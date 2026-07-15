@@ -17,7 +17,7 @@ public sealed partial class ESSparksSystem
         SubscribeLocalEvent<ESSparkOnItemToggleComponent, ItemToggledEvent>(OnItemToggled);
         SubscribeLocalEvent<ESSparkOnProjectileHitComponent, ProjectileHitEvent>(OnProjectileHit);
         SubscribeLocalEvent<ESSparkOnDespawnComponent, TimedDespawnEvent>(OnDespawn);
-        // SubscribeLocalEvent<ESSparkOnTriggerComponent, TriggerEvent>(OnTrigger);  // Moffstation - Make ESBaseSparkConfigurationComponent an interface
+        SubscribeLocalEvent<ESSparkOnTriggerComponent, TriggerEvent>(OnTrigger);
     }
 
     private void OnDamaged(Entity<ESSparkOnHitComponent> ent, ref DamageChangedEvent args)
@@ -48,10 +48,8 @@ public sealed partial class ESSparksSystem
         DoSparks(ent);
     }
 
-    // Moffstation - Begin - Make ESBaseSparkConfigurationComponent an interface
-    // private void OnTrigger(Entity<ESSparkOnTriggerComponent> ent, ref TriggerEvent args)
-    // {
-    //     DoSparks(ent);
-    // }
-    // Moffstation - Begin
+    private void OnTrigger(Entity<ESSparkOnTriggerComponent> ent, ref TriggerEvent args)
+    {
+        DoSparks(ent);
+    }
 }
