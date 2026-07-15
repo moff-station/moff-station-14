@@ -300,6 +300,7 @@ public sealed partial class AntagSelectionSystem : GameRuleSystem<AntagSelection
                 break;
             // Moff start - ghost roll enrolling
             case Enroll:
+                AddGameRuleDefinitions(gameRule, playerCount, ref postSpawnRoles, active);
                 break;
             // Moff end
         }
