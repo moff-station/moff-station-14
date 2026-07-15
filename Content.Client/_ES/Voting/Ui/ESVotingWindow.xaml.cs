@@ -20,7 +20,6 @@ public sealed partial class ESVotingWindow : FancyWindow
     private readonly MoffVoteEntrySystem _vote;
 
     private List<Entity<MoffVoteEntryComponent>> _lastEntries = new();
-    public event Action<Entity<ESVoteComponent>, bool>? OnVoteChanged;
 
     // Moffstation - matched against in declaration order to build the control for a vote entry
     private readonly List<(Func<EntityUid, bool> Matches, Func<EntityUid, IVoteEntryControl> Create)> _controlFactories;

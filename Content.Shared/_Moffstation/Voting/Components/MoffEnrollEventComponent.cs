@@ -53,7 +53,7 @@ public sealed partial class MoffEnrollEventComponent : Component
     /// Whether the event is available to be enrolled in
     /// </summary>
     [ViewVariables]
-    public bool Enrollable;
+    public bool Enrollable = true;
 
     [ViewVariables]
     public bool Warpable;

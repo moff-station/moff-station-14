@@ -39,10 +39,13 @@ public sealed partial class MoffEnrollControl : PanelContainer, IVoteEntryContro
                        && comp.Enrolled.Contains(netEntity);
 
         EnrollButton.Pressed = enrolled;
+        EnrollButton.Text = enrolled ? "Enrolled" : "Enroll";
+
         EnrollButton.OnPressed += args =>
         {
             EnrollButton.Text = args.Button.Pressed ? "Enrolled" : "Enroll";
-            OnEnrollChanged?.Invoke(Enroller, args.Button.Pressed);
+            var netEnroller = _entityManager.GetNetEntity(Enroller);
+            _entityManager.RaisePredictiveEvent(new MoffSetEnrollMessage(netEnroller, args.Button.Pressed));
         };
     }
 

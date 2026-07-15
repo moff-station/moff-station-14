@@ -1,6 +1,4 @@
-using System.Diagnostics;
 using System.Numerics;
-using Content.Shared._ES.Voting.Components;
 using JetBrains.Annotations;
 using Robust.Client.UserInterface;
 
@@ -19,12 +17,6 @@ public sealed class ESVoterBui(EntityUid owner, Enum uiKey) : BoundUserInterface
         _window = this.CreateWindow<ESVotingWindow>();
         _window.OpenCenteredAt(_defaultLocation); // Moffstation - off center the window, I like it better
         _window.Update(Owner);
-
-        _window.OnVoteChanged += (entity, option) =>
-        {
-            var netEnt = EntMan.GetNetEntity(entity);
-            EntMan.RaisePredictiveEvent(new ESSetVoteMessage(netEnt, option));
-        };
     }
 
     public override void Update()

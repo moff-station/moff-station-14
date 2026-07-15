@@ -16,8 +16,6 @@ public sealed partial class ESVoteControl : PanelContainer, IVoteEntryControl
     [Dependency] private IEntityManager _entityManager = default!;
     [Dependency] private IGameTiming _timing = default!;
 
-    public event Action<Entity<ESVoteComponent>, ESVoteOption, bool>? OnVoteChanged;
-
     public EntityUid Vote { get; }
 
     private TimeSpan _endTime;
@@ -67,9 +65,10 @@ public sealed partial class ESVoteControl : PanelContainer, IVoteEntryControl
                     Pressed = votes.Contains(netOwner),
                 };
 
-                button.OnPressed += args =>
+                button.OnPressed += _ =>
                 {
-                    OnVoteChanged?.Invoke(vote, option, args.Button.Pressed);
+                    var netVote = _entityManager.GetNetEntity(vote.Owner);
+                    _entityManager.RaisePredictiveEvent(new ESSetVoteMessage(netVote, option));
                 };
 
                 OptionsContainer.AddChild(button);
