@@ -26,5 +26,13 @@ public sealed partial class EntityTableSpawnerComponent : Component
     /// </summary>
     [DataField]
     public bool DeleteSpawnerAfterSpawn = true;
+
+    // Moffstation - Random spawner angles
+    /// <summary>
+    /// Randomizes the rotation of spawns
+    /// </summary>
+    [DataField]
+    public bool RandomRotation;
+    // Moffstation - End
 }
 

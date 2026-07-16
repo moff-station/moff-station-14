@@ -1,12 +1,14 @@
-- type: cargoProduct
-  id: FoodPizza
-  icon:
-    sprite: Objects/Consumable/Food/Baked/pizza.rsi
-    state: margherita-slice
-  product: CrateFoodPizza
-  cost: 1600
-  category: cargoproduct-category-name-food
-  group: market
+# Moffstation - Start - Pizza delivery!
+#- type: cargoProduct
+#  id: FoodPizza
+#  icon:
+#    sprite: Objects/Consumable/Food/Baked/pizza.rsi
+#    state: margherita-slice
+#  product: CrateFoodPizza
+#  cost: 1600
+#  category: cargoproduct-category-name-food
+#  group: market
+# Moffstation - End
 
 - type: cargoProduct
   id: FoodMRE

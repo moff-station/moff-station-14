@@ -20,7 +20,6 @@ public abstract partial class SharedTouristCameraSystem : EntitySystem
 
         SubscribeLocalEvent<TouristCameraComponent, UseInHandEvent>(OnCameraUseInHand);
     }
-    public ProtoId<StatusEffectPrototype> FlashedKey = "Flashed";
 
     public virtual void FlashArea(Entity<FlashComponent?> source, EntityUid? user, float range, float duration, float slowTo = 0.8f, bool displayPopup = false, float probability = 1f, SoundSpecifier? sound = null)
     {

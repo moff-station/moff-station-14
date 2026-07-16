@@ -8,7 +8,7 @@
   - CaptainJumpsuit
   - CaptainBackpack
   - CaptainOuterClothing
-  - ModularEyewearSunglasses # Moffstation - Modular Eyewear
+  - Glasses # Moffstation - Modular Eyewear
   - Survival
   - Trinkets
   #- CaptainJobTrinkets
@@ -25,8 +25,7 @@
   - HoPJumpsuit
   - HoPBackpack
   - HoPOuterClothing
-  # - Glasses # Moffstation - Modular Eyewear
-  - ModularEyewearBasic # Moffstation - Modular Eyewear
+  - Glasses
   - Survival
   - Trinkets
   #- HoPJobTrinkets
@@ -40,6 +39,7 @@
   canCustomizeName: true
   # Moffstation - Begin - Borgs can get personal items
   groups:
+  - BorgBrain # Moffstation - Borg can choose their brain type
   - PersonalItemsJobAgnostic # Umbra
   # Moffstation - End
 
@@ -61,8 +61,7 @@
   - PassengerGloves
   - PassengerOuterClothing
   - PassengerShoes
-  # - Glasses # Moffstation - Modular Eyewear
-  - ModularEyewearBasic # Moffstation - Modular Eyewear
+  - Glasses
   - Survival
   - Trinkets
   #- PassengerJobTrinkets
@@ -78,8 +77,7 @@
   - BartenderJumpsuit
   - CommonBackpack
   - BartenderOuterClothing
-  # - Glasses # Moffstation - Modular Eyewear
-  - ModularEyewearBasic # Moffstation - Modular Eyewear
+  - Glasses
   - Survival
   - Trinkets
   - BartenderJobTrinkets
@@ -93,8 +91,7 @@
   - ServiceWorkerPDA # Moffstation - Additional job title loadouts
   - BartenderJumpsuit
   - CommonBackpack
-  # - Glasses # Moffstation - Modular Eyewear
-  - ModularEyewearBasic # Moffstation - Modular Eyewear
+  - Glasses
   - Survival
   - Trinkets
   #- ServiceWorkerJobTrinkets
@@ -111,8 +108,7 @@
   - ChefJumpsuit
   - CommonBackpack
   - ChefOuterClothing
-  # - Glasses # Moffstation - Modular Eyewear
-  - ModularEyewearBasic # Moffstation - Modular Eyewear
+  - Glasses
   - Survival
   - Trinkets
   #- ChefJobTrinkets
@@ -126,8 +122,7 @@
   - LibrarianPDA # Moffstation - Additional job title loadouts
   - LibrarianJumpsuit
   - CommonBackpack
-  # - Glasses # Moffstation - Modular Eyewear
-  - ModularEyewearBasic # Moffstation - Modular Eyewear
+  - Glasses
   - Survival
   - Trinkets
   #- LibrarianJobTrinkets
@@ -142,8 +137,7 @@
   - LawyerNeck
   - LawyerJumpsuit
   - CommonBackpack
-  # - Glasses # Moffstation - Modular Eyewear
-  - ModularEyewearBasic # Moffstation - Modular Eyewear
+  - Glasses
   - Survival
   - Trinkets
   #- LawyerJobTrinkets
@@ -163,8 +157,7 @@
   - CommonBackpack
   - ChaplainOuterClothing
   - ChaplainBible
-  # - Glasses # Moffstation - Modular Eyewear
-  - ModularEyewearBasic # Moffstation - Modular Eyewear
+  - Glasses
   - Survival
   - Trinkets
   #- ChaplainJobTrinkets
@@ -181,8 +174,7 @@
   - JanitorGloves
   - CommonBackpack
   - JanitorOuterClothing
-  # - Glasses # Moffstation - Modular Eyewear
-  - ModularEyewearBasic # Moffstation - Modular Eyewear
+  - Glasses
   - Survival
   - Trinkets
   - JanitorJobTrinkets
@@ -198,8 +190,7 @@
   - BotanistJumpsuit
   - BotanistBackpack
   - BotanistOuterClothing
-  # - Glasses # Moffstation - Modular Eyewear
-  - ModularEyewearBasic # Moffstation - Modular Eyewear
+  - Glasses
   - Survival
   - Trinkets
   #- BotanistJobTrinkets
@@ -219,8 +210,7 @@
   - ClownBackpack
   - ClownOuterClothing
   - ClownShoes
-  # - Glasses # Moffstation - Modular Eyewear
-  - ModularEyewearBasic # Moffstation - Modular Eyewear
+  - Glasses
   - SurvivalClown
   - Trinkets
   - ClownJobTrinkets
@@ -240,8 +230,7 @@
   - MimeOuterClothing
   - MimeBelt
   - MimeShoes # Moffstation
-  # - Glasses # Moffstation - Modular Eyewear
-  - ModularEyewearBasic # Moffstation - Modular Eyewear
+  - Glasses
   - SurvivalMime
   - Trinkets
   #- MimeJobTrinkets
@@ -258,8 +247,7 @@
   - MusicianShoes # Moffstation - Musician loadout Options
   - CommonBackpack
   - MusicianOuterClothing
-  # - Glasses # Moffstation - Modular Eyewear
-  - ModularEyewearBasic # Moffstation - Modular Eyewear
+  - Glasses
   - Survival
   - Trinkets
   #- MusicianJobTrinkets
@@ -279,8 +267,7 @@
   - QuartermasterBackpack # Moffstation - Department Heads can wear any bag from their department
   - QuartermasterOuterClothing
   - QuartermasterShoes
-  # - Glasses # Moffstation - Modular Eyewear
-  - ModularEyewearBasic # Moffstation - Modular Eyewear
+  - Glasses
   - Survival
   - Trinkets
   #- QuartermasterJobTrinkets
@@ -298,8 +285,7 @@
   - CargoTechnicianOuterClothing
   - CargoTechnicianShoes
   # - CargoTechnicianID # Moffstation - Moved up in list
-  # - Glasses # Moffstation - Modular Eyewear
-  - ModularEyewearBasic # Moffstation - Modular Eyewear
+  - Glasses
   - Survival
   - Trinkets
   #- CargoTechnicianJobTrinkets
@@ -318,8 +304,7 @@
   - SalvageSpecialistBackpack
   - SalvageSpecialistOuterClothing
   - SalvageSpecialistShoes
-  # - Glasses # Moffstation - Modular Eyewear
-  - ModularEyewearBasic # Moffstation - Modular Eyewear
+  - Glasses
   - Survival
   - Trinkets
   #- SalvageSpecialistJobTrinkets
@@ -338,7 +323,7 @@
   - ChiefEngineerNeck
   - ChiefEngineerOuterClothing
   - ChiefEngineerShoes
-  - ModularEyewearBasic # Moffstation - Modular Eyewear
+  - Glasses # Moffstation - Modular Eyewear
   - SurvivalExtended
   - Trinkets
   #- ChiefEngineerJobTrinkets
@@ -367,7 +352,7 @@
   - StationEngineerOuterClothing
   - StationEngineerShoes
   # - StationEngineerID # Moffstation - Moved up in list
-  - ModularEyewearBasic # Moffstation - Modular Eyewear
+  - Glasses # Moffstation - Modular Eyewear
   - SurvivalExtended
   - Trinkets
   #- StationEngineerJobTrinkets
@@ -384,7 +369,7 @@
   - AtmosphericTechnicianBackpack
   - AtmosphericTechnicianOuterClothing
   - AtmosphericTechnicianShoes
-  - ModularEyewearBasic # Moffstation - Modular Eyewear
+  - Glasses # Moffstation - Modular Eyewear
   - SurvivalExtended
   - Trinkets
   #- AtmosphericTechnicianJobTrinkets
@@ -404,8 +389,7 @@
   - ResearchDirectorOuterClothing
   - ScientistGloves
   - ResearchDirectorShoes
-  # - Glasses # Moffstation - Modular Eyewear
-  - ModularEyewearBasic # Moffstation - Modular Eyewear
+  - Glasses
   - Survival
   - Trinkets
   #- ResearchDirectorJobTrinkets
@@ -425,8 +409,7 @@
   - ScientistGloves
   - ScientistShoes
   # - ScientistPDA # Moffstation - Moved up in list
-  # - Glasses # Moffstation - Modular Eyewear
-  - ModularEyewearBasic # Moffstation - Modular Eyewear
+  - Glasses
   - Survival
   - Trinkets
   #- ScientistJobTrinkets
@@ -457,7 +440,7 @@
   - SecurityBelt
   - HeadofSecurityOuterClothing
   - SecurityShoes
-  - ModularEyewearSunglasses # Moffstation - Modular Eyewear
+  - Glasses # Moffstation - Modular Eyewear
   - SurvivalSecurity
   - Trinkets
   - HeadofSecurityJobTrinkets
@@ -474,7 +457,7 @@
   - SecurityBelt
   - WardenOuterClothing
   - SecurityShoes
-  - ModularEyewearSunglasses # Moffstation - Modular Eyewear
+  - Glasses # Moffstation - Modular Eyewear
   - SurvivalSecurity
   - Trinkets
   - WardenJobTrinkets
@@ -492,7 +475,7 @@
   - SecurityShoes
 # - SecurityPDA # Moffstation - Moved up in list
   - SecurityBelt
-  - ModularEyewearSunglasses # Moffstation - Modular Eyewear
+  - Glasses # Moffstation - Modular Eyewear
   - SurvivalSecurity
   - Trinkets
   - SecurityJobTrinkets
@@ -510,7 +493,7 @@
   - DetectiveOuterClothing
   - DetectiveBelt # Moffstation - Detective loadout changes
   - SecurityShoes
-  - ModularEyewearSunglasses # Moffstation - Modular Eyewear
+  - Glasses # Moffstation - Modular Eyewear
   - DetectiveSidearm # Moffstation - (PM Pistol) - With the new PM, detective needs a loadout to select which sidearm they want.
   - SurvivalSecurity
   - Trinkets
@@ -538,8 +521,7 @@
   - ReporterHead
   - ReporterOuterClothing
   - CommonBackpack
-  # - Glasses # Moffstation - Modular Eyewear
-  - ModularEyewearBasic # Moffstation - Modular Eyewear
+  - Glasses
   - Survival
   - Trinkets
   #- ReporterJobTrinkets
@@ -553,8 +535,7 @@
   - PsychologistPDA # Moffstation - Additional job title loadouts
   - PsychologistJumpsuit
   - MedicalBackpack
-  # - Glasses # Moffstation - Modular Eyewear
-  - ModularEyewearBasic # Moffstation - Modular Eyewear
+  - Glasses
   - Survival
   - Trinkets
   #- PsychologistJobTrinkets

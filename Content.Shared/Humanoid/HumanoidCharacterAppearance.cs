@@ -7,6 +7,7 @@ using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 using Robust.Shared.Serialization;
 using Robust.Shared.Utility;
+using static Content.Shared.Preferences.HumanoidCharacterProfile;
 
 namespace Content.Shared.Humanoid;
 
@@ -83,30 +84,126 @@ public sealed partial class HumanoidCharacterAppearance : IEquatable<HumanoidCha
         Color.Black
     };
 
-    public static HumanoidCharacterAppearance Random(string species, Sex sex)
+    /// <summary>
+    /// Picks a random eye color.
+    /// </summary>
+    public static Color RandomEyes()
     {
         var random = IoCManager.Resolve<IRobustRandom>();
-        var markingManager = IoCManager.Resolve<MarkingManager>();
 
-        // TODO: Add random markings
+        var eyes = random.Pick(_realisticEyeColors);
+        return eyes;
+    }
 
-        var newEyeColor = random.Pick(_realisticEyeColors);
-
+    /// <summary>
+    /// Picks a random skin color using species.
+    /// </summary>
+    public static Color RandomSkin(ProtoId<SpeciesPrototype> species)
+    {
+        var random = IoCManager.Resolve<IRobustRandom>();
         var protoMan = IoCManager.Resolve<IPrototypeManager>();
-        var skinType = protoMan.Index<SpeciesPrototype>(species).SkinColoration;
+
+        var speciesProto = protoMan.Index(species);
+        var skinType = speciesProto.SkinColoration;
         var strategy = protoMan.Index(skinType).Strategy;
 
-        var newSkinColor = strategy.InputType switch
+        var skinColor = strategy.InputType switch
         {
             SkinColorationStrategyInput.Unary => strategy.FromUnary(random.NextFloat(0f, 100f)),
             SkinColorationStrategyInput.Color => strategy.ClosestSkinColor(new Color(random.NextFloat(1), random.NextFloat(1), random.NextFloat(1), 1)),
             _ => strategy.ClosestSkinColor(new Color(random.NextFloat(1), random.NextFloat(1), random.NextFloat(1), 1)),
         };
 
+        return skinColor;
+    }
+
+    // Moff start - Random markings
+    public static Dictionary<
+        ProtoId<OrganCategoryPrototype>,
+        Dictionary<HumanoidVisualLayers, List<Marking>>
+    > RandomMarkings(ProtoId<SpeciesPrototype> species, Sex sex, Color newSkinColor, Color newEyeColor)
+    {
+        var random = IoCManager.Resolve<IRobustRandom>();
+        var protoMan = IoCManager.Resolve<IPrototypeManager>();
+        var markingMan = IoCManager.Resolve<MarkingManager>();
+
+        var markings =
+            new Dictionary<ProtoId<OrganCategoryPrototype>, Dictionary<HumanoidVisualLayers, List<Marking>>>();
+        foreach (var (organ, organData) in markingMan.GetMarkingData(species))
+        {
+            if (!protoMan.Resolve(organData.Group, out var groupProto))
+                continue;
+            var organMarkings = new Dictionary<HumanoidVisualLayers, List<Marking>>();
+
+            foreach (var layer in organData.Layers)
+            {
+                var available = markingMan.MarkingsByLayerAndGroupAndSex(layer, organData.Group, sex).Values.ToList();
+
+                // layer is not applied
+                if (available.Count == 0 ||
+                    !groupProto.Limits.TryGetValue(layer, out var layerLimit) || layerLimit.Limit == 0 ||
+                    !random.Prob(layerLimit.RandomChance))
+                    continue;
+
+                // amount of markings to be applied
+                var count = random.Next(0, layerLimit.Limit + 1);
+                if (count == 0)
+                    continue;
+
+                random.Shuffle(available);
+
+                var picked = new List<Marking>();
+                foreach (var markingProto in available.Take(count))
+                {
+                    var colors = MarkingColoring.GetMarkingLayerColors(markingProto, newSkinColor, newEyeColor, picked);
+                    picked.Add(new Marking(markingProto.ID, colors));
+                }
+
+                organMarkings[layer] = picked;
+            }
+
+            if (organMarkings.Count > 0)
+                markings[organ] = organMarkings;
+        }
+
+        return markings;
+    }
+    // Moff end
+
+    /// <summary>
+    /// Generates a randomized character appearance.
+    /// </summary>
+    public static HumanoidCharacterAppearance Random(string species, Sex sex) // Moffstation - Added randomized markings
+    {
+        var appearance = Random(
+            RandomizeConfigAll,
+            new HumanoidCharacterAppearance { Markings = new () },
+            species,
+            sex
+        );
+
+        return appearance;
+    }
+
+    /// <summary>
+    /// Generates a randomized character appearance with selective randomizing.
+    /// </summary>
+    /// <param name="charEditorRandomizeConfig">Which values to randomize.</param>
+    /// <param name="baseAppearance">Appearance to base the new appearance on. Values that are not randomized will be taken from this appearance.</param>
+    /// <param name="species">Species prototype ID.</param>
+    /// <param name="sex">Sex.</param>
+    /// <returns>A new character appearance with selected values randomized</returns>
+    public static HumanoidCharacterAppearance Random(RandomizeCfg charEditorRandomizeConfig, HumanoidCharacterAppearance baseAppearance, ProtoId<SpeciesPrototype> species, Sex sex)
+    {
+        var appearance = new HumanoidCharacterAppearance { Markings = new () };
+        appearance.EyeColor = (charEditorRandomizeConfig & RandomizeCfg.Eyes) != 0 ? RandomEyes() : baseAppearance.EyeColor;
+        appearance.SkinColor = (charEditorRandomizeConfig & RandomizeCfg.Skin) != 0 ? RandomSkin(species) : baseAppearance.SkinColor;
+        appearance.Markings = (charEditorRandomizeConfig & RandomizeCfg.Markings) != 0 ? RandomMarkings(species, sex, appearance.SkinColor, appearance.EyeColor) : baseAppearance.Markings; // Moffstation - Randomizeable markings
+
         // Safety step. Most systems which called Random() also called this, and not doing so caused issues with markings.
         // In the future it could *maybe* be removed, but it's probably worth the extra CPU cycles to validate this info.
         return EnsureValid(
-            new HumanoidCharacterAppearance(newEyeColor, newSkinColor, new()),
+            appearance,
             species,
             sex);
     }

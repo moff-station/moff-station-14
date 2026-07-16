@@ -358,6 +358,13 @@
   - type: DeviceLinkSink
     ports:
       - Trigger
+  # Moffstation - Start - Electrocute the Scurrets
+  - type: Tag
+    tags:
+    - WhitelistChameleon
+    - Backpack
+    - ScurretWearable
+  # Moffstation - End
 
 # Debug
 - type: entity

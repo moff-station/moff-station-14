@@ -13,6 +13,8 @@
     - id: GreytideVirus
     - id: IonStorm # its calm like 90% of the time smh
     - id: KudzuGrowth
+    - id: LightOverloadRule # Moffstation - New events
+    - id: LightOverloadRuleBlinking # Moffstation - New events
     - id: MassHallucinations
     - id: MouseMigration
     - id: PowerGridCheck
@@ -48,7 +50,7 @@
     - id: SleeperAgents
     - id: ZombieOutbreak
     - id: LoneOpsSpawn
-    - id: WizardSpawn
+    # - id: WizardSpawn # Moffstation
     - id: EeepEvent # imp
     - !type:NestedSelector
       tableId: DerelictBorgEventTable
