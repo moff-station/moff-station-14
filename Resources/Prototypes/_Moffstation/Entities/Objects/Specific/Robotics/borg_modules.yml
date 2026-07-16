@@ -306,8 +306,11 @@
         whitelist:
           tags:
           - PackageDelivery
+    - item: ParcelWrapRecharging
   - type: BorgModuleIcon
     icon: { sprite: _Moffstation/Interface/Actions/actions_borg.rsi, state: mail-module }
+
+
 
 # Science Modules
 - type: entity
@@ -405,3 +408,39 @@
     tags:
     - CyborgTraversalModule
     - BorgModuleCargo
+
+- type: entity
+  parent: [ BaseBorgModuleCargo, BaseProviderBorgModule ]
+  id: BorgModuleAdvancedMail
+  name: advanced mail cyborg module
+  components:
+  - type: Sprite
+    layers:
+    - state: cargo
+    - sprite: _Moffstation/Objects/Specific/Robotics/borgmodule.rsi
+      state: icon-mail
+  - type: ItemBorgModule
+    hands:
+    - item: MailBag
+    - hand:
+        emptyRepresentative: LetterDelivery
+        emptyLabel: borg-slot-letter-empty
+        whitelist:
+          components:
+          - Paper
+          - Delivery
+          - WrappedParcel
+          tags:
+          - MailCapsule
+          - Document
+          - Paper
+    - hand:
+        emptyRepresentative: PackageDelivery
+        emptyLabel: borg-slot-package-empty
+        whitelist:
+          tags:
+          - PackageDelivery
+    - item: ParcelWrapRecharging
+    - item: NFWeaponLauncherMailBorg
+  - type: BorgModuleIcon
+    icon: { sprite: _Moffstation/Interface/Actions/actions_borg.rsi, state: mail-module }

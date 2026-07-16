@@ -1,0 +1,37 @@
+# Used in the advanced borg mail module.
+# this version don't require weild.
+- type: entity
+  id: NFWeaponLauncherMailBorg
+  name: RPDS
+  suffix: DO NOT MAP
+  components:
+  - type: Item
+    size: Ginormous
+  - type: ContainerContainer
+    containers:
+      ballistic-ammo: !type:Container
+        ents: [ ]
+  - type: Gun
+    minAngle: 1
+    maxAngle: 2
+    fireRate: 1
+    projectileSpeed: 25
+    selectedMode: SemiAuto
+    availableModes:
+    - SemiAuto
+    soundGunshot:
+      path: /Audio/Weapons/Guns/Gunshots/grenade_launcher.ogg
+  - type: Sprite
+    sprite: _NF/Objects/Weapons/Guns/Launchers/mail.rsi
+    layers:
+    - state: icon
+      map: [ "enum.GunVisualLayers.Base" ]
+  - type: AmmoCounter
+  - type: BallisticAmmoProvider
+    proto: null
+    whitelist:
+      tags:
+      - MailCapsule
+    capacity: 4
+    soundInsert:
+      path: /Audio/Weapons/Guns/MagIn/batrifle_magin.ogg
