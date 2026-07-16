@@ -29,9 +29,13 @@
   - type: LoadMapRule
     gridPath: /Maps/_Moffstation/Shuttles/shuttle-sp-sparrow.yml
   - type: AntagSelection
+    selectionTime: Enroll
     antags:
     - !type:FixedAntagCount
       proto: PirateCorsair
+  - type: ESSynchronizedVoteManager
+    votes:
+    - PirateCorsairEnroller
   - type: DynamicRuleCost
     cost: 75
 

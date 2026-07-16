@@ -46,3 +46,47 @@
     duration: 60
     minEnrolled: 1
     maxEnrolled: 1
+
+- type: entity
+  parent: MoffBaseVote
+  id: DerelictCyborgEnroller
+  name: Derelict Cyborg
+  description: Enroll for a chance to be reactivated as a derelict cyborg.
+  components:
+  - type: MoffEnrollEvent
+    duration: 60
+    minEnrolled: 1
+    maxEnrolled: 1
+
+- type: entity
+  parent: MoffBaseVote
+  id: LoneOpEnroller
+  name: Lone Operative
+  description: Enroll for a chance to strike the station as a lone nuclear operative.
+  components:
+  - type: MoffEnrollEvent
+    duration: 60
+    minEnrolled: 1
+    maxEnrolled: 1
+
+- type: entity
+  parent: MoffBaseVote
+  id: PirateCorsairEnroller
+  name: Pirate Corsair
+  description: Enroll for a chance to raid the station as a pirate corsair.
+  components:
+  - type: MoffEnrollEvent
+    duration: 60
+    minEnrolled: 1
+    maxEnrolled: 1
+
+- type: entity
+  parent: MoffBaseVote
+  id: SyndicateSpyEnroller
+  name: Syndicate Spy
+  description: Enroll for a chance to infiltrate from a Syndicate listening outpost.
+  components:
+  - type: MoffEnrollEvent
+    duration: 60
+    minEnrolled: 1
+    maxEnrolled: 2

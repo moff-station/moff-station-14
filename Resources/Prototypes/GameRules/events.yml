@@ -538,9 +538,15 @@
   - type: NukeopsRule
     roundEndBehavior: Nothing
   - type: AntagSelection
+    selectionTime: Enroll # Moffstation - drive antag selection through enrollment voting
     antags:
     - !type:FixedAntagCount
       proto: LoneOp
+  # Moffstation - drive antag selection through enrollment voting
+  - type: ESSynchronizedVoteManager
+    votes:
+    - LoneOpEnroller
+  # Moffstation end
   - type: DynamicRuleCost
     cost: 75
 
@@ -640,6 +646,11 @@
     duration: null
   - type: SpaceSpawnRule
     spawnDistance: 0
+  # Moffstation - drive antag selection through enrollment voting (shared across all derelict cyborg variants)
+  - type: ESSynchronizedVoteManager
+    votes:
+    - DerelictCyborgEnroller
+  # Moffstation end
 
 - type: entity
   parent: BaseDerelictCyborgSpawn
