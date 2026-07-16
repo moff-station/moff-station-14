@@ -97,17 +97,19 @@ public sealed partial class AntagSelectionSystem
             return false;
 
         // If our antag is mutually exclusive with other antags, yell about it!
+        // Moff - Check if they are a ghost, this is necessary to make our ghostrole enrollment systems work.
+        var embodied = player.AttachedEntity is not { } antagBody || !HasComp<GhostComponent>(antagBody);
         switch (def.MultiAntagSetting)
         {
             case AntagAcceptability.None:
             {
-                if (IsAssignedAntag(player, gameRule))
+                if (IsAssignedAntag(player, gameRule) && embodied) // Moff - Added embodied for ghostrole enrollment
                     return false;
                 break;
             }
             case AntagAcceptability.NotExclusive:
             {
-                if (IsAssignedExclusiveAntag(player, gameRule))
+                if (IsAssignedExclusiveAntag(player, gameRule) && embodied) // Moff - Added embodied for ghostrole enrollment
                     return false;
                 break;
             }
