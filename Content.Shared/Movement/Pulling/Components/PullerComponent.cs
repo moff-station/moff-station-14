@@ -1,4 +1,5 @@
 ﻿using Content.Shared.Alert;
+using Content.Shared.Item;
 using Content.Shared.Movement.Pulling.Systems;
 using Robust.Shared.GameStates;
 using Robust.Shared.Prototypes;
@@ -49,6 +50,14 @@ public sealed partial class PullerComponent : Component
     /// </summary>
     [DataField, AutoNetworkedField]
     public ProtoId<AlertPrototype> PullingAlert = "Pulling";
+
+    // Moffstation - Begin - Replicators
+    /// <summary>
+    /// If true, will apply the pulled object's <see cref="HeldSpeedModifierComponent"/>'s effect while pulling.
+    /// </summary>
+    [DataField]
+    public bool ApplyHeldSpeedModifier = true;
+    // Moffstation - End
 }
 
 public sealed partial class StopPullingAlertEvent : BaseAlertEvent;

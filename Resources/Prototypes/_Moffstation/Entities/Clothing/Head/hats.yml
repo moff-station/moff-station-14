@@ -409,3 +409,25 @@
     - ClothMade
     - Recyclable
     - WhitelistChameleon
+
+- type: entity
+  parent: ClothingHeadBase
+  id: ClothingHeadHatMaid
+  name: maid headband
+  description: You aren't a real maid without one!
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Head/Hats/maid.rsi
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Head/Hats/maid.rsi
+
+- type: entity
+  parent: ClothingHeadBase
+  id: ClothingHeadHatMaidService
+  name: service maid headband
+  description: For a personal touch.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Head/Hats/maid_service.rsi
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Head/Hats/maid_service.rsi

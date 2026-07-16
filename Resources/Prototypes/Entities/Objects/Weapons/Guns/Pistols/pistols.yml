@@ -1,6 +1,6 @@
 - type: entity
   name: BasePistol
-  parent: BaseItem
+  parent: [ BaseItem, BasePointerCrosshair ] # MACRO add crosshair
   id: BaseWeaponPistol
   description: A rooty tooty point and shooty.
   abstract: true
@@ -105,7 +105,7 @@
 
 - type: entity
   name: echis
-  parent: [ BaseItem, BaseSyndicateContraband ]
+  parent: [ BaseItem, BaseSyndicateContraband, BasePointerCrosshair ] # MACRO add crosshair
   id: WeaponPistolEchis
   description: A cyborg-mounted weapon system based on the Viper pistol. Creates ammunition on the fly from an internal fabricator, which slowly self-charges.
   components:
