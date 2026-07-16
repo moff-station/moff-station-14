@@ -47,6 +47,13 @@ public sealed partial class MoffEnrollControl : PanelContainer, IVoteEntryContro
             var netEnroller = _entityManager.GetNetEntity(Enroller);
             _entityManager.RaisePredictiveEvent(new MoffSetEnrollMessage(netEnroller, args.Button.Pressed));
         };
+
+        // Ghosts only; the server rejects the request from anyone still in a body.
+        GotoButton.OnPressed += _ =>
+        {
+            var netEnroller = _entityManager.GetNetEntity(Enroller);
+            _entityManager.RaisePredictiveEvent(new MoffEnrollGotoMessage(netEnroller));
+        };
     }
 
     public void Update(EntityUid owner)
@@ -68,6 +75,9 @@ public sealed partial class MoffEnrollControl : PanelContainer, IVoteEntryContro
         VoteDescriptionLabel.SetMarkup(Loc.GetString("moff-vote-enroll-header-desc-format",
             ("color", ent.Comp.DescriptionColor),
             ("desc", desc)));
+
+        // There's nowhere to go until the rule has been added and its spawn location picked.
+        GotoButton.Disabled = !ent.Comp.Warpable;
 
         TimerProgress.MinValue = (float) (ent.Comp.EndTime - ent.Comp.Duration).TotalSeconds;
         TimerProgress.MaxValue = (float) ent.Comp.EndTime.TotalSeconds;

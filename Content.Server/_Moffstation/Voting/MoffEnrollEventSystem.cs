@@ -6,8 +6,10 @@ using Content.Shared._Moffstation.Voting.Components;
 using Content.Shared._Moffstation.Voting.Systems;
 using Content.Shared.EntityTable;
 using Content.Shared.GameTicking.Components;
+using Content.Shared.Ghost;
 using Content.Shared.Roles.Components;
 using Robust.Server.Player;
+using Robust.Shared.Map;
 using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
@@ -36,6 +38,79 @@ public sealed partial class MoffEnrollEventSystem : SharedMoffEnrollEventSystem
     [Dependency] private AntagSelectionSystem _antag = default!;
     [Dependency] private EntityTableSystem _entityTable = default!;
     [Dependency] private IPrototypeManager _proto = default!;
+    [Dependency] private SharedTransformSystem _transform = default!;
+
+    public override void Initialize()
+    {
+        base.Initialize();
+
+        SubscribeAllEvent<MoffEnrollGotoMessage>(OnGoto);
+    }
+
+    /// <summary>
+    /// Warps a ghost to where this event will spawn, so they can have a look before enrolling.
+    /// </summary>
+    private void OnGoto(MoffEnrollGotoMessage args, EntitySessionEventArgs ev)
+    {
+        // Only ghosts get to fly off and look around.
+        if (ev.SenderSession.AttachedEntity is not { } player || !HasComp<GhostComponent>(player))
+            return;
+
+        if (!TryGetEntity(args.Enroller, out var enrollUid) ||
+            !TryComp<MoffEnrollEventComponent>(enrollUid, out var enroll) ||
+            !enroll.Warpable ||
+            GetWarpTarget(enrollUid.Value) is not { } coords)
+            return;
+
+        _transform.SetMapCoordinates(player, coords);
+    }
+
+    /// <summary>
+    /// Where this event's antag will spawn, asked of the rule the same way antag selection asks for it.
+    /// Only resolves once the rule has been added, see <see cref="EnsureOwningRuleAdded"/>.
+    /// </summary>
+    private MapCoordinates? GetWarpTarget(EntityUid enrollUid)
+    {
+        if (FindOwningRule(enrollUid) is not { } ruleUid ||
+            !TryComp<AntagSelectionComponent>(ruleUid, out var antag))
+            return null;
+
+        foreach (var selector in antag.Antags)
+        {
+            if (!_proto.TryIndex(selector.Proto, out var def))
+                continue;
+
+            var ev = new AntagSelectLocationEvent((ruleUid, antag), def);
+            RaiseLocalEvent(ruleUid, ref ev, true);
+
+            if (ev.Coordinates.Count > 0)
+                return _random.Pick(ev.Coordinates);
+        }
+
+        return null;
+    }
+
+    /// <summary>
+    /// Adds the owning rule while the vote is still running, so its map is loaded and its antag spawn
+    /// location is picked up front - that is what "Go To" warps to. This is player-invisible for these
+    /// rules since none of them set a station event start announcement or audio. Actually starting the
+    /// rule (and so spawning the antag) still waits until the vote resolves.
+    /// </summary>
+    private void EnsureOwningRuleAdded(Entity<MoffEnrollEventComponent> ent)
+    {
+        if (FindOwningRule(ent.Owner) is not { } ruleUid ||
+            !TryComp<GameRuleComponent>(ruleUid, out var gameRule) ||
+            gameRule.Added)
+            return;
+
+        gameRule.Added = true;
+        var addedEv = new GameRuleAddedEvent(ruleUid, MetaData(ruleUid).EntityPrototype?.ID ?? string.Empty);
+        RaiseLocalEvent(ruleUid, ref addedEv, true);
+
+        // The spawn location exists now, so ghosts can go and look at it.
+        ent.Comp.Warpable = true;
+        Dirty(ent);
+    }
 
     private void UpdateTitleColor(Entity<MoffEnrollEventComponent> ent)
     {
@@ -87,6 +162,7 @@ public sealed partial class MoffEnrollEventSystem : SharedMoffEnrollEventSystem
         var query = EntityQueryEnumerator<MoffEnrollEventComponent>();
         while (query.MoveNext(out var uid, out var comp))
         {
+            EnsureOwningRuleAdded((uid, comp));
             UpdateTitleColor((uid, comp));
 
             if (_timing.CurTime > comp.EndTime)

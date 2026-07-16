@@ -60,7 +60,11 @@ public sealed partial class MoffEnrollEventComponent : Component
     [ViewVariables]
     public bool Enrollable = true;
 
-    [ViewVariables]
+    /// <summary>
+    /// Whether the event's spawn location exists yet, i.e. whether a ghost can warp to it. Set once the
+    /// owning rule has been added, which loads its map and picks its antag spawn location.
+    /// </summary>
+    [ViewVariables, AutoNetworkedField]
     public bool Warpable;
 
     /// <summary>
@@ -76,4 +80,13 @@ public sealed class MoffSetEnrollMessage(NetEntity enroller, bool enrolled) : En
 {
     public NetEntity Enroller = enroller;
     public bool Enrolled = enrolled;
+}
+
+/// <summary>
+/// Sent by a ghost asking to be warped to where this event will spawn.
+/// </summary>
+[Serializable, NetSerializable]
+public sealed class MoffEnrollGotoMessage(NetEntity enroller) : EntityEventArgs
+{
+    public NetEntity Enroller = enroller;
 }
