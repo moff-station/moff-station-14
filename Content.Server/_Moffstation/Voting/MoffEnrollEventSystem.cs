@@ -10,6 +10,7 @@ using Content.Shared.Ghost;
 using Content.Shared.Roles.Components;
 using Robust.Server.Player;
 using Robust.Shared.Map;
+using Robust.Shared.Network;
 using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
@@ -112,6 +113,34 @@ public sealed partial class MoffEnrollEventSystem : SharedMoffEnrollEventSystem
         Dirty(ent);
     }
 
+    /// <summary>
+    /// Hides the character picker for antags that spawn a fixed non-humanoid body. <c>AllowNonHumans</c> is
+    /// what lets such a body past the post-spawn check in <c>AntagSelectionSystem.TryInitializeAntag</c>, so
+    /// it doubles as "this antag isn't built from the player's character profile" - those rules carry no
+    /// <c>AntagLoadProfileRuleComponent</c>, and picking a character would do nothing.
+    /// </summary>
+    private void UpdateCharacterSelection(Entity<MoffEnrollEventComponent> ent)
+    {
+        if (FindOwningRule(ent.Owner) is not { } ruleUid ||
+            !TryComp<AntagSelectionComponent>(ruleUid, out var antag))
+            return;
+
+        // A rule with several specifiers could spawn either kind of body, and we can't tell which in
+        // advance, so any non-humanoid one hides the picker.
+        var characterSelection = true;
+        foreach (var selector in antag.Antags)
+        {
+            if (_proto.TryIndex(selector.Proto, out var def) && def.AllowNonHumans)
+                characterSelection = false;
+        }
+
+        if (ent.Comp.CharacterSelection == characterSelection)
+            return;
+
+        ent.Comp.CharacterSelection = characterSelection;
+        Dirty(ent);
+    }
+
     private void UpdateTitleColor(Entity<MoffEnrollEventComponent> ent)
     {
         if (FindOwningRule(ent.Owner) is not { } ruleUid ||
@@ -164,6 +193,7 @@ public sealed partial class MoffEnrollEventSystem : SharedMoffEnrollEventSystem
         {
             EnsureOwningRuleAdded((uid, comp));
             UpdateTitleColor((uid, comp));
+            UpdateCharacterSelection((uid, comp));
 
             if (_timing.CurTime > comp.EndTime)
                 expired.Add((uid, comp));
@@ -176,55 +206,77 @@ public sealed partial class MoffEnrollEventSystem : SharedMoffEnrollEventSystem
         }
     }
 
+    /// <summary>
+    /// Users who asked to spawn as a randomly generated character. Only populated while
+    /// <see cref="ResolveEnrollment"/> is assigning antags, which is when the body gets built.
+    /// </summary>
+    private readonly HashSet<NetUserId> _randomProfiles = new();
+
+    /// <summary>
+    /// Whether this player enrolled asking for a randomly generated character instead of their selected
+    /// one. Only meaningful while an enrollment is resolving, which is the only time a body is built for
+    /// an enrollee.
+    /// </summary>
+    public bool PrefersRandomProfile(ICommonSession session) => _randomProfiles.Contains(session.UserId);
+
     private void ResolveEnrollment(Entity<MoffEnrollEventComponent> ent)
     {
         var rule = FindOwningRule(ent.Owner);
 
-        // Resolve the enrolled player entities into sessions.
-        var sessions = new List<ICommonSession>();
-        foreach (var netEntity in ent.Comp.Enrolled)
+        try
         {
-            if (TryGetEntity(netEntity, out var player) &&
-                _player.TryGetSessionByEntity(player.Value, out var session))
+            // Resolve the enrolled player entities into sessions.
+            var sessions = new List<ICommonSession>();
+            foreach (var netEntity in ent.Comp.Enrolled)
             {
+                if (!TryGetEntity(netEntity, out var player) ||
+                    !_player.TryGetSessionByEntity(player.Value, out var session))
+                    continue;
+
                 sessions.Add(session);
+                if (ent.Comp.RandomPick.Contains(netEntity))
+                    _randomProfiles.Add(session.UserId);
             }
-        }
 
-        // Cap the number of assigned players if MaxEnrolled is set (0 == unlimited).
-        if (ent.Comp.MaxEnrolled > 0 && sessions.Count > ent.Comp.MaxEnrolled)
-        {
-            _random.Shuffle(sessions);
-            sessions.RemoveRange(ent.Comp.MaxEnrolled, sessions.Count - ent.Comp.MaxEnrolled);
-        }
-
-        // Enough players enrolled and we found the antag rule: start it and assign the enrolled players.
-        if (sessions.Count >= ent.Comp.MinEnrolled &&
-            rule is { } ruleUid &&
-            TryComp<AntagSelectionComponent>(ruleUid, out var antag))
-        {
-            StartOwningRule(ruleUid);
-
-            var players = _antag.GetActivePlayerCount();
-            foreach (var session in sessions)
+            // Cap the number of assigned players if MaxEnrolled is set (0 == unlimited).
+            if (ent.Comp.MaxEnrolled > 0 && sessions.Count > ent.Comp.MaxEnrolled)
             {
-                // checkPref: false - enrolling is explicit consent, so we bypass antag preferences
-                // (bans / validity are still enforced).
-                _antag.TryAssignNextAvailableAntag((ruleUid, antag), session, players, checkPref: false);
+                _random.Shuffle(sessions);
+                sessions.RemoveRange(ent.Comp.MaxEnrolled, sessions.Count - ent.Comp.MaxEnrolled);
             }
 
-            return;
-        }
+            // Enough players enrolled and we found the antag rule: start it and assign the enrolled players.
+            if (sessions.Count >= ent.Comp.MinEnrolled &&
+                rule is { } ruleUid &&
+                TryComp<AntagSelectionComponent>(ruleUid, out var antag))
+            {
+                StartOwningRule(ruleUid);
 
-        // Not enough enrolled (or no owning antag rule): fire the fallback rules instead and clean up
-        // the antag rule that was spawned but never started.
-        foreach (var proto in _entityTable.GetSpawns(ent.Comp.FallbackRules, _random))
+                var players = _antag.GetActivePlayerCount();
+                foreach (var session in sessions)
+                {
+                    // checkPref: false - enrolling is explicit consent, so we bypass antag preferences
+                    // (bans / validity are still enforced).
+                    _antag.TryAssignNextAvailableAntag((ruleUid, antag), session, players, checkPref: false);
+                }
+
+                return;
+            }
+
+            // Not enough enrolled (or no owning antag rule): fire the fallback rules instead and clean up
+            // the antag rule that was spawned but never started.
+            foreach (var proto in _entityTable.GetSpawns(ent.Comp.FallbackRules, _random))
+            {
+                _gameTicker.StartGameRule(proto);
+            }
+
+            if (rule is { } unstartedRule)
+                QueueDel(unstartedRule);
+        }
+        finally
         {
-            _gameTicker.StartGameRule(proto);
+            _randomProfiles.Clear();
         }
-
-        if (rule is { } unstartedRule)
-            QueueDel(unstartedRule);
     }
 
     /// <summary>

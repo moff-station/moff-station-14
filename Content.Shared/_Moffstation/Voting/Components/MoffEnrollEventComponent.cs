@@ -36,9 +36,11 @@ public sealed partial class MoffEnrollEventComponent : Component
     public int MaxEnrolled;
 
     /// <summary>
-    /// Whether you can select a character to use for the event
+    /// Whether you can select a character to use for the event. Resolved at runtime from the antag this
+    /// vote hands out: false when it spawns a fixed non-humanoid body, since the chosen character's
+    /// profile is never applied to one.
     /// </summary>
-    [DataField]
+    [ViewVariables, AutoNetworkedField]
     public bool CharacterSelection = true;
 
     /// <summary>
@@ -53,6 +55,13 @@ public sealed partial class MoffEnrollEventComponent : Component
 
     [DataField, AutoNetworkedField]
     public HashSet<NetEntity> Enrolled = new();
+
+    /// <summary>
+    /// Enrollees who asked to spawn as a randomly generated character instead of their selected one.
+    /// Purely a spawn-time preference; nothing is written to the player's saved characters.
+    /// </summary>
+    [ViewVariables, AutoNetworkedField]
+    public HashSet<NetEntity> RandomPick = new();
 
     /// <summary>
     /// Whether the event is available to be enrolled in
@@ -80,6 +89,17 @@ public sealed class MoffSetEnrollMessage(NetEntity enroller, bool enrolled) : En
 {
     public NetEntity Enroller = enroller;
     public bool Enrolled = enrolled;
+}
+
+/// <summary>
+/// Sent by an enrollee toggling whether they want to spawn as a randomly generated character rather than
+/// the one they have selected.
+/// </summary>
+[Serializable, NetSerializable]
+public sealed class MoffSetEnrollRandomMessage(NetEntity enroller, bool random) : EntityEventArgs
+{
+    public NetEntity Enroller = enroller;
+    public bool Random = random;
 }
 
 /// <summary>

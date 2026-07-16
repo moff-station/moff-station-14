@@ -54,6 +54,8 @@ public sealed partial class MoffEnrollControl : PanelContainer, IVoteEntryContro
             var netEnroller = _entityManager.GetNetEntity(Enroller);
             _entityManager.RaisePredictiveEvent(new MoffEnrollGotoMessage(netEnroller));
         };
+
+        CharacterSelectionButton.OnPressed += _ => new MoffCharacterSelectWindow(Enroller).OpenCentered();
     }
 
     public void Update(EntityUid owner)
@@ -78,6 +80,9 @@ public sealed partial class MoffEnrollControl : PanelContainer, IVoteEntryContro
 
         // There's nowhere to go until the rule has been added and its spawn location picked.
         GotoButton.Disabled = !ent.Comp.Warpable;
+
+        // Hidden when the antag spawns a fixed non-humanoid body, which ignores the chosen character.
+        CharacterSelectionButton.Visible = ent.Comp.CharacterSelection;
 
         TimerProgress.MinValue = (float) (ent.Comp.EndTime - ent.Comp.Duration).TotalSeconds;
         TimerProgress.MaxValue = (float) ent.Comp.EndTime.TotalSeconds;
