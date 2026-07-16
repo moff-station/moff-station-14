@@ -71,6 +71,9 @@
     antags:
     - !type:FixedAntagCount
       proto: SyndieVentSoldier
+  - type: ESSynchronizedVoteManager
+    votes:
+    - SyndieVentSoldierEnroller
   - type: DynamicRuleCost
     cost: 25
 

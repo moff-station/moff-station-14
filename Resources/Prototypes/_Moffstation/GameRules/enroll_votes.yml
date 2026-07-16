@@ -1,0 +1,48 @@
+# Moffstation - Enrollment vote entities spawned by an antag rule's ESSynchronizedVoteManager.
+# When the timer runs out, MoffEnrollRuleSystem starts the owning rule and turns the enrolled
+# players into its antags. One enroller prototype per game rule so each can tune its own timing,
+# minimum/maximum enrollment, and fallback rules.
+
+- type: entity
+  parent: MoffBaseVote
+  id: DragonEnroller
+  name: Space Dragon
+  description: Enroll for a chance to be unleashed on the station as a space dragon.
+  components:
+  - type: MoffEnrollEvent
+    duration: 60
+    minEnrolled: 1
+    maxEnrolled: 1
+
+- type: entity
+  parent: MoffBaseVote
+  id: NinjaEnroller
+  name: Space Ninja
+  description: Enroll for a chance to infiltrate the station as a space ninja.
+  components:
+  - type: MoffEnrollEvent
+    duration: 60
+    minEnrolled: 1
+    maxEnrolled: 1
+
+- type: entity
+  parent: MoffBaseVote
+  id: ParadoxCloneEnroller
+  name: Paradox Clone
+  description: Enroll for a chance to be spawned as a paradoxical clone of a crewmember.
+  components:
+  - type: MoffEnrollEvent
+    duration: 60
+    minEnrolled: 1
+    maxEnrolled: 1
+
+- type: entity
+  parent: MoffBaseVote
+  id: SyndieVentSoldierEnroller
+  name: Syndicate Vent Soldier
+  description: Enroll for a chance to crawl out of the vents as a Syndicate soldier.
+  components:
+  - type: MoffEnrollEvent
+    duration: 60
+    minEnrolled: 1
+    maxEnrolled: 1

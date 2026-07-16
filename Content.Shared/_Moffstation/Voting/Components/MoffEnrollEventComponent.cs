@@ -1,3 +1,4 @@
+using Content.Shared.EntityTable.EntitySelectors;
 using Robust.Shared.GameStates;
 using Robust.Shared.Serialization;
 using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom;
@@ -57,6 +58,13 @@ public sealed partial class MoffEnrollEventComponent : Component
 
     [ViewVariables]
     public bool Warpable;
+
+    /// <summary>
+    /// Game rule(s) to start instead of the antag rule if fewer than <see cref="MinEnrolled"/> players
+    /// enrolled when the timer runs out. Evaluated as an entity table of game rule prototypes.
+    /// </summary>
+    [DataField]
+    public EntityTableSelector? FallbackRules;
 }
 
 [Serializable, NetSerializable]

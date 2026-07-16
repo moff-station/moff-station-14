@@ -248,10 +248,11 @@ public sealed partial class AntagSelectionSystem
         return TryInitializeAntag(gameRule, prototype, session);
     }
 
-    /// <inheritdoc cref="TryAssignNextAvailableAntag(Entity{AntagSelectionComponent},ICommonSession,int)"/>
-    public bool TryAssignNextAvailableAntag(Entity<AntagSelectionComponent> gameRule, ICommonSession session)
+    /// <inheritdoc cref="TryAssignNextAvailableAntag(Entity{AntagSelectionComponent},ICommonSession,int,bool)"/>
+    // Moff - checkPref param added so callers (enrollment) can bypass antag preference checks.
+    public bool TryAssignNextAvailableAntag(Entity<AntagSelectionComponent> gameRule, ICommonSession session, bool checkPref = true)
     {
-        return TryAssignNextAvailableAntag(gameRule, session, GetActivePlayerCount());
+        return TryAssignNextAvailableAntag(gameRule, session, GetActivePlayerCount(), checkPref);
     }
 
     /// <summary>
@@ -260,10 +261,12 @@ public sealed partial class AntagSelectionSystem
     /// <param name="gameRule">GameRule we are checking for antags.</param>
     /// <param name="session">Player we're trying to assign antag to.</param>
     /// <param name="players">Current number of players in the round. Used to determine antag count.</param>
+    /// <param name="checkPref">Whether to honor the player's antag preferences. Moffstation - false lets enrollment force-assign.</param>
     /// <returns>Returns true if an open antag slot was found and successfully assigned, false otherwise.</returns>
     public bool TryAssignNextAvailableAntag(Entity<AntagSelectionComponent> gameRule,
         ICommonSession session,
-        int players)
+        int players,
+        bool checkPref = true) // Moff - checkPref
     {
         foreach (var selector in gameRule.Comp.Antags)
         {
@@ -275,7 +278,7 @@ public sealed partial class AntagSelectionSystem
                 continue;
 
             // Try and assign this antag, if we fail, then try the next definition!
-            if (TryMakeAntag(gameRule, antag, session))
+            if (TryMakeAntag(gameRule, antag, session, checkPref)) // Moff - forward checkPref
                 return true;
         }
 

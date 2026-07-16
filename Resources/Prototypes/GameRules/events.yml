@@ -228,6 +228,11 @@
     antags:
     - !type:FixedAntagCount
       proto: Dragon
+  # Moffstation - drive antag selection through enrollment voting
+  - type: ESSynchronizedVoteManager
+    votes:
+    - DragonEnroller
+  # Moffstation end
   - type: DynamicRuleCost
     cost: 75
 
@@ -256,6 +261,11 @@
     antags:
     - !type:FixedAntagCount
       proto: SpaceNinja
+  # Moffstation - drive antag selection through enrollment voting
+  - type: ESSynchronizedVoteManager
+    votes:
+    - NinjaEnroller
+  # Moffstation end
   - type: DynamicRuleCost
     cost: 75
 
@@ -284,6 +294,11 @@
     antags:
     - !type:FixedAntagCount
       proto: ParadoxClone
+  # Moffstation - drive antag selection through enrollment voting
+  - type: ESSynchronizedVoteManager
+    votes:
+    - ParadoxCloneEnroller
+  # Moffstation end
   - type: DynamicRuleCost
     cost: 50
 

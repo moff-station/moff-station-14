@@ -18,18 +18,6 @@ public sealed partial class MoffEnrollEventSystem : EntitySystem
         SubscribeAllEvent<MoffSetEnrollMessage>(OnSetEnroll);
     }
 
-    public override void Update(float frameTime)
-    {
-        base.Update(frameTime);
-        var query = EntityQueryEnumerator<MoffEnrollEventComponent>();
-        while (query.MoveNext(out var uid, out var comp))
-        {
-            if (_timing.CurTime > comp.EndTime)
-
-                PredictedQueueDel(uid);
-        }
-    }
-
     [SubscribeLocalEvent]
     private void OnMapInit(Entity<MoffEnrollEventComponent> ent, ref MapInitEvent args)
     {
