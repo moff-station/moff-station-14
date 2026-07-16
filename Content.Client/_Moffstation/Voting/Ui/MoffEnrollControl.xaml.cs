@@ -59,7 +59,6 @@ public sealed partial class MoffEnrollControl : PanelContainer, IVoteEntryContro
 
     private void Update(Entity<MoffEnrollEventComponent> ent, EntityUid owner)
     {
-
         var metadata = _entityManager.GetComponentOrNull<MetaDataComponent>(Enroller);
         var name = metadata?.EntityName ?? string.Empty;
         var desc = metadata?.EntityDescription ?? string.Empty;

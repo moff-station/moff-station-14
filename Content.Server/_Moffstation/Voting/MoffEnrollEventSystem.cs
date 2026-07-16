@@ -3,10 +3,13 @@ using Content.Server.Antag.Components;
 using Content.Server.GameTicking;
 using Content.Shared._ES.Voting.Components;
 using Content.Shared._Moffstation.Voting.Components;
+using Content.Shared._Moffstation.Voting.Systems;
 using Content.Shared.EntityTable;
 using Content.Shared.GameTicking.Components;
+using Content.Shared.Roles.Components;
 using Robust.Server.Player;
 using Robust.Shared.Player;
+using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 using Robust.Shared.Timing;
 
@@ -24,7 +27,7 @@ namespace Content.Server._Moffstation.Voting;
 /// deliberately not started by <c>GameTicker.AddGameRule</c> while it has a vote manager, so we start
 /// it here once enrollment concludes.
 /// </remarks>
-public sealed partial class MoffEnrollRuleSystem : EntitySystem
+public sealed partial class MoffEnrollEventSystem : SharedMoffEnrollEventSystem
 {
     [Dependency] private IGameTiming _timing = default!;
     [Dependency] private IPlayerManager _player = default!;
@@ -32,6 +35,47 @@ public sealed partial class MoffEnrollRuleSystem : EntitySystem
     [Dependency] private GameTicker _gameTicker = default!;
     [Dependency] private AntagSelectionSystem _antag = default!;
     [Dependency] private EntityTableSystem _entityTable = default!;
+    [Dependency] private IPrototypeManager _proto = default!;
+
+    private void UpdateTitleColor(Entity<MoffEnrollEventComponent> ent)
+    {
+        if (FindOwningRule(ent.Owner) is not { } ruleUid ||
+            !TryComp<AntagSelectionComponent>(ruleUid, out var antag) ||
+            GetAntagColor(antag) is not { } color ||
+            ent.Comp.TitleColor == color)
+            return;
+
+        ent.Comp.TitleColor = color;
+        Dirty(ent);
+    }
+
+    /// <summary>
+    /// The colour of the antag this rule hands out: its mind role's subtype colour, falling back to the
+    /// colour of that mind role's role type.
+    /// </summary>
+    private Color? GetAntagColor(AntagSelectionComponent antag)
+    {
+        foreach (var selector in antag.Antags)
+        {
+            if (!_proto.TryIndex(selector.Proto, out var def) || def.MindRoles is not { } mindRoles)
+                continue;
+
+            foreach (var mindRoleId in mindRoles)
+            {
+                if (!_proto.TryIndex(mindRoleId, out var mindRoleProto) ||
+                    !mindRoleProto.TryComp<MindRoleComponent>(out var mindRole, EntityManager.ComponentFactory))
+                    continue;
+
+                if (mindRole.SubtypeColor is { } subtypeColor)
+                    return subtypeColor;
+
+                if (mindRole.RoleType is { } roleType && _proto.TryIndex(roleType, out var roleTypeProto))
+                    return roleTypeProto.Color;
+            }
+        }
+
+        return null;
+    }
 
     public override void Update(float frameTime)
     {
@@ -43,6 +87,8 @@ public sealed partial class MoffEnrollRuleSystem : EntitySystem
         var query = EntityQueryEnumerator<MoffEnrollEventComponent>();
         while (query.MoveNext(out var uid, out var comp))
         {
+            UpdateTitleColor((uid, comp));
+
             if (_timing.CurTime > comp.EndTime)
                 expired.Add((uid, comp));
         }

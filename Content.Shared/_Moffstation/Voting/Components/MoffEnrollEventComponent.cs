@@ -41,7 +41,11 @@ public sealed partial class MoffEnrollEventComponent : Component
     [DataField]
     public bool CharacterSelection = true;
 
-    [DataField]
+    /// <summary>
+    /// Color of the vote's title. Resolved at runtime from the antag this vote hands out: its mind
+    /// role's subtype color, falling back to that role type's color.
+    /// </summary>
+    [ViewVariables, AutoNetworkedField]
     public Color TitleColor = Color.White;
 
     [DataField]

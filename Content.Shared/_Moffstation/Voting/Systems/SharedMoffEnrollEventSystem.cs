@@ -4,10 +4,7 @@ using Robust.Shared.Timing;
 
 namespace Content.Shared._Moffstation.Voting.Systems;
 
-/// <summary>
-/// This handles...
-/// </summary>
-public sealed partial class MoffEnrollEventSystem : EntitySystem
+public abstract partial class SharedMoffEnrollEventSystem : EntitySystem
 {
     [Dependency] private IGameTiming _timing = default!;
     /// <inheritdoc/>
