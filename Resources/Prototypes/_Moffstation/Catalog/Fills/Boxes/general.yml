@@ -33,3 +33,32 @@
     tags:
     - BoxCardboard
     - BoxHug
+
+- type: entity
+  name: kasane teto costume bag
+  parent: ClothingBackpackDuffel
+  id: BoxPerformerRed
+  description: Great for impersonating virtual chimera performers.
+  components:
+  - type: EntityTableContainerFill
+    containers:
+      storagebase: !type:AllSelector
+        children:
+        - id: ClothingShoesBootsPerformerRed
+        - id: ClothingUniformJumpskirtPerformerRed
+        - id: ClothingHeadPerformerWigRed
+        - id: FoodBreadBaguette
+
+- type: entity
+  name: akita neru costume bag
+  parent: ClothingBackpackDuffel
+  id: BoxPerformerYellow
+  description: Great for impersonating... the yellow one?
+  components:
+  - type: EntityTableContainerFill
+    containers:
+      storagebase: !type:AllSelector
+        children:
+        - id: ClothingShoesBootsPerformerYellow
+        - id: ClothingUniformJumpskirtPerformerYellow
+        - id: ClothingHeadPerformerWigYellow
