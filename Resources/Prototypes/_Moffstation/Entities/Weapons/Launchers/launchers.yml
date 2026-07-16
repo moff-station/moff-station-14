@@ -3,7 +3,7 @@
 - type: entity
   id: NFWeaponLauncherMailBorg
   name: RPDS
-  suffix: DO NOT MAP
+  categories: [ HideSpawnMenu, DoNotMap ] # you fool
   components:
   - type: Item
     size: Ginormous
