@@ -1,7 +1,6 @@
 using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
-using Content.Server._Moffstation.Antag.Commands;
 using Content.Server.Administration.Managers;
 using Content.Server.Antag.Components;
 using Content.Server.Chat.Managers;
