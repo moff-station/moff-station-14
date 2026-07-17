@@ -11,16 +11,16 @@ using Robust.Shared.Random;
 namespace Content.Server._Moffstation.StationEvents.Events;
 
 /// <summary>
-/// Handles <see cref="IonAttackRuleComponent"/>. This rule act as a deliberate and more potent Ion-storm.
+/// Handles <see cref="LawBreakerVirusRuleComponent"/>. This rule act as a cyber-attack targeting the lawsets of  silicons.
 /// When started, the event will generate a lawset at random. All Ion-stormable, law-bound entities of the station
 /// will follow this lawset.
 /// </summary>
-public sealed partial class IonAttackRule : StationEventSystem<IonAttackRuleComponent>
+public sealed partial class LawBreakerVirusRule : StationEventSystem<LawBreakerVirusRuleComponent>
 {
     [Dependency] private IonAttackSystem _ion =  default!;
 
     protected override void Started(EntityUid uid,
-        IonAttackRuleComponent comp,
+        LawBreakerVirusRuleComponent comp,
         GameRuleComponent gameRule,
         GameRuleStartedEvent args)
     {
@@ -32,7 +32,7 @@ public sealed partial class IonAttackRule : StationEventSystem<IonAttackRuleComp
         var ionLawset = _ion.GenerateLawset((uid, comp));
 
         var query = EntityQueryEnumerator<IonStormTargetComponent, TransformComponent>();
-        var ev = new IonAttackEvent(ionLawset);
+        var ev = new LawBreakerVirusEvent(ionLawset);
         while (query.MoveNext(out var ent, out _, out var xform))
         {
             if (CompOrNull<StationMemberComponent>(xform.GridUid)?.Station != chosenStation)
@@ -46,4 +46,4 @@ public sealed partial class IonAttackRule : StationEventSystem<IonAttackRuleComp
 /// Event raised on an entity with <see cref="IonStormTargetComponent"/> when an ion storm occurs on the attached station.
 /// </summary>
 [ByRefEvent]
-public record struct IonAttackEvent(SiliconLawset Lawset);
+public record struct LawBreakerVirusEvent(SiliconLawset Lawset);

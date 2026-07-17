@@ -9,7 +9,7 @@ using Robust.Shared.Random;
 
 namespace Content.Server._Moffstation.Silicons.Laws;
 
-public sealed partial class IonAttackSystem : EntitySystem
+public sealed partial class LawBreakerVirusSystem : EntitySystem
 {
     [Dependency] private IRobustRandom _random = default!;
     [Dependency] private SiliconLawSystem _laws = default!;
@@ -17,13 +17,13 @@ public sealed partial class IonAttackSystem : EntitySystem
 
 
     [SubscribeLocalEvent]
-    private void OnIonAttack(Entity<IonStormTargetComponent> ent, ref IonAttackEvent args)
+    private void OnIonAttack(Entity<IonStormTargetComponent> ent, ref LawBreakerVirusEvent args)
     {
         var ev = new IonStormLawsEvent(args.Lawset);
         RaiseLocalEvent(ent, ref ev);
     }
 
-    public SiliconLawset GenerateLawset(Entity<IonAttackRuleComponent> ent)
+    public SiliconLawset GenerateLawset(Entity<LawBreakerVirusRuleComponent> ent)
     {
         var laws = _laws.GetLawset(ProtoMan.Index(ent.Comp.StartingLawset).Pick(_random));
 

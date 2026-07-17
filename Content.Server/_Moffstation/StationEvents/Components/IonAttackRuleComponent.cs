@@ -4,10 +4,10 @@ using Robust.Shared.Prototypes;
 namespace Content.Server._Moffstation.StationEvents.Components;
 
 /// <summary>
-/// See <see cref="IonAttackRule"/>
+/// See <see cref="LawBreakerVirusRule"/>
 /// </summary>
 [RegisterComponent]
-public sealed partial class IonAttackRuleComponent : Component
+public sealed partial class LawBreakerVirusRuleComponent : Component
 {
     /// <summary>
     /// <see cref="WeightedRandomPrototype"/>, a random starting lawset
