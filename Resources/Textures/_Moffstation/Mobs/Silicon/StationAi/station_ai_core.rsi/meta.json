@@ -1,0 +1,87 @@
+{
+    "version": 1,
+    "license": "CC-BY-SA-4.0",
+    "copyright": "Sprited by Davyei (Github) for Moffstation.",
+    "size": {
+        "x": 32,
+        "y": 32
+    },
+    "states": [
+        {
+            "name": "ai",
+            "delays": [
+                [
+                    0.2,
+                    0.2,
+                    0.1,
+                    0.2,
+                    0.2,
+                    0.2,
+                    0.2,
+                    0.2,
+                    0.2,
+                    0.2,
+                    0.2,
+                    0.2,
+                    0.2,
+                    0.2,
+                    0.1
+                ]
+            ]
+        },
+        {
+            "name": "ai_camera",
+            "delays": [
+                [
+                    0.2,
+                    0.1
+                ]
+            ]
+        },
+        {
+            "name": "ai_dead"
+        },
+        {
+            "name": "ai_empty",
+            "delays": [
+                [
+                    0.2,
+                    0.1
+                ]
+            ]
+        },
+        {
+            "name": "ai_error",
+            "delays": [
+                [
+                    0.2,
+                    0.1
+                ]
+            ]
+        },
+        {
+            "name": "base"
+        },
+        {
+            "name": "broken"
+        },
+        {
+            "name": "frame_0"
+        },
+        {
+            "name": "frame_1"
+        },
+        {
+            "name": "frame_2"
+        },
+        {
+            "name": "frame_3"
+        },
+        {
+            "name": "frame_3b"
+        },
+        {
+            "name": "frame_4"
+        }
+    ]
+}

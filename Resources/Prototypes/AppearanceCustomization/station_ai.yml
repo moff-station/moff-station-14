@@ -62,10 +62,12 @@
   - StationAiHologramDiona
   - StationAiHologramDwarf
   - StationAiHologramElf
+  - StationAiHologramGray
   - StationAiHologramJustice
   - StationAiHologramMoth
   - StationAiHologramReptilian
   - StationAiHologramResomi
+  - StationAiHologramThaven
   - StationAiHologramVox
   - StationAiHologramVulpkanin
   # Moffstation - End
@@ -84,10 +86,10 @@
   name: station-ai-icon-ai
   layerData:
     Occupied:
-      sprite: Mobs/Silicon/station_ai.rsi
+      sprite: _Moffstation/Mobs/Silicon/StationAi/station_ai_core.rsi # Moffstation
       state: ai
     Dead:
-      sprite: Mobs/Silicon/station_ai.rsi
+      sprite: _Moffstation/Mobs/Silicon/StationAi/station_ai_core.rsi # Moffstation
       state: ai_dead
 
 - type: stationAiCustomization
@@ -169,7 +171,7 @@
   previewKey: Hologram
   layerData:
     Hologram:
-      sprite: Mobs/Silicon/holograms.rsi
+      sprite: _Moffstation/Mobs/Silicon/holograms.rsi # Moffstation
       state: ai_female
 
 - type: stationAiCustomization
@@ -178,7 +180,7 @@
   previewKey: Hologram
   layerData:
     Hologram:
-      sprite: Mobs/Silicon/holograms.rsi
+      sprite: _Moffstation/Mobs/Silicon/holograms.rsi # Moffstation
       state: ai_male
 
 - type: stationAiCustomization
@@ -187,7 +189,7 @@
   previewKey: Hologram
   layerData:
     Hologram:
-      sprite: Mobs/Silicon/holograms.rsi
+      sprite: _Moffstation/Mobs/Silicon/holograms.rsi # Moffstation
       state: ai_face
 
 - type: stationAiCustomization
@@ -196,7 +198,7 @@
   previewKey: Hologram
   layerData:
     Hologram:
-      sprite: Mobs/Silicon/holograms.rsi
+      sprite: _Moffstation/Mobs/Silicon/holograms.rsi # Moffstation
       state: ai_cat
 
 - type: stationAiCustomization
@@ -205,5 +207,5 @@
   previewKey: Hologram
   layerData:
     Hologram:
-      sprite: Mobs/Silicon/holograms.rsi
+      sprite: _Moffstation/Mobs/Silicon/holograms.rsi # Moffstation
       state: ai_dog

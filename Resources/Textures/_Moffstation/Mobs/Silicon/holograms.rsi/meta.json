@@ -1,7 +1,7 @@
 {
     "version": 1,
     "license": "CC-BY-SA-4.0",
-    "copyright": "arachnid,avali, diona, dwarf, justice, moth, reptilian, resomi, vox & vulpkanin made by Davyei, angel created by catsmilly (Discord), elf made by Remminster/remminia (Discord) for Moffstation",
+    "copyright": "Sprited by Davyei (Github) for Moffstation, ai_vulpkanin by youtubepoopfuneral (disccord) for Moffstation.",
     "size": {
         "x": 32,
         "y": 32
@@ -17,6 +17,18 @@
             "name": "ai_avali"
         },
         {
+            "name": "ai_cat",
+            "delays": [
+                [
+                    0.75,
+                    0.75
+                ]
+            ]
+        },
+        {
+            "name": "ai_dog"
+        },
+        {
             "name": "ai_diona"
         },
         {
@@ -26,7 +38,25 @@
             "name": "ai_elf"
         },
         {
+            "name": "ai_face",
+            "delays": [
+                [
+                    0.2,
+                    2.3
+                ]
+            ]
+        },
+        {
+            "name": "ai_female"
+        },
+        {
+            "name": "ai_gray"
+        },
+        {
             "name": "ai_justice"
+        },
+        {
+            "name": "ai_male"
         },
         {
             "name": "ai_moth"
@@ -36,6 +66,9 @@
         },
         {
             "name": "ai_resomi"
+        },
+        {
+            "name": "ai_thaven"
         },
         {
             "name": "ai_vox"
