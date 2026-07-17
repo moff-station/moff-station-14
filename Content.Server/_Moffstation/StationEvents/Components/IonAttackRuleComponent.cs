@@ -24,7 +24,7 @@ public sealed partial class IonAttackRuleComponent : Component
     /// <summary>
     /// Chance to replace a random law from the starting lawset with a new one
     /// </summary>
-    [DataField)]
+    [DataField]
     public float ReplaceChance = 0.2f;
 
     /// <summary>
