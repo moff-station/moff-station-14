@@ -80,6 +80,8 @@
     useSound:
       collection: Welder
     qualities: Welding
+  - type: ToolTileCompatible
+    delay: 2
   - type: Welder
   - type: PointLight
     enabled: false
