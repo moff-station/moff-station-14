@@ -32,11 +32,11 @@ public sealed partial class IonAttackRule : StationEventSystem<IonAttackRuleComp
         var ionLawset = _ion.GenerateLawset((uid, comp));
 
         var query = EntityQueryEnumerator<IonStormTargetComponent, TransformComponent>();
+        var ev = new IonAttackEvent(ionLawset);
         while (query.MoveNext(out var ent, out _, out var xform))
         {
             if (CompOrNull<StationMemberComponent>(xform.GridUid)?.Station != chosenStation)
                 continue;
-            var ev = new IonAttackEvent(ionLawset);
             RaiseLocalEvent(ent, ref ev);
         }
     }
@@ -46,4 +46,4 @@ public sealed partial class IonAttackRule : StationEventSystem<IonAttackRuleComp
 /// Event raised on an entity with <see cref="IonStormTargetComponent"/> when an ion storm occurs on the attached station.
 /// </summary>
 [ByRefEvent]
-public record struct IonAttackEvent(SiliconLawset Lawset, bool Adminlog = true);
+public record struct IonAttackEvent(SiliconLawset Lawset);

@@ -12,7 +12,7 @@ public sealed partial class IonAttackRuleComponent : Component
     /// <summary>
     /// <see cref="WeightedRandomPrototype"/>, a random starting lawset
     /// </summary>
-    [DataField, ViewVariables(VVAccess.ReadWrite)]
+    [DataField]
     public ProtoId<WeightedRandomPrototype> StartingLawset = "IonStormLawsets";
 
     /// <summary>

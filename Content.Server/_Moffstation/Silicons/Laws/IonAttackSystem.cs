@@ -42,7 +42,7 @@ public sealed partial class IonAttackSystem : EntitySystem
         {
             var newLaw = _ionLaw.GetIonLaw();
             var i = _random.Next(laws.Laws.Count);
-            laws.Laws[i] = new SiliconLaw()
+            laws.Laws[i] = new SiliconLaw
             {
                 LawString = newLaw,
                 Order = laws.Laws[i].Order,
