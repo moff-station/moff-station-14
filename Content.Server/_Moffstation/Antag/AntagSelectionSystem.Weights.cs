@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using Content.Server._Moffstation.Antag;
 using Content.Server.GameTicking;
 using Content.Shared.GameTicking;
@@ -31,12 +32,14 @@ public sealed partial class AntagSelectionSystem
         if (args.New != GameRunLevel.PostRound)
             return;
 
-        // Gather the antag preferences distributed by the weighted antag rules that ran this round.
+        // Walk the weighted (non-exempt) antag rules that ran this round. Gather the antag preferences they handed out,
+        // and consume the weight of anyone who actually rolled one of them.
         var distributed = new List<ProtoId<AntagPrototype>>();
         var rules = QueryAllRules();
-        while (rules.MoveNext(out _, out var comp, out _))
+        while (rules.MoveNext(out var uid, out var comp, out _))
         {
-            if (!comp.UseWeights)
+            // Rules marked MoffUnweightedAntag opt out of weighting entirely - their antags neither accrue nor consume.
+            if (HasComp<MoffUnweightedAntagComponent>(uid))
                 continue;
 
             foreach (var antag in comp.Antags)
@@ -44,26 +47,23 @@ public sealed partial class AntagSelectionSystem
                 if (ProtoMan.Resolve(antag.Proto, out var def))
                     distributed.AddRange(def.PrefRoles);
             }
+
+            // Rolled a weighted antag, so their accrued weight is spent - back down to 1.
+            foreach (var session in comp.PreSelectedSessions.Values.SelectMany(sessions => sessions))
+            {
+                if (_role.PlayerIsAntagonist(session))
+                    _weightedAntagMan.SetWeight(session.UserId, 1);
+            }
         }
 
-        // No weighted antag ran, so nobody's weight should change.
-        if (distributed.Count == 0)
-            return;
-
+        // Everyone who didn't roll an antag but opted into one that actually ran gets another entry in the hat.
         foreach (var session in _playerManager.Sessions)
         {
-            // Players who rolled antag this round have their accrued weight "consumed" back down to 1.
             if (_role.PlayerIsAntagonist(session))
-            {
-                _weightedAntagMan.SetWeight(session.UserId, 1);
-                continue;
-            }
-
-            // Only players who opted into an antag that actually ran (and aren't banned/lacking playtime) accrue weight.
-            if (!TryGetValidAntagPreferences(session, distributed))
                 continue;
 
-            _weightedAntagMan.IncrementWeight(session.UserId);
+            if (TryGetValidAntagPreferences(session, distributed))
+                _weightedAntagMan.IncrementWeight(session.UserId);
         }
     }
 

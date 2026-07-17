@@ -81,7 +81,7 @@
 
 - type: entity
   abstract: true
-  parent: BaseGameRule
+  parent: BaseUnweightedAntagRule # Moff - ghost roles are NOT weighted
   id: BaseAntagGhostRoleRule
   components:
   - type: AntagSelection

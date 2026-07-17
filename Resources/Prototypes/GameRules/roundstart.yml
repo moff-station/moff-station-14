@@ -352,14 +352,13 @@
 # Put this before antags assigned to station jobs, but after non-job antags (NukeOps/Wiz).
 - type: entity
   id: DummyNonAntag
-  parent: BaseGameRule
+  parent: BaseUnweightedAntagRule # Moffstation - Antag Weights
   components:
   - type: GameRule
     minPlayers: 5
   - type: AntagSelection
     selectionTime: PrePlayerSpawn # Pre-selection before jobs; assignment doesn't really matter though, we only care about the pre-selection to block other antags.
     removeUponFailedSpawn: false
-    useWeights: false # Moffstation - Antag Weights
     antags:
     - !type:LinearAntagCount
       proto: DummyAntag
