@@ -64,7 +64,7 @@ public abstract partial class SharedStainSystem : EntitySystem
         if (!_solution.TryGetSolution(ent.Owner, ent.Comp.SolutionName, out var stainSolution))
             return;
 
-        // Random chance that stains arent applied
+        // Random chance that stains aren't applied
         var rand = SharedRandomExtensions.PredictedRandom(_timing, GetNetEntity(ent.Owner));
         if (!rand.Prob(ent.Comp.StainChance))
             return;
