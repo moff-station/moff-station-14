@@ -1,15 +1,35 @@
-﻿- type: startingGear
-  id: GunGameBaseGear
-  equipment:
-    shoes: ClothingShoesColorBlack
-    ears: ClothingHeadsetGrey
-    gloves: ClothingHandsGlovesFingerless
+# Template - Ordered left to right top down reading order (as seen in UI)
+# - type: startingGear
+#   id: GunGameDualAtredies
+#   equipment:
+#     eyes:
+#     head:
+#     neck:
+#     mask:
+#     ears:
+#     jumpsuit:
+#     outerClothing: Armor
+#     gloves:
+#     shoes:
+#     id: FlashlightLantern (Always Flashlight)
+#     belt:
+#     back: Secondary / Backup Weapon
+#     pocket1: Ammo or Flavor Items
+#     pocket2: Ammo or Flavor Items
+#   inhand:
+#   - Primary Weapon
+#   -
 
 - type: startingGear
   id: GunGameDualAtredies
   equipment:
+    head: ClothingHeadHatBeretCentcomm
+    ears: ClothingHeadsetCentCom
     jumpsuit: ClothingUniformJumpsuitCentcomAgent
     outerClothing: ClothingOuterArmorCentcommCarapace
+    gloves: ClothingHandsGlovesHop
+    shoes: ClothingShoesBootsLaceup
+    id: FlashlightLantern
     belt: ClothingBeltHolster
     pocket1: MagazinePistolSubMachineGun
     pocket2: MagazinePistolSubMachineGun
@@ -20,47 +40,69 @@
 - type: startingGear
   id: GunGameDeathSquad
   equipment:
+    mask: ClothingMaskGasDeathSquad
+    ears: ClothingHeadsetCentCom
     jumpsuit: ClothingUniformJumpsuitDeathSquad
-    back: WeaponPulseRifle
-    outerClothing: ClothingOuterArmorBasic
+    outerClothing: ClothingOuterArmorBulletproof
+    gloves: ClothingHandsGlovesCombat
+    shoes: ClothingShoesBootsJack
+    id: FlashlightLantern
     belt: ClothingBeltMilitaryWebbingMed
+    back: WeaponRevolverMateba
     pocket1: SpeedLoaderMagnumAP
     pocket2: SpeedLoaderMagnumAP
   inhand:
-  - WeaponRevolverMateba
+  - WeaponPulseCarbine
 
 - type: startingGear
   id: GunGameHoS
   equipment:
+    head: ClothingHeadHatHoshat
+    neck: ClothingNeckCloakHos
+    ears: ClothingHeadsetAltSecurity
     jumpsuit: ClothingUniformJumpsuitHoS
-    back: WeaponEnergyShotgun
     outerClothing: ClothingOuterCoatHoSTrench
+    gloves: ClothingHandsGlovesCombat
+    shoes: ClothingShoesBootsJack
+    id: FlashlightLantern
     belt: ClothingBeltSecurity
+    back: WeaponSubMachineGunWt550
     pocket1: TelescopicShield
     pocket2: MagazinePistolSubMachineGunTopMounted
   inhand:
-  - WeaponSubMachineGunWt550
+  - WeaponEnergyMagnum
 
 - type: startingGear
   id: GunGameSyndicateAssaultCyborg
   equipment:
+    head: ClothingHeadBandBlack
+    mask: ClothingMaskGasSyndicate
+    ears: ClothingHeadsetAltSyndicate
     jumpsuit: ClothingUniformJumpsuitOperative
-    back: WeaponLightMachineGunL6C
-    outerClothing: ClothingOuterArmorBasic
-    belt: ClothingBeltMilitaryWebbing
+    outerClothing: ClothingOuterVestWebElite
+    gloves: ClothingHandsGlovesRobohands
+    shoes: ClothingShoesBootsMagSyndie
+    id: FlashlightLantern
+    belt: ClothingBeltSyndieHolster
+    back: EnergySwordDouble
     pocket1: PinpointerSyndicateNuclear
-    pocket2: MagazineLightRifleBox
+    pocket2: Emag
   inhand:
-  - EnergySwordDouble
+  - WeaponLightMachineGunL6C
 
 - type: startingGear
   id: GunGameSyndicateVanguard
   equipment:
+    head: ClothingHeadHelmetSwatSyndicate
+    mask: ClothingMaskNeckGaiter
+    ears: ClothingHeadsetSyndicateInfiltrator
     jumpsuit: ClothingUniformJumpsuitOperative
-    back: MagazinePistolSubMachineGun
-    outerClothing: ClothingOuterArmorBasic
-    belt: ClothingBeltMilitaryWebbing
-    pocket1: EnergySword
+    outerClothing: ClothingOuterVestWebElite
+    gloves: ClothingHandsGlovesCombat
+    shoes: ClothingShoesSwat
+    id: FlashlightLantern
+    back: EnergySword
+    pocket1: MagazinePistolSubMachineGun
     pocket2: MagazinePistolSubMachineGun
   inhand:
   - WeaponSubMachineGunC20r
@@ -68,10 +110,14 @@
 - type: startingGear
   id: GunGameSyndicateBreacher
   equipment:
+    head: ClothingHeadHelmetRaid
+    ears: ClothingHeadsetSyndicateInfiltrator
     jumpsuit: ClothingUniformJumpsuitOperative
-    back: MagazineShotgunIncendiary
     outerClothing: ClothingOuterArmorRaid
-    belt: ClothingBeltMilitaryWebbing
+    gloves: ClothingHandsGlovesCombat
+    shoes: ClothingShoesBootsWinterSyndicate
+    id: FlashlightLantern
+    back: MagazineShotgunIncendiary
     pocket1: MagazineShotgun
     pocket2: MagazineShotgunSlug
   inhand:
@@ -80,23 +126,34 @@
 - type: startingGear
   id: GunGameWarden
   equipment:
+    head: ClothingHeadHatWarden
+    ears: ClothingHeadsetSecurity
     jumpsuit: ClothingUniformJumpsuitWarden
-    back: MagazineShotgunSlug
     outerClothing: ClothingOuterCoatWarden
+    gloves: ClothingHandsGlovesCombat
+    shoes: ClothingShoesSwat
+    id: FlashlightLantern
     belt: ClothingBeltSecurity
-    pocket1: CombatKnife
-    pocket2: MagazineShotgun
+    back: WeaponShotgunEnforcer
+    pocket1: MagazineShotgun
+    pocket2: MagazineShotgunSlug
   inhand:
-  - WeaponShotgunEnforcer
+  - WeaponEnergyShotgun
 
 - type: startingGear
   id: GunGameERTRifleman
   equipment:
+    head: ClothingHeadHelmetERTSecurity
+    mask: ClothingMaskGasERT
+    ears: ClothingHeadsetAltCentCom
     jumpsuit: ClothingUniformJumpsuitERTSecurity
-    back: WeaponLaserCannon
     outerClothing: ClothingOuterArmorBasic
+    gloves: ClothingHandsGlovesCombat
+    shoes: ClothingShoesBootsJack
+    id: FlashlightLantern
     belt: ClothingBeltSecurityWebbing
-    pocket1: CombatKnife
+    back: WeaponLaserCannon
+    pocket1: MagazineRifleUranium
     pocket2: MagazineRifleUranium
   inhand:
   - WeaponRifleLecter
@@ -104,10 +161,16 @@
 - type: startingGear
   id: GunGameSecurityBreacher
   equipment:
+    head: ClothingHeadHelmetBasic
+    mask: ClothingMaskNeckGaiterRed
+    ears: ClothingHeadsetSecurity
     jumpsuit: ClothingUniformJumpsuitSecGrey
-    back: MagazineShotgunIncendiary
     outerClothing: ClothingOuterArmorBasic
-    belt: ClothingBeltSecurityWebbing
+    gloves: ClothingHandsGlovesCombat
+    shoes: ClothingShoesBootsJack
+    id: FlashlightLantern
+    belt: ClothingBeltSecurityWebbingAlt
+    back: RiotShield
     pocket1: TearGasGrenade
     pocket2: MagazineShotgun
   inhand:
@@ -116,10 +179,15 @@
 - type: startingGear
   id: GunGameSecuritySMG
   equipment:
+    head: ClothingHeadHelmetBasic
+    ears: ClothingHeadsetSecurity
     jumpsuit: ClothingUniformJumpsuitSeniorOfficer
-    back: WeaponLaserCarbine
     outerClothing: ClothingOuterArmorBasic
+    gloves: ClothingHandsGlovesCombat
+    shoes: ClothingShoesSwat
+    id: FlashlightLantern
     belt: ClothingBeltSecurityWebbing
+    back: WeaponLaserCarbine
     pocket1: MagazinePistolSubMachineGun
     pocket2: MagazinePistolSubMachineGun
   inhand:
@@ -128,10 +196,16 @@
 - type: startingGear
   id: GunGameSyndicateMarksman
   equipment:
+    head: ClothingHeadHatFedoraGrey
+    ears: ClothingHeadsetSyndicateInfiltrator
     jumpsuit: ClothingUniformJumpsuitLawyerBlack
-    outerClothing: ClothingOuterArmorBasic
+    outerClothing: ClothingOuterArmorBasicSlim
+    gloves: ClothingHandsGlovesColorBlack
+    shoes: ClothingShoesBootsLaceup
+    id: FlashlightLantern
     belt: ClothingBeltSyndieHolster
-    pocket1: EnergyDaggerLoud
+    back: EnergyDaggerLoud
+    pocket1: MagazineRifle
     pocket2: MagazineRifle
   inhand:
   - WeaponRifleEstoc
@@ -139,11 +213,17 @@
 - type: startingGear
   id: GunGameCCRepresentative
   equipment:
+    head: ClothingHeadHatCentcomcap
+    mask: ClothingMaskGasCentcom
+    ears: ClothingHeadsetCentCom
     jumpsuit: ClothingUniformJumpsuitCentcomFormal
-    back: MagazineMagnumAP
     outerClothing: ClothingOuterArmorCentcommCarapace
+    gloves: ClothingHandsGlovesHop
+    shoes: ClothingShoesBootsLaceup
+    id: FlashlightLantern
     belt: ClothingBeltHolster
-    pocket1: PenCentcom
+    back: PenCentcom
+    pocket1: MagazineMagnumAP
     pocket2: MagazineMagnumAP
   inhand:
   - WeaponPistolN1984
@@ -151,11 +231,16 @@
 - type: startingGear
   id: GunGameMercenary
   equipment:
+    eyes: ClothingEyesGlassesMercenary
+    ears: ClothingHeadsetFreelance
     jumpsuit: ClothingUniformJumpsuitMercenary
-    back: MagazineLightRifle
     outerClothing: ClothingOuterVestWebMerc
+    gloves: ClothingHandsGlovesMercFingerless
+    shoes: ClothingShoesBootsMerc
+    id: FlashlightLantern
     belt: ClothingBeltMercWebbing
-    pocket1: KukriKnife
+    back: KukriKnife
+    pocket1: MagazineLightRifle
     pocket2: MagazineLightRifle
   inhand:
   - WeaponRifleAk
@@ -163,10 +248,15 @@
 - type: startingGear
   id: GunGameCaptain
   equipment:
+    head: ClothingHeadHatCaptain
+    neck: ClothingNeckCloakCapFormal
+    ears: ClothingHeadsetAltCommand
     jumpsuit: ClothingUniformJumpsuitCaptain
-    back: DrinkFlask
-    outerClothing: ClothingOuterArmorCaptainCarapace
-    belt: ClothingBeltSheathFilled
+    outerClothing: ClothingOuterCoatCaptainLongcoat
+    gloves: ClothingHandsGlovesCaptain
+    shoes: ClothingShoesBootsLaceup
+    id: FlashlightLantern
+    back: CaptainSabre
     pocket1: PenCap
     pocket2: NukeDiskFake
   inhand:
@@ -175,22 +265,32 @@
 - type: startingGear
   id: GunGameNinja
   equipment:
+    eyes: ClothingEyesVisorNinja
+    head: ClothingHeadHelmetSpaceNinja
+    mask: ClothingMaskNinja
+    ears: ClothingHeadsetNinja
     jumpsuit: ClothingUniformJumpsuitNinja
-    back: ThrowingStarNinja
     outerClothing: ClothingOuterSuitSpaceNinja
-    belt: EnergyKatana
+    gloves: ClothingHandsGlovesSpaceNinja
+    shoes: ClothingShoesSpaceNinja
+    id: FlashlightLantern
+    back: WeaponNinjaChainSickle
     pocket1: ThrowingStarNinja
     pocket2: ThrowingStarNinja
   inhand:
-  - ThrowingStarNinja
+  - EnergyKatana
 
 - type: startingGear
   id: GunGameWarOpsCrew
   equipment:
+    ears: ClothingHeadsetGrey
     jumpsuit: ClothingUniformJumpsuitColorGrey
-    back: WeaponTemperatureGun
     outerClothing: ClothingOuterArmorBasic
+    gloves: ClothingHandsGlovesCombat
+    shoes: ClothingShoesColorWhite
+    id: FlashlightLantern
     belt: Truncheon
+    back: WeaponAdvancedLaser
     pocket1: TelescopicShield
     pocket2: RadioHandheldSecurity
   inhand:
@@ -199,35 +299,65 @@
 - type: startingGear
   id: GunGameBotanist
   equipment:
+    head: ClothingHeadHatRedsoft
+    ears: ClothingHeadsetService
     jumpsuit: ClothingUniformOveralls
-    back: WeaponRevolverPython
     outerClothing: ClothingOuterApronBotanist
+    gloves: ClothingHandsGlovesLeather
+    shoes: ClothingShoesColorBrown
+    id: FlashlightLantern
     belt: ClothingBeltPlant
-    pocket1: DeathNettle
-    pocket2: WeaponRevolverPython
+    back: DeathNettle
+    pocket1: SpeedLoaderMagnum
+    pocket2: SpeedLoaderMagnum
   inhand:
   - WeaponRevolverPython
 
 - type: startingGear
+  id: GunGamePirate
+  equipment:
+    eyes: ClothingEyesEyepatch
+    head: ClothingHeadHatPirate
+    neck: RobotParrot
+    ears: ClothingHeadsetPirate
+    jumpsuit: ClothingUniformJumpsuitPirate
+    outerClothing: ClothingOuterHardsuitPirateSwashbuckler
+    gloves: ClothingHandsPirateHook
+    shoes: ClothingShoesBootsLaceup
+    id: FlashlightLantern
+    belt: ClothingBeltHolster
+    back: WeaponRevolverPirate
+    pocket1: MagazineShotgun
+    pocket2: MagazineShotgunIncendiary
+  inhand:
+  - WeaponShotgunBlunderbuss
+
+- type: startingGear
   id: GunGameSyndicateLibrarian
   equipment:
+    head: BladedFlatcapGrey
+    ears: ClothingHeadsetService
     jumpsuit: ClothingUniformJumpsuitLibrarian
-    back: MagazinePistolHighCapacity
-    outerClothing: ClothingOuterVestTank
+    shoes: ClothingShoesBootsLaceup
+    id: FlashlightLantern
     belt: ClothingBeltStorageWaistbag
-    pocket1: WeaponPistolViper
+    back: CaneBlade
+    pocket1: MagazinePistolHighCapacity
     pocket2: MagazinePistolHighCapacity
   inhand:
-  - CaneSheathFilled
+  - WeaponPistolViper
 
 - type: startingGear
   id: GunGamePoacher
   equipment:
-    jumpsuit: ClothingUniformJumpsuitSafari
-    back: WeaponSniperElephant
     head: ClothingHeadSafari
-    outerClothing: ClothingOuterVestTank
-    pocket1: CartridgeAntiMateriel
+    ears: ClothingHeadsetService
+    jumpsuit: ClothingUniformJumpsuitSafari
+    shoes: ClothingShoesBootsWork
+    id: FlashlightLantern
+    belt: ClothingBeltStorageWaistbag
+    back: Machete
+    pocket1: WeaponSniperElephant
     pocket2: MagazineBoxAntiMateriel
   inhand:
   - WeaponSniperElephant
@@ -235,11 +365,15 @@
 - type: startingGear
   id: GunGameGreenSec
   equipment:
+    head: ClothingHeadHelmetBasic
+    ears: ClothingHeadsetSecurity
     jumpsuit: ClothingUniformJumpsuitSec
-    back: MagazinePistol
+    back: CombatKnife
     outerClothing: ClothingOuterArmorBasicSlim
+    shoes: ClothingShoesBootsCombat
+    id: FlashlightLantern
     belt: ClothingBeltSecurityWebbing
-    pocket1: CombatKnife
+    pocket1: MagazinePistol
     pocket2: MagazinePistol
   inhand:
   - WeaponPistolMk58
@@ -247,67 +381,67 @@
 - type: startingGear
   id: GunGameSyndicateAssassin
   equipment:
+    head: ClothingHeadHatCowboyBountyHunter
+    ears: ClothingHeadsetSyndicateInfiltrator
     jumpsuit: ClothingUniformJumpsuitSyndieFormal
-    back: WeaponSniperHristov
-    outerClothing: ClothingOuterVest
-    belt: ThrowingKnivesKit
+    gloves: ClothingHandsGlovesFingerless
+    shoes: ClothingShoesColorBlack
+    id: FlashlightLantern
+    back: ThrowingKnivesKit
     pocket1: MagazinePistolCaselessRifle
-    pocket2: MagazineBoxAntiMateriel
+    pocket2: MagazinePistolCaselessRifle
   inhand:
   - WeaponPistolCobra
 
 - type: startingGear
-  id: GunGameSalvage
-  equipment:
-    jumpsuit: ClothingUniformJumpsuitSalvageSpecialist
-    back: WeaponCrusherGlaive
-    outerClothing: ClothingOuterVestTank
-    belt: ClothingBeltSalvageWebbing
-    pocket1: PKAUpgradeFireRate
-    pocket2: PKAUpgradeDamage
-  inhand:
-  - WeaponProtoKineticAccelerator
-
-- type: startingGear
   id: GunGameBartender
   equipment:
+    eyes: ClothingEyesHudBeer
+    head: ClothingHeadHatBowlerHat
+    ears: ClothingHeadsetService
     jumpsuit: ClothingUniformJumpsuitBartender
+    outerClothing: ClothingOuterArmorBasic
+    gloves: ClothingHandsGlovesFingerless
+    shoes: ClothingShoesColorBlack
+    id: FlashlightLantern
     belt: ClothingBeltBandolier
+    back: BrokenBottle
     pocket1: MagazineShotgun
     pocket2: MagazineShotgunSlug
   inhand:
   - WeaponShotgunSawn
-  - BrokenBottle
-
-- type: startingGear
-  id: GunGamePursuer
-  equipment:
-    jumpsuit: ClothingUniformJumpsuitDetective
-    outerClothing: ClothingOuterCoatDetective
-  inhand:
-  - ArmBlade
-  - ArmBlade
 
 - type: startingGear
   id: GunGameHoP
   equipment:
+    head: ClothingHeadHatHopcap
+    neck: ClothingNeckCloakHop
+    ears: ClothingHeadsetAltCommand
     jumpsuit: ClothingUniformJumpsuitHoP
-    back: BriefcaseBrownFilled
-    outerClothing: ClothingOuterVestTank
+    outerClothing: ClothingOuterWinterHoP
+    gloves: ClothingHandsGlovesHop
+    shoes: ClothingShoesLeather
+    id: FlashlightLantern
     belt: ClothingBeltStorageWaistbag
     pocket1: SpeedLoaderMagnum
     pocket2: SpeedLoaderMagnum
   inhand:
   - WeaponRevolverDeckard
+  - BriefcaseBrown
 
 - type: startingGear
   id: GunGameAtmosian
   equipment:
+    eyes: ClothingEyesGlassesMeson
+    head: ClothingHeadHatHardhatYellow
+    ears: ClothingHeadsetEngineering
     jumpsuit: ClothingUniformJumpsuitAtmosCasual
-    back: CrowbarYellow
     outerClothing: ClothingOuterVestHazard
+    gloves: ClothingHandsGlovesColorYellow
+    shoes: ClothingShoesColorYellow
+    id: FlashlightLantern
     belt: ClothingBeltUtility
-    pocket1: GasAnalyzer
+    pocket1: MetalFoamGrenade
     pocket2: RadioHandheld
   inhand:
   - FireAxe
@@ -315,47 +449,90 @@
 - type: startingGear
   id: GunGameScientist
   equipment:
+    head: ClothingHeadHatPurplesoft
+    ears: ClothingHeadsetScience
     jumpsuit: ClothingUniformJumpsuitSeniorResearcher
-    back: SpearUranium
+    back: WeaponPistolCHIMPUpgraded
     outerClothing: ClothingOuterVestTank
+    gloves: ClothingHandsGlovesColorPurple
+    shoes: ClothingShoesColorPurple
+    id: FlashlightLantern
     belt: ClothingBeltUtility
-    pocket1: WeaponPistolCHIMPUpgraded
+    pocket1: SpearUranium
     pocket2: AnomalyScanner
   inhand:
   - SpearUranium
   - SpearUranium
 
 - type: startingGear
+  id: GunGameJanitor
+  equipment:
+    head: ClothingHeadFishCap
+    ears: ClothingHeadsetService
+    jumpsuit: ClothingUniformJumpsuitJanitor
+    outerClothing: ClothingOuterWinterJani
+    gloves: ClothingHandsGlovesJanitor
+    shoes: ClothingShoesGaloshes
+    id: FlashlightLantern
+    belt: ClothingBeltJanitor
+    pocket1: CleanerGrenade
+  inhand:
+  - MopItem
+
+- type: startingGear
   id: GunGameChef
   equipment:
+    head: ClothingHeadHatChef
+    ears: ClothingHeadsetService
     jumpsuit: ClothingUniformJumpsuitChef
-    outerClothing: ClothingOuterVestTank
-    pocket1: KitchenKnife
+    outerClothing: ClothingOuterJacketChef
+    shoes: ClothingShoesChef
+    id: FlashlightLantern
+    belt: ClothingBeltChef
+    back: KitchenKnife
+    pocket1: FoodMeatDragonCooked
     pocket2: RollingPin
   inhand:
   - ButchCleaver
 
 - type: startingGear
-  id: GunGameQM
-  equipment:
-    jumpsuit: ClothingUniformJumpsuitQM
-    outerClothing: ClothingOuterVestTank
-    pocket1: AppraisalTool
-  inhand:
-  - ClothingHandsKnuckleDustersQM
-
-- type: startingGear
   id: GunGameParamedic
   equipment:
+    head: ClothingHeadHatParamedicsoft
+    neck: ClothingNeckStethoscope
+    ears: ClothingHeadsetMedical
     jumpsuit: ClothingUniformJumpsuitParamedic
-    outerClothing: ClothingOuterVestTank
+    outerClothing: ClothingOuterHardsuitVoidParamed
+    gloves: ClothingHandsGlovesNitrile
+    shoes: ClothingShoesSwat
+    id: FlashlightLantern
+    belt: ClothingBeltMedicalEMT
+    pocket1: EmergencyMedipen
   inhand:
-  - Scalpel
+  - SawElectric
+
+- type: startingGear
+  id: GunGameQM
+  equipment:
+    head: ClothingHeadHatQMsoft
+    neck: ClothingNeckCloakQm
+    ears: ClothingHeadsetQM
+    jumpsuit: ClothingUniformJumpsuitQM
+    outerClothing: ClothingOuterWinterQM
+    gloves: ClothingHandsKnuckleDustersQM
+    shoes: ClothingShoesColorBrown
+    id: FlashlightLantern
+    pocket1: AppraisalTool
 
 - type: startingGear
   id: GunGameTider
   equipment:
+    mask: ClothingMaskGas
+    ears: ClothingHeadsetGrey
     jumpsuit: ClothingUniformJumpsuitAncient
     outerClothing: ClothingOuterVestTank
+    gloves: ClothingHandsGlovesColorYellow
+    shoes: ClothingShoesColorBlack
+    id: FlashlightLantern
   inhand:
   - ToolboxGolden
