@@ -7078,5 +7078,13 @@ Entries:
   id: 1672
   time: '2026-07-17T19:29:23.000'
   url: https://github.com/moff-station/moff-station-14/pull/1672
+- author: Centronias
+  changes:
+  - message: Replicators now properly return to a controllable healthy state when
+      repaired from being disabled on the ground.
+    type: fix
+  id: 1679
+  time: '2026-07-17T23:00:01.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1679
 Name: Mofflog
 Order: -2
