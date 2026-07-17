@@ -12,7 +12,7 @@ using Robust.Shared.Prototypes;
 namespace Content.Server.Antag;
 
 /// <summary>
-/// Moff - Players who don't get selected to be antag get an extra name in the hat for future rounds
+/// Players who don't get selected to be antag get an extra name in the hat for future rounds
 /// This continues stacking until they roll antag, to which they will get reset to a weight of 1
 /// </summary>
 public sealed partial class AntagSelectionSystem
