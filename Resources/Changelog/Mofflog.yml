@@ -6448,6 +6448,13 @@ Entries:
   id: 1542
   time: '2026-06-21T01:13:14.000'
   url: https://github.com/moff-station/moff-station-14/pull/1542
+- author: widgetbeck, DuckManZach, Centronias
+  changes:
+  - message: Added Replicators!
+    type: add
+  id: 1543
+  time: '2026-07-16T01:12:46.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1543
 - author: DuckManZach
   changes:
   - message: Added clothing stains!
@@ -6455,6 +6462,13 @@ Entries:
   id: 1545
   time: '2026-07-06T22:22:03.000'
   url: https://github.com/moff-station/moff-station-14/pull/1545
+- author: DuckManZach
+  changes:
+  - message: Added a crafting menu for lockboxes
+    type: add
+  id: 1547
+  time: '2026-07-15T16:06:06.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1547
 - author: Nyxilath
   changes:
   - message: Xenoarch throw effect now features a shockwave effect.
@@ -6971,6 +6985,16 @@ Entries:
   id: 1634
   time: '2026-07-08T22:40:41.000'
   url: https://github.com/moff-station/moff-station-14/pull/1634
+- author: StudMuffin
+  changes:
+  - message: Borgs chassis now have integrated sensors that can be interacted with
+      via the action menu
+    type: add
+  - message: Borgs can now appear in the station AI crew monitor interface
+    type: add
+  id: 1643
+  time: '2026-07-15T20:09:46.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1643
 - author: gummyema
   changes:
   - message: Added engineering and medical maid outfits
@@ -7027,5 +7051,13 @@ Entries:
   id: 1657
   time: '2026-07-14T12:11:49.000'
   url: https://github.com/moff-station/moff-station-14/pull/1657
+- author: Centronias
+  changes:
+  - message: Resomis' night vision is once again disabled while they are immune to
+      flashes.
+    type: fix
+  id: 1669
+  time: '2026-07-16T19:48:57.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1669
 Name: Mofflog
 Order: -2

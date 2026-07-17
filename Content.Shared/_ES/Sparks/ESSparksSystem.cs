@@ -1,6 +1,5 @@
 using Content.Shared._ES.Physics.PreventCollide;
 using Content.Shared._ES.Sparks.Components;
-using Content.Shared._Moffstation.Sparks.Components;
 // using Content.Shared._ES.TileFires; // DeltaV - we don't have tilefires
 using Content.Shared.Power.Components;
 using Content.Shared.Power.EntitySystems;
@@ -38,9 +37,9 @@ public sealed partial class ESSparksSystem : EntitySystem
         Entity<T> ent,
         EntityUid? user = null,
         bool cooldown = true)
-        where T : ESBaseSparkConfigurationComponent, IComponent // Moffstation - Make ESBaseSparkConfigurationComponent an interface
+        where T : ESBaseSparkConfigurationComponent
     {
-        if (!_random.Prob(ent.Comp.SparkConfig.Prob)) // Moffstation - Make ESBaseSparkConfigurationComponent an interface
+        if (!_random.Prob(ent.Comp.Prob))
             return;
 
         SharedApcPowerReceiverComponent? powerReceiver = null;
@@ -49,10 +48,10 @@ public sealed partial class ESSparksSystem : EntitySystem
             return;
 
         DoSparks(ent,
-            number: ent.Comp.SparkConfig.Count, // Moffstation - Make ESBaseSparkConfigurationComponent an interface
-            ent.Comp.SparkConfig.SparkPrototype, // Moffstation - Make ESBaseSparkConfigurationComponent an interface
+            number: ent.Comp.Count,
+            ent.Comp.SparkPrototype,
             user: user,
-            tileFireChance: ent.Comp.SparkConfig.TileFireChance, // Moffstation - Make ESBaseSparkConfigurationComponent an interface
+            tileFireChance: ent.Comp.TileFireChance,
             cooldown: cooldown);
     }
 

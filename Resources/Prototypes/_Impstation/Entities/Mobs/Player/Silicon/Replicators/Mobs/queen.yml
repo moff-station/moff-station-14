@@ -1,0 +1,54 @@
+﻿- type: entity
+  parent: BaseMobReplicator
+  id: BaseMobReplicatorQueen
+  abstract: true
+  components:
+  - type: ReplicatorQueen
+  - type: ReplicatorHiveLeader
+  - type: Replicator
+    upgradedPopupSelf: replicator-upgraded-to-queen-self
+
+- type: entity
+  parent: BaseMobReplicatorQueen
+  id: MobReplicatorT0Queen
+  name: spore
+  suffix: Queen
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    granularLayersRendering: true
+    drawdepth: SmallMobs
+    layers:
+    - map: [ "enum.DamageStateVisualLayers.Base" ]
+      state: alive_spore
+    - map: [ "enum.ReplicatorVisuals.Combat" ]
+      state: combat_level1 # unused but necessary
+      shader: unshaded
+      visible: false
+  - type: MovementSpeedModifier
+    baseWalkSpeed: 2 # same as slime
+    baseSprintSpeed: 4.2
+    weightlessFriction: 1
+    weightlessFrictionNoInput: 2
+    weightlessAcceleration: 1.8
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeCircle
+          radius: 0.2
+        density: 100
+        mask:
+        - SmallMobMask
+        layer:
+        - SmallMobLayer
+
+- type: entity
+  parent: [ MobReplicatorTier3, BaseMobReplicatorQueen ]
+  id: MobReplicatorT3Queen
+  name: queen
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Replicator
+    upgradeOptionActions: [] # No upgrading out of being the queen.
+  - type: ReplicatorQueenSign
