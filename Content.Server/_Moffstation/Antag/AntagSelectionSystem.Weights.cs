@@ -19,16 +19,11 @@ public sealed partial class AntagSelectionSystem
 {
     [Dependency] private IWeightedAntagManager _weightedAntagMan = default!;
 
-    private void InitializeAntagWeights()
-    {
-        SubscribeLocalEvent<GameRunLevelChangedEvent>(OnRunLevelChanged);
-        SubscribeLocalEvent<RoundRestartCleanupEvent>(OnRoundRestartCleanup);
-    }
-
     /// <summary>
     /// Check who was and wasn't an antag at the end of the round
     /// This also checks preferences, if it's a nukie round, you don't get a weight if you didn't have nukie enabled
     /// </summary>
+    [SubscribeLocalEvent]
     private void OnRunLevelChanged(GameRunLevelChangedEvent args)
     {
         if (args.New != GameRunLevel.PostRound)
@@ -80,6 +75,7 @@ public sealed partial class AntagSelectionSystem
     }
 
     // Persist antag weights at round-end.
+    [SubscribeLocalEvent]
     private void OnRoundRestartCleanup(RoundRestartCleanupEvent args)
     {
         _ = _weightedAntagMan.Save();

@@ -73,7 +73,7 @@ public sealed partial class AntagSelectionSystem : GameRuleSystem<AntagSelection
     [Dependency] private PlayTimeTrackingSystem _playTime = default!;
     [Dependency] private RoleSystem _role = default!;
     [Dependency] private TransformSystem _transform = default!;
-    
+
     // arbitrary random number to give late joining some mild interest.
     public const float LateJoinRandomChance = 0.5f;
 
@@ -113,8 +113,6 @@ public sealed partial class AntagSelectionSystem : GameRuleSystem<AntagSelection
         SubscribeLocalEvent<NoJobsAvailableSpawningEvent>(OnJobNotAssigned);
         SubscribeLocalEvent<RulePlayerJobsAssignedEvent>(OnJobsAssigned);
         SubscribeLocalEvent<PlayerSpawnCompleteEvent>(OnSpawnComplete);
-
-        InitializeAntagWeights(); // Moff - Weighted antag selection, see AntagSelectionSystem.Weights.cs
     }
 
     protected override void Started(EntityUid uid, AntagSelectionComponent component, GameRuleComponent gameRule, GameRuleStartedEvent args)
