@@ -103,6 +103,7 @@
     thresholds:
       0: Alive
       100: Dead
+    allowRevives: true
   - type: Destructible
     thresholds:
     - trigger:
