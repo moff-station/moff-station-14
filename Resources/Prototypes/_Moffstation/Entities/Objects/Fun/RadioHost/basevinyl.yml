@@ -1,6 +1,7 @@
 # For Vinyls with custom Vinyl sprites. All other Vinyls should use layering to achieve their appearance. See base.yml file for directions.
 - type: entity
   parent: BaseVinylDisc
+  abstract: true
   id: BaseVinylAI
   components:
   - type: Sprite
@@ -8,6 +9,7 @@
 
 - type: entity
   parent: BaseVinylDisc
+  abstract: true
   id: BaseVinylCarrot
   components:
   - type: Sprite
@@ -15,6 +17,7 @@
 
 - type: entity
   parent: BaseVinylDisc
+  abstract: true
   id: BaseVinylDevil
   components:
   - type: Sprite
@@ -22,6 +25,7 @@
 
 - type: entity
   parent: BaseVinylDisc
+  abstract: true
   id: BaseVinylEarth
   components:
   - type: Sprite
@@ -29,6 +33,7 @@
 
 - type: entity
   parent: BaseVinylDisc
+  abstract: true
   id: BaseVinylFloaty
   components:
   - type: Sprite
@@ -36,6 +41,7 @@
 
 - type: entity
   parent: BaseVinylDisc
+  abstract: true
   id: BaseVinylForgotten
   components:
   - type: Sprite
@@ -43,6 +49,7 @@
 
 - type: entity
   parent: BaseVinylDisc
+  abstract: true
   id: BaseVinylGlossy
   components:
   - type: Sprite
@@ -50,6 +57,7 @@
 
 - type: entity
   parent: BaseVinylDisc
+  abstract: true
   id: BaseVinylPizza
   components:
   - type: Sprite
@@ -57,6 +65,7 @@
 
 - type: entity
   parent: BaseVinylDisc
+  abstract: true
   id: BaseVinylTTD
   components:
   - type: Sprite
@@ -64,6 +73,7 @@
 
 - type: entity
   parent: BaseVinylDisc
+  abstract: true
   id: BaseVinylNonBinary
   components:
   - type: Sprite
@@ -71,6 +81,7 @@
 
 - type: entity
   parent: BaseVinylDisc
+  abstract: true
   id: BaseVinylPride
   components:
   - type: Sprite
@@ -78,6 +89,7 @@
 
 - type: entity
   parent: BaseVinylDisc
+  abstract: true
   id: BaseVinylTrans
   components:
   - type: Sprite
