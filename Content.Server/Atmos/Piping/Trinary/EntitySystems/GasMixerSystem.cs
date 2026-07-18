@@ -276,12 +276,13 @@ namespace Content.Server.Atmos.Piping.Trinary.EntitySystems
             _atmosphereSystem.Merge(transferMixture, transferableInletOne);
             _atmosphereSystem.Merge(transferMixture, transferableInletTwo);
 
-            var pressureDelta = mixer.TargetPressure - outlet.Air.Pressure;
-            var totaltransferredMoles = (pressureDelta * outlet.Air.Volume) / (transferMixture.Temperature * Atmospherics.R);
+            var totalTransferredMoles =
+                SharedAtmosphereSystem.MolesToPressureThreshold(transferMixture,
+                    ent.Comp.TargetPressure - outlet.Air.Pressure) - transferMixture.TotalMoles;
 
             // step 3 : transfer gas from inlets using the total transferred mole amount and the requested concentrations.
-            _atmosphereSystem.Merge(outlet.Air, transferableInletOne.Remove(totaltransferredMoles * mixer.InletOneConcentration));
-            _atmosphereSystem.Merge(outlet.Air, transferableInletTwo.Remove(totaltransferredMoles * mixer.InletTwoConcentration));
+            _atmosphereSystem.Merge(outlet.Air, transferableInletOne.Remove(totalTransferredMoles * mixer.InletOneConcentration));
+            _atmosphereSystem.Merge(outlet.Air, transferableInletTwo.Remove(totalTransferredMoles * mixer.InletTwoConcentration));
 
             _atmosphereSystem.Merge(inletOne.Air, transferableInletOne);
             _atmosphereSystem.Merge(inletTwo.Air, transferableInletTwo);
