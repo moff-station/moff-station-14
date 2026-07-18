@@ -116,6 +116,10 @@
     interfaces:
       enum.ESVoterUiKey.Key:
         type: ESVoterBui
+  - type: IntrinsicUI
+    uis:
+      enum.ESVoterUiKey.Key:
+        toggleAction: ESActionStagehandVote
   # Moffstation - End
 
 # proto for player ghosts specifically
