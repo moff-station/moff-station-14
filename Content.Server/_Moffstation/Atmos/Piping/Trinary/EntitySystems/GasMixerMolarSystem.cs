@@ -80,10 +80,8 @@ public sealed partial class GasMixerMolarSystem : EntitySystem
             _atmosphereSystem.Merge(transferMixture, transferableInletOne);
             _atmosphereSystem.Merge(transferMixture, transferableInletTwo);
 
-            var totalTransferredMoles =
-                SharedAtmosphereSystem.MolesToPressureThreshold(transferMixture,
-                    ent.Comp.TargetPressure - outlet.Air.Pressure) - transferMixture.TotalMoles;
-
+            var pressureDelta = ent.Comp.TargetPressure - outlet.Air.Pressure;
+            var totalTransferredMoles = (pressureDelta * outlet.Air.Volume) / (transferMixture.Temperature * Atmospherics.R);
 
             // step 3 : transfer gas from inlets using the total transferred mole amount and the requested concentrations.
             _atmosphereSystem.Merge(outlet.Air, transferableInletOne.Remove(totalTransferredMoles * ent.Comp.InletOneConcentration));
@@ -91,6 +89,8 @@ public sealed partial class GasMixerMolarSystem : EntitySystem
 
             _atmosphereSystem.Merge(inletOne.Air, transferableInletOne);
             _atmosphereSystem.Merge(inletTwo.Air, transferableInletTwo);
+
+            _ambientSoundSystem.SetAmbience(ent.Owner, totalTransferredMoles > 0);
     }
 
     [SubscribeLocalEvent]
