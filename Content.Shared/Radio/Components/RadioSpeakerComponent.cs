@@ -2,6 +2,7 @@ using Content.Shared.Radio.EntitySystems;
 using Content.Shared.Chat;
 using Robust.Shared.GameStates;
 using Robust.Shared.Prototypes;
+using Content.Shared._Goob.StationRadio.Systems; // Moffstation
 
 namespace Content.Shared.Radio.Components;
 
@@ -9,7 +10,7 @@ namespace Content.Shared.Radio.Components;
 ///     Listens for radio messages and relays them to local chat.
 /// </summary>
 [RegisterComponent, NetworkedComponent, AutoGenerateComponentState]
-[Access(typeof(SharedRadioDeviceSystem))]
+[Access(typeof(SharedRadioDeviceSystem), typeof(StationRadioReceiverSystem))] // Moffstation - Add StationRadioReceiverSystem access.
 public sealed partial class RadioSpeakerComponent : Component
 {
     /// <summary>
@@ -26,17 +27,11 @@ public sealed partial class RadioSpeakerComponent : Component
     public bool Enabled;
 
     // Moffstation - Start - Allow speech to be full volume
-    [DataField]
+    [DataField, AutoNetworkedField]
     public bool LouderSpeech;
     // Moffstation - End
 
     // Goobstation - Start - Radio Host
-    /// <summary>
-    /// speaks normally when true whispers when false
-    /// </summary>
-    [DataField]
-    public bool SpeakNormally;
-
     /// <summary>
     /// Does the radio need to be on a power grid to work?
     /// </summary>

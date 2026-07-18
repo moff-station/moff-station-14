@@ -10,8 +10,8 @@
     prototype: VinylPlayer
     stackRequirements:
       Manipulator: 1
-      Steel: 1
-      WoodPlank: 3
+      Steel: 3 # Moffstation - 1 -> 3
+      WoodPlank: 1 # Moffstation - 3 -> 1
 
 - type: entity
   parent: BaseMachineCircuitboard
@@ -39,11 +39,11 @@
   - type: MachineBoard
     prototype: StationRadioServer
     stackRequirements:
-      Manipulator: 1
-      Steel: 10
-      Plastic: 10
-      Plasma: 5
-      CableHV: 4
+      Manipulator: 2 # Moffstation - 1 -> 2
+      Steel: 5 # Moffstation - 10 -> 5
+      Plastic: 2 # Moffstation - 10 -> 2
+      Plasma: 1 # Moffstation - 5 -> 1
+      CableMV: 4 # Moffstation - HV -> MV
 
 - type: entity
   parent: BaseMachineCircuitboard
@@ -58,8 +58,9 @@
     stackRequirements:
       Manipulator: 3
       Steel: 5
-      Glass: 5
+      Glass: 2 # Moffstation - 5 -> 2
       Cable: 2
+      WoodPlank: 4 # Moffstation - Add Wood since its mostly made of wood.
 
 - type: entity
   parent: BaseMachineCircuitboard

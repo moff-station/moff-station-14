@@ -30,6 +30,7 @@ public sealed partial class RadioDeviceSystem : SharedRadioDeviceSystem
     [Dependency] private RadioSystem _radio = default!;
     [Dependency] private InteractionSystem _interaction = default!;
     [Dependency] private SharedAppearanceSystem _appearance = default!;
+
     [Dependency] private SharedPowerReceiverSystem _power = default!; // Goobstation - Radio Host
 
     // Used to prevent a shitter from using a bunch of radios to spam chat.
@@ -191,7 +192,7 @@ public sealed partial class RadioDeviceSystem : SharedRadioDeviceSystem
         component.LouderSpeech ? InGameICChatType.Speak : InGameICChatType.Whisper, // Moffstation - Added component-dependent chatType
         ChatTransmitRange.GhostRangeLimit,
         nameOverride: name,
-        checkRadioPrefix: component.LouderSpeech); // Goobstation - Require you to speak normally
+        checkRadioPrefix: component.LouderSpeech); // Goobstation/Moffstation - SpeakNormally -> LouderSpeech
     }
 
     private void OnIntercomEncryptionChannelsChanged(Entity<IntercomComponent> ent, ref EncryptionChannelsChangedEvent args)
