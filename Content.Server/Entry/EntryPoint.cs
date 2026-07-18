@@ -1,6 +1,3 @@
-using System.Threading.Tasks;
-using Content.Server._Moffstation.Antag;
-using Content.Server._Moffstation.Discord.GuildEvent;
 using Content.Server.Acz;
 using Content.Server.Administration;
 using Content.Server.Administration.Logs;
@@ -27,8 +24,6 @@ using Content.Server.ServerInfo;
 using Content.Server.ServerUpdates;
 using Content.Server.Voting.Managers;
 using Content.Shared.CCVar;
-using Content.Shared.FeedbackSystem;
-using Content.Shared.Kitchen;
 using Content.Shared.Localizations;
 using Robust.Server;
 using Robust.Server.ServerStatus;
@@ -38,6 +33,9 @@ using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization;
 using Robust.Shared.Timing;
 using Robust.Shared.Utility;
+
+using Content.Server._Moffstation.Antag; // Moffstation
+using Content.Server._Moffstation.Discord.GuildEvent; // Moffstation
 
 namespace Content.Server.Entry
 {
@@ -78,7 +76,6 @@ namespace Content.Server.Entry
         [Dependency] private MultiServerKickManager _multiServerKick = default!;
         [Dependency] private PlayTimeTrackingManager _playTimeTracking = default!;
         [Dependency] private PlayerRateLimitManager _rateLimit = default!;
-        [Dependency] private RecipeManager _recipe = default!;
         [Dependency] private RulesManager _rules = default!;
         [Dependency] private ServerApi _serverApi = default!;
         [Dependency] private ServerInfoManager _serverInfo = default!;
@@ -164,7 +161,6 @@ namespace Content.Server.Entry
                 return;
             }
 
-            _recipe.Initialize();
             _admin.Initialize();
             _afk.Initialize();
             _rules.Initialize();
@@ -178,7 +174,7 @@ namespace Content.Server.Entry
             _multiServerKick.Initialize();
             _cvarCtrl.Initialize();
             _feedbackManager.Initialize();
-            _weightedAntags.Initialize();
+            _weightedAntags.Initialize(); // Moffstation - Weighted antags
         }
 
         public override void Update(ModUpdateLevel level, FrameEventArgs frameEventArgs)

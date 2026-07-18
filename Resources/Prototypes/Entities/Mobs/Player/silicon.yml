@@ -62,8 +62,15 @@
         toggleAction: ActionAGhostShowStationRecords
       enum.CommunicationsConsoleUiKey.Key:
         toggleAction: ActionAGhostShowCommunications
-  - type: NavMapWarp # Moffstation - Navigation map warp
+  # Moffstation - Begin - Ai warp
+  - type: Warp
+  - type: NavMapWarp
+  - type: RadioWarp
+  # Moffstation - End
   - type: CrewMonitoringConsole
+    sensorTypes: # Moffstation - Borg sensors
+    - SuitSensor
+    - NTBorgSensor
   - type: GeneralStationRecordConsole
   - type: DeviceNetwork
     deviceNetId: Wireless
@@ -111,9 +118,6 @@
   description: Handles AI interactions across holocards + AI cores
   components:
   - type: ItemSlots
-  - type: Tag
-    tags:
-    - GhostOnlyWarp
   - type: StationAiHolder
     slot:
       name: station-ai-mind-slot
@@ -188,9 +192,6 @@
     - Anchorable
   - type: Rotatable
   - type: WarpPoint
-    blacklist:
-      tags:
-      - GhostOnlyWarp
   - type: Fixtures
     fixtures:
       fix1:
@@ -521,14 +522,8 @@
         layer:
         - GhostImpassable
   - type: NoFTL
-  - type: Tag
-    tags:
-    - GhostOnlyWarp
   - type: WarpPoint
     follow: true
-    blacklist:
-      tags:
-      - GhostOnlyWarp
   - type: Eye
     pvsScale: 1.5
   - type: Visibility
@@ -550,14 +545,8 @@
   components:
   - type: Transform
     anchored: true
-  - type: Tag
-    tags:
-    - GhostOnlyWarp
   - type: WarpPoint
     follow: true
-    blacklist:
-      tags:
-      - GhostOnlyWarp
   - type: Eye
   - type: ContentEye
   - type: Examiner
@@ -574,10 +563,12 @@
   parent: BorgChassisSelectable
   suffix: Battery
   components:
-  - type: ContainerFill
-    containers:
-      borg_brain:
-      - PositronicBrain
+  # Moffstation - Begin - Borg brain loadout
+  #- type: ContainerFill
+  #  containers:
+  #    borg_brain:
+  #    - PositronicBrain
+  # Moffstation - End
   - type: ItemSlots
     slots:
       cell_slot:

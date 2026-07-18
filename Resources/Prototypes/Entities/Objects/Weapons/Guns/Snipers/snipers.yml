@@ -1,6 +1,6 @@
 - type: entity
   name: BaseWeaponSniper
-  parent: BaseItem
+  parent: [ BaseItem, BasePointerCrosshair ] # MACRO add crosshair
   id: BaseWeaponSniper
   description: A rooty tooty point and shooty.
   abstract: true
@@ -28,6 +28,7 @@
     selectedMode: SemiAuto
     availableModes:
     - SemiAuto
+    cameraRecoilScalar: 4.0 # DeltaV - higher screenshake on snipers
     soundGunshot:
       path: /Audio/Weapons/Guns/Gunshots/sniper.ogg
   - type: BallisticAmmoProvider
@@ -118,6 +119,9 @@
     - SemiAuto
     soundGunshot:
       path: /Audio/Weapons/Guns/Gunshots/sniper.ogg
+  - type: CustomSpriteAmmoCounter
+    loadedAmmoSprite: Interface/ItemStatus/Sniper_Cartriges/not_spent.png
+    spentAmmoSprite: Interface/ItemStatus/Sniper_Cartriges/spent.png
   - type: BallisticAmmoProvider
     whitelist:
       tags:

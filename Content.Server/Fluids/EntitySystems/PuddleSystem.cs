@@ -2,7 +2,6 @@ using Content.Server.Fluids.Components;
 using Content.Server.Spreader;
 using Content.Shared.Chemistry;
 using Content.Shared.Chemistry.Components;
-using Content.Shared.Chemistry.Components.SolutionManager;
 using Content.Shared.Chemistry.EntitySystems;
 using Content.Shared.Chemistry.Reaction;
 using Content.Shared.Database;
@@ -14,11 +13,15 @@ using Content.Shared.IdentityManagement;
 using Content.Shared.Maps;
 using Content.Shared.Popups;
 using Content.Shared.Slippery;
+using Content.Shared.Inventory;
+using Content.Shared._Funkystation.Fluids;
+using Content.Shared.Standing;
+using Content.Shared.StepTrigger.Systems;
 using Robust.Shared.Collections;
 using Robust.Shared.Map;
 using Robust.Shared.Map.Components;
+using Robust.Shared.Physics.Events;
 using Robust.Shared.Player;
-using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 
 namespace Content.Server.Fluids.EntitySystems;
@@ -29,14 +32,14 @@ namespace Content.Server.Fluids.EntitySystems;
 public sealed partial class PuddleSystem : SharedPuddleSystem
 {
     [Dependency] private SharedMapSystem _map = default!;
-    [Dependency] private IPrototypeManager _prototypeManager = default!;
     [Dependency] private IRobustRandom _random = default!;
     [Dependency] private EntityLookupSystem _lookup = default!;
     [Dependency] private SharedColorFlashEffectSystem _color = default!;
     [Dependency] private SharedSolutionContainerSystem _solutionContainerSystem = default!;
     [Dependency] private SharedTransformSystem _transform = default!;
     [Dependency] private TurfSystem _turf = default!;
-
+    [Dependency] private InventorySystem _inventory = default!; // Funky - Clothing stains
+    [Dependency] private StandingStateSystem _standing = default!; // Moffstation - Clothing stains
     [Dependency] private EntityQuery<PuddleComponent> _puddleQuery = default!;
     [Dependency] private EntityQuery<EvaporationSparkleComponent> _evaporationSparklesQuery = default!;
 
@@ -52,7 +55,34 @@ public sealed partial class PuddleSystem : SharedPuddleSystem
 
         SubscribeLocalEvent<PuddleComponent, SpreadNeighborsEvent>(OnPuddleSpread);
         SubscribeLocalEvent<PuddleComponent, SlipEvent>(OnPuddleSlip);
+
+        SubscribeLocalEvent<PuddleComponent, StartCollideEvent>(OnStepInPuddle); // Moffstation - Stains
     }
+
+    // Funky - Start - Clothing Stains
+    // Using startcollide rather than onstep, since the onstep is messed with by slippable... its bleak
+    private void OnStepInPuddle(Entity<PuddleComponent> ent, ref StartCollideEvent args)
+    {
+        if (!_solutionContainerSystem.ResolveSolution(ent.Owner, ent.Comp.SolutionName, ref ent.Comp.Solution, out var solution))
+            return;
+
+        if (solution.Volume <= FixedPoint2.Zero)
+            return;
+
+
+        // Choose le target...
+        // if standing and have shoes, just get it on their shoes
+        // otherwise, just spill it on them in general
+        var target = args.OtherEntity;
+        if (!_standing.IsDown(args.OtherEntity)
+            && _inventory.TryGetSlotEntity(args.OtherEntity, "shoes", out var shoes)
+            && shoes is { } shoeUid)
+            target = shoeUid;
+
+        var spilledEvent = new SpilledOnEvent(ent.Owner, solution);
+        RaiseLocalEvent(target, spilledEvent);
+    }
+    // Funky - End
 
     // TODO: This can be predicted once https://github.com/space-wizards/RobustToolbox/pull/5849 is merged
     private void OnPuddleSpread(Entity<PuddleComponent> entity, ref SpreadNeighborsEvent args)
@@ -264,6 +294,14 @@ public sealed partial class PuddleSystem : SharedPuddleSystem
         // Take 15% of the puddle solution
         var splitSol = _solutionContainerSystem.SplitSolution(entity.Comp.Solution.Value, solution.Volume * 0.15f);
         Reactive.DoEntityReaction(args.Slipped, splitSol, ReactionMethod.Touch);
+
+        // Funky - Start - Clothing stains
+        if (splitSol.Volume > 0)
+        {
+            var stainEv = new SpilledOnEvent(entity.Owner, splitSol.Clone());
+            RaiseLocalEvent(args.Slipped, stainEv);
+        }
+        // Funky - End
     }
 
     /// <summary>
@@ -429,6 +467,12 @@ public sealed partial class PuddleSystem : SharedPuddleSystem
 
             targets.Add(owner);
             Reactive.DoEntityReaction(owner, splitSolution, ReactionMethod.Touch);
+
+            // Funky - Start - Clothing stains
+            if (splitSolution.Volume > 0)
+                RaiseLocalEvent(owner, new SpilledOnEvent(entity, splitSolution.Clone()));
+            // Funky - End
+
             Popups.PopupEntity(Loc.GetString("spill-land-spilled-on-other",
                     ("spillable", entity),
                     ("target", Identity.Entity(owner, EntityManager))),
@@ -436,7 +480,7 @@ public sealed partial class PuddleSystem : SharedPuddleSystem
                 PopupType.SmallCaution);
         }
 
-        _color.RaiseEffect(spilled.GetColor(_prototypeManager), targets,
+        _color.RaiseEffect(spilled.GetColor(ProtoMan), targets,
             Filter.Pvs(entity, entityManager: EntityManager));
 
         return TrySpillAt(coordinates, spilled, out puddleUid, sound);

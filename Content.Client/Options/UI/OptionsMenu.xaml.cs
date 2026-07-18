@@ -21,6 +21,7 @@ namespace Content.Client.Options.UI
             Tabs.SetTabTitle(3, Loc.GetString("ui-options-tab-audio"));
             Tabs.SetTabTitle(4, Loc.GetString("ui-options-tab-accessibility"));
             Tabs.SetTabTitle(5, Loc.GetString("ui-options-tab-admin"));
+            Tabs.SetTabTitle(6, Loc.GetString("ui-options-tab-fork-specific")); // Moffstation - Fork specific tab
 
             UpdateTabs();
         }
@@ -33,6 +34,7 @@ namespace Content.Client.Options.UI
             GraphicsTab.Control.ReloadValues();
             MiscTab.Control.ReloadValues();
             AccessibilityTab.Control.ReloadValues();
+            ForkSpecificTab.Control.ReloadValues(); // Moffstation
             AudioTab.Control.ReloadValues();
             AdminOptionsTab.Control.ReloadValues();
         }

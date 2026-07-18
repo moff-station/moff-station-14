@@ -24,6 +24,23 @@
     - Vox
     - Vulpkanin
 
+# EVA Tanks
+- type: loadout
+  id: LoadoutSpeciesEVAOxygenAvali
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: EffectSpeciesAvali
+  equipment:
+    suitstorage: OxygenTankFilled
+
+- type: loadout
+  id: LoadoutSpeciesPocketDoubleOxygenAvali
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: EffectSpeciesAvali
+  equipment:
+    pocket1: DoubleEmergencyOxygenTankFilled
+
 # Drink Bottles
 - type: loadout
   id: LoadoutSpeciesBottleAmmonia

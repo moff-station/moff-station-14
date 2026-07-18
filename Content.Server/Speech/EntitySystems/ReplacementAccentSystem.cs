@@ -15,9 +15,7 @@ namespace Content.Server.Speech.EntitySystems
     /// </summary>
     public sealed partial class ReplacementAccentSystem : EntitySystem
     {
-        [Dependency] private IPrototypeManager _proto = default!;
         [Dependency] private IRobustRandom _random = default!;
-        [Dependency] private ILocalizationManager _loc = default!;
 
         private static readonly Regex EndOfMessagePunctuation = new(@"[\.!\?‽]+$", RegexOptions.Compiled); // Moffstation - Full replacement maintains end of message punctation
 
@@ -28,14 +26,14 @@ namespace Content.Server.Speech.EntitySystems
         {
             SubscribeLocalEvent<ReplacementAccentComponent, AccentGetEvent>(OnAccent);
 
-            _proto.PrototypesReloaded += OnPrototypesReloaded;
+            ProtoMan.PrototypesReloaded += OnPrototypesReloaded;
         }
 
         public override void Shutdown()
         {
             base.Shutdown();
 
-            _proto.PrototypesReloaded -= OnPrototypesReloaded;
+            ProtoMan.PrototypesReloaded -= OnPrototypesReloaded;
         }
 
         private void OnAccent(EntityUid uid, ReplacementAccentComponent component, AccentGetEvent args)
@@ -49,7 +47,7 @@ namespace Content.Server.Speech.EntitySystems
         [PublicAPI]
         public string ApplyReplacements(string message, string accent)
         {
-            if (!_proto.TryIndex<ReplacementAccentPrototype>(accent, out var prototype))
+            if (!ProtoMan.TryIndex<ReplacementAccentPrototype>(accent, out var prototype))
                 return message;
 
             if (!_random.Prob(prototype.ReplacementChance))
@@ -139,8 +137,8 @@ namespace Content.Server.Speech.EntitySystems
             return replacements.Select(kv =>
                 {
                     var (first, replace) = kv;
-                    var firstLoc = _loc.GetString(first);
-                    var replaceLoc = _loc.GetString(replace);
+                    var firstLoc = Loc.GetString(first);
+                    var replaceLoc = Loc.GetString(replace);
 
                     var regex = new Regex($@"(?<![\w']){firstLoc}(?![\w'])", RegexOptions.IgnoreCase);
 

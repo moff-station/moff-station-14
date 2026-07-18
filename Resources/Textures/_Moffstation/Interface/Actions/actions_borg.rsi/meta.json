@@ -1,7 +1,7 @@
 {
     "version": 1,
     "license": "CC-BY-SA-4.0",
-    "copyright": "Taken from vgstation at commit https://github.com/vgstation-coders/vgstation13/commit/cdbcb1e858b11f083994a7a269ed67ef5b452ce9, generic-anomaly-module, generic-cleaning-module, generic-construction-module, generic-mining-module, generic-musical-module, and generic-treatment-module modified by Nyxilath for Moffstation. advanced-anomaly-module, anomaly-module pirate-module, bureau-module, card-module, node-scanner-module, pirate-module, and service-module created by davyei (discord) for Moffstation. foam-force-module created by Centronias (GitHub) for Moffstation. wildlife-module taken from tgstation at a373b4cb08298523d40acc14f9c390a0c403fc31, sprite modified by mirrorcult and edited by AffleTheWaffle. adv-traversal-module taken from tgstation at commit https://github.com/tgstation/tgstation/commit/1592a112e3d33eec4a0704b518a138d5a976f455 and edited by AffleTheWaffle, investigation-module by CasaleBalthazar (Github) for Moffstation",
+    "copyright": "Taken from vgstation at commit https://github.com/vgstation-coders/vgstation13/commit/cdbcb1e858b11f083994a7a269ed67ef5b452ce9, generic-anomaly-module, generic-cleaning-module, generic-construction-module, generic-mining-module, generic-musical-module, and generic-treatment-module modified by Nyxilath for Moffstation. advanced-anomaly-module, anomaly-module pirate-module, bureau-module, card-module, node-scanner-module, pirate-module, and service-module created by davyei (discord) for Moffstation. foam-force-module created by Centronias (GitHub) for Moffstation. wildlife-module taken from tgstation at a373b4cb08298523d40acc14f9c390a0c403fc31, sprite modified by mirrorcult and edited by AffleTheWaffle. adv-traversal-module taken from tgstation at commit https://github.com/tgstation/tgstation/commit/1592a112e3d33eec4a0704b518a138d5a976f455 and edited by AffleTheWaffle, investigation-module and mail-module by CasaleBalthazar (Github) for Moffstation",
     "size": {
         "x": 32,
         "y": 32
@@ -57,6 +57,9 @@
         },
         {
             "name": "adv-traversal-module"
+        },
+        {
+            "name": "mail-module"
         }
     ]
 }

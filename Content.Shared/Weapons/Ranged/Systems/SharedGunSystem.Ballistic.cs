@@ -333,7 +333,7 @@ public abstract partial class SharedGunSystem
         var user = args.User;
 
         // Don't play a sound if the user has the silent user tag.
-        var insertSound = ProtoManager.TryIndex(entity.Comp.SilentInsertUserTag, out var tag) &&
+        var insertSound = ProtoMan.TryIndex(entity.Comp.SilentInsertUserTag, out var tag) &&
                           TagSystem.HasTag(args.User, tag)
             ? null
             : entity.Comp.SoundInsert;

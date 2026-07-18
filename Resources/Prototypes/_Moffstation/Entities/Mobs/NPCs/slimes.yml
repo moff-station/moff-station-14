@@ -93,10 +93,7 @@
     allowedEmotes: [ 'Squish' ]
   - type: Emoting
   - type: Vocal
-    sounds:
-      Male: MaleSlime
-      Female: FemaleSlime
-      Unsexed: MaleSlime
+    emoteSounds: MaleSlime
   - type: Stripping
   - type: Puller
   - type: Cuffable
@@ -110,6 +107,12 @@
         - id: OrganSlimePersonCore
         - id: OrganSlimePersonLungs
         - id: OrganGerasTorso
+  - type: NpcFactionMember
+    factions:
+    - FeralSlime # Not actually feral, but feral slimes won't attack them
+  - type: StatusIcon
+    bounds: -0.5,-0.5,0.5,0.5
+  - type: JobStatus
   - type: Tag
     tags:
     - FootstepSound
