@@ -89,3 +89,14 @@
     duration: 60
     minEnrolled: 1
     maxEnrolled: 2
+
+- type: entity
+  parent: MoffBaseVote
+  id: ReplicatorEnroller
+  name: Replicator Queen
+  description: Enroll for a chance to infiltrate from a Syndicate listening outpost.
+  components:
+  - type: MoffEnrollEvent
+    duration: 60
+    minEnrolled: 1
+    maxEnrolled: 1

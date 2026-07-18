@@ -16,15 +16,20 @@
     prototype: MobReplicatorT0Queen
   - type: ReplicatorRule
   - type: AntagSelection
+    selectionTime: Enroll # Moff - Enrolling
     agentName: ghost-role-information-replicator-name
     antags:
     - !type:FixedAntagCount
       proto: ReplicatorQueen
+  - type: ESSynchronizedVoteManager
+    votes:
+    - ReplicatorEnroller
 
 - type: antagSpecifier
   parent: RestrictedAntag
   id: ReplicatorQueen
   spawnerPrototype: SpawnPointGhostReplicatorQueenAntag
   pickPlayer: false
+  allowNonHumans: true
   mindRoles:
-  - MindRoleGhostRoleTeamAntagonist
+  - MindRoleReplicator

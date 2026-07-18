@@ -1,5 +1,5 @@
 using Content.Shared._Moffstation.Voting.Components;
-using Content.Shared.Ghost;
+using Content.Shared.Humanoid;
 using Robust.Shared.Collections;
 using Robust.Shared.Timing;
 

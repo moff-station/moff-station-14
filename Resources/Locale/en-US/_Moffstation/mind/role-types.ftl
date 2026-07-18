@@ -13,6 +13,7 @@ role-subtype-faction-blood-brothers = The Brotherhood
 role-subtype-faction-conspiracy = The Conspiracy
 role-subtype-faction-spider-clan = The Spider Clan
 role-subtype-xenoborg-faction = Xenoborgs
+role-subtype-replicators = The Hive
 
 # Individual Syndicate Factions
 role-subtype-faction-syndicate-gorlex = The Gorlex Maurauders
