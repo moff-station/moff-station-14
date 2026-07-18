@@ -2,6 +2,7 @@
 # all credit for the core gameplay concepts and a lot of the core functionality of the code goes to the folks over at Goob, but I re-wrote enough of it to justify putting it in our filestructure.
 # the original Bingle PR can be found here: https://github.com/Goob-Station/Goob-Station/pull/1519
 - type: entity
+  parents: [SolutionDrain, SolutionTile]
   id: ReplicatorNest
   name: replicator nest
   description: A roiling mass of nanotechnology is eating through the station's infrastructure.
@@ -199,3 +200,6 @@
     range: 2
     sound:
       path: /Audio/_Impstation/Ambience/replicator_ambiance.ogg
+  - type: Drain
+  - type: DumpableSolution
+    solution: drainBuffer
