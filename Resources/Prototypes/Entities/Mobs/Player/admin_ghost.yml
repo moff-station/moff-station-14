@@ -65,10 +65,6 @@
       # Moffstation - Begin - Replace normal records with CD records
       enum.CharacterRecordConsoleKey.Key:
         type: CharacterRecordConsoleBoundUserInterface
-      # Moffstation - event voting
-      enum.ESVoterUiKey.Key:
-        type: ESVoterBui
-      # Moffstation - End
   - type: IntrinsicUI
     uis:
       enum.SolarControlConsoleUiKey.Key:
@@ -133,7 +129,6 @@
     # Needed for security records console functionality
   - type: CriminalRecordsConsole
   # Moffstation - End
-  - type: ESVoter # Moffstation - Event voting
 
 - type: entity
   abstract: true
