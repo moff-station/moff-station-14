@@ -130,3 +130,27 @@
   - type: Construction
     graph: ClothingShoesBootsMagSharkminnow
     node: shoes
+
+# Red Performer (Kasane Teto)
+- type: entity
+  parent: ClothingShoesBaseButcherable
+  id: ClothingShoesBootsPerformerRed
+  name: red performer's boots
+  description: Just wearing them makes you feel a little hot-headed.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Shoes/performer-red.rsi
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Shoes/performer-red.rsi
+
+# Yellow Performer (Akita Neru)
+- type: entity
+  parent: ClothingShoesBaseButcherable
+  id: ClothingShoesBootsPerformerYellow
+  name: yellow performer's boots
+  description: They're jet-black, just waiting to be obscured by darkness.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Shoes/performer-yellow.rsi
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Shoes/performer-yellow.rsi

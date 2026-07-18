@@ -1,4 +1,15 @@
-﻿# Derelict service cyborg
+﻿# Borg with brain
+- type: entity
+  parent: PlayerBorgBattery
+  id: PlayerBorgBatteryBrain
+  suffix: Battery, Brain
+  components:
+  - type: ContainerFill
+    containers:
+      borg_brain:
+      - PositronicBrain
+
+# Derelict service cyborg
 - type: entity
   parent: ServiceBorgChassisDerelict
   id: PlayerServiceBorgDerelict

@@ -12,7 +12,7 @@
     - PlantSampleTaker
     - Wirecutter
   - type: Sprite
-    sprite: &wirecutters.rsi "_Moffstation/Objects/Tools/wirecutters.rsi" # Moffstation
+    sprite: &wirecutters_rsi "_Moffstation/Objects/Tools/wirecutters.rsi" # Moffstation
     layers:
     - state: cutters
       map: [ "enum.DamageStateVisualLayers.Base" ]
@@ -36,7 +36,7 @@
       - enum.DamageStateVisualLayers.Base:
           cutters: Rainbow
   - type: Item
-    sprite: *wirecutters.rsi # Moffstation
+    sprite: *wirecutters_rsi # Moffstation
     storedRotation: -90
   - type: ToolTileCompatible
   - type: PhysicalComposition
@@ -58,13 +58,13 @@
     tags:
     - Screwdriver
   - type: Sprite
-    sprite: &screwdriver.rsi "_Moffstation/Objects/Tools/screwdriver.rsi" # Moffstation
+    sprite: &screwdriver_rsi "_Moffstation/Objects/Tools/screwdriver.rsi" # Moffstation
     layers:
       - state: screwdriver
         map: [ "enum.DamageStateVisualLayers.Base" ]
       - state: screwdriver-screwybits
   - type: Item
-    sprite: *screwdriver.rsi # Moffstation
+    sprite: *screwdriver_rsi # Moffstation
     storedRotation: -90
   - type: MeleeWeapon
     wideAnimationRotation: -90
@@ -102,12 +102,12 @@
     tags:
     - Wrench
   - type: Sprite
-    sprite: &wrench.rsi _Moffstation/Objects/Tools/wrench.rsi # Moffstation
+    sprite: &wrench_rsi _Moffstation/Objects/Tools/wrench.rsi # Moffstation
     state: icon
   - type: Item
-    sprite: *wrench.rsi # Moffstation
+    sprite: *wrench_rsi # Moffstation
     storedSprite:
-      sprite: *wrench.rsi # Moffstation
+      sprite: *wrench_rsi # Moffstation
       state: storage
   - type: MeleeWeapon
     wideAnimationRotation: -90 # Moffstation
@@ -141,7 +141,7 @@
     sound:
       path: /Audio/Items/multitool_drop.ogg
   - type: Sprite
-    sprite: &multitool.rsi "_Moffstation/Objects/Tools/multitool.rsi" # Moffstation
+    sprite: &multitool_rsi "_Moffstation/Objects/Tools/multitool.rsi" # Moffstation
     layers:
     - state: icon
     - state: green-unlit
@@ -149,7 +149,7 @@
   - type: Item
     size: Small
   - type: Clothing
-    sprite: *multitool.rsi # Moffstation
+    sprite: *multitool_rsi # Moffstation
     quickEquip: false
     slots:
     - Belt
@@ -195,7 +195,7 @@
       sound:
         path: /Audio/Items/multitool_drop.ogg
     - type: Sprite
-      sprite: &network_configurator.rsi "_Moffstation/Objects/Tools/network_configurator.rsi" # Moffstation
+      sprite: &network_configurator_rsi "_Moffstation/Objects/Tools/network_configurator.rsi" # Moffstation
       layers:
         - state: icon
         - state: mode-link
@@ -204,7 +204,7 @@
     - type: Item
       size: Small
     - type: Clothing
-      sprite: *network_configurator.rsi # Moffstation
+      sprite: *network_configurator_rsi # Moffstation
       quickEquip: false
       slots:
         - Belt
@@ -254,10 +254,10 @@
     tags:
     - Powerdrill
   - type: Sprite
-    sprite: &drill.rsi "_Moffstation/Objects/Tools/drill.rsi" # Moffstation
+    sprite: &drill_rsi "_Moffstation/Objects/Tools/drill.rsi" # Moffstation
     state: drill_screw
   - type: Item
-    sprite: *drill.rsi # Moffstation
+    sprite: *drill_rsi # Moffstation
     size: Small
   - type: Tool
     qualities:
@@ -269,7 +269,7 @@
     entries:
       - behavior: Screwing
         sprite:
-          sprite: *drill.rsi # Moffstation
+          sprite: *drill_rsi # Moffstation
           state: drill_screw
         useSound:
           path: /Audio/Items/drill_use.ogg
@@ -277,7 +277,7 @@
           path: /Audio/Items/change_drill.ogg
       - behavior: Anchoring
         sprite:
-          sprite: *drill.rsi # Moffstation
+          sprite: *drill_rsi # Moffstation
           state: drill_bolt
         useSound:
           path: /Audio/Items/drill_use.ogg
@@ -328,12 +328,12 @@
   - type: LimitedCharges
     maxCharges: 30
   - type: Sprite
-    sprite: &rcd.rsi "_Moffstation/Objects/Tools/rcd.rsi" # Moffstation
+    sprite: &rcd_rsi "_Moffstation/Objects/Tools/rcd.rsi" # Moffstation
     state: icon
   - type: Item
     size: Normal
   - type: Clothing
-    sprite: *rcd.rsi # Moffstation
+    sprite: *rcd_rsi # Moffstation
     quickEquip: false
     slots:
     - Belt
@@ -389,10 +389,10 @@
   components:
   - type: RCDAmmo
   - type: Sprite
-    sprite: *rcd.rsi # Moffstation
+    sprite: *rcd_rsi # Moffstation
     state: ammo
   - type: Item
-    sprite: *rcd.rsi # Moffstation
+    sprite: *rcd_rsi # Moffstation
     heldPrefix: ammo
   - type: PhysicalComposition
     materialComposition:

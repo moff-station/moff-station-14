@@ -1,0 +1,54 @@
+﻿- type: entity
+  parent: MarkerBase
+  id: SpawnPointPizza
+  name: pizza box spawner
+  components:
+  - type: EntityTableSpawner
+    offset: 0.5
+    table: !type:AllSelector
+      children:
+      - id: FoodBoxPizzaFilled
+  - type: Sprite
+    sprite: Markers/jobs.rsi
+    layers:
+    - state: green
+    - sprite: Objects/Consumable/Food/Baked/pizza.rsi
+      state: margherita-slice
+
+- type: entity
+  parent: MarkerBase
+  id: SpawnPointPizzaCotton
+  name: pizza box spawner
+  suffix: Cotton
+  components:
+  - type: EntityTableSpawner
+    offset: 0.5
+    table: !type:AllSelector
+      children:
+      - id: FoodBoxPizzaCotton
+  - type: Sprite
+    sprite: Markers/jobs.rsi
+    layers:
+    - state: green
+    - sprite: Objects/Consumable/Food/Baked/pizza.rsi
+      state: cotton-slice
+
+- type: entity
+  parent: MarkerBase
+  id: SpawnPointSodaBottleLarge
+  name: random soda spawner
+  suffix: Large
+  components:
+  - type: EntityTableSpawner
+    offset: 0.5
+    table: !type:GroupSelector
+      children:
+      - id: DrinkColaBottleFull
+      - id: DrinkSpaceMountainWindBottleFull
+      - id: DrinkSpaceUpBottleFull
+  - type: Sprite
+    sprite: Markers/jobs.rsi
+    layers:
+    - state: green
+    - sprite: Objects/Consumable/Drinks/colabottle.rsi
+      state: icon

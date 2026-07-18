@@ -108,6 +108,7 @@ public sealed partial class CargoSystem
             if (FulfillOrder(currentOrder, currentOrder.Account, xform.Coordinates, comp.PrinterOutput))
             {
                 _audio.PlayPvs(_audio.ResolveSound(comp.TeleportSound), uid, AudioParams.Default.WithVolume(-8f));
+                Spawn(comp.TelepadFlash, xform.Coordinates); // Moff - Thematic Telepads
 
                 if (_station.GetOwningStation(uid) is { } station)
                     UpdateOrders(station);

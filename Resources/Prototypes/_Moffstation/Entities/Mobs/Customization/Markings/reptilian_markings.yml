@@ -13,3 +13,182 @@
     state: tattoo_eye_dragon_shadow
   - sprite: _Moffstation/Mobs/Customization/Reptilian/dragon_eye.rsi
     state: tattoo_eye_dragon_color
+
+# Legs
+
+- type: marking
+  id: FootProstheticReptilianLeft
+  bodyPart: LFoot
+  groupWhitelist: [Reptilian]
+  coloring:
+    default:
+      type:
+        !type:SimpleColoring
+        color: "#E4E4E4"
+  sprites:
+  - sprite: _Moffstation/Mobs/Customization/Reptilian/Generic/legs.rsi
+    state: foot_l_prosthetic
+
+- type: marking
+  id: FootProstheticReptilianRight
+  bodyPart: RFoot
+  groupWhitelist: [Reptilian]
+  coloring:
+    default:
+      type:
+        !type:SimpleColoring
+        color: "#E4E4E4"
+  sprites:
+  - sprite: _Moffstation/Mobs/Customization/Reptilian/Generic/legs.rsi
+    state: foot_r_prosthetic
+
+- type: marking
+  id: LegProstheticReptilianLeft
+  bodyPart: LLeg
+  groupWhitelist: [Reptilian]
+  coloring:
+    default:
+      type:
+        !type:SimpleColoring
+        color: "#E4E4E4"
+  sprites:
+  - sprite: _Moffstation/Mobs/Customization/Reptilian/Generic/legs.rsi
+    state: leg_l_prosthetic
+
+- type: marking
+  id: LegTwistingReptilianLeft
+  bodyPart: LLeg
+  groupWhitelist: [Reptilian]
+  sprites:
+  - sprite: _Moffstation/Mobs/Customization/Reptilian/Generic/legs.rsi
+    state: leg_l_twisting
+
+- type: marking
+  id: LegProstheticReptilianRight
+  bodyPart: RLeg
+  groupWhitelist: [Reptilian]
+  coloring:
+    default:
+      type:
+        !type:SimpleColoring
+        color: "#E4E4E4"
+  sprites:
+  - sprite: _Moffstation/Mobs/Customization/Reptilian/Generic/legs.rsi
+    state: leg_r_prosthetic
+
+- type: marking
+  id: LegTwistingReptilianRight
+  bodyPart: RLeg
+  groupWhitelist: [Reptilian]
+  sprites:
+  - sprite: _Moffstation/Mobs/Customization/Reptilian/Generic/legs.rsi
+    state: leg_r_twisting
+
+- type: marking
+  id: LegDollJointsTattooReptilianLeft
+  bodyPart: LLeg
+  groupWhitelist: [Reptilian]
+  coloring:
+    default:
+      type:
+        !type:TattooColoring
+      fallbackColor: "#666666"
+  sprites:
+  - sprite: _Moffstation/Mobs/Customization/Reptilian/Generic/legs.rsi
+    state: l_leg_doll
+
+- type: marking
+  id: LegDollJointsTattooReptilianRight
+  bodyPart: RLeg
+  groupWhitelist: [Reptilian]
+  coloring:
+    default:
+      type:
+        !type:TattooColoring
+      fallbackColor: "#666666"
+  sprites:
+  - sprite: _Moffstation/Mobs/Customization/Reptilian/Generic/legs.rsi
+    state: r_leg_doll
+
+- type: marking
+  id: LegHeavyTattoosReptilianLeft
+  bodyPart: LLeg
+  groupWhitelist: [Reptilian]
+  coloring:
+    default:
+      type:
+        !type:TattooColoring
+      fallbackColor: "#666666"
+  sprites:
+  - sprite: _Moffstation/Mobs/Customization/Reptilian/Generic/legs.rsi
+    state: l_leg_heavy1
+  - sprite: _Moffstation/Mobs/Customization/Reptilian/Generic/legs.rsi
+    state: l_leg_heavy2
+
+- type: marking
+  id: LegHeavyTattoosReptilianRight
+  bodyPart: RLeg
+  groupWhitelist: [Reptilian]
+  coloring:
+    default:
+      type:
+        !type:TattooColoring
+      fallbackColor: "#666666"
+  sprites:
+  - sprite: _Moffstation/Mobs/Customization/Reptilian/Generic/legs.rsi
+    state: r_leg_heavy1
+  - sprite: _Moffstation/Mobs/Customization/Reptilian/Generic/legs.rsi
+    state: r_leg_heavy2
+
+
+- type: marking
+  id: GauzeLowerLegReptilianLeft
+  bodyPart: LFoot
+  groupWhitelist: [Reptilian]
+  coloring:
+    default:
+      type:
+        !type:SimpleColoring
+        color: "#FFFFFF"
+  sprites:
+  - sprite: _Moffstation/Mobs/Customization/reptilian_parts.rsi
+    state: gauze_lowerleg_l
+
+- type: marking
+  id: GauzeUpperLegReptilianLeft
+  bodyPart: LLeg
+  groupWhitelist: [Reptilian]
+  coloring:
+    default:
+      type:
+        !type:SimpleColoring
+        color: "#FFFFFF"
+  sprites:
+  - sprite: _Moffstation/Mobs/Customization/reptilian_parts.rsi
+    state: gauze_upperleg_l
+
+- type: marking
+  id: GauzeUpperLegReptilianRight
+  bodyPart: RLeg
+  groupWhitelist: [Reptilian]
+  coloring:
+    default:
+      type:
+        !type:SimpleColoring
+        color: "#FFFFFF"
+  sprites:
+  - sprite: _Moffstation/Mobs/Customization/reptilian_parts.rsi
+    state: gauze_upperleg_r
+
+- type: marking
+  id: GauzeLowerLegReptilianRight
+  bodyPart: RFoot
+  groupWhitelist: [Reptilian]
+  coloring:
+    default:
+      type:
+        !type:SimpleColoring
+        color: "#FFFFFF"
+  sprites:
+  - sprite: _Moffstation/Mobs/Customization/reptilian_parts.rsi
+    state: gauze_lowerleg_r

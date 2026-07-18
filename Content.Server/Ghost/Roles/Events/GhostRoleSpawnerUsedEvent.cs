@@ -1,3 +1,5 @@
+using Content.Shared.Ghost.Roles.Components;
+
 namespace Content.Server.Ghost.Roles.Events
 {
     /// <summary>
@@ -22,4 +24,10 @@ namespace Content.Server.Ghost.Roles.Events
             Spawned = spawned;
         }
     }
+
+    // Moffstation - Begin - Ghost role spawner usage tracking
+    /// This event is raised on the entity with <see cref="GhostRoleMobSpawnerComponent"/> when it is used.
+    [ByRefEvent]
+    public readonly record struct UsedGhostRoleSpawnerEvent(EntityUid Spawned);
+    // Moffstation - End
 }

@@ -96,6 +96,7 @@
   - Glasses
   - GlassesJamjar
   - GlassesJensen
+  - EyePatch # Moffstation
 
 - type: loadoutGroup
   id: GroupTankHarness
@@ -124,6 +125,7 @@
   loadouts:
   - LoadoutSpeciesEVANitrogen
   - LoadoutSpeciesEVAOxygen
+  - LoadoutSpeciesEVAOxygenAvali # Moffstation
 
 # vox get a nitrogen tank, other species get nothing
 - type: loadoutGroup
@@ -140,6 +142,7 @@
   loadouts:
   - LoadoutSpeciesPocketDoubleNitrogen
   - LoadoutSpeciesPocketDoubleOxygen
+  - LoadoutSpeciesPocketDoubleOxygenAvali # Moffstation
 
 # Command
 - type: loadoutGroup
@@ -775,6 +778,8 @@
   - MusicianJumpskirt
 # Moffstation - Begin - Musician Outfits
   - PerformerSkirt
+  - PerformerSkirtRed
+  - PerformerSkirtYellow
   - RockstarSuit
 # Moffstation - End - Musician Outfits
 

@@ -1,0 +1,9 @@
+﻿- type: cargoProduct
+  id: FoodPizzaDelivery
+  icon:
+    sprite: Objects/Consumable/Food/Baked/pizza.rsi
+    state: margherita-slice
+  product: PizzaDeliveryService
+  cost: 1600
+  category: cargoproduct-category-name-delivery-service
+  group: market

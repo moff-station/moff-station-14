@@ -1,0 +1,7 @@
+- type: entity
+  id: ParcelWrapRecharging
+  parent: ParcelWrap
+  suffix: AutoRecharge
+  components:
+  - type: AutoRecharge
+    rechargeDuration: 5

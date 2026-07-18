@@ -2,7 +2,6 @@ using Content.Shared.Chemistry;
 using Content.Shared.Chemistry.Components;
 using Content.Shared.Chemistry.EntitySystems;
 using Content.Shared.Chemistry.Prototypes;
-using Content.Shared.Chemistry.Reaction;
 using Content.Shared.CombatMode.Pacification;
 using Content.Shared.Database;
 using Content.Shared.DoAfter;
@@ -16,6 +15,7 @@ using Content.Shared.Spillable;
 using Content.Shared.Verbs;
 using Content.Shared.Weapons.Melee;
 using Content.Shared.Weapons.Melee.Events;
+using Content.Shared._Funkystation.Fluids;
 using Robust.Shared.Player;
 
 namespace Content.Shared.Fluids;
@@ -79,12 +79,12 @@ public abstract partial class SharedPuddleSystem
                 // TODO: Make this an event subscription once spilling puddles is predicted.
                 // Injectors should not be hardcoded here.
                 if (TryComp<InjectorComponent>(entity, out var injectorComp)
-                    && _prototypeManager.Resolve(injectorComp.ActiveModeProtoId, out var activeMode)
+                    && ProtoMan.Resolve(injectorComp.ActiveModeProtoId, out var activeMode)
                     && !activeMode.Behavior.HasAnyFlag(InjectorBehavior.Draw | InjectorBehavior.Dynamic))
                 {
                     foreach (var mode in injectorComp.AllowedModes)
                     {
-                        if (!_prototypeManager.Resolve(mode, out var protoMode))
+                        if (!ProtoMan.Resolve(mode, out var protoMode))
                             continue;
 
                         if (protoMode.Behavior.HasAnyFlag(InjectorBehavior.Draw | InjectorBehavior.Dynamic))
@@ -162,6 +162,14 @@ public abstract partial class SharedPuddleSystem
                 continue;
 
             var splitSolution = _solutionContainerSystem.SplitSolution(soln.Value, totalSplit / hitCount);
+
+            // Forky - Start - Stains
+            if (splitSolution.Volume > 0)
+            {
+                var stainEv = new SpilledOnEvent(entity.Owner, splitSolution.Clone());
+                RaiseLocalEvent(hit, stainEv);
+            }
+            // Forky - End
 
             AdminLogger.Add(LogType.MeleeHit,
                 $"{ToPrettyString(args.User):actor} "

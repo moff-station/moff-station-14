@@ -3,10 +3,11 @@ using System.Linq;
 using System.Text.Json;
 using System.Threading;
 using System.Threading.Tasks;
-using Content.Server._CD.Records; // CD
+using Content.Server._CD.Records;
+using Content.Server.Afk;
 using Content.Server.Database;
-using Content.Shared._CD.Records; // CD
-using Content.Shared._DV.Traits; // DV
+using Content.Shared._CD.Records;
+using Content.Shared._DV.Traits;
 using Content.Shared.Body;
 using Content.Shared.CCVar;
 using Content.Shared.Construction.Prototypes;
@@ -16,7 +17,6 @@ using Content.Shared.Humanoid.Prototypes;
 using Content.Shared.Preferences;
 using Content.Shared.Preferences.Loadouts;
 using Content.Shared.Roles;
-using Content.Shared.Traits;
 using Robust.Server.Player;
 using Robust.Shared.Configuration;
 using Robust.Shared.Enums;
@@ -38,6 +38,7 @@ namespace Content.Server.Preferences.Managers
         [Dependency] private IConfigurationManager _cfg = default!;
         [Dependency] private IServerDbManager _db = default!;
         [Dependency] private IPlayerManager _playerManager = default!;
+        [Dependency] private IAfkManager _afkManager = default!;
         [Dependency] private IDependencyCollection _dependencies = default!;
         [Dependency] private ILogManager _log = default!;
         [Dependency] private UserDbDataManager _userDb = default!;
@@ -113,8 +114,15 @@ namespace Content.Server.Preferences.Managers
                 new Dictionary<ProtoId<OrganCategoryPrototype>, Dictionary<HumanoidVisualLayers, List<Marking>>>();
 
             var species = profile.Species;
-            if (!_prototypeManager.HasIndex<SpeciesPrototype>(species))
+            if (!_prototypeManager.TryIndex<SpeciesPrototype>(species, out var speciesPrototype))
+            {
                 species = HumanoidCharacterProfile.DefaultSpecies;
+                speciesPrototype = _prototypeManager.Index<SpeciesPrototype>(species);
+            }
+
+            var voice = profile.Voice ?? speciesPrototype.DefaultSoundsBySex[(int)sex];
+            if (!_prototypeManager.HasIndex(voice))
+                voice = speciesPrototype.DefaultSoundsBySex[(int)sex];
 
             if (profile.OrganMarkings?.RootElement is { } element)
             {
@@ -182,6 +190,7 @@ namespace Content.Server.Preferences.Managers
                 profile.CDProfile?.Height ?? 1.0f, // Moffstation - CD Height
                 profile.Age,
                 sex,
+                voice,
                 gender,
                 new HumanoidCharacterAppearance
                 (
@@ -224,6 +233,7 @@ namespace Content.Server.Preferences.Managers
             }
 
             prefsData.Prefs = new PlayerPreferences(curPrefs.Characters, index, curPrefs.AdminOOCColor, curPrefs.ConstructionFavorites);
+            _afkManager.PlayerDidAction(message.MsgChannel);
 
             if (ShouldStorePrefs(message.MsgChannel.AuthType))
             {
@@ -239,7 +249,10 @@ namespace Content.Server.Preferences.Managers
             if (message.Profile == null)
                 _sawmill.Error($"User {userId} sent a {nameof(MsgUpdateCharacter)} with a null profile in slot {message.Slot}.");
             else
+            {
                 await SetProfile(userId, message.Slot, message.Profile);
+                _afkManager.PlayerDidAction(message.MsgChannel);
+            }
         }
 
         public async Task SetProfile(NetUserId userId, int slot, HumanoidCharacterProfile profile)
@@ -323,6 +336,7 @@ namespace Content.Server.Preferences.Managers
             arr.Remove(slot);
 
             prefsData.Prefs = new PlayerPreferences(arr, nextSlot ?? curPrefs.SelectedCharacterIndex, curPrefs.AdminOOCColor, curPrefs.ConstructionFavorites);
+            _afkManager.PlayerDidAction(message.MsgChannel);
 
             if (ShouldStorePrefs(message.MsgChannel.AuthType))
             {
@@ -364,6 +378,7 @@ namespace Content.Server.Preferences.Managers
 
             var curPrefs = prefsData.Prefs!;
             prefsData.Prefs = new PlayerPreferences(curPrefs.Characters, curPrefs.SelectedCharacterIndex, curPrefs.AdminOOCColor, validatedList);
+            _afkManager.PlayerDidAction(message.MsgChannel);
 
             if (ShouldStorePrefs(message.MsgChannel.AuthType))
             {
@@ -485,9 +500,16 @@ namespace Content.Server.Preferences.Managers
             var prefs = await _db.GetPlayerPreferencesAsync(userId, cancel);
             if (prefs is null)
             {
+                // The player has no characters, so the Company assigns them one
+
                 var speciesToBlacklist =
                     new HashSet<string>(_cfg.GetCVar(CCVars.ICNewAccountSpeciesBlacklist).Split(","));
-                return await _db.InitPrefsAsync(userId, HumanoidCharacterProfile.Random(speciesToBlacklist), cancel);
+
+                //Randomize species and set job priorities from cvar
+                var profile = HumanoidCharacterProfile.Random(speciesToBlacklist);
+                profile = profile.WithJobFromCvar(_cfg);
+
+                return await _db.InitPrefsAsync(userId, profile, cancel);
             }
 
             return prefs;
