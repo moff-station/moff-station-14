@@ -6448,6 +6448,13 @@ Entries:
   id: 1542
   time: '2026-06-21T01:13:14.000'
   url: https://github.com/moff-station/moff-station-14/pull/1542
+- author: widgetbeck, DuckManZach, Centronias
+  changes:
+  - message: Added Replicators!
+    type: add
+  id: 1543
+  time: '2026-07-16T01:12:46.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1543
 - author: DuckManZach
   changes:
   - message: Added clothing stains!
@@ -6455,6 +6462,13 @@ Entries:
   id: 1545
   time: '2026-07-06T22:22:03.000'
   url: https://github.com/moff-station/moff-station-14/pull/1545
+- author: DuckManZach
+  changes:
+  - message: Added a crafting menu for lockboxes
+    type: add
+  id: 1547
+  time: '2026-07-15T16:06:06.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1547
 - author: Nyxilath
   changes:
   - message: Xenoarch throw effect now features a shockwave effect.
@@ -6562,6 +6576,14 @@ Entries:
   id: 1566
   time: '2026-06-24T17:08:10.000'
   url: https://github.com/moff-station/moff-station-14/pull/1566
+- author: DuckManZach
+  changes:
+  - message: Re-added fancy screenshake. Check the fork-specific tab for configuration
+      options
+    type: add
+  id: 1567
+  time: '2026-07-14T13:38:46.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1567
 - author: Nyxilath
   changes:
   - message: Grays are now more gray.
@@ -6590,6 +6612,14 @@ Entries:
   id: 1572
   time: '2026-07-01T19:02:14.000'
   url: https://github.com/moff-station/moff-station-14/pull/1572
+- author: Southbridge
+  changes:
+  - message: There is now a new event which causes lights around an APC to shatter
+      and degrade.
+    type: add
+  id: 1573
+  time: '2026-07-14T14:03:37.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1573
 - author: DuckManZach
   changes:
   - message: Shortened ghost role timers.
@@ -6656,6 +6686,13 @@ Entries:
   id: 1586
   time: '2026-07-09T19:40:36.000'
   url: https://github.com/moff-station/moff-station-14/pull/1586
+- author: DuckManZach
+  changes:
+  - message: Tweaked lighting to match our color palette
+    type: tweak
+  id: 1588
+  time: '2026-07-14T13:16:00.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1588
 - author: Dave
   changes:
   - message: new thaven sprites
@@ -6948,6 +6985,16 @@ Entries:
   id: 1634
   time: '2026-07-08T22:40:41.000'
   url: https://github.com/moff-station/moff-station-14/pull/1634
+- author: StudMuffin
+  changes:
+  - message: Borgs chassis now have integrated sensors that can be interacted with
+      via the action menu
+    type: add
+  - message: Borgs can now appear in the station AI crew monitor interface
+    type: add
+  id: 1643
+  time: '2026-07-15T20:09:46.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1643
 - author: gummyema
   changes:
   - message: Added engineering and medical maid outfits
@@ -6997,5 +7044,47 @@ Entries:
   id: 1653
   time: '2026-07-14T00:13:14.000'
   url: https://github.com/moff-station/moff-station-14/pull/1653
+- author: DuckManZach
+  changes:
+  - message: Standardized gamemode player counts
+    type: tweak
+  id: 1657
+  time: '2026-07-14T12:11:49.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1657
+- author: Centronias
+  changes:
+  - message: Resomis' night vision is once again disabled while they are immune to
+      flashes.
+    type: fix
+  id: 1669
+  time: '2026-07-16T19:48:57.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1669
+- author: gummyema
+  changes:
+  - message: Added red and yellow perfomer's outfits, inspired by Kasane Teto and
+      Akita Neru respectively
+    type: add
+  - message: added "kasane teto costume bag" and "akita neru costume bag" containing
+      the new outfits
+    type: add
+  - message: Resprited the performer's (Miku) outfit and gave it a new name
+    type: tweak
+  - message: '"hatsune miku day bag" has been renamed to "hatsune miku costume bag"'
+    type: tweak
+  - message: Miku, Teto and Neru costume bags have all been added to DramaDrobe stock
+    type: tweak
+  - message: new vocal synth outfits added to musician roundstart gear selection
+    type: tweak
+  id: 1672
+  time: '2026-07-17T19:29:23.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1672
+- author: Centronias
+  changes:
+  - message: Replicators now properly return to a controllable healthy state when
+      repaired from being disabled on the ground.
+    type: fix
+  id: 1679
+  time: '2026-07-17T23:00:01.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1679
 Name: Mofflog
 Order: -2

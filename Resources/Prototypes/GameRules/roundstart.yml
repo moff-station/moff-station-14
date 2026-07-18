@@ -236,7 +236,7 @@
   parent: [BaseGameRule, BaseRoundstartAntagRule]
   components:
   - type: GameRule
-    minPlayers: 15
+    minPlayers: 30 # Moff - Highpop Gamemode
     # Moffstation - Begin - Delay revs so that everyone spawning at the arrivals terminal doesn't end the round
     delay:
       min: 300
@@ -301,7 +301,7 @@
   parent: [ BaseGameRule, BaseRoundstartAntagRule]
   components:
   - type: GameRule
-    minPlayers: 20
+    minPlayers: 20 # Moff - Midpop Gamemode
     delay:
       min: 600
       max: 900
@@ -346,7 +346,7 @@
   id: Xenoborgs
   components:
   - type: GameRule
-    minPlayers: 30
+    minPlayers: 30 # Moff - Highpop Gamemode
 
 # This rule makes the chosen players unable to get other antag rules, as a way to prevent metagaming job rolls.
 # Put this before antags assigned to station jobs, but after non-job antags (NukeOps/Wiz).
