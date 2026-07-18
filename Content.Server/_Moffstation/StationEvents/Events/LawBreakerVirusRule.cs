@@ -17,7 +17,7 @@ namespace Content.Server._Moffstation.StationEvents.Events;
 /// </summary>
 public sealed partial class LawBreakerVirusRule : StationEventSystem<LawBreakerVirusRuleComponent>
 {
-    [Dependency] private IonAttackSystem _ion =  default!;
+    [Dependency] private LawBreakerVirusSystem _virus =  default!;
 
     protected override void Started(EntityUid uid,
         LawBreakerVirusRuleComponent comp,
@@ -29,7 +29,7 @@ public sealed partial class LawBreakerVirusRule : StationEventSystem<LawBreakerV
         if (!TryGetRandomStation(out var chosenStation))
             return;
 
-        var ionLawset = _ion.GenerateLawset((uid, comp));
+        var ionLawset = _virus.GenerateLawset((uid, comp));
 
         var query = EntityQueryEnumerator<IonStormTargetComponent, TransformComponent>();
         var ev = new LawBreakerVirusEvent(ionLawset);
