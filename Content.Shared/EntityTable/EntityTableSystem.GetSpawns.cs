@@ -29,7 +29,7 @@ public sealed partial class EntityTableSystem
         ctx ??= new EntityTableContext();
         return table.Accept(
             GetSpawnsVisitor.Instance,
-            new GetSpawnsVisitor.Args(EntityManager, _prototypeManager, rand, ctx)
+            new GetSpawnsVisitor.Args(EntityManager, ProtoMan, rand, ctx)
         );
     }
 

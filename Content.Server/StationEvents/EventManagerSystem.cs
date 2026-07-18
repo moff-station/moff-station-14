@@ -17,7 +17,6 @@ public sealed partial class EventManagerSystem : EntitySystem
     [Dependency] private IConfigurationManager _configurationManager = default!;
     [Dependency] private IPlayerManager _playerManager = default!;
     [Dependency] private IRobustRandom _random = default!;
-    [Dependency] private IPrototypeManager _prototype = default!;
     [Dependency] private EntityTableSystem _entityTable = default!;
     [Dependency] public GameTicker GameTicker = default!;
     [Dependency] private RoundEndSystem _roundEnd = default!;
@@ -62,7 +61,7 @@ public sealed partial class EventManagerSystem : EntitySystem
             return;
         }
 
-        if (!_prototype.Resolve(randomLimitedEvent, out _))
+        if (!ProtoMan.Resolve(randomLimitedEvent, out _))
         {
             Log.Warning("A requested event is not available!");
             return;
@@ -114,13 +113,13 @@ public sealed partial class EventManagerSystem : EntitySystem
 
         foreach (var (eventId, prob) in selectedEvents)
         {
-            if (!_prototype.Resolve(eventId, out var eventproto))
+            if (!ProtoMan.Resolve(eventId, out var eventproto))
                 continue;
 
             if (eventproto.Abstract)
                 continue;
 
-            if (!eventproto.TryGetComponent<StationEventComponent>(out var stationEvent, EntityManager.ComponentFactory))
+            if (!eventproto.TryComp<StationEventComponent>(out var stationEvent, EntityManager.ComponentFactory))
                 continue;
 
             if (!CanRun(eventproto, stationEvent, playerCount.Value, currentTime.Value))
@@ -168,7 +167,7 @@ public sealed partial class EventManagerSystem : EntitySystem
             if (GameTicker.IsIgnored(eventid))
                 continue;
 
-            if (!_prototype.Resolve(eventid, out var eventproto))
+            if (!ProtoMan.Resolve(eventid, out var eventproto))
             {
                 Log.Warning("An event ID has no prototype index!");
                 continue;
@@ -180,7 +179,7 @@ public sealed partial class EventManagerSystem : EntitySystem
             if (eventproto.Abstract)
                 continue;
 
-            if (!eventproto.TryGetComponent<StationEventComponent>(out var stationEvent, EntityManager.ComponentFactory))
+            if (!eventproto.TryComp<StationEventComponent>(out var stationEvent, EntityManager.ComponentFactory))
                 continue;
 
             if (!CanRun(eventproto, stationEvent, playerCount.Value, currentTime.Value))
@@ -283,12 +282,12 @@ public sealed partial class EventManagerSystem : EntitySystem
     private Dictionary<EntityPrototype, StationEventComponent> GetAllEvents()
     {
         var allEvents = new Dictionary<EntityPrototype, StationEventComponent>();
-        foreach (var prototype in _prototype.EnumeratePrototypes<EntityPrototype>())
+        foreach (var prototype in ProtoMan.EnumeratePrototypes<EntityPrototype>())
         {
             if (prototype.Abstract)
                 continue;
 
-            if (!prototype.TryGetComponent<StationEventComponent>(out var stationEvent, EntityManager.ComponentFactory))
+            if (!prototype.TryComp<StationEventComponent>(out var stationEvent, EntityManager.ComponentFactory))
                 continue;
 
             allEvents.Add(prototype, stationEvent);

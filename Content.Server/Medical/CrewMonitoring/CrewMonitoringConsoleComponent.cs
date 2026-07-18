@@ -1,4 +1,7 @@
+using Content.Shared._Moffstation.Sensors; // Moffstation - Borg sensors
 using Content.Shared.Medical.SuitSensor;
+using Robust.Shared.Prototypes;
+using Robust.Shared.Utility; // Moffstation - Borg sensors
 
 namespace Content.Server.Medical.CrewMonitoring;
 
@@ -16,4 +19,12 @@ public sealed partial class CrewMonitoringConsoleComponent : Component
     /// </summary>
     [DataField("sensorTimeout"), ViewVariables(VVAccess.ReadWrite)]
     public float SensorTimeout = 10f;
+
+    // Moffstation - Begin - Borg sensors
+    /// <summary>
+    ///     Types of sensor datas accepted by this crew monitor
+    /// </summary>
+    [DataField]
+    public PrototypeFlags<SensorTypePrototype> SensorTypes = new();
+    // Moffstation - End
 }

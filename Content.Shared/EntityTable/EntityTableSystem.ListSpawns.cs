@@ -14,7 +14,7 @@ public sealed partial class EntityTableSystem
     /// </summary>
     /// <param name="table">The table to get the spawns from. <br/> If null, returns an empty enumerable.</param>
     public IEnumerable<(EntProtoId spawn, float)> ListSpawns(EntityTableSelector? table) =>
-        table?.Accept(ListSpawnsVisitor.Instance, new ListSpawnsVisitor.Args(_prototypeManager)) ?? [];
+        table?.Accept(ListSpawnsVisitor.Instance, new ListSpawnsVisitor.Args(ProtoMan)) ?? [];
 
     /// <inheritdoc cref="ListSpawns(EntityTableSelector?)"/>
     public IEnumerable<(EntProtoId spawn, float)> ListSpawns(EntityTablePrototype entTableProto) =>

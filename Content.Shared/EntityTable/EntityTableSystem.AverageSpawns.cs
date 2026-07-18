@@ -14,7 +14,7 @@ public sealed partial class EntityTableSystem
     /// </summary>
     /// <param name="table">The table to get the spawns from. <br/> If null, returns an empty enumerable.</param>
     public IEnumerable<(EntProtoId spawn, float)> AverageSpawns(EntityTableSelector? table) =>
-        table?.Accept(AverageSpawnsVisitor.Instance, new AverageSpawnsVisitor.Args(_prototypeManager)) ?? [];
+        table?.Accept(AverageSpawnsVisitor.Instance, new AverageSpawnsVisitor.Args(ProtoMan)) ?? [];
 
     /// <inheritdoc cref="AverageSpawns(EntityTableSelector?)"/>
     public IEnumerable<(EntProtoId spawn, float)> AverageSpawns(EntityTablePrototype entTableProto) =>

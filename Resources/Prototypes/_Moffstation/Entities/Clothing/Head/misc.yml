@@ -250,3 +250,37 @@
         color: "#bb882d"
   - type: ChameleonClothing
     default: ClothingHeadHatHairFlowerGold
+
+# Red Performer (Kasane Teto)
+- type: entity
+  parent: ClothingHeadBase
+  id: ClothingHeadPerformerWigRed
+  name: red performer's wig
+  description: It has sharp drills that should be handled with care.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Head/Misc/performer-wig-red.rsi
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Head/Misc/performer-wig-red.rsi
+  - type: HideLayerClothing
+    slots:
+    - Hair
+    - HeadTop
+    - HeadSide
+
+# Yellow Performer (Akita Neru)
+- type: entity
+  parent: ClothingHeadBase
+  id: ClothingHeadPerformerWigYellow
+  name: yellow performer's wig
+  description: Banana!? Oh, no, it's just a wig...
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Head/Misc/performer-wig-yellow.rsi
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Head/Misc/performer-wig-yellow.rsi
+  - type: HideLayerClothing
+    slots:
+    - Hair
+    - HeadTop
+    - HeadSide

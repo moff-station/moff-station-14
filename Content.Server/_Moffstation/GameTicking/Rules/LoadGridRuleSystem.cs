@@ -1,6 +1,7 @@
 using System.Numerics;
 using Content.Server._Moffstation.GameTicking.Rules.Components;
 using Content.Server.GameTicking.Rules;
+using Content.Server.Mapping;
 using Content.Server.Station.Systems;
 using Content.Shared.GameTicking.Components;
 using Content.Shared.Station.Components;
@@ -15,7 +16,7 @@ public sealed partial class LoadGridRuleSystem : GameRuleSystem<LoadGridRuleComp
     [Dependency] private MapLoaderSystem _mapLoader = default!;
     [Dependency] private StationSystem _stationSystem = default!;
     [Dependency] private SharedTransformSystem _transform = default!;
-    [Dependency] private IMapManager _mapManager = default!;
+    [Dependency] private SharedMapSystem _mapManager = default!;
 
 
     protected override void Started(EntityUid uid, LoadGridRuleComponent component, GameRuleComponent gameRule, GameRuleStartedEvent args)

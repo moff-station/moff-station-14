@@ -50,6 +50,9 @@ public abstract partial class EntityTableSelector
     public bool RequireAll = true;
 
 // Moffstation - Begin - Rewrite table selectors with visitors. Early merge of https://github.com/Space-Wizards-Federation/space-station-14/pull/177
+    // /// <summary>
+    // /// Samples an output for this selector.
+    // /// </summary>
     // public IEnumerable<EntProtoId> GetSpawns(IRobustRandom rand,
     //     IEntityManager entMan,
     //     IPrototypeManager proto,
@@ -72,11 +75,9 @@ public abstract partial class EntityTableSelector
     // }
     // Moffstation - End
 
-    // Moffstation - Begin
     /// <summary>
-    /// Checks if this table should be rolled at all, based on <see cref="Conditions"/>.
+    /// Check if the condition for this selector are met.
     /// </summary>
-    // Moffstation - End
     public bool CheckConditions(IEntityManager entMan, IPrototypeManager proto, EntityTableContext ctx)
     {
         if (Conditions.Count == 0)

@@ -10,6 +10,9 @@ public sealed partial class EntSelector : EntityTableSelector
 {
     public const string IdDataFieldTag = "id";
 
+    /// <summary>
+    /// The prototype this entry yields.
+    /// </summary>
     // Moffstation - Begin - Rewrite table selectors with visitors. Early merge of https://github.com/Space-Wizards-Federation/space-station-14/pull/177
     // The const string is used in a specialized serializer.
 #pragma warning disable RA0027
@@ -18,6 +21,9 @@ public sealed partial class EntSelector : EntityTableSelector
     // Moffstation - End
     public EntProtoId Id;
 
+    /// <summary>
+    /// The amount of entities this entry might yield.
+    /// </summary>
     [DataField]
     public NumberSelector Amount = new ConstantNumberSelector(1);
 
