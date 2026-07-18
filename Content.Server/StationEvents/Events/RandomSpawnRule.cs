@@ -20,7 +20,7 @@ public sealed partial class RandomSpawnRule : StationEventSystem<RandomSpawnRule
     {
         base.Started(uid, comp, gameRule, args);
 
-        if (TryFindRandomTile(out _, out _, out _, out var coords))
+        if (TryFindRandomTile(out _, out _, out _, out var coords, largestGrid: comp.LargestGrid, safeAtmos: comp.SafeAtmosphere)) //Moff
         {
             Sawmill.Info($"Spawning {comp.Prototype} at {coords}");
             // Moffstation - Syndicate dead drop

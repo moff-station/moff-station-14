@@ -17,7 +17,19 @@ public sealed partial class RandomSpawnRuleComponent : Component
     [DataField("prototype", required: true, customTypeSerializer: typeof(PrototypeIdSerializer<EntityPrototype>))]
     public string Prototype = string.Empty;
 
-    // Moffstation - Start - Syndicate dead drop
+    // Moffstation - Start
+    /// <summary>
+    /// Bool to determine if the rule must select the station grid for spawn.
+    /// </summary>
+    [DataField]
+    public bool LargestGrid;
+
+    /// <summary>
+    /// Bool to determine if the rule must select a tile with working atmosphere for spawn.
+    /// </summary>
+    [DataField]
+    public bool SafeAtmosphere;
+
     /// <summary>
     /// The radio message to send when spawning the entity. The entity is used as the sender of the radio message.
     /// </summary>
