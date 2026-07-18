@@ -7053,6 +7053,18 @@ Entries:
   url: https://github.com/moff-station/moff-station-14/pull/1657
 - author: StudMuffin
   changes:
+  - message: the molar gas mixer, a new type of gas mixer that respect the specified
+      mix when mixing gases at different temperatures
+    type: add
+  - message: renamed the gas mixer to volumetric gas mixer
+    type: tweak
+  - message: updated the guidebook entry on gas mixing/filtering
+    type: tweak
+  id: 1662
+  time: '2026-07-18T17:17:26.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1662
+- author: StudMuffin
+  changes:
   - message: Added the mail cyborg module, allowing cyborgs to interract with... mail
     type: add
   - message: Added the advanced mail cyborg module, a salvage chassis exclusive version
