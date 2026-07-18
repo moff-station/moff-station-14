@@ -13,10 +13,9 @@ using Robust.Shared.Utility;
 namespace Content.Client._Moffstation.Voting.Ui;
 
 /// <summary>
-/// Lets a player pick which character they'll spawn as for an enrollment vote, mid-round, without going
-/// back to the lobby. Picking one of their own characters just selects it the way the lobby does, and the
-/// antag spawn path picks that up on its own - it already reads the player's selected character. Picking
-/// "random" is per-vote instead, and is the only part the server has to be told about.
+/// Lets a player pick which character they'll spawn as for an enroll vote, mid-round, without going back to
+/// the lobby. Picking one of their own just selects it like the lobby does - the antag spawn path already
+/// reads the selected character. "Random" is per-vote, and is the only bit the server needs telling about.
 /// </summary>
 [GenerateTypedNameReferences]
 public sealed partial class MoffCharacterSelectWindow : FancyWindow

@@ -1,4 +1,5 @@
 using Content.Shared._Moffstation.Voting.Components;
+using Content.Shared.Ghost;
 using Robust.Shared.Collections;
 using Robust.Shared.Timing;
 
@@ -25,7 +26,9 @@ public abstract partial class SharedMoffEnrollEventSystem : EntitySystem
 
     private void OnSetEnroll(MoffSetEnrollMessage args, EntitySessionEventArgs ev)
     {
-        if (ev.SenderSession.AttachedEntity is not { } attachedEntity)
+        // Ghosts only - assignment bypasses the mutual-antag check, so this gate is what stops an embodied
+        // already-antag from getting force-assigned a second, exclusive one.
+        if (ev.SenderSession.AttachedEntity is not { } attachedEntity || !HasComp<GhostComponent>(attachedEntity))
             return;
 
         if (!TryGetEntity(args.Enroller, out var enrollerUid) ||
@@ -50,7 +53,8 @@ public abstract partial class SharedMoffEnrollEventSystem : EntitySystem
 
     private void OnSetEnrollRandom(MoffSetEnrollRandomMessage args, EntitySessionEventArgs ev)
     {
-        if (ev.SenderSession.AttachedEntity is not { } attachedEntity)
+        // Ghosts only, matching OnSetEnroll - a random-character pick is only meaningful for an enrollee.
+        if (ev.SenderSession.AttachedEntity is not { } attachedEntity || !HasComp<GhostComponent>(attachedEntity))
             return;
 
         if (!TryGetEntity(args.Enroller, out var enrollerUid) ||

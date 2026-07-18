@@ -115,29 +115,6 @@
     duration: 30
   - type: ESGasVentVote
 
-- type: entity
-  parent: ESBaseStationEvent
-  id: MoffExampleEnrollEvent
-  name: Enroll event
-  description: Enroll for le antags
-  components:
-  - type: StationEvent
-    startAnnouncement: station-event-gas-leak-start-announcement
-    endAnnouncement: station-event-gas-leak-end-announcement
-    startAudio:
-      path: /Audio/Announcements/attention.ogg
-  - type: ESSynchronizedVoteManager
-    votes:
-    - BaseMoffEnroller
-
-- type: entity
-  parent: MoffBaseVote
-  id: BaseMoffEnroller
-  name: Enroll for nukies
-  description: This is an example event showing how this thingy works
-  components:
-  - type: MoffEnrollEvent
-
 ### Grey Tide Virus
 #- type: entity
 #  parent: ESBaseStationEvent

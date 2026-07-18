@@ -1,7 +1,6 @@
-# Moffstation - Enrollment vote entities spawned by an antag rule's ESSynchronizedVoteManager.
-# When the timer runs out, MoffEnrollRuleSystem starts the owning rule and turns the enrolled
-# players into its antags. One enroller prototype per game rule so each can tune its own timing,
-# minimum/maximum enrollment, and fallback rules.
+# Moffstation - Enroll votes spawned by an antag rule's ESSynchronizedVoteManager. When the timer runs out,
+# MoffEnrollEventSystem starts the owning rule and turns the enrolled players into its antags. One enroller
+# per rule so each can tune its own timing, min/max enrollment, and fallback rules.
 
 - type: entity
   parent: MoffBaseVote

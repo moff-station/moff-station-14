@@ -17,9 +17,9 @@ public sealed partial class MoffVoteEntrySystem : ESSharedVoteSystem
     {
         base.Initialize();
 
-        // Moffstation - MoffVoteEntryComponent is a marker component with no networked state, so it never
-        // raises AfterAutoHandleStateEvent. Subscribe on the concrete entry types instead so open vote windows
-        // refresh as soon as a new vote/enroll entity's state syncs in, not just when one is removed.
+        // Moffstation - MoffVoteEntryComponent is a stateless marker, so it never raises
+        // AfterAutoHandleStateEvent. Subscribe on the concrete entry types instead so open windows refresh
+        // when a new vote/enroll syncs in, not just on removal.
         SubscribeLocalEvent<ESVoteComponent, AfterAutoHandleStateEvent>(OnAfterAutoHandleState);
         SubscribeLocalEvent<MoffEnrollEventComponent, AfterAutoHandleStateEvent>(OnAfterAutoHandleState);
         SubscribeLocalEvent<MoffVoteEntryComponent, ComponentRemove>(OnRemove);

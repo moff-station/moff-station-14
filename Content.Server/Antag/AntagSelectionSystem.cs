@@ -143,9 +143,9 @@ public sealed partial class AntagSelectionSystem : GameRuleSystem<AntagSelection
 
         if (component.SelectionTime == RuleStarted) // Only pre-select antags if we pre-select on rule start
             AssignAntags((uid, component), players);
-        // Moff start - an Enroll rule with a synchronized vote manager is filled by MoffEnrollRuleSystem
-        // from the enrolled players, so it must not also spawn ghost roles. Enroll rules without a manager
-        // keep the legacy ghost-role behavior.
+        // Moff start - an Enroll rule with a vote manager is filled from the enrolled players by
+        // MoffEnrollEventSystem, so it mustn't also spawn ghost roles. Enroll rules without a manager keep
+        // the legacy ghost-role behavior.
         else if (component.SelectionTime != Enroll || !HasComp<ESSynchronizedVoteManagerComponent>(uid))
         // Moff end
             SpawnGhostRoles((uid, component), players.Length);
@@ -303,8 +303,8 @@ public sealed partial class AntagSelectionSystem : GameRuleSystem<AntagSelection
             case Never:
                 SpawnGhostRoles(gameRule, playerCount, true);
                 break;
-            // Moff start - ghost role enrolling: enrollment assigns the antags explicitly
-            // (via MoffEnrollRuleSystem), so skip automatic round-start selection here.
+            // Moff start - enrollment assigns the antags explicitly (via MoffEnrollEventSystem), so skip
+            // automatic round-start selection here.
             case Enroll:
                 break;
             // Moff end

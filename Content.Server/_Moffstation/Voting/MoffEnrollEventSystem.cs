@@ -67,8 +67,8 @@ public sealed partial class MoffEnrollEventSystem : SharedMoffEnrollEventSystem
     }
 
     /// <summary>
-    /// Where this event's antag will spawn, asked of the rule the same way antag selection asks for it.
-    /// Only resolves once the owning rule has been resolved, see <see cref="ResolveOwningRule"/>.
+    /// Where this event's antag spawns, asked of the rule the same way antag selection does. Only works
+    /// once the rule's resolved, see <see cref="ResolveOwningRule"/>.
     /// </summary>
     private MapCoordinates? GetWarpTarget(Entity<MoffEnrollEventComponent> ent)
     {
@@ -92,14 +92,11 @@ public sealed partial class MoffEnrollEventSystem : SharedMoffEnrollEventSystem
     }
 
     /// <summary>
-    /// Resolves the owning rule for this enroll entity, exactly once. Adds the rule while the vote is still
-    /// running - loading its map and picking its antag spawn location up front, which is what "Go To" warps
-    /// to - and derives the fields that come from the antag this vote hands out (title color, and whether a
-    /// character can be picked). Adding the rule is player-invisible for these rules since none set a
-    /// station-event start announcement or audio; actually starting the rule (and so spawning the antag)
-    /// still waits until the vote resolves. Everything here is fixed once the rule exists, so it runs a
-    /// single time - the non-null <see cref="MoffEnrollEventComponent.OwningRule"/> it sets is what stops it
-    /// re-running.
+    /// Resolves the owning rule once. Adds it mid-vote - loads its map and picks the antag spawn, which is
+    /// what "Go To" warps to, and pulls the antag-derived fields (title color, whether a character can be
+    /// picked). Adding's invisible since these rules have no start announcement/audio; the rule only really
+    /// starts (spawning the antag) when the vote resolves. All fixed once the rule exists, so a non-null
+    /// <see cref="MoffEnrollEventComponent.OwningRule"/> stops it re-running.
     /// </summary>
     private void ResolveOwningRule(Entity<MoffEnrollEventComponent> ent)
     {
@@ -120,11 +117,9 @@ public sealed partial class MoffEnrollEventSystem : SharedMoffEnrollEventSystem
     }
 
     /// <summary>
-    /// Marks a rule whose start was deferred by <c>GameTicker.AddGameRule</c> (because it carries an
-    /// <see cref="ESSynchronizedVoteManagerComponent"/>) as added, raising <see cref="GameRuleAddedEvent"/>
-    /// so its components initialize their added-time state - notably SpaceSpawnRule, which computes the
-    /// antag spawn location on add. Idempotent: does nothing if the rule is already added. Returns whether
-    /// it flipped the rule to added.
+    /// Marks a vote-manager rule (whose start <c>GameTicker.AddGameRule</c> deferred) as added, raising
+    /// <see cref="GameRuleAddedEvent"/> so its components set up their add-time state - notably SpaceSpawnRule,
+    /// which picks the antag spawn on add. Idempotent; returns whether it flipped the rule to added.
     /// </summary>
     private bool TryMarkRuleAdded(EntityUid ruleUid)
     {
@@ -138,12 +133,10 @@ public sealed partial class MoffEnrollEventSystem : SharedMoffEnrollEventSystem
     }
 
     /// <summary>
-    /// Whether the character picker should be shown for this rule's antag. Hidden for antags that spawn a
-    /// fixed non-humanoid body: <c>AllowNonHumans</c> is what lets such a body past the post-spawn check in
-    /// <c>AntagSelectionSystem.TryInitializeAntag</c>, so it doubles as "this antag isn't built from the
-    /// player's character profile" - those rules carry no <c>AntagLoadProfileRuleComponent</c>, and picking
-    /// a character would do nothing. A rule with several specifiers could spawn either kind of body and we
-    /// can't tell which in advance, so any non-humanoid one hides the picker.
+    /// Whether to show the character picker. Hidden when the antag spawns a fixed non-humanoid body:
+    /// <c>AllowNonHumans</c> doubles as "not built from the player's profile" (those rules have no
+    /// <c>AntagLoadProfileRuleComponent</c>, so a picked character does nothing). Any non-humanoid specifier
+    /// hides it, since a multi-specifier rule could go either way.
     /// </summary>
     private bool GetCharacterSelection(AntagSelectionComponent antag)
     {
@@ -194,8 +187,7 @@ public sealed partial class MoffEnrollEventSystem : SharedMoffEnrollEventSystem
         var query = EntityQueryEnumerator<MoffEnrollEventComponent>();
         while (query.MoveNext(out var uid, out var comp))
         {
-            // Resolve the owning rule exactly once (adds the rule, derives title color / character
-            // selection). All of it is fixed prototype data thereafter, so a non-null OwningRule skips it.
+            // Resolve the owning rule once; it's all fixed prototype data after, so a non-null OwningRule skips it.
             if (comp.OwningRule is null)
                 ResolveOwningRule((uid, comp));
 
@@ -211,15 +203,14 @@ public sealed partial class MoffEnrollEventSystem : SharedMoffEnrollEventSystem
     }
 
     /// <summary>
-    /// Users who asked to spawn as a randomly generated character. Only populated while
-    /// <see cref="ResolveEnrollment"/> is assigning antags, which is when the body gets built.
+    /// Users who asked to spawn as a random character. Only filled while <see cref="ResolveEnrollment"/>
+    /// assigns antags, which is when the body gets built.
     /// </summary>
     private readonly HashSet<NetUserId> _randomProfiles = new();
 
     /// <summary>
-    /// Whether this player enrolled asking for a randomly generated character instead of their selected
-    /// one. Only meaningful while an enrollment is resolving, which is the only time a body is built for
-    /// an enrollee.
+    /// Whether this player enrolled asking for a random character over their selected one. Only meaningful
+    /// while an enrollment resolves - the only time an enrollee's body gets built.
     /// </summary>
     public bool PrefersRandomProfile(ICommonSession session) => _randomProfiles.Contains(session.UserId);
 
@@ -259,10 +250,7 @@ public sealed partial class MoffEnrollEventSystem : SharedMoffEnrollEventSystem
                 var players = _antag.GetActivePlayerCount();
                 foreach (var session in sessions)
                 {
-                    // checkPref: false - enrolling is explicit consent, so we bypass antag preferences.
-                    // ignoreExclusivity: true - an enrolling ghost may already count as an antag; enrollment
-                    // opts out of the mutual-exclusivity check rather than weakening it for every ghost.
-                    // (Bans / validity are still enforced.)
+                    // ignoreExclusivity: true - an enrolling ghost may already be an antag. Bans/validity still apply.
                     _antag.TryAssignNextAvailableAntag((ruleUid, antag), session, players, checkPref: false, ignoreExclusivity: true);
                 }
 
@@ -286,9 +274,8 @@ public sealed partial class MoffEnrollEventSystem : SharedMoffEnrollEventSystem
     }
 
     /// <summary>
-    /// Starts the owning rule once enrollment concludes. The rule is normally already added by
-    /// <see cref="ResolveOwningRule"/> while the vote ran; the <see cref="TryMarkRuleAdded"/> call is an
-    /// idempotent safety net for the edge case where it was never resolved.
+    /// Starts the owning rule once enrollment's done. Normally already added by <see cref="ResolveOwningRule"/>
+    /// during the vote; the <see cref="TryMarkRuleAdded"/> call just covers the edge case where it wasn't.
     /// </summary>
     private void StartOwningRule(EntityUid ruleUid)
     {

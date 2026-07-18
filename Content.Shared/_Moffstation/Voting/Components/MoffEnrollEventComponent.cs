@@ -6,7 +6,9 @@ using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom;
 namespace Content.Shared._Moffstation.Voting.Components;
 
 /// <summary>
-/// This is used for...
+/// A vote entry players enroll in to become an owning game rule's antag(s). When the timer runs out the
+/// enrolled players get assigned; if fewer than <see cref="MinEnrolled"/> enrolled, <see cref="FallbackRules"/>
+/// start instead. Resolved server-side in <c>MoffEnrollEventSystem</c>.
 /// </summary>
 [RegisterComponent, NetworkedComponent, AutoGenerateComponentState(true), AutoGenerateComponentPause]
 public sealed partial class MoffEnrollEventComponent : Component
@@ -36,9 +38,8 @@ public sealed partial class MoffEnrollEventComponent : Component
     public int MaxEnrolled;
 
     /// <summary>
-    /// Whether you can select a character to use for the event. Resolved at runtime from the antag this
-    /// vote hands out: false when it spawns a fixed non-humanoid body, since the chosen character's
-    /// profile is never applied to one.
+    /// Whether you can pick a character for the event. Resolved at runtime from the antag: false when it
+    /// spawns a fixed non-humanoid body, since the picked character never gets applied to one.
     /// </summary>
     [ViewVariables, AutoNetworkedField]
     public bool CharacterSelection = true;
@@ -70,16 +71,15 @@ public sealed partial class MoffEnrollEventComponent : Component
     public bool Enrollable = true;
 
     /// <summary>
-    /// Whether the event's spawn location exists yet, i.e. whether a ghost can warp to it. Set once the
-    /// owning rule has been added, which loads its map and picks its antag spawn location.
+    /// Whether the spawn location exists yet, i.e. whether a ghost can warp to it. Set once the owning rule's
+    /// been added, which loads its map and picks the antag spawn.
     /// </summary>
     [ViewVariables, AutoNetworkedField]
     public bool Warpable;
 
     /// <summary>
-    /// Owning synchronized-vote-manager rule that spawned this enroll entity. Resolved once, server-side;
-    /// its null/non-null state doubles as "has this enrollment been resolved yet" (spawn location picked,
-    /// title color and character selection derived). Not networked - only the server uses it.
+    /// Vote-manager rule that spawned this enroll entity. Resolved once, server-side; null/non-null doubles
+    /// as "has this been resolved yet" (spawn picked, title color and character selection derived). Not networked.
     /// </summary>
     [ViewVariables]
     public EntityUid? OwningRule;

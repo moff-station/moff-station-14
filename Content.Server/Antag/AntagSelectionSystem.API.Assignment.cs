@@ -99,9 +99,7 @@ public sealed partial class AntagSelectionSystem
             return false;
 
         // If our antag is mutually exclusive with other antags, yell about it!
-        // Moff - ignoreExclusivity lets ghost-role enrollment force-assign a player who already counts as an
-        // antag. It is opt-in per assignment (only the enrollment call passes it) so the invariant stays
-        // enforced for the ordinary selection path.
+        // Moff - ignoreExclusivity lets enrollment force-assign an already-antag ghost; opt-in so the normal path stays strict
         switch (def.MultiAntagSetting)
         {
             case AntagAcceptability.None:
@@ -268,8 +266,8 @@ public sealed partial class AntagSelectionSystem
     /// <param name="gameRule">GameRule we are checking for antags.</param>
     /// <param name="session">Player we're trying to assign antag to.</param>
     /// <param name="players">Current number of players in the round. Used to determine antag count.</param>
-    /// <param name="checkPref">Whether to honor the player's antag preferences. Moffstation - false lets enrollment force-assign.</param>
-    /// <param name="ignoreExclusivity">Whether to skip the mutual-antag exclusivity check. Moffstation - true lets enrollment assign a ghost who already counts as an antag.</param>
+    /// <param name="checkPref">Honor the player's antag prefs. Moffstation - false lets enrollment force-assign.</param>
+    /// <param name="ignoreExclusivity">Skip the mutual-antag check. Moffstation - true lets enrollment assign an already-antag ghost.</param>
     /// <returns>Returns true if an open antag slot was found and successfully assigned, false otherwise.</returns>
     public bool TryAssignNextAvailableAntag(Entity<AntagSelectionComponent> gameRule,
         ICommonSession session,
