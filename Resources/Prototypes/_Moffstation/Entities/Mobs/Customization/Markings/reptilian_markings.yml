@@ -14,6 +14,23 @@
   - sprite: _Moffstation/Mobs/Customization/Reptilian/dragon_eye.rsi
     state: tattoo_eye_dragon_color
 
+- type: marking
+  id: LizardHornsAnglerGlowingStem
+  bodyPart: HeadTop
+  groupWhitelist: [ Reptilian ]
+  sprites:
+  - sprite: &angler_lure_rsi _Moffstation/Mobs/Customization/Reptilian/angler_lure_glowing.rsi
+    state: horns_angler_glowing_stem
+
+- type: marking
+  id: LizardHornsAnglerGlowingBulb
+  bodyPart: HeadTop
+  groupWhitelist: [ Reptilian ]
+  sprites:
+  - sprite: *angler_lure_rsi
+    state: horns_angler_glowing_bulb
+  shader: unshaded
+  
 # Legs
 
 - type: marking
