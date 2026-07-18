@@ -7044,6 +7044,14 @@ Entries:
   id: 1653
   time: '2026-07-14T00:13:14.000'
   url: https://github.com/moff-station/moff-station-14/pull/1653
+- author: StudMuffin
+  changes:
+  - message: the station can fall victim to the LawBreaker virus, a new station event
+      in which all silicons will share a unique randomly generated lawset !
+    type: add
+  id: 1655
+  time: '2026-07-18T18:48:34.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1655
 - author: DuckManZach
   changes:
   - message: Standardized gamemode player counts
@@ -7051,6 +7059,17 @@ Entries:
   id: 1657
   time: '2026-07-14T12:11:49.000'
   url: https://github.com/moff-station/moff-station-14/pull/1657
+- author: CasaleBalthazar, Centronias, Nyxilath
+  changes:
+  - message: Hellportal mobs now return back to their plane of origin on death, acidifying
+      on death.
+    type: tweak
+  - message: Hellportals now will halt reinforcements when demonic forces exceed 100
+      strong.
+    type: tweak
+  id: 1660
+  time: '2026-07-18T18:48:34.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1660
 - author: StudMuffin
   changes:
   - message: the molar gas mixer, a new type of gas mixer that respect the specified
