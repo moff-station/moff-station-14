@@ -51,9 +51,10 @@ public sealed partial class AntagSelectionSystem
     public bool CanBeAntag(ICommonSession player,
         Entity<AntagSelectionComponent> gameRule,
         AntagSpecifierPrototype def,
-        bool checkPref = true)
+        bool checkPref = true,
+        bool ignoreExclusivity = false) // Moff - ignoreExclusivity lets enrollment bypass the mutual-antag check
     {
-        if (!IsSessionValid(player, gameRule, def))
+        if (!IsSessionValid(player, gameRule, def, ignoreExclusivity)) // Moff - forward ignoreExclusivity
             return false;
 
         if (IsAssignedAntag(gameRule, def, player))
@@ -87,7 +88,8 @@ public sealed partial class AntagSelectionSystem
     [PublicAPI]
     public bool IsSessionValid(ICommonSession player,
         Entity<AntagSelectionComponent> gameRule,
-        AntagSpecifierPrototype def)
+        AntagSpecifierPrototype def,
+        bool ignoreExclusivity = false) // Moff - enrollment force-assigns already-antag ghosts; see below
     {
         // Cannot be antag if you're not in the game.
         if (IsDisconnected(player))
@@ -97,19 +99,20 @@ public sealed partial class AntagSelectionSystem
             return false;
 
         // If our antag is mutually exclusive with other antags, yell about it!
-        // Moff - Check if they are a ghost, this is necessary to make our ghostrole enrollment systems work.
-        var embodied = player.AttachedEntity is not { } antagBody || !HasComp<GhostComponent>(antagBody);
+        // Moff - ignoreExclusivity lets ghost-role enrollment force-assign a player who already counts as an
+        // antag. It is opt-in per assignment (only the enrollment call passes it) so the invariant stays
+        // enforced for the ordinary selection path.
         switch (def.MultiAntagSetting)
         {
             case AntagAcceptability.None:
             {
-                if (IsAssignedAntag(player, gameRule) && embodied) // Moff - Added embodied for ghostrole enrollment
+                if (IsAssignedAntag(player, gameRule) && !ignoreExclusivity) // Moff - ignoreExclusivity
                     return false;
                 break;
             }
             case AntagAcceptability.NotExclusive:
             {
-                if (IsAssignedExclusiveAntag(player, gameRule) && embodied) // Moff - Added embodied for ghostrole enrollment
+                if (IsAssignedExclusiveAntag(player, gameRule) && !ignoreExclusivity) // Moff - ignoreExclusivity
                     return false;
                 break;
             }
@@ -238,23 +241,25 @@ public sealed partial class AntagSelectionSystem
     public bool TryMakeAntag(Entity<AntagSelectionComponent> gameRule,
         AntagSpecifierPrototype prototype,
         ICommonSession session,
-        bool checkPref = true)
+        bool checkPref = true,
+        bool ignoreExclusivity = false) // Moff - forwarded to CanBeAntag for ghostrole enrollment
     {
         _adminLogger.Add(LogType.AntagSelection,
             $"Start trying to make {session} become the antagonist: {ToPrettyString(gameRule)}, {prototype.ID}");
 
-        if (!CanBeAntag(session, gameRule, prototype, checkPref))
+        if (!CanBeAntag(session, gameRule, prototype, checkPref, ignoreExclusivity)) // Moff - forward ignoreExclusivity
             return false;
 
         PreSelectSession(gameRule, prototype, session);
         return TryInitializeAntag(gameRule, prototype, session);
     }
 
-    /// <inheritdoc cref="TryAssignNextAvailableAntag(Entity{AntagSelectionComponent},ICommonSession,int,bool)"/>
-    // Moff - checkPref param added so callers (enrollment) can bypass antag preference checks.
-    public bool TryAssignNextAvailableAntag(Entity<AntagSelectionComponent> gameRule, ICommonSession session, bool checkPref = true)
+    /// <inheritdoc cref="TryAssignNextAvailableAntag(Entity{AntagSelectionComponent},ICommonSession,int,bool,bool)"/>
+    // Moff - checkPref/ignoreExclusivity params added so callers (enrollment) can bypass preference and
+    // mutual-exclusivity checks.
+    public bool TryAssignNextAvailableAntag(Entity<AntagSelectionComponent> gameRule, ICommonSession session, bool checkPref = true, bool ignoreExclusivity = false)
     {
-        return TryAssignNextAvailableAntag(gameRule, session, GetActivePlayerCount(), checkPref);
+        return TryAssignNextAvailableAntag(gameRule, session, GetActivePlayerCount(), checkPref, ignoreExclusivity);
     }
 
     /// <summary>
@@ -264,11 +269,13 @@ public sealed partial class AntagSelectionSystem
     /// <param name="session">Player we're trying to assign antag to.</param>
     /// <param name="players">Current number of players in the round. Used to determine antag count.</param>
     /// <param name="checkPref">Whether to honor the player's antag preferences. Moffstation - false lets enrollment force-assign.</param>
+    /// <param name="ignoreExclusivity">Whether to skip the mutual-antag exclusivity check. Moffstation - true lets enrollment assign a ghost who already counts as an antag.</param>
     /// <returns>Returns true if an open antag slot was found and successfully assigned, false otherwise.</returns>
     public bool TryAssignNextAvailableAntag(Entity<AntagSelectionComponent> gameRule,
         ICommonSession session,
         int players,
-        bool checkPref = true) // Moff - checkPref
+        bool checkPref = true, // Moff - checkPref
+        bool ignoreExclusivity = false) // Moff - ignoreExclusivity
     {
         foreach (var selector in gameRule.Comp.Antags)
         {
@@ -280,7 +287,7 @@ public sealed partial class AntagSelectionSystem
                 continue;
 
             // Try and assign this antag, if we fail, then try the next definition!
-            if (TryMakeAntag(gameRule, antag, session, checkPref)) // Moff - forward checkPref
+            if (TryMakeAntag(gameRule, antag, session, checkPref, ignoreExclusivity)) // Moff - forward checkPref/ignoreExclusivity
                 return true;
         }
 

@@ -60,7 +60,7 @@ public sealed partial class MoffEnrollEventSystem : SharedMoffEnrollEventSystem
         if (!TryGetEntity(args.Enroller, out var enrollUid) ||
             !TryComp<MoffEnrollEventComponent>(enrollUid, out var enroll) ||
             !enroll.Warpable ||
-            GetWarpTarget(enrollUid.Value) is not { } coords)
+            GetWarpTarget((enrollUid.Value, enroll)) is not { } coords)
             return;
 
         _transform.SetMapCoordinates(player, coords);
@@ -68,11 +68,11 @@ public sealed partial class MoffEnrollEventSystem : SharedMoffEnrollEventSystem
 
     /// <summary>
     /// Where this event's antag will spawn, asked of the rule the same way antag selection asks for it.
-    /// Only resolves once the rule has been added, see <see cref="EnsureOwningRuleAdded"/>.
+    /// Only resolves once the owning rule has been resolved, see <see cref="ResolveOwningRule"/>.
     /// </summary>
-    private MapCoordinates? GetWarpTarget(EntityUid enrollUid)
+    private MapCoordinates? GetWarpTarget(Entity<MoffEnrollEventComponent> ent)
     {
-        if (FindOwningRule(enrollUid) is not { } ruleUid ||
+        if (ent.Comp.OwningRule is not { } ruleUid ||
             !TryComp<AntagSelectionComponent>(ruleUid, out var antag))
             return null;
 
@@ -92,65 +92,68 @@ public sealed partial class MoffEnrollEventSystem : SharedMoffEnrollEventSystem
     }
 
     /// <summary>
-    /// Adds the owning rule while the vote is still running, so its map is loaded and its antag spawn
-    /// location is picked up front - that is what "Go To" warps to. This is player-invisible for these
-    /// rules since none of them set a station event start announcement or audio. Actually starting the
-    /// rule (and so spawning the antag) still waits until the vote resolves.
+    /// Resolves the owning rule for this enroll entity, exactly once. Adds the rule while the vote is still
+    /// running - loading its map and picking its antag spawn location up front, which is what "Go To" warps
+    /// to - and derives the fields that come from the antag this vote hands out (title color, and whether a
+    /// character can be picked). Adding the rule is player-invisible for these rules since none set a
+    /// station-event start announcement or audio; actually starting the rule (and so spawning the antag)
+    /// still waits until the vote resolves. Everything here is fixed once the rule exists, so it runs a
+    /// single time - the non-null <see cref="MoffEnrollEventComponent.OwningRule"/> it sets is what stops it
+    /// re-running.
     /// </summary>
-    private void EnsureOwningRuleAdded(Entity<MoffEnrollEventComponent> ent)
-    {
-        if (FindOwningRule(ent.Owner) is not { } ruleUid ||
-            !TryComp<GameRuleComponent>(ruleUid, out var gameRule) ||
-            gameRule.Added)
-            return;
-
-        gameRule.Added = true;
-        var addedEv = new GameRuleAddedEvent(ruleUid, MetaData(ruleUid).EntityPrototype?.ID ?? string.Empty);
-        RaiseLocalEvent(ruleUid, ref addedEv, true);
-
-        // The spawn location exists now, so ghosts can go and look at it.
-        ent.Comp.Warpable = true;
-        Dirty(ent);
-    }
-
-    /// <summary>
-    /// Hides the character picker for antags that spawn a fixed non-humanoid body. <c>AllowNonHumans</c> is
-    /// what lets such a body past the post-spawn check in <c>AntagSelectionSystem.TryInitializeAntag</c>, so
-    /// it doubles as "this antag isn't built from the player's character profile" - those rules carry no
-    /// <c>AntagLoadProfileRuleComponent</c>, and picking a character would do nothing.
-    /// </summary>
-    private void UpdateCharacterSelection(Entity<MoffEnrollEventComponent> ent)
+    private void ResolveOwningRule(Entity<MoffEnrollEventComponent> ent)
     {
         if (FindOwningRule(ent.Owner) is not { } ruleUid ||
             !TryComp<AntagSelectionComponent>(ruleUid, out var antag))
             return;
 
-        // A rule with several specifiers could spawn either kind of body, and we can't tell which in
-        // advance, so any non-humanoid one hides the picker.
-        var characterSelection = true;
-        foreach (var selector in antag.Antags)
-        {
-            if (_proto.TryIndex(selector.Proto, out var def) && def.AllowNonHumans)
-                characterSelection = false;
-        }
+        TryMarkRuleAdded(ruleUid);
 
-        if (ent.Comp.CharacterSelection == characterSelection)
-            return;
+        ent.Comp.OwningRule = ruleUid;
+        // The spawn location exists now, so ghosts can go and look at it.
+        ent.Comp.Warpable = true;
+        ent.Comp.CharacterSelection = GetCharacterSelection(antag);
+        if (GetAntagColor(antag) is { } color)
+            ent.Comp.TitleColor = color;
 
-        ent.Comp.CharacterSelection = characterSelection;
         Dirty(ent);
     }
 
-    private void UpdateTitleColor(Entity<MoffEnrollEventComponent> ent)
+    /// <summary>
+    /// Marks a rule whose start was deferred by <c>GameTicker.AddGameRule</c> (because it carries an
+    /// <see cref="ESSynchronizedVoteManagerComponent"/>) as added, raising <see cref="GameRuleAddedEvent"/>
+    /// so its components initialize their added-time state - notably SpaceSpawnRule, which computes the
+    /// antag spawn location on add. Idempotent: does nothing if the rule is already added. Returns whether
+    /// it flipped the rule to added.
+    /// </summary>
+    private bool TryMarkRuleAdded(EntityUid ruleUid)
     {
-        if (FindOwningRule(ent.Owner) is not { } ruleUid ||
-            !TryComp<AntagSelectionComponent>(ruleUid, out var antag) ||
-            GetAntagColor(antag) is not { } color ||
-            ent.Comp.TitleColor == color)
-            return;
+        if (!TryComp<GameRuleComponent>(ruleUid, out var gameRule) || gameRule.Added)
+            return false;
 
-        ent.Comp.TitleColor = color;
-        Dirty(ent);
+        gameRule.Added = true;
+        var addedEv = new GameRuleAddedEvent(ruleUid, MetaData(ruleUid).EntityPrototype?.ID ?? string.Empty);
+        RaiseLocalEvent(ruleUid, ref addedEv, true);
+        return true;
+    }
+
+    /// <summary>
+    /// Whether the character picker should be shown for this rule's antag. Hidden for antags that spawn a
+    /// fixed non-humanoid body: <c>AllowNonHumans</c> is what lets such a body past the post-spawn check in
+    /// <c>AntagSelectionSystem.TryInitializeAntag</c>, so it doubles as "this antag isn't built from the
+    /// player's character profile" - those rules carry no <c>AntagLoadProfileRuleComponent</c>, and picking
+    /// a character would do nothing. A rule with several specifiers could spawn either kind of body and we
+    /// can't tell which in advance, so any non-humanoid one hides the picker.
+    /// </summary>
+    private bool GetCharacterSelection(AntagSelectionComponent antag)
+    {
+        foreach (var selector in antag.Antags)
+        {
+            if (_proto.TryIndex(selector.Proto, out var def) && def.AllowNonHumans)
+                return false;
+        }
+
+        return true;
     }
 
     /// <summary>
@@ -191,9 +194,10 @@ public sealed partial class MoffEnrollEventSystem : SharedMoffEnrollEventSystem
         var query = EntityQueryEnumerator<MoffEnrollEventComponent>();
         while (query.MoveNext(out var uid, out var comp))
         {
-            EnsureOwningRuleAdded((uid, comp));
-            UpdateTitleColor((uid, comp));
-            UpdateCharacterSelection((uid, comp));
+            // Resolve the owning rule exactly once (adds the rule, derives title color / character
+            // selection). All of it is fixed prototype data thereafter, so a non-null OwningRule skips it.
+            if (comp.OwningRule is null)
+                ResolveOwningRule((uid, comp));
 
             if (_timing.CurTime > comp.EndTime)
                 expired.Add((uid, comp));
@@ -221,7 +225,7 @@ public sealed partial class MoffEnrollEventSystem : SharedMoffEnrollEventSystem
 
     private void ResolveEnrollment(Entity<MoffEnrollEventComponent> ent)
     {
-        var rule = FindOwningRule(ent.Owner);
+        var rule = ent.Comp.OwningRule;
 
         try
         {
@@ -255,9 +259,11 @@ public sealed partial class MoffEnrollEventSystem : SharedMoffEnrollEventSystem
                 var players = _antag.GetActivePlayerCount();
                 foreach (var session in sessions)
                 {
-                    // checkPref: false - enrolling is explicit consent, so we bypass antag preferences
-                    // (bans / validity are still enforced).
-                    _antag.TryAssignNextAvailableAntag((ruleUid, antag), session, players, checkPref: false);
+                    // checkPref: false - enrolling is explicit consent, so we bypass antag preferences.
+                    // ignoreExclusivity: true - an enrolling ghost may already count as an antag; enrollment
+                    // opts out of the mutual-exclusivity check rather than weakening it for every ghost.
+                    // (Bans / validity are still enforced.)
+                    _antag.TryAssignNextAvailableAntag((ruleUid, antag), session, players, checkPref: false, ignoreExclusivity: true);
                 }
 
                 return;
@@ -280,20 +286,13 @@ public sealed partial class MoffEnrollEventSystem : SharedMoffEnrollEventSystem
     }
 
     /// <summary>
-    /// Starts a rule whose start was deferred by <c>GameTicker.AddGameRule</c> because it carries an
-    /// <see cref="ESSynchronizedVoteManagerComponent"/>. Raises <see cref="GameRuleAddedEvent"/> first
-    /// (mirroring ESVoteSystem) so rule components initialize their added-time state - notably
-    /// SpaceSpawnRule, which computes the antag spawn location on add - then starts the rule.
+    /// Starts the owning rule once enrollment concludes. The rule is normally already added by
+    /// <see cref="ResolveOwningRule"/> while the vote ran; the <see cref="TryMarkRuleAdded"/> call is an
+    /// idempotent safety net for the edge case where it was never resolved.
     /// </summary>
     private void StartOwningRule(EntityUid ruleUid)
     {
-        if (TryComp<GameRuleComponent>(ruleUid, out var gameRule) && !gameRule.Added)
-        {
-            gameRule.Added = true;
-            var addedEv = new GameRuleAddedEvent(ruleUid, MetaData(ruleUid).EntityPrototype?.ID ?? string.Empty);
-            RaiseLocalEvent(ruleUid, ref addedEv, true);
-        }
-
+        TryMarkRuleAdded(ruleUid);
         _gameTicker.StartGameRule(ruleUid);
     }
 

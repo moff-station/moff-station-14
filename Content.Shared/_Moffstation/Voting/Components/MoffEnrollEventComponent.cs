@@ -77,6 +77,14 @@ public sealed partial class MoffEnrollEventComponent : Component
     public bool Warpable;
 
     /// <summary>
+    /// Owning synchronized-vote-manager rule that spawned this enroll entity. Resolved once, server-side;
+    /// its null/non-null state doubles as "has this enrollment been resolved yet" (spawn location picked,
+    /// title color and character selection derived). Not networked - only the server uses it.
+    /// </summary>
+    [ViewVariables]
+    public EntityUid? OwningRule;
+
+    /// <summary>
     /// Game rule(s) to start instead of the antag rule if fewer than <see cref="MinEnrolled"/> players
     /// enrolled when the timer runs out. Evaluated as an entity table of game rule prototypes.
     /// </summary>

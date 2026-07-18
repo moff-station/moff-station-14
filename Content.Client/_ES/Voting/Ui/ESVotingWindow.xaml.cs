@@ -21,21 +21,12 @@ public sealed partial class ESVotingWindow : FancyWindow
 
     private List<Entity<MoffVoteEntryComponent>> _lastEntries = new();
 
-    // Moffstation - matched against in declaration order to build the control for a vote entry
-    private readonly List<(Func<EntityUid, bool> Matches, Func<EntityUid, IVoteEntryControl> Create)> _controlFactories;
-
     public ESVotingWindow()
     {
         RobustXamlLoader.Load(this);
         IoCManager.InjectDependencies(this);
 
         _vote = _entityManager.System<MoffVoteEntrySystem>();
-
-        _controlFactories = new()
-        {
-            (uid => _entityManager.HasComponent<ESVoteComponent>(uid), uid => new ESVoteControl(uid)),
-            (uid => _entityManager.HasComponent<MoffEnrollEventComponent>(uid), uid => new MoffEnrollControl(uid)),
-        };
     }
 
     public void Update(EntityUid owner)
@@ -64,13 +55,13 @@ public sealed partial class ESVotingWindow : FancyWindow
         VotesContainer.InvalidateMeasure();
     }
 
+    // Moffstation - build the control for a vote entry based on its concrete type
     private Control? GenerateControl(Entity<MoffVoteEntryComponent> ent)
     {
-        foreach (var (matches, create) in _controlFactories)
-        {
-            if (matches(ent.Owner))
-                return (Control) create(ent.Owner);
-        }
+        if (_entityManager.HasComponent<ESVoteComponent>(ent.Owner))
+            return new ESVoteControl(ent.Owner);
+        if (_entityManager.HasComponent<MoffEnrollEventComponent>(ent.Owner))
+            return new MoffEnrollControl(ent.Owner);
         return null;
     }
 }
