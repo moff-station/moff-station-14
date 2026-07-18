@@ -18,6 +18,7 @@ public sealed partial class HellportalComponent : Component
     /// When the next spawn wave will trigger.
     /// </summary>
     [DataField(customTypeSerializer: typeof(TimeOffsetSerializer))]
+    [AutoPausedField]
     public TimeSpan NextSpawn = TimeSpan.Zero;
 
     /// <summary>
