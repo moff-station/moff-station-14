@@ -46,6 +46,12 @@
     - HullPrying # Moffstation - fireaxe can remove plating
   - type: ToolTileCompatible
     delay: 5
+    cues: # Moffstation - fireaxe can remove plating
+      startPopup: hull_prying_popup
+      startSound:
+        path: /Audio/Machines/airlock_creaking.ogg
+      endSound:
+        path: /Audio/Items/crowbar.ogg
   - type: Prying
   - type: UseDelay
     delay: 1
@@ -53,7 +59,7 @@
     stealGroup: FireAxe
   - type: IgniteOnMeleeHit
     fireStacks: -4
-  - type: ToolTileVisuals # Moffstation - fireaxe can remove plating
+  #- type: ToolTileVisuals # Moffstation - fireaxe can remove plating
 
 - type: entity
   id: FireAxeFlaming

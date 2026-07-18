@@ -1,4 +1,3 @@
-using Content.Shared._Moffstation.Tools.Components;
 using Content.Shared.Database;
 using Content.Shared.Fluids.Components;
 using Content.Shared.Interaction;
@@ -6,7 +5,6 @@ using Content.Shared.Maps;
 using Content.Shared.Physics;
 using Content.Shared.Popups;
 using Content.Shared.Tools.Components;
-using Robust.Shared.Audio.Systems;
 using Robust.Shared.Map;
 using Robust.Shared.Map.Components;
 using Robust.Shared.Network;
@@ -63,10 +61,10 @@ public abstract partial class SharedToolSystem
         args.Handled = true;
 
         // Moffstation - Begin - Fire axe can pry plating
-        if (!TryComp<ToolTileVisualsComponent>(ent, out var effects))
+        if (ent.Comp.AudioVisualCues is not { } cues)
             return;
 
-        _audioSystem.PlayPredicted(effects.InteractionEndSound, args.User, args.User);
+        _audioSystem.PlayPredicted(cues.EndSound, args.User, args.User);
         // Moffstation - End
     }
 
@@ -101,18 +99,20 @@ public abstract partial class SharedToolSystem
         UseTool(ent, user, ent, comp.Delay, tool.Qualities, args, out _, toolComponent: tool);
 
         // Moffstation - Begin - Fire axe can pry plating
-        if (!TryComp<ToolTileVisualsComponent>(ent, out var effects))
+        if (ent.Comp1.AudioVisualCues is not { } cues)
             return true;
 
-        _audioSystem.PlayPredicted(effects.InteractionStartSound, user, user);
+        _audioSystem.PlayPredicted(cues.StartSound, user, user);
+        if (cues.StartPopup is not { } popup)
+            return true;
+
         _popup.PopupEntity(
-            Loc.GetString(effects.InteractionStartSelfPopup),
-            Loc.GetString(effects.InteractionStartOthersPopup),
+            Loc.GetString(popup),
+            Loc.GetString(popup),
             user,
             user,
             PopupType.MediumCaution
             );
-
         // Moffstation - End
 
         return true;
