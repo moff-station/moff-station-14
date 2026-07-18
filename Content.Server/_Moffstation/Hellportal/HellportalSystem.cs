@@ -2,6 +2,7 @@
 using Content.Server._Moffstation.Hellportal.Components;
 using Content.Shared.EntityTable;
 using Robust.Shared.Audio.Systems;
+using Robust.Shared.Timing;
 
 namespace Content.Server._Moffstation.Hellportal;
 
@@ -9,13 +10,7 @@ public sealed partial class HellportalSystem : EntitySystem
 {
     [Dependency] private EntityTableSystem _entityTable = default!;
     [Dependency] private SharedAudioSystem _audio = default!;
-
-    public override void Initialize()
-    {
-        base.Initialize();
-        SubscribeLocalEvent < HellportalComponent, AnchorStateChangedEvent>(OnAnchorChange);
-
-    }
+    [Dependency] private IGameTiming _time = default!;
 
     public override void Update(float frameTime)
     {
@@ -26,30 +21,26 @@ public sealed partial class HellportalSystem : EntitySystem
 
         while (query.MoveNext(out var uid, out var comp, out var xform))
         {
-            comp.Accumulator += frameTime;
-            var spawns = _entityTable.GetSpawns(comp.BasicSpawnTable);
+            if (_time.CurTime < comp.NextSpawn)
+                continue;
 
-            if (comp.Accumulator > comp.SpawnCooldown)
-            {
-                comp.Accumulator -= comp.SpawnCooldown;
+            comp.NextSpawn = _time.CurTime + comp.SpawnCooldown;
 
-                if (totalCount < comp.MaxSpawns)
-                {
-                    _audio.PlayPvs(comp.Sound, xform.Coordinates);
-                    foreach (var proto in spawns)
-                    {
-                        Spawn(proto, xform.Coordinates);
-                    }
-                }
-            }
+            if (totalCount >= comp.MaxSpawns)
+                continue;
+
+            _audio.PlayPvs(comp.Sound, xform.Coordinates);
+            foreach (var proto in _entityTable.GetSpawns(comp.BasicSpawnTable))
+                Spawn(proto, xform.Coordinates);
         }
     }
 
-    private void OnAnchorChange(EntityUid uid, HellportalComponent component, ref AnchorStateChangedEvent args)
+    [SubscribeLocalEvent]
+    private void OnAnchorChange(Entity<HellportalComponent> entity, ref AnchorStateChangedEvent args)
     {
         if (!args.Anchored)
         {
-            QueueDel(uid);
+            QueueDel(entity);
         }
     }
 }
