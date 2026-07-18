@@ -87,13 +87,13 @@
   components:
   - type: Vinyl
     song:
-      path: /Audio/_Goobstation/RadioStation/CDs/adverts/quick_noodles
+      path: /Audio/_Goobstation/RadioStation/CDs/adverts/quick_noodles.ogg
 
 - type: entity
   parent: BaseCDDisc
   id: CDAdvertBecomeSilicon
   name: "CD: Become Silicon"
-  decription: A CD containing a prerecorded advertisement from your local silicon overlord.
+  description: A CD containing a prerecorded advertisement from your local silicon overlord.
   components:
   - type: Vinyl
     song:

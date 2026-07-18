@@ -42,12 +42,3 @@
   components:
   - type: Flatpack
     entity: CdRackFilled
-
-- type: entity
-  parent: BaseFlatpackNoTool
-  id: CrateRadioStationVinylsFlatpack
-  name: vinyls crate flatpack
-  description: A flatpack used for constructing a crate with a collection of random vinyls inside!
-  components:
-  - type: Flatpack
-    entity: CrateRadioStationVinyls
