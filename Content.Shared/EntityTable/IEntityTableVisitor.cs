@@ -54,48 +54,52 @@ public static class IEntityTableVisitor
 {
     /// This is the shared implementation for <see cref="GroupSelector"/>'s <c>ListSpawns</c> and <c>AverageSpawns</c>
     /// visitors.
-    public static IEnumerable<(EntityTableSelector child, float prob)> VisitGroupSelectorNodDupesImpl(
+    public static IEnumerable<(EntityTableSelector child, float prob)> VisitGroupSelectorNoDupesImpl(
         List<EntityTableSelector> children,
         float expectedRollsLeft
     )
     {
-        if (children.Count == 0 || expectedRollsLeft <= float.Epsilon)
-            yield break;
-
-        var sumOfChildWeights = children.Sum(c => c.Weight);
-
-        // A child is "certain" when its proportional rate exceeds 1 -- it would claim more than one roll
-        // under proportional allocation, so it's guaranteed to appear and is capped at probability 1.
-        var certainPicks = new List<EntityTableSelector>();
-        var uncertainPicks = new List<EntityTableSelector>();
-        foreach (var c in children)
+        var selectorsToConsider = children;
+        while (true)
         {
-            var list = c.Weight * expectedRollsLeft >= sumOfChildWeights ? certainPicks : uncertainPicks;
-            list.Add(c);
-        }
+            if (selectorsToConsider.Count == 0 || expectedRollsLeft <= float.Epsilon)
+                yield break;
 
-        // If there are no guaranteed picks, yield all children with their weights modulated.
-        if (certainPicks.Count == 0)
-        {
-            var weightModifier = expectedRollsLeft / sumOfChildWeights;
-            foreach (var c in children)
+            var sumOfChildWeights = selectorsToConsider.Sum(c => c.Weight);
+
+            // A selector is "certain" to be picked when its proportional rate exceeds 1 -- it would claim more than one
+            // roll under proportional allocation, so it's guaranteed to appear and is capped at probability 1.
+            var certainPicks = new List<EntityTableSelector>();
+            var uncertainPicks = new List<EntityTableSelector>();
+            foreach (var c in selectorsToConsider)
             {
-                yield return (c, c.Weight * weightModifier);
+                var list = c.Weight * expectedRollsLeft >= sumOfChildWeights ? certainPicks : uncertainPicks;
+                list.Add(c);
             }
 
-            yield break;
-        }
+            // If there are no guaranteed picks, yield all selectors with their weights modulated.
+            if (certainPicks.Count == 0)
+            {
+                var weightModifier = expectedRollsLeft / sumOfChildWeights;
+                foreach (var c in selectorsToConsider)
+                {
+                    yield return (c, c.Weight * weightModifier);
+                }
 
-        // Yield all guaranteed picks with a probability of 1.
-        foreach (var c in certainPicks)
-        {
-            yield return (c, 1f);
-        }
+                yield break;
+            }
 
-        // And now yield all remaining children with their weights modulated by the remaining roll probability.
-        foreach (var weighted in VisitGroupSelectorNodDupesImpl(uncertainPicks, expectedRollsLeft - certainPicks.Count))
-        {
-            yield return weighted;
+            // Otherwise...
+            // Yield all guaranteed picks with a probability of 1.
+            foreach (var c in certainPicks)
+            {
+                yield return (c, 1f);
+            }
+
+            // And now yield all remaining selectors with their weights modulated by the remaining roll probability.
+            // (Note that this is done in a loop that implements effectively a tail-recursive call of this function)
+            selectorsToConsider = uncertainPicks;
+            expectedRollsLeft -= certainPicks.Count;
         }
     }
 }

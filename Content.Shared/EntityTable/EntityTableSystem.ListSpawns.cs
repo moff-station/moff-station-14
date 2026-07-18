@@ -62,7 +62,7 @@ sealed file partial class ListSpawnsVisitor : IEntityTableVisitor<
         {
             var nonZeroWeightedChildren = selector.Children.Where(c => c.Weight > float.Epsilon).ToList();
             var averageRolls = selector.Prob * selector.Rolls.Average();
-            return IEntityTableVisitor.VisitGroupSelectorNodDupesImpl(nonZeroWeightedChildren, averageRolls)
+            return IEntityTableVisitor.VisitGroupSelectorNoDupesImpl(nonZeroWeightedChildren, averageRolls)
                 .SelectMany(weightedChild =>
                     weightedChild.child.Accept(this, args).Select(t => (t.spawn, t.probability * weightedChild.prob))
                 );
