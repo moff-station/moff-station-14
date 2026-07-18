@@ -38,10 +38,5 @@ namespace Content.Server.Atmos.Piping.Trinary.Components
         [ViewVariables(VVAccess.ReadWrite)]
         [DataField("inletTwoConcentration")]
         public float InletTwoConcentration = 0.5f;
-
-        // Moffstation - Begin - Molar Gas Mixer
-        [DataField("mixByMoles")]
-        public bool MixByMoles = false;
-        // Moffstation - End
     }
 }

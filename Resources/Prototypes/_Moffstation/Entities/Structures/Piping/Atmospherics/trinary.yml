@@ -1,8 +1,7 @@
 - type: entity
   parent: GasMixer
   id: GasMolarMixer
-  name: gas mixer
-  suffix: Molar
+  name: molar gas mixer
   description: Very useful for mixing gases.
   placement:
     mode: SnapgridCenter
@@ -15,11 +14,10 @@
       map: [ "enum.PipeVisualLayers.Pipe" ]
     - state: gasMixer
       map: [ "enum.SubfloorLayers.FirstLayer", "enabled" ]
-  - type: GasMixer
+  - type: GasMixerMolar
     enabled: false
     inletOne: inlet
     inletTwo: filter
-    mixByMoles: true
   - type: Flippable
     mirrorEntity: GasMolarMixerFlipped
   - type: Construction
@@ -29,8 +27,8 @@
 - type: entity
   parent: GasMixerFlipped
   id: GasMolarMixerFlipped
-  name: gas mixer
-  suffix: Molar, Flipped
+  name: molar gas mixer
+  suffix: Flipped
   placement:
     mode: SnapgridCenter
   components:

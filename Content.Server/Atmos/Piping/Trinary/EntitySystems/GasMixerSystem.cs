@@ -52,14 +52,6 @@ namespace Content.Server.Atmos.Piping.Trinary.EntitySystems
 
         private void OnMixerUpdated(EntityUid uid, GasMixerComponent mixer, ref AtmosDeviceUpdateEvent args)
         {
-            // Moffstation - Begin - Molar gas mixer
-            if (mixer.MixByMoles)
-            {
-                MixByMoles(uid, mixer, args);
-                return;
-            }
-            // Moffstation - End
-
             // TODO ATMOS: Cache total moles since it's expensive.
 
             if (!mixer.Enabled
