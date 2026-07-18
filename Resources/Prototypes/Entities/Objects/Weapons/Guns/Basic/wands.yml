@@ -13,7 +13,10 @@
       path: /Audio/Weapons/Guns/Gunshots/Magic/staff_animation.ogg
     projectileSpeed: 25
   - type: BasicEntityAmmoProvider
-    proto: ProjectilePolyboltCarp
+    # proto: ProjectilePolyboltCarp
+    ammoTable: !type:AllSelector
+      children:
+      - id: ProjectilePolyboltCarp
     capacity: 5
 
 - type: entity
@@ -23,7 +26,10 @@
   description: For when you need a carp filet quick and the clown is looking juicy.
   components:
   - type: BasicEntityAmmoProvider
-    proto: ProjectilePolyboltCarp
+    # proto: ProjectilePolyboltCarp
+    ammoTable: !type:AllSelector
+      children:
+      - id: ProjectilePolyboltCarp
     capacity: 5
     count: 5
 
@@ -34,7 +40,10 @@
   description: For when you need a monkey friend.
   components:
   - type: BasicEntityAmmoProvider
-    proto: ProjectilePolyboltMonkey
+    # proto: ProjectilePolyboltMonkey
+    ammoTable: !type:AllSelector
+      children:
+      - id: ProjectilePolyboltMonkey
     capacity: 5
     count: 5
 
@@ -55,7 +64,10 @@
       path: /Audio/Magic/fireball.ogg
     projectileSpeed: 25
   - type: BasicEntityAmmoProvider
-    proto: ProjectileFireball
+    # proto: ProjectileFireball
+    ammoTable: !type:AllSelector
+      children:
+      - id: ProjectileFireball
     capacity: 5
     count: 5
 
@@ -76,7 +88,10 @@
       path: /Audio/Weapons/Guns/Gunshots/Magic/staff_animation.ogg
     projectileSpeed: 25
   - type: BasicEntityAmmoProvider
-    proto: ProjectileLocker
+    # proto: ProjectileLocker
+    ammoTable: !type:AllSelector
+      children:
+      - id: ProjectileLocker
     capacity: 5
     count: 5
   - type: Item
@@ -112,9 +127,12 @@
       path: /Audio/Weapons/Guns/Gunshots/mateba.ogg # PUNCH
     projectileSpeed: 25
   - type: BasicEntityAmmoProvider
-    proto: BulletInstakillMagic
-    capacity: 3
-    count: 3
+    # proto: BulletInstakillMagic
+    ammoTable: !type:AllSelector
+      children:
+      - id: BulletInstakillMagic
+    capacity: 30
+    count: 30
 
 - type: entity
   name: wand of entrance
@@ -132,7 +150,10 @@
       path: /Audio/Weapons/Guns/Gunshots/Magic/staff_door.ogg
     projectileSpeed: 25
   - type: BasicEntityAmmoProvider
-    proto: ProjectilePolyboltDoor
+    # proto: ProjectilePolyboltDoor
+    ammoTable: !type:AllSelector
+      children:
+      - id: ProjectilePolyboltDoor
     capacity: 10
     count: 10
 
@@ -143,7 +164,10 @@
   description: Make their situation worse by turning them into a cluwne.
   components:
   - type: BasicEntityAmmoProvider
-    proto: ProjectilePolyboltCluwne
+    # proto: ProjectilePolyboltCluwne
+    ammoTable: !type:AllSelector
+      children:
+      - id: ProjectilePolyboltCluwne
     capacity: 3
     count: 3
 
@@ -154,6 +178,9 @@
   description: Turn all your friends into bread! Your boss! Your enemies! Your dog! Make everything bread!
   components:
   - type: BasicEntityAmmoProvider
-    proto: ProjectilePolyboltBread
+    # proto: ProjectilePolyboltBread
+    ammoTable: !type:AllSelector
+      children:
+      - id: ProjectilePolyboltBread
     capacity: 10
     count: 10

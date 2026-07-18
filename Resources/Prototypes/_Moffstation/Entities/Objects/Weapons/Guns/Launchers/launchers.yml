@@ -17,14 +17,14 @@
   parent: WeaponGrapplingGun
   id: WeaponNinjaChainSickle
   name: chain sickle
-  description: A sickle attached to a websilk chain. The Spider Clan embodies the ancient ways, even as they steal the future. 
+  description: A sickle attached to a websilk chain. The Spider Clan embodies the ancient ways, even as they steal the future.
   components:
   - type: GrapplingGun
     reelMassCoefficient: 200 # You can pull everyone.
     reelForce: 20000 # STRONG reeling, you can now make them GET OVER HERE
     reelRate: 7.5 # Fast reeling - can move very quickly in combat with this
     ropeBreakPoint: 150000 # Strong rope for ninja tricks
-    cycleSound: /Audio/_Moffstation/Surgery/retractor1.ogg      
+    cycleSound: /Audio/_Moffstation/Surgery/retractor1.ogg
     ropeSprite:
       sprite: _Moffstation/Objects/Weapons/Guns/Launchers/chainsickle.rsi
       state: rope
@@ -41,7 +41,7 @@
     canThrowTrigger: true
     canMoveBreakout: true
     maxEnsnares: 1
-  - type: Gun 
+  - type: Gun
     soundGunshot: /Audio/Weapons/utilityknifeopen.ogg
     fireRate: 1.0
     soundEmpty: /Audio/_Moffstation/Surgery/retractor1.ogg
@@ -52,10 +52,13 @@
       - 0,0,1,0
     storedOffset: 0,-6
   - type: BasicEntityAmmoProvider
-    proto: ChainSickle
+    # proto: ChainSickle
+    ammoTable: !type:AllSelector
+      children:
+      - id: ChainSickle
     capacity: 1
   - type: Sprite
     sprite: _Moffstation/Objects/Weapons/Guns/Launchers/chainsickle.rsi
     state: base
   - type: UseDelay
-    delay: 0.5 
+    delay: 0.5
