@@ -1,5 +1,6 @@
 ﻿using Content.Shared._Funkystation.Fluids;
 using Content.Shared._Funkystation.Stains.Components;
+using Content.Shared._Moffstation.Stains;
 using Content.Shared.Chemistry.Components;
 using Content.Shared.Chemistry.EntitySystems;
 using Content.Shared.Chemistry.Reagent;
@@ -38,6 +39,7 @@ public abstract partial class SharedStainSystem : EntitySystem
     [Dependency] private SharedPopupSystem _popup = null!;
     [Dependency] private IPrototypeManager _prototype = default!;
     [Dependency] private IGameTiming _timing = default!;
+    [Dependency] private StainRepellentSystem _stainRepellent = default!;
 
     public override void Initialize()
     {
@@ -105,6 +107,13 @@ public abstract partial class SharedStainSystem : EntitySystem
 
     private bool IsStainBlocked(Entity<StainableComponent> ent)
     {
+        // Moff start - Stain repellent
+        if (_stainRepellent.IsStainRepellent(ent.Owner))
+        {
+            return true;
+        }
+        // Moff end
+
         if (!_container.TryGetContainingContainer(ent.Owner, out var container) || !TryComp<InventoryComponent>(container.Owner, out var inv))
             return false;
 

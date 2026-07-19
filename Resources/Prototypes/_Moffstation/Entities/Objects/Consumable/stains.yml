@@ -1,0 +1,15 @@
+- type: entity
+  parent: BaseSqueezeBottle
+  id: DrinkStainRepellent
+  name: tube of fluid repellent
+  description: A tube of chemical coating that makes fabric shed liquids instead of soaking them in. DON'T DRINK!
+  components:
+  - type: Sprite
+    sprite: Objects/Consumable/Drinks/lube-tube.rsi
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: StainRepellent
+        Quantity: 60
+  - type: StainRepellent
+    removalOnWashingChance: 0.5

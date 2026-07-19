@@ -1,0 +1,13 @@
+- type: reaction
+  id: StainRepellent
+  impact: Medium
+  minTemp: 400
+  reactants:
+    Water:
+      amount: 1
+    Silicon:
+      amount: 1
+    Fluorine:
+      amount: 1
+  products:
+    StainRepellent: 5
