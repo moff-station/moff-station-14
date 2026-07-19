@@ -36,7 +36,7 @@ public sealed partial class ToolTileCompatibleComponent : Component
     // Moffstation - End
 }
 
-// Moffstation - Begin - Radio Channel for Temp IDs announcing
+// Moffstation - Begin - Fireaxe can remove plating
 [DataRecord]
 public sealed partial record ToolTileAudioVisualCues
 {
