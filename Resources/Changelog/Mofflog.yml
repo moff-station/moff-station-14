@@ -6995,6 +6995,21 @@ Entries:
   id: 1643
   time: '2026-07-15T20:09:46.000'
   url: https://github.com/moff-station/moff-station-14/pull/1643
+- author: DuckManZach
+  changes:
+  - message: Tweaked clothing stains a bit
+    type: tweak
+  - message: changes in puddle size from stepping in them are now properly communicated
+      to the client
+    type: fix
+  - message: Puddles will no longer enter an "uncleanable" state when too many people
+      walk over them
+    type: fix
+  - message: Existing stain contents are now mixed back into puddles, and vice versa
+    type: add
+  id: 1647
+  time: '2026-07-19T17:16:00.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1647
 - author: gummyema
   changes:
   - message: Added engineering and medical maid outfits
