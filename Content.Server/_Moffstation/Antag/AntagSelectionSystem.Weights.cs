@@ -19,6 +19,9 @@ public sealed partial class AntagSelectionSystem
 {
     [Dependency] private IWeightedAntagManager _weightedAntagMan = default!;
 
+    [Dependency] private EntityQuery<MoffUnweightedAntagComponent> _query;
+    [Dependency] private EntityQuery<MindComponent> _mindQuery;
+
     /// <summary>
     /// Check who was and wasn't an antag at the end of the round
     /// This also checks preferences, if it's a nukie round, you don't get a weight if you didn't have nukie enabled
@@ -35,7 +38,7 @@ public sealed partial class AntagSelectionSystem
         while (rules.MoveNext(out var uid, out var comp, out _))
         {
             // Check if the rule is exempt from changing weights
-            if (HasComp<MoffUnweightedAntagComponent>(uid))
+            if (_query.HasComp(uid))
                 continue;
 
             foreach (var antag in comp.Antags)
@@ -47,7 +50,7 @@ public sealed partial class AntagSelectionSystem
             // Get the UserIds of the players who were antags due to the rules in question
             foreach (var (mindId, _) in comp.AssignedMinds.Values.SelectMany(minds => minds))
             {
-                if (TryComp<MindComponent>(mindId, out var mind) && mind.UserId is { } userId)
+                if (_mindQuery.TryComp(mindId, out var mind) && mind.UserId is { } userId)
                     antagUsers.Add(userId);
             }
         }
