@@ -163,8 +163,6 @@
   - type: TriggerOnToggleOff
     keyOut: toggle-off
   - type: ESSparkOnTrigger
-    keysIn:
-    - toggle-on
   - type: AddComponentsOnTrigger
     keysIn:
     - toggle-on
