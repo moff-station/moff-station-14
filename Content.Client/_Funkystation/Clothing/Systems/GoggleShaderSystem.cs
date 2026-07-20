@@ -10,13 +10,13 @@ using Robust.Shared.Prototypes;
 
 namespace Content.Client._Funkystation.Clothing.Systems;
 
-public sealed class GoggleShaderSystem : EntitySystem
+public sealed partial class GoggleShaderSystem : EntitySystem
 {
-    [Dependency] private readonly IOverlayManager _overlayMan = null!;
-    [Dependency] private readonly IPlayerManager _playerManager = null!;
-    [Dependency] private readonly InventorySystem _inventory = null!;
-    [Dependency] private readonly IPrototypeManager _prototype = null!;
-    [Dependency] private readonly IConfigurationManager _cfg = null!;
+    [Dependency] private IOverlayManager _overlayMan = null!;
+    [Dependency] private IPlayerManager _playerManager = null!;
+    [Dependency] private InventorySystem _inventory = null!;
+    [Dependency] private IPrototypeManager _prototype = null!;
+    [Dependency] private IConfigurationManager _cfg = null!;
 
     private GoggleShaderOverlay _overlay = null!;
 
