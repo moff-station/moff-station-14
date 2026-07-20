@@ -110,7 +110,7 @@ public abstract partial class SharedPuddleSystem : EntitySystem
     private void OnStepInPuddle(Entity<PuddleComponent> ent, ref StartCollideEvent args)
     {
         // If it dont stain it dont stain
-        if (!ent.Comp.Stains)
+        if (!ent.Comp.CausesStains)
             return;
 
         // The thing stepping in the puddle. Because I keep forgetting which is which

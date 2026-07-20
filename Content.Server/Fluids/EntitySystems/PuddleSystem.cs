@@ -44,6 +44,8 @@ public sealed partial class PuddleSystem : SharedPuddleSystem
     [Dependency] private EntityQuery<PuddleComponent> _puddleQuery = default!;
     [Dependency] private EntityQuery<EvaporationSparkleComponent> _evaporationSparklesQuery = default!;
 
+    [Dependency] private EntityQuery<FootprintComponent> _footprintQuery; // Moff - Funky footprints
+
     /*
      * TODO: Need some sort of way to do blood slash / vomit solution spill on its own
      * This would then evaporate into the puddle tile below
@@ -534,7 +536,6 @@ public sealed partial class PuddleSystem : SharedPuddleSystem
         // Get normalized co-ordinate for spill location and spill it in the centre
         // TODO: Does SnapGrid or something else already do this?
         var anchored = _map.GetAnchoredEntitiesEnumerator(gridId, mapGrid, tileRef.GridIndices);
-        var footprintQuery = GetEntityQuery<FootprintComponent>();// Funky - footprints
 
         while (anchored.MoveNext(out var ent))
         {
@@ -549,7 +550,7 @@ public sealed partial class PuddleSystem : SharedPuddleSystem
                 continue;
 
             // Funky start - footprints
-            if (footprintQuery.HasComponent(ent.Value))
+            if (_footprintQuery.HasComponent(ent.Value))
                 continue;
             // Funky end
 
@@ -586,7 +587,6 @@ public sealed partial class PuddleSystem : SharedPuddleSystem
             return false;
 
         var anc = _map.GetAnchoredEntitiesEnumerator(tile.GridUid, grid, tile.GridIndices);
-        var footprintQuery = GetEntityQuery<FootprintComponent>(); // Funky - footprints
 
         while (anc.MoveNext(out var ent))
         {
@@ -594,7 +594,7 @@ public sealed partial class PuddleSystem : SharedPuddleSystem
                 continue;
 
             // Funky start - footprints
-            if (footprintQuery.HasComponent(ent.Value))
+            if (_footprintQuery.HasComponent(ent.Value))
                 continue;
             // Funky end
 

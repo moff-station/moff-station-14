@@ -3,11 +3,5 @@ using Robust.Shared.Serialization;
 
 namespace Content.Shared._Funkystation.Footprints;
 
-[Serializable, NetSerializable]
-public sealed class FootprintStateEvent(NetEntity netEntity) : EntityEventArgs
-{
-    public NetEntity NetEntity = netEntity;
-}
-
 [ByRefEvent]
-public readonly record struct FootprintCleanEvent(SoundSpecifier Sound, EntityUid Cleaner); // Moff - tack on sounds
+public record struct FootprintCleanEvent(bool Handled = false); // Moff - Track handling to play audio

@@ -1,49 +1,46 @@
-﻿using Content.Shared._Funkystation.Footprints;
+﻿using System.Linq;
+using Content.Shared._Funkystation.Footprints;
 using Robust.Client.GameObjects;
 using Robust.Shared.Utility;
 
 namespace Content.Client._Funkystation.Footprints;
 
-public sealed class FootprintSystem : EntitySystem
+public sealed partial class FootprintSystem : EntitySystem
 {
-    public override void Initialize()
+    [Dependency] private SpriteSystem _sprite = default!;
+
+    [SubscribeLocalEvent]
+    private void OnStartup(Entity<FootprintComponent> entity, ref ComponentStartup args)
     {
-        base.Initialize();
-        SubscribeLocalEvent<FootprintComponent, ComponentStartup>(OnStartup);
-        SubscribeNetworkEvent<FootprintStateEvent>(OnStateUpdated);
+        UpdateVisuals(entity);
     }
 
-    private void OnStartup(EntityUid uid, FootprintComponent component, ref ComponentStartup args)
+    [SubscribeLocalEvent]
+    private void OnComponentState(Entity<FootprintComponent> entity, ref AfterAutoHandleStateEvent args)
     {
-        UpdateVisuals(uid, component);
+        UpdateVisuals(entity);
     }
 
-    private void OnStateUpdated(FootprintStateEvent args)
+    private void UpdateVisuals(Entity<FootprintComponent> entity)
     {
-        if (TryGetEntity(args.NetEntity, out var uid) && TryComp<FootprintComponent>(uid, out var comp))
-        {
-            UpdateVisuals(uid.Value, comp);
-        }
-    }
-
-    private void UpdateVisuals(EntityUid uid, FootprintComponent component)
-    {
-        if (!TryComp<SpriteComponent>(uid, out var sprite))
+        if (!TryComp<SpriteComponent>(entity, out var spriteComp))
             return;
 
-        var rsiPath = new ResPath("/Textures/_Funkystation/Effects/footprints.rsi");
+        var sprite = new Entity<SpriteComponent>(entity, spriteComp);
+        var spriteNullable = sprite.AsNullable();
 
-        for (var i = 0; i < component.Prints.Count; i++)
+        var printsAndLayers = entity.Comp.Prints.Select((print, index) => (
+            print,
+            layer: _sprite.TryGetLayer(spriteNullable, index, out var l, logMissing: false)
+                ? l
+                : _sprite.AddBlankLayer(sprite, index)
+        ));
+        foreach (var (print, layer) in printsAndLayers)
         {
-            var print = component.Prints[i];
-
-            if (!sprite.LayerExists(i))
-                sprite.AddBlankLayer(i);
-
-            sprite.LayerSetOffset(i, print.Offset);
-            sprite.LayerSetRotation(i, print.Rotation);
-            sprite.LayerSetColor(i, print.Color);
-            sprite.LayerSetSprite(i, new SpriteSpecifier.Rsi(rsiPath, print.State));
+            _sprite.LayerSetOffset(layer, print.Offset);
+            _sprite.LayerSetRotation(layer, print.Rotation);
+            _sprite.LayerSetColor(layer, print.Color);
+            _sprite.LayerSetSprite(layer, new SpriteSpecifier.Rsi(entity.Comp.Sprites, print.State));
         }
     }
 }

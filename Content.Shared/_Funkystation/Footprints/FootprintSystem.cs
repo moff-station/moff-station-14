@@ -76,14 +76,13 @@ public sealed partial class FootprintSystem : EntitySystem
         }
 
         Dirty(uid, component);
-        RaiseLocalEvent(new FootprintStateEvent(GetNetEntity(uid)));
     }
 
     [SubscribeLocalEvent]
     private void OnFootprintCleaned(Entity<FootprintComponent> ent, ref FootprintCleanEvent args)
     {
         TurnIntoPuddle(ent.Owner);
-        _audio.PlayPredicted(args.Sound, args.Cleaner, args.Cleaner);
+        args.Handled = true;
     }
 
     [SubscribeLocalEvent]
@@ -151,19 +150,17 @@ public sealed partial class FootprintSystem : EntitySystem
         var maxStorage = isStanding ? component.MaxFootVolume : component.MaxBodyVolume;
 
         // Moff start - Use a non-deprecated method to get the solution
-        if (_solutionContainer.EnumerateSolutions(uid)
-                .Where(s => s.Name == PrintSolutionName)
-                .FirstOrNull() is not { } ownerSolution)
+        if (!_solutionContainer.TryGetSolution(uid, PrintSolutionName, out var s) || s is not {} ownerSolution)
             return false;
         // Moff End
 
-        if (maxStorage - ownerSolution.Solution.Comp.Solution.Volume <= 0)
+        if (maxStorage - ownerSolution.Comp.Solution.Volume <= 0)
         {
-            var split = _solutionContainer.SplitSolution((uid, ownerSolution.Solution.Comp), component.PrintMixAmount);
+            var split = _solutionContainer.SplitSolution(ownerSolution, component.PrintMixAmount);
             _puddle.TrySpillAt(Transform(puddleUid).Coordinates, split, out _, false);
         }
-        var spaceLeft = FixedPoint2.Max(0, maxStorage - ownerSolution.Solution.Comp.Solution.Volume);
-        _solutionContainer.TryTransferSolution(ownerSolution.Solution, puddleSolution.Value.Comp.Solution, spaceLeft);
+        var spaceLeft = FixedPoint2.Max(0, maxStorage - ownerSolution.Comp.Solution.Volume);
+        _solutionContainer.TryTransferSolution(ownerSolution, puddleSolution.Value.Comp.Solution, spaceLeft);
         return true;
     }
 
@@ -216,9 +213,6 @@ public sealed partial class FootprintSystem : EntitySystem
 
         printComp.Prints.Add(new FootprintData(new Vector2(normX, normY), rotation, color, state));
         Dirty(printUid, printComp);
-
-        var ev = new FootprintStateEvent(GetNetEntity(printUid));
-        RaiseNetworkEvent(ev);
     }
 
     [SubscribeLocalEvent]
