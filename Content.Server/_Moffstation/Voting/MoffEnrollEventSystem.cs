@@ -1,4 +1,3 @@
-using System.Linq;
 using Content.Server.Antag;
 using Content.Server.Antag.Components;
 using Content.Server.GameTicking;
@@ -7,14 +6,11 @@ using Content.Shared._ES.Voting;
 using Content.Shared._ES.Voting.Components;
 using Content.Shared._Moffstation.Voting.Components;
 using Content.Shared._Moffstation.Voting.Systems;
-using Content.Shared._Moffstation.Warp;
 using Content.Shared.EntityTable;
 using Content.Shared.GameTicking.Components;
-using Content.Shared.Ghost;
 using Content.Shared.Roles.Components;
 using Robust.Server.Player;
 using Robust.Shared.Map;
-using Robust.Shared.Network;
 using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
@@ -22,18 +18,6 @@ using Robust.Shared.Timing;
 
 namespace Content.Server._Moffstation.Voting;
 
-/// <summary>
-/// Server-side resolution of <see cref="MoffEnrollEventComponent"/> enrollment votes. When the enroll
-/// timer runs out, the players who enrolled are assigned as the owning game rule's antags. If fewer
-/// than <see cref="MoffEnrollEventComponent.MinEnrolled"/> enrolled, a configurable fallback game rule
-/// is started instead.
-/// </summary>
-/// <remarks>
-/// The enroll entity is spawned by an <see cref="ESSynchronizedVoteManagerComponent"/> which lives on
-/// the game rule itself (together with the <see cref="AntagSelectionComponent"/>). That rule is
-/// deliberately not started by <c>GameTicker.AddGameRule</c> while it has a vote manager, so we start
-/// it here once enrollment concludes.
-/// </remarks>
 public sealed partial class MoffEnrollEventSystem : SharedMoffEnrollEventSystem
 {
     [Dependency] private IGameTiming _timing = default!;
@@ -44,13 +28,6 @@ public sealed partial class MoffEnrollEventSystem : SharedMoffEnrollEventSystem
     [Dependency] private EntityTableSystem _entityTable = default!;
     [Dependency] private IPrototypeManager _proto = default!;
     [Dependency] private SharedTransformSystem _transform = default!;
-
-    public override void Initialize()
-    {
-        base.Initialize();
-
-        SubscribeAllEvent<MoffEnrollGotoMessage>(OnGoto);
-    }
 
     public override void Update(float frameTime)
     {
@@ -84,10 +61,10 @@ public sealed partial class MoffEnrollEventSystem : SharedMoffEnrollEventSystem
         TryMarkRuleAdded(ev.Manager);
 
         ent.Comp.OwningRule = ev.Manager;
-        // The spawn location exists now, so ghosts can go and look at it.
-        ent.Comp.Warpable = true;
-        // A picked character is only ever applied by AntagLoadProfileRule (it builds the humanoid body from
-        // the player's profile). Rules without it spawn a fixed non-humanoid body, so hide the picker.
+
+        if (GetWarpTarget((ev.Manager, antag)) is { } mapCoords)
+            ent.Comp.WarpTarget = GetNetCoordinates(_transform.ToCoordinates(mapCoords));
+
         ent.Comp.CharacterSelection = HasComp<AntagLoadProfileRuleComponent>(ev.Manager);
         if (GetAntagColor(antag) is { } color)
             ent.Comp.TitleColor = color;
@@ -97,41 +74,63 @@ public sealed partial class MoffEnrollEventSystem : SharedMoffEnrollEventSystem
         Dirty(ent);
     }
 
-    /// <summary>
-    /// Warps a ghost to where this event will spawn, so they can have a look before enrolling.
-    /// </summary>
-    private void OnGoto(MoffEnrollGotoMessage args, EntitySessionEventArgs ev)
+    private void ResolveEnrollment(Entity<MoffEnrollEventComponent> ent)
     {
-        // Only ghosts get to fly off and look around.
-        if (ev.SenderSession.AttachedEntity is not { } player || !HasComp<GhostComponent>(player))
-            return;
+        var rule = ent.Comp.OwningRule;
 
-        if (!TryGetEntity(args.Enroller, out var enrollUid) ||
-            !TryComp<MoffEnrollEventComponent>(enrollUid, out var enroll) ||
-            !enroll.Warpable ||
-            GetWarpTarget((enrollUid.Value, enroll)) is not { } coords)
-            return;
+        // Resolve the enrolled player entities into sessions.
+        var sessions = new List<ICommonSession>();
+        foreach (var netEntity in ent.Comp.Enrolled)
+        {
+            if (!TryGetEntity(netEntity, out var player) ||
+                !_player.TryGetSessionByEntity(player.Value, out var session))
+                continue;
 
-        _transform.SetMapCoordinates(player, coords);
+            sessions.Add(session);
+        }
+
+        // Cap the number of assigned players if MaxEnrolled is set.
+        if (sessions.Count > ent.Comp.MaxEnrolled)
+        {
+            _random.Shuffle(sessions);
+            sessions.RemoveRange(ent.Comp.MaxEnrolled, sessions.Count - ent.Comp.MaxEnrolled);
+        }
+
+        // Start the rule
+        if (sessions.Count >= ent.Comp.MinEnrolled &&
+            rule is { } ruleUid &&
+            TryComp<AntagSelectionComponent>(ruleUid, out var antag))
+        {
+            TryMarkRuleAdded(ruleUid);
+            _gameTicker.StartGameRule(ruleUid);
+
+            var players = _antag.GetActivePlayerCount();
+            foreach (var session in sessions)
+            {
+                // ignoreExclusivity: true - an enrolling ghost may already be an antag. Bans/validity still apply.
+                _antag.TryAssignNextAvailableAntag((ruleUid, antag), session, players, checkPref: false, ignoreExclusivity: true);
+            }
+
+            return;
+        }
+
+        FireFallbackRule(ent);
+        TryQueueDel(rule);
     }
 
     /// <summary>
-    /// Where this event's antag spawns, asked of the rule the same way antag selection does. Only works
-    /// once the rule's resolved, see <see cref="ResolveOwningRule"/>.
+    /// Where this event's antag spawns, asked of the rule the same way antag selection does. Resolved once
+    /// when the rule's added (see <see cref="OnVoteSpawned"/>) and stored on the component as the warp target.
     /// </summary>
-    private MapCoordinates? GetWarpTarget(Entity<MoffEnrollEventComponent> ent)
+    private MapCoordinates? GetWarpTarget(Entity<AntagSelectionComponent> rule)
     {
-        if (ent.Comp.OwningRule is not { } ruleUid ||
-            !TryComp<AntagSelectionComponent>(ruleUid, out var antag))
-            return null;
-
-        foreach (var selector in antag.Antags)
+        foreach (var selector in rule.Comp.Antags)
         {
             if (!_proto.TryIndex(selector.Proto, out var def))
                 continue;
 
-            var ev = new AntagSelectLocationEvent((ruleUid, antag), def);
-            RaiseLocalEvent(ruleUid, ref ev, true);
+            var ev = new AntagSelectLocationEvent(rule, def);
+            RaiseLocalEvent(rule, ref ev, true);
 
             if (ev.Coordinates.Count > 0)
                 return _random.Pick(ev.Coordinates);
@@ -189,50 +188,6 @@ public sealed partial class MoffEnrollEventSystem : SharedMoffEnrollEventSystem
         var players = _antag.GetActivePlayerCount();
 
         return _antag.GetTotalAntagCount(ent, players);
-    }
-
-    private void ResolveEnrollment(Entity<MoffEnrollEventComponent> ent)
-    {
-        var rule = ent.Comp.OwningRule;
-
-            // Resolve the enrolled player entities into sessions.
-            var sessions = new List<ICommonSession>();
-            foreach (var netEntity in ent.Comp.Enrolled)
-            {
-                if (!TryGetEntity(netEntity, out var player) ||
-                    !_player.TryGetSessionByEntity(player.Value, out var session))
-                    continue;
-
-                sessions.Add(session);
-            }
-
-            // Cap the number of assigned players if MaxEnrolled is set.
-            if (sessions.Count > ent.Comp.MaxEnrolled)
-            {
-                _random.Shuffle(sessions);
-                sessions.RemoveRange(ent.Comp.MaxEnrolled, sessions.Count - ent.Comp.MaxEnrolled);
-            }
-
-            // Start the rule
-            if (sessions.Count >= ent.Comp.MinEnrolled &&
-                rule is { } ruleUid &&
-                TryComp<AntagSelectionComponent>(ruleUid, out var antag))
-            {
-                TryMarkRuleAdded(ruleUid);
-                _gameTicker.StartGameRule(ruleUid);
-
-                var players = _antag.GetActivePlayerCount();
-                foreach (var session in sessions)
-                {
-                    // ignoreExclusivity: true - an enrolling ghost may already be an antag. Bans/validity still apply.
-                    _antag.TryAssignNextAvailableAntag((ruleUid, antag), session, players, checkPref: false, ignoreExclusivity: true);
-                }
-
-                return;
-            }
-
-        FireFallbackRule(ent);
-        TryQueueDel(rule);
     }
 
     private void FireFallbackRule(Entity<MoffEnrollEventComponent> ent)

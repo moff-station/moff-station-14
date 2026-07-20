@@ -49,11 +49,12 @@ public sealed partial class MoffEnrollControl : PanelContainer, IVoteEntryContro
             _entityManager.RaisePredictiveEvent(new MoffSetEnrollMessage(netEnroller, args.Button.Pressed));
         };
 
-        // Ghosts only; the server rejects the request from anyone still in a body.
+        // Ghosts only; only they carry a WarpComponent, so the warp system ignores anyone still in a body.
         GotoButton.OnPressed += _ =>
         {
-            var netEnroller = _entityManager.GetNetEntity(Enroller);
-            _entityManager.RaisePredictiveEvent(new MoffEnrollGotoMessage(netEnroller));
+            if (_entityManager.TryGetComponent<MoffEnrollEventComponent>(Enroller, out var enroll)
+                && enroll.WarpTarget is { } target)
+                _entityManager.System<SharedWarpSystem>().RequestWarpToLocation(target);
         };
 
         CharacterSelectionButton.OnPressed += _ => new MoffCharacterSelectWindow(Enroller).OpenCentered();
@@ -80,7 +81,7 @@ public sealed partial class MoffEnrollControl : PanelContainer, IVoteEntryContro
             ("desc", desc)));
 
         // There's nowhere to go until the rule has been added and its spawn location picked.
-        GotoButton.Disabled = !ent.Comp.Warpable;
+        GotoButton.Disabled = ent.Comp.WarpTarget is null;
 
         // Hidden when the antag spawns a fixed non-humanoid body, which ignores the chosen character.
         CharacterSelectionButton.Visible = ent.Comp.CharacterSelection;

@@ -6,11 +6,6 @@ using Robust.Shared.Timing;
 
 namespace Content.Shared._Moffstation.Voting.Systems;
 
-/// <summary>
-/// Tracks <see cref="MoffVoteEntryComponent"/> entries - anything shown in the ES voting panel, vote or
-/// enroll event alike. Makes them visible to voters (PVS overrides, opening the UI on map init) and
-/// enumerates them for the UI.
-/// </summary>
 public sealed partial class MoffVoteEntrySystem : EntitySystem
 {
     [Dependency] private SharedPvsOverrideSystem _pvsOverride = default!;

@@ -120,6 +120,9 @@
     uis:
       enum.ESVoterUiKey.Key:
         toggleAction: ESActionStagehandVote
+  # Lets a ghost warp to an enroll event's spawn to preview it (the "Go To" button).
+  - type: Warp
+    delayBetweenWarps: 0
   # Moffstation - End
 
 # proto for player ghosts specifically

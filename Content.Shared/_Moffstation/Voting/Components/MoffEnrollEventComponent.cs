@@ -1,5 +1,6 @@
 using Content.Shared.EntityTable.EntitySelectors;
 using Robust.Shared.GameStates;
+using Robust.Shared.Map;
 using Robust.Shared.Network;
 using Robust.Shared.Player;
 using Robust.Shared.Serialization;
@@ -67,28 +68,19 @@ public sealed partial class MoffEnrollEventComponent : Component
     public HashSet<NetEntity> RandomPick = new();
 
     /// <summary>
-    /// Whether the event is available to be enrolled in
-    /// </summary>
-    [ViewVariables]
-    public bool Enrollable = true;
-
-    /// <summary>
-    /// Whether the spawn location exists yet, i.e. whether a ghost can warp to it. Set once the owning rule's
-    /// been added, which loads its map and picks the antag spawn.
+    /// Location of the ghost warp
     /// </summary>
     [ViewVariables, AutoNetworkedField]
-    public bool Warpable;
+    public NetCoordinates? WarpTarget;
 
     /// <summary>
-    /// Vote-manager rule that spawned this enroll entity. Resolved once, server-side; null/non-null doubles
-    /// as "has this been resolved yet" (spawn picked, title color and character selection derived). Not networked.
+    /// Vote-manager rule that spawned this enroll entity
     /// </summary>
     [ViewVariables]
     public EntityUid? OwningRule;
 
     /// <summary>
-    /// Game rule(s) to start instead of the antag rule if fewer than <see cref="MinEnrolled"/> players
-    /// enrolled when the timer runs out. Evaluated as an entity table of game rule prototypes.
+    /// Fallback gamerules if rule doesnt meet the requirements to be ran
     /// </summary>
     [DataField]
     public EntityTableSelector? FallbackRules;
@@ -110,13 +102,4 @@ public sealed class MoffSetEnrollRandomMessage(NetEntity enroller, bool random) 
 {
     public NetEntity Enroller = enroller;
     public bool Random = random;
-}
-
-/// <summary>
-/// Sent by a ghost asking to be warped to where this event will spawn.
-/// </summary>
-[Serializable, NetSerializable]
-public sealed class MoffEnrollGotoMessage(NetEntity enroller) : EntityEventArgs
-{
-    public NetEntity Enroller = enroller;
 }

@@ -10,8 +10,6 @@ namespace Content.Shared._Moffstation.Voting.Systems;
 
 public abstract partial class SharedMoffEnrollEventSystem : EntitySystem
 {
-    [Dependency] private IGameTiming _timing = default!;
-    /// <inheritdoc/>
     public override void Initialize()
     {
         base.Initialize();
@@ -28,8 +26,7 @@ public abstract partial class SharedMoffEnrollEventSystem : EntitySystem
             return;
 
         if (!TryGetEntity(args.Enroller, out var enrollerUid) ||
-            !TryComp<MoffEnrollEventComponent>(enrollerUid, out var comp) ||
-            !comp.Enrollable)
+            !TryComp<MoffEnrollEventComponent>(enrollerUid, out var comp))
             return;
 
         var netAttached = GetNetEntity(attachedEntity);
@@ -55,7 +52,6 @@ public abstract partial class SharedMoffEnrollEventSystem : EntitySystem
 
         if (!TryGetEntity(args.Enroller, out var enrollerUid) ||
             !TryComp<MoffEnrollEventComponent>(enrollerUid, out var comp) ||
-            !comp.Enrollable ||
             !comp.CharacterSelection)
             return;
 

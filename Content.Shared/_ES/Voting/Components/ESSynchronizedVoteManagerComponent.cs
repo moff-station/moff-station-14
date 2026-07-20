@@ -22,7 +22,7 @@ public sealed partial class ESSynchronizedVoteManagerComponent : Component
     /// The vote prototypes that will be spawned
     /// </summary>
     [DataField]
-    public List<EntProtoId<MoffVoteEntryComponent>> Votes = new();
+    public List<EntProtoId<MoffVoteEntryComponent>> Votes = new(); // Moff - decouple entries from vote logic
 
     /// <summary>
     /// Currently active votes that are being run
