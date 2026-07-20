@@ -158,4 +158,7 @@ public sealed partial record ReplicatorNestPointAward(
     int Flat = 0,
     FixedPoint2 ScaledWithLevel = default,
     FixedPoint2 ScaledWithSpawnCost = default
-);
+)
+{
+    public ReplicatorNestPointAward() : this(0, default, default) {}
+};
