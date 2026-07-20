@@ -12,7 +12,7 @@ using Robust.Client.UserInterface.XAML;
 
 namespace Content.Client._ES.Voting.Ui;
 
-// Moffstation - we rewrote alot of this for
+// Moffstation - we rewrote alot of this for enrollable stuff
 [GenerateTypedNameReferences]
 public sealed partial class ESVotingWindow : FancyWindow
 {
