@@ -230,7 +230,7 @@
     antags:
     - !type:FixedAntagCount
       proto: Dragon
-  # Moffstation - drive antag selection through enrollment voting
+  # Moffstation - antag enrollment
   - type: ESSynchronizedVoteManager
     votes:
     - DragonEnroller
@@ -263,7 +263,7 @@
     antags:
     - !type:FixedAntagCount
       proto: SpaceNinja
-  # Moffstation - drive antag selection through enrollment voting
+  # Moffstation - antag enrollment
   - type: ESSynchronizedVoteManager
     votes:
     - NinjaEnroller
@@ -296,7 +296,7 @@
     antags:
     - !type:FixedAntagCount
       proto: ParadoxClone
-  # Moffstation - drive antag selection through enrollment voting
+  # Moffstation - antag enrollment
   - type: ESSynchronizedVoteManager
     votes:
     - ParadoxCloneEnroller
@@ -540,11 +540,11 @@
   - type: NukeopsRule
     roundEndBehavior: Nothing
   - type: AntagSelection
-    selectionTime: Enroll # Moffstation - drive antag selection through enrollment voting
+    selectionTime: Enroll # Moffstation - antag enrollment
     antags:
     - !type:FixedAntagCount
       proto: LoneOp
-  # Moffstation - drive antag selection through enrollment voting
+  # Moffstation - antag enrollment
   - type: ESSynchronizedVoteManager
     votes:
     - LoneOpEnroller
@@ -648,7 +648,7 @@
     duration: null
   - type: SpaceSpawnRule
     spawnDistance: 0
-  # Moffstation - drive antag selection through enrollment voting (shared across all derelict cyborg variants)
+  # Moffstation - antag enrollment (shared across all derelict cyborg variants)
   - type: ESSynchronizedVoteManager
     votes:
     - DerelictCyborgEnroller
