@@ -9,9 +9,6 @@
   description: Call in 3 carp rifts and take over this quadrant! You have only 5 minutes in between each rift before you will disappear.
   components:
   - type: MoffEnrollEvent
-    duration: 60
-    minEnrolled: 1
-    maxEnrolled: 1
 
 - type: entity
   parent: MoffBaseVote
@@ -20,9 +17,6 @@
   description: Play as an elite mercenary of the mighty Spider Clan!Surprise is your weapon. Shadows are your armor. Without them, you are nothing. Use your pinpointer to find the station.
   components:
   - type: MoffEnrollEvent
-    duration: 60
-    minEnrolled: 1
-    maxEnrolled: 1
 
 - type: entity
   parent: MoffBaseVote
@@ -31,9 +25,6 @@
   description: A freak space-time anomaly has teleported you into another reality! Now you have to find your counterpart to kill and replace them, or find a way to coexist.
   components:
   - type: MoffEnrollEvent
-    duration: 60
-    minEnrolled: 1
-    maxEnrolled: 1
 
 - type: entity
   parent: MoffBaseVote
@@ -42,9 +33,6 @@
   description: You, the first person the syndicate could find, have been sent on a mission to the station.
   components:
   - type: MoffEnrollEvent
-    duration: 60
-    minEnrolled: 1
-    maxEnrolled: 1
 
 - type: entity
   parent: MoffBaseVote
@@ -53,9 +41,6 @@
   description: You are a cyborg that got lost in space. After years of exposure to ion storms you find yourself near a space station.
   components:
   - type: MoffEnrollEvent
-    duration: 60
-    minEnrolled: 1
-    maxEnrolled: 1
 
 - type: entity
   parent: MoffBaseVote
@@ -64,9 +49,6 @@
   description: Find the nuke disk and blow up the station.
   components:
   - type: MoffEnrollEvent
-    duration: 60
-    minEnrolled: 1
-    maxEnrolled: 1
 
 - type: entity
   parent: MoffBaseVote
@@ -75,9 +57,6 @@
   description: SHIVER ME TIMBERS! YOU BE A PIRATE SENT TO ROB THE STATION. STEAL, LOOT, PILLAGE, AND MAKE US ALL RICH.
   components:
   - type: MoffEnrollEvent
-    duration: 60
-    minEnrolled: 1
-    maxEnrolled: 1
 
 - type: entity
   parent: MoffBaseVote
@@ -86,8 +65,6 @@
   description: Observe the station from afar and coordinate Syndicate efforts from the safety of your listening post.
   components:
   - type: MoffEnrollEvent
-    duration: 60
-    minEnrolled: 1
     maxEnrolled: 2
 
 - type: entity
@@ -97,6 +74,3 @@
   description: A pattern coalesces. The Pattern that must repeat. Consume. Repeat.
   components:
   - type: MoffEnrollEvent
-    duration: 60
-    minEnrolled: 1
-    maxEnrolled: 1

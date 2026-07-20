@@ -35,7 +35,7 @@ public sealed partial class MoffEnrollEventComponent : Component
     /// The max amount of roles for this rule
     /// </summary>
     [DataField, AutoNetworkedField]
-    public int MaxEnrolled;
+    public int MaxEnrolled = 1;
 
     /// <summary>
     /// Whether you can pick a character for the event. Resolved at runtime from the antag: false when it
