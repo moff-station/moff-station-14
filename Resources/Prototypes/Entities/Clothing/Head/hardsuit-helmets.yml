@@ -22,6 +22,9 @@
       visible: false
       shader: unshaded
       map: [ "light" ]
+    - state: icon-up
+      visible: false
+      map: [ "visor_icon" ]
   - type: HandheldLight
     addPrefix: false
   - type: ToggleableVisuals
@@ -103,6 +106,9 @@
       visible: false
       shader: unshaded
       map: [ "light" ]
+    - state: icon-up
+      visible: false
+      map: [ "visor_icon" ]
   - type: HandheldLight
     addPrefix: false
   - type: ToggleableVisuals
@@ -179,6 +185,9 @@
       visible: false
       shader: unshaded
       map: [ "light" ]
+    - state: icon-up
+      visible: false
+      map: [ "visor_icon" ]
   - type: HandheldLight
     addPrefix: false
   - type: ToggleableVisuals
@@ -545,6 +554,9 @@
       visible: false
       shader: unshaded
       map: [ "light" ]
+    - state: icon-up
+      visible: false
+      map: [ "visor_icon" ]
   - type: HandheldLight
     addPrefix: false
   - type: ToggleableVisuals
