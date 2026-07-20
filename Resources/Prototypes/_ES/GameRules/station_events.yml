@@ -33,12 +33,6 @@
       min: 0
       max: 0
 
-- type: entity # Variant for events which have no delay between announcing and starting
-  id: MoffBaseVote
-  abstract: true
-  components:
-  - type: MoffVoteEntry
-
 ## General Tables for Station Events
 #- type: entityTable
 #  id: ESStationEvents

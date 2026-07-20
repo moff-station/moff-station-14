@@ -1,3 +1,4 @@
+using System.Linq;
 using Content.Server.Antag;
 using Content.Server.Antag.Components;
 using Content.Server.GameTicking;
@@ -46,6 +47,31 @@ public sealed partial class MoffEnrollEventSystem : SharedMoffEnrollEventSystem
         base.Initialize();
 
         SubscribeAllEvent<MoffEnrollGotoMessage>(OnGoto);
+    }
+
+    public override void Update(float frameTime)
+    {
+        base.Update(frameTime);
+
+        // Collect first: resolving an enrollment starts game rules and deletes entities, which would
+        // invalidate the query enumerator if done inline.
+        var expired = new List<Entity<MoffEnrollEventComponent>>();
+        var query = EntityQueryEnumerator<MoffEnrollEventComponent>();
+        while (query.MoveNext(out var uid, out var comp))
+        {
+            // Resolve the owning rule once; it's all fixed prototype data after, so a non-null OwningRule skips it.
+            if (comp.OwningRule is null)
+                ResolveOwningRule((uid, comp));
+
+            if (_timing.CurTime > comp.EndTime)
+                expired.Add((uid, comp));
+        }
+
+        foreach (var ent in expired)
+        {
+            ResolveEnrollment(ent);
+            QueueDel(ent.Owner);
+        }
     }
 
     /// <summary>
@@ -113,6 +139,8 @@ public sealed partial class MoffEnrollEventSystem : SharedMoffEnrollEventSystem
         if (GetAntagColor(antag) is { } color)
             ent.Comp.TitleColor = color;
 
+        ent.Comp.MaxEnrolled = GetAntagSlotCount(antag);
+
         Dirty(ent);
     }
 
@@ -177,29 +205,11 @@ public sealed partial class MoffEnrollEventSystem : SharedMoffEnrollEventSystem
         return null;
     }
 
-    public override void Update(float frameTime)
+    private int GetAntagSlotCount(AntagSelectionComponent antag)
     {
-        base.Update(frameTime);
+        var players = _antag.GetActivePlayerCount();
 
-        // Collect first: resolving an enrollment starts game rules and deletes entities, which would
-        // invalidate the query enumerator if done inline.
-        var expired = new List<Entity<MoffEnrollEventComponent>>();
-        var query = EntityQueryEnumerator<MoffEnrollEventComponent>();
-        while (query.MoveNext(out var uid, out var comp))
-        {
-            // Resolve the owning rule once; it's all fixed prototype data after, so a non-null OwningRule skips it.
-            if (comp.OwningRule is null)
-                ResolveOwningRule((uid, comp));
-
-            if (_timing.CurTime > comp.EndTime)
-                expired.Add((uid, comp));
-        }
-
-        foreach (var ent in expired)
-        {
-            ResolveEnrollment(ent);
-            QueueDel(ent.Owner);
-        }
+        return antag.Antags.Sum(selector => selector.GetTargetAntagCount(_random, players));
     }
 
     /// <summary>
