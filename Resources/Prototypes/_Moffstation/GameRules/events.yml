@@ -61,7 +61,7 @@
 
 # Syndicate soldier spawn
 - type: entity
-  parent: BaseAntagGhostRoleRule
+  parent: BaseTraitorRule
   id: SyndieVentSoldierSpawn
   components:
   - type: StationEvent
