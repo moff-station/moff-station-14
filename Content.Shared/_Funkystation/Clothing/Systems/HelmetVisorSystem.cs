@@ -9,10 +9,10 @@ namespace Content.Shared._Funkystation.Clothing.Systems;
 
 public sealed class HelmetVisorSystem : EntitySystem
 {
-    [Dependency] private readonly SharedActionsSystem _actions = null!;
-    [Dependency] private readonly SharedItemSystem _item = null!;
-    [Dependency] private readonly SharedAudioSystem _audio = null!;
-    [Dependency] private readonly SharedAppearanceSystem _appearance = null!;
+    [Dependency] private SharedActionsSystem _actions = null!;
+    [Dependency] private SharedItemSystem _item = null!;
+    [Dependency] private SharedAudioSystem _audio = null!;
+    [Dependency] private SharedAppearanceSystem _appearance = null!;
 
     public override void Initialize()
     {
