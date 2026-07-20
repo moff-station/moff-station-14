@@ -7,7 +7,7 @@ using Robust.Shared.Audio.Systems;
 
 namespace Content.Shared._Funkystation.Clothing.Systems;
 
-public sealed class HelmetVisorSystem : EntitySystem
+public sealed partial class HelmetVisorSystem : EntitySystem
 {
     [Dependency] private SharedActionsSystem _actions = null!;
     [Dependency] private SharedItemSystem _item = null!;
