@@ -1,8 +1,8 @@
 using System.Numerics;
+using Content.Shared._Moffstation.Sensors; // Moffstation - Borg sensors
 using Content.Shared.Access.Systems;
 using Content.Shared.ActionBlocker;
 using Content.Shared.Clothing;
-using Content.Shared.Damage.Components;
 using Content.Shared.Damage.Systems;
 using Content.Shared.DeviceNetwork;
 using Content.Shared.DoAfter;
@@ -389,6 +389,7 @@ public abstract partial class SharedSuitSensorSystem : EntitySystem
             return null;
 
         // try to get mobs id from ID slot
+        var sensorType = sensor.SensorType; // Moffstation - Borg sensors
         var userName = Loc.GetString("suit-sensor-component-unknown-name");
         var userJob = Loc.GetString("suit-sensor-component-unknown-job");
         var userJobIcon = "JobIconNoId";
@@ -420,7 +421,10 @@ public abstract partial class SharedSuitSensorSystem : EntitySystem
             totalDamageThreshold = critThreshold.Value.Int();
 
         // finally, form suit sensor status
-        var status = new SuitSensorStatus(GetNetEntity(sensor.User.Value), GetNetEntity(ent.Owner), userName, userJob, userJobIcon, userJobDepartments);
+        var status = new SuitSensorStatus(GetNetEntity(sensor.User.Value), GetNetEntity(ent.Owner), userName, userJob, userJobIcon, userJobDepartments)
+        {
+            SensorType = sensorType, // Moffstation - Borg sensors
+        };
         switch (sensor.Mode)
         {
             case SuitSensorMode.SensorBinary:
@@ -468,6 +472,7 @@ public abstract partial class SharedSuitSensorSystem : EntitySystem
         var payload = new NetworkPayload()
         {
             [DeviceNetworkConstants.Command] = DeviceNetworkConstants.CmdUpdatedState,
+            [SuitSensorConstants.NET_TYPE] = status.SensorType,// Moffstation - Borg sensors
             [SuitSensorConstants.NET_NAME] = status.Name,
             [SuitSensorConstants.NET_JOB] = status.Job,
             [SuitSensorConstants.NET_JOB_ICON] = status.JobIcon,
@@ -499,6 +504,7 @@ public abstract partial class SharedSuitSensorSystem : EntitySystem
             return null;
 
         // check name, job and alive
+        if (!payload.TryGetValue(SuitSensorConstants.NET_TYPE, out ProtoId<SensorTypePrototype>? type)) return null; // Moffstation - Borg sensors
         if (!payload.TryGetValue(SuitSensorConstants.NET_NAME, out string? name)) return null;
         if (!payload.TryGetValue(SuitSensorConstants.NET_JOB, out string? job)) return null;
         if (!payload.TryGetValue(SuitSensorConstants.NET_JOB_ICON, out string? jobIcon)) return null;
@@ -514,6 +520,7 @@ public abstract partial class SharedSuitSensorSystem : EntitySystem
 
         var status = new SuitSensorStatus(ownerUid, suitSensorUid, name, job, jobIcon, jobDepartments)
         {
+            SensorType = type.Value, // Moffstation - Borg sensors
             IsAlive = isAlive.Value,
             TotalDamage = totalDamage,
             TotalDamageThreshold = totalDamageThreshold,
