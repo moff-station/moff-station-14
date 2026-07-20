@@ -2,6 +2,7 @@ using System.Linq;
 using Content.Server.Antag;
 using Content.Server.Antag.Components;
 using Content.Server.GameTicking;
+using Content.Server.GameTicking.Rules.Components;
 using Content.Shared._ES.Voting;
 using Content.Shared._ES.Voting.Components;
 using Content.Shared._Moffstation.Voting.Components;
@@ -85,7 +86,9 @@ public sealed partial class MoffEnrollEventSystem : SharedMoffEnrollEventSystem
         ent.Comp.OwningRule = ev.Manager;
         // The spawn location exists now, so ghosts can go and look at it.
         ent.Comp.Warpable = true;
-        ent.Comp.CharacterSelection = GetCharacterSelection(antag);
+        // A picked character is only ever applied by AntagLoadProfileRule (it builds the humanoid body from
+        // the player's profile). Rules without it spawn a fixed non-humanoid body, so hide the picker.
+        ent.Comp.CharacterSelection = HasComp<AntagLoadProfileRuleComponent>(ev.Manager);
         if (GetAntagColor(antag) is { } color)
             ent.Comp.TitleColor = color;
 
@@ -154,20 +157,6 @@ public sealed partial class MoffEnrollEventSystem : SharedMoffEnrollEventSystem
     }
 
     /// <summary>
-    /// Whether to show the character picker. Hidden when the antag spawns a fixed non-humanoid body
-    /// </summary>
-    private bool GetCharacterSelection(AntagSelectionComponent antag)
-    {
-        foreach (var selector in antag.Antags)
-        {
-            if (_proto.TryIndex(selector.Proto, out var def) && def.AllowNonHumans)
-                return false;
-        }
-
-        return true;
-    }
-
-    /// <summary>
     /// The colour of the antag this rule hands out: its mind role's subtype colour, falling back to the
     /// colour of that mind role's role type.
     /// </summary>
@@ -217,14 +206,14 @@ public sealed partial class MoffEnrollEventSystem : SharedMoffEnrollEventSystem
                 sessions.Add(session);
             }
 
-            // Cap the number of assigned players if MaxEnrolled is set (0 == unlimited).
-            if (ent.Comp.MaxEnrolled > 0 && sessions.Count > ent.Comp.MaxEnrolled)
+            // Cap the number of assigned players if MaxEnrolled is set.
+            if (sessions.Count > ent.Comp.MaxEnrolled)
             {
                 _random.Shuffle(sessions);
                 sessions.RemoveRange(ent.Comp.MaxEnrolled, sessions.Count - ent.Comp.MaxEnrolled);
             }
 
-            // Enough players enrolled and we found the antag rule: start it and assign the enrolled players.
+            // Start the rule
             if (sessions.Count >= ent.Comp.MinEnrolled &&
                 rule is { } ruleUid &&
                 TryComp<AntagSelectionComponent>(ruleUid, out var antag))
