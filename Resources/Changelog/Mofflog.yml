@@ -6995,6 +6995,21 @@ Entries:
   id: 1643
   time: '2026-07-15T20:09:46.000'
   url: https://github.com/moff-station/moff-station-14/pull/1643
+- author: DuckManZach
+  changes:
+  - message: Tweaked clothing stains a bit
+    type: tweak
+  - message: changes in puddle size from stepping in them are now properly communicated
+      to the client
+    type: fix
+  - message: Puddles will no longer enter an "uncleanable" state when too many people
+      walk over them
+    type: fix
+  - message: Existing stain contents are now mixed back into puddles, and vice versa
+    type: add
+  id: 1647
+  time: '2026-07-19T17:16:00.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1647
 - author: gummyema
   changes:
   - message: Added engineering and medical maid outfits
@@ -7044,6 +7059,14 @@ Entries:
   id: 1653
   time: '2026-07-14T00:13:14.000'
   url: https://github.com/moff-station/moff-station-14/pull/1653
+- author: StudMuffin
+  changes:
+  - message: the station can fall victim to the LawBreaker virus, a new station event
+      in which all silicons will share a unique randomly generated lawset !
+    type: add
+  id: 1655
+  time: '2026-07-18T18:48:34.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1655
 - author: DuckManZach
   changes:
   - message: Standardized gamemode player counts
@@ -7051,6 +7074,48 @@ Entries:
   id: 1657
   time: '2026-07-14T12:11:49.000'
   url: https://github.com/moff-station/moff-station-14/pull/1657
+- author: CasaleBalthazar, Centronias, Nyxilath
+  changes:
+  - message: Hellportal mobs now return back to their plane of origin on death, acidifying
+      on death.
+    type: tweak
+  - message: Hellportals now will halt reinforcements when demonic forces exceed 100
+      strong.
+    type: tweak
+  id: 1660
+  time: '2026-07-18T18:48:34.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1660
+- author: StudMuffin
+  changes:
+  - message: the molar gas mixer, a new type of gas mixer that respect the specified
+      mix when mixing gases at different temperatures
+    type: add
+  - message: renamed the gas mixer to volumetric gas mixer
+    type: tweak
+  - message: updated the guidebook entry on gas mixing/filtering
+    type: tweak
+  id: 1662
+  time: '2026-07-18T17:17:26.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1662
+- author: StudMuffin
+  changes:
+  - message: Added the mail cyborg module, allowing cyborgs to interract with... mail
+    type: add
+  - message: Added the advanced mail cyborg module, a salvage chassis exclusive version
+      of the mail module including a mail cannon
+    type: add
+  - message: Cargo can now order mail capsules from the orders console
+    type: add
+  id: 1663
+  time: '2026-07-18T02:23:48.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1663
+- author: gooseyguy
+  changes:
+  - message: Added Rareel's Personal Item!
+    type: add
+  id: 1664
+  time: '2026-07-18T21:49:36.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1664
 - author: Centronias
   changes:
   - message: Resomis' night vision is once again disabled while they are immune to
@@ -7059,5 +7124,58 @@ Entries:
   id: 1669
   time: '2026-07-16T19:48:57.000'
   url: https://github.com/moff-station/moff-station-14/pull/1669
+- author: CastleKeeper325, TheLaggyOne1
+  changes:
+  - message: There is a new version of the angler markings which has a bulb that glows
+      in the dark
+    type: add
+  id: 1670
+  time: '2026-07-18T19:20:10.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1670
+- author: gummyema
+  changes:
+  - message: Added red and yellow perfomer's outfits, inspired by Kasane Teto and
+      Akita Neru respectively
+    type: add
+  - message: added "kasane teto costume bag" and "akita neru costume bag" containing
+      the new outfits
+    type: add
+  - message: Resprited the performer's (Miku) outfit and gave it a new name
+    type: tweak
+  - message: '"hatsune miku day bag" has been renamed to "hatsune miku costume bag"'
+    type: tweak
+  - message: Miku, Teto and Neru costume bags have all been added to DramaDrobe stock
+    type: tweak
+  - message: new vocal synth outfits added to musician roundstart gear selection
+    type: tweak
+  id: 1672
+  time: '2026-07-17T19:29:23.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1672
+- author: DuckManZach
+  changes:
+  - message: You now rejuvenate after getting a kill in gungame!
+    type: add
+  id: 1676
+  time: '2026-07-19T17:08:52.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1676
+- author: Centronias
+  changes:
+  - message: Replicators now properly return to a controllable healthy state when
+      repaired from being disabled on the ground.
+    type: fix
+  id: 1679
+  time: '2026-07-17T23:00:01.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1679
+- author: Dave
+  changes:
+  - message: New Kitten Plushie!
+    type: add
+  - message: Kazo & Sawa-Tar Personal Item tweaks
+    type: tweak
+  - message: Sammy Sniffles' Personal Item removed
+    type: remove
+  id: 1684
+  time: '2026-07-18T16:47:07.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1684
 Name: Mofflog
 Order: -2
