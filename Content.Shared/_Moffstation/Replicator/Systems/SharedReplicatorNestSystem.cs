@@ -50,32 +50,12 @@ public abstract partial class SharedReplicatorNestSystem : EntitySystem
     [Dependency] private InventorySystem _inventory = default!;
 
     [Dependency] private EntityQuery<BuckleComponent> _buckleQuery;
-    [Dependency] private EntityQuery<ChasmComponent> _chasmQuery;
-    [Dependency] private EntityQuery<ReplicatorHiveLeaderComponent> _hiveLeaderQuery;
     [Dependency] private EntityQuery<ReplicatorComponent> _replicatorQuery;
     [Dependency] private EntityQuery<StrapComponent> _strapQuery;
     [Dependency] private EntityQuery<EntityStorageComponent> _storageQuery;
     [Dependency] private EntityQuery<TransformComponent> _transformQuery;
 
     private static readonly EntProtoId<ReplicatorNestComponent> NestProtoId = "ReplicatorNest";
-
-    public override void Initialize()
-    {
-        base.Initialize();
-
-        SubscribeLocalEvent<ReplicatorNestComponent, MapInitEvent>(OnMapInit);
-        SubscribeLocalEvent<ReplicatorNestComponent, EntityTriesStartingFallingEvent>(OnTryStartFalling);
-        SubscribeLocalEvent<ReplicatorNestComponent, FallerRejectedByChasmEvent>(OnChasmRejects);
-        SubscribeLocalEvent<ReplicatorNestComponent, EntityStartedFallingIntoChasmEvent>(
-            OnEntityStartedFallingIntoReplicatorNest);
-        SubscribeLocalEvent<ReplicatorNestComponent, EntityCompletedFallingIntoChasmEvent>(
-            OnEntityCompletedFallingIntoReplicatorNest);
-        SubscribeLocalEvent<ReplicatorNestComponent, EntRemovedFromContainerMessage>(OnEntRemoved);
-        SubscribeLocalEvent<ReplicatorNestComponent, TrackedSpawnerUsed>(OnTrackedSpawnerUsed);
-        SubscribeLocalEvent<ReplicatorNestComponent, ComponentRemove>(OnRemove);
-
-        SubscribeLocalEvent<StackComponent, ReplicatorNestSpecialPointCalculationEvent>(StackComponentSpecialPoints);
-    }
 
     /// Creates and returns a new replicator nest at the given <paramref name="location"/>, assigning the given
     /// <paramref name="replicatorsToAssignToNest"/> to it.
@@ -96,6 +76,7 @@ public abstract partial class SharedReplicatorNestSystem : EntitySystem
     }
 
 
+    [SubscribeLocalEvent]
     private void OnMapInit(Entity<ReplicatorNestComponent> ent, ref MapInitEvent args)
     {
         EnsureComp<ChasmComponent>(ent);
@@ -110,15 +91,17 @@ public abstract partial class SharedReplicatorNestSystem : EntitySystem
     }
 
     /// Prevents living things from falling into the nest.
-    private void OnTryStartFalling(Entity<ReplicatorNestComponent> ent, ref EntityTriesStartingFallingEvent args)
+    [SubscribeLocalEvent]
+    private void OnTryStartFalling(Entity<ReplicatorNestComponent> ent, ref EntityStartFallingAttemptEvent args)
     {
         if (MobState.IsAlive(args.Faller))
         {
-            args.Cancel();
+            args.Cancelled = true;
         }
     }
 
     /// Anything that tries to fall into the hole but doesn't "fit" gets thrown away from the hole.
+    [SubscribeLocalEvent]
     private void OnChasmRejects(Entity<ReplicatorNestComponent> ent, ref FallerRejectedByChasmEvent args)
     {
         if (TryComp<PullableComponent>(args.Entity, out var pullable) && pullable.BeingPulled)
@@ -129,8 +112,7 @@ public abstract partial class SharedReplicatorNestSystem : EntitySystem
         _throwing.TryThrow(args.Entity, (fallerPosition - nestPosition) * 10, 7, ent, 0);
     }
 
-    [Dependency] private EntityQuery<EntityStorageComponent> _entityStorage;
-
+    [SubscribeLocalEvent]
     private void OnEntityStartedFallingIntoReplicatorNest(
         Entity<ReplicatorNestComponent> entity,
         ref EntityStartedFallingIntoChasmEvent args
@@ -154,6 +136,7 @@ public abstract partial class SharedReplicatorNestSystem : EntitySystem
     }
 
     /// When something falls into the hole, calculate points, try spawning, etc.
+    [SubscribeLocalEvent]
     private void OnEntityCompletedFallingIntoReplicatorNest(
         Entity<ReplicatorNestComponent> entity,
         ref EntityCompletedFallingIntoChasmEvent args
@@ -186,6 +169,7 @@ public abstract partial class SharedReplicatorNestSystem : EntitySystem
         CheckTileConversionPoints(entity);
     }
 
+    [SubscribeLocalEvent]
     private void OnEntRemoved(Entity<ReplicatorNestComponent> ent, ref EntRemovedFromContainerMessage args)
     {
         // Undo the jank "lmao you can't act in the hole" stun.
@@ -193,6 +177,7 @@ public abstract partial class SharedReplicatorNestSystem : EntitySystem
         _stun.TryKnockdown(args.Entity, TimeSpan.FromSeconds(2), false);
     }
 
+    [SubscribeLocalEvent]
     private void OnTrackedSpawnerUsed(Entity<ReplicatorNestComponent> ent, ref TrackedSpawnerUsed args)
     {
         ent.Comp.UnclaimedSpawners.Remove(args.Spawner);
@@ -204,6 +189,7 @@ public abstract partial class SharedReplicatorNestSystem : EntitySystem
         }
     }
 
+    [SubscribeLocalEvent]
     private void OnRemove(Entity<ReplicatorNestComponent> ent, ref ComponentRemove args)
     {
         // Delete unclaimed spawners.
@@ -214,6 +200,7 @@ public abstract partial class SharedReplicatorNestSystem : EntitySystem
     }
 
     /// Implements special point calculation for stacks, by count.
+    [SubscribeLocalEvent]
     private static void StackComponentSpecialPoints(
         Entity<StackComponent> entity,
         ref ReplicatorNestSpecialPointCalculationEvent args
