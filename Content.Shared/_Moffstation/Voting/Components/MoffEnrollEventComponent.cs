@@ -1,5 +1,7 @@
 using Content.Shared.EntityTable.EntitySelectors;
 using Robust.Shared.GameStates;
+using Robust.Shared.Network;
+using Robust.Shared.Player;
 using Robust.Shared.Serialization;
 using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom;
 
@@ -32,7 +34,7 @@ public sealed partial class MoffEnrollEventComponent : Component
     public int MinEnrolled = 1;
 
     /// <summary>
-    /// The max amount of roles for this rule
+    /// The max amount of roles for this rule, this is set automatically.
     /// </summary>
     [ViewVariables, AutoNetworkedField]
     public int MaxEnrolled;

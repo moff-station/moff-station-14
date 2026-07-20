@@ -2,9 +2,11 @@ using System.Linq;
 using Content.Server.Antag;
 using Content.Server.Antag.Components;
 using Content.Server.GameTicking;
+using Content.Shared._ES.Voting;
 using Content.Shared._ES.Voting.Components;
 using Content.Shared._Moffstation.Voting.Components;
 using Content.Shared._Moffstation.Voting.Systems;
+using Content.Shared._Moffstation.Warp;
 using Content.Shared.EntityTable;
 using Content.Shared.GameTicking.Components;
 using Content.Shared.Ghost;
@@ -53,25 +55,43 @@ public sealed partial class MoffEnrollEventSystem : SharedMoffEnrollEventSystem
     {
         base.Update(frameTime);
 
-        // Collect first: resolving an enrollment starts game rules and deletes entities, which would
         // invalidate the query enumerator if done inline.
-        var expired = new List<Entity<MoffEnrollEventComponent>>();
         var query = EntityQueryEnumerator<MoffEnrollEventComponent>();
         while (query.MoveNext(out var uid, out var comp))
         {
-            // Resolve the owning rule once; it's all fixed prototype data after, so a non-null OwningRule skips it.
-            if (comp.OwningRule is null)
-                ResolveOwningRule((uid, comp));
-
-            if (_timing.CurTime > comp.EndTime)
-                expired.Add((uid, comp));
+            if (_timing.CurTime < comp.EndTime)
+                return;
+            ResolveEnrollment((uid, comp));
+            QueueDel(uid);
         }
+    }
 
-        foreach (var ent in expired)
-        {
-            ResolveEnrollment(ent);
-            QueueDel(ent.Owner);
-        }
+    /// <summary>
+    /// Resolves all the things needed to make the rule run as we want it.
+    /// Sets up the map, warp, color, maxcount, and other stuff that only needs to be done once
+    /// We do this here because
+    /// <see cref="MoffEnrollEventComponent.OwningRule"/> prevents it from re-running.
+    /// </summary>
+    [SubscribeLocalEvent]
+    private void OnVoteSpawned(Entity<MoffEnrollEventComponent> ent, ref ESVoteEntitySpawnedEvent ev)
+    {
+        ent.Comp.EndTime = _timing.CurTime + ent.Comp.Duration;
+
+        if (!TryComp<AntagSelectionComponent>(ev.Manager, out var antag))
+            return;
+
+        TryMarkRuleAdded(ev.Manager);
+
+        ent.Comp.OwningRule = ev.Manager;
+        // The spawn location exists now, so ghosts can go and look at it.
+        ent.Comp.Warpable = true;
+        ent.Comp.CharacterSelection = GetCharacterSelection(antag);
+        if (GetAntagColor(antag) is { } color)
+            ent.Comp.TitleColor = color;
+
+        ent.Comp.MaxEnrolled = GetAntagSlotCount((ev.Manager, antag));
+
+        Dirty(ent);
     }
 
     /// <summary>
@@ -118,35 +138,8 @@ public sealed partial class MoffEnrollEventSystem : SharedMoffEnrollEventSystem
     }
 
     /// <summary>
-    /// Resolves the owning rule once. Adds it mid-vote - loads its map and picks the antag spawn, which is
-    /// what "Go To" warps to, and pulls the antag-derived fields (title color, whether a character can be
-    /// picked). Adding's invisible since these rules have no start announcement/audio; the rule only really
-    /// starts (spawning the antag) when the vote resolves. All fixed once the rule exists, so a non-null
-    /// <see cref="MoffEnrollEventComponent.OwningRule"/> stops it re-running.
-    /// </summary>
-    private void ResolveOwningRule(Entity<MoffEnrollEventComponent> ent)
-    {
-        if (FindOwningRule(ent.Owner) is not { } ruleUid ||
-            !TryComp<AntagSelectionComponent>(ruleUid, out var antag))
-            return;
-
-        TryMarkRuleAdded(ruleUid);
-
-        ent.Comp.OwningRule = ruleUid;
-        // The spawn location exists now, so ghosts can go and look at it.
-        ent.Comp.Warpable = true;
-        ent.Comp.CharacterSelection = GetCharacterSelection(antag);
-        if (GetAntagColor(antag) is { } color)
-            ent.Comp.TitleColor = color;
-
-        ent.Comp.MaxEnrolled = GetAntagSlotCount(antag);
-
-        Dirty(ent);
-    }
-
-    /// <summary>
-    /// Marks a vote-manager rule (whose start <c>GameTicker.AddGameRule</c> deferred) as added, raising
-    /// <see cref="GameRuleAddedEvent"/> so its components set up their add-time state - notably SpaceSpawnRule,
+    /// Marks a vote-manager rule as added, raising <see cref="GameRuleAddedEvent"/>
+    /// its components set up their add-time state notably SpaceSpawnRule,
     /// which picks the antag spawn on add. Idempotent; returns whether it flipped the rule to added.
     /// </summary>
     private bool TryMarkRuleAdded(EntityUid ruleUid)
@@ -161,10 +154,7 @@ public sealed partial class MoffEnrollEventSystem : SharedMoffEnrollEventSystem
     }
 
     /// <summary>
-    /// Whether to show the character picker. Hidden when the antag spawns a fixed non-humanoid body:
-    /// <c>AllowNonHumans</c> doubles as "not built from the player's profile" (those rules have no
-    /// <c>AntagLoadProfileRuleComponent</c>, so a picked character does nothing). Any non-humanoid specifier
-    /// hides it, since a multi-specifier rule could go either way.
+    /// Whether to show the character picker. Hidden when the antag spawns a fixed non-humanoid body
     /// </summary>
     private bool GetCharacterSelection(AntagSelectionComponent antag)
     {
@@ -205,31 +195,17 @@ public sealed partial class MoffEnrollEventSystem : SharedMoffEnrollEventSystem
         return null;
     }
 
-    private int GetAntagSlotCount(AntagSelectionComponent antag)
+    private int GetAntagSlotCount(Entity<AntagSelectionComponent> ent)
     {
         var players = _antag.GetActivePlayerCount();
 
-        return antag.Antags.Sum(selector => selector.GetTargetAntagCount(_random, players));
+        return _antag.GetTotalAntagCount(ent, players);
     }
-
-    /// <summary>
-    /// Users who asked to spawn as a random character. Only filled while <see cref="ResolveEnrollment"/>
-    /// assigns antags, which is when the body gets built.
-    /// </summary>
-    private readonly HashSet<NetUserId> _randomProfiles = new();
-
-    /// <summary>
-    /// Whether this player enrolled asking for a random character over their selected one. Only meaningful
-    /// while an enrollment resolves - the only time an enrollee's body gets built.
-    /// </summary>
-    public bool PrefersRandomProfile(ICommonSession session) => _randomProfiles.Contains(session.UserId);
 
     private void ResolveEnrollment(Entity<MoffEnrollEventComponent> ent)
     {
         var rule = ent.Comp.OwningRule;
 
-        try
-        {
             // Resolve the enrolled player entities into sessions.
             var sessions = new List<ICommonSession>();
             foreach (var netEntity in ent.Comp.Enrolled)
@@ -239,8 +215,6 @@ public sealed partial class MoffEnrollEventSystem : SharedMoffEnrollEventSystem
                     continue;
 
                 sessions.Add(session);
-                if (ent.Comp.RandomPick.Contains(netEntity))
-                    _randomProfiles.Add(session.UserId);
             }
 
             // Cap the number of assigned players if MaxEnrolled is set (0 == unlimited).
@@ -255,7 +229,8 @@ public sealed partial class MoffEnrollEventSystem : SharedMoffEnrollEventSystem
                 rule is { } ruleUid &&
                 TryComp<AntagSelectionComponent>(ruleUid, out var antag))
             {
-                StartOwningRule(ruleUid);
+                TryMarkRuleAdded(ruleUid);
+                _gameTicker.StartGameRule(ruleUid);
 
                 var players = _antag.GetActivePlayerCount();
                 foreach (var session in sessions)
@@ -267,45 +242,32 @@ public sealed partial class MoffEnrollEventSystem : SharedMoffEnrollEventSystem
                 return;
             }
 
-            // Not enough enrolled (or no owning antag rule): fire the fallback rules instead and clean up
-            // the antag rule that was spawned but never started.
-            foreach (var proto in _entityTable.GetSpawns(ent.Comp.FallbackRules, _random))
-            {
-                _gameTicker.StartGameRule(proto);
-            }
+        FireFallbackRule(ent);
+        TryQueueDel(rule);
+    }
 
-            if (rule is { } unstartedRule)
-                QueueDel(unstartedRule);
-        }
-        finally
+    private void FireFallbackRule(Entity<MoffEnrollEventComponent> ent)
+    {
+        // Not enough people enrolled, fire the fallback rule
+        foreach (var proto in _entityTable.GetSpawns(ent.Comp.FallbackRules, _random))
         {
-            _randomProfiles.Clear();
+            _gameTicker.StartGameRule(proto);
         }
     }
 
-    /// <summary>
-    /// Starts the owning rule once enrollment's done. Normally already added by <see cref="ResolveOwningRule"/>
-    /// during the vote; the <see cref="TryMarkRuleAdded"/> call just covers the edge case where it wasn't.
-    /// </summary>
-    private void StartOwningRule(EntityUid ruleUid)
+    public bool EnrolleeWantsRandom(EntityUid rule, ICommonSession session)
     {
-        TryMarkRuleAdded(ruleUid);
-        _gameTicker.StartGameRule(ruleUid);
-    }
+      if (session.AttachedEntity is not { } attached
+          || !TryComp<ESSynchronizedVoteManagerComponent>(rule, out var voteManager))
+          return false;
 
-    /// <summary>
-    /// Finds the synchronized vote manager (the game rule) that spawned this enroll entity.
-    /// </summary>
-    private EntityUid? FindOwningRule(EntityUid enrollUid)
-    {
-        var query = EntityQueryEnumerator<ESSynchronizedVoteManagerComponent>();
-        while (query.MoveNext(out var uid, out var comp))
-        {
-            var voteEntities = comp.VoteEntities;
-            if (voteEntities.Contains(enrollUid))
-                return uid;
-        }
+      var net = GetNetEntity(attached);
+      foreach (var voteUid in voteManager.VoteEntities)
+      {
+          if (TryComp<MoffEnrollEventComponent>(voteUid, out var enroll))
+              return enroll.RandomPick.Contains(net);
+      }
 
-        return null;
+      return false;
     }
 }

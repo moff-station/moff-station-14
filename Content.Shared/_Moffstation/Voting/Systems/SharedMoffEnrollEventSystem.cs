@@ -1,7 +1,9 @@
+using System.Diagnostics.CodeAnalysis;
 using Content.Shared._Moffstation.Voting.Components;
 using Content.Shared.Ghost;
 using Content.Shared.Humanoid;
 using Robust.Shared.Collections;
+using Robust.Shared.Player;
 using Robust.Shared.Timing;
 
 namespace Content.Shared._Moffstation.Voting.Systems;
@@ -16,13 +18,6 @@ public abstract partial class SharedMoffEnrollEventSystem : EntitySystem
 
         SubscribeAllEvent<MoffSetEnrollMessage>(OnSetEnroll);
         SubscribeAllEvent<MoffSetEnrollRandomMessage>(OnSetEnrollRandom);
-    }
-
-    [SubscribeLocalEvent]
-    private void OnMapInit(Entity<MoffEnrollEventComponent> ent, ref MapInitEvent args)
-    {
-        ent.Comp.EndTime = _timing.CurTime + ent.Comp.Duration;
-        Dirty(ent);
     }
 
     private void OnSetEnroll(MoffSetEnrollMessage args, EntitySessionEventArgs ev)

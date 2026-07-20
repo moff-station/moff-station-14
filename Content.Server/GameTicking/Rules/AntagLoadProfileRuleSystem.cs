@@ -31,11 +31,11 @@ public sealed partial class AntagLoadProfileRuleSystem : GameRuleSystem<AntagLoa
         if (args.Handled)
             return;
 
-        // Moff - PrefersRandomProfile check added so enrollees can ask for a randomly generated character.
-        var profile = args.Session != null && !_moffEnroll.PrefersRandomProfile(args.Session)
-            ? _prefs.GetPreferences(args.Session.UserId).SelectedCharacter as HumanoidCharacterProfile
-            : HumanoidCharacterProfile.RandomWithSpecies();
-
+        // Moff start - enrollees can opt to spawn as a randomly generated character rather than their selected one.
+        var profile = args.Session == null || _moffEnroll.EnrolleeWantsRandom(ent.Owner, args.Session)
+            ? HumanoidCharacterProfile.RandomWithSpecies()
+            : _prefs.GetPreferences(args.Session.UserId).SelectedCharacter as HumanoidCharacterProfile;
+        // Moff end
 
         if (profile?.Species is not { } speciesId || !ProtoMan.Resolve(speciesId, out var species))
         {
