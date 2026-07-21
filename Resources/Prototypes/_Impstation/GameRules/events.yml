@@ -47,6 +47,8 @@
     maxDifficulty: 5
   - type: LoadMapRule
     gridPath: /Maps/_Moffstation/Shuttles/tourists.yml
+  - type: AntagLoadProfileRule
+    preserveName: true
   - type: AntagSelection
     selectionTime: Enroll
     agentName: tourist-round-end-agent-name

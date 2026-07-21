@@ -1,75 +1,89 @@
 # Moffstation - Enroll votes spawned by an antag rule's ESSynchronizedVoteManager. When the timer runs out,
 # MoffEnrollEventSystem starts the owning rule and turns the enrolled players into its antags. One enroller
 # per rule so each can tune its own timing, min/max enrollment, and fallback rules.
+
 - type: entity # Variant for events which have no delay between announcing and starting
-  id: MoffBaseVote
+  id: MoffBaseEntry
   abstract: true
   components:
   - type: MoffVoteEntry
+
+- type: entity # Variant for events which have no delay between announcing and starting
+  parent: MoffBaseEntry
+  id: MoffBaseEnroll
+  abstract: true
+  components:
   - type: MoffEnrollEvent
 
 - type: entity
-  parent: MoffBaseVote
+  parent: MoffBaseEnroll
   id: DragonEnroller
   name: Space Dragon
   description: Call in 3 carp rifts and take over this quadrant! You have only 5 minutes in between each rift before you will disappear.
 
 - type: entity
-  parent: MoffBaseVote
+  parent: MoffBaseEnroll
   id: NinjaEnroller
   name: Space Ninja
   description: Play as an elite mercenary of the mighty Spider Clan! Surprise is your weapon. Shadows are your armor. Without them, you are nothing. Use your pinpointer to find the station.
 
 - type: entity
-  parent: MoffBaseVote
+  parent: MoffBaseEnroll
   id: ParadoxCloneEnroller
   name: Paradox Clone
   description: A freak space-time anomaly has teleported you into another reality! Now you have to find your counterpart to kill and replace them, or find a way to coexist.
 
 - type: entity
-  parent: MoffBaseVote
+  parent: MoffBaseEnroll
   id: SyndieVentSoldierEnroller
   name: Syndicate Vent Soldier
   description: You, the first person the syndicate could find, have been sent on a mission to the station.
 
 - type: entity
-  parent: MoffBaseVote
+  parent: MoffBaseEnroll
   id: DerelictCyborgEnroller
   name: Derelict Cyborg
   description: You are a cyborg that got lost in space. After years of exposure to ion storms you find yourself near a space station.
 
 - type: entity
-  parent: MoffBaseVote
+  parent: MoffBaseEnroll
   id: LoneOpEnroller
   name: Lone Operative
   description: Find the nuke disk and blow up the station.
 
 - type: entity
-  parent: MoffBaseVote
+  parent: MoffBaseEnroll
   id: PirateCorsairEnroller
   name: Pirate Corsair
   description: SHIVER ME TIMBERS! YOU BE A PIRATE SENT TO ROB THE STATION. STEAL, LOOT, PILLAGE, AND MAKE US ALL RICH.
 
 - type: entity
-  parent: MoffBaseVote
+  parent: MoffBaseEnroll
   id: SyndicateSpyEnroller
   name: Syndicate Spy
   description: Observe the station from afar and coordinate Syndicate efforts from the safety of your listening post.
+  components:
+  - type: MoffEnrollEvent
+    minEnrolled: 2
 
 - type: entity
-  parent: MoffBaseVote
+  parent: MoffBaseEnroll
   id: ReplicatorEnroller
   name: Replicator Queen
   description: A pattern coalesces. The Pattern that must repeat. Consume. Repeat.
 
 - type: entity
-  parent: MoffBaseVote
+  parent: MoffBaseEnroll
   id: EepEnroller
   name: Eeplet
   description: A bad tempered and fully grown Electric sheep.
 
 - type: entity
-  parent: MoffBaseVote
+  parent: MoffBaseEnroll
   id: TouristEnroller
   name: Tourists
   description: Have careless fun on your vacation to a Nanotrasen station!
+#  components:
+#  - type: MoffEnrollEvent
+#    minEnrolled: 2
+

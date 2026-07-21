@@ -8,7 +8,13 @@
 - type: antagSpecifier
   parent: RestrictedAntag
   id: Tourist
+  spawnerPrototype: SpawnPointGhostTourist
+  pickPlayer: false
   prefRoles:
   - Tourist
   mindRoles:
   - MindRoleTourist
+  components:
+  - type: Tourist
+  roleLoadout:
+  - TouristRedShirt

@@ -83,7 +83,7 @@
     - ESVoteGasLeakLocation
 
 - type: entity
-  parent: MoffBaseVote
+  parent: MoffBaseEntry
   id: ESVoteGasLeakGases
   name: Which gas should leak?
   components:
@@ -100,7 +100,7 @@
     count: 2
 
 - type: entity
-  parent: MoffBaseVote
+  parent: MoffBaseEntry
   id: ESVoteGasLeakLocation
   name: Where should the gas leak?
   components:
