@@ -6,7 +6,13 @@
   components:
   - type: Item
     storedRotation: 0
-  - type: PhysicalComposition
+# Moff - Start - Funky change, now handled by ComponentToggler below
+#  - type: IngestionBlocker
+#  - type: FlashImmunity
+#  - type: IdentityBlocker
+#  - type: EyeProtection
+#  - type: PhysicalComposition
+# Moff - End
     materialComposition:
       Steel: 200
       Glass: 100
@@ -16,7 +22,7 @@
     tags:
     - WhitelistChameleon
     - WeldingMask
-  # Funky
+  # Funky - Start
   - type: ToggleClothing
     action: ActionToggleWeldingMask
     mustEquip: false
@@ -43,6 +49,7 @@
         enum.ToggleableVisuals.Layer:
           True: {state: icon}
           False: {state: icon-up}
+  # Funky - End
 
 - type: entity
   parent: WeldingMaskBase
@@ -52,9 +59,11 @@
   components:
   - type: Sprite
     sprite: Clothing/Head/Welding/welding.rsi
-    layers: # Funky
+    # Funky - Start
+    layers:
     - state: icon
       map: [ "enum.ToggleableVisuals.Layer" ]
+    # Funky - End
   - type: Clothing
     sprite: Clothing/Head/Welding/welding.rsi
   - type: Tag
@@ -71,9 +80,11 @@
   components:
   - type: Sprite
     sprite: Clothing/Head/Welding/flame_welding_mask.rsi
-    layers: # Funky
+    # Funky - Start
+    layers:
     - state: icon
       map: [ "enum.ToggleableVisuals.Layer" ]
+    # Funky - End
   - type: Clothing
     sprite: Clothing/Head/Welding/flame_welding_mask.rsi
 
@@ -85,9 +96,11 @@
   components:
   - type: Sprite
     sprite: Clothing/Head/Welding/blue_flame_welding_mask.rsi
-    layers: # Funky
+    # Funky - Start
+    layers:
     - state: icon
       map: [ "enum.ToggleableVisuals.Layer" ]
+    # Funky - End
   - type: Clothing
     sprite: Clothing/Head/Welding/blue_flame_welding_mask.rsi
 
@@ -99,8 +112,10 @@
   components:
   - type: Sprite
     sprite: Clothing/Head/Welding/paintedwelding.rsi
-    layers: # Funky
+    # Funky - Start
+    layers:
     - state: icon
       map: [ "enum.ToggleableVisuals.Layer" ]
+    # Funky - End
   - type: Clothing
     sprite: Clothing/Head/Welding/paintedwelding.rsi
