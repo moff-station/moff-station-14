@@ -79,7 +79,7 @@ public sealed partial class WeldingMaskOverlaySystem : EntitySystem
             headItem != ignoreEnt &&
             TryComp<WeldingMaskOverlayComponent>(headItem.Value, out var headComp))
         {
-            _overlay. = headComp.Texture;
+            _overlay.CurrentTexturePath = headComp.Texture;
             AddOverlay();
             return;
         }
