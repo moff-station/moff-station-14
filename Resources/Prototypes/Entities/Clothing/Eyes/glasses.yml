@@ -69,6 +69,7 @@
     - PetWearable
     - WhitelistChameleon
     - MesonGoggles # Moffstation - Meson Sunglasses
+  # Moff start - Funky welding
   - type: TrayScanner
     toggleAction: ActionToggleTrayScanner
     soundOn:
@@ -79,6 +80,7 @@
     shader: Goggles
     color: '#5AB43CCC'
     enabled: false
+  # Moff end
 
 - type: entity
   parent: ClothingEyesBase
