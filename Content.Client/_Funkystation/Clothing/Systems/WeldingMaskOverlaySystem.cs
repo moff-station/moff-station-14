@@ -16,7 +16,7 @@ public sealed partial class WeldingMaskOverlaySystem : EntitySystem
     [Dependency] private InventorySystem _inventory = null!;
 
     private WeldingMaskOverlay _overlay = null!;
-    private const string HeadString = "head"
+    private const string HeadString = "head";
     public override void Initialize()
     {
         base.Initialize();
@@ -79,7 +79,7 @@ public sealed partial class WeldingMaskOverlaySystem : EntitySystem
             headItem != ignoreEnt &&
             TryComp<WeldingMaskOverlayComponent>(headItem.Value, out var headComp))
         {
-            _overlay.CurrentTexturePath = headComp.Texture;
+            _overlay. = headComp.Texture;
             AddOverlay();
             return;
         }
