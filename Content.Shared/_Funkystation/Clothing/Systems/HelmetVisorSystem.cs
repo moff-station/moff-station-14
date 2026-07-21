@@ -93,22 +93,13 @@ public sealed partial class HelmetVisorSystem : EntitySystem
             }
         }
 
-        var layer = new PrototypeLayerData()
+        var layer = new PrototypeLayerData
         {
             State = state,
-            Visible = true
+            Visible = true,
         };
 
-        var insertIndex = args.Layers.Count;
-        for (var i = 0; i < args.Layers.Count; i++)
-        {
-            if (args.Layers[i].Item1 == "light")
-            {
-                insertIndex = i;
-                break;
-            }
-        }
-
+        var insertIndex = args.Layers.Index().FirstOrNull(it => it.Item.Item1 == "light")?.Index ?? args.Layers.Count;
         args.Layers.Insert(insertIndex, (ent.Comp.VisualLayer, layer));
     }
 
