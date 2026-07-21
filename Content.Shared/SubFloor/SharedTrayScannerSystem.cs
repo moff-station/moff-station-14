@@ -14,10 +14,6 @@ using Robust.Shared.GameStates;
 using Robust.Shared.Network;
 using Robust.Shared.Serialization;
 using Robust.Shared.Utility;
-// Funky change
-// Funky change
-// Funky change
-// Funky change
 
 namespace Content.Shared.SubFloor;
 
