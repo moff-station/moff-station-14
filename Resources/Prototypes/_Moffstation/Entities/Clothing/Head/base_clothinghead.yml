@@ -4,9 +4,6 @@
   name: base helmet toggleable welding mask
   categories: [ HideSpawnMenu ]
   components:
-  - state: icon-up
-    visible: false
-    map: [ "visor_icon" ]
   - type: HelmetVisor
     isActive: true
     components:
