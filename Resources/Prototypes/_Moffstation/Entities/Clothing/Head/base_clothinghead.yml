@@ -20,16 +20,3 @@
         unshaded_base:
           False: { visible: true }
           True: { visible: false }
-
-- type: entity
-  parent: BaseAction
-  id: ActionToggleHelmetVisor
-  name: Toggle Visor
-  description: Flips the helmet visor up or down.
-  components:
-  - type: Action
-    icon:
-      sprite: Clothing/Head/Welding/welding.rsi
-      state: icon
-  - type: InstantAction
-    event: !type:ToggleHelmetVisorEvent
