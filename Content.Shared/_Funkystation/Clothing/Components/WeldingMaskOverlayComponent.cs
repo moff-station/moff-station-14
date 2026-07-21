@@ -12,5 +12,5 @@ public sealed partial class WeldingMaskOverlayComponent : Component
     /// Path to the texture used for the screen overlay.
     /// </summary>
     [DataField, AutoNetworkedField]
-    public string Texture = "/Textures/_Funkystation/Clothing/Head/Welding/weldingOverlay.png";
+    public ResPath Texture = new("/Textures/_Funkystation/Clothing/Head/Welding/weldingOverlay.png");
 }
