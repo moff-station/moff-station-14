@@ -235,10 +235,3 @@ public abstract partial class SharedTrayScannerSystem : EntitySystem
     }
 }
 
-[Serializable, NetSerializable]
-public enum TrayScannerVisual : sbyte
-{
-    Visual,
-    On,
-    Off
-}
