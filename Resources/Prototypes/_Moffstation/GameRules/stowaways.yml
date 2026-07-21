@@ -1,5 +1,5 @@
 - type: entity
-  parent: BaseGameRule
+  parent: BaseUnweightedAntagRule
   id: Stowaways
   components:
   - type: GameRule
@@ -10,7 +10,6 @@
     preserveName: true
   - type: AntagSelection
     selectionTime: PrePlayerSpawn
-    useWeights: false
     antags:
     - !type:LinearAntagCount
       proto: Stowaway

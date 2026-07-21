@@ -1,4 +1,3 @@
-using Content.Shared._Moffstation.Sparks.Components;
 using Content.Shared.Item.ItemToggle.Components;
 using Robust.Shared.GameStates;
 
@@ -9,11 +8,8 @@ namespace Content.Shared._ES.Sparks.Components;
 /// </summary>
 [RegisterComponent, NetworkedComponent]
 [Access(typeof(ESSparksSystem))]
-public sealed partial class ESSparkOnItemToggleComponent : Component, ESBaseSparkConfigurationComponent // Moffstation - Make ESBaseSparkConfigurationComponent an interface
+public sealed partial class ESSparkOnItemToggleComponent : ESBaseSparkConfigurationComponent
 {
-    [IncludeDataField]
-    public ESBaseSparkConfigurationComponent.Config SparkConfig { get; set; } = new(); // Moffstation - Make ESBaseSparkConfigurationComponent an interface
-
     /// <summary>
     /// If true, sparks will occur when the item is toggled ON.
     /// If false, sparks will occur when the item is toggled OFF.

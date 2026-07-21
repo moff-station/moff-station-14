@@ -4,12 +4,14 @@
   parent: BaseStationEventShortDelay
   components:
   - type: StationEvent
-    startAnnouncement: station-event-vent-creatures-start-announcement
+    startAnnouncement: station-event-vent-creatures-start-horde-announcement
     startAudio:
       path: /Audio/Announcements/attention.ogg
     weight: 6
     duration: 30 # Moffstation - used as delay
-  - type: VentCrittersRule
-    entries:
-    - id: MobMoproachHat
-      prob: 0.03
+  # Moff start - Swap to vent horde rule
+  - type: VentHordeRule
+    table:
+      id: MobMoproachHat
+      rolls: 5, 10
+  # Moff end

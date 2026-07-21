@@ -6448,6 +6448,13 @@ Entries:
   id: 1542
   time: '2026-06-21T01:13:14.000'
   url: https://github.com/moff-station/moff-station-14/pull/1542
+- author: widgetbeck, DuckManZach, Centronias
+  changes:
+  - message: Added Replicators!
+    type: add
+  id: 1543
+  time: '2026-07-16T01:12:46.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1543
 - author: DuckManZach
   changes:
   - message: Added clothing stains!
@@ -6933,6 +6940,13 @@ Entries:
   id: 1625
   time: '2026-07-08T22:17:20.000'
   url: https://github.com/moff-station/moff-station-14/pull/1625
+- author: DuckManZach
+  changes:
+  - message: Added reagent footprints and crawling marks!
+    type: add
+  id: 1626
+  time: '2026-07-21T16:57:04.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1626
 - author: Dave
   changes:
   - message: lawyer now starts with a service headset
@@ -6978,6 +6992,31 @@ Entries:
   id: 1634
   time: '2026-07-08T22:40:41.000'
   url: https://github.com/moff-station/moff-station-14/pull/1634
+- author: StudMuffin
+  changes:
+  - message: Borgs chassis now have integrated sensors that can be interacted with
+      via the action menu
+    type: add
+  - message: Borgs can now appear in the station AI crew monitor interface
+    type: add
+  id: 1643
+  time: '2026-07-15T20:09:46.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1643
+- author: DuckManZach
+  changes:
+  - message: Tweaked clothing stains a bit
+    type: tweak
+  - message: changes in puddle size from stepping in them are now properly communicated
+      to the client
+    type: fix
+  - message: Puddles will no longer enter an "uncleanable" state when too many people
+      walk over them
+    type: fix
+  - message: Existing stain contents are now mixed back into puddles, and vice versa
+    type: add
+  id: 1647
+  time: '2026-07-19T17:16:00.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1647
 - author: gummyema
   changes:
   - message: Added engineering and medical maid outfits
@@ -7027,6 +7066,14 @@ Entries:
   id: 1653
   time: '2026-07-14T00:13:14.000'
   url: https://github.com/moff-station/moff-station-14/pull/1653
+- author: StudMuffin
+  changes:
+  - message: the station can fall victim to the LawBreaker virus, a new station event
+      in which all silicons will share a unique randomly generated lawset !
+    type: add
+  id: 1655
+  time: '2026-07-18T18:48:34.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1655
 - author: DuckManZach
   changes:
   - message: Standardized gamemode player counts
@@ -7034,5 +7081,159 @@ Entries:
   id: 1657
   time: '2026-07-14T12:11:49.000'
   url: https://github.com/moff-station/moff-station-14/pull/1657
+- author: FreianOfVoid
+  changes:
+  - message: Added moffles and meat waffles for our moth and reptilian friends!
+    type: add
+  id: 1659
+  time: '2026-07-20T18:47:14.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1659
+- author: CasaleBalthazar, Centronias, Nyxilath
+  changes:
+  - message: Hellportal mobs now return back to their plane of origin on death, acidifying
+      on death.
+    type: tweak
+  - message: Hellportals now will halt reinforcements when demonic forces exceed 100
+      strong.
+    type: tweak
+  id: 1660
+  time: '2026-07-18T18:48:34.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1660
+- author: StudMuffin
+  changes:
+  - message: the molar gas mixer, a new type of gas mixer that respect the specified
+      mix when mixing gases at different temperatures
+    type: add
+  - message: renamed the gas mixer to volumetric gas mixer
+    type: tweak
+  - message: updated the guidebook entry on gas mixing/filtering
+    type: tweak
+  id: 1662
+  time: '2026-07-18T17:17:26.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1662
+- author: StudMuffin
+  changes:
+  - message: Added the mail cyborg module, allowing cyborgs to interract with... mail
+    type: add
+  - message: Added the advanced mail cyborg module, a salvage chassis exclusive version
+      of the mail module including a mail cannon
+    type: add
+  - message: Cargo can now order mail capsules from the orders console
+    type: add
+  id: 1663
+  time: '2026-07-18T02:23:48.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1663
+- author: gooseyguy
+  changes:
+  - message: Added Rareel's Personal Item!
+    type: add
+  id: 1664
+  time: '2026-07-18T21:49:36.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1664
+- author: Centronias
+  changes:
+  - message: Resomis' night vision is once again disabled while they are immune to
+      flashes.
+    type: fix
+  id: 1669
+  time: '2026-07-16T19:48:57.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1669
+- author: CastleKeeper325, TheLaggyOne1
+  changes:
+  - message: There is a new version of the angler markings which has a bulb that glows
+      in the dark
+    type: add
+  id: 1670
+  time: '2026-07-18T19:20:10.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1670
+- author: gummyema
+  changes:
+  - message: Added red and yellow perfomer's outfits, inspired by Kasane Teto and
+      Akita Neru respectively
+    type: add
+  - message: added "kasane teto costume bag" and "akita neru costume bag" containing
+      the new outfits
+    type: add
+  - message: Resprited the performer's (Miku) outfit and gave it a new name
+    type: tweak
+  - message: '"hatsune miku day bag" has been renamed to "hatsune miku costume bag"'
+    type: tweak
+  - message: Miku, Teto and Neru costume bags have all been added to DramaDrobe stock
+    type: tweak
+  - message: new vocal synth outfits added to musician roundstart gear selection
+    type: tweak
+  id: 1672
+  time: '2026-07-17T19:29:23.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1672
+- author: DuckManZach
+  changes:
+  - message: You now rejuvenate after getting a kill in gungame!
+    type: add
+  id: 1676
+  time: '2026-07-19T17:08:52.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1676
+- author: Dave
+  changes:
+  - message: New Holopad sprites & hue adjustments.
+    type: add
+  - message: New AI core sprites.
+    type: add
+  - message: new AI hologram sprites
+    type: tweak
+  - message: thaven & gray ai hologram options
+    type: add
+  id: 1678
+  time: '2026-07-21T19:01:23.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1678
+- author: Centronias
+  changes:
+  - message: Replicators now properly return to a controllable healthy state when
+      repaired from being disabled on the ground.
+    type: fix
+  id: 1679
+  time: '2026-07-17T23:00:01.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1679
+- author: DuckManZach
+  changes:
+  - message: Fixed antag weights!
+    type: fix
+  id: 1680
+  time: '2026-07-20T23:00:56.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1680
+- author: Nyxilath
+  changes:
+  - message: Vox Syndicate Footsoldiers now spawn with nitrogen tanks.
+    type: fix
+  - message: Syndicate Footsoldiers have been given brand swag backpacks.
+    type: tweak
+  id: 1683
+  time: '2026-07-20T20:55:40.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1683
+- author: Dave
+  changes:
+  - message: New Kitten Plushie!
+    type: add
+  - message: Kazo & Sawa-Tar Personal Item tweaks
+    type: tweak
+  - message: Sammy Sniffles' Personal Item removed
+    type: remove
+  id: 1684
+  time: '2026-07-18T16:47:07.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1684
+- author: OrbitSystem07
+  changes:
+  - message: 'Fixed the rotation on the pirate shuttles thrusters: It can now go forward.'
+    type: fix
+  id: 1685
+  time: '2026-07-20T19:07:56.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1685
+- author: FreianOfVoid
+  changes:
+  - message: A "Hephaestus" Iconography option has been added to the AI's customization
+      database
+    type: add
+  id: 1691
+  time: '2026-07-20T23:21:50.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1691
 Name: Mofflog
 Order: -2
