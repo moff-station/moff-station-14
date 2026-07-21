@@ -9,9 +9,7 @@ using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom;
 namespace Content.Shared._Moffstation.Voting.Components;
 
 /// <summary>
-/// A vote entry players enroll in to become an owning game rule's antag(s). When the timer runs out the
-/// enrolled players get assigned; if fewer than <see cref="MinEnrolled"/> enrolled, <see cref="FallbackRules"/>
-/// start instead. Resolved server-side in <c>MoffEnrollEventSystem</c>.
+/// A component which allows for ghost rolls to be enrolled in via a ESSynchronizedVoteManagerComponent
 /// </summary>
 [RegisterComponent, NetworkedComponent, AutoGenerateComponentState(true), AutoGenerateComponentPause]
 public sealed partial class MoffEnrollEventComponent : Component
