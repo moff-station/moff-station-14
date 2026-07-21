@@ -1,0 +1,25 @@
+- type: entity
+  abstract: true
+  id: ClothingHeadToggleableWeldingMask
+  name: base helmet toggleable welding mask
+  categories: [ HideSpawnMenu ]
+  components:
+  - state: icon-up
+    visible: false
+    map: [ "visor_icon" ]
+  - type: HelmetVisor
+    isActive: true
+    components:
+    - type: EyeProtection
+    - type: FlashImmunity
+    - type: WeldingMaskOverlay
+      texture: /Textures/_Funkystation/Clothing/Head/Welding/weldingOverlay.png
+  - type: GenericVisualizer
+    visuals:
+      enum.HelmetVisorVisuals.IsDown:
+        visor_icon:
+          False: { visible: false }
+          True: { visible: true, state: icon-up }
+        unshaded_base:
+          False: { visible: true }
+          True: { visible: false }
