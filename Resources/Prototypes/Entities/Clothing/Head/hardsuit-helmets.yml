@@ -1428,16 +1428,4 @@
     radius: 5
     energy: 2
 
-# Hardsuit welding visor action, Funky
-- type: entity
-  parent: BaseAction
-  id: ActionToggleHelmetVisor
-  name: Toggle Visor
-  description: Flips the helmet visor up or down.
-  components:
-  - type: Action
-    icon:
-      sprite: Clothing/Head/Welding/welding.rsi
-      state: icon
-  - type: InstantAction
-    event: !type:ToggleHelmetVisorEvent
+
