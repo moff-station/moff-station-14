@@ -2,13 +2,8 @@ using Robust.Shared.Audio;
 using Robust.Shared.GameStates;
 using Robust.Shared.Prototypes; // Funky change
 using Robust.Shared.Serialization;
-using Content.Shared.Actions; // Funky change
 
 namespace Content.Shared.SubFloor;
-
-public sealed partial class ToggleTrayScannerEvent : InstantActionEvent
-{
-}
 
 [RegisterComponent, NetworkedComponent, AutoGenerateComponentState]
 public sealed partial class TrayScannerComponent : Component
