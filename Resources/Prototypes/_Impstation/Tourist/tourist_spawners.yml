@@ -74,7 +74,7 @@
     profile: TouristRule
 
 # Tourist starting gear options. Currently differentiated by color of shirt and whether or not they're wearing hats, but they could get other stuff too
-- type: roleLoadout
+- type: startingGear
   id: TouristRedShirt
   equipment:
     jumpsuit: ClothingUniformJumpsuitHawaiRed
@@ -86,7 +86,7 @@
     pocket1: SpaceCash2500
     pocket2: TouristCamera
 
-- type: roleLoadout
+- type: startingGear
   id: TouristBlueShirt
   equipment:
     jumpsuit: ClothingUniformJumpsuitHawaiBlue
@@ -98,7 +98,7 @@
     pocket1: SpaceCash2500
     pocket2: TouristCamera
 
-- type: roleLoadout
+- type: startingGear
   id: TouristYellowShirt
   equipment:
     jumpsuit: ClothingUniformJumpsuitHawaiYellow
@@ -110,7 +110,7 @@
     pocket1: SpaceCash2500
     pocket2: TouristCamera
 
-- type: roleLoadout
+- type: startingGear
   id: TouristBlackShirt
   equipment:
     jumpsuit: ClothingUniformJumpsuitHawaiBlack
@@ -122,7 +122,7 @@
     pocket1: SpaceCash2500
     pocket2: TouristCamera
 
-- type: roleLoadout
+- type: startingGear
   id: TouristHatRedShirt
   equipment:
     head: ClothingHeadHatStrawHat
@@ -135,7 +135,7 @@
     pocket1: SpaceCash2500
     pocket2: TouristCamera
 
-- type: roleLoadout
+- type: startingGear
   id: TouristHatBlueShirt
   equipment:
     head: ClothingHeadHatStrawHat
@@ -148,7 +148,7 @@
     pocket1: SpaceCash2500
     pocket2: TouristCamera
 
-- type: roleLoadout
+- type: startingGear
   id: TouristHatYellowShirt
   equipment:
     head: ClothingHeadHatStrawHat
@@ -161,7 +161,7 @@
     pocket1: SpaceCash2500
     pocket2: TouristCamera
 
-- type: roleLoadout
+- type: startingGear
   id: TouristHatBlackShirt
   equipment:
     head: ClothingHeadHatStrawHat
