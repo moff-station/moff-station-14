@@ -38,6 +38,7 @@
     # Moffstation - Start - Moffstation basic antag events
     - id: SyndicateDeadDrop
     - id: SyndieVentSoldierSpawn
+    - id: LawBreakerVirus
     # Moffstation - End
 
 - type: entityTable
@@ -58,6 +59,7 @@
     - id: SyndicateListeningOutpostSpawn
     - id: PirateCorsairSpawn
     - id: HellPortalSpawn
+    - id: ReplicatorSpawn
     # Moffstation - End
 
 - type: entityTable
@@ -80,7 +82,7 @@
 
 - type: entity
   abstract: true
-  parent: BaseGameRule
+  parent: BaseUnweightedAntagRule # Moff - ghost roles are NOT weighted
   id: BaseAntagGhostRoleRule
   components:
   - type: AntagSelection

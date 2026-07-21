@@ -23,7 +23,7 @@
     range: 1
     needsAnchoring: true
   - type: Sprite
-    sprite: Structures/Machines/holopad.rsi
+    sprite: _Moffstation/Structures/Machines/holopad.rsi # Moffstation
     drawdepth: HighFloorObjects
     snapCardinals: true
     layers:
@@ -59,7 +59,7 @@
   - type: PointLight
     radius: 1.3
     energy: 1.8
-    color: "#afe1fe"
+    color: "#7baa9a"
     enabled: false
   - type: AmbientSound
     enabled: false
@@ -71,7 +71,7 @@
     hologramProtoId: HolopadHologram
   - type: Speech
     speechVerb: Robotic
-    speechSounds: Borg
+    speechSounds: Pai # Moffstation
     speechBubbleOffset: 0.45
   - type: Telephone
     ringTone: /Audio/Machines/double_ring.ogg
@@ -163,18 +163,20 @@
     proto: robot
   - type: Speech
     speechVerb: Robotic
-    speechSounds: Borg
+    speechSounds: Pai # Moffstation
     speechBubbleOffset: 0.45
   - type: HolopadHologram
-    rsiPath: Structures/Machines/holopad.rsi
+    rsiPath: _Moffstation/Structures/Machines/holopad.rsi # Moffstation
     rsiState: icon_in_call
     shaderName: Hologram
-    color1: "#65b8e2"
-    color2: "#3a6981"
-    alpha: 0.9
+# Moffstation - Start
+    color1: "#4fb3aa"
+    color2: "#2b948a"
+    alpha: 0.75
+# Moffstation - End
     intensity: 2
     scrollRate: 0.125
-    offset: -0.02, 0.45
+    offset: 0.05, 0.45 # Moffstation
   - type: Tag
     tags:
     - HideContextMenu

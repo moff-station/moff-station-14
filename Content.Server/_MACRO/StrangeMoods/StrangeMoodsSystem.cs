@@ -13,7 +13,6 @@ using Robust.Shared.Audio.Systems;
 using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
-using Robust.Shared.Serialization.Manager;
 
 namespace Content.Server._MACRO.StrangeMoods;
 
@@ -22,14 +21,15 @@ public sealed partial class StrangeMoodsSystem : SharedStrangeMoodsSystem
     [Dependency] private IChatManager _chat = default!;
     [Dependency] private IPrototypeManager _proto = default!;
     [Dependency] private IRobustRandom _random = default!;
-    [Dependency] private ISerializationManager _serialization = default!;
     [Dependency] private ActionsSystem _actions = default!;
     [Dependency] private SharedAudioSystem _audio = default!;
     [Dependency] private UserInterfaceSystem _bui = default!;
 
     private readonly HashSet<SharedMood> _sharedMoods = [];
     private readonly HashSet<StrangeMood> _emptyMoods = []; // cached hashset that never gets modified
-    private readonly HashSet<ProtoId<StrangeMoodPrototype>> _moodProtos = []; // cached hashset that gets changed in GetMoodProtoSet
+
+    private readonly HashSet<ProtoId<StrangeMoodPrototype>>
+        _moodProtos = []; // cached hashset that gets changed in GetMoodProtoSet
 
     public override void Initialize()
     {
@@ -50,7 +50,7 @@ public sealed partial class StrangeMoodsSystem : SharedStrangeMoodsSystem
 
         if (_proto.TryIndex(ent.Comp.StrangeMoodPrototype, out var moodProto))
         {
-            _serialization.CopyTo(moodProto, ref mood, notNullableOverride: true);
+            mood = DeepCopy(moodProto);
 
             // Add any required components
             if (moodProto.Components is { } components)
@@ -65,7 +65,9 @@ public sealed partial class StrangeMoodsSystem : SharedStrangeMoodsSystem
         // Add action to bar
         ent.Comp.Action ??= _actions.AddAction(ent.Owner, mood.ActionViewMoods);
         if (TryComp<UserInterfaceComponent>(ent, out var ui))
-            _bui.SetUi((ent, ui), StrangeMoodsUiKey.Key, new InterfaceData("StrangeMoodsBoundUserInterface", requireInputValidation: false));
+            _bui.SetUi((ent, ui),
+                StrangeMoodsUiKey.Key,
+                new InterfaceData("StrangeMoodsBoundUserInterface", requireInputValidation: false));
     }
 
     private void OnStrangeMoodsShutdown(Entity<StrangeMoodsComponent> ent, ref ComponentShutdown args)
@@ -102,7 +104,8 @@ public sealed partial class StrangeMoodsSystem : SharedStrangeMoodsSystem
     /// <summary>
     /// Clears the moods for an entity, then applies a new set of moods.
     /// </summary>
-    public void RefreshMoods(Entity<StrangeMoodsComponent> ent, Dictionary<ProtoId<DatasetPrototype>, int>? datasets = null)
+    public void RefreshMoods(Entity<StrangeMoodsComponent> ent,
+        Dictionary<ProtoId<DatasetPrototype>, int>? datasets = null)
     {
         datasets ??= ent.Comp.StrangeMood.Datasets;
         ent.Comp.StrangeMood.Moods = _emptyMoods.ToList();
@@ -124,7 +127,10 @@ public sealed partial class StrangeMoodsSystem : SharedStrangeMoodsSystem
     /// Checks if the given mood prototype conflicts with the current moods, and
     /// adds the mood if it does not.
     /// </summary>
-    public bool TryAddMood(Entity<StrangeMoodsComponent> ent, StrangeMoodPrototype moodProto, bool allowConflict = false, bool notify = true)
+    public bool TryAddMood(Entity<StrangeMoodsComponent> ent,
+        StrangeMoodPrototype moodProto,
+        bool allowConflict = false,
+        bool notify = true)
     {
         if (!allowConflict && GetConflicts(ent).Contains(moodProto.ID))
             return false;
@@ -136,7 +142,10 @@ public sealed partial class StrangeMoodsSystem : SharedStrangeMoodsSystem
     /// <summary>
     /// Tries to add a random mood using a specific dataset.
     /// </summary>
-    public bool TryAddRandomMood(Entity<StrangeMoodsComponent> ent, ProtoId<DatasetPrototype> dataset, bool notify = true, HashSet<ProtoId<StrangeMoodPrototype>>? conflicts = null)
+    public bool TryAddRandomMood(Entity<StrangeMoodsComponent> ent,
+        ProtoId<DatasetPrototype> dataset,
+        bool notify = true,
+        HashSet<ProtoId<StrangeMoodPrototype>>? conflicts = null)
     {
         conflicts ??= [];
         conflicts.UnionWith(GetConflicts(ent));
@@ -151,7 +160,10 @@ public sealed partial class StrangeMoodsSystem : SharedStrangeMoodsSystem
     /// <summary>
     /// Tries to add a random mood using a weighted random dataset.
     /// </summary>
-    public bool TryAddRandomMood(Entity<StrangeMoodsComponent> ent, ProtoId<WeightedRandomPrototype> dataset, bool notify = true, HashSet<ProtoId<StrangeMoodPrototype>>? conflicts = null)
+    public bool TryAddRandomMood(Entity<StrangeMoodsComponent> ent,
+        ProtoId<WeightedRandomPrototype> dataset,
+        bool notify = true,
+        HashSet<ProtoId<StrangeMoodPrototype>>? conflicts = null)
     {
         var chosenDataset = _proto.Index(dataset).Pick();
 
@@ -189,7 +201,13 @@ public sealed partial class StrangeMoodsSystem : SharedStrangeMoodsSystem
 
         var msg = Loc.GetString(ent.Comp.StrangeMood.MoodsChangedMessage);
         var wrappedMessage = Loc.GetString("chat-manager-server-wrap-message", ("message", msg));
-        _chat.ChatMessageToOne(ChatChannel.Server, msg, wrappedMessage, default, false, session.Channel, colorOverride: ent.Comp.StrangeMood.MoodsChangedColor);
+        _chat.ChatMessageToOne(ChatChannel.Server,
+            msg,
+            wrappedMessage,
+            default,
+            false,
+            session.Channel,
+            colorOverride: ent.Comp.StrangeMood.MoodsChangedColor);
 
         UpdateBuiState(ent); // update the UI without needing to re-open it
     }
@@ -211,7 +229,10 @@ public sealed partial class StrangeMoodsSystem : SharedStrangeMoodsSystem
     /// <summary>
     /// Attempts to pick a new mood from the given dataset.
     /// </summary>
-    public bool TryPick(ProtoId<DatasetPrototype>? dataset, [NotNullWhen(true)] out StrangeMoodPrototype? proto, IEnumerable<StrangeMood>? currentMoods = null, HashSet<ProtoId<StrangeMoodPrototype>>? conflicts = null)
+    public bool TryPick(ProtoId<DatasetPrototype>? dataset,
+        [NotNullWhen(true)] out StrangeMoodPrototype? proto,
+        IEnumerable<StrangeMood>? currentMoods = null,
+        HashSet<ProtoId<StrangeMoodPrototype>>? conflicts = null)
     {
         if (!_proto.TryIndex(dataset, out var datasetProto))
         {
@@ -271,7 +292,6 @@ public sealed partial class StrangeMoodsSystem : SharedStrangeMoodsSystem
 
         sharedMood = null;
         return false;
-
     }
 
     /// <summary>
@@ -295,8 +315,7 @@ public sealed partial class StrangeMoodsSystem : SharedStrangeMoodsSystem
     /// </summary>
     public StrangeMood RollMood(StrangeMoodPrototype proto)
     {
-        var mood = new StrangeMood();
-        _serialization.CopyTo(proto, ref mood, notNullableOverride: true);
+        var mood = DeepCopy(proto);
         var alreadyChosen = new HashSet<ProtoId<StrangeMoodPrototype>>();
 
         foreach (var (name, datasetId) in proto.MoodVarDatasets)
@@ -462,10 +481,12 @@ public sealed partial class StrangeMoodsSystem : SharedStrangeMoodsSystem
     /// Attempts to add moods to the given shared mood.
     /// If no moods are specified, a random mood is added.
     /// </summary>
-    private bool TryAddSharedMood(SharedMood sharedMood, List<StrangeMood>? newMoods = null, bool checkConflicts = true, bool notify = true)
+    private bool TryAddSharedMood(SharedMood sharedMood,
+        List<StrangeMood>? newMoods = null,
+        bool checkConflicts = true,
+        bool notify = true)
     {
-        var mood = new SharedMood();
-        _serialization.CopyTo(sharedMood, ref mood, notNullableOverride: true);
+        var mood = DeepCopy(sharedMood);
 
         if (newMoods == null)
         {
@@ -516,8 +537,8 @@ public sealed partial class StrangeMoodsSystem : SharedStrangeMoodsSystem
     private bool SharedMoodConflicts(SharedMood sharedMood, StrangeMood mood)
     {
         return mood.ProtoId is { } id &&
-            (GetConflicts(sharedMood.Moods).Contains(id) ||
-            GetMoodProtoSet(sharedMood.Moods).Overlaps(mood.Conflicts));
+               (GetConflicts(sharedMood.Moods).Contains(id) ||
+                GetMoodProtoSet(sharedMood.Moods).Overlaps(mood.Conflicts));
     }
 
     /// <summary>
