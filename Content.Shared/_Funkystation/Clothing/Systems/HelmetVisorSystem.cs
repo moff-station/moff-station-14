@@ -64,7 +64,7 @@ public sealed partial class HelmetVisorSystem : EntitySystem
             EntityManager.RemoveComponents(ent.Owner, ent.Comp.Components);
     }
 
-    private void OnGetVisuals(Entity<HelmetVisorComponent> ent, ref GetEquipmentVisualsEvent args)
+    private static void OnGetVisuals(Entity<HelmetVisorComponent> ent, ref GetEquipmentVisualsEvent args)
     {
         var state = ent.Comp.IsActive ? ent.Comp.StateUp : ent.Comp.StateDown;
 
