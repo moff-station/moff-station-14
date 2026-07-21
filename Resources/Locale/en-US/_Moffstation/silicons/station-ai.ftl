@@ -10,6 +10,7 @@ station-ai-icon-floppycat = Floppycat
 station-ai-icon-glitchman = Glitchman
 station-ai-icon-hades = Hades
 station-ai-icon-helios = Helios
+station-ai-icon-hephaestus = Hephaestus
 station-ai-icon-honeycomb = Honeycomb
 station-ai-icon-hourglass = Hourglass
 station-ai-icon-lonestar = Lonestar

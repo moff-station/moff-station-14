@@ -19,6 +19,7 @@
     slots:
       item:
         name: clothing-boots-sidearm
+        ejectOnBreak: true
         whitelist:
           tags:
           - ToyKnife
@@ -128,6 +129,7 @@
   - type: SpeedModifierContactCapClothing
     maxContactSprintSlowdown: 0.7
     maxContactWalkSlowdown: 0.7
+  - type: NoFootprints # Funky change
   - type: StainRepellent # Moff - Can't be stained
 
 - type: entity

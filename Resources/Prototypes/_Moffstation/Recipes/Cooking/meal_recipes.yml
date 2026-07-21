@@ -87,3 +87,29 @@
     Milk: 20
   solids:
     FoodMeat: 1
+
+- type: microwaveMealRecipe
+  id: RecipeMoffles
+  name: waffle recipe
+  result: FoodBakedMoffle
+  time: 10
+  group: Breakfast
+  reagents:
+    Flour: 1
+    Fiber: 5
+    Milk: 5
+    Egg: 6
+    SodaWater: 5
+
+- type: microwaveMealRecipe
+  id: RecipeMeatWaffles
+  name: waffle recipe
+  result: FoodBakedMeatWaffle
+  time: 10
+  group: Breakfast
+  reagents:
+    Flour: 5
+    UncookedAnimalProteins: 5
+    Milk: 5
+    Egg: 6
+    SodaWater: 5
