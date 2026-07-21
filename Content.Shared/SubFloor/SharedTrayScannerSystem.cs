@@ -174,6 +174,7 @@ public abstract partial class SharedTrayScannerSystem : EntitySystem
     }
 
     // Funky change
+    [SubscribeLocalEvent]
     private void OnToggleAction(EntityUid uid, TrayScannerComponent scanner, ToggleTrayScannerEvent args)
     {
         if (args.Handled)
