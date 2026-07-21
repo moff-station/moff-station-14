@@ -9,6 +9,8 @@
   parent: RestrictedAntag
   id: SyndieVentSoldier
   spawnerPrototype: SyndicateFootsoldierGhostRoleSpawn
+  roleLoadout:
+  - RoleSurvivalNukie
   components:
   - type: Loadout
     prototypes:
