@@ -107,7 +107,7 @@
       visible: false
       shader: unshaded
       map: [ "light" ]
-      # Moffstation - Start - port hardsuit welding masks
+      # Moffstation - Start - port hardsuit welding masks, left here instead of _Moffstation's base_clothinghead.yml because the abstract cant apply layers. same for every instance of this.
     - state: icon-up
       visible: false
       map: [ "visor_icon" ]
