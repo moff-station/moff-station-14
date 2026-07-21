@@ -104,15 +104,3 @@
       map: [ "enum.ToggleableVisuals.Layer" ]
   - type: Clothing
     sprite: Clothing/Head/Welding/paintedwelding.rsi
-
-# Funky
-- type: entity
-  parent: BaseAction
-  id: ActionToggleWeldingMask
-  name: Toggle Welding Mask
-  description: Flips the welding mask up or down.
-  components:
-  - type: Action
-    itemIconStyle: BigItem
-  - type: InstantAction
-    event: !type:ToggleActionEvent
