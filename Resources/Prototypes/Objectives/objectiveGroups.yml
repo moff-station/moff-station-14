@@ -10,6 +10,7 @@
     TraitorObjectiveGroupSabotage: 0.5
     TraitorObjectiveGroupOther: 0.5
     DieObjective: 0.002 # Moved here directly, as embedding it in a table messes up the odds
+    EscapeShuttleObjective: 0.01
     # Moffstation - End
 
 - type: weightedRandom
