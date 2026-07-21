@@ -40,7 +40,7 @@ public sealed partial class HelmetVisorSystem : EntitySystem
             _actions.RemoveAction(ent.Owner, ent.Comp.ActionEntity);
     }
 
-    private void OnGetActions(Entity<HelmetVisorComponent> ent, ref GetItemActionsEvent args)
+    private static void OnGetActions(Entity<HelmetVisorComponent> ent, ref GetItemActionsEvent args)
     {
         if (ent.Comp.ActionEntity != null)
             args.AddAction(ent.Comp.ActionEntity.Value);
