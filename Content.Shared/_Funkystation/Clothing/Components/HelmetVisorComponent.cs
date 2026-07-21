@@ -34,9 +34,7 @@ public sealed partial class HelmetVisorComponent : Component
     public ComponentRegistry Components = new();
 }
 
-public sealed partial class ToggleHelmetVisorEvent : InstantActionEvent
-{
-}
+public sealed partial class ToggleHelmetVisorEvent : InstantActionEvent;
 
 [Serializable, NetSerializable]
 public enum HelmetVisorVisuals : byte
