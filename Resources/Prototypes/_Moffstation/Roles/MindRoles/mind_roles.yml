@@ -1,3 +1,14 @@
+# Eep
+- type: entity
+  parent: BaseMindRoleAntag
+  id: MindRoleEep
+  name: Eep Role
+  components:
+  - type: MindRole
+    roleType: SoloAntagonist
+    subtype: role-subtype-eep
+    subtypeColor: '#8522ff'
+
 # Replicators
 - type: entity
   parent: BaseMindRoleAntag
@@ -51,7 +62,7 @@
     roleType: TeamAntagonist
     exclusiveAntag: true
     antagPrototype: SyndicateSpy
-    subtype: role-subtype-faction-syndicate
+    subtype: role-subtype-faction-syndicate-mi13
     subtypeColor: darkred
   - type: SyndicateSpyRole
 

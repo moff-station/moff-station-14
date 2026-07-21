@@ -14,9 +14,11 @@ role-subtype-faction-conspiracy = The Conspiracy
 role-subtype-faction-spider-clan = The Spider Clan
 role-subtype-xenoborg-faction = Xenoborgs
 role-subtype-replicators = The Hive
+role-subtype-eep = Space Sheep
 
 # Individual Syndicate Factions
 role-subtype-faction-syndicate-gorlex = The Gorlex Maurauders
+role-subtype-faction-syndicate-mi13 = MI13
 
 role-subtype-dragon-faction = Space Dragons
 role-subtype-silicon = Silicon Law Matrix
