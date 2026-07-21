@@ -70,8 +70,6 @@
   parent: EventHumanoid
   components:
   - type: Tourist
-  - type: AutoTraitor #this is weirdly named but works for more than just traitors
-    profile: TouristRule
 
 # Tourist starting gear options. Currently differentiated by color of shirt and whether or not they're wearing hats, but they could get other stuff too
 - type: startingGear
