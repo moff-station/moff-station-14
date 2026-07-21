@@ -19,7 +19,8 @@ public sealed partial class GoggleShaderSystem : EntitySystem
     [Dependency] private IConfigurationManager _cfg = null!;
 
     private GoggleShaderOverlay _overlay = null!;
-
+    private const string HeadString = "head";
+    private const string EyeString = "eyes";
     public override void Initialize()
     {
         base.Initialize();
@@ -48,13 +49,13 @@ public sealed partial class GoggleShaderSystem : EntitySystem
 
     private void OnEquip(Entity<GoggleShaderComponent> ent, ref GotEquippedEvent args)
     {
-        if (args.EquipTarget == _playerManager.LocalEntity && (args.Slot == "head" || args.Slot == "eyes"))
+        if (args.EquipTarget == _playerManager.LocalEntity && (args.Slot == HeadString || args.Slot == EyeString))
             RefreshOverlay();
     }
 
     private void OnUnequip(Entity<GoggleShaderComponent> ent, ref GotUnequippedEvent args)
     {
-        if (args.EquipTarget == _playerManager.LocalEntity && (args.Slot == "head" || args.Slot == "eyes"))
+        if (args.EquipTarget == _playerManager.LocalEntity && (args.Slot == HeadString || args.Slot == EyeString))
             RefreshOverlay(ignoreEnt: ent.Owner);
     }
 
@@ -85,7 +86,7 @@ public sealed partial class GoggleShaderSystem : EntitySystem
 
         _overlay.ActiveShaders.Clear();
 
-        if (_inventory.TryGetSlotEntity(localPlayer.Value, "eyes", out var eyesItem) &&
+        if (_inventory.TryGetSlotEntity(localPlayer.Value, EyeString, out var eyesItem) &&
             eyesItem != ignoreEnt &&
             TryComp<GoggleShaderComponent>(eyesItem.Value, out var eyesComp) &&
             eyesComp.Enabled)
@@ -93,7 +94,7 @@ public sealed partial class GoggleShaderSystem : EntitySystem
             _overlay.ActiveShaders.Add((eyesComp.Shader, eyesComp.Color));
         }
 
-        if (_inventory.TryGetSlotEntity(localPlayer.Value, "head", out var headItem) &&
+        if (_inventory.TryGetSlotEntity(localPlayer.Value, HeadString, out var headItem) &&
             headItem != ignoreEnt &&
             TryComp<GoggleShaderComponent>(headItem.Value, out var headComp) &&
             headComp.Enabled)

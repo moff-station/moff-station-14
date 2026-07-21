@@ -16,7 +16,7 @@ public sealed partial class WeldingMaskOverlaySystem : EntitySystem
     [Dependency] private InventorySystem _inventory = null!;
 
     private WeldingMaskOverlay _overlay = null!;
-
+    private const string HeadString = "head"
     public override void Initialize()
     {
         base.Initialize();
@@ -45,13 +45,13 @@ public sealed partial class WeldingMaskOverlaySystem : EntitySystem
     private void OnEquip(Entity<WeldingMaskOverlayComponent> ent, ref GotEquippedEvent args)
     {
 
-        if (args.EquipTarget == _player.LocalSession?.AttachedEntity && (args.Slot == "head" || args.Slot == "mask"))
+        if (args.EquipTarget == _player.LocalSession?.AttachedEntity && (args.Slot == HeadString || args.Slot == HeadString))
             RefreshOverlay();
     }
 
     private void OnUnequip(Entity<WeldingMaskOverlayComponent> ent, ref GotUnequippedEvent args)
     {
-        if (args.EquipTarget == _player.LocalSession?.AttachedEntity && (args.Slot == "head" || args.Slot == "mask"))
+        if (args.EquipTarget == _player.LocalSession?.AttachedEntity && (args.Slot == HeadString || args.Slot == HeadString))
             RefreshOverlay(ignoreEnt: ent.Owner);
     }
 
@@ -75,7 +75,7 @@ public sealed partial class WeldingMaskOverlaySystem : EntitySystem
             return;
         }
 
-        if (_inventory.TryGetSlotEntity(localPlayer.Value, "head", out var headItem) &&
+        if (_inventory.TryGetSlotEntity(localPlayer.Value, HeadString, out var headItem) &&
             headItem != ignoreEnt &&
             TryComp<WeldingMaskOverlayComponent>(headItem.Value, out var headComp))
         {
