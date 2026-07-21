@@ -5,11 +5,11 @@
     # Moffstation - Start - Reweighing tables for picker. Keep original proto so we can keep up with any upstream changes
     TraitorObjectiveGroupSteal: 0.25
     TraitorObjectiveGroupKill: 1
-    #TraitorObjectiveGroupState: 0.25 # Moff - QUIT FUCKIN UP MY ODDS
+    #TraitorObjectiveGroupState: 0.25 # Moff - QUIT FUCKIN UP MY ODDS (Rolls DAGD too often)
     TraitorObjectiveGroupSocial: 0.5 #Involves helping/harming others without killing them or stealing their stuff
     TraitorObjectiveGroupSabotage: 0.5
     TraitorObjectiveGroupOther: 0.5
-    DieObjective: 0.002 # Moved here directly, as embedding it in a table messes up the odds
+    DieObjective: 0.002 # Moff - Moved here directly, as embedding it in a table messes up the odds
     EscapeShuttleObjective: 0.01
     # Moffstation - End
 
