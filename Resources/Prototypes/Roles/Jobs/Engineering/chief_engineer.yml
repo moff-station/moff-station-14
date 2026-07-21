@@ -17,7 +17,7 @@
     - !type:DepartmentTimeRequirement
       department: Engineering
       time: 10h
-  weight: 10
+#  weight: 10 # Moff - no job weights
   startingGear: ChiefEngineerGear
   icon: "JobIconChiefEngineer"
   supervisors: job-supervisors-captain
