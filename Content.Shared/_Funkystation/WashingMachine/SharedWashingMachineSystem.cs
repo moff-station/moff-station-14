@@ -189,8 +189,7 @@ public abstract partial class SharedWashingMachineSystem : EntitySystem
         {
             items = storage.Contents.ContainedEntities.ToHashSet();
 
-            // Harvest server-side forensics (fibers, and DNA from the stains) before we wash the
-            // stains out below - GetSolutionsDNA needs the solution intact.
+            // Clean off prints and DNA
             UpdateForensics((uid, comp), items);
 
             foreach (var item in items)
