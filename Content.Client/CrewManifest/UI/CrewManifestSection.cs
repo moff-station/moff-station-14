@@ -70,7 +70,7 @@ public sealed class CrewManifestSection : BoxContainer
                 Margin = new Thickness(6, 0, 0, 0),
                 StyleClasses = { "CrewManifestGender" }
             };
-            gender.SetMessage(Loc.GetString("gender-display", ("gender", entry.Gender)));
+            gender.SetMessage(Loc.GetString("humanoid-profile-editor-pronouns", ("gender", entry.Gender)));
 
             nameContainer.AddChild(name);
             nameContainer.AddChild(gender);
