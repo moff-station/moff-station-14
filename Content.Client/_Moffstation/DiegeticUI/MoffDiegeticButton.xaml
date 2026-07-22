@@ -1,14 +1,13 @@
-﻿<ContainerButton xmlns="https://spacestation14.io"
+<ContainerButton xmlns="https://spacestation14.io"
                  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                  xmlns:graphics="clr-namespace:Robust.Client.Graphics;assembly=Robust.Client"
-                 MuteSounds="True">
+                 MuteSounds="True"
+                 MinSize="48 48">
     <ContainerButton.StyleBoxOverride>
-        <graphics:StyleBoxEmpty />
+        <graphics:StyleBoxTexture PatchMarginLeft="6" PatchMarginRight="6"
+                                  PatchMarginTop="11" PatchMarginBottom="9"
+                                  ContentMarginLeftOverride="6" ContentMarginRightOverride="6"
+                                  ContentMarginTopOverride="12" ContentMarginBottomOverride="14" />
     </ContainerButton.StyleBoxOverride>
-    <LayoutContainer Name="Inner">
-        <TextureRect Name="KeySprite"
-                     TexturePath="/Textures/_Funkystation/Interface/vending_key.png"
-                     Stretch="Scale" />
-        <Label Name="KeyLabel" HorizontalAlignment="Center" VerticalAlignment="Center" FontColorOverride="#807B7A"/>
-    </LayoutContainer>
+    <Label Name="KeyLabel" HorizontalAlignment="Center" VerticalAlignment="Center" FontColorOverride="#807B7A"/>
 </ContainerButton>
