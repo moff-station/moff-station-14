@@ -81,3 +81,11 @@ humanoid-profile-editor-voice-masculine = Masculine
 humanoid-profile-editor-voice-feminine = Feminine
 humanoid-profile-editor-voice-neutral = Neutral
 humanoid-profile-editor-voice-none = Unnamed Voice
+
+# Moff - Gender for crew pronouns
+gender-display = ({$gender ->
+    [male] He / Him
+    [female] She / Her
+    [neuter] It / It
+    *[other] They / Them
+})
