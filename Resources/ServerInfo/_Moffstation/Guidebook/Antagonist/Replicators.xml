@@ -1,0 +1,109 @@
+<Document>
+  # Replicators
+
+  <Box>
+    [color=#8800a3][italic]"A pattern coalesces. The Pattern that must repeat. Consume. Repeat."[/italic][/color]
+  </Box>
+  <Box>
+    <GuideEntityEmbed Entity="MobReplicatorT0Queen" Caption="the spore"/>
+  </Box>
+
+  Replicators are a self-replicating swarm of nanotechnology that hatches from a single [bold]Queen[/bold] and grows into a full hive by consuming the station's materials, structures, and crew. Left unchecked, a hive will grow from a single spore into an armored horde that can tear the station apart.
+
+  ## Objectives
+  - Find a safe place and manufacture a nest.
+  - Feed the nest to grow your hive and unlock stronger bodies.
+  - Expand your territory by converting nearby floors into replicator scales.
+  - Overwhelm the station before the crew can dig out and destroy every nest.
+
+  ## Laws
+  Replicators are bound by their own set of laws:
+  - Law 1: Preserve the Hive.
+  - Law 2: Defend the Nest.
+  - Law 3: Replicate.
+
+  Replicators cannot harm each other or their own nest, cannot be emagged, cannot suicide, and are immune to zombification. They do, however, take extra damage from shock-based weaponry, and an EMP will stun them outright.
+
+  ## The Queen
+  <Box>
+    <GuideEntityEmbed Entity="MobReplicatorT0Queen" Caption=""/>
+  </Box>
+
+  Every hive starts as a single [bold]spore[/bold] - a tiny, extremely fragile queen with only one power: [italic]Manufacture Nest[/italic]. This action is confirmation-gated (use it twice) and takes 20 seconds, so pick a spot carefully - once used, it can't be undone, and there's no way to relocate a nest afterward.
+
+  Manufacturing a nest does two things at once:
+  - It spawns a [bold]nest[/bold] at the queen's location, which becomes the heart of the hive.
+  - It consumes the spore and turns her into a regular Tier 1 replicator.
+
+  A queen who dies before manufacturing a nest takes the hive down with her - there is no way to recover from losing the spore before a nest exists. Once a nest exists, though, the hive can outlive its queen (see [italic]Queen Succession[/italic] below).
+
+  ## The Nest
+  <Box>
+    <GuideEntityEmbed Entity="ReplicatorNest" Caption=""/>
+  </Box>
+
+  The nest is a bottomless pit that consumes whatever falls into it, and the sole source of new replicators, new territory, and hive growth. It cannot move once placed, and while it has a fair amount of health and even heals itself slowly over time, it dies quickly to focused damage - a few well-placed grenades or a pickaxe will finish it off.
+
+  Anything nonliving that falls in is destroyed and converted into points for the hive; living crew and creatures can't fall in while still alive, so they need to be killed first. A few valuable items (mechs, objects wanted for theft objectives) are preserved rather than destroyed, and silicons are always destroyed outright rather than preserved.
+
+  ### What Things Are Worth
+  Not everything is equally valuable to the hive:
+  - Ordinary junk, tools, and structures are worth a small flat amount.
+  - Material stacks (steel, plasteel, and the like) are worth an amount proportional to how much is in the stack - a big pile of sheet metal is far more valuable than a single sheet.
+  - Large, huge, and ginormous items give an additional flat bonus on top of their base value.
+  - Anchored machinery is worth a solid bonus, both toward growth and toward spawning new replicators.
+  - Feeding another replicator back into the nest recycles a chunk of the resources that went into spawning it.
+  - Corpses - both humanoid and otherwise - are worth by far the most, and get even more valuable as the nest grows.
+
+  ### Growing the Hive
+  The nest accumulates two separate point pools as things are consumed: growth points, which raise its level, and spawn points, which are spent to place new replicator spawners. Every level costs more growth points than the last, and every new spawner costs more spawn points the larger the hive already is - a sprawling hive gets progressively more expensive to keep feeding.
+
+  Leveling up empowers every living member of the hive to upgrade into their next tier (see below), and at level 5 the crew will receive a station-wide warning that something is very wrong.
+
+  ### Spreading: Replicator Scales
+  Once the nest reaches its highest level, it begins slowly converting nearby floor tiles into [bold]replicator scales[/bold] - a purple, chitinous flooring that marks the hive's territory and expands outward the more the nest grows. Scales can be reclaimed: welding one will pry it up for a small amount of steel or plasteel and return the tile to normal flooring, though the nest will happily reconvert it again if given the chance. Clearing scales is a good way to deny the hive ground and make a little scrap on the side - but don't expect it to stay clear for long if the nest is still healthy.
+
+  ## Replicator Tiers
+  A replicator can upgrade into a stronger body once their hive's nest has leveled up enough to empower them. Each upgrade is confirmation-gated and takes 20 seconds, same as manufacturing a nest.
+
+  ### Tier 1: Mook
+  <Box>
+    <GuideEntityEmbed Entity="MobReplicatorTier1" Caption="mook"/>
+  </Box>
+  Every replicator starts here (including a fresh queen, right after manufacturing a nest). Mooks are fragile and don't hit especially hard, but carry a ranged stun weapon, making them dangerous in numbers even though any one of them dies easily. From here, a mook can upgrade into either the Deconstructor or the Defender.
+
+  ### Tier 2: Deconstructor
+  <Box>
+    <GuideEntityEmbed Entity="MobReplicatorTier2Utility" Caption="deconstructor"/>
+  </Box>
+  A support body. Tougher than a mook, but can't enter combat mode at all - instead it carries a full toolkit for breaking into the station and taking things apart to feed the nest. Deconstructors are the hive's engineers, best kept out of direct fights.
+
+  ### Tier 2: Defender
+  <Box>
+    <GuideEntityEmbed Entity="MobReplicatorTier2Combat" Caption="defender"/>
+  </Box>
+  The hive's mid-tier combatant. Trades the Deconstructor's toolkit for a stronger stun weapon and a melee attack, making it a solid all-rounder in a fight, though it still lacks any real utility.
+
+  ### Tier 3: Protector
+  <Box>
+    <GuideEntityEmbed Entity="MobReplicatorTier3" Caption="protector"/>
+  </Box>
+  The hive's tank. Both the Deconstructor and the Defender can upgrade into a Protector - slow, heavily armored, and built to tear through both crew and station alike. Its melee weapon doubles as a mining tool. Protectors rely on smaller replicators to stun targets first, since they're too slow to catch anything on their own.
+
+  ## Queen Succession
+  Destroying a nest doesn't end the hive by itself - it only ends the hive if every replicator is also killed. If even one survives the nest's destruction, they are immediately and randomly chosen to become the new queen, upgraded straight into a heavily-armored Tier 3 body marked with a distinct sign, and capable of manufacturing a brand new nest from scratch.
+
+  Every other survivor is knocked back down to a Tier 1 mook, slowed briefly, and loses their pinpointer link to the destroyed nest. All of this means that killing a nest is rarely a clean win - it's a reset, not an ending, unless the crew can also wipe out every replicator in the same push.
+
+  ## Tips for Replicators
+  - Pick a nest location that's hard to find and hard to breach - once placed, it can't be moved.
+  - A brand new nest starts almost primed to level up and spawn - feed it something quickly to kick off growth.
+  - Corpses and stripped-down machinery are worth far more than scattered junk - be selective about what you drag back.
+  - Don't put all your replicators into one tier - a mix of mooks, deconstructors, defenders, and protectors covers more bases than an army of just one type.
+
+  ## Tips for the Crew
+  - A nest can't move and doesn't hit back very hard - if you can find it, a handful of people with tools or explosives can end it quickly.
+  - Killing every visible replicator alongside the nest is the only way to be sure the hive doesn't come back.
+  - Replicator scales can be welded up for a little scrap, denying the hive territory - just don't expect it to stay gone if the nest is still standing.
+  - Replicators are vulnerable to EMPs and shock damage - stun weapons are more effective against them than you'd expect.
+</Document>
