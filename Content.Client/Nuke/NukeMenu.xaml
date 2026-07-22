@@ -1,8 +1,10 @@
 <DefaultWindow xmlns="https://spacestation14.io"
-            xmlns:gfx="clr-namespace:Robust.Client.Graphics;assembly=Robust.Client"
-            Title="{Loc 'nuke-user-interface-title'}"
-            MinSize="256 256"
-            SetSize="256 256">
+               xmlns:gfx="clr-namespace:Robust.Client.Graphics;assembly=Robust.Client"
+               xmlns:diegeticUI="clr-namespace:Content.Client._Moffstation.DiegeticUI"
+               Title="{Loc 'nuke-user-interface-title'}"
+               MinSize="320 310"
+               SetSize="320 310">
+    <!-- Moff - Adjusted window size above ^ -->
     <BoxContainer Orientation="Vertical"
                   HorizontalExpand="True"
                   VerticalExpand="True">

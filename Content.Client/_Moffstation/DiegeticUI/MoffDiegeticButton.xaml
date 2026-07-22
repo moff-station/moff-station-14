@@ -1,0 +1,14 @@
+﻿<ContainerButton xmlns="https://spacestation14.io"
+                 xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                 xmlns:graphics="clr-namespace:Robust.Client.Graphics;assembly=Robust.Client"
+                 MuteSounds="True">
+    <ContainerButton.StyleBoxOverride>
+        <graphics:StyleBoxEmpty />
+    </ContainerButton.StyleBoxOverride>
+    <LayoutContainer Name="Inner">
+        <TextureRect Name="KeySprite"
+                     TexturePath="/Textures/_Funkystation/Interface/vending_key.png"
+                     Stretch="Scale" />
+        <Label Name="KeyLabel" HorizontalAlignment="Center" VerticalAlignment="Center" FontColorOverride="#807B7A"/>
+    </LayoutContainer>
+</ContainerButton>
