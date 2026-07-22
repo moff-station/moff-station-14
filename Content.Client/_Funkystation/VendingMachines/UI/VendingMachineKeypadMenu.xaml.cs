@@ -73,12 +73,12 @@ public sealed partial class VendingMachineKeypadMenu : FancyWindow
             var shift = _bluesScale[number - 1]; // map 1-9 to the scale
             var pitch = MathF.Pow(2f, shift / 12f);
 
-            var key = new MoffDiegeticButton{ Text = number.ToString() };
+            var key = new MoffDiegeticButtonPhysical{ Text = number.ToString() };
             key.OnKeyPressed += () => OnNumberPressed(number, pitch);
             NumpadGrid.AddChild(key);
         }
 
-        var clearKey = new MoffDiegeticButton
+        var clearKey = new MoffDiegeticButtonPhysical
         {
             Text = Loc.GetString("vending-machine-keypad-clear"),
             Color = Color.FromHex("#ffb3b3"),
@@ -92,11 +92,11 @@ public sealed partial class VendingMachineKeypadMenu : FancyWindow
         };
         NumpadGrid.AddChild(clearKey);
 
-        var zeroKey = new MoffDiegeticButton{ Text = "0" };
+        var zeroKey = new MoffDiegeticButtonPhysical{ Text = "0" };
         zeroKey.OnKeyPressed += () => OnNumberPressed(0, MathF.Pow(2f, 12f / 12f));
         NumpadGrid.AddChild(zeroKey);
 
-        var enterKey = new MoffDiegeticButton
+        var enterKey = new MoffDiegeticButtonPhysical
         {
             Text = Loc.GetString("vending-machine-keypad-enter"),
             Color = Color.FromHex("#b3ffb3"),
@@ -118,7 +118,7 @@ public sealed partial class VendingMachineKeypadMenu : FancyWindow
             var shift = _bluesScale[row % _bluesScale.Length] - 12;
             var pitch = MathF.Pow(2f, shift / 12f);
 
-            var key = new MoffDiegeticButton{ Text = letter.ToString() };
+            var key = new MoffDiegeticButtonPhysical{ Text = letter.ToString() };
             key.OnKeyPressed += () => OnLetterPressed(capturedLetter, pitch);
             LetterGrid.AddChild(key);
         }

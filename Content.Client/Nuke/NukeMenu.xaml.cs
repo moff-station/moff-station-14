@@ -35,7 +35,7 @@ namespace Content.Client.Nuke
             }
 
             // clear button
-            var clearBtn = new MoffDiegeticButton // Moff - Diegetic Buttons
+            var clearBtn = new MoffDiegeticButtonPhysical // Moff - Diegetic Buttons
             {
                 Text = "C",
                 Color = Color.LightBlue // Moff - Diegetic Buttons
@@ -47,7 +47,7 @@ namespace Content.Client.Nuke
             AddKeypadButton(0);
 
             // enter button
-            var enterBtn = new MoffDiegeticButton() // Moff - Diegetic Buttons
+            var enterBtn = new MoffDiegeticButtonPhysical() // Moff - Diegetic Buttons
             {
                 Text = "E",
                 Color = Color.IndianRed // Moff - Diegetic Buttons
@@ -58,7 +58,7 @@ namespace Content.Client.Nuke
 
         private void AddKeypadButton(int i)
         {
-            var btn = new MoffDiegeticButton() // Moff - Diegetic Buttons
+            var btn = new MoffDiegeticButtonPhysical() // Moff - Diegetic Buttons
             {
                 Text = i.ToString()
             };

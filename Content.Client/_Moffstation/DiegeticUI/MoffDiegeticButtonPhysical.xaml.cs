@@ -7,7 +7,7 @@ using Robust.Client.UserInterface.XAML;
 namespace Content.Client._Moffstation.DiegeticUI;
 
 [GenerateTypedNameReferences]
-public sealed partial class MoffDiegeticButton : ContainerButton
+public sealed partial class MoffDiegeticButtonPhysical : ContainerButton
 {
     private const float PressedDarken = 0.7f;
 
@@ -39,7 +39,7 @@ public sealed partial class MoffDiegeticButton : ContainerButton
         set => KeyLabel.FontColorOverride = value;
     }
 
-    public MoffDiegeticButton()
+    public MoffDiegeticButtonPhysical()
     {
         RobustXamlLoader.Load(this);
         IoCManager.InjectDependencies(this);
