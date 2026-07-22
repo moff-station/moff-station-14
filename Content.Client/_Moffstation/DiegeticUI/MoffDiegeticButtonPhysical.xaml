@@ -4,10 +4,10 @@
                  MuteSounds="True"
                  MinSize="48 48">
     <ContainerButton.StyleBoxOverride>
-        <graphics:StyleBoxTexture PatchMarginLeft="6" PatchMarginRight="6"
-                                  PatchMarginTop="11" PatchMarginBottom="9"
+        <graphics:StyleBoxTexture PatchMarginLeft="5" PatchMarginRight="5"
+                                  PatchMarginTop="5" PatchMarginBottom="8"
                                   ContentMarginLeftOverride="6" ContentMarginRightOverride="6"
-                                  ContentMarginTopOverride="12" ContentMarginBottomOverride="14" />
+                                  ContentMarginTopOverride="6" ContentMarginBottomOverride="12" />
     </ContainerButton.StyleBoxOverride>
     <Label Name="KeyLabel" HorizontalAlignment="Center" VerticalAlignment="Center" FontColorOverride="#807B7A"/>
 </ContainerButton>
