@@ -225,3 +225,9 @@
     alternateState: Standing
   - type: StunVisuals
   - type: SetExamine # Umbra Change, all species can set additional examine text.
+  # Moff start - Funky footprints
+  - type: FootprintOwner
+  - type: SolutionManager
+    solutions:
+    - SolutionPrint
+  # Moff end

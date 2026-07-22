@@ -1,4 +1,5 @@
 using System.Linq;
+using Content.Shared._Funkystation.Fluids;
 using Content.Shared.Administration.Logs;
 using Content.Shared.Chemistry;
 using Content.Shared.Chemistry.Components;
@@ -10,18 +11,23 @@ using Content.Shared.Examine;
 using Content.Shared.FixedPoint;
 using Content.Shared.Fluids.Components;
 using Content.Shared.Friction;
+using Content.Shared.Gravity;
+using Content.Shared.Inventory;
 using Content.Shared.Movement.Components;
 using Content.Shared.Movement.Events;
 using Content.Shared.Movement.Systems;
 using Content.Shared.Nutrition.EntitySystems;
 using Content.Shared.Popups;
 using Content.Shared.Slippery;
+using Content.Shared.Standing;
 using Content.Shared.StepTrigger.Components;
 using Content.Shared.StepTrigger.Systems;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Containers;
 using Robust.Shared.Map;
 using Robust.Shared.Network;
+using Robust.Shared.Physics.Components;
+using Robust.Shared.Physics.Events;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Timing;
 
@@ -42,6 +48,9 @@ public abstract partial class SharedPuddleSystem : EntitySystem
     [Dependency] private StepTriggerSystem _stepTrigger = default!;
     [Dependency] private TileFrictionController _tile = default!;
     [Dependency] private INetManager _net = default!;
+    [Dependency] private InventorySystem _inventory = default!; // Funky - Clothing stains
+    [Dependency] private StandingStateSystem _standing = default!; // Moff - Clothing stains
+    [Dependency] private SharedGravitySystem _gravity = default!; // Moff - Clothing Stains
 
     [Dependency] private EntityQuery<StepTriggerComponent> _stepTriggerQuery = default!;
     [Dependency] private EntityQuery<ReactiveComponent> _reactiveQuery = default!;
@@ -95,6 +104,44 @@ public abstract partial class SharedPuddleSystem : EntitySystem
         TickEvaporation();
     }
 
+    // Moff start - we basically rewrote this function compared to what funky has
+    // Using startcollide rather than onstep, since the onstep is messed with by slippable... its bleak
+    [SubscribeLocalEvent]
+    private void OnStepInPuddle(Entity<PuddleComponent> ent, ref StartCollideEvent args)
+    {
+        // If it dont stain it dont stain
+        if (!ent.Comp.CausesStains)
+            return;
+
+        // The thing stepping in the puddle. Because I keep forgetting which is which
+        var stepper = args.OtherEntity;
+
+        if (!_solutionContainerSystem.ResolveSolution(ent.Owner, ent.Comp.SolutionName, ref ent.Comp.Solution, out var solution))
+            return;
+
+        if (solution.Volume <= FixedPoint2.Zero)
+            return;
+
+        // Check if its in air... because... if you're not on the ground you don't get spilled on
+        if (TryComp<PhysicsComponent>(stepper, out var physicsComp)
+            && (physicsComp.BodyStatus == BodyStatus.InAir || _gravity.IsWeightless(stepper)))
+            return;
+
+        // Choose le target...
+        // if standing and have shoes, just get it on their shoes
+        EntityUid target;
+        if (_standing.IsDown(stepper)) // on the ground, spill it on them in general
+            target = stepper;
+        else if (_inventory.TryGetSlotEntity(stepper, "shoes", out var shoes) && shoes is { } shoeUid)
+            target = shoeUid;
+        else
+            return;
+
+        var spilledEvent = new SpilledOnEvent(ent.Owner, solution);
+        RaiseLocalEvent(target, spilledEvent);
+    }
+    // Moff end
+
     private void OnPrototypesReloaded(PrototypesReloadedEventArgs ev)
     {
         if (ev.WasModified<ReagentPrototype>())
@@ -126,13 +173,18 @@ public abstract partial class SharedPuddleSystem : EntitySystem
 
         _deletionQueue.Remove(entity);
         UpdateSlip((entity, entity.Comp), args.Solution.Comp.Solution);
-        UpdateSlow(entity, args.Solution.Comp.Solution);
+        UpdateSlow(entity, args.Solution.Comp.Solution, entity.Comp); // Funky - Pass component here
         UpdateEvaporation(entity, args.Solution.Comp.Solution);
         UpdateAppearance((entity, entity.Comp));
     }
 
     private void OnGetFootstepSound(Entity<PuddleComponent> entity, ref GetFootstepSoundEvent args)
     {
+        // Funky start - footprints
+        if (!entity.Comp.AffectsSound)
+            return;
+        // Funky end
+
         if (!_solutionContainerSystem.ResolveSolution(entity.Owner, entity.Comp.SolutionName, ref entity.Comp.Solution,
                 out var solution))
             return;
@@ -187,7 +239,7 @@ public abstract partial class SharedPuddleSystem : EntitySystem
     private void UpdateAppearance(Entity<PuddleComponent?, AppearanceComponent?> ent)
     {
         var (uid, puddle, appearance) = ent;
-        if (!Resolve(ent, ref puddle, ref appearance))
+        if (!Resolve(ent, ref puddle, ref appearance, false)) // Funky - Uses TryComp behind the scenes now, protecting Footprints which lack it
             return;
 
         var volume = FixedPoint2.Zero;
@@ -319,8 +371,16 @@ public abstract partial class SharedPuddleSystem : EntitySystem
         Dirty(entity, slipComp);
     }
 
-    private void UpdateSlow(EntityUid uid, Solution solution)
+    private void UpdateSlow(EntityUid uid, Solution solution, PuddleComponent puddle) // Funky - added puddlecomponent
     {
+        // Funky start - Footprints
+        if (!puddle.AffectsMovement)
+        {
+            RemComp<SpeedModifierContactsComponent>(uid);
+            return;
+        }
+        // Funky end
+
         var maxViscosity = 0f;
         foreach (var (reagent, _) in solution.Contents)
         {

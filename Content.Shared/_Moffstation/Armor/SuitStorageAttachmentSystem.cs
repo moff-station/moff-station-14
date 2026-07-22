@@ -44,7 +44,7 @@ public sealed partial class SuitStorageAttachmentSystem : EntitySystem
         EntityUid item
     )
     {
-        if (!Resolve(entity, ref entity.Comp) ||
+        if (!Resolve(entity, ref entity.Comp, logMissing: false) ||
             GetSuitStorageAttachment((entity, entity.Comp)) is not { } attachment)
             return false;
 

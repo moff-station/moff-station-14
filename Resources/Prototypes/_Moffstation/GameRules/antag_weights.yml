@@ -1,0 +1,6 @@
+- type: entity
+  abstract: true
+  parent: BaseGameRule
+  id: BaseUnweightedAntagRule
+  components:
+  - type: MoffUnweightedAntag
