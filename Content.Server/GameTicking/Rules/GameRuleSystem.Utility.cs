@@ -1,3 +1,4 @@
+using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using Content.Server.Station.Components;
@@ -87,8 +88,8 @@ public abstract partial class GameRuleSystem<T> where T: IComponent
                 out targetGrid,
                 out targetCoords,
                 // Moffstation - Added largestGrid and safeatmos options
-                    largestGrid,
-                    safeAtmos);
+                largestGrid: largestGrid,
+                safeAtmos: safeAtmos);
                 // Moffstation - End
         }
 
@@ -99,6 +100,7 @@ public abstract partial class GameRuleSystem<T> where T: IComponent
         out Vector2i tile,
         out EntityUid targetGrid,
         out EntityCoordinates targetCoords,
+        int numAttempts = 10,
         // Moffstation - Add Largestgrid and safeatmos options
         bool largestGrid = false,
         bool safeAtmos = false)
@@ -109,33 +111,79 @@ public abstract partial class GameRuleSystem<T> where T: IComponent
         targetGrid = EntityUid.Invalid;
 
         // Weight grid choice by tilecount
-        var weights = new Dictionary<Entity<MapGridComponent>, float>();
+        var totalTiles = 0;
+        var grids = new List<(Entity<MapGridComponent> Entity, int Count, List<TileRef> Tiles)>();
         foreach (var possibleTarget in station.Comp.Grids)
         {
             if (!TryComp<MapGridComponent>(possibleTarget, out var comp))
                 continue;
 
-            weights.Add((possibleTarget, comp), _map.GetFilledTileCount((possibleTarget, comp)));
+            // Get the tile count for the given grid.
+            var tileCount = _map.GetFilledTileCount((possibleTarget, comp));
+
+            // Just to be sure, no empty elements.
+            if (tileCount > 0)
+            {
+                grids.Add(((possibleTarget, comp), tileCount, new()));
+                totalTiles += tileCount;
+            }
         }
 
-        if (weights.Count == 0)
+        if (grids.Count == 0)
         {
             targetGrid = EntityUid.Invalid;
             return false;
         }
 
-        (targetGrid, var gridComp) = RobustRandom.Pick(weights);
-
-        var found = false;
-        var aabb = gridComp.LocalAABB;
-
-        for (var i = 0; i < 100; i++) //Moffstation paradox clone integration test fix
+        for (var i = 0; i < numAttempts; i++)
         {
-            var randomX = RobustRandom.Next((int) aabb.Left, (int) aabb.Right);
-            var randomY = RobustRandom.Next((int) aabb.Bottom, (int) aabb.Top);
+            // Find random tile within list.
+            var nextTileIndex = RobustRandom.Next(totalTiles);
+            TileRef? randomTileRef = null;
+            MapGridComponent gridComp = default!;
+            var startIndex = 0;
+            for (int j = 0; j < grids.Count; j++)
+            {
+                var grid = grids[j];
+                // If the index is in this particular grid, find it and remove the tile to prevent selecting it twice.
+                if (nextTileIndex >= startIndex + grid.Count)
+                {
+                    startIndex += grid.Count;
+                    continue;
+                }
 
-            tile = new Vector2i(randomX, randomY);
-            if (_atmosphere.IsTileSpace(targetGrid, Transform(targetGrid).MapUid, tile)
+                (targetGrid, gridComp) = grid.Entity;
+
+                // Empty list: hasn't been queried yet - get our tiles.
+                if (grid.Tiles.Count <= 0)
+                {
+                    grid.Tiles = _map.GetAllTiles(targetGrid, gridComp).ToList();
+
+                    // Actual list count doesn't match expected count (a bug - return failure).
+                    Debug.Assert(grid.Tiles.Count == grid.Count);
+                    if (grid.Tiles.Count != grid.Count)
+                        return false;
+                }
+
+                var ourTileIndex = nextTileIndex - startIndex;
+                randomTileRef = grid.Tiles[ourTileIndex];
+                grid.Tiles.RemoveSwap(ourTileIndex);
+                grid.Count--;
+                totalTiles--;
+
+                // Empty list, remove element
+                if (grid.Tiles.Count <= 0)
+                    grids.RemoveSwap(j);
+
+                break;
+            }
+
+            // Out of valid tiles, return early.
+            if (randomTileRef is not { } tileRef)
+                return false;
+
+            // Invalid tile, try again.
+            if (_atmosphere.IsTileSpace(targetGrid, Transform(targetGrid).MapUid, tileRef.GridIndices)
                 || _atmosphere.IsTileAirBlockedCached(targetGrid, tile)
                 // Moffstation - Start - Add Largestgrid and safeatmos options
                 || _station.GetLargestGrid(station.Owner) != targetGrid && largestGrid
@@ -146,40 +194,11 @@ public abstract partial class GameRuleSystem<T> where T: IComponent
                 continue;
             }
 
-            found = true;
             targetCoords = _map.GridTileToLocal(targetGrid, gridComp, tile);
-            break;
+            return true;
         }
 
-        // Moffstation - Start - Paradox Clone integration test fix
-        // Fallback: iterate all tiles on the grid systematically, picking a random one as the target coords.
-        if (!found)
-        {
-            Log.Warning(
-                "Failed to pick suitable random location for paradox clone spawn. Resorting to brute enumeration of tiles");
-            var tGrid = targetGrid; // Rebind to local to use in lambdas.
-            var map = Transform(tGrid).MapUid;
-            var allValidCoords = _map.GetAllTiles(targetGrid, gridComp)
-                .Select(t => t.GridIndices)
-                .Where(index => !(_atmosphere.IsTileSpace(tGrid, map, index)
-                                  || _atmosphere.IsTileAirBlockedCached(tGrid, index))
-                                // Moffstation - Start - Add Largestgrid and safeatmos options
-                                || _station.GetLargestGrid(station.Owner) == tGrid && largestGrid
-                                || map != null
-                                || _atmosphere.IsTileMixtureProbablySafe(tGrid, map!.Value, index) && safeAtmos)
-                                // Moffstation - End
-                .ToList();
-
-            RobustRandom.Shuffle(allValidCoords);
-            if (allValidCoords.TryFirstOrNull(out var first))
-            {
-                found = true;
-                targetCoords = _map.GridTileToLocal(tGrid, gridComp, first.Value);
-            }
-        }
-        // Moffstation - End
-
-        return found;
+        return false;
     }
 
     protected void ForceEndSelf(EntityUid uid, GameRuleComponent? component = null)
