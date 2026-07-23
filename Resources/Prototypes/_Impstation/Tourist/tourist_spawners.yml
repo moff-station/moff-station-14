@@ -66,7 +66,6 @@
 
 - type: randomHumanoidSettings
   id: Tourist
-  categories: [ HideSpawnMenu, Spawner ]
   parent: EventHumanoid
   components:
   - type: Tourist
