@@ -15,7 +15,6 @@ public sealed partial class CustomObjectiveSummarySystem : EntitySystem
     [Dependency] private SharedMindSystem _mind = default!;
     [Dependency] private IAdminLogManager _adminLog = default!;
     [Dependency] private IPlayerManager _playerManager = default!;
-    [Dependency] private TargetSystem _target = default!;
 
 
     public override void Initialize()
@@ -43,7 +42,7 @@ public sealed partial class CustomObjectiveSummarySystem : EntitySystem
 
     private void OnEvacShuttleLeft(EvacShuttleLeftEvent args)
     {
-        var allMinds = _target.GetAliveHumans();
+        var allMinds = _mind.GetAliveHumans();
 
         // Assumes the assistant is still there at the end of the round.
         foreach (var mind in allMinds)

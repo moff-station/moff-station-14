@@ -72,13 +72,15 @@ public sealed partial class MarkingsLimits
     [DataField]
     public List<ProtoId<MarkingPrototype>> NudityDefault = new();
 
-    // Moff start - Random markings
     /// <summary>
-    /// The chance of a marking for this layer being selected when a character is randomly generated
+    /// Chance for a randomly generated entity to spawn with a marking in this category.
     /// </summary>
+    /// <remarks>
+    /// Does one roll for each point in limit- eg. at 2 points in limit with a .6 weight,
+    /// you have a 16% chance of no marking, a 48% chance of one marking and a 36% chance of two markings.
+    /// </remarks>
     [DataField]
-    public float RandomChance = 0.5f;
-    // Moff end
+    public float Weight = 0.6f;
 }
 
 [DataDefinition]

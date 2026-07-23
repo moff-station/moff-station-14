@@ -37,10 +37,12 @@ station-ai-hologram-avali = Avali form
 station-ai-hologram-diona = Diona form
 station-ai-hologram-dwarf = Dwarf form
 station-ai-hologram-elf = Elf form
+station-ai-hologram-gray = Gray form
 station-ai-hologram-justice = Justice form
 station-ai-hologram-moth = Moth form
 station-ai-hologram-reptilian = Reptilian form
 station-ai-hologram-resomi = Resomi form
+station-ai-hologram-thaven = Thaven form
 station-ai-hologram-vox = Vox form
 station-ai-hologram-vulpkanin = Vulpkanin form
 

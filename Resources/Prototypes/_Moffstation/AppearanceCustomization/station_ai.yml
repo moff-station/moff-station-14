@@ -132,17 +132,17 @@
       sprite: _Moffstation/Mobs/Silicon/StationAi/station_ai.rsi
       state: ai_helios
     Dead: *defaultdead
-    
+
 - type: stationAiCustomization
   parent: StationAiIconBase
   id: StationAiIconAiHephaestus
   name: station-ai-icon-hephaestus
   layerData:
     Occupied:
-      sprite: _Moffstation\Mobs\Silicon\StationAi\hephaestus_ai.rsi
+      sprite: &hephaestus_rsi _Moffstation/Mobs/Silicon/StationAi/hephaestus_ai.rsi
       state: ai_hephaestus
     Dead:
-      sprite: _Moffstation\Mobs\Silicon\StationAi\hephaestus_ai.rsi
+      sprite: *hephaestus_rsi
       state: ai_hephaestus_purged
 
 - type: stationAiCustomization
@@ -395,6 +395,15 @@
       state: ai_elf
 
 - type: stationAiCustomization
+  id: StationAiHologramGray
+  name: station-ai-hologram-gray
+  previewKey: Hologram
+  layerData:
+    Hologram:
+      sprite: _Moffstation/Mobs/Silicon/holograms.rsi
+      state: ai_gray
+
+- type: stationAiCustomization
   id: StationAiHologramJustice
   name: station-ai-hologram-justice
   previewKey: Hologram
@@ -429,6 +438,15 @@
     Hologram:
       sprite: _Moffstation/Mobs/Silicon/holograms.rsi
       state: ai_resomi
+
+- type: stationAiCustomization
+  id: StationAiHologramThaven
+  name: station-ai-hologram-thaven
+  previewKey: Hologram
+  layerData:
+    Hologram:
+      sprite: _Moffstation/Mobs/Silicon/holograms.rsi
+      state: ai_thaven
 
 - type: stationAiCustomization
   id: StationAiHologramVox

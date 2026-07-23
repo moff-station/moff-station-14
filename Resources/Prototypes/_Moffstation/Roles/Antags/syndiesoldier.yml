@@ -16,7 +16,9 @@
     prototypes:
     - SyndicateFootsoldierGearArmed
   - type: RandomMetadata
-    nameSegments: [ NamesDeathCommando ]
+    nameSegments:
+    - NamesDeathCommandoFirst
+    - NamesDeathCommandoLast
   - type: NpcFactionMember
     factions:
     - Syndicate

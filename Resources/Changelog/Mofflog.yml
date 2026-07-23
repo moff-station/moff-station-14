@@ -6940,6 +6940,13 @@ Entries:
   id: 1625
   time: '2026-07-08T22:17:20.000'
   url: https://github.com/moff-station/moff-station-14/pull/1625
+- author: DuckManZach
+  changes:
+  - message: Added reagent footprints and crawling marks!
+    type: add
+  id: 1626
+  time: '2026-07-21T16:57:04.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1626
 - author: Dave
   changes:
   - message: lawyer now starts with a service headset
@@ -7165,6 +7172,19 @@ Entries:
   id: 1676
   time: '2026-07-19T17:08:52.000'
   url: https://github.com/moff-station/moff-station-14/pull/1676
+- author: Dave
+  changes:
+  - message: New Holopad sprites & hue adjustments.
+    type: add
+  - message: New AI core sprites.
+    type: add
+  - message: new AI hologram sprites
+    type: tweak
+  - message: thaven & gray ai hologram options
+    type: add
+  id: 1678
+  time: '2026-07-21T19:01:23.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1678
 - author: Centronias
   changes:
   - message: Replicators now properly return to a controllable healthy state when
@@ -7215,5 +7235,26 @@ Entries:
   id: 1691
   time: '2026-07-20T23:21:50.000'
   url: https://github.com/moff-station/moff-station-14/pull/1691
+- author: DuckManZach
+  changes:
+  - message: Washing machines are now fully predicted
+    type: tweak
+  id: 1695
+  time: '2026-07-23T03:28:16.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1695
+- author: Centronias
+  changes:
+  - message: The Hephaestus AI core customization no longer has an ERROR sprite.
+    type: fix
+  id: 1697
+  time: '2026-07-23T02:45:39.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1697
+- author: Centronias
+  changes:
+  - message: Re-add engineering goggles to the Chief Engineer's locker.
+    type: fix
+  id: 1707
+  time: '2026-07-23T03:28:15.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1707
 Name: Mofflog
 Order: -2

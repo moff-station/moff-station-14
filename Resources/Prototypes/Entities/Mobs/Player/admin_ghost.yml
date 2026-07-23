@@ -18,6 +18,8 @@
     - PreventAccessLogging
     - AllowBiomeLoading
     - NotGhostnadoWarpable
+    - AllowPortalTraversal
+    - PreventPortalCollision
   - type: Input
     context: "aghost"
   - type: Ghost
@@ -121,6 +123,8 @@
   - type: BypassInteractionChecks
   - type: ExplosionResistance
     damageCoefficient: 0
+  - type: GluedImmune
+  - type: LubedImmune
   # Moffstation - Begin - The ghost needs to be a console to view the UI
   - type: CharacterRecordConsole
     consoleType: Admin

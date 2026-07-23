@@ -7,7 +7,8 @@
   sprites:
   - sprite: _CD/Mobs/Customization/Diona/chest.rsi
     state: firefly
-  shader: unshaded
+  shaders:
+    firefly: unshaded
 
 - type: marking
   id: DionaLivingNymph
@@ -40,7 +41,8 @@
   sprites:
   - sprite: _CD/Mobs/Customization/Diona/chest.rsi
     state: mycena
-  shader: unshaded
+  shaders:
+    mycena: unshaded
 
 - type: marking
   id: ShelfChest
@@ -69,7 +71,8 @@
   sprites:
   - sprite: _CD/Mobs/Customization/Diona/head.rsi
     state: bigfirefly
-  shader: unshaded
+  shaders:
+    bigfirefly: unshaded
 
 - type: marking
   id: DionaPollenDust
@@ -86,7 +89,8 @@
   sprites:
   - sprite: _CD/Mobs/Customization/Diona/head.rsi
     state: jack
-  shader: unshaded
+  shaders:
+    jack: unshaded
 
 - type: marking
   id: MycenaHead
@@ -103,7 +107,8 @@
   sprites:
   - sprite: _CD/Mobs/Customization/Diona/head.rsi
     state: mycena
-  shader: unshaded
+  shaders:
+    mycena: unshaded
 
 - type: marking
   id: ShelfHead
@@ -136,7 +141,8 @@
   sprites:
   - sprite: _CD/Mobs/Customization/Diona/larm.rsi
     state: mycena
-  shader: unshaded
+  shaders:
+    mycena: unshaded
 
 # RLeg
 
@@ -169,7 +175,8 @@
   sprites:
   - sprite: _CD/Mobs/Customization/Diona/headtop.rsi
     state: moonbloom
-  shader: unshaded
+  shaders:
+    moonbloom: unshaded
 
 # Tail
 

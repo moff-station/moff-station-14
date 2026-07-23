@@ -13,6 +13,7 @@ using Content.Shared.Fluids.Components;
 using Content.Shared.Friction;
 using Content.Shared.Gravity;
 using Content.Shared.Inventory;
+using Content.Shared.Maps;
 using Content.Shared.Movement.Components;
 using Content.Shared.Movement.Events;
 using Content.Shared.Movement.Systems;
@@ -48,6 +49,9 @@ public abstract partial class SharedPuddleSystem : EntitySystem
     [Dependency] private StepTriggerSystem _stepTrigger = default!;
     [Dependency] private TileFrictionController _tile = default!;
     [Dependency] private INetManager _net = default!;
+    [Dependency] private SharedMapSystem _map = default!;
+    [Dependency] private TurfSystem _turf = default!;
+
     [Dependency] private InventorySystem _inventory = default!; // Funky - Clothing stains
     [Dependency] private StandingStateSystem _standing = default!; // Moff - Clothing stains
     [Dependency] private SharedGravitySystem _gravity = default!; // Moff - Clothing Stains
@@ -55,6 +59,7 @@ public abstract partial class SharedPuddleSystem : EntitySystem
     [Dependency] private EntityQuery<StepTriggerComponent> _stepTriggerQuery = default!;
     [Dependency] private EntityQuery<ReactiveComponent> _reactiveQuery = default!;
     [Dependency] private EntityQuery<EvaporationComponent> _evaporationQuery = default!;
+    [Dependency] private EntityQuery<PuddleComponent> _puddleQuery = default!;
 
     private ProtoId<ReagentPrototype>[] _standoutReagents = [];
 
@@ -109,6 +114,10 @@ public abstract partial class SharedPuddleSystem : EntitySystem
     [SubscribeLocalEvent]
     private void OnStepInPuddle(Entity<PuddleComponent> ent, ref StartCollideEvent args)
     {
+        // If it dont stain it dont stain
+        if (!ent.Comp.CausesStains)
+            return;
+
         // The thing stepping in the puddle. Because I keep forgetting which is which
         var stepper = args.OtherEntity;
 
@@ -169,13 +178,18 @@ public abstract partial class SharedPuddleSystem : EntitySystem
 
         _deletionQueue.Remove(entity);
         UpdateSlip((entity, entity.Comp), args.Solution.Comp.Solution);
-        UpdateSlow(entity, args.Solution.Comp.Solution);
+        UpdateSlow(entity, args.Solution.Comp.Solution, entity.Comp); // Funky - Pass component here
         UpdateEvaporation(entity, args.Solution.Comp.Solution);
         UpdateAppearance((entity, entity.Comp));
     }
 
     private void OnGetFootstepSound(Entity<PuddleComponent> entity, ref GetFootstepSoundEvent args)
     {
+        // Funky start - footprints
+        if (!entity.Comp.AffectsSound)
+            return;
+        // Funky end
+
         if (!_solutionContainerSystem.ResolveSolution(entity.Owner, entity.Comp.SolutionName, ref entity.Comp.Solution,
                 out var solution))
             return;
@@ -227,10 +241,29 @@ public abstract partial class SharedPuddleSystem : EntitySystem
             ent.Comp.Solution = null;
     }
 
+    [SubscribeLocalEvent]
+    private void OnTileChanged(ref TileChangedEvent ev)
+    {
+        foreach (var change in ev.Changes)
+        {
+            if (!_turf.IsSpace(change.NewTile))
+                continue;
+
+            var anchored = _map.GetAnchoredEntitiesEnumerator(ev.Entity, ev.Entity.Comp, change.GridIndices);
+            while (anchored.MoveNext(out var ent))
+            {
+                if (!_puddleQuery.HasComponent(ent))
+                    continue;
+
+                PredictedQueueDel(ent);
+            }
+        }
+    }
+
     private void UpdateAppearance(Entity<PuddleComponent?, AppearanceComponent?> ent)
     {
         var (uid, puddle, appearance) = ent;
-        if (!Resolve(ent, ref puddle, ref appearance))
+        if (!Resolve(ent, ref puddle, ref appearance, false)) // Funky - Uses TryComp behind the scenes now, protecting Footprints which lack it
             return;
 
         var volume = FixedPoint2.Zero;
@@ -362,8 +395,16 @@ public abstract partial class SharedPuddleSystem : EntitySystem
         Dirty(entity, slipComp);
     }
 
-    private void UpdateSlow(EntityUid uid, Solution solution)
+    private void UpdateSlow(EntityUid uid, Solution solution, PuddleComponent puddle) // Funky - added puddlecomponent
     {
+        // Funky start - Footprints
+        if (!puddle.AffectsMovement)
+        {
+            RemComp<SpeedModifierContactsComponent>(uid);
+            return;
+        }
+        // Funky end
+
         var maxViscosity = 0f;
         foreach (var (reagent, _) in solution.Contents)
         {

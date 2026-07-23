@@ -266,7 +266,7 @@
   - type: InteractionOutline
   - type: Sprite
     snapCardinals: true
-    sprite: Mobs/Silicon/station_ai.rsi
+    sprite: _Moffstation/Mobs/Silicon/StationAi/station_ai_core.rsi # Moffstation
     layers:
     - state: base
     - state: ai_empty
@@ -363,7 +363,7 @@
   - type: Rotatable
   - type: Sprite
     snapCardinals: true
-    sprite: Mobs/Silicon/station_ai.rsi
+    sprite: _Moffstation/Mobs/Silicon/StationAi/station_ai_core.rsi # Moffstation
     layers:
     - state: frame_0
       map: [ "enum.ConstructionVisuals.Layer" ]
@@ -479,7 +479,7 @@
       StationAiHolograms: StationAiHologramFemale
   - type: HolographicAvatar
     layerData:
-    - sprite: Mobs/Silicon/holograms.rsi
+    - sprite: _Moffstation/Mobs/Silicon/holograms.rsi # Moffstation
       state: ai_female
   - type: NameIdentifier
     group: StationAi
@@ -529,7 +529,7 @@
   - type: Visibility
     layer: 2
   - type: Sprite
-    sprite: Mobs/Silicon/station_ai.rsi
+    sprite: _Moffstation/Mobs/Silicon/StationAi/station_ai_core.rsi # Moffstation
     layers:
     - state: ai_camera
       shader: unshaded
@@ -874,7 +874,10 @@
         name: power-cell-slot-component-slot-name-default
         startingItem: PowerCellHyper
   - type: RandomMetadata
-    nameSegments: [NamesDeathCommando]
+    nameSegments: # TODO: add unique syndieborg-specific names; right now this is the same pool that syndicate agents use
+    - NamesDeathCommandoFirst
+    - NamesDeathCommandoLast
+    nameFormat: name-format-standard
 
 - type: entity
   parent: PlayerSyndicateAssaultBorgDerelict
