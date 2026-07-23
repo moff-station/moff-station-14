@@ -27,54 +27,37 @@
         Piercing: 0.9
         Heat: 0.9
 
-#Basic Helmet (Security Helmet)
+#Security Helmet
 - type: entity
-  parent: [ClothingHeadHelmetArmoredBase, FoldableHelmetBase, BaseSecurityContraband] # Moffstation - (Foldable Helmets)
+  parent: [ClothingHeadHelmetArmoredBase, BaseFoldable, BaseSecurityContraband]
   id: ClothingHeadHelmetBasic
-  # Moffstation - Begin (New Security Helmets)
   name: security helmet
-  description: A modern, tight helmet, it provides decent protection against most forms of attack, and comes with a detachable visor. A staple of the classic security officer look.
+  description: Standard security gear. Protects the head from impacts, and comes with a visor which can be lowered to protect the eyes.
   components:
   - type: Sprite
-    sprite: _Moffstation/Clothing/Head/Helmets/security.rsi
+    sprite: Clothing/Head/Helmets/security.rsi
     layers:
-    - state: raised-icon
-    - state: lowered-icon
+    - state: icon
+      map: [ "unfoldedLayer" ]
+    - state: icon-visor
+      map: [ "foldedLayer" ]
       visible: false
-      map: [ "visor" ]
   - type: Clothing
-    sprite: _Moffstation/Clothing/Head/Helmets/security.rsi
-    equippedPrefix: raised
-  - type: Item
-    heldPrefix: raised
-  - type: ToggleableVisuals
-    spriteLayer: visor
-    clothingVisuals:
-      head:
-      - state: lowered-equipped-HELMET
-      head-vox:
-      - state: lowered-equipped-HELMET-vox
-    inhandVisuals:
-      left:
-      - state: lowered-inhand-left
-      right:
-      - state: lowered-inhand-right
-  - type: Appearance
-  - type: ItemToggle
-    predictable: false
-    verbToggleOn: item-toggle-lower-visor
-    verbToggleOff: item-toggle-raise-visor
-  # Moffstation - End
+    sprite: Clothing/Head/Helmets/security.rsi
   - type: Tag
     tags:
     - WhitelistChameleon
     - SecurityHelmet
-  # Moffstation - Begin (Foldable Helmets)
-  #- type: HideLayerClothing
-  #  slots: [ ]
-  #  layers:
-  #    Hair: HEAD
-  # Moffstation - End
+  - type: Foldable
+    canFoldInsideContainer: true
+    unfoldVerbText: fold-raise-visor-verb
+    foldVerbText: fold-lower-visor-verb
+  - type: FoldableClothing
+    foldedEquippedPrefix: visor
+    foldedHeldPrefix: visor
+  - type: HideLayerClothing
+    layers:
+      Hair: HEAD
 
 #Mercenary Helmet
 - type: entity
@@ -313,6 +296,11 @@
     coolingCoefficient: 0.8
   - type: FireProtection
     reduction: 0.15 # not fully sealed so less protection
+  - type: ItemSlots
+    slots:
+      cell_slot:
+        name: power-cell-slot-component-slot-name-default
+        startingItem: PowerCellSmall
   - type: IdentityBlocker
   - type: Tag
     tags:
@@ -584,12 +572,10 @@
   #  layers:
   #    Hair: HEAD
   # Moffstation - End
-  # Moffstation - Begin (Foldable Security Helmet)
   - type: Tag
     tags:
     - WhitelistChameleon
     - SecurityHelmet
-  # Moffstation - End
 
 - type: entity
   parent: ClothingHeadHelmetJustice
