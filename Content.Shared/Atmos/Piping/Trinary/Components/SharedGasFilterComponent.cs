@@ -1,62 +1,38 @@
-﻿using Content.Shared.Atmos.Prototypes;
-using Robust.Shared.Prototypes;
-using Robust.Shared.Serialization;
+﻿using Robust.Shared.Serialization;
 
-namespace Content.Shared.Atmos.Piping.Trinary.Components
+namespace Content.Shared.Atmos.Piping.Trinary.Components;
+
+[Serializable, NetSerializable]
+public enum GasFilterUiKey
 {
-    [Serializable, NetSerializable]
-    public enum GasFilterUiKey
+    Key,
+}
+
+[Serializable, NetSerializable]
+public sealed class GasFilterToggleStatusMessage : BoundUserInterfaceMessage
+{
+    public bool Enabled { get; }
+
+    public GasFilterToggleStatusMessage(bool enabled)
     {
-        Key,
+        Enabled = enabled;
     }
+}
 
-    [Serializable, NetSerializable]
-    public sealed class GasFilterBoundUserInterfaceState : BoundUserInterfaceState
+[Serializable, NetSerializable]
+public sealed class GasFilterChangeRateMessage : BoundUserInterfaceMessage
+{
+    public float Rate { get; }
+
+    public GasFilterChangeRateMessage(float rate)
     {
-        public string FilterLabel { get; }
-        public float TransferRate { get; }
-        public bool Enabled { get; }
-        public HashSet<Gas> FilteredGases { get; } // Moffstation - filter multiple gases
-
-        public GasFilterBoundUserInterfaceState(string filterLabel, float transferRate, bool enabled, HashSet<Gas> filteredGases)
-        {
-            FilterLabel = filterLabel;
-            TransferRate = transferRate;
-            Enabled = enabled;
-            FilteredGases = filteredGases; // Moffstation - fitler multiple gases
-        }
+        Rate = rate;
     }
+}
 
-    [Serializable, NetSerializable]
-    public sealed class GasFilterToggleStatusMessage : BoundUserInterfaceMessage
-    {
-        public bool Enabled { get; }
-
-        public GasFilterToggleStatusMessage(bool enabled)
-        {
-            Enabled = enabled;
-        }
-    }
-
-    [Serializable, NetSerializable]
-    public sealed class GasFilterChangeRateMessage : BoundUserInterfaceMessage
-    {
-        public float Rate { get; }
-
-        public GasFilterChangeRateMessage(float rate)
-        {
-            Rate = rate;
-        }
-    }
-
-    // Moffstation - Begin (filter multiple gases)
-
-    [Serializable, NetSerializable]
-    public sealed class GasFilterToggleGasMessage(Gas gas, bool filtered) : BoundUserInterfaceMessage
-    {
-        public readonly Gas Gas = gas;
-        public readonly bool Filtered = filtered;
-    }
-
-    // Moffstation - End
+[Serializable, NetSerializable]
+    public sealed class GasFilterSelectGasMessage(Gas gas, bool filtered) : BoundUserInterfaceMessage // Moff - filter multiple gasses
+{
+    public readonly Gas Gas = gas; // Moff - filter multiple gasses; Gas is not nullable
+    public readonly bool Filtered = filtered;  // Moff - filter multiple gasses
 }
