@@ -1,3 +1,4 @@
+using System.Diagnostics.CodeAnalysis;
 using Content.Shared.DeviceNetwork;
 using Content.Shared.Damage.Components;
 using Content.Shared.FixedPoint;
@@ -197,4 +198,35 @@ public sealed partial class BorgSystem
 
         return true;
     }
+
+    // Moff start - new robotics console
+    public bool TryControlData(EntityUid uid, [NotNullWhen(true)] out CyborgControlData? data)
+    {
+        data = null;
+        if (!TryComp<BorgTransponderComponent>(uid, out var transponder) ||
+            !TryComp<BorgChassisComponent>(uid, out var chassis) ||
+            !TryComp<MetaDataComponent>(uid, out var metaData))
+            return false;
+
+        var chargeFraction = 0f;
+        if (_powerCell.TryGetBatteryFromSlot(uid, out var battery))
+            chargeFraction = _battery.GetChargeLevel(battery.Value.AsNullable());
+
+        var hpPercent = CalcHP(uid);
+
+        var hasBrain = CheckBrain(chassis.BrainEntity) && !transponder.FakeDisabled;
+        var canDisable = transponder.NextDisable == null && !transponder.FakeDisabling;
+
+        data = new CyborgControlData(
+            transponder.Sprite,
+            transponder.Name,
+            metaData.EntityName,
+            chargeFraction,
+            hpPercent,
+            chassis.ModuleCount,
+            hasBrain,
+            canDisable);
+        return true;
+    }
+    // Moff end
 }

@@ -1603,8 +1603,12 @@
       state: rd_key
     - map: [ "enum.WiresVisualLayers.MaintenancePanel" ]
       state: generic_panel_open
-  - type: RoboticsConsole
+  - type: MoffRoboticsConsole
+    sensorTypes:
+    - NTBorgSensor
     allowBorgControl: false
+  #- type: RoboticsConsole
+  #  allowBorgControl: false
   - type: ActiveRadio
     channels:
     - Science
@@ -1613,7 +1617,8 @@
   - type: UserInterface
     interfaces:
       enum.RoboticsConsoleUiKey.Key:
-        type: RoboticsConsoleBoundUserInterface
+        #type: RoboticsConsoleBoundUserInterface
+        type: MoffRoboticsConsoleBoundUserInterface
       enum.WiresUiKey.Key:
         type: WiresBoundUserInterface
   - type: ApcPowerReceiver
@@ -1623,8 +1628,11 @@
     workingPowerDraw: 1000
   - type: UIPowerState
   - type: DeviceNetwork
+    receiveAll: true
+    range: 10000
     deviceNetId: Wireless
-    receiveFrequencyId: RoboticsConsole
+    receiveFrequencyId: SuitSensor
+    #receiveFrequencyId: RoboticsConsole
     transmitFrequencyId: CyborgControl
   - type: Computer
     board: RoboticsConsoleCircuitboard

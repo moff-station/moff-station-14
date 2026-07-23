@@ -1,0 +1,35 @@
+<Button xmlns="https://spacestation14.io"
+        HorizontalExpand="True">
+    <BoxContainer Orientation="Vertical"
+                  HorizontalExpand="True">
+        <BoxContainer Name="ShortPanel"
+                      Orientation="Horizontal"
+                      HorizontalExpand="True">
+            <BoxContainer SizeFlagsStretchRatio="1.25"
+                          Orientation="Horizontal"
+                          HorizontalExpand="True">
+                <TextureRect Name="CoordsIndicator"
+                             TexturePath="/Textures/Interface/NavMap/beveled_circle.png"
+                             TextureScale="0.25 0.25"
+                             HorizontalAlignment="Center"
+                             VerticalAlignment="Center"/>
+                <AnimatedTextureRect Name="StatusIcon"
+                                     HorizontalAlignment="Center"
+                                     VerticalAlignment="Center"
+                                     Margin="0 1 3 0"/>
+                <Label Name="NameLabel"
+                       HorizontalExpand="True"
+                       ClipText="True"/>
+            </BoxContainer>
+        </BoxContainer>
+        <BoxContainer Name="DetailedPanel"
+                      Orientation="Horizontal"
+                      HorizontalExpand="True"
+                      Visible="False">
+            <Label Name="PlaceHolderLabel"
+                   Text="Detailed Informations"
+                   HorizontalExpand="True"
+                   VerticalExpand="True"/>
+        </BoxContainer>
+    </BoxContainer>
+</Button>
