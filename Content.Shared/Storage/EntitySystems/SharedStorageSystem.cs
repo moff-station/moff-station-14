@@ -585,7 +585,8 @@ public abstract partial class SharedStorageSystem : EntitySystem
             _entityLookupSystem.GetEntitiesInRange(args.ClickLocation, storageComp.AreaInsertRadius, _entSet, LookupFlags.Dynamic | LookupFlags.Sundries);
             var delay = 0f;
 
-            foreach (var entity in _entSet)
+            // TODO: Remove OrderBy when this issue is fixed in RT https://github.com/space-wizards/RobustToolbox/issues/6241
+            foreach (var entity in _entSet.OrderBy(e => GetNetEntity(e)))
             {
                 if (entity == args.User
                     || !_itemQuery.TryGetComponent(entity, out var itemComp) // Need comp to get item size to get weight
@@ -1080,7 +1081,8 @@ public abstract partial class SharedStorageSystem : EntitySystem
             || Resolve(target, ref targetLock, false) && targetLock.Locked)
             return;
 
-        foreach (var entity in entities.ToArray())
+        // TODO: Remove OrderBy when this issue is fixed in RT https://github.com/space-wizards/RobustToolbox/issues/6241
+        foreach (var entity in entities.ToArray().OrderBy(e => GetNetEntity(e)))
         {
             Insert(target, entity, out _, user: user, targetComp, playSound: false);
         }
@@ -1279,7 +1281,8 @@ public abstract partial class SharedStorageSystem : EntitySystem
 
         var toInsertCount = insertStack.Count;
 
-        foreach (var ent in storageComp.Container.ContainedEntities)
+        // TODO: Remove OrderBy when this issue is fixed in RT https://github.com/space-wizards/RobustToolbox/issues/6241
+        foreach (var ent in storageComp.Container.ContainedEntities.OrderBy(e => GetNetEntity(e)))
         {
             if (!_stackQuery.TryGetComponent(ent, out var containedStack))
                 continue;
@@ -1324,13 +1327,13 @@ public abstract partial class SharedStorageSystem : EntitySystem
 
         if (!CanInsert(ent, toInsert.Value, out var reason, ent.Comp))
         {
-            _popupSystem.PopupClient(Loc.GetString(reason ?? "comp-storage-cant-insert"), ent, player);
+            _popupSystem.PopupEntity(Loc.GetString(reason ?? "comp-storage-cant-insert"), ent, player);
             return false;
         }
 
         if (!_sharedHandsSystem.CanDrop(player, toInsert.Value))
         {
-            _popupSystem.PopupClient(Loc.GetString("comp-storage-cant-drop", ("entity", toInsert.Value)), ent, player);
+            _popupSystem.PopupEntity(Loc.GetString("comp-storage-cant-drop", ("entity", toInsert.Value)), ent, player);
             return false;
         }
 
@@ -1352,7 +1355,7 @@ public abstract partial class SharedStorageSystem : EntitySystem
 
         if (!Insert(uid, toInsert, out _, user: player, uid.Comp, playSound: playSound))
         {
-            _popupSystem.PopupClient(Loc.GetString("comp-storage-cant-insert"), uid, player);
+            _popupSystem.PopupEntity(Loc.GetString("comp-storage-cant-insert"), uid, player);
             return false;
         }
         return true;

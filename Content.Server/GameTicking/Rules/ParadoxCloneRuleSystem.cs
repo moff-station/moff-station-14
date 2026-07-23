@@ -19,7 +19,7 @@ public sealed partial class ParadoxCloneRuleSystem : GameRuleSystem<ParadoxClone
     [Dependency] private CloningSystem _cloning = default!;
     [Dependency] private SharedMindSystem _mind = default!;
     [Dependency] private SuitSensorSystem _sensor = default!;
-    [Dependency] private TargetSystem _target = default!;
+    [Dependency] private AliveHumanoidTargetSystem _target = default!;
 
     [Dependency] private CollectiveMindUpdateSystem _collectiveMindUpdate = default!; // Starlight - Collective Minds
 
@@ -36,7 +36,7 @@ public sealed partial class ParadoxCloneRuleSystem : GameRuleSystem<ParadoxClone
         base.Started(uid, component, gameRule, args);
 
         // check if we got enough potential cloning targets, otherwise cancel the gamerule so that the ghost role does not show up
-        var allHumans = _target.GetAliveHumans();
+        var allHumans = _target.GetMinds();
 
         if (allHumans.Count == 0)
         {
@@ -60,7 +60,7 @@ public sealed partial class ParadoxCloneRuleSystem : GameRuleSystem<ParadoxClone
         else
         {
             // get possible targets
-            var allAliveHumanoids = _target.GetAliveHumans();
+            var allAliveHumanoids = _target.GetMinds();
 
             // we already checked when starting the gamerule, but someone might have died since then.
             if (allAliveHumanoids.Count == 0)

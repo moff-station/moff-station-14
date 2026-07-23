@@ -153,22 +153,6 @@
 
 - type: entity
   parent: CargoIDCard
-  id: SeniorCourierIDCard
-  name: senior courier ID card
-  components:
-  - type: Sprite
-    layers:
-    - state: default
-    - state: stripe_side
-      color: "#b47832"
-    - state: stripe_top
-      color: "#e9b375"
-    - sprite: *icon-rsi
-      offset: *icon-offset
-      state: SeniorCourier
-
-- type: entity
-  parent: CargoIDCard
   id: FreightPilotIDCard
   name: freight pilot ID card
   components:

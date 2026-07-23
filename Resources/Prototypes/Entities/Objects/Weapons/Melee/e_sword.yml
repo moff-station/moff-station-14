@@ -277,7 +277,7 @@
           # Moffstation - End
     deactivatedSecret: true
   - type: Sprite
-    sprite: _Moffstation/Objects/Weapons/Melee/e_cutlass.rsi  #Moffstation - Point to our custom sprite
+    sprite: _Moffstation/Objects/Weapons/Melee/e_cutlass.rsi  # Moffstation - Point to our custom sprite
     layers:
       - state: e_cutlass
       - state: e_cutlass_blade
@@ -286,7 +286,7 @@
         shader: unshaded
         map: [ "blade" ]
   - type: Item
-    sprite: _Moffstation/Objects/Weapons/Melee/e_cutlass.rsi  #Moffstation - Point to our custom sprite
+    sprite: _Moffstation/Objects/Weapons/Melee/e_cutlass.rsi  # Moffstation - Point to our custom sprite
 
 - type: entity
   name: double-bladed energy sword
@@ -295,9 +295,9 @@
   description: Syndicate Command Interns thought that having one blade on the energy sword was not enough. This can be stored in pockets.
   components:
   - type: ItemToggle
-    predictable: false #Moffstation Change - Fixes the hum not working, but introduces minor amt of clientside latency on activation (barely noticable, mainly affects 'feel). Upstream PR #38070 fixes this, so when it is merged w/o conflicts, this line can be removed. 
+    predictable: false # Moffstation Change - Fixes the hum not working, but introduces minor amt of clientside latency on activation (barely noticable, mainly affects 'feel). Upstream PR #38070 fixes this, so when it is merged w/o conflicts, this line can be removed.
     onUse: false # wielding events control it instead
-    onActivate: true #Moffstation Change - Allows it to turned on while on the ground to see the cool sprite. Mainly for items this parents from.
+    onActivate: true # Moffstation Change - Allows it to turned on while on the ground to see the cool sprite. Mainly for items this parents from.
     soundActivate:
       path: /Audio/Weapons/ebladeon.ogg
       params:
@@ -381,11 +381,12 @@
       types:
         Slash: 20
         Heat: 20
-        Structural: 40 #Moffstation adjustment - previously 20
+        Structural: 40 # Moffstation adjustment - previously 20
   - type: MeleeRequiresWield
   - type: HeldSpeedModifier #slowdown is what balances this compared to a dsword
-    walkModifier: 0.70 #Moffstation adjustment - previously .6
-    sprintModifier: 0.70 #Moffstation adjustment - previously .6
+    walkModifier: 0.70 # Moffstation adjustment - previously .6
+    sprintModifier: 0.70 # Moffstation adjustment - previously .6
+    weightlessAcceleration: 0.6
   - type: UseDelay
     delay: 1.5
   - type: Sprite
@@ -406,7 +407,7 @@
     size: Small
     sprite: Objects/Weapons/Melee/hypereutactic_blade_inhands.rsi
   - type: Reflect
-    reflectProb: .80 #Moffstation adjustment - no longer 100% reflect. 
+    reflectProb: .80 # Moffstation adjustment - no longer 100% reflect.
     spread: 75
 
 # Borgs

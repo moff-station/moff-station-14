@@ -2,7 +2,9 @@ using Content.Server.Administration;
 using Content.Server.Chat.Managers;
 using Content.Server.Station.Systems;
 using Content.Shared.Administration;
+using Content.Shared.Administration.Logs;
 using Content.Shared.Chat;
+using Content.Shared.Database;
 using Content.Shared.Emag.Systems;
 using Content.Shared.Mind;
 using Content.Shared.Mind.Components;
@@ -28,6 +30,7 @@ public sealed partial class SiliconLawSystem : SharedSiliconLawSystem
     // [Dependency] private StationSystem _station = default!; // Moffstation - Now Unused
     // [Dependency] private UserInterfaceSystem _userInterface = default!; // Moffstation - Now Unused
     // [Dependency] private EmagSystem _emag = default!; // Moffstation - Now Unused
+    [Dependency] private ISharedAdminLogManager _adminLogger = default!;
 
     private static readonly ProtoId<SiliconLawsetPrototype> DefaultCrewLawset = "Crewsimov";
 
@@ -43,6 +46,8 @@ public sealed partial class SiliconLawSystem : SharedSiliconLawSystem
     {
         if (!TryComp<ActorComponent>(ent, out var actor))
             return;
+
+        _adminLogger.Add(LogType.SiliconLaw, LogImpact.Low, $"{ent.Owner} laws at MindAdded are [{ent.Comp.Lawset?.LoggingString()}]");
 
         UpdateSiliconRoles(ent);
 
@@ -60,24 +65,29 @@ public sealed partial class SiliconLawSystem : SharedSiliconLawSystem
 
     private void OnMindRemoved(Entity<SiliconLawBoundComponent> ent, ref BeforeMindRemovedMessage args)
     {
+        _adminLogger.Add(LogType.SiliconLaw, LogImpact.Low, $"{ent.Owner} laws at MindAdded are [{ent.Comp.Lawset?.LoggingString()}]");
+
         if (args.TransferEntity is not { } owner)
             return;
 
         UpdateSiliconRoles(owner, args.Mind);
     }
 
-    public override void NotifyLawsChanged(EntityUid uid, SoundSpecifier? cue = null)
+    public override void NotifyLawsChanged(Entity<SiliconLawProviderComponent> ent, SoundSpecifier? cue = null)
     {
-        base.NotifyLawsChanged(uid, cue);
+        base.NotifyLawsChanged(ent, cue);
 
-        if (!TryComp<ActorComponent>(uid, out var actor))
+        _adminLogger.Add(LogType.SiliconLaw, LogImpact.Low, $"{ent} laws changed to [{ent.Comp.Lawset?.LoggingString()}]");
+
+        if (!TryComp<ActorComponent>(ent, out var actor))
             return;
 
         var msg = Loc.GetString("laws-update-notify");
         var wrappedMessage = Loc.GetString("chat-manager-server-wrap-message", ("message", msg));
+        UpdateLawVersion(ent.Owner);
         _chatManager.ChatMessageToOne(ChatChannel.Server, msg, wrappedMessage, default, false, actor.PlayerSession.Channel, colorOverride: Color.Red);
 
-        if (cue != null && _mind.TryGetMind(uid, out var mindId, out _))
+        if (cue != null && _mind.TryGetMind(ent, out var mindId, out _))
             _roles.MindPlaySound(mindId, cue);
     }
 
@@ -112,7 +122,8 @@ public sealed partial class SiliconLawSystem : SharedSiliconLawSystem
             component.Lawset = new SiliconLawset();
 
         component.Lawset.Laws = newLaws;
-        NotifyLawsChanged(target, cue);
+        RankLaws(component.Lawset.Laws);
+        NotifyLawsChanged((target,component), cue);
     }
 
     protected override void OnUpdaterInsert(Entity<SiliconLawUpdaterComponent> ent, ref EntInsertedIntoContainerMessage args)
@@ -134,6 +145,58 @@ public sealed partial class SiliconLawSystem : SharedSiliconLawSystem
             }
 
             SetProviderLaws(update, lawset.Laws, false, provider.LawUploadSound);
+        }
+    }
+
+    /// <summary>
+    /// Updates the version on a target SiliconLawBoundComponent. This is used in the law UI as flair to show the
+    /// number of updates a silicon player's laws has had
+    /// </summary>
+    private void UpdateLawVersion(Entity<SiliconLawBoundComponent?> target)
+    {
+        if (!Resolve(target, ref target.Comp))
+            return;
+
+        target.Comp.Version++;
+    }
+
+    /// <summary>
+    /// Given a list of laws, sets all unobfuscated laws' identifier in order from highest to lowest priority.
+    /// </summary>
+    /// <param name="laws">The lawset to deduce identifiers for.</param>
+    public static void RankLaws(List<SiliconLaw> laws)
+    {
+        // Sort laws first since there can be cases where law order != list order
+        laws.Sort();
+        // Don't need to set any overrides if there are no corrupted laws and law order already makes sense
+        // (i.e. order is non-negative and monotonically increasing by 1)
+        var overrideIdentifiers = false;
+        for (var i = 0; i < laws.Count; i++)
+        {
+            if (laws[i].Corrupted
+                || laws[i].Order < 0
+                || i > 0 && laws[i].Order - laws[i - 1].Order != 1)
+            {
+                overrideIdentifiers = true;
+                break;
+            }
+        }
+        if (!overrideIdentifiers)
+        {
+            return;
+        }
+
+        var orderDeduction = -1;
+        for (var i = 0; i < laws.Count; i++)
+        {
+            if (laws[i].Corrupted)
+            {
+                orderDeduction += 1;
+            }
+            else
+            {
+                laws[i].LawIdentifierOverride = (i - orderDeduction).ToString();
+            }
         }
     }
 }

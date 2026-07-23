@@ -87,7 +87,8 @@
   sprites:
   - sprite: _CD/Mobs/Customization/Moth/chest.rsi
     state: glow
-  shader: unshaded
+  shaders:
+    glow: unshaded
 
 - type: marking
   id: TorsoIncisionMoth
@@ -167,7 +168,8 @@
   sprites:
   - sprite: _CD/Mobs/Customization/Moth/head.rsi
     state: glow
-  shader: unshaded
+  shaders:
+    glow: unshaded
 
 - type: marking
   id: MothSlashLeft
@@ -587,7 +589,8 @@
   sprites:
   - sprite: _CD/Mobs/Customization/Moth/headtop.rsi
     state: glowantenna
-  shader: unshaded
+  shaders:
+    glowantenna: unshaded
 
 - type: marking
   id: AntennaCockroach
@@ -790,6 +793,7 @@
   sprites:
   - sprite: _CD/Mobs/Customization/Moth/tail.rsi
     state: firefly1
-  shader: unshaded
+  shaders:
+    firefly1: unshaded
 
 # RArmExtension
