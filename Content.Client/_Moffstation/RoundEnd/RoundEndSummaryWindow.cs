@@ -12,7 +12,7 @@ using static Robust.Client.UserInterface.Controls.BoxContainer;
 // ReSharper disable once CheckNamespace
 namespace Content.Client.RoundEnd;
 
-public sealed class RoundEndSummaryWindow : DefaultWindow
+public sealed partial class RoundEndSummaryWindow : DefaultWindow
 {
     [Dependency] private IEntityManager _entityManager = default!;
     public int RoundId;
