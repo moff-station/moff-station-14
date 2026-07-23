@@ -17,7 +17,9 @@
     - SyndicateFootsoldierGearArmed
   - type: RandomHumanoidAppearance
   - type: RandomMetadata
-    nameSegments: [ NamesDeathCommando ]
+    nameSegments:
+    - NamesDeathCommandoFirst
+    - NamesDeathCommandoLast
   - type: NpcFactionMember
     factions:
     - Syndicate

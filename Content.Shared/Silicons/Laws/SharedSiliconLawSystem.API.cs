@@ -145,6 +145,11 @@ public abstract partial class SharedSiliconLawSystem
         return ent.Comp.Lawset;
     }
 
+    public int? GetVersion(Entity<SiliconLawBoundComponent?> ent)
+    {
+        return Resolve(ent, ref ent.Comp) ? ent.Comp.Version : null;
+    }
+
     /// <summary>
     /// Extract all the laws from a lawset's prototype ids.
     /// </summary>
@@ -316,7 +321,7 @@ public abstract partial class SharedSiliconLawSystem
 
             lawboundComp.LawsetProvider = ent.Owner;
             UpdateLaws((lawboundEnt, lawboundComp));
-            NotifyLawsChanged(lawboundEnt, cue);
+            NotifyLawsChanged((ent, ent.Comp), cue);
         }
 
         Dirty(ent);
@@ -327,7 +332,7 @@ public abstract partial class SharedSiliconLawSystem
     /// </summary>
     /// <param name="uid">The entity to notify.</param>
     /// <param name="cue">The sound to play. Will play no sound if null.</param>
-    public virtual void NotifyLawsChanged(EntityUid uid, SoundSpecifier? cue = null)
+    public virtual void NotifyLawsChanged(Entity<SiliconLawProviderComponent> ent, SoundSpecifier? cue = null)
     {
 
     }

@@ -18,18 +18,6 @@
   category: cargoproduct-category-name-atmospherics
   group: market
 
-# Moffstation - Begin - Remove liquid gasses from cargo
-#- type: cargoProduct
-#  id: AtmosphericsLiquidOxygen
-#  icon:
-#    sprite: Structures/Storage/canister.rsi
-#    state: blue
-#  product: LiquidOxygenCanister
-#  cost: 1000
-#  category: cargoproduct-category-name-atmospherics
-#  group: market
-# Moffstation - End
-
 - type: cargoProduct
   id: AtmosphericsNitrogen
   icon:
@@ -40,18 +28,6 @@
   category: cargoproduct-category-name-atmospherics
   group: market
 
-# Moffstation - Begin - Remove liquid gasses from cargo
-#- type: cargoProduct
-#  id: AtmosphericsLiquidNitrogen
-#  icon:
-#    sprite: Structures/Storage/canister.rsi
-#    state: red
-#  product: LiquidNitrogenCanister
-#  cost: 1000
-#  category: cargoproduct-category-name-atmospherics
-#  group: market
-# Moffstation - End
-
 - type: cargoProduct
   id: AtmosphericsCarbonDioxide
   icon:
@@ -61,18 +37,6 @@
   cost: 670 # even though it's poisonous, it comes locked and only damages you slowly even with high amounts (tested)
   category: cargoproduct-category-name-atmospherics
   group: market
-
-# Moffstation - Begin - Remove liquid gasses from cargo
-#- type: cargoProduct
-#  id: AtmosphericsLiquidCarbonDioxide
-#  icon:
-#    sprite: Structures/Storage/canister.rsi
-#    state: black
-#  product: LiquidCarbonDioxideCanister
-#  cost: 1800 # much less deadly than the plasma can (this has been tested) even though this is cold+poison
-#  category: cargoproduct-category-name-atmospherics
-#  group: market
-# Moffstation - End
 
 - type: cargoProduct
   id: AtmosphericsStorage

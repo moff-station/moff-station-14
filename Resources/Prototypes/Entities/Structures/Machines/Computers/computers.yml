@@ -36,10 +36,6 @@
           3: { state: alert_2 }
           4: { state: alert_2 }
           # Moffstation - End
-      enum.WiresVisuals.MaintenancePanelState:
-        enum.WiresVisualLayers.MaintenancePanel:
-          True: { visible: false }
-          False: { visible: true }
   - type: AtmosAlertsComputer
   - type: ActivatableUI
     singleUser: true
@@ -1323,10 +1319,6 @@
           computerLayerKeys:
             True: { visible: true, shader: unshaded }
             False: { visible: true }
-        enum.WiresVisuals.MaintenancePanelState:
-          enum.WiresVisualLayers.MaintenancePanel:
-            True: { visible: false }
-            False: { visible: true }
     - type: SalvageExpeditionConsole
     - type: ActivatableUI
       key: enum.SalvageConsoleUiKey.Expedition
@@ -1776,10 +1768,6 @@
           Rebooting: { state: ai_fixer_404 }
           Dead: { state: ai_fixer_404 }
           # Moffstation - End
-      enum.WiresVisuals.MaintenancePanelState:
-        enum.WiresVisualLayers.MaintenancePanel:
-          True: { visible: false }
-          False: { visible: true }
   - type: ApcPowerReceiver
     powerLoad: 50
   - type: PowerState

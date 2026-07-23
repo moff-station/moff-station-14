@@ -99,7 +99,7 @@ public sealed partial class LogProbeCartridgeSystem : EntitySystem // CD - Made 
 
         //Play scanning sound with slightly randomized pitch
         _audio.PlayPredicted(ent.Comp.SoundScan, target, args.User); // Moffstation - Split
-        _popup.PopupPredictedCursor(Loc.GetString("log-probe-scan", ("device", target)), args.User); // Moffstation - Split
+        _popup.PopupCursor(Loc.GetString("log-probe-scan", ("device", target)), args.User); // Moffstation - Split
 
         ent.Comp.EntityName = Name(target);
         ent.Comp.PulledAccessLogs.Clear();

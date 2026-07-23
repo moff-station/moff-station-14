@@ -29,8 +29,9 @@
   sprites:
   - sprite: *angler_lure_rsi
     state: horns_angler_glowing_bulb
-  shader: unshaded
-  
+  shaders:
+    horns_angler_glowing_bulb: unshaded
+
 # Legs
 
 - type: marking
