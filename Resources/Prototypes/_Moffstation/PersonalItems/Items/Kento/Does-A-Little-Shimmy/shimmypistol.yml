@@ -18,14 +18,14 @@
     zeroVisible: true
 
 - type: entity
-  parent: BasePersonalItemPistolCase
-  id: &case-id PersonalItemShimmyPistolCase
+  parent: BriefcaseWeaponSmall
+  id: &case_id "PersonalItemShimmyPistolCase"
   name: XP-01 gun case
   description: A slim, portable gun case intended to protect its contents. "XP-01" is inscribed on the top of the case.
   suffix: PersonalItem
   components:
   - type: Sprite
-    sprite: &case _Moffstation/PersonalItems/Items/Kento/Does-A-Little-Shimmy/shimmypistolcase.rsi
+    sprite: &case "_Moffstation/PersonalItems/Items/Kento/Does-A-Little-Shimmy/shimmypistolcase.rsi"
   - type: Item
     sprite: *case
   - type: EntityTableContainerFill
@@ -35,10 +35,10 @@
         amount: 1
 
 - type: loadout
-  id: *case-id
+  id: *case_id
   storage:
     back:
-    - *case-id
+    - *case_id
   effects:
   - !type:PersonalItemLoadoutEffect
     character:

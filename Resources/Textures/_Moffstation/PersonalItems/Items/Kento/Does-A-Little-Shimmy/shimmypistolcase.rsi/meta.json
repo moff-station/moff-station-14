@@ -1,15 +1,12 @@
 {
     "version": 1,
-    "license": "CC-BY-SA-3.0",
-    "copyright": "Taken from Beestation-Hornet at https://github.com/BeeStation/BeeStation-Hornet/commit/d06dde90f7bb6e6ba1b4a34bcc2a4624dbb1518c, modified by ps3moira (github), recolored by kento_da_neko (Discord)",
+    "license": "CC-BY-SA-4.0",
+    "copyright": "Sprited by Davyei (github)",
     "size": {
         "x": 32,
         "y": 32
     },
     "states": [
-        {
-            "name": "closed"
-        },
         {
             "name": "inhand-left",
             "directions": 4
@@ -19,7 +16,16 @@
             "directions": 4
         },
         {
-            "name": "open"
+            "name": "icon"
+        },
+        {
+            "name": "locked"
+        },
+        {
+            "name": "unlocked"
+        },
+        {
+            "name": "icon-open"
         }
     ]
 }

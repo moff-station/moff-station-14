@@ -19,7 +19,7 @@
     containers:
       ballistic-ammo: !type:Container
   - type: Sprite
-    sprite: Objects/Weapons/Guns/Ammunition/Magazine/CaselessRifle/caseless_pistol_mag.rsi
+    sprite: _Moffstation/Objects/Weapons/Guns/Ammunition/Magazine/CaselessRifle/caseless_pistol_mag.rsi # Moffstation
     layers:
     - state: base
       map: ["enum.GunVisualLayers.Base"]
@@ -60,14 +60,14 @@
     - state: mag-1
       map: ["enum.GunVisualLayers.Mag"]
     - state: stripe
-      color: "#dbdbdb"
+      color: "#e0dee5" # Moffstation
   - type: Item
     inhandVisuals:
       left:
       - state: inhand-left-mag
       - state: inhand-left-stripe
-        color: "#dbdbdb"
+        color: "#e0dee5" # Moffstation
       right:
       - state: inhand-right-mag
       - state: inhand-right-stripe
-        color: "#dbdbdb"
+        color: "#e0dee5" # Moffstation

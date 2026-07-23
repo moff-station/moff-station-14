@@ -501,7 +501,7 @@
   description: A self-defense weapon that exhausts organic targets, weakening them until they collapse. This one has been undertuned for cadets making it mostly harmless.
   components:
   - type: Sprite
-    sprite: Objects/Weapons/Guns/Battery/practice_disabler.rsi
+    sprite: _Moffstation/Objects/Weapons/Guns/Battery/practice_disabler.rsi # Moffstation
     layers:
     - state: base
       map: ["enum.GunVisualLayers.Base"]
@@ -511,7 +511,7 @@
   - type: Item
     storedOffset: -1,-5
   - type: Clothing
-    sprite: Objects/Weapons/Guns/Battery/practice_disabler.rsi
+    sprite: _Moffstation/Objects/Weapons/Guns/Battery/practice_disabler.rsi # Moffstation
     quickEquip: false
     slots:
     - Belt
@@ -544,7 +544,7 @@
   description: A self-defense weapon that exhausts organic targets, weakening them until they collapse.
   components:
   - type: Sprite
-    sprite: Objects/Weapons/Guns/Battery/disabler.rsi
+    sprite: _Moffstation/Objects/Weapons/Guns/Battery/disabler.rsi # Moffstation
     layers:
       - state: base
         map: ["enum.GunVisualLayers.Base"]
@@ -552,7 +552,7 @@
         map: ["enum.GunVisualLayers.MagUnshaded"]
         shader: unshaded
   - type: Clothing
-    sprite: Objects/Weapons/Guns/Battery/disabler.rsi
+    sprite: _Moffstation/Objects/Weapons/Guns/Battery/disabler.rsi # Moffstation
     quickEquip: false
     slots:
       - suitStorage
