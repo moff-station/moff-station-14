@@ -195,6 +195,7 @@
       Plastic: 100
   - type: StaticPrice
     price: 30 # increases in price after decomposed into raw materials
+  - type: StainRepellent # Moff - Mostly solid plastic, and it means Vox don't look like they just climed out of the dumpster constantly
 
 - type: entity
   parent: ClothingMaskBase
@@ -349,6 +350,7 @@
       Plastic: 25
   - type: StaticPrice
     price: 5
+  - type: StainRepellent # Moff - Mostly solid plastic, and it means Vox don't look like they just climed out of the dumpster constantly
 
 - type: entity
   parent: ClothingMaskBase

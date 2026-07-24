@@ -1,6 +1,6 @@
 - type: entity
   abstract: true
-  parent: [SolutionFood, SolutionToolSmall, Clothing]
+  parent: [SolutionFood, SolutionToolSmall, Clothing, StainableClothingBase] # Moffstation - mixed in StainableClothingBase
   id: ClothingHeadBase
   components:
   - type: Clothing
@@ -23,7 +23,6 @@
     - ClothMade
     - WhitelistChameleon
   # Forky - start - clothing stains
-  - type: Appearance
   - type: Stainable
     clothingVisuals:
       head:
@@ -32,9 +31,6 @@
     iconVisuals:
     - sprite: _Funkystation/Effects/blood.rsi
       state: helmetbloodicon
-  - type: SolutionManager
-    solutions:
-    - SolutionStain
   # Forky - end
 
 - type: entity
@@ -160,6 +156,7 @@
 - type: entity
   abstract: true
   # No parent since we aren't actually an item.
+  parent: StainableClothingBase # Moffstation - mixed in StainableClothingBase
   id: ClothingHeadHardsuitBase
   name: base hardsuit helmet
   categories: [ HideSpawnMenu ]
@@ -206,7 +203,6 @@
     - HeadSide
     - FacialHair
   # Forky - start - clothing stains
-  - type: Appearance
   - type: Stainable
     clothingVisuals:
       head:
@@ -215,9 +211,6 @@
     iconVisuals:
     - sprite: _Funkystation/Effects/blood.rsi
       state: helmetbloodicon
-  - type: SolutionManager
-    solutions:
-    - SolutionStain
   - type: StainBlocker
     slots: [MASK]
   # Forky - end
@@ -281,6 +274,7 @@
 
 - type: entity
   abstract: true
+  parent: StainableClothingBase # Moffstation - mixed in StainableClothingBase
   id: ClothingHeadHatHoodWinterBase
   name: base winter coat hood
   description: A hood, made to keep your head warm.
@@ -309,7 +303,6 @@
     - HeadTop
     - HeadSide
   # Forky - start - clothing stains
-  - type: Appearance
   - type: Stainable
     clothingVisuals:
       head:
@@ -318,7 +311,4 @@
     iconVisuals:
     - sprite: _Funkystation/Effects/blood.rsi
       state: helmetbloodicon
-  - type: SolutionManager
-    solutions:
-    - SolutionStain
   # Forky - end

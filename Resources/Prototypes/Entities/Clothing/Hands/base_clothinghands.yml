@@ -1,6 +1,6 @@
 - type: entity
   abstract: true
-  parent: [SolutionFood, SolutionToolSmall, Clothing]
+  parent: [SolutionFood, SolutionToolSmall, Clothing, StainableClothingBase] # Moffstation - mixed in StainableClothingBase
   id: ClothingHandsBase
   components:
   - type: Sprite
@@ -26,7 +26,6 @@
       flatReductions:
         Heat: 5 # the average lightbulb only does around four damage!
   # Forky - start - clothing stains
-  - type: Appearance
   - type: Stainable
     clothingVisuals:
       gloves:
@@ -35,9 +34,6 @@
     iconVisuals:
     - sprite: _Funkystation/Effects/blood.rsi
       state: glovebloodicon
-  - type: SolutionManager
-    solutions:
-    - SolutionStain
   # Forky - end
 
 - type: entity
