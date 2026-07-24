@@ -33,6 +33,9 @@ using Content.Shared.FixedPoint;
 using Content.Shared.Mobs;
 using Content.Shared.Mobs.Components;
 using Robust.Shared.Prototypes;
+using Content.Server.Voting.Managers; // Moff
+using Content.Shared.Voting; // Moff
+using Timer = Robust.Shared.Timing.Timer; // Moff
 
 namespace Content.Server.GameTicking
 {
@@ -43,6 +46,7 @@ namespace Content.Server.GameTicking
         [Dependency] private ITaskManager _taskManager = default!;
 
         [Dependency] private DamageableSystem _damageable = default!; // Moffstation - Goob roundend info
+        [Dependency] private IVoteManager _voteManager = default!; // Moff - auto map vote
 
         private static readonly Counter RoundNumberMetric = Metrics.CreateCounter(
             "ss14_round_number",
@@ -728,6 +732,25 @@ namespace Content.Server.GameTicking
                 UpdateInfoText();
 
                 ReqWindowAttentionAll();
+
+                // Moff Start - Auto-start a map vote timed to finish just before map preload
+                if (_cfg.GetCVar(MoffCCVars.AutoStartMapVote))
+                {
+                    // 5s buffer so the vote resolves before map preloading starts
+                    var preloadTime = RoundPreloadTime + TimeSpan.FromSeconds(5);
+                    // Delay so the vote lands late in the lobby (accurate pop) and ends before preload
+                    var delay = LobbyDuration - (preloadTime + TimeSpan.FromSeconds(_cfg.GetCVar(CCVars.VoteTimerMap)));
+                    Timer.Spawn(delay,
+                        () =>
+                    {
+                        // Skip if a map vote is already running. IVoteHandle exposes no vote type, so the
+                        // localized title is the only map-specific signal available. Checked at fire time
+                        // so a manually-opened map vote mid-lobby also suppresses this one.
+                        if (_voteManager.ActiveVotes.All(x => x.Title != Loc.GetString("ui-vote-map-title")))
+                            _voteManager.CreateStandardVote(null, StandardVoteType.Map);
+                    });
+                }
+                // Moff end
             }
         }
 
