@@ -19,11 +19,13 @@ public sealed partial class MoffRoboticsConsoleWindow : FancyWindow
     private readonly SharedTransformSystem _transformSystem;
     private readonly SpriteSystem _spriteSystem;
 
+    private bool controlsEnabled = false;
     private Texture blipTexture;
     private Texture borgBlipTexture;
 
     private NetEntity? _trackedEntity;
 
+    Dictionary<NetEntity, MoffRoboticsConsoleButton> buttons = new();
 
     public MoffRoboticsConsoleWindow()
     {
@@ -35,10 +37,11 @@ public sealed partial class MoffRoboticsConsoleWindow : FancyWindow
         borgBlipTexture = blipTexture; // change later.
     }
 
-    public void Setup(EntityUid? mapUid, string? stationName)
+    public void Setup(EntityUid? mapUid, string? stationName, bool enableControls)
     {
         NavMap.MapUid = mapUid;
         StationName.Text = stationName ?? Loc.GetString("crew-monitoring-ui-no-station-label");
+        controlsEnabled = enableControls;
 
         NavMap.ForceNavMapUpdate();
     }
@@ -55,6 +58,7 @@ public sealed partial class MoffRoboticsConsoleWindow : FancyWindow
 
     private void ClearData()
     {
+        buttons = new Dictionary<NetEntity, MoffRoboticsConsoleButton>();
         SensorsTable.RemoveAllChildren();
         NavMap.TrackedCoordinates.Clear();
         NavMap.TrackedEntities.Clear();
@@ -63,7 +67,7 @@ public sealed partial class MoffRoboticsConsoleWindow : FancyWindow
 
     private void DisplaySensor(BorgSensorStatus sensor)
     {
-        var button = new MoffRoboticsConsoleButton(sensor, sensor.OwnerUid == _trackedEntity);
+        var button = new MoffRoboticsConsoleButton(sensor, sensor.OwnerUid == _trackedEntity, controlsEnabled);
         button.OnPressed += _ =>
         {
             if (_trackedEntity == sensor.OwnerUid)
@@ -72,6 +76,7 @@ public sealed partial class MoffRoboticsConsoleWindow : FancyWindow
                 _trackedEntity = sensor.OwnerUid;
         };
         SensorsTable.AddChild(button);
+        buttons[sensor.OwnerUid] = button;
 
         if (sensor.Coordinates is {} coordinates && NavMap.Visible)
         {
@@ -99,5 +104,16 @@ public sealed partial class MoffRoboticsConsoleWindow : FancyWindow
         {
             return coordinates;
         }
+    }
+
+    private void SetFocus(NetEntity entity)
+    {
+        if (_trackedEntity is {} old && buttons[old] is { } oldButton)
+            oldButton.SetExpanded(false);
+
+        _trackedEntity = entity == _trackedEntity ? null : entity;
+
+        if (_trackedEntity is {} cur && buttons[cur] is { } curButton)
+            curButton.SetExpanded(true);
     }
 }

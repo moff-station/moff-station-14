@@ -1,4 +1,5 @@
 <Button xmlns="https://spacestation14.io"
+        xmlns:customs="clr-namespace:Content.Client.Administration.UI.CustomControls"
         HorizontalExpand="True">
     <BoxContainer Orientation="Vertical"
                   HorizontalExpand="True">
@@ -22,14 +23,28 @@
                        ClipText="True"/>
             </BoxContainer>
         </BoxContainer>
-        <BoxContainer Name="DetailedPanel"
-                      Orientation="Horizontal"
-                      HorizontalExpand="True"
-                      Visible="False">
-            <Label Name="PlaceHolderLabel"
-                   Text="Detailed Informations"
-                   HorizontalExpand="True"
-                   VerticalExpand="True"/>
+        <PanelContainer Name="DetailedPanel"
+                        StyleClasses="BackgroundPanel"
+                        HorizontalExpand="True"
+                        VerticalExpand="True"
+                        Visible="False">
+        <BoxContainer Orientation="Horizontal"
+                      HorizontalExpand="True">
+                <TextureRect Name="BorgSprite"
+                             HorizontalAlignment="Center"
+                             VerticalAlignment="Center"
+                             TextureScale="4 4"/>
+                <customs:VSeparator Margin="4 4 4 4"/>
+                <BoxContainer Orientation="Vertical"
+                              HorizontalExpand="True"
+                              VerticalExpand="True"
+                              VerticalAlignment="Center">
+                    <RichTextLabel Name="BrainLabel"/>
+                    <RichTextLabel Name="IntegrityLabel"/>
+                    <RichTextLabel Name="BatteriesLabel"/>
+                    <RichTextLabel Name="ModulesLabel"/>
+            </BoxContainer>
         </BoxContainer>
+        </PanelContainer>
     </BoxContainer>
 </Button>

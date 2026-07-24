@@ -34,7 +34,7 @@ public sealed class MoffRoboticsConsoleBoundUserInterface : BoundUserInterface
             stationName = metaData.EntityName;
         }
 
-        _window.Setup(gridUid, stationName);
+        _window.Setup(gridUid, stationName, false);
     }
 
     protected override void UpdateState(BoundUserInterfaceState state)
