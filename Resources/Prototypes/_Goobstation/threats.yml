@@ -2,20 +2,20 @@
 - type: weightedRandom
   id: NumberStationThreats
   weights:
-    # Major Threats
+    # Major Threats 20% Chance
     LoneOp: 0.6
     Dragon: 0.3
     Wizard: 0.1
-    # Moderate Threats
+    # Moderate Threats 60% Chance
     NinjaBackup: 0.9
     Eeeplet: 0.8
     Rod: 0.6
     Revenant: 0.5
     Pirate: 0.2
-    # Minor Threats
+    # Minor Threats 20% Chance
     Tourists: 0.75
     Clown: 0.25
-    # Bad Luck
+    # Bad Luck 1% Chance
     DeadDrop: 0.05
 
 # Threats

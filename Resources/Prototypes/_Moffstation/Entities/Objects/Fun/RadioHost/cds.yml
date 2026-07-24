@@ -181,8 +181,38 @@
     state: synd-cd
   - type: Vinyl
     song:
-      path: /Audio/_Goobstation/RadioStation/CDs/misc/numbersShort.ogg # Short version is 171 seconds long. Long version is 275 seconds long.
+      path: /Audio/_Goobstation/RadioStation/CDs/misc/numbersShort.ogg # Short version of numbers and takes 171 seconds to summon a threat.
   - type: VinylSummonRule # This CD summons a random station threat from the following gamerule.
+    gameRule: NumberStationThreats
+
+- type: entity
+  parent: [ BaseCDDisc, BaseSyndicateContraband ]
+  id: CDNumbersSlowAdmin
+  suffix: ADMEME
+  name: "CD: Nuuuummmmbbbbeeeerrrrssss"
+  description: A CD containing a cryptic message that will eventually contact a nearby threat from off station.
+  components:
+  - type: Sprite
+    state: synd-cd
+  - type: Vinyl
+    song:
+      path: /Audio/_Goobstation/RadioStation/CDs/misc/numbers.ogg # This is the long version of numbers and takes 275 seconds to summon a threat.
+  - type: VinylSummonRule
+    gameRule: NumberStationThreats
+
+- type: entity
+  parent: [ BaseCDDisc, BaseSyndicateContraband ]
+  id: CDNumbersQuickAdmin
+  suffix: ADMEME
+  name: "CD: Nmbrz"
+  description: A sped up CD that will quickly contact a nearby threat from off station.
+  components:
+  - type: Sprite
+    state: synd-cd
+  - type: Vinyl
+    song:
+      path: /Audio/_Goobstation/RadioStation/CDs/misc/numbersAdmin.ogg # Super sped up version of numbers which will summon a threat in about 15 seconds.
+  - type: VinylSummonRule
     gameRule: NumberStationThreats
 
 # Nuclear Operative Contraband CDs
