@@ -2,7 +2,7 @@
   parent: BaseItem
   id: WeaponProtoKineticAcceleratorIntegrated
   name: integrated proto-kinetic accelerator
-  description: NT miraculously managed to save up to 33.4% by producing a weaker version of the proto-kinetic accelerator and redesigned it for use by cyborgs. 
+  description: NT miraculously managed to save up to 33.4% by producing a weaker version of the proto-kinetic accelerator and redesigned it for use by cyborgs.
   components:
   - type: Sprite
     sprite: _Moffstation/Objects/Weapons/Guns/Basic/kinetic_accelerator_integrated.rsi
@@ -41,7 +41,10 @@
     rechargeSound:
       path: /Audio/Weapons/Guns/MagIn/kinetic_reload.ogg
   - type: BasicEntityAmmoProvider
-    proto: BulletKineticSmall
+    # proto: BulletKineticSmall
+    ammoTable: !type:AllSelector
+      children:
+      - id: BulletKineticSmall
     capacity: 1
     count: 1
   - type: UseDelay

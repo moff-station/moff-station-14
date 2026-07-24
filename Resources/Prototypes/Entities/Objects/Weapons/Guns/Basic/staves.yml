@@ -16,7 +16,10 @@
       path: /Audio/Weapons/Guns/Gunshots/Magic/staff_healing.ogg
     projectileSpeed: 25
   - type: BasicEntityAmmoProvider
-    proto: ProjectileHealingBolt
+    # proto: ProjectileHealingBolt
+    ammoTable: !type:AllSelector
+      children:
+      - id: ProjectileHealingBolt
     capacity: 10
     count: 10
   - type: PacifismAllowedGun
@@ -37,6 +40,9 @@
       path: /Audio/Weapons/Guns/Gunshots/Magic/staff_door.ogg
     projectileSpeed: 25
   - type: BasicEntityAmmoProvider
-    proto: ProjectilePolyboltDoor
+    # proto: ProjectilePolyboltDoor
+    ammoTable: !type:AllSelector
+      children:
+      - id: ProjectilePolyboltDoor
     capacity: 10
     count: 10

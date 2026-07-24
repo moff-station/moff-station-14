@@ -155,7 +155,10 @@
     fireRate: 0.5
     soundEmpty: /Audio/Misc/boing.ogg
   - type: BasicEntityAmmoProvider
-    proto: StickyHandPalm
+    # proto: StickyHandPalm
+    ammoTable: !type:AllSelector
+      children:
+      - id: StickyHandPalm
     capacity: 1
   - type: Sprite
     sprite: Objects/Weapons/Guns/Launchers/sticky_hand.rsi
