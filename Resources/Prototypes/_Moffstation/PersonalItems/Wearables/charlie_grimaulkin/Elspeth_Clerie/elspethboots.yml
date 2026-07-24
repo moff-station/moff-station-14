@@ -1,0 +1,23 @@
+# Player: charlie_grimaulkin - Character: Elspeth Clerie
+
+- type: entity
+  parent: ClothingShoesHighheelBoots
+  id: &id PersonalItemElspethBoots
+  name: purple-laced high heeled boots
+  description: A pair of broken-in, well-polished boots with purple laces, no doubt been to more than one DIY show.
+  suffix: PersonalItem
+  components:
+  - type: Sprite
+    sprite: &sprite _Moffstation/PersonalItems/Wearables/charlie_grimaulkin/Elspeth_Clerie/elspethboots.rsi
+  - type: Clothing
+    sprite: *sprite
+
+- type: loadout
+  id: *id
+  storage:
+    back:
+    - *id
+  effects:
+  - !type:PersonalItemLoadoutEffect
+    character:
+    - Elspeth Clerie
