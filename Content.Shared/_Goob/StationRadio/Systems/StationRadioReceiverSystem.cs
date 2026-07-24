@@ -46,7 +46,7 @@ public sealed partial class StationRadioReceiverSystem : EntitySystem
             return;
 
         comp.SoundEntity = sound.Value.Entity;
-            _audio.SetGain(comp.SoundEntity, _GetGain(comp, _power.IsPowered(uid)));
+            _audio.SetGain(comp.SoundEntity, GetGain(comp, _power.IsPowered(uid)));
     }
 
     private void OnMediaStopped(EntityUid uid, StationRadioReceiverComponent comp, StationRadioMediaStoppedEvent args)
