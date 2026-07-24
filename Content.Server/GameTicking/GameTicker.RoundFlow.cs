@@ -738,14 +738,13 @@ namespace Content.Server.GameTicking
                 {
                     // 5s buffer so the vote resolves before map preloading starts
                     var preloadTime = RoundPreloadTime + TimeSpan.FromSeconds(5);
+
                     // Delay so the vote lands late in the lobby (accurate pop) and ends before preload
                     var delay = LobbyDuration - (preloadTime + TimeSpan.FromSeconds(_cfg.GetCVar(CCVars.VoteTimerMap)));
                     Timer.Spawn(delay,
                         () =>
                     {
-                        // Skip if a map vote is already running. IVoteHandle exposes no vote type, so the
-                        // localized title is the only map-specific signal available. Checked at fire time
-                        // so a manually-opened map vote mid-lobby also suppresses this one.
+                        // There isn't really a better way to identify an already running map vote...
                         if (_voteManager.ActiveVotes.All(x => x.Title != Loc.GetString("ui-vote-map-title")))
                             _voteManager.CreateStandardVote(null, StandardVoteType.Map);
                     });
