@@ -7,7 +7,7 @@
 #CREW HARDSUITS
 #Atmospherics Hardsuit
 - type: entity
-  parent: [ ClothingHeadHardsuitBase, ClothingHeadSuitWithLightBase ]
+  parent: [ ClothingHeadHardsuitBase, ClothingHeadSuitWithLightBase, ClothingHeadToggleableWeldingMask ]
   id: ClothingHeadHelmetHardsuitAtmos
   name: atmos hardsuit helmet
   description: A special hardsuit helmet designed for working in low-pressure, high thermal environments.
@@ -22,6 +22,11 @@
       visible: false
       shader: unshaded
       map: [ "light" ]
+      # Moffstation - Start - port hardsuit welding masks
+    - state: icon-up
+      visible: false
+      map: [ "visor_icon" ]
+      # Moffstation - End
   - type: HandheldLight
     addPrefix: false
   - type: ToggleableVisuals
@@ -85,10 +90,9 @@
   - type: Tag
     tags:
     - WhitelistChameleon
-
 #Engineering Hardsuit
 - type: entity
-  parent: [ ClothingHeadHardsuitBase, ClothingHeadSuitWithLightBase ]
+  parent: [ ClothingHeadHardsuitBase, ClothingHeadSuitWithLightBase, ClothingHeadToggleableWeldingMask ]
   id: ClothingHeadHelmetHardsuitEngineering
   name: engineering hardsuit helmet
   description: An engineering hardsuit helmet designed for working in low-pressure, high radioactive environments.
@@ -103,6 +107,11 @@
       visible: false
       shader: unshaded
       map: [ "light" ]
+      # Moffstation - Start - port hardsuit welding masks, left here instead of _Moffstation's base_clothinghead.yml because the abstract cant apply layers. same for every instance of this.
+    - state: icon-up
+      visible: false
+      map: [ "visor_icon" ]
+      # Moffstation - End
   - type: HandheldLight
     addPrefix: false
   - type: ToggleableVisuals
@@ -164,7 +173,7 @@
 
 #Spationaut Hardsuit
 - type: entity
-  parent: [ ClothingHeadHardsuitBase, ClothingHeadSuitWithLightBase ]
+  parent: [ ClothingHeadHardsuitBase, ClothingHeadSuitWithLightBase, ClothingHeadToggleableWeldingMask ]
   id: ClothingHeadHelmetHardsuitSpatio
   name: spationaut hardsuit helmet
   description: A sturdy helmet designed for complex industrial operations in space.
@@ -179,6 +188,11 @@
       visible: false
       shader: unshaded
       map: [ "light" ]
+      # Moffstation - Start - port hardsuit welding masks
+    - state: icon-up
+      visible: false
+      map: [ "visor_icon" ]
+      # Moffstation - End
   - type: HandheldLight
     addPrefix: false
   - type: ToggleableVisuals
@@ -234,7 +248,6 @@
   - type: Tag
     tags:
     - WhitelistChameleon
-
 #Salvage Hardsuit
 - type: entity
   parent: [ ClothingHeadHardsuitBase, ClothingHeadSuitWithLightBase ]
@@ -530,7 +543,7 @@
 
 #Chief Engineer's Hardsuit
 - type: entity
-  parent: [ ClothingHeadHardsuitBase, ClothingHeadSuitWithLightBase ]
+  parent: [ ClothingHeadHardsuitBase, ClothingHeadSuitWithLightBase, ClothingHeadToggleableWeldingMask ]
   id: ClothingHeadHelmetHardsuitEngineeringWhite
   name: chief engineer's hardsuit helmet
   description: Special hardsuit helmet, made for the chief engineer of the station.
@@ -545,6 +558,11 @@
       visible: false
       shader: unshaded
       map: [ "light" ]
+      # Moffstation - Start - port hardsuit welding masks
+    - state: icon-up
+      visible: false
+      map: [ "visor_icon" ]
+      # Moffstation - End
   - type: HandheldLight
     addPrefix: false
   - type: ToggleableVisuals

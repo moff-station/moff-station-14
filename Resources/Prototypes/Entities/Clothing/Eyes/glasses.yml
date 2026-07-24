@@ -55,14 +55,13 @@
 - type: entity
   parent: [ClothingEyesBase, BaseEngineeringContraband]
   id: ClothingEyesGlassesMeson
-  name: engineering goggles #less confusion
-  description: Green-tinted goggles using a proprietary polymer that provides protection from eye damage of all types.
+  name: NT-THz Meson Goggles # Funky - more confusion
+  description: Nanotrasen-issue engineering goggles that utilize THz radiation and mesons to reveal sub-floor infrastructure, while protecting the eyes from sparks and debris. # Funky
   components:
   - type: Sprite
     sprite: Clothing/Eyes/Glasses/meson.rsi
   - type: Clothing
     sprite: Clothing/Eyes/Glasses/meson.rsi
-  - type: EyeProtection
   - type: IdentityBlocker
     coverage: EYES
   - type: Tag
@@ -70,6 +69,18 @@
     - PetWearable
     - WhitelistChameleon
     - MesonGoggles # Moffstation - Meson Sunglasses
+  # Moff start - Funky welding
+  - type: TrayScanner
+    toggleAction: ActionToggleTrayScanner
+    soundOn:
+      path: /Audio/Items/flashlight_on.ogg
+    soundOff:
+      path: /Audio/Items/flashlight_off.ogg
+  - type: GoggleShader
+    shader: Goggles
+    color: '#5AB43CCC'
+    enabled: false
+  # Moff end
 
 - type: entity
   parent: ClothingEyesBase
