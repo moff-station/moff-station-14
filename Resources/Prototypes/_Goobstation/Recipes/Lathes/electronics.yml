@@ -1,40 +1,25 @@
 # Goobstation - Radio Host boards
 - type: latheRecipe
-  parent: [ BaseCircuitboardRecipe, BaseMachineRecipeCategory ]
+  parent: [ BaseCircuitboardRecipe, BaseGeneralMachineRecipeCategory ]
   id: VinylPlayerCircuitboard
-  icon:
-    sprite:  _Goobstation/Structures/Machines/StationRadio/vinylplayer.rsi
-    state: icon
   result: VinylPlayerCircuitboard
 
 - type: latheRecipe
-  parent: [ BaseCircuitboardRecipe, BaseMachineRecipeCategory ]
+  parent: [ BaseCircuitboardRecipe, BaseGeneralMachineRecipeCategory ]
   id: TapeDeckCircuitboard
-  icon:
-    sprite:  _Goobstation/Structures/Machines/StationRadio/tapedeck.rsi
-    state: icon
   result: TapeDeckCircuitboard
 
 - type: latheRecipe
-  parent: [ BaseGoldCircuitboardRecipe, BaseMachineRecipeCategory ]
+  parent: [ BaseGoldCircuitboardRecipe, BaseGeneralMachineRecipeCategory ]
   id: StationRadioServerCircuitboard
-  icon:
-    sprite:  _Goobstation/Structures/Machines/StationRadio/stationradioserver.rsi
-    state: icon
   result: StationRadioServerCircuitboard
 
 - type: latheRecipe
-  parent: [ BaseSilverCircuitboardRecipe, BaseMachineRecipeCategory ]
+  parent: [ BaseSilverCircuitboardRecipe, BaseGeneralMachineRecipeCategory ]
   id: StationRadioRigCircuitboard
-  icon:
-    sprite:  _Goobstation/Structures/Machines/StationRadio/radiostationrig.rsi
-    state: icon
   result: StationRadioRigCircuitboard
 
 - type: latheRecipe
-  parent: [ BaseCircuitboardRecipe, BaseMachineRecipeCategory ]
+  parent: [ BaseCheapCircuitboardRecipe, BaseCircuitryRecipeCategory ]
   id: StationRadioCircuitboard
-  icon:
-    sprite:  _Goobstation/Structures/Machines/StationRadio/stationradio.rsi
-    state: icon
   result: StationRadioCircuitboard

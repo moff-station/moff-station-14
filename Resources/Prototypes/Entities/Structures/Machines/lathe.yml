@@ -158,6 +158,7 @@
     - PowerCellsStatic
     - ElectronicsStatic
     - ModularHudModulesStatic # Moffstation - Modular Eyewear
+    - ServiceBoardsStaticGoob # Goobstation - Radio Host boards
   - type: EmagLatheRecipes
     emagStaticPacks:
     - SecurityAmmoStatic
@@ -218,7 +219,6 @@
     staticPacks:
     - ChemistryStatic
     - SurgeryStatic
-    - ServiceBoardsStaticGoob # Goobstation - Radio Host boards
     - ScienceModularHudModulesStatic # Moffstation - Modular Eyewear
     dynamicPacks:
     - AdvancedTools
@@ -236,7 +236,6 @@
     - Equipment
     - WirelessCameraHandheld # MOFFSTATION CHANGE - Adds wireless handheld camera
     - LawProgrammer # Moffstation - Cyborg Programming
-    - ServiceBoardsGoob # Goobstation - Radio Host boards
   - type: EmagLatheRecipes
     emagDynamicPacks:
     - SecurityAmmo
@@ -293,6 +292,7 @@
     - CameraBoards
     - MechBoards
     - ShuttleBoards
+    - ServiceBoardsGoob # Goobstation - Radio Host boards
   - type: EmagLatheRecipes
     emagDynamicPacks:
     - SecurityBoards
