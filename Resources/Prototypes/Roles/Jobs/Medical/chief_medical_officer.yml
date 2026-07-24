@@ -19,7 +19,7 @@
     - !type:DepartmentTimeRequirement
       department: Medical
       time: 10h
-  weight: 10
+#  weight: 10 # Moff - no job weights
   startingGear: CMOGear
   icon: "JobIconChiefMedicalOfficer"
   supervisors: job-supervisors-captain

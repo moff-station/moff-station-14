@@ -23,7 +23,7 @@
     - !type:DepartmentTimeRequirement
       department: Command
       time: 4h
-  weight: 20
+#  weight: 20 # Moff - no job weights
   startingGear: CaptainGear
   icon: "JobIconCaptain"
   joinNotifyCrew: true
