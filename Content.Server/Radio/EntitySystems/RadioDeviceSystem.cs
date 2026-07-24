@@ -15,6 +15,7 @@ using Content.Shared.Speech;
 using Content.Shared.Speech.Components;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Utility; // Moffstation
+using Content.Shared.Power.EntitySystems; // Goobstation - Radio Host
 
 namespace Content.Server.Radio.EntitySystems;
 
@@ -28,6 +29,8 @@ public sealed partial class RadioDeviceSystem : SharedRadioDeviceSystem
     [Dependency] private RadioSystem _radio = default!;
     [Dependency] private InteractionSystem _interaction = default!;
     [Dependency] private SharedAppearanceSystem _appearance = default!;
+
+    [Dependency] private SharedPowerReceiverSystem _power = default!; // Goobstation - Radio Host
 
     // Used to prevent a shitter from using a bunch of radios to spam chat.
     private HashSet<(string, EntityUid, RadioChannelPrototype)> _recentlySent = new();
@@ -173,7 +176,7 @@ public sealed partial class RadioDeviceSystem : SharedRadioDeviceSystem
 
     private void OnReceiveRadio(EntityUid uid, RadioSpeakerComponent component, ref RadioReceiveEvent args)
     {
-        if (uid == args.RadioSource)
+        if (uid == args.RadioSource || component.PowerRequired && !_power.IsPowered(uid)) // Goobstation - Radio Host - Powered required
             return;
 
         var nameEv = new TransformSpeakerNameEvent(args.MessageSource, Name(args.MessageSource));
@@ -184,7 +187,11 @@ public sealed partial class RadioDeviceSystem : SharedRadioDeviceSystem
             ("originalName", nameEv.VoiceName));
 
         // log to chat so people can identity the speaker/source, but avoid clogging ghost chat if there are many radios
-        _chat.TrySendInGameICMessage(uid, args.Message, component.LouderSpeech ? InGameICChatType.Speak : InGameICChatType.Whisper, ChatTransmitRange.GhostRangeLimit, nameOverride: name, checkRadioPrefix: false); // Moffstation - Added component-dependent chatType
+        _chat.TrySendInGameICMessage(uid, args.Message,
+        component.LouderSpeech ? InGameICChatType.Speak : InGameICChatType.Whisper, // Moffstation - Added component-dependent chatType
+        ChatTransmitRange.GhostRangeLimit,
+        nameOverride: name,
+        checkRadioPrefix: component.LouderSpeech); // Goobstation/Moffstation - SpeakNormally -> LouderSpeech
     }
 
     private void OnIntercomEncryptionChannelsChanged(Entity<IntercomComponent> ent, ref EncryptionChannelsChangedEvent args)
