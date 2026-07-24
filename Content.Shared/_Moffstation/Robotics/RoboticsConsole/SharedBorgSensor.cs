@@ -15,7 +15,9 @@ public sealed class BorgSensorStatus(SuitSensorStatus status, CyborgControlData 
     public ProtoId<SensorTypePrototype> SensorType = status.SensorType;
     public NetEntity SuitSensorUid = status.SuitSensorUid;
     public NetEntity OwnerUid = status.OwnerUid;
+    public NetCoordinates? Coordinates = status.Coordinates;
     public string Name = status.Name;
+    public string JobIcon = status.JobIcon;
     public bool IsAlive = status.IsAlive;
     public int? TotalDamage = status.TotalDamage;
     public int? TotalDamageThreshold = status.TotalDamageThreshold;
@@ -28,5 +30,4 @@ public sealed class BorgSensorStatus(SuitSensorStatus status, CyborgControlData 
     public TimeSpan Timeout = TimeSpan.Zero;
 
     public float? DamagePercentage => TotalDamageThreshold == null || TotalDamage == null ? null : TotalDamage / (float) TotalDamageThreshold;
-    public NetCoordinates? Coordinates;
 }
