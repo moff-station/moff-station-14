@@ -14,7 +14,7 @@
   # To create a custom Vinyl using layers, use the following template.
   # sprite: _Moffstation/Objects/Fun/RadioHost/vinyl.rsi
   # state: default
-  # layers:             
+  # layers:
   # - state: base-dark  # Choose either "base-dark", "base-medium" or "base-light".
   #   color: pink       # The lighter the base, the more color will show through.
   # - state: label      # Requires a label.
@@ -137,8 +137,8 @@
     slots:
       vinyl:
         name: vinyl
-        insertSound: /Audio/_Goobstation/RadioStation/Vinyls/vinylEject.ogg
-        ejectSound: /Audio/_Goobstation/RadioStation/Vinyls/vinylInsert.ogg
+        insertSound: /Audio/_Goobstation/RadioStation/Vinyls/vinylInsert.ogg
+        ejectSound: /Audio/_Goobstation/RadioStation/Vinyls/vinylEject.ogg
         whitelist:
           tags:
           - VinylSleeveFit
@@ -158,8 +158,8 @@
     slots:
       vinyl:
         name: vinyl
-        insertSound: /Audio/_Goobstation/RadioStation/Vinyls/vinylEject.ogg
-        ejectSound: /Audio/_Goobstation/RadioStation/Vinyls/vinylInsert.ogg
+        insertSound: /Audio/_Goobstation/RadioStation/Vinyls/vinylInsert.ogg
+        ejectSound: /Audio/_Goobstation/RadioStation/Vinyls/vinylEject.ogg
         whitelist:
           tags:
           - VinylSleeveFit
