@@ -4,15 +4,23 @@
   parent: [ BaseMachinePowered, ConstructibleMachine ]
   description: Listen to the top hits of your stations local radio.
   components:
+  - type: ApcPowerReceiver
+    powerLoad: 100
   - type: Appearance
   - type: Sprite
     sprite: _Goobstation/Structures/Machines/StationRadio/stationradio.rsi
+    drawdepth: SmallObjects
     layers:
     - state: icon
     - state: unlit
       shader: unshaded
-      map: [ "enum.PowerDeviceVisualLayers.Powered" ]
-    drawdepth: SmallObjects
+      map: ["enum.PowerDeviceVisualLayers.Powered"]
+  - type: GenericVisualizer
+    visuals:
+      enum.PowerDeviceVisuals.Powered:
+        enum.PowerDeviceVisualLayers.Powered:
+          True: { visible: true }
+          False: { visible: false }
   - type: Fixtures
     fixtures:
       fix1:

@@ -6,12 +6,21 @@
   components:
   - type: Transform
     noRot: false
+  - type: Appearance
   - type: Sprite
     sprite: _Goobstation/Structures/Machines/StationRadio/tapedeck.rsi
+    drawdepth: SmallObjects
     layers:
     - state: icon
-    drawdepth: SmallObjects
-    # TODO: unlit & maints panel sprite
+    - state: unlit
+      shader: unshaded
+      map: ["enum.PowerDeviceVisualLayers.Powered"]
+  - type: GenericVisualizer
+    visuals:
+      enum.PowerDeviceVisuals.Powered:
+        enum.PowerDeviceVisualLayers.Powered:
+          True: { visible: true }
+          False: { visible: false }
   - type: Rotatable
   - type: Machine
     board: TapeDeckCircuitboard
