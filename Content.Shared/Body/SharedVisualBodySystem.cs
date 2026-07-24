@@ -1,8 +1,8 @@
 using System.Linq;
-using System.Numerics; // Moffstation
-using Content.Shared.Humanoid.Markings;
+using System.Numerics;
 using Content.Shared.Humanoid;
-using Content.Shared.Sprite; // Moffstation
+using Content.Shared.Humanoid.Markings;
+using Content.Shared.Sprite;
 using Robust.Shared.Containers;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Utility;
@@ -125,8 +125,19 @@ public abstract partial class SharedVisualBodySystem : EntitySystem
     // Moffstation - Begin - Height Scaling
     private void OnApplyOrganProfileData(Entity<HumanoidProfileComponent> entity, ref ApplyOrganProfileDataEvent args)
     {
-        if (args.Base?.Height is not { } height ||
-            !HasComp<VisualBodyComponent>(entity) ||
+        if (args.Base?.Height is not { } height)
+            return;
+
+        ApplyHeightScale(entity, height);
+    }
+
+    /// <summary>
+    /// Sets <paramref name="entity"/>'s <see cref="HumanoidProfileComponent.Height"/> to <paramref name="height"/>, via
+    /// <see cref="SharedScaleVisualsSystem"/>, respecting species' limits.
+    /// </summary>
+    private void ApplyHeightScale(Entity<HumanoidProfileComponent> entity, float height)
+    {
+        if (!HasComp<VisualBodyComponent>(entity) ||
             !ProtoMan.Resolve(entity.Comp.Species, out var species))
             return;
 
