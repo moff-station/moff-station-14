@@ -1,5 +1,6 @@
 using Content.Shared.DoAfter;
 using Content.Shared.Tools.Systems;
+using Robust.Shared.Audio;
 using Robust.Shared.GameStates;
 using Robust.Shared.Map;
 using Robust.Shared.Serialization;
@@ -25,7 +26,26 @@ public sealed partial class ToolTileCompatibleComponent : Component
     /// </summary>
     [DataField, ViewVariables(VVAccess.ReadWrite)]
     public bool RequiresUnobstructed = true;
+
+    // Moffstation - Begin - Fireaxe can destroy hull plating
+    /// <summary>
+    /// If not null, provide audio and visual indicators emitted when the tool is being used on a tile.
+    /// </summary>
+    [DataField("cues")]
+    public ToolTileAudioVisualCues? AudioVisualCues;
+    // Moffstation - End
 }
+
+// Moffstation - Begin - Fireaxe can remove plating
+[DataRecord]
+public sealed partial record ToolTileAudioVisualCues
+{
+    public SoundSpecifier? StartSound;
+    public LocId? StartPopup;
+    public SoundSpecifier? EndSound;
+}
+// Moffstation - End
+
 
 [Serializable, NetSerializable]
 public sealed partial class TileToolDoAfterEvent : DoAfterEvent
