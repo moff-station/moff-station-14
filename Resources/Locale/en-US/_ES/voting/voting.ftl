@@ -15,3 +15,10 @@ command-description-esvote-ls = Returns a list of all active votes
 command-description-esvote-options = Given a vote entity, returns the different options
 command-description-esvote-tally = Given a vote entity, returns the current vote tally for the different options
 command-description-esvote-end = Given a vote entity, ends the vote
+
+# Moffstation - namespace this later
+moff-vote-enroll-header-text-format = [bold][font size=16][color={$color}]{$title}[/color][/font][/bold]
+moff-vote-enroll-header-desc-format = [color={$color}]{$desc}[/color]
+moff-vote-enroll-character-select-title = Select Character
+moff-vote-enroll-character-select-random = Random Character
+moff-vote-enroll-character-select-random-tooltip = Spawn as a randomly generated character instead of one of your own. Nothing is saved to your character slots.

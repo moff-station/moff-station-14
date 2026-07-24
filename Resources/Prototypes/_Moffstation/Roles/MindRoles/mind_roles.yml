@@ -1,3 +1,25 @@
+# Eep
+- type: entity
+  parent: BaseMindRoleAntag
+  id: MindRoleEep
+  name: Eep Role
+  components:
+  - type: MindRole
+    roleType: SoloAntagonist
+    subtype: role-subtype-eep
+    subtypeColor: '#8522ff'
+
+# Replicators
+- type: entity
+  parent: BaseMindRoleAntag
+  id: MindRoleReplicator
+  name: Replicator Role
+  components:
+  - type: MindRole
+    roleType: TeamAntagonist
+    subtype: role-subtype-replicators
+    subtypeColor: '#8522ff'
+
 # Pirates
 - type: entity
   parent: BaseMindRoleAntag
@@ -18,6 +40,8 @@
   name: Pirate Captain Role
   components:
   - type: MindRole
+    subtype: role-subtype-faction-pirates
+    subtypeColor: '#a15608'
     antagPrototype: PirateCaptain
 
 - type: entity
@@ -38,7 +62,7 @@
     roleType: TeamAntagonist
     exclusiveAntag: true
     antagPrototype: SyndicateSpy
-    subtype: role-subtype-faction-syndicate
+    subtype: role-subtype-faction-syndicate-mi13
     subtypeColor: darkred
   - type: SyndicateSpyRole
 

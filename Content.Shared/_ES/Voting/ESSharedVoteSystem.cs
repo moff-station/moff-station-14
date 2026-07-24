@@ -1,5 +1,6 @@
 using System.Linq;
 using Content.Shared._ES.Voting.Components;
+using Content.Shared._Moffstation.Voting.Components;
 using Content.Shared.Atmos.EntitySystems;
 using Content.Shared.EntityTable;
 using Content.Shared.Random.Helpers;
@@ -29,9 +30,6 @@ public abstract partial class ESSharedVoteSystem : EntitySystem
     public override void Initialize()
     {
         SubscribeLocalEvent<ESVoteComponent, MapInitEvent>(OnVoteMapInit);
-
-        SubscribeLocalEvent<ESVoterComponent, PlayerAttachedEvent>(OnVoterPlayerAttached);
-        SubscribeLocalEvent<ESVoterComponent, PlayerDetachedEvent>(OnVoterPlayerDetached);
         SubscribeAllEvent<ESSetVoteMessage>(OnSetVote);
 
         InitializeOptions();
@@ -42,34 +40,8 @@ public abstract partial class ESSharedVoteSystem : EntitySystem
     private void OnVoteMapInit(Entity<ESVoteComponent> ent, ref MapInitEvent args)
     {
         ent.Comp.EndTime = _timing.CurTime + ent.Comp.Duration;
-
-        // Add a session override for all the present voters
-        var query = EntityQueryEnumerator<ESVoterComponent, ActorComponent>();
-        while (query.MoveNext(out _, out var actor))
-        {
-            _pvsOverride.AddSessionOverride(ent, actor.PlayerSession);
-        }
-
         RefreshVoteOptions(ent.AsNullable());
         SendVoteStartAnnouncement(ent);
-    }
-
-    private void OnVoterPlayerAttached(Entity<ESVoterComponent> ent, ref PlayerAttachedEvent args)
-    {
-        var query = EntityQueryEnumerator<ESVoteComponent>();
-        while (query.MoveNext(out var uid, out _))
-        {
-            _pvsOverride.AddSessionOverride(uid, args.Player);
-        }
-    }
-
-    private void OnVoterPlayerDetached(Entity<ESVoterComponent> ent, ref PlayerDetachedEvent args)
-    {
-        var query = EntityQueryEnumerator<ESVoteComponent>();
-        while (query.MoveNext(out var uid, out _))
-        {
-            _pvsOverride.RemoveSessionOverride(uid, args.Player);
-        }
     }
 
     private void OnSetVote(ESSetVoteMessage args, EntitySessionEventArgs ev)

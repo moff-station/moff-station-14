@@ -1,3 +1,4 @@
+using Content.Server._Moffstation.Voting; // Moff - enrollment character selection
 using Content.Server.Antag;
 using Content.Server.GameTicking.Rules.Components;
 using Content.Server.Preferences.Managers;
@@ -16,6 +17,7 @@ public sealed partial class AntagLoadProfileRuleSystem : GameRuleSystem<AntagLoa
     [Dependency] private IServerPreferencesManager _prefs = default!;
     [Dependency] private SharedVisualBodySystem _visualBody = default!;
     [Dependency] private MetaDataSystem _metaData = default!;  // Moffstation
+    [Dependency] private MoffEnrollEventSystem _moffEnroll = default!; // Moff - enrollment character selection
 
     public override void Initialize()
     {
@@ -29,10 +31,11 @@ public sealed partial class AntagLoadProfileRuleSystem : GameRuleSystem<AntagLoa
         if (args.Handled)
             return;
 
-        var profile = args.Session != null
-            ? _prefs.GetPreferences(args.Session.UserId).SelectedCharacter as HumanoidCharacterProfile
-            : HumanoidCharacterProfile.RandomWithSpecies();
-
+        // Moff start - enrollees can opt to spawn as a randomly generated character rather than their selected one.
+        var profile = args.Session == null || _moffEnroll.EnrolleeWantsRandom(ent.Owner, args.Session)
+            ? HumanoidCharacterProfile.RandomWithSpecies()
+            : _prefs.GetPreferences(args.Session.UserId).SelectedCharacter as HumanoidCharacterProfile;
+        // Moff end
 
         if (profile?.Species is not { } speciesId || !ProtoMan.Resolve(speciesId, out var species))
         {

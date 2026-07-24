@@ -29,9 +29,13 @@
   - type: LoadMapRule
     gridPath: /Maps/_Moffstation/Shuttles/shuttle-sp-sparrow.yml
   - type: AntagSelection
+    selectionTime: Enroll
     antags:
     - !type:FixedAntagCount
       proto: PirateCorsair
+  - type: ESSynchronizedVoteManager
+    votes:
+    - PirateCorsairEnroller
   - type: DynamicRuleCost
     cost: 75
 
@@ -57,7 +61,7 @@
 
 # Syndicate soldier spawn
 - type: entity
-  parent: BaseAntagGhostRoleRule
+  parent: BaseTraitorRule
   id: SyndieVentSoldierSpawn
   components:
   - type: StationEvent
@@ -68,9 +72,13 @@
   - type: AntagRandomSpawn
   - type: AntagLoadProfileRule
   - type: AntagSelection
+    selectionTime: Enroll
     antags:
     - !type:FixedAntagCount
       proto: SyndieVentSoldier
+  - type: ESSynchronizedVoteManager
+    votes:
+    - SyndieVentSoldierEnroller
   - type: DynamicRuleCost
     cost: 25
 

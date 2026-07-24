@@ -54,7 +54,7 @@ public sealed partial class ESVoteComponent : Component
     /// If false, voters will not be able to see how many votes they have.
     /// </summary>
     [DataField, AutoNetworkedField]
-    public bool ShowCount = true;
+    public bool ShowCount = false;
 }
 
 /// <summary>

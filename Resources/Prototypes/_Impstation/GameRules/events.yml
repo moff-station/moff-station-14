@@ -1,6 +1,6 @@
 # eeeplet
 - type: entity
-  id: EeepEvent
+  id: EeepSpawn
   parent: BaseGameRule
   components:
   - type: StationEvent
@@ -14,10 +14,14 @@
   - type: AntagSpawner
     prototype: MobEeeplet
   - type: AntagSelection
+    selectionTime: Enroll
     agentName: ghost-role-information-eeep-name
     antags:
     - !type:FixedAntagCount
       proto: Eeplet
+  - type: ESSynchronizedVoteManager
+    votes:
+    - EepEnroller
 
 - type: antagSpecifier
   parent: RestrictedAntag
@@ -25,10 +29,10 @@
   spawnerPrototype: SpawnPointGhostEeeplet
   pickPlayer: false
   mindRoles:
-  - MindRoleGhostRoleTeamAntagonist
+  - MindRoleEep
 
 - type: entity
-  id: TouristsShuttleEvent #three tourists
+  id: TouristSpawn #three tourists
   parent: BaseGameRule
   components:
   - type: StationEvent
@@ -37,5 +41,21 @@
     minimumPlayers: 25
     maxOccurrences: 1
   - type: RuleGrids
+  - type: AntagRandomObjectives
+    sets:
+    - groups: TouristObjectiveGroups
+    maxDifficulty: 5
   - type: LoadMapRule
     gridPath: /Maps/_Moffstation/Shuttles/tourists.yml
+  - type: AntagLoadProfileRule
+    preserveName: true
+  - type: AntagSelection
+    selectionTime: Enroll
+    agentName: tourist-round-end-agent-name
+    antags:
+    - !type:FixedAntagCount
+      count: 3
+      proto: Tourist
+  - type: ESSynchronizedVoteManager
+    votes:
+    - TouristEnroller

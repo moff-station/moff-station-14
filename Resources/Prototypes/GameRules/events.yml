@@ -52,7 +52,7 @@
     - id: ZombieOutbreak
     - id: LoneOpsSpawn
     # - id: WizardSpawn # Moffstation
-    - id: EeepEvent # imp
+    - id: EeepSpawn # imp
     - !type:NestedSelector
       tableId: DerelictBorgEventTable
     # Moffstation - Start - Moffstation ghostrole antags
@@ -86,7 +86,7 @@
   id: BaseAntagGhostRoleRule
   components:
   - type: AntagSelection
-    selectionTime: Never
+    selectionTime: Enroll
 
 - type: entity
   id: BaseStationEvent
@@ -228,10 +228,16 @@
     - CarpRiftsObjective
     - DragonSurviveObjective
   - type: AntagSelection
+    selectionTime: Enroll # Moffstation - antag enrollment
     agentName: dragon-round-end-agent-name
     antags:
     - !type:FixedAntagCount
       proto: Dragon
+  # Moffstation - antag enrollment
+  - type: ESSynchronizedVoteManager
+    votes:
+    - DragonEnroller
+  # Moffstation end
   - type: DynamicRuleCost
     cost: 75
 
@@ -257,10 +263,16 @@
     - MassArrestObjective
     - NinjaSurviveObjective
   - type: AntagSelection
+    selectionTime: Enroll # Moffstation - antag enrollment
     agentName: ninja-round-end-agent-name
     antags:
     - !type:FixedAntagCount
       proto: SpaceNinja
+  # Moffstation - antag enrollment
+  - type: ESSynchronizedVoteManager
+    votes:
+    - NinjaEnroller
+  # Moffstation end
   - type: DynamicRuleCost
     cost: 75
 
@@ -286,10 +298,16 @@
     - ParadoxCloneLivingObjective
   - type: AntagRandomSpawn # TODO: improve spawning so they only start in maints
   - type: AntagSelection
+    selectionTime: Enroll # Moffstation - antag enrollment
     agentName: paradox-clone-round-end-agent-name
     antags:
     - !type:FixedAntagCount
       proto: ParadoxClone
+  # Moffstation - antag enrollment
+  - type: ESSynchronizedVoteManager
+    votes:
+    - ParadoxCloneEnroller
+  # Moffstation end
   - type: DynamicRuleCost
     cost: 50
 
@@ -532,9 +550,15 @@
   - type: NukeopsRule
     roundEndBehavior: Nothing
   - type: AntagSelection
+    selectionTime: Enroll # Moffstation - antag enrollment
     antags:
     - !type:FixedAntagCount
       proto: LoneOp
+  # Moffstation - antag enrollment
+  - type: ESSynchronizedVoteManager
+    votes:
+    - LoneOpEnroller
+  # Moffstation end
   - type: DynamicRuleCost
     cost: 75
 
@@ -635,6 +659,11 @@
     occursDuringRoundEnd: false
   - type: SpaceSpawnRule
     spawnDistance: 0
+  # Moffstation - antag enrollment (shared across all derelict cyborg variants)
+  - type: ESSynchronizedVoteManager
+    votes:
+    - DerelictCyborgEnroller
+  # Moffstation end
 
 - type: entity
   parent: BaseDerelictCyborgSpawn
@@ -643,6 +672,7 @@
   - type: AntagSpawner
     prototype: PlayerEngineeringBorgDerelictGhostRole
   - type: AntagSelection
+    selectionTime: Enroll # Moffstation - antag enrollment
     antags:
     - !type:FixedAntagCount
       proto: DerelictEngineeringCyborg
@@ -654,6 +684,7 @@
   - type: AntagSpawner
     prototype: PlayerBorgDerelictGhostRole
   - type: AntagSelection
+    selectionTime: Enroll # Moffstation - antag enrollment
     antags:
     - !type:FixedAntagCount
       proto: DerelictGenericCyborg
@@ -665,6 +696,7 @@
   - type: AntagSpawner
     prototype: PlayerJanitorBorgDerelictGhostRole
   - type: AntagSelection
+    selectionTime: Enroll # Moffstation - antag enrollment
     antags:
     - !type:FixedAntagCount
       proto: DerelictJanitorCyborg
@@ -676,6 +708,7 @@
   - type: AntagSpawner
     prototype: PlayerMedicalBorgDerelictGhostRole
   - type: AntagSelection
+    selectionTime: Enroll # Moffstation - antag enrollment
     antags:
     - !type:FixedAntagCount
       proto: DerelictMedicalCyborg
@@ -687,6 +720,7 @@
   - type: AntagSpawner
     prototype: PlayerMiningBorgDerelictGhostRole
   - type: AntagSelection
+    selectionTime: Enroll # Moffstation - antag enrollment
     antags:
     - !type:FixedAntagCount
       proto: DerelictMiningCyborg
@@ -701,6 +735,7 @@
   - type: AntagSpawner
     prototype: PlayerBorgSyndicateDerelictGhostRole
   - type: AntagSelection
+    selectionTime: Enroll # Moffstation - antag enrollment
     antags:
     - !type:FixedAntagCount
       proto: DerelictSyndicateAssaultCyborg

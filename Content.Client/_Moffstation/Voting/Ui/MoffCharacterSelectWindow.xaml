@@ -1,0 +1,30 @@
+<controls:MoffCharacterSelectWindow
+    xmlns="https://spacestation14.io"
+    xmlns:controls="clr-namespace:Content.Client._Moffstation.Voting.Ui"
+    xmlns:graphics="clr-namespace:Robust.Client.Graphics;assembly=Robust.Client"
+    xmlns:xNamespace="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:style="clr-namespace:Content.Client.Stylesheets"
+    Title="{Loc 'moff-vote-enroll-character-select-title'}"
+    MinSize="420 480">
+    <ScrollContainer HScrollEnabled="False" HorizontalExpand="True" VerticalExpand="True" Margin="5">
+        <PanelContainer>
+            <PanelContainer.PanelOverride>
+                <graphics:StyleBoxFlat BackgroundColor="{xNamespace:Static style:StyleNano.PanelDark}" />
+            </PanelContainer.PanelOverride>
+            <BoxContainer Orientation="Vertical" HorizontalExpand="True" VerticalExpand="True" Margin="10" SeparationOverride="5">
+                <!-- A ContainerButton rather than a Button so the dice can sit beside the label. -->
+                <ContainerButton Name="RandomButton" ToggleMode="True" StyleClasses="button"
+                                 ToolTip="{Loc 'moff-vote-enroll-character-select-random-tooltip'}">
+                    <BoxContainer Orientation="Horizontal" HorizontalAlignment="Left" SeparationOverride="6">
+                        <TextureRect Name="DiceIcon"
+                                     Stretch="KeepAspectCentered"
+                                     SetSize="70 70"
+                                     VerticalAlignment="Center"/>
+                        <Label Text="{Loc 'moff-vote-enroll-character-select-random'}" VerticalAlignment="Center"/>
+                    </BoxContainer>
+                </ContainerButton>
+                <BoxContainer Name="Characters" HorizontalExpand="True" VerticalExpand="True" Orientation="Vertical" SeparationOverride="5"/>
+            </BoxContainer>
+        </PanelContainer>
+    </ScrollContainer>
+</controls:MoffCharacterSelectWindow>

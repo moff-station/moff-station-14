@@ -107,6 +107,20 @@
     overlayColor: '#FFFFFF00'
     noiseAmount: 0 # In case default values change
     noiseMultiplier: 0 # In case default values change
+  # Moffstation - event voting
+  - type: ESVoter
+  - type: UserInterface
+    interfaces:
+      enum.ESVoterUiKey.Key:
+        type: ESVoterBui
+  - type: IntrinsicUI
+    uis:
+      enum.ESVoterUiKey.Key:
+        toggleAction: ESActionStagehandVote
+  # Lets a ghost warp to an enroll event's spawn to preview it (the "Go To" button).
+  - type: Warp
+    delayBetweenWarps: 0
+  # Moffstation - End
 
 # proto for player ghosts specifically
 - type: entity
