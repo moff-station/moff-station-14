@@ -23,6 +23,7 @@ public sealed class BorgSensorStatus(SuitSensorStatus status, CyborgControlData 
     public int? TotalDamageThreshold = status.TotalDamageThreshold;
 
     public SpriteSpecifier? ChassisSprite = control.ChassisSprite;
+    public string ChassisName = control.ChassisName;
     public float Charge = control.Charge;
     public int ModuleCount = control.ModuleCount;
     public bool HasBrain = control.HasBrain;

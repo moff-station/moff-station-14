@@ -21,6 +21,13 @@
                 <Label Name="NameLabel"
                        HorizontalExpand="True"
                        ClipText="True"/>
+                <TextureRect Name="JobIcon"
+                             TextureScale="2 2"
+                             VerticalAlignment="Center"
+                             Margin="5 0 5 0"/>
+                <Label Name="ChassisLabel"
+                       HorizontalExpand="True"
+                       ClipText="True"/>
             </BoxContainer>
         </BoxContainer>
         <PanelContainer Name="DetailedPanel"
@@ -30,19 +37,27 @@
                         Visible="False">
         <BoxContainer Orientation="Horizontal"
                       HorizontalExpand="True">
-                <TextureRect Name="BorgSprite"
-                             HorizontalAlignment="Center"
-                             VerticalAlignment="Center"
-                             TextureScale="4 4"/>
-                <customs:VSeparator Margin="4 4 4 4"/>
-                <BoxContainer Orientation="Vertical"
-                              HorizontalExpand="True"
-                              VerticalExpand="True"
-                              VerticalAlignment="Center">
-                    <RichTextLabel Name="BrainLabel"/>
-                    <RichTextLabel Name="IntegrityLabel"/>
-                    <RichTextLabel Name="BatteriesLabel"/>
-                    <RichTextLabel Name="ModulesLabel"/>
+            <TextureRect Name="BorgSprite"
+                         HorizontalAlignment="Center"
+                         VerticalAlignment="Center"
+                         TextureScale="4 4"/>
+            <customs:VSeparator Margin="4 4 4 4"/>
+            <BoxContainer Orientation="Vertical"
+                          HorizontalExpand="True"
+                          VerticalExpand="True"
+                          VerticalAlignment="Center">
+                <RichTextLabel Name="BrainLabel"/>
+                <RichTextLabel Name="IntegrityLabel"/>
+                <RichTextLabel Name="BatteriesLabel"/>
+                <RichTextLabel Name="ModulesLabel"/>
+            </BoxContainer>
+            <BoxContainer Orientation="Vertical"
+                          VerticalExpand="True"
+                          VerticalAlignment="Center">
+                <Button Name="DisableButton"
+                        Text="{Loc 'robotics-console-disable'}"/>
+                <Button Name="DestroyButton"
+                        Text="{Loc 'robotics-console-destroy'}"/>
             </BoxContainer>
         </BoxContainer>
         </PanelContainer>

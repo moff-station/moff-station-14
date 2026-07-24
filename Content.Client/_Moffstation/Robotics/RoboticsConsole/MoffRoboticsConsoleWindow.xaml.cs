@@ -1,3 +1,4 @@
+using System.Linq;
 using Content.Client.Pinpointer.UI;
 using Content.Client.UserInterface.Controls;
 using Content.Shared._Moffstation.Robotics.RoboticsConsole;
@@ -15,11 +16,13 @@ namespace Content.Client._Moffstation.Robotics.RoboticsConsole;
 [GenerateTypedNameReferences]
 public sealed partial class MoffRoboticsConsoleWindow : FancyWindow
 {
+    public event Action<NetEntity>? OnDisablePressed;
+    public event Action<NetEntity>? OnDestroyPressed;
+
     [Dependency] private IEntityManager _entManager = default!;
     [Dependency] private IPrototypeManager _prototypeManager = default!;
     private readonly SpriteSystem _spriteSystem;
 
-    private bool controlsEnabled = false;
     private Texture blipTexture;
     private Texture borgBlipTexture;
 
@@ -36,58 +39,107 @@ public sealed partial class MoffRoboticsConsoleWindow : FancyWindow
         borgBlipTexture = blipTexture; // change later.
     }
 
-    public void Setup(EntityUid? mapUid, string? stationName, bool enableControls)
+    public void Setup(EntityUid? mapUid, string? stationName)
     {
         NavMap.MapUid = mapUid;
         StationName.Text = stationName ?? Loc.GetString("crew-monitoring-ui-no-station-label");
-        controlsEnabled = enableControls;
-
         NavMap.ForceNavMapUpdate();
     }
 
     public void Update(MoffRoboticsConsoleState status)
     {
-        ClearData();
-
-        foreach (var sensor in status.Cyborgs)
+        foreach (var borg in status.Cyborgs)
         {
-            DisplaySensor(sensor);
+            if (! buttons.Keys.Contains(borg.OwnerUid))
+                CreateSensor(borg, status.AllowBorgControl);
+            else
+                UpdateSensor(borg.OwnerUid, borg, status.AllowBorgControl);
         }
+
+        foreach (var removed in buttons.Keys.Except(status.Cyborgs.Select(x => x.OwnerUid)))
+        {
+            RemoveSensor(removed);
+        }
+
+        NavMap.ForceNavMapUpdate();
     }
 
-    private void ClearData()
-    {
-        buttons = new Dictionary<NetEntity, MoffRoboticsConsoleButton>();
-        SensorsTable.RemoveAllChildren();
-        NavMap.TrackedCoordinates.Clear();
-        NavMap.TrackedEntities.Clear();
-        NavMap.LocalizedNames.Clear();
-    }
-
-    private void DisplaySensor(BorgSensorStatus sensor)
+    private void CreateSensor(BorgSensorStatus sensor, bool controlsEnabled)
     {
         var button = new MoffRoboticsConsoleButton(sensor, sensor.OwnerUid == _trackedEntity, controlsEnabled);
         button.OnPressed += _ => SetFocus(sensor.OwnerUid);
+        button.OnDisablePressed += () => OnDisablePressed?.Invoke(sensor.OwnerUid);
+        button.OnDestroyPressed += () => OnDestroyPressed?.Invoke(sensor.OwnerUid);
+
+        buttons.Add(sensor.OwnerUid, button);
         SensorsTable.AddChild(button);
-        buttons[sensor.OwnerUid] = button;
+
+        if (sensor.Coordinates is not { } coordinates || !NavMap.Visible)
+            return;
 
         var blip = borgBlipTexture;
         if (_prototypeManager.TryIndex<JobIconPrototype>(sensor.JobIcon, out var jobIcon))
             blip = _spriteSystem.Frame0(jobIcon.Icon);
 
-        if (sensor.Coordinates is {} coordinates && NavMap.Visible)
+        NavMap.TrackedEntities.TryAdd(
+            sensor.OwnerUid,
+            new NavMapBlip(
+                CoordinatesToLocal(coordinates),
+                blip,
+                Color.White,
+                sensor.SuitSensorUid == _trackedEntity,
+                true,
+                4f));
+    }
+
+    private void UpdateSensor(NetEntity borg, BorgSensorStatus sensor, bool controlsEnabled)
+    {
+        if (!buttons.TryGetValue(borg, out var button))
+            return;
+
+        button.Update(sensor, _trackedEntity == borg, controlsEnabled);
+
+        var blip = borgBlipTexture;
+        if (_prototypeManager.TryIndex<JobIconPrototype>(sensor.JobIcon, out var jobIcon))
+            blip = _spriteSystem.Frame0(jobIcon.Icon);
+
+        if (sensor.Coordinates is { } coordinates)
         {
-            NavMap.TrackedEntities.TryAdd(
-                sensor.OwnerUid,
-                new NavMapBlip(
-                    CoordinatesToLocal(coordinates),
-                    blip,
-                    Color.White,
-                    sensor.SuitSensorUid == _trackedEntity,
-                    true,
-                    4f));
+            if (NavMap.TrackedEntities.ContainsKey(borg))
+            {
+                var tick = NavMap.TrackedEntities[borg];
+                tick.Coordinates = CoordinatesToLocal(coordinates);
+                tick.Blinks = _trackedEntity == borg;
+                NavMap.TrackedEntities[borg] = tick;
+            }
+            else
+            {
+                NavMap.TrackedEntities.TryAdd(
+                    sensor.OwnerUid,
+                    new NavMapBlip(
+                        CoordinatesToLocal(coordinates),
+                        blip,
+                        Color.White,
+                        sensor.SuitSensorUid == _trackedEntity,
+                        true,
+                        4f));
+            }
+        }
+        else
+        {
+            NavMap.TrackedEntities.Remove(borg);
         }
     }
+
+    private void RemoveSensor(NetEntity borg)
+    {
+        if (!buttons.TryGetValue(borg, out var button))
+            return;
+
+        SensorsTable.RemoveChild(button);
+        NavMap.TrackedEntities.Remove(borg);
+    }
+
 
     private EntityCoordinates CoordinatesToLocal(NetCoordinates refCoords)
     {
