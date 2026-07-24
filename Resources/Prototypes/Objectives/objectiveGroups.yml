@@ -5,10 +5,12 @@
     # Moffstation - Start - Reweighing tables for picker. Keep original proto so we can keep up with any upstream changes
     TraitorObjectiveGroupSteal: 0.25
     TraitorObjectiveGroupKill: 1
-    TraitorObjectiveGroupState: 0.25 #As in, something about your character. Alive, dead, arrested, gained an ability...
+    #TraitorObjectiveGroupState: 0.25 # Moff - QUIT FUCKIN UP MY ODDS (Rolls DAGD too often)
     TraitorObjectiveGroupSocial: 0.5 #Involves helping/harming others without killing them or stealing their stuff
     TraitorObjectiveGroupSabotage: 0.5
     TraitorObjectiveGroupOther: 0.5
+    DieObjective: 0.002 # Moff - Moved here directly, as embedding it in a table messes up the odds
+    EscapeShuttleObjective: 0.01
     # Moffstation - End
 
 - type: weightedRandom
@@ -36,12 +38,14 @@
     KillRandomHeadObjective: 0.25
     TeachLessonObjective: 1 # Moffstation - teach lesson objective
 
-- type: weightedRandom
-  id: TraitorObjectiveGroupState
-  weights:
-    EscapeShuttleObjective: 1
-    DieObjective: 0.01 # Moffstation - Objective picker adjustments
+# Moff start - Dont embed this table because it makes DAGD way higher prob than it should be
+#- type: weightedRandom
+#  id: TraitorObjectiveGroupState
+#  weights:
+#    EscapeShuttleObjective: 1
+#    DieObjective: 0.01 # Moffstation - Objective picker adjustments
     #HijackShuttleObjective: 0.02
+# Moff end
 
 - type: weightedRandom
   id: TraitorObjectiveGroupSocial
