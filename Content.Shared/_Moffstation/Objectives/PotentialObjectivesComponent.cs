@@ -12,7 +12,7 @@ public sealed partial class PotentialObjectivesComponent : Component
     /// The delay until the objectives get automatically selected
     /// </summary>
     [DataField, AutoNetworkedField]
-    public TimeSpan AutoSelectionDelay = TimeSpan.FromMinutes(0.1f);
+    public TimeSpan AutoSelectionDelay = TimeSpan.FromMinutes(15);
 
     /// <summary>
     /// The in-game time it get selected
