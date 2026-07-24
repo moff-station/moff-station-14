@@ -58,7 +58,7 @@ public sealed partial class HumanoidCharacterAppearance : IEquatable<HumanoidCha
     public static HumanoidCharacterAppearance DefaultWithSpecies(ProtoId<SpeciesPrototype> species, Sex sex)
     {
         var protoMan = IoCManager.Resolve<IPrototypeManager>();
-        var speciesPrototype = protoMan.Index<SpeciesPrototype>(species);
+        var speciesPrototype = protoMan.Index(species);
         var skinColoration = protoMan.Index(speciesPrototype.SkinColoration).Strategy;
         var skinColor = skinColoration.InputType switch
         {
@@ -75,14 +75,14 @@ public sealed partial class HumanoidCharacterAppearance : IEquatable<HumanoidCha
         return EnsureValid(appearance, species, sex);
     }
 
-    private static IReadOnlyList<Color> _realisticEyeColors = new List<Color>
-    {
+    private static readonly IReadOnlyList<Color> RealisticEyeColors =
+    [
         Color.Brown,
         Color.Gray,
         Color.Azure,
         Color.SteelBlue,
         Color.Black
-    };
+    ];
 
     /// <summary>
     /// Picks a random eye color.
@@ -91,7 +91,7 @@ public sealed partial class HumanoidCharacterAppearance : IEquatable<HumanoidCha
     {
         var random = IoCManager.Resolve<IRobustRandom>();
 
-        var eyes = random.Pick(_realisticEyeColors);
+        var eyes = random.Pick(RealisticEyeColors);
         return eyes;
     }
 
@@ -117,95 +117,47 @@ public sealed partial class HumanoidCharacterAppearance : IEquatable<HumanoidCha
         return skinColor;
     }
 
-    // Moff start - Random markings
-    public static Dictionary<
-        ProtoId<OrganCategoryPrototype>,
-        Dictionary<HumanoidVisualLayers, List<Marking>>
-    > RandomMarkings(ProtoId<SpeciesPrototype> species, Sex sex, Color newSkinColor, Color newEyeColor)
-    {
-        var random = IoCManager.Resolve<IRobustRandom>();
-        var protoMan = IoCManager.Resolve<IPrototypeManager>();
-        var markingMan = IoCManager.Resolve<MarkingManager>();
-
-        var markings =
-            new Dictionary<ProtoId<OrganCategoryPrototype>, Dictionary<HumanoidVisualLayers, List<Marking>>>();
-        foreach (var (organ, organData) in markingMan.GetMarkingData(species))
-        {
-            if (!protoMan.Resolve(organData.Group, out var groupProto))
-                continue;
-            var organMarkings = new Dictionary<HumanoidVisualLayers, List<Marking>>();
-
-            foreach (var layer in organData.Layers)
-            {
-                var available = markingMan.MarkingsByLayerAndGroupAndSex(layer, organData.Group, sex).Values.ToList();
-
-                // layer is not applied
-                if (available.Count == 0 ||
-                    !groupProto.Limits.TryGetValue(layer, out var layerLimit) || layerLimit.Limit == 0 ||
-                    !random.Prob(layerLimit.RandomChance))
-                    continue;
-
-                // amount of markings to be applied
-                var count = random.Next(0, layerLimit.Limit + 1);
-                if (count == 0)
-                    continue;
-
-                random.Shuffle(available);
-
-                var picked = new List<Marking>();
-                foreach (var markingProto in available.Take(count))
-                {
-                    var colors = MarkingColoring.GetMarkingLayerColors(markingProto, newSkinColor, newEyeColor, picked);
-                    picked.Add(new Marking(markingProto.ID, colors));
-                }
-
-                organMarkings[layer] = picked;
-            }
-
-            if (organMarkings.Count > 0)
-                markings[organ] = organMarkings;
-        }
-
-        return markings;
-    }
-    // Moff end
-
     /// <summary>
-    /// Generates a randomized character appearance.
+    ///     Generates a randomized character appearance.
     /// </summary>
-    public static HumanoidCharacterAppearance Random(string species, Sex sex) // Moffstation - Added randomized markings
-    {
-        var appearance = Random(
-            RandomizeConfigAll,
-            new HumanoidCharacterAppearance { Markings = new () },
-            species,
-            sex
-        );
-
-        return appearance;
-    }
-
-    /// <summary>
-    /// Generates a randomized character appearance with selective randomizing.
-    /// </summary>
+    /// <remarks>
+    ///     When <see cref="RandomizeCfg"/> and an existing <see cref="HumanoidCharacterAppearance"> are passed in,
+    ///     values will be selectively randomized with the option to maintain existing values.
+    /// </remarks>
     /// <param name="charEditorRandomizeConfig">Which values to randomize.</param>
     /// <param name="baseAppearance">Appearance to base the new appearance on. Values that are not randomized will be taken from this appearance.</param>
     /// <param name="species">Species prototype ID.</param>
     /// <param name="sex">Sex.</param>
-    /// <returns>A new character appearance with selected values randomized</returns>
-    public static HumanoidCharacterAppearance Random(RandomizeCfg charEditorRandomizeConfig, HumanoidCharacterAppearance baseAppearance, ProtoId<SpeciesPrototype> species, Sex sex)
+    public static HumanoidCharacterAppearance Random(SpeciesPrototype species, Sex sex, RandomizeCfg? charEditorRandomizeConfig = null, HumanoidCharacterAppearance? baseAppearance = null)
     {
-        var appearance = new HumanoidCharacterAppearance { Markings = new () };
-        appearance.EyeColor = (charEditorRandomizeConfig & RandomizeCfg.Eyes) != 0 ? RandomEyes() : baseAppearance.EyeColor;
-        appearance.SkinColor = (charEditorRandomizeConfig & RandomizeCfg.Skin) != 0 ? RandomSkin(species) : baseAppearance.SkinColor;
-        appearance.Markings = (charEditorRandomizeConfig & RandomizeCfg.Markings) != 0 ? RandomMarkings(species, sex, appearance.SkinColor, appearance.EyeColor) : baseAppearance.Markings; // Moffstation - Randomizeable markings
+        var random = IoCManager.Resolve<IRobustRandom>();
+        var protoMan = IoCManager.Resolve<IPrototypeManager>();
+
+        var skinType = protoMan.Index(species.SkinColoration);
+        var palette = GetRandomClampedPalette(skinType, random);
+
+        // squash Cfg as necessary
+        palette = palette with
+        {
+            SkinColor = (charEditorRandomizeConfig & RandomizeCfg.Skin) != 0 || baseAppearance is null
+                ? palette.SkinColor : baseAppearance.SkinColor,
+            EyeColor = (charEditorRandomizeConfig & RandomizeCfg.Eyes) != 0 || baseAppearance is null
+                ? palette.EyeColor : baseAppearance.EyeColor
+        };
+
+        var markings = ((charEditorRandomizeConfig & RandomizeCfg.Markings) != 0 || baseAppearance is null)
+            ? RandomizeMarkings(species, sex, palette, protoMan, random)
+            : baseAppearance.Markings;
+        // TODO if someone really cares they can probably regenerate the old markings with new colors but im too tired to figure that out
+
+        HumanoidCharacterAppearance appearance = new(
+            palette.EyeColor,
+            palette.SkinColor,
+            markings);
 
         // Safety step. Most systems which called Random() also called this, and not doing so caused issues with markings.
         // In the future it could *maybe* be removed, but it's probably worth the extra CPU cycles to validate this info.
-        return EnsureValid(
-            appearance,
-            species,
-            sex);
+        return EnsureValid(appearance, species, sex);
     }
 
     public static Color ClampColor(Color color)
@@ -215,21 +167,22 @@ public sealed partial class HumanoidCharacterAppearance : IEquatable<HumanoidCha
 
     public static HumanoidCharacterAppearance EnsureValid(HumanoidCharacterAppearance appearance, ProtoId<SpeciesPrototype> species, Sex sex)
     {
-        var eyeColor = ClampColor(appearance.EyeColor);
 
         var proto = IoCManager.Resolve<IPrototypeManager>();
         var markingManager = IoCManager.Resolve<MarkingManager>();
 
         var skinColor = appearance.SkinColor;
+        var eyeColor = appearance.EyeColor;
         var validatedMarkings = appearance.Markings.ShallowClone();
 
         if (proto.TryIndex(species, out var speciesProto))
         {
-            var strategy = proto.Index(speciesProto.SkinColoration).Strategy;
+            var coloration = proto.Index(speciesProto.SkinColoration);
             var organs = markingManager.GetOrgans(species);
-            skinColor = strategy.EnsureVerified(skinColor);
+            skinColor = coloration.Strategy.EnsureVerified(skinColor);
+            eyeColor = ClampEyeColorToStrategy(eyeColor, coloration);
 
-            foreach (var (organ, markings) in appearance.Markings)
+            foreach (var (organ, _) in appearance.Markings)
             {
                 if (!organs.ContainsKey(organ))
                     validatedMarkings.Remove(organ);
@@ -243,7 +196,7 @@ public sealed partial class HumanoidCharacterAppearance : IEquatable<HumanoidCha
                     continue;
                 }
 
-                var actualMarkings = appearance.Markings.GetValueOrDefault(organ)?.ShallowClone() ?? [];
+                var actualMarkings = appearance.Markings.GetValueOrDefault(organ)?.ShallowClone() ?? new();
 
                 markingManager.EnsureValidColors(actualMarkings);
                 markingManager.EnsureValidGroupAndSex(actualMarkings, organData.Value.Group, sex);

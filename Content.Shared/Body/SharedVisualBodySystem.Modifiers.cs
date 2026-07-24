@@ -59,10 +59,13 @@ public abstract partial class SharedVisualBodySystem
         if (!Resolve(source, ref source.Comp) || !Resolve(target, ref target.Comp))
             return;
 
-        // Moffstation - Begin - Cloning copies height. This isn't just a component copy because it needs event piping to be applied properly.
-        if (TryComp<HumanoidProfileComponent>(source, out var profile))
+        // Moffstation - Begin - Cloning copies height. We apply height scaling directly rather than through
+        // ApplyProfile / ApplyOrganProfileDataEvent as those apply an entire profile, which would apply sex, skin
+        // color, etc., which we don't want to do here.
+        if (TryComp<HumanoidProfileComponent>(source, out var profile) &&
+            TryComp<HumanoidProfileComponent>(target, out var targetProfile))
         {
-            ApplyProfile(target, new() { Height = profile.Height });
+            ApplyHeightScale((target, targetProfile), profile.Height);
         }
         // Moffstation - End
 

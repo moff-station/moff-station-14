@@ -396,8 +396,8 @@
   name: soviet pilotka
   description: "\"Perfect for summer in Moscow, da?\""
   components:
-  - type: AddAccentClothing
-    accent: RussianAccent
+  - type: RussianAccent
+    relayAccent: true
   - type: Sprite
     sprite: _Moffstation/Clothing/Head/Hats/pilotka.rsi
   - type: Clothing

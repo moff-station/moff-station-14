@@ -249,6 +249,7 @@ namespace Content.IntegrationTests.Tests
                 // Moffstation - Portals spawn more stuff on trigger, self-explanatory
                 "SpawnEntityTableOnTrigger",
                 "AddGameRuleOnTrigger",
+                "Hellportal",
                 // ES fancy timed despawn
                 "ESTimedDespawn",
                 "ESSparkOnTrigger",
