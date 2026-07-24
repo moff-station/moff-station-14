@@ -55,6 +55,7 @@
 - type: entity
   parent: BaseVinylDisc
   id: BaseVinylSlippery
+  abstract: true
   components:
   - type: Slippery
   - type: CollisionWake
@@ -169,20 +170,3 @@
       vinyl: !type:NestedSelector
         tableId: RandomVinylDisc
 
-# Testing Vinyl for Trying out different layering.
-- type: entity
-  parent: BaseVinylDisc
-  id: TestVinyl
-  name: Test vinyl disc
-  suffix: TEST
-  components:
-  - type: Sprite
-    sprite: _Moffstation/Objects/Fun/RadioHost/vinyl.rsi
-    state: default
-    layers:
-    - state: base-medium
-      color: "#9a3d8c"
-    - state: label
-      color: "#20b024"
-    - state: base-shine
-      color: "#20b024"
