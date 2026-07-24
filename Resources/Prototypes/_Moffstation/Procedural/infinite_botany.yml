@@ -1,0 +1,15 @@
+# Infinite Maints
+- type: biomeTemplate
+  id: Botany
+  layers:
+    # Trays
+    - !type:BiomeEntityLayer
+      threshold: -1
+      allowedTiles:
+        - FloorSteel
+      entities:
+        - HydroponicsTrayEmpty
+    # Floor
+    - !type:BiomeTileLayer
+      threshold: -1
+      tile: FloorSteel
