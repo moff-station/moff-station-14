@@ -32,3 +32,15 @@ public sealed class BorgSensorStatus(SuitSensorStatus status, CyborgControlData 
 
     public float? DamagePercentage => TotalDamageThreshold == null || TotalDamage == null ? null : TotalDamage / (float) TotalDamageThreshold;
 }
+
+[Serializable, NetSerializable]
+public sealed class MoffRoboticsConsoleDestroyMessage(NetEntity target) : BoundUserInterfaceMessage
+{
+    public readonly NetEntity Target = target;
+}
+
+[Serializable, NetSerializable]
+public sealed class MoffRoboticsConsoleDisableMessage(NetEntity target) : BoundUserInterfaceMessage
+{
+    public readonly NetEntity Target;
+}

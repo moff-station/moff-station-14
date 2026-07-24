@@ -1,5 +1,6 @@
 using Content.Shared._Moffstation.Medical.CrewMonitoring;
 using Content.Shared._Moffstation.Robotics.RoboticsConsole;
+using Content.Shared.Robotics;
 using Robust.Client.UserInterface;
 
 namespace Content.Client._Moffstation.Robotics.RoboticsConsole;
@@ -16,6 +17,8 @@ public sealed class MoffRoboticsConsoleBoundUserInterface : BoundUserInterface
     {
         base.Open();
         _window = this.CreateWindow<MoffRoboticsConsoleWindow>();
+        _window.OnDisablePressed += OnDisablePressed;
+        _window.OnDestroyPressed += OnDestroyPressed;
 
         EntityUid? gridUid = null;
         var stationName = string.Empty;
@@ -44,6 +47,16 @@ public sealed class MoffRoboticsConsoleBoundUserInterface : BoundUserInterface
             return;
 
         _window?.Update(cast);
+    }
+
+    private void OnDisablePressed(NetEntity borg)
+    {
+        SendMessage(new MoffRoboticsConsoleDisableMessage(borg));
+    }
+
+    private void OnDestroyPressed(NetEntity borg)
+    {
+        SendMessage(new MoffRoboticsConsoleDestroyMessage(borg));
     }
 }
 

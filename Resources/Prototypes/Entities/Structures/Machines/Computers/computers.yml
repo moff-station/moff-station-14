@@ -1607,8 +1607,10 @@
     sensorTypes:
     - NTBorgSensor
     allowBorgControl: false
+  # Moff start - new robotic console
   #- type: RoboticsConsole
   #  allowBorgControl: false
+  # Moff end
   - type: ActiveRadio
     channels:
     - Science
@@ -1617,8 +1619,10 @@
   - type: UserInterface
     interfaces:
       enum.RoboticsConsoleUiKey.Key:
+        # Moff start - new robotic console
         #type: RoboticsConsoleBoundUserInterface
         type: MoffRoboticsConsoleBoundUserInterface
+        # Moff end
       enum.WiresUiKey.Key:
         type: WiresBoundUserInterface
   - type: ApcPowerReceiver
@@ -1627,6 +1631,7 @@
     idlePowerDraw: 5
     workingPowerDraw: 1000
   - type: UIPowerState
+  # Moff start - new robotic console
   - type: DeviceNetwork
     receiveAll: true
     range: 10000
@@ -1634,6 +1639,7 @@
     receiveFrequencyId: SuitSensor
     #receiveFrequencyId: RoboticsConsole
     transmitFrequencyId: CyborgControl
+    # Moff end
   - type: Computer
     board: RoboticsConsoleCircuitboard
   - type: AccessReader # only used for dangerous things
