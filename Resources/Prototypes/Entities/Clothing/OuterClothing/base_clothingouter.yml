@@ -111,7 +111,6 @@
   parent: [ClothingOuterStorageSuitStorageAttachableBase, BaseFoldable] # Moffstation - Attachable suit storage
   id: ClothingOuterStorageFoldableBase
   components:
-  - type: Appearance
   - type: Foldable
     canFoldInsideContainer: true
     unfoldVerbText: fold-zip-verb
