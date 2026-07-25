@@ -4,16 +4,7 @@
   name: sharkminnow
   suffix: DragonBrood
 
-- type: entity
-  parent: MobShark
-  id: MobSharkMagic
-  name: magishark
-  suffix: Wizard Polymorph
-  description: Looks like some kind of shark. Might be magical.
-  components:
-  - type: TypingIndicator
-    proto: guardian
-
+# Wizard Polymorphs
 - type: entity
   parent: MobDragonDungeon
   id: MobDragonMagic
@@ -30,3 +21,13 @@
   - type: RandomMetadata
     nameSegments: null
     nameFormat: random-metadata-name-format-default
+
+- type: entity
+  parent: MobShark
+  id: MobSharkMagic
+  name: magishark
+  suffix: Wizard Polymorph
+  description: Looks like some kind of shark. Might be magical.
+  components:
+  - type: TypingIndicator
+    proto: guardian
