@@ -7,17 +7,17 @@
     attackRate: 0.4
     damage:
       types:
-        Blunt: 21
+        Blunt: 18
     soundHit:
         path: /Audio/Effects/metal_slam3.ogg
   - type: DamageOtherOnHit
     damage:
       types:
-        Blunt: 12
+        Blunt: 9
   - type: DamageOnHit
     damage:
       types:
-        Blunt: 20
+        Blunt: 40
   - type: DamageOnLand
     damage:
       types:
@@ -25,8 +25,10 @@
   - type: EmitSoundOnLand
     sound:
       path: /Audio/Effects/metal_slam3.ogg
-      params:
-        variation: 0.25
+  - type: Damageable
+    damageModifierSet: Electronic
+  - type: Injurable
+    damageContainer: StructuralInorganic
   - type: HeldSpeedModifier
     walkModifier: 0.7
     sprintModifier: 0.7
