@@ -11,6 +11,39 @@
 
 - type: entity
   parent: PosterBaseMoff
+  id: PosterArnoldsPizzaAdvertisement
+  name: "Arnold's Pizza"
+  description: "A poster for advertising Arnold's Pizza, delivered by their dedicated team of Wawas!"
+  components:
+  - type: Sprite
+    state: poster_arnolds_pizza_advertisement
+  - type: DetailExaminable
+    content: "The tagline reads: \"If you like pepperoni and bullets, you've come to the right place.\""
+
+- type: entity
+  parent: PosterBaseMoff
+  id: PosterArnoldsPizzaHiring
+  name: "Arnold's Pizza Recruitment"
+  description: "Are you a Wawa looking for a job? Now hiring, Arnold's Pizza! Join our crew today!"
+  components:
+  - type: Sprite
+    state: poster_arnolds_pizza_hiring
+  - type: DetailExaminable
+    content: "Terms and conditions for applications apply."
+
+- type: entity
+  parent: PosterBaseMoff
+  id: PosterArnoldsPizzaMissing
+  name: "Missing Wawa"
+  description: "Have you seen this Wawa?"
+  components:
+  - type: Sprite
+    state: poster_arnolds_pizza_missing
+  - type: DetailExaminable
+    content: "Last seen by Arnold's Pizza."
+
+- type: entity
+  parent: PosterBaseMoff
   id: PosterXenoborgs
   name: "Dawn of the Xenoborgs"
   description: "A poster for a sci-fi horror movie. The tagline reads: \"They came in the dead of night, they've taken security. All you can think is. . . Somehow, Nyx had something to do with this.\""

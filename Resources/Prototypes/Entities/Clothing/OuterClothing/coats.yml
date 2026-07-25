@@ -334,8 +334,10 @@
     sprite: Clothing/OuterClothing/Coats/pirate.rsi
   - type: Clothing
     sprite: Clothing/OuterClothing/Coats/pirate.rsi
-  - type: AddAccentClothing #Moffstation - Adding pirate accent
-    accent: PirateAccent #Moffstation - Adding pirate accent
+  # Moff start - Add pirate accent
+  - type: PirateAccent
+    relayAccent: true
+    # Moff end
 
 - type: entity
   parent: [ClothingOuterArmorWarden, BaseSecurityContraband]

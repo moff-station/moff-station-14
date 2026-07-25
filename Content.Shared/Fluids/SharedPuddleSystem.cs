@@ -1,4 +1,5 @@
 using System.Linq;
+using Content.Shared._Funkystation.Fluids;
 using Content.Shared.Administration.Logs;
 using Content.Shared.Chemistry;
 using Content.Shared.Chemistry.Components;
@@ -10,18 +11,24 @@ using Content.Shared.Examine;
 using Content.Shared.FixedPoint;
 using Content.Shared.Fluids.Components;
 using Content.Shared.Friction;
+using Content.Shared.Gravity;
+using Content.Shared.Inventory;
+using Content.Shared.Maps;
 using Content.Shared.Movement.Components;
 using Content.Shared.Movement.Events;
 using Content.Shared.Movement.Systems;
 using Content.Shared.Nutrition.EntitySystems;
 using Content.Shared.Popups;
 using Content.Shared.Slippery;
+using Content.Shared.Standing;
 using Content.Shared.StepTrigger.Components;
 using Content.Shared.StepTrigger.Systems;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Containers;
 using Robust.Shared.Map;
 using Robust.Shared.Network;
+using Robust.Shared.Physics.Components;
+using Robust.Shared.Physics.Events;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Timing;
 
@@ -30,7 +37,6 @@ namespace Content.Shared.Fluids;
 public abstract partial class SharedPuddleSystem : EntitySystem
 {
     [Dependency] private IGameTiming _timing = default!;
-    [Dependency] private IPrototypeManager _prototypeManager = default!;
     [Dependency] protected ISharedAdminLogManager AdminLogger = default!;
     [Dependency] protected OpenableSystem Openable = default!;
     [Dependency] protected ReactiveSystem Reactive = default!;
@@ -43,10 +49,17 @@ public abstract partial class SharedPuddleSystem : EntitySystem
     [Dependency] private StepTriggerSystem _stepTrigger = default!;
     [Dependency] private TileFrictionController _tile = default!;
     [Dependency] private INetManager _net = default!;
+    [Dependency] private SharedMapSystem _map = default!;
+    [Dependency] private TurfSystem _turf = default!;
+
+    [Dependency] private InventorySystem _inventory = default!; // Funky - Clothing stains
+    [Dependency] private StandingStateSystem _standing = default!; // Moff - Clothing stains
+    [Dependency] private SharedGravitySystem _gravity = default!; // Moff - Clothing Stains
 
     [Dependency] private EntityQuery<StepTriggerComponent> _stepTriggerQuery = default!;
     [Dependency] private EntityQuery<ReactiveComponent> _reactiveQuery = default!;
     [Dependency] private EntityQuery<EvaporationComponent> _evaporationQuery = default!;
+    [Dependency] private EntityQuery<PuddleComponent> _puddleQuery = default!;
 
     private ProtoId<ReagentPrototype>[] _standoutReagents = [];
 
@@ -96,6 +109,44 @@ public abstract partial class SharedPuddleSystem : EntitySystem
         TickEvaporation();
     }
 
+    // Moff start - we basically rewrote this function compared to what funky has
+    // Using startcollide rather than onstep, since the onstep is messed with by slippable... its bleak
+    [SubscribeLocalEvent]
+    private void OnStepInPuddle(Entity<PuddleComponent> ent, ref StartCollideEvent args)
+    {
+        // If it dont stain it dont stain
+        if (!ent.Comp.CausesStains)
+            return;
+
+        // The thing stepping in the puddle. Because I keep forgetting which is which
+        var stepper = args.OtherEntity;
+
+        if (!_solutionContainerSystem.ResolveSolution(ent.Owner, ent.Comp.SolutionName, ref ent.Comp.Solution, out var solution))
+            return;
+
+        if (solution.Volume <= FixedPoint2.Zero)
+            return;
+
+        // Check if its in air... because... if you're not on the ground you don't get spilled on
+        if (TryComp<PhysicsComponent>(stepper, out var physicsComp)
+            && (physicsComp.BodyStatus == BodyStatus.InAir || _gravity.IsWeightless(stepper)))
+            return;
+
+        // Choose le target...
+        // if standing and have shoes, just get it on their shoes
+        EntityUid target;
+        if (_standing.IsDown(stepper)) // on the ground, spill it on them in general
+            target = stepper;
+        else if (_inventory.TryGetSlotEntity(stepper, "shoes", out var shoes) && shoes is { } shoeUid)
+            target = shoeUid;
+        else
+            return;
+
+        var spilledEvent = new SpilledOnEvent(ent.Owner, solution);
+        RaiseLocalEvent(target, spilledEvent);
+    }
+    // Moff end
+
     private void OnPrototypesReloaded(PrototypesReloadedEventArgs ev)
     {
         if (ev.WasModified<ReagentPrototype>())
@@ -107,7 +158,7 @@ public abstract partial class SharedPuddleSystem : EntitySystem
     /// </summary>
     private void CacheStandsout()
     {
-        _standoutReagents = [.. _prototypeManager.EnumeratePrototypes<ReagentPrototype>().Where(x => x.Standsout).Select(x => x.ID)];
+        _standoutReagents = [.. ProtoMan.EnumeratePrototypes<ReagentPrototype>().Where(x => x.Standsout).Select(x => x.ID)];
     }
 
     private void OnSolutionUpdate(Entity<PuddleComponent> entity, ref SolutionChangedEvent args)
@@ -127,20 +178,25 @@ public abstract partial class SharedPuddleSystem : EntitySystem
 
         _deletionQueue.Remove(entity);
         UpdateSlip((entity, entity.Comp), args.Solution.Comp.Solution);
-        UpdateSlow(entity, args.Solution.Comp.Solution);
+        UpdateSlow(entity, args.Solution.Comp.Solution, entity.Comp); // Funky - Pass component here
         UpdateEvaporation(entity, args.Solution.Comp.Solution);
         UpdateAppearance((entity, entity.Comp));
     }
 
     private void OnGetFootstepSound(Entity<PuddleComponent> entity, ref GetFootstepSoundEvent args)
     {
+        // Funky start - footprints
+        if (!entity.Comp.AffectsSound)
+            return;
+        // Funky end
+
         if (!_solutionContainerSystem.ResolveSolution(entity.Owner, entity.Comp.SolutionName, ref entity.Comp.Solution,
                 out var solution))
             return;
 
         var reagentId = solution.GetPrimaryReagentId();
         if (!string.IsNullOrWhiteSpace(reagentId?.Prototype)
-            && _prototypeManager.TryIndex(reagentId.Value.Prototype, out ReagentPrototype? proto))
+            && ProtoMan.TryIndex(reagentId.Value.Prototype, out ReagentPrototype? proto))
         {
             args.Sound = proto.FootstepSound;
         }
@@ -185,10 +241,29 @@ public abstract partial class SharedPuddleSystem : EntitySystem
             ent.Comp.Solution = null;
     }
 
+    [SubscribeLocalEvent]
+    private void OnTileChanged(ref TileChangedEvent ev)
+    {
+        foreach (var change in ev.Changes)
+        {
+            if (!_turf.IsSpace(change.NewTile))
+                continue;
+
+            var anchored = _map.GetAnchoredEntitiesEnumerator(ev.Entity, ev.Entity.Comp, change.GridIndices);
+            while (anchored.MoveNext(out var ent))
+            {
+                if (!_puddleQuery.HasComponent(ent))
+                    continue;
+
+                PredictedQueueDel(ent);
+            }
+        }
+    }
+
     private void UpdateAppearance(Entity<PuddleComponent?, AppearanceComponent?> ent)
     {
         var (uid, puddle, appearance) = ent;
-        if (!Resolve(ent, ref puddle, ref appearance))
+        if (!Resolve(ent, ref puddle, ref appearance, false)) // Funky - Uses TryComp behind the scenes now, protecting Footprints which lack it
             return;
 
         var volume = FixedPoint2.Zero;
@@ -205,7 +280,7 @@ public abstract partial class SharedPuddleSystem : EntitySystem
             // Kinda EH
             // Could potentially do alpha per-solution but future problem.
 
-            color = solution.GetColorWithout(_prototypeManager, _standoutReagents);
+            color = solution.GetColorWithout(ProtoMan, _standoutReagents);
             color = color.WithAlpha(0.7f);
 
             foreach (var standout in _standoutReagents)
@@ -216,7 +291,7 @@ public abstract partial class SharedPuddleSystem : EntitySystem
 
                 var interpolateValue = quantity.Float() / solution.Volume.Float();
                 color = Color.InterpolateBetween(color,
-                    _prototypeManager.Index<ReagentPrototype>(standout).SubstanceColor,
+                    ProtoMan.Index<ReagentPrototype>(standout).SubstanceColor,
                     interpolateValue);
             }
         }
@@ -270,7 +345,7 @@ public abstract partial class SharedPuddleSystem : EntitySystem
 
         foreach (var (reagent, quantity) in solution.Contents)
         {
-            var reagentProto = _prototypeManager.Index<ReagentPrototype>(reagent.Prototype);
+            var reagentProto = ProtoMan.Index<ReagentPrototype>(reagent.Prototype);
 
             // Calculate the minimum speed needed to slip in the puddle. Average the overall slip thresholds for all reagents
             var deltaSlipTrigger = reagentProto.SlipData?.RequiredSlipSpeed ?? entity.Comp.DefaultSlippery;
@@ -320,12 +395,20 @@ public abstract partial class SharedPuddleSystem : EntitySystem
         Dirty(entity, slipComp);
     }
 
-    private void UpdateSlow(EntityUid uid, Solution solution)
+    private void UpdateSlow(EntityUid uid, Solution solution, PuddleComponent puddle) // Funky - added puddlecomponent
     {
+        // Funky start - Footprints
+        if (!puddle.AffectsMovement)
+        {
+            RemComp<SpeedModifierContactsComponent>(uid);
+            return;
+        }
+        // Funky end
+
         var maxViscosity = 0f;
         foreach (var (reagent, _) in solution.Contents)
         {
-            var reagentProto = _prototypeManager.Index<ReagentPrototype>(reagent.Prototype);
+            var reagentProto = ProtoMan.Index<ReagentPrototype>(reagent.Prototype);
             maxViscosity = Math.Max(maxViscosity, reagentProto.Viscosity);
         }
 
@@ -346,7 +429,7 @@ public abstract partial class SharedPuddleSystem : EntitySystem
         for (var i = solution.Contents.Count - 1; i >= 0; i--)
         {
             var (reagent, quantity) = solution.Contents[i];
-            var proto = _prototypeManager.Index<ReagentPrototype>(reagent.Prototype);
+            var proto = ProtoMan.Index<ReagentPrototype>(reagent.Prototype);
             var removed = proto.ReactionTile(tileRef, quantity, EntityManager, reagent.Data);
             if (removed <= FixedPoint2.Zero)
                 continue;

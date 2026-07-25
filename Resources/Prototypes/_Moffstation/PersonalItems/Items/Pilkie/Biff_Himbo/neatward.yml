@@ -1,0 +1,26 @@
+# Player: Pilkie - Character: Biff Himbo
+
+- type: entity
+  parent: Gavel
+  id: &id PersonalItemBiffNeatAward
+  name: NEAT award
+  description: The Nanotrasen Entertainment Achievement in Television award, also known as the daytime Nanny. A small plaque reads "Best Performance in a Medical Drama."
+  suffix: PersonalItem
+  components:
+  - type: Sprite
+    sprite: &sprite _Moffstation/PersonalItems/Items/Pilkie/Biff_Himbo/neatward.rsi
+  - type: Item
+    sprite: *sprite
+  - type: DetailExaminable
+    content: >-
+      The engraving on it says "Biff Himbo: Best Performance in a Medical Drama. Awarded for his performance as Doctor Steamy McDreamboat on Gray's Anaxt'Ömii."
+
+- type: loadout
+  id: *id
+  storage:
+    back:
+    - *id
+  effects:
+  - !type:PersonalItemLoadoutEffect
+    character:
+    - Biff Himbo

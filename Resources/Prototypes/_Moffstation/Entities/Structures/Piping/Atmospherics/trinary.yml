@@ -1,0 +1,19 @@
+- type: entity
+  parent: GasMixer
+  id: GasMolarMixer
+  name: molar gas mixer
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Structures/Piping/Atmospherics/gas_molar_mixer.rsi
+  - type: GasMixer
+    strategy: Molar
+
+- type: entity
+  parent: GasMixerFlipped
+  id: GasMolarMixerFlipped
+  suffix: Flipped
+  components:
+  - type: Flippable
+    mirrorEntity: GasMolarMixer
+  - type: Construction
+    node: molarmixerflipped

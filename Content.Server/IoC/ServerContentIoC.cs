@@ -69,6 +69,7 @@ internal static class ServerContentIoC
         deps.Register<DiscordWebhook>();
         deps.Register<DiscordGuildEventManager>(); // Moffstation - Discord events
         deps.Register<VoteWebhooks>();
+        deps.Register<EventWebhook>();
         deps.Register<ServerDbEntryManager>();
         deps.Register<ISharedPlaytimeManager, PlayTimeTrackingManager>();
         deps.Register<ServerApi>();

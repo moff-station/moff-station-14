@@ -4,7 +4,9 @@
   components:
   - type: RandomHumanoidAppearance
   - type: RandomMetadata
-    nameSegments: [ NamesDeathCommando ]
+    nameSegments:
+    - NamesDeathCommandoFirst
+    - NamesDeathCommandoLast
   - type: GhostRole
     makeSentient: true
     name: ghost-role-information-wild-human-name

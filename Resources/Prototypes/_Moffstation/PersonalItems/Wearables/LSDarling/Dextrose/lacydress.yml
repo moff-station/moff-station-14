@@ -1,0 +1,23 @@
+# Player: LSDarling - Character: Dextrose
+
+- type: entity
+  parent: ClothingUniformBase
+  id: &id PersonalItemDextroseLacyDress
+  name: lacy dress
+  description: A delicately sewn lolita-like dress with rosary draped around the waist and shoulder pads shaped like angel wings. Looks to be handmade with care.
+  suffix: PersonalItem
+  components:
+  - type: Sprite
+    sprite: &sprite _Moffstation/PersonalItems/Wearables/LSDarling/Dextrose/lacydress.rsi
+  - type: Clothing
+    sprite: *sprite
+
+- type: loadout
+  id: *id
+  storage:
+    back:
+    - *id
+  effects:
+  - !type:PersonalItemLoadoutEffect
+    character:
+    - Dextrose
