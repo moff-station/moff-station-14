@@ -87,10 +87,7 @@
   - type: RechargeBasicEntityAmmo
     rechargeCooldown: 0.50
   - type: BasicEntityAmmoProvider
-    # proto: BulletHivebot
-    ammoTable: !type:AllSelector
-      children:
-      - id: BulletHivebot
+    proto: BulletHivebot
     capacity: 1
     count: 1
   - type: Gun

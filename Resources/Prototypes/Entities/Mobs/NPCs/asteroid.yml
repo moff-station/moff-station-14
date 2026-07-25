@@ -227,10 +227,7 @@
     rechargeCooldown: 0
     rechargeSound: null
   - type: BasicEntityAmmoProvider
-    # proto: MobHivelordBrood
-    ammoTable: !type:AllSelector
-      children:
-      - id: MobHivelordBrood
+    proto: MobHivelordBrood
     capacity: 1
     count: 1
   - type: NpcFactionMember
@@ -400,10 +397,7 @@
     rechargeCooldown: 0
     rechargeSound: null
   - type: BasicEntityAmmoProvider
-    # proto: BasiliskRay
-    ammoTable: !type:AllSelector
-      children:
-      - id: BasiliskRay
+    proto: BasiliskRay
     capacity: 1
     count: 1
   - type: Bloodstream

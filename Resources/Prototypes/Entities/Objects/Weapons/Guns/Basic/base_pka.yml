@@ -42,10 +42,7 @@
     rechargeSound:
       path: /Audio/Weapons/Guns/MagIn/kinetic_reload.ogg
   - type: BasicEntityAmmoProvider
-    # proto: BulletKinetic
-    ammoTable: !type:AllSelector
-      children:
-      - id: BulletKinetic
+    proto: BulletKinetic
     capacity: 1
     count: 1
   - type: Clothing

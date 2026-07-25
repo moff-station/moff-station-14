@@ -12,14 +12,18 @@ namespace Content.Shared.Weapons.Ranged.Components;
 [RegisterComponent, NetworkedComponent, AutoGenerateComponentState]
 public sealed partial class BasicEntityAmmoProviderComponent : AmmoProviderComponent
 {
-    /*
-    [ViewVariables(VVAccess.ReadWrite)]
-    [DataField("proto", required: true, customTypeSerializer:typeof(PrototypeIdSerializer<EntityPrototype>))]
-    public string Proto = default!;
-    */
 
+    [ViewVariables(VVAccess.ReadWrite)]
+    [DataField("proto", /*required: true,*/ customTypeSerializer:typeof(PrototypeIdSerializer<EntityPrototype>))] // Moff - Entity table support
+    public string? Proto; // Moff - Entity table support
+
+    // Moff Start - Entity table support
+    /// <summary>
+    /// Entity table for projectile prototypes, if a static prototype is not defined.
+    /// </summary>
     [DataField]
-    public EntityTableSelector AmmoTable;
+    public EntityTableSelector? AmmoTable;
+    // Moff End
 
     /// <summary>
     ///     Max capacity.

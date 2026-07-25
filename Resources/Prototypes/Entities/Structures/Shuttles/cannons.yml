@@ -357,10 +357,7 @@
         pitch: 1.2
         variation: 0.08
   - type: BasicEntityAmmoProvider
-    # proto: BulletKineticShuttle
-    ammoTable: !type:AllSelector
-      children:
-      - id: BulletKineticShuttle
+    proto: BulletKineticShuttle
     capacity: 5
     count: 5
   - type: Machine
@@ -408,10 +405,7 @@
         pitch: 1.2
         variation: 0.08
   - type: BasicEntityAmmoProvider
-    # proto: BulletKineticShuttle
-    ammoTable: !type:AllSelector
-      children:
-      - id: BulletKineticShuttle
+    proto: BulletKineticShuttle
     capacity: 3
     count: 3
   - type: DeviceLinkSink
