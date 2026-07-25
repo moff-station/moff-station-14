@@ -1603,11 +1603,11 @@
       state: rd_key
     - map: [ "enum.WiresVisualLayers.MaintenancePanel" ]
       state: generic_panel_open
+  # Moff start - new robotic console
   - type: MoffRoboticsConsole
     sensorTypes:
     - NTBorgSensor
     allowBorgControl: false
-  # Moff start - new robotic console
   #- type: RoboticsConsole
   #  allowBorgControl: false
   # Moff end

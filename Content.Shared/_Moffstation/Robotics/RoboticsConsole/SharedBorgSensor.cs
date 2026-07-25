@@ -21,6 +21,7 @@ public sealed class BorgSensorStatus(SuitSensorStatus status, CyborgControlData 
     public bool IsAlive = status.IsAlive;
     public int? TotalDamage = status.TotalDamage;
     public int? TotalDamageThreshold = status.TotalDamageThreshold;
+    public float HpPercent = control.HpPercent;
 
     public SpriteSpecifier? ChassisSprite = control.ChassisSprite;
     public string ChassisName = control.ChassisName;
@@ -42,5 +43,5 @@ public sealed class MoffRoboticsConsoleDestroyMessage(NetEntity target) : BoundU
 [Serializable, NetSerializable]
 public sealed class MoffRoboticsConsoleDisableMessage(NetEntity target) : BoundUserInterfaceMessage
 {
-    public readonly NetEntity Target;
+    public readonly NetEntity Target = target;
 }

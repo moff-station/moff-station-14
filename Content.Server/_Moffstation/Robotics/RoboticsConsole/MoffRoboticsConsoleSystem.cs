@@ -13,11 +13,13 @@ using Content.Shared.DeviceNetwork.Events;
 using Content.Shared.Lock;
 using Content.Shared.Robotics;
 using Robust.Server.GameObjects;
+using Robust.Shared.Timing;
 
 namespace Content.Server._Moffstation.Robotics.RoboticsConsole;
 
 public sealed partial class MoffRoboticsConsoleSystem : SharedMoffRoboticsConsoleSystem
 {
+    [Dependency] private IGameTiming _time = default!;
     [Dependency] private SuitSensorSystem _sensors = default!;
     [Dependency] private BorgSystem _borgs = default!;
     [Dependency] private UserInterfaceSystem _ui = default!;
@@ -38,6 +40,34 @@ public sealed partial class MoffRoboticsConsoleSystem : SharedMoffRoboticsConsol
             });
     }
 
+    public override void Update(float frameTime)
+    {
+        base.Update(frameTime);
+
+        var now = _time.CurTime;
+        var query = EntityQueryEnumerator<MoffRoboticsConsoleComponent>();
+
+        HashSet<EntityUid> removed = [];
+        while (query.MoveNext(out var uid, out var comp))
+        {
+            // remove cyborgs that havent pinged in a while
+            foreach (var (borg, data) in comp.Cyborgs)
+            {
+                if (now >= data.Timeout)
+                    removed.Add(borg);
+            }
+
+            // needed to prevent modifying while iterating it
+            foreach (var borg in removed)
+            {
+                comp.Cyborgs.Remove(borg);
+            }
+
+            if (removed.Count > 0)
+                UpdateUserInterface((uid, comp));
+        }
+    }
+
     [SubscribeLocalEvent]
     private void OnPacketReceived(Entity<MoffRoboticsConsoleComponent> ent, ref DeviceNetworkPacketEvent args)
     {
@@ -48,6 +78,7 @@ public sealed partial class MoffRoboticsConsoleSystem : SharedMoffRoboticsConsol
             return;
 
         var data = new BorgSensorStatus(sensor, controls.Value);
+        data.Timeout = _time.CurTime + ent.Comp.Timeout;
 
         ent.Comp.Cyborgs[GetEntity(sensor.OwnerUid)] = data;
         UpdateUserInterface(ent);

@@ -50,7 +50,7 @@ public sealed partial class MoffRoboticsConsoleButton : Button
         BorgSprite.Texture = _sprite.Frame0(sensor.ChassisSprite!);
 
         var hpPercentColor =
-            sensor.DamagePercentage switch {
+            sensor.HpPercent switch {
                 < 0.2f => "#FF6C7F", // red
                 < 0.4f => "#EF973C", // orange
                 < 0.6f => "#E8CB2D", // yellow
@@ -69,8 +69,8 @@ public sealed partial class MoffRoboticsConsoleButton : Button
 
         BrainLabel.Text = Loc.GetString("robotics-console-brain", ("brain", sensor.HasBrain));
         IntegrityLabel.Text = Loc.GetString("robotics-console-hp",
-            ("hp", (int)((1 - sensor.DamagePercentage??0) * 100f)),
-            ("color", hpPercentColor)); // todo : make an "unknown" label or smthing
+            ("hp", (int)(sensor.HpPercent * 100f)),
+            ("color", hpPercentColor));
         BatteriesLabel.Text = Loc.GetString("robotics-console-battery",
             ("charge", (int)(sensor.Charge * 100f)),
             ("color", batteryColor));
