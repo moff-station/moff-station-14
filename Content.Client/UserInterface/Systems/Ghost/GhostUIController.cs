@@ -5,7 +5,7 @@ using Content.Client.UserInterface.Systems.Ghost.Widgets;
 using Content.Shared.Ghost;
 using Robust.Client.UserInterface;
 using Robust.Client.UserInterface.Controllers;
-using Robust.Shared.Console;    // Moffstation
+using Robust.Shared.Console; // Moffstation
 
 namespace Content.Client.UserInterface.Systems.Ghost;
 
@@ -14,7 +14,7 @@ public sealed partial class GhostUIController : UIController, IOnSystemChanged<G
 {
     [Dependency] private IEntityNetworkManager _net = default!;
 
-    [Dependency] private IConsoleHost _consoleHost = default!;     // Moffstation - respawn button
+    [Dependency] private IConsoleHost _consoleHost = default!; // Moffstation - respawn button
 
     [UISystemDependency] private readonly GhostSystem? _system = default;
 
@@ -77,7 +77,7 @@ public sealed partial class GhostUIController : UIController, IOnSystemChanged<G
 
     private void OnPlayerUpdated(GhostComponent component)
     {
-        UpdateTimeOfDeath(component.TimeOfDeath);   // Moffstation - respawn button
+        UpdateTimeOfDeath(component.TimeOfDeath); // Moffstation - respawn button
         UpdateGui();
     }
 
@@ -87,7 +87,7 @@ public sealed partial class GhostUIController : UIController, IOnSystemChanged<G
             return;
 
         Gui.Visible = true;
-        UpdateTimeOfDeath(component.TimeOfDeath);   // Moffstation - respawn button
+        UpdateTimeOfDeath(component.TimeOfDeath); // Moffstation - respawn button
         UpdateGui();
     }
 
@@ -122,6 +122,18 @@ public sealed partial class GhostUIController : UIController, IOnSystemChanged<G
         _net.SendSystemNetworkMessage(msg);
     }
 
+    private void OnWarpToRandomFollowedClicked()
+    {
+        var msg = new WarpToRandomFollowedRequestEvent();
+        _net.SendSystemNetworkMessage(msg);
+    }
+
+    private void OnWarpToRandomClicked()
+    {
+        var msg = new WarpToRandomRequestEvent();
+        _net.SendSystemNetworkMessage(msg);
+    }
+
     public void LoadGui()
     {
         if (Gui == null)
@@ -132,7 +144,9 @@ public sealed partial class GhostUIController : UIController, IOnSystemChanged<G
         Gui.GhostRolesPressed += GhostRolesPressed;
         Gui.TargetWindow.WarpClicked += OnWarpClicked;
         Gui.TargetWindow.OnGhostnadoClicked += OnGhostnadoClicked;
-        Gui.GhostRespawnRulesWindow.GhostRespawnPressed += GuiOnGhostRespawnPressed;   // Moffstation - respawn button
+        Gui.TargetWindow.OnWarpToRandomFollowedClicked += OnWarpToRandomFollowedClicked;
+        Gui.TargetWindow.OnWarpToRandomClicked += OnWarpToRandomClicked;
+        Gui.GhostRespawnRulesWindow.GhostRespawnPressed += GuiOnGhostRespawnPressed; // Moffstation - respawn button
 
         UpdateGui();
     }
