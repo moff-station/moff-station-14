@@ -1634,7 +1634,6 @@
   # Moff start - new robotic console
   - type: DeviceNetwork
     receiveAll: true
-    range: 10000
     deviceNetId: Wireless
     receiveFrequencyId: SuitSensor
     #receiveFrequencyId: RoboticsConsole
