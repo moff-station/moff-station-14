@@ -1,0 +1,29 @@
+﻿- type: polymorph
+  id: WizardForcedShark
+  configuration:
+    entity: MobSharkMagic
+    forced: true
+    inventory: None
+    transferName: false # Moff
+    transferDamage: true
+    revertOnCrit: false
+    revertOnDeath: true
+    polymorphSound: !type:SoundPathSpecifier
+      path: /Audio/Magic/forcewall.ogg
+    exitPolymorphSound: !type:SoundPathSpecifier
+      path: /Audio/Magic/forcewall.ogg
+
+- type: polymorph
+  id: WizardForcedDragon
+  configuration:
+    entity: MobDragonMagic
+    forced: true
+    inventory: None
+    transferName: false # Moff
+    transferDamage: true
+    revertOnCrit: false
+    revertOnDeath: true
+    polymorphSound: !type:SoundPathSpecifier
+      path: /Audio/Magic/forcewall.ogg
+    exitPolymorphSound: !type:SoundPathSpecifier
+      path: /Audio/Magic/forcewall.ogg

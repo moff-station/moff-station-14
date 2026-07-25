@@ -1,4 +1,4 @@
-﻿using Content.Shared.EntityTable.EntitySelectors;
+﻿using Content.Shared.EntityTable.EntitySelectors; // Moff - Entity table integration
 using Robust.Shared.GameStates;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom.Prototype;

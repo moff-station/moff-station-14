@@ -29,8 +29,14 @@
   - type: BasicEntityAmmoProvider
     # Moff Start - Entity table integration
     # proto: ProjectilePolyboltCarp
-    ammoTable:
-      id: ProjectilePolyboltCarp
+    ammoTable: !type:GroupSelector
+      children:
+      - id: ProjectilePolyboltCarp
+        prob: 0.75
+      - id: ProjectilePolyboltShark
+        prob: 0.2
+      - id: ProjectilePolyboltDragon
+        prob: 0.05
     # Moff End
     capacity: 5
     count: 5
