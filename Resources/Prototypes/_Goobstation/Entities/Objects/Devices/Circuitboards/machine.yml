@@ -63,13 +63,15 @@
       WoodPlank: 4 # Moffstation - Add Wood since its mostly made of wood.
 
 - type: entity
-  parent: BaseMachineCircuitboard
+  parent: BaseMachineElectronic
   id: StationRadioCircuitboard
   name: station radio machine board
-  description: A machine printed circuit board for a station radio receiver.
+  description: A printed circuit board for a station radio receiver.
   components:
   - type: Sprite
     state: service
+  - type: StaticPrice
+    price: 61
   - type: MachineBoard
     prototype: StationRadioReceiver
     stackRequirements:
