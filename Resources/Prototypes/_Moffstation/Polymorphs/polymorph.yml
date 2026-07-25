@@ -15,17 +15,17 @@
       path: /Audio/Magic/forcewall.ogg
 
 - type: polymorph
-  parents: WizardForcedFishBase
+  parent: WizardForcedFishBase
   id: WizardForcedCarp
 
 - type: polymorph
-  parents: WizardForcedFishBase
+  parent: WizardForcedFishBase
   id: WizardForcedDragon
   configuration:
     entity: MobDragonMagic
 
 - type: polymorph
-  parents: WizardForcedFishBase
+  parent: WizardForcedFishBase
   id: WizardForcedShark
   configuration:
     entity: MobSharkMagic
