@@ -45,12 +45,13 @@ public abstract partial class SharedGunSystem
             }
 
             if (ent.Comp.AmmoTable != null) // If no static prototype is defined, checks for an entity table.
-                continue;
-
-            foreach (var proto in _entityTable.GetSpawns(ent.Comp.AmmoTable)) // If an entitytable is found, fires prototype(s) according to the entity table.
             {
-                var ammoEnt = Spawn(proto, args.Coordinates);
-                args.Ammo.Add((ammoEnt, EnsureShootable(ammoEnt)));
+                foreach (var proto in _entityTable.GetSpawns(ent.Comp.AmmoTable)) // If an entitytable is found, fires prototype(s) according to the entity table.
+                {
+                    var ammoEnt = Spawn(proto, args.Coordinates);
+                    args.Ammo.Add((ammoEnt, EnsureShootable(ammoEnt)));
+                }
+                return;
             }
             // Moff End
         }

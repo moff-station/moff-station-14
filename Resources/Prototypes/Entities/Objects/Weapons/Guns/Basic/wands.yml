@@ -13,10 +13,7 @@
       path: /Audio/Weapons/Guns/Gunshots/Magic/staff_animation.ogg
     projectileSpeed: 25
   - type: BasicEntityAmmoProvider
-    # proto: ProjectilePolyboltCarp
-    ammoTable: !type:AllSelector
-      children:
-      - id: ProjectilePolyboltCarp
+    # proto: ProjectilePolyboltCarp # Moff - Entity table support
     capacity: 5
 
 - type: entity
@@ -40,10 +37,7 @@
   description: For when you need a monkey friend.
   components:
   - type: BasicEntityAmmoProvider
-    # proto: ProjectilePolyboltMonkey
-    ammoTable: !type:AllSelector
-      children:
-      - id: ProjectilePolyboltMonkey
+    proto: ProjectilePolyboltMonkey
     capacity: 5
     count: 5
 
@@ -64,10 +58,7 @@
       path: /Audio/Magic/fireball.ogg
     projectileSpeed: 25
   - type: BasicEntityAmmoProvider
-    # proto: ProjectileFireball
-    ammoTable: !type:AllSelector
-      children:
-      - id: ProjectileFireball
+    proto: ProjectileFireball
     capacity: 5
     count: 5
 
@@ -88,10 +79,7 @@
       path: /Audio/Weapons/Guns/Gunshots/Magic/staff_animation.ogg
     projectileSpeed: 25
   - type: BasicEntityAmmoProvider
-    # proto: ProjectileLocker
-    ammoTable: !type:AllSelector
-      children:
-      - id: ProjectileLocker
+    proto: ProjectileLocker
     capacity: 5
     count: 5
   - type: Item
@@ -127,10 +115,7 @@
       path: /Audio/Weapons/Guns/Gunshots/mateba.ogg # PUNCH
     projectileSpeed: 25
   - type: BasicEntityAmmoProvider
-    # proto: BulletInstakillMagic
-    ammoTable: !type:AllSelector
-      children:
-      - id: BulletInstakillMagic
+    proto: BulletInstakillMagic
     capacity: 30
     count: 30
 
@@ -150,10 +135,7 @@
       path: /Audio/Weapons/Guns/Gunshots/Magic/staff_door.ogg
     projectileSpeed: 25
   - type: BasicEntityAmmoProvider
-    # proto: ProjectilePolyboltDoor
-    ammoTable: !type:AllSelector
-      children:
-      - id: ProjectilePolyboltDoor
+    proto: ProjectilePolyboltDoor
     capacity: 10
     count: 10
 
@@ -164,10 +146,7 @@
   description: Make their situation worse by turning them into a cluwne.
   components:
   - type: BasicEntityAmmoProvider
-    # proto: ProjectilePolyboltCluwne
-    ammoTable: !type:AllSelector
-      children:
-      - id: ProjectilePolyboltCluwne
+    proto: ProjectilePolyboltCluwne
     capacity: 3
     count: 3
 
@@ -178,9 +157,6 @@
   description: Turn all your friends into bread! Your boss! Your enemies! Your dog! Make everything bread!
   components:
   - type: BasicEntityAmmoProvider
-    # proto: ProjectilePolyboltBread
-    ammoTable: !type:AllSelector
-      children:
-      - id: ProjectilePolyboltBread
+    proto: ProjectilePolyboltBread
     capacity: 10
     count: 10
