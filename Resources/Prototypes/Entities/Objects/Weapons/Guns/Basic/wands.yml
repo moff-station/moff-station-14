@@ -32,11 +32,11 @@
     ammoTable: !type:GroupSelector
       children:
       - id: ProjectilePolyboltCarp
-        prob: 0.75
+        weight: 15
       - id: ProjectilePolyboltShark
-        prob: 0.2
+        weight: 4
       - id: ProjectilePolyboltDragon
-        prob: 0.05
+        weight: 1
     # Moff End
     capacity: 5
     count: 5
