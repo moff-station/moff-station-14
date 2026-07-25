@@ -13,10 +13,11 @@
       path: /Audio/Weapons/Guns/Gunshots/Magic/staff_animation.ogg
     projectileSpeed: 25
   - type: BasicEntityAmmoProvider
+    # Moff Start - Entity table integration
     # proto: ProjectilePolyboltCarp
-    ammoTable: !type:AllSelector
-      children:
-      - id: ProjectilePolyboltCarp
+    ammoTable:
+      id: ProjectilePolyboltCarp
+    # Moff End
     capacity: 5
 
 - type: entity
@@ -26,10 +27,11 @@
   description: For when you need a carp filet quick and the clown is looking juicy.
   components:
   - type: BasicEntityAmmoProvider
+    # Moff Start - Entity table integration
     # proto: ProjectilePolyboltCarp
-    ammoTable: !type:AllSelector
-      children:
-      - id: ProjectilePolyboltCarp
+    ammoTable:
+      id: ProjectilePolyboltCarp
+    # Moff End
     capacity: 5
     count: 5
 
@@ -40,10 +42,11 @@
   description: For when you need a monkey friend.
   components:
   - type: BasicEntityAmmoProvider
+    # Moff Start - Entity table integration
     # proto: ProjectilePolyboltMonkey
-    ammoTable: !type:AllSelector
-      children:
-      - id: ProjectilePolyboltMonkey
+    ammoTable:
+      id: ProjectilePolyboltMonkey
+    # Moff End
     capacity: 5
     count: 5
 
@@ -64,10 +67,11 @@
       path: /Audio/Magic/fireball.ogg
     projectileSpeed: 25
   - type: BasicEntityAmmoProvider
+    # Moff Start - Entity table integration
     # proto: ProjectileFireball
-    ammoTable: !type:AllSelector
-      children:
-      - id: ProjectileFireball
+    ammoTable:
+      id: ProjectileFireball
+    # Moff End
     capacity: 5
     count: 5
 
@@ -88,10 +92,11 @@
       path: /Audio/Weapons/Guns/Gunshots/Magic/staff_animation.ogg
     projectileSpeed: 25
   - type: BasicEntityAmmoProvider
+    # Moff Start - Entity table integration
     # proto: ProjectileLocker
-    ammoTable: !type:AllSelector
-      children:
-      - id: ProjectileLocker
+    ammoTable:
+      id: ProjectileLocker
+    # Moff End
     capacity: 5
     count: 5
   - type: Item
@@ -127,10 +132,11 @@
       path: /Audio/Weapons/Guns/Gunshots/mateba.ogg # PUNCH
     projectileSpeed: 25
   - type: BasicEntityAmmoProvider
+    # Moff Start - Entity table integration
     # proto: BulletInstakillMagic
-    ammoTable: !type:AllSelector
-      children:
-      - id: BulletInstakillMagic
+    ammoTable:
+      id: BulletInstakillMagic
+    # Moff End
     capacity: 30
     count: 30
 
@@ -150,10 +156,11 @@
       path: /Audio/Weapons/Guns/Gunshots/Magic/staff_door.ogg
     projectileSpeed: 25
   - type: BasicEntityAmmoProvider
+    # Moff Start - Entity table integration
     # proto: ProjectilePolyboltDoor
-    ammoTable: !type:AllSelector
-      children:
-      - id: ProjectilePolyboltDoor
+    ammoTable:
+      id: ProjectilePolyboltDoor
+    # Moff End
     capacity: 10
     count: 10
 
@@ -164,10 +171,11 @@
   description: Make their situation worse by turning them into a cluwne.
   components:
   - type: BasicEntityAmmoProvider
+    # Moff Start - Entity table integration
     # proto: ProjectilePolyboltCluwne
-    ammoTable: !type:AllSelector
-      children:
-      - id: ProjectilePolyboltCluwne
+    ammoTable:
+      id: ProjectilePolyboltCluwne
+    # Moff End
     capacity: 3
     count: 3
 
@@ -178,9 +186,10 @@
   description: Turn all your friends into bread! Your boss! Your enemies! Your dog! Make everything bread!
   components:
   - type: BasicEntityAmmoProvider
+    # Moff Start - Entity table integration
     # proto: ProjectilePolyboltBread
-    ammoTable: !type:AllSelector
-      children:
-      - id: ProjectilePolyboltBread
+    ammoTable:
+      id: ProjectilePolyboltBread
+    # Moff End
     capacity: 10
     count: 10

@@ -1,4 +1,4 @@
-﻿using Content.Shared.EntityTable;
+﻿using Content.Shared.EntityTable; // Moff - Entity table integration
 using Content.Shared.Weapons.Ranged.Components;
 using Content.Shared.Weapons.Ranged.Events;
 
@@ -6,7 +6,7 @@ namespace Content.Shared.Weapons.Ranged.Systems;
 
 public abstract partial class SharedGunSystem
 {
-    [Dependency] private EntityTableSystem _entityTable = default!;
+    [Dependency] private EntityTableSystem _entityTable = default!; // Moff - Entity table integration
 
     protected virtual void InitializeBasicEntity()
     {
@@ -36,11 +36,13 @@ public abstract partial class SharedGunSystem
             if (ent.Comp.Count != null)
                 ent.Comp.Count--;
 
+            // Moff Start - Entity table integration
             foreach (var proto in _entityTable.GetSpawns(ent.Comp.AmmoTable))
             {
                 var ammoEnt = Spawn(proto, args.Coordinates);
                 args.Ammo.Add((ammoEnt, EnsureShootable(ammoEnt)));
             }
+            // Moff End
         }
 
         _recharge.Reset(ent.Owner);

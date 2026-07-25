@@ -250,10 +250,11 @@
     fireRate: 1
     clumsyProof: true
   - type: BasicEntityAmmoProvider
+    # Moff Start - Entity table integration
     # proto: GrapplingHook
-    ammoTable: !type:AllSelector
-      children:
-      - id: GrapplingHook
+    ammoTable:
+      id: GrapplingHook
+    # Moff End
     capacity: 1
   - type: UseDelay
     delay: 0.5

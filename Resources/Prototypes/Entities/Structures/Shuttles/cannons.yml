@@ -357,10 +357,11 @@
         pitch: 1.2
         variation: 0.08
   - type: BasicEntityAmmoProvider
+    # Moff Start - Entity table integration
     # proto: BulletKineticShuttle
-    ammoTable: !type:AllSelector
-      children:
-      - id: BulletKineticShuttle
+    ammoTable:
+      id: BulletKineticShuttle
+    # Moff end
     capacity: 5
     count: 5
   - type: Machine
@@ -408,10 +409,11 @@
         pitch: 1.2
         variation: 0.08
   - type: BasicEntityAmmoProvider
+    # Moff Start - Entity table integration
     # proto: BulletKineticShuttle
-    ammoTable: !type:AllSelector
-      children:
-      - id: BulletKineticShuttle
+    ammoTable:
+      id: BulletKineticShuttle
+    # Moff End
     capacity: 3
     count: 3
   - type: DeviceLinkSink

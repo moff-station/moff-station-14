@@ -144,10 +144,11 @@
     rechargeSound:
       path: /Audio/Weapons/Guns/MagIn/kinetic_reload.ogg
   - type: BasicEntityAmmoProvider
+    # Moff Start - Entity table integration
     # proto: BulletCharge
-    ammoTable: !type:AllSelector
-      children:
-      - id: BulletCharge
+    ammoTable:
+      id: BulletCharge
+    # Moff End
     capacity: 1
     count: 1
   - type: MeleeWeapon
@@ -237,10 +238,11 @@
   - type: UseDelay
     delay: 1.9
   - type: BasicEntityAmmoProvider
+    # Moff Start - Entity table integration
     # proto: BulletChargeGlaive
-    ammoTable: !type:AllSelector
-      children:
-      - id: BulletChargeGlaive
+    ammoTable:
+      id: BulletChargeGlaive
+    # Moff End
     capacity: 1
     count: 1
   - type: LeechOnMarker

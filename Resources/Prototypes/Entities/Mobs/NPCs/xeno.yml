@@ -337,10 +337,11 @@
   - type: RechargeBasicEntityAmmo
     rechargeCooldown: 0.75
   - type: BasicEntityAmmoProvider
+    # Moff Start - Entity table integration
     # proto: BulletAcid
-    ammoTable: !type:AllSelector
-      children:
-      - id: BulletAcid
+    ammoTable:
+      id: BulletAcid
+    # Moff End
     capacity: 1
     count: 1
   - type: Gun
