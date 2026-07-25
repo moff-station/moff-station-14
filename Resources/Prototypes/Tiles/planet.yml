@@ -7,7 +7,6 @@
     collection: FootstepAsteroid
   weather: true
   indestructible: true
-  isSpace: true
 
 - type: tile
   id: FloorPlanetDirt
@@ -87,7 +86,6 @@
     West: /Textures/Tiles/Planet/Snow/snow_double_edge_west.png
   footstepSounds:
     collection: FootstepSnow
-  isSpace: true
 
 # Ice
 - type: tile
@@ -100,7 +98,6 @@
   weather: true
   mobAcceleration: 0.1
   indestructible: true
-  isSpace: true
 
 # Dug snow
 - type: tile
