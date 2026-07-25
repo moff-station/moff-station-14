@@ -28,6 +28,10 @@ public sealed partial class AntagRandomObjectivesSystem : EntitySystem
         if (args.Session == null)
             return;
 
+        // Only assign to the whitelisted antag definitions (e.g. just the leader) when configured.
+        if (ent.Comp.OnlyForDefs.Count > 0 && !ent.Comp.OnlyForDefs.Contains(args.Def.ID))
+            return;
+
         if (!_mind.TryGetMind(args.Session, out var mindId, out var mind))
         {
             Log.Error($"Antag {ToPrettyString(args.EntityUid):player} was selected by {ToPrettyString(ent):rule} but had no mind attached!");

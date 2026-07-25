@@ -1,0 +1,51 @@
+# Random objective table for the nuke op leader (the commander). Picked from by the objective picker.
+- type: weightedRandom
+  id: NukeOpsLeaderObjectiveGroups
+  weights:
+    NukeOpsLeaderObjectiveGroupDefault: 1.0
+
+- type: weightedRandom
+  id: NukeOpsLeaderObjectiveGroupDefault
+  weights:
+    NukeOpsDestroyStationObjective: 1.0
+    NukeOpsKidnapCommandObjective: 1.0
+
+# Freeform (SimpleObjective) objectives for nuclear operatives. Narrative only - no auto-progress,
+# matching the paradox-clone / blood-brother objective pattern in this fork.
+- type: entity
+  abstract: true
+  parent: BaseObjective
+  id: BaseNukeOpsObjective
+  components:
+  - type: Objective
+    difficulty: 1
+    issuer: TheSyndicate
+  - type: RoleRequirement
+    roles:
+    - NukeopsRole
+
+- type: entity
+  parent: BaseNukeOpsObjective
+  id: NukeOpsDestroyStationObjective
+  name: Destroy the station with a nuclear device.
+  description: Arm the nuclear device and detonate it on the station. Leave nothing but a crater.
+  components:
+  - type: Objective
+    icon:
+      sprite: Objects/Devices/nuke.rsi
+      state: nuclearbomb_base
+  - type: SimpleObjective
+    title: objective-nukeops-destroy-station-title
+
+- type: entity
+  parent: BaseNukeOpsObjective
+  id: NukeOpsKidnapCommandObjective
+  name: Kidnap a member of command.
+  description: Capture a member of the station's command staff and bring them back to your shuttle alive.
+  components:
+  - type: Objective
+    icon:
+      sprite: Objects/Misc/id_cards.rsi
+      state: icon-captain
+  - type: SimpleObjective
+    title: objective-nukeops-kidnap-command-title

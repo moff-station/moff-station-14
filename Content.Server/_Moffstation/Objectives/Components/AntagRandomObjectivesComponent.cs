@@ -1,5 +1,7 @@
 using Content.Server.Antag.Components;
+using Content.Shared.Antag;
 using Robust.Shared.Player;
+using Robust.Shared.Prototypes;
 
 namespace Content.Server._Moffstation.Objectives.Components;
 
@@ -11,6 +13,13 @@ public sealed partial class AntagRandomObjectivesComponent : Component
     /// </summary>
     [DataField(required: true)]
     public List<AntagObjectiveSet> Sets = new();
+
+    /// <summary>
+    /// If non-empty, these objectives are only given to antags selected by one of these antag
+    /// definitions (e.g. only the leader). Leave empty to apply to every antag the rule selects.
+    /// </summary>
+    [DataField]
+    public HashSet<ProtoId<AntagSpecifierPrototype>> OnlyForDefs = new();
 
     /// <summary>
     /// Selection time for objectives, set to 0 to have them be instantly picked randomly
