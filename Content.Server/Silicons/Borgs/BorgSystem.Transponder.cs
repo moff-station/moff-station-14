@@ -205,7 +205,7 @@ public sealed partial class BorgSystem
         data = null;
         if (!TryComp<BorgTransponderComponent>(uid, out var transponder) ||
             !TryComp<BorgChassisComponent>(uid, out var chassis) ||
-            !TryComp<MetaDataComponent>(uid, out var metaData))
+            !TryComp(uid, out MetaDataComponent? metaData))
             return false;
 
         var chargeFraction = 0f;
