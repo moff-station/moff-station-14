@@ -5,9 +5,8 @@
   components:
   - type: EntityTableSpawner
     offset: 0.2
-    table: !type:AllSelector
-      children:
-      - id: Sledgehammer
+    table:
+      id: Sledgehammer
   - type: Sprite
     sprite: Markers/jobs.rsi
     layers:
