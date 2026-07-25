@@ -250,7 +250,10 @@
     fireRate: 1
     clumsyProof: true
   - type: BasicEntityAmmoProvider
-    proto: GrapplingHook
+    # proto: GrapplingHook
+    ammoTable: !type:AllSelector
+      children:
+      - id: GrapplingHook
     capacity: 1
   - type: UseDelay
     delay: 0.5

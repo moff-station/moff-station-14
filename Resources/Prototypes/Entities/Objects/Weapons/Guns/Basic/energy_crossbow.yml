@@ -30,7 +30,10 @@
     rechargeSound:
       path: /Audio/Weapons/Guns/MagIn/energycrossbow_reload.ogg
   - type: BasicEntityAmmoProvider
-    proto: EnergyCrossbowBolt
+    # proto: EnergyCrossbowBolt
+    ammoTable: !type:AllSelector
+      children:
+      - id: EnergyCrossbowBolt
     capacity: 1
     count: 1
 

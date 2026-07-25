@@ -52,7 +52,10 @@
       - 0,0,1,0
     storedOffset: 0,-6
   - type: BasicEntityAmmoProvider
-    proto: ChainSickle
+    # proto: ChainSickle
+    ammoTable: !type:AllSelector
+      children:
+      - id: ChainSickle
     capacity: 1
   - type: Sprite
     sprite: _Moffstation/Objects/Weapons/Guns/Launchers/chainsickle.rsi
