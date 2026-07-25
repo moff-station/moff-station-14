@@ -153,12 +153,12 @@
   parent: ClothingHandsBase
   id: ClothingHandsGlovesHop
   name: papercut-proof gloves
-  description: Perfect for dealing with paperwork and matters with bureaucracy.
+  description: Perfect for dealing with paperwork and bureaucratic matter, their eloquent sheep cloth knit provide adequate protection from writer's cramp. # Moffstation
   components:
   - type: Sprite
-    sprite: Clothing/Hands/Gloves/hop.rsi
+    sprite: _Moffstation/Clothing/Hands/hop.rsi # Moffstation
   - type: Clothing
-    sprite: Clothing/Hands/Gloves/hop.rsi
+    sprite: _Moffstation/Clothing/Hands/hop.rsi # Moffstation
   - type: Fiber
     fiberMaterial: fibers-durathread
     fiberColor: fibers-black

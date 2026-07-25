@@ -393,7 +393,8 @@
 
 - type: entity
   parent: [ClothingOuterWinterCoatToggleable, BaseCommandContraband]
-  id: ClothingOuterWinterHoP
+  id: ClothingOuterWinterHoPUpstream # Moffstation
+  abstract: true # Moffstation
   name: head of personnel's winter coat
   components:
   - type: Sprite
