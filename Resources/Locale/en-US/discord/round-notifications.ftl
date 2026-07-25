@@ -1,5 +1,5 @@
 ﻿# Moff - Change the new round starting text
-#discord-round-notifications-new = The round is now in lobby!
+discord-round-notifications-new = The round is now in lobby!
 discord-round-notifications-started = Round #{$id} on map "{$map}" started.
 discord-round-notifications-end = Round #{$id} has ended. It lasted for {$hours} hours, {$minutes} minutes, and {$seconds} seconds.
 discord-round-notifications-end-ping = <@&{$roleId}>, a new round will start soon!

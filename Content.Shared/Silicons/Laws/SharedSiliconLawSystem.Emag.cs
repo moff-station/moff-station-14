@@ -43,7 +43,7 @@ public abstract partial class SharedSiliconLawSystem
         {
             // If no brain and chassis is not provider
             if (ent.Comp.BrainEntity == null)
-                _popup.PopupClient(Loc.GetString("law-emag-cannot-brainless", ("entity", ent)), ent, args.UserUid);
+                _popup.PopupEntity(Loc.GetString("law-emag-cannot-brainless", ("entity", ent)), ent, args.UserUid);
 
             return;
         }
@@ -51,7 +51,7 @@ public abstract partial class SharedSiliconLawSystem
         // Check if provider is already emagged
         if (_emag.CheckFlag(providerUid, EmagType.Interaction))
         {
-            _popup.PopupClient(Loc.GetString("law-emag-already-emagged", ("entity", providerUid)), ent, args.UserUid);
+            _popup.PopupEntity(Loc.GetString("law-emag-already-emagged", ("entity", providerUid)), ent, args.UserUid);
             return;
         }
 
@@ -66,7 +66,7 @@ public abstract partial class SharedSiliconLawSystem
                 )
             )
         {
-            _popup.PopupClient(reason, ent, args.UserUid);
+            _popup.PopupEntity(reason, ent, args.UserUid);
             return;
         }
 
@@ -83,7 +83,7 @@ public abstract partial class SharedSiliconLawSystem
 
         if (!foundMind)
         {
-            _popup.PopupClient(Loc.GetString("law-emag-require-mind", ("entity", providerUid)), ent, args.UserUid);
+            _popup.PopupEntity(Loc.GetString("law-emag-require-mind", ("entity", providerUid)), ent, args.UserUid);
             return;
         }
 
@@ -119,7 +119,7 @@ public abstract partial class SharedSiliconLawSystem
         // Check if brain is already emagged
         if (_emag.CheckFlag(ent, EmagType.Interaction))
         {
-            _popup.PopupClient(Loc.GetString("law-emag-already-emagged", ("entity", ent)), ent, args.UserUid);
+            _popup.PopupEntity(Loc.GetString("law-emag-already-emagged", ("entity", ent)), ent, args.UserUid);
             return;
         }
 
@@ -129,14 +129,14 @@ public abstract partial class SharedSiliconLawSystem
 
         if (!CanBeEmagged(ent, args.UserUid, out var reason, out var emagLawcomp))
         {
-            _popup.PopupClient(reason, ent, args.UserUid);
+            _popup.PopupEntity(reason, ent, args.UserUid);
             return;
         }
 
         // The brain must have a mind to be emagged.
         if (!TryComp<MindContainerComponent>(ent, out var mindContainer) || !mindContainer.HasMind)
         {
-            _popup.PopupClient(Loc.GetString("law-emag-require-mind", ("entity", ent)), ent, args.UserUid);
+            _popup.PopupEntity(Loc.GetString("law-emag-require-mind", ("entity", ent)), ent, args.UserUid);
             return;
         }
 

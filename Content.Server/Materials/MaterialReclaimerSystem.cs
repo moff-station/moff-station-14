@@ -174,7 +174,11 @@ public sealed partial class MaterialReclaimerSystem : SharedMaterialReclaimerSys
 
         //Moffstation - recycler damage change - begin
         if(!CanGib(uid, item, component))
+        {
+            var eventArgs = new DestructionEventArgs();
+            RaiseLocalEvent(item, eventArgs);
             QueueDel(item);
+        }
         //Moffstation - end
     }
 

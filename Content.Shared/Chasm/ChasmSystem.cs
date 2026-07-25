@@ -1,6 +1,4 @@
-﻿using System.Linq;
-using Content.Shared._Moffstation.Extensions;
-using Content.Shared.ActionBlocker;
+﻿using Content.Shared.ActionBlocker;
 using Content.Shared.Movement.Events;
 using Content.Shared.StepTrigger.Systems;
 using Content.Shared.Weapons.Misc;
@@ -13,17 +11,18 @@ using Robust.Shared.Utility;
 namespace Content.Shared.Chasm;
 
 /// <summary>
-///     Handles making entities fall into chasms when stepped on.
+/// Handles making entities fall into chasms when stepped on.
 /// </summary>
 public sealed partial class ChasmSystem : EntitySystem
 {
-    [Dependency] private IGameTiming _timing = default!;
-    [Dependency] private ActionBlockerSystem _blocker = default!;
     [Dependency] private SharedAudioSystem _audio = default!;
+    [Dependency] private ActionBlockerSystem _blocker = default!;
     [Dependency] private SharedGrapplingGunSystem _grapple = default!;
+    [Dependency] private IGameTiming _timing = default!;
+    [Dependency] private EntityWhitelistSystem _whitelist = default!;
 
-    [Dependency] private EntityQuery<ChasmComponent> _chasmQuery;
     [Dependency] private EntityQuery<ChasmFallingComponent> _chasmFallingQuery;
+    [Dependency] private EntityQuery<ChasmComponent> _chasmQuery;
 
     public override void Initialize()
     {
@@ -31,8 +30,9 @@ public sealed partial class ChasmSystem : EntitySystem
 
         SubscribeLocalEvent<ChasmComponent, StepTriggeredOffEvent>(OnStepTriggered);
         SubscribeLocalEvent<ChasmComponent, StepTriggerAttemptEvent>(OnStepTriggerAttempt);
-        SubscribeLocalEvent<ChasmFallingComponent, UpdateCanMoveEvent>(OnUpdateCanMove);
         SubscribeLocalEvent<ChasmComponent, ComponentShutdown>(OnShutdown);
+
+        SubscribeLocalEvent<ChasmFallingComponent, UpdateCanMoveEvent>(OnUpdateCanMove);
     }
 
     public override void Update(float frameTime)
@@ -61,8 +61,6 @@ public sealed partial class ChasmSystem : EntitySystem
         }
     }
 
-    [Dependency] private EntityWhitelistSystem _whitelist = default!;
-
     private void OnStepTriggered(Entity<ChasmComponent> entity, ref StepTriggeredOffEvent args)
     {
         // already doomed
@@ -79,7 +77,7 @@ public sealed partial class ChasmSystem : EntitySystem
         }
 
         // Give an opportunity to cancel the fall for whatever reason.
-        var checkEvent = new EntityTriesStartingFallingEvent(args.Tripper);
+        var checkEvent = new EntityStartFallingAttemptEvent(args.Tripper);
         RaiseLocalEvent(entity, ref checkEvent);
         if (checkEvent.Cancelled)
             return;
@@ -142,11 +140,13 @@ public sealed partial class ChasmSystem : EntitySystem
 
     private void OnShutdown(Entity<ChasmComponent> entity, ref ComponentShutdown args)
     {
-        foreach (var falling in EntityQueryEnumerator<ChasmFallingComponent>()
-                     .AsEnumerable()
-                     .Where(falling => falling.Comp.FallingInto == entity.Owner))
+        var e = EntityQueryEnumerator<ChasmFallingComponent>();
+        while (e.MoveNext(out var fallingEnt, out var falling))
         {
-            RemCompDeferred<ChasmFallingComponent>(falling);
+            if (falling.FallingInto != entity.Owner)
+                continue;
+
+            RemCompDeferred<ChasmFallingComponent>(fallingEnt);
         }
     }
 }
