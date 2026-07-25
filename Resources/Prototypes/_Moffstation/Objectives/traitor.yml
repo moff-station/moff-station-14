@@ -88,6 +88,7 @@
   - type: TargetObjective
     title: objective-condition-teach-lesson
   - type: PickRandomPerson
+    conditions: []
   - type: EscapeShuttleCondition
 
 # gather intel on someone
@@ -104,6 +105,7 @@
   - type: TargetObjective
     title: objective-condition-gather-intel
   - type: PickRandomPerson
+    conditions: []
   - type: EscapeShuttleCondition
 
 # objective to leave a calling card
@@ -142,6 +144,7 @@
   - type: TargetObjective
     title: objective-condition-leave-card-on-person
   - type: PickRandomPerson
+    conditions: []
   - type: EscapeShuttleCondition
   - type: ObjectiveBlacklistRequirement
     blacklist:
