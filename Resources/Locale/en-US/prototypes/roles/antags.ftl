@@ -25,7 +25,7 @@ roles-antag-nuclear-operative-commander-objective = Lead a strike team of Gorlex
 roles-antag-nuclear-operative-agent-name = Gorlex Marauder corpsman
 roles-antag-nuclear-operative-agent-objective = The medic of the Gorlex Marauder strike team. Heal your team to victory!
 
-roles-antag-nuclear-operative-name = Gorlex Marauder
+roles-antag-nuclear-operative-name = Gorlex Marauder operative
 roles-antag-nuclear-operative-objective = A professional solider of a Gorlex Marauder strike team. Follow your commander to victory!
 #Moff end
 
