@@ -28,8 +28,8 @@ public sealed partial class AntagRandomObjectivesSystem : EntitySystem
         if (args.Session == null)
             return;
 
-        // Only assign to the whitelisted antag definitions (e.g. just the leader) when configured.
-        if (ent.Comp.OnlyForDefs.Count > 0 && !ent.Comp.OnlyForDefs.Contains(args.Def.ID))
+        // See if objectives are only given to specific antag defs.
+        if (ent.Comp.OnlyForDefs is not { } antagDefs || !antagDefs.Contains(args.Def.ID))
             return;
 
         if (!_mind.TryGetMind(args.Session, out var mindId, out var mind))

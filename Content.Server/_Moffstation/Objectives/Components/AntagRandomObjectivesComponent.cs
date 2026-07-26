@@ -15,11 +15,11 @@ public sealed partial class AntagRandomObjectivesComponent : Component
     public List<AntagObjectiveSet> Sets = new();
 
     /// <summary>
-    /// If non-empty, these objectives are only given to antags selected by one of these antag
-    /// definitions (e.g. only the leader). Leave empty to apply to every antag the rule selects.
+    /// When specified, you can choose to give objectives to only specific AntagSpecifiers within the rule.
+    /// When empty, it goes to everyone part of the rule
     /// </summary>
     [DataField]
-    public HashSet<ProtoId<AntagSpecifierPrototype>> OnlyForDefs = new();
+    public HashSet<ProtoId<AntagSpecifierPrototype>>? OnlyForDefs;
 
     /// <summary>
     /// Selection time for objectives, set to 0 to have them be instantly picked randomly
