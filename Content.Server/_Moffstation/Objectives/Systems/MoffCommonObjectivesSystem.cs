@@ -2,6 +2,7 @@ using System.Linq;
 using Content.Server._Moffstation.Objectives.Components;
 using Content.Server.Antag;
 using Content.Server.Antag.Components;
+using Content.Shared._Moffstation.Objectives;
 using Content.Shared.GameTicking.Components;
 using Content.Shared.Mind;
 using Content.Shared.Objectives.Systems;
@@ -10,12 +11,17 @@ using Robust.Shared.Timing;
 namespace Content.Server._Moffstation.Objectives.Systems;
 
 /// <summary>
-/// Keeps the objectives of entities with <see cref="MoffSharedObjectivesComponent"/> mirrored from
-/// their <see cref="MoffSharedObjectivesComponent.Authority"/>. While the authority has no
+/// Keeps the objectives of entities with <see cref="MoffCommonObjectivesComponent"/> mirrored from
+/// their <see cref="MoffCommonObjectivesComponent.Authority"/>. While the authority has no
 /// objectives (or no authority is set) the follower is given a placeholder objective instead so its
 /// character menu isn't empty.
 /// </summary>
-public sealed partial class MoffSharedObjectivesSystem : EntitySystem
+/// <remarks>
+/// Mirroring is driven by <see cref="ObjectiveAddedEvent"/>/<see cref="ObjectiveRemovedEvent"/>, so
+/// followers pick changes up the moment the authority's mind is touched. The update loop only exists
+/// to find the authority in the first place, since nothing announces that.
+/// </remarks>
+public sealed partial class MoffCommonObjectivesSystem : EntitySystem
 {
     [Dependency] private SharedMindSystem _mind = default!;
     [Dependency] private SharedObjectivesSystem _objectives = default!;
@@ -31,7 +37,7 @@ public sealed partial class MoffSharedObjectivesSystem : EntitySystem
             return;
         _nextSync = _timing.CurTime + SyncInterval;
 
-        var query = EntityQueryEnumerator<MoffSharedObjectivesComponent>();
+        var query = EntityQueryEnumerator<MoffCommonObjectivesComponent>();
         while (query.MoveNext(out var uid, out var comp))
         {
             // Resolve the authority once from the game rules, then cache it and follow it from there.
@@ -40,8 +46,37 @@ public sealed partial class MoffSharedObjectivesSystem : EntitySystem
             {
                 comp.Authority = found;
             }
+        }
+    }
 
-            Sync((uid, comp));
+
+
+    [SubscribeLocalEvent]
+    private void OnObjectiveAdded(ref ObjectiveAddedEvent ev)
+    {
+        SyncFollowersOf(ev.Mind);
+    }
+
+    [SubscribeLocalEvent]
+    private void OnObjectiveRemoved(ref ObjectiveRemovedEvent ev)
+    {
+        SyncFollowersOf(ev.Mind);
+    }
+
+    /// <summary>
+    /// Re-syncs every follower that is currently following <paramref name="authorityMind"/>.
+    /// </summary>
+    private void SyncFollowersOf(EntityUid authorityMind)
+    {
+        var query = EntityQueryEnumerator<MoffCommonObjectivesComponent>();
+        while (query.MoveNext(out var uid, out var comp))
+        {
+            if (comp.Authority is not { } authority ||
+                !_mind.TryGetMind(authority, out var mindId, out _) ||
+                mindId != authorityMind)
+                continue;
+
+            SyncObjectives((uid, comp));
         }
     }
 
@@ -50,24 +85,21 @@ public sealed partial class MoffSharedObjectivesSystem : EntitySystem
     /// belongs to is scanned for the member whose live mob carries
     /// <see cref="MoffSharedObjectiveAuthorityComponent"/>.
     /// </summary>
-    private bool TryResolveAuthority(Entity<MoffSharedObjectivesComponent> ent, out EntityUid authority)
+    private bool TryResolveAuthority(Entity<MoffCommonObjectivesComponent> ent, out EntityUid authority)
     {
         authority = default;
 
         if (!_mind.TryGetMind(ent.Owner, out var mindId, out _))
             return false;
 
-        // Every antag rule carries AntagSelectionComponent; ActiveGameRuleComponent means it's running.
         var rules = EntityQueryEnumerator<AntagSelectionComponent, ActiveGameRuleComponent>();
         while (rules.MoveNext(out var ruleUid, out _, out _))
         {
             var members = _antag.GetAntagMinds(ruleUid).ToList();
 
-            // Only look inside the rule this follower is actually part of.
             if (members.All(member => member.Owner != mindId))
                 continue;
 
-            // The marked member is the authority. The marker sits on the live mob.
             foreach (var member in members)
             {
                 if (member.Comp.CurrentEntity is { } mob &&
@@ -75,6 +107,7 @@ public sealed partial class MoffSharedObjectivesSystem : EntitySystem
                     HasComp<MoffSharedObjectiveAuthorityComponent>(mob))
                 {
                     authority = mob;
+                    SyncObjectives(ent);
                     return true;
                 }
             }
@@ -83,17 +116,22 @@ public sealed partial class MoffSharedObjectivesSystem : EntitySystem
         return false;
     }
 
-    private void Sync(Entity<MoffSharedObjectivesComponent> ent)
+    private void SyncObjectives(Entity<MoffCommonObjectivesComponent> ent)
     {
         var comp = ent.Comp;
 
         if (!_mind.TryGetMind(ent, out var ownerMindId, out var ownerMind))
             return;
 
-        IReadOnlyList<EntityUid> target = comp.Authority is { } authority &&
-                                          _mind.TryGetMind(authority, out _, out var authMind)
-            ? authMind.Objectives
-            : Array.Empty<EntityUid>();
+        // Objectives on their way out (e.g. a spent objective pack) must not be mirrored, and a
+        // queued deletion doesn't mark the entity as terminating yet.
+        var target = comp.Authority is { } authority &&
+                     _mind.TryGetMind(authority, out _, out var authMind)
+            ? authMind.Objectives.ToList()
+            : [];
+
+        if (target.Count == 0)
+            return;
 
         foreach (var objective in ownerMind.Objectives.ToArray())
         {
@@ -109,41 +147,6 @@ public sealed partial class MoffSharedObjectivesSystem : EntitySystem
         {
             if (!ownerMind.Objectives.Contains(objective))
                 _mind.AddObjective(ownerMindId, ownerMind, objective);
-        }
-
-        UpdatePlaceholder(ent, ownerMindId, ownerMind, wantPlaceholder: target.Count == 0);
-    }
-
-    private void UpdatePlaceholder(
-        Entity<MoffSharedObjectivesComponent> ent,
-        EntityUid ownerMindId,
-        MindComponent ownerMind,
-        bool wantPlaceholder)
-    {
-        var comp = ent.Comp;
-
-        if (wantPlaceholder)
-        {
-            var alreadyPresent = comp.PlaceHolder is { } existing &&
-                                 !Deleted(existing) &&
-                                 ownerMind.Objectives.Contains(existing);
-            if (alreadyPresent)
-                return;
-
-            var objective = _objectives.TryCreateObjective(ownerMindId, ownerMind, comp.PlaceholderProtoId);
-            if (objective == null)
-                return;
-
-            _mind.AddObjective(ownerMindId, ownerMind, objective.Value);
-            comp.PlaceHolder = objective.Value;
-        }
-        else if (comp.PlaceHolder is { } placeholder)
-        {
-            var index = ownerMind.Objectives.IndexOf(placeholder);
-            if (index >= 0)
-                _mind.TryRemoveObjective(ownerMindId, ownerMind, index);
-
-            comp.PlaceHolder = null;
         }
     }
 }

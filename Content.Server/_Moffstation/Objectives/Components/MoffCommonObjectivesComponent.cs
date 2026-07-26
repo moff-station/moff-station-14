@@ -7,7 +7,7 @@ namespace Content.Server._Moffstation.Objectives.Components;
 /// when the authority has their objectives updated the changes will be copied down
 /// </summary>
 [RegisterComponent]
-public sealed partial class MoffSharedObjectivesComponent : Component
+public sealed partial class MoffCommonObjectivesComponent : Component
 {
     /// <summary>
     /// What objective should be used as a placeholder
