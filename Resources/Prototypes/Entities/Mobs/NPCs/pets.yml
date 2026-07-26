@@ -785,6 +785,10 @@
   description: This masterpiece has gone through thousands of experiments. But it is the sweetest creature in the world. Smile Slime!
   components:
   - type: Sprite
+    # Moffstation - Start - Need to specify, since parents are using a different sprite path
+    drawdepth: Mobs
+    sprite: Mobs/Aliens/slimes.rsi
+    # Moffstation - End
     layers:
     - map: [ "enum.DamageStateVisualLayers.Base" ]
       state: rainbow_baby_slime
@@ -854,6 +858,10 @@
     description: ghost-role-information-smile-description
     rules: ghost-role-information-nonantagonist-rules
     raffle: null
+  # Moffstation - Start - cancel out the random colors
+  - type: RandomSprite
+    available: []
+  # Moffstation - End
   - type: Grammar
     attributes:
       proper: true

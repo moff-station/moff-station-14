@@ -1,0 +1,89 @@
+﻿- type: entity
+  parent: BaseMobReplicator
+  id: BaseMobReplicatorTier2
+  abstract: true
+  components:
+  - type: Replicator
+    upgradeOptionActions:
+    - ActionReplicatorUpgrade3
+  - type: Damageable
+    damageModifierSet: Replicator2
+  - type: MovementSpeedModifier
+    baseWalkSpeed: 2
+    baseSprintSpeed: 4.2
+    weightlessFriction: 1
+    weightlessAcceleration: 1.2
+  - type: Hands
+    showInHands: false
+    disableExplosionRecursion: true
+    canBeStripped: false
+    hands:
+      Right:
+        location: Right
+      Left:
+        location: Left
+    sortedHands:
+    - Right
+    - Left
+  - type: DamageStateVisuals
+    states:
+      Dead:
+        Base: dead_level2
+
+# Tier 2: Deconstructors. These guys are a little bit tougher, and have tools to take things apart, but they don't have the ability to enter combat mode.
+- type: entity
+  parent: BaseMobReplicatorTier2
+  id: MobReplicatorTier2Utility
+  name: deconstructor
+  suffix: Level 2
+  categories: [ HideSpawnMenu ] # I don't want admins spawning a replicator that's unlinked to a nest
+  components:
+  - type: Sprite
+    granularLayersRendering: true
+    layers:
+    - map: [ "enum.DamageStateVisualLayers.Base" ]
+      state: alive_level2
+    - map: [ "enum.ReplicatorVisuals.Combat" ]
+      state: combat_level2
+      shader: unshaded
+      visible: false
+  - type: MovementSpeedModifier
+    weightlessFrictionNoInput: 200
+  - type: DamageStateVisuals
+    states:
+      Alive:
+        Base: alive_level2
+  - type: Loadout
+    prototypes:
+    - StartingGearReplicatorTools
+
+# Tier 2 ALT: Defender. These guys are our mid-level combatants. They have a slightly better stun laser, and a decent melee attack, but no utility functions.
+- type: entity
+  parent: BaseMobReplicatorTier2
+  id: MobReplicatorTier2Combat
+  name: defender
+  suffix: Level 2
+  categories: [ HideSpawnMenu ] # I don't want admins spawning a replicator that's unlinked to a nest
+  components:
+  - type: CombatMode
+  - type: Sprite
+    granularLayersRendering: true
+    layers:
+    - map: [ "enum.DamageStateVisualLayers.Base" ]
+      state: alive_level2alt
+    - map: [ "enum.ReplicatorVisuals.Combat" ]
+      state: combat_level2alt
+      shader: unshaded
+      visible: false
+  - type: MovementSpeedModifier
+    weightlessFrictionNoInput: 2
+  - type: DamageStateVisuals
+    states:
+      Alive:
+        Base: alive_level2alt
+  - type: Loadout
+    prototypes:
+    - StartingGearReplicatorT2Alt
+
+
+

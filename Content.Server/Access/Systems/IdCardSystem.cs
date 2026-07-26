@@ -10,9 +10,9 @@ using Content.Shared.Chat;
 using Content.Shared.Database;
 using Content.Shared.Kitchen;
 using Content.Shared.Popups;
-using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 using Content.Server.Kitchen.EntitySystems;
+using Content.Server.Radio.EntitySystems; //Moffstation - For Radio Expire ID Message from Harmony
 
 namespace Content.Server.Access.Systems;
 
@@ -20,10 +20,10 @@ public sealed partial class IdCardSystem : SharedIdCardSystem
 {
     [Dependency] private PopupSystem _popupSystem = default!;
     [Dependency] private IRobustRandom _random = default!;
-    [Dependency] private IPrototypeManager _prototypeManager = default!;
     [Dependency] private IAdminLogManager _adminLogger = default!;
     [Dependency] private ChatSystem _chat = default!;
     [Dependency] private MicrowaveSystem _microwave = default!;
+    [Dependency] private RadioSystem _radio = default!; //Moffstation - For Radio Expire ID Message from Harmony
 
     public override void Initialize()
     {
@@ -82,7 +82,7 @@ public sealed partial class IdCardSystem : SharedIdCardSystem
             }
 
             // Give them a wonderful new access to compensate for everything
-            var ids = _prototypeManager.EnumeratePrototypes<AccessLevelPrototype>().Where(x => x.CanAddToIdCard).ToArray();
+            var ids = ProtoMan.EnumeratePrototypes<AccessLevelPrototype>().Where(x => x.CanAddToIdCard).ToArray();
 
             if (ids.Length == 0)
                 return;
@@ -114,5 +114,13 @@ public sealed partial class IdCardSystem : SharedIdCardSystem
                 ChatTransmitRange.Normal,
                 true);
         }
+        // Moffstation - Begin - Genpop ID radio for expiry announcement
+        if (ent.Comp.ExpireRadioMessage is {} msg)
+        {
+            var name = CompOrNull<IdCardComponent>(ent)?.FullName ?? "";
+            var message = Loc.GetString(msg.Message, ("name", name));
+            _radio.SendRadioMessage(ent.Owner, message, msg.Channel, ent.Owner);
+        }
+        // Moffstation - End
     }
 }

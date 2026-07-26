@@ -1,16 +1,4 @@
-﻿#Ranger Hardsuit
-- type: entity
-  parent: ClothingHeadHelmetHardsuitSecurityUpstream
-  id: ClothingHeadHelmetHardsuitRanger
-  name: ranger hardsuit helmet
-  description: A security helmet that offers supreme views of the vacuum of space.
-  components:
-  - type: Sprite
-    sprite: _Moffstation/Clothing/Head/Hardsuits/security-ranger.rsi
-  - type: Clothing
-    sprite: _Moffstation/Clothing/Head/Hardsuits/security-ranger.rsi
-
-#Blackbeard Hardsuit
+﻿#Blackbeard Hardsuit
 - type: entity
   parent: [ ClothingHeadHardsuitBase, ClothingHeadSuitWithLightBase ]
   id: ClothingHeadHelmetHardsuitPirateBlackbeard

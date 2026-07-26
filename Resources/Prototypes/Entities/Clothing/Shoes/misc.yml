@@ -71,12 +71,6 @@
   - type: Construction
     graph: ClothingShoeSlippersLizard
     node: shoes
-  - type: Edible
-    useSound:
-      path: /Audio/Items/Toys/weh.ogg # Copied from lizard plush sound
-      params:
-        volume: -10
-    transferAmount: 10
   - type: Extractable
     juiceSolution:
       reagents:

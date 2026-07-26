@@ -556,13 +556,13 @@
 - type: entity
   parent: ClothingUniformSkirtBase
   id: ClothingUniformJumpskirtPerformer
-  name: performer's jumpskirt
+  name: blue performer's jumpskirt # Moff
   description: Hi, I'm Scott, president of Donk Pizza. Have you heard of [FAMOUS VIRTUAL PERFORMER]?
   components:
   - type: Sprite
-    sprite: Clothing/Uniforms/Jumpskirt/performer.rsi
+    sprite: _Moffstation/Clothing/Uniforms/Jumpskirt/performer.rsi # Moff
   - type: Clothing
-    sprite: Clothing/Uniforms/Jumpskirt/performer.rsi
+    sprite: _Moffstation/Clothing/Uniforms/Jumpskirt/performer.rsi # Moff
 
 - type: entity
   parent: ClothingUniformSkirtBase
@@ -636,10 +636,10 @@
     sprite: _Moffstation/Clothing/Uniforms/Jumpskirt/jumpskirt.rsi
     layers:
     - state: icon
-      color: &color-atmos "#1bb3a1"
+      color: &color-yellow "#ffe335"
     - state: basics-trinkets-icon
     - state: color-trinkets-icon
-      color: &color-yellow "#ffe14d"
+      color: &color-atmos "#6ec9c1"
   - type: Item
     inhandVisuals:
       left:
@@ -664,15 +664,15 @@
   description: For professionals, not the posers.
   components:
   - type: Sprite
-    sprite: Clothing/Uniforms/Jumpskirt/janimaid.rsi
+    sprite: _Moffstation/Clothing/Uniforms/Jumpskirt/janimaid.rsi # Moffstation
   - type: Clothing
-    sprite: Clothing/Uniforms/Jumpskirt/janimaid.rsi
+    sprite: _Moffstation/Clothing/Uniforms/Jumpskirt/janimaid.rsi # Moffstation
 
 - type: entity
   parent: ClothingUniformSkirtBase
   id: ClothingUniformJumpskirtJanimaidmini
-  name: janitorial maid uniform with miniskirt
-  description: Elite service, not some candy wrappers.
+  name: ancient janitorial maid uniform # Moffstation - Rename/redescribe janimaidmini
+  description: Ironically, it has mold growing on it. # Moffstation - Rename/redescribe janimaidmini
   components:
   - type: Sprite
     sprite: Clothing/Uniforms/Jumpskirt/janimaidmini.rsi

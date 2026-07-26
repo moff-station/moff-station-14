@@ -53,17 +53,6 @@ ghost-role-information-flying-dutchman-name = Flying Dutchman
 ghost-role-information-flying-dutchman-description = A legendary pirate come to plunder from beyond the grave.
 
 
-# Vampries
-roles-antag-vampire-name = Vampire
-roles-antag-vampire-objective = Feed on the crew, stay quiet, instill fear.
-
-roles-antag-vampire-briefing = You're a creature of the night. Stay out of the light, protect your existence, and feed off the crew.
-
-vampire-existing = [color=Crimson]There was a [bold]Vampire[/bold]![/color]
-vampires-existing = [color=Crimson]There were {$total} [bold]Vampires[/bold]![/color]
-vampire-list-name-user = [color=White]{$name}[/color] ([color=gray]{$user}[/color])
-
-
 # Syndicate spies
 roles-antag-syndicate-spy = Syndicate Intelligence Officer
 roles-antag-short-syndicate-spy = Syndicate Intel

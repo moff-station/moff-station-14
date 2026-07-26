@@ -1,8 +1,8 @@
 ﻿- type: entity
   parent: BaseAntagSpawner
   id: SpawnPointGhostWizardDuelistBase
-  name: ghost role spawn point
   categories: [ HideSpawnMenu, Spawner ]
+  name: ghost role spawn point
   components:
   - type: GhostRole
     name: ghost-role-information-wizard-duelist-name
@@ -21,8 +21,8 @@
 - type: entity
   parent: SpawnPointGhostWizardDuelistBase
   id: SpawnPointGhostWizardDuelistRed
-  name: red wizard duelist spawn point
   categories: [ HideSpawnMenu, Spawner ]
+  name: red wizard duelist spawn point
   components:
   - type: GhostRole
     mindRoles:
@@ -31,8 +31,8 @@
 - type: entity
   parent: SpawnPointGhostWizardDuelistBase
   id: SpawnPointGhostWizardDuelistBlue
-  name: blue wizard duelist spawn point
   categories: [ HideSpawnMenu, Spawner ]
+  name: blue wizard duelist spawn point
   components:
   - type: GhostRole
     mindRoles:
@@ -41,8 +41,8 @@
 - type: entity
   parent: SpawnPointGhostWizardDuelistBase
   id: SpawnPointGhostWizardDuelistViolet
-  name: violet wizard duelist spawn point
   categories: [ HideSpawnMenu, Spawner ]
+  name: violet wizard duelist spawn point
   components:
   - type: GhostRole
     mindRoles:

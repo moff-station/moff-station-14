@@ -2,19 +2,19 @@
   parent: BaseSheetStack
   id: Steel
   name: stack-steel
-  icon: { sprite: /Textures/Objects/Materials/Sheets/metal.rsi, state: steel }
+  icon: { sprite: _Moffstation/Objects/Materials/Sheets/metal.rsi, state: steel } # Moffstation
   spawn: SheetSteel1
 
 - type: stack
   parent: BaseSheetStack
   id: Plasteel
   name: stack-plasteel
-  icon: { sprite: /Textures/Objects/Materials/Sheets/metal.rsi, state: plasteel }
+  icon: { sprite: _Moffstation/Objects/Materials/Sheets/metal.rsi, state: plasteel } # Moffstation
   spawn: SheetPlasteel1
 
 - type: stack
   parent: BaseSheetStack
   id: Brass
   name: stack-brass
-  icon: { sprite: /Textures/Objects/Materials/Sheets/metal.rsi, state: brass }
+  icon: { sprite: _Moffstation/Objects/Materials/Sheets/metal.rsi, state: brass } # Moffstation
   spawn: SheetBrass1

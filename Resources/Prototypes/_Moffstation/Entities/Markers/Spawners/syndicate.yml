@@ -1,8 +1,8 @@
 - type: entity
-  categories: [ HideSpawnMenu, Spawner ]
-  id: SpawnPointGhostSyndicateSpy
-  name: ghost role spawn point
   parent: MarkerBase
+  id: SpawnPointGhostSyndicateSpy
+  categories: [ HideSpawnMenu, Spawner ]
+  name: ghost role spawn point
   components:
   - type: GhostRole
     name: roles-antag-syndicate-spy
@@ -22,9 +22,9 @@
       state: banner_syndicate
 
 - type: entity
-  categories: [ HideSpawnMenu, Spawner ]
   parent: BaseAntagSpawner
   id: SpawnerSyndicateSpy
+  categories: [ HideSpawnMenu, Spawner ]
   components:
   - type: GhostRole
     name: roles-antag-syndicate-spy

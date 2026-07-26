@@ -5,31 +5,27 @@
   description: A shield!
   abstract: true
   components:
+    # Moffstation - Shield resprites/Suitstorage - Start
+    - type: Clothing
+      quickEquip: false
+      slots:
+      - back
+      - suitStorage
+    # Moffstation - Shield resprites/Suitstorage - End
     - type: Sprite
       sprite: Objects/Weapons/Melee/shields.rsi
       state: riot-icon
     - type: Item
       sprite: Objects/Weapons/Melee/shields.rsi
       size: Ginormous
-      heldPrefix: riot
+#    heldPrefix: riot # Moffstation
     - type: Blocking
       passiveBlockModifier:
-        coefficients:
-          Blunt: 0.9
-          Slash: 0.9
-          Piercing: 0.9
-          Heat: 0.9
-      activeBlockModifier:
-        coefficients:
-          Blunt: 0.8
-          Slash: 0.8
-          Piercing: 0.8
-          Heat: 0.8
         flatReductions:
-          Blunt: 1
-          Slash: 1
-          Piercing: 1
-          Heat: 1
+          Blunt: 10
+          Slash: 10
+          Piercing: 10
+          Heat: 10
     - type: Damageable
     - type: Injurable
       damageContainer: Shield
@@ -39,7 +35,7 @@
       thresholds:
       - trigger:
           !type:DamageTrigger
-          damage: 100 #This is probably enough damage before it breaks
+          damage: 125 #This is probably enough damage before it breaks
         behaviors:
         - !type:DoActsBehavior
           acts: [ "Destruction" ]
@@ -83,20 +79,24 @@
   id: RiotShield
   description: A large tower shield. Good for controlling crowds.
   components:
+    # Moffstation - Shield resprites - Start
+    - type: Clothing
+      sprite: _Moffstation/Objects/Weapons/Melee/riotshield.rsi
+    - type: Sprite
+      sprite: _Moffstation/Objects/Weapons/Melee/riotshield.rsi
+      state: icon
+    - type: Item
+      sprite: _Moffstation/Objects/Weapons/Melee/riotshield.rsi
+    # Moffstation - Shield resprites - End
     - type: StaticPrice
       price: 90
     - type: Blocking
       passiveBlockModifier:
-        coefficients:
-          Blunt: 0.7
-          Slash: 0.7
-      activeBlockModifier:
-        coefficients:
-          Blunt: 0.5
-          Slash: 0.5
         flatReductions:
-          Blunt: 1
-          Slash: 1
+          Blunt: 15
+          Slash: 15
+          Piercing: 5
+          Heat: 5
 
 - type: entity
   name: laser shield
@@ -104,19 +104,22 @@
   id: RiotLaserShield
   description: A shield built for withstanding lasers, but not much else.
   components:
+    # Moffstation - Shield resprites - Start
+    - type: Clothing
+      sprite: _Moffstation/Objects/Weapons/Melee/lasershield.rsi
     - type: Sprite
-      state: riot_laser-icon
+      sprite: _Moffstation/Objects/Weapons/Melee/lasershield.rsi
+      state: icon
     - type: Item
-      heldPrefix: riot_laser
+      sprite: _Moffstation/Objects/Weapons/Melee/lasershield.rsi
+    # Moffstation - Shield resprites - End
     - type: Blocking
       passiveBlockModifier:
-        coefficients:
-          Heat: 0.7
-      activeBlockModifier:
-        coefficients:
-          Heat: 0.5
         flatReductions:
-          Heat: 1
+          Blunt: 5
+          Slash: 10
+          Piercing: 5
+          Heat: 20
 
 - type: entity
   name: ballistic shield
@@ -124,19 +127,22 @@
   id: RiotBulletShield
   description: A shield built for protecting against ballistics, but not much else.
   components:
+    # Moffstation - Shield resprites - Start
+    - type: Clothing
+      sprite: _Moffstation/Objects/Weapons/Melee/bulletshield.rsi
     - type: Sprite
-      state: riot_bullet-icon
+      sprite: _Moffstation/Objects/Weapons/Melee/bulletshield.rsi
+      state: icon
     - type: Item
-      heldPrefix: riot_bullet
+      sprite: _Moffstation/Objects/Weapons/Melee/bulletshield.rsi
+    # Moffstation - Shield resprites - End
     - type: Blocking
       passiveBlockModifier:
-        coefficients:
-          Piercing: 0.7
-      activeBlockModifier:
-        coefficients:
-          Piercing: 0.5
         flatReductions:
-          Piercing: 1
+          Blunt: 10
+          Slash: 5
+          Piercing: 20
+          Heat: 5
 
 #Craftable shields
 
@@ -152,21 +158,11 @@
       heldPrefix: buckler
     - type: Blocking
       passiveBlockModifier:
-        coefficients:
-          Blunt: 0.95
-          Slash: 0.95
-          Piercing: 0.95
-          Heat: 2
-      activeBlockModifier:
-        coefficients:
-          Blunt: 0.85
-          Slash: 0.85
-          Piercing: 0.85
-          Heat: 2
         flatReductions:
-          Blunt: 1
-          Slash: 1
-          Piercing: 1
+          Blunt: 5
+          Slash: 5
+          Piercing: 5
+          Heat: 5
     - type: Construction
       graph: WoodenBuckler
       node: woodenBuckler
@@ -174,7 +170,7 @@
       thresholds:
       - trigger:
           !type:DamageTrigger
-          damage: 30 #Weaker shield
+          damage: 75 #Weaker shield
         behaviors:
         - !type:DoActsBehavior
           acts: [ "Destruction" ]
@@ -201,19 +197,11 @@
       heldPrefix: cardshield
     - type: Blocking
       passiveBlockModifier:
-        coefficients:
-          Blunt: 1
-          Slash: 2
-          Piercing: 0.6
-          Heat: 3
-      activeBlockModifier:
-        coefficients:
-          Blunt: 0.9
-          Slash: 1.8
-          Piercing: 0.5
-          Heat: 2.5
         flatReductions:
-          Blunt: 0.5
+          Blunt: 1
+          Slash: 1
+          Piercing: 1
+          Heat: 1
     - type: Construction
       graph: CardShield
       node: cardShield
@@ -221,7 +209,7 @@
       thresholds:
       - trigger:
           !type:DamageTrigger
-          damage: 10 #Very very weak shield
+          damage: 25 #Very very weak shield
         behaviors:
         - !type:DoActsBehavior
           acts: [ "Destruction" ]
@@ -241,28 +229,14 @@
   id: MakeshiftShield
   description: A rundown looking shield, not good for much.
   components:
+    # Moffstation - Shield resprites - Start
     - type: Sprite
+      sprite: _Moffstation/Objects/Weapons/Melee/makeshiftshield.rsi
       state: makeshift-icon
     - type: Item
-      heldPrefix: metal
-    - type: Blocking
-      passiveBlockModifier:
-        coefficients:
-          Blunt: 0.95
-          Slash: 0.95
-          Piercing: 0.95
-          Heat: 0.9
-      activeBlockModifier:
-        coefficients:
-          Blunt: 0.85
-          Slash: 0.85
-          Piercing: 0.85
-          Heat: 0.8
-        flatReductions:
-          Blunt: 0.5
-          Slash: 0.5
-          Piercing: 0.5
-          Heat: 1
+      sprite: _Moffstation/Objects/Weapons/Melee/makeshiftshield.rsi
+      heldPrefix: makeshift
+    # Moffstation - Shield resprites - End
     - type: Construction
       graph: MakeshiftShield
       node: makeshiftShield
@@ -270,7 +244,7 @@
       thresholds:
       - trigger:
           !type:DamageTrigger
-          damage: 20 #Very weak shield
+          damage: 75
         behaviors:
         - !type:DoActsBehavior
           acts: [ "Destruction" ]
@@ -297,19 +271,9 @@
       heldPrefix: icon
     - type: Blocking
       passiveBlockModifier:
-        coefficients:
-          Blunt: 0.95
-          Slash: 0.95
-          Piercing: 0.95
-      activeBlockModifier:
-        coefficients:
-          Blunt: 0.85
-          Slash: 0.85
-          Piercing: 0.85
         flatReductions:
-          Blunt: 0.5
-          Slash: 0.5
-          Piercing: 0.5
+          Blunt: 5
+          Piercing: 1 # Scar told me to.
     - type: Construction
       graph: WebObjects
       node: shield
@@ -317,7 +281,7 @@
       thresholds:
       - trigger:
           !type:DamageTrigger
-          damage: 20
+          damage: 50
         behaviors:
         - !type:DoActsBehavior
           acts: [ "Destruction" ]
@@ -342,23 +306,6 @@
       state: ratvarian-icon
     - type: Item
       heldPrefix: ratvarian
-    - type: Blocking
-      passiveBlockModifier:
-        coefficients:
-          Blunt: 0.8
-          Slash: 0.8
-          Piercing: 0.8
-          Heat: 1.5
-      activeBlockModifier:
-        coefficients:
-          Blunt: 0.7
-          Slash: 0.7
-          Piercing: 0.7
-          Heat: 1.5
-        flatReductions:
-          Blunt: 1
-          Slash: 1
-          Piercing: 1
       #Have it break into brass when clock cult is in
 
 - type: entity
@@ -378,25 +325,19 @@
     - type: Blocking #Mirror shield reflects heat/laser, but is relatively weak to everything else.
       passiveBlockModifier:
         coefficients:
-          Blunt: 1.2
-          Slash: 1.2
-          Piercing: 1.2
-          Heat: .7
-      activeBlockModifier:
-        coefficients:
-          Blunt: 1.2
-          Slash: 1.2
-          Piercing: 1.2
-          Heat: .6
+          Heat: 0.5
         flatReductions:
-          Heat: 1
+          Blunt: 5
+          Slash: 10
+          Piercing: 5
+          Heat: 25
       blockSound: !type:SoundPathSpecifier
         path: /Audio/Effects/glass_step.ogg
     - type: Destructible
       thresholds:
       - trigger:
           !type:DamageTrigger
-          damage: 40
+          damage: 50
         behaviors:
         - !type:DoActsBehavior
           acts: [ "Destruction" ]
@@ -415,6 +356,12 @@
   id: EnergyShield
   description: Exotic energy shield, when folded, can even fit in your pocket.
   components:
+    # Moffstation - Shield resprites - Start
+    - type: RandomSprite
+      available:
+      - shield:
+          eshield-on: Rainbow
+          # Moffstation - End
     - type: ItemToggle
       soundActivate:
         path: /Audio/Weapons/ebladeon.ogg
@@ -430,7 +377,7 @@
       - type: DisarmMalus
         malus: 0.6
     - type: Sprite
-      sprite: Objects/Weapons/Melee/e_shield.rsi
+      sprite: _Moffstation/Objects/Weapons/Melee/e_shield.rsi # Moffstation - Shield Resprites
       layers:
         - state: eshield-icon
         - state: eshield-on
@@ -440,7 +387,7 @@
           map: [ "shield" ]
     - type: Item
       size: Small
-      sprite: Objects/Weapons/Melee/e_shield.rsi
+      sprite: _Moffstation/Objects/Weapons/Melee/e_shield.rsi # Moffstation - Shield Resprites
       heldPrefix: eshield
     - type: UseDelay
       delay: 0.5
@@ -458,8 +405,9 @@
       enabled: false
       radius: 1.5
       energy: 2
-      color: blue
+      color: white # Moffstation - Shield Resprites
     - type: ItemTogglePointLight
+      toggleableVisualsColorModulatesLights: true # Moffstation - Shield Resprites
     - type: Reflect
       reflectProb: 0.95
       reflects:
@@ -467,19 +415,12 @@
     - type: Blocking
       passiveBlockModifier:
         coefficients:
-          Blunt: 1.0
-          Slash: 0.9
-          Piercing: 0.85
-          Heat: 0.6
-      activeBlockModifier:
-        coefficients:
-          Blunt: 1.2
-          Slash: 0.85
-          Piercing: 0.5
-          Heat: 0.4
+          Heat: 0.5
         flatReductions:
-          Heat: 1
-          Piercing: 1
+          Blunt: 5
+          Piercing: 10
+          Slash: 5
+          Heat: 25
     - type: Appearance
     - type: Damageable
     - type: Injurable
@@ -490,7 +431,7 @@
       thresholds:
       - trigger:
           !type:DamageTrigger
-          damage: 100
+          damage: 125
         behaviors:
         - !type:DoActsBehavior
           acts: [ "Destruction" ]
@@ -512,10 +453,10 @@
   description: Something inside is burned out, it is no longer functional.
   components:
     - type: Sprite
-      sprite: Objects/Weapons/Melee/e_shield.rsi
+      sprite: _Moffstation/Objects/Weapons/Melee/e_shield.rsi # Moffstation - Shield resprites
       state: eshield-icon
     - type: Item
-      sprite: Objects/Weapons/Melee/e_shield.rsi
+      sprite: _Moffstation/Objects/Weapons/Melee/e_shield.rsi # Moffstation - Shield resprites
       size: Small
       heldPrefix: eshield
 
@@ -561,24 +502,5 @@
         right:
           - state: inhand-right-shield
     - type: Appearance
-    - type: Destructible
-      thresholds:
-      - trigger:
-          !type:DamageTrigger
-          damage: 70
-        behaviors:
-        - !type:DoActsBehavior
-          acts: [ "Destruction" ]
-        - !type:PlaySoundBehavior
-          sound:
-            collection: MetalGlassBreak
-        - !type:SpawnEntitiesBehavior
-          spawn:
-            SheetSteel:
-              min: 1
-              max: 1
-            SheetGlass:
-              min: 2
-              max: 2
     - type: StaticPrice
       price: 150

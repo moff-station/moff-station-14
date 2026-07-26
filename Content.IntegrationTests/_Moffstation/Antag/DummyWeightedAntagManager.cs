@@ -14,6 +14,7 @@ public sealed class DummyWeightedAntagManager : IWeightedAntagManager
     }
     public void Shutdown() { }
     public void SetWeight(NetUserId userId, int newWeight) { }
+    public void IncrementWeight(NetUserId userId, int amount = 1) { }
     public int GetWeight(NetUserId userId) => 0;
     public System.Threading.Tasks.Task Save() => System.Threading.Tasks.Task.CompletedTask;
 }

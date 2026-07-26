@@ -3,6 +3,7 @@ using Content.Shared.Fluids.Components;
 using Content.Shared.Interaction;
 using Content.Shared.Maps;
 using Content.Shared.Physics;
+using Content.Shared.Popups;
 using Content.Shared.Tools.Components;
 using Robust.Shared.Map;
 using Robust.Shared.Map.Components;
@@ -58,6 +59,13 @@ public abstract partial class SharedToolSystem
             LogImpact.Medium,
             $"{ToPrettyString(args.User):player} used {ToPrettyString(ent)} to edit the tile at {coords}");
         args.Handled = true;
+
+        // Moffstation - Begin - Fire axe can pry plating
+        if (ent.Comp.AudioVisualCues is not { } cues)
+            return;
+
+        _audioSystem.PlayPredicted(cues.EndSound, args.User, args.User);
+        // Moffstation - End
     }
 
     private bool UseToolOnTile(Entity<ToolTileCompatibleComponent?, ToolComponent?> ent, EntityUid user, EntityCoordinates clickLocation)
@@ -68,7 +76,7 @@ public abstract partial class SharedToolSystem
         var comp = ent.Comp1!;
         var tool = ent.Comp2!;
 
-        if (!_mapManager.TryFindGridAt(_transformSystem.ToMapCoordinates(clickLocation), out var gridUid, out var mapGrid))
+        if (!_maps.TryFindGridAt(_transformSystem.ToMapCoordinates(clickLocation), out var gridUid, out var mapGrid))
             return false;
 
         var tileRef = _maps.GetTileRef(gridUid, mapGrid, clickLocation);
@@ -89,6 +97,24 @@ public abstract partial class SharedToolSystem
 
         var args = new TileToolDoAfterEvent(GetNetEntity(gridUid), tileRef.GridIndices);
         UseTool(ent, user, ent, comp.Delay, tool.Qualities, args, out _, toolComponent: tool);
+
+        // Moffstation - Begin - Fire axe can pry plating
+        if (ent.Comp1.AudioVisualCues is not { } cues)
+            return true;
+
+        _audioSystem.PlayPredicted(cues.StartSound, user, user);
+        if (cues.StartPopup is not { } popup)
+            return true;
+
+        _popup.PopupEntity(
+            Loc.GetString(popup),
+            Loc.GetString(popup),
+            user,
+            user,
+            PopupType.MediumCaution
+            );
+        // Moffstation - End
+
         return true;
     }
 

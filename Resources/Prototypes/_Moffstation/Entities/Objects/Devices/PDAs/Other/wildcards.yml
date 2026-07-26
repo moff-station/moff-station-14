@@ -42,3 +42,15 @@
   - type: PdaBorderColor
     accentVColor: "#bf8f2e"
     accentHColor: "#364d37"
+
+- type: entity
+  parent: PizzaioloPDA
+  id: ArnoldsPizzaPDA
+  name: Arnold's Pizza PDA
+  description: The official PDA for Arnold's Pizza employees. Wawa!
+  components:
+  - type: Pda
+    id: VisitorIDCard
+  - type: Tag #  Ignore Chameleon tags
+    tags:
+    - DoorBumpOpener

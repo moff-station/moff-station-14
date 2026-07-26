@@ -65,6 +65,7 @@ public abstract partial class SharedBorgSystem : EntitySystem
     [Dependency] private INetManager _net = default!;
     [Dependency] private SharedHandheldLightSystem _handheldLight = default!;
     [Dependency] private SharedAccessSystem _access = default!;
+    [Dependency] private SharedTransformSystem _transform = default!;
     [Dependency] private SharedAudioSystem _audio = default!;
 
     [Dependency] private SharedSiliconLawSystem _siliconLaws = default!;
@@ -93,7 +94,7 @@ public abstract partial class SharedBorgSystem : EntitySystem
         SubscribeLocalEvent<BorgChassisComponent, RefreshMovementSpeedModifiersEvent>(OnRefreshMovementSpeedModifiers);
         SubscribeLocalEvent<BorgChassisComponent, ActivatableUIOpenAttemptEvent>(OnUIOpenAttempt);
         SubscribeLocalEvent<BorgChassisComponent, MobStateChangedEvent>(OnMobStateChanged);
-        SubscribeLocalEvent<BorgChassisComponent, GibbedBeforeDeletionEvent>(OnBeingGibbed);
+        SubscribeLocalEvent<BorgChassisComponent, BeingGibbedEvent>(OnBeingGibbed);
         SubscribeLocalEvent<BorgChassisComponent, GetCharactedDeadIcEvent>(OnGetDeadIC);
         SubscribeLocalEvent<BorgChassisComponent, GetCharacterUnrevivableIcEvent>(OnGetUnrevivableIC);
         SubscribeLocalEvent<BorgChassisComponent, PowerCellSlotEmptyEvent>(OnPowerCellSlotEmpty);
@@ -303,7 +304,7 @@ public abstract partial class SharedBorgSystem : EntitySystem
         {
             if (brain != null || module != null)
             {
-                _popup.PopupClient(Loc.GetString("borg-panel-not-open"), chassis, args.User);
+                _popup.PopupEntity(Loc.GetString("borg-panel-not-open"), chassis, args.User);
             }
             return;
         }
@@ -313,7 +314,6 @@ public abstract partial class SharedBorgSystem : EntitySystem
         {
             if (TryComp<ActorComponent>(used, out var actor) && !CanPlayerBeBorged(actor.PlayerSession))
             {
-                // Don't use PopupClient because CanPlayerBeBorged is not predicted.
                 _popup.PopupEntity(Loc.GetString("borg-player-not-allowed"), used, args.User);
                 return;
             }
@@ -366,15 +366,17 @@ public abstract partial class SharedBorgSystem : EntitySystem
             SetActive(chassis, false, user: args.Origin);
     }
 
-    private void OnBeingGibbed(Entity<BorgChassisComponent> chassis, ref GibbedBeforeDeletionEvent args)
+    private void OnBeingGibbed(Entity<BorgChassisComponent> chassis, ref BeingGibbedEvent args)
     {
         // Don't use the ItemSlotsSystem eject method since we don't want to play a sound and want we to eject the battery even if the slot is locked.
         if (TryComp<PowerCellSlotComponent>(chassis, out var slotComp) &&
             _container.TryGetContainer(chassis, slotComp.CellSlotId, out var slotContainer))
-            _container.EmptyContainer(slotContainer);
+        {
+            args.Giblets.UnionWith(_container.EmptyContainer(slotContainer));
+        }
 
-        _container.EmptyContainer(chassis.Comp.BrainContainer);
-        _container.EmptyContainer(chassis.Comp.ModuleContainer);
+        args.Giblets.UnionWith(_container.EmptyContainer(chassis.Comp.BrainContainer));
+        args.Giblets.UnionWith(_container.EmptyContainer(chassis.Comp.ModuleContainer));
     }
 
     private void OnGetDeadIC(Entity<BorgChassisComponent> chassis, ref GetCharactedDeadIcEvent args)
@@ -404,7 +406,6 @@ public abstract partial class SharedBorgSystem : EntitySystem
 
         if (!CanPlayerBeBorged(session))
         {
-            // Don't use PopupClient because MindAddedMessage and CanPlayerBeBorged are not predicted.
             _popup.PopupEntity(Loc.GetString("borg-player-not-allowed-eject"), brain);
             _container.RemoveEntity(borg, brain);
             _throwing.TryThrow(brain, _random.NextVector2() * 5, 5f);

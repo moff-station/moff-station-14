@@ -176,14 +176,22 @@
   description: An ancient war blade.
   components:
   - type: Sprite
-    sprite: Objects/Weapons/Melee/claymore.rsi
+    sprite: _Moffstation/Objects/Weapons/Melee/claymore.rsi # Moff
+    state: icon # Moff
   - type: MeleeWeapon
     attackRate: 0.75
     damage:
       types:
-        Slash: 20
+        Slash: 5 # Moff - Claymore updates
     soundHit:
         path: /Audio/Weapons/bladeslice.ogg
+  # Moff - Start - Move damage to wielding
+  - type: Wieldable
+  - type: IncreaseDamageOnWield
+    damage:
+      types:
+        Slash: 25
+  # Moff - End
   - type: Item
     storedSprite:
       state: storage

@@ -1,12 +1,13 @@
 ﻿using System.Linq;
-using Content.Shared.Ghost;
+using Content.Shared._Moffstation.Teleportation.Components;
 using Content.Shared.Movement.Pulling.Components;
 using Content.Shared.Movement.Pulling.Systems;
 using Content.Shared.Popups;
 using Content.Shared.Projectiles;
+using Content.Shared.Tag;
 using Content.Shared.Teleportation.Components;
-using Content.Shared.Weapons.Misc;
 using Content.Shared.Verbs;
+using Content.Shared.Weapons.Misc;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Map;
 using Robust.Shared.Network;
@@ -14,6 +15,7 @@ using Robust.Shared.Physics.Dynamics;
 using Robust.Shared.Physics.Events;
 using Robust.Shared.Physics.Systems;
 using Robust.Shared.Player;
+using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 using Robust.Shared.Utility;
 
@@ -26,17 +28,22 @@ namespace Content.Shared.Teleportation.Systems;
 /// <seealso cref="PortalComponent"/>
 public abstract partial class SharedPortalSystem : EntitySystem
 {
-    [Dependency] private IRobustRandom _random = default!;
     [Dependency] private INetManager _netMan = default!;
+    [Dependency] private IRobustRandom _random = default!;
     [Dependency] private EntityLookupSystem _lookup = default!;
-    [Dependency] private SharedAudioSystem _audio = default!;
-    [Dependency] private SharedTransformSystem _transform = default!;
     [Dependency] private PullingSystem _pulling = default!;
-    [Dependency] private SharedPopupSystem _popup = default!;
+    [Dependency] private SharedAudioSystem _audio = default!;
     [Dependency] private SharedJointSystem _joints = default!;
+    [Dependency] private SharedPopupSystem _popup = default!;
+    [Dependency] private SharedTransformSystem _transform = default!;
+    [Dependency] private TagSystem _tag = default!;
+
+    [Dependency] private EntityQuery<PortalBlacklistComponent> _portalBlacklistQuery; // Moffstation - Portal Blacklist
 
     private const string PortalFixture = "portalFixture";
     private const string ProjectileFixture = "projectile";
+    private static readonly ProtoId<TagPrototype> ShowTraverseVerbTag = "AllowPortalTraversal";
+    private static readonly ProtoId<TagPrototype> PreventCollisionTag = "PreventPortalCollision";
 
     private const int MaxRandomTeleportAttempts = 20;
 
@@ -52,7 +59,7 @@ public abstract partial class SharedPortalSystem : EntitySystem
     private void OnGetVerbs(Entity<PortalComponent> ent, ref GetVerbsEvent<AlternativeVerb> args)
     {
         // Traversal altverb for ghosts to use that bypasses normal functionality
-        if (!args.CanAccess || !HasComp<GhostComponent>(args.User))
+        if (!args.CanAccess || !_tag.HasTag(args.User, ShowTraverseVerbTag))
             return;
 
         // Don't use the verb with unlinked or with multi-output portals
@@ -92,9 +99,17 @@ public abstract partial class SharedPortalSystem : EntitySystem
 
         var subject = args.OtherEntity;
 
+        if (_tag.HasTag(args.OtherEntity, PreventCollisionTag))
+            return;
+
         // best not.
         if (Transform(subject).Anchored)
             return;
+
+        // Moffstation - Begin
+        if (_portalBlacklistQuery.HasComp(subject))
+            return;
+        // Moffstation - End
 
         // break pulls before portal enter so we don't break shit
         if (TryComp<PullableComponent>(subject, out var pullable) && pullable.BeingPulled)
@@ -251,7 +266,13 @@ public abstract partial class SharedPortalSystem : EntitySystem
             return;
 
         _audio.PlayPredicted(departureSound, ent, subject);
-        _audio.PlayPredicted(arrivalSound, subject, subject);
+        // Moffstation - Start - Sparks and fx
+        if (!HasComp<PortalComponent>(targetEntity))
+            PredictedSpawnAtPosition(ent.Comp.TeleportEffect, Transform(subject).Coordinates);
+        else
+            _audio.PlayPredicted(arrivalSound, subject, subject);
+        // Moffstation - End
+
     }
 
     /// <summary>

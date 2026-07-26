@@ -369,8 +369,18 @@
         effectProto: StatusEffectSeeingRainbow
         type: Add
         time: 15
+        # Moffstation - Start - Frezon-cooled Avali
+        conditions:
+        - &ExcludeAvali !type:MetabolizerTypeCondition
+          type: [ Avali ]
+          inverted: true
+        # Moffstation - end
       - !type:Drunk
         boozePower: 15
+        # Moffstation - Start - Frezon-cooled Avali
+        conditions:
+        - *ExcludeAvali
+        # Moffstation - End
       - !type:PopupMessage
         type: Local
         messages: [ "frezon-lungs-cold" ]
@@ -382,6 +392,7 @@
         messages: [ "frezon-euphoric" ]
         probability: 0.1
         conditions:
+        - *ExcludeAvali # Moffstation - Frezon-cooled Avali
         minScale: 2
     Respiration:
       effects:
@@ -396,9 +407,17 @@
         effectProto: StatusEffectSeeingRainbow
         type: Add
         time: 500
+        # Moffstation - Start - Frezon-cooled Avali
+        conditions:
+        - *ExcludeAvali
+        # Moffstation - End
       - !type:Drunk
         boozePower: 500
         minScale: 1
+        # Moffstation - Start - Frezon-cooled Avali
+        conditions:
+        - *ExcludeAvali
+        # Moffstation - End
       - !type:PopupMessage
         type: Local
         messages: [ "frezon-lungs-cold" ]
@@ -410,8 +429,41 @@
         messages: [ "frezon-euphoric" ]
         probability: 0.1
         minScale: 1
+        # Moffstation - Start - Frezon-cooled Avali
+        conditions:
+        - *ExcludeAvali
+        # Moffstation - End
       - !type:Oxygenate #macro, thaven don't suffocate from any gases
         scaling: true
         conditions:
         - !type:MetabolizerTypeCondition
           type: [ Thaven ]
+      # Moffstation - Start - Frezon-cooled Avali
+      - !type:MovementSpeedModifier
+        walkSpeedModifier: 1.20
+        sprintSpeedModifier: 1.20
+        conditions:
+        - &ExclusivelyAvali !type:MetabolizerTypeCondition
+          type: [ Avali ]
+      - !type:GenericStatusEffect
+        key: Adrenaline
+        component: IgnoreSlowOnDamage
+        time: 1
+        conditions:
+        - *ExclusivelyAvali
+      - !type:Jitter
+        time: 3
+        conditions:
+        - *ExclusivelyAvali
+      - !type:GenericStatusEffect
+        key: Stutter
+        component: StutteringAccent
+        time: 3
+        conditions:
+        - *ExclusivelyAvali
+      - !type:ModifyStatusEffect
+        effectProto: StatusEffectPainNumbness
+        time: 1
+        conditions:
+        - *ExclusivelyAvali
+      # Moffstation - End

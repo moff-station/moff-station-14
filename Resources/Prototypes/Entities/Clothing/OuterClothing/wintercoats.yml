@@ -241,7 +241,7 @@
 
 - type: entity
   parent: ClothingOuterWinterCoatToggleable
-  id: ClothingOuterWinterChem
+  id: ClothingOuterWinterChemUpstream # Moffstation
   name: chemistry winter coat
   components:
   - type: Sprite
@@ -276,7 +276,7 @@
 
 - type: entity
   parent: [ClothingOuterWinterCoatToggleable, BaseCommandContraband]
-  id: ClothingOuterWinterCMO
+  id: ClothingOuterWinterCMOUpstream # Moffstation
   name: chief medical officer's winter coat
   components:
   - type: Sprite
@@ -517,7 +517,7 @@
 
 - type: entity
   parent: ClothingOuterWinterCoatToggleable
-  id: ClothingOuterWinterMed
+  id: ClothingOuterWinterMedUpstream # Moffstation
   name: medical winter coat
   components:
   - type: Sprite
