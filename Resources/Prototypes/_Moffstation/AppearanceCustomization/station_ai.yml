@@ -132,17 +132,17 @@
       sprite: _Moffstation/Mobs/Silicon/StationAi/station_ai.rsi
       state: ai_helios
     Dead: *defaultdead
-    
+
 - type: stationAiCustomization
   parent: StationAiIconBase
   id: StationAiIconAiHephaestus
   name: station-ai-icon-hephaestus
   layerData:
     Occupied:
-      sprite: _Moffstation\Mobs\Silicon\StationAi\hephaestus_ai.rsi
+      sprite: &hephaestus_rsi _Moffstation/Mobs/Silicon/StationAi/hephaestus_ai.rsi
       state: ai_hephaestus
     Dead:
-      sprite: _Moffstation\Mobs\Silicon\StationAi\hephaestus_ai.rsi
+      sprite: *hephaestus_rsi
       state: ai_hephaestus_purged
 
 - type: stationAiCustomization

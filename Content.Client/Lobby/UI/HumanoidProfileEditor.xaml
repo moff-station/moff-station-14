@@ -42,8 +42,8 @@
                                 <ui:RandomizeLockButton For="Eyes" LabelText="{Loc 'humanoid-profile-editor-randomize-eye-button'}"/>
                                 <!-- Moff Start - Buttons for our shit -->
                                 <ui:RandomizeLockButton For="Height" LabelText="{Loc 'humanoid-profile-editor-randomize-height-button'}"/>
-                                <ui:RandomizeLockButton For="Markings" LabelText="{Loc 'humanoid-profile-editor-randomize-marking-button'}"/>
                                 <!-- Moff end -->
+                                <ui:RandomizeLockButton For="Markings" LabelText="{Loc 'humanoid-profile-editor-randomize-markings-button'}"/>
                             </GridContainer>
                             <Button
                                 Name="RandomizeUnlockedButton"
