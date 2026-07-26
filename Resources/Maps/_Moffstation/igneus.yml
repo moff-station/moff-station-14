@@ -4,8 +4,8 @@ meta:
   engineVersion: 283.1.0
   forkId: ""
   forkVersion: ""
-  time: 07/26/2026 13:21:36
-  entityCount: 13498
+  time: 07/26/2026 18:29:10
+  entityCount: 13521
 maps:
 - 1
 grids:
@@ -7840,12 +7840,6 @@ entities:
       parent: 2
       rot: 3.141592653589793 rad
       pos: 29.5,-27.5
-  - uid: 7364
-    components:
-    - type: Transform
-      parent: 2
-      rot: 1.5707963267948966 rad
-      pos: 2.5,-17.5
   - uid: 7365
     components:
     - type: Transform
@@ -8051,6 +8045,12 @@ entities:
       parent: 2
       rot: 3.141592653589793 rad
       pos: 25.5,-42.5
+  - uid: 13513
+    components:
+    - type: Transform
+      parent: 2
+      rot: 1.5707963267948966 rad
+      pos: 2.5,-18.5
 - proto: ArrivalsShuttleTimer
   entities:
   - uid: 5422
@@ -9824,6 +9824,11 @@ entities:
       pos: 15.5,11.5
 - proto: CableApcExtension
   entities:
+  - uid: 138
+    components:
+    - type: Transform
+      parent: 2
+      pos: 3.5,-18.5
   - uid: 222
     components:
     - type: Transform
@@ -12364,11 +12369,6 @@ entities:
     - type: Transform
       parent: 2
       pos: -6.5,6.5
-  - uid: 4838
-    components:
-    - type: Transform
-      parent: 2
-      pos: -5.5,6.5
   - uid: 4839
     components:
     - type: Transform
@@ -14144,6 +14144,11 @@ entities:
     - type: Transform
       parent: 2
       pos: 8.5,30.5
+  - uid: 6984
+    components:
+    - type: Transform
+      parent: 2
+      pos: 2.5,-18.5
   - uid: 7108
     components:
     - type: Transform
@@ -14899,11 +14904,6 @@ entities:
     - type: Transform
       parent: 2
       pos: 7.5,-14.5
-  - uid: 9597
-    components:
-    - type: Transform
-      parent: 2
-      pos: 2.5,-17.5
   - uid: 9598
     components:
     - type: Transform
@@ -14919,11 +14919,6 @@ entities:
     - type: Transform
       parent: 2
       pos: 3.5,-15.5
-  - uid: 9601
-    components:
-    - type: Transform
-      parent: 2
-      pos: 4.5,-17.5
   - uid: 9602
     components:
     - type: Transform
@@ -18054,6 +18049,11 @@ entities:
     - type: Transform
       parent: 2
       pos: 14.5,-54.5
+  - uid: 12344
+    components:
+    - type: Transform
+      parent: 2
+      pos: -4.5,7.5
   - uid: 12390
     components:
     - type: Transform
@@ -18499,6 +18499,11 @@ entities:
     - type: Transform
       parent: 2
       pos: 4.5,-50.5
+  - uid: 12657
+    components:
+    - type: Transform
+      parent: 2
+      pos: -4.5,5.5
   - uid: 12795
     components:
     - type: Transform
@@ -18744,6 +18749,11 @@ entities:
     - type: Transform
       parent: 2
       pos: 17.5,-23.5
+  - uid: 13480
+    components:
+    - type: Transform
+      parent: 2
+      pos: -5.5,5.5
 - proto: CablecuffsBroken
   entities:
   - uid: 5805
@@ -25755,6 +25765,11 @@ entities:
     - type: Transform
       parent: 2
       pos: 17.5,-23.5
+  - uid: 13514
+    components:
+    - type: Transform
+      parent: 2
+      pos: 2.5,-18.5
 - proto: CableTerminal
   entities:
   - uid: 640
@@ -28035,6 +28050,11 @@ entities:
       parent: 2
       rot: 3.141592653589793 rad
       pos: 23.5,-32.5
+  - uid: 7371
+    components:
+    - type: Transform
+      parent: 2
+      pos: -30.5,7.5
   - uid: 7435
     components:
     - type: Transform
@@ -28848,6 +28868,36 @@ entities:
       parent: 2
       rot: 3.141592653589793 rad
       pos: 64.5,-21.5
+  - uid: 13505
+    components:
+    - type: Transform
+      parent: 2
+      pos: -31.5,7.5
+  - uid: 13506
+    components:
+    - type: Transform
+      parent: 2
+      pos: -32.5,7.5
+  - uid: 13507
+    components:
+    - type: Transform
+      parent: 2
+      pos: -33.5,7.5
+  - uid: 13508
+    components:
+    - type: Transform
+      parent: 2
+      pos: -34.5,7.5
+  - uid: 13509
+    components:
+    - type: Transform
+      parent: 2
+      pos: -30.5,8.5
+  - uid: 13510
+    components:
+    - type: Transform
+      parent: 2
+      pos: -31.5,8.5
 - proto: CCTVCircuitBoard
   entities:
   - uid: 8204
@@ -29380,12 +29430,6 @@ entities:
       parent: 2
       rot: 3.141592653589793 rad
       pos: 8.026549,-5.5285797
-  - uid: 7841
-    components:
-    - type: Transform
-      parent: 2
-      rot: -1.5707963267948966 rad
-      pos: 3.5134587,-15.644917
   - uid: 7843
     components:
     - type: Transform
@@ -29404,6 +29448,12 @@ entities:
       parent: 2
       rot: -1.5707963267948966 rad
       pos: 9.481594,-32.802258
+  - uid: 9601
+    components:
+    - type: Transform
+      parent: 2
+      rot: -1.5707963267948966 rad
+      pos: 3.513804,-16.496101
 - proto: ChairRitual
   entities:
   - uid: 11657
@@ -30307,7 +30357,7 @@ entities:
     components:
     - type: Transform
       parent: 2
-      pos: 2.2921817,-15.394952
+      pos: 3.23952,-15.042976
 - proto: ClothingHeadHatTophat
   entities:
   - uid: 11344
@@ -30964,12 +31014,12 @@ entities:
       parent: 2
       rot: 3.141592653589793 rad
       pos: 32.5,20.5
-  - uid: 7355
+  - uid: 4838
     components:
     - type: Transform
       parent: 2
       rot: 1.5707963267948966 rad
-      pos: 2.5,-15.5
+      pos: 2.5,-16.5
     - type: TechnologyDatabase
       supportedDisciplines:
       - Industrial
@@ -31680,6 +31730,12 @@ entities:
       pos: -2.5,33.5
 - proto: CurtainsPurpleOpen
   entities:
+  - uid: 1220
+    components:
+    - type: Transform
+      parent: 2
+      rot: 1.5707963267948966 rad
+      pos: 3.5,-17.5
   - uid: 5928
     components:
     - type: Transform
@@ -31702,12 +31758,6 @@ entities:
       parent: 2
       rot: 1.5707963267948966 rad
       pos: 1.5,-15.5
-  - uid: 7371
-    components:
-    - type: Transform
-      parent: 2
-      rot: 1.5707963267948966 rad
-      pos: 3.5,-17.5
   - uid: 7372
     components:
     - type: Transform
@@ -32128,11 +32178,11 @@ entities:
       pos: 40.5,1.5
 - proto: DefaultStationBeaconBridge
   entities:
-  - uid: 1196
+  - uid: 13504
     components:
     - type: Transform
       parent: 2
-      pos: 37.5,21.5
+      pos: 36.5,21.5
 - proto: DefaultStationBeaconBrig
   entities:
   - uid: 13259
@@ -32163,11 +32213,11 @@ entities:
       pos: 29.5,-26.5
 - proto: DefaultStationBeaconChapel
   entities:
-  - uid: 8779
+  - uid: 7373
     components:
     - type: Transform
       parent: 2
-      pos: -34.5,2.5
+      pos: -37.5,1.5
 - proto: DefaultStationBeaconChemistry
   entities:
   - uid: 1014
@@ -32198,18 +32248,18 @@ entities:
       pos: -15.5,25.5
 - proto: DefaultStationBeaconDisposals
   entities:
-  - uid: 6984
+  - uid: 7364
     components:
     - type: Transform
       parent: 2
-      pos: -32.5,7.5
+      pos: -34.5,8.5
 - proto: DefaultStationBeaconDorms
   entities:
-  - uid: 6011
+  - uid: 7375
     components:
     - type: Transform
       parent: 2
-      pos: -0.5,25.5
+      pos: -0.5,22.5
 - proto: DefaultStationBeaconEngineering
   entities:
   - uid: 2989
@@ -32240,11 +32290,15 @@ entities:
       pos: -6.5,-33.5
 - proto: DefaultStationBeaconEvac
   entities:
-  - uid: 12344
+  - uid: 7355
     components:
     - type: Transform
       parent: 2
-      pos: 30.5,-53.5
+      pos: 31.5,-53.5
+    - type: NavMapBeacon
+      text: Evacuation Docks
+    - type: WarpPoint
+      location: Evacuation Docks
 - proto: DefaultStationBeaconGravGen
   entities:
   - uid: 2850
@@ -32275,11 +32329,11 @@ entities:
       pos: 16.5,28.5
 - proto: DefaultStationBeaconKitchen
   entities:
-  - uid: 138
+  - uid: 13521
     components:
     - type: Transform
       parent: 2
-      pos: 32.5,5.5
+      pos: 33.5,5.5
 - proto: DefaultStationBeaconLawOffice
   entities:
   - uid: 13258
@@ -32296,11 +32350,11 @@ entities:
       pos: 15.5,-50.5
 - proto: DefaultStationBeaconMedical
   entities:
-  - uid: 1220
+  - uid: 13520
     components:
     - type: Transform
       parent: 2
-      pos: 12.5,7.5
+      pos: 14.5,7.5
 - proto: DefaultStationBeaconMorgue
   entities:
   - uid: 1085
@@ -32359,11 +32413,11 @@ entities:
       pos: -0.5,14.5
 - proto: DefaultStationBeaconService
   entities:
-  - uid: 239
+  - uid: 7840
     components:
     - type: Transform
       parent: 2
-      pos: 25.5,4.5
+      pos: 26.5,4.5
 - proto: DefaultStationBeaconSolars
   entities:
   - uid: 13294
@@ -35891,6 +35945,18 @@ entities:
     - type: Transform
       parent: 2
       pos: 45.909557,-1.5297968
+- proto: DrinkHotCoffee
+  entities:
+  - uid: 13501
+    components:
+    - type: Transform
+      parent: 2
+      pos: 10.616022,-51.117996
+  - uid: 13502
+    components:
+    - type: Transform
+      parent: 2
+      pos: 10.303522,-51.430496
 - proto: DrinkLean
   entities:
   - uid: 4416
@@ -35922,6 +35988,20 @@ entities:
     - type: Transform
       parent: 2
       pos: 39.238846,-40.322086
+- proto: DrinkMugDog
+  entities:
+  - uid: 13503
+    components:
+    - type: Transform
+      parent: 2
+      pos: 11.319147,-51.992996
+- proto: DrinkMugGreen
+  entities:
+  - uid: 7841
+    components:
+    - type: Transform
+      parent: 2
+      pos: 2.77077,-15.792976
 - proto: DrinkMugOne
   entities:
   - uid: 1199
@@ -39851,6 +39931,14 @@ entities:
     - type: Transform
       parent: 2
       pos: 3.4636073,20.615314
+- proto: FoodCartHot
+  entities:
+  - uid: 13499
+    components:
+    - type: Transform
+      parent: 2
+      rot: 1.5707963267948966 rad
+      pos: 39.5,8.5
 - proto: FoodCheeseSlice
   entities:
   - uid: 13484
@@ -56508,11 +56596,12 @@ entities:
     - type: Transform
       parent: 2
       pos: 6.5,-14.5
-  - uid: 7840
+  - uid: 13512
     components:
     - type: Transform
       parent: 2
-      pos: 3.5,-14.5
+      rot: 3.141592653589793 rad
+      pos: 2.5,-17.5
 - proto: IntercomSecurity
   entities:
   - uid: 4347
@@ -58180,6 +58269,12 @@ entities:
 
 
         But hey, first day should be a breeze. I’ll chat with you tomorrow. Uh, check those cameras, and remember to close the doors only if absolutely necessary. Gotta conserve power. Alright, good night.
+  - uid: 13500
+    components:
+    - type: Transform
+      parent: 2
+      rot: 1.5707963267948966 rad
+      pos: 10.569147,-51.555496
 - proto: ParcelWrap
   entities:
   - uid: 10124
@@ -58640,11 +58735,11 @@ entities:
       pos: -5.5,-43.5
 - proto: PottedPlantRD
   entities:
-  - uid: 7375
+  - uid: 1196
     components:
     - type: Transform
       parent: 2
-      pos: 2.5,-16.5
+      pos: 2.5,-15.5
 - proto: PowerCellRecharger
   entities:
   - uid: 4706
@@ -58831,6 +58926,12 @@ entities:
       parent: 2
       rot: 3.141592653589793 rad
       pos: -31.5,-0.5
+  - uid: 8779
+    components:
+    - type: Transform
+      parent: 2
+      rot: 1.5707963267948966 rad
+      pos: 25.5,-57.5
   - uid: 8876
     components:
     - type: Transform
@@ -59039,6 +59140,36 @@ entities:
       parent: 2
       rot: 1.5707963267948966 rad
       pos: 5.5,-28.5
+  - uid: 13515
+    components:
+    - type: Transform
+      parent: 2
+      rot: -1.5707963267948966 rad
+      pos: 27.5,-57.5
+  - uid: 13516
+    components:
+    - type: Transform
+      parent: 2
+      rot: -1.5707963267948966 rad
+      pos: 38.5,-57.5
+  - uid: 13517
+    components:
+    - type: Transform
+      parent: 2
+      rot: 1.5707963267948966 rad
+      pos: 36.5,-57.5
+  - uid: 13518
+    components:
+    - type: Transform
+      parent: 2
+      rot: -1.5707963267948966 rad
+      pos: 28.5,38.5
+  - uid: 13519
+    components:
+    - type: Transform
+      parent: 2
+      rot: 1.5707963267948966 rad
+      pos: 21.5,38.5
 - proto: Poweredlight
   entities:
   - uid: 180
@@ -66800,11 +66931,11 @@ entities:
       pos: 39.5,8.5
 - proto: SpawnMobBandito
   entities:
-  - uid: 7373
+  - uid: 13511
     components:
     - type: Transform
       parent: 2
-      pos: 3.5,-16.5
+      pos: 3.5,-18.5
 - proto: SpawnMobCatException
   entities:
   - uid: 7936
@@ -67285,11 +67416,11 @@ entities:
       pos: -40.5,-17.5
 - proto: SpawnPointResearchDirector
   entities:
-  - uid: 12657
+  - uid: 9597
     components:
     - type: Transform
       parent: 2
-      pos: 3.5,-15.5
+      pos: 3.5,-16.5
 - proto: SpawnPointSalvageSpecialist
   entities:
   - uid: 12658
@@ -67721,6 +67852,13 @@ entities:
     - type: Transform
       parent: 2
       pos: 17.5,9.5
+- proto: StationAiFixerComputer
+  entities:
+  - uid: 6011
+    components:
+    - type: Transform
+      parent: 2
+      pos: 3.5,-15.5
 - proto: StationAiUploadComputer
   entities:
   - uid: 8182
@@ -68553,6 +68691,7 @@ entities:
       pos: 17.5,15.5
     - type: SurveillanceCamera
       nameSet: True
+      id: '[EST] 5 - north east hall camera'
   - uid: 12840
     components:
     - type: Transform
@@ -68632,6 +68771,15 @@ entities:
       id: '[WST] 1 - north west hall camera'
 - proto: SurveillanceCameraMedical
   entities:
+  - uid: 239
+    components:
+    - type: Transform
+      parent: 2
+      rot: 1.5707963267948966 rad
+      pos: 17.5,-23.5
+    - type: SurveillanceCamera
+      nameSet: True
+      id: '[PSY] psychology camera'
   - uid: 632
     components:
     - type: Transform
@@ -68806,7 +68954,7 @@ entities:
       pos: 9.5,-12.5
     - type: SurveillanceCamera
       nameSet: True
-      id: '[SCI] materials storage camera'
+      id: '[SCI] 2 - materials storage camera'
 - proto: SurveillanceCameraSecurity
   entities:
   - uid: 12755
@@ -68844,7 +68992,7 @@ entities:
       pos: -17.5,15.5
     - type: SurveillanceCamera
       nameSet: True
-      id: '[SEC] west hallway camera'
+      id: '[SEC] 3 - west hallway camera'
   - uid: 12759
     components:
     - type: Transform
@@ -68861,7 +69009,7 @@ entities:
       pos: -21.5,15.5
     - type: SurveillanceCamera
       nameSet: True
-      id: '[SEC] 5 - lockeroom camera'
+      id: '[SEC] 4 - lockeroom camera'
   - uid: 12761
     components:
     - type: Transform
@@ -68869,7 +69017,7 @@ entities:
       pos: -18.5,20.5
     - type: SurveillanceCamera
       nameSet: True
-      id: '[SEC] 6 - shooting range camera'
+      id: '[SEC] 5 - shooting range camera'
   - uid: 12762
     components:
     - type: Transform
@@ -68904,6 +69052,7 @@ entities:
       rot: 3.141592653589793 rad
       pos: -3.5,7.5
     - type: SurveillanceCamera
+      nameSet: True
       id: '[BRG] 1 - east general population camera'
   - uid: 12766
     components:
@@ -68912,7 +69061,7 @@ entities:
       pos: -11.5,7.5
     - type: SurveillanceCamera
       nameSet: True
-      id: '[BRG] west general population camera'
+      id: '[BRG] 2 - west general population camera'
   - uid: 12767
     components:
     - type: Transform
@@ -68920,7 +69069,7 @@ entities:
       pos: -15.5,7.5
     - type: SurveillanceCamera
       nameSet: True
-      id: '[BRG] general population bunks camera'
+      id: '[BRG] 3 - general population bunks camera'
   - uid: 12768
     components:
     - type: Transform
@@ -70542,13 +70691,6 @@ entities:
     - type: Transform
       parent: 2
       pos: -18.510567,-4.2297254
-- proto: TowelColorTeal
-  entities:
-  - uid: 13480
-    components:
-    - type: Transform
-      parent: 2
-      pos: 12.362957,30.646378
 - proto: TowelColorWhite
   entities:
   - uid: 13479
