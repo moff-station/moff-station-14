@@ -6,6 +6,7 @@ using Content.Shared._Moffstation.Objectives;
 using Content.Shared.GameTicking.Components;
 using Content.Shared.Mind;
 using Content.Shared.Objectives.Systems;
+using Robust.Shared.Player;
 using Robust.Shared.Timing;
 
 namespace Content.Server._Moffstation.Objectives.Systems;
@@ -49,7 +50,21 @@ public sealed partial class MoffCommonObjectivesSystem : EntitySystem
         }
     }
 
+    [SubscribeLocalEvent]
+    private void OnPlayerAttached(Entity<MoffCommonObjectivesComponent> ent, ref PlayerAttachedEvent ev)
+    {
+        if (ent.Comp.PlaceHolder != null)
+            return;
 
+        if (!_mind.TryGetMind(ev.Player, out var mindId, out var mindComp))
+            return;
+
+        if (_objectives.TryCreateObjective(mindId, mindComp, ent.Comp.PlaceholderProtoId) is not { } objective)
+            return;
+
+        ent.Comp.PlaceHolder = objective;
+        _mind.AddObjective(mindId, mindComp, objective);
+    }
 
     [SubscribeLocalEvent]
     private void OnObjectiveAdded(ref ObjectiveAddedEvent ev)
@@ -135,7 +150,7 @@ public sealed partial class MoffCommonObjectivesSystem : EntitySystem
 
         foreach (var objective in ownerMind.Objectives.ToArray())
         {
-            if (objective == comp.PlaceHolder || target.Contains(objective))
+            if (target.Contains(objective))
                 continue;
 
             var index = ownerMind.Objectives.IndexOf(objective);
