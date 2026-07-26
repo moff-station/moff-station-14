@@ -1,4 +1,6 @@
-# Random objective table for the nuke op leader (the commander). Picked from by the objective picker.
+# Tables
+
+# this requires a table within a table, so we'll just make one for now
 - type: weightedRandom
   id: NukeOpsLeaderObjectiveGroups
   weights:
@@ -7,33 +9,53 @@
 - type: weightedRandom
   id: NukeOpsLeaderObjectiveGroupDefault
   weights:
-    NukeOpsDestroyStationObjective: 1.0
-    NukeOpsKidnapCommandObjective: 1.0
-    NukeOpsKidnapPersonObjective: 1.0
+    NukeOpsDestroyStationObjectivePack: 1.0
+    NukeOpsShowOfForceObjectivePack: 1.0
+
+# Objective Packs
 
 - type: entity
   parent: BaseNukeOpsObjective
-  id: NukeOpsKidnapPersonObjective
-  description: The Syndicate wants a word with them. Take them off the station alive and bring them back with you.
+  id: NukeOpsShowOfForceObjectivePack
+  description: A loud and deadly operation meant to strike fear into the hearts of Nanotrasen.
   components:
   - type: Objective
     icon:
       sprite: Objects/Misc/handcuffs.rsi
       state: handcuff
   - type: SimpleObjective
-    title: objective-nukeops-kidnap-command-title
+    title: objective-nukeops-show-of-force-title
   - type: MoffObjectivePack
-    objectives: !type:NestedSelector
-      tableId: NukeOpsKidnapPersonTable
-
-
-- type: entityTable
-  id: NukeOpsKidnapPersonTable
-  table: !type:AllSelector # we need to pass a list of rules, since rules have further restrictions to consider via StationEventComp
-    children:
-      - id: NukeOpsKidnapPersonObjective
+    objectives: !type:AllSelector
+      children:
+      - id: NukeOpsKidnapTargetObjective
         amount: !type:RangeNumberSelector
-          range: 4, 6
+          range: 3, 4
+      - id: NukeOpsKillObjective
+        amount: !type:RangeNumberSelector
+          range: 2, 3
+      - id: NukeOpsDestroyRoomObjective
+        amount: 3
+      - id: NukeOpsSurviveObjective
+
+- type: entity
+  parent: BaseNukeOpsObjective
+  id: NukeOpsDestroyStationObjectivePack
+  description: Arm the nuclear fission explosive device and detonate it on the station.
+  components:
+  - type: Objective
+    icon:
+      sprite: Objects/Devices/nuke.rsi
+      state: nuclearbomb_base
+  - type: SimpleObjective
+    title: objective-nukeops-destroy-station-title
+  - type: MoffObjectivePack
+    objectives: !type:AllSelector
+      children:
+      - id: NukeOpsDestroyStationObjective
+      - id: NukeOpsSurviveObjective
+
+# Objectives
 
 - type: entity
   abstract: true
@@ -50,8 +72,8 @@
 - type: entity
   parent: BaseNukeOpsObjective
   id: NukeOpsDestroyStationObjective
-  name: Destroy the station with a nuclear device.
-  description: Arm the nuclear device and detonate it on the station. Leave nothing but a crater.
+  name: Nuke the station.
+  description: Arm the nuclear fission explosive device and detonate it on the station.
   components:
   - type: Objective
     icon:
@@ -62,24 +84,12 @@
 
 - type: entity
   parent: BaseNukeOpsObjective
-  id: NukeOpsKidnapCommandObjective
-  name: Kidnap a member of command.
-  description: Capture a member of the station's command staff and bring them back to your shuttle alive.
-  components:
-  - type: Objective
-    icon:
-      sprite: Objects/Misc/id_cards.rsi
-      state: icon-captain
-  - type: SimpleObjective
-    title: objective-nukeops-kidnap-command-title
-
-- type: entity
-  parent: BaseNukeOpsObjective
-  id: NukeOpsKidnapPersonObjective
+  id: NukeOpsKidnapTargetObjective
   description: The Syndicate wants a word with them. Take them off the station alive and bring them back with you.
   components:
   - type: Objective
     difficulty: 2
+    unique: false
     icon:
       sprite: Objects/Misc/handcuffs.rsi
       state: handcuff
@@ -87,7 +97,57 @@
     title: objective-nukeops-kidnap-person-title
   - type: PickRandomPerson
     conditions:
-    # Don't send them after their own squad, or any other antag.
     - !type:AntagonistCondition
       inverted: true
+    - !type:ObjectiveTargetCondition
+      inverted: true
+      whitelist:
+        components:
+        - PickRandomPerson
   - type: CodeCondition
+
+- type: entity
+  parent: [ BaseNukeOpsObjective, BaseKillRandomObjective ]
+  id: NukeOpsKillObjective
+  description: Gorlex wants this person dead.
+  components:
+  - type: Objective
+    difficulty: 2
+    unique: false
+  - type: TargetObjective
+    title: objective-nukeops-kill-person-title
+  - type: PickRandomPerson
+    conditions:
+    - !type:AntagonistCondition
+      inverted: true
+  - type: KillPersonCondition
+    requireDead: true
+
+- type: entity
+  parent: BaseNukeOpsObjective
+  id: NukeOpsDestroyRoomObjective
+  name: Destroy Room
+  description: We want everything in this room obliterated.
+  components:
+  - type: Objective
+    difficulty: 2
+    unique: false
+    icon:
+      sprite: Objects/Weapons/Bombs/c4.rsi
+      state: icon
+  - type: PickRoomObjective
+  - type: LocationObjective
+    title: objective-nukeops-destroy-room-title
+  - type: CodeCondition
+
+- type: entity
+  parent: [ BaseNukeOpsObjective, BaseSurviveObjective ]
+  id: NukeOpsSurviveObjective
+  name: Escape alive.
+  description: Make it off the station alive.
+  components:
+  - type: Objective
+    difficulty: 1.5
+    icon:
+      sprite: Structures/Furniture/chairs.rsi
+      state: shuttle

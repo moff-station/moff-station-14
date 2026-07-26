@@ -153,9 +153,7 @@ public sealed partial class MoffCommonObjectivesSystem : EntitySystem
             if (target.Contains(objective))
                 continue;
 
-            var index = ownerMind.Objectives.IndexOf(objective);
-            if (index >= 0)
-                _mind.TryRemoveObjective(ownerMindId, ownerMind, index);
+            _mind.TryRemoveObjective(ownerMindId, ownerMind, ownerMind.Objectives.IndexOf(objective));
         }
 
         foreach (var objective in target)

@@ -26,13 +26,10 @@ public sealed partial class MoffObjectivePackSystem : EntitySystem
 
         foreach (var spawn in spawns)
         {
-            if (_objectives.TryCreateObjective(ev.Mind, mind, spawn) is not { } objective)
-                continue;
-
-            _mindSystem.AddObjective(ev.Mind, mind, objective);
+            _mindSystem.TryAddObjective(ev.Mind, mind, spawn);
         }
 
         if (!ent.Comp.KeepOriginal)
-            QueueDel(ent.Owner);
+            _mindSystem.TryRemoveObjective(ev.Mind, mind, mind.Objectives.IndexOf(ent.Owner));
     }
 }
