@@ -11,17 +11,6 @@ using Robust.Shared.Timing;
 
 namespace Content.Server._Moffstation.Objectives.Systems;
 
-/// <summary>
-/// Keeps the objectives of entities with <see cref="MoffCommonObjectivesComponent"/> mirrored from
-/// their <see cref="MoffCommonObjectivesComponent.Authority"/>. While the authority has no
-/// objectives (or no authority is set) the follower is given a placeholder objective instead so its
-/// character menu isn't empty.
-/// </summary>
-/// <remarks>
-/// Mirroring is driven by <see cref="ObjectiveAddedEvent"/>/<see cref="ObjectiveRemovedEvent"/>, so
-/// followers pick changes up the moment the authority's mind is touched. The update loop only exists
-/// to find the authority in the first place, since nothing announces that.
-/// </remarks>
 public sealed partial class MoffCommonObjectivesSystem : EntitySystem
 {
     [Dependency] private SharedMindSystem _mind = default!;
@@ -41,7 +30,6 @@ public sealed partial class MoffCommonObjectivesSystem : EntitySystem
         var query = EntityQueryEnumerator<MoffCommonObjectivesComponent>();
         while (query.MoveNext(out var uid, out var comp))
         {
-            // Resolve the authority once from the game rules, then cache it and follow it from there.
             if (comp.Authority == null &&
                 TryResolveAuthority((uid, comp), out var found))
             {
@@ -95,11 +83,6 @@ public sealed partial class MoffCommonObjectivesSystem : EntitySystem
         }
     }
 
-    /// <summary>
-    /// Finds the authority for a follower by walking the active antag rules: the rule the follower
-    /// belongs to is scanned for the member whose live mob carries
-    /// <see cref="MoffSharedObjectiveAuthorityComponent"/>.
-    /// </summary>
     private bool TryResolveAuthority(Entity<MoffCommonObjectivesComponent> ent, out EntityUid authority)
     {
         authority = default;
@@ -119,7 +102,7 @@ public sealed partial class MoffCommonObjectivesSystem : EntitySystem
             {
                 if (member.Comp.CurrentEntity is { } mob &&
                     mob != ent.Owner &&
-                    HasComp<MoffSharedObjectiveAuthorityComponent>(mob))
+                    HasComp<MoffCommonObjectiveAuthorityComponent>(mob))
                 {
                     authority = mob;
                     SyncObjectives(ent);
@@ -138,8 +121,6 @@ public sealed partial class MoffCommonObjectivesSystem : EntitySystem
         if (!_mind.TryGetMind(ent, out var ownerMindId, out var ownerMind))
             return;
 
-        // Objectives on their way out (e.g. a spent objective pack) must not be mirrored, and a
-        // queued deletion doesn't mark the entity as terminating yet.
         var target = comp.Authority is { } authority &&
                      _mind.TryGetMind(authority, out _, out var authMind)
             ? authMind.Objectives.ToList()

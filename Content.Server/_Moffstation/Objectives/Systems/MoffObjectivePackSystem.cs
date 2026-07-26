@@ -2,8 +2,6 @@ using Content.Server._Moffstation.Objectives.Components;
 using Content.Shared._Moffstation.Objectives;
 using Content.Shared.EntityTable;
 using Content.Shared.Mind;
-using Content.Shared.Objectives.Systems;
-using Robust.Shared.Map;
 
 namespace Content.Server._Moffstation.Objectives.Systems;
 
@@ -11,7 +9,6 @@ namespace Content.Server._Moffstation.Objectives.Systems;
 public sealed partial class MoffObjectivePackSystem : EntitySystem
 {
     [Dependency] private EntityTableSystem _entityTable = default!;
-    [Dependency] private SharedObjectivesSystem _objectives = default!;
     [Dependency] private SharedMindSystem _mindSystem = default!;
 
     [Dependency] private EntityQuery<MindComponent> _mindQuery;

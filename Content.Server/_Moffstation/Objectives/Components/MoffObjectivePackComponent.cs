@@ -2,8 +2,9 @@ using Content.Shared.EntityTable.EntitySelectors;
 
 namespace Content.Server._Moffstation.Objectives.Components;
 
+
 /// <summary>
-/// Component that can be given to objectives entities to have them add other objectives upon being chosen
+/// When an objective with component is chosen, it will spawn and assign an EntityTable of objectives to the person's mind
 /// </summary>
 [RegisterComponent]
 public sealed partial class MoffObjectivePackComponent : Component
