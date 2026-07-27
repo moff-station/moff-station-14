@@ -7207,6 +7207,17 @@ Entries:
   id: 1680
   time: '2026-07-20T23:00:56.000'
   url: https://github.com/moff-station/moff-station-14/pull/1680
+- author: Centronias, FreianOfVoid
+  changes:
+  - message: Floor tiles converted by a replicator nest can now be harvested for a
+      bit of steel and plasteel by using a welder on them.
+    type: add
+  - message: Replicator nests now properly drain liquids near themselves. No more
+      puddles of blood hovering over the hole.
+    type: fix
+  id: 1681
+  time: '2026-07-27T04:18:09.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1681
 - author: Nyxilath
   changes:
   - message: Vox Syndicate Footsoldiers now spawn with nitrogen tanks.
