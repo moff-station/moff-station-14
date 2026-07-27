@@ -141,7 +141,7 @@
   id: Nukeops
   components:
   - type: GameRule
-    minPlayers: 0
+    minPlayers: 20
   # Moff Start - give only the nuke op commander a random objective table
   - type: AntagRandomObjectives
     onlyForDefs:
