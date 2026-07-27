@@ -182,6 +182,7 @@
         Structural: -0.5
   - type: AntiRottingContainer
   - type: Chasm
+    deleteEntitiesWhichFallInto: false # ReplicatorNest handles deletion as appropriate.
     fallingSound:
       path: /Audio/_Impstation/Effects/falling.ogg
       params:
