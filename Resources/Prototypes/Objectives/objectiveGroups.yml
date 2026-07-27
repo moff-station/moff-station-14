@@ -9,8 +9,6 @@
     TraitorObjectiveGroupSocial: 0.5 #Involves helping/harming others without killing them or stealing their stuff
     TraitorObjectiveGroupSabotage: 0.5
     TraitorObjectiveGroupOther: 0.5
-    DieObjective: 0.002 # Moff - Moved here directly, as embedding it in a table messes up the odds
-    EscapeShuttleObjective: 0.01
     # Moffstation - End
 
 - type: weightedRandom
@@ -77,6 +75,9 @@
     # Moffstation - Location based objectives
     TrashRoomObjective: 1
     ClaimLocationObjective: 1
+    # Die and escape moved here so that their weights are respected
+    DieObjective: 0.01
+    EscapeShuttleObjective: 0.1
     # Moffstation - End
 
 
