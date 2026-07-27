@@ -8,12 +8,10 @@ using Content.Client._Funkystation.VendingMachines;
 
 namespace Content.Client.VendingMachines;
 
-public sealed class VendingMachineBoundUserInterface(EntityUid owner, Enum uiKey) : BoundUserInterface(owner, uiKey)
+public sealed class VendingMachineBoundUserInterface(EntityUid owner, Enum uiKey) : BoundUserInterface(owner, uiKey), IVendingMachineBoundUi
 {
-    public sealed class VendingMachineBoundUserInterface : BoundUserInterface, IVendingMachineBoundUi // Funky change
-    {
-        [ViewVariables]
-        private VendingMachineMenu? _menu;
+    [ViewVariables]
+    private VendingMachineMenu? _menu;
 
     [ViewVariables]
     private List<VendingMachineInventoryEntry> _cachedInventory = new();
@@ -80,3 +78,4 @@ public sealed class VendingMachineBoundUserInterface(EntityUid owner, Enum uiKey
         _menu.Dispose();
     }
 }
+
