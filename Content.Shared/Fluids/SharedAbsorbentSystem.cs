@@ -163,7 +163,7 @@ public abstract partial class SharedAbsorbentSystem : EntitySystem
         var absorbentSolution = absorbentSoln.Comp.Solution;
         if (absorbentSolution.Volume <= 0)
         {
-            _popups.PopupClient(Loc.GetString("mopping-system-target-container-empty", ("target", target)), user, user);
+            _popups.PopupEntity(Loc.GetString("mopping-system-target-container-empty", ("target", target)), user, user);
             return false;
         }
 
@@ -174,7 +174,7 @@ public abstract partial class SharedAbsorbentSystem : EntitySystem
 
         if (transferAmount <= 0)
         {
-            _popups.PopupClient(Loc.GetString("mopping-system-full", ("used", absorbEnt)), absorbEnt, user);
+            _popups.PopupEntity(Loc.GetString("mopping-system-full", ("used", absorbEnt)), absorbEnt, user);
             return false;
         }
 
@@ -209,7 +209,7 @@ public abstract partial class SharedAbsorbentSystem : EntitySystem
             && absorbentSolution.AvailableVolume == FixedPoint2.Zero)
         {
             // Nothing to transfer to refillable and no room to absorb anything extra
-            _popups.PopupClient(Loc.GetString("mopping-system-puddle-space", ("used", absorbEnt)), user, user);
+            _popups.PopupEntity(Loc.GetString("mopping-system-puddle-space", ("used", absorbEnt)), user, user);
 
             // We can return cleanly because nothing was split from absorbent solution
             return false;
@@ -228,7 +228,7 @@ public abstract partial class SharedAbsorbentSystem : EntitySystem
         if (waterFromRefillable.Volume == FixedPoint2.Zero && contaminantsFromAbsorbent.Volume == FixedPoint2.Zero)
         {
             // Nothing to transfer in either direction
-            _popups.PopupClient(Loc.GetString("mopping-system-target-container-empty-water", ("target", target)),
+            _popups.PopupEntity(Loc.GetString("mopping-system-target-container-empty-water", ("target", target)),
                 user,
                 user);
 
@@ -250,7 +250,7 @@ public abstract partial class SharedAbsorbentSystem : EntitySystem
 
         if (refillableSolution.AvailableVolume <= 0)
         {
-            _popups.PopupClient(Loc.GetString("mopping-system-full", ("used", target)), user, user);
+            _popups.PopupEntity(Loc.GetString("mopping-system-full", ("used", target)), user, user);
         }
         else
         {
@@ -293,7 +293,7 @@ public abstract partial class SharedAbsorbentSystem : EntitySystem
                 puddleSolution.GetTotalPrototypeQuantity(Puddle.GetAbsorbentReagents(puddleSolution));
             if (puddleAbsorberVolume == puddleSolution.Volume)
             {
-                _popups.PopupClient(Loc.GetString("mopping-system-puddle-already-mopped", ("target", target)),
+                _popups.PopupEntity(Loc.GetString("mopping-system-puddle-already-mopped", ("target", target)),
                     target,
                     user);
                 return true;
@@ -306,7 +306,7 @@ public abstract partial class SharedAbsorbentSystem : EntitySystem
             // No material
             if (available == FixedPoint2.Zero)
             {
-                _popups.PopupClient(Loc.GetString("mopping-system-no-water", ("used", absorbEnt)), absorbEnt, user);
+                _popups.PopupEntity(Loc.GetString("mopping-system-no-water", ("used", absorbEnt)), absorbEnt, user);
                 return true;
             }
 

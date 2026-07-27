@@ -203,7 +203,7 @@ public abstract partial class SharedFlatpackSystem : EntitySystem
         }
 
         if (!ProtoMan.Resolve(flatpack.Comp.Entity, out var proto) ||
-            !proto.TryGetComponent<FixturesComponent>(out var fixture, EntityManager.ComponentFactory))
+            !proto.TryComp<FixturesComponent>(out var fixture, EntityManager.ComponentFactory))
         {
             return true;
         }
@@ -213,7 +213,7 @@ public abstract partial class SharedFlatpackSystem : EntitySystem
 
         if (!_anchorable.TileFree((grid, gridComp), buildPos, layer, mask))
         {
-            _popup.PopupPredicted(Loc.GetString("flatpack-unpack-no-room"), flatpack, user);
+            _popup.PopupEntity(Loc.GetString("flatpack-unpack-no-room"), flatpack, user);
             return true;
         }
 

@@ -170,7 +170,7 @@
         children:
         - id: HudModuleShowHungerIcons
   - type: Label
-    currentLabel: modularhud-premade-food
+    localizedLabel: modularhud-premade-food
 
 - type: entity
   id: AbstractModularHudDiagnostic
@@ -184,7 +184,7 @@
         - id: HudModuleShowInorganicHealthBars
         - id: HudModuleShowAccessReaderSettings
   - type: Label
-    currentLabel: modularhud-premade-diagnostic
+    localizedLabel: modularhud-premade-diagnostic
 
 - type: entity
   id: AbstractModularHudMedicalIcons
@@ -197,7 +197,7 @@
         children:
         - id: HudModuleShowMedicalIcons
   - type: Label
-    currentLabel: modularhud-premade-medical
+    localizedLabel: modularhud-premade-medical
 
 - type: entity
   id: AbstractModularHudSecurity
@@ -210,7 +210,7 @@
         children:
         - id: HudModuleSecurity
   - type: Label
-    currentLabel: modularhud-premade-security
+    localizedLabel: modularhud-premade-security
 
 ## Premade modular HUD usages
 ### Modular HUD eye patches
@@ -225,7 +225,7 @@
         children:
         - id: HudModuleShowThirstIcons
   - type: Label
-    currentLabel: modularhud-premade-thirst
+    localizedLabel: modularhud-premade-thirst
 
 - type: entity
   parent: [ ClothingEyesModularHudPatch, AbstractModularHudChef ]
@@ -256,7 +256,7 @@
         - id: HudModuleShowThirstIcons
         - id: HudModuleCheapSunglasses
   - type: Label
-    currentLabel: modularhud-premade-thirst
+    localizedLabel: modularhud-premade-thirst
 
 - type: entity
   parent: [ ClothingEyesModularHudGlasses ]
@@ -270,7 +270,7 @@
         - id: HudModuleShowJobIcons
         - id: HudModuleFlashImmunity
   - type: Label
-    currentLabel: modularhud-premade-command
+    localizedLabel: modularhud-premade-command
 
 - type: entity
   parent: [ ClothingEyesModularHudGlasses ]
@@ -284,7 +284,7 @@
         - id: HudModuleShowMedicalIcons
         - id: HudModuleCheapSunglasses
   - type: Label
-    currentLabel: modularhud-premade-medical
+    localizedLabel: modularhud-premade-medical
 
 - type: entity
   parent: [ ClothingEyesModularHudGlasses ]
@@ -298,7 +298,7 @@
         - id: HudModuleSecurity
         - id: HudModuleNoirOverlay
   - type: Label
-    currentLabel: modularhud-premade-noir
+    localizedLabel: modularhud-premade-noir
 
 - type: entity
   parent: [ ClothingEyesModularHudGlasses ]
@@ -312,7 +312,7 @@
         - id: HudModuleSecurity
         - id: HudModuleFlashImmunity
   - type: Label
-    currentLabel: modularhud-premade-security
+    localizedLabel: modularhud-premade-security
 
 ### Modular HUD visor
 - type: entity
@@ -330,7 +330,7 @@
         children:
         - id: HudModuleSolutionScanner
   - type: Label
-    currentLabel: modularhud-premade-chemistry
+    localizedLabel: modularhud-premade-chemistry
 
 - type: entity
   parent: [ ClothingEyesModularHudVisor ]
@@ -343,7 +343,7 @@
         children:
         - id: HudModuleShowJobIcons
   - type: Label
-    currentLabel: modularhud-premade-command
+    localizedLabel: modularhud-premade-command
 
 - type: entity
   parent: [ ClothingEyesModularHudVisor, AbstractModularHudDiagnostic ]
@@ -365,7 +365,7 @@
         - id: HudModuleShowMedicalIcons
         - id: HudModuleSolutionScanner
   - type: Label
-    currentLabel: modularhud-premade-medchem
+    localizedLabel: modularhud-premade-medchem
 
 - type: entity
   parent: [ ClothingEyesModularHudVisor ]
@@ -379,7 +379,7 @@
         - id: HudModuleSecurity
         - id: HudModuleShowMedicalIcons
   - type: Label
-    currentLabel: modularhud-premade-medsec
+    localizedLabel: modularhud-premade-medsec
 
 - type: entity
   parent: [ ClothingEyesModularHudVisor, AbstractModularHudSecurity ]

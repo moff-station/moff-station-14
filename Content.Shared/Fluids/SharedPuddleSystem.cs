@@ -13,6 +13,7 @@ using Content.Shared.Fluids.Components;
 using Content.Shared.Friction;
 using Content.Shared.Gravity;
 using Content.Shared.Inventory;
+using Content.Shared.Maps;
 using Content.Shared.Movement.Components;
 using Content.Shared.Movement.Events;
 using Content.Shared.Movement.Systems;
@@ -48,6 +49,9 @@ public abstract partial class SharedPuddleSystem : EntitySystem
     [Dependency] private StepTriggerSystem _stepTrigger = default!;
     [Dependency] private TileFrictionController _tile = default!;
     [Dependency] private INetManager _net = default!;
+    [Dependency] private SharedMapSystem _map = default!;
+    [Dependency] private TurfSystem _turf = default!;
+
     [Dependency] private InventorySystem _inventory = default!; // Funky - Clothing stains
     [Dependency] private StandingStateSystem _standing = default!; // Moff - Clothing stains
     [Dependency] private SharedGravitySystem _gravity = default!; // Moff - Clothing Stains
@@ -55,6 +59,7 @@ public abstract partial class SharedPuddleSystem : EntitySystem
     [Dependency] private EntityQuery<StepTriggerComponent> _stepTriggerQuery = default!;
     [Dependency] private EntityQuery<ReactiveComponent> _reactiveQuery = default!;
     [Dependency] private EntityQuery<EvaporationComponent> _evaporationQuery = default!;
+    [Dependency] private EntityQuery<PuddleComponent> _puddleQuery = default!;
 
     private ProtoId<ReagentPrototype>[] _standoutReagents = [];
 
@@ -234,6 +239,25 @@ public abstract partial class SharedPuddleSystem : EntitySystem
         // Make sure the removed entity was our contained solution and clear our cached reference
         if (args.Entity == ent.Comp.Solution?.Owner)
             ent.Comp.Solution = null;
+    }
+
+    [SubscribeLocalEvent]
+    private void OnTileChanged(ref TileChangedEvent ev)
+    {
+        foreach (var change in ev.Changes)
+        {
+            if (!_turf.IsSpace(change.NewTile))
+                continue;
+
+            var anchored = _map.GetAnchoredEntitiesEnumerator(ev.Entity, ev.Entity.Comp, change.GridIndices);
+            while (anchored.MoveNext(out var ent))
+            {
+                if (!_puddleQuery.HasComponent(ent))
+                    continue;
+
+                PredictedQueueDel(ent);
+            }
+        }
     }
 
     private void UpdateAppearance(Entity<PuddleComponent?, AppearanceComponent?> ent)
