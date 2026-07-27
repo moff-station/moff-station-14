@@ -42,12 +42,6 @@
       shuttlePath: /Maps/_Moffstation/Shuttles/arrivals.yml # Moffstation - Changed the arrivals shuttle
 
 - type: entity
-  id: BaseStationGateway
-  abstract: true
-  components:
-    - type: GatewayGenerator
-
-- type: entity
   id: BaseStationShuttles
   abstract: true
   components:
