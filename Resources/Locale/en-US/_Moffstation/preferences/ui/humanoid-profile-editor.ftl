@@ -11,3 +11,11 @@ moff-antag-search-placeholder = Search Special Roles...
 
 moff-antag-footer-hint = Read faction info for more details
 moff-antag-footer-info = Death to Nanotrasen!
+
+# Genders for pronoun manifest
+gender-display = ({$gender ->
+    [male] { humanoid-profile-editor-male-text }
+    [female] { humanoid-profile-editor-female-text }
+    [neuter] { humanoid-profile-editor-neuter-text }
+    *[other] { humanoid-profile-editor-epicene-text }
+})

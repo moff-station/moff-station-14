@@ -168,7 +168,6 @@ namespace Content.Client.Stylesheets
         public const string ClassHighDivider = "HighDivider";
         public const string ClassLowDivider = "LowDivider";
         public const string ClassAngleRect = "AngleRect";
-        public const string StyleClassCrewManifestGender = "CrewManifestGender"; //Delta-V - Manifest pronouns
 
         public override Stylesheet Stylesheet { get; }
 
@@ -1224,13 +1223,6 @@ namespace Content.Client.Stylesheets
                     .Class(StyleClassItemStatusNotHeld)
                     .Prop("font", notoSansItalic10)
                     .Prop("font-color", ItemStatusNotHeldColor),
-
-                // Delta-V Start - Box - add style for pronouns on the crew manifest
-                Element<RichTextLabel>()
-                    .Class(StyleClassCrewManifestGender)
-                    .Prop("font", notoSansItalic10)
-                    .Prop("font-style", "italic"),
-                // Delta-V End - Box - add style for pronouns on the crew manifest
 
                 Element<RichTextLabel>()
                     .Class(StyleClassItemStatus)

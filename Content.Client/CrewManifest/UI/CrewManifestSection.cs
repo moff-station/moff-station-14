@@ -25,13 +25,14 @@ public sealed class CrewManifestSection : BoxContainer
             Text = Loc.GetString(section.Name)
         });
 
-        // var gridContainer = new GridContainer() Box - replaces with a box container to better fit long names - for pronoun display
+        // var gridContainer = new GridContainer() //Box - replaces with a box container to better fit long names - for pronoun display
         var gridContainer = new BoxContainer()
         {
             Orientation = LayoutOrientation.Horizontal,
             HorizontalExpand = true,
-            // Columns = 2 Box - replaces with a horizontal orientation instead - for pronoun display
+            // Columns = 2 //Box - replaces with a horizontal orientation instead - for pronoun display
         };
+
         // Delta-V - Start of column BoxContainers.
         var namesContainer = new BoxContainer()
         {
@@ -55,7 +56,7 @@ public sealed class CrewManifestSection : BoxContainer
 
         foreach (var entry in entries)
         {
-            // var name = new RichTextLabel() Box - Comments out for pronouns pr
+            // var name = new RichTextLabel() // Box - Comments out for pronouns pr
             // Delta-V - start of name and pronoun container
             var nameContainer = new BoxContainer()
             {
