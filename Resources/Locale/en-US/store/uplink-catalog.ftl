@@ -160,8 +160,10 @@ uplink-reinforcement-radio-ancestor-desc =  Call in a trained ancestor of your c
 uplink-reinforcement-radio-name = Reinforcement Teleporter
 uplink-reinforcement-radio-traitor-desc =  Radio in a reinforcement agent of extremely questionable quality. No off button, buy this if you're ready to party. Call in a medic or spy or thief to help you out. Good luck.
 
-uplink-reinforcement-radio-nukeops-name = Nuclear Operative Teleporter
-uplink-reinforcement-radio-nukeops-desc =  Radio in a nuclear operative of extremely questionable quality. No off button, buy this if you're ready to party. They have basic nuclear operative gear.
+#Moff Start - rename nukies to gorlex
+uplink-reinforcement-radio-nukeops-name = Gorlex Marauder Teleporter
+uplink-reinforcement-radio-nukeops-desc =  Radio in a gorlex marauder of extremely questionable quality. No off button, buy this if you're ready to party. They have basic gorlex marauder gear.
+#Moff End
 
 uplink-reinforcement-radio-cyborg-assault-name = Syndicate Assault Cyborg Teleporter
 uplink-reinforcement-radio-cyborg-assault-desc =  A lean, mean killing machine with access to an Energy Sword, LMG, Cryptographic Sequencer, and a Pinpointer.
@@ -467,11 +469,13 @@ uplink-costume-clown-desc = Contains a complete Clown outfit. Includes PDA and s
 uplink-carp-suit-bundle-name = Carp Suit Duffel Bag
 uplink-carp-suit-bundle-desc = Contains a carp suit and some friends to play with.
 
+#Moff Start - rename nukies to gorlex
 uplink-operative-suit-name = Operative Jumpsuit
-uplink-operative-suit-desc = A suit given to our nuclear operatives with fine fabric to make sure you stand out, no other benefits aside from looking cool.
+uplink-operative-suit-desc = A suit given to our gorlex marauders with fine fabric to make sure you stand out, no other benefits aside from looking cool.
 
 uplink-operative-skirt-name = Operative Jumpskirt
-uplink-operative-skirt-desc = A skirt given to our nuclear operatives with fine fabric to make sure you stand out, no other benefits aside from looking cool.
+uplink-operative-skirt-desc = A skirt given to our gorlex marauders with fine fabric to make sure you stand out, no other benefits aside from looking cool.
+#Moff End
 
 uplink-balloon-name = Syndie Balloon
 uplink-balloon-desc = Handed out to the bravest souls who survived the "atomic twister" ride at Syndieland.
