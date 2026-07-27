@@ -146,6 +146,8 @@ public abstract partial class SharedReplicatorNestSystem : EntitySystem
     {
         foreach (var consumed in AllConsumedEntitiesRecursive(rootConsumed))
         {
+            Log.Debug($"Replicator nest {ToPrettyString(entity)} consumed entity {ToPrettyString(consumed)}");
+
             if (_mind.TryGetMind(consumed, out _, out _) &&
                 _whitelist.CheckBoth(consumed, entity.Comp.PreservationBlacklist, entity.Comp.PreservationWhitelist))
             {
