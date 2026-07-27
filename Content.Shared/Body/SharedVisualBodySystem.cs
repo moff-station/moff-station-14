@@ -1,8 +1,8 @@
 using System.Linq;
-using System.Numerics; // Moffstation
-using Content.Shared.Humanoid.Markings;
+using System.Numerics;
 using Content.Shared.Humanoid;
-using Content.Shared.Sprite; // Moffstation
+using Content.Shared.Humanoid.Markings;
+using Content.Shared.Sprite;
 using Robust.Shared.Containers;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Utility;
@@ -14,7 +14,6 @@ namespace Content.Shared.Body;
 /// </summary>
 public abstract partial class SharedVisualBodySystem : EntitySystem
 {
-    [Dependency] private IPrototypeManager _prototype = default!;
     [Dependency] private MarkingManager _marking = default!;
     [Dependency] private SharedContainerSystem _container = default!;
 
@@ -126,9 +125,20 @@ public abstract partial class SharedVisualBodySystem : EntitySystem
     // Moffstation - Begin - Height Scaling
     private void OnApplyOrganProfileData(Entity<HumanoidProfileComponent> entity, ref ApplyOrganProfileDataEvent args)
     {
-        if (args.Base?.Height is not { } height ||
-            !HasComp<VisualBodyComponent>(entity) ||
-            !_prototype.Resolve(entity.Comp.Species, out var species))
+        if (args.Base?.Height is not { } height)
+            return;
+
+        ApplyHeightScale(entity, height);
+    }
+
+    /// <summary>
+    /// Sets <paramref name="entity"/>'s <see cref="HumanoidProfileComponent.Height"/> to <paramref name="height"/>, via
+    /// <see cref="SharedScaleVisualsSystem"/>, respecting species' limits.
+    /// </summary>
+    private void ApplyHeightScale(Entity<HumanoidProfileComponent> entity, float height)
+    {
+        if (!HasComp<VisualBodyComponent>(entity) ||
+            !ProtoMan.Resolve(entity.Comp.Species, out var species))
             return;
 
         // If the height is the default, don't worry about scaling.
@@ -143,10 +153,7 @@ public abstract partial class SharedVisualBodySystem : EntitySystem
 
         _scaleVisuals.SetSpriteScale(
             entity,
-            new Vector2(
-                (species.ScaleHeight ? heightClamped : 1f) * species.ImplicitSpriteScale.X,
-                heightClamped * species.ImplicitSpriteScale.Y
-            )
+            new Vector2(species.ScaleHeight ? heightClamped : 1f, heightClamped)
         );
     }
     // Moffstation - End
@@ -185,7 +192,7 @@ public abstract partial class SharedVisualBodySystem : EntitySystem
         if (!args.Args.Markings.TryGetValue(category, out var markingSet))
             return;
 
-        var groupProto = _prototype.Index(ent.Comp.MarkingData.Group);
+        var groupProto = ProtoMan.Index(ent.Comp.MarkingData.Group);
         var organMarkings = ent.Comp.Markings.ShallowClone();
 
         foreach (var layer in ent.Comp.MarkingData.Layers)

@@ -1,0 +1,42 @@
+- type: mapModification
+  id: SkeldModificationsLaundry
+  applyOn:
+  - Skeld
+  removals:
+  - !type:EntityPrototypeSelector
+    prototype: WallSolid
+    bounds: "-59,25,-56,28"
+  - !type:EntityPrototypeSelector
+    prototype: Mirror
+    bounds: "-59,25,-56,28"
+  - !type:EntityPrototypeSelector
+    prototype: Sink
+    bounds: "-59,25,-56,28"
+  - !type:EntityPrototypeSelector
+    prototype: ToiletDirtyWater
+    bounds: "-59,25,-56,28"
+  - !type:EntityPrototypeSelector
+    prototype: CurtainSpawner
+    bounds: "-59,25,-56,28"
+  - !type:EntityPrototypeSelector
+    prototype: Plunger
+    bounds: "-59,25,-56,28"
+  - !type:EntityPrototypeSelector
+    prototype: SignRestroom
+    bounds: "-59,24,-56,28"
+  additions:
+    # Add the actual Laundromat
+  - prototype: WashingMachine
+    position: -56.5, 27.5
+  - prototype: WashingMachine
+    position: -57.5, 27.5
+  - prototype: SignLaundromat
+    position: -57.5, 24.5
+  - prototype: DefaultStationBeaconLaundromat
+    position: -56.5, 25.5
+    # Additional Visual Improvements
+  - prototype: Stool
+    position: -57.5, 25.5
+    rotation: 90
+  - prototype: Ashtray
+    position: -57.5, 25.46

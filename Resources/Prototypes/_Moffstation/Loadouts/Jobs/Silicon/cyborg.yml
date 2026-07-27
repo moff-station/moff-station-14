@@ -1,0 +1,19 @@
+# Brain
+- type: loadout
+  id: PositronicBrain
+  dummyEntity: PositronicBrain
+  specialJobLoadouts:
+    JobBorg:
+      containers:
+        borg_brain:
+        - PositronicBrain
+
+- type: loadout
+  id: MMI
+  dummyEntity: MMIFilled
+  specialJobLoadouts:
+    JobBorg:
+      containers:
+        borg_brain:
+        - MMIFilled
+

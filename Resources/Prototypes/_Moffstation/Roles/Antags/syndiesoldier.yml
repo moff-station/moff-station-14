@@ -9,13 +9,17 @@
   parent: RestrictedAntag
   id: SyndieVentSoldier
   spawnerPrototype: SyndicateFootsoldierGhostRoleSpawn
+  roleLoadout:
+  - RoleSurvivalNukie
   components:
   - type: Loadout
     prototypes:
     - SyndicateFootsoldierGearArmed
   - type: RandomHumanoidAppearance
   - type: RandomMetadata
-    nameSegments: [ NamesDeathCommando ]
+    nameSegments:
+    - NamesDeathCommandoFirst
+    - NamesDeathCommandoLast
   - type: NpcFactionMember
     factions:
     - Syndicate

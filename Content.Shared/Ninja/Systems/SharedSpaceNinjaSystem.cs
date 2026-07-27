@@ -110,7 +110,7 @@ public abstract partial class SharedSpaceNinjaSystem : EntitySystem
             return;
         // Moffstation - End
 
-        Popup.PopupClient(Loc.GetString("gun-disabled"), ent, ent);
+        Popup.PopupEntity(Loc.GetString("gun-disabled"), ent, ent);
         args.Cancel();
     }
 }

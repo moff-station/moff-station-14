@@ -154,10 +154,13 @@ public sealed partial class DeliveryModifierSystem : EntitySystem
 
         var isPrimed = HasComp<PrimedDeliveryBombComponent>(ent);
 
+        // Moffstation - Start - Less obvious bomb mail
         if (isPrimed)
-            args.PushMarkup(Loc.GetString("delivery-bomb-primed-examine", ("type", trueName)));
-        else
-            args.PushMarkup(Loc.GetString("delivery-bomb-examine", ("type", trueName)));
+            // args.PushMarkup(Loc.GetString("delivery-bomb-primed-examine", ("type", trueName)));
+            args.PushMarkup(Loc.GetString("moff-delivery-bomb-primed-examine", ("type", trueName)));
+        //else
+        //    args.PushMarkup(Loc.GetString("delivery-bomb-examine", ("type", trueName)));
+        // Moffstation - End
     }
 
     private void OnGetExplosiveMultiplier(Entity<DeliveryBombComponent> ent, ref GetDeliveryMultiplierEvent args)

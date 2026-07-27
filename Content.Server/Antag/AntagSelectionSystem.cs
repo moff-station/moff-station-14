@@ -1,7 +1,6 @@
 using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
-using Content.Server._Moffstation.Antag;
 using Content.Server.Administration.Managers;
 using Content.Server.Antag.Components;
 using Content.Server.Chat.Managers;
@@ -27,6 +26,7 @@ using Content.Shared.GameTicking.Components;
 using Content.Shared.Random.Helpers;
 using Content.Shared.Roles;
 using Content.Shared.Whitelist;
+using JetBrains.Annotations;
 using Robust.Server.Audio;
 using Robust.Server.GameObjects;
 using Robust.Server.Player;
@@ -73,8 +73,6 @@ public sealed partial class AntagSelectionSystem : GameRuleSystem<AntagSelection
     [Dependency] private RoleSystem _role = default!;
     [Dependency] private TransformSystem _transform = default!;
 
-    [Dependency] private IWeightedAntagManager _weightedAntagMan = default!; //Moffstation Dummy Antag Weights
-
     // arbitrary random number to give late joining some mild interest.
     public const float LateJoinRandomChance = 0.5f;
 
@@ -114,8 +112,6 @@ public sealed partial class AntagSelectionSystem : GameRuleSystem<AntagSelection
         SubscribeLocalEvent<NoJobsAvailableSpawningEvent>(OnJobNotAssigned);
         SubscribeLocalEvent<RulePlayerJobsAssignedEvent>(OnJobsAssigned);
         SubscribeLocalEvent<PlayerSpawnCompleteEvent>(OnSpawnComplete);
-
-        SubscribeLocalEvent<RoundRestartCleanupEvent>(OnRoundRestartCleanup); // Moffstation - Persist antag weights at round-end.
     }
 
     protected override void Started(EntityUid uid, AntagSelectionComponent component, GameRuleComponent gameRule, GameRuleStartedEvent args)
@@ -153,7 +149,7 @@ public sealed partial class AntagSelectionSystem : GameRuleSystem<AntagSelection
         if (ent.Comp.Rule is not { } rule || ent.Comp.Definition is not { } proto)
             return;
 
-        if (!Proto.Resolve(proto, out var def))
+        if (!ProtoMan.Resolve(proto, out var def))
             return;
 
         if (!Exists(rule) || !RuleQuery.TryComp(rule, out var select))
@@ -309,7 +305,7 @@ public sealed partial class AntagSelectionSystem : GameRuleSystem<AntagSelection
 
         foreach (var antag in gameRule.Comp.Antags)
         {
-            if (!Proto.Resolve(antag.Proto, out var proto))
+            if (!ProtoMan.Resolve(antag.Proto, out var proto))
                 continue;
 
             // We do it this way in case our resolve fails.
@@ -317,24 +313,22 @@ public sealed partial class AntagSelectionSystem : GameRuleSystem<AntagSelection
         }
     }
 
-    private AntagCount[]  GetAntags(Entity<AntagSelectionComponent> gameRule,
+    private List<AntagCount> GetAntags(Entity<AntagSelectionComponent> gameRule,
         int playerCount)
     {
         var runningCount = 0;
-        var antags = new AntagCount[gameRule.Comp.Antags.Length];
+        var antags = new List<AntagCount>(gameRule.Comp.Antags.Length);
 
         // We assume that antag definitions are prioritized by order, and take up slots that other roles may take.
         // I.E for Nukies, it selects 1 commander which takes up 10 players, then one corpsman which takes up another 10, then we select X nukies based on the remaining player count.
         // This is how the system worked when I got here, and I decided not to change it to avoid fucking with team antag balance
-        var i = 0;
         foreach (var antag in gameRule.Comp.Antags)
         {
-            if (!Proto.Resolve(antag.Proto, out var definition))
+            if (!ProtoMan.Resolve(antag.Proto, out var definition))
                 continue;
 
             // We do it this way in case our resolve fails.
-            antags[i] = (definition, GetTargetAntagCount(antag, playerCount, ref runningCount));
-            i++;
+            antags.Add((definition, GetTargetAntagCount(antag, playerCount, ref runningCount)));
         }
 
         return antags;
@@ -353,8 +347,10 @@ public sealed partial class AntagSelectionSystem : GameRuleSystem<AntagSelection
 
     private float GetWeight(ICommonSession player)
     {
-        return 1f;
-        // return _weightedAntagMan.GetWeight(player.UserId); // Moffstation - We have antag weights, so they can cleanly slot into here.
+        // Moff start - We have antag weights, so they can cleanly slot into here.
+        // return 1f;
+        return _weightedAntagMan.GetWeight(player.UserId);
+        // Moff end
     }
 
     private void AssignAntags(Entity<AntagSelectionComponent> gameRule)
@@ -369,19 +365,19 @@ public sealed partial class AntagSelectionSystem : GameRuleSystem<AntagSelection
         gameRule.Comp.PreSelectionsComplete = true;
     }
 
-    private void AssignAntags(Entity<AntagSelectionComponent> gameRule, IList<ICommonSession> players, AntagCount[] antags)
+    private void AssignAntags(Entity<AntagSelectionComponent> gameRule, IList<ICommonSession> players, List<AntagCount> antags)
     {
         AssignAntags(gameRule, GetWeightedPlayerPool(players), antags);
     }
 
-    private void AssignAntags(Entity<AntagSelectionComponent> gameRule, Dictionary<ICommonSession, float> weightedPool, AntagCount[] antags)
+    private void AssignAntags(Entity<AntagSelectionComponent> gameRule, Dictionary<ICommonSession, float> weightedPool, List<AntagCount> antags)
     {
         while (RobustRandom.TryPickAndTake(weightedPool, out var session))
         {
             AssignAntag(gameRule, session, ref antags);
 
             // Assignment complete, return early.
-            if (antags.Length == 0)
+            if (antags.Count == 0)
                 return;
         }
 
@@ -505,13 +501,13 @@ public sealed partial class AntagSelectionSystem : GameRuleSystem<AntagSelection
     /// Selects and assigns antags from a list.
     /// Is private because it has it should only ever be run in very specific scenarios.
     /// </summary>
-    private bool AssignAntag(Entity<AntagSelectionComponent> gameRule, ICommonSession player, ref AntagCount[] antags)
+    private bool AssignAntag(Entity<AntagSelectionComponent> gameRule, ICommonSession player, ref List<AntagCount> antags)
     {
         // If this session cannot be an antag, then get the next session!
         if (!TryGetValidAntagPreferences(player, out var prefs))
             return false;
 
-        for (var i = antags.Length - 1; i >= 0; i--)
+        for (var i = antags.Count - 1; i >= 0; i--)
         {
             var antag = antags[i];
 
@@ -730,7 +726,7 @@ public sealed partial class AntagSelectionSystem : GameRuleSystem<AntagSelection
         foreach (var (proto, set) in gameRule.Comp.PreSelectedSessions)
         {
             // How did we even get here?
-            if (!Proto.Resolve(proto, out var def))
+            if (!ProtoMan.Resolve(proto, out var def))
                 continue;
 
             foreach (var session in set)
@@ -787,7 +783,7 @@ public sealed partial class AntagSelectionSystem : GameRuleSystem<AntagSelection
             $"Game rule {ToPrettyString(gameRule)}, failed to pre-assign {player.Name} to antag {prototype.ID}");
 
         // The following is where we apply components, equipment, and other changes to our antagonist entity.
-        EntityManager.AddComponents(antag, prototype.Components);
+        AssignAntagComponents(antag, prototype);
 
         // Equip the entity's RoleLoadout and LoadoutGroup
         List<ProtoId<StartingGearPrototype>> gear = new();
@@ -812,11 +808,6 @@ public sealed partial class AntagSelectionSystem : GameRuleSystem<AntagSelection
         _adminLogger.Add(LogType.AntagSelection, $"Assigned {ToPrettyString(antag):target}, mind {ToPrettyString(mind):target} as antagonist: {ToPrettyString(gameRule):user}");
 
         SendBriefing(player, prototype.Briefing);
-
-        // Moffstation - Begin - If this rule uses antag weights, "consume" the weighting, now that they've been selected.
-        if (gameRule.Comp.UseWeights)
-            _weightedAntagMan.SetWeight(player.UserId, 1);
-        // Moffstation - End
 
         var afterEv = new AfterAntagEntitySelectedEvent(player, antag, gameRule, prototype);
         RaiseLocalEvent(gameRule, ref afterEv, true);
@@ -845,12 +836,6 @@ public sealed partial class AntagSelectionSystem : GameRuleSystem<AntagSelection
         args.AgentName = Loc.GetString(name);
     }
 
-    // Moffstation - Begin - Weighted antag weights persistence
-    private void OnRoundRestartCleanup(RoundRestartCleanupEvent args)
-    {
-        _ = _weightedAntagMan.Save();
-    }
-    // Moffstation - End
 }
 
 /// <summary>

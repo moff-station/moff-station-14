@@ -53,6 +53,11 @@
   id: BorgModuleInvestigation
   result: BorgModuleInvestigation
 
+- type: latheRecipe
+  parent: BaseBorgModuleRecipe
+  id: BorgModuleMail
+  result: BorgModuleMail
+
 # Science Modules
 - type: latheRecipe
   parent: BaseGoldBorgModuleRecipe

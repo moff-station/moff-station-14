@@ -11,7 +11,7 @@ namespace Content.Client._MACRO.StrangeMoods;
 public sealed partial class StrangeMoodInitUi : FancyWindow
 {
     [Dependency] private IPrototypeManager _proto = default!;
-    [Dependency] private ISerializationManager _serialization = default!;
+    [Dependency] private IEntityManager _entMan = default!;
 
     public event Action<StrangeMoodDefinition>? OnPresetAccepted;
 
@@ -29,8 +29,7 @@ public sealed partial class StrangeMoodInitUi : FancyWindow
         {
             MoodPresetDropDown.AddItem(proto.Name, i);
 
-            var def = new StrangeMoodDefinition();
-            _serialization.CopyTo(proto, ref def, notNullableOverride: true);
+            var def = SharedStrangeMoodsSystem.DeepCopy(proto);
             _definitions.Insert(i++, def);
         }
     }

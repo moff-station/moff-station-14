@@ -1,0 +1,106 @@
+<windows:MoffCharacterWindow
+    xmlns="https://spacestation14.io"
+    xmlns:cc="clr-namespace:Content.Client.UserInterface.Controls"
+    xmlns:windows="clr-namespace:Content.Client._Moffstation.CharacterMenu"
+    Title="{Loc 'character-info-title'}"
+    MinWidth="800"
+    MinHeight="420">
+    <BoxContainer Orientation="Vertical" Margin="15 15 15 10">
+
+        <!-- Header -->
+        <BoxContainer Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center" SeparationOverride="6">
+            <Label Text="{Loc 'character-info-acting-as-prefix'}"
+                   StyleClasses="LabelSubText"
+                   VerticalAlignment="Center"/>
+            <Label Name="RoleType"
+                   Access="Public"
+                   StyleClasses="LabelHeadingBigger"
+                   VerticalAlignment="Center"/>
+        </BoxContainer>
+
+        <PanelContainer StyleClasses="LowDivider" Margin="0 6 0 15"/>
+
+        <BoxContainer Orientation="Horizontal" VerticalExpand="True">
+
+            <!-- character sprite + name + job -->
+            <BoxContainer Orientation="Vertical"
+                          VerticalAlignment="Center"
+                          VerticalExpand="True"
+                          SeparationOverride="4"
+                          Margin="0 0 15 0"
+                          MinWidth="130">
+                <SpriteView Name="SpriteView"
+                            Access="Public"
+                            OverrideDirection="South"
+                            Scale="4 4"
+                            HorizontalAlignment="Center"/>
+                <Label Name="NameLabel"
+                       Access="Public"
+                       HorizontalAlignment="Center"/>
+                <Label Name="SubText"
+                       Access="Public"
+                       StyleClasses="LabelSubText"
+                       HorizontalAlignment="Center"/>
+            </BoxContainer>
+
+            <!-- faction OOC briefing -->
+            <PanelContainer StyleClasses="BackgroundDeep"
+                            Margin="0 0 10 0"
+                            MinWidth="220"
+                            HorizontalExpand="True"
+                            VerticalExpand="True">
+                <ScrollContainer HScrollEnabled="False" VerticalExpand="True">
+                    <BoxContainer Name="Briefing"
+                                  Access="Public"
+                                  Orientation="Vertical"
+                                  Margin="8"
+                                  VerticalExpand="True"/>
+                </ScrollContainer>
+            </PanelContainer>
+
+            <!-- objectives list -->
+            <PanelContainer StyleClasses="BackgroundDeep"
+                            Margin="0 0 10 0"
+                            MinWidth="220"
+                            HorizontalExpand="True"
+                            VerticalExpand="True">
+                <ScrollContainer Name="ObjectivesScroll"
+                                 Access="Public"
+                                 HScrollEnabled="False"
+                                 MinWidth="270"
+                                 VerticalExpand="True">
+                    <BoxContainer Name="ObjectivesWrapper"
+                                  Access="Public"
+                                  Orientation="Vertical">
+                        <Button Name="ObjectiveButton"
+                                StyleClasses="OpenBoth"
+                                Margin="2 2 2 0"
+                                VerticalExpand="False"
+                                VerticalAlignment="Top"/>
+                        <Label Name="NoObjectivesLabel"
+                               Text="{Loc 'character-info-no-objectives'}"
+                               StyleClasses="LabelSubText"
+                               HorizontalAlignment="Center"
+                               VerticalAlignment="Top"
+                               VerticalExpand="False"/>
+                        <BoxContainer Name="Objectives"
+                                      Access="Public"
+                                      Orientation="Vertical"
+                                      Margin="0 2 0 0"
+                                      SeparationOverride="2"/>
+                    </BoxContainer>
+                </ScrollContainer>
+            </PanelContainer>
+
+        </BoxContainer>
+
+        <!-- Collective Minds -->
+        <BoxContainer Name="Minds" Access="Public" Orientation="Vertical"/>
+
+        <!-- This thing... I keep it so that its compatible with the old UI code -->
+        <cc:Placeholder Name="RolePlaceholder"
+                        Access="Public"
+                        Visible="False"/>
+
+    </BoxContainer>
+</windows:MoffCharacterWindow>

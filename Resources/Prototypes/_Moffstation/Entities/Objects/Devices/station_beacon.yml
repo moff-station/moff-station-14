@@ -1,9 +1,17 @@
 ﻿# Pirate Beacons
 - type: entity
-  parent: DefaultStationBeaconGhost
+  parent: DefaultStationBeacon
   id: DefaultStationBeaconPirateCove
   suffix: Pirate Cove
   components:
   - type: PirateNavMapBeacon
   - type: NavMapBeacon
     text: Pirate Cove
+
+- type: entity
+  parent: DefaultStationBeaconService
+  id: DefaultStationBeaconLaundromat
+  suffix: Laundromat
+  components:
+  - type: NavMapBeacon
+    text: Laundromat

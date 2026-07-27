@@ -12,7 +12,6 @@ using Content.Shared.Access.Components;
 using Content.Shared.Access.Systems;
 using Content.Shared.Administration;
 using Content.Shared.Administration.Components;
-using Content.Shared.Administration.Systems;
 using Content.Shared.Atmos;
 using Content.Shared.Atmos.Components;
 using Content.Shared.Construction.Components;
@@ -768,7 +767,7 @@ public sealed partial class AdminVerbSystem
                     if (HasComp<StrangeMoodsComponent>(args.Target))
                         return;
 
-                    var ui = new StrangeMoodsInitEui(_moods, EntityManager, _prototypeManager, _random, _adminManager, _playerManager, _euiManager, args.User);
+                    var ui = new StrangeMoodsInitEui(_moods, EntityManager, ProtoMan, _random, _adminManager, _playerManager, _euiManager, args.User);
                     if (!_playerManager.TryGetSessionByEntity(args.User, out var session))
                         return;
 
@@ -883,7 +882,7 @@ public sealed partial class AdminVerbSystem
 
     private void GiveAllAccess(EntityUid entity)
     {
-        var allAccess = _prototypeManager
+        var allAccess = ProtoMan
             .EnumeratePrototypes<AccessLevelPrototype>()
             .Select(p => new ProtoId<AccessLevelPrototype>(p.ID)).ToArray();
 

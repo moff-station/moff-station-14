@@ -9,6 +9,10 @@
     sprite: _Moffstation/PersonalItems/Wearables/Davyei/Kazo/kazos-skates.rsi
   - type: Clothing
     sprite: _Moffstation/PersonalItems/Wearables/Davyei/Kazo/kazos-skates.rsi
+    clothingVisuals:
+      shoes-vox:
+      - state: equipped-FEET-vox
+        offset: "0, -0.04"
   - type: Item
     sprite: _Moffstation/PersonalItems/Wearables/Davyei/Kazo/kazos-skates.rsi
   - type: DetailExaminable

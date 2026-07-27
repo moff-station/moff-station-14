@@ -7,17 +7,9 @@ namespace Content.Shared._Moffstation.CCVar;
 [CVarDefs]
 public sealed class MoffCCVars
 {
-    /// <summary>
-    /// Whether the respawn button is available to ghost players
-    /// </summary>
-    public static readonly CVarDef<bool> RespawningEnabled =
-        CVarDef.Create("moff.respawn_enabled", true, CVar.SERVER | CVar.REPLICATED);
-
-    /// <summary>
-    /// Respawn time, how long the player has to wait in seconds after death. Set this to zero to disable timer.
-    /// </summary>
-    public static readonly CVarDef<float> RespawnTime =
-        CVarDef.Create("moff.respawn_time", 450f, CVar.SERVER | CVar.REPLICATED);
+    /*
+     * Admin
+     */
 
     /// <summary>
     /// The maximum size that an overlay stack can reach. Additional overlays will be superimposed over the last one.
@@ -25,11 +17,9 @@ public sealed class MoffCCVars
     public static readonly CVarDef<bool> AdminOverlayShowWatchlist =
         CVarDef.Create("ui.admin_overlay_show_watchlist", true, CVar.CLIENTONLY | CVar.ARCHIVE);
 
-    /// <summary>
-    /// Whether longspeech should be enabled
-    /// </summary>
-    public static readonly CVarDef<bool> LongSpeech =
-        CVarDef.Create("moff.long_speech", false, CVar.SERVER);
+    /*
+     * Voting
+     */
 
     /// <summary>
     ///     Blocks restart votes when the lobby is paused
@@ -61,11 +51,43 @@ public sealed class MoffCCVars
     public static readonly CVarDef<int> MapVoteCount =
         CVarDef.Create("votekick.map_vote_count", 3, CVar.SERVERONLY);
 
+    /*
+     * Gameplay
+     */
+
     /// <summary>
     /// if true, the player count check for rules will be based on the number of players readied, versus the total number in the lobby.
     /// </summary>
     public static readonly CVarDef<bool>
         GameRulesCountReadied = CVarDef.Create("game.rules_count_readied", true, CVar.SERVERONLY);
+
+    /// <summary>
+    /// Whether longspeech should be enabled
+    /// </summary>
+    public static readonly CVarDef<bool> LongSpeech =
+        CVarDef.Create("moff.long_speech", false, CVar.SERVER);
+
+    /// <summary>
+    /// Whether the respawn button is available to ghost players
+    /// </summary>
+    public static readonly CVarDef<bool> RespawningEnabled =
+        CVarDef.Create("moff.respawn_enabled", true, CVar.SERVER | CVar.REPLICATED);
+
+    /// <summary>
+    /// Respawn time, how long the player has to wait in seconds after death. Set this to zero to disable timer.
+    /// </summary>
+    public static readonly CVarDef<float> RespawnTime =
+        CVarDef.Create("moff.respawn_time", 450f, CVar.SERVER | CVar.REPLICATED);
+
+    /// <summary>
+    /// Respawn time, how long the player has to wait in seconds after death. Set this to zero to disable timer.
+    /// </summary>
+    public static readonly CVarDef<float> MoffScreenShakeIntensity =
+        CVarDef.Create("moff.screenshake_intensity", 1.0f, CVar.CLIENTONLY | CVar.ARCHIVE);
+
+    /*
+     * Arrivals
+     */
 
     /// <summary>
     ///     Whether players should spawn at arrivals at the start of the round
@@ -84,6 +106,10 @@ public sealed class MoffCCVars
     /// </summary>
     public static readonly CVarDef<float> ArrivalsRange =
         CVarDef.Create("shuttle.arrivals_range", 50f, CVar.SERVERONLY);
+
+    /*
+     * Patreon
+     */
 
     /// <summary>
     /// Whether to show or not show Moffstation Patreons special ooc color
@@ -130,4 +156,36 @@ public sealed class MoffCCVars
     /// </summary>
     public static readonly CVarDef<string> DiscordRoundEventLocation =
         CVarDef.Create("moff.discord_round_event_location", string.Empty, CVar.SERVERONLY);
+
+    /// <summary>
+    ///     Whether a pending update/uptime restart is allowed to trigger while the game is paused
+    ///     with players still connected. Set to false to disable this behavior entirely.
+    /// </summary>
+    public static readonly CVarDef<bool> RestartQueueEnabled =
+        CVarDef.Create("moff.restart_queue_enabled", true, CVar.SERVERONLY);
+
+    /// <summary>
+    ///     If an update is pending, but the round is paused and there are players sitting in the lobby
+    ///     how long should we queue up a server restart in minutes?
+    /// </summary>
+    public static readonly CVarDef<int> RestartQueueTimer =
+        CVarDef.Create("moff.restart_queue_timer", 30, CVar.SERVERONLY);
+
+    /// <summary>
+    ///     How often should players be notified when the server is restarting?
+    /// </summary>
+    public static readonly CVarDef<int> PauseRestartAnnounceInterval =
+        CVarDef.Create("moff.restart_queue_announce_interval", 5, CVar.SERVERONLY);
+
+    /// <summary>
+    ///     Once below the <see cref="PauseRestartFinalAnnounceThreshold"/>, how often should players be notified when the server is restarting?
+    /// </summary>
+    public static readonly CVarDef<int> PauseRestartFinalAnnounceInterval =
+        CVarDef.Create("moff.restart_queue_final_announce_interval", 1, CVar.SERVERONLY);
+
+    /// <summary>
+    ///     When should more-often reminders that the server is restarting appear?
+    /// </summary>
+    public static readonly CVarDef<int> PauseRestartFinalAnnounceThreshold =
+        CVarDef.Create("moff.restart_queue_final_announce_threshold", 5, CVar.SERVERONLY);
 }

@@ -1,6 +1,6 @@
 - type: entity
   abstract: true
-  parent: [SolutionGun, SolutionSmall, BaseItem] # 12 shots
+  parent: [ SolutionGun, SolutionSmall, BaseItem, BasePointerCrosshair ] # MACRO add crosshair
   id: WeaponWaterGunBase
   components:
   - type: Sprite
@@ -20,6 +20,8 @@
     - SemiAuto
     soundGunshot:
       path: /Audio/Weapons/Guns/Gunshots/water_spray.ogg
+  - type: SolutionItemStatus
+    solution: chamber
   - type: SolutionAmmoProvider
     solutionId: chamber
     proto: BulletWaterShot
