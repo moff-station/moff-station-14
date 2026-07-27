@@ -7174,6 +7174,16 @@ Entries:
   url: https://github.com/moff-station/moff-station-14/pull/1672
 - author: DuckManZach
   changes:
+  - message: Fixed DAGD being far more common than it should be
+    type: fix
+  - message: Removed escape to CC, people dont really pick it in the objective picker.
+      If you wanna live then live!
+    type: remove
+  id: 1674
+  time: '2026-07-27T21:20:10.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1674
+- author: DuckManZach
+  changes:
   - message: You now rejuvenate after getting a kill in gungame!
     type: add
   id: 1676
