@@ -7330,6 +7330,16 @@ Entries:
   id: 1724
   time: '2026-07-27T19:54:15.000'
   url: https://github.com/moff-station/moff-station-14/pull/1724
+- author: Centronias
+  changes:
+  - message: People being thrown into the Replicator Nest are no longer removed from
+      the round, and their bodies can be recovered by destroying the hole.
+    type: fix
+  - message: Items now visually "fall" into replicator nests.
+    type: fix
+  id: 1728
+  time: '2026-07-27T20:59:56.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1728
 - author: The Dai Li
   changes:
   - message: There is no atmos bug in Moffstation.
