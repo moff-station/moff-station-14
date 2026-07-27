@@ -19,13 +19,13 @@ roles-antag-zombie-name = Zombie
 roles-antag-zombie-objective = Turn as many humans as possible into zombies.
 
 #Moff start - rename them to gorlex
-roles-antag-nuclear-operative-commander-name = Gorlex Marauder commander
+roles-antag-nuclear-operative-commander-name = Gorlex Commander
 roles-antag-nuclear-operative-commander-objective = Lead a strike team of Gorlex Marauders in an assault against the station.
 
-roles-antag-nuclear-operative-agent-name = Gorlex Marauder corpsman
+roles-antag-nuclear-operative-agent-name = Gorlex Medic
 roles-antag-nuclear-operative-agent-objective = The medic of the Gorlex Marauder strike team. Heal your team to victory!
 
-roles-antag-nuclear-operative-name = Gorlex Marauder operative
+roles-antag-nuclear-operative-name = Gorlex Marauder
 roles-antag-nuclear-operative-objective = A professional solider of a Gorlex Marauder strike team. Follow your commander to victory!
 #Moff end
 
