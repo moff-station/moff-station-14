@@ -1,6 +1,6 @@
 - type: entity
   abstract: true
-  parent: [ Clothing, StainableClothingBase ] # Moffstation - mixed in StainableClothingBase
+  parent: [ Clothing, MoffStainableClothingBase ] # Moffstation - mixed in MoffStainableClothingBase
   id: ClothingOuterBase
   components:
   - type: Clothing

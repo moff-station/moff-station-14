@@ -1,6 +1,6 @@
 - type: entity
   abstract: true
-  parent: [SolutionFood, SolutionToolNormal, Clothing, StainableClothingBase] # Moffstation - mixed in StainableClothingBase
+  parent: [SolutionFood, SolutionToolNormal, Clothing, MoffStainableClothingBase] # Moffstation - mixed in MoffStainableClothingBase
   id: ClothingShoesBase
   components:
   - type: Clothing

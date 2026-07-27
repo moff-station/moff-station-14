@@ -8,7 +8,7 @@ namespace Content.Shared._Moffstation.Stains;
 
 /// This component indicates that an entity has a stain-resistant coating applied.
 [RegisterComponent, NetworkedComponent, AutoGenerateComponentState]
-public sealed partial class StainRepellentCoatedComponent : Component
+public sealed partial class MoffStainRepellentCoatedComponent : Component
 {
     [DataField, AutoNetworkedField]
     public float RemovalOnWashingChance = 0f;
@@ -18,8 +18,8 @@ public sealed partial class StainRepellentCoatedComponent : Component
 /// clothing.
 // TODO This is copied from SpaceGlue/Lube, and it seems like the shared behavior between these three things could be unified
 [RegisterComponent, NetworkedComponent, AutoGenerateComponentState]
-[Access(typeof(StainRepellentSystem))]
-public sealed partial class StainRepellentComponent : Component
+[Access(typeof(MoffStainRepellentSystem))]
+public sealed partial class MoffStainRepellentComponent : Component
 {
     /// <summary>
     /// Noise made when the coating is applied.
@@ -37,7 +37,7 @@ public sealed partial class StainRepellentComponent : Component
     /// Reagent that will be used as the stain-repellent coating.
     /// </summary>
     [DataField, AutoNetworkedField]
-    public ProtoId<ReagentPrototype> Reagent = "StainRepellent";
+    public ProtoId<ReagentPrototype> Reagent = "MoffStainRepellent";
 
     /// <summary>
     /// Reagent consumption per use.

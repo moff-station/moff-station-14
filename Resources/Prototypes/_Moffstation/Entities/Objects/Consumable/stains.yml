@@ -1,6 +1,6 @@
 - type: entity
   parent: BaseSqueezeBottle
-  id: DrinkStainRepellent
+  id: MoffDrinkStainRepellent
   name: tube of fluid repellent
   description: A tube of chemical coating that makes fabric shed liquids instead of soaking them in. DON'T DRINK!
   components:
@@ -9,7 +9,7 @@
   - type: Solution
     solution:
       reagents:
-      - ReagentId: StainRepellent
+      - ReagentId: MoffStainRepellent
         Quantity: 60
-  - type: StainRepellent
+  - type: MoffStainRepellent
     removalOnWashingChance: 0.5

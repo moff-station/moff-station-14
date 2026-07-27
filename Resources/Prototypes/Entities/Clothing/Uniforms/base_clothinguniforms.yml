@@ -1,6 +1,6 @@
 - type: entity
   abstract: true
-  parent: [SolutionFood, SolutionToolNormal, Clothing, BaseSlicingRefinable, StainableClothingBase] # Moffstation - mixed in StainableClothingBase
+  parent: [SolutionFood, SolutionToolNormal, Clothing, BaseSlicingRefinable, MoffStainableClothingBase] # Moffstation - mixed in MoffStainableClothingBase
   id: UnsensoredClothingUniformBase
   components:
   - type: Sprite

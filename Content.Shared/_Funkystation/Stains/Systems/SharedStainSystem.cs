@@ -39,7 +39,7 @@ public abstract partial class SharedStainSystem : EntitySystem
     [Dependency] private SharedPopupSystem _popup = null!;
     [Dependency] private IPrototypeManager _prototype = default!;
     [Dependency] private IGameTiming _timing = default!;
-    [Dependency] private StainRepellentSystem _stainRepellent = default!;
+    [Dependency] private MoffStainRepellentSystem _stainRepellent = default!;
 
     public override void Initialize()
     {
