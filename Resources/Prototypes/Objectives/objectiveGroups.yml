@@ -75,7 +75,7 @@
     # Moffstation - Location based objectives
     TrashRoomObjective: 1
     ClaimLocationObjective: 1
-    # Die and escape moved here so that their weights are respected
+    # Despite them not being "social", die and escape moved here so that their weights are respected
     DieObjective: 0.01
     EscapeShuttleObjective: 0.1
     # Moffstation - End
