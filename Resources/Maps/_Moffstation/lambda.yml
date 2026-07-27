@@ -4,8 +4,8 @@ meta:
   engineVersion: 283.1.0
   forkId: ""
   forkVersion: ""
-  time: 07/27/2026 00:27:12
-  entityCount: 19671
+  time: 07/27/2026 00:38:31
+  entityCount: 19672
 maps:
 - 1
 grids:
@@ -53497,7 +53497,7 @@ entities:
       pos: -85.5,-57.5
     - type: Door
       state: Closing
-      secondsUntilStateChange: -79486.81
+      secondsUntilStateChange: -79507.04
     - type: Firelock
       emergencyCloseCooldown: 3716.2296191
     - type: DeviceNetwork
@@ -53773,8 +53773,6 @@ entities:
     - type: DeviceNetwork
       deviceLists:
       - 15670
-      configurators:
-      - invalid
   - uid: 333
     components:
     - type: Transform
@@ -93866,6 +93864,11 @@ entities:
     - type: Transform
       parent: 2
       pos: -41.5,-9.5
+  - uid: 19672
+    components:
+    - type: Transform
+      parent: 2
+      pos: -39.5,-15.5
 - proto: PottedPlantRD
   entities:
   - uid: 1958
