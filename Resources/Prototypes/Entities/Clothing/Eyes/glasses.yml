@@ -71,6 +71,7 @@
     - MesonGoggles # Moffstation - Meson Sunglasses
   # Moff start - Funky welding
   - type: TrayScanner
+    range: 10
     toggleAction: ActionToggleTrayScanner
     soundOn:
       path: /Audio/Items/flashlight_on.ogg
