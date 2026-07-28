@@ -1,7 +1,7 @@
 ﻿- type: entity
   abstract: true
-  id: ConstructibleBladeServer
   parent: BaseItem
+  id: ConstructibleBladeServer
   components:
   - type: MeleeWeapon
     attackRate: 0.4
