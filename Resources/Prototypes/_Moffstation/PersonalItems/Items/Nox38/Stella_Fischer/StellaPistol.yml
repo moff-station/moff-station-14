@@ -22,7 +22,7 @@
   suffix: PersonalItem
   components:
   - type: Sprite
-    sprite: &case "_Moffstation/PersonalItems/Items/shared/Does-A-Little-Shimmy/shimmypistolcase.rsi"
+    sprite: &case "_Moffstation/PersonalItems/Items/shared/shimmypistolcase.rsi"
   - type: Item
     sprite: *case
   - type: EntityTableContainerFill
