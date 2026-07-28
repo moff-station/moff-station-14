@@ -1769,21 +1769,43 @@ INSERT INTO player_round (players_id, rounds_id) VALUES ({players[player]}, {id}
             if (prefs.MoffPreference == null)
             {
                 // First login since multi-character selection was added. Seed the player-global
-                // priorities from whichever character they had selected.
+                // priorities from every character, keeping the highest priority each job was given,
+                // so a role that only lived on a non-selected character isn't silently lost.
+                var seeded = new Dictionary<string, DbJobPriority>();
+
+                foreach (var profile in prefs.Profiles)
+                {
+                    foreach (var job in profile.Jobs)
+                    {
+                        if (!seeded.TryGetValue(job.JobName, out var existing) || job.Priority > existing)
+                            seeded[job.JobName] = job.Priority;
+                    }
+                }
+
+                // Only one job may be High, so keep whichever the selected character had rather than
+                // leaving it to Normalize, which picks by dictionary enumeration order.
                 var selected = prefs.Profiles.FirstOrDefault(p => p.Slot == prefs.SelectedCharacterSlot);
+                var keepHigh = selected?.Jobs.FirstOrDefault(j => j.Priority == DbJobPriority.High)?.JobName
+                               ?? seeded.Where(kv => kv.Value == DbJobPriority.High)
+                                   .Select(kv => kv.Key)
+                                   .OrderBy(name => name)
+                                   .FirstOrDefault();
+
+                foreach (var jobName in seeded.Keys.ToList())
+                {
+                    if (seeded[jobName] == DbJobPriority.High && jobName != keepHigh)
+                        seeded[jobName] = DbJobPriority.Medium;
+                }
 
                 var moffPrefs = new MoffModel.MoffPreference { PreferenceId = prefs.Id };
 
-                if (selected != null)
+                foreach (var (jobName, priority) in seeded)
                 {
-                    foreach (var job in selected.Jobs)
+                    moffPrefs.JobPriorities.Add(new MoffModel.MoffJobPriority
                     {
-                        moffPrefs.JobPriorities.Add(new MoffModel.MoffJobPriority
-                        {
-                            JobName = job.JobName,
-                            Priority = job.Priority,
-                        });
-                    }
+                        JobName = jobName,
+                        Priority = priority,
+                    });
                 }
 
                 db.DbContext.Add(moffPrefs);

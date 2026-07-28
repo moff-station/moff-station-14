@@ -1,7 +1,7 @@
 using System.Linq;
 using Content.Server.Antag;
+using Content.Server.Players.PlayTimeTracking;
 using Content.Shared.GameTicking;
-using Content.Shared.Players.PlayTimeTracking;
 using Content.Shared.Preferences;
 using Content.Shared.Roles;
 using Robust.Shared.Network;
@@ -18,10 +18,9 @@ namespace Content.Server._Moffstation.Station;
 public sealed class MoffCharacterPickerSystem : EntitySystem
 {
     [Dependency] private readonly AntagSelectionSystem _antag = default!;
-    [Dependency] private readonly IPrototypeManager _protoManager = default!;
     [Dependency] private readonly IRobustRandom _random = default!;
     [Dependency] private readonly MoffJobCandidateSystem _candidates = default!;
-    [Dependency] private readonly ISharedPlaytimeManager _playTime = default!;
+    [Dependency] private readonly PlayTimeTrackingSystem _playTime = default!;
 
     /// <summary>
     /// So antag loadouts equip the character that spawned, not the one selected in the lobby.
@@ -41,8 +40,8 @@ public sealed class MoffCharacterPickerSystem : EntitySystem
     }
 
     /// <summary>
-    /// Null when no active character can take <paramref name="job"/>; never falls back to the
-    /// character selected in the lobby.
+    /// Null only when the player has no active character at all willing to take
+    /// <paramref name="job"/>; the caller is expected to fall back rather than drop the player.
     /// </summary>
     public HumanoidCharacterProfile? PickProfile(ICommonSession player, ProtoId<JobPrototype> job)
     {
@@ -68,6 +67,10 @@ public sealed class MoffCharacterPickerSystem : EntitySystem
         return _spawnedProfiles.GetValueOrDefault(player);
     }
 
+    /// <summary>
+    /// Narrows in stages and takes the last non-empty one, so a character that misses a
+    /// preference still spawns instead of the player being dropped from the round.
+    /// </summary>
     private HumanoidCharacterProfile? PickProfileOrNull(ICommonSession player, ProtoId<JobPrototype> job)
     {
         var eligible = _candidates.GetEligibleProfiles(player.UserId, job);
@@ -75,29 +78,30 @@ public sealed class MoffCharacterPickerSystem : EntitySystem
         if (eligible.Count == 0)
             return null;
 
-        if (!_protoManager.TryIndex(job, out var jobProto))
-            return null;
+        // Drop characters that don't meet the job's own requirements, e.g. age or species. This
+        // goes through PlayTimeTrackingSystem so that disabled role timers are honoured.
+        var allowed = eligible.Where(profile => _playTime.IsAllowed(player, job, profile)).ToList();
 
-        var playTimes = _playTime.GetPlayTimes(player);
-
-        // Drop characters that don't meet the job's own requirements, e.g. age or species.
-        var filtered = eligible.Where(profile =>
-            JobRequirements.TryRequirementsMet(
-                jobProto,
-                playTimes,
-                out _,
-                EntityManager,
-                _protoManager,
-                profile));
-
-        // A preselected antag can only be filled by a character that opted in to it.
-        foreach (var antagSet in _antag.GetMoffPreSelectedAntagPrefRoles(player))
+        if (allowed.Count == 0)
         {
-            filtered = filtered.Where(profile => antagSet.Overlaps(profile.AntagPreferences));
+            Log.Warning($"No active character of {player} meets the requirements for {job}; spawning one anyway.");
+            allowed = eligible;
         }
 
-        var final = filtered.ToList();
+        // A preselected antag should be filled by a character that opted in to it.
+        var final = allowed;
 
-        return final.Count == 0 ? null : _random.Pick(final);
+        foreach (var antagSet in _antag.GetMoffPreSelectedAntagPrefRoles(player))
+        {
+            final = final.Where(profile => antagSet.Overlaps(profile.AntagPreferences)).ToList();
+        }
+
+        if (final.Count == 0)
+        {
+            Log.Warning($"No active character of {player} wants the antag role they were preselected for.");
+            final = allowed;
+        }
+
+        return _random.Pick(final);
     }
 }

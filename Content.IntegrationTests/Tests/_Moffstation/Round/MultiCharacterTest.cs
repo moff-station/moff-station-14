@@ -1,6 +1,7 @@
 #nullable enable
 using System.Collections.Generic;
 using Content.IntegrationTests.Fixtures;
+using Content.IntegrationTests.Fixtures.Attributes;
 using Content.IntegrationTests.Pair;
 using Content.Server._Moffstation.Preferences;
 using Content.Server.GameTicking;
@@ -213,6 +214,53 @@ public sealed class MultiCharacterTest : GameTest
         await StartRound(pair);
 
         AssertJobAndCharacter(pair, Engineer, SlotOneName);
+
+        await pair.Server.WaitPost(() => ticker.RestartRound());
+    }
+
+    /// <summary>
+    /// An inactive character contributes no candidate jobs, even when it is the selected one. If it
+    /// did, the player would be assigned a job no active character can fill.
+    /// </summary>
+    [Test]
+    public async Task InactiveSelectedCharacterContributesNoJobs()
+    {
+        var pair = Pair;
+        pair.Server.CfgMan.SetCVar(CCVars.GameMap, Map);
+        var ticker = pair.Server.System<GameTicker>();
+
+        // Slot 0 is the selected character and the only one wanting Captain.
+        await SetupTwoCharacters(pair, Captain, Passenger);
+        await SetGlobalPriorities(pair, (Captain, JobPriority.High), (Passenger, JobPriority.Medium));
+        await SetSlotEnabled(pair, 0, false);
+
+        await StartRound(pair);
+
+        AssertJobAndCharacter(pair, Passenger, SlotOneName);
+
+        await pair.Server.WaitPost(() => ticker.RestartRound());
+    }
+
+    /// <summary>
+    /// Jobs contributed by a non-selected character are still subject to role timers, and a player
+    /// who fails them falls back to a job they can hold rather than not spawning at all.
+    /// </summary>
+    [Test]
+    public async Task RoleTimersApplyToOtherCharactersJobs()
+    {
+        var pair = Pair;
+        pair.Server.CfgMan.SetCVar(CCVars.GameMap, Map);
+        var ticker = pair.Server.System<GameTicker>();
+
+        await OverrideCVar(Side.Server, CCVars.GameRoleTimers, true);
+
+        await SetupTwoCharacters(pair, Passenger, Captain);
+        await SetGlobalPriorities(pair, (Captain, JobPriority.High), (Passenger, JobPriority.Medium));
+
+        await StartRound(pair);
+
+        // The test user has no playtime, so Captain is filtered out before jobs are assigned.
+        AssertJobAndCharacter(pair, Passenger, SlotZeroName);
 
         await pair.Server.WaitPost(() => ticker.RestartRound());
     }

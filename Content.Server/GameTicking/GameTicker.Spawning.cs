@@ -270,23 +270,14 @@ namespace Content.Server.GameTicking
             }
 
             // Moff Start - Multi-character selection: spawn whichever active character wants this
-            // job, not whoever is selected in the lobby. Randomized characters are left alone.
+            // job, not whoever is selected in the lobby. Randomized characters are left alone, and
+            // a readied player always spawns, so the lobby-selected character is the last resort.
             if (!_randomizeCharacters)
             {
-                if (_moffCharacterPicker.PickProfile(player, jobId) is not { } picked)
-                {
-                    if (!LobbyEnabled)
-                        JoinAsObserver(player);
-
-                    var evNoChar = new NoJobsAvailableSpawningEvent(player);
-                    RaiseLocalEvent(evNoChar);
-
-                    _chatManager.DispatchServerMessage(player,
-                        Loc.GetString("moff-game-ticker-no-character-for-job", ("job", jobId)));
-                    return;
-                }
-
-                character = picked;
+                if (_moffCharacterPicker.PickProfile(player, jobId) is { } picked)
+                    character = picked;
+                else
+                    Log.Warning($"No active character of {player} will take {jobId}; using their selected one.");
             }
             // Moff end
 

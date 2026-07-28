@@ -1,5 +1,7 @@
 using System.Linq;
 using Content.Server._Moffstation.Preferences;
+using Content.Server.Players.JobWhitelist;
+using Content.Server.Players.PlayTimeTracking;
 using Content.Server.Preferences.Managers;
 using Content.Server.Station.Events;
 using Content.Shared.Preferences;
@@ -10,9 +12,9 @@ using Robust.Shared.Prototypes;
 namespace Content.Server._Moffstation.Station;
 
 /// <summary>
-/// Widens round-start job candidacy to every one of a player's active characters. Uses
-/// <see cref="StationJobsGetCandidatesEvent"/> in the opposite direction to JobWhitelistSystem and
-/// PlayTimeTrackingSystem, which narrow the same list.
+/// Sources round-start job candidacy from every one of a player's active characters rather than just
+/// the selected one. Uses <see cref="StationJobsGetCandidatesEvent"/> in the opposite direction to
+/// JobWhitelistSystem and PlayTimeTrackingSystem, which narrow the same list.
 /// </summary>
 public sealed class MoffJobCandidateSystem : EntitySystem
 {
@@ -23,12 +25,25 @@ public sealed class MoffJobCandidateSystem : EntitySystem
     {
         base.Initialize();
 
-        SubscribeLocalEvent<StationJobsGetCandidatesEvent>(OnGetCandidates);
+        // Must run before the two systems that narrow the same list, or the jobs added here would
+        // skip their playtime and whitelist filtering.
+        SubscribeLocalEvent<StationJobsGetCandidatesEvent>(OnGetCandidates,
+            before: [typeof(PlayTimeTrackingSystem), typeof(JobWhitelistSystem)]);
     }
 
     private void OnGetCandidates(ref StationJobsGetCandidatesEvent ev)
     {
-        foreach (var profile in GetActiveProfiles(ev.Player))
+        var active = GetActiveProfiles(ev.Player);
+
+        // Nothing cached, so leave upstream's seed from the selected character alone.
+        if (active.Count == 0)
+            return;
+
+        // Replace rather than add to: the selected character contributes nothing if its slot is
+        // inactive, and upstream seeded the list from it unconditionally.
+        ev.Jobs.Clear();
+
+        foreach (var profile in active)
         {
             foreach (var job in profile.JobPriorities.Keys)
             {
@@ -75,17 +90,22 @@ public sealed class MoffJobCandidateSystem : EntitySystem
         return result;
     }
 
-    private IEnumerable<HumanoidCharacterProfile> GetActiveProfiles(NetUserId player)
+    /// <summary>Every character of <paramref name="player"/> whose slot is active.</summary>
+    public List<HumanoidCharacterProfile> GetActiveProfiles(NetUserId player)
     {
+        var result = new List<HumanoidCharacterProfile>();
+
         if (!_prefs.TryGetCachedPreferences(player, out var prefs))
-            yield break;
+            return result;
 
         var state = _selection.GetState(player);
 
         foreach (var (slot, profile) in prefs.Characters)
         {
             if (profile is HumanoidCharacterProfile humanoid && state.IsSlotEnabled(slot))
-                yield return humanoid;
+                result.Add(humanoid);
         }
+
+        return result;
     }
 }

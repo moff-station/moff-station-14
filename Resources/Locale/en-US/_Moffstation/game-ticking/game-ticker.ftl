@@ -14,6 +14,3 @@ game-ticker-get-info-preround-text-moff = Hi and welcome to [color=#7d3bc8]Moffs
                             The current game mode is: [color=white]{$gmTitle}[/color]
                             >[color=yellow]{$desc}[/color]
 game-ticker-set-countdown = Round will begin in {$seconds} seconds.
-
-# Multi-character selection: no active character said yes to the job that was assigned.
-moff-game-ticker-no-character-for-job = You were assigned {$job}, but none of your active characters will take it.
