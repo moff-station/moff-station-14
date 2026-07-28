@@ -309,6 +309,30 @@ namespace Content.Server.Database
                 .HasPrincipalKey<Player>(p => p.UserId);
             // Moffstation - End
 
+            // Moff Start - Multi-character selection: player-global job priorities and per-character enable flag
+            modelBuilder.Entity<MoffModel.MoffPreference>()
+                .HasOne(mp => mp.Preference)
+                .WithOne(p => p.MoffPreference)
+                .HasForeignKey<MoffModel.MoffPreference>(mp => mp.PreferenceId)
+                .IsRequired();
+
+            modelBuilder.Entity<MoffModel.MoffJobPriority>()
+                .HasOne(jp => jp.MoffPreference)
+                .WithMany(mp => mp.JobPriorities)
+                .HasForeignKey(jp => jp.MoffPreferenceId)
+                .IsRequired();
+
+            modelBuilder.Entity<MoffModel.MoffJobPriority>()
+                .HasIndex(jp => new { jp.MoffPreferenceId, jp.JobName })
+                .IsUnique();
+
+            modelBuilder.Entity<MoffModel.MoffProfile>()
+                .HasOne(mp => mp.Profile)
+                .WithOne(p => p.MoffProfile)
+                .HasForeignKey<MoffModel.MoffProfile>(mp => mp.ProfileId)
+                .IsRequired();
+            // Moff end
+
             modelBuilder.Entity<ConnectionLog>()
                 .OwnsOne(p => p.HWId)
                 .Property(p => p.Hwid)
@@ -344,6 +368,8 @@ namespace Content.Server.Database
         public string AdminOOCColor { get; set; } = null!;
         public List<string> ConstructionFavorites { get; set; } = new();
         public List<Profile> Profiles { get; } = new();
+
+        public MoffModel.MoffPreference? MoffPreference { get; set; } // Moff - Multi-character selection
     }
 
     public class Profile
@@ -378,6 +404,8 @@ namespace Content.Server.Database
         public Preference Preference { get; set; } = null!;
 
         public CDModel.CDProfile? CDProfile { get; set; } // Moffstation - Add CD Profile
+
+        public MoffModel.MoffProfile? MoffProfile { get; set; } // Moff - Multi-character selection
     }
 
     public class Job

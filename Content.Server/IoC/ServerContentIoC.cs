@@ -1,5 +1,6 @@
 using Content.Server._Moffstation.Antag;
 using Content.Server._Moffstation.Discord;
+using Content.Server._Moffstation.Preferences; // Moffstation - Multi-character selection
 using Content.Server._Moffstation.Discord.GuildEvent;
 using Content.Server.Administration;
 using Content.Server.Administration.Logs;
@@ -86,5 +87,6 @@ internal static class ServerContentIoC
         deps.Register<ServerFeedbackManager>();
         deps.Register<ISharedFeedbackManager, ServerFeedbackManager>();
         deps.Register<IWeightedAntagManager, WeightedAntagManager>(); //Moffstaion - Dummy Antag Manager for Integration tests
+        deps.Register<MoffCharacterSelectionManager>(); // Moff - Multi-character selection
     }
 }

@@ -1,6 +1,7 @@
 ﻿#nullable enable
 using System.Collections.Generic;
 using System.Linq;
+using Content.Server._Moffstation.Preferences; // Moffstation - Multi-character selection
 using Content.Server.Preferences.Managers;
 using Content.Shared.Preferences;
 using Content.Shared.Roles;
@@ -127,5 +128,12 @@ public sealed partial class TestPair
         var newProfile = profile.WithJobPriorities(dictionary);
         _modifiedProfiles.Add(user);
         await Server.WaitPost(() => prefMan.SetProfile(user, 0, newProfile).Wait());
+
+        // Moff Start - Multi-character selection: the profile now only records *which* jobs a
+        // character will take; the priority applied to them is player-global. Mirror the same
+        // priorities into that global state so these helpers keep meaning what they used to.
+        var moffSelection = Server.ResolveDependency<MoffCharacterSelectionManager>();
+        await Server.WaitPost(() => moffSelection.SetJobPriorities(user, dictionary).Wait());
+        // Moff end
     }
 }

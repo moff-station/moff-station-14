@@ -120,7 +120,12 @@ namespace Content.Server.GameTicking
                 if (job == null)
                     continue;
 
-                SpawnPlayer(_playerManager.GetSessionById(player), profiles[player], station, job, false);
+                // Moff Start - Multi-character selection: the job was assigned to the player, so
+                // pick whichever of their active characters is actually eligible for it (and for
+                // any antag they were preselected for) instead of always using the selected one.
+                var spawnProfile = _moffCharacterPicker.PickProfile(player, job.Value, profiles[player]);
+                SpawnPlayer(_playerManager.GetSessionById(player), spawnProfile, station, job, false);
+                // Moff end
             }
 
             RefreshLateJoinAllowed();

@@ -37,7 +37,8 @@ public sealed partial class HumanoidProfileEditor
         foreach (var (jobId, prioritySelector) in _jobPriorities)
         {
             var priority = Profile?.JobPriorities.GetValueOrDefault(jobId, JobPriority.Never) ?? JobPriority.Never;
-            prioritySelector.Select((int)priority);
+            // Moff - The selector is now yes/no, so collapse any legacy Low/High onto "yes".
+            prioritySelector.Select((int)(priority == JobPriority.Never ? JobPriority.Never : JobPriority.Medium));
         }
     }
 
@@ -136,6 +137,10 @@ public sealed partial class HumanoidProfileEditor
 
         departments.Sort(DepartmentUIComparer.Instance);
 
+        // Moff Start - Multi-character selection: a character only says whether it is willing to
+        // take a job. The priority applied to that job is player-global and lives in the job
+        // priority window, so the four-way selector collapses to yes/no.
+        /*
         var items = new[]
         {
                 ("humanoid-profile-editor-job-priority-never-button", (int) JobPriority.Never),
@@ -143,6 +148,13 @@ public sealed partial class HumanoidProfileEditor
                 ("humanoid-profile-editor-job-priority-medium-button", (int) JobPriority.Medium),
                 ("humanoid-profile-editor-job-priority-high-button", (int) JobPriority.High),
             };
+        */
+        var items = new[]
+        {
+            ("humanoid-profile-editor-job-preference-no-button-moffstation", (int) JobPriority.Never),
+            ("humanoid-profile-editor-job-preference-yes-button-moffstation", (int) JobPriority.Medium),
+        };
+        // Moff end
 
         foreach (var department in departments)
         {

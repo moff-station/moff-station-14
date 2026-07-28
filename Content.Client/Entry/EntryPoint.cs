@@ -1,3 +1,4 @@
+using Content.Client._Moffstation.Preferences; // Moffstation - Multi-character selection
 using Content.Client.Administration.Managers;
 using Content.Client.Changelog;
 using Content.Client.Chat.Managers;
@@ -63,6 +64,7 @@ namespace Content.Client.Entry
         [Dependency] private IOverlayManager _overlayManager = default!;
         [Dependency] private IChatManager _chatManager = default!;
         [Dependency] private IClientPreferencesManager _clientPreferencesManager = default!;
+        [Dependency] private MoffCharacterSelectionManager _moffCharacterSelection = default!; // Moffstation - Multi-character selection
         [Dependency] private EuiManager _euiManager = default!;
         [Dependency] private IVoteManager _voteManager = default!;
         [Dependency] private DocumentParsingManager _documentParsingManager = default!;
@@ -167,6 +169,7 @@ namespace Content.Client.Entry
             _overlayManager.AddOverlay(new RadiationPulseOverlay());
             _chatManager.Initialize();
             _clientPreferencesManager.Initialize();
+            _moffCharacterSelection.Initialize(); // Moffstation - Multi-character selection
             _euiManager.Initialize();
             _voteManager.Initialize();
             _userInterfaceManager.SetDefaultTheme("SS14DefaultTheme");

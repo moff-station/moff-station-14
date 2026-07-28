@@ -14,6 +14,12 @@
         <Label Name="DescriptionLabel"
                ClipText="True"
                HorizontalExpand="True"/>
+        <!-- Moff Start - Multi-character selection: only active characters can be spawned -->
+        <CheckBox Name="MoffEnabledCheckBox"
+                  Text="{Loc 'moff-character-enabled-button'}"
+                  ToolTip="{Loc 'moff-character-enabled-button-tooltip'}"
+                  Visible="False"/>
+        <!-- Moff end -->
         <Button Name="DeleteButton"
                 Text="{Loc 'character-setup-gui-character-picker-button-delete-button'}"/>
         <Button Name="ConfirmDeleteButton"

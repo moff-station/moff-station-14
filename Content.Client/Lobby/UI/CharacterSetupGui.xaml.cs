@@ -54,7 +54,11 @@ namespace Content.Client.Lobby.UI
 
             _createNewCharacterButton.OnPressed += args =>
             {
-                _preferencesManager.CreateCharacter(HumanoidCharacterProfile.Random().WithJobFromCvar(_cfg));
+                // Moff Start - Multi-character selection: go through a wrapper so any stale
+                // "inactive" flag on the slot the new character lands in gets cleared.
+                // _preferencesManager.CreateCharacter(HumanoidCharacterProfile.Random().WithJobFromCvar(_cfg));
+                CreateMoffCharacter(HumanoidCharacterProfile.Random().WithJobFromCvar(_cfg));
+                // Moff end
                 ReloadCharacterPickers();
                 args.Event.Handle();
             };
@@ -100,6 +104,8 @@ namespace Content.Client.Lobby.UI
                     characterButtonsGroup,
                     character,
                     slot == selectedSlot);
+
+                characterPickerButton.SetupMoffEnabled(slot); // Moffstation - Multi-character selection
 
                 if (slot >= maxCharactersSlots)
                 {

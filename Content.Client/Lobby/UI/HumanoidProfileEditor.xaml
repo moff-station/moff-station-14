@@ -147,6 +147,12 @@
                 <BoxContainer Orientation="Vertical">
                     <!-- Jobs -->
                     <OptionButton Name="PreferenceUnavailableButton" />
+                    <!-- Moff Start - Job priority is player-global now, so it gets its own window -->
+                    <Button Name="MoffJobPriorityButton"
+                            Text="{Loc 'moff-job-priority-button'}"
+                            ToolTip="{Loc 'moff-job-priority-button-tooltip'}"
+                            Margin="0 0 0 4" />
+                    <!-- Moff end -->
                     <ScrollContainer VerticalExpand="True">
                         <BoxContainer Name="JobList" Orientation="Vertical" />
                     </ScrollContainer>

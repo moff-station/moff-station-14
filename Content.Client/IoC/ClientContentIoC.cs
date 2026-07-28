@@ -1,3 +1,4 @@
+using Content.Client._Moffstation.Preferences; // Moffstation - Multi-character selection
 using Content.Client.Administration.Managers;
 using Content.Client.Audio.Midi;
 using Content.Client.Changelog;
@@ -42,6 +43,7 @@ namespace Content.Client.IoC
             collection.Register<IChatManager, ChatManager>();
             collection.Register<ISharedChatManager, ChatManager>();
             collection.Register<IClientPreferencesManager, ClientPreferencesManager>();
+            collection.Register<MoffCharacterSelectionManager>(); // Moffstation - Multi-character selection
             collection.Register<IStylesheetManager, StylesheetManager>();
             collection.Register<IScreenshotHook, ScreenshotHook>();
             collection.Register<FullscreenHook, FullscreenHook>();

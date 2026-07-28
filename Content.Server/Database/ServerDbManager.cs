@@ -9,6 +9,7 @@ using Content.Shared.Administration.Logs;
 using Content.Shared.CCVar;
 using Content.Shared.Construction.Prototypes;
 using Content.Shared.Database;
+using Content.Shared._Moffstation.Preferences; // Moff - Multi-character selection
 using Content.Shared.Preferences;
 using Content.Shared.Roles;
 using Microsoft.Data.Sqlite;
@@ -320,6 +321,15 @@ namespace Content.Server.Database
 
         Task<string?> GetDiscordId(NetUserId userId);
         Task<bool> SetDiscordId(NetUserId userId, string? discordId);
+
+        #endregion
+
+        #region Multi-Character Selection
+        // Moffstation - Everything in this region is moff
+
+        Task<MoffCharacterSelectionState> GetMoffCharacterSelection(NetUserId userId, CancellationToken cancel = default);
+        Task SaveMoffJobPriorities(NetUserId userId, Dictionary<ProtoId<JobPrototype>, JobPriority> priorities);
+        Task SaveMoffCharacterEnabled(NetUserId userId, int slot, bool enabled);
 
         #endregion
 
@@ -1059,6 +1069,26 @@ namespace Content.Server.Database
             return RunDbCommand(() => _db.SetDiscordId(userId, discordId));
         }
         // Moffstation - End - Discord ID
+
+        // Moffstation - Begin - Multi-character selection
+        public Task<MoffCharacterSelectionState> GetMoffCharacterSelection(NetUserId userId, CancellationToken cancel = default)
+        {
+            DbReadOpsMetric.Inc();
+            return RunDbCommand(() => _db.GetMoffCharacterSelectionAsync(userId, cancel));
+        }
+
+        public Task SaveMoffJobPriorities(NetUserId userId, Dictionary<ProtoId<JobPrototype>, JobPriority> priorities)
+        {
+            DbWriteOpsMetric.Inc();
+            return RunDbCommand(() => _db.SaveMoffJobPrioritiesAsync(userId, priorities));
+        }
+
+        public Task SaveMoffCharacterEnabled(NetUserId userId, int slot, bool enabled)
+        {
+            DbWriteOpsMetric.Inc();
+            return RunDbCommand(() => _db.SaveMoffCharacterEnabledAsync(userId, slot, enabled));
+        }
+        // Moffstation - End - Multi-character selection
 
         public void SubscribeToNotifications(Action<DatabaseNotification> handler)
         {

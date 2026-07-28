@@ -556,10 +556,13 @@ public sealed partial class AntagSelectionSystem
     [PublicAPI]
     public IEnumerable<ProtoId<AntagPrototype>> GetValidAntagPreferences(ICommonSession session, List<ProtoId<AntagPrototype>>? filter = null)
     {
-        if (!_pref.TryGetCachedPreferences(session.UserId, out var prefs))
+        if (!_pref.TryGetCachedPreferences(session.UserId, out _))
             yield break;
 
-        foreach (var antag in prefs.SelectedCharacter.AntagPreferences)
+        // Moff Start - Multi-character selection: a player opts in to an antag if any of their
+        // active characters wants it, not just whichever one happens to be selected.
+        foreach (var antag in GetMoffEnabledAntagPreferences(session))
+        // Moff end
         {
             // We also check this in IsSessionValid, but we also check it here since this is public API.
             if (_ban.IsRoleBanned(session, antag) || !_playTime.IsAllowed(session, antag))
