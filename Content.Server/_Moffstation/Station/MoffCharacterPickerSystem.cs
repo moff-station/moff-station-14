@@ -27,6 +27,11 @@ public sealed class MoffCharacterPickerSystem : EntitySystem
     /// </summary>
     private readonly Dictionary<NetUserId, HumanoidCharacterProfile> _spawnedProfiles = new();
 
+    /// <summary>
+    /// A late join names the character it wants, so nothing should pick one at random for it.
+    /// </summary>
+    private readonly Dictionary<NetUserId, HumanoidCharacterProfile> _explicitChoices = new();
+
     public override void Initialize()
     {
         base.Initialize();
@@ -37,6 +42,25 @@ public sealed class MoffCharacterPickerSystem : EntitySystem
     private void OnCleanup(RoundRestartCleanupEvent ev)
     {
         _spawnedProfiles.Clear();
+        _explicitChoices.Clear();
+    }
+
+    /// <summary>Records the character a late join asked to spawn as.</summary>
+    public void SetExplicitChoice(NetUserId player, HumanoidCharacterProfile profile)
+    {
+        _explicitChoices[player] = profile;
+    }
+
+    /// <summary>
+    /// Returns and consumes a pending explicit choice, so it applies to exactly one spawn.
+    /// </summary>
+    public HumanoidCharacterProfile? TakeExplicitChoice(NetUserId player)
+    {
+        if (!_explicitChoices.Remove(player, out var profile))
+            return null;
+
+        _spawnedProfiles[player] = profile;
+        return profile;
     }
 
     /// <summary>

@@ -26,20 +26,30 @@ public sealed partial class CharacterPickerButton : ContainerButton
     /// </summary>
     public event Action? OnDeletePressed;
 
+    /// <summary>
+    /// Invoked if we should mark the attached character active or inactive
+    /// </summary>
+    public event Action<bool>? OnEnableToggled; // Moffstation - Multi-character selection
+
     public CharacterPickerButton(
         IPrototypeManager prototypeManager,
         ISharedPlayerManager playerMan,
         ButtonGroup group,
         HumanoidCharacterProfile profile,
-        bool isSelected)
+        bool isSelected,
+        bool simple = false) // Moff - Multi-character selection: late join reuses this without the side buttons
     {
         RobustXamlLoader.Load(this);
         AddStyleClass(StyleClassButton);
         ToggleMode = true;
         Group = group;
-        var description = profile.Name;
 
         View.LoadPreview(profile);
+
+        // Moff Start - Multi-character selection: no job is "High" on a character any more, so the
+        // subtitle comes from the player-global priorities instead.
+        /*
+        var description = profile.Name;
 
         var highPriorityJob = profile.JobPriorities.SingleOrDefault(p => p.Value == JobPriority.High).Key;
         if (highPriorityJob != default)
@@ -47,11 +57,16 @@ public sealed partial class CharacterPickerButton : ContainerButton
             var jobName = prototypeManager.Index(highPriorityJob).LocalizedName;
             description = $"{description}\n{jobName}";
         }
+        */
+        DescriptionLabel.Text = BuildMoffDescription(profile, prototypeManager);
+        // Moff end
 
         Pressed = isSelected;
-        DeleteButton.Visible = !isSelected;
 
-        DescriptionLabel.Text = description;
+        // Moff Start - Multi-character selection: delete is a ConfirmButton in the side column now,
+        // and it shares that column with the active toggle.
+        /*
+        DeleteButton.Visible = !isSelected;
 
         ConfirmDeleteButton.OnPressed += _ =>
         {
@@ -65,5 +80,8 @@ public sealed partial class CharacterPickerButton : ContainerButton
             DeleteButton.Visible = false;
             ConfirmDeleteButton.Visible = true;
         };
+        */
+        SetupMoffButtons(isSelected, simple);
+        // Moff end
     }
 }

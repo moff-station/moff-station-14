@@ -1,3 +1,4 @@
+using System.Linq;
 using Content.Shared.CCVar;
 using Content.Shared.Preferences;
 using Content.Shared.Roles;
@@ -14,10 +15,16 @@ public sealed partial class PlayTimeTrackingSystem
     /// character other than the selected one. Multi-character selection has to test each of a
     /// player's active characters against the job they were assigned.
     /// </summary>
+    /// <remarks>
+    /// Unlike the upstream overload this still checks age, species and traits when role timers are
+    /// off. Without that, picking which character spawns would ignore those gates entirely.
+    /// </remarks>
     public bool IsAllowed(ICommonSession player, ProtoId<JobPrototype> job, HumanoidCharacterProfile profile)
     {
+        var requirements = _roles.GetRoleRequirements(job);
+
         if (!_cfg.GetCVar(CCVars.GameRoleTimers))
-            return true;
+            requirements = StripPlaytimeRequirements(requirements);
 
         if (!_tracking.TryGetTrackerTimes(player, out var playTimes))
         {
@@ -25,7 +32,23 @@ public sealed partial class PlayTimeTrackingSystem
             playTimes = new Dictionary<string, TimeSpan>();
         }
 
-        var requirements = _roles.GetRoleRequirements(job);
         return JobRequirements.TryRequirementsMet(requirements, playTimes, out _, EntityManager, ProtoMan, profile);
+    }
+
+    /// <summary>
+    /// Drops the requirements that role timers govern, leaving the ones that describe the character
+    /// itself. Returns null when nothing is left, which <see cref="JobRequirements"/> treats as met.
+    /// </summary>
+    private static HashSet<JobRequirement>? StripPlaytimeRequirements(HashSet<JobRequirement>? requirements)
+    {
+        if (requirements == null)
+            return null;
+
+        return requirements
+            .Where(requirement => requirement is not (
+                RoleTimeRequirement or
+                DepartmentTimeRequirement or
+                OverallPlaytimeRequirement))
+            .ToHashSet();
     }
 }

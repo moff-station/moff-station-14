@@ -24,6 +24,7 @@ public sealed class MoffCharacterSelectionManager : IPostInjectInit
     [Dependency] private readonly UserDbDataManager _userDb = default!;
     [Dependency] private readonly IPrototypeManager _protoManager = default!;
     [Dependency] private readonly ILogManager _log = default!;
+    [Dependency] private readonly IServerPreferencesManager _prefs = default!;
 
     private readonly Dictionary<NetUserId, MoffCharacterSelectionState> _cached = new();
 
@@ -70,19 +71,46 @@ public sealed class MoffCharacterSelectionManager : IPostInjectInit
         ProtoId<JobPrototype> job,
         HumanoidCharacterProfile fallback)
     {
-        if (TryGetState(userId, out var state) && state.IsAuthoritative)
+        var state = GetState(userId);
+
+        if (state.IsAuthoritative)
             return state.GetPriority(job);
 
-        return fallback.JobPriorities.GetValueOrDefault(job, JobPriority.Never);
+        // The job may have come from an active character other than the caller's fallback, so take
+        // the strongest priority any of them gives it rather than only asking the fallback.
+        var best = fallback.JobPriorities.GetValueOrDefault(job, JobPriority.Never);
+
+        if (!_prefs.TryGetCachedPreferences(userId, out var prefs))
+            return best;
+
+        foreach (var (slot, profile) in prefs.Characters)
+        {
+            if (profile is not HumanoidCharacterProfile humanoid || !state.IsSlotEnabled(slot))
+                continue;
+
+            var priority = humanoid.JobPriorities.GetValueOrDefault(job, JobPriority.Never);
+
+            if (priority > best)
+                best = priority;
+        }
+
+        return best;
     }
 
     /// <summary>
     /// For tests and admin tooling; ordinary changes arrive as <see cref="MsgUpdateMoffJobPriorities"/>.
     /// </summary>
+    /// <remarks>
+    /// Creates transient state rather than dropping the write when nothing is cached, so dummy
+    /// sessions in tests -- which never run the database load -- still take the priorities.
+    /// </remarks>
     public async Task SetJobPriorities(NetUserId userId, Dictionary<ProtoId<JobPrototype>, JobPriority> priorities)
     {
         if (!_cached.TryGetValue(userId, out var state))
-            return;
+        {
+            state = new MoffCharacterSelectionState();
+            _cached[userId] = state;
+        }
 
         state.JobPriorities = new Dictionary<ProtoId<JobPrototype>, JobPriority>(priorities);
         state.Normalize();
@@ -124,10 +152,15 @@ public sealed class MoffCharacterSelectionManager : IPostInjectInit
 
     private void SendState(ICommonSession session)
     {
-        if (!_cached.TryGetValue(session.UserId, out var state))
+        SendState(session.Channel);
+    }
+
+    private void SendState(INetChannel channel)
+    {
+        if (!_cached.TryGetValue(channel.UserId, out var state))
             return;
 
-        _netManager.ServerSendMessage(new MsgMoffCharacterSelectionState { State = state }, session.Channel);
+        _netManager.ServerSendMessage(new MsgMoffCharacterSelectionState { State = state }, channel);
     }
 
     private static bool ShouldStore(ICommonSession session)
@@ -160,11 +193,19 @@ public sealed class MoffCharacterSelectionManager : IPostInjectInit
             sanitized[job] = priority;
         }
 
+        // The client applied its own copy optimistically, so it has to be told what we actually
+        // stored -- sanitizing and Normalize may both have changed it, and a failed write below
+        // would otherwise leave the two silently disagreeing until the player reconnects.
+        var previous = state.JobPriorities;
+
         state.JobPriorities = sanitized;
         state.Normalize();
 
         if (!ServerPreferencesManager.ShouldStorePrefs(message.MsgChannel.AuthType))
+        {
+            SendState(message.MsgChannel);
             return;
+        }
 
         try
         {
@@ -173,7 +214,10 @@ public sealed class MoffCharacterSelectionManager : IPostInjectInit
         catch (Exception e)
         {
             _sawmill.Error($"Failed to save job priorities for {userId}: {e}");
+            state.JobPriorities = previous;
         }
+
+        SendState(message.MsgChannel);
     }
 
     private async void HandleSetCharacterEnabled(MsgSetMoffCharacterEnabled message)
@@ -183,12 +227,18 @@ public sealed class MoffCharacterSelectionManager : IPostInjectInit
         if (!_cached.TryGetValue(userId, out var state))
             return;
 
+        // As above: the client already toggled its own copy, so it needs the stored result back.
+        var hadPrevious = state.EnabledSlots.TryGetValue(message.Slot, out var previous);
+
         state.EnabledSlots[message.Slot] = message.Enabled;
 
         _sawmill.Debug($"Set slot {message.Slot} enabled={message.Enabled} for {userId}");
 
         if (!ServerPreferencesManager.ShouldStorePrefs(message.MsgChannel.AuthType))
+        {
+            SendState(message.MsgChannel);
             return;
+        }
 
         try
         {
@@ -197,7 +247,14 @@ public sealed class MoffCharacterSelectionManager : IPostInjectInit
         catch (Exception e)
         {
             _sawmill.Error($"Failed to save character enabled state for {userId}: {e}");
+
+            if (hadPrevious)
+                state.EnabledSlots[message.Slot] = previous;
+            else
+                state.EnabledSlots.Remove(message.Slot);
         }
+
+        SendState(message.MsgChannel);
     }
 
     #endregion

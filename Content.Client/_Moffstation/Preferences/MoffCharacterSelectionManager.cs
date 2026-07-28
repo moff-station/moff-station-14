@@ -52,6 +52,29 @@ public sealed class MoffCharacterSelectionManager
         return State.IsSlotEnabled(slot);
     }
 
+    /// <summary>
+    /// The job <paramref name="profile"/> is most likely to be assigned: of the jobs it will take,
+    /// whichever the player rates highest. Null if it will take none.
+    /// </summary>
+    public ProtoId<JobPrototype>? GetPreferredJob(HumanoidCharacterProfile profile)
+    {
+        ProtoId<JobPrototype>? best = null;
+        var bestPriority = JobPriority.Never;
+
+        foreach (var job in profile.JobPriorities.Keys)
+        {
+            var priority = GetPriority(job);
+
+            if (best != null && priority <= bestPriority)
+                continue;
+
+            best = job;
+            bestPriority = priority;
+        }
+
+        return best;
+    }
+
     /// <summary>Replaces the priorities and pushes them to the server.</summary>
     public void UpdateJobPriorities(Dictionary<ProtoId<JobPrototype>, JobPriority> priorities)
     {

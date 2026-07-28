@@ -46,7 +46,7 @@ namespace Content.Client.LateJoin
 
         public LateJoinGui()
         {
-            MinSize = SetSize = new Vector2(360, 560);
+            MinSize = SetSize = new Vector2(685, 560); // Moff - Multi-character selection: room for the character column
             IoCManager.InjectDependencies(this);
             _sprites = _entitySystem.GetEntitySystem<SpriteSystem>();
             _crewManifest = _entitySystem.GetEntitySystem<CrewManifestSystem>();
@@ -61,7 +61,11 @@ namespace Content.Client.LateJoin
                 VerticalExpand = true,
             };
 
-            ContentsContainer.AddChild(_base);
+            // Moff Start - Multi-character selection: the job list moves right to make room for a
+            // character picker, and joining names the character it picked.
+            // ContentsContainer.AddChild(_base);
+            ContentsContainer.AddChild(BuildMoffLayout(_base));
+            // Moff end
 
             _jobRequirements.Updated += RebuildUI;
             RebuildUI();
@@ -70,7 +74,12 @@ namespace Content.Client.LateJoin
             {
                 var (station, jobId) = x;
                 _sawmill.Info($"Late joining as ID: {jobId}");
-                _consoleHost.ExecuteCommand($"joingame {CommandParsing.Escape(jobId)} {station}");
+                // Moff Start - Multi-character selection: join as the picked character
+                // _consoleHost.ExecuteCommand($"joingame {CommandParsing.Escape(jobId)} {station}");
+                _consoleHost.ExecuteCommand(MoffSelectedSlot is { } slot
+                    ? $"joingame {slot} {CommandParsing.Escape(jobId)} {station}"
+                    : $"joingame {CommandParsing.Escape(jobId)} {station}");
+                // Moff end
                 Close();
             };
 
@@ -79,6 +88,8 @@ namespace Content.Client.LateJoin
 
         private void RebuildUI()
         {
+            RebuildMoffCharacterList(); // Moffstation - Multi-character selection
+
             _base.RemoveAllChildren();
             _jobLists.Clear();
             _jobButtons.Clear();
@@ -260,7 +271,10 @@ namespace Content.Client.LateJoin
 
                         jobButton.OnPressed += _ => SelectedId.Invoke((id, jobButton.JobId));
 
-                        if (!_jobRequirements.IsAllowed(prototype, (HumanoidCharacterProfile?)_preferencesManager.Preferences?.SelectedCharacter, out var reason))
+                        // Moff Start - Multi-character selection: gate on the character being joined as
+                        // if (!_jobRequirements.IsAllowed(prototype, (HumanoidCharacterProfile?)_preferencesManager.Preferences?.SelectedCharacter, out var reason))
+                        if (!_jobRequirements.IsAllowed(prototype, GetMoffSelectedProfile(), out var reason))
+                        // Moff end
                         {
                             jobButton.Disabled = true;
 

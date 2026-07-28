@@ -64,6 +64,7 @@ namespace Content.Client.Lobby.UI
             };
 
             CharEditor.AddChild(profileEditor);
+            InitializeMoffJobPriorities(); // Moffstation - Multi-character selection
             RulesButton.OnPressed += _ => new RulesAndInfoWindow().Open();
 
             StatsButton.OnPressed += _ => new PlaytimeStatsWindow().OpenCentered();
@@ -82,6 +83,8 @@ namespace Content.Client.Lobby.UI
 
             var numberOfFullSlots = 0;
             var characterButtonsGroup = new ButtonGroup();
+
+            JobPrioritiesButton.Group = characterButtonsGroup; // Moff - So picking a character unhighlights it
 
             if (!_preferencesManager.ServerDataLoaded)
             {
@@ -119,6 +122,7 @@ namespace Content.Client.Lobby.UI
 
                 characterPickerButton.OnPressed += args =>
                 {
+                    ShowMoffJobPriorities(false); // Moff - Swap the right pane back to the character editor
                     SelectCharacter?.Invoke(slot);
                 };
 

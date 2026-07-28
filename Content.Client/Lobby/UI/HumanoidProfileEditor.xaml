@@ -146,13 +146,9 @@
                 </BoxContainer>
                 <BoxContainer Orientation="Vertical">
                     <!-- Jobs -->
-                    <OptionButton Name="PreferenceUnavailableButton" />
-                    <!-- Moff Start - Job priority is player-global now, so it gets its own window -->
-                    <Button Name="MoffJobPriorityButton"
-                            Text="{Loc 'moff-job-priority-button'}"
-                            ToolTip="{Loc 'moff-job-priority-button-tooltip'}"
-                            Margin="0 0 0 4" />
-                    <!-- Moff end -->
+                    <!-- Moff - Multi-character selection: superseded by the player-global priority editor, which
+                         has a Passenger priority of its own. Kept so the setting and its DB column still load. -->
+                    <OptionButton Name="PreferenceUnavailableButton" Visible="False" />
                     <ScrollContainer VerticalExpand="True">
                         <BoxContainer Name="JobList" Orientation="Vertical" />
                     </ScrollContainer>

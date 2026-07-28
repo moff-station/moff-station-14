@@ -26,6 +26,7 @@ public sealed class MultiCharacterTest : GameTest
     private static readonly ProtoId<JobPrototype> Passenger = "Passenger";
     private static readonly ProtoId<JobPrototype> Engineer = "StationEngineer";
     private static readonly ProtoId<JobPrototype> Captain = "Captain";
+    private static readonly ProtoId<JobPrototype> AgeGated = "MoffMultiCharacterAgeGatedJob";
 
     private const string Map = "MoffMultiCharacterTestMap";
 
@@ -34,6 +35,18 @@ public sealed class MultiCharacterTest : GameTest
 
     [TestPrototypes]
     private static readonly string TestMap = @$"
+- type: job
+  id: {AgeGated}
+  name: job-name-passenger
+  description: job-description-passenger
+  playTimeTracker: JobPassenger
+  startingGear: PassengerGear
+  icon: ""JobIconPassenger""
+  supervisors: job-supervisors-everyone
+  requirements:
+  - !type:AgeRequirement
+    requiredAge: 30
+
 - type: gameMap
   id: {Map}
   mapName: {Map}
@@ -50,6 +63,7 @@ public sealed class MultiCharacterTest : GameTest
             {Passenger}: [ -1, -1 ]
             {Engineer}: [ -1, -1 ]
             {Captain}: [ 1, 1 ]
+            {AgeGated}: [ -1, -1 ]
 ";
 
     public override PoolSettings PoolSettings => new()
@@ -290,6 +304,51 @@ public sealed class MultiCharacterTest : GameTest
         await StartRound(pair);
 
         AssertJobAndCharacter(pair, Passenger, SlotZeroName);
+
+        await pair.Server.WaitPost(() => ticker.RestartRound());
+    }
+
+    /// <summary>
+    /// Which character fills a job still has to respect the job's age and species gates when role
+    /// timers are off, or the pick would ignore them entirely.
+    /// </summary>
+    [Test]
+    public async Task AgeRequirementAppliesWithRoleTimersOff()
+    {
+        var pair = Pair;
+        pair.Server.CfgMan.SetCVar(CCVars.GameMap, Map);
+        var ticker = pair.Server.System<GameTicker>();
+
+        await OverrideCVar(Side.Server, CCVars.GameRoleTimers, false);
+
+        var prefMan = pair.Server.ResolveDependency<IServerPreferencesManager>();
+        var user = pair.Client.User!.Value;
+
+        // Both characters want the same age gated job; only the older one may hold it.
+        var young = new HumanoidCharacterProfile()
+            .WithName(SlotZeroName)
+            .WithAge(20)
+            .WithJobPriorities(new Dictionary<ProtoId<JobPrototype>, JobPriority>
+            {
+                [AgeGated] = JobPriority.Medium,
+            });
+
+        var old = new HumanoidCharacterProfile()
+            .WithName(SlotOneName)
+            .WithAge(60)
+            .WithJobPriorities(new Dictionary<ProtoId<JobPrototype>, JobPriority>
+            {
+                [AgeGated] = JobPriority.Medium,
+            });
+
+        await pair.Server.WaitPost(() => prefMan.SetProfile(user, 0, young).Wait());
+        await pair.Server.WaitPost(() => prefMan.SetProfile(user, 1, old).Wait());
+
+        await SetGlobalPriorities(pair, (AgeGated, JobPriority.High));
+
+        await StartRound(pair);
+
+        AssertJobAndCharacter(pair, AgeGated, SlotOneName);
 
         await pair.Server.WaitPost(() => ticker.RestartRound());
     }

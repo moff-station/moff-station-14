@@ -34,11 +34,35 @@ namespace Content.Server.GameTicking.Commands
 
         public void Execute(IConsoleShell shell, string argStr, string[] args)
         {
+            // Moff Start - Multi-character selection: an optional leading slot argument says which
+            // character to join as. The two argument form still works and uses the selected one.
+            /*
             if (args.Length != 2)
             {
                 shell.WriteError(Loc.GetString("shell-wrong-arguments-number"));
                 return;
             }
+            */
+            if (args.Length is not (2 or 3))
+            {
+                shell.WriteError(Loc.GetString("shell-wrong-arguments-number"));
+                return;
+            }
+
+            int? charSlot = null;
+
+            if (args.Length == 3)
+            {
+                if (!int.TryParse(args[0], out var parsedSlot))
+                {
+                    shell.WriteError(Loc.GetString("shell-argument-must-be-number"));
+                    return;
+                }
+
+                charSlot = parsedSlot;
+                args = args[1..];
+            }
+            // Moff end
 
             var player = shell.Player;
 
@@ -76,6 +100,12 @@ namespace Content.Server.GameTicking.Commands
                 shell.WriteLine($"{jobPrototype.LocalizedName} has no available slots.");
                 return;
             }
+
+            // Moff Start - Multi-character selection: pin the chosen character before spawning, or
+            // the picker would roll a random active one instead.
+            if (charSlot != null && !TrySetMoffCharacter(shell, player, charSlot.Value))
+                return;
+            // Moff end
 
             if (_adminManager.IsAdmin(player) && _cfg.GetCVar(CCVars.AdminDeadminOnJoin))
             {

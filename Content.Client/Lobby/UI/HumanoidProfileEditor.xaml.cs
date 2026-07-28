@@ -159,7 +159,6 @@ namespace Content.Client.Lobby.UI
             Traits.OnTraitsChanged += OnTraitsSelectionChanged; // DeltaV
             Antags.OnAntagsChanged += OnAntagsSelectionChanged; // Moffstation
             Antags.OnLoadoutPressed += OnAntagLoadoutPressed; // Moffstation
-            InitializeMoffMultiCharacter(); // Moffstation - Multi-character selection
 
             #region Left
 
@@ -691,7 +690,6 @@ namespace Content.Client.Lobby.UI
 
             _loadoutWindow?.Dispose();
             _loadoutWindow = null;
-            ShutdownMoffMultiCharacter(); // Moffstation - Multi-character selection
         }
 
         protected override void EnteredTree()

@@ -140,6 +140,9 @@ namespace Content.Server.Administration.Systems
                     args.Verbs.Add(prayerVerb);
 
                     // Spawn - Like respawn but on the spot.
+                    // Moff Start - Multi-character selection: a player has several characters and no
+                    // "selected" one, so this becomes one entry per character in its own category.
+                    /*
                     args.Verbs.Add(new Verb()
                     {
                         Text = Loc.GetString("admin-player-actions-spawn"),
@@ -165,6 +168,9 @@ namespace Content.Server.Administration.Systems
                         ConfirmationPopup = true,
                         Impact = LogImpact.High,
                     });
+                    */
+                    AddMoffSpawnAsVerbs(args, targetActor.PlayerSession);
+                    // Moff end
 
                     // Clone - Spawn but without the mind transfer, also spawns at the user's coordinates not the target's
                     args.Verbs.Add(new Verb()
@@ -182,7 +188,10 @@ namespace Content.Server.Administration.Systems
 
                             var stationUid = _stations.GetOwningStation(args.Target);
 
-                            var profile = _gameTicker.GetPlayerProfile(targetActor.PlayerSession);
+                            // Moff - Multi-character selection: clone the character they actually
+                            // spawned as, not whichever one is selected in the lobby.
+                            var profile = _moffCharacterPicker.GetSpawnedProfile(targetActor.PlayerSession.UserId)
+                                          ?? _gameTicker.GetPlayerProfile(targetActor.PlayerSession);
                             _spawning.SpawnPlayerMob(coords.Value, null, profile, stationUid);
                         },
                         ConfirmationPopup = true,
@@ -230,7 +239,12 @@ namespace Content.Server.Administration.Systems
                     {
                         Text = Loc.GetString("admin-player-actions-respawn"),
                         Message = Loc.GetString("admin-player-actions-respawn-message"),
-                        Category = VerbCategory.Admin,
+                        // Moff Start - Multi-character selection: sits alongside the per-character
+                        // spawn entries, below them.
+                        // Category = VerbCategory.Admin,
+                        Category = VerbCategory.Spawn,
+                        Priority = -1,
+                        // Moff end
                         Act = () =>
                         {
                             _console.ExecuteCommand(player, $"respawn \"{mindComp.UserId}\"");

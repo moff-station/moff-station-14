@@ -1,4 +1,5 @@
 using System.Linq;
+using Content.Client._Moffstation.Lobby.UI;
 using Content.Client._Moffstation.Preferences;
 using Content.Shared.Preferences;
 
@@ -7,6 +8,31 @@ namespace Content.Client.Lobby.UI;
 
 public sealed partial class CharacterSetupGui
 {
+    private MoffJobPriorityEditor? _moffJobPriorityEditor;
+
+    /// <summary>
+    /// Job priorities apply to the whole player, so they get their own pane next to the character
+    /// editor rather than living inside any one character.
+    /// </summary>
+    private void InitializeMoffJobPriorities()
+    {
+        _moffJobPriorityEditor = new MoffJobPriorityEditor();
+        JobPriorityEditor.AddChild(_moffJobPriorityEditor);
+
+        JobPrioritiesButton.OnPressed += _ =>
+        {
+            _moffJobPriorityEditor.LoadJobPriorities();
+            ShowMoffJobPriorities(true);
+        };
+    }
+
+    private void ShowMoffJobPriorities(bool show)
+    {
+        CharEditor.Visible = !show;
+        JobPriorityEditor.Visible = show;
+        JobPrioritiesButton.Pressed = show;
+    }
+
     /// <summary>
     /// Slots are not reindexed on deletion, so a new character can inherit a deleted one's
     /// disabled flag.
