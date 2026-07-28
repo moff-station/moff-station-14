@@ -1,21 +1,4 @@
-﻿using Content.Shared.Whitelist;
-using JetBrains.Annotations;
-using Robust.Shared.Audio;
-using Robust.Shared.GameStates;
-using Robust.Shared.Prototypes;
-using Robust.Shared.Serialization;
-using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom;
-using Content.Shared.Damage;
-using Content.Shared.Damage.Prototypes; //Moffstation - recycler damage change
-using Content.Shared.FixedPoint; //Moffstation - recycler damage change
-using Content.Shared.Whitelist;
-using JetBrains.Annotations;
-using Robust.Shared.Audio;
-using Robust.Shared.GameStates;
-using Robust.Shared.Prototypes;
-using Robust.Shared.Serialization;
-using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom;
-using Content.Shared.Damage;
+﻿using Content.Shared.Damage;
 using Content.Shared.Damage.Prototypes;
 using Content.Shared.FixedPoint;
 using Content.Shared.Whitelist;

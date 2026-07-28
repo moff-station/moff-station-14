@@ -74,41 +74,6 @@
     damageContainer: Biological
   - type: Destructible
     thresholds:
-    - trigger: # Moffstation start - reimplement gibbing and ashing
-        !type:DamageTypeTrigger
-        damageType: Blunt
-        damage: 400
-      behaviors:
-      - !type:GibBehavior { }
-    - trigger:
-        !type:DamageTypeTrigger
-        damageType: Heat
-        damage: 1500
-      behaviors:
-      - !type:SpawnEntitiesBehavior
-        spawnInContainer: true
-        spawn:
-          Ash:
-            min: 1
-            max: 1
-      - !type:BurnBodyBehavior
-      - !type:PlaySoundBehavior
-        sound:
-          collection: MeatLaserImpact # Moffstation end
-    # Moffstation - Start - Caustic Damage Acidifies Corpses
-    - trigger:
-        !type:DamageTypeTrigger
-        damageType: Caustic
-        damage: 400
-      behaviors:
-      - !type:SpawnEntitiesBehavior
-        spawnInContainer: false
-        spawn:
-          Acidifier:
-            min: 1
-            max: 1
-      - !type:GibBehavior { }
-    # Moffstation - End
     - trigger:
         !type:DamageTypeTrigger
         damageType: Blunt
@@ -145,6 +110,20 @@
         damage: 40
       behaviors:
       - !type:VomitBehavior
+      # Moffstation - Start - Caustic Damage Acidifies Corpses
+    - trigger:
+        !type:DamageTypeTrigger
+        damageType: Caustic
+        damage: 400
+      behaviors:
+      - !type:SpawnEntitiesBehavior
+        spawnInContainer: false
+        spawn:
+          Acidifier:
+            min: 1
+            max: 1
+      - !type:GibBehavior { }
+    # Moffstation - End
   - type: RadiationReceiver
   - type: Stamina
   - type: StunVisuals
