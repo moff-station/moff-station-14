@@ -3,27 +3,17 @@ using Robust.Shared.Serialization;
 
 namespace Content.Shared._Moffstation.Robotics.RoboticsConsole;
 
-public abstract class SharedMoffRoboticsConsoleSystem : EntitySystem
-{
-}
-
-
 [Serializable, NetSerializable]
-public sealed class MoffRoboticsConsoleState : BoundUserInterfaceState
+public sealed class MoffRoboticsConsoleState(List<BorgSensorStatus> cyborgs, bool allowBorgControl)
+    : BoundUserInterfaceState
 {
     /// <summary>
     /// Map of device network addresses to cyborg data.
     /// </summary>
-    public List<BorgSensorStatus> Cyborgs;
+    public List<BorgSensorStatus> Cyborgs = cyborgs;
 
     /// <summary>
     /// If the UI will have the buttons to disable and destroy.
     /// </summary>
-    public bool AllowBorgControl;
-
-    public MoffRoboticsConsoleState(List<BorgSensorStatus> cyborgs, bool allowBorgControl)
-    {
-        Cyborgs = cyborgs;
-        AllowBorgControl = allowBorgControl;
-    }
+    public bool AllowBorgControl = allowBorgControl;
 }

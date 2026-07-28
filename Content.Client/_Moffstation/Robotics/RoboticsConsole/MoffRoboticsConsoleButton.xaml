@@ -35,31 +35,31 @@
                         HorizontalExpand="True"
                         VerticalExpand="True"
                         Visible="False">
-        <BoxContainer Orientation="Horizontal"
-                      HorizontalExpand="True">
-            <TextureRect Name="BorgSprite"
-                         HorizontalAlignment="Center"
-                         VerticalAlignment="Center"
-                         TextureScale="4 4"/>
-            <customs:VSeparator Margin="4 4 4 4"/>
-            <BoxContainer Orientation="Vertical"
-                          HorizontalExpand="True"
-                          VerticalExpand="True"
-                          VerticalAlignment="Center">
-                <RichTextLabel Name="BrainLabel"/>
-                <RichTextLabel Name="IntegrityLabel"/>
-                <RichTextLabel Name="BatteriesLabel"/>
-                <RichTextLabel Name="ModulesLabel"/>
+            <BoxContainer Orientation="Horizontal"
+                          HorizontalExpand="True">
+                <TextureRect Name="BorgSprite"
+                             HorizontalAlignment="Center"
+                             VerticalAlignment="Center"
+                             TextureScale="4 4"/>
+                <customs:VSeparator Margin="4 4 4 4"/>
+                <BoxContainer Orientation="Vertical"
+                              HorizontalExpand="True"
+                              VerticalExpand="True"
+                              VerticalAlignment="Center">
+                    <RichTextLabel Name="BrainLabel"/>
+                    <RichTextLabel Name="IntegrityLabel"/>
+                    <RichTextLabel Name="BatteriesLabel"/>
+                    <RichTextLabel Name="ModulesLabel"/>
+                </BoxContainer>
+                <BoxContainer Orientation="Vertical"
+                              VerticalExpand="True"
+                              VerticalAlignment="Center">
+                    <Button Name="DisableButton"
+                            Text="{Loc 'robotics-console-disable'}"/>
+                    <Button Name="DestroyButton"
+                            Text="{Loc 'robotics-console-destroy'}"/>
+                </BoxContainer>
             </BoxContainer>
-            <BoxContainer Orientation="Vertical"
-                          VerticalExpand="True"
-                          VerticalAlignment="Center">
-                <Button Name="DisableButton"
-                        Text="{Loc 'robotics-console-disable'}"/>
-                <Button Name="DestroyButton"
-                        Text="{Loc 'robotics-console-destroy'}"/>
-            </BoxContainer>
-        </BoxContainer>
         </PanelContainer>
     </BoxContainer>
 </Button>

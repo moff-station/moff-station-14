@@ -1,17 +1,16 @@
 using Content.Shared._Moffstation.Medical.CrewMonitoring;
 using Content.Shared._Moffstation.Robotics.RoboticsConsole;
 using Content.Shared.Robotics;
+using JetBrains.Annotations;
 using Robust.Client.UserInterface;
 
 namespace Content.Client._Moffstation.Robotics.RoboticsConsole;
 
-public sealed class MoffRoboticsConsoleBoundUserInterface : BoundUserInterface
+[UsedImplicitly]
+public sealed class MoffRoboticsConsoleBoundUserInterface(EntityUid owner, Enum uiKey)
+    : BoundUserInterface(owner, uiKey)
 {
     private MoffRoboticsConsoleWindow? _window;
-
-    public MoffRoboticsConsoleBoundUserInterface(EntityUid owner, Enum uiKey) : base(owner, uiKey)
-    {
-    }
 
     protected override void Open()
     {
@@ -43,7 +42,7 @@ public sealed class MoffRoboticsConsoleBoundUserInterface : BoundUserInterface
     protected override void UpdateState(BoundUserInterfaceState state)
     {
         base.UpdateState(state);
-        if (state is not MoffRoboticsConsoleState { } cast)
+        if (state is not MoffRoboticsConsoleState cast)
             return;
 
         _window?.Update(cast);

@@ -23,20 +23,16 @@ public sealed partial class MoffRoboticsConsoleWindow : FancyWindow
     [Dependency] private IPrototypeManager _prototypeManager = default!;
     private readonly SpriteSystem _spriteSystem;
 
-    private Texture blipTexture;
-    private Texture borgBlipTexture;
-
+    private readonly Texture _borgBlipTexture;
     private NetEntity? _trackedEntity;
-
-    Dictionary<NetEntity, MoffRoboticsConsoleButton> buttons = new();
+    private readonly Dictionary<NetEntity, MoffRoboticsConsoleButton> _buttons = new();
 
     public MoffRoboticsConsoleWindow()
     {
         RobustXamlLoader.Load(this);
         _spriteSystem = _entManager.System<SpriteSystem>();
 
-        blipTexture = _spriteSystem.Frame0(new SpriteSpecifier.Texture(new ResPath("/Textures/Interface/NavMap/beveled_circle.png")));
-        borgBlipTexture = blipTexture; // change later.
+        _borgBlipTexture = _spriteSystem.Frame0(new SpriteSpecifier.Texture(new ResPath("/Textures/Interface/NavMap/beveled_circle.png")));
     }
 
     public void Setup(EntityUid? mapUid, string? stationName)
@@ -50,13 +46,13 @@ public sealed partial class MoffRoboticsConsoleWindow : FancyWindow
     {
         foreach (var borg in status.Cyborgs)
         {
-            if (! buttons.Keys.Contains(borg.OwnerUid))
+            if (!_buttons.ContainsKey(borg.OwnerUid))
                 CreateSensor(borg, status.AllowBorgControl);
             else
                 UpdateSensor(borg.OwnerUid, borg, status.AllowBorgControl);
         }
 
-        foreach (var removed in buttons.Keys.Except(status.Cyborgs.Select(x => x.OwnerUid)))
+        foreach (var removed in _buttons.Keys.Except(status.Cyborgs.Select(x => x.OwnerUid)))
         {
             RemoveSensor(removed);
         }
@@ -66,25 +62,27 @@ public sealed partial class MoffRoboticsConsoleWindow : FancyWindow
 
     private void CreateSensor(BorgSensorStatus sensor, bool controlsEnabled)
     {
-        var button = new MoffRoboticsConsoleButton(sensor, sensor.OwnerUid == _trackedEntity, controlsEnabled);
+        var button = new MoffRoboticsConsoleButton();
+        button.Update(sensor, sensor.OwnerUid == _trackedEntity, controlsEnabled);
+
         button.OnPressed += _ => SetFocus(sensor.OwnerUid);
         button.OnDisablePressed += () => OnDisablePressed?.Invoke(sensor.OwnerUid);
         button.OnDestroyPressed += () => OnDestroyPressed?.Invoke(sensor.OwnerUid);
 
-        buttons.Add(sensor.OwnerUid, button);
+        _buttons.Add(sensor.OwnerUid, button);
         SensorsTable.AddChild(button);
 
         if (sensor.Coordinates is not { } coordinates || !NavMap.Visible)
             return;
 
-        var blip = borgBlipTexture;
-        if (_prototypeManager.TryIndex<JobIconPrototype>(sensor.JobIcon, out var jobIcon))
+        var blip = _borgBlipTexture;
+        if (_prototypeManager.Resolve(sensor.JobIcon, out var jobIcon))
             blip = _spriteSystem.Frame0(jobIcon.Icon);
 
         NavMap.TrackedEntities.TryAdd(
             sensor.OwnerUid,
             new NavMapBlip(
-                CoordinatesToLocal(coordinates),
+                _entManager.GetCoordinates(coordinates),
                 blip,
                 Color.White,
                 sensor.SuitSensorUid == _trackedEntity,
@@ -94,21 +92,20 @@ public sealed partial class MoffRoboticsConsoleWindow : FancyWindow
 
     private void UpdateSensor(NetEntity borg, BorgSensorStatus sensor, bool controlsEnabled)
     {
-        if (!buttons.TryGetValue(borg, out var button))
+        if (!_buttons.TryGetValue(borg, out var button))
             return;
 
         button.Update(sensor, _trackedEntity == borg, controlsEnabled);
 
-        var blip = borgBlipTexture;
-        if (_prototypeManager.TryIndex<JobIconPrototype>(sensor.JobIcon, out var jobIcon))
+        var blip = _borgBlipTexture;
+        if (_prototypeManager.Resolve(sensor.JobIcon, out var jobIcon))
             blip = _spriteSystem.Frame0(jobIcon.Icon);
 
         if (sensor.Coordinates is { } coordinates)
         {
-            if (NavMap.TrackedEntities.ContainsKey(borg))
+            if (NavMap.TrackedEntities.TryGetValue(borg, out var tick))
             {
-                var tick = NavMap.TrackedEntities[borg];
-                tick.Coordinates = CoordinatesToLocal(coordinates);
+                tick.Coordinates = _entManager.GetCoordinates(coordinates);
                 tick.Blinks = _trackedEntity == borg;
                 NavMap.TrackedEntities[borg] = tick;
             }
@@ -117,7 +114,7 @@ public sealed partial class MoffRoboticsConsoleWindow : FancyWindow
                 NavMap.TrackedEntities.TryAdd(
                     sensor.OwnerUid,
                     new NavMapBlip(
-                        CoordinatesToLocal(coordinates),
+                        _entManager.GetCoordinates(coordinates),
                         blip,
                         Color.White,
                         sensor.SuitSensorUid == _trackedEntity,
@@ -133,27 +130,25 @@ public sealed partial class MoffRoboticsConsoleWindow : FancyWindow
 
     private void RemoveSensor(NetEntity borg)
     {
-        if (!buttons.TryGetValue(borg, out var button))
+        if (!_buttons.TryGetValue(borg, out var button))
             return;
 
         SensorsTable.RemoveChild(button);
         NavMap.TrackedEntities.Remove(borg);
-    }
+        _buttons.Remove(borg);
 
-
-    private EntityCoordinates CoordinatesToLocal(NetCoordinates refCoords)
-    {
-        return new EntityCoordinates(_entManager.GetEntity(refCoords.NetEntity), refCoords.X, refCoords.Y);
+        if (_trackedEntity == borg)
+            _trackedEntity = null;
     }
 
     private void SetFocus(NetEntity entity)
     {
-        if (_trackedEntity is {} old && buttons[old] is { } oldButton)
+        if (_trackedEntity is {} old && _buttons[old] is { } oldButton)
             oldButton.SetExpanded(false);
 
         _trackedEntity = entity == _trackedEntity ? null : entity;
 
-        if (_trackedEntity is {} cur && buttons[cur] is { } curButton)
+        if (_trackedEntity is {} cur && _buttons[cur] is { } curButton)
             curButton.SetExpanded(true);
     }
 }

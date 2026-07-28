@@ -1,6 +1,7 @@
 using Content.Shared._Moffstation.Sensors;
 using Content.Shared.Medical.SuitSensor;
 using Content.Shared.Robotics;
+using Content.Shared.StatusIcon;
 using Robust.Shared.Map;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization;
@@ -9,27 +10,27 @@ using Robust.Shared.Utility;
 namespace Content.Shared._Moffstation.Robotics.RoboticsConsole;
 
 [Serializable, NetSerializable]
-public sealed class BorgSensorStatus(SuitSensorStatus status, CyborgControlData control)
+public readonly record struct BorgSensorStatus(SuitSensorStatus Status, CyborgControlData Control, TimeSpan TimeOut)
 {
-    public TimeSpan Timestamp = status.Timestamp;
-    public ProtoId<SensorTypePrototype> SensorType = status.SensorType;
-    public NetEntity SuitSensorUid = status.SuitSensorUid;
-    public NetEntity OwnerUid = status.OwnerUid;
-    public NetCoordinates? Coordinates = status.Coordinates;
-    public string Name = status.Name;
-    public string JobIcon = status.JobIcon;
-    public bool IsAlive = status.IsAlive;
-    public int? TotalDamage = status.TotalDamage;
-    public int? TotalDamageThreshold = status.TotalDamageThreshold;
-    public float HpPercent = control.HpPercent;
+    public readonly TimeSpan Timestamp = Status.Timestamp;
+    public readonly ProtoId<SensorTypePrototype> SensorType = Status.SensorType;
+    public readonly NetEntity SuitSensorUid = Status.SuitSensorUid;
+    public readonly NetEntity OwnerUid = Status.OwnerUid;
+    public readonly NetCoordinates? Coordinates = Status.Coordinates;
+    public readonly string Name = Status.Name;
+    public readonly ProtoId<JobIconPrototype> JobIcon = Status.JobIcon;
+    public readonly bool IsAlive = Status.IsAlive;
+    public readonly int? TotalDamage = Status.TotalDamage;
+    public readonly int? TotalDamageThreshold = Status.TotalDamageThreshold;
+    public readonly float HpPercent = Control.HpPercent;
 
-    public SpriteSpecifier? ChassisSprite = control.ChassisSprite;
-    public string ChassisName = control.ChassisName;
-    public float Charge = control.Charge;
-    public int ModuleCount = control.ModuleCount;
-    public bool HasBrain = control.HasBrain;
-    public bool CanDisable = control.CanDisable;
-    public TimeSpan Timeout = TimeSpan.Zero;
+    public readonly SpriteSpecifier? ChassisSprite = Control.ChassisSprite;
+    public readonly string ChassisName = Control.ChassisName;
+    public readonly float Charge = Control.Charge;
+    public readonly int ModuleCount = Control.ModuleCount;
+    public readonly bool HasBrain = Control.HasBrain;
+    public readonly bool CanDisable = Control.CanDisable;
+    public readonly TimeSpan Timeout = TimeOut;
 
     public float? DamagePercentage => TotalDamageThreshold == null || TotalDamage == null ? null : TotalDamage / (float) TotalDamageThreshold;
 }

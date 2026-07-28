@@ -13,22 +13,22 @@ namespace Content.Client._Moffstation.Robotics.RoboticsConsole;
 [GenerateTypedNameReferences]
 public sealed partial class MoffRoboticsConsoleButton : Button
 {
-    public event Action? OnDisablePressed = null;
-    public event Action? OnDestroyPressed = null;
+    public event Action? OnDisablePressed;
+    public event Action? OnDestroyPressed;
 
     [Dependency] private IEntityManager _entManager = default!;
     [Dependency] private IPrototypeManager _prototypeManager = default!;
-    private SpriteSystem _sprite;
+    private readonly SpriteSystem _sprite;
 
-    public MoffRoboticsConsoleButton(BorgSensorStatus sensor, bool expanded, bool controlsEnabled)
+    public MoffRoboticsConsoleButton()
     {
         RobustXamlLoader.Load(this);
         IoCManager.InjectDependencies(this);
         _sprite = _entManager.System<SpriteSystem>();
 
-        Update(sensor, expanded, controlsEnabled);
         DisableButton.OnPressed += _ => OnDisablePressed?.Invoke();
         DestroyButton.OnPressed += _ => OnDestroyPressed?.Invoke();
+        OnPressed += _ => DetailedPanel.Visible = !DetailedPanel.Visible;
     }
 
     public void SetExpanded(bool expanded)
@@ -50,21 +50,23 @@ public sealed partial class MoffRoboticsConsoleButton : Button
         BorgSprite.Texture = _sprite.Frame0(sensor.ChassisSprite!);
 
         var hpPercentColor =
-            sensor.HpPercent switch {
+            sensor.HpPercent switch
+            {
                 < 0.2f => "#FF6C7F", // red
                 < 0.4f => "#EF973C", // orange
                 < 0.6f => "#E8CB2D", // yellow
                 < 0.8f => "#30CC19", // green
-                _ => "#00D3B8" // cyan
+                _ => "#00D3B8", // cyan
             };
 
         var batteryColor =
-            sensor.Charge switch {
+            sensor.Charge switch
+            {
                 < 0.2f => "#FF6C7F", // red
                 < 0.4f => "#EF973C", // orange
                 < 0.6f => "#E8CB2D", // yellow
                 < 0.8f => "#30CC19", // green
-                _ => "#00D3B8" // cyan
+                _ => "#00D3B8", // cyan
             };
 
         BrainLabel.Text = Loc.GetString("robotics-console-brain", ("brain", sensor.HasBrain));
@@ -76,31 +78,24 @@ public sealed partial class MoffRoboticsConsoleButton : Button
             ("color", batteryColor));
         ModulesLabel.Text = Loc.GetString("robotics-console-modules", ("count", sensor.ModuleCount));
 
-        OnPressed += _ => DetailedPanel.Visible = !DetailedPanel.Visible;
-
         DetailedPanel.Visible = expanded;
 
         DisableButton.Disabled = !controlsEnabled;
         DestroyButton.Disabled = !controlsEnabled;
     }
 
-    private SpriteSpecifier StatusSpecifier(BorgSensorStatus sensor)
+    private static SpriteSpecifier StatusSpecifier(BorgSensorStatus sensor)
     {
-        var specifier = new SpriteSpecifier.Rsi(new ResPath("Interface/Alerts/human_crew_monitoring.rsi"), "alive");
-
         if (!sensor.IsAlive)
-        {
-            specifier = new SpriteSpecifier.Rsi(new ResPath("Interface/Alerts/human_crew_monitoring.rsi"), "dead");
-        }
-        else if (sensor.DamagePercentage != null)
-        {
-            var index = MathF.Round(4f * sensor.DamagePercentage.Value);
-            if (index >= 5)
-                specifier = new SpriteSpecifier.Rsi(new ResPath("Interface/Alerts/human_crew_monitoring.rsi"), "critical");
-            else
-                specifier = new SpriteSpecifier.Rsi(new ResPath("Interface/Alerts/human_crew_monitoring.rsi"), "health" + index);
-        }
+            return new SpriteSpecifier.Rsi(new ResPath("Interface/Alerts/human_crew_monitoring.rsi"), "dead");
 
-        return specifier;
+        if (sensor.DamagePercentage == null)
+            return new SpriteSpecifier.Rsi(new ResPath("Interface/Alerts/human_crew_monitoring.rsi"), "alive");
+
+        var index = MathF.Round(4f * sensor.DamagePercentage.Value);
+        return new SpriteSpecifier.Rsi(
+            new ResPath("Interface/Alerts/human_crew_monitoring.rsi"),
+            index >= 5 ? "critical" : "health" + index);
+
     }
 }

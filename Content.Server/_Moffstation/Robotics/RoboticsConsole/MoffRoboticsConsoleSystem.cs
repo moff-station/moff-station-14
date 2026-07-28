@@ -17,7 +17,7 @@ using Robust.Shared.Timing;
 
 namespace Content.Server._Moffstation.Robotics.RoboticsConsole;
 
-public sealed partial class MoffRoboticsConsoleSystem : SharedMoffRoboticsConsoleSystem
+public sealed partial class MoffRoboticsConsoleSystem : EntitySystem
 {
     [Dependency] private IGameTiming _time = default!;
     [Dependency] private SuitSensorSystem _sensors = default!;
@@ -50,7 +50,7 @@ public sealed partial class MoffRoboticsConsoleSystem : SharedMoffRoboticsConsol
         HashSet<EntityUid> removed = [];
         while (query.MoveNext(out var uid, out var comp))
         {
-            // remove cyborgs that havent pinged in a while
+            // remove cyborgs that have not pinged for a long time
             foreach (var (borg, data) in comp.Cyborgs)
             {
                 if (now >= data.Timeout)
@@ -65,20 +65,20 @@ public sealed partial class MoffRoboticsConsoleSystem : SharedMoffRoboticsConsol
 
             if (removed.Count > 0)
                 UpdateUserInterface((uid, comp));
+
+            removed.Clear();
         }
     }
 
     [SubscribeLocalEvent]
     private void OnPacketReceived(Entity<MoffRoboticsConsoleComponent> ent, ref DeviceNetworkPacketEvent args)
     {
-        var sensor = _sensors.PacketToSuitSensor(args.Data);
-        if (sensor == null ||
+        if (_sensors.PacketToSuitSensor(args.Data) is not {} sensor ||
             !ent.Comp.SensorTypes.Contains(sensor.SensorType) ||
-            !_borgs.TryControlData(GetEntity(sensor.OwnerUid), out var controls))
+            _borgs.ControlDataOrNull(GetEntity(sensor.OwnerUid)) is not {} controls)
             return;
 
-        var data = new BorgSensorStatus(sensor, controls.Value);
-        data.Timeout = _time.CurTime + ent.Comp.Timeout;
+        var data = new BorgSensorStatus(sensor, controls, _time.CurTime + ent.Comp.Timeout);
 
         ent.Comp.Cyborgs[GetEntity(sensor.OwnerUid)] = data;
         UpdateUserInterface(ent);
@@ -101,7 +101,7 @@ public sealed partial class MoffRoboticsConsoleSystem : SharedMoffRoboticsConsol
             [DeviceNetworkConstants.Command] = RoboticsConsoleConstants.NET_DISABLE_COMMAND,
         };
 
-        if (!TryGetAddress(args.Target, out var address))
+        if (AddressOrNull(args.Target) is not {} address)
             return;
 
         _deviceNetwork.QueuePacket(ent, address, payload);
@@ -122,7 +122,7 @@ public sealed partial class MoffRoboticsConsoleSystem : SharedMoffRoboticsConsol
             [DeviceNetworkConstants.Command] = RoboticsConsoleConstants.NET_DESTROY_COMMAND,
         };
 
-        if (!TryGetAddress(args.Target, out var address))
+        if (AddressOrNull(args.Target) is not {} address)
             return;
 
         _deviceNetwork.QueuePacket(ent, address, payload);
@@ -141,14 +141,5 @@ public sealed partial class MoffRoboticsConsoleSystem : SharedMoffRoboticsConsol
     }
 
 
-    private bool TryGetAddress(NetEntity borg, [NotNullWhen(true)] out string? address)
-    {
-        address = null;
-        if (!TryComp<DeviceNetworkComponent>(GetEntity(borg), out var comp))
-            return false;
-
-        address = comp.Address;
-        return true;
-    }
-
+    private string? AddressOrNull(NetEntity borg) => CompOrNull<DeviceNetworkComponent>(GetEntity(borg))?.Address;
 }
