@@ -7017,6 +7017,13 @@ Entries:
   id: 1647
   time: '2026-07-19T17:16:00.000'
   url: https://github.com/moff-station/moff-station-14/pull/1647
+- author: DrWhoFan13, BlueMoon59, TGRCDev
+  changes:
+  - message: Pronouns now show up on crew manifest
+    type: add
+  id: 1648
+  time: '2026-07-28T18:06:03.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1648
 - author: gummyema
   changes:
   - message: Added engineering and medical maid outfits
@@ -7130,6 +7137,13 @@ Entries:
   id: 1664
   time: '2026-07-18T21:49:36.000'
   url: https://github.com/moff-station/moff-station-14/pull/1664
+- author: StudMuffin
+  changes:
+  - message: the atmos fireaxe can be used to remove hull plating again
+    type: add
+  id: 1667
+  time: '2026-07-26T09:51:58.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1667
 - author: Centronias
   changes:
   - message: Resomis' night vision is once again disabled while they are immune to
@@ -7167,6 +7181,16 @@ Entries:
   url: https://github.com/moff-station/moff-station-14/pull/1672
 - author: DuckManZach
   changes:
+  - message: Fixed DAGD being far more common than it should be
+    type: fix
+  - message: Removed escape to CC, people dont really pick it in the objective picker.
+      If you wanna live then live!
+    type: remove
+  id: 1674
+  time: '2026-07-27T21:20:10.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1674
+- author: DuckManZach
+  changes:
   - message: You now rejuvenate after getting a kill in gungame!
     type: add
   id: 1676
@@ -7200,6 +7224,17 @@ Entries:
   id: 1680
   time: '2026-07-20T23:00:56.000'
   url: https://github.com/moff-station/moff-station-14/pull/1680
+- author: Centronias, FreianOfVoid
+  changes:
+  - message: Floor tiles converted by a replicator nest can now be harvested for a
+      bit of steel and plasteel by using a welder on them.
+    type: add
+  - message: Replicator nests now properly drain liquids near themselves. No more
+      puddles of blood hovering over the hole.
+    type: fix
+  id: 1681
+  time: '2026-07-27T04:18:09.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1681
 - author: Nyxilath
   changes:
   - message: Vox Syndicate Footsoldiers now spawn with nitrogen tanks.
@@ -7237,6 +7272,13 @@ Entries:
   url: https://github.com/moff-station/moff-station-14/pull/1691
 - author: DuckManZach
   changes:
+  - message: You are no longer guaranteed to a command role if youre queued for it!
+    type: fix
+  id: 1693
+  time: '2026-07-26T19:44:56.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1693
+- author: DuckManZach
+  changes:
   - message: Washing machines are now fully predicted
     type: tweak
   id: 1695
@@ -7254,6 +7296,13 @@ Entries:
   id: 1699
   time: '2026-07-24T16:52:18.000'
   url: https://github.com/moff-station/moff-station-14/pull/1699
+- author: SillyAmy
+  changes:
+  - message: Made high-heeled boots available in the hacked dramadrobe
+    type: tweak
+  id: 1700
+  time: '2026-07-25T17:20:19.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1700
 - author: Centronias
   changes:
   - message: Added Elspeth Clerie's personal item
@@ -7268,5 +7317,69 @@ Entries:
   id: 1707
   time: '2026-07-23T03:28:15.000'
   url: https://github.com/moff-station/moff-station-14/pull/1707
+- author: PanzerVo
+  changes:
+  - message: Floodlights in the Engi-Vend
+    type: add
+  id: 1713
+  time: '2026-07-26T03:18:26.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1713
+- author: DuckManZach
+  changes:
+  - message: Map votes now fire mid-lobby, so that the playercount is more accurate
+      to the map.
+    type: tweak
+  id: 1714
+  time: '2026-07-28T19:00:36.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1714
+- author: FreianOfVoid
+  changes:
+  - message: Fixed the positioning and size of the Hephaestus AI iconography to match
+      the new core sprites!
+    type: fix
+  id: 1718
+  time: '2026-07-25T17:20:19.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1718
+- author: Nyxilath
+  changes:
+  - message: The Infiltrator shuttle now spawns with a sledgehammer instead of a fireaxe.
+    type: tweak
+  id: 1720
+  time: '2026-07-26T09:31:56.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1720
+- author: FreianOfVoid
+  changes:
+  - message: Added one more thruster to the Pirate Corsair's shuttle so it will be
+      able to slow down properly!
+    type: fix
+  id: 1724
+  time: '2026-07-27T19:54:15.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1724
+- author: Centronias
+  changes:
+  - message: People being thrown into the Replicator Nest are no longer removed from
+      the round, and their bodies can be recovered by destroying the hole.
+    type: fix
+  - message: Items now visually "fall" into replicator nests.
+    type: fix
+  id: 1728
+  time: '2026-07-27T20:59:56.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1728
+- author: The Dai Li
+  changes:
+  - message: There is no atmos bug in Moffstation.
+    type: tweak
+  id: 1729
+  time: '2026-07-27T16:05:58.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1729
+- author: Dave
+  changes:
+  - message: Qm hardsuit sprites for Moff
+    type: add
+  - message: vox hardsuits now have tails added
+    type: fix
+  id: 1730
+  time: '2026-07-28T18:06:03.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1730
 Name: Mofflog
 Order: -2

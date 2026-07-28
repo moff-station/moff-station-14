@@ -148,11 +148,14 @@ public abstract partial class SharedReplicatorNestSystem : EntitySystem
         {
             Log.Debug($"Replicator nest {ToPrettyString(entity)} consumed entity {ToPrettyString(consumed)}");
 
-            if (_mind.TryGetMind(consumed, out _, out _) &&
+            if (_mind.TryGetMind(consumed, out _, out _) ||
                 _whitelist.CheckBoth(consumed, entity.Comp.PreservationBlacklist, entity.Comp.PreservationWhitelist))
             {
                 // Preserve entities with a mind or which pass the lists.
-                ContainerSystem.Insert(consumed, entity.Comp.Hole);
+                if (entity.Comp.Hole != null) // This can happen if your eye is the entity going in the hole, I assume because of PVS jank or something. So just... don't explode.
+                {
+                    ContainerSystem.Insert(consumed, entity.Comp.Hole);
+                }
                 // TODO Force-stunning things in the hole is pretty hacky
                 // used stunned to prevent any funny being done inside the pit
                 EnsureComp<StunnedComponent>(consumed);
