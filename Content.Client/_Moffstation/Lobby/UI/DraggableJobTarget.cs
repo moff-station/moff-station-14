@@ -48,9 +48,10 @@ public sealed class DraggableJobTarget : Control
 
         _mainBox = new BoxContainer
         {
-            Margin = new Thickness(10, 0),
+            Margin = new Thickness(4, 0),
             Orientation = BoxContainer.LayoutOrientation.Vertical,
             HorizontalExpand = true,
+            VerticalExpand = true,
         };
         AddChild(_mainBox);
     }
@@ -84,12 +85,13 @@ public sealed class DraggableJobTarget : Control
             Margin = new Thickness(0, 6),
         });
 
+        // All four containers hang from the top so their icons line up under the headers.
         _jobIconContainer = IsHighPriority
             ? new BoxContainer
             {
                 Name = "HighBox",
                 HorizontalAlignment = HAlignment.Center,
-                VerticalAlignment = VAlignment.Center,
+                VerticalAlignment = VAlignment.Top,
                 // The width of one high priority icon, so the box does not resize when emptied.
                 MinWidth = 64,
             }
@@ -97,6 +99,10 @@ public sealed class DraggableJobTarget : Control
             {
                 Columns = 5,
                 HorizontalAlignment = HAlignment.Center,
+                VerticalAlignment = VAlignment.Top,
+                // Tighter than the default 4 so the columns fit the lobby panel's width.
+                HSeparationOverride = 2,
+                VSeparationOverride = 2,
             };
 
         _mainBox.AddChild(_jobIconContainer);

@@ -97,7 +97,9 @@ public sealed partial class LobbyCharacterPreviewPanel
     /// </summary>
     private void BalanceMoffColumns()
     {
-        const int totalColumns = 15;
+        // Sized so the three grids plus the high slot, rules and margins stay inside the lobby's
+        // right panel (server.lobby_right_panel_width, 500 by default) at an 8px icon and scale 3.
+        const int totalColumns = 12;
 
         // Each header label is this many columns wide on its own, so never go narrower.
         const int minNever = 3;

@@ -33,7 +33,8 @@
                           VerticalExpand="True"
                           HorizontalExpand="True"
                           HorizontalAlignment="Center"
-                          SeparationOverride="6">
+                          MinHeight="220"
+                          SeparationOverride="2">
                 <moffui:DraggableJobTarget Name="NeverBox" Priority="Never" />
                 <PanelContainer MinSize="2 0">
                     <PanelContainer.PanelOverride>
