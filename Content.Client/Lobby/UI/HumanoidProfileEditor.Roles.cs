@@ -27,6 +27,10 @@ public sealed partial class HumanoidProfileEditor
 
     private List<(string, RequirementsSelector)> _jobPriorities = new();
 
+    // Moff - RadioOptions ids, not JobPriority values.
+    private const int MoffJobPreferenceNo = 0;
+    private const int MoffJobPreferenceYes = 1;
+
     private readonly Dictionary<string, BoxContainer> _jobCategories;
 
     /// <summary>
@@ -37,8 +41,8 @@ public sealed partial class HumanoidProfileEditor
         foreach (var (jobId, prioritySelector) in _jobPriorities)
         {
             var priority = Profile?.JobPriorities.GetValueOrDefault(jobId, JobPriority.Never) ?? JobPriority.Never;
-            // Moff - The selector is now yes/no, so collapse any legacy Low/High onto "yes".
-            prioritySelector.Select((int)(priority == JobPriority.Never ? JobPriority.Never : JobPriority.Medium));
+            // Moff - Yes/no selector, so any legacy Low/High collapses onto "yes".
+            prioritySelector.Select(priority == JobPriority.Never ? MoffJobPreferenceNo : MoffJobPreferenceYes);
         }
     }
 
@@ -149,10 +153,12 @@ public sealed partial class HumanoidProfileEditor
                 ("humanoid-profile-editor-job-priority-high-button", (int) JobPriority.High),
             };
         */
+        // RadioOptions ids are auto-incremented, not the values passed here, so these must stay
+        // index-aligned. Upstream's four entries only lined up with JobPriority by coincidence.
         var items = new[]
         {
-            ("humanoid-profile-editor-job-preference-no-button-moffstation", (int) JobPriority.Never),
-            ("humanoid-profile-editor-job-preference-yes-button-moffstation", (int) JobPriority.Medium),
+            ("humanoid-profile-editor-job-preference-no-button-moffstation", MoffJobPreferenceNo),
+            ("humanoid-profile-editor-job-preference-yes-button-moffstation", MoffJobPreferenceYes),
         };
         // Moff end
 
@@ -239,25 +245,20 @@ public sealed partial class HumanoidProfileEditor
 
                 selector.OnSelected += selectedPrio =>
                 {
-                    var selectedJobPrio = (JobPriority)selectedPrio;
+                    // Moff Start - Yes/no selection; the priority itself is player-global.
+                    var selectedJobPrio = selectedPrio == MoffJobPreferenceNo
+                        ? JobPriority.Never
+                        : JobPriority.Medium;
+
                     Profile = Profile?.WithJobPriority(job.ID, selectedJobPrio);
 
                     foreach (var (jobId, other) in _jobPriorities)
                     {
                         // Sync other selectors with the same job in case of multiple department jobs
                         if (jobId == job.ID)
-                        {
                             other.Select(selectedPrio);
-                            continue;
-                        }
-
-                        if (selectedJobPrio != JobPriority.High || (JobPriority)other.Selected != JobPriority.High)
-                            continue;
-
-                        // Lower any other high priorities to medium.
-                        other.Select((int)JobPriority.Medium);
-                        Profile = Profile?.WithJobPriority(jobId, JobPriority.Medium);
                     }
+                    // Moff end
 
                     // TODO: Only reload on high change (either to or from).
                     ReloadPreview();

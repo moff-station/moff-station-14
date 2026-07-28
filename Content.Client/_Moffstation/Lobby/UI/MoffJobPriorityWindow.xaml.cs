@@ -54,6 +54,7 @@ public sealed partial class MoffJobPriorityWindow : FancyWindow
         _departments.Clear();
         _selectors.Clear();
 
+        // RadioOptions ids are auto-incremented; these only work because they match JobPriority 0-3.
         var items = new[]
         {
             ("humanoid-profile-editor-job-priority-never-button", (int)JobPriority.Never),

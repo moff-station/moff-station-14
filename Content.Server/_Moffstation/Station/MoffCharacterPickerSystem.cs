@@ -4,8 +4,8 @@ using Content.Shared.GameTicking;
 using Content.Shared.Players.PlayTimeTracking;
 using Content.Shared.Preferences;
 using Content.Shared.Roles;
-using Robust.Server.Player;
 using Robust.Shared.Network;
+using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 
@@ -18,7 +18,6 @@ namespace Content.Server._Moffstation.Station;
 public sealed class MoffCharacterPickerSystem : EntitySystem
 {
     [Dependency] private readonly AntagSelectionSystem _antag = default!;
-    [Dependency] private readonly IPlayerManager _playerManager = default!;
     [Dependency] private readonly IPrototypeManager _protoManager = default!;
     [Dependency] private readonly IRobustRandom _random = default!;
     [Dependency] private readonly MoffJobCandidateSystem _candidates = default!;
@@ -42,31 +41,36 @@ public sealed class MoffCharacterPickerSystem : EntitySystem
     }
 
     /// <summary>
-    /// Falls back to <paramref name="fallback"/> when no active character qualifies.
+    /// Null when no active character can take <paramref name="job"/>; never falls back to the
+    /// character selected in the lobby.
     /// </summary>
-    public HumanoidCharacterProfile PickProfile(
-        NetUserId player,
-        ProtoId<JobPrototype> job,
-        HumanoidCharacterProfile fallback)
+    public HumanoidCharacterProfile? PickProfile(ICommonSession player, ProtoId<JobPrototype> job)
     {
-        var picked = PickProfileOrNull(player, job) ?? fallback;
+        var picked = PickProfileOrNull(player, job);
 
-        _spawnedProfiles[player] = picked;
+        if (picked != null)
+            _spawnedProfiles[player.UserId] = picked;
 
         return picked;
     }
 
-    /// <summary>
-    /// Null if they were not spawned by the round-start assigner.
-    /// </summary>
+    /// <summary>For picking a job when the caller has not assigned one, e.g. late joins.</summary>
+    public Dictionary<ProtoId<JobPrototype>, JobPriority> GetJobPriorities(
+        NetUserId player,
+        HumanoidCharacterProfile fallback)
+    {
+        return _candidates.GetJobPriorities(player, fallback);
+    }
+
+    /// <summary>Null if they have not spawned this round.</summary>
     public HumanoidCharacterProfile? GetSpawnedProfile(NetUserId player)
     {
         return _spawnedProfiles.GetValueOrDefault(player);
     }
 
-    private HumanoidCharacterProfile? PickProfileOrNull(NetUserId player, ProtoId<JobPrototype> job)
+    private HumanoidCharacterProfile? PickProfileOrNull(ICommonSession player, ProtoId<JobPrototype> job)
     {
-        var eligible = _candidates.GetEligibleProfiles(player, job);
+        var eligible = _candidates.GetEligibleProfiles(player.UserId, job);
 
         if (eligible.Count == 0)
             return null;
@@ -74,10 +78,7 @@ public sealed class MoffCharacterPickerSystem : EntitySystem
         if (!_protoManager.TryIndex(job, out var jobProto))
             return null;
 
-        if (!_playerManager.TryGetSessionById(player, out var session))
-            return null;
-
-        var playTimes = _playTime.GetPlayTimes(session);
+        var playTimes = _playTime.GetPlayTimes(player);
 
         // Drop characters that don't meet the job's own requirements, e.g. age or species.
         var filtered = eligible.Where(profile =>
@@ -89,9 +90,8 @@ public sealed class MoffCharacterPickerSystem : EntitySystem
                 _protoManager,
                 profile));
 
-        // If the player has already been preselected for antags, only characters that opted in to
-        // every one of those antags can fill the slot.
-        foreach (var antagSet in _antag.GetMoffPreSelectedAntagPrefRoles(session))
+        // A preselected antag can only be filled by a character that opted in to it.
+        foreach (var antagSet in _antag.GetMoffPreSelectedAntagPrefRoles(player))
         {
             filtered = filtered.Where(profile => antagSet.Overlaps(profile.AntagPreferences));
         }
