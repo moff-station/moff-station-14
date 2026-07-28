@@ -90,6 +90,7 @@
   - type: Tag
     tags:
     - WhitelistChameleon
+
 #Engineering Hardsuit
 - type: entity
   parent: [ ClothingHeadHardsuitBase, ClothingHeadSuitWithLightBase, ClothingHeadToggleableWeldingMask ]
@@ -1079,13 +1080,20 @@
 
 #ERT Engineer Hardsuit
 - type: entity
-  parent: [ BaseCentcommContraband, ClothingHeadHelmetHardsuitSyndie ]
+  parent: [ BaseCentcommContraband, ClothingHeadHelmetHardsuitSyndie, ClothingHeadToggleableWeldingMask ]
   id: ClothingHeadHelmetHardsuitERTEngineer
   name: ERT engineer hardsuit helmet
   description: A special hardsuit helmet worn by members of an emergency response team.
   components:
   - type: Sprite
     sprite: Clothing/Head/Hardsuits/ERThelmets/ertengineer.rsi
+    # Moffstation - Start - WOW the ERT suits are old and jank. layers and icon state added so it actually works.
+    layers:
+    - state: icon
+    - state: icon-up
+      visible: false
+      map: [ "visor_icon" ]
+      # Moffstation - End
   - type: Clothing
     sprite: Clothing/Head/Hardsuits/ERThelmets/ertengineer.rsi
   - type: PointLight
