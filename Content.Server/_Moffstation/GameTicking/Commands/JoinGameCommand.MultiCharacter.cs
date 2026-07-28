@@ -4,19 +4,50 @@ using Content.Shared.Preferences;
 using Robust.Shared.Console;
 using Robust.Shared.Player;
 
-// Partial of the upstream JoinGameCommand, so it must sit in the upstream namespace.
 namespace Content.Server.GameTicking.Commands;
 
 sealed partial class JoinGameCommand
 {
-    [Dependency] private readonly IServerPreferencesManager _moffPreferences = default!;
+    [Dependency] private IServerPreferencesManager _moffPreferences = default!;
+
+    /// <summary>
+    /// Validates the argument count and takes the optional leading character-slot argument, trimming
+    /// it off <paramref name="args"/> so the rest of the command sees upstream's two-argument form.
+    /// </summary>
+    private static bool TryTakeMoffSlotArg(IConsoleShell shell, ref string[] args, out int? slot)
+    {
+        slot = null;
+
+        if (args.Length is not (2 or 3))
+        {
+            shell.WriteError(Loc.GetString("shell-wrong-arguments-number"));
+            return false;
+        }
+
+        if (args.Length != 3)
+            return true;
+
+        if (!int.TryParse(args[0], out var parsed))
+        {
+            shell.WriteError(Loc.GetString("shell-argument-must-be-number"));
+            return false;
+        }
+
+        slot = parsed;
+        args = args[1..];
+        return true;
+    }
 
     /// <summary>
     /// Pins the character in <paramref name="slot"/> as the one this player is late joining with.
     /// </summary>
     private bool TrySetMoffCharacter(IConsoleShell shell, ICommonSession player, int slot)
     {
-        var prefs = _moffPreferences.GetPreferences(player.UserId);
+        if (_moffPreferences.GetPreferencesOrNull(player.UserId) is not { } prefs)
+        {
+            shell.WriteError(Loc.GetString("moff-join-game-no-character-in-slot", ("slot", slot)));
+            return false;
+        }
 
         if (!prefs.Characters.TryGetValue(slot, out var profile) || profile is not HumanoidCharacterProfile humanoid)
         {

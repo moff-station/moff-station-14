@@ -3,7 +3,6 @@ using Content.Client._Moffstation.Lobby.UI;
 using Content.Client._Moffstation.Preferences;
 using Content.Shared.Preferences;
 
-// Partial of the upstream CharacterSetupGui, so it must sit in the upstream namespace.
 namespace Content.Client.Lobby.UI;
 
 public sealed partial class CharacterSetupGui

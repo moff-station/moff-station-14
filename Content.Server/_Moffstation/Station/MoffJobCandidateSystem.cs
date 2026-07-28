@@ -16,10 +16,10 @@ namespace Content.Server._Moffstation.Station;
 /// the selected one. Uses <see cref="StationJobsGetCandidatesEvent"/> in the opposite direction to
 /// JobWhitelistSystem and PlayTimeTrackingSystem, which narrow the same list.
 /// </summary>
-public sealed class MoffJobCandidateSystem : EntitySystem
+public sealed partial class MoffJobCandidateSystem : EntitySystem
 {
-    [Dependency] private readonly IServerPreferencesManager _prefs = default!;
-    [Dependency] private readonly MoffCharacterSelectionManager _selection = default!;
+    [Dependency] private IServerPreferencesManager _prefs = default!;
+    [Dependency] private MoffCharacterSelectionManager _selection = default!;
 
     public override void Initialize()
     {
@@ -33,11 +33,13 @@ public sealed class MoffJobCandidateSystem : EntitySystem
 
     private void OnGetCandidates(ref StationJobsGetCandidatesEvent ev)
     {
-        var active = GetActiveProfiles(ev.Player);
-
-        // Nothing cached, so leave upstream's seed from the selected character alone.
-        if (active.Count == 0)
+        // Only when nothing is cached do we leave upstream's seed from the selected character alone.
+        // An empty result with state loaded means the player deliberately disabled every slot, which
+        // must produce no candidates rather than silently falling back to that disabled character.
+        if (!_selection.TryGetState(ev.Player, out _))
             return;
+
+        var active = GetActiveProfiles(ev.Player);
 
         // Replace rather than add to: the selected character contributes nothing if its slot is
         // inactive, and upstream seeded the list from it unconditionally.

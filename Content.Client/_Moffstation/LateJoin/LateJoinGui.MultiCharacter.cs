@@ -10,13 +10,12 @@ using Robust.Shared.Player;
 using Robust.Shared.Utility;
 using static Robust.Client.UserInterface.Controls.BoxContainer;
 
-// Partial of the upstream LateJoinGui, so it must sit in the upstream namespace.
 namespace Content.Client.LateJoin;
 
 public sealed partial class LateJoinGui
 {
-    [Dependency] private readonly ISharedPlayerManager _moffPlayerManager = default!;
-    [Dependency] private readonly MoffCharacterSelectionManager _moffSelection = default!;
+    [Dependency] private ISharedPlayerManager _moffPlayerManager = default!;
+    [Dependency] private MoffCharacterSelectionManager _moffSelection = default!;
 
     private BoxContainer _moffCharacterList = default!;
 
@@ -75,13 +74,18 @@ public sealed partial class LateJoinGui
 
         var group = new ButtonGroup();
 
-        // A slot can disappear while the window is open, so fall back to the first one.
+        // A slot can disappear while the window is open, so drop a stale selection.
         if (MoffSelectedSlot is { } selected && !prefs.Characters.ContainsKey(selected))
             MoffSelectedSlot = null;
 
+        // Default to the character they picked in the lobby, not whichever slot enumerates first,
+        // or joining would silently spawn someone else.
+        if (MoffSelectedSlot == null && prefs.Characters.ContainsKey(prefs.SelectedCharacterIndex))
+            MoffSelectedSlot = prefs.SelectedCharacterIndex;
+
         foreach (var (slot, profile) in prefs.Characters)
         {
-            if (profile is not HumanoidCharacterProfile humanoid)
+            if (profile is not { } humanoid)
                 continue;
 
             MoffSelectedSlot ??= slot;

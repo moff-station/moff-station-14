@@ -27,10 +27,6 @@ public sealed partial class HumanoidProfileEditor
 
     private List<(string, RequirementsSelector)> _jobPriorities = new();
 
-    // Moff - RadioOptions ids, not JobPriority values.
-    private const int MoffJobPreferenceNo = 0;
-    private const int MoffJobPreferenceYes = 1;
-
     private readonly Dictionary<string, BoxContainer> _jobCategories;
 
     /// <summary>
@@ -41,8 +37,7 @@ public sealed partial class HumanoidProfileEditor
         foreach (var (jobId, prioritySelector) in _jobPriorities)
         {
             var priority = Profile?.JobPriorities.GetValueOrDefault(jobId, JobPriority.Never) ?? JobPriority.Never;
-            // Moff - Yes/no selector, so any legacy Low/High collapses onto "yes".
-            prioritySelector.Select(priority == JobPriority.Never ? MoffJobPreferenceNo : MoffJobPreferenceYes);
+            prioritySelector.Select(MoffFromJobPriority(priority)); // Moff - Yes/no selector
         }
     }
 
@@ -141,9 +136,7 @@ public sealed partial class HumanoidProfileEditor
 
         departments.Sort(DepartmentUIComparer.Instance);
 
-        // Moff Start - Multi-character selection: a character only says whether it is willing to
-        // take a job. The priority applied to that job is player-global and lives in the job
-        // priority window, so the four-way selector collapses to yes/no.
+        // Moff Start - Multi-character selection: the four-way selector collapses to yes/no
         /*
         var items = new[]
         {
@@ -153,13 +146,8 @@ public sealed partial class HumanoidProfileEditor
                 ("humanoid-profile-editor-job-priority-high-button", (int) JobPriority.High),
             };
         */
-        // RadioOptions ids are auto-incremented, not the values passed here, so these must stay
-        // index-aligned. Upstream's four entries only lined up with JobPriority by coincidence.
-        var items = new[]
-        {
-            ("humanoid-profile-editor-job-preference-no-button-moffstation", MoffJobPreferenceNo),
-            ("humanoid-profile-editor-job-preference-yes-button-moffstation", MoffJobPreferenceYes),
-        };
+        var items = MoffJobPreferenceItems;
+        HideMoffPreferenceUnavailable();
         // Moff end
 
         foreach (var department in departments)
@@ -246,9 +234,7 @@ public sealed partial class HumanoidProfileEditor
                 selector.OnSelected += selectedPrio =>
                 {
                     // Moff Start - Yes/no selection; the priority itself is player-global.
-                    var selectedJobPrio = selectedPrio == MoffJobPreferenceNo
-                        ? JobPriority.Never
-                        : JobPriority.Medium;
+                    var selectedJobPrio = MoffToJobPriority(selectedPrio);
 
                     Profile = Profile?.WithJobPriority(job.ID, selectedJobPrio);
 

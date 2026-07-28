@@ -54,8 +54,13 @@ public sealed class MoffCharacterSelectionManager
 
     /// <summary>
     /// The job <paramref name="profile"/> is most likely to be assigned: of the jobs it will take,
-    /// whichever the player rates highest. Null if it will take none.
+    /// whichever the player rates highest. Null only if it will take no job at all.
     /// </summary>
+    /// <remarks>
+    /// A character that has selected only jobs the player rates <see cref="JobPriority.Never"/> still
+    /// reports one of them, so it previews and lists as a job it actually chose rather than as a
+    /// passenger. Ties are broken by job id so the answer is stable between sessions.
+    /// </remarks>
     public ProtoId<JobPrototype>? GetPreferredJob(HumanoidCharacterProfile profile)
     {
         ProtoId<JobPrototype>? best = null;
@@ -65,8 +70,13 @@ public sealed class MoffCharacterSelectionManager
         {
             var priority = GetPriority(job);
 
-            if (best != null && priority <= bestPriority)
+            if (best != null
+                && (priority < bestPriority
+                    || priority == bestPriority
+                    && string.CompareOrdinal(job.Id, best.Value.Id) >= 0))
+            {
                 continue;
+            }
 
             best = job;
             bestPriority = priority;

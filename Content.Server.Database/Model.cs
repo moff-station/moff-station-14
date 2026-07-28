@@ -309,29 +309,7 @@ namespace Content.Server.Database
                 .HasPrincipalKey<Player>(p => p.UserId);
             // Moffstation - End
 
-            // Moff Start - Multi-character selection: player-global job priorities and per-character enable flag
-            modelBuilder.Entity<MoffModel.MoffPreference>()
-                .HasOne(mp => mp.Preference)
-                .WithOne(p => p.MoffPreference)
-                .HasForeignKey<MoffModel.MoffPreference>(mp => mp.PreferenceId)
-                .IsRequired();
-
-            modelBuilder.Entity<MoffModel.MoffJobPriority>()
-                .HasOne(jp => jp.MoffPreference)
-                .WithMany(mp => mp.JobPriorities)
-                .HasForeignKey(jp => jp.MoffPreferenceId)
-                .IsRequired();
-
-            modelBuilder.Entity<MoffModel.MoffJobPriority>()
-                .HasIndex(jp => new { jp.MoffPreferenceId, jp.JobName })
-                .IsUnique();
-
-            modelBuilder.Entity<MoffModel.MoffProfile>()
-                .HasOne(mp => mp.Profile)
-                .WithOne(p => p.MoffProfile)
-                .HasForeignKey<MoffModel.MoffProfile>(mp => mp.ProfileId)
-                .IsRequired();
-            // Moff end
+            MoffModel.Configure(modelBuilder); // Moff - Multi-character selection
 
             modelBuilder.Entity<ConnectionLog>()
                 .OwnsOne(p => p.HWId)

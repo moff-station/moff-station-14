@@ -12,6 +12,7 @@ using Content.Server.Prayer;
 using Content.Server.Silicons.Laws;
 using Content.Server.Station.Systems;
 using Content.Shared._MACRO.StrangeMoods;
+using Content.Shared._Moffstation.Verbs; // Moff - Multi-character selection
 using Content.Shared.Administration;
 using Content.Shared.Administration.Systems;
 using Content.Shared.Chemistry.Components;
@@ -242,7 +243,7 @@ namespace Content.Server.Administration.Systems
                         // Moff Start - Multi-character selection: sits alongside the per-character
                         // spawn entries, below them.
                         // Category = VerbCategory.Admin,
-                        Category = VerbCategory.Spawn,
+                        Category = MoffVerbCategory.Spawn,
                         Priority = -1,
                         // Moff end
                         Act = () =>

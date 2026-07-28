@@ -2,26 +2,15 @@
     xmlns="https://spacestation14.io"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:controls="clr-namespace:Content.Client.UserInterface.Controls"
-    xmlns:profile="clr-namespace:Content.Client.Lobby.UI.ProfileEditorControls"
-    xmlns:graphics="clr-namespace:Robust.Client.Graphics;assembly=Robust.Client"
-    xmlns:style="clr-namespace:Content.Client.Stylesheets"
-    xmlns:moffui="clr-namespace:Content.Client._Moffstation.Lobby.UI">
+    xmlns:profile="clr-namespace:Content.Client.Lobby.UI.ProfileEditorControls">
     <BoxContainer Name="VBox" Orientation="Vertical">
-        <!-- Moff Start - Multi-character selection: the summary shows every job you can be assigned,
-             sorted into player-global priority buckets you can drag between -->
-        <BoxContainer>
-            <controls:NanoHeading Name="Header" Text="{Loc 'lobby-character-preview-panel-header'}" />
-            <CheckBox Name="PriorityLock" Text="{Loc 'moff-lobby-lock-priorities-checkbox-label'}"
-                      HorizontalExpand="True" HorizontalAlignment="Right" VerticalAlignment="Center"
-                      ToolTip="{Loc 'moff-lobby-lock-priorities-checkbox-tooltip'}"/>
-        </BoxContainer>
-        <!-- Moff end -->
+        <controls:NanoHeading Name="Header" Text="{Loc 'lobby-character-preview-panel-header'}">
+
+        </controls:NanoHeading>
         <BoxContainer Name="Loaded" Orientation="Vertical"
                       Visible="False">
-            <!-- Moff Start - Multi-character selection: superseded by the job grid below. Kept so
-                 LobbyUIController's preview refresh keeps working untouched. -->
-            <Label Name="Summary" HorizontalAlignment="Center" Margin="3 3" Visible="False"/>
-            <BoxContainer Name="ViewBox" Orientation="Horizontal" HorizontalAlignment="Center" Visible="False">
+            <Label Name="Summary" HorizontalAlignment="Center" Margin="3 3"/>
+            <BoxContainer Name="ViewBox" Orientation="Horizontal" HorizontalAlignment="Center">
                 <profile:ProfilePreviewSpriteView Name="ProfilePreviewSpriteView"
                                                   OverrideDirection="South"
                                                   Scale="4 4"
@@ -29,33 +18,6 @@
                                                   Stretch="Fill"
                                                   Access="Public" />
             </BoxContainer>
-            <BoxContainer Name="JobGrid"
-                          VerticalExpand="True"
-                          HorizontalExpand="True"
-                          HorizontalAlignment="Center"
-                          MinHeight="220"
-                          SeparationOverride="2">
-                <moffui:DraggableJobTarget Name="NeverBox" Priority="Never" />
-                <PanelContainer MinSize="2 0">
-                    <PanelContainer.PanelOverride>
-                        <graphics:StyleBoxFlat BackgroundColor="{x:Static style:StyleNano.NanoGold}" ContentMarginTopOverride="2" />
-                    </PanelContainer.PanelOverride>
-                </PanelContainer>
-                <moffui:DraggableJobTarget Name="LowBox" Priority="Low" />
-                <PanelContainer MinSize="2 0">
-                    <PanelContainer.PanelOverride>
-                        <graphics:StyleBoxFlat BackgroundColor="{x:Static style:StyleNano.NanoGold}" ContentMarginTopOverride="2" />
-                    </PanelContainer.PanelOverride>
-                </PanelContainer>
-                <moffui:DraggableJobTarget Name="MediumBox" Priority="Medium" />
-                <PanelContainer MinSize="2 0">
-                    <PanelContainer.PanelOverride>
-                        <graphics:StyleBoxFlat BackgroundColor="{x:Static style:StyleNano.NanoGold}" ContentMarginTopOverride="2" />
-                    </PanelContainer.PanelOverride>
-                </PanelContainer>
-                <moffui:DraggableJobTarget Name="HighBox" Priority="High" />
-            </BoxContainer>
-            <!-- Moff end -->
             <controls:VSpacer/>
             <Button Name="CharacterSetup" Text="{Loc 'lobby-character-preview-panel-character-setup-button'}"
                     HorizontalAlignment="Center"

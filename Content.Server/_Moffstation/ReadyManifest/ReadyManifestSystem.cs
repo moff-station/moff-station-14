@@ -91,7 +91,9 @@ public sealed partial class ReadyManifestSystem : EntitySystem
                 if (!_jobCounts.ContainsKey(job) || !counted.Add(job))
                     continue;
 
-                if (_selection.GetPriority(userId, job) < JobPriority.High)
+                // GetEffectivePriority, not GetPriority: a guest or a player whose database load
+                // has not finished has an empty priority dictionary, and would count as Never.
+                if (_selection.GetEffectivePriority(userId, job, profile) < JobPriority.High)
                     continue;
 
                 _jobCounts[job]++;

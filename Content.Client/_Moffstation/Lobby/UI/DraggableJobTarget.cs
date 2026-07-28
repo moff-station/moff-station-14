@@ -70,11 +70,26 @@ public sealed class DraggableJobTarget : Control
         _fallbackTarget = target;
     }
 
-    protected override void EnteredTree()
+    /// <summary>
+    /// The header and icon container, built on first use. Not built in the constructor because
+    /// <see cref="Priority"/> is only assigned afterwards, and not in <c>EnteredTree</c> because a
+    /// parent's <c>EnteredTree</c> runs before its children's -- anything the owner adds while
+    /// entering the tree would land in a container that does not exist yet.
+    /// </summary>
+    private Container JobIconContainer
     {
-        base.EnteredTree();
+        get
+        {
+            if (_jobIconContainer != null)
+                return _jobIconContainer;
 
-        // Built here rather than in the constructor because Priority is set by XAML afterwards.
+            Build();
+            return _jobIconContainer!;
+        }
+    }
+
+    private void Build()
+    {
         _mainBox.RemoveAllChildren();
 
         _mainBox.AddChild(new Label
@@ -108,17 +123,9 @@ public sealed class DraggableJobTarget : Control
         _mainBox.AddChild(_jobIconContainer);
     }
 
-    protected override void ExitedTree()
-    {
-        base.ExitedTree();
-
-        _mainBox.RemoveAllChildren();
-        _jobIconContainer = null;
-    }
-
     public void ClearIcons()
     {
-        _jobIconContainer?.DisposeAllChildren();
+        JobIconContainer.DisposeAllChildren();
     }
 
     public void RegisterJobIcon(DraggableJobIcon icon)
@@ -133,12 +140,12 @@ public sealed class DraggableJobTarget : Control
     /// </summary>
     public void AddJobIcon(DraggableJobIcon icon, bool preOrdered = false)
     {
-        if (IsHighPriority && _jobIconContainer?.ChildCount > 0)
+        if (IsHighPriority && JobIconContainer.ChildCount > 0)
         {
             if (_fallbackTarget is null)
                 return;
 
-            if (_jobIconContainer.Children.First() is not DraggableJobIcon toBump)
+            if (JobIconContainer.Children.First() is not DraggableJobIcon toBump)
                 return;
 
             _fallbackTarget.AddJobIcon(toBump);
@@ -146,10 +153,13 @@ public sealed class DraggableJobTarget : Control
 
         icon.SetScale(Priority);
 
+        // Orphan first: dropping an icon back into the container it already occupies would otherwise
+        // shift every later sibling down one after removal, landing the icon a position too late.
+        icon.Orphan();
+
         var insertIndex = preOrdered ? -1 : FindInsertLocation(icon);
 
-        icon.Orphan();
-        _jobIconContainer?.AddChild(icon);
+        JobIconContainer.AddChild(icon);
 
         if (insertIndex >= 0)
             icon.SetPositionInParent(insertIndex);
@@ -162,11 +172,10 @@ public sealed class DraggableJobTarget : Control
 
         var thisIndex = OrderedJobs.IndexOf(icon.JobProto);
 
-        var insertAt = _jobIconContainer?.Children.Cast<DraggableJobIcon>()
+        // FindIndex already returns -1 when every icon present sorts before this one.
+        return JobIconContainer.Children.Cast<DraggableJobIcon>()
             .ToImmutableList()
             .FindIndex(curIcon => OrderedJobs.IndexOf(curIcon.JobProto) > thisIndex);
-
-        return insertAt ?? -1;
     }
 
     private void HandleMouseUp(Vector2 pos, DraggableJobIcon icon)
@@ -211,21 +220,18 @@ public sealed class DraggableJobTarget : Control
 
     public IEnumerable<JobPrototype> GetContainedJobs()
     {
-        if (_jobIconContainer is null)
-            return [];
-
-        return _jobIconContainer.Children.Cast<DraggableJobIcon>().Select(icon => icon.JobProto);
+        return JobIconContainer.Children.Cast<DraggableJobIcon>().Select(icon => icon.JobProto);
     }
 
     public int ContainedJobCount()
     {
-        return _jobIconContainer?.ChildCount ?? 0;
+        return JobIconContainer.ChildCount;
     }
 
     public void SetColumns(int columns)
     {
         // Clamping to the child count keeps the icons centred, and GridContainer throws on zero.
-        if (_jobIconContainer is GridContainer grid)
+        if (JobIconContainer is GridContainer grid)
             grid.Columns = grid.ChildCount == 0 ? 1 : Math.Min(columns, grid.ChildCount);
     }
 }

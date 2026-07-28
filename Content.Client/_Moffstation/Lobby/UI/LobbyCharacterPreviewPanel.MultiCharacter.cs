@@ -3,15 +3,16 @@ using System.Numerics;
 using Content.Client._Moffstation.Preferences;
 using Content.Client.Lobby.UI.ProfileEditorControls;
 using Content.Client.Players.PlayTimeTracking;
+using Content.Client.Stylesheets;
 using Content.Shared.Preferences;
 using Content.Shared.Roles;
+using Robust.Client.Graphics;
 using Robust.Client.UserInterface;
 using Robust.Client.UserInterface.Controls;
 using Robust.Client.UserInterface.CustomControls;
 using Robust.Shared.Prototypes;
 using MoffUI = Content.Client._Moffstation.Lobby.UI;
 
-// Partial of the upstream LobbyCharacterPreviewPanel, so it must sit in the upstream namespace.
 namespace Content.Client.Lobby.UI;
 
 public sealed partial class LobbyCharacterPreviewPanel
@@ -25,21 +26,106 @@ public sealed partial class LobbyCharacterPreviewPanel
     /// <summary>Suppresses the rebuild triggered by our own save, which would run mid-callback.</summary>
     private bool _moffApplyingPriorities;
 
-    /// <summary>The four drop targets are named after their priority, so look them up by it.</summary>
+    /// <summary>Built in code rather than XAML so the upstream .xaml file needs no Moff edit.</summary>
+    private readonly Dictionary<JobPriority, MoffUI.DraggableJobTarget> _moffTargets = new();
+
+    private CheckBox _moffPriorityLock = default!;
+
     private MoffUI.DraggableJobTarget GetMoffTarget(JobPriority priority)
     {
-        return FindControl<MoffUI.DraggableJobTarget>($"{priority}Box");
+        return _moffTargets[priority];
+    }
+
+    /// <summary>A vertical gold rule, matching the ones elsewhere in the lobby.</summary>
+    private static PanelContainer MakeMoffDivider()
+    {
+        return new PanelContainer
+        {
+            MinSize = new Vector2(2, 0),
+            PanelOverride = new StyleBoxFlat
+            {
+                BackgroundColor = StyleNano.NanoGold,
+                ContentMarginTopOverride = 2,
+            },
+        };
     }
 
     private void InitializeMoffJobGrid()
     {
-        _moffPrototypeManager.PrototypesReloaded += OnMoffPrototypesReloaded;
-        _moffSelection.OnStateChanged += RefreshMoffJobGrid;
-
         MoffUI.DraggableJobTarget.UpdatedOrderedJobs(_moffPrototypeManager);
+
+        BuildMoffHeader();
+        BuildMoffGrid();
 
         // Dropping a second job on the single high slot has to bump the occupant somewhere.
         GetMoffTarget(JobPriority.High).SetFallbackTarget(GetMoffTarget(JobPriority.Medium));
+
+        // Subscribed last: both callbacks refresh the grid, which the targets must exist for.
+        _moffPrototypeManager.PrototypesReloaded += OnMoffPrototypesReloaded;
+        _moffSelection.OnStateChanged += RefreshMoffJobGrid;
+    }
+
+    /// <summary>Puts the priority lock next to the upstream heading, on the same row.</summary>
+    private void BuildMoffHeader()
+    {
+        _moffPriorityLock = new CheckBox
+        {
+            Text = Loc.GetString("moff-lobby-lock-priorities-checkbox-label"),
+            ToolTip = Loc.GetString("moff-lobby-lock-priorities-checkbox-tooltip"),
+            HorizontalExpand = true,
+            HorizontalAlignment = HAlignment.Right,
+            VerticalAlignment = VAlignment.Center,
+        };
+
+        var index = Header.GetPositionInParent();
+
+        Header.Orphan();
+
+        var row = new BoxContainer
+        {
+            Orientation = BoxContainer.LayoutOrientation.Horizontal,
+            Children = { Header, _moffPriorityLock },
+        };
+
+        VBox.AddChild(row);
+        row.SetPositionInParent(index);
+    }
+
+    /// <summary>
+    /// The job grid supersedes the single-character summary and portrait, which stay in the tree so
+    /// LobbyUIController's preview refresh keeps working untouched.
+    /// </summary>
+    private void BuildMoffGrid()
+    {
+        Summary.Visible = false;
+        ViewBox.Visible = false;
+
+        var grid = new BoxContainer
+        {
+            Orientation = BoxContainer.LayoutOrientation.Horizontal,
+            VerticalExpand = true,
+            HorizontalExpand = true,
+            HorizontalAlignment = HAlignment.Center,
+            MinHeight = 220,
+            SeparationOverride = 2,
+        };
+
+        var first = true;
+
+        foreach (var priority in new[] { JobPriority.Never, JobPriority.Low, JobPriority.Medium, JobPriority.High })
+        {
+            if (!first)
+                grid.AddChild(MakeMoffDivider());
+
+            first = false;
+
+            var target = new MoffUI.DraggableJobTarget { Priority = priority };
+            _moffTargets[priority] = target;
+            grid.AddChild(target);
+        }
+
+        Loaded.AddChild(grid);
+        grid.SetPositionInParent(ViewBox.GetPositionInParent() + 1);
     }
 
     private void OnMoffPrototypesReloaded(PrototypesReloadedEventArgs args)
@@ -72,7 +158,7 @@ public sealed partial class LobbyCharacterPreviewPanel
             if (!job.SetPreference || !_moffRequirements.IsAllowed(job, null, out _))
                 continue;
 
-            var icon = new MoffUI.DraggableJobIcon(job, () => PriorityLock.Pressed, _ => CreateMoffJobTooltip(job));
+            var icon = new MoffUI.DraggableJobIcon(job, () => _moffPriorityLock.Pressed, _ => CreateMoffJobTooltip(job));
 
             // A job no character will take can never be assigned, however it is prioritised.
             if (GetMoffProfilesForJob(job.ID).Count == 0)
@@ -268,17 +354,6 @@ public sealed partial class LobbyCharacterPreviewPanel
         }
 
         return tooltip;
-    }
-
-    /// <summary>
-    /// Each <see cref="MoffUI.DraggableJobTarget"/> rebuilds itself empty when it enters the tree,
-    /// so the icons have to be put back afterwards.
-    /// </summary>
-    protected override void EnteredTree()
-    {
-        base.EnteredTree();
-
-        RefreshMoffJobGrid();
     }
 
     protected override void Dispose(bool disposing)

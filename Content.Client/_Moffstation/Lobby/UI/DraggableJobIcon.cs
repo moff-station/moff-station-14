@@ -32,6 +32,9 @@ public sealed class DraggableJobIcon : TextureRect
 
     private Vector2? _oldScale;
 
+    /// <summary>Position within <see cref="_oldParent"/>, so a cancelled drag keeps its sort order.</summary>
+    private int _oldIndex;
+
     public bool Dragging => _oldParent is not null;
 
     public event Action<GUIBoundKeyEventArgs>? OnMouseDown;
@@ -74,11 +77,15 @@ public sealed class DraggableJobIcon : TextureRect
 
     private void StopDragging()
     {
-        // Nothing caught the icon, so put it back where it came from.
+        // Nothing caught the icon, so put it back exactly where it came from -- AddChild appends,
+        // which would drop it to the end of an otherwise sorted container.
         if (Parent == _uiManager.PopupRoot)
         {
             Orphan();
             _oldParent?.AddChild(this);
+
+            if (_oldParent != null)
+                SetPositionInParent(_oldIndex);
 
             if (_oldScale is not null)
                 TextureScale = _oldScale.Value;
@@ -95,6 +102,8 @@ public sealed class DraggableJobIcon : TextureRect
     {
         _oldParent = Parent;
         _oldScale = TextureScale;
+        // GetPositionInParent throws when parentless, which a drag should never start from anyway.
+        _oldIndex = _oldParent == null ? 0 : GetPositionInParent();
 
         Orphan();
         _uiManager.PopupRoot.AddChild(this);

@@ -7,7 +7,6 @@ using Content.Shared.Roles;
 using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
 
-// Partial of the upstream AntagSelectionSystem, so it must sit in the upstream namespace.
 namespace Content.Server.Antag;
 
 /// <summary>

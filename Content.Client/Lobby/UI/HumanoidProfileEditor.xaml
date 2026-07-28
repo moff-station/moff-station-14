@@ -146,9 +146,7 @@
                 </BoxContainer>
                 <BoxContainer Orientation="Vertical">
                     <!-- Jobs -->
-                    <!-- Moff - Multi-character selection: superseded by the player-global priority editor, which
-                         has a Passenger priority of its own. Kept so the setting and its DB column still load. -->
-                    <OptionButton Name="PreferenceUnavailableButton" Visible="False" />
+                    <OptionButton Name="PreferenceUnavailableButton" />
                     <ScrollContainer VerticalExpand="True">
                         <BoxContainer Name="JobList" Orientation="Vertical" />
                     </ScrollContainer>

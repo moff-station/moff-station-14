@@ -63,24 +63,9 @@ public sealed partial class CharacterPickerButton : ContainerButton
 
         Pressed = isSelected;
 
-        // Moff Start - Multi-character selection: delete is a ConfirmButton in the side column now,
-        // and it shares that column with the active toggle.
-        /*
-        DeleteButton.Visible = !isSelected;
-
-        ConfirmDeleteButton.OnPressed += _ =>
-        {
-            Parent?.RemoveChild(this);
-            Parent?.RemoveChild(ConfirmDeleteButton);
-            OnDeletePressed?.Invoke();
-        };
-
-        DeleteButton.OnPressed += _ =>
-        {
-            DeleteButton.Visible = false;
-            ConfirmDeleteButton.Visible = true;
-        };
-        */
+        // Moff Start - Multi-character selection: delete becomes a ConfirmButton in a side column
+        // shared with the active toggle, built in CharacterPickerButton.MultiCharacter.cs. That
+        // hides upstream's DeleteButton/ConfirmDeleteButton rather than replacing them.
         SetupMoffButtons(isSelected, simple);
         // Moff end
     }

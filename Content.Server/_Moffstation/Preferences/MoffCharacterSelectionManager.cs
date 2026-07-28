@@ -25,6 +25,7 @@ public sealed class MoffCharacterSelectionManager : IPostInjectInit
     [Dependency] private readonly IPrototypeManager _protoManager = default!;
     [Dependency] private readonly ILogManager _log = default!;
     [Dependency] private readonly IServerPreferencesManager _prefs = default!;
+    [Dependency] private readonly ISharedPlayerManager _playerManager = default!;
 
     private readonly Dictionary<NetUserId, MoffCharacterSelectionState> _cached = new();
 
@@ -102,12 +103,24 @@ public sealed class MoffCharacterSelectionManager : IPostInjectInit
     /// </summary>
     /// <remarks>
     /// Creates transient state rather than dropping the write when nothing is cached, so dummy
-    /// sessions in tests -- which never run the database load -- still take the priorities.
+    /// sessions in tests -- which never run the database load -- still take the priorities. Only
+    /// does so for a connected user, or the entry would linger for someone who has left.
     /// </remarks>
     public async Task SetJobPriorities(NetUserId userId, Dictionary<ProtoId<JobPrototype>, JobPriority> priorities)
     {
         if (!_cached.TryGetValue(userId, out var state))
         {
+            if (!_playerManager.TryGetSessionById(userId, out var session))
+                return;
+
+            // A real player's state arrives from the database; standing in for it here would drop
+            // the write silently and leave them non-authoritative for the rest of the session.
+            if (ShouldStore(session))
+            {
+                _sawmill.Error($"Job priorities set for {userId} before their selection state loaded; discarding.");
+                return;
+            }
+
             state = new MoffCharacterSelectionState();
             _cached[userId] = state;
         }
@@ -160,7 +173,11 @@ public sealed class MoffCharacterSelectionManager : IPostInjectInit
         if (!_cached.TryGetValue(channel.UserId, out var state))
             return;
 
-        _netManager.ServerSendMessage(new MsgMoffCharacterSelectionState { State = state }, channel);
+        // A copy, because the message is serialized after this returns and the cached instance may
+        // be mutated in between by another message from the same client.
+        _netManager.ServerSendMessage(
+            new MsgMoffCharacterSelectionState { State = new MoffCharacterSelectionState(state) },
+            channel);
     }
 
     private static bool ShouldStore(ICommonSession session)

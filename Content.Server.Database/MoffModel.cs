@@ -9,6 +9,34 @@ namespace Content.Server.Database;
 
 public static class MoffModel
 {
+    /// <summary>
+    /// Multi-character selection model config, kept here so upstream's OnModelCreating needs one line.
+    /// </summary>
+    public static void Configure(ModelBuilder modelBuilder)
+    {
+        modelBuilder.Entity<MoffPreference>()
+            .HasOne(mp => mp.Preference)
+            .WithOne(p => p.MoffPreference)
+            .HasForeignKey<MoffPreference>(mp => mp.PreferenceId)
+            .IsRequired();
+
+        modelBuilder.Entity<MoffJobPriority>()
+            .HasOne(jp => jp.MoffPreference)
+            .WithMany(mp => mp.JobPriorities)
+            .HasForeignKey(jp => jp.MoffPreferenceId)
+            .IsRequired();
+
+        modelBuilder.Entity<MoffJobPriority>()
+            .HasIndex(jp => new { jp.MoffPreferenceId, jp.JobName })
+            .IsUnique();
+
+        modelBuilder.Entity<MoffProfile>()
+            .HasOne(mp => mp.Profile)
+            .WithOne(p => p.MoffProfile)
+            .HasForeignKey<MoffProfile>(mp => mp.ProfileId)
+            .IsRequired();
+    }
+
     public class MoffPlayer
     {
         public int Id { get; set; }

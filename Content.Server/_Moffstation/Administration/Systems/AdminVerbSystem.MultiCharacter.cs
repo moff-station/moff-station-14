@@ -1,11 +1,11 @@
 using Content.Server._Moffstation.Station;
 using Content.Server.Preferences.Managers;
+using Content.Shared._Moffstation.Verbs;
 using Content.Shared.Database;
 using Content.Shared.Preferences;
 using Content.Shared.Verbs;
 using Robust.Shared.Player;
 
-// Partial of the upstream AdminVerbSystem, so it must sit in the upstream namespace.
 namespace Content.Server.Administration.Systems;
 
 public sealed partial class AdminVerbSystem
@@ -18,7 +18,10 @@ public sealed partial class AdminVerbSystem
     /// </summary>
     private void AddMoffSpawnAsVerbs(GetVerbsEvent<Verb> args, ICommonSession target)
     {
-        var prefs = _moffPrefsManager.GetPreferences(target.UserId);
+        // OrNull, because this runs while building the verb list: GetPreferences throws for a user
+        // whose preferences aren't cached, which would drop every other admin verb too.
+        if (_moffPrefsManager.GetPreferencesOrNull(target.UserId) is not { } prefs)
+            return;
 
         foreach (var (slot, profile) in prefs.Characters)
         {
@@ -29,7 +32,7 @@ public sealed partial class AdminVerbSystem
             {
                 Text = $"{slot}. {humanoid.Name}",
                 Message = Loc.GetString("admin-player-actions-spawn-message"),
-                Category = VerbCategory.Spawn,
+                Category = MoffVerbCategory.Spawn,
                 Act = () =>
                 {
                     if (!_transformSystem.TryGetMapOrGridCoordinates(args.Target, out var coords))

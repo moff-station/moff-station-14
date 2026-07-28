@@ -5,7 +5,6 @@ using Content.Shared.Roles;
 using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
 
-// Partial of the upstream PlayTimeTrackingSystem, so it must sit in the upstream namespace.
 namespace Content.Server.Players.PlayTimeTracking;
 
 public sealed partial class PlayTimeTrackingSystem
@@ -37,7 +36,7 @@ public sealed partial class PlayTimeTrackingSystem
 
     /// <summary>
     /// Drops the requirements that role timers govern, leaving the ones that describe the character
-    /// itself. Returns null when nothing is left, which <see cref="JobRequirements"/> treats as met.
+    /// itself. A null or empty result is treated as "met" by <see cref="JobRequirements"/>.
     /// </summary>
     private static HashSet<JobRequirement>? StripPlaytimeRequirements(HashSet<JobRequirement>? requirements)
     {
@@ -46,9 +45,9 @@ public sealed partial class PlayTimeTrackingSystem
 
         return requirements
             .Where(requirement => requirement is not (
-                RoleTimeRequirement or
-                DepartmentTimeRequirement or
-                OverallPlaytimeRequirement))
+                RoleTimeRequirement
+                or DepartmentTimeRequirement
+                or OverallPlaytimeRequirement))
             .ToHashSet();
     }
 }

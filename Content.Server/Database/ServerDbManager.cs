@@ -1070,26 +1070,6 @@ namespace Content.Server.Database
         }
         // Moffstation - End - Discord ID
 
-        // Moffstation - Begin - Multi-character selection
-        public Task<MoffCharacterSelectionState> GetMoffCharacterSelection(NetUserId userId, CancellationToken cancel = default)
-        {
-            DbReadOpsMetric.Inc();
-            return RunDbCommand(() => _db.GetMoffCharacterSelectionAsync(userId, cancel));
-        }
-
-        public Task SaveMoffJobPriorities(NetUserId userId, Dictionary<ProtoId<JobPrototype>, JobPriority> priorities)
-        {
-            DbWriteOpsMetric.Inc();
-            return RunDbCommand(() => _db.SaveMoffJobPrioritiesAsync(userId, priorities));
-        }
-
-        public Task SaveMoffCharacterEnabled(NetUserId userId, int slot, bool enabled)
-        {
-            DbWriteOpsMetric.Inc();
-            return RunDbCommand(() => _db.SaveMoffCharacterEnabledAsync(userId, slot, enabled));
-        }
-        // Moffstation - End - Multi-character selection
-
         public void SubscribeToNotifications(Action<DatabaseNotification> handler)
         {
             lock (_notificationHandlers)

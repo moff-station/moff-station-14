@@ -43,25 +43,8 @@ namespace Content.Server.GameTicking.Commands
                 return;
             }
             */
-            if (args.Length is not (2 or 3))
-            {
-                shell.WriteError(Loc.GetString("shell-wrong-arguments-number"));
+            if (!TryTakeMoffSlotArg(shell, ref args, out var charSlot))
                 return;
-            }
-
-            int? charSlot = null;
-
-            if (args.Length == 3)
-            {
-                if (!int.TryParse(args[0], out var parsedSlot))
-                {
-                    shell.WriteError(Loc.GetString("shell-argument-must-be-number"));
-                    return;
-                }
-
-                charSlot = parsedSlot;
-                args = args[1..];
-            }
             // Moff end
 
             var player = shell.Player;
