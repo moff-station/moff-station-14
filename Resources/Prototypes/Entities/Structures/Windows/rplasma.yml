@@ -1,13 +1,13 @@
 - type: entity
-  parent: [BaseDeltaPressureReinforcedPlasma, BaseWindowStructure, BaseRCDResistant]
   id: ReinforcedPlasmaWindow
   name: reinforced plasma window
+  parent: [BaseDeltaPressureReinforcedPlasma, WindowRCDResistant]
   components:
   - type: Sprite
+    drawdepth: WallTops
     sprite: _Moffstation/Structures/Windows/reinforced_plasma_window.rsi # Moffstation
   - type: Icon
     sprite: _Moffstation/Structures/Windows/reinforced_plasma_window.rsi # Moffstation
-#    state: full # Moff
   - type: Damageable
     damageModifierSet: RGlass
   - type: Injurable
@@ -49,9 +49,14 @@
     price: 132
 
 - type: entity
-  parent: [BaseDeltaPressureReinforcedPlasmaQuarter, BaseWindowStructureDirectional, BaseRCDResistant]
   id: PlasmaReinforcedWindowDirectional
+  parent: [BaseDeltaPressureReinforcedPlasmaQuarter, WindowDirectionalRCDResistant]
   name: directional reinforced plasma window
+  description: Don't smudge up the glass down there.
+  placement:
+    mode: SnapgridCenter
+    snap:
+    - Window
   components:
   - type: Sprite
     sprite: _Moffstation/Structures/Windows/directional.rsi # Moffstation
@@ -71,8 +76,6 @@
       sprite: Structures/Windows/cracks_directional.rsi
   - type: Damageable
     damageModifierSet: RGlass
-  - type: Injurable
-    damageContainer: StructuralInorganic
   - type: RadiationBlocker
     resistance: 2
   - type: Destructible
