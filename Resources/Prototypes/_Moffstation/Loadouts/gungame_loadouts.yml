@@ -170,7 +170,6 @@
     shoes: ClothingShoesBootsJack
     id: FlashlightLantern
     belt: ClothingBeltSecurityWebbingAlt
-    back: RiotShield
     pocket1: TearGasGrenade
     pocket2: MagazineShotgun
   inhand:
@@ -272,7 +271,7 @@
     jumpsuit: ClothingUniformJumpsuitNinja
     outerClothing: ClothingOuterSuitSpaceNinja
     gloves: ClothingHandsGlovesSpaceNinja
-    shoes: ClothingShoesSpaceNinja
+    shoes: ClothingShoesColorBlack
     id: FlashlightLantern
     back: WeaponNinjaChainSickle
     pocket1: ThrowingStarNinja
@@ -356,8 +355,8 @@
     shoes: ClothingShoesBootsWork
     id: FlashlightLantern
     belt: ClothingBeltStorageWaistbag
-    back: Machete
-    pocket1: WeaponSniperElephant
+    back: WeaponSniperElephant
+    pocket1: Machete
     pocket2: MagazineBoxAntiMateriel
   inhand:
   - WeaponSniperElephant
@@ -474,10 +473,11 @@
     gloves: ClothingHandsGlovesJanitor
     shoes: ClothingShoesGaloshes
     id: FlashlightLantern
-    belt: ClothingBeltJanitor
-    pocket1: CleanerGrenade
+    belt: BoxTrashbag
+    pocket1: Soap
+    pocket2: SprayBottleSpaceCleaner
   inhand:
-  - MopItem
+  - AdvMopItem
 
 - type: startingGear
   id: GunGameChef
