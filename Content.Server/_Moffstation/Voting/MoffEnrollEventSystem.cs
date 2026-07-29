@@ -80,10 +80,9 @@ public sealed partial class MoffEnrollEventSystem : SharedMoffEnrollEventSystem
 
         // Resolve the enrolled player entities into sessions.
         var sessions = new List<ICommonSession>();
-        foreach (var netEntity in ent.Comp.Enrolled)
+        foreach (var player in ent.Comp.Enrolled)
         {
-            if (!TryGetEntity(netEntity, out var player) ||
-                !_player.TryGetSessionByEntity(player.Value, out var session))
+            if (!_player.TryGetSessionByEntity(player, out var session))
                 continue;
 
             sessions.Add(session);

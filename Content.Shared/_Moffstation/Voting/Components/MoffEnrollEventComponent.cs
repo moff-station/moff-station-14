@@ -56,7 +56,7 @@ public sealed partial class MoffEnrollEventComponent : Component
     public Color DescriptionColor = Color.LightGray;
 
     [DataField, AutoNetworkedField]
-    public HashSet<NetEntity> Enrolled = new();
+    public HashSet<EntityUid> Enrolled = new();
 
     /// <summary>
     /// Enrollees who asked to spawn as a randomly generated character instead of their selected one.
@@ -85,7 +85,7 @@ public sealed partial class MoffEnrollEventComponent : Component
 }
 
 [Serializable, NetSerializable]
-public sealed class MoffSetEnrollMessage(NetEntity enroller, bool enrolled) : EntityEventArgs
+public sealed class MoffSetEnrollMessage(NetEntity enroller, bool enrolled) : BoundUserInterfaceMessage
 {
     public NetEntity Enroller = enroller;
     public bool Enrolled = enrolled;
@@ -96,7 +96,7 @@ public sealed class MoffSetEnrollMessage(NetEntity enroller, bool enrolled) : En
 /// the one they have selected.
 /// </summary>
 [Serializable, NetSerializable]
-public sealed class MoffSetEnrollRandomMessage(NetEntity enroller, bool random) : EntityEventArgs
+public sealed class MoffSetEnrollRandomMessage(NetEntity enroller, bool random) : BoundUserInterfaceMessage
 {
     public NetEntity Enroller = enroller;
     public bool Random = random;

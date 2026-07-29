@@ -1,4 +1,5 @@
 using System.Numerics;
+using Content.Shared._Moffstation.Voting.Components; // Moff
 using JetBrains.Annotations;
 using Robust.Client.UserInterface;
 
@@ -15,7 +16,13 @@ public sealed class ESVoterBui(EntityUid owner, Enum uiKey) : BoundUserInterface
         base.Open();
 
         _window = this.CreateWindow<ESVotingWindow>();
-        _window.OpenCenteredAt(_defaultLocation); // Moffstation - off center the window, I like it better
+        // Moff Start - off center the window, I like it better, and send the enroll messages from here
+        _window.OpenCenteredAt(_defaultLocation);
+        _window.OnSetEnroll += (enroller, enrolled) =>
+            SendPredictedMessage(new MoffSetEnrollMessage(EntMan.GetNetEntity(enroller), enrolled));
+        _window.OnSetRandom += (enroller, random) =>
+            SendPredictedMessage(new MoffSetEnrollRandomMessage(EntMan.GetNetEntity(enroller), random));
+        // Moff end
         _window.Update(Owner);
     }
 

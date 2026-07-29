@@ -18,26 +18,30 @@ public sealed partial class MoffEnrollControl : PanelContainer, IVoteEntryContro
     [Dependency] private IGameTiming _timing = default!;
     [Dependency] private IPlayerManager _player = default!;
 
-    public EntityUid Enroller { get; }
+    private EntityUid _enroller;
     private TimeSpan _endTime;
+
+    /// <summary>
+    /// Toggled enrollment, and the character-select window's random pick. The BUI owning this control turns
+    /// these into messages; controls don't talk to the server themselves.
+    /// </summary>
+    public Action<bool>? OnSetEnroll;
+
+    public Action<bool>? OnSetRandom;
 
     public MoffEnrollControl()
     {
         IoCManager.InjectDependencies(this);
         RobustXamlLoader.Load(this);
     }
-    public MoffEnrollControl(EntityUid enroller)
+    public MoffEnrollControl(Entity<MoffEnrollEventComponent> enroller)
     {
         IoCManager.InjectDependencies(this);
         RobustXamlLoader.Load(this);
 
-        Enroller = enroller;
+        _enroller = enroller;
 
-        if (!_entityManager.TryGetComponent<MoffEnrollEventComponent>(Enroller, out var comp))
-            return;
-
-        var enrolled = _entityManager.GetNetEntity(_player.LocalEntity) is { } netEntity
-                       && comp.Enrolled.Contains(netEntity);
+        var enrolled = _player.LocalEntity is { } localEntity && enroller.Comp.Enrolled.Contains(localEntity);
 
         EnrollButton.Pressed = enrolled;
         EnrollButton.Text = enrolled ? "Enrolled" : "Enroll";
@@ -45,32 +49,36 @@ public sealed partial class MoffEnrollControl : PanelContainer, IVoteEntryContro
         EnrollButton.OnPressed += args =>
         {
             EnrollButton.Text = args.Button.Pressed ? "Enrolled" : "Enroll";
-            var netEnroller = _entityManager.GetNetEntity(Enroller);
-            _entityManager.RaisePredictiveEvent(new MoffSetEnrollMessage(netEnroller, args.Button.Pressed));
+            OnSetEnroll?.Invoke(args.Button.Pressed);
         };
 
         // Ghosts only; only they carry a WarpComponent, so the warp system ignores anyone still in a body.
         GotoButton.OnPressed += _ =>
         {
-            if (_entityManager.TryGetComponent<MoffEnrollEventComponent>(Enroller, out var enroll)
+            if (_entityManager.TryGetComponent<MoffEnrollEventComponent>(_enroller, out var enroll)
                 && enroll.WarpTarget is { } target)
                 _entityManager.System<SharedWarpSystem>().RequestWarpToLocation(target);
         };
 
-        CharacterSelectionButton.OnPressed += _ => new MoffCharacterSelectWindow(Enroller).OpenCentered();
+        CharacterSelectionButton.OnPressed += _ =>
+        {
+            var window = new MoffCharacterSelectWindow(_enroller);
+            window.OnSetRandom += random => OnSetRandom?.Invoke(random);
+            window.OpenCentered();
+        };
     }
 
     public void Update(EntityUid owner)
     {
-        if (!_entityManager.TryGetComponent<MoffEnrollEventComponent>(Enroller, out var comp))
+        if (!_entityManager.TryGetComponent<MoffEnrollEventComponent>(_enroller, out var comp))
             return;
 
-        Update((Enroller, comp), owner);
+        Update((_enroller, comp), owner);
     }
 
     private void Update(Entity<MoffEnrollEventComponent> ent, EntityUid owner)
     {
-        var metadata = _entityManager.GetComponentOrNull<MetaDataComponent>(Enroller);
+        var metadata = _entityManager.GetComponentOrNull<MetaDataComponent>(_enroller);
         var name = metadata?.EntityName ?? string.Empty;
         var desc = metadata?.EntityDescription ?? string.Empty;
         VoteNameLabel.SetMarkup(Loc.GetString("moff-vote-enroll-header-text-format",

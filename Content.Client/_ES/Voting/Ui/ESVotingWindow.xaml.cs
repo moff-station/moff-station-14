@@ -21,6 +21,10 @@ public sealed partial class ESVotingWindow : FancyWindow
 
     private List<Entity<MoffVoteEntryComponent>> _lastEntries = new();
 
+    // Moff - enroll actions, bubbled up from the entry controls for the BUI to send.
+    public Action<EntityUid, bool>? OnSetEnroll;
+    public Action<EntityUid, bool>? OnSetRandom;
+
     public ESVotingWindow()
     {
         RobustXamlLoader.Load(this);
@@ -60,8 +64,15 @@ public sealed partial class ESVotingWindow : FancyWindow
     {
         if (_entityManager.HasComponent<ESVoteComponent>(ent.Owner))
             return new ESVoteControl(ent.Owner);
-        if (_entityManager.HasComponent<MoffEnrollEventComponent>(ent.Owner))
-            return new MoffEnrollControl(ent.Owner);
+
+        if (_entityManager.TryGetComponent<MoffEnrollEventComponent>(ent.Owner, out var enroll))
+        {
+            var control = new MoffEnrollControl((ent.Owner, enroll));
+            control.OnSetEnroll += enrolled => OnSetEnroll?.Invoke(ent.Owner, enrolled);
+            control.OnSetRandom += random => OnSetRandom?.Invoke(ent.Owner, random);
+            return control;
+        }
+
         return null;
     }
 }

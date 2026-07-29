@@ -1,4 +1,5 @@
 using System.Diagnostics.CodeAnalysis;
+using Content.Shared._ES.Voting.Components;
 using Content.Shared._Moffstation.Voting.Components;
 using Content.Shared.Ghost;
 using Content.Shared.Humanoid;
@@ -14,40 +15,39 @@ public abstract partial class SharedMoffEnrollEventSystem : EntitySystem
     {
         base.Initialize();
 
-        SubscribeAllEvent<MoffSetEnrollMessage>(OnSetEnroll);
-        SubscribeAllEvent<MoffSetEnrollRandomMessage>(OnSetEnrollRandom);
+        SubscribeLocalEvent<ESVoterComponent, MoffSetEnrollMessage>(OnSetEnroll);
+        SubscribeLocalEvent<ESVoterComponent, MoffSetEnrollRandomMessage>(OnSetEnrollRandom);
     }
 
-    private void OnSetEnroll(MoffSetEnrollMessage args, EntitySessionEventArgs ev)
+    private void OnSetEnroll(Entity<ESVoterComponent> ent, ref MoffSetEnrollMessage args)
     {
         // Ghosts only - assignment bypasses the mutual-antag check, so this gate is what stops an embodied
         // already-antag from getting force-assigned a second, exclusive one.
-        if (ev.SenderSession.AttachedEntity is not { } attachedEntity || !HasComp<GhostComponent>(attachedEntity))
+        if (!HasComp<GhostComponent>(args.Actor))
             return;
 
         if (!TryGetEntity(args.Enroller, out var enrollerUid) ||
             !TryComp<MoffEnrollEventComponent>(enrollerUid, out var comp))
             return;
 
-        var netAttached = GetNetEntity(attachedEntity);
         if (args.Enrolled)
         {
-            comp.Enrolled.Add(netAttached);
+            comp.Enrolled.Add(args.Actor);
         }
         else
         {
-            comp.Enrolled.Remove(netAttached);
+            comp.Enrolled.Remove(args.Actor);
             // Their character choice goes with them, so re-enrolling starts from their own character again.
-            comp.RandomPick.Remove(netAttached);
+            comp.RandomPick.Remove(GetNetEntity(args.Actor));
         }
 
         Dirty(enrollerUid.Value, comp);
     }
 
-    private void OnSetEnrollRandom(MoffSetEnrollRandomMessage args, EntitySessionEventArgs ev)
+    private void OnSetEnrollRandom(Entity<ESVoterComponent> ent, ref MoffSetEnrollRandomMessage args)
     {
         // Ghosts only, matching OnSetEnroll - a random-character pick is only meaningful for an enrollee.
-        if (ev.SenderSession.AttachedEntity is not { } attachedEntity || !HasComp<GhostComponent>(attachedEntity))
+        if (!HasComp<GhostComponent>(args.Actor))
             return;
 
         if (!TryGetEntity(args.Enroller, out var enrollerUid) ||
@@ -55,7 +55,7 @@ public abstract partial class SharedMoffEnrollEventSystem : EntitySystem
             !comp.CharacterSelection)
             return;
 
-        var netAttached = GetNetEntity(attachedEntity);
+        var netAttached = GetNetEntity(args.Actor);
         if (args.Random)
             comp.RandomPick.Add(netAttached);
         else
