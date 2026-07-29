@@ -93,6 +93,11 @@ namespace Content.Server.Afk
 
         public bool IsAfk(ICommonSession player)
         {
+            // Moff start - A timer of 0 disables AFK entirely, don't report anyone as AFK
+            if (_afkTime <= TimeSpan.Zero)
+                return false;
+            // Moff end
+
             if (!_lastActionTimes.TryGetValue(player, out var time))
             {
                 // Some weird edge case like disconnected clients. Just say true I guess.
@@ -103,6 +108,11 @@ namespace Content.Server.Afk
 
             if (_adminManager.IsAdmin(player))
             {
+                // Moff start - Admin AFK timer disabled
+                if (_adminAfkTime <= TimeSpan.Zero)
+                    return false;
+                // Moff end
+
                 timeOut = _adminAfkTime;
             }
             else

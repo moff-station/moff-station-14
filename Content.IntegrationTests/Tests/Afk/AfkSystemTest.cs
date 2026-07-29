@@ -154,7 +154,7 @@ public sealed class AfkSystemTest : GameTest
 
             Assert.Multiple(() =>
             {
-                Assert.That(_afkManager.IsAfk(session), Is.True);
+                Assert.That(_afkManager.IsAfk(session), Is.False); // Moff - should be false
                 Assert.That(_afkConfirm.HasConfirmation(session), Is.False);
             });
         });
