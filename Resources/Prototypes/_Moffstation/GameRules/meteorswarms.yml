@@ -1,4 +1,24 @@
 - type: entity
+  parent: MeteorSwarm
+  id: MissileBarrage
+  components:
+  - type: StationEvent
+    weight: 4
+    earliestStart: 30
+  - type: MeteorSwarm
+    announcement: station-event-rocket-barrage-start-announcement
+    announcementSound: /Audio/Announcements/war.ogg
+    meteorVelocity: 30
+    meteors:
+      MoffBulletMissile: 1
+    waves:
+      min: 2
+      max: 4
+    meteorsPerWave:
+      min: 5
+      max: 10
+
+- type: entity
   id: ImmovableRodSpawn
   parent: BaseGameRule
   components:
