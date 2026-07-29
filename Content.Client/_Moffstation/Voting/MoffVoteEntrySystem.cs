@@ -1,5 +1,6 @@
 using Content.Shared._ES.Voting;
 using Content.Shared._ES.Voting.Components;
+using Content.Shared._Moffstation.Extensions;
 using Content.Shared._Moffstation.Voting.Components;
 using Robust.Client.GameObjects;
 using Robust.Shared.Timing;
@@ -20,35 +21,19 @@ public sealed partial class MoffVoteEntrySystem : ESSharedVoteSystem
         // Moffstation - MoffVoteEntryComponent is a stateless marker, so it never raises
         // AfterAutoHandleStateEvent. Subscribe on the concrete entry types instead so open windows refresh
         // when a new vote/enroll syncs in, not just on removal.
-        SubscribeLocalEvent<ESVoteComponent, AfterAutoHandleStateEvent>(OnAfterAutoHandleState);
-        SubscribeLocalEvent<MoffEnrollEventComponent, AfterAutoHandleStateEvent>(OnAfterAutoHandleState);
-        SubscribeLocalEvent<MoffVoteEntryComponent, ComponentRemove>(OnRemove);
+        SubscribeLocalEvent<ESVoteComponent, AfterAutoHandleStateEvent>(RefreshOpenVoteWindows);
+        SubscribeLocalEvent<MoffEnrollEventComponent, AfterAutoHandleStateEvent>(RefreshOpenVoteWindows);
+        SubscribeLocalEvent<MoffVoteEntryComponent, ComponentRemove>(RefreshOpenVoteWindows);
     }
 
-    private void OnAfterAutoHandleState(Entity<ESVoteComponent> ent, ref AfterAutoHandleStateEvent args)
-    {
-        RefreshOpenVoteWindows();
-    }
-
-    private void OnAfterAutoHandleState(Entity<MoffEnrollEventComponent> ent, ref AfterAutoHandleStateEvent args)
-    {
-        RefreshOpenVoteWindows();
-    }
-
-    private void OnRemove(Entity<MoffVoteEntryComponent> ent, ref ComponentRemove args)
-    {
-        RefreshOpenVoteWindows();
-    }
-
-    private void RefreshOpenVoteWindows()
+    private void RefreshOpenVoteWindows<TComp, TArgs>(Entity<TComp> ent, ref TArgs args) where TComp : Component
     {
         if (!_timing.ApplyingState)
             return;
 
-        var query = EntityQueryEnumerator<ESVoterComponent, UserInterfaceComponent>();
-        while (query.MoveNext(out var uid, out _, out var ui))
+        foreach (var entity in EntityQueryEnumerator<ESVoterComponent, UserInterfaceComponent>().AsEnumerable())
         {
-            if (_userInterface.TryGetOpenUi((uid, ui), ESVoterUiKey.Key, out var bui))
+            if (_userInterface.TryGetOpenUi((entity, entity), ESVoterUiKey.Key, out var bui))
                 bui.Update();
         }
     }

@@ -1,4 +1,3 @@
-using System.Linq;
 using Content.Client.Message;
 using Content.Shared._Moffstation.Voting.Components;
 using Content.Shared._Moffstation.Warp;
@@ -17,6 +16,9 @@ public sealed partial class MoffEnrollControl : PanelContainer, IVoteEntryContro
     [Dependency] private IEntityManager _entityManager = default!;
     [Dependency] private IGameTiming _timing = default!;
     [Dependency] private IPlayerManager _player = default!;
+
+    [Dependency] private EntityQuery<MoffEnrollEventComponent> _enrollQuery;
+    [Dependency] private EntityQuery<MetaDataComponent> _metaDataQuery;
 
     private EntityUid _enroller;
     private TimeSpan _endTime;
@@ -40,15 +42,28 @@ public sealed partial class MoffEnrollControl : PanelContainer, IVoteEntryContro
         RobustXamlLoader.Load(this);
 
         _enroller = enroller;
+        _endTime = enroller.Comp.EndTime;
 
-        var enrolled = _player.LocalEntity is { } localEntity && enroller.Comp.Enrolled.Contains(localEntity);
+        var metadata = _metaDataQuery.GetComponent(_enroller);
+        VoteNameLabel.SetMarkup(Loc.GetString("moff-vote-enroll-header-text-format",
+            ("color", enroller.Comp.TitleColor),
+            ("title", metadata.EntityName)));
+        VoteDescriptionLabel.SetMarkup(Loc.GetString("moff-vote-enroll-header-desc-format",
+            ("color", enroller.Comp.DescriptionColor),
+            ("desc", metadata.EntityDescription)));
 
-        EnrollButton.Pressed = enrolled;
-        EnrollButton.Text = enrolled ? "Enrolled" : "Enroll";
+        GotoButton.Disabled = enroller.Comp.WarpTarget is null;
+
+        CharacterSelectionButton.Visible = enroller.Comp.CharacterSelection;
+
+        TimerProgress.MinValue = (float) (enroller.Comp.EndTime - enroller.Comp.Duration).TotalSeconds;
+        TimerProgress.MaxValue = (float) enroller.Comp.EndTime.TotalSeconds;
+
+        RefreshEnrollButton(enroller.Comp);
 
         EnrollButton.OnPressed += args =>
         {
-            EnrollButton.Text = args.Button.Pressed ? "Enrolled" : "Enroll";
+            EnrollButton.Text = GetEnrollText(args.Button.Pressed);
             OnSetEnroll?.Invoke(args.Button.Pressed);
         };
 
@@ -68,40 +83,23 @@ public sealed partial class MoffEnrollControl : PanelContainer, IVoteEntryContro
         };
     }
 
-    public void Update(EntityUid owner)
+    private static string GetEnrollText(bool enrolled)
     {
-        if (!_entityManager.TryGetComponent<MoffEnrollEventComponent>(_enroller, out var comp))
-            return;
-
-        Update((_enroller, comp), owner);
+        return Loc.GetString(enrolled ? "moff-vote-enroll-button-enrolled" : "moff-vote-enroll-button-enroll");
     }
 
-    private void Update(Entity<MoffEnrollEventComponent> ent, EntityUid owner)
+    public void Update(EntityUid owner)
     {
-        var metadata = _entityManager.GetComponentOrNull<MetaDataComponent>(_enroller);
-        var name = metadata?.EntityName ?? string.Empty;
-        var desc = metadata?.EntityDescription ?? string.Empty;
-        VoteNameLabel.SetMarkup(Loc.GetString("moff-vote-enroll-header-text-format",
-            ("color", ent.Comp.TitleColor),
-            ("title", name)));
-        VoteDescriptionLabel.SetMarkup(Loc.GetString("moff-vote-enroll-header-desc-format",
-            ("color", ent.Comp.DescriptionColor),
-            ("desc", desc)));
+        if (_enrollQuery.TryComp(_enroller, out var comp))
+            RefreshEnrollButton(comp);
+    }
 
-        // There's nowhere to go until the rule has been added and its spawn location picked.
-        GotoButton.Disabled = ent.Comp.WarpTarget is null;
+    private void RefreshEnrollButton(MoffEnrollEventComponent comp)
+    {
+        var enrolled = _player.LocalEntity is { } localEntity && comp.Enrolled.Contains(localEntity);
 
-        // Hidden when the antag spawns a fixed non-humanoid body, which ignores the chosen character.
-        CharacterSelectionButton.Visible = ent.Comp.CharacterSelection;
-
-        TimerProgress.MinValue = (float) (ent.Comp.EndTime - ent.Comp.Duration).TotalSeconds;
-        TimerProgress.MaxValue = (float) ent.Comp.EndTime.TotalSeconds;
-        _endTime = ent.Comp.EndTime;
-        if (_timing.CurTime > _endTime)
-        {
-            TimerProgress.Visible = false;
-            TimeLabel.Visible = false;
-        }
+        EnrollButton.Pressed = enrolled;
+        EnrollButton.Text = GetEnrollText(enrolled);
     }
 
     protected override void FrameUpdate(FrameEventArgs args)
@@ -109,8 +107,15 @@ public sealed partial class MoffEnrollControl : PanelContainer, IVoteEntryContro
         base.FrameUpdate(args);
 
         var curTime = _timing.CurTime;
+        var remaining = _endTime - curTime;
+        if (remaining <= TimeSpan.Zero)
+        {
+            TimerProgress.Visible = false;
+            TimeLabel.Visible = false;
+            return;
+        }
 
-        TimeLabel.Text = $"Time remaining: {_endTime - curTime:mm\\:ss}";
+        TimeLabel.Text = Loc.GetString("moff-vote-enroll-time-remaining", ("time", $"{remaining:mm\\:ss}"));
         TimerProgress.Value = (float) curTime.TotalSeconds;
     }
 }
