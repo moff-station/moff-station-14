@@ -2,6 +2,7 @@ using System.Text.RegularExpressions;
 using Content.Server._Moffstation.Speech.Components;
 using Content.Server.Speech.EntitySystems;
 using Content.Shared.Speech;
+using Content.Shared.Speech.EntitySystems;
 using Robust.Shared.Random;
 
 namespace Content.Server._Moffstation.Speech.EntitySystems;
