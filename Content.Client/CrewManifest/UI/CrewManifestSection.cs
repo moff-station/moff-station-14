@@ -1,15 +1,19 @@
-﻿using Content.Shared.CrewManifest;
+﻿using System.Numerics;
+using Content.Shared.CrewManifest;
+using Content.Shared.Roles;
 using Content.Shared.StatusIcon;
 using Robust.Client.GameObjects;
+using Robust.Client.Graphics;
 using Robust.Client.UserInterface.Controls;
 using Robust.Shared.Prototypes;
-using System.Numerics;
-using Content.Shared.Roles;
 
 namespace Content.Client.CrewManifest.UI;
 
 public sealed class CrewManifestSection : BoxContainer
 {
+    private const int NameColumnMinWidth = 190; // Moff - improved manifest
+    public const string GenderStyleClass = "CrewManifestGender"; // Moff - improved manifest
+
     public CrewManifestSection(
         IPrototypeManager prototypeManager,
         SpriteSystem spriteSystem,
@@ -19,69 +23,66 @@ public sealed class CrewManifestSection : BoxContainer
         Orientation = LayoutOrientation.Vertical;
         HorizontalExpand = true;
 
-        AddChild(new Label()
+        // Moff - improved manifest - department header
+        // AddChild(new Label()
+        // {
+        //     StyleClasses = { "LabelBig" },
+        //     Text = Loc.GetString(section.Name)
+        // });
+
+        AddChild(new PanelContainer
         {
-            StyleClasses = { "LabelBig" },
-            Text = Loc.GetString(section.Name)
+            PanelOverride = new StyleBoxFlat { BackgroundColor = section.Color },
+            Children =
+            {
+                new RichTextLabel
+                {
+                    Text = Loc.GetString("moff-crew-manifest-department-header", ("departmentName", Loc.GetString(section.Name))),
+                    Margin = new Thickness(5f, 2f, 0, 2f),
+                },
+            },
         });
+        // Moff end
 
-        // var gridContainer = new GridContainer() //Box - replaces with a box container to better fit long names - for pronoun display
-        var gridContainer = new BoxContainer()
+        var gridContainer = new GridContainer()
         {
-            Orientation = LayoutOrientation.Horizontal,
+            Margin = new Thickness(0, 4, 0, 0), // Moff
             HorizontalExpand = true,
-            // Columns = 2 //Box - replaces with a horizontal orientation instead - for pronoun display
+            Columns = 2
         };
 
-        // Delta-V - Start of column BoxContainers.
-        var namesContainer = new BoxContainer()
-        {
-            Orientation = LayoutOrientation.Vertical,
-            HorizontalExpand = true,
-            SizeFlagsStretchRatio = 3,
-        };
-
-        var titlesContainer = new BoxContainer()
-        {
-            Orientation = LayoutOrientation.Vertical,
-            HorizontalExpand = true,
-            SizeFlagsStretchRatio = 2,
-        };
-
-        gridContainer.AddChild(namesContainer);
-        gridContainer.AddChild(titlesContainer);
-        // Delta-V - end of column BoxContainers.
-
-        AddChild(gridContainer);
+        // AddChild(gridContainer); // Moff
 
         foreach (var entry in entries)
         {
-            // var name = new RichTextLabel() // Box - Comments out for pronouns pr
-            // Delta-V - start of name and pronoun container
-            var nameContainer = new BoxContainer()
-            {
-                Orientation = LayoutOrientation.Horizontal,
-                HorizontalExpand = true,
-            };
-            var name = new RichTextLabel();
-            name.SetMessage(entry.Name);
+            // Moff start - improved crew manifest
+            var nameLabel = new RichTextLabel();
+            // {
+            //     HorizontalExpand = true,
+            // };
+            // Moff end
+            nameLabel.SetMessage(entry.Name);
 
-            var gender = new RichTextLabel()
+            // Moff start - improved crew manifest - display pronouns
+            var gender = new RichTextLabel
             {
                 Margin = new Thickness(6, 0, 0, 0),
-                StyleClasses = { "CrewManifestGender" }
+                StyleClasses = { GenderStyleClass },
             };
-            gender.SetMessage(Loc.GetString("gender-display", ("gender", entry.Gender)));
+            gender.SetMessage(Loc.GetString("gender-display", ("gender", entry.Gender)), Color.Gray);
 
-            nameContainer.AddChild(name);
-            nameContainer.AddChild(gender);
-            // Delta-V - end of name and pronoun container
+            var name = new BoxContainer
+            {
+                Orientation = LayoutOrientation.Horizontal,
+                MinWidth = NameColumnMinWidth,
+                Children = { nameLabel, gender },
+            };
+            // Moff end
 
             var titleContainer = new BoxContainer()
             {
                 Orientation = LayoutOrientation.Horizontal,
-                HorizontalExpand = true,
-                SizeFlagsStretchRatio = 1, // Delta-V
+                HorizontalExpand = true
             };
 
             var title = new RichTextLabel();
@@ -106,12 +107,10 @@ public sealed class CrewManifestSection : BoxContainer
                 titleContainer.AddChild(title);
             }
 
-            // Delta-V - grid was replaced with two BoxContainer columns
-            //gridContainer.AddChild(name);
-            //gridContainer.AddChild(titleContainer);
-            namesContainer.AddChild(nameContainer);
-            titlesContainer.AddChild(titleContainer);
-            // Delta-V - end of grid container change
+            gridContainer.AddChild(name);
+            gridContainer.AddChild(titleContainer);
         }
+
+        AddChild(gridContainer); // Moff
     }
 }

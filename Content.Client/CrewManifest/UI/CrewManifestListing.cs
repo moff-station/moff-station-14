@@ -1,9 +1,11 @@
 ﻿using Content.Shared.CrewManifest;
 using Content.Shared.Roles;
 using Robust.Client.GameObjects;
+using Robust.Client.UserInterface;
 using Robust.Client.UserInterface.Controls;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Utility;
+using System.Numerics;
 
 namespace Content.Client.CrewManifest.UI;
 
@@ -44,8 +46,16 @@ public sealed partial class CrewManifestListing : BoxContainer
 
         entryList.Sort((a, b) => DepartmentUIComparer.Instance.Compare(a.section, b.section));
 
+        var firstSection = true; // Moff - improved manifest
         foreach (var item in entryList)
         {
+            // Moff start - improved manifest
+            if (firstSection)
+                firstSection = false;
+            else
+                AddChild(new Control { MinSize = new Vector2(0, 12) });
+            // Moff end
+
             AddChild(new CrewManifestSection(_prototypeManager, _spriteSystem, item.section, item.entries));
         }
     }
