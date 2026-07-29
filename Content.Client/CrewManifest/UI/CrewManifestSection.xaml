@@ -1,0 +1,9 @@
+<controls:CrewManifestSection xmlns="https://spacestation14.io"
+                              xmlns:controls="clr-namespace:Content.Client.CrewManifest.UI"
+                              Orientation="Vertical"
+                              HorizontalExpand="True">
+    <PanelContainer Name="HeaderPanel">
+        <RichTextLabel Name="HeaderLabel" Margin="5 2 0 2" />
+    </PanelContainer>
+    <BoxContainer Name="EntryContainer" Orientation="Vertical" HorizontalExpand="True" Margin="0 4 0 0" />
+</controls:CrewManifestSection>

@@ -56,7 +56,7 @@ public sealed partial class CrewManifestListing : BoxContainer
                 AddChild(new Control { MinSize = new Vector2(0, 12) });
             // Moff end
 
-            AddChild(new CrewManifestSection(_prototypeManager, _spriteSystem, item.section, item.entries));
+            AddChild(new CrewManifestSection(item.section, item.entries));
         }
     }
 }

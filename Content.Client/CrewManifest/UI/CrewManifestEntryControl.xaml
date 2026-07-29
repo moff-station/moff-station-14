@@ -1,0 +1,13 @@
+<controls:CrewManifestEntryControl xmlns="https://spacestation14.io"
+                                   xmlns:controls="clr-namespace:Content.Client.CrewManifest.UI"
+                                   Orientation="Horizontal"
+                                   HorizontalExpand="True">
+    <BoxContainer Name="NameContainer" Orientation="Horizontal" MinWidth="190">
+        <RichTextLabel Name="NameLabel" />
+        <RichTextLabel Name="GenderLabel" Margin="6 0 0 0" StyleClasses="CrewManifestGender" />
+    </BoxContainer>
+    <BoxContainer Name="TitleContainer" Orientation="Horizontal" HorizontalExpand="True">
+        <TextureRect Name="JobIcon" TextureScale="2 2" VerticalAlignment="Center" Margin="0 0 4 0" Visible="False" />
+        <RichTextLabel Name="TitleLabel" />
+    </BoxContainer>
+</controls:CrewManifestEntryControl>

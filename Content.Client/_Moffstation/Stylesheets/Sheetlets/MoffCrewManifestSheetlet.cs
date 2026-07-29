@@ -15,7 +15,7 @@ public sealed class MoffCrewManifestSheetlet : Sheetlet<PalettedStylesheet>
     public override StyleRule[] GetRules(PalettedStylesheet sheet, object config) =>
     [
         Client.Stylesheets.StylesheetHelpers.E<RichTextLabel>()
-            .Class(CrewManifestSection.GenderStyleClass)
+            .Class(CrewManifestEntryControl.GenderStyleClass)
             .Font(sheet.BaseFont.GetFont(10, FontKind.Italic)),
     ];
 }
