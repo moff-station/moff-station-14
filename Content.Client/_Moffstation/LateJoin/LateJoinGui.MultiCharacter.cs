@@ -1,14 +1,10 @@
-using System.Numerics;
+using Content.Client._Moffstation.LateJoin;
 using Content.Client._Moffstation.Preferences;
 using Content.Client.Lobby.UI;
-using Content.Client.Stylesheets;
 using Content.Shared.Preferences;
-using Robust.Client.Graphics;
 using Robust.Client.UserInterface;
 using Robust.Client.UserInterface.Controls;
 using Robust.Shared.Player;
-using Robust.Shared.Utility;
-using static Robust.Client.UserInterface.Controls.BoxContainer;
 
 namespace Content.Client.LateJoin;
 
@@ -17,7 +13,7 @@ public sealed partial class LateJoinGui
     [Dependency] private ISharedPlayerManager _moffPlayerManager = default!;
     [Dependency] private MoffCharacterSelectionManager _moffSelection = default!;
 
-    private BoxContainer _moffCharacterList = default!;
+    private MoffLateJoinLayout _moffLayout = default!;
 
     /// <summary>Which character slot the player is joining as, if they have one.</summary>
     private int? MoffSelectedSlot { get; set; }
@@ -27,47 +23,15 @@ public sealed partial class LateJoinGui
     /// </summary>
     private Control BuildMoffLayout(Control jobList)
     {
-        _moffCharacterList = new BoxContainer { Orientation = LayoutOrientation.Vertical };
+        _moffLayout = new MoffLateJoinLayout();
+        _moffLayout.JobList.AddChild(jobList);
 
-        return new BoxContainer
-        {
-            Orientation = LayoutOrientation.Horizontal,
-            HorizontalExpand = true,
-            VerticalExpand = true,
-            Children =
-            {
-                new ScrollContainer
-                {
-                    VerticalExpand = true,
-                    HorizontalExpand = true,
-                    SizeFlagsStretchRatio = 1,
-                    Children = { _moffCharacterList },
-                },
-                new PanelContainer
-                {
-                    MinSize = new Vector2(2, 0),
-                    PanelOverride = new StyleBoxFlat
-                    {
-                        BackgroundColor = StyleNano.NanoGold,
-                        ContentMarginTopOverride = 2,
-                    },
-                },
-                new BoxContainer
-                {
-                    Orientation = LayoutOrientation.Vertical,
-                    VerticalExpand = true,
-                    HorizontalExpand = true,
-                    SizeFlagsStretchRatio = 1.3f,
-                    Margin = new Thickness(5, 5, 0, 0),
-                    Children = { jobList },
-                },
-            },
-        };
+        return _moffLayout;
     }
 
     private void RebuildMoffCharacterList()
     {
-        _moffCharacterList.RemoveAllChildren();
+        _moffLayout.CharacterList.RemoveAllChildren();
 
         if (_preferencesManager.Preferences is not { } prefs)
             return;
@@ -107,7 +71,7 @@ public sealed partial class LateJoinGui
                 RebuildUI();
             };
 
-            _moffCharacterList.AddChild(button);
+            _moffLayout.CharacterList.AddChild(button);
         }
     }
 
