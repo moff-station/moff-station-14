@@ -28,6 +28,23 @@
   categories:
   - UplinkWeaponry
 
+- type: listing # Syndicate fireaxe for atmosians
+  id: UplinkFireAxeFlamingUpstream
+  name: uplink-flaming-fire-axe-name
+  description: uplink-flaming-fire-axe-desc
+  productEntity: FireAxeFlamingUpstream
+  discountCategory: usualDiscounts
+  discountDownTo:
+    Telecrystal: 4
+  cost:
+    Telecrystal: 6
+  categories:
+  - UplinkJob
+  conditions:
+  - !type:BuyerJobCondition
+    whitelist:
+    - AtmosphericTechnician
+
 # Wearables
 - type: listing
   id: UplinkClothingShoesSkatesSyndicate
