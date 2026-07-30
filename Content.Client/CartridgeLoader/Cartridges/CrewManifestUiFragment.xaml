@@ -9,7 +9,7 @@
                 <Label Name="StationName" Align="Center" Text="{Loc 'crew-manifest-cartridge-loading'}"/>
             </PanelContainer>
         </controls:StripeBack>
-        <ScrollContainer HorizontalExpand="True" VerticalExpand="True">
+        <ScrollContainer HorizontalExpand="True" VerticalExpand="True" HScrollEnabled="False">
             <ui:CrewManifestListing
                 Name="CrewManifestListing"
                 Orientation="Vertical"

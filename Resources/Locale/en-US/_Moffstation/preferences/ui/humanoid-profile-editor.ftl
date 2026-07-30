@@ -12,10 +12,10 @@ moff-antag-search-placeholder = Search Special Roles...
 moff-antag-footer-hint = Read faction info for more details
 moff-antag-footer-info = Death to Nanotrasen!
 
-# Genders for pronoun manifest
+# Genders for pronoun manifest. We use non-breaking spaces (U+00A0) very intentionally here.
 gender-display = ({$gender ->
-    [male] { humanoid-profile-editor-pronouns-male-text }
-    [female] { humanoid-profile-editor-pronouns-female-text }
-    [neuter] { humanoid-profile-editor-pronouns-neuter-text }
-    *[other] { humanoid-profile-editor-pronouns-epicene-text }
+    [male] He / Him
+    [female] She / Her
+    [neuter] It / Its
+    *[other] They / Them
 })

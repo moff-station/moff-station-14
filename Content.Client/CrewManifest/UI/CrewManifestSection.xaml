@@ -5,5 +5,7 @@
     <PanelContainer Name="HeaderPanel">
         <RichTextLabel Name="HeaderLabel" Margin="5 2 0 2" />
     </PanelContainer>
-    <BoxContainer Name="EntryContainer" Orientation="Vertical" HorizontalExpand="True" Margin="0 4 0 0" />
+    <BoxContainer Name="EntryContainer" Orientation="Vertical" HorizontalExpand="True" Margin="0 4 0 0" >
+        <!-- Populated in C# -->
+    </BoxContainer>
 </controls:CrewManifestSection>

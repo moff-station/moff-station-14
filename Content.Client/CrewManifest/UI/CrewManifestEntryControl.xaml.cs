@@ -4,6 +4,7 @@ using Robust.Client.GameObjects;
 using Robust.Client.UserInterface.Controls;
 using Robust.Client.UserInterface.XAML;
 using Robust.Shared.Prototypes;
+using Robust.Shared.Utility;
 
 namespace Content.Client.CrewManifest.UI;
 
@@ -12,8 +13,6 @@ public sealed partial class CrewManifestEntryControl : BoxContainer
 {
     [Dependency] private IPrototypeManager _prototypeManager = default!;
     [Dependency] private IEntityManager _entityManager = default!;
-
-    public const string GenderStyleClass = "CrewManifestGender";
 
     public CrewManifestEntryControl()
     {
@@ -26,8 +25,22 @@ public sealed partial class CrewManifestEntryControl : BoxContainer
         RobustXamlLoader.Load(this);
         IoCManager.InjectDependencies(this);
 
-        NameLabel.SetMessage(entry.Name);
-        GenderLabel.SetMessage(Loc.GetString("gender-display", ("gender", entry.Gender)), Color.Gray);
+        // Use markup to style the pronouns. This is done so that the name and pronouns can be in one label which wraps
+        // nicely. If they're separate controls, wrapping is WAY more complicated.
+        var nameMessage = new FormattedMessage();
+        nameMessage.AddText(entry.Name);
+        nameMessage.AddText(" ");
+        nameMessage.PushTag(new MarkupNode("font",
+            null,
+            new Dictionary<string, MarkupParameter> { ["size"] = new(10L) }));
+        nameMessage.PushTag(new MarkupNode("italic", null, null));
+        nameMessage.PushColor(Color.Gray);
+        nameMessage.AddText(Loc.GetString("gender-display", ("gender", entry.Gender)));
+        nameMessage.Pop(); // color
+        nameMessage.Pop(); // italic
+        nameMessage.Pop(); // font
+        NameLabel.SetMessage(nameMessage);
+
         TitleLabel.SetMessage(entry.JobTitle);
 
         if (_prototypeManager.TryIndex<JobIconPrototype>(entry.JobIcon, out var jobIcon))
