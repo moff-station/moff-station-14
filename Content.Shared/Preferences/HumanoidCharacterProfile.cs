@@ -414,7 +414,7 @@ namespace Content.Shared.Preferences
         /// <returns>A new character profile</returns>
         public static HumanoidCharacterProfile RandomWithSpecies(string? species = null)
         {
-            species ??= RandomSpecies().Prototype; // Moff - random can be any species, not just humans
+            species ??= DefaultSpecies;
 
             return Random(
                 RandomizeConfigAll ^ RandomizeCfg.Species,

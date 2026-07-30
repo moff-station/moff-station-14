@@ -149,26 +149,27 @@ public sealed partial class MoffEnrollEventSystem : EntitySystem
         var enrolled = sessions.Take(ent.Comp.MaxEnrolled);
         var enrolledCount = Math.Min(sessions.Count, ent.Comp.MaxEnrolled);
 
-        // Start the rule
-        if (enrolledCount >= ent.Comp.MinEnrolled &&
-            rule is { } ruleUid &&
-            _antagSelectionQuery.TryComp(ruleUid, out var antag))
+        // Too few enrollees, or no rule to hand antags out - run the fallback instead.
+        if (enrolledCount < ent.Comp.MinEnrolled ||
+            rule is not { } ruleUid ||
+            !_antagSelectionQuery.TryComp(ruleUid, out var antag))
         {
-            TryMarkRuleAdded(ruleUid);
-            _gameTicker.StartGameRule(ruleUid);
-
-            var players = _antag.GetActivePlayerCount();
-            foreach (var session in enrolled)
-            {
-                // ignoreExclusivity: true - an enrolling ghost may already be an antag. Bans/validity still apply.
-                _antag.TryAssignNextAvailableAntag((ruleUid, antag), session, players, checkPref: false, ignoreExclusivity: true);
-            }
-
+            FireFallbackRule(ent);
+            TryQueueDel(rule);
             return;
         }
 
-        FireFallbackRule(ent);
-        TryQueueDel(rule);
+        // Start the rule
+        TryMarkRuleAdded(ruleUid);
+        _gameTicker.StartGameRule(ruleUid);
+
+        var players = _antag.GetActivePlayerCount();
+        var gameRule = new Entity<AntagSelectionComponent>(ruleUid, antag);
+        foreach (var session in enrolled)
+        {
+            // ignoreExclusivity: true - an enrolling ghost may already be an antag. Bans/validity still apply.
+            _antag.TryAssignNextAvailableAntag(gameRule, session, players, checkPref: false, ignoreExclusivity: true);
+        }
     }
 
     /// <summary>

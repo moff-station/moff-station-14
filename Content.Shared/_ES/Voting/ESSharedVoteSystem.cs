@@ -24,12 +24,18 @@ public abstract partial class ESSharedVoteSystem : EntitySystem
     [Dependency] private IRobustRandom _random = default!;
     [Dependency] private SharedAtmosphereSystem _atmosphere = default!;
     [Dependency] private EntityTableSystem _entityTable = default!;
-    [Dependency] private SharedPvsOverrideSystem _pvsOverride = default!;
+    // [Dependency] private SharedPvsOverrideSystem _pvsOverride = default!;
 
     /// <inheritdoc/>
     public override void Initialize()
     {
         SubscribeLocalEvent<ESVoteComponent, MapInitEvent>(OnVoteMapInit);
+        // Moff end - These are moved into MoffSharedVoteEntrySystem.
+        // We separated the component that makes stuff appear in the UI from the one that handles the vote logic
+        // This is to make sure changes don't get muddled with the original ES vote system
+        // SubscribeLocalEvent<ESVoterComponent, PlayerAttachedEvent>(OnVoterPlayerAttached);
+        // SubscribeLocalEvent<ESVoterComponent, PlayerDetachedEvent>(OnVoterPlayerDetached);
+        // Moff end
         SubscribeAllEvent<ESSetVoteMessage>(OnSetVote);
 
         InitializeOptions();
