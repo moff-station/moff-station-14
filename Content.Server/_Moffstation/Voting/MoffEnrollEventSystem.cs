@@ -1,9 +1,11 @@
+using System.Linq;
 using Content.Server.Antag;
 using Content.Server.Antag.Components;
 using Content.Server.GameTicking;
 using Content.Server.GameTicking.Rules.Components;
 using Content.Shared._ES.Voting;
 using Content.Shared._ES.Voting.Components;
+using Content.Shared._Moffstation.Extensions;
 using Content.Shared._Moffstation.Voting.Components;
 using Content.Shared._Moffstation.Voting.Systems;
 using Content.Shared.EntityTable;
@@ -29,18 +31,20 @@ public sealed partial class MoffEnrollEventSystem : SharedMoffEnrollEventSystem
     [Dependency] private IPrototypeManager _proto = default!;
     [Dependency] private SharedTransformSystem _transform = default!;
 
+    [Dependency] private EntityQuery<AntagSelectionComponent> _antagSelectionQuery;
+    [Dependency] private EntityQuery<AntagLoadProfileRuleComponent> _antagProfileRuleQuery;
+
     public override void Update(float frameTime)
     {
         base.Update(frameTime);
 
-        // invalidate the query enumerator if done inline.
-        var query = EntityQueryEnumerator<MoffEnrollEventComponent>();
-        while (query.MoveNext(out var uid, out var comp))
+        foreach (var enroll in EntityQueryEnumerator<MoffEnrollEventComponent>().AsEnumerable().ToList())
         {
-            if (_timing.CurTime < comp.EndTime)
-                return;
-            ResolveEnrollment((uid, comp));
-            QueueDel(uid);
+            if (_timing.CurTime < enroll.Comp.EndTime)
+                continue;
+
+            ResolveEnrollment(enroll);
+            QueueDel(enroll.Owner);
         }
     }
 
@@ -55,7 +59,7 @@ public sealed partial class MoffEnrollEventSystem : SharedMoffEnrollEventSystem
     {
         ent.Comp.EndTime = _timing.CurTime + ent.Comp.Duration;
 
-        if (!TryComp<AntagSelectionComponent>(ev.Manager, out var antag))
+        if (!_antagSelectionQuery.TryComp(ev.Manager, out var antag))
             return;
 
         TryMarkRuleAdded(ev.Manager);
@@ -65,7 +69,7 @@ public sealed partial class MoffEnrollEventSystem : SharedMoffEnrollEventSystem
         if (GetWarpTarget((ev.Manager, antag)) is { } mapCoords)
             ent.Comp.WarpTarget = GetNetCoordinates(_transform.ToCoordinates(mapCoords));
 
-        ent.Comp.CharacterSelection = HasComp<AntagLoadProfileRuleComponent>(ev.Manager);
+        ent.Comp.CharacterSelection = _antagProfileRuleQuery.HasComp(ev.Manager);
         if (GetAntagColor(antag) is { } color)
             ent.Comp.TitleColor = color;
 
@@ -88,23 +92,21 @@ public sealed partial class MoffEnrollEventSystem : SharedMoffEnrollEventSystem
             sessions.Add(session);
         }
 
-        // Cap the number of assigned players if MaxEnrolled is set.
-        if (sessions.Count > ent.Comp.MaxEnrolled)
-        {
-            _random.Shuffle(sessions);
-            sessions.RemoveRange(ent.Comp.MaxEnrolled, sessions.Count - ent.Comp.MaxEnrolled);
-        }
+        // Shuffled first so that capping to the antag's slot count takes a random subset.
+        _random.Shuffle(sessions);
+        var enrolled = sessions.Take(ent.Comp.MaxEnrolled);
+        var enrolledCount = Math.Min(sessions.Count, ent.Comp.MaxEnrolled);
 
         // Start the rule
-        if (sessions.Count >= ent.Comp.MinEnrolled &&
+        if (enrolledCount >= ent.Comp.MinEnrolled &&
             rule is { } ruleUid &&
-            TryComp<AntagSelectionComponent>(ruleUid, out var antag))
+            _antagSelectionQuery.TryComp(ruleUid, out var antag))
         {
             TryMarkRuleAdded(ruleUid);
             _gameTicker.StartGameRule(ruleUid);
 
             var players = _antag.GetActivePlayerCount();
-            foreach (var session in sessions)
+            foreach (var session in enrolled)
             {
                 // ignoreExclusivity: true - an enrolling ghost may already be an antag. Bans/validity still apply.
                 _antag.TryAssignNextAvailableAntag((ruleUid, antag), session, players, checkPref: false, ignoreExclusivity: true);

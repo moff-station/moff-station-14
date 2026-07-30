@@ -2,13 +2,14 @@ using Content.Shared._ES.Voting;
 using Content.Shared._ES.Voting.Components;
 using Content.Shared._Moffstation.Extensions;
 using Content.Shared._Moffstation.Voting.Components;
+using Content.Shared._Moffstation.Voting.Systems;
 using Robust.Client.GameObjects;
 using Robust.Shared.Timing;
 
 namespace Content.Client._Moffstation.Voting;
 
 /// <inheritdoc/>
-public sealed partial class MoffVoteEntrySystem : ESSharedVoteSystem
+public sealed partial class MoffVoteEntrySystem : MoffSharedVoteEntrySystem
 {
     [Dependency] private IGameTiming _timing = default!;
     [Dependency] private UserInterfaceSystem _userInterface = default!;

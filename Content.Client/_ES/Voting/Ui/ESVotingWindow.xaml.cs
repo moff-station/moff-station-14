@@ -17,7 +17,7 @@ namespace Content.Client._ES.Voting.Ui;
 public sealed partial class ESVotingWindow : FancyWindow
 {
     [Dependency] private IEntityManager _entityManager = default!;
-    private readonly MoffVoteEntrySystem _vote;
+    private readonly MoffSharedVoteEntrySystem _sharedVote;
 
     private List<Entity<MoffVoteEntryComponent>> _lastEntries = new();
 
@@ -30,12 +30,12 @@ public sealed partial class ESVotingWindow : FancyWindow
         RobustXamlLoader.Load(this);
         IoCManager.InjectDependencies(this);
 
-        _vote = _entityManager.System<MoffVoteEntrySystem>();
+        _sharedVote = _entityManager.System<MoffSharedVoteEntrySystem>();
     }
 
     public void Update(EntityUid owner)
     {
-        var entries = _vote.EnumerateEntries().ToList();
+        var entries = _sharedVote.EnumerateEntries().ToList();
 
         if (entries.Count != _lastEntries.Count || entries.Intersect(_lastEntries).Count() != entries.Count)
         {

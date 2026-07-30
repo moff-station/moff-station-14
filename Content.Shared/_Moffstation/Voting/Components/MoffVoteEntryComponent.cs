@@ -7,5 +7,5 @@ namespace Content.Shared._Moffstation.Voting.Components;
 /// This is used for marking things to go in the ES voting panel, even if they're not explicitly votes
 /// </summary>
 [RegisterComponent, NetworkedComponent]
-[Access(typeof(MoffVoteEntrySystem))]
+[Access(typeof(MoffSharedVoteEntrySystem))]
 public sealed partial class MoffVoteEntryComponent : Component;
