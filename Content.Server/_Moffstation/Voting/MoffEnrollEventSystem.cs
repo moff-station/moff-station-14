@@ -7,9 +7,10 @@ using Content.Shared._ES.Voting;
 using Content.Shared._ES.Voting.Components;
 using Content.Shared._Moffstation.Extensions;
 using Content.Shared._Moffstation.Voting.Components;
-using Content.Shared._Moffstation.Voting.Systems;
+using Content.Shared.Antag;
 using Content.Shared.EntityTable;
 using Content.Shared.GameTicking.Components;
+using Content.Shared.Ghost;
 using Content.Shared.Roles.Components;
 using Robust.Server.Player;
 using Robust.Shared.Map;
@@ -17,10 +18,11 @@ using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 using Robust.Shared.Timing;
+using Robust.Shared.Utility;
 
 namespace Content.Server._Moffstation.Voting;
 
-public sealed partial class MoffEnrollEventSystem : SharedMoffEnrollEventSystem
+public sealed partial class MoffEnrollEventSystem : EntitySystem
 {
     [Dependency] private IGameTiming _timing = default!;
     [Dependency] private IPlayerManager _player = default!;
@@ -33,6 +35,9 @@ public sealed partial class MoffEnrollEventSystem : SharedMoffEnrollEventSystem
 
     [Dependency] private EntityQuery<AntagSelectionComponent> _antagSelectionQuery;
     [Dependency] private EntityQuery<AntagLoadProfileRuleComponent> _antagProfileRuleQuery;
+    [Dependency] private EntityQuery<GameRuleComponent> _gameRuleQuery;
+    [Dependency] private EntityQuery<MoffEnrollEventComponent> _enrollEventQuery;
+    [Dependency] private EntityQuery<GhostComponent> _ghostQuery;
 
     public override void Update(float frameTime)
     {
@@ -76,6 +81,53 @@ public sealed partial class MoffEnrollEventSystem : SharedMoffEnrollEventSystem
         ent.Comp.MaxEnrolled = GetAntagSlotCount((ev.Manager, antag));
 
         Dirty(ent);
+    }
+
+    [SubscribeLocalEvent]
+    private void OnSetEnroll(Entity<ESVoterComponent> ent, ref MoffSetEnrollMessage args)
+    {
+        // Ghosts only - assignment bypasses the mutual-antag check, so this gate is what stops an embodied
+        // already-antag from getting force-assigned a second, exclusive one.
+        if (!_ghostQuery.HasComp(args.Actor))
+            return;
+
+        if (!TryGetEntity(args.Enroller, out var enrollerUid) ||
+            !_enrollEventQuery.TryComp(enrollerUid, out var comp))
+            return;
+
+        if (args.Enrolled)
+        {
+            comp.Enrolled.Add(args.Actor);
+        }
+        else
+        {
+            comp.Enrolled.Remove(args.Actor);
+            // Their character choice goes with them, so re-enrolling starts from their own character again.
+            comp.RandomPick.Remove(GetNetEntity(args.Actor));
+        }
+
+        Dirty(enrollerUid.Value, comp);
+    }
+
+    [SubscribeLocalEvent]
+    private void OnSetEnrollRandom(Entity<ESVoterComponent> ent, ref MoffSetEnrollRandomMessage args)
+    {
+        // Ghosts only, matching OnSetEnroll - a random-character pick is only meaningful for an enrollee.
+        if (!_ghostQuery.HasComp(args.Actor))
+            return;
+
+        if (!TryGetEntity(args.Enroller, out var enrollerUid) ||
+            !_enrollEventQuery.TryComp(enrollerUid, out var comp) ||
+            !comp.CharacterSelection)
+            return;
+
+        var netAttached = GetNetEntity(args.Actor);
+        if (args.Random)
+            comp.RandomPick.Add(netAttached);
+        else
+            comp.RandomPick.Remove(netAttached);
+
+        Dirty(enrollerUid.Value, comp);
     }
 
     private void ResolveEnrollment(Entity<MoffEnrollEventComponent> ent)
@@ -122,12 +174,13 @@ public sealed partial class MoffEnrollEventSystem : SharedMoffEnrollEventSystem
     /// <summary>
     /// Where this event's antag spawns, asked of the rule the same way antag selection does. Resolved once
     /// when the rule's added (see <see cref="OnVoteSpawned"/>) and stored on the component as the warp target.
+    /// Returns null when there isn't a valid location to warp to.
     /// </summary>
     private MapCoordinates? GetWarpTarget(Entity<AntagSelectionComponent> rule)
     {
         foreach (var selector in rule.Comp.Antags)
         {
-            if (!_proto.TryIndex(selector.Proto, out var def))
+            if (!_proto.Resolve(selector.Proto, out var def))
                 continue;
 
             var ev = new AntagSelectLocationEvent(rule, def);
@@ -145,38 +198,37 @@ public sealed partial class MoffEnrollEventSystem : SharedMoffEnrollEventSystem
     /// its components set up their add-time state notably SpaceSpawnRule,
     /// which picks the antag spawn on add. Idempotent; returns whether it flipped the rule to added.
     /// </summary>
-    private bool TryMarkRuleAdded(EntityUid ruleUid)
+    private void TryMarkRuleAdded(EntityUid ruleUid)
     {
-        if (!TryComp<GameRuleComponent>(ruleUid, out var gameRule) || gameRule.Added)
-            return false;
+        if (!_gameRuleQuery.TryComp(ruleUid, out var gameRule) || gameRule.Added)
+            return;
 
         gameRule.Added = true;
         var addedEv = new GameRuleAddedEvent(ruleUid, MetaData(ruleUid).EntityPrototype?.ID ?? string.Empty);
         RaiseLocalEvent(ruleUid, ref addedEv, true);
-        return true;
     }
 
     /// <summary>
-    /// The colour of the antag this rule hands out: its mind role's subtype colour, falling back to the
-    /// colour of that mind role's role type.
+    /// The color of the antag this rule hands out: its mind role's subtype color, falling back to the
+    /// color of that mind role's role type.
     /// </summary>
     private Color? GetAntagColor(AntagSelectionComponent antag)
     {
         foreach (var selector in antag.Antags)
         {
-            if (!_proto.TryIndex(selector.Proto, out var def) || def.MindRoles is not { } mindRoles)
+            if (!_proto.Resolve(selector.Proto, out var def) || def.MindRoles is not { } mindRoles)
                 continue;
 
             foreach (var mindRoleId in mindRoles)
             {
-                if (!_proto.TryIndex(mindRoleId, out var mindRoleProto) ||
+                if (!_proto.Resolve(mindRoleId, out var mindRoleProto) ||
                     !mindRoleProto.TryComp<MindRoleComponent>(out var mindRole, EntityManager.ComponentFactory))
                     continue;
 
                 if (mindRole.SubtypeColor is { } subtypeColor)
                     return subtypeColor;
 
-                if (mindRole.RoleType is { } roleType && _proto.TryIndex(roleType, out var roleTypeProto))
+                if (mindRole.RoleType is { } roleType && _proto.Resolve(roleType, out var roleTypeProto))
                     return roleTypeProto.Color;
             }
         }
@@ -202,17 +254,12 @@ public sealed partial class MoffEnrollEventSystem : SharedMoffEnrollEventSystem
 
     public bool EnrolleeWantsRandom(EntityUid rule, ICommonSession session)
     {
-      if (session.AttachedEntity is not { } attached
-          || !TryComp<ESSynchronizedVoteManagerComponent>(rule, out var voteManager))
-          return false;
+        if (session.AttachedEntity is not { } attached
+            || !TryComp<ESSynchronizedVoteManagerComponent>(rule, out var voteManager))
+            return false;
 
-      var net = GetNetEntity(attached);
-      foreach (var voteUid in voteManager.VoteEntities)
-      {
-          if (TryComp<MoffEnrollEventComponent>(voteUid, out var enroll))
-              return enroll.RandomPick.Contains(net);
-      }
-
-      return false;
+        return _enrollEventQuery.ResolveAll(voteManager.VoteEntities, logMissing: false)
+            .FirstOrNull()
+            ?.Comp.RandomPick.Contains(GetNetEntity(attached)) ?? false;
     }
 }
