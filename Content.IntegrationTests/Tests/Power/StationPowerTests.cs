@@ -34,6 +34,7 @@ public sealed class StationPowerTests : GameTest
         "Relic",
         "Snowball",
         "Exo",
+        "Tram2",
         "Amber", // Moffstation
         "Frezon", // Moffstation
         "Lambda", // Moffstation
