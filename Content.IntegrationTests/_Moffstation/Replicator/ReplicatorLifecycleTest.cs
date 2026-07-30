@@ -32,7 +32,7 @@ public sealed class ReplicatorLifecycleTest : GameTest
         Dirty = true,
         DummyTicker = false,
         Connected = true,
-        Map = PoolManager.TestStation,
+        Map = PoolManager.TestMap,
     };
 
     private const string RuleId = "TestReplicatorRule";
