@@ -8,9 +8,8 @@ moff-vote-enroll-button-enrolled = Enrolled
 moff-vote-enroll-button-character-select = Select Character
 moff-vote-enroll-button-goto = Go To
 moff-vote-enroll-time-remaining = Time remaining: {$time}
-moff-vote-enroll-count = Enrolled: [bold]{$count}[/bold]
-moff-vote-enroll-required = Required: {$count}
-moff-vote-enroll-slots = Slots: {$count}
+moff-vote-enroll-count = {$count} / {$max} Enrolled
+moff-vote-enroll-required = Minimum: {$count}
 
 moff-vote-enroll-character-select-title = Select Character
 moff-vote-enroll-character-select-random = Random Character
