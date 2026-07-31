@@ -7262,6 +7262,24 @@ Entries:
   id: 1685
   time: '2026-07-20T19:07:56.000'
   url: https://github.com/moff-station/moff-station-14/pull/1685
+- author: Centronias
+  changes:
+  - message: Stained clothes can now be examined to see what's staining them, similar
+      to examining drinks / reagents.
+    type: add
+  - message: Galoshes, breath masks, and sterile breath masks are now innately stain
+      repellent.
+    type: add
+  - message: ERT Janitors' uniforms are now innately stain repellent by virtue of
+      their inimitable cleanliness.
+    type: add
+  - message: Added "DrinkStainRepellent", a bottle of appliable stain-repellent coating
+      (and a box of four of them, "BoxStainRepellent"). It's unobtainable except via
+      spawning.
+    type: add
+  id: 1686
+  time: '2026-07-31T18:37:42.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1686
 - author: FreianOfVoid
   changes:
   - message: A "Hephaestus" Iconography option has been added to the AI's customization
