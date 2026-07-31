@@ -34,7 +34,7 @@ public sealed class MoffCCVars
         CVarDef.Create("votekick.map_votes_rollover", true, CVar.SERVERONLY);
 
     /// <summary>
-    ///     Automatically starts a new map vote at the end of each round
+    ///     Automatically starts a map vote during the pre-round lobby
     /// </summary>
     public static readonly CVarDef<bool> AutoStartMapVote =
         CVarDef.Create("votekick.auto_start_map_vote", true, CVar.SERVERONLY);

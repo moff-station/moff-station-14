@@ -3,6 +3,7 @@ using Content.Shared.Administration.Logs;
 using Content.Shared.Body; //Moffstation - Re-add Geras
 using Content.Shared.Damage.Systems;
 using Content.Shared.Mobs.Components;
+using Content.Shared.Popups;
 using Content.Shared.Standing;
 using Robust.Shared.Timing;
 
@@ -17,6 +18,7 @@ public partial class MobStateSystem : EntitySystem
     [Dependency] private ISharedAdminLogManager _adminLogger = default!;
     [Dependency] private IGameTiming _timing = default!;
     [Dependency] private DamageableSystem _damageable = default!;
+    [Dependency] private SharedPopupSystem _popup = default!;
     private ISawmill _sawmill = default!;
 
     [Dependency] private BodySystem _bodySystem = default!; //Moffstation - Re-add Geras

@@ -124,6 +124,8 @@
         Piercing: 0.6
         Heat: 0.5
         Caustic: 0.9
+  - type: ExplosionResistance
+    damageCoefficient: 0.65
   - type: GroupExamine
 
 - type: entity
@@ -195,6 +197,8 @@
         Heat: 0.3
         Radiation: 0.5
         Caustic: 0.5
+  - type: ExplosionResistance
+    damageCoefficient: 0.5
   - type: FireProtection
     reduction: 0.85
   - type: StaticPrice
@@ -244,6 +248,8 @@
         Piercing: 0.35
         Heat: 0.35
         Caustic: 0.5
+  - type: ExplosionResistance
+    damageCoefficient: 0.35
   - type: StaminaResistance # do not add these to other equipment or mobs, we don't want to microbalance these everywhere
     damageCoefficient: 0.45
   - type: ClothingSpeedModifier
@@ -429,7 +435,7 @@
     sprintModifier: 0.65
   - type: HeldSpeedModifier
   - type: ExplosionResistance
-    damageCoefficient: 0.75
+    damageCoefficient: 0.5
   - type: GroupExamine
   - type: ProtectedFromStepTriggers
     slots: WITHOUT_POCKET
@@ -455,7 +461,7 @@
     sprintModifier: 0.8
   - type: HeldSpeedModifier
   - type: ExplosionResistance
-    damageCoefficient: 0.6
+    damageCoefficient: 0.4
   - type: GroupExamine
   - type: Construction
     graph: BoneArmor
