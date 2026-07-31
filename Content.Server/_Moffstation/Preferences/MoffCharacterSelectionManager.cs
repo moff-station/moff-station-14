@@ -17,15 +17,15 @@ namespace Content.Server._Moffstation.Preferences;
 /// Hooks its own callbacks into <see cref="UserDbDataManager"/> so ServerPreferencesManager needs
 /// no modification.
 /// </summary>
-public sealed class MoffCharacterSelectionManager : IPostInjectInit
+public sealed partial class MoffCharacterSelectionManager : IPostInjectInit
 {
-    [Dependency] private readonly IServerNetManager _netManager = default!;
-    [Dependency] private readonly IServerDbManager _db = default!;
-    [Dependency] private readonly UserDbDataManager _userDb = default!;
-    [Dependency] private readonly IPrototypeManager _protoManager = default!;
-    [Dependency] private readonly ILogManager _log = default!;
-    [Dependency] private readonly IServerPreferencesManager _prefs = default!;
-    [Dependency] private readonly ISharedPlayerManager _playerManager = default!;
+    [Dependency] private IServerNetManager _netManager = default!;
+    [Dependency] private IServerDbManager _db = default!;
+    [Dependency] private UserDbDataManager _userDb = default!;
+    [Dependency] private IPrototypeManager _protoManager = default!;
+    [Dependency] private ILogManager _log = default!;
+    [Dependency] private IServerPreferencesManager _prefs = default!;
+    [Dependency] private ISharedPlayerManager _playerManager = default!;
 
     private readonly Dictionary<NetUserId, MoffCharacterSelectionState> _cached = new();
 

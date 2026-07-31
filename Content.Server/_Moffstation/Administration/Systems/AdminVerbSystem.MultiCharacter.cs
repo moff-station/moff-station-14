@@ -10,8 +10,8 @@ namespace Content.Server.Administration.Systems;
 
 public sealed partial class AdminVerbSystem
 {
-    [Dependency] private readonly IServerPreferencesManager _moffPrefsManager = default!;
-    [Dependency] private readonly MoffCharacterPickerSystem _moffCharacterPicker = default!;
+    [Dependency] private IServerPreferencesManager _moffPrefsManager = default!;
+    [Dependency] private MoffCharacterPickerSystem _moffCharacterPicker = default!;
 
     /// <summary>
     /// One "spawn here" entry per character the player has, since there is no single selected one.
@@ -25,7 +25,7 @@ public sealed partial class AdminVerbSystem
 
         foreach (var (slot, profile) in prefs.Characters)
         {
-            if (profile is not HumanoidCharacterProfile humanoid)
+            if (profile is not { } humanoid)
                 continue;
 
             args.Verbs.Add(new Verb

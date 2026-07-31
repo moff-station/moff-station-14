@@ -15,7 +15,7 @@ namespace Content.Server.Antag;
 /// </summary>
 public sealed partial class AntagSelectionSystem
 {
-    [Dependency] private readonly MoffCharacterSelectionManager _moffCharacterSelection = default!;
+    [Dependency] private MoffCharacterSelectionManager _moffCharacterSelection = default!;
 
     // Resolved on demand; a mutual [Dependency] with MoffCharacterPickerSystem would be circular.
     private MoffCharacterPickerSystem MoffCharacterPicker => EntityManager.System<MoffCharacterPickerSystem>();
@@ -34,13 +34,13 @@ public sealed partial class AntagSelectionSystem
 
         foreach (var (slot, profile) in prefs.Characters)
         {
-            if (profile is not HumanoidCharacterProfile humanoid)
+            if (profile == null)
                 continue;
 
             if (!state.IsSlotEnabled(slot))
                 continue;
 
-            result.UnionWith(humanoid.AntagPreferences);
+            result.UnionWith(profile.AntagPreferences);
         }
 
         return result;
