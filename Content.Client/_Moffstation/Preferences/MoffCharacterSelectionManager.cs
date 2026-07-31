@@ -11,10 +11,10 @@ namespace Content.Client._Moffstation.Preferences;
 /// Client mirror of the server's multi-character selection state. Separate from
 /// ClientPreferencesManager so upstream needs no modification. Changes apply optimistically.
 /// </summary>
-public sealed class MoffCharacterSelectionManager
+public sealed partial class MoffCharacterSelectionManager
 {
-    [Dependency] private readonly IClientNetManager _netManager = default!;
-    [Dependency] private readonly IBaseClient _baseClient = default!;
+    [Dependency] private IClientNetManager _netManager = default!;
+    [Dependency] private IBaseClient _baseClient = default!;
 
     /// <summary>Raised on any state change, from the server or a local edit.</summary>
     public event Action? OnStateChanged;

@@ -13,7 +13,6 @@ namespace Content.Client._Moffstation.Lobby.UI;
 
 /// <summary>
 /// A drop target for <see cref="DraggableJobIcon"/>, representing one job priority. Handles hover
-/// feedback, drops, and keeping the icons it holds sorted. Ported from upstream PR #36493.
 /// </summary>
 [GenerateTypedNameReferences]
 public sealed partial class DraggableJobTarget : Control

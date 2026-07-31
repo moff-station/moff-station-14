@@ -17,11 +17,11 @@ namespace Content.Client.Lobby.UI;
 
 public sealed partial class LobbyCharacterPreviewPanel
 {
-    [Dependency] private readonly IClientPreferencesManager _moffPreferences = default!;
-    [Dependency] private readonly IPrototypeManager _moffPrototypeManager = default!;
-    [Dependency] private readonly JobRequirementsManager _moffRequirements = default!;
-    [Dependency] private readonly IUserInterfaceManager _moffUiManager = default!;
-    [Dependency] private readonly MoffCharacterSelectionManager _moffSelection = default!;
+    [Dependency] private IClientPreferencesManager _moffPreferences = default!;
+    [Dependency] private IPrototypeManager _moffPrototypeManager = default!;
+    [Dependency] private JobRequirementsManager _moffRequirements = default!;
+    [Dependency] private IUserInterfaceManager _moffUiManager = default!;
+    [Dependency] private MoffCharacterSelectionManager _moffSelection = default!;
 
     /// <summary>Suppresses the rebuild triggered by our own save, which would run mid-callback.</summary>
     private bool _moffApplyingPriorities;

@@ -22,10 +22,10 @@ namespace Content.Client._Moffstation.Lobby.UI;
 [GenerateTypedNameReferences]
 public sealed partial class MoffJobPriorityEditor : BoxContainer
 {
-    [Dependency] private readonly IEntityManager _entManager = default!;
-    [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
-    [Dependency] private readonly JobRequirementsManager _requirements = default!;
-    [Dependency] private readonly MoffCharacterSelectionManager _selection = default!;
+    [Dependency] private IEntityManager _entManager = default!;
+    [Dependency] private IPrototypeManager _prototypeManager = default!;
+    [Dependency] private JobRequirementsManager _requirements = default!;
+    [Dependency] private MoffCharacterSelectionManager _selection = default!;
 
     private readonly SpriteSystem _sprite;
 

@@ -14,11 +14,11 @@ namespace Content.Client._Moffstation.Lobby.UI;
 /// A job icon that can be dragged between <see cref="DraggableJobTarget"/>s to set its priority.
 /// Ported from upstream PR #36493.
 /// </summary>
-public sealed class DraggableJobIcon : TextureRect
+public sealed partial class DraggableJobIcon : TextureRect
 {
-    [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
-    [Dependency] private readonly IEntityManager _entManager = default!;
-    [Dependency] private readonly IUserInterfaceManager _uiManager = default!;
+    [Dependency] private IPrototypeManager _prototypeManager = default!;
+    [Dependency] private IEntityManager _entManager = default!;
+    [Dependency] private IUserInterfaceManager _uiManager = default!;
 
     private const float DefaultScale = 3;
 

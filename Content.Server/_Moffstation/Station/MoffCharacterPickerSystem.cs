@@ -13,14 +13,13 @@ namespace Content.Server._Moffstation.Station;
 
 /// <summary>
 /// Picks which of a player's active characters spawns, once a job has been assigned to them.
-/// Ported from upstream PR #36493.
 /// </summary>
-public sealed class MoffCharacterPickerSystem : EntitySystem
+public sealed partial class MoffCharacterPickerSystem : EntitySystem
 {
-    [Dependency] private readonly AntagSelectionSystem _antag = default!;
-    [Dependency] private readonly IRobustRandom _random = default!;
-    [Dependency] private readonly MoffJobCandidateSystem _candidates = default!;
-    [Dependency] private readonly PlayTimeTrackingSystem _playTime = default!;
+    [Dependency] private AntagSelectionSystem _antag = default!;
+    [Dependency] private IRobustRandom _random = default!;
+    [Dependency] private MoffJobCandidateSystem _candidates = default!;
+    [Dependency] private PlayTimeTrackingSystem _playTime = default!;
 
     /// <summary>
     /// So antag loadouts equip the character that spawned, not the one selected in the lobby.
