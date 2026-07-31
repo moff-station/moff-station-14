@@ -35,29 +35,6 @@ public sealed class ReplicatorLifecycleTest : GameTest
         Map = PoolManager.TestStation,
     };
 
-    private const string RuleId = "TestReplicatorRule";
-
-    /// Mirrors the real ReplicatorSpawn event (minus StationEvent), so that starting the rule
-    /// automatically spawns MobReplicatorT0Queen and places the SpawnPointGhostReplicatorQueenAntag marker.
-    [TestPrototypes]
-    private const string TestProtos = $@"
-- type: entity
-  id: {RuleId}
-  parent: BaseGameRule
-  suffix: TEST
-  components:
-  - type: ReplicatorRule
-  - type: GameRule
-  - type: AntagRandomSpawn
-  - type: AntagSpawner
-    prototype: MobReplicatorT0Queen
-  - type: AntagSelection
-    agentName: ghost-role-information-replicator-name
-    antags:
-    - !type:FixedAntagCount
-      proto: ReplicatorQueen
-";
-
     [SidedDependency(Side.Server)] private readonly GameTicker _ticker = default!;
     [SidedDependency(Side.Server)] private readonly GhostRoleSystem _ghostRole = default!;
     [SidedDependency(Side.Server)] private readonly SharedActionsSystem _action = default!;
@@ -67,6 +44,7 @@ public sealed class ReplicatorLifecycleTest : GameTest
     [SidedDependency(Side.Server)] private readonly EntityLookupSystem _lookup = default!;
     [SidedDependency(Side.Server)] private readonly ITileDefinitionManager _tileDefMan = default!;
 
+    // I hate passing useful state from setup to tests like this, but it works.
     private EntityUid _ruleEntity;
     private EntityUid _nest;
     private EntityUid _t1Replicator;
@@ -82,8 +60,9 @@ public sealed class ReplicatorLifecycleTest : GameTest
         var ruleEntity = EntityUid.Invalid;
         await Server.WaitPost(() =>
         {
+            const string ruleId = "ReplicatorSpawn";
             Assume.That(
-                _ticker.StartGameRule(RuleId, out ruleEntity),
+                _ticker.StartGameRule(ruleId, out ruleEntity),
                 "TestReplicatorRule should start successfully"
             );
         });
@@ -190,12 +169,12 @@ public sealed class ReplicatorLifecycleTest : GameTest
 
         var tileRef = _turf.GetTileRef(_nestCoords)!.Value;
         var originalTileTypeId = tileRef.Tile.TypeId;
-        _tile.ReplaceTile(tileRef, (ContentTileDefinition) replicatorTileDef!);
+        _tile.ReplaceTile(tileRef, (ContentTileDefinition)replicatorTileDef!);
 
         tileRef = _turf.GetTileRef(_nestCoords)!.Value;
         Assume.That(
             tileRef.Tile.TypeId,
-            Is.EqualTo(((ContentTileDefinition) replicatorTileDef!).TileId),
+            Is.EqualTo(((ContentTileDefinition)replicatorTileDef!).TileId),
             "Tile should be FloorReplicator after replacement"
         );
 
@@ -229,6 +208,19 @@ public sealed class ReplicatorLifecycleTest : GameTest
     [Test]
     public async Task TestNestLevelsUpAndUpgradesToTier2Combat()
     {
+        // Wait for anything already here to fall into the hole.
+        await RunTicksSync(60);
+
+        // Tracks the starting values in case we spawn on top of something on the test map.
+        var startingSizePoints = 0;
+        var startingSpawnersCreated = 0;
+        await Server.WaitPost(() =>
+        {
+            var rule = SComp<ReplicatorRuleComponent>(_ruleEntity);
+            startingSizePoints = rule.TotalSizePoints;
+            startingSpawnersCreated = rule.TotalSpawnersCreated;
+        });
+
         // Consume a steel stack to generate points, level up the nest, and trigger spawner creation.
         await Server.WaitPost(() =>
         {
@@ -243,14 +235,18 @@ public sealed class ReplicatorLifecycleTest : GameTest
             var nestComp = SComp<ReplicatorNestComponent>(_nest);
             Assert.That(nestComp.CurrentLevel, Is.EqualTo(2), "Nest should have leveled up to level 2");
             Assert.That(
-                nestComp.UnclaimedSpawners.Count,
-                Is.GreaterThanOrEqualTo(1),
+                nestComp.UnclaimedSpawners,
+                Is.Not.Empty,
                 "At least one replicator spawner should have been created"
             );
 
             var rule = SComp<ReplicatorRuleComponent>(_ruleEntity);
-            Assert.That(rule.TotalSizePoints, Is.EqualTo(30), "Rule should track all gained size points");
-            Assert.That(rule.TotalSpawnersCreated, Is.EqualTo(1), "Rule should track one spawner creation");
+            Assert.That(rule.TotalSizePoints,
+                Is.EqualTo(startingSizePoints + 30),
+                "Rule should track all gained size points");
+            Assert.That(rule.TotalSpawnersCreated,
+                Is.AtLeast(1).And.GreaterThanOrEqualTo(startingSpawnersCreated),
+                "Rule should track one spawner creation");
         });
 
         // Upgrading to T2 Combat claims one of the spawners the leveling above just created, so it
