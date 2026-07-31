@@ -14,9 +14,6 @@ public sealed partial class MoffVoteEntrySystem : MoffSharedVoteEntrySystem
     [Dependency] private IGameTiming _timing = default!;
     [Dependency] private UserInterfaceSystem _userInterface = default!;
 
-    [Dependency] private EntityQuery<MoffEnrollEventComponent> _enrollQuery;
-    [Dependency] private EntityQuery<MetaDataComponent> _metaDataQuery;
-
     /// <inheritdoc/>
     public override void Initialize()
     {
