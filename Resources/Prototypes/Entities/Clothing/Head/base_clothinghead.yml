@@ -1,6 +1,6 @@
 - type: entity
   abstract: true
-  parent: [SolutionFood, SolutionToolSmall, Clothing]
+  parent: [SolutionFood, SolutionToolSmall, Clothing, MoffStainableClothingBase] # Moffstation - mixed in MoffStainableClothingBase
   id: ClothingHeadBase
   components:
   - type: Clothing
@@ -23,7 +23,6 @@
     - ClothMade
     - WhitelistChameleon
   # Forky - start - clothing stains
-  - type: Appearance
   - type: Stainable
     clothingVisuals:
       head:
@@ -32,9 +31,6 @@
     iconVisuals:
     - sprite: _Funkystation/Effects/blood.rsi
       state: helmetbloodicon
-  - type: SolutionManager
-    solutions:
-    - SolutionStain
   # Forky - end
 
 - type: entity
@@ -156,7 +152,7 @@
 
 - type: entity
   abstract: true
-  parent: TemperatureProtection
+  parent: [ TemperatureProtection, MoffStainableClothingBase ] # Moffstation - mixed in MoffStainableClothingBase
   id: ClothingHeadHardsuitBase
   name: base hardsuit helmet
   categories: [ HideSpawnMenu ]
@@ -200,7 +196,6 @@
     - HeadSide
     - FacialHair
   # Forky - start - clothing stains
-  - type: Appearance
   - type: Stainable
     clothingVisuals:
       head:
@@ -209,9 +204,6 @@
     iconVisuals:
     - sprite: _Funkystation/Effects/blood.rsi
       state: helmetbloodicon
-  - type: SolutionManager
-    solutions:
-    - SolutionStain
   - type: StainBlocker
     slots: [MASK]
   # Forky - end
@@ -280,7 +272,7 @@
 
 - type: entity
   abstract: true
-  parent: TemperatureProtectionMinimal
+  parent: [ TemperatureProtectionMinimal, MoffStainableClothingBase ] # Moffstation - mixed in MoffStainableClothingBase
   id: ClothingHeadHatHoodWinterBase
   name: base winter coat hood
   description: A hood, made to keep your head warm.
@@ -306,7 +298,6 @@
     - HeadTop
     - HeadSide
   # Forky - start - clothing stains
-  - type: Appearance
   - type: Stainable
     clothingVisuals:
       head:
@@ -315,7 +306,4 @@
     iconVisuals:
     - sprite: _Funkystation/Effects/blood.rsi
       state: helmetbloodicon
-  - type: SolutionManager
-    solutions:
-    - SolutionStain
   # Forky - end
