@@ -60,8 +60,9 @@ public sealed class ReplicatorLifecycleTest : GameTest
         var ruleEntity = EntityUid.Invalid;
         await Server.WaitPost(() =>
         {
+            const string ruleId = "ReplicatorSpawn";
             Assume.That(
-                _ticker.StartGameRule("ReplicatorSpawn", out ruleEntity),
+                _ticker.StartGameRule(ruleId, out ruleEntity),
                 "TestReplicatorRule should start successfully"
             );
         });
