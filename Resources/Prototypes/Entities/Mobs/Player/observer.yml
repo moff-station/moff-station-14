@@ -113,6 +113,7 @@
     interfaces:
       enum.ESVoterUiKey.Key:
         type: ESVoterBui
+        requireInputValidation: false
   - type: IntrinsicUI
     uis:
       enum.ESVoterUiKey.Key:

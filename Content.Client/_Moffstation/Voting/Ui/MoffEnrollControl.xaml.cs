@@ -17,10 +17,7 @@ public sealed partial class MoffEnrollControl : PanelContainer, IVoteEntryContro
     [Dependency] private IGameTiming _timing = default!;
     [Dependency] private IPlayerManager _player = default!;
 
-    [Dependency] private EntityQuery<MoffEnrollEventComponent> _enrollQuery;
-    [Dependency] private EntityQuery<MetaDataComponent> _metaDataQuery;
-
-    private EntityUid _enroller;
+    private Entity<MoffEnrollEventComponent> _enroller;
     private TimeSpan _endTime;
 
     /// <summary>
@@ -44,7 +41,7 @@ public sealed partial class MoffEnrollControl : PanelContainer, IVoteEntryContro
         _enroller = enroller;
         _endTime = enroller.Comp.EndTime;
 
-        var metadata = _metaDataQuery.GetComponent(_enroller);
+        var metadata = _entityManager.GetComponent<MetaDataComponent>(_enroller);
         VoteNameLabel.SetMarkup(Loc.GetString("moff-vote-enroll-header-text-format",
             ("color", enroller.Comp.TitleColor),
             ("title", metadata.EntityName)));
@@ -59,7 +56,7 @@ public sealed partial class MoffEnrollControl : PanelContainer, IVoteEntryContro
         TimerProgress.MinValue = (float) (enroller.Comp.EndTime - enroller.Comp.Duration).TotalSeconds;
         TimerProgress.MaxValue = (float) enroller.Comp.EndTime.TotalSeconds;
 
-        RefreshEnrollButton(enroller.Comp);
+        RefreshEnrollButton();
 
         EnrollButton.OnPressed += args =>
         {
@@ -70,8 +67,7 @@ public sealed partial class MoffEnrollControl : PanelContainer, IVoteEntryContro
         // Ghosts only; only they carry a WarpComponent, so the warp system ignores anyone still in a body.
         GotoButton.OnPressed += _ =>
         {
-            if (_entityManager.TryGetComponent<MoffEnrollEventComponent>(_enroller, out var enroll)
-                && enroll.WarpTarget is { } target)
+            if (_enroller.Comp.WarpTarget is { } target)
                 _entityManager.System<SharedWarpSystem>().RequestWarpToLocation(target);
         };
 
@@ -83,20 +79,19 @@ public sealed partial class MoffEnrollControl : PanelContainer, IVoteEntryContro
         };
     }
 
+    public void Update(EntityUid owner)
+    {
+        RefreshEnrollButton();
+    }
+
     private static string GetEnrollText(bool enrolled)
     {
         return Loc.GetString(enrolled ? "moff-vote-enroll-button-enrolled" : "moff-vote-enroll-button-enroll");
     }
 
-    public void Update(EntityUid owner)
+    private void RefreshEnrollButton()
     {
-        if (_enrollQuery.TryComp(_enroller, out var comp))
-            RefreshEnrollButton(comp);
-    }
-
-    private void RefreshEnrollButton(MoffEnrollEventComponent comp)
-    {
-        var enrolled = _player.LocalEntity is { } localEntity && comp.Enrolled.Contains(localEntity);
+        var enrolled = _player.LocalEntity is { } localEntity && _enroller.Comp.Enrolled.Contains(localEntity);
 
         EnrollButton.Pressed = enrolled;
         EnrollButton.Text = GetEnrollText(enrolled);
