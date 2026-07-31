@@ -24,10 +24,6 @@
   description: A slim, portable gun case intended to protect its contents. "XP-01" is inscribed on the top of the case.
   suffix: PersonalItem
   components:
-  - type: Sprite
-    sprite: &case "_Moffstation/PersonalItems/Items/shared/shimmypistolcase.rsi"
-  - type: Item
-    sprite: *case
   - type: EntityTableContainerFill
     containers:
       storagebase:

@@ -25,3 +25,16 @@
         whitelist:
           tags:
           - CartridgePistol
+
+
+- type: entity
+  parent: [BaseStorageItem, BaseBagOpenClose, BaseSecurityContraband]
+  id: BasePersonalItemPistolCase
+  abstract: true
+  name: Mk9 gun case
+  description: A slim, portable gun case intended to protect its contents. The outside is wrapped in blue tape.
+  components:
+  - type: Sprite
+    sprite: &case "_Moffstation/PersonalItems/Items/shared/personalpistolcase.rsi"
+  - type: Item
+    sprite: *case
