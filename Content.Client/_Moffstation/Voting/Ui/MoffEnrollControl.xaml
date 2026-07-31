@@ -12,6 +12,9 @@
                 <Button Name="EnrollButton" ToggleMode="True" Text="{Loc 'moff-vote-enroll-button-enroll'}"/>
                 <Button Name="CharacterSelectionButton" Text="{Loc 'moff-vote-enroll-button-character-select'}"/>
                 <Button Name="GotoButton" Text="{Loc 'moff-vote-enroll-button-goto'}"/>
+                <RichTextLabel Name="EnrollCount"/>
+                <RichTextLabel Name="RequiredEnrolls"/>
+                <RichTextLabel Name="MaxSlots"/>
             </BoxContainer>
         </BoxContainer>
         <RichTextLabel Name="TimeLabel"/>

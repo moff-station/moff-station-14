@@ -56,7 +56,7 @@ public sealed partial class MoffEnrollControl : PanelContainer, IVoteEntryContro
         TimerProgress.MinValue = (float) (enroller.Comp.EndTime - enroller.Comp.Duration).TotalSeconds;
         TimerProgress.MaxValue = (float) enroller.Comp.EndTime.TotalSeconds;
 
-        RefreshEnrollButton();
+        Refresh();
 
         EnrollButton.OnPressed += args =>
         {
@@ -81,7 +81,7 @@ public sealed partial class MoffEnrollControl : PanelContainer, IVoteEntryContro
 
     public void Update(EntityUid owner)
     {
-        RefreshEnrollButton();
+        Refresh();
     }
 
     private static string GetEnrollText(bool enrolled)
@@ -89,12 +89,16 @@ public sealed partial class MoffEnrollControl : PanelContainer, IVoteEntryContro
         return Loc.GetString(enrolled ? "moff-vote-enroll-button-enrolled" : "moff-vote-enroll-button-enroll");
     }
 
-    private void RefreshEnrollButton()
+    private void Refresh()
     {
         var enrolled = _player.LocalEntity is { } localEntity && _enroller.Comp.Enrolled.Contains(localEntity);
 
         EnrollButton.Pressed = enrolled;
         EnrollButton.Text = GetEnrollText(enrolled);
+
+        EnrollCount.SetMarkup(Loc.GetString("moff-vote-enroll-count", ("count", _enroller.Comp.Enrolled.Count)));
+        RequiredEnrolls.SetMarkup(Loc.GetString("moff-vote-enroll-required", ("count", _enroller.Comp.MinEnrolled)));
+        MaxSlots.SetMarkup(Loc.GetString("moff-vote-enroll-slots", ("count", _enroller.Comp.MaxEnrolled)));
     }
 
     protected override void FrameUpdate(FrameEventArgs args)
