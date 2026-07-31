@@ -251,7 +251,9 @@ public abstract partial class SharedReplicatorNestSystem : EntitySystem
         {
             if (_storageQuery.TryComp(rootConsumed, out var storage))
             {
-                foreach (var contentsContainedEntity in storage.Contents.ContainedEntities)
+                // Defensive copy of the contents, in case consuming the container messes with the contents.
+                var contents = storage.Contents.ContainedEntities.ToList();
+                foreach (var contentsContainedEntity in contents)
                 {
                     yield return contentsContainedEntity;
                 }
