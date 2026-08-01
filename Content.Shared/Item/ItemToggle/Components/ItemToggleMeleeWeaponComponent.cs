@@ -1,5 +1,4 @@
 using Content.Shared.Damage;
-using Content.Shared.FixedPoint;
 using Robust.Shared.Audio;
 using Robust.Shared.GameStates;
 
@@ -67,18 +66,4 @@ public sealed partial class ItemToggleMeleeWeaponComponent : Component
     /// </summary>
     [ViewVariables(VVAccess.ReadWrite), DataField, AutoNetworkedField]
     public bool DeactivatedSecret = false;
-
-    // Funky
-
-    /// <summary>
-    ///     The factor of stamina damage, proportional to blunt damage dealt, done by the item when activated.
-    /// </summary>
-    [ViewVariables(VVAccess.ReadWrite), DataField, AutoNetworkedField]
-    public FixedPoint2? ActivatedBluntStaminaDamageFactor = null;
-
-    /// <summary>
-    ///     The factor of stamina damage, proportional to blunt damage dealt, done by the item when deactivated.
-    /// </summary>
-    [ViewVariables(VVAccess.ReadWrite), DataField, AutoNetworkedField]
-    public FixedPoint2? DeactivatedBluntStaminaDamageFactor = null;
 }
