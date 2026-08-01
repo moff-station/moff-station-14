@@ -35,11 +35,14 @@ public sealed class MultiCharacterTest : GameTest
 
     [TestPrototypes]
     private static readonly string MultiCharTestMap = @$"
+- type: playTimeTracker
+  id: PlayTimeMoffMultiCharacterAgeGated
+
 - type: job
   id: {AgeGated}
   name: job-name-passenger
   description: job-description-passenger
-  playTimeTracker: JobPassenger
+  playTimeTracker: PlayTimeMoffMultiCharacterAgeGated
   startingGear: PassengerGear
   icon: ""JobIconPassenger""
   supervisors: job-supervisors-everyone
