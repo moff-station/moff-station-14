@@ -39,7 +39,7 @@ public abstract partial class SharedGunSystem
             // Moff Start - Entity table integration
             foreach (var proto in _entityTable.GetSpawns(ent.Comp.AmmoTable))
             {
-                var ammoEnt = Spawn(proto, args.Coordinates);
+                var ammoEnt = SpawnAtPosition(proto, args.Coordinates);
                 args.Ammo.Add((ammoEnt, EnsureShootable(ammoEnt)));
             }
             // Moff End

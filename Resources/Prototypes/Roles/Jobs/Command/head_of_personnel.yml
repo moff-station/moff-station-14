@@ -23,7 +23,10 @@
     - !type:DepartmentTimeRequirement
       department: Command
       time: 2.5h
-  weight: 20
+  # Moff start - no job weights
+#  weight: 20
+  displayWeight: 20
+  # Moff end
   startingGear: HoPGear
   icon: "JobIconHeadOfPersonnel"
   supervisors: job-supervisors-captain

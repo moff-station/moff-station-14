@@ -1,6 +1,6 @@
 - type: entity
   abstract: true
-  parent: Clothing
+  parent: [ Clothing, MoffStainableClothingBase ] # Moffstation - mixed in MoffStainableClothingBase
   id: ClothingOuterBase
   components:
   - type: Clothing
@@ -9,7 +9,6 @@
   - type: Sprite
     state: icon
   # Forky - start - clothing stains
-  - type: Appearance
   - type: Stainable
     clothingVisuals:
       outerClothing:
@@ -25,9 +24,6 @@
       reagents:
       - ReagentId: Fiber
         Quantity: 30
-  - type: SolutionManager
-    solutions:
-    - SolutionStain
   - type: StainBlocker
     slots: [INNERCLOTHING]
   # Forky - end
@@ -111,7 +107,6 @@
   parent: [ClothingOuterStorageSuitStorageAttachableBase, BaseFoldable] # Moffstation - Attachable suit storage
   id: ClothingOuterStorageFoldableBase
   components:
-  - type: Appearance
   - type: Foldable
     canFoldInsideContainer: true
     unfoldVerbText: fold-zip-verb
