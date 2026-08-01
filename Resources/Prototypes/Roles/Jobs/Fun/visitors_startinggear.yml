@@ -12,10 +12,11 @@
     head: ClothingHeadHatCaptain
     neck: ClothingNeckCloakCap
     id: VisitorPDA
-    #belt: # TODO: RG-2
+    #belt: WeaponDisabler # Moff - stuns
     back: ClothingBackpackCaptain
     ears: ClothingHeadsetAltCommand
     outerClothing: ClothingOuterArmorCaptainCarapace
+    #pocket1: WeaponDisabler # Moff - stuns
 
 - type: startingGear
   id: VisitorCaptainAlt
@@ -27,7 +28,7 @@
     head: ClothingHeadHatCapcap
     neck: ClothingNeckMantleCap
     id: VisitorPDA
-    #belt: # TODO: RG-2
+    #belt: WeaponDisabler # Moff - stuns
     back: ClothingBackpackSatchelCaptain
     ears: ClothingHeadsetAltCommand
     outerClothing: ClothingOuterArmorCaptainCarapace
@@ -44,7 +45,7 @@
     back: ClothingBackpackDuffelEngineering
     ears: ClothingHeadsetCE
     outerClothing: ClothingOuterVestHazard
-    #pocket1: # TODO: RG-2
+    #pocket1: WeaponDisabler # Moff - stuns
 
 - type: startingGear
   id: VisitorCEAlt
@@ -58,7 +59,7 @@
     back: ClothingBackpackSatchelEngineering
     ears: ClothingHeadsetCE
     outerClothing: ClothingOuterWinterCE
-    #pocket1: # TODO: RG-2
+    #pocket1: WeaponDisabler # Moff - stuns
 
 - type: startingGear
   id: VisitorCMO
@@ -73,7 +74,7 @@
     ears: ClothingHeadsetCMO
     belt: ClothingBeltMedicalFilled
     outerClothing: ClothingOuterCoatLabCmo
-    #pocket1: # TODO: RG-2
+    #pocket1: WeaponDisabler # Moff - stuns
 
 - type: startingGear
   id: VisitorCMOAlt
@@ -88,7 +89,7 @@
     ears: ClothingHeadsetCMO
     belt: ClothingBeltMedicalFilled
     outerClothing: ClothingOuterCoatLabCmo
-    #pocket1: # TODO: RG-2
+    #pocket1: WeaponDisabler # Moff - stuns
 
 - type: startingGear
   id: VisitorHOP
@@ -98,7 +99,7 @@
     head: ClothingHeadHatHopcap
     neck: ClothingNeckCloakHop
     id: VisitorPDA
-    #belt: # TODO: RG-2
+    #belt: WeaponDisabler # Moff - stuns
     back: ClothingBackpackDebug
     ears: ClothingHeadsetAltCommand
     outerClothing: ClothingOuterWinterHoP
@@ -111,7 +112,7 @@
     head: ClothingHeadHatHopcap
     neck: ClothingNeckMantleHOP
     id: VisitorPDA
-    #belt: # TODO: RG-2
+    #belt: WeaponDisabler # Moff - stuns
     back: ClothingBackpackSatchelLeather
     ears: ClothingHeadsetAltCommand
     outerClothing: ClothingOuterWinterHoP
@@ -130,7 +131,7 @@
     ears: ClothingHeadsetAltSecurity
     eyes: ClothingEyesGlassesSecurity
     outerClothing: ClothingOuterCoatHoSTrench
-    #pocket1: # TODO: RG-2
+    #pocket1: WeaponDisabler # Moff - stuns
     pocket2: MagazinePistolSubMachineGunTopMounted
   inhand:
   - WeaponSubMachineGunWt550
@@ -148,7 +149,7 @@
     back: ClothingBackpackSatchelLeather
     ears: ClothingHeadsetAltSecurity
     eyes: ClothingEyesGlassesSecurity
-    #pocket1: # TODO: RG-2
+    #pocket1: WeaponDisabler # Moff - stuns
     pocket2: MagazinePistolSubMachineGunTopMounted
   inhand:
   - WeaponSubMachineGunWt550
@@ -165,7 +166,7 @@
     back: ClothingBackpackScience
     ears: ClothingHeadsetRD
     outerClothing: ClothingOuterCoatRD
-    #pocket1: # TODO: RG-2
+    #pocket1: WeaponDisabler # Moff - stuns
 
 - type: startingGear
   id: VisitorRDAlt
@@ -179,7 +180,7 @@
     back: ClothingBackpackSatchelScience
     ears: ClothingHeadsetRD
     outerClothing: ClothingOuterCoatRD
-    #pocket1: # TODO: RG-2
+    #pocket1: WeaponDisabler # Moff - stuns
 
 - type: startingGear
   id: VisitorQM
@@ -192,7 +193,7 @@
     back: ClothingBackpackCargo
     ears: ClothingHeadsetQM
     outerClothing: ClothingOuterWinterQM
-    #pocket1: # TODO: RG-2
+    #pocket1: WeaponDisabler # Moff - stuns
     pocket2: AppraisalTool
 
 - type: startingGear
@@ -206,7 +207,7 @@
     back: ClothingBackpackSatchelCargo
     ears: ClothingHeadsetQM
     outerClothing: ClothingOuterWinterQM
-    #pocket1: # TODO: RG-2
+    #pocket1: WeaponDisabler # Moff - stuns
     pocket2: AppraisalTool
 
 # Security
@@ -331,7 +332,7 @@
     ears: ClothingHeadsetSecurity
     eyes: ClothingEyesGlassesSecurity
     outerClothing: ClothingOuterCoatWarden
-    #pocket1: # TODO: RG-2
+    #pocket1: WeaponDisabler # Moff - stuns
     pocket2: Zipties
   inhand:
   - FlashlightSeclite
@@ -350,7 +351,7 @@
     ears: ClothingHeadsetSecurity
     eyes: ClothingEyesGlassesSecurity
     outerClothing: ClothingOuterWinterWarden
-    #pocket1: # TODO: RG-2
+    #pocket1: WeaponDisabler # Moff - stuns
     pocket2: Zipties
   inhand:
   - FlashlightSeclite
@@ -1675,7 +1676,7 @@
     back: ClothingBackpackDuffelEngineering
     #ears: # No headsets.
     outerClothing: ClothingOuterVestHazard
-    #pocket1: # TODO: RG-2
+    #pocket1: WeaponDisabler # Moff - stuns
 
 - type: startingGear
   id: ChallengeVictimCEAlt
@@ -1689,7 +1690,7 @@
     back: ClothingBackpackSatchelEngineering
     #ears: # No headsets.
     outerClothing: ClothingOuterWinterCE
-    #pocket1: # TODO: RG-2
+    #pocket1: WeaponDisabler # Moff - stuns
 
 # CHALLENGE
 # carefully consider everything you add to these. These are meant for roles that are placed in survival situations where every item will be a resource.
@@ -1702,7 +1703,7 @@
     head: ClothingHeadHatHopcap
     neck: ClothingNeckCloakHop
     id: VisitorPDA
-    #belt: # TODO: RG-2
+    #belt: WeaponDisabler # Moff - stuns
     back: ClothingBackpackDebug
     #ears: #No headsets.
     outerClothing: ClothingOuterWinterHoP
@@ -1715,7 +1716,7 @@
     head: ClothingHeadHatHopcap
     neck: ClothingNeckMantleHOP
     id: VisitorPDA
-    #belt: # TODO: RG-2
+    #belt: WeaponDisabler # Moff - stuns
     back: ClothingBackpackSatchelLeather
     #ears: #No headsets.
     outerClothing: ClothingOuterWinterHoP
