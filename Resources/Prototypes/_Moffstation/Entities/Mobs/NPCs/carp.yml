@@ -6,7 +6,7 @@
 
 # Wizard Polymorphs
 - type: entity
-  parent: MobDragonDungeon
+  parent: BaseMobDragon
   id: MobDragonMagic
   name: magidragon
   suffix: Wizard Polymorph
@@ -14,10 +14,28 @@
   components:
   - type: TypingIndicator
     proto: guardian
-  - type: RandomSprite
-    available:
-    - enum.DamageStateVisualLayers.Base:
-        alive: Red
+  - type: Sprite
+    layers:
+    - map: [ "enum.DamageStateVisualLayers.Base" ]
+      state: alive
+      color: "#E03030"
+    - map: [ "enum.DamageStateVisualLayers.BaseUnshaded" ]
+      state: alive-unshaded
+      shader: unshaded
+  - type: SlowOnDamage
+    speedModifierThresholds:
+      100: 0.7
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      200: Dead
+  - type: ToolRefinable
+    refineResult:
+    - id: FoodMeatDragon
+  - type: MeleeWeapon
+    damage:
+      types:
+        Piercing: 12
   - type: RandomMetadata
     nameSegments: null
     nameFormat: random-metadata-name-format-default
