@@ -87,7 +87,11 @@
   - type: RechargeBasicEntityAmmo
     rechargeCooldown: 0.50
   - type: BasicEntityAmmoProvider
-    proto: BulletHivebot
+    # Moff Start - Entity table integration
+    # proto: BulletHivebot
+    ammoTable:
+      id: BulletHivebot
+    # Moff End
     capacity: 1
     count: 1
   - type: Gun

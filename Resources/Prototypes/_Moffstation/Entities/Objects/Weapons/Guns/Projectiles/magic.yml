@@ -1,0 +1,17 @@
+﻿- type: entity
+  parent: ProjectilePolyboltCarp
+  id: ProjectilePolyboltShark
+  name: shark polybolt
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: PolymorphOnTrigger
+    polymorph: WizardForcedShark
+
+- type: entity
+  parent: ProjectilePolyboltCarp
+  id: ProjectilePolyboltDragon
+  name: shark polybolt
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: PolymorphOnTrigger
+    polymorph: WizardForcedDragon

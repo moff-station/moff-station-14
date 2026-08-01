@@ -3,3 +3,49 @@
   id: MobSharkDragon
   name: sharkminnow
   suffix: DragonBrood
+
+# Wizard Polymorphs
+- type: entity
+  parent: BaseMobDragon
+  id: MobDragonMagic
+  name: magidragon
+  suffix: Wizard Polymorph
+  description: Looks like some kind of dragon. Might be magical.
+  components:
+  - type: TypingIndicator
+    proto: guardian
+  - type: Sprite
+    layers:
+    - map: [ "enum.DamageStateVisualLayers.Base" ]
+      state: alive
+      color: "#E03030"
+    - map: [ "enum.DamageStateVisualLayers.BaseUnshaded" ]
+      state: alive-unshaded
+      shader: unshaded
+  - type: SlowOnDamage
+    speedModifierThresholds:
+      100: 0.7
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      200: Dead
+  - type: ToolRefinable
+    refineResult:
+    - id: FoodMeatDragon
+  - type: MeleeWeapon
+    damage:
+      types:
+        Piercing: 12
+  - type: RandomMetadata
+    nameSegments: null
+    nameFormat: random-metadata-name-format-default
+
+- type: entity
+  parent: MobShark
+  id: MobSharkMagic
+  name: magishark
+  suffix: Wizard Polymorph
+  description: Looks like some kind of shark. Might be magical.
+  components:
+  - type: TypingIndicator
+    proto: guardian
