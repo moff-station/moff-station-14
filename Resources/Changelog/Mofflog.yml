@@ -7290,6 +7290,20 @@ Entries:
   id: 1686
   time: '2026-07-31T18:37:42.000'
   url: https://github.com/moff-station/moff-station-14/pull/1686
+- author: meganerobot
+  changes:
+  - message: Engineering hardsuits and the spationaut suit now have a toggleable welding
+      mask.
+    type: add
+  - message: Mesons no longer provide welding protection and now act as t-ray scanners.
+    type: tweak
+  - message: Welding masks greatly occlude your vision whilst you're using them.
+    type: tweak
+  - message: You can now flip up welding masks.
+    type: tweak
+  id: 1688
+  time: '2026-08-01T05:12:21.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1688
 - author: FreianOfVoid
   changes:
   - message: A "Hephaestus" Iconography option has been added to the AI's customization
