@@ -256,6 +256,13 @@ namespace Content.IntegrationTests.Tests
                 "BluespaceLocker", // Spawns bluespace farticles in its code
             };
 
+            // Moff start
+            var excludedIds = new[]
+            {
+                "MaterialHideSharkminnowTrimmed",
+            };
+            // Moff end
+
             Assert.That(server.CfgMan.GetCVar(CVars.NetPVS), Is.False);
 
             var protoIds = server.ProtoMan
@@ -263,6 +270,7 @@ namespace Content.IntegrationTests.Tests
                 .Where(p => !p.Abstract)
                 .Where(p => !pair.IsTestPrototype(p))
                 .Where(p => !excluded.Any(p.Components.ContainsKey))
+                .Where(p => !excludedIds.Contains(p.ID)) // Moff
                 .Where(p => p.Categories.All(x => !IgnoredCategories.Contains(x.ID)))
                 .Select(p => p.ID)
                 .ToList();

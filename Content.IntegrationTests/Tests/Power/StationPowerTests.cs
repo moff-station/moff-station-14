@@ -33,7 +33,6 @@ public sealed class StationPowerTests : GameTest
         "Plasma",
         "Relic",
         "Snowball",
-        "Reach",
         "Exo",
         "Amber", // Moffstation
         "Frezon", // Moffstation

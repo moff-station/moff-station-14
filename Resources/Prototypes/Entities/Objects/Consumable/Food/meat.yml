@@ -39,12 +39,11 @@
   # let air cook and freeze meat for cooking and preservation
   - type: AtmosExposed
   - type: Temperature
-    currentTemperature: 290
+    thermalConductivity: 1
+    heatCapacity: 750
   - type: TemperatureDamage
   # required for cooking to work
   - type: InternalTemperature
-    thickness: 0.02
-    area: 0.02 # arbitrary number that sounds right for a slab of meat
   - type: Material
   - type: PhysicalComposition
     materialComposition:
@@ -90,8 +89,6 @@
     refineResult:
     - id: FoodMeatCutlet
       amount: 5
-  - type: InternalTemperature
-    conductivity: 0.43
   - type: Construction
     graph: MeatSteak
     node: start
@@ -192,15 +189,6 @@
         Quantity: 6
       - ReagentId: Fat
         Quantity: 9
-  - type: Extractable # Moffstation - Meat Pulp
-    juiceSolution:
-      reagents:
-      - ReagentId: MeatPulp
-        Quantity: 11 # Mothstation- End
-  - type: InternalTemperature
-    conductivity: 0.44
-    thickness: 0.004 # bacon is thin so faster to cook than a steak
-    area: 0.0075 # ~5x15cm
   - type: Construction
     graph: Bacon
     node: start
@@ -212,6 +200,13 @@
       - state: generic-pink-inhand-left
       right:
       - state: generic-pink-inhand-right
+  # Moff start - Meat pulp
+  - type: Extractable
+    juiceSolution:
+      reagents:
+      - ReagentId: MeatPulp
+        Quantity: 11
+  # Moff end
 
 - type: entity
   parent: [FoodMeatRawBase, BaseSlicingRefinableFood]
@@ -296,8 +291,6 @@
     refineResult:
     - id: FoodMeatChickenCutlet
       amount: 5
-  - type: InternalTemperature
-    conductivity: 0.41
   - type: Construction
     graph: ChickenSteak
     node: start
@@ -406,15 +399,6 @@
   components:
   - type: Sprite
     state: goliath
-  # Moffstation - Begin - Meat Pulp
-  - type: Extractable
-    juiceSolution:
-      reagents:
-      - ReagentId: MeatPulp
-        Quantity: 8
-  # Moffstation - End
-  - type: InternalTemperature
-    thickness: 0.1 # very big, do cook it in lava
   - type: Construction
     graph: GoliathSteak
     node: start
@@ -426,6 +410,13 @@
       - state: plain-inhand-left
       right:
       - state: plain-inhand-right
+  # Moffstation - Begin - Meat Pulp
+  - type: Extractable
+    juiceSolution:
+      reagents:
+      - ReagentId: MeatPulp
+        Quantity: 8
+  # Moffstation - End
 
 - type: entity
   parent: [FoodMeatBase, BaseSlicingRefinableFood]
@@ -870,8 +861,6 @@
     - Meat
   - type: Sprite
     state: raw_patty
-  - type: InternalTemperature
-    conductivity: 0.43
   - type: Construction
     graph: CookedPatty
     node: start
@@ -947,8 +936,6 @@
     refineResult:
     - id: FoodMeatCutlet
       amount: 16
-  - type: InternalTemperature
-    conductivity: 0.43
   - type: Construction
     graph: AnomalyMeatSteak
     node: start
