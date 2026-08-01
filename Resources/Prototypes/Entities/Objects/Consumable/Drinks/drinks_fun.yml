@@ -125,6 +125,12 @@
     - SpaceCleaner
     - MilkSpoiled
     - FourteenLoko
+  # Moff Start - Randomly appearing romerol
+  - quantity: 10
+    weight: 0.25
+    reagents:
+    - Romerol
+  # Moff end
 
 - type: entity
   parent: [DrinkVisualsAllFilled, DrinkBottleGlassSmallBaseFull]

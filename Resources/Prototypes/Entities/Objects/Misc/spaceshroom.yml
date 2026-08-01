@@ -120,6 +120,12 @@
     weight: 1
     reagents:
     - Amatoxin
+  # Moff Start - Romerol, 15u so the dose still lands when eaten across several bites
+  - quantity: 15
+    weight: 0.25
+    reagents:
+    - Romerol
+  # Moff end
 
 # Cooked Object
 - type: entity
