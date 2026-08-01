@@ -34,7 +34,7 @@ public sealed class MultiCharacterTest : GameTest
     private const string SlotOneName = "Slot One Guy";
 
     [TestPrototypes]
-    private static readonly string TestMap = @$"
+    private static readonly string MultiCharTestMap = @$"
 - type: job
   id: {AgeGated}
   name: job-name-passenger
