@@ -31,10 +31,10 @@
     # proto: ProjectilePolyboltCarp
     ammoTable: !type:GroupSelector
       children:
-      #- id: ProjectilePolyboltCarp
-      #  weight: 15 # D20 Roll of 1-15
-      #- id: ProjectilePolyboltShark
-      #  weight: 4 # D20 Roll of 16-19
+      - id: ProjectilePolyboltCarp
+        weight: 15 # D20 Roll of 1-15
+      - id: ProjectilePolyboltShark
+        weight: 4 # D20 Roll of 16-19
       - id: ProjectilePolyboltDragon
         weight: 1 # D20 Roll of 20, Critical!
     # Moff End
@@ -143,8 +143,8 @@
     ammoTable:
       id: BulletInstakillMagic
     # Moff End
-    capacity: 30
-    count: 30
+    capacity: 3
+    count: 3
 
 - type: entity
   name: wand of entrance

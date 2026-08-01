@@ -22,7 +22,7 @@ public sealed partial class BasicEntityAmmoProviderComponent : AmmoProviderCompo
     /// <summary>
     /// Entity table for prototype selection.
     /// </summary>
-    [DataField]
+    [DataField(required: true)]
     public EntityTableSelector AmmoTable;
     // Moff End
 
