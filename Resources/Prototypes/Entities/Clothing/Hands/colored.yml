@@ -10,7 +10,7 @@
   description: Regular purple gloves that do not keep you from frying.
   components:
   - type: Sprite
-    sprite: Clothing/Hands/Gloves/Color/color.rsi
+    sprite: &color_rsi "_Moffstation/Clothing/Hands/Color/color.rsi" # Moffstation
     layers:
     - state: icon
       color: "#9C0DE1"
@@ -23,7 +23,7 @@
       - state: inhand-right
         color: "#9C0DE1"
   - type: Clothing
-    sprite: Clothing/Hands/Gloves/Color/color.rsi
+    sprite: *color_rsi # Moffstation
     clothingVisuals:
       gloves:
       - state: equipped-HAND
@@ -39,7 +39,7 @@
   description: Regular red gloves that do not keep you from frying.
   components:
   - type: Sprite
-    sprite: Clothing/Hands/Gloves/Color/color.rsi
+    sprite: *color_rsi # Moffstation
     layers:
     - state: icon
       color: "#940000"
@@ -52,7 +52,7 @@
       - state: inhand-right
         color: "#940000"
   - type: Clothing
-    sprite: Clothing/Hands/Gloves/Color/color.rsi
+    sprite: *color_rsi # Moffstation
     clothingVisuals:
       gloves:
       - state: equipped-HAND
@@ -68,7 +68,7 @@
   description: Regular blue gloves that do not keep you from frying.
   components:
   - type: Sprite
-    sprite: Clothing/Hands/Gloves/Color/color.rsi
+    sprite: *color_rsi # Moffstation
     layers:
     - state: icon
       color: "#0089EF"
@@ -81,7 +81,7 @@
       - state: inhand-right
         color: "#0089EF"
   - type: Clothing
-    sprite: Clothing/Hands/Gloves/Color/color.rsi
+    sprite: *color_rsi # Moffstation
     clothingVisuals:
       gloves:
       - state: equipped-HAND
@@ -97,7 +97,7 @@
   description: Regular teal gloves that do not keep you from frying.
   components:
   - type: Sprite
-    sprite: Clothing/Hands/Gloves/Color/color.rsi
+    sprite: *color_rsi # Moffstation
     layers:
     - state: icon
       color: "#3CB57C"
@@ -110,7 +110,7 @@
       - state: inhand-right
         color: "#3CB57C"
   - type: Clothing
-    sprite: Clothing/Hands/Gloves/Color/color.rsi
+    sprite: *color_rsi # Moffstation
     clothingVisuals:
       gloves:
       - state: equipped-HAND
@@ -126,7 +126,7 @@
   description: Regular brown gloves that do not keep you from frying.
   components:
   - type: Sprite
-    sprite: Clothing/Hands/Gloves/Color/color.rsi
+    sprite: *color_rsi # Moffstation
     layers:
     - state: icon
       color: "#723A02"
@@ -139,7 +139,7 @@
       - state: inhand-right
         color: "#723A02"
   - type: Clothing
-    sprite: Clothing/Hands/Gloves/Color/color.rsi
+    sprite: *color_rsi # Moffstation
     clothingVisuals:
       gloves:
       - state: equipped-HAND
@@ -155,7 +155,7 @@
   description: Regular grey gloves that do not keep you from frying.
   components:
   - type: Sprite
-    sprite: Clothing/Hands/Gloves/Color/color.rsi
+    sprite: *color_rsi # Moffstation
     layers:
     - state: icon
       color: "#999999"
@@ -168,7 +168,7 @@
       - state: inhand-right
         color: "#999999"
   - type: Clothing
-    sprite: Clothing/Hands/Gloves/Color/color.rsi
+    sprite: *color_rsi # Moffstation
     clothingVisuals:
       gloves:
       - state: equipped-HAND
@@ -184,7 +184,7 @@
   description: Regular green gloves that do not keep you from frying.
   components:
   - type: Sprite
-    sprite: Clothing/Hands/Gloves/Color/color.rsi
+    sprite: *color_rsi # Moffstation
     layers:
     - state: icon
       color: "#5ABF2F"
@@ -197,7 +197,7 @@
       - state: inhand-right
         color: "#5ABF2F"
   - type: Clothing
-    sprite: Clothing/Hands/Gloves/Color/color.rsi
+    sprite: *color_rsi # Moffstation
     clothingVisuals:
       gloves:
       - state: equipped-HAND
@@ -213,7 +213,7 @@
   description: Regular light brown gloves that do not keep you from frying.
   components:
   - type: Sprite
-    sprite: Clothing/Hands/Gloves/Color/color.rsi
+    sprite: *color_rsi # Moffstation
     layers:
     - state: icon
       color: "#C09F72"
@@ -226,7 +226,7 @@
       - state: inhand-right
         color: "#C09F72"
   - type: Clothing
-    sprite: Clothing/Hands/Gloves/Color/color.rsi
+    sprite: *color_rsi # Moffstation
     clothingVisuals:
       gloves:
       - state: equipped-HAND
@@ -242,7 +242,7 @@
   description: Regular orange gloves that do not keep you from frying.
   components:
   - type: Sprite
-    sprite: Clothing/Hands/Gloves/Color/color.rsi
+    sprite: *color_rsi # Moffstation
     layers:
     - state: icon
       color: "#EF8100"
@@ -255,7 +255,7 @@
       - state: inhand-right
         color: "#EF8100"
   - type: Clothing
-    sprite: Clothing/Hands/Gloves/Color/color.rsi
+    sprite: *color_rsi # Moffstation
     clothingVisuals:
       gloves:
       - state: equipped-HAND
@@ -271,7 +271,7 @@
   description: Regular white gloves that do not keep you from frying.
   components:
   - type: Sprite
-    sprite: Clothing/Hands/Gloves/Color/color.rsi
+    sprite: *color_rsi # Moffstation
     layers:
     - state: icon
       color: "#EAE8E8"
@@ -284,7 +284,7 @@
       - state: inhand-right
         color: "#EAE8E8"
   - type: Clothing
-    sprite: Clothing/Hands/Gloves/Color/color.rsi
+    sprite: *color_rsi # Moffstation
     clothingVisuals:
       gloves:
       - state: equipped-HAND
@@ -295,24 +295,34 @@
 # Black Gloves
 # TECHNICALLY, if you ported the worn state to the RSI, this could be greyscaled, but I do not really feel like doing that.
 - type: entity
-  parent: ClothingHandsGlovesSyntheticBase
+  parent: [ClothingHandsGlovesSyntheticBase, BaseSlicingRefinable]
   id: ClothingHandsGlovesColorBlack
   name: black gloves
   description: Regular black gloves that do not keep you from frying.
   components:
+# Moffstation -Start
   - type: Sprite
-    sprite: Clothing/Hands/Gloves/Color/black.rsi
+    sprite: *color_rsi
+    layers:
+    - state: icon
+      color: "#3f3f3f"
   - type: Item
     inhandVisuals:
       left:
       - state: inhand-left
+        color: "#3f3f3f"
       right:
       - state: inhand-right
+        color: "#3f3f3f"
   - type: Clothing
-    sprite: Clothing/Hands/Gloves/Color/black.rsi
-  - type: Butcherable
-    butcheringType: Knife
-    spawned:
+    sprite: *color_rsi
+    clothingVisuals:
+      gloves:
+      - state: equipped-HAND
+        color: "#3f3f3f"
+# Moffstation - End
+  - type: ToolRefinable
+    refineResult:
     - id: ClothingHandsGlovesFingerless
   - type: Fiber
     fiberColor: fibers-black
@@ -320,19 +330,18 @@
 # Insulated Gloves (Yellow Gloves)
 # Currently can not be greyscaled without looking like shit.
 - type: entity
-  parent: ClothingHandsBase
+  parent: [ClothingHandsBase, BaseSlicingRefinable]
   id: ClothingHandsGlovesColorYellow
   name: insulated gloves
   description: These gloves will protect the wearer from electric shocks.
   components:
   - type: FingerprintMask
   - type: Sprite
-    sprite: Clothing/Hands/Gloves/Color/yellow.rsi
+    sprite: _Moffstation/Clothing/Hands/Color/yellow.rsi # Moffstation
   - type: Clothing
-    sprite: Clothing/Hands/Gloves/Color/yellow.rsi
-  - type: Butcherable
-    butcheringType: Knife
-    spawned:
+    sprite: _Moffstation/Clothing/Hands/Color/yellow.rsi # Moffstation
+  - type: ToolRefinable
+    refineResult:
     - id: ClothingHandsGlovesFingerlessInsulated
   - type: Insulated
   - type: Fiber

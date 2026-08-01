@@ -36,16 +36,11 @@
   - type: PlaceableSurface
     placeCentered: true
   - type: Damageable
-    damageContainer: StructuralInorganic # Moffstation - Structural damagetype fix 
     damageModifierSet: Metallic
+  - type: Injurable
+    damageContainer: StructuralInorganic # Moffstation - Structural damagetype fix
   - type: Destructible
     thresholds:
-    - trigger: # Excess damage, don't spawn entities
-        !type:DamageTrigger
-        damage: 200
-      behaviors:
-      - !type:DoActsBehavior
-        acts: ["Destruction"]
     - trigger:
         !type:DamageTrigger
         damage: 75
@@ -84,6 +79,7 @@
   - type: GuideHelp
     guides:
     - MedicalDoctor
+  - type: AmbientMusicMarkerMedical
 
 - type: entity
   parent: Bed
@@ -103,15 +99,6 @@
     damageModifierSet: Wood
   - type: Destructible
     thresholds:
-    - trigger: # Excess damage, don't spawn entities
-        !type:DamageTrigger
-        damage: 200
-      behaviors:
-      - !type:PlaySoundBehavior
-        sound:
-          collection: WoodDestroy
-      - !type:DoActsBehavior
-        acts: ["Destruction"]
     - trigger:
         !type:DamageTrigger
         damage: 75
@@ -136,8 +123,9 @@
   - type: Sprite
     state: mattress
   - type: Damageable
-    damageContainer: Inorganic # Moffstation - Structural damagetype fix 
     damageModifierSet: Inflatable
+  - type: Injurable
+    damageContainer: Inorganic # Moffstation - Structural damagetype fix
 
 - type: entity
   parent: Bed
@@ -152,15 +140,6 @@
     state: icon
   - type: Destructible
     thresholds:
-    - trigger: # Excess damage, don't spawn entities
-        !type:DamageTrigger
-        damage: 200
-      behaviors:
-      - !type:PlaySoundBehavior
-        sound:
-          collection: WoodDestroy
-      - !type:DoActsBehavior
-        acts: ["Destruction"]
     - trigger:
         !type:DamageTrigger
         damage: 50
@@ -191,16 +170,10 @@
     damage:
       types:
         Cold: -0.5
-  - type: Damageable # Moffstation - Structural damagetype fix 
-    damageModifierSet: Wood # Moffstation - Structural damagetype fix 
+  - type: Damageable # Moffstation - Structural damagetype fix
+    damageModifierSet: Wood # Moffstation - Structural damagetype fix
   - type: Destructible
     thresholds:
-    - trigger: # Excess damage, don't spawn entities
-        !type:DamageTrigger
-        damage: 200
-      behaviors:
-      - !type:DoActsBehavior
-        acts: ["Destruction"]
     - trigger:
         !type:DamageTrigger
         damage: 75

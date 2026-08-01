@@ -22,15 +22,13 @@ using Robust.Shared.Utility;
 
 namespace Content.Server.Objectives;
 
-public sealed class ObjectivesSystem : SharedObjectivesSystem
+public sealed partial class ObjectivesSystem : SharedObjectivesSystem
 {
-    [Dependency] private readonly GameTicker _gameTicker = default!;
-    [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
-    [Dependency] private readonly IPlayerManager _player = default!;
-    [Dependency] private readonly IRobustRandom _random = default!;
-    [Dependency] private readonly EmergencyShuttleSystem _emergencyShuttle = default!;
-    [Dependency] private readonly SharedJobSystem _job = default!;
-    [Dependency] private readonly IConfigurationManager _cfg = default!;
+    [Dependency] private IConfigurationManager _cfg = default!;
+    [Dependency] private IPlayerManager _player = default!;
+    [Dependency] private IRobustRandom _random = default!;
+    [Dependency] private EmergencyShuttleSystem _emergencyShuttle = default!;
+    [Dependency] private SharedJobSystem _job = default!;
 
     private IEnumerable<string>? _objectives;
 
@@ -44,14 +42,14 @@ public sealed class ObjectivesSystem : SharedObjectivesSystem
 
         Subs.CVar(_cfg, CCVars.GameShowGreentext, value => _showGreentext = value, true);
 
-        _prototypeManager.PrototypesReloaded += CreateCompletions;
+        ProtoMan.PrototypesReloaded += CreateCompletions;
     }
 
     public override void Shutdown()
     {
         base.Shutdown();
 
-        _prototypeManager.PrototypesReloaded -= CreateCompletions;
+        ProtoMan.PrototypesReloaded -= CreateCompletions;
     }
 
     /// <summary>
@@ -61,12 +59,9 @@ public sealed class ObjectivesSystem : SharedObjectivesSystem
     {
         // go through each gamerule getting data for the roundend summary.
         var summaries = new Dictionary<string, Dictionary<string, List<(EntityUid, string)>>>();
-        var query = EntityQueryEnumerator<GameRuleComponent>();
-        while (query.MoveNext(out var uid, out var gameRule))
+        var query = EntityQueryEnumerator<ActiveGameRuleComponent, GameRuleComponent>();
+        while (query.MoveNext(out var uid, out _, out var comp))
         {
-            if (!_gameTicker.IsGameRuleAdded(uid, gameRule))
-                continue;
-
             var info = new ObjectivesTextGetInfoEvent(new List<(EntityUid, string)>(), string.Empty);
             RaiseLocalEvent(uid, ref info);
             if (info.Minds.Count == 0)
@@ -90,7 +85,7 @@ public sealed class ObjectivesSystem : SharedObjectivesSystem
             }
             else
             {
-                summary[prepend.Text] = info.Minds;
+                summary[prepend.Text] = info.Minds.ToList();
             }
         }
 
@@ -103,14 +98,14 @@ public sealed class ObjectivesSystem : SharedObjectivesSystem
             foreach (var (_, minds) in summary)
             {
                 total += minds.Count;
-                totalInCustody += minds.Where(pair => IsInCustody(pair.Item1)).Count();
+                totalInCustody += minds.Count(pair => IsInCustody(pair.Item1));
             }
 
             var result = new StringBuilder();
-            result.AppendLine(Loc.GetString("objectives-round-end-result", ("count", total), ("agent", agent)));
-            if (agent == Loc.GetString("traitor-round-end-agent-name"))
+            result.AppendLine(Loc.GetString("objectives-round-end-result", ("count", total), ("agent", Loc.GetString(agent)))); // Moffstation - Add missing loc resolution
+            if (agent == "traitor-round-end-agent-name" || agent == Loc.GetString("traitor-round-end-agent-name")) // Moffstation - I don't know if this is expecting the `antag` string to be localized or not, so let's check against both
             {
-                result.AppendLine(Loc.GetString("objectives-round-end-result-in-custody", ("count", total), ("custody", totalInCustody), ("agent", agent)));
+                result.AppendLine(Loc.GetString("objectives-round-end-result-in-custody", ("count", total), ("custody", totalInCustody), ("agent", Loc.GetString(agent)))); // Moffstation - Add missing loc resolution
             }
             // next add all the players with its own prepended text
             foreach (var (prepend, minds) in summary)
@@ -121,7 +116,7 @@ public sealed class ObjectivesSystem : SharedObjectivesSystem
                 // add space between the start text and player list
                 result.AppendLine();
 
-                AddSummary(result, agent, minds, ev);   // Moffstation - Custom objective summary
+                AddSummary(result, Loc.GetString(agent), minds, ev);   // Moffstation - Custom objective summary
             }
 
             ev.AddLine(result.AppendLine().ToString());
@@ -152,12 +147,18 @@ public sealed class ObjectivesSystem : SharedObjectivesSystem
             var agentSummary = new StringBuilder();
             agentSummary.AppendLine(Loc.GetString("objectives-with-objectives", ("custody", custody), ("title", title), ("agent", agent)));
 
-            foreach (var objectiveGroup in objectives.GroupBy(o => Comp<ObjectiveComponent>(o).LocIssuer))
+            foreach (var objectiveGroup in objectives.GroupBy(o => Comp<ObjectiveComponent>(o).Issuer))
             {
                 //TO DO:
                 //check for the right group here. Getting the target issuer is easy: objectiveGroup.Key
                 //It should be compared to the type of the group's issuer.
-                agentSummary.AppendLine(objectiveGroup.Key);
+                if (!ProtoMan.TryIndex(objectiveGroup.Key, out var issuer))
+                {
+                    Log.Error($"Found incorrect objective issuer {issuer} when generating round end text.");
+                    continue;
+                }
+
+                agentSummary.AppendLine(issuer.LocalizedName);
 
                 foreach (var objective in objectiveGroup)
                 {
@@ -233,7 +234,7 @@ public sealed class ObjectivesSystem : SharedObjectivesSystem
     // Moffstation - Objective Picker - make sure to use our yield break implementation and take upstream changes
     public IEnumerable<EntityUid> GetRandomObjectives(EntityUid mindId, MindComponent mind, ProtoId<WeightedRandomPrototype> objectiveGroupProto, float maxDifficulty)
     {
-        if (!_prototypeManager.TryIndex(objectiveGroupProto, out var groupsProto))
+        if (!ProtoMan.TryIndex(objectiveGroupProto, out var groupsProto))
         {
             Log.Error($"Tried to get a random objective, but can't index WeightedRandomPrototype {objectiveGroupProto}");
             yield break; // Moffstation - Objective Picker
@@ -244,7 +245,7 @@ public sealed class ObjectivesSystem : SharedObjectivesSystem
 
         while (_random.TryPickAndTake(groups, out var groupName))
         {
-            if (!_prototypeManager.TryIndex<WeightedRandomPrototype>(groupName, out var group))
+            if (!ProtoMan.TryIndex<WeightedRandomPrototype>(groupName, out var group))
             {
                 Log.Error($"Couldn't index objective group prototype {groupName}");
                 yield break; // Moffstation - Objective Picker
@@ -253,7 +254,7 @@ public sealed class ObjectivesSystem : SharedObjectivesSystem
             var objectives = group.Weights.ShallowClone();
             while (_random.TryPickAndTake(objectives, out var objectiveProto))
             {
-                if (!_prototypeManager.Index(objectiveProto).TryGetComponent<ObjectiveComponent>(out var objectiveComp, EntityManager.ComponentFactory))
+                if (!ProtoMan.Index(objectiveProto).TryComp<ObjectiveComponent>(out var objectiveComp, EntityManager.ComponentFactory))
                     continue;
 
                 if (objectiveComp.Difficulty <= maxDifficulty && TryCreateObjective((mindId, mind), objectiveProto, out var objective))
@@ -274,7 +275,7 @@ public sealed class ObjectivesSystem : SharedObjectivesSystem
     /// <summary>
     /// Returns whether a target is considered 'in custody' (cuffed on the shuttle).
     /// </summary>
-    private bool IsInCustody(EntityUid mindId, MindComponent? mind = null)
+    public bool IsInCustody(EntityUid mindId, MindComponent? mind = null)
     {
         if (!Resolve(mindId, ref mind))
             return false;
@@ -334,7 +335,7 @@ public sealed class ObjectivesSystem : SharedObjectivesSystem
 
     private void CreateCompletions()
     {
-        _objectives = _prototypeManager.EnumeratePrototypes<EntityPrototype>()
+        _objectives = ProtoMan.EnumeratePrototypes<EntityPrototype>()
             .Where(p => p.HasComponent<ObjectiveComponent>())
             .Select(p => p.ID)
             .Order();

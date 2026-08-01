@@ -1,21 +1,21 @@
 using Content.Server.Station.Systems;
-using Content.Server.StationRecords.Systems;
-using Content.Server.StationRecords;
+using Content.Shared._CD.Records;
 using Content.Shared.CriminalRecords;
 using Content.Shared.Security;
 using Content.Shared.StationRecords;
-using Content.Shared._CD.Records;
+using Content.Shared.StationRecords.Components;
+using Content.Shared.StationRecords.Systems;
 using Robust.Server.GameObjects;
 
 namespace Content.Server._CD.Records.Consoles;
 
-public sealed class CharacterRecordConsoleSystem : EntitySystem
+public sealed partial class CharacterRecordConsoleSystem : EntitySystem
 {
-    [Dependency] private readonly CharacterRecordsSystem _characterRecords = default!;
-    [Dependency] private readonly IEntityManager _entity = default!;
-    [Dependency] private readonly StationRecordsSystem _records = default!;
-    [Dependency] private readonly StationSystem _station = default!;
-    [Dependency] private readonly UserInterfaceSystem _ui = default!;
+    [Dependency] private CharacterRecordsSystem _characterRecords = default!;
+    [Dependency] private IEntityManager _entity = default!;
+    [Dependency] private StationRecordsSystem _records = default!;
+    [Dependency] private StationSystem _station = default!;
+    [Dependency] private UserInterfaceSystem _ui = default!;
 
     public override void Initialize()
     {

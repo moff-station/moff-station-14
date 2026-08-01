@@ -6,9 +6,9 @@ using Robust.Shared.Player;
 
 namespace Content.Shared._Moffstation.Paper.Systems;
 
-public sealed class StampSystem : EntitySystem
+public sealed partial class StampSystem : EntitySystem
 {
-    [Dependency] private readonly SharedPopupSystem _popupSystem = default!;
+    [Dependency] private SharedPopupSystem _popupSystem = default!;
 
     public override void Initialize()
     {

@@ -3,9 +3,9 @@ using Content.Shared._Starlight.CollectiveMind;
 
 namespace Content.Client._Starlight.Chat;
 
-public sealed class CollectiveMindSystem : EntitySystem
+public sealed partial class CollectiveMindSystem : EntitySystem
 {
-    [Dependency] private readonly IChatManager _chatManager = default!;
+    [Dependency] private IChatManager _chatManager = default!;
 
     public override void Initialize()
     {

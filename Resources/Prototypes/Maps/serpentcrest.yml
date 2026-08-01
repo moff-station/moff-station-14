@@ -2,7 +2,7 @@
   id: Serpentcrest
   mapName: 'Serpentcrest'
   mapPath: /Maps/serpentcrest.yml
-  minPlayers: 50
+  minPlayers: 81 # Moffstation - Ultra-High Pop
   stations:
     Serpentcrest:
       stationProto: StandardNanotrasenStation
@@ -17,7 +17,7 @@
         - type: StationCargoShuttle
           path: /Maps/Shuttles/cargo_syndicate.yml
         - type: StationJobs
-          availableJobs: 
+          availableJobs:
             #command (7)
             Captain: [ 1, 1 ]
             HeadOfPersonnel: [ 1, 1 ]
@@ -26,7 +26,7 @@
             ChiefEngineer: [ 1, 1 ]
             ResearchDirector: [ 1, 1 ]
             Quartermaster: [ 1, 1 ]
-            #service 
+            #service
             Bartender: [ 2, 2 ]
             Botanist: [ 2, 2 ]
             Chef: [ 2, 2 ]
@@ -35,32 +35,33 @@
             Librarian: [ 1, 1 ]
             ServiceWorker: [ 2, 3 ]
             Reporter: [ 1, 1 ]
-            #engineering 
+            #engineering
             AtmosphericTechnician: [ 3, 3 ]
             StationEngineer: [ 4, 5 ]
-            TechnicalAssistant: [ 3, 3 ] #intern, not counted
-            #medical 
+            # TechnicalAssistant: [ 3, 3 ] # Moffstation - Removed role
+            #medical
             Chemist: [ 3, 3 ]
             MedicalDoctor: [ 5, 5 ]
             Paramedic: [ 2, 2 ]
-            MedicalIntern: [ 3, 3 ] #intern, not counted
+            # MedicalIntern: [ 3, 3 ] # Moffstation - Removed role
             #science (5)
             Scientist: [ 5, 5 ]
-            ResearchAssistant: [ 4, 4 ] #intern, not counted
-            #security 
+            # ResearchAssistant: [ 4, 4 ] # Moffstation - Removed role
+            #security
             Warden: [ 1, 1 ]
             SecurityOfficer: [ 5, 6 ]
             Detective: [ 1, 1 ]
-            SecurityCadet: [ 3, 3 ] #intern, not counted
+            # SecurityCadet: [ 3, 3 ] # Moffstation - Removed role
             Lawyer: [ 2, 2 ]
-            #supply 
+            Prisoner: [ 1, 1 ] # Moffstation - Prisoners
+            #supply
             SalvageSpecialist: [ 4, 4 ]
             CargoTechnician: [ 4, 5 ]
-            #civilian 
+            #civilian
             Passenger: [ -1, -1 ] #infinite, not counted
             Clown: [ 1, 1 ]
             Mime: [ 1, 1 ]
             Musician: [ 1, 1 ]
-            #silicon 
+            #silicon
             Borg: [ 3, 3 ]
             StationAi: [ 1, 1 ]

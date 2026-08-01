@@ -17,14 +17,14 @@ namespace Content.Shared._Moffstation.BladeServer;
 /// This system handles behavior for <see cref="BladeServerRackComponent"/>s and <see cref="BladeServerComponent"/>s.
 public abstract partial class SharedBladeServerSystem : EntitySystem
 {
-    [Dependency] private readonly IComponentFactory _componentFactory = default!;
-    [Dependency] private readonly SharedAppearanceSystem _appearance = default!;
-    [Dependency] private readonly SharedContainerSystem _container = default!;
-    [Dependency] private readonly SharedInteractionSystem _interaction = default!;
-    [Dependency] private readonly ItemSlotsSystem _itemSlots = default!;
-    [Dependency] private readonly SharedPopupSystem _popup = default!;
-    [Dependency] private readonly SharedPowerReceiverSystem _powerReceiver = default!;
-    [Dependency] private readonly SharedUserInterfaceSystem _ui = default!;
+    [Dependency] private IComponentFactory _componentFactory = default!;
+    [Dependency] private SharedAppearanceSystem _appearance = default!;
+    [Dependency] private SharedContainerSystem _container = default!;
+    [Dependency] private SharedInteractionSystem _interaction = default!;
+    [Dependency] private ItemSlotsSystem _itemSlots = default!;
+    [Dependency] private SharedPopupSystem _popup = default!;
+    [Dependency] private SharedPowerReceiverSystem _powerReceiver = default!;
+    [Dependency] private SharedUserInterfaceSystem _ui = default!;
 
     /// This whitelist allows only entities with <see cref="BladeServerComponent"/> to be inserted into the rack.
     private EntityWhitelist _slotWhitelist = new();
@@ -64,6 +64,7 @@ public abstract partial class SharedBladeServerSystem : EntitySystem
 
         SubscribeLocalEvent<BladeServerFrameComponent, InteractUsingEvent>(OnBladeServerFrameInteractUsing);
         SubscribeLocalEvent<BladeServerBoardComponent, ExaminedEvent>(OnBladeServerBoardExamined);
+        SubscribeLocalEvent<BladeServerComponent, AccessibleOverrideEvent>(OnBladeServerAccessibleOverride); // Starlight
     }
 
     private void OnComponentInit(Entity<BladeServerRackComponent> entity, ref ComponentInit args)
@@ -171,6 +172,38 @@ public abstract partial class SharedBladeServerSystem : EntitySystem
     {
         ClearSlots(entity);
     }
+
+    // Starlight Start
+    /// <summary>
+    /// Allow interaction with blade servers that are inside a rack if the user is in range of the rack.
+    /// </summary>
+    private void OnBladeServerAccessibleOverride(Entity<BladeServerComponent> bladeServer, ref AccessibleOverrideEvent args)
+    {
+        // If already handled or already accessible, return
+        if (args.Handled || args.Accessible)
+            return;
+
+        // Check if the blade server (target) is what we're trying to access
+        if (args.Target != bladeServer.Owner)
+            return;
+
+        // Find the rack containing this blade server
+        foreach (var container in _container.GetContainingContainers(bladeServer.Owner))
+        {
+            // Check if the container owner is a blade server rack
+            if (!HasComp<BladeServerRackComponent>(container.Owner))
+                continue;
+
+            // Check if the user is in range of the rack
+            if (_interaction.InRangeUnobstructed(args.User, container.Owner))
+            {
+                args.Accessible = true;
+                args.Handled = true;
+                return;
+            }
+        }
+    }
+    // Starlight End
 
     private void OnEjectPressed(Entity<BladeServerRackComponent> entity, ref BladeServerRackEjectPressedMessage args)
     {

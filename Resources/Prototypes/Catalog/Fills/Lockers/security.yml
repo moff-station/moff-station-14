@@ -28,7 +28,6 @@
     children:
     - id: FlashlightSeclite
     #- id: WeaponDisabler # Moffstation - no stuns
-    #- id: WeaponTaser  # Moffstation - Remove tasers
     - id: ClothingBeltSecurityFilled
     - id: Flash
     - id: ClothingEyesGlassesSecurity
@@ -74,7 +73,6 @@
     - id: FlashlightSeclite
       prob: 0.8
     #- id: WeaponDisabler # Moffstation - No stuns
-    #- id: WeaponTaser # Moffstation - Remove tasers
     - id: ClothingUniformJumpsuitSecGrey
       prob: 0.3
     - id: ClothingHeadHelmetBasic
@@ -115,8 +113,8 @@
   id: FillLockerBrigmedic
   table: !type:AllSelector
     children:
-    - id: ClothingEyesGlassesSecurity
-    #- id: WeaponTaser # Moffstation - remove tasers
+    # - id: ClothingEyesGlassesSecurity # Moffstation - Modular Eyewear
+    - id: ClothingEyesHudMedSec # Moffstation - Modular Eyewear
     - id: WeaponDisabler
     - id: TrackingImplanter
       amount: 2

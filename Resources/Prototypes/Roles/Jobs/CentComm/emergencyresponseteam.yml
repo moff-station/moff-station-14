@@ -8,7 +8,6 @@
   startingGear: ERTLeaderGearEVA
   icon: "JobIconERTLeader"
   supervisors: job-supervisors-centcom
-  canBeAntag: false
   accessGroups:
   - AllAccess
   access:
@@ -106,7 +105,6 @@
   startingGear: ERTChaplainGear
   icon: "JobIconERTChaplain"
   supervisors: job-supervisors-centcom
-  canBeAntag: false
   accessGroups:
   - AllAccess
   access:
@@ -183,7 +181,6 @@
   startingGear: ERTEngineerGearEVA
   icon: "JobIconERTEngineer"
   supervisors: job-supervisors-centcom
-  canBeAntag: false
   accessGroups:
   - AllAccess
   access:
@@ -277,7 +274,6 @@
   startingGear: ERTSecurityGearEVA
   icon: "JobIconERTSecurity"
   supervisors: job-supervisors-centcom
-  canBeAntag: false
   accessGroups:
   - AllAccess
   access:
@@ -464,7 +460,6 @@
   startingGear: ERTMedicalGearEVA
   icon: "JobIconERTMedic"
   supervisors: job-supervisors-centcom
-  canBeAntag: false
   accessGroups:
   - AllAccess
   access:
@@ -564,7 +559,6 @@
   startingGear: ERTJanitorGearEVA
   icon: "JobIconERTJanitor"
   supervisors: job-supervisors-centcom
-  canBeAntag: false
   accessGroups:
   - AllAccess
   access:
@@ -599,13 +593,12 @@
     suitstorage: WeaponLauncherHydra
   storage:
     back:
-    - TrashBag
     - SoapNT
     - Plunger
     - Screwdriver
-    - AdvMopItem # End of first line
+    - AdvMopItem
     - GrenadeCleanade
-    - GrenadeCleanade
+    - GrenadeCleanade # End of first line
     - GrenadeCleanade
     - GrenadeCleanade
     - GrenadeCleanade
@@ -619,6 +612,8 @@
     - WeaponPistolMk58
     - MagazinePistol
     - EmergencyMedipen
+  inhand:
+    - TrashBag
 
 - type: chameleonOutfit
   id: ERTJanitorChameleonOutfit

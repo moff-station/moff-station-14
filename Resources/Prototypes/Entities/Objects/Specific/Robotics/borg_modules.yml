@@ -188,7 +188,7 @@
   components:
   - type: BorgModule
     borgFitTypes:
-    - borg-type-generic
+    - borg-type-science
   - type: Tag
     tags:
     - BorgModuleScience
@@ -528,7 +528,7 @@
 
 - type: entity
   id: BorgModuleFireExtinguisher
-  parent: [ BaseBorgModule, BaseProviderBorgModule, BaseBorgModuleMagboots ] # Moffstation - toggleable magboots
+  parent: [ BaseBorgModule, BaseProviderBorgModule ]
   name: thruster cyborg module
   description: NT assigned a team to design a jetpack for cyborg units, but they ran out of funding and just made a bigger fire extinguisher. It comes with a integrated GPS and mass scanner though!
   components:
@@ -539,7 +539,7 @@
   - type: ItemBorgModule
     hands:
     - item: BorgFireExtinguisher
-    - item: BorgHandheldGPSBasic
+#    - item: BorgHandheldGPSBasic # Moffstation - The mass scanner is a GPS now, too.
     - item: HandheldStationMapUnpowered
     - item: HandHeldMassScannerBorg
   - type: BorgModuleIcon
@@ -666,7 +666,7 @@
     - item: MiningDrillDiamond
     - item: Shovel
     - item: AdvancedMineralScannerUnpowered
-    - item: OreBagOfHolding
+    - item: BorgOreBagOfHolding
     # Moffstation - Start - Add orehand for salvage borgs
     - hand:
         emptyRepresentative: Coal1
@@ -685,7 +685,7 @@
 
 - type: entity
   id: BorgModuleTraversal
-  parent: [ BaseBorgModuleCargo, BaseProviderBorgModule, BaseBorgModuleMagboots ] # Moffstation - toggleable magboots
+  parent: [ BaseBorgModuleCargo, BaseProviderBorgModule ]
   name: traversal cyborg module
   components:
   - type: Sprite
@@ -696,10 +696,17 @@
     hands:
     - item: WeaponGrapplingGun
     - item: BorgFireExtinguisher
-    - item: BorgHandheldGPSBasic
+#    - item: BorgHandheldGPSBasic # Moffstation - The mass scanner is a GPS now, too.
     - item: HandHeldMassScannerBorg
+    - item: HandheldStationMapUnpowered # Moffstation - Make "traversal" modules strict upgrades of the generic thruster
   - type: BorgModuleIcon
     icon: { sprite: Interface/Actions/actions_borg.rsi, state: grappling-module }
+  # Moffstation - Start - Replacable Traversal Module
+  - type: Tag
+    tags:
+    - CyborgTraversalModule
+    - BorgModuleCargo
+  # Moffstation - End
 
 # engineering modules
 - type: entity
@@ -731,7 +738,7 @@
   parent: BaseItem
   components:
   - type: Sprite
-    sprite: Objects/Materials/Sheets/other.rsi
+    sprite: _Moffstation/Objects/Materials/Sheets/other.rsi # Moffstation
     state: generic_materials
 
 - type: entity
@@ -807,7 +814,7 @@
 
 - type: entity
   id: BorgModuleRCD
-  parent: [ BaseBorgModuleEngineering, BaseProviderBorgModule, BaseBorgModuleMagboots ] # Moffstation - toggleable magboots
+  parent: [ BaseBorgModuleEngineering, BaseProviderBorgModule ]
   name: engineering cyborg module
   components:
   - type: Sprite
@@ -818,10 +825,12 @@
     hands:
     - item: RCDRecharging
     - item: BorgFireExtinguisher
-    - item: BorgHandheldGPSBasic
+#    - item: BorgHandheldGPSBasic # Moffstation - The mass scanner is a GPS now, too.
+    - item: HandHeldMassScannerBorg # Moffstation - so give them the mass scanner.
     - item: GasAnalyzer
     - item: HolofanProjectorBorg
     - item: GeigerCounter
+    - item: HandheldStationMapUnpowered # Moffstation - Make "traversal" modules strict upgrades of the generic thruster
   - type: BorgModuleIcon
     icon: { sprite: Interface/Actions/actions_borg.rsi, state: rcd-module }
 
@@ -964,7 +973,7 @@
 
 - type: entity
   id: BorgModuleRescue
-  parent: [ BaseBorgModuleMedical, BaseProviderBorgModule, BaseBorgModuleMagboots ] # Moffstation - toggleable magboots
+  parent: [ BaseBorgModuleMedical, BaseProviderBorgModule ]
   name: rescue cyborg module
   components:
   - type: Sprite
@@ -977,7 +986,9 @@
     - item: DefibrillatorOneHandedUnpowered
     - item: Crowbar
     - item: BorgFireExtinguisher
-    - item: BorgHandheldGPSBasic
+#    - item: BorgHandheldGPSBasic # Moffstation - The mass scanner is a GPS now, too.
+    - item: HandHeldMassScannerBorg # Moffstation - ... so give them the mass scanner.
+    - item: HandheldStationMapUnpowered # Moffstation - Make "traversal" modules strict upgrades of the generic thruster
   - type: BorgModuleIcon
     icon: { sprite: Interface/Actions/actions_borg.rsi, state: defib-module }
 
@@ -1712,7 +1723,7 @@
     - state: icon-xenoborg-tile
   - type: ItemBorgModule
     hands:
-    - item: WeaponTileGunEmpty
+    - item: WeaponTileGun
   - type: BorgModuleIcon
     icon: { sprite: Interface/Actions/actions_borg.rsi, state: xenoborg-tile-module }
 

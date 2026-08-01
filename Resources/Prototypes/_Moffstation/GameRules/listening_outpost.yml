@@ -22,31 +22,10 @@
     minPlayers: 25
     cancelPresetOnTooFewPlayers: false
   - type: AntagSelection
-    selectionTime: PrePlayerSpawn
-    definitions:
-    - prefRoles: [ SyndicateSpy ]
-      min: 2
-      max: 2
-      spawnerPrototype: SpawnerSyndicateSpy
-      startingGear: SyndicateSpyGear
-      roleLoadout:
-      - RoleSurvivalSyndicate
-      - JobSyndicateSpy
-      briefing:
-        text: roles-antag-syndicate-spy-objective
-        color: red
-        sound: "/Audio/Ambience/Antag/traitor_start.ogg"
-      components:
-      - type: RandomMetadata
-        nameSegments:
-        - NamesSyndicateNormal
-        nameFormat: name-format-nukie-agent
-      - type: NpcFactionMember
-        factions:
-        - Syndicate
-      mindRoles:
-      - MindRoleSyndicateSpy
-
+    antags:
+    - !type:FixedAntagCount
+      count: 2
+      proto: SyndicateSpy
 
 - type: entity
   parent: BaseSyndicateListeningOutpost
@@ -59,26 +38,35 @@
     minimumPlayers: 25
     maxOccurrences: 1
   - type: AntagSelection
-    definitions:
-    - spawnerPrototype: SpawnerSyndicateSpy
-      min: 2
-      max: 2
-      pickPlayer: false
-      startingGear: SyndicateSpyGear
-      roleLoadout:
-      - RoleSurvivalSyndicate
-      - JobSyndicateSpy
-      briefing:
-        text: roles-antag-syndicate-spy-objective
-        color: red
-        sound: "/Audio/Ambience/Antag/traitor_start.ogg"
-      components:
-      - type: RandomMetadata
-        nameSegments:
-        - NamesSyndicateNormal
-        nameFormat: name-format-nukie-agent
-      - type: NpcFactionMember
-        factions:
-        - Syndicate
-      mindRoles:
-      - MindRoleSyndicateSpy
+    antags:
+    - !type:FixedAntagCount
+      count: 2
+      proto: SyndicateSpyMidround
+
+- type: antagSpecifier
+  parent: RestrictedAntag
+  id: SyndicateSpy
+  spawnerPrototype: SpawnerSyndicateSpy
+  startingGear: SyndicateSpyGear
+  roleLoadout:
+  - RoleSurvivalSyndicate
+  - JobSyndicateSpy
+  briefing:
+    text: roles-antag-syndicate-spy-objective
+    color: red
+    sound: "/Audio/Ambience/Antag/traitor_start.ogg"
+  components:
+  - type: RandomMetadata
+    nameSegments:
+    - NamesSyndicateNormal
+    nameFormat: name-format-nukie-agent
+  - type: NpcFactionMember
+    factions:
+    - Syndicate
+  mindRoles:
+  - MindRoleSyndicateSpy
+
+- type: antagSpecifier
+  parent: SyndicateSpy
+  id: SyndicateSpyMidround
+  pickPlayer: false

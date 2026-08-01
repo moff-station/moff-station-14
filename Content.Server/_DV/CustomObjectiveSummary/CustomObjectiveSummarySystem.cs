@@ -9,13 +9,12 @@ using Robust.Shared.Network;
 
 namespace Content.Server._DV.CustomObjectiveSummary;
 
-public sealed class CustomObjectiveSummarySystem : EntitySystem
+public sealed partial class CustomObjectiveSummarySystem : EntitySystem
 {
-    [Dependency] private readonly IServerNetManager _net = default!;
-    [Dependency] private readonly SharedMindSystem _mind = default!;
-    [Dependency] private readonly IAdminLogManager _adminLog = default!;
-    [Dependency] private readonly IPlayerManager _playerManager = default!;
-    [Dependency] private readonly TargetSystem _target = default!;
+    [Dependency] private IServerNetManager _net = default!;
+    [Dependency] private SharedMindSystem _mind = default!;
+    [Dependency] private IAdminLogManager _adminLog = default!;
+    [Dependency] private IPlayerManager _playerManager = default!;
 
 
     public override void Initialize()
@@ -43,7 +42,7 @@ public sealed class CustomObjectiveSummarySystem : EntitySystem
 
     private void OnEvacShuttleLeft(EvacShuttleLeftEvent args)
     {
-        var allMinds = _target.GetAliveHumans();
+        var allMinds = _mind.GetAliveHumans();
 
         // Assumes the assistant is still there at the end of the round.
         foreach (var mind in allMinds)

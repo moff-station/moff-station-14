@@ -24,10 +24,7 @@
   text: "/ServerInfo/Guidebook/Security/CriminalRecords.xml"
 
 - type: guideEntry
-  # Moffstation - Start Space law page rewrite
-  abstract: true  # So it wont show up in the guidebook
-  id: SpaceLawUpstream
-  # Moffstation - End
+  id: SpaceLaw
   name: guide-entry-rules-space-law
   text: "/ServerInfo/Guidebook/ServerRules/SpaceLaw/SpaceLaw.xml"
   children:

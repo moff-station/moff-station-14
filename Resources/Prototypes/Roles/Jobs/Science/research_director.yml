@@ -14,11 +14,13 @@
   - !type:DepartmentTimeRequirement
     department: Science
     time: 10h
-  weight: 10
+  # Moff start - no job weights
+#  weight: 10
+  displayWeight: 10
+  # Moff end
   startingGear: ResearchDirectorGear
   icon: "JobIconResearchDirector"
   supervisors: job-supervisors-captain
-  canBeAntag: false
   access:
   - Research
   - Command

@@ -1,4 +1,18 @@
 - type: entity
+  parent: BaseAction
+  id: ActionSlimeGrow
+  name: Grow
+  description: Concentrate and grow into a slimeperson.
+  components:
+  - type: Action
+    useDelay: 600
+    icon:
+      sprite: Mobs/Aliens/slimes.rsi
+      state: green_adult_slime
+  - type: InstantAction
+    event: !type:ReformEvent {}
+
+- type: entity
   id: ActionMorphGeras
   name: Morph into Geras
   description:  Morphs you into a Geras - a miniature version of you which allows you to move fast, at the cost of your inventory.
@@ -7,10 +21,26 @@
     popup: geras-transformation-popup
   - type: Action
     itemIconStyle: BigAction
-    useDelay: 10 # prevent spam
-    priority: -20
+    useDelay: 30 # prevent spam
+    priority: 20
     icon:
       sprite: Mobs/Aliens/slimes.rsi
       state: blue_adult_slime
   - type: InstantAction
     event: !type:MorphGeras
+
+- type: entity
+  parent: BaseAction
+  id: ActionSonicBoom
+  name: Sonic Boom
+  description: Emit a shockwave which flings everything around you.
+  components:
+  - type: Action
+    checkCanInteract: false
+    icon:
+      sprite: _Moffstation/Interface/Actions/actions_mothroach.rsi
+      state: shockwave
+    itemIconStyle: BigAction
+    useDelay: 15.0
+  - type: InstantAction
+    event: !type:AbilitySonicBoomEvent

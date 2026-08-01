@@ -11,6 +11,9 @@
     sprite: _Moffstation/PersonalItems/Wearables/goblinsable/The_Rose_Of_Silence/The_Rose_Of_Silence.rsi
   - type: Clothing
     sprite: _Moffstation/PersonalItems/Wearables/goblinsable/The_Rose_Of_Silence/The_Rose_Of_Silence.rsi
+  - type: Tag #Temp fix until we go through all of headwear parenting
+    tags:
+    - ClothMade
 
 - type: loadout
   id: PersonalItemRoseHeadphones

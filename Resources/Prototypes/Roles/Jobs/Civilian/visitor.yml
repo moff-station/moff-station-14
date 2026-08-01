@@ -3,11 +3,11 @@
   name: job-name-visitor
   description: job-description-visitor
   playTimeTracker: JobVisitor
-  canBeAntag: false
   icon: JobIconVisitor
   setPreference: false
   overrideConsoleVisibility: true
   access:
   - Maintenance
+  - Freelance # Moffstation - Visitor shuttle tweaks
   extendedAccess:
   - External

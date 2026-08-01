@@ -1,5 +1,5 @@
 - type: entity
-  parent: [ClothingNeckBase, BaseCommandContraband]
+  parent: [ClothingNeckClothChameleonableBase, BaseCommandContraband]
   id: ClothingNeckCapeCaptain
   name: captain's formal cape
   description: An elegant and superfluous cape for only the most graceful of Nanotrasen captains.
@@ -23,3 +23,7 @@
     requiredSlot:
     - neck
     slot: head
+  - type: Tag
+    tags:
+    - ClothMade
+    - Recyclable

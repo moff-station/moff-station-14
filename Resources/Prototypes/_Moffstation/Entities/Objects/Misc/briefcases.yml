@@ -1,4 +1,15 @@
 ﻿- type: entity
+  parent: BriefcaseBase
+  id: BriefcaseMetal
+  name: metal briefcase
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Objects/Storage/Briefcases/briefcase_metal.rsi
+    state: icon
+  - type: Item
+    sprite: _Moffstation/Objects/Storage/Briefcases/briefcase_metal.rsi
+
+- type: entity
   parent: [BriefcaseBase, BaseSyndicateContraband]
   id: BriefcaseSyndieFlashy
   suffix: Syndicate, Empty
@@ -37,3 +48,17 @@
   - type: Sprite
     sprite: _Moffstation/Objects/Storage/Briefcases/briefcase_centcomm.rsi
     state: icon
+
+- type: entity
+  parent: BriefcaseWeapon
+  id: BriefcaseWeaponMedium
+  suffix: Gun, Medium, Empty
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Objects/Storage/Briefcases/weapon_case.rsi
+  - type: Item
+    size: Large
+  - type: Storage
+    maxItemSize: Large
+    grid:
+    - 0,0,4,1

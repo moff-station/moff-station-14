@@ -7,7 +7,6 @@
   - type: Tag
     tags:
     - FireAxe
-  - type: Sharp
   - type: Execution
     doAfterDuration: 4.0
   - type: Sprite
@@ -38,10 +37,21 @@
     quickEquip: false
     slots:
     - back
+    - suitStorage
   - type: Tool
     qualities:
-      - Prying
+    - Prying
+    - Slicing
+    - Sawing
+    - HullPrying # Moffstation - fireaxe can remove plating
   - type: ToolTileCompatible
+    delay: 5
+    cues: # Moffstation - fireaxe can remove plating
+      startPopup: hull_prying_popup
+      startSound:
+        path: /Audio/Machines/airlock_creaking.ogg
+      endSound:
+        path: /Audio/Items/crowbar.ogg
   - type: Prying
   - type: UseDelay
     delay: 1
@@ -51,13 +61,14 @@
     fireStacks: -4
 
 - type: entity
-  id: FireAxeFlaming
+  id: FireAxeFlamingUpstream # Moff
   name: fire axe
-  parent: [BaseSyndicateContraband, FireAxe]
+  parent: [ BaseSyndicateContraband, FireAxe ]
   description: Why fight fire with an axe when you can fight with fire and axe? Now featuring rugged rubberized handle!
   components:
   - type: MeleeWeapon
-    wideAnimationRotation: 90
+    wideAnimationRotation: 135
+    swingLeft: true
   - type: IgniteOnMeleeHit
     fireStacks: 1
   - type: Sprite
@@ -68,3 +79,4 @@
     quickEquip: false
     slots:
     - back
+    - suitStorage

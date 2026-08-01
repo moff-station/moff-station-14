@@ -1,0 +1,24 @@
+# Player: CaramelKitten - Character: Renee Kurtzkazaltz
+
+- type: entity
+  parent: BaseItem
+  id: PersonalItemReneePlanetaryPasscard
+  name: planetary passcard
+  suffix: PersonalItem
+  description: "A small, worn, laminated card that can be folded out, displaying info on a 'Renee D. Kurtzkazaltz' alongside a prison camp ID number. The card is for a distant planet, and is at least a couple years past the expiration date."
+  components:
+  - type: Sprite
+    sprite: _Moffstation/PersonalItems/Items/CaramelKitten/Renee_Kurtzkazaltz/planetarypasscard.rsi
+    state: icon
+  - type: Item
+    sprite: _Moffstation/PersonalItems/Items/CaramelKitten/Renee_Kurtzkazaltz/planetarypasscard.rsi
+
+- type: loadout
+  id: PersonalItemReneePlanetaryPasscard
+  storage:
+    back:
+    - PersonalItemReneePlanetaryPasscard
+  effects:
+  - !type:PersonalItemLoadoutEffect
+    character:
+    - Renee Kurtzkazaltz

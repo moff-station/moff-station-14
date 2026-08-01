@@ -8,10 +8,10 @@ namespace Content.Client._Moffstation.Paper.UI;
 /// <summary>
 /// Initializes a <see cref="ForgeSignatureWindow"/> and updates it when new server messages are received.
 /// </summary>
-public sealed class ForgeSignatureBoundUserInterface(EntityUid owner, Enum uiKey) : BoundUserInterface(owner, uiKey)
+public sealed partial class ForgeSignatureBoundUserInterface(EntityUid owner, Enum uiKey) : BoundUserInterface(owner, uiKey)
 {
-    [Dependency] private readonly IEntityManager _entManager = default!;
-    [Dependency] private readonly IConfigurationManager _cfgManager = default!;
+    [Dependency] private IEntityManager _entManager = default!;
+    [Dependency] private IConfigurationManager _cfgManager = default!;
 
     [ViewVariables]
     private ForgeSignatureWindow? _window;

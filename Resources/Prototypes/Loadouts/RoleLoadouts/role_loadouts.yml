@@ -8,7 +8,8 @@
   - CaptainJumpsuit
   - CaptainBackpack
   - CaptainOuterClothing
-  - CaptainEyewear # Moffstation - Eyepatches!
+  - AssistiveItems
+  - Glasses # Moffstation - Modular Eyewear
   - Survival
   - Trinkets
   #- CaptainJobTrinkets
@@ -25,8 +26,8 @@
   - HoPJumpsuit
   - HoPBackpack
   - HoPOuterClothing
-# - Glasses # Moffstation - Eyepatches!
-  - HopEyewear # Moffstation - Eyepatches!
+  - Glasses
+  - AssistiveItems
   - Survival
   - Trinkets
   #- HoPJobTrinkets
@@ -38,6 +39,11 @@
   id: JobBorg
   nameDataset: NamesBorg
   canCustomizeName: true
+  # Moffstation - Begin - Borgs can get personal items
+  groups:
+  - BorgBrain # Moffstation - Borg can choose their brain type
+  - PersonalItemsJobAgnostic # Umbra
+  # Moffstation - End
 
 - type: roleLoadout
   id: JobStationAi
@@ -58,6 +64,7 @@
   - PassengerOuterClothing
   - PassengerShoes
   - Glasses
+  - AssistiveItems
   - Survival
   - Trinkets
   #- PassengerJobTrinkets
@@ -73,8 +80,8 @@
   - BartenderJumpsuit
   - CommonBackpack
   - BartenderOuterClothing
-# - Glasses # Moffstation - Eyepatches!
-  - BartenderEyewear # Moffstation - Eyepatches!
+  - Glasses
+  - AssistiveItems
   - Survival
   - Trinkets
   - BartenderJobTrinkets
@@ -89,6 +96,7 @@
   - BartenderJumpsuit
   - CommonBackpack
   - Glasses
+  - AssistiveItems
   - Survival
   - Trinkets
   #- ServiceWorkerJobTrinkets
@@ -106,6 +114,7 @@
   - CommonBackpack
   - ChefOuterClothing
   - Glasses
+  - AssistiveItems
   - Survival
   - Trinkets
   #- ChefJobTrinkets
@@ -120,6 +129,7 @@
   - LibrarianJumpsuit
   - CommonBackpack
   - Glasses
+  - AssistiveItems
   - Survival
   - Trinkets
   #- LibrarianJobTrinkets
@@ -135,6 +145,7 @@
   - LawyerJumpsuit
   - CommonBackpack
   - Glasses
+  - AssistiveItems
   - Survival
   - Trinkets
   #- LawyerJobTrinkets
@@ -155,6 +166,7 @@
   - ChaplainOuterClothing
   - ChaplainBible
   - Glasses
+  - AssistiveItems
   - Survival
   - Trinkets
   #- ChaplainJobTrinkets
@@ -172,6 +184,7 @@
   - CommonBackpack
   - JanitorOuterClothing
   - Glasses
+  - AssistiveItems
   - Survival
   - Trinkets
   - JanitorJobTrinkets
@@ -188,6 +201,7 @@
   - BotanistBackpack
   - BotanistOuterClothing
   - Glasses
+  - AssistiveItems
   - Survival
   - Trinkets
   #- BotanistJobTrinkets
@@ -208,6 +222,7 @@
   - ClownOuterClothing
   - ClownShoes
   - Glasses
+  - AssistiveItems
   - SurvivalClown
   - Trinkets
   - ClownJobTrinkets
@@ -228,7 +243,8 @@
   - MimeBelt
   - MimeShoes # Moffstation
   - Glasses
-  - SurvivalMime
+  - AssistiveItems
+  - Survival
   - Trinkets
   #- MimeJobTrinkets
   - PersonalItemsJobAgnostic # Umbra
@@ -244,11 +260,12 @@
   - MusicianShoes # Moffstation - Musician loadout Options
   - CommonBackpack
   - MusicianOuterClothing
+  - Instruments
   - Glasses
+  - AssistiveItems
   - Survival
   - Trinkets
   #- MusicianJobTrinkets
-  - Instruments
   - GroupSpeciesBreathTool
   - PersonalItemsJobAgnostic # Umbra
 
@@ -265,6 +282,7 @@
   - QuartermasterOuterClothing
   - QuartermasterShoes
   - Glasses
+  - AssistiveItems
   - Survival
   - Trinkets
   #- QuartermasterJobTrinkets
@@ -281,8 +299,9 @@
   - CargoTechnicianBackpack
   - CargoTechnicianOuterClothing
   - CargoTechnicianShoes
-# - CargoTechnicianID # Moffstation - Moved up in list
+  # - CargoTechnicianID # Moffstation - Moved up in list
   - Glasses
+  - AssistiveItems
   - Survival
   - Trinkets
   #- CargoTechnicianJobTrinkets
@@ -302,6 +321,7 @@
   - SalvageSpecialistOuterClothing
   - SalvageSpecialistShoes
   - Glasses
+  - AssistiveItems
   - Survival
   - Trinkets
   #- SalvageSpecialistJobTrinkets
@@ -320,7 +340,8 @@
   - ChiefEngineerNeck
   - ChiefEngineerOuterClothing
   - ChiefEngineerShoes
-  - EngineeringEyewear # Moffstation - Eyepatches!
+  - AssistiveItems
+  - Glasses # Moffstation - Modular Eyewear
   - SurvivalExtended
   - Trinkets
   #- ChiefEngineerJobTrinkets
@@ -333,11 +354,11 @@
   - GroupTankHarness
   - TechnicalAssistantJumpsuit
   - StationEngineerBackpack
+  - AssistiveItems
   - SurvivalExtended
   - Trinkets
   #- TechnicalAssistantJobTrinkets
   - GroupSpeciesBreathTool
-  - PersonalItemsJobAgnostic # Umbra
 
 - type: roleLoadout
   id: JobStationEngineer
@@ -349,8 +370,9 @@
   - StationEngineerBackpack
   - StationEngineerOuterClothing
   - StationEngineerShoes
-#  - StationEngineerID # Moffstation - Moved up in list
-  - EngineeringEyewear # Moffstation - Eyepatches!
+  # - StationEngineerID # Moffstation - Moved up in list
+  - AssistiveItems
+  - Glasses # Moffstation - Modular Eyewear
   - SurvivalExtended
   - Trinkets
   #- StationEngineerJobTrinkets
@@ -367,7 +389,8 @@
   - AtmosphericTechnicianBackpack
   - AtmosphericTechnicianOuterClothing
   - AtmosphericTechnicianShoes
-  - EngineeringEyewear # Moffstation - Eyepatches!
+  - AssistiveItems
+  - Glasses # Moffstation - Modular Eyewear
   - SurvivalExtended
   - Trinkets
   #- AtmosphericTechnicianJobTrinkets
@@ -387,8 +410,8 @@
   - ResearchDirectorOuterClothing
   - ScientistGloves
   - ResearchDirectorShoes
-# - Glasses # Moffstation - Eyepatches!
-  - ScienceEyewear # Moffstation - Eyepatches!
+  - Glasses
+  - AssistiveItems
   - Survival
   - Trinkets
   #- ResearchDirectorJobTrinkets
@@ -407,9 +430,9 @@
   - ScientistOuterClothing
   - ScientistGloves
   - ScientistShoes
-# - ScientistPDA # Moffstation - Moved up in list
-# - Glasses # Moffstation - Eyepatches!
-  - ScienceEyewear # Moffstation - Eyepatches!
+  # - ScientistPDA # Moffstation - Moved up in list
+  - Glasses
+  - AssistiveItems
   - Survival
   - Trinkets
   #- ScientistJobTrinkets
@@ -423,11 +446,11 @@
   - ResearchAssistantJumpsuit
   - ScientistBackpack
   - Glasses
+  - AssistiveItems
   - Survival
   - Trinkets
   #- ResearchAssistantJobTrinkets
   - GroupSpeciesBreathTool
-  - PersonalItemsJobAgnostic # Umbra
 
 # Security
 - type: roleLoadout
@@ -441,7 +464,8 @@
   - SecurityBelt
   - HeadofSecurityOuterClothing
   - SecurityShoes
-  - SecurityEyewear # Moffstation - Eyepatches!
+  - AssistiveItems
+  - Glasses # Moffstation - Modular Eyewear
   - SurvivalSecurity
   - Trinkets
   - HeadofSecurityJobTrinkets
@@ -458,7 +482,8 @@
   - SecurityBelt
   - WardenOuterClothing
   - SecurityShoes
-  - SecurityEyewear # Moffstation - Eyepatches!
+  - AssistiveItems
+  - Glasses # Moffstation - Modular Eyewear
   - SurvivalSecurity
   - Trinkets
   - WardenJobTrinkets
@@ -476,7 +501,8 @@
   - SecurityShoes
 # - SecurityPDA # Moffstation - Moved up in list
   - SecurityBelt
-  - SecurityEyewear # Moffstation - Eyepatches!
+  - AssistiveItems
+  - Glasses # Moffstation - Modular Eyewear
   - SurvivalSecurity
   - Trinkets
   - SecurityJobTrinkets
@@ -494,7 +520,8 @@
   - DetectiveOuterClothing
   - DetectiveBelt # Moffstation - Detective loadout changes
   - SecurityShoes
-  - DetectiveEyewear # Moffstation - Eyepatches!
+  - AssistiveItems
+  - Glasses # Moffstation - Modular Eyewear
   - DetectiveSidearm # Moffstation - (PM Pistol) - With the new PM, detective needs a loadout to select which sidearm they want.
   - SurvivalSecurity
   - Trinkets
@@ -507,11 +534,11 @@
   groups:
   - SecurityCadetJumpsuit
   - SecurityBackpack
+  - AssistiveItems
   - SurvivalSecurity
   - Trinkets
   #- SecurityCadetJobTrinkets
   - GroupSpeciesBreathToolSecurity
-  - PersonalItemsJobAgnostic # Umbra
 
 # Wildcards
 - type: roleLoadout
@@ -524,6 +551,7 @@
   - ReporterOuterClothing
   - CommonBackpack
   - Glasses
+  - AssistiveItems
   - Survival
   - Trinkets
   #- ReporterJobTrinkets
@@ -538,6 +566,7 @@
   - PsychologistJumpsuit
   - MedicalBackpack
   - Glasses
+  - AssistiveItems
   - Survival
   - Trinkets
   #- PsychologistJobTrinkets
@@ -583,6 +612,13 @@
   - GroupTankHarness
 
 - type: roleLoadout
+  id: RoleSurvivalExtendedAntag # Used by antagonists that spawn off-station (e.g wizards)
+  groups:
+  - SurvivalExtendedAntag
+  - GroupSpeciesBreathTool
+  - GroupTankHarness
+
+- type: roleLoadout
   id: RoleSurvivalMedical
   groups:
   - SurvivalMedical
@@ -622,6 +658,13 @@
   - SurvivalExtended
 
 - type: roleLoadout
+  id: RoleSurvivalEVAAntag # Used by antagonists that spawn off-station AND in space (e.g ninjas)
+  groups:
+  - GroupEVATank
+  - SurvivalExtendedAntag
+
+- type: roleLoadout
   id: RoleSurvivalSpaceNinja
   groups:
   - GroupEVATank
+  - GroupDrinkBottle # Moffstation - Avali Ninjas get ammonia

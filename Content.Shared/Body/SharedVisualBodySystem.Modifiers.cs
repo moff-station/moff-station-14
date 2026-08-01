@@ -15,8 +15,8 @@ namespace Content.Shared.Body;
 
 public abstract partial class SharedVisualBodySystem
 {
-    [Dependency] private readonly ISharedAdminManager _admin = default!;
-    [Dependency] private readonly SharedUserInterfaceSystem _userInterface = default!;
+    [Dependency] private ISharedAdminManager _admin = default!;
+    [Dependency] private SharedUserInterfaceSystem _userInterface = default!;
 
     private void InitializeModifiers()
     {
@@ -59,10 +59,13 @@ public abstract partial class SharedVisualBodySystem
         if (!Resolve(source, ref source.Comp) || !Resolve(target, ref target.Comp))
             return;
 
-        // Moffstation - Begin - Cloning copies height. This isn't just a component copy because it needs event piping to be applied properly.
-        if (TryComp<HumanoidProfileComponent>(source, out var profile))
+        // Moffstation - Begin - Cloning copies height. We apply height scaling directly rather than through
+        // ApplyProfile / ApplyOrganProfileDataEvent as those apply an entire profile, which would apply sex, skin
+        // color, etc., which we don't want to do here.
+        if (TryComp<HumanoidProfileComponent>(source, out var profile) &&
+            TryComp<HumanoidProfileComponent>(target, out var targetProfile))
         {
-            ApplyProfile(target, new() { Height = profile.Height });
+            ApplyHeightScale((target, targetProfile), profile.Height);
         }
         // Moffstation - End
 
@@ -89,7 +92,7 @@ public abstract partial class SharedVisualBodySystem
         [NotNullWhen(true)] out Dictionary<ProtoId<OrganCategoryPrototype>, OrganMarkingData>? markings,
         [NotNullWhen(true)] out Dictionary<ProtoId<OrganCategoryPrototype>, Dictionary<HumanoidVisualLayers, List<Marking>>>? applied)
     {
-        if (!Resolve(ent, ref ent.Comp))
+        if (!Resolve(ent, ref ent.Comp, logMissing: false))
         {
             profiles = null;
             markings = null;

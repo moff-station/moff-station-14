@@ -4,9 +4,9 @@
   id: BoxBase
   components:
   - type: Sprite
-    sprite: Objects/Storage/boxes.rsi
+    sprite: _Moffstation/Objects/Storage/boxes.rsi # Moffstation - Uncabinetification
   - type: Item
-    sprite: Objects/Storage/boxes.rsi
+    sprite: _Moffstation/Objects/Storage/boxes.rsi # Moffstation - Uncabinetification
     size: Large
     shape:
     - 0,0,2,2
@@ -34,6 +34,14 @@
     - 0,0,1,1
   - type: StaticPrice # Half of the "regular" box
     price: 5
+
+- type: entity
+  abstract: true
+  parent: BoxBaseSmall
+  id: BoxBaseHug
+  components:
+  - type: Item
+    heldPrefix: hug
 
 - type: entity
   parent: BoxBase

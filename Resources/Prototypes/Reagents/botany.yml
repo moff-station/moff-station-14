@@ -291,6 +291,11 @@
         - !type:MetabolizerTypeCondition
           type: [ Vox ]
         factor: -4
+      - !type:Oxygenate #macro, thaven don't suffocate from any gases
+        scaling: true
+        conditions:
+        - !type:MetabolizerTypeCondition
+          type: [ Thaven ]
 
 
 - type: reagent

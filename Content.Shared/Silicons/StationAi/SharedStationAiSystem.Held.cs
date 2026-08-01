@@ -6,6 +6,7 @@ using Content.Shared.Verbs;
 using Robust.Shared.Serialization;
 using Robust.Shared.Utility;
 using System.Diagnostics.CodeAnalysis;
+using Content.Shared._Moffstation.Warp; // Moffstation - Ai Warp
 
 namespace Content.Shared.Silicons.StationAi;
 
@@ -14,9 +15,7 @@ public abstract partial class SharedStationAiSystem
     /*
      * Added when an entity is inserted into a StationAiCore.
      */
-
-    //TODO: Fix this, please
-    private const string JobNameLocId = "job-name-station-ai";
+    [Dependency] private SharedWarpSystem _warp = default!; // Moffstation - Ai warp
 
     private void InitializeHeld()
     {
@@ -28,30 +27,23 @@ public abstract partial class SharedStationAiSystem
         SubscribeLocalEvent<StationAiHeldComponent, AttemptRelayActionComponentChangeEvent>(OnHeldRelay);
         SubscribeLocalEvent<StationAiHeldComponent, JumpToCoreEvent>(OnCoreJump);
 
-        SubscribeLocalEvent<TryGetIdentityShortInfoEvent>(OnTryGetIdentityShortInfo);
+        SubscribeLocalEvent<StationAiHeldComponent, TryGetIdentityShortInfoEvent>(OnTryGetIdentityShortInfo);
     }
 
-    private void OnTryGetIdentityShortInfo(TryGetIdentityShortInfoEvent args)
+    private void OnTryGetIdentityShortInfo(Entity<StationAiHeldComponent> ent, ref TryGetIdentityShortInfoEvent args)
     {
         if (args.Handled)
-        {
             return;
-        }
 
-        if (!HasComp<StationAiHeldComponent>(args.ForActor))
-        {
-            return;
-        }
-        args.Title = $"{Name(args.ForActor)} ({Loc.GetString(JobNameLocId)})";
+        args.Title = $"{Name(args.Target)} ({Loc.GetString("job-name-station-ai")})";
         args.Handled = true;
     }
 
     private void OnCoreJump(Entity<StationAiHeldComponent> ent, ref JumpToCoreEvent args)
     {
-        if (!TryGetCore(ent.Owner, out var core) || core.Comp?.RemoteEntity == null)
+        if (!TryGetCore(ent.Owner, out var core))
             return;
-
-        _xforms.DropNextTo(core.Comp.RemoteEntity.Value, core.Owner);
+        _warp.RequestWarpToEntity(GetNetEntity(core)); // Moffstation - Ai warp
     }
 
     /// <summary>
@@ -204,12 +196,12 @@ public abstract partial class SharedStationAiSystem
 
     private void ShowDeviceNotRespondingPopup(EntityUid toEntity)
     {
-        _popup.PopupClient(Loc.GetString("ai-device-not-responding"), toEntity, PopupType.MediumCaution);
+        _popup.PopupEntity(Loc.GetString("ai-device-not-responding"), toEntity, toEntity, PopupType.MediumCaution);
     }
 
     private void ShowDeviceNoAccessPopup(EntityUid toEntity)
     {
-        _popup.PopupClient(Loc.GetString("ai-device-no-access"), toEntity, PopupType.MediumCaution);
+        _popup.PopupEntity(Loc.GetString("ai-device-no-access"), toEntity, toEntity, PopupType.MediumCaution);
     }
 }
 

@@ -38,6 +38,7 @@
   - type: EncryptionKey
     channels:
     - Supply
+    - Traffic # Moffstation - Visitor Shuttle Tweaks
     defaultChannel: Supply
   - type: Sprite
     layers:
@@ -78,6 +79,7 @@
     - Security
     - Service
     - Supply
+    - Traffic # Moffstation - Visitor Shuttle Tweaks
     defaultChannel: Command
   - type: Sprite
     layers:

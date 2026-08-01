@@ -15,13 +15,13 @@ namespace Content.Server._Moffstation.GameTicking.Rules;
 /// <summary>
 /// This system listens for the player spawning event, and attempts to spawn them away from other players
 /// </summary>
-public sealed class AvoidantSpawningSystem : GameRuleSystem<AvoidantSpawningComponent>
+public sealed partial class AvoidantSpawningSystem : GameRuleSystem<AvoidantSpawningComponent>
 {
-    [Dependency] private readonly IRobustRandom _random = default!;
-    [Dependency] private readonly StationSystem _stationSystem = default!;
-    [Dependency] private readonly StationSpawningSystem _stationSpawning = default!;
-    [Dependency] private readonly EntityLookupSystem _entityLookup = default!;
-    [Dependency] private readonly EntityWhitelistSystem _whitelist = default!;
+    [Dependency] private IRobustRandom _random = default!;
+    [Dependency] private StationSystem _stationSystem = default!;
+    [Dependency] private StationSpawningSystem _stationSpawning = default!;
+    [Dependency] private EntityLookupSystem _entityLookup = default!;
+    [Dependency] private EntityWhitelistSystem _whitelist = default!;
 
     /// <inheritdoc/>
     public override void Initialize()

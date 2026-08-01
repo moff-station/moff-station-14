@@ -5,30 +5,22 @@
   components:
   - type: Sprite
     drawdepth: WallTops
-    sprite: Structures/Windows/reinforced_window.rsi
+    sprite: _Moffstation/Structures/Windows/reinforced_window.rsi # Moffstation
   - type: Icon
-    sprite: Structures/Windows/reinforced_window.rsi
+    sprite: _Moffstation/Structures/Windows/reinforced_window.rsi # Moffstation
   - type: Repairable
     fuelCost: 10
     doAfterDelay: 2
   - type: Damageable
-    damageContainer: StructuralInorganic
     damageModifierSet: RGlass
+  - type: Injurable
+    damageContainer: StructuralInorganic
   - type: RCDDeconstructable
     cost: 6
     delay: 6
     fx: EffectRCDDeconstruct6
   - type: Destructible
     thresholds:
-    - trigger:
-        !type:DamageTrigger
-        damage: 150 #excess damage (nuke?). avoid computational cost of spawning entities.
-      behaviors:
-      - !type:DoActsBehavior
-        acts: [ "Destruction" ]
-      - !type:PlaySoundBehavior
-        sound:
-          collection: WindowShatter
     - trigger:
         !type:DamageTrigger
         damage: 75
@@ -67,10 +59,10 @@
     - Window
   components:
   - type: Sprite
-    sprite: Structures/Windows/directional.rsi
+    sprite: _Moffstation/Structures/Windows/directional.rsi # Moffstation
     state: reinforced_window
   - type: Icon
-    sprite: Structures/Windows/directional.rsi
+    sprite: _Moffstation/Structures/Windows/directional.rsi # Moffstation
     state: reinforced_window
   - type: Construction
     graph: WindowDirectional
@@ -90,15 +82,6 @@
     fx: EffectRCDDeconstruct4
   - type: Destructible
     thresholds:
-    - trigger:
-        !type:DamageTrigger
-        damage: 75
-      behaviors:
-      - !type:DoActsBehavior
-        acts: [ "Destruction" ]
-      - !type:PlaySoundBehavior
-        sound:
-          collection: WindowShatter
     - trigger:
         !type:DamageTrigger
         damage: 37
@@ -127,7 +110,7 @@
   components:
   - type: Sprite
     drawdepth: WallTops
-    sprite: Structures/Windows/reinforced_window_diagonal.rsi
+    sprite: _Moffstation/Structures/Windows/reinforced_window_diagonal.rsi # Moffstation
     state: state0
   - type: Tag
     tags:
@@ -135,10 +118,10 @@
     - Window
   - type: IconSmooth
     mode: Diagonal
-    key: windows
+    key: walls # Moffstation
     base: state
   - type: Icon
-    sprite: Structures/Windows/reinforced_window_diagonal.rsi
+    sprite: _Moffstation/Structures/Windows/reinforced_window_diagonal.rsi # Moffstation
     state: state0
   - type: Fixtures
     fixtures:

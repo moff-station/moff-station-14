@@ -13,8 +13,10 @@
   - !type:RoleTimeRequirement
     role: JobBorg
     time: 5h
-  weight: 10
-  canBeAntag: false
+  # Moff start - no job weights
+#  weight: 10
+  displayWeight: 10
+  # Moff end
   icon: JobIconStationAi
   supervisors: job-supervisors-rd
   jobEntity: StationAiBrain
@@ -36,7 +38,6 @@
   requirements:
     - !type:OverallPlaytimeRequirement
       time: 10h
-  canBeAntag: false
   icon: JobIconBorg
   supervisors: job-supervisors-rd
   jobEntity: PlayerBorgBattery

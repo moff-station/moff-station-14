@@ -5,9 +5,9 @@ using Robust.Shared.Console;
 namespace Content.Server._Moffstation.Administration.Commands;
 
 [AdminCommand(AdminFlags.Admin)]
-public sealed class ToggleSpawnEffectCommand : LocalizedCommands
+public sealed partial class ToggleSpawnEffectCommand : LocalizedCommands
 {
-    [Dependency] private readonly IEntitySystemManager _sysManager = default!;
+    [Dependency] private IEntitySystemManager _sysManager = default!;
 
     public override string Command => "togglespawneffect";
 

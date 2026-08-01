@@ -140,9 +140,9 @@
   description: A label on the packaging reads, Wouldn't a slow death make a change?
   components:
   - type: Sprite
-    sprite: Objects/Consumable/Smokeables/Cigarettes/Packs/green.rsi
+    sprite: _Moffstation/Objects/Consumable/Smokeables/Cigarettes/Packs/green.rsi # Moffstation - Uncabinetification
   - type: Item
-    sprite: Objects/Consumable/Smokeables/Cigarettes/Packs/green.rsi
+    sprite: _Moffstation/Objects/Consumable/Smokeables/Cigarettes/Packs/green.rsi # Moffstation - Uncabinetification
 
 - type: entity
   id: CigPackRed
@@ -151,9 +151,9 @@
   description: The most popular brand of Space Cigarettes, sponsors of the Space Olympics.
   components:
   - type: Sprite
-    sprite: Objects/Consumable/Smokeables/Cigarettes/Packs/red.rsi
+    sprite: _Moffstation/Objects/Consumable/Smokeables/Cigarettes/Packs/red.rsi # Moffstation - Uncabinetification
   - type: Item
-    sprite: Objects/Consumable/Smokeables/Cigarettes/Packs/red.rsi
+    sprite: _Moffstation/Objects/Consumable/Smokeables/Cigarettes/Packs/red.rsi # Moffstation - Uncabinetification
 
 - type: entity
   id: CigPackBlue
@@ -162,9 +162,9 @@
   description: For those who somehow want to obtain the record for the most amount of cancerous tumors.
   components:
   - type: Sprite
-    sprite: Objects/Consumable/Smokeables/Cigarettes/Packs/blue.rsi
+    sprite: _Moffstation/Objects/Consumable/Smokeables/Cigarettes/Packs/blue.rsi # Moffstation - Uncabinetification
   - type: Item
-    sprite: Objects/Consumable/Smokeables/Cigarettes/Packs/blue.rsi
+    sprite: _Moffstation/Objects/Consumable/Smokeables/Cigarettes/Packs/blue.rsi # Moffstation - Uncabinetification
 
 - type: entity
   id: CigPackBlack
@@ -173,9 +173,9 @@
   description: Nomads's extra strong, for when your life is more extra hard.
   components:
   - type: Sprite
-    sprite: Objects/Consumable/Smokeables/Cigarettes/Packs/black.rsi
+    sprite: _Moffstation/Objects/Consumable/Smokeables/Cigarettes/Packs/black.rsi # Moffstation - Uncabinetification
   - type: Item
-    sprite: Objects/Consumable/Smokeables/Cigarettes/Packs/black.rsi
+    sprite: _Moffstation/Objects/Consumable/Smokeables/Cigarettes/Packs/black.rsi # Moffstation - Uncabinetification
 
 - type: entity
   id: CigPackSyndicate
@@ -184,9 +184,9 @@
   description: Elite cigarettes for elite syndicate agents. Infused with medicine for when you need to do more than calm your nerves.
   components:
   - type: Sprite
-    sprite: Objects/Consumable/Smokeables/Cigarettes/Packs/syndicate.rsi
+    sprite: _Moffstation/Objects/Consumable/Smokeables/Cigarettes/Packs/syndicate.rsi # Moffstation - Uncabinetification
   - type: Item
-    sprite: Objects/Consumable/Smokeables/Cigarettes/Packs/syndicate.rsi
+    sprite: _Moffstation/Objects/Consumable/Smokeables/Cigarettes/Packs/syndicate.rsi # Moffstation - Uncabinetification
   - type: EntityTableContainerFill
     containers:
       storagebase:
@@ -201,9 +201,9 @@
   description: Dan worked with NT chemistry to dispose of excess chemicals, ENJOY.
   components:
   - type: Sprite
-    sprite: Objects/Consumable/Smokeables/Cigarettes/Packs/mixed.rsi
+    sprite: _Moffstation/Objects/Consumable/Smokeables/Cigarettes/Packs/mixed.rsi # Moffstation - Uncabinetification
   - type: Item
-    sprite: Objects/Consumable/Smokeables/Cigarettes/Packs/mixed.rsi
+    sprite: _Moffstation/Objects/Consumable/Smokeables/Cigarettes/Packs/mixed.rsi # Moffstation - Uncabinetification
   - type: EntityTableContainerFill
     containers:
       storagebase: !type:NestedSelector

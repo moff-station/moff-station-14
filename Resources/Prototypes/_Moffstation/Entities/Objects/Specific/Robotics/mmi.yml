@@ -1,0 +1,33 @@
+﻿- type: entity
+  parent: BaseItem
+  id: AIShellBrain
+  name: shell CPU
+  description: The CPU for an AI's shell
+  categories: [ HideSpawnMenu, DoNotMap ]
+  components:
+  - type: Sprite
+    sprite: Objects/Misc/potatoai_chip.rsi
+    state: icon
+    visible: false
+  - type: Input
+    context: human
+  - type: BlockMovement
+  - type: Examiner
+  - type: BorgBrain
+  - type: AiShell
+  - type: DoAfter
+  - type: Actions
+  - type: MobState
+    allowedStates:
+    - Alive
+  - type: Appearance
+  - type: Tag
+    tags:
+    - CannotSuicide
+  - type: SiliconLawBound
+  - type: SiliconLawProvider
+    laws: Crewsimov
+
+
+
+

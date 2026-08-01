@@ -33,7 +33,7 @@ job-name-security-officer-hall-monitor = Hall Monitor
 job-name-cargo-technician-courier = Courier
 job-name-cargo-technician-logistics-associate = Logistics Associate
 job-name-cargo-technician-senior-courier = Senior Courier
-job-name-cargo-technician-requisitions-clerk = Requisitions Clerk
+job-name-cargo-technician-freight-pilot = Freight Pilot
 # Salvage Specialist
 job-name-salvage-specialist-astrominer = Astrominer
 job-name-salvage-specialist-excavator = Excavator
@@ -153,8 +153,7 @@ job-name-passenger-off-duty-staff = Off-Duty Staff
 job-name-passenger-assistant = Assistant
 job-name-passenger-freelancer = Freelancer
 job-name-passenger-tourist = Tourist
-job-name-passenger-bridge-assistant = Bridge Assistant
-job-name-passenger-coffee-logistics-officer = Coffee Logistics Officer
+
 # Prisoner
 job-name-prisoner-convict = Convict
 job-name-prisoner-death-row-inmate = Death Row Inmate
@@ -163,9 +162,12 @@ job-name-prisoner-maximum-security = Maximum Security Prisoner
 job-name-prisoner-protective-custody = Protective Custody Prisoner
 job-name-prisoner-felon = Felon
 job-name-prisoner-inmate = Inmate
-job-name-prisoner-test-subject = Test Subject
+job-name-prisoner-community-laborer = Community Laborer
 ghost-role-captains-sabre = Captain´s Persona Sabre
 ## Other Job Titles
 job-name-mercenary = Mercenary
 job-name-pirate-captain = Pirate Captain
 job-name-ertmailcarrier = ERT Mail Carrier
+job-name-passenger-bridge-assistant = Bridge Assistant
+job-name-coffee-logistics-officer = Coffee Logistics Officer
+job-name-centcommint = Central Command Intern

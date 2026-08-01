@@ -23,9 +23,4 @@ public sealed partial class CollectiveMindMemberData
 {
     [DataField(required: true)]
     public int MindId;
-
-    /// <summary>
-    /// The first ID number to assign to members of a collective mind. Subsequent IDs increment from this.
-    /// </summary>
-    public const int StartingId = 1;
 }

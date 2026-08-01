@@ -1,0 +1,24 @@
+# Player Lokachop - Character: Plastitaniatia Osmiatia
+
+- type: entity
+  parent: BasePaper
+  id: PersonalItemPlastiPicture
+  name: "laminated picture"
+  description: "A laminated picture depicting a red slimeperson with black spots. \"Thank you.\" is written on it."
+  suffix: PersonalItem
+  components:
+  - type: Sprite
+    sprite: _Moffstation/PersonalItems/Items/Lokachop/Plastitaniatia_Osmiatia/plastipicture.rsi
+    state: icon
+  - type: Item
+    sprite: _Moffstation/PersonalItems/Items/Lokachop/Plastitaniatia_Osmiatia/plastipicture.rsi
+
+- type: loadout
+  id: PersonalItemPlastiPicture
+  storage:
+    back:
+    - PersonalItemPlastiPicture
+  effects:
+  - !type:PersonalItemLoadoutEffect
+    character:
+    - Plastitaniatia Osmiatia

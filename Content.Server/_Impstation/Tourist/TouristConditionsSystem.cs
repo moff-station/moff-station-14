@@ -10,9 +10,9 @@ namespace Content.Server._Impstation.Tourist;
 /// <summary>
 /// Handles tourist objective conditions
 /// </summary>
-public sealed class TouristConditionsSystem : EntitySystem
+public sealed partial class TouristConditionsSystem : EntitySystem
 {
-    [Dependency] private readonly NumberObjectiveSystem _number = default!;
+    [Dependency] private NumberObjectiveSystem _number = default!;
     private EntityQuery<ContainerManagerComponent> _containerQuery;
     public override void Initialize()
     {

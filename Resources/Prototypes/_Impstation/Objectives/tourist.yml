@@ -4,7 +4,7 @@
   id: BaseTouristObjective
   components:
   - type: Objective
-    issuer: objective-issuer-self
+    issuer: Civilians
     difficulty: 1
   - type: RoleRequirement
     roles:
@@ -146,7 +146,7 @@
   - type: Objective
     difficulty: 1
     icon:
-      sprite: Mobs/Silicon/holograms.rsi
+      sprite: _Moffstation/Mobs/Silicon/holograms.rsi # Moffstation
       state: ai_face
   - type: NumberObjective
     min: 1

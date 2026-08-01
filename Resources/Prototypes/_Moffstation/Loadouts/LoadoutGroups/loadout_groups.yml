@@ -1,17 +1,13 @@
-# Captain
+# Generic
 - type: loadoutGroup
-  id: CaptainEyewear
-  name: loadout-group-captain-glasses
-  minLimit: 1
+  id: GroupDrinkBottle
+  name: loadout-group-drink-bottle
+  hidden: true
   loadouts:
-  - AdminGlasses
-  - AdminHud
-  - Glasses
-  - GlassesJamjar
-  - GlassesJensen
-  - EyePatch
-  - EyePatchFlipped
+  - LoadoutSpeciesBottleAmmonia
+  - LoadoutSpeciesBottleWater
 
+# Captain
 - type: loadoutGroup
   id: CaptainPDA
   name: loadout-group-captain-id
@@ -31,5 +27,3 @@
   - AssistantPDA
   - FreelancerPDA
   - TouristPDA
-
-

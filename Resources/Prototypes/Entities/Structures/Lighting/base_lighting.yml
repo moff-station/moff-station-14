@@ -38,8 +38,9 @@
     softness: 1
     offset: "0, -0.5"
   - type: Damageable
-    damageContainer: StructuralInorganic # Moffstation - Structural damagetype fix 
     damageModifierSet: Metallic
+  - type: Injurable
+    damageContainer: StructuralInorganic # Moffstation - Structural damagetype fix
   - type: RCDDeconstructable
     cost: 4
     delay: 2
@@ -61,15 +62,6 @@
     thresholds:
     - trigger:
         !type:DamageTrigger
-        damage: 200
-      behaviors: #excess damage, don't spawn entities.
-      - !type:DoActsBehavior
-        acts: [ "Destruction" ]
-      - !type:PlaySoundBehavior
-        sound:
-          collection: GlassBreak
-    - trigger:
-        !type:DamageTrigger
         damage: 50
       behaviors:
       - !type:EmptyAllContainersBehaviour
@@ -85,6 +77,9 @@
           collection: GlassBreak
   - type: PlacementReplacement
     key: lights
+# ES START
+  - type: ESSparkOnHit
+# ES END
   placement:
     mode: SnapgridCenter
     snap:
@@ -282,15 +277,10 @@
           layer:
           - TabletopMachineLayer
     - type: Damageable
-      damageContainer: StructuralInorganic # Moffstation - Structural damagetype fix 
+    - type: Injurable
+      damageContainer: StructuralInorganic # Moffstation - Structural damagetype fix
     - type: Destructible
       thresholds:
-      - trigger:
-          !type:DamageTrigger
-          damage: 100
-        behaviors: #excess damage, don't spawn entities.
-        - !type:DoActsBehavior
-          acts: [ "Destruction" ]
       - trigger:
           !type:DamageTrigger
           damage: 25
@@ -480,15 +470,6 @@
     node: emergencyLight
   - type: Destructible
     thresholds:
-    - trigger:
-        !type:DamageTrigger
-        damage: 100
-      behaviors: #excess damage, don't spawn entities.
-      - !type:DoActsBehavior
-        acts: [ "Destruction" ]
-      - !type:PlaySoundBehavior
-        sound:
-          collection: GlassBreak
     - trigger:
         !type:DamageTrigger
         damage: 25

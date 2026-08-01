@@ -1,0 +1,10 @@
+cmd-discordlink-desc = Shows your linked Discord ID. Use "set" or "clear" to modify it.
+cmd-discordlink-help = Usage: discordlink | discordlink set <id> | discordlink clear
+cmd-discordlink-not-set = No Discord ID is linked to your account.
+cmd-discordlink-result = Your linked Discord ID is "{$id}".
+cmd-discordlink-disabled = Modifying your Discord ID is not available on release builds.
+cmd-discordlink-failed = Failed to update Discord ID.
+cmd-discordlink-set = Discord ID set to "{$id}".
+cmd-discordlink-cleared = Discord ID cleared.
+cmd-discordlink-set-usage = Usage: discordlink set <id>
+cmd-discordlink-unknown-subcommand = Unknown subcommand "{$sub}".

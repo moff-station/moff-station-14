@@ -6,9 +6,9 @@ namespace Content.Server._Moffstation.Objectives.Systems;
 /// This is a system/component that will take strings and plop them straight into the objective system, without conditions and the like.
 /// Good for freeform objectives that dont have varying targets.
 /// </summary>
-public sealed class SimpleObjectiveSystem : EntitySystem
+public sealed partial class SimpleObjectiveSystem : EntitySystem
 {
-    [Dependency] private readonly MetaDataSystem _metaData = default!;
+    [Dependency] private MetaDataSystem _metaData = default!;
     public override void Initialize()
     {
         base.Initialize();

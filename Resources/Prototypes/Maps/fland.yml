@@ -2,7 +2,7 @@
   id: Fland
   mapName: 'Fland Installation'
   mapPath: /Maps/fland.yml
-  minPlayers: 70
+  minPlayers: 81 # Moffstation - Ultra-High Pop
   stations:
     Fland:
       stationProto: StandardNanotrasenStation
@@ -37,22 +37,23 @@
             Reporter: [ 2, 2 ]
             #engineering (9)
             AtmosphericTechnician: [ 3, 3 ]
-            StationEngineer: [ 6, 7 ] #CD - Intern not counted
-            # TechnicalAssistant: [ 4, 4 ] #CD - Remove intern roles, rework them into loadouts
+            StationEngineer: [ 6, 6 ]
+            # TechnicalAssistant: [ 4, 4 ] # Moffstation - Removed role
             #medical (11)
             Chemist: [ 3, 3 ]
-            MedicalDoctor: [ 6, 7 ] #CD - Intern not counted
+            MedicalDoctor: [ 6, 6 ]
             Paramedic: [ 2, 2 ]
-            # MedicalIntern: [ 4, 4 ] #CD - Remove intern roles, rework them into loadouts
+            # MedicalIntern: [ 4, 4 ] # Moffstation - Removed role
             #science (5)
-            Scientist: [ 5, 6 ] #CD - Intern not counted
-            # ResearchAssistant: [ 6, 6 ] #CD - Remove intern roles, rework them into loadouts
+            Scientist: [ 5, 5 ]
+            # ResearchAssistant: [ 6, 6 ] # Moffstation - Removed role
             #security (14)
             Warden: [ 1, 1 ]
-            SecurityOfficer: [ 10, 11 ] #CD - Intern not counted
+            SecurityOfficer: [ 10, 10 ]
             Detective: [ 1, 1 ]
-            # SecurityCadet: [ 6, 6 ] #CD - Remove intern roles, rework them into loadouts
+            # SecurityCadet: [ 6, 6 ] # Moffstation - Removed role
             Lawyer: [ 2, 2 ]
+            Prisoner: [ 1, 1 ] # Moffstation - Prisoners
             #supply (9)
             SalvageSpecialist: [ 3, 3 ]
             CargoTechnician: [ 6, 6 ]
@@ -64,5 +65,3 @@
             #silicon (6)
             StationAi: [ 1, 1 ]
             Borg: [ 5, 5 ]
-            # Moffstation - custom roles below
-            Prisoner: [ 1, 1 ]

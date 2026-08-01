@@ -83,7 +83,6 @@ namespace Content.IntegrationTests.Tests
             {"/Maps/_Moffstation/PreCrewed/shuttle-nt-gunboat.yml", ["ShuttleGunDuster", "ShuttleGunPerforator"]},
             {"/Maps/_Moffstation/Nonstations/d1_logic.yml", ["ShuttleGunSvalinnMachineGun"]},
             {"/Maps/_Moffstation/frezon.yml", ["HandheldCrewMonitor"]},
-            {"/Maps/_Moffstation/dugstation.yml", ["ClothingHeadHatCatEarsValid"]},
             {"/Maps/_Moffstation/skeld.yml", ["ShuttleGunDuster"]},
             // Moffstation - End
         };
@@ -112,7 +111,6 @@ namespace Content.IntegrationTests.Tests
             "/Maps/_Moffstation/Shuttles/shuttle-nt-businessclass.yml", // Contains CentComm folder
             "/Maps/_Moffstation/frezon.yml", // Contains handheld crew monitor & other head of staff items
             "/Maps/_Moffstation/Nonstations/d1_logic.yml", // Contains LSE-400c "Svalinn machine gun" defanged and renamed
-            "/Maps/_Moffstation/dugstation.yml", // Contains cat ears and knockback stick
             "/Maps/_Moffstation/ossuary.yml" // Contains head of staff items
         };
 
@@ -361,7 +359,6 @@ namespace Content.IntegrationTests.Tests
             var pair = Pair;
             var server = pair.Server;
 
-            var mapManager = server.ResolveDependency<IMapManager>();
             var entManager = server.ResolveDependency<IEntityManager>();
             var mapLoader = entManager.System<MapLoaderSystem>();
             var mapSystem = entManager.System<SharedMapSystem>();
@@ -388,7 +385,7 @@ namespace Content.IntegrationTests.Tests
                 EntityUid? targetGrid = null;
                 var memberQuery = entManager.GetEntityQuery<StationMemberComponent>();
 
-                var grids = mapManager.GetAllGrids(mapId).ToList();
+                var grids = mapSystem.GetAllGrids(mapId).ToList();
                 var gridUids = grids.Select(o => o.Owner).ToList();
                 targetGrid = gridUids.First();
 

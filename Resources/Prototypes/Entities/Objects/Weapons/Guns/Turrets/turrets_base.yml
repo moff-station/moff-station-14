@@ -33,21 +33,11 @@
   - type: CombatMode
     toggleMouseRotator: false
   - type: Damageable
-   # Moffstation - Begin - Fixing Container and adding a Modifier
-    damageContainer: StructuralInorganic
-    damageModifierSet: Metallic
-   # Moffstation - End
+    damageModifierSet: Metallic # Moffstation - Fixing Container and adding a Modifier
+  - type: Injurable
+    damageContainer: StructuralInorganic # Moffstation - Fixing Container and adding a Modifier
   - type: Destructible
     thresholds:
-    - trigger:
-        !type:DamageTrigger
-        damage: 600
-      behaviors:
-      - !type:DoActsBehavior
-        acts: [ "Destruction" ]
-      - !type:PlaySoundBehavior
-        sound:
-          collection: MetalGlassBreak
     - trigger:
         !type:DamageTrigger
         damage: 300

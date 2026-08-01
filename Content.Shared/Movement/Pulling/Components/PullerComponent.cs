@@ -1,4 +1,5 @@
 ﻿using Content.Shared.Alert;
+using Content.Shared.Item;
 using Content.Shared.Movement.Pulling.Systems;
 using Robust.Shared.GameStates;
 using Robust.Shared.Prototypes;
@@ -21,7 +22,10 @@ public sealed partial class PullerComponent : Component
     [DataField(customTypeSerializer: typeof(TimeOffsetSerializer)), AutoNetworkedField, Access(Other = AccessPermissions.ReadWriteExecute)]
     public TimeSpan NextThrow;
 
-    [DataField]
+    /// <summary>
+    /// Minimum time between pull throws.
+    /// </summary>
+    [DataField, AutoNetworkedField]
     public TimeSpan ThrowCooldown = TimeSpan.FromSeconds(1);
 
     // Before changing how this is updated, please see SharedPullerSystem.RefreshMovementSpeed
@@ -32,17 +36,28 @@ public sealed partial class PullerComponent : Component
     /// <summary>
     /// Entity currently being pulled if applicable.
     /// </summary>
-    [AutoNetworkedField, DataField]
+    [DataField, AutoNetworkedField]
     public EntityUid? Pulling;
 
     /// <summary>
-    ///     Does this entity need hands to be able to pull something?
+    /// Does this entity need hands to be able to pull something?
     /// </summary>
-    [DataField]
+    [DataField, AutoNetworkedField]
     public bool NeedsHands = true;
 
-    [DataField]
+    /// <summary>
+    /// The alert shown to the puller indicating that they are pulling something.
+    /// </summary>
+    [DataField, AutoNetworkedField]
     public ProtoId<AlertPrototype> PullingAlert = "Pulling";
+
+    // Moffstation - Begin - Replicators
+    /// <summary>
+    /// If true, will apply the pulled object's <see cref="HeldSpeedModifierComponent"/>'s effect while pulling.
+    /// </summary>
+    [DataField]
+    public bool ApplyHeldSpeedModifier = true;
+    // Moffstation - End
 }
 
 public sealed partial class StopPullingAlertEvent : BaseAlertEvent;

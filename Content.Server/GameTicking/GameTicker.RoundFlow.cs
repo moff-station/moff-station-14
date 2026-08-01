@@ -25,22 +25,28 @@ using Robust.Shared.Network;
 using Robust.Shared.Player;
 using Robust.Shared.Random;
 using Robust.Shared.Utility;
-using Content.Shared._Goob.LastWords; // Goob Station - End of Round Screen
+using Content.Shared._Goob.LastWords;
+using Content.Shared._Moffstation.CCVar;
 using Content.Shared.Damage.Prototypes;
 using Content.Shared.Damage.Systems;
 using Content.Shared.FixedPoint;
 using Content.Shared.Mobs;
 using Content.Shared.Mobs.Components;
 using Robust.Shared.Prototypes;
+using Content.Server.Voting.Managers; // Moff
+using Content.Shared.Voting; // Moff
+using Timer = Robust.Shared.Timing.Timer; // Moff
 
 namespace Content.Server.GameTicking
 {
     public sealed partial class GameTicker
     {
-        [Dependency] private readonly DiscordWebhook _discord = default!;
-        [Dependency] private readonly RoleSystem _role = default!;
-        [Dependency] private readonly ITaskManager _taskManager = default!;
-        [Dependency] private readonly DamageableSystem _damageable = default!; // Moffstation - Goob roundend info
+        [Dependency] private DiscordWebhook _discord = default!;
+        [Dependency] private RoleSystem _role = default!;
+        [Dependency] private ITaskManager _taskManager = default!;
+
+        [Dependency] private DamageableSystem _damageable = default!; // Moffstation - Goob roundend info
+        [Dependency] private IVoteManager _voteManager = default!; // Moff - auto map vote
 
         private static readonly Counter RoundNumberMetric = Metrics.CreateCounter(
             "ss14_round_number",
@@ -128,7 +134,7 @@ namespace Content.Server.GameTicking
             }
 
             if (CurrentPreset?.MapPool != null &&
-                _prototypeManager.TryIndex<GameMapPoolPrototype>(CurrentPreset.MapPool, out var pool) &&
+                ProtoMan.TryIndex<GameMapPoolPrototype>(CurrentPreset.MapPool, out var pool) &&
                 !pool.Maps.Contains(mainStationMap.ID))
             {
                 var msg = Loc.GetString("game-ticker-start-round-invalid-map",
@@ -360,7 +366,7 @@ namespace Content.Server.GameTicking
         // Moffstation - Start - Player count calculated depending on cvar
         public int DynamicPlayerCount()
         {
-            return _cfg.GetCVar(CCVars.GameRulesCountReadied)
+            return _cfg.GetCVar(MoffCCVars.GameRulesCountReadied)
                 ? ReadyPlayerCount()
                 : _playerManager.PlayerCount;
         }
@@ -726,6 +732,24 @@ namespace Content.Server.GameTicking
                 UpdateInfoText();
 
                 ReqWindowAttentionAll();
+
+                // Moff Start - Auto-start a map vote timed to finish just before map preload
+                if (_cfg.GetCVar(MoffCCVars.AutoStartMapVote))
+                {
+                    // 5s buffer so the vote resolves before map preloading starts
+                    var preloadTime = RoundPreloadTime + TimeSpan.FromSeconds(5);
+
+                    // Delay so the vote lands late in the lobby (accurate pop) and ends before preload
+                    var delay = LobbyDuration - (preloadTime + TimeSpan.FromSeconds(_cfg.GetCVar(CCVars.VoteTimerMap)));
+                    Timer.Spawn(delay,
+                        () =>
+                    {
+                        // There isn't really a better way to identify an already running map vote...
+                        if (_voteManager.ActiveVotes.All(x => x.Title != Loc.GetString("ui-vote-map-title")))
+                            _voteManager.CreateStandardVote(null, StandardVoteType.Map);
+                    });
+                }
+                // Moff end
             }
         }
 
@@ -768,8 +792,6 @@ namespace Content.Server.GameTicking
             RaiseNetworkEvent(ev);
 
             EntityManager.FlushEntities();
-
-            _mapManager.Restart();
 
             _banManager.Restart();
 
@@ -852,7 +874,7 @@ namespace Content.Server.GameTicking
         {
             if (CurrentPreset == null) return;
 
-            var options = _prototypeManager.EnumeratePrototypes<RoundAnnouncementPrototype>().ToList();
+            var options = ProtoMan.EnumeratePrototypes<RoundAnnouncementPrototype>().ToList();
 
             if (options.Count == 0)
                 return;

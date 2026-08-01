@@ -1,18 +1,17 @@
 using Content.Server.Administration;
 using Content.Server.Administration.Logs;
-using Content.Server.Administration.Managers;   // Moffstation
-using Content.Server.Bible.Components;
+using Content.Server.Administration.Managers;
 using Content.Server.Chat.Managers;
 using Content.Server.Popups;
-using Content.Shared._Moffstation.Prayers; // Moffstation - Os level alert for prayers
+using Content.Shared._Moffstation.Prayers;
+using Content.Shared.Bible.Components;
+using Content.Shared.Chat;
 using Content.Shared.Database;
 using Content.Shared.Popups;
-using Content.Shared.Chat;
 using Content.Shared.Prayer;
 using Content.Shared.Verbs;
-using Robust.Server.GameObjects;
-using Robust.Shared.Audio;  // Moffstation
-using Robust.Shared.Audio.Systems;  // Moffstation
+using Robust.Shared.Audio;
+using Robust.Shared.Audio.Systems;
 using Robust.Shared.Player;
 
 namespace Content.Server.Prayer;
@@ -22,14 +21,15 @@ namespace Content.Server.Prayer;
 /// <remarks>
 /// Rain is a professional developer and this did not take 2 PRs to fix subtle messages
 /// </remarks>
-public sealed class PrayerSystem : EntitySystem
+public sealed partial class PrayerSystem : EntitySystem
 {
-    [Dependency] private readonly IAdminLogManager _adminLogger = default!;
-    [Dependency] private readonly PopupSystem _popupSystem = default!;
-    [Dependency] private readonly IChatManager _chatManager = default!;
-    [Dependency] private readonly QuickDialogSystem _quickDialog = default!;
-    [Dependency] private readonly SharedAudioSystem _audioSystem = default!;    // Moffstation - prayers have audio notification
-    [Dependency] private readonly IAdminManager _adminManager = default!;   // Moffstation - prayers have audio notification
+    [Dependency] private IAdminLogManager _adminLogger = default!;
+    [Dependency] private PopupSystem _popupSystem = default!;
+    [Dependency] private IChatManager _chatManager = default!;
+    [Dependency] private QuickDialogSystem _quickDialog = default!;
+
+    [Dependency] private SharedAudioSystem _audioSystem = default!;    // Moffstation - prayers have audio notification
+    [Dependency] private IAdminManager _adminManager = default!;   // Moffstation - prayers have audio notification
 
     public override void Initialize()
     {
@@ -54,7 +54,7 @@ public sealed class PrayerSystem : EntitySystem
             Icon = comp.VerbImage,
             Act = () =>
             {
-                if (comp.BibleUserOnly && !TryComp<BibleUserComponent>(args.User, out var bibleUser))
+                if (comp.BibleUserOnly && !HasComp<BibleUserComponent>(args.User))
                 {
                     _popupSystem.PopupEntity(Loc.GetString("prayer-popup-notify-pray-locked"), uid, actor.PlayerSession, PopupType.Large);
                     return;

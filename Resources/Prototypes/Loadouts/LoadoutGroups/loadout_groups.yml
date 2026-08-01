@@ -1,5 +1,15 @@
 # Miscellaneous
 - type: loadoutGroup
+  id: Glasses
+  name: loadout-group-glasses
+  minLimit: 0
+  loadouts:
+  - Glasses
+  - GlassesJamjar
+  - GlassesJensen
+  - EyePatch # Moffstation
+
+- type: loadoutGroup
   id: Trinkets
   name: loadout-group-trinkets
   minLimit: 0
@@ -39,13 +49,24 @@
   - ClothingNeckTransPin
   - ClothingNeckAutismPin
   - ClothingNeckGoldAutismPin
-  - OffsetCane
-  - OffsetCaneWood
-  - OffsetCaneClown
-  - OffsetCaneMime
-  - OffsetCaneNT
-  - Cane
   - TowelColorWhite
+  # Moffstation - Start - Other Towels
+  - TowelColorGray
+  - TowelColorBlack
+  - TowelColorRed
+  - TowelColorOrange
+  - TowelColorLightBrown
+  - TowelColorYellow
+  - TowelColorDarkGreen
+  - TowelColorGreen
+  - TowelColorLightBlue
+  - TowelColorDarkBlue
+  - TowelColorPurple
+  - TowelColorMaroon
+  - TowelColorMime
+  - TowelColorSilver
+  - TowelColorGold
+  # Moffstation - End
   # Moffstation - Start - Expanded trinkets
   - PlushieArachind
   - PlushieAtmosian
@@ -67,21 +88,22 @@
   - PlushieVulp
   - GoldRing
   - SilverRing
+  - ClothingNeckDogTags
   # Moffstation - End
-  - AACTablet # DeltaV
 
 - type: loadoutGroup
-  id: Glasses
-  name: loadout-group-glasses
+  id: AssistiveItems
+  name: loadout-group-assistive-items
   minLimit: 0
+  maxLimit: 1 # Increase this limit in the future once there's more assistive items than just canes!
   loadouts:
-  - Glasses
-  - GlassesJamjar
-  - GlassesJensen
-  # Moffstation - Begin (More Eyewear!)
-  - EyePatch
-  - EyePatchFlipped
-  # Moffstation - End
+  - OffsetCane
+  - OffsetCaneWood
+  - OffsetCaneClown
+  - OffsetCaneMime
+  - OffsetCaneNT
+  - Cane
+  - AACTablet # DeltaV
 
 - type: loadoutGroup
   id: GroupTankHarness
@@ -99,7 +121,6 @@
   loadouts:
   - EmergencyNitrogen
   - EmergencyOxygen
-  - EmergencyAmmonia # Moffstation - Allow avali to drink ammonia
   - LoadoutSpeciesVoxNitrogen
 
 # nitrogen or oxygen tank, depending on what your species needs
@@ -110,6 +131,7 @@
   loadouts:
   - LoadoutSpeciesEVANitrogen
   - LoadoutSpeciesEVAOxygen
+  - LoadoutSpeciesEVAOxygenAvali # Moffstation
 
 # vox get a nitrogen tank, other species get nothing
 - type: loadoutGroup
@@ -126,6 +148,7 @@
   loadouts:
   - LoadoutSpeciesPocketDoubleNitrogen
   - LoadoutSpeciesPocketDoubleOxygen
+  - LoadoutSpeciesPocketDoubleOxygenAvali # Moffstation
 
 # Command
 - type: loadoutGroup
@@ -166,7 +189,10 @@
   - CaptainCloak
   - CaptainCloakFormal
   - CaptainMantle
-  - CaptainCapeFormal # Moffstation
+  # Moffstation - Start
+  - CaptainCapeFormal
+  - CaptainScarf
+  # Moffstation - End
 
 - type: loadoutGroup
   id: CaptainBackpack
@@ -184,6 +210,7 @@
   - CaptainOuterClothing
   - CaptainWintercoat
   # Moffstation - Start
+  - CaptainTrenchcoat
   - CaptainLongcoat
   - CaptainFestivecoat
   # Moffstation - End
@@ -225,6 +252,7 @@
   loadouts:
   - HoPCloak
   - HoPMantle
+  - HoPScarf # Moffstation
 
 - type: loadoutGroup
   id: HoPBackpack
@@ -336,6 +364,10 @@
   - BartenderJumpsuit
   - BartenderJumpskirt
   - BartenderJumpsuitPurple
+  # Moffstation - Start
+  - BartenderJumpsuitRed
+  - BartenderJumpskirtRed
+  # Moffstation - End
 
 - type: loadoutGroup
   id: BartenderOuterClothing
@@ -455,6 +487,7 @@
   - ChaplainPlagueHat
   - ChaplainWitchHat
   - ChaplainWitchHatAlt
+  - ClownMitre # Moffstation
 
 - type: loadoutGroup
   id: ChaplainMask
@@ -462,6 +495,7 @@
   minLimit: 0
   loadouts:
   - ChaplainMask
+  - ClownMaskDefault # Moffstation
 
 - type: loadoutGroup
   id: ChaplainJumpsuit
@@ -481,6 +515,7 @@
   - ChaplainNunRobe
   - ChaplainBlackHoodie
   - ChaplainHoodie
+  - ClownRobes # Moffstation
 
 - type: loadoutGroup
   id: ChaplainNeck
@@ -610,6 +645,7 @@
   - JesterAltSuit
   # Moffstation - Begin - Clown Clothes
   - HarlequinSuit
+  - BananaSuit
   # Moffstation - End - Clown Clothes
 
 - type: loadoutGroup
@@ -641,6 +677,7 @@
   - LargeClownShoes
   - ClownSandals
   - ClownSlippers
+  - BananaShoes
   # Moffstation - End - Clown Clothes
 
 - type: loadoutGroup
@@ -721,18 +758,6 @@
   - MimeSuspendersRed
   - MimeSuspendersBlack
 
-- type: loadoutGroup
-  id: SurvivalMime
-  name: loadout-group-survival-mime
-  minLimit: 2
-  hidden: true
-  loadouts:
-  - EmergencyNitrogenMime
-  - EmergencyOxygenMime
-  - EmergencyOxygenMimeAmmonia # Moffstation - Allow avali to drink ammonia
-  - EmergencySpeciesMothMime
-  - LoadoutSpeciesVoxNitrogen
-
 #- type: loadoutGroup
 #  id: MimeJobTrinkets
 #  name: loadout-group-jobtrinkets
@@ -747,6 +772,8 @@
   - MusicianJumpskirt
 # Moffstation - Begin - Musician Outfits
   - PerformerSkirt
+  - PerformerSkirtRed
+  - PerformerSkirtYellow
   - RockstarSuit
 # Moffstation - End - Musician Outfits
 
@@ -833,6 +860,7 @@
   loadouts:
   - QuartermasterCloak
   - QuartermasterMantle
+  - QuartermasterScarf # Moffstation
 
 - type: loadoutGroup
   id: QuartermasterOuterClothing
@@ -894,8 +922,11 @@
   minLimit: 0
   loadouts:
   - CargoTechnicianWintercoat
-  - CargoTechnicianWindbreaker # Moffstation - Start - (Cargo Outfits)
-  - SeniorCargoWintercoat # Moffstation - End - (Cargo Outfits)
+# Moffstation - Start
+  - CourierWintercoat
+  - CargoTechnicianWindbreaker
+  - SeniorCargoWintercoat
+# Moffstation - End
 
 - type: loadoutGroup
   id: CargoTechnicianShoes
@@ -914,7 +945,7 @@
   # Moffstation - Start - Additional job title loadouts
   - CourierPDA
   - LogisticsAssociatePDA
-  - RequisitionsClerkPDA
+  - FreightPilotPDA
   # Moffstation - End
 
 #- type: loadoutGroup
@@ -973,6 +1004,7 @@
   - ChiefEngineerJumpskirt
   - ChiefEngineerTurtleneck
   - ChiefEngineerTurtleneckSkirt
+  - CEFormal # Moffstation
 
 - type: loadoutGroup
   id: ChiefEngineerNeck
@@ -981,6 +1013,7 @@
   loadouts:
   - ChiefEngineerCloak
   - ChiefEngineerMantle
+  - CeScarf # Moffstation
 
 - type: loadoutGroup
   id: ChiefEngineerOuterClothing
@@ -1155,6 +1188,7 @@
   loadouts:
   - ResearchDirectorMantle
   - ResearchDirectorCloak
+  - RdScarf # Moffstation
 
 - type: loadoutGroup
   id: ResearchDirectorJumpsuit
@@ -1323,6 +1357,7 @@
   # Moffstation - Start
   - HeadofSecurityWestern
   - HeadofSecurityFestive
+  - HeadofSecuritySummer
   # Moffstation - End
 
 - type: loadoutGroup
@@ -1332,6 +1367,7 @@
   loadouts:
   - HeadofSecurityCloak
   - HeadofSecurityMantle
+  - HOSScarf # Moffstation
 
 - type: loadoutGroup
   id: HeadofSecurityOuterClothing
@@ -1342,6 +1378,7 @@
   # Moffstation - Start
   - HeadofSecurityCarapace
   - HeadofSecurityWintercoatSmall
+  - HeadofSecuritySummerCoat
   # Moffstation - End
 - type: loadoutGroup
   id: HeadofSecurityJobTrinkets
@@ -1511,6 +1548,7 @@
   - DetectiveArmorVest
   - DetectiveCoat
   - DetectiveCoatGrey
+  - SecurityOfficerWintercoat
   - DetectiveCoatSleuth # Moffstation - (New Detective Outfits)
 
 - type: loadoutGroup
@@ -1594,8 +1632,19 @@
 #  loadouts:
 
 # Other
+
 - type: loadoutGroup
-  id: SurvivalSyndicate
+  id: SurvivalExtendedAntag # Larger survival box containing food/water, used by antags that spawn off-station (e.g ninjas, wizards)
+  name: loadout-group-survival-extended
+  minLimit: 2
+  hidden: true
+  loadouts:
+  - EmergencyNitrogenExtendedAntag
+  - EmergencyOxygenExtendedAntag
+  - LoadoutSpeciesVoxNitrogen
+
+- type: loadoutGroup
+  id: SurvivalSyndicate # Larger survival box containing food, used by syndicate operatives that spawn off-station (e.g nukies)
   name: loadout-group-survival-syndicate
   minLimit: 2
   hidden: true
@@ -1606,7 +1655,7 @@
   - LoadoutSpeciesVoxNitrogen
 
 - type: loadoutGroup
-  id: SurvivalMilitaryDouble
+  id: SurvivalMilitaryDouble # Survival box mostly used by ERT/deathsquad
   name: loadout-group-survival-military
   minLimit: 2
   hidden: true

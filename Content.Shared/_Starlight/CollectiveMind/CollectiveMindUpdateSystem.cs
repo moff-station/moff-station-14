@@ -1,16 +1,16 @@
+using System.Linq;
 using Content.Shared.GameTicking;
-using Content.Shared.Tag;
+using Content.Shared.Whitelist;
 using Robust.Shared.Prototypes;
+using Robust.Shared.Utility;
 
 namespace Content.Shared._Starlight.CollectiveMind;
 
-public sealed class CollectiveMindUpdateSystem : EntitySystem
+public sealed partial class CollectiveMindUpdateSystem : EntitySystem
 {
-    [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
-    [Dependency] private readonly IComponentFactory _componentFactory = default!;
-    [Dependency] private readonly TagSystem _tag = default!;
+    [Dependency] private IPrototypeManager _prototypeManager = default!;
 
-    private static readonly Dictionary<CollectiveMindPrototype, int> GlobalMindIdTracker = new();
+    private readonly Dictionary<CollectiveMindPrototype, int> _globalMindIdTracker = new();
 
     public override void Initialize()
     {
@@ -20,100 +20,63 @@ public sealed class CollectiveMindUpdateSystem : EntitySystem
         SubscribeLocalEvent<RoundRestartCleanupEvent>(OnRoundRestartCleanup);
     }
 
-    private void OnCollectiveMindInit(EntityUid uid, CollectiveMindComponent component, ComponentStartup args)
+    private void OnCollectiveMindInit(Entity<CollectiveMindComponent> entity, ref ComponentStartup args)
     {
-        UpdateCollectiveMind(uid, component);
+        UpdateCollectiveMind(entity.AsNullable());
     }
 
-    private static void OnRoundRestartCleanup(RoundRestartCleanupEvent ev)
+    private void OnRoundRestartCleanup(RoundRestartCleanupEvent ev)
     {
-        GlobalMindIdTracker.Clear();
+        _globalMindIdTracker.Clear();
     }
 
-    public void ForceCloneFrom(EntityUid sourceuid, EntityUid targetuid)
+    public void ForceCloneFrom(EntityUid source, EntityUid target)
     {
-        if (!TryComp<CollectiveMindComponent>(sourceuid, out var component))
-            return;
-
-        if (!TryComp<CollectiveMindComponent>(targetuid, out var targetComponent))
+        if (!TryComp<CollectiveMindComponent>(source, out var component) ||
+            !TryComp<CollectiveMindComponent>(target, out var targetComponent))
             return;
 
         targetComponent.Minds.Clear();
 
-        foreach (var mind in component.Minds)
+        foreach (var (proto, mind) in component.Minds)
         {
-            targetComponent.Minds.Add(mind.Key, mind.Value);
+            targetComponent.Minds.Add(proto, mind);
         }
 
-        UpdateCollectiveMind(targetuid, targetComponent); //capture any we missed
+        UpdateCollectiveMind((target, targetComponent)); //capture any we missed
     }
 
-    public void UpdateCollectiveMind(EntityUid uid, CollectiveMindComponent collective)
+    [Dependency] private EntityWhitelistSystem _whitelist = default!;
 
+    public void UpdateCollectiveMind(Entity<CollectiveMindComponent?> entity)
     {
+        if (!Resolve(entity, ref entity.Comp, logMissing: false))
+            return;
+
         foreach (var prototype in _prototypeManager.EnumeratePrototypes<CollectiveMindPrototype>())
         {
-            //check if they dont already have it
-            if (collective.Minds.ContainsKey(prototype))
-                continue;
-
-            var components = StringsToRegs(prototype.RequiredComponents);
-
-            var meetsRequirements = false;
-
-            foreach (var component in components)
+            var any = false;
+            foreach (var requirement in prototype.Requirements)
             {
-                if (HasComp(uid, component.Type))
+                if (_whitelist.IsWhitelistPass(requirement, entity))
                 {
-                    meetsRequirements = true;
+                    any = true;
                     break;
                 }
             }
 
-            foreach (var tag in prototype.RequiredTags)
+            if (!any)
             {
-                if (_tag.HasTag(uid, tag))
-                {
-                    meetsRequirements = true;
-                    break;
-                }
-            }
-
-            if (meetsRequirements)
-            {
-                collective.Minds.TryAdd(prototype, CreateNewCollectiveMindMemberData(prototype));
-            }
-            else
-            {
-                collective.Minds.Remove(prototype);
-            }
-        }
-    }
-
-    private List<ComponentRegistration> StringsToRegs(List<string> input)
-    {
-        var list = new List<ComponentRegistration>();
-
-        foreach (var name in input)
-        {
-            if (!_componentFactory.TryGetRegistration(name, out var registration))
-            {
-                Log.Error(
-                    $"StringsToRegs failed: Unknown component name {name} passed to {nameof(CollectiveMindUpdateSystem)}.");
+                entity.Comp.Minds.Remove(prototype);
                 continue;
             }
 
-            list.Add(registration);
+            var id = _globalMindIdTracker.GetOrNew(prototype);
+            entity.Comp.Minds.TryAdd(
+                prototype,
+                new CollectiveMindMemberData { MindId = id }
+            );
+            _globalMindIdTracker[prototype] = id + 1;
         }
-
-        return list;
-    }
-
-    private static CollectiveMindMemberData CreateNewCollectiveMindMemberData(CollectiveMindPrototype prototype)
-    {
-        // Initialize the tracker value for this prototype.
-        GlobalMindIdTracker.TryAdd(prototype, CollectiveMindMemberData.StartingId);
-
-        return new CollectiveMindMemberData { MindId = GlobalMindIdTracker[prototype]++ };
     }
 }

@@ -8,18 +8,18 @@
     appearanceDataInit:
       enum.PdaVisuals.PdaType:
         !type:String
-        pda-refuseworker
+        pda-library
   - type: Sprite
     sprite: _Moffstation/Objects/Devices/pda.rsi
     layers:
     - map: [ "enum.PdaVisualLayers.Base" ]
-      state: "pda-archivist"
-    - state: "light_overlay_wide"
+      state: "pda-library"
+    - state: "light_overlay_book"
       sprite: _Moffstation/Objects/Devices/pda.rsi
       map: [ "enum.PdaVisualLayers.Flashlight" ]
       shader: "unshaded"
       visible: false
-    - state: "id_overlay_wide"
+    - state: "id_overlay_book"
       sprite: _Moffstation/Objects/Devices/pda.rsi
       map: [ "enum.PdaVisualLayers.IdLight" ]
       shader: "unshaded"
@@ -44,13 +44,13 @@
     layers:
     - map: [ "enum.PdaVisualLayers.Base" ]
       state: "pda-archivist"
-    - state: "light_overlay"
-      sprite: Objects/Devices/pda.rsi
+    - state: "light_overlay_wide"
+      sprite: _Moffstation/Objects/Devices/pda.rsi
       map: [ "enum.PdaVisualLayers.Flashlight" ]
       shader: "unshaded"
       visible: false
-    - state: "id_overlay"
-      sprite: Objects/Devices/pda.rsi
+    - state: "id_overlay_wide"
+      sprite: _Moffstation/Objects/Devices/pda.rsi
       map: [ "enum.PdaVisualLayers.IdLight" ]
       shader: "unshaded"
       visible: false
@@ -84,6 +84,20 @@
       enum.PdaVisuals.PdaType:
         !type:String
         pda-gamemaster
+  - type: Sprite
+    sprite: _Moffstation/Objects/Devices/pda.rsi
+    layers:
+    - map: [ "enum.PdaVisualLayers.Base" ]
+      state: "pda-gamemaster"
+    - state: "light_overlay_wide"
+      sprite: _Moffstation/Objects/Devices/pda.rsi
+      map: [ "enum.PdaVisualLayers.Flashlight" ]
+      shader: "unshaded"
+      visible: false
+    - state: "id_overlay_wide"
+      sprite: _Moffstation/Objects/Devices/pda.rsi
+      map: [ "enum.PdaVisualLayers.IdLight" ]
+      shader: "unshaded"
   - type: PdaBorderColor
     borderColor: "#a07c5c"
 
@@ -99,5 +113,19 @@
       enum.PdaVisuals.PdaType:
         !type:String
         pda-gamemaster
+  - type: Sprite
+    sprite: _Moffstation/Objects/Devices/pda.rsi
+    layers:
+    - map: [ "enum.PdaVisualLayers.Base" ]
+      state: "pda-writer"
+    - state: "light_overlay_wide"
+      sprite: _Moffstation/Objects/Devices/pda.rsi
+      map: [ "enum.PdaVisualLayers.Flashlight" ]
+      shader: "unshaded"
+      visible: false
+    - state: "id_overlay_wide"
+      sprite: _Moffstation/Objects/Devices/pda.rsi
+      map: [ "enum.PdaVisualLayers.IdLight" ]
+      shader: "unshaded"
   - type: PdaBorderColor
     borderColor: "#a07c5c"

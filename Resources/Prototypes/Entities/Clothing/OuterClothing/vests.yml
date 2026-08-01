@@ -46,15 +46,15 @@
 
 #(Bartender) vest
 - type: entity
-  parent: ClothingOuterBase
+  parent: ClothingOuterStorageSuitStorageAttachableBase # Moffstation
   id: ClothingOuterVest
   name: vest
   description: A thick vest with a rubbery, water-resistant shell.
   components:
   - type: Sprite
-    sprite: Clothing/OuterClothing/Vests/vest.rsi
+    sprite: _Moffstation/Clothing/OuterClothing/Vests/vest.rsi # Moffstation
   - type: Clothing
-    sprite: Clothing/OuterClothing/Vests/vest.rsi
+    sprite: _Moffstation/Clothing/OuterClothing/Vests/vest.rsi # Moffstation
 
 #Tank Harness
 - type: entity

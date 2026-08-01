@@ -39,10 +39,18 @@
     Bloodstream:
       effects:
       - !type:HealthChange
+        conditions: #MACRO, thaven are immune to carpotoxin
+        - !type:MetabolizerTypeCondition
+          type: [ Thaven ]
+          inverted: true
         damage:
           types:
             Poison: 4
       - !type:PopupMessage
+        conditions: #MACRO, thaven are immune to carpotoxin
+        - !type:MetabolizerTypeCondition
+          type: [ Thaven ]
+          inverted: true
         type: Local
         visualType: MediumCaution
         messages: [ "generic-reagent-effect-burning-insides" ]

@@ -8,11 +8,11 @@ using DrawDepth = Content.Shared.DrawDepth.DrawDepth;
 
 namespace Content.Client.DamageState;
 
-public sealed class DamageStateVisualizerSystem : VisualizerSystem<DamageStateVisualsComponent>
+public sealed partial class DamageStateVisualizerSystem : VisualizerSystem<DamageStateVisualsComponent>
 {
 
     //Moffstation - Re-add Geras - Begin
-    [Dependency] private readonly BodySystem _bodySystem = default!;
+    [Dependency] private BodySystem _bodySystem = default!;
     public override void Initialize()
     {
         base.Initialize();

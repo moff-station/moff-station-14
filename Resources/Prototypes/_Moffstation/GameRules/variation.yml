@@ -1,0 +1,113 @@
+- type: entity
+  parent: BaseVariationPass
+  id: MoffFilthyStationDecalVariationPass
+  components:
+  - type: EntitySpawnVariationPass
+    tilesPerEntityAverage: 3
+    tilesPerEntityStdDev: 1
+    entities:
+    - id: DecalSpawnerBurns
+    - id: DecalSpawnerDirtMonospace
+    - id: DecalSpawnerGraffiti
+      prob: 0.2
+
+- type: entity
+  parent: BaseVariationPass
+  id: MoffRustyStationVariationPass
+  components:
+  - type: WallReplaceVariationPass
+  - type: EntityReplaceVariationPass
+    entitiesPerReplacementAverage: 5
+    entitiesPerReplacementStdDev: 2
+    replacements:
+    - id: WallSolidRust
+
+- type: entity
+  parent: BaseVariationPass
+  id: MoffReinforcedRustyStationVariationPass
+  components:
+  - type: ReinforcedWallReplaceVariationPass
+  - type: EntityReplaceVariationPass
+    entitiesPerReplacementAverage: 5
+    entitiesPerReplacementStdDev: 2
+    replacements:
+    - id: WallReinforcedRust
+
+- type: entity
+  parent: BaseVariationPass
+  id: MoffTrashedStationVariationPass
+  components:
+  - type: EntitySpawnVariationPass
+    tilesPerEntityAverage: 8
+    tilesPerEntityStdDev: 2
+    entities:
+    - id: RandomSpawner100
+
+- type: entity
+  parent: BaseVariationPass
+  id: MoffWaterloggedStationVariationPass
+  components:
+  - type: PuddleMessVariationPass
+    randomPuddleSolutionFill: MoffWaterloggedTrashPuddle
+    tilesPerSpillAverage: 100
+    tilesPerSpillStdDev: 20
+
+- type: weightedRandomFillSolution
+  id: MoffWaterloggedTrashPuddle
+  fills:
+  - quantity: 600
+    weight: 5
+    reagents:
+    - Vomit
+    - InsectBlood
+    - WeldingFuel
+    - Mold
+  - quantity: 500
+    weight: 4
+    reagents:
+    - PlantBGone
+    - VentCrud
+    - Carbon
+    - Hydrogen
+    - Fat
+    - SpaceGlue
+    - Sulfur
+    - Acetone
+    - Bleach
+  - quantity: 30
+    weight: 3
+    reagents:
+    - Blood
+    - CopperBlood
+    - Slime
+    - ShimmeringBlood
+
+- type: entity
+  parent: BaseVariationPass
+  id: MoffDamagedHullVariationPass
+  components:
+  - type: MoffAnnounceOnRuleStarted
+    message: damaged-hull-variation-briefing
+    color: salmon
+    serverAnnouncement: true
+  - type: EntitySpawnVariationPass
+    tilesPerEntityAverage: 400
+    tilesPerEntityStdDev: 10
+    entities:
+    - id: MoffC4InstantExplosion
+
+- type: entity
+  parent: C4
+  id: MoffC4InstantExplosion
+  name: C-4 Explosion
+  suffix: Instant Explosion
+  description: UH OH WE ARE EXPLODING
+  components:
+  - type: TriggerOnSpawn
+  - type: TimerTrigger
+    keysIn:
+    - trigger
+    - stuck
+    delay: 0.01
+    delayOptions: [ 0.01 ]
+    beepSound: null

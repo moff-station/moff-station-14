@@ -81,8 +81,8 @@
   id: BridgeAssistantPDA
   name: bridge assistant PDA
   components:
-  - type: RenameId
-    value: job-name-passenger-bridge-assistant
+  - type: Pda
+    id: BridgeAssistantIDCard
   - type: Appearance
     appearanceDataInit:
       enum.PdaVisuals.PdaType:
@@ -97,8 +97,8 @@
   id: CoffeeLogisticsOfficerPDA
   name: coffee logistics officer PDA
   components:
-  - type: RenameId
-    value: job-name-passenger-coffee-logistics-officer
+  - type: Pda
+    id: CLOIDCard
   - type: Appearance
     appearanceDataInit:
       enum.PdaVisuals.PdaType:

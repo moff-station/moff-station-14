@@ -2,7 +2,6 @@ using Content.Server.Fluids.Components;
 using Content.Server.Spreader;
 using Content.Shared.Chemistry;
 using Content.Shared.Chemistry.Components;
-using Content.Shared.Chemistry.Components.SolutionManager;
 using Content.Shared.Chemistry.EntitySystems;
 using Content.Shared.Chemistry.Reaction;
 using Content.Shared.Database;
@@ -14,11 +13,18 @@ using Content.Shared.IdentityManagement;
 using Content.Shared.Maps;
 using Content.Shared.Popups;
 using Content.Shared.Slippery;
+using Content.Shared.Inventory;
+using Content.Shared._Funkystation.Fluids;
+using Content.Shared.Gravity;
+using Content.Shared.Standing;
+using Content.Shared.StepTrigger.Systems;
+using Content.Shared._Funkystation.Footprints;
 using Robust.Shared.Collections;
 using Robust.Shared.Map;
 using Robust.Shared.Map.Components;
+using Robust.Shared.Physics.Components;
+using Robust.Shared.Physics.Events;
 using Robust.Shared.Player;
-using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 
 namespace Content.Server.Fluids.EntitySystems;
@@ -28,16 +34,17 @@ namespace Content.Server.Fluids.EntitySystems;
 /// </summary>
 public sealed partial class PuddleSystem : SharedPuddleSystem
 {
-    [Dependency] private readonly SharedMapSystem _map = default!;
-    [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
-    [Dependency] private readonly IRobustRandom _random = default!;
-    [Dependency] private readonly EntityLookupSystem _lookup = default!;
-    [Dependency] private readonly SharedColorFlashEffectSystem _color = default!;
-    [Dependency] private readonly SharedSolutionContainerSystem _solutionContainerSystem = default!;
-    [Dependency] private readonly SharedTransformSystem _transform = default!;
-    [Dependency] private readonly TurfSystem _turf = default!;
+    [Dependency] private SharedMapSystem _map = default!;
+    [Dependency] private IRobustRandom _random = default!;
+    [Dependency] private EntityLookupSystem _lookup = default!;
+    [Dependency] private SharedColorFlashEffectSystem _color = default!;
+    [Dependency] private SharedSolutionContainerSystem _solutionContainerSystem = default!;
+    [Dependency] private SharedTransformSystem _transform = default!;
+    [Dependency] private TurfSystem _turf = default!;
+    [Dependency] private EntityQuery<PuddleComponent> _puddleQuery = default!;
+    [Dependency] private EntityQuery<EvaporationSparkleComponent> _evaporationSparklesQuery = default!;
 
-    private EntityQuery<PuddleComponent> _puddleQuery;
+    [Dependency] private EntityQuery<FootprintComponent> _footprintQuery; // Moff - Funky footprints
 
     /*
      * TODO: Need some sort of way to do blood slash / vomit solution spill on its own
@@ -48,8 +55,6 @@ public sealed partial class PuddleSystem : SharedPuddleSystem
     public override void Initialize()
     {
         base.Initialize();
-
-        _puddleQuery = GetEntityQuery<PuddleComponent>();
 
         SubscribeLocalEvent<PuddleComponent, SpreadNeighborsEvent>(OnPuddleSpread);
         SubscribeLocalEvent<PuddleComponent, SlipEvent>(OnPuddleSlip);
@@ -151,7 +156,7 @@ public sealed partial class PuddleSystem : SharedPuddleSystem
                     break;
             }
 
-            // If there is nothing left to overflow from our tile, then we'll stop this tile being a active spreader
+            // If there is nothing left to overflow from our tile, then we'll stop this tile being an active spreader
             if (overflow.Volume == FixedPoint2.Zero)
             {
                 RemCompDeferred<ActiveEdgeSpreaderComponent>(entity);
@@ -265,6 +270,14 @@ public sealed partial class PuddleSystem : SharedPuddleSystem
         // Take 15% of the puddle solution
         var splitSol = _solutionContainerSystem.SplitSolution(entity.Comp.Solution.Value, solution.Volume * 0.15f);
         Reactive.DoEntityReaction(args.Slipped, splitSol, ReactionMethod.Touch);
+
+        // Funky - Start - Clothing stains
+        if (splitSol.Volume > 0)
+        {
+            var stainEv = new SpilledOnEvent(entity.Owner, splitSol.Clone());
+            RaiseLocalEvent(args.Slipped, stainEv);
+        }
+        // Funky - End
     }
 
     /// <summary>
@@ -294,20 +307,13 @@ public sealed partial class PuddleSystem : SharedPuddleSystem
         Solution addedSolution,
         bool sound = true,
         bool checkForOverflow = true,
-        PuddleComponent? puddleComponent = null,
-        SolutionContainerManagerComponent? sol = null)
+        PuddleComponent? puddleComponent = null)
     {
-        if (!Resolve(puddleUid, ref puddleComponent, ref sol))
+        if (!Resolve(puddleUid, ref puddleComponent))
             return false;
 
-        _solutionContainerSystem.EnsureAllSolutions((puddleUid, sol));
-
-        if (addedSolution.Volume == 0 ||
-            !_solutionContainerSystem.ResolveSolution(puddleUid, puddleComponent.SolutionName,
-                ref puddleComponent.Solution))
-        {
+        if (addedSolution.Volume == 0 || !_solutionContainerSystem.ResolveSolution(puddleUid, puddleComponent.SolutionName, ref puddleComponent.Solution))
             return false;
-        }
 
         _solutionContainerSystem.AddSolution(puddleComponent.Solution.Value, addedSolution);
 
@@ -437,6 +443,12 @@ public sealed partial class PuddleSystem : SharedPuddleSystem
 
             targets.Add(owner);
             Reactive.DoEntityReaction(owner, splitSolution, ReactionMethod.Touch);
+
+            // Funky - Start - Clothing stains
+            if (splitSolution.Volume > 0)
+                RaiseLocalEvent(owner, new SpilledOnEvent(entity, splitSolution.Clone()));
+            // Funky - End
+
             Popups.PopupEntity(Loc.GetString("spill-land-spilled-on-other",
                     ("spillable", entity),
                     ("target", Identity.Entity(owner, EntityManager))),
@@ -444,7 +456,7 @@ public sealed partial class PuddleSystem : SharedPuddleSystem
                 PopupType.SmallCaution);
         }
 
-        _color.RaiseEffect(spilled.GetColor(_prototypeManager), targets,
+        _color.RaiseEffect(spilled.GetColor(ProtoMan), targets,
             Filter.Pvs(entity, entityManager: EntityManager));
 
         return TrySpillAt(coordinates, spilled, out puddleUid, sound);
@@ -524,20 +536,23 @@ public sealed partial class PuddleSystem : SharedPuddleSystem
         // Get normalized co-ordinate for spill location and spill it in the centre
         // TODO: Does SnapGrid or something else already do this?
         var anchored = _map.GetAnchoredEntitiesEnumerator(gridId, mapGrid, tileRef.GridIndices);
-        var puddleQuery = GetEntityQuery<PuddleComponent>();
-        var sparklesQuery = GetEntityQuery<EvaporationSparkleComponent>();
 
         while (anchored.MoveNext(out var ent))
         {
             // If there's existing sparkles then delete it
-            if (sparklesQuery.TryGetComponent(ent, out var sparkles))
+            if (_evaporationSparklesQuery.TryGetComponent(ent, out var sparkles))
             {
                 QueueDel(ent.Value);
                 continue;
             }
 
-            if (!puddleQuery.TryGetComponent(ent, out var puddle))
+            if (!_puddleQuery.TryGetComponent(ent, out var puddle))
                 continue;
+
+            // Funky start - footprints
+            if (_footprintQuery.HasComponent(ent.Value))
+                continue;
+            // Funky end
 
             if (TryAddSolution(ent.Value, solution, sound, puddleComponent: puddle))
             {
@@ -572,12 +587,16 @@ public sealed partial class PuddleSystem : SharedPuddleSystem
             return false;
 
         var anc = _map.GetAnchoredEntitiesEnumerator(tile.GridUid, grid, tile.GridIndices);
-        var puddleQuery = GetEntityQuery<PuddleComponent>();
 
         while (anc.MoveNext(out var ent))
         {
-            if (!puddleQuery.HasComponent(ent.Value))
+            if (!_puddleQuery.HasComponent(ent.Value))
                 continue;
+
+            // Funky start - footprints
+            if (_footprintQuery.HasComponent(ent.Value))
+                continue;
+            // Funky end
 
             puddleUid = ent.Value;
             return true;

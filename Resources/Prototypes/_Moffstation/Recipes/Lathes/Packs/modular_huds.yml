@@ -1,49 +1,40 @@
+# Frames
 - type: latheRecipePack
-  id: ModularHudFrames
+  id: ModularHudFramesStatic
   recipes:
-  - ClothingEyesModularHudCheapSunglasses
   - ClothingEyesModularHudGlasses
-  - ClothingEyesModularHudGoggles
   - ClothingEyesModularHudJamjars
   - ClothingEyesModularHudPatch
   - ClothingEyesModularHudVisor
 
+# Modules
 - type: latheRecipePack
-  id: SecurityModularHudFrames
+  id: ModularHudModulesStatic
   recipes:
-  - ClothingEyesModularHudSunglasses
+  - HudModuleCheapSunglasses
+  - HudModuleShowAccessReaderSettings
+  - HudModuleShowInorganicHealthBars
 
 - type: latheRecipePack
-  id: ModularHudModules
+  id: MedicalModularHudModulesStatic
   recipes:
-  - HudModuleBlackAndWhiteOverlay
-  - HudModuleEyeProtection
-  - HudModuleNoirOverlay
-  - HudModuleShowAccessReaderSettings
-  - HudModuleShowContrabandDetails
-  - HudModuleShowHungerIcons
-  - HudModuleShowJobIcons
+  - HudModuleCheapSunglasses
   - HudModuleShowMedicalIcons
-  - HudModuleShowThirstIcons
   - HudModuleSolutionScanner
   - HudModuleVisionCorrection
 
 - type: latheRecipePack
-  id: SecurityModularHudModules
+  id: ScienceModularHudModulesStatic
   recipes:
   - HudModuleBlackAndWhiteOverlay
+  - HudModuleSolutionScanner
+
+- type: latheRecipePack
+  id: SecurityModularHudModulesStatic
+  recipes:
+  - HudModuleBlackAndWhiteOverlay
+  - HudModuleCheapSunglasses
   - HudModuleFlashImmunity
   - HudModuleNoirOverlay
-  - HudModuleShowContrabandDetails
-  - HudModuleShowCriminalRecordIcons
+  - HudModuleSecurity
   - HudModuleShowJobIcons
-  - HudModuleShowMindShieldIcons
-
-- type: latheRecipePack
-  id: MedicalModularHudModules
-  recipes:
-  - HudModuleShowHungerIcons
-  - HudModuleShowMedicalIcons
-  - HudModuleShowThirstIcons
-  - HudModuleSolutionScanner
-  - HudModuleVisionCorrection

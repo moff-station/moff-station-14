@@ -1,0 +1,41 @@
+- type: antagCategory
+  id: Syndicate
+  name: antag-catagory-syndicate-name
+  description: antag-catagory-syndicate-desc
+  priority: -1
+  accentColor: "#69152e"
+  antags:
+  - Traitor
+  - TraitorSleeper
+  - NukeopsCommander
+  - NukeopsMedic
+  - Nukeops
+  - SyndicateSpy
+
+- type: antagCategory
+  id: Outlaws
+  name: antag-catagory-outlaws-name
+  description: antag-catagory-outlaws-desc
+  accentColor: "#753c2f"
+  antags:
+  - PirateCaptain
+  - PirateCrew
+  - Conspirator
+  - Thief
+
+- type: antagCategory
+  id: Nanotrasen
+  name: antag-catagory-nanotrasen-name
+  description: antag-catagory-nanotrasen-desc
+  accentColor: "#2d62bc"
+  priority: 50
+  antags:
+  - OpeningShift
+
+- type: antagCategory
+  id: Other
+  name: antag-catagory-misc-name
+  description: antag-catagory-misc-desc
+  accentColor: "#5e4daf"
+  priority: 100
+  default: true

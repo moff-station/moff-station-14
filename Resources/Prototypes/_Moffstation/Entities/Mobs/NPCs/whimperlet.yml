@@ -29,13 +29,9 @@
     allowedEmotes: ['Crying']
     speechSounds: Whimperlet
   - type: Vocal
-    sounds:
-      Male: Whimperlet
-      Female: Whimperlet
-      Unsexed: Whimperlet
-  - type: Butcherable
-    butcheringType: Spike
-    spawned:
+    emoteSounds: Whimperlet
+  - type: ToolRefinable
+    refineResult:
     - id: FoodMeat
       amount: 1
   - type: Item

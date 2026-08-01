@@ -1,5 +1,6 @@
 ﻿using Content.Shared._Moffstation.Atmos.Components;
 using Content.Shared._Moffstation.Atmos.EntitySystems;
+using Content.Shared._Moffstation.Extensions;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization;
 
@@ -107,7 +108,7 @@ public sealed partial class GasTankVisualStylePrototype : IPrototype
 /// <see cref="GasTankVisualsSystem.GetColorValues"/> (but that should only happen internally to that system).
 /// </summary>
 [ImplicitDataDefinitionForInheritors, Serializable, NetSerializable]
-public abstract partial class GasTankVisuals
+public abstract partial class GasTankVisuals : ISealedInheritance
 {
     private GasTankVisuals()
     {

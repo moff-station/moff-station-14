@@ -1,0 +1,20 @@
+- type: quickPhrase
+  parent: BaseCommonPhrase
+  abstract: true
+  id: BaseQuestionPhrase
+  group: phrase-group-question
+
+- { type: quickPhrase, parent: BaseQuestionPhrase, id: WherePhrase }
+- { type: quickPhrase, parent: BaseQuestionPhrase, id: WhoPhrase }
+- { type: quickPhrase, parent: BaseQuestionPhrase, id: WhatPhrase }
+- { type: quickPhrase, parent: BaseQuestionPhrase, id: WhyPhrase }
+- { type: quickPhrase, parent: BaseQuestionPhrase, id: HowPhrase }
+- { type: quickPhrase, parent: BaseQuestionPhrase, id: WhenPhrase }
+- { type: quickPhrase, parent: BaseQuestionPhrase, id: WhichPhrase }
+- { type: quickPhrase, parent: BaseQuestionPhrase, id: DoYouHavePhrase }
+- { type: quickPhrase, parent: BaseQuestionPhrase, id: HowDoIPhrase }
+- { type: quickPhrase, parent: BaseQuestionPhrase, id: CanPhrase }
+- { type: quickPhrase, parent: BaseQuestionPhrase, id: ShouldPhrase }
+- { type: quickPhrase, parent: BaseQuestionPhrase, id: IUnderstandPhrase }
+- { type: quickPhrase, parent: BaseQuestionPhrase, id: IDontUnderstandPhrase }
+- { type: quickPhrase, parent: BaseQuestionPhrase, id: QuestionPhrase }

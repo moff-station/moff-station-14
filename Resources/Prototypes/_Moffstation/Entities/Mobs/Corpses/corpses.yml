@@ -1,0 +1,66 @@
+- type: entity
+  parent: MobHuman
+  suffix: Dead
+  save: false # mobs are currently not saveable.
+  id: SalvageHumanCorpse
+  name: unidentified corpse
+  description: I think they're dead.
+  components:
+  - type: RandomHumanoidSpawner
+    settings: MoffRandomHumanoidCorpse
+
+- type: entity
+  parent: SalvageHumanCorpse
+  id: MobRandomServiceCorpse
+  suffix: Dead, Service
+  components:
+  - type: RandomHumanoidSpawner
+    settings: MoffRandomHumanoidCorpseService
+
+- type: entity
+  parent: SalvageHumanCorpse
+  id: MobRandomEngineerCorpse
+  suffix: Dead, Engineer
+  components:
+  - type: RandomHumanoidSpawner
+    settings: MoffRandomHumanoidCorpseEngineer
+
+- type: entity
+  parent: SalvageHumanCorpse
+  id: MobRandomCargoCorpse
+  suffix: Dead, Cargo
+  components:
+  - type: RandomHumanoidSpawner
+    settings: MoffRandomHumanoidCorpseCargo
+
+- type: entity
+  parent: SalvageHumanCorpse
+  id: MobRandomMedicCorpse
+  suffix: Dead, Medic
+  components:
+  - type: RandomHumanoidSpawner
+    settings: MoffRandomHumanoidCorpseMedic
+
+- type: entity
+  parent: SalvageHumanCorpse
+  id: MobRandomScienceCorpse
+  suffix: Dead, Science
+  components:
+  - type: RandomHumanoidSpawner
+    settings: MoffRandomHumanoidCorpseScience
+
+- type: entity
+  parent: SalvageHumanCorpse
+  id: MobRandomSecurityCorpse
+  suffix: Dead, Security
+  components:
+  - type: RandomHumanoidSpawner
+    settings: MoffRandomHumanoidCorpseSecurity
+
+- type: entity
+  parent: SalvageHumanCorpse
+  id: MobRandomCommandCorpse
+  suffix: Dead, Command
+  components:
+  - type: RandomHumanoidSpawner
+    settings: MoffRandomHumanoidCorpseCommand

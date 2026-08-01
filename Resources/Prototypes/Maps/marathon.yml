@@ -2,8 +2,8 @@
   id: Marathon
   mapName: 'Marathon Station'
   mapPath: /Maps/marathon.yml
-  minPlayers: 35
-  maxPlayers: 70
+  minPlayers: 41 # Moffstation - Medium Pop
+  maxPlayers: 75 # Moffstation - Medium Pop
   stations:
     Marathon:
       stationProto: StandardNanotrasenStation
@@ -35,23 +35,24 @@
             ServiceWorker: [ 2, 2 ]
             #engineering (7)
             AtmosphericTechnician: [ 3, 3 ]
-            StationEngineer: [ 4, 5 ] #CD - Intern not counted
-            # TechnicalAssistant: [ 3, 3 ] #CD - Remove intern roles, rework them into loadouts
+            StationEngineer: [ 4, 4 ]
+            # TechnicalAssistant: [ 3, 3 ] # Moffstation - Removed role
             #medical (8)
             Chemist: [ 2, 2 ]
-            MedicalDoctor: [ 4, 5 ] #CD - Intern not counted
-            # MedicalIntern: [ 3, 3 ] #CD - Remove intern roles, rework them into loadouts
+            MedicalDoctor: [ 4, 4 ]
+            # MedicalIntern: [ 3, 3 ] # Moffstation - Removed role
             Psychologist: [ 1, 1 ]
             Paramedic: [ 1, 1 ]
             #science (4)
-            Scientist: [ 4, 5 ] #CD - Intern not counted
-            # ResearchAssistant: [ 3, 3 ] #CD - Remove intern roles, rework them into loadouts
+            Scientist: [ 4, 4 ]
+            # ResearchAssistant: [ 3, 3 ] # Moffstation - Removed role
             #security (12)
             Warden: [ 1, 1 ]
-            SecurityOfficer: [ 8, 9 ] #CD - Intern not counted
+            SecurityOfficer: [ 8, 8 ]
             Detective: [ 1, 1 ]
-            # SecurityCadet: [ 4, 4 ] #CD - Remove intern roles, rework them into loadouts
+            # SecurityCadet: [ 4, 4 ] # Moffstation - Removed role
             Lawyer: [ 2, 2 ]
+            Prisoner: [ 1, 1 ] # Moffstation - Prisoners
             #supply (6)
             SalvageSpecialist: [ 3, 3 ]
             CargoTechnician: [ 3, 3 ]
@@ -63,5 +64,3 @@
             #silicon (3)
             StationAi: [ 1, 1 ]
             Borg: [ 2, 2 ]
-            # Moffstation - custom roles below
-            Prisoner: [ 1, 1 ]

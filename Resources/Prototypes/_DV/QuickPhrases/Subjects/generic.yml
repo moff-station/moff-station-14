@@ -1,0 +1,53 @@
+- { type: quickPhrase, parent: BaseSubjectPhrase, id: PenPhrase }
+- { type: quickPhrase, parent: BaseSubjectPhrase, id: PaperPhrase }
+- { type: quickPhrase, parent: BaseSubjectPhrase, id: WrenchPhrase }
+- { type: quickPhrase, parent: BaseSubjectPhrase, id: CrowbarPhrase }
+- { type: quickPhrase, parent: BaseSubjectPhrase, id: ScrewdriverPhrase }
+- { type: quickPhrase, parent: BaseSubjectPhrase, id: WirecutterPhrase }
+- { type: quickPhrase, parent: BaseSubjectPhrase, id: WeldingToolPhrase }
+- { type: quickPhrase, parent: BaseSubjectPhrase, id: WeldingMaskPhrase }
+- { type: quickPhrase, parent: BaseSubjectPhrase, id: ToolboxPhrase }
+- { type: quickPhrase, parent: BaseSubjectPhrase, id: BeakerPhrase }
+- { type: quickPhrase, parent: BaseSubjectPhrase, id: RadioPhrase }
+- { type: quickPhrase, parent: BaseSubjectPhrase, id: UniformPhrase }
+- { type: quickPhrase, parent: BaseSubjectPhrase, id: SuitSensorsPhrase }
+- { type: quickPhrase, parent: BaseSubjectPhrase, id: InternalsPhrase }
+- { type: quickPhrase, parent: BaseSubjectPhrase, id: GasTankPhrase }
+- { type: quickPhrase, parent: BaseSubjectPhrase, id: MultitoolPhrase }
+- { type: quickPhrase, parent: BaseSubjectPhrase, id: LathePhrase }
+- { type: quickPhrase, parent: BaseSubjectPhrase, id: ComputerPhrase }
+- { type: quickPhrase, parent: BaseSubjectPhrase, id: DoorPhrase }
+- { type: quickPhrase, parent: BaseSubjectPhrase, id: FirelockPhrase }
+- { type: quickPhrase, parent: BaseSubjectPhrase, id: SpacePhrase }
+- { type: quickPhrase, parent: BaseSubjectPhrase, id: ToolPhrase }
+- { type: quickPhrase, parent: BaseSubjectPhrase, id: WeaponPhrase }
+- { type: quickPhrase, parent: BaseSubjectPhrase, id: ArmorPhrase }
+- { type: quickPhrase, parent: BaseSubjectPhrase, id: BrainPhrase }
+- { type: quickPhrase, parent: BaseSubjectPhrase, id: DrinkPhrase }
+- { type: quickPhrase, parent: BaseSubjectPhrase, id: FoodPhrase }
+- { type: quickPhrase, parent: BaseSubjectPhrase, id: WaterPhrase }
+- { type: quickPhrase, parent: BaseSubjectPhrase, id: SignaturePhrase }
+- { type: quickPhrase, parent: BaseSubjectPhrase, id: BeltPhrase }
+- { type: quickPhrase, parent: BaseSubjectPhrase, id: HardsuitPhrase }
+- { type: quickPhrase, parent: BaseSubjectPhrase, id: LightPhrase }
+- { type: quickPhrase, parent: BaseSubjectPhrase, id: BagPhrase }
+
+- type: quickPhrase
+  parent: BaseSubjectPhrase
+  id: BaseMaterialPhrase
+  abstract: true
+  group: phrase-group-materials
+
+- { type: quickPhrase, parent: BaseMaterialPhrase, id: SteelPhrase }
+- { type: quickPhrase, parent: BaseMaterialPhrase, id: GlassPhrase }
+- { type: quickPhrase, parent: BaseMaterialPhrase, id: PlasticPhrase }
+- { type: quickPhrase, parent: BaseMaterialPhrase, id: PlasteelPhrase }
+- { type: quickPhrase, parent: BaseMaterialPhrase, id: PlasmaPhrase }
+- { type: quickPhrase, parent: BaseMaterialPhrase, id: UraniumPhrase }
+- { type: quickPhrase, parent: BaseMaterialPhrase, id: BananiumPhrase }
+- { type: quickPhrase, parent: BaseMaterialPhrase, id: WoodPhrase }
+- { type: quickPhrase, parent: BaseMaterialPhrase, id: ClothPhrase }
+- { type: quickPhrase, parent: BaseMaterialPhrase, id: CardboardPhrase }
+- { type: quickPhrase, parent: BaseMaterialPhrase, id: GoldPhrase }
+- { type: quickPhrase, parent: BaseMaterialPhrase, id: SilverPhrase }
+- { type: quickPhrase, parent: BaseMaterialPhrase, id: BluespacePhrase }

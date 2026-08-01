@@ -12,7 +12,7 @@ namespace Content.Shared._Impstation.Tourist;
 
 public abstract partial class SharedTouristCameraSystem : EntitySystem
 {
-    [Dependency] private readonly SharedDoAfterSystem _doAfter = default!;
+    [Dependency] private SharedDoAfterSystem _doAfter = default!;
 
     public override void Initialize()
     {
@@ -20,7 +20,6 @@ public abstract partial class SharedTouristCameraSystem : EntitySystem
 
         SubscribeLocalEvent<TouristCameraComponent, UseInHandEvent>(OnCameraUseInHand);
     }
-    public ProtoId<StatusEffectPrototype> FlashedKey = "Flashed";
 
     public virtual void FlashArea(Entity<FlashComponent?> source, EntityUid? user, float range, float duration, float slowTo = 0.8f, bool displayPopup = false, float probability = 1f, SoundSpecifier? sound = null)
     {

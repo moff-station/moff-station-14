@@ -19,6 +19,7 @@
   - type: Tool
     qualities:
     - Cutting
+    - Shearing
     useSound:
       path: /Audio/Items/wirecutter.ogg
     speedModifier: 0.05
@@ -157,14 +158,20 @@
   description: A weirdly shaped box, stocked with... tools?
   components:
   - type: Sprite
-    sprite: Objects/Tools/Cowtools/cow_toolbox.rsi
+    sprite: _Moffstation/Objects/Tools/Cowtools/cow_toolbox.rsi # Moffstation - Uncabinetification
     state: cow_toolbox
   - type: Item
-    sprite: Objects/Tools/Cowtools/cow_toolbox.rsi
+    sprite: _Moffstation/Objects/Tools/Cowtools/cow_toolbox.rsi # Moffstation - Uncabinetification
   - type: MeleeWeapon
     damage:
       types:
         Blunt: 4
+  # Moffstation - Toolbox Throwable
+  - type: DamageOtherOnHit
+    damage:
+      types:
+        Blunt: 1.5 # just below 50% 
+  # Moffstation - End
 
 - type: entity
   id: CowToolboxFilled

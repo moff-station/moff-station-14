@@ -55,21 +55,38 @@
       enum.PdaVisuals.PdaType:
         !type:String
         pda-logistics
+  - type: Sprite
+    sprite: _Moffstation/Objects/Devices/pda.rsi
+    layers:
+    - map: [ "enum.PdaVisualLayers.Base" ]
+      state: "pda-logistics"
+    - state: "light_overlay_wide"
+      sprite: _Moffstation/Objects/Devices/pda.rsi
+      map: [ "enum.PdaVisualLayers.Flashlight" ]
+      shader: "unshaded"
+      visible: false
+    - state: "id_overlay_wide"
+      sprite: _Moffstation/Objects/Devices/pda.rsi
+      map: [ "enum.PdaVisualLayers.IdLight" ]
+      shader: "unshaded"
+      visible: false
   - type: PdaBorderColor
     borderColor: "#e39751"
 
 - type: entity
   parent: CargoPDAAltBase
-  id: RequisitionsClerkPDA
-  name: requisitions clerk PDA
+  id: FreightPilotPDA
+  name: freight pilot PDA
   components:
+  - type: Pda
+    id: FreightPilotIDCard
   - type: RenameId
-    value: job-name-cargo-technician-requisitions-clerk
+    value: job-name-cargo-technician-freight-pilot
   - type: Appearance
     appearanceDataInit:
       enum.PdaVisuals.PdaType:
         !type:String
-        pda-requisitionsclerk
+        pda-freightpilot
   - type: PdaBorderColor
     borderColor: "#e39751"
     accentVColor: "#241707"

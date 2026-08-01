@@ -5,20 +5,15 @@
   components:
   - type: Sprite
     drawdepth: WallTops
-    sprite: Structures/Windows/reinforced_uranium_window.rsi
+    sprite: _Moffstation/Structures/Windows/reinforced_uranium_window.rsi # Moffstation
   - type: Icon
-    sprite: Structures/Windows/reinforced_uranium_window.rsi
+    sprite: _Moffstation/Structures/Windows/reinforced_uranium_window.rsi # Moffstation
   - type: Damageable
-    damageContainer: StructuralInorganic
     damageModifierSet: RGlass
+  - type: Injurable
+    damageContainer: StructuralInorganic
   - type: Destructible
     thresholds:
-    - trigger:
-        !type:DamageTrigger
-        damage: 450
-      behaviors:
-      - !type:DoActsBehavior
-        acts: [ "Destruction" ]
     - trigger:
         !type:DamageTrigger
         damage: 225
@@ -64,10 +59,10 @@
     - Window
   components:
   - type: Sprite
-    sprite: Structures/Windows/directional.rsi
+    sprite: _Moffstation/Structures/Windows/directional.rsi # Moffstation
     state: uranium_reinforced_window
   - type: Icon
-    sprite: Structures/Windows/directional.rsi
+    sprite: _Moffstation/Structures/Windows/directional.rsi # Moffstation
     state: uranium_reinforced_window
   - type: Construction
     graph: WindowDirectional
@@ -83,12 +78,6 @@
     damageModifierSet: RGlass
   - type: Destructible
     thresholds:
-    - trigger:
-        !type:DamageTrigger
-        damage: 225
-      behaviors:
-      - !type:DoActsBehavior
-        acts: [ "Destruction" ]
     - trigger:
         !type:DamageTrigger
         damage: 113
@@ -122,7 +111,7 @@
   components:
   - type: Sprite
     drawdepth: WallTops
-    sprite: Structures/Windows/reinforced_uranium_diagonal.rsi
+    sprite: _Moffstation/Structures/Windows/reinforced_uranium_diagonal.rsi # Moffstation
     state: state0
   - type: Tag
     tags:
@@ -130,10 +119,10 @@
     - Window
   - type: IconSmooth
     mode: Diagonal
-    key: windows
+    key: walls # Moffstation
     base: state
   - type: Icon
-    sprite: Structures/Windows/reinforced_uranium_diagonal.rsi
+    sprite: _Moffstation/Structures/Windows/reinforced_uranium_diagonal.rsi # Moffstation
     state: state0
   - type: Fixtures
     fixtures:

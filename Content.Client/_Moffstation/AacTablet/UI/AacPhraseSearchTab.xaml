@@ -1,0 +1,15 @@
+﻿<controls:BoxContainer xmlns:controls="https://spacestation14.io"
+                       HorizontalExpand="True"
+                       VerticalExpand="True"
+                       Orientation="Vertical">
+    <controls:LineEdit Name="SearchText"
+                       HorizontalExpand="True" />
+    <controls:ScrollContainer HorizontalExpand="True"
+                              VerticalExpand="True">
+        <controls:BoxContainer HorizontalExpand="True"
+                               Orientation="Vertical"
+                               Name="Content">
+            <!-- Contents added programmatically -->
+        </controls:BoxContainer>
+    </controls:ScrollContainer>
+</controls:BoxContainer>

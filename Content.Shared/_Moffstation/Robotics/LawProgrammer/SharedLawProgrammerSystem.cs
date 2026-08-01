@@ -19,16 +19,16 @@ namespace Content.Shared._Moffstation.Robotics.LawProgrammer;
 /// </summary>
 public sealed partial class SharedLawProgrammerSystem : EntitySystem
 {
-    [Dependency] private readonly SharedAppearanceSystem _appearance = default!;
-    [Dependency] private readonly SharedAudioSystem _audio = default!;
-    [Dependency] private readonly SharedDoAfterSystem _doAfterSystem = default!;
-    [Dependency] private readonly ItemSlotsSystem _itemSlots = default!;
-    [Dependency] private readonly SharedSiliconLawSystem _lawSystem = default!;
-    [Dependency] private readonly SharedMindSystem _mind = default!;
-    [Dependency] private readonly INetManager _netMan = default!;
-    [Dependency] private readonly SharedPopupSystem _popup = default!;
-    [Dependency] private readonly SharedUserInterfaceSystem _userInterface = default!;
-    [Dependency] private readonly SharedWiresSystem _wires = default!;
+    [Dependency] private SharedAppearanceSystem _appearance = default!;
+    [Dependency] private SharedAudioSystem _audio = default!;
+    [Dependency] private SharedDoAfterSystem _doAfterSystem = default!;
+    [Dependency] private ItemSlotsSystem _itemSlots = default!;
+    [Dependency] private SharedSiliconLawSystem _lawSystem = default!;
+    [Dependency] private SharedMindSystem _mind = default!;
+    [Dependency] private INetManager _netMan = default!;
+    [Dependency] private SharedPopupSystem _popup = default!;
+    [Dependency] private SharedUserInterfaceSystem _userInterface = default!;
+    [Dependency] private SharedWiresSystem _wires = default!;
 
     /// <inheritdoc/>
     public override void Initialize()
@@ -305,7 +305,7 @@ public sealed partial class SharedLawProgrammerSystem : EntitySystem
             !TryComp<BorgChassisComponent>(entity, out var borgChassis) ||
             !TryComp<SiliconLawProviderComponent>(entity, out var lawProvider))
             return null;
-        
+
         return (entity, entity.Comp, borgChassis, lawProvider);
     }
 }

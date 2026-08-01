@@ -12,15 +12,14 @@ using Content.Shared.EntityTable;
 
 namespace Content.Server.StationEvents;
 
-public sealed class EventManagerSystem : EntitySystem
+public sealed partial class EventManagerSystem : EntitySystem
 {
-    [Dependency] private readonly IConfigurationManager _configurationManager = default!;
-    [Dependency] private readonly IPlayerManager _playerManager = default!;
-    [Dependency] private readonly IRobustRandom _random = default!;
-    [Dependency] private readonly IPrototypeManager _prototype = default!;
-    [Dependency] private readonly EntityTableSystem _entityTable = default!;
-    [Dependency] public readonly GameTicker GameTicker = default!;
-    [Dependency] private readonly RoundEndSystem _roundEnd = default!;
+    [Dependency] private IConfigurationManager _configurationManager = default!;
+    [Dependency] private IPlayerManager _playerManager = default!;
+    [Dependency] private IRobustRandom _random = default!;
+    [Dependency] private EntityTableSystem _entityTable = default!;
+    [Dependency] public GameTicker GameTicker = default!;
+    [Dependency] private RoundEndSystem _roundEnd = default!;
 
     public bool EventsEnabled { get; private set; }
     private void SetEnabled(bool value) => EventsEnabled = value;
@@ -62,7 +61,7 @@ public sealed class EventManagerSystem : EntitySystem
             return;
         }
 
-        if (!_prototype.Resolve(randomLimitedEvent, out _))
+        if (!ProtoMan.Resolve(randomLimitedEvent, out _))
         {
             Log.Warning("A requested event is not available!");
             return;
@@ -74,7 +73,7 @@ public sealed class EventManagerSystem : EntitySystem
     /// <summary>
     /// Builds a list of all possible events and their probabilities.
     /// </summary>
-    public IEnumerable<(EntProtoId, double)> ListLimitedEvents(
+    public IEnumerable<(EntProtoId, float)> ListLimitedEvents( // Moffstation - Early merge of https://github.com/Space-Wizards-Federation/space-station-14/pull/177
         EntityTableSelector limitedEventsTable,
         TimeSpan? currentTime = null,
         int? playerCount = null)
@@ -96,12 +95,14 @@ public sealed class EventManagerSystem : EntitySystem
         return TryBuildLimitedEvents(selectedEvents, out limitedEvents, currentTime, playerCount);
     }
 
-    public IEnumerable<(EntProtoId, double)> ListLimitedEvents(
-        IEnumerable<(EntProtoId, double)> selectedEvents,
+    // Moffstation - Begin - Rewrite table selectors with visitors. Early merge of https://github.com/Space-Wizards-Federation/space-station-14/pull/177
+    public IEnumerable<(EntProtoId, float)> ListLimitedEvents(
+        IEnumerable<(EntProtoId, float)> selectedEvents,
+    // Moffstation - End
         TimeSpan? currentTime = null,
         int? playerCount = null)
     {
-        var limitedEvents = new List<(EntProtoId, double)>();
+        var limitedEvents = new List<(EntProtoId, float)>(); // Moffstation
 
         playerCount ??= _playerManager.PlayerCount;
 
@@ -112,13 +113,13 @@ public sealed class EventManagerSystem : EntitySystem
 
         foreach (var (eventId, prob) in selectedEvents)
         {
-            if (!_prototype.Resolve(eventId, out var eventproto))
+            if (!ProtoMan.Resolve(eventId, out var eventproto))
                 continue;
 
             if (eventproto.Abstract)
                 continue;
 
-            if (!eventproto.TryGetComponent<StationEventComponent>(out var stationEvent, EntityManager.ComponentFactory))
+            if (!eventproto.TryComp<StationEventComponent>(out var stationEvent, EntityManager.ComponentFactory))
                 continue;
 
             if (!CanRun(eventproto, stationEvent, playerCount.Value, currentTime.Value))
@@ -163,7 +164,10 @@ public sealed class EventManagerSystem : EntitySystem
 
         foreach (var eventid in selectedEvents)
         {
-            if (!_prototype.Resolve(eventid, out var eventproto))
+            if (GameTicker.IsIgnored(eventid))
+                continue;
+
+            if (!ProtoMan.Resolve(eventid, out var eventproto))
             {
                 Log.Warning("An event ID has no prototype index!");
                 continue;
@@ -175,7 +179,7 @@ public sealed class EventManagerSystem : EntitySystem
             if (eventproto.Abstract)
                 continue;
 
-            if (!eventproto.TryGetComponent<StationEventComponent>(out var stationEvent, EntityManager.ComponentFactory))
+            if (!eventproto.TryComp<StationEventComponent>(out var stationEvent, EntityManager.ComponentFactory))
                 continue;
 
             if (!CanRun(eventproto, stationEvent, playerCount.Value, currentTime.Value))
@@ -278,12 +282,12 @@ public sealed class EventManagerSystem : EntitySystem
     private Dictionary<EntityPrototype, StationEventComponent> GetAllEvents()
     {
         var allEvents = new Dictionary<EntityPrototype, StationEventComponent>();
-        foreach (var prototype in _prototype.EnumeratePrototypes<EntityPrototype>())
+        foreach (var prototype in ProtoMan.EnumeratePrototypes<EntityPrototype>())
         {
             if (prototype.Abstract)
                 continue;
 
-            if (!prototype.TryGetComponent<StationEventComponent>(out var stationEvent, EntityManager.ComponentFactory))
+            if (!prototype.TryComp<StationEventComponent>(out var stationEvent, EntityManager.ComponentFactory))
                 continue;
 
             allEvents.Add(prototype, stationEvent);
@@ -340,7 +344,7 @@ public sealed class EventManagerSystem : EntitySystem
             return false;
         }
 
-        if (_roundEnd.IsRoundEndRequested() && !stationEvent.OccursDuringRoundEnd)
+        if (_roundEnd.IsRoundEndRequested() && !stationEvent.OccursDuringRoundEnd && !_roundEnd.CanCallOrRecall())
         {
             return false;
         }

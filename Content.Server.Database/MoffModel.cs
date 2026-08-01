@@ -19,5 +19,7 @@ public static class MoffModel
         public Player Player { get; set; } = null!;
 
         public int AntagWeight { get; set; } = 1;
+
+        public string? DiscordId { get; set; }
     }
 }

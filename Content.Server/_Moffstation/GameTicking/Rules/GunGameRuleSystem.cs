@@ -9,6 +9,7 @@ using Content.Server.Mind;
 using Content.Server.Power.Components;
 using Content.Server.RoundEnd;
 using Content.Server.Station.Systems;
+using Content.Shared.Administration.Systems;
 using Content.Shared.Containers.ItemSlots;
 using Content.Shared.GameTicking;
 using Content.Shared.GameTicking.Components;
@@ -33,20 +34,21 @@ namespace Content.Server._Moffstation.GameTicking.Rules;
 /// This is mostly a copy of <see cref="Content.Server.GameTicking.Rules.DeathMatchRuleSystem"/> with some
 /// key changes for gun game.
 /// </summary>
-public sealed class GunGameRuleSystem : GameRuleSystem<GunGameRuleComponent>
+public sealed partial class GunGameRuleSystem : GameRuleSystem<GunGameRuleComponent>
 {
-    [Dependency] private readonly IPlayerManager _player = default!;
-    [Dependency] private readonly MindSystem _mind = default!;
-    [Dependency] private readonly OutfitSystem _outfitSystem = default!;
-    [Dependency] private readonly RespawnRuleSystem _respawn = default!;
-    [Dependency] private readonly RoundEndSystem _roundEnd = default!;
-    [Dependency] private readonly StationSpawningSystem _stationSpawning = default!;
-    [Dependency] private readonly IPrototypeManager _proto = default!;
-    [Dependency] private readonly SharedHandsSystem _hands = default!;
-    [Dependency] private readonly InventorySystem _inventory = default!;
-    [Dependency] private readonly IRobustRandom _random = default!;
-    [Dependency] private readonly EntityLookupSystem _lookup = default!;
-    [Dependency] private readonly ItemSlotsSystem _itemSlots = default!;
+    [Dependency] private IPlayerManager _player = default!;
+    [Dependency] private MindSystem _mind = default!;
+    [Dependency] private OutfitSystem _outfitSystem = default!;
+    [Dependency] private RespawnRuleSystem _respawn = default!;
+    [Dependency] private RoundEndSystem _roundEnd = default!;
+    [Dependency] private StationSpawningSystem _stationSpawning = default!;
+    [Dependency] private IPrototypeManager _proto = default!;
+    [Dependency] private SharedHandsSystem _hands = default!;
+    [Dependency] private InventorySystem _inventory = default!;
+    [Dependency] private IRobustRandom _random = default!;
+    [Dependency] private EntityLookupSystem _lookup = default!;
+    [Dependency] private ItemSlotsSystem _itemSlots = default!;
+    [Dependency] private RejuvenateSystem _rejuvenate = default!;
 
     public override void Initialize()
     {
@@ -79,7 +81,6 @@ public sealed class GunGameRuleSystem : GameRuleSystem<GunGameRuleComponent>
             var mob = mobMaybe!.Value;
 
             _mind.TransferTo(mindId.Value, mob);
-            _outfitSystem.SetOutfit(mob, gunGame.Gear);
             EnsureComp<KillTrackerComponent>(mob);
             EnsureComp<GunGameTrackerComponent>(mob);
 
@@ -130,6 +131,11 @@ public sealed class GunGameRuleSystem : GameRuleSystem<GunGameRuleComponent>
             killerInfo.Kills = 0;
             ProgressPlayerReward(killerInfo, gunGame);
             RefreshPlayerLoadout(killerInfo, gunGame);
+
+            // Rejuvenate the killer
+            if (_player.TryGetSessionById(killer.PlayerId, out var session)
+                && session.AttachedEntity is { } killerUid)
+                _rejuvenate.PerformRejuvenate(killerUid);
         }
     }
 

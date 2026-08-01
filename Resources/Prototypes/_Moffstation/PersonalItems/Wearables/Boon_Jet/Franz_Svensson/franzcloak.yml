@@ -1,0 +1,60 @@
+# Player Boon_Jet - Character: Franz Svensson
+
+- type: entity
+  parent: ClothingNeckClothBase
+  id: &id PersonalItemFranzCloak
+  name: oversized moth-wing cloak
+  description: A large, blanket-like cloak resembling a pair of moth wings. The fabric is thick and fluffy, carrying the faint scent of fresh soil and cardboard boxes.
+  suffix: PersonalItem
+  components:
+  - type: Sprite
+    sprite: _Moffstation/PersonalItems/Wearables/Boon_Jet/Franz_Svensson/franzcloak.rsi
+  - type: ToggleableClothing
+    clothingPrototype: PersonalItemFranzHood
+    requiredSlot:
+    - neck
+    slot: head
+  - type: DetailExaminable
+    content: The tag sewn into the inner collar has the name "Svens" written on it in orange marker.
+  - type: ContainerContainer
+    containers:
+      toggleable-clothing: !type:ContainerSlot {}
+  - type: TypingIndicatorClothing
+    proto: moth
+  - type: UseDelay
+  - type: EmitSoundOnActivate
+    sound: &PlushieMothSound
+      path: /Audio/Voice/Moth/moth_chitter.ogg
+      params:
+        volume: -2
+  - type: EmitSoundOnCollide
+    sound: *PlushieMothSound
+
+- type: entity
+  parent: ClothingHeadHatHoodMoth
+  id: PersonalItemFranzHood
+  name: fluffy hood
+  description: An oversized hood made to resemble a giant moth's head.
+  components:
+  - type: Sprite
+    sprite: &sprite _Moffstation/PersonalItems/Wearables/Boon_Jet/Franz_Svensson/franzcloakhood.rsi
+  - type: Clothing
+    sprite: *sprite
+  - type: IdentityBlocker
+  - type: HideLayerClothing
+    slots:
+    - Hair
+    - Snout
+    - HeadTop
+    - HeadSide
+    - FacialHair
+
+- type: loadout
+  id: *id
+  storage:
+    back:
+    - *id
+  effects:
+  - !type:PersonalItemLoadoutEffect
+    character:
+    - Franz Svensson

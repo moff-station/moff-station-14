@@ -1,5 +1,21 @@
+#General
 - type: entity
-  parent: [ClothingNeckBase]
+  parent: ClothingNeckMetallicChameleonableBase
+  id: ClothingNeckDogTags
+  name: dog tags
+  description: A necklace with a pair of steel dog tags.
+  suffix: PersonalItem
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Neck/dogtags.rsi
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Neck/dogtags.rsi
+  - type: Item
+    sprite: _Moffstation/Clothing/Neck/dogtags.rsi
+
+#Clown
+- type: entity
+  parent: ClothingNeckClothChameleonableBase
   id: ClothingNeckRuffle
   name: ruffle
   description: A piece of clothing to ponder existence in.
@@ -11,7 +27,25 @@
 
 #Detective
 - type: entity
-  parent: ClothingNeckBase
+  parent: [ClothingNeckMetallicChameleonableBase, BaseSecurityContraband]
+  id: ClothingNeckDetBadge
+  name: Detective's badge
+  description: A standard-issue badge designed for returning to the Head Of Security upon demotion.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Neck/detective-badge.rsi
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Neck/detective-badge.rsi
+  - type: Tag
+    tags:
+    - PetWearable
+    - CorgiWearable
+    - Recyclable
+    - HamsterWearable
+    - WhitelistChameleon
+
+- type: entity
+  parent: ClothingNeckClothChameleonableBase
   id: ClothingNeckTieDetHorrendous
   name: detective's horrendous necktie
   description: A loosely tied necktie, a disturbingly vivid accessory for the over-worked detective.

@@ -1,0 +1,24 @@
+﻿# Player: Nyxilath
+# Character: Delirium
+
+- type: entity
+  parent: ClothingMaskBase
+  id: &id PersonalItemDelirumMask
+  name: mask of Delirium
+  description: A golden mask, it feels unusually warm to the touch.
+  suffix: PersonalItem
+  components:
+  - type: Sprite
+    sprite: &sprite _Moffstation/PersonalItems/Wearables/Nyxilath/Delirium/deliriummask.rsi
+  - type: Clothing
+    sprite: *sprite
+
+- type: loadout
+  id: *id
+  storage:
+    back:
+    - *id
+  effects:
+  - !type:PersonalItemLoadoutEffect
+    character:
+    - Delirium

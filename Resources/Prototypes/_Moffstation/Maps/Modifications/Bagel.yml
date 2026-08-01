@@ -1,0 +1,37 @@
+# Laundromat
+- type: mapModification
+  id: BagelModificationsLaundry
+  applyOn:
+  - Bagel
+  removals:
+  - !type:EntityPrototypeSelector
+    prototype: HospitalCurtainsOpen
+    bounds: "20, 14, 21, 15"
+  - !type:EntityPrototypeSelector
+    prototype: RandomSoap
+    bounds: "20, 14, 21, 15"
+  - !type:EntityPrototypeSelector
+    prototype: FloorDrain
+    bounds: "20, 14, 21, 15"
+  - !type:EntityPrototypeSelector
+    prototype: ToiletDirtyWater
+    bounds: "19, 14, 20, 15"
+  - !type:EntityPrototypeSelector
+    prototype: WindowFrostedDirectional
+    bounds: "19, 14, 20, 15"
+  additions:
+  # Relocate the Toilet and RandomSoap
+  - prototype: ToiletDirtyWater
+    position: 20.5, 13.5
+    rotation: -90
+  - prototype: RandomSoap
+    position: 19.5, 11.5
+    # Add the actual Laundromat
+  - prototype: WashingMachine
+    position: 20.5, 14.5
+  - prototype: WashingMachine
+    position: 19.5, 14.5
+  - prototype: SignLaundromat
+    position: 18.5, 13.5
+  - prototype: DefaultStationBeaconLaundromat
+    position: 20.5, 13.5

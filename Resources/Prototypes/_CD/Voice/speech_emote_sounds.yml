@@ -1,6 +1,7 @@
 # Avali Sounds
 - type: emoteSounds
   id: MaleAvali
+  voiceSelectorName: humanoid-profile-editor-voice-masculine
   params:
     variation: 0.125
   sounds:
@@ -9,11 +10,11 @@
     Laugh:
       path: /Audio/_CD/Voice/Avali/avali_laugh.ogg
     # Moffstation - Start - Avali Sound Additions
-    Crying: 
+    Crying:
       path: /Audio/_Moffstation/Voice/Avali/avali_cry.ogg
-    Gasp: 
+    Gasp:
       path: /Audio/_Moffstation/Voice/Avali/avali_gasp.ogg
-    Hiss: 
+    Hiss:
       path: /Audio/_Moffstation/Voice/Avali/avali_hiss.ogg
     DefaultDeathgasp:
       path: /Audio/_Moffstation/Voice/Avali/avali_deathgasp.ogg
@@ -31,6 +32,7 @@
 
 - type: emoteSounds
   id: FemaleAvali
+  voiceSelectorName: humanoid-profile-editor-voice-feminine
   params:
     variation: 0.125
   sounds:
@@ -39,11 +41,11 @@
     Laugh:
       path: /Audio/_CD/Voice/Avali/avali_laugh.ogg
     # Moffstation - Start - Avali Sound Additions
-    Crying: 
+    Crying:
       path: /Audio/_Moffstation/Voice/Avali/avali_cry.ogg
-    Gasp: 
+    Gasp:
       path: /Audio/_Moffstation/Voice/Avali/avali_gasp.ogg
-    Hiss: 
+    Hiss:
       path: /Audio/_Moffstation/Voice/Avali/avali_hiss.ogg
     DefaultDeathgasp:
       path: /Audio/_Moffstation/Voice/Avali/avali_deathgasp.ogg

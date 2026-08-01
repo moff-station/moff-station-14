@@ -9,10 +9,10 @@ namespace Content.Server._Moffstation.Players;
 /// <summary>
 /// This is a class that allows synchronous code to identify whether a player is WatchListed
 /// </summary>
-public sealed class WatchListTracker : EntitySystem
+public sealed partial class WatchListTracker : EntitySystem
 {
-    [Dependency] private readonly IAdminNotesManager _notes = default!;
-    [Dependency] private readonly IPlayerManager _playerManager = default!;
+    [Dependency] private IAdminNotesManager _notes = default!;
+    [Dependency] private IPlayerManager _playerManager = default!;
 
     public override void Initialize()
     {

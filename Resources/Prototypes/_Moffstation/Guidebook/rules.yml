@@ -5,7 +5,7 @@
   priority: 1
   text: "/ServerInfo/_Moffstation/Guidebook/ServerRules/MoffRules.xml"
   children:
-  - MoffSpaceLawChanges
+#  - MoffSpaceLawChanges
   - MoffOOC
 
 - type: guideEntry
@@ -56,15 +56,16 @@
   ruleEntry: true
   text: "/ServerInfo/_Moffstation/Guidebook/ServerRules/MoffR8Antags.xml"
 
-- type: guideEntry
-  id: MoffSpaceLawChanges
-  name: spacelaw-changes
-  ruleEntry: true
-  text: "/ServerInfo/_Moffstation/Guidebook/ServerRules/MoffSpaceLawChanges.xml"
+# Currently not in use
+#- type: guideEntry
+#  id: MoffSpaceLawChanges
+#  name: spacelaw-changes
+#  ruleEntry: true
+#  text: "/ServerInfo/_Moffstation/Guidebook/ServerRules/MoffSpaceLawChanges.xml"
 
-- type: guideEntry
-  id: SpaceLaw
-  name: guide-entry-rules-space-law
-  text: "/ServerInfo/_Moffstation/Guidebook/Spacelaw/MoffSpaceLaw.xml"
-  children:
-  - SpaceLawCrimeList
+#- type: guideEntry
+#  id: SpaceLaw
+#  name: guide-entry-rules-space-law
+#  text: "/ServerInfo/_Moffstation/Guidebook/Spacelaw/MoffSpaceLaw.xml"
+#  children:
+#  - SpaceLawCrimeList

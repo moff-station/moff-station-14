@@ -31,7 +31,12 @@
       prob: 0.2
     - id: OrganSkeletonPersonTorso
       prob: 0.2
-    - id: ClothingUniformJumpsuitAncient
+    - !type:GroupSelector
+      children:
+      - id: ClothingUniformJumpsuitAncient
+        weight: 3
+      - id: ClothingCostumeBeetleSuit
+        weight: 1
       prob: 0.15
     - id: OrganSkeletonPersonHead
       prob: 0.2

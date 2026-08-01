@@ -1,0 +1,77 @@
+{
+  "version": 1,
+  "license": "CC-BY-SA-4.0",
+  "copyright": "Sprited by Davyei (Github) for Moffstation",
+  "size": {
+    "x": 32,
+    "y": 32
+  },
+  "states": [
+    {
+      "name": "junk-pai"
+    },
+    {
+      "name": "junk-pai-gold"
+    },
+    {
+      "name": "icon-pai-off"
+    },
+    {
+      "name": "pai-base"
+    },
+    {
+      "name": "pai-off-overlay"
+    },
+    {
+      "name": "pai-on-overlay",
+      "delays": [
+        [
+          0.4,
+          0.8
+        ]
+      ]
+    },
+    {
+      "name": "pai-searching-overlay",
+      "delays": [
+        [
+          0.8,
+          0.8
+        ]
+      ]
+    },
+    {
+      "name": "syndicate-base"
+    },
+    {
+      "name": "syndicate-icon-pai-off"
+    },
+    {
+      "name": "syndicate-pai-off-overlay"
+    },
+    {
+      "name": "syndicate-pai-on-overlay",
+      "delays": [
+        [
+          0.4,
+          0.8
+        ]
+      ]
+    },
+    {
+      "name": "syndicate-pai-searching-overlay",
+      "delays": [
+        [
+          0.8,
+          0.8
+        ]
+      ]
+    },
+    {
+      "name": "golden-icon-pai-off"
+    },
+    {
+      "name": "golden-pai-base"
+    }
+  ]
+}

@@ -110,6 +110,31 @@
   - type: ToggleableClothing
     clothingPrototype: ClothingHeadHatHoodWinterSeniorCargo
 
+- type: entity
+  parent: ClothingOuterWinterCoatToggleable
+  id: ClothingOuterWinterCourier
+  name: courier winter coat
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/OuterClothing/WinterCoats/coat.rsi
+    layers:
+    - state: COURIER-icon
+  - type: Item
+    inhandVisuals:
+      left:
+      - state: CARGO-inhand-left
+      right:
+      - state: CARGO-inhand-right
+  - type: Clothing
+    sprite: _Moffstation/Clothing/OuterClothing/WinterCoats/coat.rsi
+    clothingVisuals:
+      outerClothing:
+      - state: COURIER-equipped-OUTERCLOTHING
+      outerClothing-vox:
+      - state: COURIER-equipped-OUTERCLOTHING-vox
+  - type: ToggleableClothing
+    clothingPrototype: ClothingHeadHatHoodWinterCargo
+
 #QM
 - type: entity
   parent: ClothingOuterWinterCoatToggleable

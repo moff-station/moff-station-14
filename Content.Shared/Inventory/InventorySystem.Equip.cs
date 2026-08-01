@@ -24,18 +24,19 @@ namespace Content.Shared.Inventory;
 
 public abstract partial class InventorySystem
 {
-    [Dependency] private readonly SharedPopupSystem _popup = default!;
-    [Dependency] private readonly MovementSpeedModifierSystem _movementSpeed = default!;
-    [Dependency] private readonly SharedInteractionSystem _interactionSystem = default!;
-    [Dependency] private readonly SharedItemSystem _item = default!;
-    [Dependency] private readonly SharedAudioSystem _audio = default!;
-    [Dependency] private readonly SharedContainerSystem _containerSystem = default!;
-    [Dependency] private readonly SharedDoAfterSystem _doAfter = default!;
-    [Dependency] private readonly SharedHandsSystem _handsSystem = default!;
-    [Dependency] private readonly SharedTransformSystem _transform = default!;
-    [Dependency] private readonly EntityWhitelistSystem _whitelistSystem = default!;
-    [Dependency] private readonly SharedStrippableSystem _strippable = default!;
-    [Dependency] private readonly SuitStorageAttachmentSystem _suitStorageAttachment = default!; // Moffstation
+    [Dependency] private SharedPopupSystem _popup = default!;
+    [Dependency] private MovementSpeedModifierSystem _movementSpeed = default!;
+    [Dependency] private SharedInteractionSystem _interactionSystem = default!;
+    [Dependency] private SharedItemSystem _item = default!;
+    [Dependency] private SharedAudioSystem _audio = default!;
+    [Dependency] private SharedContainerSystem _containerSystem = default!;
+    [Dependency] private SharedDoAfterSystem _doAfter = default!;
+    [Dependency] private SharedHandsSystem _handsSystem = default!;
+    [Dependency] private SharedTransformSystem _transform = default!;
+    [Dependency] private EntityWhitelistSystem _whitelistSystem = default!;
+    [Dependency] private SharedStrippableSystem _strippable = default!;
+
+    [Dependency] private SuitStorageAttachmentSystem _suitStorageAttachment = default!; // Moffstation
 
     private static readonly ProtoId<ItemSizePrototype> PocketableItemSize = "Small";
 
@@ -114,7 +115,7 @@ public abstract partial class InventorySystem
         // before we drop the item, check that it can be equipped in the first place.
         if (!CanEquip(actor, held.Value, ev.Slot, out var reason))
         {
-            _popup.PopupCursor(Loc.GetString(reason));
+            _popup.PopupCursor(Loc.GetString(reason), actor);
             return;
         }
 
@@ -136,7 +137,7 @@ public abstract partial class InventorySystem
         if (!Resolve(target, ref inventory, false))
         {
             if (!silent)
-                _popup.PopupCursor(Loc.GetString("inventory-component-can-equip-cannot"));
+                _popup.PopupCursor(Loc.GetString("inventory-component-can-equip-cannot"), actor);
             return false;
         }
 
@@ -147,14 +148,14 @@ public abstract partial class InventorySystem
         if (!TryGetSlotContainer(target, slot, out var slotContainer, out var slotDefinition, inventory))
         {
             if (!silent)
-                _popup.PopupCursor(Loc.GetString("inventory-component-can-equip-cannot"));
+                _popup.PopupCursor(Loc.GetString("inventory-component-can-equip-cannot"), actor);
             return false;
         }
 
         if (!force && !CanEquip(actor, target, itemUid, slot, out var reason, slotDefinition, inventory, clothing))
         {
             if (!silent)
-                _popup.PopupCursor(Loc.GetString(reason));
+                _popup.PopupCursor(Loc.GetString(reason), actor);
             return false;
         }
 
@@ -192,7 +193,7 @@ public abstract partial class InventorySystem
         if (!_containerSystem.Insert(itemUid, slotContainer))
         {
             if (!silent)
-                _popup.PopupCursor(Loc.GetString("inventory-component-can-unequip-cannot"));
+                _popup.PopupCursor(Loc.GetString("inventory-component-can-unequip-cannot"), actor);
             return false;
         }
 
@@ -426,14 +427,14 @@ public abstract partial class InventorySystem
         if (!Resolve(target, ref inventory, false))
         {
             if (!silent)
-                _popup.PopupCursor(Loc.GetString("inventory-component-can-unequip-cannot"));
+                _popup.PopupCursor(Loc.GetString("inventory-component-can-unequip-cannot"), actor);
             return false;
         }
 
         if (!TryGetSlotContainer(target, slot, out var slotContainer, out var slotDefinition, inventory))
         {
             if (!silent)
-                _popup.PopupCursor(Loc.GetString("inventory-component-can-unequip-cannot"));
+                _popup.PopupCursor(Loc.GetString("inventory-component-can-unequip-cannot"), actor);
             return false;
         }
 
@@ -445,7 +446,7 @@ public abstract partial class InventorySystem
         if (!force && !CanUnequip(actor, target, slot, out var reason, slotContainer, slotDefinition, inventory))
         {
             if (!silent)
-                _popup.PopupCursor(Loc.GetString(reason));
+                _popup.PopupCursor(Loc.GetString(reason), actor);
             return false;
         }
 
@@ -505,7 +506,7 @@ public abstract partial class InventorySystem
         // the reason we check for > 1 is because the first item is always the one we are trying to unequip,
         // whereas we only want to notify for extra dropped items.
         if (!silent && firstRun && itemsDropped > 1)
-            _popup.PopupClient(Loc.GetString("inventory-component-dropped-from-unequip", ("items", itemsDropped - 1)), target, target);
+            _popup.PopupEntity(Loc.GetString("inventory-component-dropped-from-unequip", ("items", itemsDropped - 1)), target, target);
 
         // TODO: Inventory needs a hot cleanup hoo boy
         // Check if something else (AKA toggleable) dumped it into a container.
@@ -597,7 +598,7 @@ public abstract partial class InventorySystem
     {
         foreach (var item in _handsSystem.EnumerateHeld(uid))
         {
-            _interactionSystem.DoContactInteraction(uid, item);
+            _interactionSystem.DoContactInteraction(uid, item, null, true); // Stellar - Interaction particles
         }
     }
 

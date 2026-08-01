@@ -7,10 +7,10 @@ using Robust.Shared.Network;
 
 namespace Content.Server._Moffstation.Antag;
 
-public sealed class WeightedAntagManager
+public sealed partial class WeightedAntagManager : IWeightedAntagManager //Moffstation - Dummay Weighted Antags
 {
-    [Dependency] private readonly IServerDbManager _db = default!;
-    [Dependency] private readonly ITaskManager _taskManager = default!;
+    [Dependency] private IServerDbManager _db = default!;
+    [Dependency] private ITaskManager _taskManager = default!;
 
     private ISawmill _logger = default!;
     private readonly ConcurrentDictionary<NetUserId, int> _cachedAntagWeight = new();
@@ -31,6 +31,15 @@ public sealed class WeightedAntagManager
         _cachedAntagWeight[userId] = newWeight;
 
         _logger.Info($"Updated antag weight for {userId}: {oldWeight} -> {newWeight}");
+    }
+
+    public void IncrementWeight(NetUserId userId, int amount = 1)
+    {
+        // Seed the cache from the DB first so an unseen user increments from their persisted weight, not zero.
+        var oldWeight = GetWeight(userId);
+        var newWeight = _cachedAntagWeight.AddOrUpdate(userId, oldWeight + amount, (_, current) => current + amount);
+
+        _logger.Info($"Incremented antag weight for {userId}: {oldWeight} -> {newWeight}");
     }
 
     public async Task Save()

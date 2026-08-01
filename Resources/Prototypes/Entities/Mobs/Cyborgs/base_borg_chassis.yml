@@ -141,10 +141,10 @@
     speechVerb: Robotic
     speechSounds: Borg
   - type: Vocal
-    sounds:
-      Unsexed: UnisexSilicon
+    emoteSounds: UnisexSilicon
     wilhelmProbability: 0
   - type: DamagedSiliconAccent
+    damageAtMaxCorruption: 300
   - type: UnblockableSpeech
   - type: FootstepModifier
     footstepSoundCollection:
@@ -163,8 +163,10 @@
     - enum.BorgUiKey.Key
   - type: LockedWiresPanel
   - type: Damageable
+  - type: Injurable
     damageContainer: Silicon
   - type: Destructible
+    generateOverkillThreshold: false
     thresholds:
     - trigger:
         !type:DamageTrigger
@@ -324,6 +326,17 @@
   - type: InteractionPopup
     interactSuccessSound:
       path: /Audio/Ambience/Objects/periodic_beep.ogg
+  # Moffstation - Begin - Borg sensors
+  - type: BorgSensor
+    sensorType: NTBorgSensor
+  - type: DeviceNetwork
+    deviceNetId: Wireless
+    transmitFrequencyId: SuitSensor
+    savableAddress: false
+  - type: WirelessNetworkConnection
+    range: 1200
+  - type: StationLimitedNetwork
+  # Moffstation - End
 
 - type: entity
   id: BaseBorgChassisSyndicate
@@ -357,8 +370,7 @@
     allowedEmotes:
     - Laugh
   - type: Vocal
-    sounds:
-      Unsexed: UnisexSiliconSyndicate
+    emoteSounds: UnisexSiliconSyndicate
   - type: PointLight
     color: "#dd200b"
   - type: BypassLock
@@ -420,8 +432,7 @@
     allowedEmotes:
     - Laugh
   - type: Vocal
-    sounds:
-      Unsexed: UnisexSiliconSyndicate
+    emoteSounds: UnisexSiliconSyndicate
   - type: PointLight
     color: "#dd200b"
   - type: BypassLock
@@ -481,8 +492,7 @@
     allowedEmotes:
     - Laugh
   - type: Vocal
-    sounds:
-      Unsexed: UnisexSiliconXenoborg
+    emoteSounds: UnisexSiliconXenoborg
     wilhelmProbability: 0
   - type: DamagedSiliconAccent
   - type: UnblockableSpeech

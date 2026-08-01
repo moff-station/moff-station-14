@@ -24,9 +24,9 @@
       - Window
   - type: Sprite
     drawdepth: WallTops
-    sprite: Structures/Windows/window.rsi
+    sprite: _Moffstation/Structures/Windows/window.rsi # Moffstation
   - type: Icon
-    sprite: Structures/Windows/window.rsi
+    sprite: _Moffstation/Structures/Windows/window.rsi # Moffstation
     state: full
   - type: Physics
     bodyType: Static
@@ -40,8 +40,9 @@
         layer:
         - GlassLayer
   - type: Damageable
-    damageContainer: StructuralInorganic
     damageModifierSet: Glass
+  - type: Injurable
+    damageContainer: StructuralInorganic
   - type: ExaminableDamage
     messages: WindowMessages
   - type: Repairable
@@ -51,15 +52,6 @@
     fx: EffectRCDDeconstruct4
   - type: Destructible
     thresholds:
-    - trigger:
-        !type:DamageTrigger
-        damage: 150 #excess damage (nuke?). avoid computational cost of spawning entities.
-      behaviors:
-      - !type:PlaySoundBehavior
-        sound:
-          collection: WindowShatter
-      - !type:DoActsBehavior
-        acts: [ "Destruction" ]
     - trigger:
         !type:DamageTrigger
         damage: 50
@@ -76,7 +68,7 @@
         acts: [ "Destruction" ]
   - type: Airtight
   - type: IconSmooth
-    key: windows
+    key: walls # Moffstation
     base: window
   - type: InteractionPopup
     interactSuccessString: comp-window-knock
@@ -145,10 +137,10 @@
         collection: GlassSmack
   - type: Sprite
     drawdepth: Mobs
-    sprite: Structures/Windows/directional.rsi
+    sprite: _Moffstation/Structures/Windows/directional.rsi # Moffstation
     state: window
   - type: Icon
-    sprite: Structures/Windows/directional.rsi
+    sprite: _Moffstation/Structures/Windows/directional.rsi # Moffstation
     state: window
   - type: InteractionPopup
     interactSuccessString: comp-window-knock
@@ -169,8 +161,9 @@
         - GlassLayer
   - type: Repairable
   - type: Damageable
-    damageContainer: StructuralInorganic
     damageModifierSet: Glass
+  - type: Injurable
+    damageContainer: StructuralInorganic
   - type: ExaminableDamage
     messages: WindowMessages
   - type: RCDDeconstructable
@@ -179,15 +172,6 @@
     fx: EffectRCDDeconstruct2
   - type: Destructible
     thresholds:
-    - trigger:
-        !type:DamageTrigger
-        damage: 50 #excess damage (nuke?). avoid computational cost of spawning entities.
-      behaviors:
-      - !type:DoActsBehavior
-        acts: [ "Destruction" ]
-      - !type:PlaySoundBehavior
-        sound:
-          collection: WindowShatter
     - trigger:
         !type:DamageTrigger
         damage: 25
@@ -256,7 +240,7 @@
   components:
   - type: Sprite
     drawdepth: WallTops
-    sprite: Structures/Windows/window_diagonal.rsi
+    sprite: _Moffstation/Structures/Windows/window_diagonal.rsi # Moffstation
     state: state0
   - type: Tag
     tags:
@@ -264,10 +248,10 @@
     - Window
   - type: IconSmooth
     mode: Diagonal
-    key: windows
+    key: walls # Moffstation
     base: state
   - type: Icon
-    sprite: Structures/Windows/window_diagonal.rsi
+    sprite: _Moffstation/Structures/Windows/window_diagonal.rsi # Moffstation
     state: state0
   - type: Fixtures
     fixtures:

@@ -13,10 +13,10 @@ using Content.Shared.GameTicking.Components;
 
 namespace Content.Server._Moffstation.GameTicking.Rules;
 
-public sealed class PiratesRuleSystem : GameRuleSystem<PiratesRuleComponent>
+public sealed partial class PiratesRuleSystem : GameRuleSystem<PiratesRuleComponent>
 {
-    [Dependency] private readonly AntagSelectionSystem _antag = default!;
-    [Dependency] private readonly StationSystem _station = default!;
+    [Dependency] private AntagSelectionSystem _antag = default!;
+    [Dependency] private StationSystem _station = default!;
 
     public override void Initialize()
     {

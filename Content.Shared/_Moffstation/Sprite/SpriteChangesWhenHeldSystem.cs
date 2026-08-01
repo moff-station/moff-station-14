@@ -23,8 +23,8 @@ public sealed partial class SpriteChangesWhenHeldComponent : Component
 /// <see cref="SpriteChangesWhenHeldComponent"/>.
 public sealed partial class SpriteChangesWhenHeldSystem : EntitySystem
 {
-    [Dependency] private readonly SharedHandsSystem _hands = default!;
-    [Dependency] private readonly SharedAppearanceSystem _appearance = default!;
+    [Dependency] private SharedHandsSystem _hands = default!;
+    [Dependency] private SharedAppearanceSystem _appearance = default!;
 
     public override void Initialize()
     {

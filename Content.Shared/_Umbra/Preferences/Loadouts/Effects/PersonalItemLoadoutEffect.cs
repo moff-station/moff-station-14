@@ -1,4 +1,5 @@
 using System.Diagnostics.CodeAnalysis;
+using System.Linq;
 using Content.Shared.Preferences;
 using Content.Shared.Preferences.Loadouts;
 using Content.Shared.Preferences.Loadouts.Effects;
@@ -28,17 +29,11 @@ public sealed partial class PersonalItemLoadoutEffect : LoadoutEffect
         RoleLoadout loadout,
         ICommonSession? session,
         IDependencyCollection collection,
-        [NotNullWhen(false)] out FormattedMessage? reason)
+        [NotNullWhen(false)] out FormattedMessage? reason
+    )
     {
-        var foundMatchingName = false;
-        foreach (var name in CharacterName)
-        {
-            if (name.Equals(profile.Name, StringComparison.OrdinalIgnoreCase))
-            {
-                foundMatchingName = true;
-                break;
-            }
-        }
+        var loadoutName = loadout.EntityName ?? profile.Name;
+        var foundMatchingName = CharacterName.Any(it => it.Equals(loadoutName, StringComparison.OrdinalIgnoreCase));
 
         if (!foundMatchingName)
         {
@@ -50,15 +45,9 @@ public sealed partial class PersonalItemLoadoutEffect : LoadoutEffect
 
         if (!(Jobs.Count == 0 || Jobs.Contains(loadout.Role)))
         {
-            var jobNames = new List<string>();
-            foreach (var jobId in Jobs)
-            {
-                jobNames.Add(Loc.GetString(jobId));
-            }
-
             reason = FormattedMessage.FromUnformatted(Loc.GetString(
                 "loadout-personalitem-joblocked",
-                ("job", string.Join(", ", jobNames)),
+                ("job", string.Join(", ", Jobs.Select(it => Loc.GetString(it)))),
                 ("received", Loc.GetString(loadout.Role))));
 
             return false;

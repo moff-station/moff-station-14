@@ -1,7 +1,7 @@
 - type: entity
-  name: Moffstation Minifigure Spawner
-  id: MoffstationFigureSpawner
   parent: MarkerBase
+  id: MoffstationFigureSpawner
+  name: Moffstation Minifigure Spawner
   components:
   - type: Sprite
     layers:
@@ -53,6 +53,7 @@
         - id: ToyFigurineHeather
         - id: ToyFigurineHot
         - id: ToyFigurineIcarus
+        - id: ToyFigurineIchabod
         - id: ToyFigurineIo
         - id: ToyFigurineIris
         - id: ToyFigurineJelob

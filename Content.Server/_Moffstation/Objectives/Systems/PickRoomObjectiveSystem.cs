@@ -5,9 +5,9 @@ using Robust.Shared.Random;
 
 namespace Content.Server._Moffstation.Objectives.Systems;
 
-public sealed class PickRoomObjectiveSystem : EntitySystem
+public sealed partial class PickRoomObjectiveSystem : EntitySystem
 {
-    [Dependency] private readonly IRobustRandom _random = default!;
+    [Dependency] private IRobustRandom _random = default!;
 
     public override void Initialize()
     {

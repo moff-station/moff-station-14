@@ -13,11 +13,13 @@
   - type: Stunbaton
     energyPerUse: 50
   - type: ItemToggle
-    predictable: false
-    soundActivate:
-      collection: sparks
-      params:
-        variation: 0.250
+    onActivate: false
+# ES START
+#    soundActivate:
+#      collection: sparks
+#      params:
+#        variation: 0.250
+# ES END
     soundDeactivate:
       collection: sparks
       params:
@@ -40,7 +42,11 @@
         Blunt: 7
     bluntStaminaDamageFactor: 2.0
     angle: 60
-    animation: WeaponArcThrust
+    wideAnimation: WeaponArcThrust
+# ES START
+  - type: ESSparkOnItemToggle
+    count: 1
+# ES END
   - type: StaminaDamageOnHit
     damage: 35
     sound: /Audio/Weapons/egloves.ogg
@@ -72,10 +78,9 @@
   - type: StaticPrice
     price: 80
   - type: Riggable
-  - type: SolutionContainerManager
+  - type: SolutionManager
     solutions:
-      battery:
-        maxVol: 5
+    - SolutionRiggable
   - type: InjectableSolution
     solution: battery
   - type: DrawableSolution

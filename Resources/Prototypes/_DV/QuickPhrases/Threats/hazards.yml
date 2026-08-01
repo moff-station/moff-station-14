@@ -1,0 +1,27 @@
+- type: quickPhrase
+  parent: BaseThreatPhrase
+  abstract: true
+  id: BaseHazardThreatPhrase
+  group: phrase-group-hazards
+  styleClass: EngineeringButton
+
+- { type: quickPhrase, parent: BaseHazardThreatPhrase, id: HazardSpacePhrase }
+- { type: quickPhrase, parent: BaseHazardThreatPhrase, id: HazardLowPressurePhrase }
+- { type: quickPhrase, parent: BaseHazardThreatPhrase, id: HazardHighPressurePhrase }
+- { type: quickPhrase, parent: BaseHazardThreatPhrase, id: HazardHeatPhrase }
+- { type: quickPhrase, parent: BaseHazardThreatPhrase, id: HazardColdPhrase }
+- { type: quickPhrase, parent: BaseHazardThreatPhrase, id: HazardGasLeakPhrase }
+- { type: quickPhrase, parent: BaseHazardThreatPhrase, id: HazardExplosionPhrase }
+- { type: quickPhrase, parent: BaseHazardThreatPhrase, id: HazardRadiationPhrase }
+- { type: quickPhrase, parent: BaseHazardThreatPhrase, id: HazardStructureDamagePhrase }
+- { type: quickPhrase, parent: BaseHazardThreatPhrase, id: HazardChemicalSpillPhrase }
+- { type: quickPhrase, parent: BaseHazardThreatPhrase, id: HazardShockPhrase }
+- { type: quickPhrase, parent: BaseHazardThreatPhrase, id: HazardPhrase }
+- { type: quickPhrase, parent: BaseHazardThreatPhrase, id: HazardMeteorsPhrase }
+- { type: quickPhrase, parent: BaseHazardThreatPhrase, id: HazardPoisonPhrase }
+- { type: quickPhrase, parent: BaseHazardThreatPhrase, id: HazardFirePhrase }
+- { type: quickPhrase, parent: BaseHazardThreatPhrase, id: HazardPowerOutagePhrase }
+- { type: quickPhrase, parent: BaseHazardThreatPhrase, id: HazardLowPhrase }
+- { type: quickPhrase, parent: BaseHazardThreatPhrase, id: HazardInfectionPhrase }
+- { type: quickPhrase, parent: BaseHazardThreatPhrase, id: HazardViralThreatPhrase }
+- { type: quickPhrase, parent: BaseHazardThreatPhrase, id: HazardBrokenEquipmentPhrase }

@@ -61,6 +61,7 @@
   - BorgModuleConstruction
   - BorgModuleRCD
   - BorgModuleCable
+  - BorgModuleGravity # Moffstation - Magboots module
 
   requiredModules:
   - simpleDescription: borg-module-requirement-tool
@@ -109,12 +110,19 @@
   - BorgModuleMining
   - BorgModuleTraversal
   - BorgModuleAppraisal
+  - BorgModuleGravity # Moffstation - Magboots module
 
   requiredModules:
   - simpleDescription: borg-module-requirement-mining
     whitelist:
       tags:
       - CyborgMiningModule
+  # Moffstation - Start - Advanced Traversal Module
+  - simpleDescription: borg-module-requirement-traversal
+    whitelist:
+      tags:
+      - CyborgTraversalModule
+  # Moffstation - End
 
   radioChannels:
   - Supply

@@ -3,13 +3,11 @@
   id: LemonLimeBittersGlass
   suffix: lemon lime and bitters
   components:
-  - type: SolutionContainerManager
-    solutions:
-      drink:
-        maxVol: 30
-        reagents:
-        - ReagentId: LemonLimeBitters
-          Quantity: 30
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: LemonLimeBitters
+        Quantity: 30
   - type: Icon
     sprite: _Moffstation/Objects/Consumable/Drinks/lemonlimebitters.rsi
     state: icon
@@ -19,13 +17,11 @@
   id: PinkGinGlass
   suffix: pink gin
   components:
-  - type: SolutionContainerManager
-    solutions:
-      drink:
-        maxVol: 30
-        reagents:
-        - ReagentId: PinkGin
-          Quantity: 30
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: PinkGin
+        Quantity: 30
   - type: Icon
     sprite: _Moffstation/Objects/Consumable/Drinks/ginpink.rsi
     state: icon
@@ -35,13 +31,11 @@
   id: PlatersPunchGlass
   suffix: planters punch
   components:
-  - type: SolutionContainerManager
-    solutions:
-      drink:
-        maxVol: 30
-        reagents:
-        - ReagentId: PlantersPunch
-          Quantity: 30
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: PlantersPunch
+        Quantity: 30
   - type: Icon
     sprite: _Moffstation/Objects/Consumable/Drinks/planterspunch.rsi
     state: icon
@@ -51,13 +45,11 @@
   id: BreathalyzerGlass
   suffix: breathalyzer
   components:
-  - type: SolutionContainerManager
-    solutions:
-      drink:
-        maxVol: 30
-        reagents:
-        - ReagentId: Breathalyzer
-          Quantity: 30
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: Breathalyzer
+        Quantity: 30
   - type: Icon
     sprite: _Moffstation/Objects/Consumable/Drinks/breathalyzer.rsi
     state: icon
@@ -67,13 +59,11 @@
   id: CorpseReviverGlass
   suffix: Corpse Reviver no. 2
   components:
-  - type: SolutionContainerManager
-    solutions:
-      drink:
-        maxVol: 30
-        reagents:
-        - ReagentId: CorpseReviver
-          Quantity: 30
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: CorpseReviver
+        Quantity: 30
   - type: Icon
     sprite: _Moffstation/Objects/Consumable/Drinks/corpsereviver.rsi
     state: icon
@@ -83,13 +73,11 @@
   id: PrairieCocktailGlass
   suffix: Prairie Cocktail
   components:
-  - type: SolutionContainerManager
-    solutions:
-      drink:
-        maxVol: 30
-        reagents:
-        - ReagentId: PrairieCocktail
-          Quantity: 30
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: PrairieCocktail
+        Quantity: 30
   - type: Icon
     sprite: _Moffstation/Objects/Consumable/Drinks/prairiecocktail.rsi
     state: icon
@@ -99,13 +87,11 @@
   id: MossySpecialGlass
   suffix: Mossy Special
   components:
-  - type: SolutionContainerManager
-    solutions:
-      drink:
-        maxVol: 30
-        reagents:
-        - ReagentId: MossySpecial
-          Quantity: 30
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: MossySpecial
+        Quantity: 30
   - type: Icon
     sprite: _Moffstation/Objects/Consumable/Drinks/mossyspecial.rsi
     state: icon
@@ -115,13 +101,11 @@
   id: DrinkScrantonSpecialGlass
   suffix: scranton special
   components:
-  - type: SolutionContainerManager
-    solutions:
-      drink:
-        maxVol: 30
-        reagents:
-        - ReagentId: ScrantonSpecial
-          Quantity: 30
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: ScrantonSpecial
+        Quantity: 30
   - type: Icon
     sprite: _Moffstation/Objects/Consumable/Drinks/scrantonspecial.rsi
     state: icon
@@ -131,13 +115,11 @@
   id: ApexColaGlass
   suffix: Apex Cola
   components:
-  - type: SolutionContainerManager
-    solutions:
-      drink:
-        maxVol: 30
-        reagents:
-        - ReagentId: ApexCola
-          Quantity: 30
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: ApexCola
+        Quantity: 30
   - type: Icon
     sprite: _Moffstation/Objects/Consumable/Drinks/apexcola.rsi
     state: icon
@@ -147,13 +129,11 @@
   id: CocoonGlass
   suffix: Cocoon
   components:
-  - type: SolutionContainerManager
-    solutions:
-      drink:
-        maxVol: 30
-        reagents:
-        - ReagentId: Cocoon
-          Quantity: 30
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: Cocoon
+        Quantity: 30
   - type: Icon
     sprite: _Moffstation/Objects/Consumable/Drinks/cocoon.rsi
     state: icon
@@ -163,13 +143,11 @@
   id: CoughDropGlass
   suffix: Cough Drop
   components:
-  - type: SolutionContainerManager
-    solutions:
-      drink:
-        maxVol: 30
-        reagents:
-        - ReagentId: CoughDrop
-          Quantity: 30
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: CoughDrop
+        Quantity: 30
   - type: Icon
     sprite: _Moffstation/Objects/Consumable/Drinks/coughdrop.rsi
     state: icon
@@ -179,13 +157,11 @@
   id: FertilizerGlass
   suffix: Fertilizer
   components:
-  - type: SolutionContainerManager
-    solutions:
-      drink:
-        maxVol: 30
-        reagents:
-        - ReagentId: Fertilizer
-          Quantity: 30
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: Fertilizer
+        Quantity: 30
   - type: Icon
     sprite: _Moffstation/Objects/Consumable/Drinks/fertilizer.rsi
     state: icon
@@ -195,13 +171,11 @@
   id: GelatinGlass
   suffix: Gelatin
   components:
-  - type: SolutionContainerManager
-    solutions:
-      drink:
-        maxVol: 30
-        reagents:
-        - ReagentId: Gelatin
-          Quantity: 30
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: Gelatin
+        Quantity: 30
   - type: Icon
     sprite: _Moffstation/Objects/Consumable/Drinks/gelatin.rsi
     state: icon
@@ -211,13 +185,11 @@
   id: MeatAnomalyGlass
   suffix: Meat Anomaly
   components:
-  - type: SolutionContainerManager
-    solutions:
-      drink:
-        maxVol: 30
-        reagents:
-        - ReagentId: MeatAnomaly
-          Quantity: 30
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: MeatAnomaly
+        Quantity: 30
   - type: Icon
     sprite: _Moffstation/Objects/Consumable/Drinks/meatanomaly.rsi
     state: icon
@@ -227,13 +199,11 @@
   id: MeatPulpGlass
   suffix: Meat Pulp
   components:
-  - type: SolutionContainerManager
-    solutions:
-      drink:
-        maxVol: 30
-        reagents:
-        - ReagentId: MeatPulp
-          Quantity: 30
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: MeatPulp
+        Quantity: 30
   - type: Icon
     sprite: _Moffstation/Objects/Consumable/Drinks/meatpulp.rsi
     state: icon
@@ -243,13 +213,11 @@
   id: SolarHurricaneGlass
   suffix: Solar Hurricane
   components:
-  - type: SolutionContainerManager
-    solutions:
-      drink:
-        maxVol: 30
-        reagents:
-        - ReagentId: SolarHurricane
-          Quantity: 30
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: SolarHurricane
+        Quantity: 30
   - type: Icon
     sprite: _Moffstation/Objects/Consumable/Drinks/solarhurricane.rsi
     state: icon
@@ -259,13 +227,11 @@
   id: RussianMothroachGlass
   suffix: Russian Mothroach
   components:
-  - type: SolutionContainerManager
-    solutions:
-      drink:
-        maxVol: 30
-        reagents:
-        - ReagentId: RussianMothroach
-          Quantity: 30
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: RussianMothroach
+        Quantity: 30
   - type: Icon
     sprite: _Moffstation/Objects/Consumable/Drinks/russianmothroach.rsi
     state: icon
@@ -275,13 +241,11 @@
   id: UprootingGlass
   suffix: Uprooting
   components:
-  - type: SolutionContainerManager
-    solutions:
-      drink:
-        maxVol: 30
-        reagents:
-        - ReagentId: Uprooting
-          Quantity: 30
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: Uprooting
+        Quantity: 30
   - type: Icon
     sprite: _Moffstation/Objects/Consumable/Drinks/uprooting.rsi
     state: icon

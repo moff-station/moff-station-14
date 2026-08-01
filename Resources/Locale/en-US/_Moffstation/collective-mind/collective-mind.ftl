@@ -1,1 +1,0 @@
-collective-mind-xeno = Xeno

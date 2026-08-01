@@ -9,10 +9,10 @@ using Robust.Shared.Console;
 namespace Content.Server._Moffstation.Antag.Commands;
 
 [AdminCommand(AdminFlags.Admin)]
-public sealed class AntagWeights : LocalizedEntityCommands
+public sealed partial class AntagWeights : LocalizedEntityCommands
 {
-    [Dependency] private readonly IPlayerManager _players = default!;
-    [Dependency] private readonly WeightedAntagManager _antagWeight = default!;
+    [Dependency] private IPlayerManager _players = default!;
+    [Dependency] private IWeightedAntagManager _antagWeight = default!; //Moffstation Dummy Antag Weights
 
     public override string Command => "antagweights";
 
@@ -40,11 +40,11 @@ public sealed class AntagWeights : LocalizedEntityCommands
 }
 
 [AdminCommand(AdminFlags.Admin)]
-public sealed class SetAntagWeight : LocalizedEntityCommands
+public sealed partial class SetAntagWeight : LocalizedEntityCommands
 {
-    [Dependency] private readonly IPlayerManager _players = default!;
-    [Dependency] private readonly WeightedAntagManager _antagWeight = default!;
-    [Dependency] private readonly IAdminLogManager _adminLogger = default!;
+    [Dependency] private IPlayerManager _players = default!;
+    [Dependency] private IWeightedAntagManager _antagWeight = default!; //Moffstation Dummy Antag Weights
+    [Dependency] private IAdminLogManager _adminLogger = default!;
 
     public override string Command => "setantagweight";
 

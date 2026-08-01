@@ -1,0 +1,25 @@
+- type: entity
+  parent: ShuttleWindow
+  id: ShuttleSovietWindow
+  name: shuttle window
+  suffix: USSP
+  components:
+  - type: Sprite
+    drawdepth: WallTops
+    sprite: _Moffstation/Structures/Windows/soviet_shuttle_window.rsi
+  - type: Icon
+    sprite: _Moffstation/Structures/Windows/soviet_shuttle_window.rsi
+
+- type: entity
+  parent: ShuttleWindowDiagonal
+  id: ShuttleSovietWindowDiagonal
+  name: shuttle window
+  suffix: USSP
+  components:
+  - type: Sprite
+    drawdepth: WallTops
+    sprite: _Moffstation/Structures/Windows/soviet_shuttle_window_diagonal.rsi
+    state: state0
+  - type: Icon
+    sprite: _Moffstation/Structures/Windows/soviet_shuttle_window_diagonal.rsi
+    state: state0

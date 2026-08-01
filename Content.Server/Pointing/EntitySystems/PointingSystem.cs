@@ -6,6 +6,7 @@ using Content.Shared.Database;
 using Content.Shared.Examine;
 using Content.Shared.Eye;
 using Content.Shared.Ghost;
+using Content.Shared.Hands.EntitySystems; // MACRO point modifiers
 using Content.Shared.IdentityManagement;
 using Content.Shared.Input;
 using Content.Shared.Interaction;
@@ -29,23 +30,24 @@ using Robust.Shared.Timing;
 namespace Content.Server.Pointing.EntitySystems
 {
     [UsedImplicitly]
-    internal sealed class PointingSystem : SharedPointingSystem
+    internal sealed partial class PointingSystem : SharedPointingSystem
     {
-        [Dependency] private readonly IConfigurationManager _config = default!;
-        [Dependency] private readonly IReplayRecordingManager _replay = default!;
-        [Dependency] private readonly IMapManager _mapManager = default!;
-        [Dependency] private readonly IPlayerManager _playerManager = default!;
-        [Dependency] private readonly ITileDefinitionManager _tileDefinitionManager = default!;
-        [Dependency] private readonly IGameTiming _gameTiming = default!;
-        [Dependency] private readonly RotateToFaceSystem _rotateToFaceSystem = default!;
-        [Dependency] private readonly SharedContainerSystem _container = default!;
-        [Dependency] private readonly SharedPopupSystem _popup = default!;
-        [Dependency] private readonly VisibilitySystem _visibilitySystem = default!;
-        [Dependency] private readonly SharedMindSystem _minds = default!;
-        [Dependency] private readonly SharedTransformSystem _transform = default!;
-        [Dependency] private readonly SharedMapSystem _map = default!;
-        [Dependency] private readonly IAdminLogManager _adminLogger = default!;
-        [Dependency] private readonly ExamineSystemShared _examine = default!;
+        [Dependency] private IConfigurationManager _config = default!;
+        [Dependency] private IReplayRecordingManager _replay = default!;
+        [Dependency] private IPlayerManager _playerManager = default!;
+        [Dependency] private ITileDefinitionManager _tileDefinitionManager = default!;
+        [Dependency] private IGameTiming _gameTiming = default!;
+        [Dependency] private RotateToFaceSystem _rotateToFaceSystem = default!;
+        [Dependency] private SharedContainerSystem _container = default!;
+        [Dependency] private SharedPopupSystem _popup = default!;
+        [Dependency] private VisibilitySystem _visibilitySystem = default!;
+        [Dependency] private SharedMindSystem _minds = default!;
+        [Dependency] private SharedTransformSystem _transform = default!;
+        [Dependency] private SharedMapSystem _map = default!;
+        [Dependency] private IAdminLogManager _adminLogger = default!;
+        [Dependency] private ExamineSystemShared _examine = default!;
+        [Dependency] private SharedHandsSystem _hands = default!; // MACRO add, point modifiers
+        [Dependency] private EntityQuery<InventoryComponent> _inventoryQuery = default!;
 
         private TimeSpan _pointDelay = TimeSpan.FromSeconds(0.5f);
 
@@ -56,6 +58,11 @@ namespace Content.Server.Pointing.EntitySystems
         private readonly Dictionary<ICommonSession, TimeSpan> _pointers = new();
 
         private const float PointingRange = 15f;
+        // MACRO add start: point modifiers
+        private const string PointVerbSelf = "point";
+        private const string PointVerbOther = "points";
+        private const string PointingArrow = "PointingArrow";
+        // MACRO end
 
         private void GetCompState(Entity<PointingArrowComponent> entity, ref ComponentGetState args)
         {
@@ -103,10 +110,10 @@ namespace Content.Server.Pointing.EntitySystems
                 // Someone pointing at YOU is slightly more important
                 var popupType = viewerEntity == pointed ? PopupType.Medium : PopupType.Small;
 
-                RaiseNetworkEvent(new PopupEntityEvent(message, popupType, netSource), viewerEntity);
+                RaiseNetworkEvent(new PopupEntityEvent(message, popupType, _gameTiming.CurTick, netSource), viewerEntity); // TODO: Make this use the popup system API
             }
 
-            _replay.RecordServerMessage(new PopupEntityEvent(viewerMessage, PopupType.Small, netSource));
+            _replay.RecordServerMessage(new PopupEntityEvent(viewerMessage, PopupType.Small, _gameTiming.CurTick, netSource));
         }
 
         public bool InRange(EntityUid pointer, EntityCoordinates coordinates)
@@ -160,7 +167,17 @@ namespace Content.Server.Pointing.EntitySystems
             var mapCoordsPointed = _transform.ToMapCoordinates(coordsPointed);
             _rotateToFaceSystem.TryFaceCoordinates(player, mapCoordsPointed.Position);
 
-            var arrow = Spawn("PointingArrow", coordsPointed);
+            // MACRO edit start: modular verbs & arrow
+            // var arrow = Spawn("PointingArrow", coordsPointed); // upstream comment out
+            var heldItem = _hands.GetHeldItem(player, _hands.GetActiveHand(player));
+            TryComp<PointingModifierComponent>(heldItem, out var pointMod);
+
+            var verbSelf = pointMod is null ? PointVerbSelf : Loc.GetString(pointMod.TextSelf);
+            var verbOther = pointMod is null ? PointVerbOther : Loc.GetString(pointMod.TextOther);
+            var pointArrow = pointMod is null ? PointingArrow : pointMod.PointingArrow;
+
+            var arrow = Spawn(pointArrow, coordsPointed);
+            // MACRO end
 
             if (TryComp<PointingArrowComponent>(arrow, out var pointing))
             {
@@ -213,10 +230,9 @@ namespace Content.Server.Pointing.EntitySystems
 
                 EntityUid? containingInventory = null;
                 // Search up through the target's containing containers until we find an inventory
-                var inventoryQuery = GetEntityQuery<InventoryComponent>();
                 foreach (var container in _container.GetContainingContainers(pointed))
                 {
-                    if (inventoryQuery.HasComp(container.Owner))
+                    if (_inventoryQuery.HasComp(container.Owner))
                     {
                         // We want the innermost inventory, since that's the "owner" of the item
                         containingInventory = container.Owner;
@@ -240,36 +256,36 @@ namespace Content.Server.Pointing.EntitySystems
                     if (pointingAtOwnItem)
                     {
                         // You point at your item
-                        selfMessage = Loc.GetString("pointing-system-point-in-own-inventory-self", ("item", itemName));
+                        selfMessage = Loc.GetString("macro-pointing-system-point-in-own-inventory-self", ("item", itemName), ("verb", verbSelf)); // macro locale & verb
                         // Urist McPointer points at his item
-                        viewerMessage = Loc.GetString("pointing-system-point-in-own-inventory-others", ("item", itemName), ("pointer", playerName));
+                        viewerMessage = Loc.GetString("macro-pointing-system-point-in-own-inventory-others", ("item", itemName), ("pointer", playerName), ("verb", verbOther)); // macro locale & verb
                     }
                     else
                     {
                         // You point at Urist McHands' item
-                        selfMessage = Loc.GetString("pointing-system-point-in-other-inventory-self", ("item", itemName), ("wearer", pointedName));
+                        selfMessage = Loc.GetString("macro-pointing-system-point-in-other-inventory-self", ("item", itemName), ("wearer", pointedName), ("verb", verbSelf)); // macro locale & verb
                         // Urist McPointer points at Urist McWearer's item
-                        viewerMessage = Loc.GetString("pointing-system-point-in-other-inventory-others", ("item", itemName), ("pointer", playerName), ("wearer", pointedName));
+                        viewerMessage = Loc.GetString("macro-pointing-system-point-in-other-inventory-others", ("item", itemName), ("pointer", playerName), ("wearer", pointedName), ("verb", verbOther)); // macro locale & verb
                         // Urist McPointer points at your item
-                        viewerPointedAtMessage = Loc.GetString("pointing-system-point-in-other-inventory-target", ("item", itemName), ("pointer", playerName));
+                        viewerPointedAtMessage = Loc.GetString("macro-pointing-system-point-in-other-inventory-target", ("item", itemName), ("pointer", playerName), ("verb", verbOther)); // macro locale & verb
                     }
                 }
                 else
                 {
                     selfMessage = pointingAtSelf
                         // You point at yourself
-                        ? Loc.GetString("pointing-system-point-at-self")
+                        ? Loc.GetString("macro-pointing-system-point-at-self", ("verb", verbSelf)) // macro locale & verb
                         // You point at Urist McTarget
-                        : Loc.GetString("pointing-system-point-at-other", ("other", pointedName));
+                        : Loc.GetString("macro-pointing-system-point-at-other", ("other", pointedName), ("verb", verbSelf)); // macro locale & verb
 
                     viewerMessage = pointingAtSelf
                         // Urist McPointer points at himself
-                        ? Loc.GetString("pointing-system-point-at-self-others", ("otherName", playerName), ("other", playerName))
+                        ? Loc.GetString("macro-pointing-system-point-at-self-others", ("otherName", playerName), ("other", playerName), ("verb", verbOther)) // macro locale & verb
                         // Urist McPointer points at Urist McTarget
-                        : Loc.GetString("pointing-system-point-at-other-others", ("otherName", playerName), ("other", pointedName));
+                        : Loc.GetString("macro-pointing-system-point-at-other-others", ("otherName", playerName), ("other", pointedName), ("verb", verbOther)); // macro locale & verb
 
                     // Urist McPointer points at you
-                    viewerPointedAtMessage = Loc.GetString("pointing-system-point-at-you-other", ("otherName", playerName));
+                    viewerPointedAtMessage = Loc.GetString("macro-pointing-system-point-at-you-other", ("otherName", playerName), ("verb", verbOther)); // macro locale & verb
                 }
 
                 var ev = new AfterPointedAtEvent(pointed);
@@ -284,7 +300,7 @@ namespace Content.Server.Pointing.EntitySystems
                 TileRef? tileRef = null;
                 string? position = null;
 
-                if (_mapManager.TryFindGridAt(mapCoordsPointed, out var gridUid, out var grid))
+                if (_map.TryFindGridAt(mapCoordsPointed, out var gridUid, out var grid))
                 {
                     position = $"EntId={gridUid} {_map.WorldToTile(gridUid, grid, mapCoordsPointed.Position)}";
                     tileRef = _map.GetTileRef(gridUid, grid, _map.WorldToTile(gridUid, grid, mapCoordsPointed.Position));
@@ -293,9 +309,9 @@ namespace Content.Server.Pointing.EntitySystems
                 var tileDef = _tileDefinitionManager[tileRef?.Tile.TypeId ?? 0];
 
                 var name = Loc.GetString(tileDef.Name);
-                selfMessage = Loc.GetString("pointing-system-point-at-tile", ("tileName", name));
+                selfMessage = Loc.GetString("macro-pointing-system-point-at-tile", ("tileName", name), ("verb", verbSelf)); // macro locale & verb
 
-                viewerMessage = Loc.GetString("pointing-system-other-point-at-tile", ("otherName", playerName), ("tileName", name));
+                viewerMessage = Loc.GetString("macro-pointing-system-other-point-at-tile", ("otherName", playerName), ("tileName", name), ("verb", verbOther)); // macro locale & verb
 
                 _adminLogger.Add(LogType.Action, LogImpact.Low, $"{ToPrettyString(player):user} pointed at {name} {(position == null ? mapCoordsPointed : position)}");
             }

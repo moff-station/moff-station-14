@@ -281,12 +281,29 @@
   components:
   - type: EntityTableContainerFill
     containers:
-      # Moffstation - Start - Add Rosie and Deathshead Mothroaches
-      entity_storage: !type:GroupSelector
-        rolls: 4
-        children:
-        - id: MobMothroach
-          weight: 2
-        - id: MobMothroachRosy
-        - id: MobMothroachDeathshead
+      # Moffstation - Start - Random mothroaches
+      entity_storage: !type:NestedSelector
+        tableId: RandomMothroach
+        rolls: !type:ConstantNumberSelector
+          value: 4
       # Moffstation - End
+
+- type: entity
+  parent: CrateLivestock
+  id: CrateNPCSheep
+  name: sheep crate
+  description: A crate containing a single sheep.
+  components:
+  - type: EntityTableContainerFill
+    containers:
+      entity_storage: !type:GroupSelector
+        children:
+        - id: MobSheep
+        - id: MobSheepRainbow
+          weight: 0.1
+        - id: MobSheepSpace
+          weight: 0.1
+        - id: PlushieSheep # teehee get plushied
+          weight: 0.001
+        - id: PlushieSpaceSheep
+          weight: 0.001

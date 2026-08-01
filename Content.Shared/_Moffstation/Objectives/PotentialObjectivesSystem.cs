@@ -7,9 +7,9 @@ namespace Content.Shared._Moffstation.Objectives;
 /// <summary>
 /// This handles setting the Objective Autoselection Time, by adding the delay to the Current time.
 /// </summary>
-public sealed class SharedPotentialObjectivesSystem : EntitySystem
+public sealed partial class SharedPotentialObjectivesSystem : EntitySystem
 {
-    [Dependency] private readonly IGameTiming _timing = default!;
+    [Dependency] private IGameTiming _timing = default!;
 
     public override void Initialize()
     {

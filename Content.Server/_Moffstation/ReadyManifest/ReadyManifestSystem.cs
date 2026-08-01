@@ -14,12 +14,12 @@ using Robust.Shared.Prototypes;
 
 namespace Content.Server._Moffstation.ReadyManifest;
 
-public sealed class ReadyManifestSystem : EntitySystem
+public sealed partial class ReadyManifestSystem : EntitySystem
 {
-    [Dependency] private readonly EuiManager _euiManager = default!;
-    [Dependency] private readonly GameTicker _gameTicker = default!;
-    [Dependency] private readonly IServerPreferencesManager _prefsManager = default!;
-    [Dependency] private readonly IPrototypeManager _protoMan = default!;
+    [Dependency] private EuiManager _euiManager = default!;
+    [Dependency] private GameTicker _gameTicker = default!;
+    [Dependency] private IServerPreferencesManager _prefsManager = default!;
+    [Dependency] private IPrototypeManager _protoMan = default!;
 
 
     private readonly Dictionary<ICommonSession, ReadyManifestEui> _openEuis = [];

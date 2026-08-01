@@ -1,22 +1,60 @@
 - type: entity
-  name: coffee beans
   parent: FoodProduceBase
   id: FoodCoffeeBeans
+  name: coffee beans
   description: These beans are said to spark enlightenment
   components:
   - type: FlavorProfile
     flavors:
-      - coffee
+    - coffee
   - type: Sprite
     sprite: _Moffstation/Objects/Specific/Hydroponics/coffee_plant.rsi
     state: produce-beans
-  - type: SolutionContainerManager
-    solutions:
-      food:
-        maxVol: 5
-        reagents:
-        - ReagentId: Nutriment
-          Quantity: 2
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: Nutriment
+        Quantity: 5
   - type: Tag
     tags:
-      - Ingredient
+    - Ingredient
+
+- type: entity
+  parent: ReagentContainerFlour
+  id: ReagentContainerSalt
+  name: table salt bag
+  description: A big bag of salt.
+  components:
+  - type: GenericVisualizer
+    visuals:
+      enum.OpenableVisuals.Opened:
+        enum.OpenableVisuals.Layer:
+          True: { state: "open" }
+          False: { state: "closed" }
+  - type: Sprite
+    layers:
+    - sprite: _Moffstation/Objects/Consumable/Food/salt-bag.rsi
+      state: closed
+      map: [ "enum.OpenableVisuals.Layer" ]
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: TableSalt
+        Quantity: 120
+
+- type: entity
+  parent: ReagentContainerSalt
+  id: ReagentContainerPepper
+  name: black pepper bag
+  description: A big bag of ground pepper.
+  components:
+  - type: Sprite
+    layers:
+    - sprite: _Moffstation/Objects/Consumable/Food/pepper-bag.rsi
+      state: closed
+      map: [ "enum.OpenableVisuals.Layer" ]
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: Blackpepper
+        Quantity: 120

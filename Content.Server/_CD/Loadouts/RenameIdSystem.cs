@@ -1,21 +1,23 @@
 ﻿using Content.Server._CD.Spawners;
 using Content.Server.Access.Systems;
 using Content.Server.GameTicking;
-using Content.Server.StationRecords.Systems;
+using Content.Shared._CD.Loadouts;
 using Content.Shared.Access.Components;
 using Content.Shared.Access.Systems;
 using Content.Shared.GameTicking;
 using Content.Shared.Inventory;
 using Content.Shared.PDA;
 using Content.Shared.StationRecords;
+using Content.Shared.StationRecords.Components;
+using Content.Shared.StationRecords.Systems;
 
 namespace Content.Server._CD.Loadouts;
 
-public sealed class RenameIdSystem : EntitySystem
+public sealed partial class RenameIdSystem : EntitySystem
 {
-    [Dependency] private readonly InventorySystem _inventorySystem = default!;
-    [Dependency] private readonly SharedIdCardSystem _idCardSystem = default!;
-    [Dependency] private readonly StationRecordsSystem _records = default!;
+    [Dependency] private InventorySystem _inventorySystem = default!;
+    [Dependency] private SharedIdCardSystem _idCardSystem = default!;
+    [Dependency] private StationRecordsSystem _records = default!;
 
     public override void Initialize()
     {

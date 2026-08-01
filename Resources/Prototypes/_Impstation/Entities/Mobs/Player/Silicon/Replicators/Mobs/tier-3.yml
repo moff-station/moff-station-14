@@ -1,0 +1,57 @@
+﻿# Tier 3: These guys are tanks. Their job is to tear shit apart and kill things. They're slow, tanky, and have a weapon that does 25 blunt 30 struct.
+- type: entity
+  parent: BaseMobReplicator
+  id: MobReplicatorTier3
+  name: protector
+  description: Oh boy.
+  suffix: Level 3
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: CombatMode
+  - type: Replicator
+  - type: MovementSpeedModifier
+    baseWalkSpeed: 2 # same as slime
+    baseSprintSpeed: 2.835 # this is the same speed as an engineering hardsuit + duffel
+    friction: 35 # these fellas are the tanks, they rely on the smaller guys stunning things for them.
+  - type: Sprite
+    granularLayersRendering: true
+    layers:
+    - map: [ "enum.DamageStateVisualLayers.Base" ]
+      state: alive_level3
+    - map: [ "enum.ReplicatorVisuals.Combat" ]
+      state: combat_level3
+      shader: unshaded
+      visible: false
+  - type: DamageStateVisuals
+    states:
+      Alive:
+        Base: alive_level3
+      Dead:
+        Base: dead_level3
+  - type: Hands
+    showInHands: false
+    disableExplosionRecursion: true
+    canBeStripped: false
+    activeHandId: Hand
+    hands:
+      Hand:
+        location: Left
+  - type: Loadout
+    prototypes:
+    - StartingGearReplicatorT3Weapon
+  - type: Magboots
+  - type: Damageable
+    damageModifierSet: Replicator3
+  - type: PassiveDamage # passive healing
+    allowedStates:
+    - Alive
+    damage:
+      types:
+        Blunt: -0.66
+        Piercing: -0.66
+        Slash: -0.66
+        Heat: -0.66
+        Shock: -0.66
+        Caustic: -0.66
+        Cold: -0.66
+        Structural: -0.5

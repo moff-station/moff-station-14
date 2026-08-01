@@ -6,9 +6,9 @@ using Content.Shared.GameTicking.Components;
 
 namespace Content.Server._Moffstation.GameTicking.Rules;
 
-public sealed class ListeningOutpostRuleSystem : GameRuleSystem<ListeningOutpostRuleComponent>
+public sealed partial class ListeningOutpostRuleSystem : GameRuleSystem<ListeningOutpostRuleComponent>
 {
-    [Dependency] private readonly AntagSelectionSystem _antag = default!;
+    [Dependency] private AntagSelectionSystem _antag = default!;
 
     protected override void AppendRoundEndText(EntityUid uid,
         ListeningOutpostRuleComponent listeningOutpostRuleComponent,

@@ -48,6 +48,12 @@ public sealed partial class CCVars
         GameLobbyFallbackPreset = CVarDef.Create("game.fallbackpreset", "Traitor,Extended", CVar.ARCHIVE);
 
     /// <summary>
+    ///     The preset for the game to fall back to if the selected preset could not be used, and fallback is enabled.
+    /// </summary>
+    public static readonly CVarDef<string>
+        GameTickerIgnoredPresets = CVarDef.Create("game.ignoredpresets", "", CVar.ARCHIVE);
+
+    /// <summary>
     ///     Controls if people can win the game in Suspicion or Deathmatch.
     /// </summary>
     public static readonly CVarDef<bool>
@@ -63,7 +69,7 @@ public sealed partial class CCVars
     ///     Controls the maximum number of character slots a player is allowed to have.
     /// </summary>
     public static readonly CVarDef<int>
-        GameMaxCharacterSlots = CVarDef.Create("game.maxcharacterslots", 30, CVar.ARCHIVE | CVar.SERVERONLY);
+        GameMaxCharacterSlots = CVarDef.Create("game.maxcharacterslots", 30, CVar.ARCHIVE | CVar.REPLICATED | CVar.SERVER);
 
     /// <summary>
     ///     Controls the game map prototype to load. SS14 stores these prototypes in Prototypes/Maps.
@@ -419,11 +425,14 @@ public sealed partial class CCVars
     public static readonly CVarDef<int> TileStackLimit =
         CVarDef.Create("game.tile_stack_limit", 5, CVar.SERVER | CVar.REPLICATED);
 
-    // Moffstation - Begin
     /// <summary>
-    /// if true, the player count check for rules will be based on the number of players readied, versus the total number in the lobby.
+    /// The list of jobs that will be enabled on newly created characters.
+    /// The first job will be set to High priority, subsequent ones to Medium.
     /// </summary>
-    public static readonly CVarDef<bool>
-        GameRulesCountReadied = CVarDef.Create("game.rules_count_readied", false, CVar.SERVERONLY);
-    // Moffstation - End
+    /// <remarks>
+    /// When setting multiple values in server config, separate them with commas, like "Captain, SecurityOfficer,Janitor"
+    /// Spaces between entries can be either used or omitted.
+    /// </remarks>
+    public static readonly CVarDef<string> NewCharacterJobs =
+        CVarDef.Create("game.new_character_jobs", "Passenger", CVar.REPLICATED);
 }

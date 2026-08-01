@@ -6,9 +6,9 @@ using Robust.Shared.Console;
 namespace Content.Server._Moffstation.GameTicking.Commands;
 
 [AdminCommand(AdminFlags.Round)]
-public sealed class SetCountdownCommand : LocalizedEntityCommands
+public sealed partial class SetCountdownCommand : LocalizedEntityCommands
 {
-    [Dependency] private readonly GameTicker _gameTicker = default!;
+    [Dependency] private GameTicker _gameTicker = default!;
 
     public override string Command => "setcountdown";
 

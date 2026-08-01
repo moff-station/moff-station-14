@@ -16,3 +16,7 @@ borg-slot-seeds-empty = Seeds
 borg-slot-sprays-empty = Sprays
 borg-slot-swabs-empty = Swabs
 borg-slot-utensils-empty = Utensils
+borg-slot-pka-modkit-empty = PKA modkit
+borg-slot-cassette-empty = Cassette tape
+borg-slot-letter-empty = Letters / Parcels
+borg-slot-package-empty = Packages

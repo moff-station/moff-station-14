@@ -1,20 +1,11 @@
 # Generic
-- type: loadoutGroup
-  id: ScienceEyewear
-  name: loadout-group-science-glasses
-  minLimit: 0
-  loadouts:
-  - RoboticsHud
-  - RoboticsEyePatchHud
-  - Glasses
-  - GlassesJamjar
-  - GlassesJensen
-  - EyePatch
-  - EyePatchFlipped
-#RD
+
+# RD
 - type: loadoutGroup
   id: ResearchDirectorPDA
   name: loadout-group-research-director-id
   loadouts:
   - RnDPDA # Keep default PDA on top of the list
   - ResearchSupervisorPDA
+
+# Scientist

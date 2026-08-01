@@ -3,7 +3,7 @@
   id: AirlockGlassPlaswood
   name: plaswood airlock
   suffix: pirate
-  components:    
+  components:
   - type: Sprite
     sprite: _Moffstation/Structures/Doors/Airlocks/Glass/plaswood.rsi
   - type: IconSmooth
@@ -14,9 +14,10 @@
       - Energy
     reflectProb: 1
     spread: 30
-  - type: Tag 
+  - type: Tag
     tags:
     - Wooden
   - type: Damageable
-    damageContainer: StructuralInorganic
     damageModifierSet: StructuralPlaswood
+  - type: Injurable
+    damageContainer: StructuralInorganic

@@ -1,0 +1,12 @@
+- type: entity
+  parent: LockerBaseMoff
+  id: LockerFreelance
+  name: freelancer locker # Placeholder name, ideally should be renamed during mapping to something relevant to the situation.
+  components:
+  - type: Appearance
+  - type: EntityStorageVisuals
+    stateBaseClosed: freelance
+    stateDoorOpen: freelance_open
+    stateDoorClosed: freelance_door
+  - type: AccessReader
+    access: [ [ "Freelance" ] ]
