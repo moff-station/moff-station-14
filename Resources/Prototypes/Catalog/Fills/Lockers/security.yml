@@ -247,7 +247,7 @@
   parent: [GunSafeBaseSecure, BaseSecurityContraband]
   id: GunSafeDisabler
   name: disabler safe
-  categories: [ DoNotMap ]
+  abstract: true # Moff - no stuns
   components:
   - type: EntityTableContainerFill
     containers:

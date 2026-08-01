@@ -16,21 +16,30 @@
 - type: entity
   parent: CrateSecgear
   id: CrateSecurityNonlethal
+  # Moff start - no stuns
   name: less-lethals crate
   description: Contains a mix of nightsticks, flashes, shell guns, and beanbag shells. Requires Security access to open.
+  # Moff end
   components:
   - type: EntityTableContainerFill
     containers:
       entity_storage: !type:AllSelector
         children:
+        # Moff start - no stuns
+        #- id: WeaponDisabler
+        #  amount: 3
+        #- id: Stunbaton
         - id: Nightstick
           amount: 3
+        # Moff end
         - id: BoxFlashbang
         - id: Flash
           amount: 3
-        - id: WeaponFlareGunSecurity # Funky
+        # Moff start - no stuns
+        - id: WeaponFlareGunSecurity
           amount: 3
-        - id: BoxBeanbag # Funky - That's 5 shots for each, plus 1 extra to squabble over
+        - id: BoxBeanbag
+        # Moff end
 #        - Pepperspray
 #        - GrenadeTeargas
 
