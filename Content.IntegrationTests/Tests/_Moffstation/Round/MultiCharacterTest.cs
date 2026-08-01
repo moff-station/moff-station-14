@@ -26,7 +26,7 @@ public sealed class MultiCharacterTest : GameTest
     private static readonly ProtoId<JobPrototype> Passenger = "Passenger";
     private static readonly ProtoId<JobPrototype> Engineer = "StationEngineer";
     private static readonly ProtoId<JobPrototype> Captain = "Captain";
-    private static readonly ProtoId<JobPrototype> AgeGated = "MoffMultiCharacterAgeGatedJob";
+    private const string AgeGated = "MoffMultiCharacterAgeGatedJob";
 
     private const string Map = "MoffMultiCharacterTestMap";
 
