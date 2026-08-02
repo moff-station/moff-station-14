@@ -14,3 +14,6 @@
   - type: InstantAction
     event: !type:ToggleIntrinsicUIEvent
       key: enum.ESVoterUiKey.Key
+  - type: Sprite
+    sprite: _ES/Actions/stagehands.rsi
+    state: ballot

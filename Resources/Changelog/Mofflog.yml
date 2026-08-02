@@ -7196,6 +7196,16 @@ Entries:
   id: 1676
   time: '2026-07-19T17:08:52.000'
   url: https://github.com/moff-station/moff-station-14/pull/1676
+- author: Mixelz
+  changes:
+  - message: Refreshed all Gun Game loadouts! Ask your local admin nicely to try it
+      out!
+    type: tweak
+  - message: Reduced Gun Game respawn wait from 5 seconds to 4 seconds.
+    type: tweak
+  id: 1677
+  time: '2026-07-31T18:58:26.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1677
 - author: Dave
   changes:
   - message: New Holopad sprites & hue adjustments.
@@ -7262,6 +7272,38 @@ Entries:
   id: 1685
   time: '2026-07-20T19:07:56.000'
   url: https://github.com/moff-station/moff-station-14/pull/1685
+- author: Centronias
+  changes:
+  - message: Stained clothes can now be examined to see what's staining them, similar
+      to examining drinks / reagents.
+    type: add
+  - message: Galoshes, breath masks, and sterile breath masks are now innately stain
+      repellent.
+    type: add
+  - message: ERT Janitors' uniforms are now innately stain repellent by virtue of
+      their inimitable cleanliness.
+    type: add
+  - message: Added "DrinkStainRepellent", a bottle of appliable stain-repellent coating
+      (and a box of four of them, "BoxStainRepellent"). It's unobtainable except via
+      spawning.
+    type: add
+  id: 1686
+  time: '2026-07-31T18:37:42.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1686
+- author: meganerobot
+  changes:
+  - message: Engineering hardsuits and the spationaut suit now have a toggleable welding
+      mask.
+    type: add
+  - message: Mesons no longer provide welding protection and now act as t-ray scanners.
+    type: tweak
+  - message: Welding masks greatly occlude your vision whilst you're using them.
+    type: tweak
+  - message: You can now flip up welding masks.
+    type: tweak
+  id: 1688
+  time: '2026-08-01T05:12:21.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1688
 - author: FreianOfVoid
   changes:
   - message: A "Hephaestus" Iconography option has been added to the AI's customization
@@ -7388,6 +7430,21 @@ Entries:
   id: 1730
   time: '2026-07-28T18:06:03.000'
   url: https://github.com/moff-station/moff-station-14/pull/1730
+- author: Nyxilath
+  changes:
+  - message: Artifacts have gotten their life together and will no longer ask for
+      Antidepressants, Meth, Lube, and Cleaner.
+    type: remove
+  id: 1731
+  time: '2026-07-31T20:27:40.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1731
+- author: Centronias
+  changes:
+  - message: The crew manifest has received a visual update.
+    type: tweak
+  id: 1740
+  time: '2026-08-01T23:25:31.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1740
 - author: Centronias
   changes:
   - message: Jobs on the manifest once again sort with department heads above their

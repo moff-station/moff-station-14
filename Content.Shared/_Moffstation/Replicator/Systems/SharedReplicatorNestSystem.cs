@@ -146,7 +146,7 @@ public abstract partial class SharedReplicatorNestSystem : EntitySystem
     {
         foreach (var consumed in AllConsumedEntitiesRecursive(rootConsumed))
         {
-            Log.Debug($"Replicator nest {ToPrettyString(entity)} consumed entity {ToPrettyString(consumed)}");
+            Log.Debug($"{ToPrettyString(entity)} consumed entity {ToPrettyString(consumed)}");
 
             if (_mind.TryGetMind(consumed, out _, out _) ||
                 _whitelist.CheckBoth(consumed, entity.Comp.PreservationBlacklist, entity.Comp.PreservationWhitelist))
@@ -251,7 +251,9 @@ public abstract partial class SharedReplicatorNestSystem : EntitySystem
         {
             if (_storageQuery.TryComp(rootConsumed, out var storage))
             {
-                foreach (var contentsContainedEntity in storage.Contents.ContainedEntities)
+                // Defensive copy of the contents, in case consuming the container messes with the contents.
+                var contents = storage.Contents.ContainedEntities.ToList();
+                foreach (var contentsContainedEntity in contents)
                 {
                     yield return contentsContainedEntity;
                 }
