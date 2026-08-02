@@ -215,7 +215,7 @@ public abstract partial class SharedVendingMachineSystem : EntitySystem
                 inventory.Add(id, new VendingMachineInventoryEntry(type, id, restock));
 
             // Moffstation - Start - Allow use of entityTables in vending machine inventories
-            else if (ProtoMan.TryIndex<EntityTablePrototype>(id, out var table))
+            if (ProtoMan.TryIndex<EntityTablePrototype>(id, out var table))
             {
                 AddInventoryFromPrototype(uid,
                     Enumerable.Repeat(table, (int)amount)
