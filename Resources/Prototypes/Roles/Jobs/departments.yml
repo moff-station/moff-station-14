@@ -30,7 +30,7 @@
   - Reporter
   - Visitor
   - ServiceWorker
-  - TramDriver
+  # - TramDriver # Moff - Need to figure out how this will fit into our space first.
 
 - type: department
   id: CentralCommand
@@ -141,5 +141,5 @@
   roles:
   - Reporter
   - Psychologist
-  - TramDriver
+  # - TramDriver # Moff - Need to figure out how this will fit into our space first.
   primary: false

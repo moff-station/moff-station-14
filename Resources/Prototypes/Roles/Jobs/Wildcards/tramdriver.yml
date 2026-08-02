@@ -1,21 +1,23 @@
-- type: job
-  id: TramDriver
-  name: job-name-tram-driver
-  description: job-description-tram-driver
-  playTimeTracker: JobTramDriver
-  startingGear: TramDriverGear
-  icon: "JobIconTramDriver"
-  supervisors: job-supervisors-hop
-  requirements:
-    - !type:OverallPlaytimeRequirement # someone that's not doing this job will just be a pain for the station
-      time: 10h
-  access:
-  - Maintenance
-  - Service # the tram has command + service access
-  - External # to pick up people trapped in the tramway's space
-  special: # we don't want it becoming an antag... for now at least
-  - !type:AddImplantSpecial
-    implants: [ MindShieldImplant ]
+# Moff Start - Need to figure out how this will fit into our space first.
+# - type: job
+#   id: TramDriver
+#   name: job-name-tram-driver
+#   description: job-description-tram-driver
+#   playTimeTracker: JobTramDriver
+#   startingGear: TramDriverGear
+#   icon: "JobIconTramDriver"
+#   supervisors: job-supervisors-hop
+#   requirements:
+#     - !type:OverallPlaytimeRequirement # someone that's not doing this job will just be a pain for the station
+#       time: 10h
+#   access:
+#   - Maintenance
+#   - Service # the tram has command + service access
+#   - External # to pick up people trapped in the tramway's space
+#   special: # we don't want it becoming an antag... for now at least
+#   - !type:AddImplantSpecial
+#     implants: [ MindShieldImplant ]
+# Moff End
 
 - type: startingGear
   id: TramDriverGear
@@ -25,14 +27,16 @@
     ears: ClothingHeadsetService
     neck: ClothingNeckTieSerious
 
-- type: chameleonOutfit
-  id: TramDriverChameleonOutfit
-  job: TramDriver
-  equipment:
-    head: ClothingHeadHatTramDriver
-    eyes: ClothingEyesGlasses
-    mask: ClothingMaskBreath
-    outerClothing: ClothingOuterSuitTramDriver
-    neck: ClothingNeckTieSerious
-    belt: ClothingBeltUtility
-    gloves: ClothingHandsGlovesColorWhite
+# Moff Start - Need to figure out how this will fit into our space first.
+# - type: chameleonOutfit
+#   id: TramDriverChameleonOutfit
+#   job: TramDriver
+#   equipment:
+#     head: ClothingHeadHatTramDriver
+#     eyes: ClothingEyesGlasses
+#     mask: ClothingMaskBreath
+#     outerClothing: ClothingOuterSuitTramDriver
+#     neck: ClothingNeckTieSerious
+#     belt: ClothingBeltUtility
+#     gloves: ClothingHandsGlovesColorWhite
+# Moff End

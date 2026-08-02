@@ -3,8 +3,8 @@
   mapName: 'Tram2'
   mapPath: /Maps/tram2.yml
   maxRandomOffset: 0
-  minPlayers: 45
-  maxPlayers: 65
+  minPlayers: 41 # Moffstation - Medium Pop
+  maxPlayers: 75 # Moffstation - Medium Pop
   stations:
     Tram2:
       stationProto: StandardNanotrasenStation
@@ -29,29 +29,30 @@
             Librarian: [ 1, 1 ]
             ServiceWorker: [ 1, 1 ]
             Detective: [ 1, 2 ]
-            TramDriver: [ 1, 1 ]
+#             TramDriver: [ 1, 1 ] # Moff - Need to figure out how this will fit into our space first.
             #engineering 9
             ChiefEngineer: [ 1, 1 ]
             AtmosphericTechnician: [ 3, 3 ]
             StationEngineer: [ 3, 3 ]
-            TechnicalAssistant: [ 2, 2 ]
+#             TechnicalAssistant: [ 2, 2 ] # Moff - Removed role
             #medical 10
             ChiefMedicalOfficer: [ 1, 1 ]
             Chemist: [ 2, 2 ]
             MedicalDoctor: [ 3, 3 ]
-            MedicalIntern: [ 2, 2 ]
+#             MedicalIntern: [ 2, 2 ] # Moff - Removed role
             Paramedic: [ 1, 2 ]
             Psychologist: [1, 1]
             #science 6
             ResearchDirector: [ 1, 1 ]
             Scientist: [ 3, 3 ]
-            ResearchAssistant: [ 2, 2 ]
+#             ResearchAssistant: [ 2, 2 ] # Moff - Removed role
             #security 8-9
             HeadOfSecurity: [ 1, 1 ]
             Warden: [ 1, 1 ]
             SecurityOfficer: [ 3, 3 ]
-            SecurityCadet: [ 2, 2 ]
+#             SecurityCadet: [ 2, 2 ] # Moff - Removed role
             Lawyer: [ 1, 2 ]
+            Prisoner: [ 1, 1 ] # Moff - Prisoners
             #supply 6
             Quartermaster: [ 1, 1 ]
             SalvageSpecialist: [ 2, 2 ]
