@@ -887,23 +887,25 @@
       offset: *icon-offset
       state: Zookeeper
 
-- type: entity
-  parent: IDCardStandard
-  id: TramDriverIDCard
-  name: tram driver ID card
-  components:
-  - type: Sprite
-    layers:
-    - state: default
-    - state: stripe_top
-      color: "#ffc500"
-    - state: stripe_bottom
-      color: "#454a50"
-    - sprite: *icon-rsi
-      offset: *icon-offset
-      state: TramDriver
-  - type: PresetIdCard
-    job: TramDriver
+# Moff Start - Need to figure out how this will fit into our space first.
+# - type: entity
+#   parent: IDCardStandard
+#   id: TramDriverIDCard
+#   name: tram driver ID card
+#   components:
+#   - type: Sprite
+#     layers:
+#     - state: default
+#     - state: stripe_top
+#       color: "#ffc500"
+#     - state: stripe_bottom
+#       color: "#454a50"
+#     - sprite: *icon-rsi
+#       offset: *icon-offset
+#       state: TramDriver
+#   - type: PresetIdCard
+#     job: TramDriver
+# Moff End
 
 #Supply
 
