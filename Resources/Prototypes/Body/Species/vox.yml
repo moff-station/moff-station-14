@@ -207,6 +207,12 @@
           collection: MeatLaserImpact # Moffstation end
     - trigger:
         !type:DamageTypeTrigger
+        damageType: Blunt
+        damage: 400
+      behaviors:
+      - !type:GibBehavior { }
+    - trigger:
+        !type:DamageTypeTrigger
         damageType: Heat
         damage: 1500
       behaviors:

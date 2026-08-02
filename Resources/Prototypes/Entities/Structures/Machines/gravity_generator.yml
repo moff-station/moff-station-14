@@ -1,4 +1,4 @@
-# Moffstation - Because the big gravity generator is destructible on Moff, I had to extract `MoffBaseGravityGenerator`
+﻿# Moffstation - Because the big gravity generator is destructible on Moff, I had to extract `MoffBaseGravityGenerator`
 #   out of `GravityGenerator`. Any changes made to `GravityGenerator` should be considered to be applied to the base
 #   proto intead. If the change is to the _structural_ aspect of GravityGenerator, apply it here; if the change is to
 #   the gravity-generation aspect of GravityGenerator, apply it to the base proto!
@@ -9,14 +9,14 @@
   - MoffBaseGravityGenerator
   - ConstructibleMachine
 #  - BaseConstructibleMachineDestructible # NOT using this because it would inherit much flimsier HP than needed
-  # Moff end
+# Moff end
   id: GravityGenerator
   name: gravity generator
   description: It's what keeps you to the floor.
   placement:
     mode: AlignTileAny
   components:
-  # Moff start - Extract abstract gravity generator
+# Moff start - Extract abstract gravity generator
 #  - type: StationAiWhitelist
 #  - type: AmbientSound
 #    enabled: false
@@ -24,7 +24,7 @@
 #    range: 7
 #    sound:
 #      path: /Audio/Ambience/Objects/gravity_gen_hum.ogg
-  # Moff end
+# Moff end
   - type: Sprite
     sprite: Structures/Machines/gravity_generator.rsi
     layers:
@@ -34,17 +34,17 @@
         state: activated
         shader: unshaded
         map: ["enum.GravityGeneratorVisualLayers.Core"]
-  # Moff start - Extract abstract gravity generator
+# Moff start - Extract abstract gravity generator
 #  - type: Transform
 #    anchored: true
-  # Moff end
+# Moff end
   - type: ApcPowerReceiver
     powerLoad: 2500
-  # Moff start - Extract abstract gravity generator
+# Moff start - Extract abstract gravity generator
 #  - type: ExtensionCableReceiver
 #  - type: Physics
 #    bodyType: Static
-  # Moff end
+# Moff end
   - type: Fixtures
     fixtures:
       fix1:
@@ -56,11 +56,11 @@
         - LargeMobMask
         layer:
         - WallLayer
-  # Moff start - Extract abstract gravity generator
+# Moff start - Extract abstract gravity generator
 #  - type: Repairable
 #    fuelCost: 10
 #    doAfterDelay: 5
-  # Moff end
+# Moff end
   - type: Destructible
     thresholds:
     - trigger:
@@ -87,16 +87,16 @@
     idlePower: 50
     activePower: 2500
   - type: GravityGenerator
-    # Moff start - Extract abstract gravity generator
+# Moff start - Extract abstract gravity generator
 #    lightRadiusMin: 0.75
 #    lightRadiusMax: 2.5
-    # Moff end
+# Moff end
     spriteMap:
       broken: "broken"
       unpowered: "off"
       off: "off"
       on: "on"
-  # Moff start - Extract abstract gravity generator
+# Moff start - Extract abstract gravity generator
 #  - type: ActivatableUI
 #    key: enum.PowerChargeUiKey.Key
 #  - type: ActivatableUIRequiresPower
@@ -111,7 +111,7 @@
 #    # Gravity generator is a large machine, not casting shadows is fine within the radius set above.
 #    castShadows: false
 #    color: "#a8ffd9"
-  # Moff end
+# Moff end
   - type: StaticPrice
     price: 5000
 
@@ -163,11 +163,11 @@
   - type: PowerCharge
     idlePower: 15
     activePower: 500
-  # Moff start - Extract abstract gravity generator
+# Moff start - Extract abstract gravity generator
 #  - type: GravityGenerator
 #    lightRadiusMin: 0.75
 #    lightRadiusMax: 2.5
-  # Moff end
+# Moff end
   - type: StaticPrice
     price: 2000
 

@@ -25,10 +25,6 @@
     - Window
   - type: Sprite
     drawdepth: WallTops
-    sprite: _Moffstation/Structures/Windows/window.rsi # Moffstation
-  - type: Icon
-    sprite: _Moffstation/Structures/Windows/window.rsi # Moffstation
-    state: full
   - type: Physics
     bodyType: Static
   - type: Fixtures
@@ -75,9 +71,9 @@
   id: Window
   components:
   - type: Sprite
-    sprite: Structures/Windows/window.rsi
+    sprite: _Moffstation/Structures/Windows/window.rsi # Moffstation
   - type: Icon
-    sprite: Structures/Windows/window.rsi
+    sprite: _Moffstation/Structures/Windows/window.rsi # Moffstation
     state: full
   - type: Damageable
     damageModifierSet: Glass
@@ -153,11 +149,6 @@
         collection: GlassSmack
   - type: Sprite
     drawdepth: Mobs
-    sprite: _Moffstation/Structures/Windows/directional.rsi # Moffstation
-    state: window
-  - type: Icon
-    sprite: _Moffstation/Structures/Windows/directional.rsi # Moffstation
-    state: window
   - type: InteractionPopup
     interactSuccessString: comp-window-knock
     messagePerceivedByOthers: comp-window-knock
@@ -203,10 +194,10 @@
   id: WindowDirectional
   components:
   - type: Sprite
-    sprite: Structures/Windows/directional.rsi
+    sprite: _Moffstation/Structures/Windows/directional.rsi # Moffstation
     state: window
   - type: Icon
-    sprite: Structures/Windows/directional.rsi
+    sprite: _Moffstation/Structures/Windows/directional.rsi # Moffstation
     state: window
   - type: Damageable
     damageModifierSet: Glass

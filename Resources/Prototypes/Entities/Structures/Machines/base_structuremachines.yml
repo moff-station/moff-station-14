@@ -85,8 +85,8 @@
   id: BaseConstructibleMachineDestructible
   components:
   - type: Damageable
-    damageModifierSet: Electronic # Moffstation - Easier to break into a machine frame
   - type: Injurable
+    damageContainer: StructuralInorganic
   - type: Destructible
     thresholds:
     - trigger: !type:DamageTrigger
@@ -109,8 +109,8 @@
   id: BaseSmallConstructibleMachineDestructible
   components:
   - type: Damageable
-    damageModifierSet: Electronic # Moffstation - Easier to break into a machine frame
   - type: Injurable
+    damageContainer: StructuralInorganic
   - type: Destructible
     thresholds:
     - trigger: !type:DamageTrigger

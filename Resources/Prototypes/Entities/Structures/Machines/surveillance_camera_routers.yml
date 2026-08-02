@@ -34,14 +34,14 @@
           map: ["enum.PowerDeviceVisualLayers.Powered"]
         - state: server_o
           map: ["enum.WiresVisualLayers.MaintenancePanel"]
-  # Moff start - Blade server
+# Moffstation - Begin - Blade server
 #    - type: GenericVisualizer
 #      visuals:
 #        enum.PowerDeviceVisuals.Powered:
 #          enum.PowerDeviceVisualLayers.Powered:
 #            True: { visible: true }
 #            False: { visible: false }
-  # Moff end
+# Moffstation - End - Blade server
     - type: Destructible
       thresholds:
       - trigger: !type:DamageTrigger
@@ -50,7 +50,7 @@
         - !type:PlaySoundBehavior
           sound:
             collection: MetalBreak
-#    - type: Appearance # Moff - Blade server
+  #    - type: Appearance # Moff - Blade server
     - type: AmbientOnPowered
     - type: AmbientSound
       volume: -9

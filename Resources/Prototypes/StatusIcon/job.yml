@@ -607,3 +607,11 @@
     state: Unknown
   jobName: job-name-unknown
   isCrewJob: false
+
+- type: jobIcon
+  parent: JobIcon
+  id: JobIconSus
+  icon:
+    sprite: Interface/Misc/job_icons.rsi # Moff - Use upstream's RSI instead of moff's
+    state: Sus
+  jobName: job-name-sus
