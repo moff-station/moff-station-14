@@ -27,7 +27,7 @@
   table: !type:AllSelector
     children:
     - id: FlashlightSeclite
-    #- id: WeaponDisabler # Moffstation - no stuns
+    #- id: WeaponDisabler # Moff - no stuns
     - id: ClothingBeltSecurityFilled
     - id: Flash
     - id: ClothingEyesGlassesSecurity
@@ -72,7 +72,9 @@
     children:
     - id: FlashlightSeclite
       prob: 0.8
-    #- id: WeaponDisabler # Moffstation - No stuns
+    #- id: WeaponDisabler # Moff - No stuns
+    - id: SecurityBola
+      amount: 2
     - id: ClothingUniformJumpsuitSecGrey
       prob: 0.3
     - id: ClothingHeadHelmetBasic

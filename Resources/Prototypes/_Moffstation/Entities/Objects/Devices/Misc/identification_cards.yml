@@ -17,12 +17,12 @@
   name: prisoner ID card
   suffix: Perma, DO NOT MAP
   components:
-    - type: GenpopIdCard
-      crime: "[CLASSIFIED]"    # Maybe we could randomize this in the future? maybe even set it in loadouts?
-    - type: ExpireIdCard
-      permanent: true
-    - type: PresetIdCard
-      job: Prisoner
+  - type: GenpopIdCard
+    crime: "[CLASSIFIED]"    # Maybe we could randomize this in the future? maybe even set it in loadouts?
+  - type: ExpireIdCard
+    expireTime: null
+  - type: PresetIdCard
+    job: Prisoner
 
 # Syndicate Agent ID without chameleon, for non-nukies
 - type: entity
