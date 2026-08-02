@@ -6,9 +6,6 @@
   components:
   - type: Action
     priority: 1
-    icon:
-      sprite: _ES/Actions/stagehands.rsi
-      state: ballot
     checkCanInteract: false
     checkConsciousness: false
   - type: InstantAction
