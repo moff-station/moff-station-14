@@ -213,21 +213,21 @@ public abstract partial class SharedVendingMachineSystem : EntitySystem
                 entry.Amount = Math.Min(entry.Amount + amount, 3 * restock);
             else
                 inventory.Add(id, new VendingMachineInventoryEntry(type, id, restock));
-        }
 
-        // Moffstation - Start - Allow use of entityTables in vending machine inventories
-        else if (ProtoMan.TryIndex<EntityTablePrototype>(id, out var table))
-        {
-            AddInventoryFromPrototype(uid,
-                Enumerable.Repeat(table, (int)amount)
-                    .SelectMany(it => _entityTable.GetSpawns(it, Randomizer))
-                    .CountBy(it => it)
-                    .ToDictionary(it => it.Key.Id, it => (uint)it.Value),
-                type,
-                component,
-                restockQuality);
+            // Moffstation - Start - Allow use of entityTables in vending machine inventories
+            else if (ProtoMan.TryIndex<EntityTablePrototype>(id, out var table))
+            {
+                AddInventoryFromPrototype(uid,
+                    Enumerable.Repeat(table, (int)amount)
+                        .SelectMany(it => _entityTable.GetSpawns(it, Randomizer))
+                        .CountBy(it => it)
+                        .ToDictionary(it => it.Key.Id, it => (uint)it.Value),
+                    type,
+                    component,
+                    restockQuality);
+            }
+            // Moffstation - End
         }
-        // Moffstation - End
     }
 
 }

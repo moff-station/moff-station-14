@@ -1,48 +1,14 @@
 # If you add a new trait, make sure to add the corresponding component to the whitelist in \Resources\Prototypes\Entities\Mobs\Player\clone.yml so it gets copied to clones correctly!
 
 - type: trait
-  id: ReptilianAccent
-  name: trait-reptile-accent-name
-  description: trait-reptile-accent-desc
-  category: Accents
-  effects:
-  - !type:AddCompsEffect
-    components:
-    - type: LizardAccent
-
-- type: trait
-  id: RussianAccent
-  name: trait-russian-name
-  description: trait-russian-desc
-  category: Accents
-  effects:
-  - !type:AddCompsEffect
-    components:
-    - type: RussianAccent
-
-- type: trait
   id: BostonAccent
-  # Moffstation - Start
   name: trait-boston-accent-name-moff
   description: trait-boston-accent-desc-moff
-  # Moffstation - End
   category: Accents
   effects:
   - !type:AddCompsEffect
     components:
     - type: BostonAccent
-
-- type: trait
-  id: ScandinavianAccent
-  # Moffstation - Start
-  name: trait-scandi-accent-name-moff
-  description: trait-scandi-accent-desc-moff
-  # Moffstation - End
-  category: Accents
-  effects:
-  - !type:AddCompsEffect
-    components:
-    - type: ScandinavianAccent
 
 - type: trait
   id: GermanAccent
@@ -63,3 +29,49 @@
   - !type:AddCompsEffect
     components:
     - type: GrayAccent
+
+- type: trait
+  id: Muted
+  name: trait-muted-name
+  description: trait-muted-desc
+  category: Accents
+  cost: 2
+  conditions:
+  - !type:HasCompCondition
+    component: BorgChassis
+    invert: true
+    tooltip: trait-condition-borg-not
+  effects:
+  - !type:ApplyStatusEffectSpecial
+    statusEffects:
+    - TraitStatusEffectMuted
+
+- type: trait
+  id: ReptilianAccent
+  name: trait-reptile-accent-name
+  description: trait-reptile-accent-desc
+  category: Accents
+  effects:
+  - !type:AddCompsEffect
+    components:
+    - type: LizardAccent
+
+- type: trait
+  id: RussianAccent
+  name: trait-russian-name
+  description: trait-russian-desc
+  category: Accents
+  effects:
+  - !type:AddCompsEffect
+    components:
+    - type: RussianAccent
+
+- type: trait
+  id: ScandinavianAccent
+  name: trait-scandi-accent-name-moff
+  description: trait-scandi-accent-desc-moff
+  category: Accents
+  effects:
+  - !type:AddCompsEffect
+    components:
+    - type: ScandinavianAccent

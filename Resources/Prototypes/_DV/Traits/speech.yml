@@ -46,21 +46,23 @@
     - type: ReplacementAccent
       accent: italian
 
-- type: trait
-  id: Muted
-  name: trait-muted-name
-  description: trait-muted-desc
-  category: Accents
-  cost: 2
-  conditions:
-  - !type:HasCompCondition
-    component: BorgChassis
-    invert: true
-    tooltip: trait-condition-borg-not
-  effects:
-  - !type:AddCompsEffect
-    components:
-    - type: Muted
+# Moff start - Moved to Moffstation namespace
+#- type: trait
+#  id: Muted
+#  name: trait-muted-name
+#  description: trait-muted-desc
+#  category: Accents
+#  cost: 2
+#  conditions:
+#  - !type:HasCompCondition
+#    component: BorgChassis
+#    invert: true
+#    tooltip: trait-condition-borg-not
+#  effects:
+#  - !type:AddCompsEffect
+#    components:
+#    - type: Muted
+# Moff end
 
 - type: trait
   id: FrenchAccent
