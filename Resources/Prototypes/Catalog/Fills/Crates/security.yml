@@ -14,9 +14,11 @@
           amount: 3
 
 - type: entity
-  abstract: true # Moff - moved to our namespace
   parent: CrateSecgear
-  id: CrateSecurityNonlethalUpstream # Moff - moved to our namespace
+  # Moff start - moved to our namespace
+  abstract: true
+  id: CrateSecurityNonlethalUpstream
+  # Moff end
   name: nonlethals crate
   description: Contains a mix of disablers, stun batons, and flashes. Requires Security access to open.
   components:
