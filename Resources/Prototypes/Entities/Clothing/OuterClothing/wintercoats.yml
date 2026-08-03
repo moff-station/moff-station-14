@@ -1,6 +1,6 @@
 - type: entity
   # Moffstation - Begin - Split the existing base winter coat into an abstract base with all of the coat stats; the basic winter coat gets attachable suit storage now, which we don't want to inherit in some cases
-  parent: ClothingOuterStorageEdible
+  parent: [ TemperatureProtection, ClothingOuterJacketBase ]
   id: ClothingOuterWinterCoatBase
 #  id: ClothingOuterWinterCoat # Moffstation - The upstream basic winter coat `ClothingOuterWinterCoat` was moved to our namespace
   abstract: true
@@ -10,11 +10,6 @@
     sprite: Clothing/OuterClothing/WinterCoats/coat.rsi
   - type: Clothing
     sprite: Clothing/OuterClothing/WinterCoats/coat.rsi
-  - type: TemperatureProtection
-    heatingCoefficient: 1.1
-    coolingCoefficient: 0.1
-  - type: Item
-    size: Normal
   - type: Armor
     modifiers:
       coefficients:
