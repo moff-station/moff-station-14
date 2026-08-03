@@ -73,8 +73,8 @@ public sealed partial class MoffCharacterSelectionManager : IPostInjectInit
         HumanoidCharacterProfile fallback)
     {
         var state = GetState(userId);
-
-        if (state.IsAuthoritative)
+        
+        if (state.IsAuthoritative || state.JobPriorities.Count > 0)
             return state.GetPriority(job);
 
         // The job may have come from an active character other than the caller's fallback, so take

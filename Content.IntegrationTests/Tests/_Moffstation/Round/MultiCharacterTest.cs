@@ -138,6 +138,26 @@ public sealed class MultiCharacterTest : GameTest
     }
 
     /// <summary>
+    /// Resets the state of the test
+    /// </summary>
+    [SetUp]
+    public async Task ResetSelectionState()
+    {
+        var pair = Pair;
+        var selection = pair.Server.ResolveDependency<MoffCharacterSelectionManager>();
+        var user = pair.Client.User!.Value;
+
+        await pair.Server.WaitPost(() =>
+        {
+            if (!selection.TryGetState(user, out var state))
+                return;
+
+            state.EnabledSlots.Clear();
+            state.JobPriorities.Clear();
+        });
+    }
+
+    /// <summary>
     /// Automatic preference resetting only covers slot 0, so slot 1 would leak between tests.
     /// </summary>
     [TearDown]
@@ -155,6 +175,7 @@ public sealed class MultiCharacterTest : GameTest
         {
             if (selection.TryGetState(user, out var state))
             {
+                state.EnabledSlots.Clear();
                 state.EnabledSlots[1] = false;
                 state.JobPriorities.Clear();
             }
@@ -246,7 +267,6 @@ public sealed class MultiCharacterTest : GameTest
         pair.Server.CfgMan.SetCVar(CCVars.GameMap, Map);
         var ticker = pair.Server.System<GameTicker>();
 
-        // Slot 0 is the selected character and the only one wanting Captain.
         await SetupTwoCharacters(pair, Captain, Passenger);
         await SetGlobalPriorities(pair, (Captain, JobPriority.High), (Passenger, JobPriority.Medium));
         await SetSlotEnabled(pair, 0, false);
@@ -289,6 +309,8 @@ public sealed class MultiCharacterTest : GameTest
         var pair = Pair;
         pair.Server.CfgMan.SetCVar(CCVars.GameMap, Map);
         var ticker = pair.Server.System<GameTicker>();
+
+        await OverrideCVar(Side.Server, CCVars.GameRoleTimers, false);
 
         await SetupTwoCharacters(pair, Passenger, Captain);
 
