@@ -462,7 +462,6 @@
     accentHColor: "#333333"
   - type: Icon
     state: pda-mime
-  - type: Muted # for random sentience event
   - type: EntityTableContainerFill
     containers:
       preinstalled-program-container: !type:AllSelector
@@ -471,6 +470,9 @@
         - id: NewsReaderCartridge
         - id: NanoChatCartridge # CD
         - id: SOSCartridge # Imp
+  - type: PermanentStatusEffects # for random sentience event
+    statusEffects:
+    - TraitStatusEffectMuted
 
 - type: entity
   name: chaplain PDA
@@ -1374,6 +1376,27 @@
     accentVColor: "#447987"
   - type: Icon
     state: pda-medical
+
+# Moff Start - Need to figure out how this will fit into our space first.
+# - type: entity
+#   parent: BasePDA
+#   id: TramDriverPDA
+#   name: tram driver PDA
+#   description: A serious driver will always arrive on time.
+#   components:
+#   - type: Pda
+#     id: TramDriverIDCard
+#   - type: Appearance
+#     appearanceDataInit:
+#      enum.PdaVisuals.PdaType:
+#        !type:String
+#        pda-tramdriver
+#   - type: PdaBorderColor
+#     borderColor: "#454a50"
+#     accentVColor: "#ffc500"
+#   - type: Icon
+#     state: pda-tramdriver
+# Moff End
 
 - type: entity
   parent: BasePDA
