@@ -11,7 +11,6 @@
                                  ToolTip="{Loc 'moff-vote-enroll-character-select-random-tooltip'}">
                     <BoxContainer Orientation="Horizontal" HorizontalAlignment="Left" SeparationOverride="6">
                         <TextureRect Name="DiceIcon"
-                                     TexturePath="/Textures/Objects/Fun/dice.rsi/d6_6.png"
                                      Stretch="KeepAspectCentered"
                                      SetSize="70 70"
                                      VerticalAlignment="Center"/>
