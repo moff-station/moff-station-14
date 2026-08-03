@@ -2,8 +2,8 @@
   id: Sushi
   mapName: 'Sushi Station'
   mapPath: /Maps/sushi.yml
-  minPlayers: 45
-  maxPlayers: 70
+  minPlayers: 41 # Moffstation - Medium Pop
+  maxPlayers: 75 # Moffstation - Medium Pop
   stations:
     Sushi:
       stationProto: StandardNanotrasenStation
@@ -37,22 +37,23 @@
             # Engineering (7-9)
             AtmosphericTechnician: [ 3, 3 ]
             StationEngineer: [ 4, 4 ]
-            TechnicalAssistant: [ 2, 2 ]
+#             TechnicalAssistant: [ 2, 2 ] # Moff - Removed role
             # Medical (8-10)
             Chemist: [ 2, 2 ]
             MedicalDoctor: [ 4, 4 ]
             Paramedic: [ 1, 1 ]
-            MedicalIntern: [ 2, 2 ]
+#             MedicalIntern: [ 2, 2 ] # Moff - Removed role
             Psychologist: [ 1, 1 ]
             # Science (4-6)
             Scientist: [ 4, 4 ]
-            ResearchAssistant: [ 2, 2 ]
+#             ResearchAssistant: [ 2, 2 ] # Moff - Removed role
             # Security (9-11)
             Warden: [ 1, 1 ]
             SecurityOfficer: [ 5, 5 ]
             Detective: [ 1, 1 ]
-            SecurityCadet: [ 2, 2 ]
+#             SecurityCadet: [ 2, 2 ] # Moff - Removed role
             Lawyer: [ 2, 2 ]
+            Prisoner: [ 1, 1 ] # Moffstation - Prisoners
             # Supply (6)
             SalvageSpecialist: [ 3, 3 ]
             CargoTechnician: [ 3, 3 ]
