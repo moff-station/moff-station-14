@@ -1,0 +1,452 @@
+- type: entity
+  id: BorgModuleGravity
+  parent: BaseBorgModule
+  name: magnetic artificial gravity module
+  description: A cyborg module which allows it to produce artificial gravity for itself.
+  components:
+  - type: ActionBorgModule
+    actions:
+    - ActionBorgToggleMagboots
+  - type: ComponentBorgModule
+    components:
+    - type: Magboots
+      useGenericToggle: false
+      magbootsAlert: MagbootsBorg
+  - type: Sprite
+    layers:
+    - state: generic
+    - sprite: _Moffstation/Objects/Specific/Robotics/borgmodule.rsi
+      state: icon-magboots
+
+- type: entity
+  parent: BaseAction
+  id: ActionBorgToggleMagboots
+  name: Toggle Magnetic Adhesion
+  description: Toggle magnetic adhesion to the ground on or off.
+  components:
+  - type: Action
+    itemIconStyle: BigAction
+    useDelay: 0.5
+  - type: Sprite
+    sprite: Clothing/Shoes/Boots/magboots.rsi
+    layers:
+    - state: icon
+      map: ["enum.ActionVisuals.Icon"]
+    - state: icon-on
+      map: ["enum.ActionVisuals.IconToggled"]
+      visible: false
+  - type: InstantAction
+    event: !type:ToggleMagbootsActionEvent
+
+# Generic Modules
+- type: entity
+  id: BorgModuleBureaucracy
+  parent: [ BaseBorgModule, BaseProviderBorgModule ]
+  name: bureaucracy cyborg module
+  components:
+  - type: Sprite
+    layers:
+    - state: generic
+    - sprite: _Moffstation/Objects/Specific/Robotics/borgmodule.rsi
+      state: icon-bureaucracy
+  - type: ItemBorgModule
+    hands:
+    - item: Pen
+    - item: BooksBag
+    - hand:
+        emptyLabel: borg-slot-documents-empty
+        emptyRepresentative: Paper
+        whitelist:
+          tags:
+          - Book
+          - Dice
+          - Document
+          - Figurine
+          - TabletopBoard
+          - Write
+    - item: HandLabeler
+    - item: RubberStampApproved
+    - item: RubberStampDenied
+    - item: RubberStampSilicon
+  - type: BorgModuleIcon
+    icon: { sprite: _Moffstation/Interface/Actions/actions_borg.rsi, state: bureau-module }
+
+- type: entity
+  id: BorgModuleCardboard
+  parent: [ BaseBorgModule, BaseProviderBorgModule ]
+  name: cardborg module
+  description: A piece of trash that gives cyborgs new abilities.
+  components:
+  - type: Sprite
+    layers:
+    - sprite: _Moffstation/Objects/Specific/Robotics/borgmodule.rsi
+      state: card
+    - sprite: _Moffstation/Objects/Specific/Robotics/borgmodule.rsi
+      state: icon-card
+  - type: ItemBorgModule
+    hands:
+    - item: CardSwordBorg
+    - hand:
+        emptyRepresentative: MaterialCardboard
+        emptyLabel: borg-slot-cardboard-empty
+        whitelist:
+          tags:
+          - Cardboard
+  - type: Construction
+    graph: BorgModuleCardboard
+    node: BorgModuleCardboard
+  - type: BorgModuleIcon
+    icon: { sprite: _Moffstation/Interface/Actions/actions_borg.rsi, state: card-module }
+
+- type: entity
+  id: BorgModuleConstructionGeneric
+  parent: [ BaseBorgModule, BaseProviderBorgModule ]
+  name: generalized construction cyborg module
+  components:
+  - type: Sprite
+    layers:
+    - state: generic
+    - state: icon-construction
+  - type: ItemBorgModule
+    hands:
+    - hand:
+        emptyRepresentative: BorgModuleConstructionMaterialPlaceholder
+        emptyLabel: borg-slot-construction-empty
+        whitelist:
+          tags:
+          - ConstructionMaterial
+    - hand:
+        emptyRepresentative: FloorTileItemSteel
+        emptyLabel: borg-slot-tiles-empty
+        whitelist:
+          components:
+          - FloorTile
+    - hand:
+        emptyRepresentative: DoorElectronics
+        emptyLabel: borg-slot-circuitboards-empty
+        whitelist:
+          components:
+          - Circuitboard
+        blacklist:
+          components:
+          - SiliconLawProvider
+  - type: BorgModuleIcon
+    icon: { sprite: _Moffstation/Interface/Actions/actions_borg.rsi, state: generic-construction-module }
+
+- type: entity
+  id: BorgModuleCustodialGeneric
+  parent: [ BaseBorgModule, BaseProviderBorgModule ]
+  name: generalized custodial cyborg module
+  components:
+  - type: Sprite
+    layers:
+    - state: generic
+    - state: icon-mop
+  - type: ItemBorgModule
+    hands:
+    - item: LightReplacer
+    - item: BorgTrashBag
+    - item: BorgSprayBottle
+  - type: BorgModuleIcon
+    icon: { sprite: _Moffstation/Interface/Actions/actions_borg.rsi, state: generic-cleaning-module }
+
+- type: entity
+  id: BorgModuleFoamForceGallant
+  parent: [ BaseBorgModule, BaseProviderBorgModule ]
+  name: foam force gallant cyborg module
+  description: A module that comes with a Foam Force Gallant rifle.
+  components:
+  - type: Sprite
+    layers:
+    - state: generic
+    - sprite: _Moffstation/Objects/Specific/Robotics/foam_gun_module.rsi
+      state: icon-foam-gun
+  - type: ItemBorgModule
+    hands:
+    - item: WeaponRifleFoamBorg
+    - item: BoxDonkSoftBox
+    - hand:
+        emptyRepresentative: GrenadeFoamDart
+        emptyLabel: borg-slot-foam-grenade-empty
+        whitelist:
+          tags:
+          - FoamGrenade
+  - type: BorgModuleIcon
+    icon: { sprite: _Moffstation/Interface/Actions/actions_borg.rsi, state: foam-force-module }
+
+- type: entity
+  id: BorgModuleMiningGeneric
+  parent: [ BaseBorgModule, BaseProviderBorgModule ]
+  name: generalized mining cyborg module
+  components:
+  - type: Sprite
+    layers:
+    - state: generic
+    - state: icon-mining
+  - type: ItemBorgModule
+    hands:
+    - item: AppraisalTool
+    - item: MiningDrill
+    - item: BorgOreBag
+    - hand:
+        emptyRepresentative: Coal1
+        emptyLabel: borg-slot-ores-empty
+        whitelist:
+          tags:
+          - Ore
+          - ArtifactFragment
+  - type: BorgModuleIcon
+    icon: { sprite: _Moffstation/Interface/Actions/actions_borg.rsi, state: generic-mining-module }
+
+- type: entity
+  id: BorgModuleMusiqueGeneric
+  parent: [ BaseBorgModule, BaseProviderBorgModule ]
+  name: generalized musique cyborg module
+  components:
+  - type: Sprite
+    layers:
+    - state: generic
+    - state: icon-musique
+  - type: ItemBorgModule
+    hands:
+    - item: SynthesizerInstrument
+  - type: BorgModuleIcon
+    icon: { sprite: _Moffstation/Interface/Actions/actions_borg.rsi, state: generic-musical-module }
+
+- type: entity
+  id: BorgModuleScienceGeneric
+  parent: [ BaseBorgModule, BaseProviderBorgModule ]
+  name: generalized scientific cyborg module
+  components:
+  - type: Sprite
+    layers:
+    - state: generic
+    - state: icon-anomalies
+  - type: ItemBorgModule
+    hands:
+    - item: NodeScanner
+    - item: AnomalyScanner
+    - hand:
+        emptyRepresentative: SheetPlasma
+        emptyLabel: borg-slot-construction-empty
+        whitelist:
+          tags:
+          - ConstructionMaterial
+  - type: BorgModuleIcon
+    icon: { sprite: _Moffstation/Interface/Actions/actions_borg.rsi, state: generic-anomaly-module }
+
+- type: entity
+  id: BorgModuleTopicalsGeneric
+  parent: [ BaseBorgModule, BaseProviderBorgModule ]
+  name: generalized topicals cyborg module
+  components:
+  - type: Sprite
+    layers:
+    - state: generic
+    - state: icon-treatment
+  - type: ItemBorgModule
+    hands:
+    - item: HandheldHealthAnalyzer
+    - hand:
+        emptyRepresentative: Brutepack
+        emptyLabel: borg-slot-topicals-empty
+        whitelist:
+          components:
+          - Healing
+  - type: BorgModuleIcon
+    icon: { sprite: _Moffstation/Interface/Actions/actions_borg.rsi, state: generic-treatment-module }
+
+- type: entity
+  id: BorgModuleInvestigation
+  parent: [ BaseBorgModule, BaseProviderBorgModule ]
+  name: investigation cyborg module
+  components:
+  - type: Sprite
+    layers:
+    - state: generic
+    - sprite: _Moffstation/Objects/Specific/Robotics/borgmodule.rsi
+      state: icon-investigation
+  - type: ItemBorgModule
+    hands:
+    - item: ForensicScanner
+    - item: LogProbe
+    - item: HandLabeler
+    - item: TapeRecorder
+    - hand:
+        emptyRepresentative: CassetteTape
+        emptyLabel: borg-slot-cassette-empty
+        whitelist:
+          components:
+          - FitsInTapeRecorder
+  - type: BorgModuleIcon
+    icon: { sprite: _Moffstation/Interface/Actions/actions_borg.rsi, state: investigation-module }
+
+- type: entity
+  id: BorgModuleMail
+  parent: [ BaseBorgModule, BaseProviderBorgModule ]
+  name: mail cyborg module
+  components:
+  - type: Sprite
+    layers:
+    - state: generic
+    - sprite: _Moffstation/Objects/Specific/Robotics/borgmodule.rsi
+      state: icon-mail
+  - type: ItemBorgModule
+    hands:
+    - item: MailBag
+    - hand:
+        emptyRepresentative: LetterDelivery
+        emptyLabel: borg-slot-letter-empty
+        whitelist:
+          components:
+          - Paper
+          - Delivery
+          - WrappedParcel
+          tags:
+          - MailCapsule
+          - Document
+          - Paper
+    - hand:
+        emptyRepresentative: PackageDelivery
+        emptyLabel: borg-slot-package-empty
+        whitelist:
+          tags:
+          - PackageDelivery
+    - item: ParcelWrapRecharging
+  - type: BorgModuleIcon
+    icon: { sprite: _Moffstation/Interface/Actions/actions_borg.rsi, state: mail-module }
+
+
+
+# Science Modules
+- type: entity
+  id: BorgModuleAdvancedAnomaly
+  parent: [ BaseBorgModuleScience, BaseProviderBorgModule ]
+  name: advanced anomaly cyborg module
+  components:
+  - type: Sprite
+    layers:
+    - state: science
+    - sprite: _Moffstation/Objects/Specific/Robotics/borgmodule.rsi
+      state: icon-anomalies-adv
+  - type: ItemBorgModule
+    hands:
+    - item: AnomalyScanner
+    - item: WeaponPistolCHIMPBorg
+    - item: WeaponGauntletGorilla
+    - hand:
+        emptyRepresentative: AnomalyCoreBluespaceInert
+        emptyLabel: borg-slot-anomaly-core
+        whitelist:
+          components:
+          - AnomalyCore
+  - type: BorgModuleIcon
+    icon: { sprite: _Moffstation/Interface/Actions/actions_borg.rsi, state: adv-anomaly-module }
+
+# Pirate Modules
+- type: entity
+  id: BorgModulePirate
+  parent: [ BaseBorgModuleSyndicate, BaseProviderBorgModule, BaseSyndicateContraband ]
+  name: pirate cyborg module
+  description: A module that comes with a grappling hook, anchor, and self-reloading pepperbox shotgun.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Objects/Specific/Robotics/pirate_borg.rsi
+    layers:
+    - state: pirate
+    - state: icon-pirate
+  - type: ItemBorgModule
+    hands:
+    - item: WeaponGrapplingGun
+    - item: EnergyCutlass
+    - item: WeaponShotgunBlackbox
+  - type: BorgModuleIcon
+    icon: { sprite: _Moffstation/Interface/Actions/actions_borg.rsi, state: pirate-module }
+
+# Cargo Modules
+- type: entity
+  id: BorgModuleWildlifeControl
+  parent: [ BaseBorgModuleCargo, BaseProviderBorgModule ]
+  name: wildlife cyborg module
+  description: Designed for salvaging in a wildlife-heavy environment, this module comes with a stabbing tool and modified proto-kinetic particle accelerator to "tame" fauna from afar.
+  components:
+  - type: Sprite
+    layers:
+    - state: cargo
+    - sprite: _Moffstation/Objects/Specific/Robotics/borgmodule.rsi
+      state: icon-wildlife
+  - type: ItemBorgModule
+    hands:
+    - item: WeaponProtoKineticAcceleratorIntegrated
+    - item: SurvivalKnife
+    - hand:
+        emptyRepresentative: PKAUpgradeDamage
+        emptyLabel: borg-slot-pka-modkit-empty
+        whitelist:
+          tags:
+          - PKAUpgrade
+  - type: BorgModuleIcon
+    icon: { sprite: _Moffstation/Interface/Actions/actions_borg.rsi, state: wildlife-module }
+  - type: Tag
+    tags:
+    - BorgModuleCargo
+
+- type: entity
+  parent: [ BaseBorgModuleCargo, BaseProviderBorgModule ]
+  id: BorgModuleAdvancedTraversal
+  name: advanced traversal cyborg module
+  description: NT finally funded the "cyborg jetpack" initiative after locating a deadly planet filled with diamonds. This module is the result of that initiative, providing the cyborg with a grappling hook, jetpack, and integrated navigation electronics.
+  components:
+  - type: Sprite
+    layers:
+    - state: cargo
+    - sprite: _Moffstation/Objects/Specific/Robotics/borgmodule.rsi
+      state: icon-advanced-traversal
+  - type: ItemBorgModule
+    hands:
+    - item: WeaponGrapplingGun
+    - item: HandHeldMassScannerBorg
+    - item: HandheldStationMapUnpowered
+    - item: JetpackSalvageborg
+  - type: BorgModuleIcon
+    icon: { sprite: _Moffstation/Interface/Actions/actions_borg.rsi, state: adv-traversal-module }
+  - type: Tag
+    tags:
+    - CyborgTraversalModule
+    - BorgModuleCargo
+
+- type: entity
+  parent: [ BaseBorgModuleCargo, BaseProviderBorgModule ]
+  id: BorgModuleAdvancedMail
+  name: advanced mail cyborg module
+  components:
+  - type: Sprite
+    layers:
+    - state: cargo
+    - sprite: _Moffstation/Objects/Specific/Robotics/borgmodule.rsi
+      state: icon-mail
+  - type: ItemBorgModule
+    hands:
+    - item: MailBag
+    - hand:
+        emptyRepresentative: LetterDelivery
+        emptyLabel: borg-slot-letter-empty
+        whitelist:
+          components:
+          - Paper
+          - Delivery
+          - WrappedParcel
+          tags:
+          - MailCapsule
+          - Document
+          - Paper
+    - hand:
+        emptyRepresentative: PackageDelivery
+        emptyLabel: borg-slot-package-empty
+        whitelist:
+          tags:
+          - PackageDelivery
+    - item: ParcelWrapRecharging
+    - item: NFWeaponLauncherMailBorg
+  - type: BorgModuleIcon
+    icon: { sprite: _Moffstation/Interface/Actions/actions_borg.rsi, state: mail-module }

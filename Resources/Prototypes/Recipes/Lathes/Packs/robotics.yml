@@ -7,6 +7,7 @@
   - PositronicBrain
   - SciFlash
   - CyborgEndoskeleton
+  - AiShell # Moffstation - Add Ai Shells
 
 - type: latheRecipePack
   id: BorgModulesStatic
@@ -16,6 +17,9 @@
   - BorgModuleFireExtinguisher
   - BorgModuleInflatable
   - BorgModuleArtistry
+  - BorgModuleBureaucracy # Moffstation - Give service borgs some love
+  - BorgModuleInvestigation # Moffstation
+  - BorgModuleMail # Moffstation
 
 - type: latheRecipePack
   id: BorgLimbsStatic
@@ -42,6 +46,19 @@
   - BorgModuleAdvancedClowning
   - BorgModuleAdvancedTopical
   - BorgModuleAdvancedMining
+  - BorgModuleAdvancedAnomaly # Moffstation - Scienceborg
+  - BorgModuleFoamForceGallant # Moffstation - Foam force module
+  - BorgModuleAdvancedTraversal # Moffstation - Salvborg advanced thruster
+  # Moffstation - Start - specialty lite modules
+  - BorgModuleConstructionGeneric
+  - BorgModuleCustodialGeneric
+  - BorgModuleMiningGeneric
+  - BorgModuleMusiqueGeneric
+  - BorgModuleScienceGeneric
+  - BorgModuleTopicalsGeneric
+  - BorgModuleWildlifeControl
+  - BorgModuleGravity
+  # Moffstation - End
 
 - type: latheRecipePack
   id: MechParts

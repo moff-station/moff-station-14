@@ -1,0 +1,159 @@
+# Synthliz markings
+
+# tail
+- type: marking
+  id: LizardTailSynth
+  bodyPart: Tail
+  forcedColoring: true
+  groupWhitelist: [ Reptilian ]
+  sprites:
+  - sprite: _CD/Mobs/Customization/Synthliz/tails.rsi
+    state: tail_synthliz
+
+- type: marking
+  id: LizardTailSynthAnimated
+  bodyPart: Tail
+  groupWhitelist: []
+  sprites:
+  - sprite: _CD/Mobs/Customization/Synthliz/tails.rsi
+    state: tail_synthliz_wagging
+
+# alternate snout
+
+- type: marking
+  id: LizardSnoutSynth
+  bodyPart: Snout
+  groupWhitelist: [ Reptilian ]
+  sprites:
+  - sprite: _CD/Mobs/Customization/Synthliz/altsnouts.rsi
+    state: alt_synthsnout_eyes
+  - sprite: _CD/Mobs/Customization/Synthliz/altsnouts.rsi
+    state: alt_synthsnout_visor
+  - sprite: _CD/Mobs/Customization/Synthliz/altsnouts.rsi
+    state: alt_synthsnout_frame
+  - sprite: _CD/Mobs/Customization/Synthliz/altsnouts.rsi
+    state: alt_synthsnout_snout
+  - sprite: _CD/Mobs/Customization/Synthliz/altsnouts.rsi
+    state: alt_synthsnout_jaw
+
+# horns
+
+- type: marking
+  id: SyntheticHornCurl
+  bodyPart: HeadTop
+  groupWhitelist: [ Reptilian ]
+  sprites:
+  - sprite: _CD/Mobs/Customization/Synthliz/antennas.rsi
+    state: horn_antenna_curl
+
+- type: marking
+  id: SyntheticHornShort
+  bodyPart: HeadTop
+  groupWhitelist: [ Reptilian ]
+  sprites:
+  - sprite: _CD/Mobs/Customization/Synthliz/antennas.rsi
+    state: horn_antenna_short
+
+- type: marking
+  id: SyntheticHornSlash
+  bodyPart: HeadTop
+  groupWhitelist: [ Reptilian ]
+  sprites:
+  - sprite: _CD/Mobs/Customization/Synthliz/antennas.rsi
+    state: horn_antenna_slash
+
+- type: marking
+  id: SyntheticHornSharp
+  bodyPart: HeadTop
+  groupWhitelist: [ Reptilian ]
+  sprites:
+  - sprite: _CD/Mobs/Customization/Synthliz/antennas.rsi
+    state: horn_antenna_sharp
+
+- type: marking
+  id: SyntheticHornTwin
+  bodyPart: HeadTop
+  groupWhitelist: [ Reptilian ]
+  sprites:
+  - sprite: _CD/Mobs/Customization/Synthliz/antennas.rsi
+    state: horn_antenna_twin
+
+- type: marking
+  id: SyntheticHornThick
+  bodyPart: HeadTop
+  groupWhitelist: [ Reptilian ]
+  sprites:
+  - sprite: _CD/Mobs/Customization/Synthliz/antennas.rsi
+    state: horn_antenna_thick
+
+# horns with lights
+
+- type: marking
+  id: SyntheticHornSharpLight
+  bodyPart: HeadTop
+  groupWhitelist: [ Reptilian ]
+  sprites:
+  - sprite: _CD/Mobs/Customization/Synthliz/antennas.rsi
+    state: horn_antenna_sharp
+  - sprite: _CD/Mobs/Customization/Synthliz/antennas.rsi
+    state: horn_antenna_sharp_light
+
+- type: marking
+  id: SyntheticHornTwinLight
+  bodyPart: HeadTop
+  groupWhitelist: [ Reptilian ]
+  sprites:
+  - sprite: _CD/Mobs/Customization/Synthliz/antennas.rsi
+    state: horn_antenna_twin
+  - sprite: _CD/Mobs/Customization/Synthliz/antennas.rsi
+    state: horn_antenna_twin_light
+
+- type: marking
+  id: SyntheticHornThickLight
+  bodyPart: HeadTop
+  groupWhitelist: [ Reptilian ]
+  sprites:
+  - sprite: _CD/Mobs/Customization/Synthliz/antennas.rsi
+    state: horn_antenna_thick
+  - sprite: _CD/Mobs/Customization/Synthliz/antennas.rsi
+    state: horn_antenna_thick_light
+
+# Chest
+
+- type: marking
+  id: SyntheticBodyScute
+  bodyPart: Chest
+  groupWhitelist: [ Reptilian ]
+  sprites:
+  - sprite: _CD/Mobs/Customization/Synthliz/body_markings.rsi
+    state: body_scute
+
+- type: marking
+  id: SyntheticBodyPlate
+  bodyPart: Chest
+  groupWhitelist: [ Reptilian ]
+  sprites:
+  - sprite: _CD/Mobs/Customization/Synthliz/body_markings.rsi
+    state: body_plate
+
+# Chest w/ Lights
+
+- type: marking
+  id: SyntheticBodyPecs
+  bodyPart: Chest
+  groupWhitelist: [ Reptilian ]
+  sprites:
+  - sprite: _CD/Mobs/Customization/Synthliz/body_markings.rsi
+    state: body_pecs_primary
+  - sprite: _CD/Mobs/Customization/Synthliz/body_markings.rsi
+    state: body_pecs_secondary
+
+- type: marking
+  id: SyntheticBodyLights
+  bodyPart: Chest
+  groupWhitelist: [ Reptilian ]
+  sprites:
+  - sprite: _CD/Mobs/Customization/Synthliz/body_markings.rsi
+    state: body_lights_primary
+  - sprite: _CD/Mobs/Customization/Synthliz/body_markings.rsi
+    state: body_lights_secondary

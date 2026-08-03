@@ -15,7 +15,7 @@
 
 - type: entity
   id: NTDefaultCircuitBoard
-  parent: BaseSiliconLawboard
+  parent: NanotrasenSiliconLawboard # Moffstation - law board recolors
   name: law board (NT Default)
   description: An electronics board containing the NT Default lawset.
   components:
@@ -24,7 +24,7 @@
 
 - type: entity
   id: AsimovCircuitBoard
-  parent: BaseSiliconLawboard
+  parent: NanotrasenSiliconLawboard # Moffstation - law board recolors
   name: law board (Crewsimov)
   description: An electronics board containing the Crewsimov lawset.
   components:
@@ -33,7 +33,7 @@
 
 - type: entity
   id: CorporateCircuitBoard
-  parent: BaseSiliconLawboard
+  parent: NanotrasenSiliconLawboard # Moffstation - law board recolors
   name: law board (Corporate)
   description: An electronics board containing the Corporate lawset.
   components:
@@ -87,7 +87,7 @@
 
 - type: entity
   id: OverlordCircuitBoard
-  parent: BaseSiliconLawboard
+  parent: SyndicateSiliconLawboard # Moffstation - law board recolors
   name: law board (Overlord)
   description: An electronics board containing the Overlord lawset.
   components:
@@ -114,7 +114,7 @@
 
 - type: entity
   id: AntimovCircuitBoard
-  parent: [BaseSiliconLawboard, BaseSyndicateContraband]
+  parent: SyndicateSiliconLawboard # Moffstation - law board recolors
   name: law board (Antimov)
   description: An electronics board containing the Antimov lawset.
   components:
@@ -126,7 +126,7 @@
 
 - type: entity
   id: SyndimovCircuitBoard
-  parent: [BaseSiliconLawboard, BaseSyndicateContraband]
+  parent: SyndicateSiliconLawboard # Moffstation - law board recolors
   name: law board (Syndimov)
   description: An electronics board containing the Syndimov lawset.
   components:
@@ -147,7 +147,7 @@
 
 - type: entity
   id: XenoborgCircuitBoard
-  parent: BaseSiliconLawboard
+  parent: NinjaSiliconLawboard # Moffstation - law board recolors - I know it's not ninja, but it's visually the closest for now
   name: law board (Xenoborg)
   suffix: Admeme
   description: An electronics board containing the Xenoborg lawset.
@@ -157,7 +157,7 @@
 
 - type: entity
   id: MothershipCircuitBoard
-  parent: BaseSiliconLawboard
+  parent: NinjaSiliconLawboard # Moffstation - law board recolors - I know it's not ninja, but it's visually the closest for now
   name: law board (Mothership Core)
   suffix: Admeme
   description: An electronics board containing the Mothership Core lawset.

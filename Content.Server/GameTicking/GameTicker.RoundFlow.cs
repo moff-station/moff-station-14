@@ -1,5 +1,6 @@
 using System.Linq;
 using System.Numerics;
+using System.Text;  // Moffstation
 using Content.Server.Announcements;
 using Content.Server.Discord;
 using Content.Server.GameTicking.Events;
@@ -24,6 +25,17 @@ using Robust.Shared.Network;
 using Robust.Shared.Player;
 using Robust.Shared.Random;
 using Robust.Shared.Utility;
+using Content.Shared._Goob.LastWords;
+using Content.Shared._Moffstation.CCVar;
+using Content.Shared.Damage.Prototypes;
+using Content.Shared.Damage.Systems;
+using Content.Shared.FixedPoint;
+using Content.Shared.Mobs;
+using Content.Shared.Mobs.Components;
+using Robust.Shared.Prototypes;
+using Content.Server.Voting.Managers; // Moff
+using Content.Shared.Voting; // Moff
+using Timer = Robust.Shared.Timing.Timer; // Moff
 
 namespace Content.Server.GameTicking
 {
@@ -32,6 +44,9 @@ namespace Content.Server.GameTicking
         [Dependency] private DiscordWebhook _discord = default!;
         [Dependency] private RoleSystem _role = default!;
         [Dependency] private ITaskManager _taskManager = default!;
+
+        [Dependency] private DamageableSystem _damageable = default!; // Moffstation - Goob roundend info
+        [Dependency] private IVoteManager _voteManager = default!; // Moff - auto map vote
 
         private static readonly Counter RoundNumberMetric = Metrics.CreateCounter(
             "ss14_round_number",
@@ -348,6 +363,15 @@ namespace Content.Server.GameTicking
             return total;
         }
 
+        // Moffstation - Start - Player count calculated depending on cvar
+        public int DynamicPlayerCount()
+        {
+            return _cfg.GetCVar(MoffCCVars.GameRulesCountReadied)
+                ? ReadyPlayerCount()
+                : _playerManager.PlayerCount;
+        }
+        // Moffstation - End
+
         public void StartRound(bool force = false)
         {
 #if EXCEPTION_TOLERANCE
@@ -564,6 +588,27 @@ namespace Content.Server.GameTicking
 
                 var roles = _roles.MindGetAllRoleInfo(mindId);
 
+                // Goobstation - Start - Cool player manifest
+                var lastWords = "";
+                var mobState = MobState.Invalid;
+#pragma warning disable CS0618 // Type or member is obsolete // Moffstation - new API, I'm using it right
+                IReadOnlyDictionary<ProtoId<DamageGroupPrototype>, FixedPoint2>? damagePerGroup = null;
+#pragma warning restore CS0618 // Type or member is obsolete
+                if (TryComp<LastWordsComponent>(mindId, out var lastWordsComponent)
+                    && !TerminatingOrDeleted(entity))
+                {
+                    lastWords = lastWordsComponent.LastWords;
+
+                    if (TryComp<MobStateComponent>(entity, out var mobStateComp) && mobState is { } _)
+                        mobState = mobStateComp.CurrentState;
+
+                    if (entity is { } e)
+#pragma warning disable CS0618 // Type or member is obsolete // Moffstation - new damage API, we specifically wanna show this for grouping in the UI, which is what this method's obsolescence warns about.
+                        damagePerGroup = _damageable.GetDamagePerGroup(e);
+#pragma warning restore CS0618 // Type or member is obsolete
+                }
+                // Goobstation - End
+
                 var playerEndRoundInfo = new RoundEndMessageEvent.RoundEndPlayerInfo()
                 {
                     // Note that contentPlayerData?.Name sticks around after the player is disconnected.
@@ -580,7 +625,13 @@ namespace Content.Server.GameTicking
                     JobPrototypes = roles.Where(role => !role.Antagonist).Select(role => role.Prototype).ToArray(),
                     AntagPrototypes = roles.Where(role => role.Antagonist).Select(role => role.Prototype).ToArray(),
                     Observer = observer,
-                    Connected = connected
+                    Connected = connected,
+                    // Goob Station - End of Round Screen
+                    LastWords = lastWords,
+                    EntMobState = mobState,
+#pragma warning disable CS0618 // Type or member is obsolete // Moffstation Grouping in the UI
+                    DamagePerGroup = damagePerGroup ?? new Dictionary<ProtoId<DamageGroupPrototype>, FixedPoint2>(),
+#pragma warning restore CS0618 // Type or member is obsolete
                 };
                 listOfPlayerInfo.Add(playerEndRoundInfo);
             }
@@ -681,6 +732,24 @@ namespace Content.Server.GameTicking
                 UpdateInfoText();
 
                 ReqWindowAttentionAll();
+
+                // Moff Start - Auto-start a map vote timed to finish just before map preload
+                if (_cfg.GetCVar(MoffCCVars.AutoStartMapVote))
+                {
+                    // 5s buffer so the vote resolves before map preloading starts
+                    var preloadTime = RoundPreloadTime + TimeSpan.FromSeconds(5);
+
+                    // Delay so the vote lands late in the lobby (accurate pop) and ends before preload
+                    var delay = LobbyDuration - (preloadTime + TimeSpan.FromSeconds(_cfg.GetCVar(CCVars.VoteTimerMap)));
+                    Timer.Spawn(delay,
+                        () =>
+                    {
+                        // There isn't really a better way to identify an already running map vote...
+                        if (_voteManager.ActiveVotes.All(x => x.Title != Loc.GetString("ui-vote-map-title")))
+                            _voteManager.CreateStandardVote(null, StandardVoteType.Map);
+                    });
+                }
+                // Moff end
             }
         }
 
@@ -757,6 +826,22 @@ namespace Content.Server.GameTicking
 
             return true;
         }
+
+        // Moffstation - Start - SetCountdown Command
+        public bool SetCountdown(TimeSpan time)
+        {
+            if (_runLevel != GameRunLevel.PreRoundLobby) // must be in preround
+                return false;
+
+            _roundStartTime = _gameTiming.CurTime + time;
+            RaiseNetworkEvent(new TickerLobbyCountdownEvent(_roundStartTime, Paused));
+            _chatManager.DispatchServerAnnouncement(
+                Loc.GetString("game-ticker-set-countdown", ("seconds", time.TotalSeconds))
+            );
+
+            return true;
+        }
+        // Moffstation - End
 
         private void UpdateRoundFlow(float frameTime)
         {
@@ -994,5 +1079,40 @@ namespace Content.Server.GameTicking
             Text += text;
             _doNewLine = true;
         }
+
+        // Moffstation - Start - Added line wrapping for end of round screen
+        public void AddLineWrapping(string text, int linewidth = 50, char separator = ' ')
+        {
+            AddLine(WrapString(text, linewidth, separator));
+        }
+
+        public string WrapString(string text, int linewidth = 50, char separator = ' ')
+        {
+            var wholeString = new StringBuilder();
+            var words = text.Split(separator);
+            var line = "";
+            foreach (var word in words)
+            {
+                line += word + separator;
+
+                // If there's a linebreak within the word, reset the line
+                if (word.Contains("\n"))
+                {
+                    wholeString.Append(line);
+                    line = "";
+                    continue;
+                }
+
+                // Otherwise, check if the length has been met
+                if (line.Length > linewidth)
+                {
+                    wholeString.AppendLine(line);
+                    line = "";
+                }
+            }
+            wholeString.AppendLine(line);
+            return wholeString.ToString();
+        }
+        // Moffstation - End - Added line wrapping for end of round screen
     }
 }

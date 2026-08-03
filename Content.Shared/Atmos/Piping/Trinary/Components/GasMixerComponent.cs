@@ -1,4 +1,5 @@
 using Robust.Shared.GameStates;
+using Robust.Shared.Serialization;
 
 namespace Content.Shared.Atmos.Piping.Trinary.Components;
 
@@ -56,4 +57,27 @@ public sealed partial class GasMixerComponent : Component
     /// </summary>
     [DataField, AutoNetworkedField]
     public float InletTwoConcentration = 0.5f;
+
+    // Moff start - Molar gas mixer
+    /// <summary>
+    /// How the mixer determines what exactly to do when mixing.
+    /// </summary>
+    [DataField, AutoNetworkedField]
+    public GasMixerStrategy Strategy = GasMixerStrategy.Volumetric;
+    // Moff end
 }
+
+// Moff start - Molar gas mixer
+/// <summary>
+/// Values for <see cref="GasMixerComponent.Strategy"/>.
+/// </summary>
+/// <remarks>
+/// This could be changed to be various prototypes if there're ever more of these added in the future. For now, meh.
+/// </remarks>
+[Serializable, NetSerializable]
+public enum GasMixerStrategy : byte
+{
+    Volumetric,
+    Molar,
+}
+// Moff end

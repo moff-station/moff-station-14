@@ -16,6 +16,14 @@ public sealed partial class ArrivalsShuttleComponent : Component
     [DataField("nextArrivalsTime", customTypeSerializer: typeof(TimeOffsetSerializer))]
     public TimeSpan NextArrivalsTime;
 
+    // Moffstation - Start - Keep track of the first time hitting the station
+    /// <summary>
+    /// True until the arrivals shuttle arrives at the station for the first time
+    /// </summary>
+    [DataField]
+    public bool FirstArrival = true;
+    // Moffstation - End
+
     /// <summary>
     ///     the first arrivals FTL originates from nullspace instead of the station
     /// </summary>
@@ -23,3 +31,11 @@ public sealed partial class ArrivalsShuttleComponent : Component
     public bool FirstRun = true;
 
 }
+
+// Moffstation - Start - First arrivals event
+/// <summary>
+///     Event for the first time the arrivals shuttle reaches the station.
+/// </summary>
+[Serializable]
+public sealed class FirstArrivalEvent : EventArgs;
+// Moffstation - End

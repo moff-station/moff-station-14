@@ -27,10 +27,14 @@
     capacity: 40
     proto: BulletFoam
   - type: Sprite
-    sprite: Objects/Storage/boxes.rsi
+    sprite: _Moffstation/Objects/Storage/boxes.rsi # Moffstation - Uncabinetification
     layers:
       - state: boxwidetoy
       - state: shelltoy
+  # Moffstation - Start
+  - type: QuickPickup
+  - type: AreaPickup
+  # Moffstation - End
 
 - type: entity
   parent: BaseMagazineBoxMagnum

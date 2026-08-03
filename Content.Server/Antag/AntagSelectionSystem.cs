@@ -61,7 +61,7 @@ public sealed partial class AntagSelectionSystem : GameRuleSystem<AntagSelection
     [Dependency] private IPlayerManager _playerManager = default!;
     [Dependency] private IServerPreferencesManager _pref = default!;
     [Dependency] private ISharedAdminLogManager _adminLogger = default!;
-    [Dependency] private ArrivalsSystem _arrivals = default!;
+    // [Dependency] private ArrivalsSystem _arrivals = default!; // Moffstation
     [Dependency] private AudioSystem _audio = default!;
     [Dependency] private EntityWhitelistSystem _whitelist = default!;
     [Dependency] private FollowerSystem _follower = default!;
@@ -347,8 +347,10 @@ public sealed partial class AntagSelectionSystem : GameRuleSystem<AntagSelection
 
     private float GetWeight(ICommonSession player)
     {
-        // TODO: Actually add weights! This is placeholder for a future PR.
-        return 1f;
+        // Moff start - We have antag weights, so they can cleanly slot into here.
+        // return 1f;
+        return _weightedAntagMan.GetWeight(player.UserId);
+        // Moff end
     }
 
     private void AssignAntags(Entity<AntagSelectionComponent> gameRule)
@@ -788,7 +790,11 @@ public sealed partial class AntagSelectionSystem : GameRuleSystem<AntagSelection
         if (prototype.StartingGear is not null)
             gear.Add(prototype.StartingGear.Value);
 
-        _loadout.Equip(antag, gear, prototype.RoleLoadout);
+        // Moffstation - Begin - Use LoadoutAwareEquip function to equip Roleloadout and Starting gear, this allows custom loadouts for antags.
+        // _loadout.Equip(antag, gear, prototype.RoleLoadout);
+        var profile = _pref.GetPreferences(player.UserId).SelectedCharacter;
+        _loadout.LoadoutAwareEquip(antag, player, gear, prototype.RoleLoadout, profile);
+        // Moffstation - End
 
         // Ensure that we have the right mind for our entity.
         if (!_mind.TryGetMind(player, out var mind, out var mindComp) || mindComp.OwnedEntity != antag)
@@ -829,6 +835,7 @@ public sealed partial class AntagSelectionSystem : GameRuleSystem<AntagSelection
         args.Minds = GetAntagIdentities(ent.AsNullable()).ToList();
         args.AgentName = Loc.GetString(name);
     }
+
 }
 
 /// <summary>

@@ -1,0 +1,31 @@
+- type: quickPhrase
+  parent: BaseCommonPhrase
+  id: BaseImperativePhrase
+  abstract: true
+  group: phrase-group-command
+
+- { type: quickPhrase, parent: BaseImperativePhrase, id: GivePhrase }
+- { type: quickPhrase, parent: BaseImperativePhrase, id: NeedPhrase }
+- { type: quickPhrase, parent: BaseImperativePhrase, id: WantPhrase }
+- { type: quickPhrase, parent: BaseImperativePhrase, id: CantPhrase }
+- { type: quickPhrase, parent: BaseImperativePhrase, id: ShowMePhrase }
+- { type: quickPhrase, parent: BaseImperativePhrase, id: HelpPhrase }
+- { type: quickPhrase, parent: BaseImperativePhrase, id: AttackPhrase }
+- { type: quickPhrase, parent: BaseImperativePhrase, id: BreakPhrase }
+- { type: quickPhrase, parent: BaseImperativePhrase, id: BuildPhrase }
+- { type: quickPhrase, parent: BaseImperativePhrase, id: HealPhrase }
+- { type: quickPhrase, parent: BaseImperativePhrase, id: StopPhrase }
+- { type: quickPhrase, parent: BaseImperativePhrase, id: GoAwayPhrase }
+- { type: quickPhrase, parent: BaseImperativePhrase, id: LeavePhrase }
+- { type: quickPhrase, parent: BaseImperativePhrase, id: StayPhrase }
+- { type: quickPhrase, parent: BaseImperativePhrase, id: ComeHerePhrase }
+- { type: quickPhrase, parent: BaseImperativePhrase, id: TakeThisPhrase }
+- { type: quickPhrase, parent: BaseImperativePhrase, id: GoToPhrase }
+- { type: quickPhrase, parent: BaseImperativePhrase, id: DoNotPhrase }
+- { type: quickPhrase, parent: BaseImperativePhrase, id: WaitPhrase }
+- { type: quickPhrase, parent: BaseImperativePhrase, id: GoPhrase }
+- { type: quickPhrase, parent: BaseImperativePhrase, id: RunPhrase }
+- { type: quickPhrase, parent: BaseImperativePhrase, id: FixPhrase }
+- { type: quickPhrase, parent: BaseImperativePhrase, id: SwitchPhrase }
+- { type: quickPhrase, parent: BaseImperativePhrase, id: WillPhrase }
+- { type: quickPhrase, parent: BaseImperativePhrase, id: PleaseListenPhrase }

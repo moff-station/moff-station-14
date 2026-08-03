@@ -227,6 +227,16 @@ public sealed class StationJobsTest : GameTest
 
         await server.WaitAssertion(() =>
         {
+            // Moffstation - Start - Remove intern roles
+            var jobsSkipRoundstartCheck = new HashSet<string>
+            {
+                "TechnicalAssistant",
+                "SecurityCadet",
+                "MedicalIntern",
+                "ResearchAssistant",
+            };
+            // Moffstation - End
+
             // invalidJobs contains all the jobs which can't be set for preference:
             // i.e. all the jobs that shouldn't be available round-start.
             var invalidJobs = new HashSet<string>();
@@ -235,6 +245,8 @@ public sealed class StationJobsTest : GameTest
                 if (!job.SetPreference)
                     invalidJobs.Add(job.ID);
             }
+
+            invalidJobs.ExceptWith(jobsSkipRoundstartCheck); // Moffstation - Remove assistants
 
             Assert.Multiple(() =>
             {

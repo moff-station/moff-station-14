@@ -1,0 +1,63 @@
+- type: entity
+  id: BaseWeaponPowerCellProjectile
+  parent: BaseItem
+  abstract: true
+  components:
+  - type: Sprite
+  - type: Item
+    size: Huge
+  - type: AmmoCounter
+  - type: Gun
+    fireRate: 2
+    selectedMode: SemiAuto
+    availableModes:
+    - SemiAuto
+    soundGunshot:
+      path: /Audio/Weapons/Guns/Gunshots/laser.ogg
+  - type: BatteryAmmoProvider
+    proto: RedLightLaser
+    fireCost: 50
+  - type: ItemSlots
+    slots:
+      cell_slot:
+        name: Magazine
+        startingItem: PowerCellSmall
+        insertSound: /Audio/Weapons/Guns/MagIn/batrifle_magin.ogg
+        ejectSound: /Audio/Weapons/Guns/MagOut/batrifle_magout.ogg
+        whitelist:
+          tags:
+          - PowerCell
+          - PowerCellSmall
+  - type: PowerCellSlot
+    cellSlotId: cell_slot
+  - type: Appearance
+  - type: StaticPrice
+    price: 500
+  - type: ContainerContainer
+    containers:
+      cell_slot: !type:ContainerSlot
+
+- type: entity
+  id: BaseWeaponPowerCellProjectileSmall
+  parent: BaseWeaponPowerCellProjectile
+  abstract: true
+  components:
+  - type: Item
+    size: Small
+  - type: Tag
+    tags:
+    - Sidearm
+  - type: Clothing
+    sprite: Objects/Weapons/Guns/Battery/taser.rsi
+    quickEquip: false
+    slots:
+    - Belt
+
+- type: entity
+  parent: WeaponPistolCHIMP
+  id: WeaponPistolCHIMPBorg
+  name: integrated C.H.I.M.P.
+  description: An even smaller particle handcannon, designed for cyborg use.
+  components:
+  - type: BatterySelfRecharger
+    autoRechargeRate: 10

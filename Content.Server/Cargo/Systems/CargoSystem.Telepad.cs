@@ -111,6 +111,7 @@ public sealed partial class CargoSystem
                 var audioParams = teleportSound?.Params ?? AudioParams.Default;
                 audioParams = audioParams.AddVolume(-8f);
                 _audio.PlayPvs(_audio.ResolveSound(comp.TeleportSound), uid, audioParams);
+                Spawn(comp.TelepadFlash, xform.Coordinates); // Moff - Thematic Telepads
 
                 if (_station.GetOwningStation(uid) is { } station)
                     UpdateOrders(station);

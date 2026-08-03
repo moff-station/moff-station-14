@@ -139,7 +139,7 @@
   description: An exclusive satchel for Nanotrasen officers.
   components:
   - type: Sprite
-    sprite: Clothing/Back/Satchels/captain.rsi
+    sprite: _Moffstation/Clothing/Back/Satchels/captain.rsi # Moffstation - Command Outfit Resprite
 
 - type: entity
   parent: ClothingBackpackSatchel
@@ -157,7 +157,7 @@
   description: A robust satchel for stealing cargo's loot.
   components:
     - type: Sprite
-      sprite: Clothing/Back/Satchels/cargo.rsi
+      sprite: _Moffstation/Clothing/Back/Satchels/cargo.rsi # Moffstation
 
 - type: entity
   parent: ClothingBackpackSatchel

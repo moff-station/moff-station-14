@@ -116,6 +116,7 @@
     - id: OxygenTankFilled
     - id: ClothingOuterHardsuitPirateEVA
     - id: ClothingMaskGas
+    - id: ClothingShoesBootsMag
 
 #NTSRA Voidsuit
 - type: entity
@@ -313,7 +314,7 @@
     children:
     - id: OxygenTankFilled
     - id: ClothingOuterHardsuitPirateCap
-    - id: ClothingMaskGas
+    - id: ClothingMaskGasPirate # Moffstation - Pirate gas mask
 
 #Wizard
 - type: entity

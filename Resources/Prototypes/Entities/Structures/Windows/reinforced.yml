@@ -4,9 +4,9 @@
   name: reinforced window
   components:
   - type: Sprite
-    sprite: Structures/Windows/reinforced_window.rsi
+    sprite: _Moffstation/Structures/Windows/reinforced_window.rsi # Moffstation
   - type: Icon
-    sprite: Structures/Windows/reinforced_window.rsi
+    sprite: _Moffstation/Structures/Windows/reinforced_window.rsi # Moffstation
     state: full
   - type: Repairable
     fuelCost: 10
@@ -54,10 +54,10 @@
   name: directional reinforced window
   components:
   - type: Sprite
-    sprite: Structures/Windows/directional.rsi
+    sprite: _Moffstation/Structures/Windows/directional.rsi # Moffstation
     state: reinforced_window
   - type: Icon
-    sprite: Structures/Windows/directional.rsi
+    sprite: _Moffstation/Structures/Windows/directional.rsi # Moffstation
     state: reinforced_window
   - type: Construction
     graph: WindowDirectional
@@ -107,7 +107,7 @@
   components:
   - type: Sprite
     drawdepth: WallTops
-    sprite: Structures/Windows/reinforced_window_diagonal.rsi
+    sprite: _Moffstation/Structures/Windows/reinforced_window_diagonal.rsi # Moffstation
     state: state0
   - type: Tag
     tags:
@@ -115,10 +115,10 @@
     - Window
   - type: IconSmooth
     mode: Diagonal
-    key: windows
+    key: walls # Moffstation
     base: state
   - type: Icon
-    sprite: Structures/Windows/reinforced_window_diagonal.rsi
+    sprite: _Moffstation/Structures/Windows/reinforced_window_diagonal.rsi # Moffstation
     state: state0
   - type: Fixtures
     fixtures:

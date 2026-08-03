@@ -153,8 +153,10 @@ public abstract partial class SharedSolutionContainerSystem : EntitySystem
     {
         if (entity is not null)
         {
-            DebugTools.Assert(TryGetSolution(container, name, out var debugEnt)
-                              && debugEnt.Value.Owner == entity.Value.Owner);
+            // Moffstation - Start - Using more verbose error statements here
+            DebugTools.Assert(TryGetSolution(container, name, out var debugEnt, true));
+            DebugTools.AssertEqual(debugEnt.Value.Owner, entity.Value.Owner);
+            // Moffstation - End
             return true;
         }
 
@@ -885,7 +887,8 @@ public abstract partial class SharedSolutionContainerSystem : EntitySystem
     {
         if (!args.IsInDetailsRange ||
             !CanSeeHiddenSolution(entity, args.Examiner) ||
-            !TryGetSolution(entity.Owner, entity.Comp.Solution, out _, out var solution))
+            !TryGetSolution(entity.Owner, entity.Comp.Solution, out _, out var solution) || // Moff - Examinable stains
+            solution.Volume < entity.Comp.MinimumVolumeToBeVisible) // Moff - Examinable stains
             return;
 
         using (args.PushGroup(nameof(ExaminableSolutionComponent)))

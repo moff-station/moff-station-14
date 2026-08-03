@@ -71,6 +71,11 @@
       path: /Audio/Effects/thunk.ogg
     soundEmpty:
       path: /Audio/Weapons/Guns/Empty/empty.ogg
+    # Moffstation - Begin - Add gun recoil.
+    recoilKick:
+      impulse: 200
+      staminaMultiplier: 0
+    # Moffstation - End - Add gun recoil.
   - type: StaticPrice
     price: 100
 

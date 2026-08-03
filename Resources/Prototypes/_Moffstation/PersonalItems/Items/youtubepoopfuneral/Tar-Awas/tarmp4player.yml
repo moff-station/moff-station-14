@@ -1,0 +1,34 @@
+﻿# Player: youtubepoopfuneral - Character: Tar-Awas
+
+- type: entity
+  parent: BaseHandheldInstrument
+  id: PersonalItemTarAwasMp4Player
+  name: MP4 player
+  description: A pink MP4 player littered with scratches, bite marks, and various worn stickers on the back; hearts, flowers, and ponies.
+  suffix: PersonalItem
+  components:
+  - type: Sprite
+    sprite: _Moffstation/PersonalItems/Items/youtubepoopfuneral/Tar-Awas/tarmp4player.rsi
+    layers:
+    - state: icon-base
+    - state: icon-screen
+      shader: unshaded
+  - type: Item
+    size: Small
+  - type: Instrument
+    allowPercussion: false
+    handheld: false
+    program: 2
+    bank: 100
+  - type: ActivatableUI
+    inHandsOnly: false
+
+- type: loadout
+  id: PersonalItemTarAwasMp4Player
+  storage:
+    back:
+    - PersonalItemTarAwasMp4Player
+  effects:
+  - !type:PersonalItemLoadoutEffect
+    character:
+    - Tar-Awas

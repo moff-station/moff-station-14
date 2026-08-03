@@ -1,0 +1,80 @@
+- type: entity
+  parent: MarkerBase
+  id: SpawnPointGhostPirate
+  categories: [ HideSpawnMenu, Spawner ]
+  name: ghost role spawn point
+  suffix: Pirate
+  components:
+  - type: GhostRole
+    rules: ghost-role-information-rules-default-team-antagonist
+    mindRoles:
+    - MindRoleGhostRoleTeamAntagonist
+    raffle:
+      settings: default
+  - type: GhostRoleMobSpawner
+    prototype: MobHumanPirate
+  - type: Sprite
+    sprite: Markers/jobs.rsi
+    layers:
+      - state: green
+      - sprite: Mobs/Species/Skeleton/parts.rsi
+        state: skull_icon
+
+- type: entity
+  parent: BaseAntagSpawner
+  id: SpawnPointPirateCaptain
+  categories: [ HideSpawnMenu, Spawner ]
+  components:
+  - type: GhostRole
+    name: roles-antag-pirate-captain-name
+    description: roles-antag-pirate-captain-objective
+    rules: ghost-role-information-rules-default-team-antagonist
+    mindRoles:
+    - MindRoleGhostRoleTeamAntagonist
+  - type: Sprite
+    sprite: Markers/jobs.rsi
+    layers:
+    - state: green
+    - sprite: Structures/Wallmounts/signs.rsi
+      state: radiation
+
+- type: entity
+  parent: SpawnPointPirateCaptain
+  id: SpawnPointPirateCrew
+  categories: [ HideSpawnMenu, Spawner ]
+  components:
+  - type: GhostRole
+    name: roles-antag-pirate-crew-name
+    description: roles-antag-pirate-crew-objective
+    rules: ghost-role-information-rules-default-team-antagonist
+    mindRoles:
+    - MindRoleGhostRoleTeamAntagonist
+
+- type: entity
+  parent: SpawnPointPirateCaptain
+  id: SpawnPointPirateCorsair
+  categories: [ HideSpawnMenu, Spawner ]
+  components:
+  - type: GhostRole
+    name: roles-antag-pirate-corsair-name
+    description: roles-antag-pirate-corsair-objective
+    rules: ghost-role-information-corsair-rules
+    mindRoles:
+    - MindRolePirateCorsair
+
+- type: entity
+  parent: MarkerBase
+  id: SpawnMobKoboldJokejoke
+  name: Joke Joke Spawner
+  suffix: Pirate Bartender Pet
+  components:
+  - type: Sprite
+    layers:
+    - state: green
+    - state: kobold
+      sprite: Mobs/Animals/kobold.rsi
+    - state: outline
+      sprite: Mobs/Animals/kobold.rsi
+  - type: ConditionalSpawner
+    prototypes:
+    - MobKoboldJokejoke

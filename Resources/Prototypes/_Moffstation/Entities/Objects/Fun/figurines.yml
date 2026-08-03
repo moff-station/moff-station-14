@@ -1,0 +1,1053 @@
+# --- GENERAL FORMATTING ---
+# Relevant yaml files, lists or databases should include figurines in alphabetical order
+# Figurine IDs and relevant files should be written using the character's given name, not the figurine's name. This is usually just their first name, or whatever you'd normally scream over comms for their attention (e.g. "Tania" for Tania Buttersworth, "Gigs" for Works-Many-Gigs, "Polly" for Pollyari)
+# Figurines use the "BaseFigurineMoff" parent
+
+# --- NAMES & DESC ---
+# Figurine names should be written from the perspective of someone who *doesn't* know your character, i.e. "Green Lizard Figurine", "Pink Moth Figurine", "Yellow Slime CMO Figurine", e.t.c.
+# Descriptions should be written in the form of "A figurine depicting...", and again, written from the perspective of someone who *doesn't* know your character. Avoid name dropping the character..
+
+# --- VOICE LINES ---
+# Voice lines can contain identifying information, like the character's name.
+# Voice lines should be semi iconic or unique to that character. A passing greeting, a catchphrase, something they often say on the job, a throwback to a round they remember well.
+# Voice lines should be written without an accent, if an accent is added it should be done via the accent component in post.
+# Voice lines should be written with proper grammar and spelling, unless doing otherwise is an explicit feature of the character.
+# Voice lines should not have excessive punctuation, no more than 2 "!" at the end of a sentence. They're figurines with tiny piezoelectrics, not loudspeakers.
+
+- type: entity
+  parent: BaseFigurine
+  id: BaseFigurineMoff
+  name: figurine
+  description: A figurine depicting someone.
+  abstract: true
+  suffix: Moff
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Objects/Fun/figurines.rsi
+
+- type: entity
+  parent: BaseFigurine
+  id: BaseFigurineUpstream
+  name: upstream figurine
+  description: A figurine depicting someone.
+  abstract: true
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Objects/Fun/upstreamfigurines.rsi
+
+- type: entity
+  parent: BaseFigurineMoff
+  id: ToyFigurineAlfredo
+  name: sinister atmospherics technician figurine
+  description: A figurine depicting an atmospherics technician with a streak of building overly complex spaghetti messes of pipes. Smells faintly of frezon.
+  components:
+  - type: Sprite
+    state: alfredo
+  - type: SpeakOnTrigger
+    pack: FigurinesAlfredo
+
+- type: entity
+  parent: BaseFigurineMoff
+  id: ToyFigurineAsher
+  name: two-faced moth figurine
+  description: "A double-sided figurine depicting a young, feminine moth person. This side is dressed like a security officer, his face twisted into a scowl.\nThe bottom of the figurine has a depressed button that looks like it would fit a crowbar."
+  components:
+  - type: Sprite
+    state: aurora-asher
+  - type: SpeakOnTrigger
+    pack: FigurinesAsher
+  - type: Construction
+    deconstructionTarget: null
+    graph: ToyFigurineAuroraSwapGraph
+    node: swap_asher
+
+- type: entity
+  parent: BaseFigurineMoff
+  id: ToyFigurineAudrina
+  name: unimpressed human psychologist figurine
+  description: A figurine depicting a human with cat ears. There are bandages on its left arm, seemingly haphazardly painted on. The tie seems loose, although it's hard plastic. The expression is concerningly blank.
+  components:
+  - type: Sprite
+    state: audrina
+  - type: SpeakOnTrigger
+    pack: FigurinesAudrina
+
+- type: entity
+  parent: BaseFigurineMoff
+  id: ToyFigurineAurora
+  name: two-faced moth figurine
+  description: "A double-sided figurine depicting a young, feminine moth person. This side is dressed like an engineer, with a playful smile on her face.\nThe bottom of the figurine has a depressed button that looks like it would fit a crowbar."
+  components:
+  - type: Sprite
+    state: aurora
+  - type: SpeakOnTrigger
+    pack: FigurinesAurora
+  - type: Construction
+    deconstructionTarget: null
+    graph: ToyFigurineAuroraSwapGraph
+    node: swap_aurora
+
+# Allows you to toggle between the Aurora and Asher figurines using a crowbar.
+- type: constructionGraph
+  id: ToyFigurineAuroraSwapGraph
+  start: swap_asher
+  graph:
+  - node: swap_asher
+    entity: ToyFigurineAsher
+    edges:
+    - to: swap_aurora
+      steps:
+      - tool: Prying
+        doAfter: 0.1
+  - node: swap_aurora
+    entity: ToyFigurineAurora
+    edges:
+    - to: swap_asher
+      steps:
+      - tool: Prying
+        doAfter: 0.1
+
+- type: entity
+  parent: BaseFigurineMoff
+  id: ToyFigurineAwana
+  name: squishy-looking salvager figurine
+  description: A figurine depicting a purple slime-woman with a stressed yet calm appearance. She is indeed squishable, to an extent, giving off an aura that she's observing you.
+  components:
+  - type: Sprite
+    state: awana
+  - type: SpeakOnTrigger
+    pack: FigurinesAwana
+
+- type: entity
+  parent: BaseFigurineMoff
+  id: ToyFigurineBenny
+  name: disgruntled centcomm figurine
+  description: A figurine depicting a very well dressed centcomm executive. There are numerous medals painted on their chest, although it's still made of cheap plastic.
+  components:
+  - type: Sprite
+    state: benny
+  - type: SpeakOnTrigger
+    pack: FigurinesBenny
+  - type: Prayable
+
+- type: entity
+  parent: BaseFigurineMoff
+  id: ToyFigurineBoxcar
+  name: scrappy reporter figurine
+  description: A figurine depicting a man with a fashionable pompadour and reporter outfit holding a microphone. (Camera accessory not included.)
+  components:
+  - type: Sprite
+    state: boxcar
+  - type: SpeakOnTrigger
+    pack: FigurinesBoxcar
+
+- type: entity
+  parent: BaseFigurineMoff
+  id: ToyFigurineBuck
+  name: robust law enforcer figurine
+  description: A figurine depicting NanoTrasen's ideal security officer.
+  components:
+  - type: Sprite
+    state: buck
+  - type: SpeakOnTrigger
+    pack: FigurinesBuck
+
+- type: entity
+  parent: BaseFigurineMoff
+  id: ToyFigurineBrad
+  name: disheveled official figurine
+  description: A figurine depicting a very unkempt man with blonde hair in some sort of formal security uniform. The clothes appear a bit stained and tattered.
+  components:
+  - type: Sprite
+    state: brad
+  - type: SpeakOnTrigger
+    pack: FigurinesBrad
+
+- type: entity
+  parent: BaseFigurineMoff
+  id: ToyFigurineBradBucket
+  name: ultra-rare Brad Thomas collectible figurine
+  description: A gorgeous figurine depicting the most radical and awesome man you've ever had the pleasure to lay your eyes upon. He wears a bucket upon his head. Gemstones are inlaid upon its golden base. It has lost all resale value from being unboxed.
+  components:
+  - type: Sprite
+    state: brad-bucket
+  - type: SpeakOnTrigger
+    pack: FigurinesBradBucket
+  - type: StaticPrice
+    price: 0 # You unboxed it and now it's worthless, good job
+
+- type: entity
+  parent: BaseFigurineMoff
+  id: ToyFigurineBrisbane
+  name: local fisherman figurine
+  description: A tall figurine dressed up as a passenger and his iconic fisherman hat. The hat appears to be glued on and will not come off.
+  components:
+  - type: Sprite
+    state: brisbane
+  - type: SpeakOnTrigger
+    pack: FigurinesBrisbane
+
+- type: entity
+  parent: BaseFigurineMoff
+  id: ToyFigurineBrisbaneBigHat
+  name: rare big-hatted fisherman figurine
+  description: That is a whole lotta hat for a single figurine to handle.
+  components:
+  - type: Sprite
+    state: brisbanebighat
+  - type: SpeakOnTrigger
+    pack: FigurinesBrisbaneBigHat
+
+- type: entity
+  parent: BaseFigurineMoff
+  id: ToyFigurineBuckshot
+  name: annoyed chief engineer figurine
+  description: A figurine depicting a green lizard in a stained CE outfit and beret that looks annoyed with you not doing your job.
+  components:
+      - type: Sprite
+        state: buckshot
+      - type: SpeakOnTrigger
+        pack: FigurinesBuckshot
+      - type: LizardAccent
+
+- type: entity
+  parent: BaseFigurineMoff
+  id: ToyFigurineCamilla
+  name: scarred HOS figurine
+  description: A figurine of a human head of security woman covered in scars, wearing the red and black uniform. She's trying her hardest to be friendly but she's very clearly overwhelmed. Collectors tend to pair it with a certain captain figurine.
+  components:
+  - type: Sprite
+    state: camilla
+  - type: SpeakOnTrigger
+    pack: FigurinesCamilla
+  - type: FrenchAccent
+
+- type: entity
+  parent: BaseFigurineMoff
+  id: ToyFigurineCassiel
+  name: anxious cargo technician figurine
+  description: A figurine depicting a tall pink moth covered in scars, wearing a cargo tech jumpskirt. She looks incredibly nervous about something... or rather, a lot of things.
+  components:
+  - type: Sprite
+    state: cassiel
+  - type: SpeakOnTrigger
+    pack: FigurinesCassiel
+
+- type: entity
+  parent: BaseFigurineMoff
+  id: ToyFigurineCatAi
+  name: marketable AI figurine
+  description: A figurine depicting a widely used Nanotrasen AI program, designed to encourage good relationships between the crew and their silicon assistants.
+  components:
+  - type: Sprite
+    state: catai
+  - type: SpeakOnTrigger
+    pack: FigurinesCatAi
+
+- type: entity
+  parent: BaseFigurineMoff
+  id: ToyFigurineCinnabar
+  name: red and black moth figurine
+  description: A figurine depicting a slightly shorter than average moth, he looks happy to be here!
+  components:
+  - type: Sprite
+    state: cinnabar
+  - type: SpeakOnTrigger
+    pack: FigurinesCinnabar
+
+- type: entity
+  parent: BaseFigurineMoff
+  id: ToyFigurineCooks
+  name: small chemist lizard figurine
+  description: A small sized lizard who is decked out with bright colours. He wears a jacket two sizes larger than he should and emits a faint smell of cigarettes.
+  components:
+  - type: Sprite
+    state: cooks
+  - type: SpeakOnTrigger
+    pack: FigurinesCooks
+  - type: LizardAccent
+
+- type: entity
+  parent: BaseFigurineMoff
+  id: ToyFigurineCory
+  name: mass produced lizard figurine
+  description: A figurine depicting a friendly mustard colored lizard in Supply gear.
+  components:
+  - type: Sprite
+    state: cory
+  - type: SpeakOnTrigger
+    pack: FigurinesCory
+
+- type: entity
+  parent: BaseFigurineMoff
+  id: ToyFigurineCrux
+  name: ominous vox figurine
+  description: A figurine depicting a tall, vibrant atmos vox. Smells faintly of burnt plasma.
+  components:
+  - type: Sprite
+    state: crux
+  - type: SpeakOnTrigger
+    pack: FigurinesCrux
+
+- type: entity
+  parent: BaseFigurineMoff
+  id: ToyFigurineDarnell
+  name: inexplicably competent janitor figurine
+  description: "A figurine depicting an unfriendly-looking human janitor. He looks like he’s seen everything from dragons to decompressions and kept cleaning through it all."
+  components:
+  - type: Sprite
+    state: darnell
+  - type: SpeakOnTrigger
+    pack: FigurinesDarnell
+
+- type: entity
+  parent: BaseFigurineMoff
+  id: ToyFigurineDelana
+  name: green arachnid detective figurine
+  description: A figurine depicting a detective with a perpetual smirk on it's face. Is this all a joke to it?
+  components:
+  - type: Sprite
+    state: delana
+  - type: SpeakOnTrigger
+    pack: FigurinesDelana
+
+- type: entity
+  parent: BaseFigurineMoff
+  id: ToyFigurineDelivers
+  name: stitched quartermaster figurine
+  description: A figurine depicting a purple lizard in quartermaster attire, there's small gold stripes across their mouth and a small red bit hanging off.
+  components:
+  - type: Sprite
+    state: delivers
+  - type: SpeakOnTrigger
+    pack: FigurinesMime
+
+- type: entity
+  parent: BaseFigurineMoff
+  id: ToyFigurineDies
+  name: anxious lizard figurine
+  description: A figurine depicting an orange reptilian with floppy ears and big horns. It cries when you squeeze it.
+  components:
+  - type: Sprite
+    state: dies
+  - type: SpeakOnTrigger
+    pack: FigurinesDies
+  - type: LizardAccent
+
+- type: entity
+  parent: BaseFigurineMoff
+  id: ToyFigurineEchiara
+  name: forgetful researcher figurine
+  description: A figurine depicting a figurine you don't actually remember being part of this collection.
+  components:
+  - type: Sprite
+    state: echiara
+  - type: SpeakOnTrigger
+    pack: FigurinesEchiara
+
+- type: entity
+  parent: BaseFigurineMoff
+  id: ToyFigurineEclipse
+  name: gun-loving medical moth figurine
+  description: A figurine depicting a silky white moth with bright blue eyes and dark orangey wings in a medical jacket wearing a red hairflower?
+  components:
+  - type: Sprite
+    state: eclipse
+  - type: SpeakOnTrigger
+    pack: FigurinesEclipse
+
+- type: entity
+  parent: BaseFigurineMoff
+  id: ToyFigurineEclispe
+  name: smug arachnid officer figurine
+  description: A figurine depicting a very cheerful arachnid lady. She seems to look at you with a smug grin, as if she's planning something devious...
+  components:
+  - type: Sprite
+    state: eclispe
+  - type: SpeakOnTrigger
+    pack: FigurinesEclispe
+
+- type: entity
+  parent: BaseFigurineMoff
+  id: ToyFigurineFaces
+  name: concerningly cheerful research director
+  description: A figurine depicting a researcher director with somewhat unsettling amounts of positivity.
+  components:
+  - type: Sprite
+    state: faces
+  - type: SpeakOnTrigger
+    pack: FigurinesFaces
+
+- type: entity
+  parent: BaseFigurineMoff
+  id: ToyFigurineFails
+  name: hungry lizard officer figurine
+  description: A figurine depicting a bright red lizard in a grey security outfit, with removable kung-fu pistol action!
+  components:
+  - type: Sprite
+    state: fails
+  - type: SpeakOnTrigger
+    pack: FigurinesFails
+  - type: LizardAccent
+
+- type: entity
+  parent: BaseFigurineMoff
+  id: ToyFigurineFred
+  name: professional-looking lawyer figurine
+  description: A figurine depicting a professional-looking lawyer, he has a mischievous look on his face. There seems seems to be a chip in the paint above his left ear.
+  components:
+  - type: Sprite
+    state: fred
+  - type: SpeakOnTrigger
+    pack: FigurinesFred
+
+- type: entity
+  parent: BaseFigurineMoff
+  id: ToyFigurineFrostwing
+  name: blunt central command official
+  description: A figurine depicting a very well dressed centcomm executive. This one is blue. You are unsure if it is a designer choice, or an excuse to add a few zeroes to the price tag.
+  components:
+  - type: Sprite
+    state: frostwing
+  - type: SpeakOnTrigger
+    pack: FigurinesFrostwing
+
+- type: entity
+  parent: BaseFigurineMoff
+  id: ToyFigurineHot
+  name: fire safety clown figurine
+  description: A figurine depicting a clown in a firefighting outfit. Etched in the base reads 'Only you can prevent station fires!'
+  components:
+  - type: Sprite
+    state: hot
+  - type: SpeakOnTrigger
+    pack: FigurinesHot
+
+- type: entity
+  parent: BaseFigurineMoff
+  id: ToyFigurineGigs
+  name: friendly-looking lizard figurine
+  description: A figurine depicting a smiling orange lizard in bartenders attire, bandages cover his left hand.
+  components:
+  - type: Sprite
+    state: gigs
+  - type: SpeakOnTrigger
+    pack: FigurinesGigs
+
+- type: entity
+  parent: BaseFigurineMoff
+  id: ToyFigurineHeather
+  name: red arm machinist figurine
+  description: A figurine depicting a purple machinist slime girl with a red, metallic arm. She seems to switch her composure from time to time.
+  components:
+  - type: Sprite
+    state: heather
+  - type: SpeakOnTrigger
+    pack: FigurinesHeather
+
+- type: entity
+  parent: BaseFigurineMoff
+  id: ToyFigurineHercyn
+  name: sinister suited figurine
+  description: A figurine depicting a suited Slime bearing a performative smile. Your gut is telling you to look away.
+  components:
+  - type: Sprite
+    state: hercyn
+  - type: SpeakOnTrigger
+    pack: FigurinesHercyn
+
+- type: entity
+  parent: BaseFigurineMoff
+  id: ToyFigurineIo
+  name: moth CMO figurine
+  description: A figurine depicting a chief medical mofficer. There seems to be a second pair of arms underneath the cloak.
+  components:
+  - type: Sprite
+    state: io
+  - type: SpeakOnTrigger
+    pack: FigurinesIo
+  - type: FrenchAccent
+
+- type: entity
+  parent: BaseFigurineMoff
+  id: ToyFigurineIcarus
+  name: confused, old botanist figurine
+  description: A figurine depicting a reddish moth with poorly painted on fur. It looks quite heavily scratched, and the material looks to be getting quite old, with parts chipping away and wear marks all over it, and its voice box seems to be slightly damaged, stuttering words at times. It looks confused.
+  components:
+  - type: Sprite
+    state: icarus
+  - type: SpeakOnTrigger
+    pack: FigurinesIcarus
+  - type: StutteringAccent
+    matchRandomProb: 0.1
+    fourRandomProb: 0
+    threeRandomProb: 0
+    cutRandomProb: 0
+
+- type: entity
+  parent: BaseFigurineMoff
+  id: ToyFigurineIchabod
+  name: pumpkin mime figurine
+  description: A figurine depicting a grinning pumpkin-headed moth mime. It's a bobblehead, but the head has been glued on firmly.
+  components:
+  - type: Sprite
+    state: ichabod
+  - type: SpeakOnTrigger
+    pack: FigurinesMime
+
+- type: entity
+  parent: BaseFigurineMoff
+  id: ToyFigurineIris
+  name: burnt orange moth figurine
+  description: A figurine depicting a tall orange mothperson in research director uniform.
+  components:
+  - type: Sprite
+    state: iris
+  - type: SpeakOnTrigger
+    pack: FigurinesIris
+
+- type: entity
+  parent: BaseFigurineMoff
+  id: ToyFigurineJelob
+  name: tired slime bartender figurine
+  description: A figurine depicting a slime person in a worn looking scarf and a bartender uniform. Despite how tired they appear, they are smiling.
+  components:
+  - type: Sprite
+    state: jelob
+  - type: SpeakOnTrigger
+    pack: FigurinesJelob
+
+- type: entity
+  parent: BaseFigurineMoff
+  id: ToyFigurineJessGerr
+  name: jubilant jester figurine
+  description: A figurine depicting a vulpkanin dressed head to toe in yellow and red jester garb, with her hair and tail tip dyed to match. You could swear the smile on the mask grows larger each time you look away.
+  components:
+  - type: Sprite
+    state: jessgerr
+  - type: SpeakOnTrigger
+    pack: FigurinesJessGerr
+
+- type: entity
+  parent: BaseFigurineMoff
+  id: ToyFigurineJobs
+  name: scarred reptilian figurine
+  description: A figurine depicting a seemingly tired forest green passenger reptile with a bomber jacket and burn scars covering his body from head to toe. Somehow the figure smells of whiskey.
+  components:
+  - type: Sprite
+    state: jobs
+  - type: SpeakOnTrigger
+    pack: FigurinesJobs
+
+- type: entity
+  parent: BaseFigurineMoff
+  id: ToyFigurineJupiter
+  name: purple head of security moth
+  description: A figurine depicting a tired and old looking moth man. He’s wearing the Head of Security outfit.
+  components:
+  - type: Sprite
+    state: jupiter
+  - type: SpeakOnTrigger
+    pack: FigurinesJupiter
+
+- type: entity
+  parent: BaseFigurineMoff
+  id: ToyFigurineKatie
+  name: young engineer woman figurine
+  description: A figurine depicting a young woman dressed in an engineering attire, they seem hopeful.
+  components:
+  - type: Sprite
+    state: katie
+  - type: SpeakOnTrigger
+    pack: FigurinesKatie
+
+- type: entity
+  parent: BaseFigurineMoff
+  id: ToyFigurineKaza
+  name: colorful vox figurine
+  description: A figurine depicting a tall, plain vox adorned with colorful flowers and jumpsuit. It's smiling.
+  components:
+  - type: Sprite
+    state: kaza
+  - type: SpeakOnTrigger
+    pack: FigurinesKaza
+
+- type: entity
+  parent: BaseFigurineMoff
+  id: ToyFigurineKazo
+  name: fancy gooberish vox figurine
+  description: A figurine depicting a small, vibrant vox wearing a big puffy coat & skates, The skates are tied to the base
+  components:
+  - type: Sprite
+    state: kazo
+  - type: SpeakOnTrigger
+    pack: FigurinesKazo
+
+- type: entity
+  parent: BaseFigurineMoff
+  id: ToyFigurineKim
+  name: robust tider figurine
+  description: A figurine depicting an arachnid in a gas mask. They are weilding a spear and toolbox.
+  components:
+  - type: Sprite
+    state: kim
+  - type: SpeakOnTrigger
+    pack: FigurinesKim
+
+- type: entity
+  parent: BaseFigurineMoff
+  id: ToyFigurineKrakatoa
+  name: silly service lizard figurine
+  description: A figurine depicting a silly lil lizar.
+  components:
+  - type: Sprite
+    state: krakatoa
+  - type: SpeakOnTrigger
+    pack: FigurinesKrakatoa
+  - type: ConditionalSpawner
+    prototypes:
+      - FoodWatermelon
+
+- type: entity
+  parent: BaseFigurineMoff
+  id: ToyFigurineKylie
+  name: green slime bartender figurine
+  description: A figurine depicting a green slimeperson dressed in bartender attire.
+  components:
+  - type: Sprite
+    state: kylie
+  - type: SpeakOnTrigger
+    pack: FigurinesKylie
+
+- type: entity
+  parent: BaseFigurineMoff
+  id: ToyFigurineLesbot
+  name: prideful cyborg figurine
+  description: A figurine depicting a cyborg decorated in a lesbian-coloured scarf. Comes with a pride pin attachable to its back arm.
+  components:
+  - type: Sprite
+    state: lesbot
+  - type: SpeakOnTrigger
+    pack: FigurinesLesbot
+
+- type: entity
+  parent: BaseFigurineMoff
+  id: ToyFigurineLight
+  name: shadowy scientist figurine
+  description: A figurine depicting a scientist who appears to harbor a darker method of letting out stress.
+  components:
+  - type: Sprite
+    state: light
+  - type: SpeakOnTrigger
+    pack: FigurinesLight
+
+- type: entity
+  parent: BaseFigurineMoff
+  id: ToyFigurineLightsSeeker
+  name: charred scientist moth figurine
+  description: The moth is mostly black and charred but it has small patches of almost pink? It's wearing a scientist jumpsuit, a unzipped labcoat and a water cup as a hat.
+  components:
+  - type: Sprite
+    state: lightsseeker
+  - type: SpeakOnTrigger
+    pack: FigurinesLightsSeeker
+
+- type: entity
+  parent: BaseFigurineMoff
+  id: ToyFigurineLilith
+  name: suspicious blue moth figurine
+  description: A figurine picturing a tired and stressed looking moth.
+  components:
+  - type: Sprite
+    state: lilith
+  - type: SpeakOnTrigger
+    pack: FigurinesLilith
+
+- type: entity
+  parent: BaseFigurineMoff
+  id: ToyFigurineMalenia
+  name: deranged captain figurine
+  description: A figurine depicting a white haired human captain woman with a missing eye. She sounds crazy. Collectors tend to pair it with a certain HOS figurine.
+  components:
+  - type: Sprite
+    state: malenia
+  - type: SpeakOnTrigger
+    pack: FigurinesMalenia
+  - type: GermanAccent
+
+- type: entity
+  parent: BaseFigurineMoff
+  id: ToyFigurineMolar
+  name: angry moth figurine
+  description: A figurine depicting a tall and wide mothperson, wearing an off brand operative jumpsuit
+  components:
+  - type: Sprite
+    state: molar
+  - type: SpeakOnTrigger
+    pack: FigurinesMolar
+  - type: RussianAccent
+
+- type: entity
+  parent: BaseFigurineMoff
+  id: ToyFigurineNyxie
+  name: pink scientist moth figurine
+  description: A figurine depicting a tired young moth that refuses to sleep. She wears a senior scientist jumpskirt, winter scietist coat and a hairflower. For some reason the figurine has a smell of vodka.
+  components:
+  - type: Sprite
+    state: nyxie
+  - type: SpeakOnTrigger
+    pack: FigurinesNyxie
+
+- type: entity
+  parent: BaseFigurineMoff
+  id: ToyFigurineNyxilath
+  name: evil roboticist figurine
+  description: A figurine highlighting a smaller blue moth wearing a Roboticist Jumpsuit, hairflower, and welding gas mask, standing proudly.
+  components:
+  - type: Sprite
+    state: nyxilath
+  - type: SpeakOnTrigger
+    pack: FigurinesNyxilath
+
+- type: entity
+  parent: BaseFigurineMoff
+  id: ToyFigurinePeedee
+  name: haunted mediborg figurine
+  description: A figurine of a mediborg, haunted by a sinuous orange ghost with a tapering, frilled face and disembodied hands. There's probably magnets involved.
+  components:
+  - type: Sprite
+    state: peedee
+  - type: SpeakOnTrigger
+    pack: FigurinesPeedee
+
+- type: entity
+  parent: BaseFigurineMoff
+  id: ToyFigurinePepper
+  name: worried cargo tech figurine
+  description: A figurine depicting a lizard. It seems to be looking away from you at every angle.
+  components:
+  - type: Sprite
+    state: pepper
+  - type: SpeakOnTrigger
+    pack: FigurinesPepper
+
+- type: entity
+  parent: BaseFigurineMoff
+  id: ToyFigurinePeriwinkle
+  name: chief medical clown figurine
+  description: A figurine depicting a doctor with clown attire. Honk.
+  components:
+  - type: Sprite
+    state: periwinkle
+  - type: SpeakOnTrigger
+    pack: FigurinesPeriwinkle
+
+- type: entity
+  parent: BaseFigurineMoff
+  id: ToyFigurinePolly
+  name: old avali prisoner figurine
+  description: A figurine depicting an avali prisoner with very colorful feathers. It appears to be roughed up, possibly due to age, or it could have been mishandled during transport.
+  components:
+  - type: Sprite
+    state: polly
+  - type: SpeakOnTrigger
+    pack: FigurinesPolly
+
+- type: entity
+  parent: BaseFigurineMoff
+  id: ToyFigurineRareel
+  name: cheerful-looking lizard figurine
+  description: A figurine depicting a happy looking red lizard in paramedic clothing with some frills coming off the side of its head, looks like one got chipped off during shipping
+  components:
+  - type: Sprite
+    state: rareel
+  - type: SpeakOnTrigger
+    pack: FigurinesRareel
+
+- type: entity
+  parent: BaseFigurineMoff
+  id: ToyFigurineRevri
+  name: cheerful vox paramedic figurine
+  description: A figurine depicting a vox paramedic. It's expression is difficult to read considering the mask, but you get the sense that it's happy to be there.
+  components:
+  - type: Sprite
+    state: revri
+  - type: SpeakOnTrigger
+    pack: FigurinesRevri
+
+- type: entity
+  parent: BaseFigurineMoff
+  id: ToyFigurineRoomba
+  name: grey arachnid engineer figurine
+  description: A figurine depicting a grey arachnid as a chief engineer. They're playing an acoustic guitar, seemingly at peace.
+  components:
+  - type: Sprite
+    state: roomba
+  - type: SpeakOnTrigger
+    pack: FigurinesRoomba
+  - type: SouthernAccent
+
+- type: entity
+  parent: BaseFigurineMoff
+  id: ToyFigurineSapphire
+  name: squishy blue nurse figurine
+  description: A figurine depicting a blue slime wearing a nurse hat and senior doctor uniform.
+  components:
+  - type: Sprite
+    state: sapphire
+  - type: SpeakOnTrigger
+    pack: FigurinesSapphire
+
+- type: entity
+  parent: BaseFigurineMoff
+  id: ToyFigurineSamantha
+  name: messy-looking librarian
+  description: An overwhelmed looking woman who looks like she has not had the time nor the patience to brush her hair in a long time. This figure also seems to have a chip in the plastic over one of the eyes.
+  components:
+  - type: Sprite
+    state: samantha
+  - type: SpeakOnTrigger
+    pack: FigurinesSamantha
+
+- type: entity
+  parent: BaseFigurineMoff
+  id: ToyFigurineSaprophyte
+  name: fungi-covered druid figurine
+  description: A figurine depicting a blueish-indigo diona that has various fungi growing from it.
+  components:
+  - type: Sprite
+    state: saprophyte
+  - type: SpeakOnTrigger
+    pack: FigurinesSaprophyte
+
+- type: entity
+  parent: BaseFigurineMoff
+  id: ToyFigurineSawa
+  name: bug-eyed lizard figurine
+  description: A figurine depicting a lazy reprint of another figurine
+  components:
+  - type: Sprite
+    state: sawa
+  - type: SpeakOnTrigger
+    pack: FigurinesSawa
+
+- type: entity
+  parent: BaseFigurineMoff
+  id: ToyFigurineScribbles
+  name: unusually tall lizard figurine
+  description: A figurine depicting a tall muscular lizard in a snazzy suit. They must be a brave and stoic crew member! Shame the voice box is broken, though.
+  components:
+  - type: Sprite
+    state: scribbles
+  - type: SpeakOnTrigger
+    pack: FigurinesMime
+
+- type: entity
+  parent: BaseFigurineMoff
+  id: ToyFigurineSean
+  name: caped CMO figurine
+  description: A figurine depicting a blonde human, sporting CMO winter attire and a unique looking cape.
+  components:
+  - type: Sprite
+    state: sean
+  - type: SpeakOnTrigger
+    pack: FigurinesSean
+
+- type: entity
+  parent: BaseFigurineMoff
+  id: ToyFigurineSeikret
+  name: mean officer figurine
+  description: A figurine depicting a scowling and irritated Security Officer. The paint on the left side of her face is noticeably lighter.
+  components:
+  - type: Sprite
+    state: seikret
+  - type: SpeakOnTrigger
+    pack: FigurinesSeikret
+
+- type: entity
+  parent: BaseFigurineMoff
+  id: ToyFigurineSigerthe
+  name: gruff salvager figurine
+  description: A figurine depicting a reptilian salvage specialist with pitch black scales. The figurine's right eye glows faintly.
+  components:
+  - type: Sprite
+    state: sigerthe
+  - type: SpeakOnTrigger
+    pack: FigurinesSigerthe
+
+- type: entity
+  parent: BaseFigurineMoff
+  id: ToyFigurineSilas
+  name: cybernetic moth captain figurine
+  description: A figurine depicting a moth captain with a prosthetic leg, arm, and antennae. It seems to be wearing formal clothing, and there's a look of confidence on its face.
+  components:
+  - type: Sprite
+    state: silas
+  - type: SpeakOnTrigger
+    pack: FigurinesSilas
+
+- type: entity
+  parent: BaseFigurineMoff
+  id: ToyFigurineSiliconwing
+  name: helpful salvage robot figurine
+  description: A figurine depicting a borg, that seems dedicated to maximizing optimalbility
+  components:
+  - type: Sprite
+    state: siliconwing
+  - type: SpeakOnTrigger
+    pack: FigurinesSiliconwing
+
+- type: entity
+  parent: BaseFigurineMoff
+  id: ToyFigurineSouthbridge
+  name: stagehand deer figurine
+  description: A figurine depicting a deer, that can sometimes be seen behind the curtain, helping put on the show. Legend says you can ask her for help!
+  components:
+  - type: Sprite
+    state: southbridge
+  - type: SpeakOnTrigger
+    pack: FigurinesSouthbridge
+  - type: Prayable
+
+- type: entity
+  parent: BaseFigurineMoff
+  id: ToyFigurineStella
+  name: blue-haired security officer
+  description: A figurine depicting a young-looking security officer, with long blue hair. They look serious.
+  components:
+  - type: Sprite
+    state: stella
+  - type: SpeakOnTrigger
+    pack: FigurinesStella
+
+- type: entity
+  parent: BaseFigurineMoff
+  id: ToyFigurineStrawberry
+  name: tactical engi slime maid figurine
+  description: A figurine depicting a very tactical slime girl wearing maid clothing with four tentacles, wearing miniature insulated gloves and engi goggles, they seam to be the real deal, but are sadly too small to use
+  components:
+  - type: Sprite
+    state: strawberry
+  - type: SpeakOnTrigger
+    pack: FigurinesStrawberry
+
+- type: entity
+  parent: BaseFigurineMoff
+  id: ToyFigurineSwims
+  name: aquatic reptilian researcher figurine
+  description: A figurine depicting a blue lizard with some fishlike attributes. It is shirtless under a loosely-worn labcoat. Its expression is distant, yet amiable, though with a faint hint of a mischievous smirk.
+  components:
+  - type: Sprite
+    state: swims
+  - type: SpeakOnTrigger
+    pack: FigurinesSwims
+
+- type: entity
+  parent: BaseFigurineMoff
+  id: ToyFigurineTalvi
+  name: extremely fluffy lizard figurine
+  description: A surprisingly large and bear-like reptilian figurine with a calm, compassionate look in her eyes. She's covered in incredibly soft fur. The cheap comb that was packed with this figure fell apart as soon as it was freed from the packaging. Smells like vanilla.
+  components:
+  - type: Sprite
+    state: talvi
+  - type: SpeakOnTrigger
+    pack: FigurinesTalvi
+
+- type: entity
+  parent: BaseFigurineMoff
+  id: ToyFigurineTania
+  name: pink slime engineer figurine
+  description: A figurine depicting a pink slime chief engineer, with numerous tentacles and a tiny fire axe. Pulled from shelves for containing unsafe levels of plasma.
+  components:
+  - type: Sprite
+    state: tania
+  - type: SpeakOnTrigger
+    pack: FigurinesTania
+
+- type: entity
+  parent: BaseFigurineMoff
+  id: ToyFigurineTar
+  name: bug-eyed lizard figurine
+  description: A figurine depicting a small blue lizard with large buggish glasses. Neeeerd nerd nerd nerd.....
+  components:
+  - type: Sprite
+    state: tar
+  - type: SpeakOnTrigger
+    pack: FigurinesTar
+
+- type: entity
+  parent: BaseFigurineMoff
+  id: ToyFigurineTusk
+  name: ambiguous reptile figurine
+  description: A figurine depicting what could be a kobold or a reptilian.
+  components:
+  - type: Sprite
+    state: tusk
+  - type: SpeakOnTrigger
+    pack: FigurinesTusk
+
+- type: entity
+  parent: BaseFigurineMoff
+  id: ToyFigurineVortex
+  name: arachnid research director figurine
+  description: A figurine depicting a small and unthreatening arachnid, something about it makes you want to laugh at it.
+  components:
+  - type: Sprite
+    state: vortex
+  - type: SpeakOnTrigger
+    pack: FigurinesVortex
+
+- type: entity
+  parent: BaseFigurineMoff
+  id: ToyFigurineWallace
+  name: stressed pink spider figurine
+  description: A strikingly pink spider in captain's clothes. He seems high strung, like he survived 3 attempts on his life in the past 15 minutes.
+  components:
+  - type: Sprite
+    state: wallace
+  - type: SpeakOnTrigger
+    pack: FigurinesWallace
+
+- type: entity
+  parent: BaseFigurineMoff
+  id: ToyFigurineWiggles
+  name: wise clown figurine
+  description: A figurine depicting a clown with a wizard hat. They look very wise.
+  components:
+  - type: Sprite
+    state: wiggles
+  - type: SpeakOnTrigger
+    pack: FigurinesClown # They never gave lines, so they get the clown pack
+
+- type: entity
+  parent: BaseFigurineMoff
+  id: ToyFigurineMoonlight
+  name: chief medical moth figurine
+  description: A figurine showing an adorable black moth doctor. Looking at their smile makes you feel warm inside!
+  components:
+  - type: Sprite
+    state: moonlight
+  - type: SpeakOnTrigger
+    pack: FigurinesMoonlight
+
+- type: entity
+  parent: BaseFigurineMoff
+  id: ToyFigurineZara
+  name: pale research director figurine
+  description: A figurine depicting an eerily pale human with long, messy hair, wearing a research director lab coat and beret. The face has a smug grin plastered on it.
+  components:
+  - type: Sprite
+    state: zara
+  - type: SpeakOnTrigger
+    pack: FigurinesZara
+
+- type: entity
+  parent: BaseFigurineMoff
+  id: ToyFigurineZoey
+  name: stressed senior officer figurine
+  description: A figurine depicting a red slime with black spots everywhere on its body. The eyes have visible eyebags, but its smile is comforting.
+  components:
+  - type: Sprite
+    state: zoey
+  - type: SpeakOnTrigger
+    pack: FigurinesZoey

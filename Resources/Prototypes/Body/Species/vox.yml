@@ -168,7 +168,7 @@
   - type: Speech
     speechVerb: Vox
     speechSounds: Vox
-    allowedEmotes: ['Click', 'Chitter']
+    allowedEmotes: ['Click', 'Chitter', 'Caw', 'Hiss', 'Crow'] # Moffstation - Vox emotes
   - type: TypingIndicator
     proto: vox
   - type: CreamPied
@@ -183,6 +183,34 @@
       amount: 5
   - type: Destructible
     thresholds:
+    - trigger: # Moffstation start - reimplement gibbing and ashing
+        !type:DamageTypeTrigger
+        damageType: Blunt
+        damage: 400
+      behaviors:
+      - !type:GibBehavior { }
+    - trigger:
+        !type:DamageTypeTrigger
+        damageType: Heat
+        damage: 1500
+      behaviors:
+      - !type:SpawnEntitiesBehavior
+        spawnInContainer: true
+        spawn:
+          FoodMeatChickenFriedVox:
+            min: 3
+            max: 5
+      - !type:BurnBodyBehavior
+        popupMessage: bodyburn-vox-text-others
+      - !type:PlaySoundBehavior
+        sound:
+          collection: MeatLaserImpact # Moffstation end
+    - trigger:
+        !type:DamageTypeTrigger
+        damageType: Blunt
+        damage: 400
+      behaviors:
+      - !type:GibBehavior { }
     - trigger:
         !type:DamageTypeTrigger
         damageType: Heat

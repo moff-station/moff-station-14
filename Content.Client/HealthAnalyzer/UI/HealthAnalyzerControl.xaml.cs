@@ -108,7 +108,7 @@ public sealed partial class HealthAnalyzerControl : BoxContainer
 
         // Alerts
 
-        var showAlerts = state.Unrevivable == true || state.Bleeding == true;
+        var showAlerts = state.Unrevivable == true || state.Uncloneable == true || state.Bleeding == true; //Moffstation change - uncloneable
 
         AlertsDivider.Visible = showAlerts;
         AlertsContainer.Visible = showAlerts;
@@ -131,6 +131,14 @@ public sealed partial class HealthAnalyzerControl : BoxContainer
                 Margin = new Thickness(0, 4),
                 MaxWidth = 300
             });
+
+        if (state.Uncloneable == true) //Moffstation start - uncloneable
+            AlertsContainer.AddChild(new RichTextLabel
+            {
+                Text = Loc.GetString("health-analyzer-window-entity-uncloneable-text"),
+                Margin = new Thickness(0, 4),
+                MaxWidth = 300
+            }); //Moffstation end - uncloneable
 
         // Damage Groups
 

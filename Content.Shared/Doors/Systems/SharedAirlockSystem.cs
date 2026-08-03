@@ -86,7 +86,7 @@ public abstract partial class SharedAirlockSystem : EntitySystem
 
     private void OnBeforeDoorOpened(Entity<AirlockComponent> ent, ref BeforeDoorOpenedEvent args)
     {
-        if (!CanChangeState(ent))
+        if (!CanChangeState(ent, args.IgnorePower)) // Moffstation - Hack to fix evac pods
             args.Cancel();
     }
 
@@ -222,8 +222,11 @@ public abstract partial class SharedAirlockSystem : EntitySystem
         component.Safety = value;
     }
 
-    public bool CanChangeState(Entity<AirlockComponent> ent)
+    // Moffstation - Start - Hack to fix evac pods
+    public bool CanChangeState(Entity<AirlockComponent> ent, bool ignorePower = false)
+
     {
-        return ent.Comp.Powered && !DoorSystem.IsBolted(ent);
+        return (ignorePower || ent.Comp.Powered) && !DoorSystem.IsBolted(ent);
     }
+    // Moffstation - End
 }

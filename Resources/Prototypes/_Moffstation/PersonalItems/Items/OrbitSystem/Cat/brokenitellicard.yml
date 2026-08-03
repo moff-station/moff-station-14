@@ -1,0 +1,23 @@
+﻿#Player: OrbitSystem / Character: Cat
+- type: entity
+  parent: BaseItem
+  id: PersonalItemCatCard
+  name: Broken Intellicard
+  suffix: PersonalItem
+  description: An Intellicard that no longer functions. A memento of a previous life.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/PersonalItems/Items/OrbitSystem/Cat/catscard.rsi
+    state: base
+  - type: Item
+    sprite: _Moffstation/PersonalItems/Items/OrbitSystem/Cat/catscard.rsi
+
+- type: loadout
+  id: PersonalItemCatCard
+  storage:
+    back:
+    - PersonalItemCatCard
+  effects:
+  - !type:PersonalItemLoadoutEffect
+    character:
+    - Cat

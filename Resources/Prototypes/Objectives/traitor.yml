@@ -204,7 +204,7 @@
   id: BaseCMOStealObjective
   components:
   - type: NotJobRequirement
-    jobs: [ ChiefMedicalOfficer ]
+    jobs: [ ChiefMedicalOfficer, Paramedic, Chemist, MedicalDoctor, Psychologist ] # Moffstation - More drama, less cheese
   - type: StealCondition
     owner: job-name-cmo
 
@@ -230,7 +230,7 @@
   id: BaseRDStealObjective
   components:
   - type: NotJobRequirement
-    jobs: [ ResearchDirector ]
+    jobs: [ ResearchDirector, Scientist ] # Moffstation - More drama, less cheese
   - type: StealCondition
     owner: job-name-rd
 
@@ -261,7 +261,7 @@
     # HoS will have this on them a lot of the time so..
     difficulty: 3
   - type: NotJobRequirement
-    jobs: [ HeadOfSecurity ]
+    jobs: [ HeadOfSecurity, Warden, Detective, SecurityOfficer, Lawyer ] # Moffstation - More drama, less cheese
   - type: StealCondition
     stealGroup: WeaponEnergyMagnum
     owner: job-name-hos
@@ -273,7 +273,7 @@
   id: MagbootsStealObjective
   components:
   - type: NotJobRequirement
-    jobs: [ ChiefEngineer ]
+    jobs: [ ChiefEngineer, AtmosphericTechnician, StationEngineer ] # Moffstation - More drama, less cheese
   - type: StealCondition
     stealGroup: ClothingShoesBootsMagAdv
     owner: job-name-ce
@@ -285,7 +285,7 @@
   id: ClipboardStealObjective
   components:
   - type: NotJobRequirement
-    jobs: [ Quartermaster ]
+    jobs: [ Quartermaster, CargoTechnician, SalvageSpecialist ] # Moffstation - More drama, less cheese
   - type: StealCondition
     stealGroup: BoxFolderQmClipboard
     owner: job-name-qm
@@ -295,7 +295,7 @@
   id: KnuckleDustersStealObjective
   components:
   - type: NotJobRequirement
-    jobs: [ Quartermaster ]
+    jobs: [ Quartermaster, CargoTechnician, SalvageSpecialist ] # Moffstation - More drama, less cheese
   - type: StealCondition
     stealGroup: ClothingHandsKnuckleDustersQM
     owner: job-name-qm
@@ -381,6 +381,8 @@
     title: objective-condition-supercrit-anomalies-title
   - type: ObjectiveLimit
     limit: 1
+  - type: NotJobRequirement
+    jobs: [ ResearchDirector, Scientist ] # Moffstation - Too easy for scientists
 
 # other
 - type: entity
@@ -398,6 +400,8 @@
   - type: ObjectiveLimit
     # There is only one trade station so there should never be more than one of these objectives.
     limit: 1
+  - type: NotJobRequirement
+    jobs: [ Quartermaster, CargoTechnician, SalvageSpecialist ] # Moffstation - It's too easy for cargo people
 
 - type: entity
   parent: [BaseTraitorObjective, BaseCounterObjective]

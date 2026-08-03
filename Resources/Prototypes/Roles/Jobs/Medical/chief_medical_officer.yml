@@ -6,6 +6,10 @@
   description: job-description-cmo
   playTimeTracker: JobChiefMedicalOfficer
   requirements:
+    # Moffstation - Start - Change role timers
+    - !type:OverallPlaytimeRequirement
+      time: 20h
+    # Moffstation - End
     - !type:RoleTimeRequirement
       role: JobChemist
       time: 2.5h
@@ -15,7 +19,10 @@
     - !type:DepartmentTimeRequirement
       department: Medical
       time: 10h
-  weight: 10
+  # Moff start - no job weights
+#  weight: 10
+  displayWeight: 10
+  # Moff end
   startingGear: CMOGear
   icon: "JobIconChiefMedicalOfficer"
   supervisors: job-supervisors-captain
@@ -27,6 +34,7 @@
   - ChiefMedicalOfficer
   - Brig
   - Cryogenics
+  - External # Moffstation - Give paramedics externals (CMO to match)
   special:
   - !type:AddImplantSpecial
     implants: [ MindShieldImplant ]
@@ -37,7 +45,7 @@
 - type: startingGear
   id: CMOGear
   equipment:
-    id: CMOPDA
+    #id: CMOPDA # Moffstation - New PDAs
     ears: ClothingHeadsetCMO
   storage:
     back:

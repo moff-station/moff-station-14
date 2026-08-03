@@ -1,0 +1,38 @@
+{
+  "version": 1,
+  "license": "CC-BY-SA-4.0",
+  "copyright": "reskin of the explorer gas mask by Davyei (on github & ss14), https://github.com/space-wizards/space-station-14/tree/e4a516514f37d26708e676122eb7c6a95f37b5e3/Resources/Textures/Clothing/Mask/gasexplorer.rsi",
+  "size": {
+    "x": 32,
+    "y": 32
+  },
+  "states": [
+      {
+          "name": "icon"
+      },
+      {
+          "name": "equipped-MASK",
+          "directions": 4
+      },
+      {
+          "name": "equipped-MASK-vox",
+          "directions": 4
+      },
+      {
+          "name": "up-equipped-MASK",
+          "directions": 4
+      },
+      {
+          "name": "inhand-left",
+          "directions": 4
+      },
+      {
+          "name": "inhand-right",
+          "directions": 4
+      },
+      {
+          "name": "equipped-MASK-reptilian",
+          "directions": 4
+      }
+  ]
+}

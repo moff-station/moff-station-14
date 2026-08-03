@@ -1,5 +1,6 @@
 using Content.Server.Construction.Components;
 using Content.Server.Stack;
+using Content.Shared._Moffstation.BladeServer; // Moffstation
 using Content.Shared.Construction.Components;
 using Content.Shared.Examine;
 using Content.Shared.Interaction;
@@ -18,6 +19,8 @@ public sealed partial class MachineFrameSystem : EntitySystem
     [Dependency] private StackSystem _stack = default!;
     [Dependency] private ConstructionSystem _construction = default!;
     [Dependency] private SharedPopupSystem _popupSystem = default!;
+
+    [Dependency] private SharedInteractionSystem _interactionSystem = default!; // Moffstation - Interaction particles
 
     public override void Initialize()
     {
@@ -42,7 +45,10 @@ public sealed partial class MachineFrameSystem : EntitySystem
         if (TryComp<ConstructionComponent>(uid, out var construction) && construction.TargetNode == null)
         {
             // Attempt to set pathfinding to the machine node...
-            _construction.SetPathfindingTarget(uid, "machine", construction);
+            // Moffstation - Start - Blade Server Construction
+            if (!_construction.SetPathfindingTarget(uid, "machine", construction))
+                _construction.SetPathfindingTarget(uid, "bladeServer", construction);
+            // Moffstation - End
         }
     }
 
@@ -50,6 +56,8 @@ public sealed partial class MachineFrameSystem : EntitySystem
     {
         if (args.Handled)
             return;
+
+        _interactionSystem.DoContactInteraction(args.User, uid, args.Used, false); // Moffstation - Interaction particles
 
         if (!component.HasBoard)
         {
@@ -138,6 +146,12 @@ public sealed partial class MachineFrameSystem : EntitySystem
     {
         if (!TryComp<MachineBoardComponent>(used, out var machineBoard))
             return false;
+
+        // Moffstation - Begin - Blade Server construction
+        // If this is a Blade Server frame, make sure the board is a Blade Server board.
+        if (HasComp<BladeServerFrameComponent>(uid) && !HasComp<BladeServerBoardComponent>(used))
+            return false;
+        // Moffstation - End
 
         if (!_container.TryRemoveFromContainer(used))
             return false;

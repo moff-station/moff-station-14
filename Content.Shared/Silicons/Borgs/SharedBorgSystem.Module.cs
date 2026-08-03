@@ -1,5 +1,6 @@
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
+using Content.Shared._Moffstation.Silicons.Borgs; // Moffstation
 using Content.Shared.Examine;
 using Content.Shared.Hands.Components;
 using Content.Shared.Interaction.Components;
@@ -37,6 +38,11 @@ public abstract partial class SharedBorgSystem
         SubscribeLocalEvent<BorgModuleWhitelistComponent, BorgModuleInsertAttemptEvent>(OnCheckWhitelist);
         SubscribeLocalEvent<BorgModuleWhitelistComponent, BorgModuleRelayedEvent<BorgModuleInsertAttemptEvent>>(
             OnCheckBlacklistRelay);
+
+        // Moffstation - start
+        SubscribeLocalEvent<ActionBorgModuleComponent, BorgModuleInstalledEvent>(OnActionModuleInstalled);
+        SubscribeLocalEvent<ActionBorgModuleComponent, BorgModuleUninstalledEvent>(OnActionModuleUninstalled);
+        // Moffstation - end
     }
 
     #region BorgModule
@@ -118,9 +124,11 @@ public abstract partial class SharedBorgSystem
 
         UninstallModule((chassis, chassisComp), module.AsNullable());
 
-        // Default modules should not be dropped so let's remove them.
-        if (TryComp<BorgModuleComponent>(module, out var moduleComp) && moduleComp.DefaultModule)
-            PredictedQueueDel(module);
+        // Moff start - default modules don't exist
+        // // Default modules should not be dropped so let's remove them.
+        // if (TryComp<BorgModuleComponent>(module, out var moduleComp) && moduleComp.DefaultModule)
+        //     PredictedQueueDel(module);
+        // Moff end
     }
 
     #endregion
@@ -407,4 +415,29 @@ public abstract partial class SharedBorgSystem
     }
 
     #endregion
+
+    // Moffstation - start
+    private void OnActionModuleInstalled(Entity<ActionBorgModuleComponent> ent, ref BorgModuleInstalledEvent args)
+    {
+        foreach (var action in ent.Comp.Actions)
+        {
+            EntityUid? actionEnt = null;
+            _actions.AddAction(args.ChassisEnt, ref actionEnt, action);
+
+            if (actionEnt != null)
+                ent.Comp.ActionEntities.Add(actionEnt.Value);
+        }
+        Dirty(ent);
+    }
+
+    private void OnActionModuleUninstalled(Entity<ActionBorgModuleComponent> ent, ref BorgModuleUninstalledEvent args)
+    {
+        foreach (var actionEnt in ent.Comp.ActionEntities)
+        {
+            _actions.RemoveAction(args.ChassisEnt, actionEnt);
+        }
+        ent.Comp.ActionEntities.Clear();
+        Dirty(ent);
+    }
+    // Moffstation - end
 }

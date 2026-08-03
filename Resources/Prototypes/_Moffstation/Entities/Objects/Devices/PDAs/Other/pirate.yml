@@ -1,0 +1,19 @@
+- type: entity
+  parent: [ SyndiPDA , BaseHighlyIllegalContraband ]
+  id: PirateCaptainPDA
+  name: pirate captain PDA
+  description: Yargh!
+  components:
+  - type: RenameId
+    value: job-name-pirate-captain
+  - type: Pda
+    id: PirateIDCard
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-piratecaptain
+  - type: Icon
+    state: pda-piratecaptain
+  - type: PdaBorderColor
+    accentVColor: "#2c2c2c"

@@ -1,0 +1,29 @@
+﻿# science borg
+- type: borgType
+  id: science
+
+  # Description
+  dummyPrototype: BorgChassisScience
+
+  # Functional
+  extraModuleCount: 3
+  moduleWhitelist:
+    tags:
+    - BorgModuleGeneric
+    - BorgModuleScience
+
+  defaultModules:
+  - BorgModuleTool
+  - BorgModuleArtifact
+  - BorgModuleAnomaly
+
+  radioChannels:
+  - Science
+
+  # Visual
+  inventoryTemplateId: borgShort
+  spritePath: _Moffstation/Mobs/Silicon/Chassis/science.rsi
+
+  # Pet
+  petSuccessString: petting-success-science-cyborg
+  petFailureString: petting-failure-science-cyborg

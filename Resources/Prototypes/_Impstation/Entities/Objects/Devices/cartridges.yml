@@ -1,0 +1,14 @@
+- type: entity
+  parent: BasePDACartridge
+  id: SOSCartridge
+  name: SOS cartridge
+  description: A program to call for help.
+  components:
+    - type: Cartridge
+      programName: sos-program-name
+      icon:
+        sprite: _Impstation/Objects/Devices/sos.rsi
+        state: icon
+    - type: Sprite
+      state: cart-log
+    - type: SOSCartridge

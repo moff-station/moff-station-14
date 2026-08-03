@@ -45,7 +45,7 @@
     fx: EffectRCDDeconstruct4
   - type: Airtight
   - type: IconSmooth
-    key: windows
+    key: walls # Moffstation
     base: window
   - type: InteractionPopup
     interactSuccessString: comp-window-knock
@@ -71,9 +71,9 @@
   id: Window
   components:
   - type: Sprite
-    sprite: Structures/Windows/window.rsi
+    sprite: _Moffstation/Structures/Windows/window.rsi # Moffstation
   - type: Icon
-    sprite: Structures/Windows/window.rsi
+    sprite: _Moffstation/Structures/Windows/window.rsi # Moffstation
     state: full
   - type: Damageable
     damageModifierSet: Glass
@@ -194,10 +194,10 @@
   id: WindowDirectional
   components:
   - type: Sprite
-    sprite: Structures/Windows/directional.rsi
+    sprite: _Moffstation/Structures/Windows/directional.rsi # Moffstation
     state: window
   - type: Icon
-    sprite: Structures/Windows/directional.rsi
+    sprite: _Moffstation/Structures/Windows/directional.rsi # Moffstation
     state: window
   - type: Damageable
     damageModifierSet: Glass
@@ -255,7 +255,7 @@
   components:
   - type: Sprite
     drawdepth: WallTops
-    sprite: Structures/Windows/window_diagonal.rsi
+    sprite: _Moffstation/Structures/Windows/window_diagonal.rsi # Moffstation
     state: state0
   - type: Tag
     tags:
@@ -263,10 +263,10 @@
     - Window
   - type: IconSmooth
     mode: Diagonal
-    key: windows
+    key: walls # Moffstation
     base: state
   - type: Icon
-    sprite: Structures/Windows/window_diagonal.rsi
+    sprite: _Moffstation/Structures/Windows/window_diagonal.rsi # Moffstation
     state: state0
   - type: Fixtures
     fixtures:

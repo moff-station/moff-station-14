@@ -1,0 +1,63 @@
+{
+    "version": 1,
+    "license": "CC-BY-SA-3.0",
+    "copyright": "fluff sprites taken from Baystation12. back_patch, snout, belly and forehead sprites created by Huaqas (GitHub). back_patch_full, body_stripes, body_lines, body_rings, head_war and head_stripes taken from commit 4e9c367322a5a07604d120c0972adbc61fba9a25, with edits by Huaqas (GitHub).",
+    "size": {
+        "x": 32,
+        "y": 32
+    },
+    "states": [
+        {
+            "name": "fluff",
+            "directions": 4
+        },
+        {
+            "name": "fluff_head",
+            "directions": 4
+        },
+        {
+            "name": "fluff_head_up",
+            "directions": 4
+        },
+        {
+            "name": "belly",
+            "directions": 4
+        },
+        {
+            "name": "back_patch",
+            "directions": 4
+        },
+        {
+            "name": "snout",
+            "directions": 4
+        },
+        {
+            "name": "forehead",
+            "directions": 4
+        },
+        {
+            "name": "body_stripes",
+            "directions": 4
+        },
+        {
+            "name": "back_patch_full",
+            "directions": 4
+        },
+        {
+            "name": "body_lines",
+            "directions": 4
+        },
+        {
+            "name": "body_rings",
+            "directions": 4
+        },
+        {
+            "name": "head_war",
+            "directions": 4
+        },
+        {
+            "name": "head_stripes",
+            "directions": 4
+        }
+    ]
+}

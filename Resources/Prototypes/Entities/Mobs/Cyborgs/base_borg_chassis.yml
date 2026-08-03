@@ -1,6 +1,6 @@
 - type: entity
   parent: [BaseMob, StripableInventoryBase]
-  id: BaseBorgChassisNotIonStormable
+  id: BaseBorgChassis
   name: cyborg
   description: A man-machine hybrid that assists in station activity. They love being asked to state their laws over and over.
   save: false
@@ -34,7 +34,7 @@
     baseWalkSpeed : 2.5
     baseSprintSpeed : 4.5
   - type: Sprite
-    sprite: Mobs/Silicon/chassis.rsi
+    sprite: _Moffstation/Mobs/Silicon/Chassis/generic.rsi # Moffstation - Early merge of Borg RSI fix
   - type: RotationVisuals
     horizontalRotation: 90
   - type: MobState
@@ -55,11 +55,11 @@
     allowRevives: true
   - type: HealthExaminable
     examinableTypes:
-      - Blunt
-      - Slash
-      - Piercing
-      - Heat
-      - Shock
+    - Blunt
+    - Slash
+    - Piercing
+    - Heat
+    - Shock
     locPrefix: silicon
   - type: UserInterface
     interfaces:
@@ -75,14 +75,10 @@
         type: BorgSelectTypeUserInterface
   - type: ActivatableUI
     key: enum.BorgUiKey.Key
-  - type: SiliconLawBound
   - type: ActionGrant
     actions:
     - ActionViewLaws
-  - type: EmagSiliconLaw
-    stunTime: 5
-  - type: SiliconLawProvider
-    laws: Crewsimov
+  - type: SiliconLawBound
   - type: Inventory
     templateId: borg
   - type: Hands
@@ -169,6 +165,32 @@
   - type: Damageable
   - type: Injurable
     damageContainer: Silicon
+  - type: Destructible
+    generateOverkillThreshold: false
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 75
+      behaviors:
+      - !type:PlaySoundBehavior
+        sound:
+          path: /Audio/Machines/warning_buzzer.ogg
+          params:
+            volume: 5
+    - trigger:
+        !type:DamageTrigger
+        damage: 300
+      behaviors:
+      - !type:PlaySoundBehavior
+        sound:
+          collection: MetalBreak
+      - !type:EmptyContainersBehaviour
+        containers:
+        - borg_brain
+        - borg_module
+        - cell_slot
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
   - type: HandheldLight
     toggleOnInteract: false
     wattage: 0.2
@@ -197,7 +219,7 @@
       isLooped: true
   - type: PointLight
     enabled: false
-    mask: /Textures/Effects/LightMasks/cone.png
+    lightMask: ConeSingle
     autoRot: true
     radius: 4
     netsync: false
@@ -228,41 +250,7 @@
     requiredMobState:
     - Critical
     - Dead
-
-- type: entity
-  abstract: true
-  parent: BaseBorgChassisNotIonStormable
-  id: BaseBorgChassis
-  components:
-  - type: IonStormTarget
-  - type: Destructible
-    generateOverkillThreshold: false
-    thresholds:
-    - trigger:
-        !type:DamageTrigger
-        damage: 75
-      behaviors:
-      - !type:PlaySoundBehavior
-        sound:
-          path: /Audio/Machines/warning_buzzer.ogg
-          params:
-            volume: 5
-    - trigger:
-        !type:DamageTrigger
-        damage: 300
-      behaviors:
-      - !type:PlaySoundBehavior
-        sound:
-          collection: MetalBreak
-      - !type:GibBehavior
-      - !type:SpawnEntitiesBehavior
-        spawn:
-          ScrapGlass:
-            min: 1
-            max: 1
-          SheetSteel:
-            min: 10
-            max: 20
+  - type: LawProgrammerTarget # Moffstation - Cyborg programming
 
 - type: entity
   abstract: true
@@ -338,6 +326,17 @@
   - type: InteractionPopup
     interactSuccessSound:
       path: /Audio/Ambience/Objects/periodic_beep.ogg
+  # Moffstation - Begin - Borg sensors
+  - type: BorgSensor
+    sensorType: NTBorgSensor
+  - type: DeviceNetwork
+    deviceNetId: Wireless
+    transmitFrequencyId: SuitSensor
+    savableAddress: false
+  - type: WirelessNetworkConnection
+    range: 1200
+  - type: StationLimitedNetwork
+  # Moffstation - End
 
 - type: entity
   id: BaseBorgChassisSyndicate
@@ -376,6 +375,12 @@
     color: "#dd200b"
   - type: BypassLock
     bypassDelay: 15 # We don't want people to easily be able to remove syndieborg brains.
+  - type: EmagSiliconLaw
+    stunTime: 5
+  # Moffstation - Start - Cyborg programming ( to not circumvent the bypassDelay of removing brain)
+  - type: LawProgrammerTarget
+    durationMultiplier: 10
+  # Moffstation - End
 
 - type: entity
   id: BaseBorgChassisDerelict
@@ -390,10 +395,6 @@
     - AllAccess #Randomized access would be fun. AllAccess is the best i can think of right now that does make it too hard for it to enter the station or navigate it..
   - type: AccessReader
     access: [["Command"], ["Research"]]
-  - type: StartIonStormed
-    ionStormAmount: 3
-  - type: IonStormTarget
-    chance: 1
   - type: ShowJobIcons
   - type: ShowCrewIcons
 
@@ -404,7 +405,7 @@
   components:
   - type: SiliconLawProvider
     laws: SyndicateStatic #Non-subverted version so they can still be changed
-  - type: StartIonStormed
+  - type: StartIonStormed #The chassis and the brain will have different ion storm laws, this is intended, since it can be the provider too
     ionStormAmount: 3
   - type: IonStormTarget
     chance: 1
@@ -436,9 +437,15 @@
     color: "#dd200b"
   - type: BypassLock
     bypassDelay: 15 # We don't want people to easily be able to remove syndieborg brains.
+  - type: EmagSiliconLaw
+    stunTime: 5
+  # Moffstation - Start - Cyborg programming ( to not circumvent the bypassDelay of removing brain)
+  - type: LawProgrammerTarget
+    durationMultiplier: 10
+  # Moffstation - End
 
 - type: entity
-  parent: BaseBorgChassisNotIonStormable
+  parent: BaseBorgChassis
   id: BaseXenoborgChassis
   name: xenoborg
   description: A man-machine hybrid that aims to replicate itself. They love extracting brains to insert into fresh Xenoborg chassis to grow their army.
@@ -560,3 +567,7 @@
         - cell_slot
       - !type:DoActsBehavior
         acts: [ "Destruction" ]
+  # Moffstation - Start - Cyborg programming ( to not circumvent the bypassDelay of removing brain)
+  - type: LawProgrammerTarget
+    durationMultiplier: 10
+  # Moffstation - End

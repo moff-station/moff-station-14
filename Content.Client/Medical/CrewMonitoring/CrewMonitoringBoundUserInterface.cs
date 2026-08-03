@@ -1,3 +1,6 @@
+using Content.Shared._Moffstation.Medical.CrewMonitoring;
+using Content.Shared._Moffstation.Pinpointer; // Moffstation - AI Warp
+using Content.Shared._Moffstation.Warp; // Moffstation - AI Warp
 using Content.Shared.Medical.CrewMonitoring;
 using Robust.Client.UserInterface;
 
@@ -19,18 +22,32 @@ public sealed class CrewMonitoringBoundUserInterface : BoundUserInterface
         EntityUid? gridUid = null;
         var stationName = string.Empty;
 
-        if (EntMan.TryGetComponent<TransformComponent>(Owner, out var xform))
+        // Moffstation - Long range monitor implementation
+        if (EntMan.TryGetComponent<LongRangeCrewMonitorComponent>(Owner, out var longRangeComp))
+        {
+            gridUid = longRangeComp.TargetGrid;
+        }
+        else if (EntMan.TryGetComponent<TransformComponent>(Owner, out var xform))
         {
             gridUid = xform.GridUid;
-
-            if (EntMan.TryGetComponent<MetaDataComponent>(gridUid, out var metaData))
-            {
-                stationName = metaData.EntityName;
-            }
         }
+        if (EntMan.TryGetComponent<MetaDataComponent>(gridUid, out var metaData))
+        {
+            stationName = metaData.EntityName;
+        }
+        // Moffstation - End
 
         _menu = this.CreateWindow<CrewMonitoringWindow>();
-        _menu.Set(stationName, gridUid);
+
+        // Moffstation - Navigation map warp
+        _menu.WarpRequested += coords =>
+            EntMan.EventBus.RaiseLocalEvent(Owner, new NavMapWarpRequest(coords));
+
+        var req = new NavMapWarpEnabledQuery();
+        EntMan.EventBus.RaiseLocalEvent(Owner, ref req);
+
+        _menu.Set(stationName, gridUid, req.Enabled);
+        // Moffstation - End
     }
 
     protected override void UpdateState(BoundUserInterfaceState state)

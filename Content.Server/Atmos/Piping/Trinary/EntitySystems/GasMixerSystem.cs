@@ -42,6 +42,19 @@ public sealed partial class GasMixerSystem : SharedGasMixerSystem
         if (outputStartingPressure >= ent.Comp.TargetPressure)
             return; // Target reached, no need to mix.
 
+        var transferred = ent.Comp.Strategy switch
+        {
+            GasMixerStrategy.Volumetric => Volumetric(ent, inletOne, inletTwo, outlet, outputStartingPressure),
+            GasMixerStrategy.Molar => Molar(ent, inletOne, inletTwo, outlet, outputStartingPressure),
+            _ => Volumetric(ent, inletOne, inletTwo, outlet, outputStartingPressure),
+        };
+
+        if (transferred)
+            _ambientSoundSystem.SetAmbience(ent.Owner, true);
+    }
+
+    private bool Volumetric(Entity<GasMixerComponent> ent, PipeNode inletOne, PipeNode inletTwo, PipeNode outlet, float outputStartingPressure)
+    {
         var generalTransfer = (ent.Comp.TargetPressure - outputStartingPressure) * outlet.Air.Volume / Atmospherics.R;
 
         var transferMolesOne = inletOne.Air.Temperature > 0 ? ent.Comp.InletOneConcentration * generalTransfer / inletOne.Air.Temperature : 0f;
@@ -50,7 +63,7 @@ public sealed partial class GasMixerSystem : SharedGasMixerSystem
         if (ent.Comp.InletTwoConcentration <= 0f)
         {
             if (inletOne.Air.Temperature <= 0f)
-                return;
+                return false;
 
             transferMolesOne = MathF.Min(transferMolesOne, inletOne.Air.TotalMoles);
             transferMolesTwo = 0f;
@@ -59,7 +72,7 @@ public sealed partial class GasMixerSystem : SharedGasMixerSystem
         else if (ent.Comp.InletOneConcentration <= 0)
         {
             if (inletTwo.Air.Temperature <= 0f)
-                return;
+                return false;
 
             transferMolesOne = 0f;
             transferMolesTwo = MathF.Min(transferMolesTwo, inletTwo.Air.TotalMoles);
@@ -67,12 +80,12 @@ public sealed partial class GasMixerSystem : SharedGasMixerSystem
         else
         {
             if (inletOne.Air.Temperature <= 0f || inletTwo.Air.Temperature <= 0f)
-                return;
+                return false;
 
             if (transferMolesOne <= 0 || transferMolesTwo <= 0)
             {
                 _ambientSoundSystem.SetAmbience(ent.Owner, false);
-                return;
+                return false;
             }
 
             if (inletOne.Air.TotalMoles < transferMolesOne || inletTwo.Air.TotalMoles < transferMolesTwo)
@@ -100,8 +113,42 @@ public sealed partial class GasMixerSystem : SharedGasMixerSystem
             _atmosphereSystem.Merge(outlet.Air, removed);
         }
 
-        if (transferred)
-            _ambientSoundSystem.SetAmbience(ent.Owner, true);
+        return transferred;
+    }
+    private bool Molar(Entity<GasMixerComponent> ent, PipeNode inletOne, PipeNode inletTwo, PipeNode outlet, float outputStartingPressure)
+    {
+            // step 1 : Compute the maximum number of moles that can be provided by the two input nodes.
+            //          These quantities will respect the requested concentrations.
+            var maxMolesOne = inletOne.Air.TotalMoles;
+            var maxMolesTwo = inletTwo.Air.TotalMoles;
+
+            if (ent.Comp.InletTwoConcentration > 0)
+                maxMolesOne = MathF.Min(maxMolesOne, inletTwo.Air.TotalMoles * (ent.Comp.InletOneConcentration / ent.Comp.InletTwoConcentration));
+
+            if (ent.Comp.InletOneConcentration > 0)
+                maxMolesTwo = MathF.Min(maxMolesTwo, inletOne.Air.TotalMoles * (ent.Comp.InletTwoConcentration / ent.Comp.InletOneConcentration));
+
+            // step 2 : create a gas mixture from the content of the two inlets.
+            //          compute the amount of this mixture to be transferred to the outlet using PV=nRT.
+            var transferableInletOne = inletOne.Air.Remove(maxMolesOne);
+            var transferableInletTwo = inletTwo.Air.Remove(maxMolesTwo);
+
+            var transferMixture = new GasMixture();
+
+            _atmosphereSystem.Merge(transferMixture, transferableInletOne);
+            _atmosphereSystem.Merge(transferMixture, transferableInletTwo);
+
+            var pressureDelta = ent.Comp.TargetPressure - outlet.Air.Pressure;
+            var totalTransferredMoles = (pressureDelta * outlet.Air.Volume) / (transferMixture.Temperature * Atmospherics.R);
+
+            // step 3 : transfer gas from inlets using the total transferred mole amount and the requested concentrations.
+            _atmosphereSystem.Merge(outlet.Air, transferableInletOne.Remove(totalTransferredMoles * ent.Comp.InletOneConcentration));
+            _atmosphereSystem.Merge(outlet.Air, transferableInletTwo.Remove(totalTransferredMoles * ent.Comp.InletTwoConcentration));
+
+            _atmosphereSystem.Merge(inletOne.Air, transferableInletOne);
+            _atmosphereSystem.Merge(inletTwo.Air, transferableInletTwo);
+
+            return totalTransferredMoles > 0;
     }
 
     [SubscribeLocalEvent]

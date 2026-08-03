@@ -1,0 +1,13 @@
+- type: entity
+  categories: [ HideSpawnMenu ]
+  parent: BaseBulletSilver
+  id: BulletAntiVampirical
+  name: bullet (.60 anti-vampirical)
+  components:
+  - type: Projectile
+    damage: # Deals normal (75) damage to unholy entities. Deviates from the normal 1/2 Pierce + 3/4 Holy formula since they're specialty made (read: syndicate/admeme only).
+      types:
+        Piercing: 50
+        Holy: 50
+  - type: StaminaDamageOnCollide
+    damage: 60

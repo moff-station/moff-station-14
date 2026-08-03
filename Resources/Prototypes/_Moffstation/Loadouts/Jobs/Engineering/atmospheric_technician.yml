@@ -1,0 +1,83 @@
+# ID
+- type: loadout
+  id: AtmosPDA
+  equipment:
+    id: AtmosPDA
+  groupBy: "atmos tech roles"
+
+- type: loadout
+  id: ThermalSystemsSpecialistPDA
+  equipment:
+    id: ThermalSystemsSpecialistPDA
+  groupBy: "atmos tech roles"
+
+- type: loadout
+  id: SeniorAtmosphericTechnicianPDA
+  equipment:
+    id: SeniorAtmosphericTechnicianPDA
+  groupBy: "atmos tech roles"
+
+- type: loadout
+  id: FirefighterPDA
+  equipment:
+    id: FirefighterPDA
+  groupBy: "atmos tech roles"
+
+- type: loadout
+  id: AssistantAtmosphericTechnicianPDA
+  equipment:
+    id: AssistantAtmosphericTechnicianPDA
+  groupBy: "atmos assistant"
+
+# Head
+- type: loadout
+  id: AtmosphericTechnicianHardhatBlue
+  equipment:
+    head: ClothingHeadHatHardhatBlue
+
+- type: loadout
+  id: AtmosphericTechnicianYellowCap
+  equipment:
+    head: ClothingHeadHatYellowsoft
+
+# Mask
+
+# Neck
+
+# Jumpsuit
+- type: loadout
+  id: AtmosphericTechnicianSeniorJumpsuit
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: SeniorEngineering
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitSeniorAtmos
+
+- type: loadout
+  id: AtmosphericTechnicianSeniorJumpskirt
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: SeniorEngineering
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtSeniorAtmos
+
+- type: loadout
+  id: AtmosphericTechnicianTurtleneck
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitAtmosTurtle
+
+# Back
+
+# Belt
+
+# Outer Clothing
+- type: loadout
+  id: AtmosphericTechnicianOuterVest
+  equipment:
+    outerClothing: ClothingOuterVestHazardBlue
+
+# Gloves
+
+# Shoes
+
+# Eyewear

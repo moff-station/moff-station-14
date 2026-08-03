@@ -1,0 +1,27 @@
+- type: entity
+  parent: MarkerBase
+  id: SpawnMobBat
+  name: Bat Spawner
+  components:
+  - type: Sprite
+    layers:
+    - state: green
+    - state: bat
+      sprite: Mobs/Animals/bat.rsi
+  - type: ConditionalSpawner
+    prototypes:
+    - MobBat
+
+- type: entity
+  parent: MobSpiderBase
+  id: MobSpiderNoGhostRoleAngryBase
+  abstract: true
+  components:
+  - type: NpcFactionMember
+    factions:
+    - Xeno
+  - type: InputMover
+  - type: MobMover
+  - type: HTN
+    rootTask:
+      task: SimpleHostileCompound

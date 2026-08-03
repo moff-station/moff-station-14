@@ -1,12 +1,13 @@
 ﻿using System.Linq;
+using Content.Shared._Moffstation.Teleportation.Components;
 using Content.Shared.Movement.Pulling.Components;
 using Content.Shared.Movement.Pulling.Systems;
 using Content.Shared.Popups;
 using Content.Shared.Projectiles;
 using Content.Shared.Tag;
 using Content.Shared.Teleportation.Components;
-using Content.Shared.Weapons.Misc;
 using Content.Shared.Verbs;
+using Content.Shared.Weapons.Misc;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Map;
 using Robust.Shared.Network;
@@ -14,9 +15,9 @@ using Robust.Shared.Physics.Dynamics;
 using Robust.Shared.Physics.Events;
 using Robust.Shared.Physics.Systems;
 using Robust.Shared.Player;
+using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 using Robust.Shared.Utility;
-using Robust.Shared.Prototypes;
 
 namespace Content.Shared.Teleportation.Systems;
 
@@ -36,6 +37,8 @@ public abstract partial class SharedPortalSystem : EntitySystem
     [Dependency] private SharedPopupSystem _popup = default!;
     [Dependency] private SharedTransformSystem _transform = default!;
     [Dependency] private TagSystem _tag = default!;
+
+    [Dependency] private EntityQuery<PortalBlacklistComponent> _portalBlacklistQuery; // Moffstation - Portal Blacklist
 
     private const string PortalFixture = "portalFixture";
     private const string ProjectileFixture = "projectile";
@@ -103,6 +106,11 @@ public abstract partial class SharedPortalSystem : EntitySystem
         if (Transform(subject).Anchored)
             return;
 
+        // Moffstation - Begin
+        if (_portalBlacklistQuery.HasComp(subject))
+            return;
+        // Moffstation - End
+
         // break pulls before portal enter so we don't break shit
         if (TryComp<PullableComponent>(subject, out var pullable) && pullable.BeingPulled)
         {
@@ -124,11 +132,8 @@ public abstract partial class SharedPortalSystem : EntitySystem
             return;
         }
 
-        if (TryComp<LinkedEntityComponent>(ent, out var link))
+        if (TryComp<LinkedEntityComponent>(ent, out var link) && link.LinkedEntities.Count != 0)
         {
-            if (link.LinkedEntities.Count == 0)
-                return;
-
             // check prediction
             if (_netMan.IsClient && !CanPredictTeleport((ent, link)))
                 return;
@@ -258,7 +263,13 @@ public abstract partial class SharedPortalSystem : EntitySystem
             return;
 
         _audio.PlayPredicted(departureSound, ent, subject);
-        _audio.PlayPredicted(arrivalSound, subject, subject);
+        // Moffstation - Start - Sparks and fx
+        if (!HasComp<PortalComponent>(targetEntity))
+            PredictedSpawnAtPosition(ent.Comp.TeleportEffect, Transform(subject).Coordinates);
+        else
+            _audio.PlayPredicted(arrivalSound, subject, subject);
+        // Moffstation - End
+
     }
 
     /// <summary>

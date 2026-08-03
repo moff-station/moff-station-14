@@ -1,4 +1,6 @@
-﻿using Content.Shared.Roles;
+// Moffstation - Moved to shared in our namespace, so that we can apply via traits in the new system
+// Accept all upstream changes
+/*
 using Content.Shared.StatusEffectNew;
 using JetBrains.Annotations;
 using Robust.Shared.Prototypes;
@@ -25,3 +27,4 @@ public sealed partial class ApplyStatusEffectSpecial : JobSpecial
         }
     }
 }
+*/

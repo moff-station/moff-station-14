@@ -1,4 +1,4 @@
-using Robust.Shared.Serialization;
+﻿using Robust.Shared.Serialization;
 
 namespace Content.Shared.Atmos.Piping.Trinary.Components;
 
@@ -31,7 +31,8 @@ public sealed class GasFilterChangeRateMessage : BoundUserInterfaceMessage
 }
 
 [Serializable, NetSerializable]
-public sealed class GasFilterSelectGasMessage(Gas? gas) : BoundUserInterfaceMessage
+    public sealed class GasFilterSelectGasMessage(Gas gas, bool filtered) : BoundUserInterfaceMessage // Moff - filter multiple gasses
 {
-    public readonly Gas? Gas = gas;
+    public readonly Gas Gas = gas; // Moff - filter multiple gasses; Gas is not nullable
+    public readonly bool Filtered = filtered;  // Moff - filter multiple gasses
 }

@@ -164,7 +164,7 @@
       params:
         variation: 0.125
   - type: Sprite
-    sprite: Mobs/Silicon/Bots/honkbot.rsi
+    sprite: _Moffstation/Mobs/Silicon/Bots/honkbot.rsi # Moffstation - Uncabinetification
     state: honkbot
   - type: HTN
     rootTask:
@@ -311,14 +311,14 @@
     replacements:
       # when you are fine, medibot will help you go sleep
       Alive:
-        reagent: ChloralHydrate
+        reagent: Nocturine # Moffstation - Make medibots worth emagging
         quantity: 15
       # when you are crit, medibot will help you have fun
       Critical:
         reagent: SpaceDrugs
         quantity: 25
   - type: Sprite
-    sprite: Mobs/Silicon/Bots/medibot.rsi
+    sprite: _Moffstation/Mobs/Silicon/Bots/medibot.rsi # Moffstation - Uncabinetification
     state: medibot
   - type: HTN
     rootTask:
@@ -348,7 +348,7 @@
   description: Why not give the mimebot a friendly wave?
   components:
   - type: Sprite
-    sprite: Mobs/Silicon/Bots/mimebot.rsi
+    sprite: _Moffstation/Mobs/Silicon/Bots/mimebot.rsi # Moffstation - Uncabinetification
     state: mimebot
   - type: MimePowers
   - type: Construction
@@ -422,7 +422,7 @@
     enabled: false
     radius: 3.5
     softness: 2
-    mask: /Textures/Effects/LightMasks/cone.png
+    lightMask: ConeSingle
     autoRot: true
   - type: FootstepModifier
     footstepSoundCollection:
@@ -448,7 +448,7 @@
   description: Awww, who needs a hug?
   components:
   - type: Sprite
-    sprite: Mobs/Silicon/Bots/hugbot.rsi
+    sprite: _Moffstation/Mobs/Silicon/Bots/hugbot.rsi # Moffstation - Uncabinetification
     state: hugbot
   - type: Construction
     graph: HugBot

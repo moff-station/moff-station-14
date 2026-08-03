@@ -75,7 +75,7 @@
     altDisarm: false
     angle: 0
     soundHit:
-     collection: AlienClaw
+      collection: AlienClaw
     animation: WeaponArcBite
     damage:
       types:
@@ -89,6 +89,7 @@
       Dead:
         Base: dead
   - type: Puller
+    needsHands: false # Moffstation - Xeno changes
   - type: Butcherable
     spawned:
     - id: FoodMeatXeno
@@ -101,7 +102,7 @@
     description: ghost-role-information-xeno-description
     rules: ghost-role-information-xeno-rules
     raffle:
-      settings: default
+      settings: short # Moffstation - Xeno changes
   - type: GhostTakeoverAvailable
   - type: TypingIndicator
     proto: alien
@@ -110,9 +111,9 @@
     coldDamageThreshold: -150
   - type: Tag
     tags:
-      - CannotSuicide
-      - DoorBumpOpener
-      - FootstepSound
+    - CannotSuicide
+    - DoorBumpOpener
+    - FootstepSound
   - type: NoSlip
   - type: Perishable #Ummmm the acid kills a lot of the bacteria or something
     molsPerSecondPerUnitMass: 0.0005
@@ -342,7 +343,7 @@
     useKey: false
     selectedMode: FullAuto
     availableModes:
-      - FullAuto
+    - FullAuto
     soundGunshot: /Audio/Weapons/Xeno/alien_spitacid.ogg
   - type: Fixtures
     fixtures:
@@ -507,7 +508,7 @@
     altDisarm: false
     angle: 0
     soundHit:
-     collection: AlienClaw
+      collection: AlienClaw
     animation: WeaponArcBite
     damage:
       types:
@@ -521,6 +522,7 @@
       Dead:
         Base: dead
   - type: Puller
+    needsHands: false # Moffstation - Xeno changes
   - type: Butcherable
     spawned:
     - id: FoodMeatXeno

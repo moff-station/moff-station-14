@@ -1,0 +1,615 @@
+# Use the CratePirateChestSecure and CratePirate for pirate themed stuff, and CratePiratePrivateSecure for modern stuff (and CratePirateDavyJones for really cool stuff)
+
+- type: entity
+  parent: CratePirateChestSecure
+  id: CratePirateECutlass
+  name: energy cutlass crate
+  description: Contains two top of the line e-cutlasses, fresh from the ship
+  components:
+  - type: EntityTableContainerFill
+    containers:
+      entity_storage:
+        id: EnergyCutlass
+        amount: 2
+
+- type: entity
+  parent: CratePiratePrivateSecure
+  id: CratePirateWebvest
+  name: webvest crate
+  description: Contains two military-grade web vests
+  components:
+  - type: EntityTableContainerFill
+    containers:
+      entity_storage:
+        id: ClothingOuterVestWeb
+        amount: 2
+
+- type: entity
+  parent: CratePiratePrivateSecure
+  id: CratePirateAk
+  name: AKMS crate
+  description: Contains two AKs and ammo to operate them
+  components:
+  - type: EntityTableContainerFill
+    containers:
+      entity_storage: !type:AllSelector
+        children:
+        - id: WeaponRifleAk
+          amount: 2
+        - id: MagazineLightRifle
+          amount: 4
+
+- type: entity
+  parent: CratePiratePrivateSecure
+  id: CratePirateRifleAmmo
+  name: rifle ammo crate
+  description: Contains a stockpile of standard .30 rifle ammo
+  components:
+  - type: EntityTableContainerFill
+    containers:
+      entity_storage: !type:AllSelector
+        children:
+        - id: MagazineBoxLightRifle
+          amount: 2
+        - id: MagazineLightRifle
+          amount: 4
+
+- type: entity
+  parent: CratePiratePrivateSecure
+  id: CratePirateMagnumAmmo
+  name: magnum ammo crate
+  description: Contains a stockpile of standard .45 magnum ammo, along with 2 speedloaders
+  components:
+  - type: EntityTableContainerFill
+    containers:
+      entity_storage: !type:AllSelector
+        children:
+        - id: SpeedLoaderMagnum
+          amount: 2
+        - id: MagazineBoxMagnum
+          amount: 2
+
+- type: entity
+  parent: CratePirateChestSecure
+  id: CratePirateBlunderbuss
+  name: blunderbuss crate
+  description: Contains two pirate blunderbusses, the flagship pirate weapon
+  components:
+  - type: EntityTableContainerFill
+    containers:
+      entity_storage: !type:AllSelector
+        children:
+        - id: WeaponShotgunBlunderbuss
+          amount: 2
+        - id: BoxLethalshot
+          amount: 2
+
+- type: entity
+  parent: CratePirateChestSecure
+  id: CratePirateCannonBall
+  name: cannonball crate
+  description: Contains three standard cannonballs
+  components:
+  - type: EntityTableContainerFill
+    containers:
+      entity_storage:
+        id: CannonBall
+        amount: 3
+
+- type: entity
+  parent: CratePirateChestSecure
+  id: CratePirateGlassshot
+  name: glassshot crate
+  description: Contains three rounds of glassshot
+  components:
+  - type: EntityTableContainerFill
+    containers:
+      entity_storage:
+        id: CannonBallGlassshot
+        amount: 3
+
+- type: entity
+  parent: CratePirateChestSecure
+  id: CratePirateGrapeshot
+  name: grapeshot crate
+  description: Contains three rounds of grapeshot
+  components:
+  - type: EntityTableContainerFill
+    containers:
+      entity_storage:
+        id: CannonBallGrapeshot
+        amount: 3
+
+- type: entity
+  parent: CratePirateChestSecure
+  id: CratePirateSpareEVA
+  name: deepspace EVA crate
+  description: Contains two deepspace EVA suits, and some air tanks to go with them.
+  components:
+  - type: EntityTableContainerFill
+    containers:
+      entity_storage: !type:AllSelector
+        children:
+        - id: ClothingOuterHardsuitPirateEVA
+          amount: 2
+        - id: OxygenTankFilled
+          amount: 2
+        - id: NitrogenTankFilled
+          amount: 2
+
+- type: entity
+  parent: CratePirate
+  id: CratePirateAdvancedMedkit
+  name: advanced medkit crate
+  description: Contains an advanced medical kit
+  components:
+  - type: EntityTableContainerFill
+    containers:
+      entity_storage:
+        id: MedkitAdvancedFilled
+        amount: 1
+
+- type: entity
+  parent: CratePirate
+  id: CratePirateCombatMedkit
+  name: combat medkit crate
+  description: Contains a combat medical kit
+  components:
+  - type: EntityTableContainerFill
+    containers:
+      entity_storage:
+        id: MedkitCombatFilled
+        amount: 1
+
+- type: entity
+  parent: CratePiratePrivateSecure
+  id: CratePirateKidnap
+  name: kidnapping supplies crate
+  description: Comes with everything you need to keep someone locked away!
+  components:
+  - type: EntityTableContainerFill
+    containers:
+      entity_storage: !type:AllSelector
+        children:
+        - id: Handcuffs
+          amount: 3
+        - id: ClothingMaskMuzzle
+          amount: 1
+        - id: ClothingUniformJumpsuitPrisoner
+          amount: 2
+        - id: Stunprod
+          amount: 2
+
+- type: entity
+  parent: CratePirateChestSecure
+  id: CratePirateHandcannon
+  name: handcannon crate
+  description: Contains a pirate handcannon and two standard cannonballs. the landlubbers will not like this one.
+  components:
+  - type: EntityTableContainerFill
+    containers:
+      entity_storage: !type:AllSelector
+        children:
+        - id: WeaponLauncherPirateCannon
+          amount: 1
+        - id: CannonBall
+          amount: 2
+
+- type: entity
+  parent: CratePirateChestSecure
+  id: CratePirateCutlass
+  name: cutlass crate
+  description: Contains two pirate cutlasses. For scallywags who prefer the old fashioned way.
+  components:
+  - type: EntityTableContainerFill
+    containers:
+      entity_storage:
+        id: Cutlass
+        amount: 3
+
+- type: entity
+  parent: CratePirateChestSecure
+  id: CratePirateFlintlock
+  name: flintlock crate
+  description: Contains two flintlock pistols, and the ammo to operate them. For scallywags who prefer the old fashioned way.
+  components:
+  - type: EntityTableContainerFill
+    containers:
+      entity_storage: !type:AllSelector
+        children:
+        - id: WeaponPistolFlintlock
+          amount: 2
+        - id: MagazineBoxMagnum
+          amount: 2
+
+- type: entity
+  parent: CratePirateChestSecure
+  id: CratePirateRevolver
+  name: pirate revolver crate
+  description: Contains 2 Pirate revolvers, 2 speed loaders, and the ammo to operate them.
+  components:
+  - type: EntityTableContainerFill
+    containers:
+      entity_storage: !type:AllSelector
+        children:
+        - id: WeaponRevolverPirate
+          amount: 2
+        - id: SpeedLoaderMagnum
+          amount: 2
+        - id: MagazineBoxMagnum
+          amount: 2
+
+- type: entity
+  parent: CratePiratePrivateSecure
+  id: CratePirateRifleLeverMagnum
+  name: repeating rifle crate
+  description: Contains two Crestfall lever-action rifles with four ammo boxes.
+  components:
+  - type: EntityTableContainerFill
+    containers:
+      entity_storage: !type:AllSelector
+        children:
+        - id: WeaponRifleLeverMagnum
+          amount: 2
+        - id: MagazineBoxMagnum
+          amount: 4
+
+- type: entity
+  parent: CratePiratePrivateSecure
+  id: CratePirateMakeshiftLaser
+  name: makeshift laser pistol crate
+  description: Contains two makeshift laser pistols, no warranty included.
+  components:
+  - type: EntityTableContainerFill
+    containers:
+      entity_storage:
+        id: WeaponMakeshiftLaser
+        amount: 2
+
+- type: entity
+  parent: CratePirateChestSecure
+  id: CratePirateShotgunAmmo
+  name: shotgun ammo crate
+  description: Contains a stockpile of standard .50 shotgun ammo
+  components:
+  - type: EntityTableContainerFill
+    containers:
+      entity_storage: !type:AllSelector
+        children:
+        - id: MagazineShotgun
+          amount: 4
+        - id: BoxLethalshot
+          amount: 2
+
+- type: entity
+  parent: CratePirateChestSecure
+  id: CratePirateMagnumAPAmmo
+  name: AP speed loader crate
+  description: Contains a speed loader filled with armor-piercing rounds, for when you need the job done quick.
+  components:
+  - type: EntityTableContainerFill
+    containers:
+      entity_storage:
+        id: SpeedLoaderMagnumAP
+        amount: 1
+
+- type: entity
+  parent: CratePiratePrivateSecure
+  id: CratePirateAppraisalTool
+  name: appraisal tool crate
+  description: Contains 3 appraisal tools. good for calculating the value of (stolen) goods.
+  components:
+  - type: EntityTableContainerFill
+    containers:
+      entity_storage:
+        id: AppraisalTool
+        amount: 3
+
+- type: entity
+  parent: CratePirateChestSecure
+  id: CratePirateAnchor
+  name: pirate anchor crate
+  description: Contains an anchor suitable for a pirate ship. Also useful for prying doors and busting down walls.
+  components:
+  - type: EntityTableContainerFill
+    containers:
+      entity_storage:
+        id: PirateAnchor
+        amount: 1
+
+- type: entity
+  parent: CratePirateChestSecure
+  id: CratePirateHook
+  name: pirate hook crate
+  description: Contains two pirate hooks, useful for scratching up foes in a pinch
+  components:
+  - type: EntityTableContainerFill
+    containers:
+      entity_storage:
+        id: ClothingHandsPirateHook
+        amount: 2
+
+- type: entity
+  parent: CratePirateDavyJones
+  id: CratePirateReinforcement
+  name: pirate reinforcement crate
+  description: Contains a reinforcement conch shell, capable of calling in another pirate for assistance
+  components:
+  - type: EntityTableContainerFill
+    containers:
+      entity_storage:
+        id: ReinforcementRadioPirate
+        amount: 1
+
+- type: entity
+  parent: CratePirateDavyJones
+  id: CratePirateReinforcementSkeleton
+  name: skeleton pirate reinforcement crate
+  description: Contains a reinforcement conch shell, capable of calling in a skeleton pirate for assistance
+  components:
+  - type: EntityTableContainerFill
+    containers:
+      entity_storage:
+        id: ReinforcementRadioPirateSkeleton
+        amount: 1
+
+- type: entity
+  parent: CratePirateDavyJones
+  id: CratePirateReinforcementMonkey
+  name: monkey pirate reinforcement crate
+  description: Contains a reinforcement conch shell, capable of calling in a monkey pirate for assistance
+  components:
+  - type: EntityTableContainerFill
+    containers:
+      entity_storage:
+        id: ReinforcementRadioPirateMonkey
+        amount: 1
+
+- type: entity
+  parent: CratePirateDavyJones
+  id: CratePirateSkeletonCoin
+  name: skeleton coin crate
+  description: Contains a coin said to transform its owner into an immortal skeleton...
+  components:
+  - type: EntityTableContainerFill
+    containers:
+      entity_storage:
+        id: SkeletonCoin
+        amount: 1
+
+- type: entity
+  parent: CratePirateChestSecure
+  id: CratePirateGasMask
+  name: gas mask crate
+  description: Contains 3 gas masks, specially tuned to come with welding and flash protection.
+  components:
+  - type: EntityTableContainerFill
+    containers:
+      entity_storage:
+        id: ClothingMaskGasPirate
+        amount: 3
+
+- type: entity
+  parent: CratePirateChestSecure
+  id: CratePirateRobotParrot
+  name: robot parrot crate
+  description: Contains 3 robot parrots, tried and true companions for the scurviest of pirates.
+  components:
+  - type: EntityTableContainerFill
+    containers:
+      entity_storage:
+        id: RobotParrot
+        amount: 3
+
+- type: entity
+  parent: CratePirateDavyJones
+  id: CratePirateReinforcementCyborg
+  name: assault cyborg crate
+  description: Contains a reinforcement conch shell, capable of calling in a pirate assault cyborg for assistance
+  components:
+  - type: EntityTableContainerFill
+    containers:
+      entity_storage:
+        id: ReinforcementRadioPirateAssaultCyborg
+        amount: 1
+
+- type: entity
+  parent: CratePirateChestSecure
+  id: CratePirateMassScanner
+  name: holographic map crate
+  description: Contains 3 holographic maps, useful for charting the surrounding area in space
+  components:
+  - type: EntityTableContainerFill
+    containers:
+      entity_storage:
+        id: HandHeldMassScannerPirate
+        amount: 3
+
+- type: entity
+  parent: CratePirateChestSecure
+  id: CratePirateKammererShotgun
+  name: kammerer shotgun crate
+  description: Contains two Kammerer shotguns, procured from the finest black market gunsmiths.
+  components:
+  - type: EntityTableContainerFill
+    containers:
+      entity_storage: !type:AllSelector
+        children:
+        - id: WeaponShotgunKammererOld
+          amount: 2
+        - id: BoxLethalshot
+          amount: 3
+        - id: BoxShotgunSlug
+          amount: 1
+
+- type: entity
+  parent: CratePirateChestSecure
+  id: CratePirateShotgunDoubleBarreled
+  name: double-barreled shotgun crate
+  description: Contains 2 double-barreled shotguns, stolen from ransacked NT shipments.
+  components:
+  - type: EntityTableContainerFill
+    containers:
+      entity_storage: !type:AllSelector
+        children:
+        - id: WeaponShotgunDoubleBarreled
+          amount: 2
+        - id: BoxLethalshot
+          amount: 2
+
+- type: entity
+  parent: CratePirateChestSecure
+  id: CratePirateGunpowderCharge
+  name: dynamite crate
+  description: Contains 5 sticks of dynamite, good for putting holes in walls
+  components:
+  - type: EntityTableContainerFill
+    containers:
+      entity_storage:
+        id: GunpowderCharge
+        amount: 5
+
+- type: entity
+  parent: CratePirateChestSecure
+  id: CratePirateJetpack
+  name: jetpack crate
+  description: Contains 2 cannon jetpacks, good for sailing the seas of space
+  components:
+  - type: EntityTableContainerFill
+    containers:
+      entity_storage:
+        id: PirateJetpackFilled
+        amount: 2
+
+- type: entity
+  parent: CratePirateDavyJones
+  id: CratePirateFlyingDutchman
+  name: flying dutchman injector crate
+  description: Contains a injector allowing the user to summon an incarnation of a legendary ghost, the Flying Dutchman
+  components:
+  - type: EntityTableContainerFill
+    containers:
+      entity_storage:
+        id: FlyingDutchmanInjector
+
+- type: entity
+  parent: CratePirateChestSecure
+  id: CratePirateSkeletonKey
+  name: master key crate
+  description: Contains an accursed key, said to break locks using the souls of the damned
+  components:
+  - type: EntityTableContainerFill
+    containers:
+      entity_storage:
+        id: AccessBreakerPirate
+
+- type: entity
+  parent: CratePirateDavyJones
+  id: CratePirateBuccaneerHardsuit
+  name: buccaneer hardsuit crate
+  description: Contains a buccaneer hardsuit, a well-rounded hardsuit for wealthy pirates
+  components:
+  - type: EntityTableContainerFill
+    containers:
+      entity_storage:
+        id: ClothingOuterHardsuitPirateBuccaneer
+
+- type: entity
+  parent: CratePirateDavyJones
+  id: CratePirateBlackbeardHardsuit
+  name: Blackbeard hardsuit crate
+  description: Contains a Blackbeard hardsuit, a hardsuit specializing in extreme protection from the heat
+  components:
+  - type: EntityTableContainerFill
+    containers:
+      entity_storage:
+        id: ClothingOuterHardsuitPirateBlackbeard
+
+- type: entity
+  parent: CratePirateDavyJones
+  id: CratePirateDavyJonesHardsuit
+  name: Davy Jones' hardsuit crate
+  description: Contains Davy Jones' hardsuit, a heavy, impenetrable hardsuit of pirate legend
+  components:
+  - type: EntityTableContainerFill
+    containers:
+      entity_storage:
+        id: ClothingOuterHardsuitPirateDavyJones
+
+- type: entity
+  parent: CratePirateDavyJones
+  id: CratePirateSwashbucklerHardsuit
+  name: swashbuckler hardsuit crate
+  description: Contains a swashbuckler hardsuit, a light hardsuit built for hit-and-run operations
+  components:
+  - type: EntityTableContainerFill
+    containers:
+      entity_storage:
+        id: ClothingOuterHardsuitPirateSwashbuckler
+
+- type: entity
+  parent: CratePirateChestSecure
+  id: CratePirateGrapplingGun
+  name: grappling gun crate
+  description: Contains 3 grappling guns, useful for grappling
+  components:
+  - type: EntityTableContainerFill
+    containers:
+      entity_storage:
+        id: WeaponGrapplingGun
+        amount: 3
+
+- type: entity
+  parent: CratePirate
+  id: CratePirateSharkPlush
+  name: shark plushie crate
+  description: A crate filled with a variety of everyone's favorite finned friend. Rawr!
+  components:
+  - type: EntityTableContainerFill
+    containers:
+      entity_storage: !type:AllSelector
+        children:
+        - id: PlushieSharkBlue
+          amount: 2
+        - id: PlushieSharkPink
+          amount: 2
+        - id: PlushieSharkGrey
+          amount: 2
+        - id: PlushieSharkPirate
+          amount: 2
+
+- type: entityTable
+  id: AllEyepatchesTable
+  table: !type:GroupSelector
+    children:
+    - id: ClothingEyesEyepatchHudMedical
+    - id: ClothingEyesEyepatchHudSecurity
+    - id: ClothingEyesEyepatchHudBeer
+    - id: ClothingEyesEyepatchHudDiag
+
+- type: entity
+  parent: CratePirate
+  id: CratePirateEyepatch
+  name: eyepatch crate
+  description: A crate filled with some pirate swag.
+  components:
+  - type: EntityTableContainerFill
+    containers:
+      entity_storage: !type:GroupSelector
+        children:
+        - !type:NestedSelector
+          tableId: AllEyepatchesTable
+        - id: ClothingEyesEyepatch
+          amount: 2
+
+- type: entity
+  parent: CratePiratePrivateSecure
+  id: CratePirateFulton
+  name: fulton crate
+  description: Contains 50 fultons, for robbing stationlubbers
+  components:
+  - type: EntityTableContainerFill
+    containers:
+      entity_storage:
+        id: Fulton
+        amount: 5

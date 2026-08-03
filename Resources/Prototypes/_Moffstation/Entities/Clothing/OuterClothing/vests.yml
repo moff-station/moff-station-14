@@ -1,0 +1,39 @@
+﻿#Hazard vest
+- type: entity
+  parent: [ ClothingOuterVestHazard ]
+  id: ClothingOuterVestHazardBlue
+  name: hi-viz vest
+  description: A high-visibility vest used in work zones. This one is atmos-themed blue. How prestigious.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/OuterClothing/Vests/hazard.rsi
+    layers:
+    - state: icon
+    - state: icon-unshaded
+      shader: unshaded
+    - state: icon-unshaded
+      shader: shaded
+  - type: Clothing
+    sprite: _Moffstation/Clothing/OuterClothing/Vests/hazard.rsi
+    clothingVisuals:
+      outerClothing:
+      - state: equipped-OUTERCLOTHING
+      - state: equipped-OUTERCLOTHING-unshaded
+        shader: unshaded
+      - state: equipped-OUTERCLOTHING-unshaded
+        shader: shaded
+      outerClothing-vox:
+      - state: equipped-OUTERCLOTHING-vox
+      - state: equipped-OUTERCLOTHING-unshaded-vox
+        shader: unshaded
+      - state: equipped-OUTERCLOTHING-unshaded-vox
+        shader: shaded
+  - type: Reflect
+    reflectProb: 0.02
+    reflects:
+    - Energy
+    reflectingInHands: false
+  - type: Tag
+    tags:
+    - HiViz
+    - WhitelistChameleon

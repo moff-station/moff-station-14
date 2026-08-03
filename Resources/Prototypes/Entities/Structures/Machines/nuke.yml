@@ -66,7 +66,7 @@
     radius: 4
     energy: 2.0
     color: "#FF4020"
-    mask: /Textures/Effects/LightMasks/double_cone.png
+    lightMask: ConeDouble
   - type: RotatingLight
     speed: 120
   - type: NavMapBeacon
@@ -88,8 +88,8 @@
       whitelist:
         components:
         - NukeDisk
-    alertLevelOnActivate: delta
-    alertLevelOnDeactivate: green
+    alertLevelOnActivate: DeltaNuke
+    alertLevelOnDeactivate: Green
   - type: InteractionOutline
   - type: ActivatableUI
     key: enum.NukeUiKey.Key
@@ -97,8 +97,10 @@
     interfaces:
       enum.NukeUiKey.Key:
         type: NukeBoundUserInterface
-  - type: StaticPrice
-    price: 50000 # YOU STOLE A NUCLEAR FISSION EXPLOSIVE?!
+#  Moffstation - Start - Removing this in favor of the pirate bounty
+#  - type: StaticPrice
+#    price: 50000 # YOU STOLE A NUCLEAR FISSION EXPLOSIVE?!
+#  Moffstation - End
   - type: CargoSellBlacklist
   - type: ArrivalsBlacklist
   - type: ItemSlots
@@ -107,6 +109,9 @@
       Nuke: !type:ContainerSlot
   - type: StealTarget
     stealGroup: NuclearBomb
+  - type: Tag
+    tags:
+    - Nuke  # Moffstation - Tag for pirate bounty
   - type: WarpPoint
     follow: true
     location: location-nuclear-bomb

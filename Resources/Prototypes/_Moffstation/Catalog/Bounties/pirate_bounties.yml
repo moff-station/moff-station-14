@@ -1,0 +1,164 @@
+# We need to be careful how we balance these, as we dont want to bankroll them to quickly
+# take into account risk/difficulty of stealing a certain bounty
+# make things less if we want to disincentivize it being stolen
+# Also, make sure theres enough disruptive bounties so that they dont just become symbiotic with the crew
+
+# Big Heists
+- type: cargoBounty
+  id: PirateBountyNuke
+  reward: 50000
+  description: bounty-description-nuke
+  idPrefix: GX
+  group: Pirates
+  entries:
+  - name: bounty-item-nuke
+    amount: 1
+    whitelist:
+      components:
+      - Nuke
+
+- type: cargoBounty
+  id: PirateBountyAnomVessel
+  reward: 6000
+  description: bounty-description-anom-vessel
+  idPrefix: CS
+  group: Pirates
+  entries:
+  - name: bounty-item-anom-vessel
+    amount: 1
+    whitelist:
+      components:
+      - AnomalyVessel
+
+- type: cargoBounty
+  id: PirateBountyArtifact
+  reward: 6000
+  description: bounty-description-artifact
+  idPrefix: SP
+  group: Pirates
+  entries:
+  - name: bounty-item-artifact
+    amount: 1
+    whitelist:
+      components:
+      - XenoArtifact
+
+# Service
+
+- type: cargoBounty
+  id: PirateBountyChefTech
+  reward: 5000
+  description: bounty-description-cheftech
+  idPrefix: WC
+  group: Pirates
+  entries:
+  - name: bounty-item-cheftech
+    amount: 1
+    whitelist:
+      tags:
+      - Chefware
+
+# Medical
+- type: cargoBounty
+  id: PirateBountyCrewMonitor
+  reward: 6000
+  description: bounty-description-crew-monitor
+  idPrefix: CS
+  group: Pirates
+  entries:
+  - name: bounty-item-crew-monitor
+    amount: 1
+    whitelist:
+      components:
+      - CrewMonitoringConsole
+
+# General Bounties
+- type: cargoBounty
+  id: PirateBountyVendingMachine
+  reward: 4000
+  description: bounty-description-vendmachine
+  idPrefix: DC
+  group: Pirates
+  entries:
+  - name: bounty-item-vendmachine
+    amount: 1
+    whitelist:
+      components:
+      - VendingMachine
+    blacklist: # No using pirate vendings
+      tags:
+      - Pirate
+
+- type: cargoBounty
+  id: PirateBountyTelecom
+  reward: 6000
+  description: bounty-description-telecom
+  idPrefix: SP
+  group: Pirates
+  entries:
+  - name: bounty-item-telecom
+    amount: 1
+    whitelist:
+      components:
+      - TelecomServer
+
+- type: cargoBounty
+  id: PirateBountyShuttleParts
+  reward: 3000
+  description: bounty-description-shuttle-parts
+  idPrefix: SP
+  group: Pirates
+  entries:
+  - name: bounty-item-shuttle-parts
+    amount: 1
+    whitelist:
+      components:
+      - Thruster
+    blacklist: # No using pirate thrusters and pirate gyroscopes
+      tags:
+      - Pirate
+
+- type: cargoBounty
+  id: PirateBountyFaxmachine
+  reward: 6000
+  description: bounty-description-fax
+  idPrefix: SP
+  group: Pirates
+  entries:
+  - name: bounty-item-fax
+    amount: 3
+    whitelist:
+      components:
+      - FaxMachine
+    blacklist: # No using the pirate fax
+      tags:
+      - Pirate
+
+- type: cargoBounty
+  id: PirateBountyRecharger
+  reward: 6000
+  description: bounty-description-recharger
+  idPrefix: SP
+  group: Pirates
+  entries:
+  - name: bounty-item-recharger
+    amount: 4
+    whitelist:
+      tags:
+      - Recharger
+    blacklist: # No using pirate rechargers
+      tags:
+      - Pirate
+
+- type: cargoBounty
+  id: PirateBountyStatisBed
+  reward: 7000
+  description: bounty-description-stasis
+  idPrefix: ID
+  group: Pirates
+  entries:
+  - name: bounty-item-stasis
+    amount: 1
+    whitelist:
+      components:
+      - StasisBed

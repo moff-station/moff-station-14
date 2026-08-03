@@ -1,0 +1,8 @@
+﻿# Ninja threats
+terror-clown = Attention crew, it appears that someone on your station has made an unexpected communication with a bombastic trio of honkies in nearby space.
+terror-eeep = Attention crew, it appears that someone on your station has made an unexpected communication with an adorable sentient tesla in nearby space.
+terror-lone-op = Attention crew, it appears that someone on your station has made an unexpected communication with a blood-red marauder in nearby space.
+terror-pirate = Attention crew, it appears that someone on your station has made an unexpected communication with a scurvy dog in nearby space.
+terror-ninja = Attention crew, it appears that someone on your station has made an unexpected communication with the spider clan in nearby space.
+terror-rod = Attention crew, it appears that someone on your station has made an unexpected communication with an unstoppable force in nearby space.
+terror-tourists = Attention crew, it appears that someone on your station has made an unexpected... listing advertising this station on SpaceBNB...?

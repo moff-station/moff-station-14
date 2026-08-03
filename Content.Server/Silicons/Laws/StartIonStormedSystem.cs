@@ -1,3 +1,4 @@
+using Content.Server.StationEvents.Events; // macro
 using Content.Shared.Silicons.Laws.Components;
 using Content.Shared.Administration.Logs;
 using Content.Shared.Database;
@@ -21,17 +22,22 @@ public sealed partial class StartIonStormedSystem : EntitySystem
 
     private void OnMapInit(Entity<StartIonStormedComponent> ent, ref MapInitEvent args)
     {
-        if (!TryComp<SiliconLawBoundComponent>(ent.Owner, out var lawBound))
+        if (!TryComp<SiliconLawProviderComponent>(ent.Owner, out var lawBound))
             return;
+
         if (!TryComp<IonStormTargetComponent>(ent.Owner, out var target))
             return;
 
         for (int currentIonStorm = 0; currentIonStorm < ent.Comp.IonStormAmount; currentIonStorm++)
         {
-            _ionStorm.IonStormTarget((ent.Owner, lawBound, target));
+            // begin macro edit
+            // _ionStorm.IonStormTarget((ent.Owner, lawBound, target), false);
+            var ev = new IonStormEvent(false);
+            RaiseLocalEvent(ent, ref ev);
+            // end macro edit
         }
 
-        var laws = _siliconLaw.GetLaws(ent.Owner, lawBound);
+        var laws = _siliconLaw.GetProviderLaws(ent.Owner);
         _adminLogger.Add(LogType.Mind, LogImpact.High, $"{ToPrettyString(ent.Owner):silicon} spawned with ion stormed laws: {laws.LoggingString()}");
     }
 }

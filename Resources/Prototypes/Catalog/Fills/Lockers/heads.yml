@@ -14,6 +14,7 @@
     - id: ClothingHandsKnuckleDustersQM
     - id: PlushieLizardJobQuartermaster
       prob: 0.02
+    - id: CargoCommsFlatpack # Moffstation - Departmental Communications Computers
 
 - type: entity
   id: LockerQuarterMasterFilled
@@ -22,8 +23,16 @@
   components:
   - type: EntityTableContainerFill
     containers:
-      entity_storage: !type:NestedSelector
-        tableId: LockerFillQuarterMaster
+    # Moffstation - Start - Harmony QM Hardsuit in locker variations
+      # entity_storage: !type:NestedSelector
+        # tableId: LockerFillQuarterMaster
+      entity_storage: !type:AllSelector
+        children:
+        - !type:NestedSelector
+          tableId: LockerFillQuarterMaster
+        - !type:NestedSelector
+          tableId: FillQuarterMasterHardsuit
+    # Moffstation - End
 
 # No laser table
 - type: entityTable
@@ -136,6 +145,7 @@
     - id: ClothingEyesHudCommand
     - id: PlushieLizardJobHeadofpersonnel
       prob: 0.02
+    - id: ServiceCommsFlatpack # Moffstation - Departmental Communications Computers
 
 - type: entity
   id: LockerHeadOfPersonnelFilled
@@ -168,6 +178,7 @@
     - id: MetalFoamGrenade
     - id: PlushieLizardJobChiefengineer
       prob: 0.02
+    - id: EngiCommsFlatpack # Moffstation - Departmental Communications Computers
 
 # Hardsuit table, used for suit storage as well
 - type: entityTable
@@ -211,7 +222,8 @@
   id: LockerFillChiefMedicalOfficerNoHardsuit
   table: !type:AllSelector
     children:
-    - id: ClothingEyesHudMedical
+    # - id: ClothingEyesHudMedical # Moffstation - Modular Eyewear
+    - id: ClothingEyesHudMedChem # Moffstation - Modular Eyewear
     - id: ClothingBeltMedicalFilled
     - id: HandheldCrewMonitor
     - id: Hypospray
@@ -224,6 +236,8 @@
     - id: BoxCMOCircuitboards
     - id: PlushieLizardJobChiefmedicalofficer
       prob: 0.02
+    - id: MedicalWrench # Moffstation - Medical wrench
+    - id: MedCommsFlatpack # Moffstation - Departmental Communications Computers
 
 # Hardsuit table, used for suit storage as well
 - type: entityTable
@@ -275,6 +289,7 @@
     - id: RubberStampRd
     - id: PlushieLizardJobResearchdirector
       prob: 0.02
+    - id: ScienceCommsFlatpack # Moffstation - Departmental Communications Computers
 
 # Hardsuit table, used for suit storage as well
 - type: entityTable
@@ -336,6 +351,7 @@
     - id: DrinkHosFlask
     - id: PlushieLizardJobHeadofsecurity
       prob: 0.02
+    - id: SecCommsFlatpack # Moffstation - Departmental Communications Computers
 
 # Hardsuit table, used for suit storage as well
 - type: entityTable

@@ -1,0 +1,21 @@
+﻿# Player: MissKay1994 / Character: Skrikikaki
+- type: entity
+  parent: PlushieVox
+  id: PersonalItemSkrikiPlush
+  suffix: PersonalItem
+  description: A worn and stained Vox plushie with numerous small stitches on it. It smells heavily of ammonia
+  components:
+  - type: Sprite
+    sprite: _Moffstation/PersonalItems/Items/MissKay1994/skrikiplush.rsi
+  - type: Item
+    sprite: _Moffstation/PersonalItems/Items/MissKay1994/skrikiplush.rsi
+
+- type: loadout
+  id: PersonalItemSkrikiPlush
+  storage:
+    back:
+    - PersonalItemSkrikiPlush
+  effects:
+  - !type:PersonalItemLoadoutEffect
+    character:
+    - Skrikikaki

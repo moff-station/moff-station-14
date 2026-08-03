@@ -8,7 +8,7 @@ using Content.Shared.Mech;
 using Content.Shared.Mech.Components;
 using Content.Shared.Mech.Equipment.Components;
 using Content.Shared.Mobs.Components;
-using Content.Shared.Vehicle;
+using Content.Shared.Vehicle.Systems;
 using Content.Shared.Wall;
 using Robust.Server.GameObjects;
 using Robust.Shared.Audio.Systems;
@@ -159,7 +159,7 @@ public sealed partial class MechGrabberSystem : EntitySystem
             return;
 
         args.Handled = true;
-        component.AudioStream = _audio.PlayPvs(component.GrabSound, uid)?.Entity;
+        component.AudioStream = _audio.PlayPvs(component.GrabSound, uid, component.GrabSoundParams)?.Entity; // Moffstation - Add sound variation
         var doAfterArgs = new DoAfterArgs(EntityManager, args.User, component.GrabDelay, new GrabberDoAfterEvent(), uid, target: target, used: uid)
         {
             BreakOnMove = true

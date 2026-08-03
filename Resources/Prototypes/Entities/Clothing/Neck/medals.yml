@@ -1,6 +1,6 @@
 
 - type: entity
-  parent: ClothingNeckBase
+  parent: ClothingNeckMetallicChameleonableBase # Moffstation - Fix neck slot parenting
   id: ClothingNeckBronzeheart
   name: bronzeheart medal
   description: Given to crewmates for exemplary bravery in the face of danger.
@@ -13,9 +13,13 @@
     tags:
       - Medal
       - WhitelistChameleon
+  # Moffstation - Start - Examinable Clothing
+  - type: ExtraExaminable
+    wornText: clothing-medal-bronzeheart
+  # Moffstation - End
 
 - type: entity
-  parent: ClothingNeckBase
+  parent: ClothingNeckMetallicChameleonableBase # Moffstation - Fix neck slot parenting
   id: ClothingNeckGoldmedal
   name: gold medal of crewmanship
   description: Given to crewmates who display excellent crewmanship.
@@ -30,95 +34,129 @@
     tags:
       - Medal
       - WhitelistChameleon
+  # Moffstation - Start - Examinable Clothing
+  - type: PhysicalComposition
+    materialComposition:
+      Gold: 10
+  - type: ExtraExaminable
+    wornText: clothing-medal-crewmanship
+  # Moffstation - End
 
 - type: entity
-  parent: ClothingNeckBase
+  parent: ClothingNeckMetallicChameleonableBase # Moffstation - Fix neck slot parenting
   id: ClothingNeckCargomedal
   name: cargo medal
   description: Given for the best work in the cargo department.
   components:
   - type: Sprite
-    sprite: Clothing/Neck/Medals/cargomedal.rsi
+    sprite: _Moffstation/Clothing/Neck/Medals/cargomedal.rsi # Moffstation - Swapped out medal sprites
   - type: Clothing
-    sprite: Clothing/Neck/Medals/cargomedal.rsi
+    sprite: _Moffstation/Clothing/Neck/Medals/cargomedal.rsi # Moffstation - Swapped out medal sprites
   - type: Tag
     tags:
       - Medal
       - WhitelistChameleon
+  # Moffstation - Start - Examinable Clothing
+  - type: ExtraExaminable
+    wornText: clothing-medal-cargo
+  # Moffstation - End
 
 - type: entity
-  parent: ClothingNeckBase
+  parent: ClothingNeckMetallicChameleonableBase # Moffstation - Fix neck slot parenting
   id: ClothingNeckEngineermedal
   name: engineer medal
   description: Given for the best work in the engineering department.
   components:
   - type: Sprite
-    sprite: Clothing/Neck/Medals/engineermedal.rsi
+    sprite: _Moffstation/Clothing/Neck/Medals/engineermedal.rsi # Moffstation - Swapped out medal sprites
   - type: Clothing
-    sprite: Clothing/Neck/Medals/engineermedal.rsi
+    sprite: _Moffstation/Clothing/Neck/Medals/engineermedal.rsi # Moffstation - Swapped out medal sprites
   - type: Tag
     tags:
       - Medal
       - WhitelistChameleon
+  # Moffstation - Start - Examinable Clothing
+  - type: ExtraExaminable
+    wornText: clothing-medal-engineer
+  # Moffstation - End
 
 - type: entity
-  parent: ClothingNeckBase
+  parent: ClothingNeckMetallicChameleonableBase # Moffstation - Fix neck slot parenting
   id: ClothingNeckMedicalmedal
   name: medical medal
   description: Given for the best work in the medical department.
   components:
   - type: Sprite
-    sprite: Clothing/Neck/Medals/medicalmedal.rsi
+    sprite: _Moffstation/Clothing/Neck/Medals/medicalmedal.rsi # Moffstation - Swapped out medal sprites
   - type: Clothing
-    sprite: Clothing/Neck/Medals/medicalmedal.rsi
+    sprite: _Moffstation/Clothing/Neck/Medals/medicalmedal.rsi # Moffstation - Swapped out medal sprites
   - type: Tag
     tags:
       - Medal
       - WhitelistChameleon
+  # Moffstation - Start - Examinable Clothing
+  - type: ExtraExaminable
+    wornText: clothing-medal-medical
+  # Moffstation - End
 
 - type: entity
-  parent: ClothingNeckBase
+  parent: ClothingNeckMetallicChameleonableBase # Moffstation - Fix neck slot parenting
   id: ClothingNeckSciencemedal
   name: science medal
   description: Given for the best work in the science department.
   components:
   - type: Sprite
-    sprite: Clothing/Neck/Medals/sciencemedal.rsi
+    sprite: _Moffstation/Clothing/Neck/Medals/sciencemedal.rsi # Moffstation - Swapped out medal sprites
   - type: Clothing
-    sprite: Clothing/Neck/Medals/sciencemedal.rsi
+    sprite: _Moffstation/Clothing/Neck/Medals/sciencemedal.rsi # Moffstation - Swapped out medal sprites
   - type: Tag
     tags:
       - Medal
       - WhitelistChameleon
+  # Moffstation - Start - Examinable Clothing
+  - type: ExtraExaminable
+    wornText: clothing-medal-science
+  # Moffstation - End
 
 - type: entity
-  parent: ClothingNeckBase
+  parent: ClothingNeckMetallicChameleonableBase # Moffstation - Fix neck slot parenting
   id: ClothingNeckSecuritymedal
   name: security medal
   description: Given for the best work in the security department.
   components:
   - type: Sprite
-    sprite: Clothing/Neck/Medals/securitymedal.rsi
+    sprite: _Moffstation/Clothing/Neck/Medals/securitymedal.rsi # Moffstation - Swapped out medal sprites
   - type: Clothing
-    sprite: Clothing/Neck/Medals/securitymedal.rsi
+    sprite: _Moffstation/Clothing/Neck/Medals/securitymedal.rsi # Moffstation - Swapped out medal sprites
   - type: Tag
     tags:
       - Medal
       - WhitelistChameleon
+  # Moffstation - Start - Examinable Clothing
+  - type: ExtraExaminable
+    wornText: clothing-medal-security
+  # Moffstation - End
 
 - type: entity
-  parent: ClothingNeckBase
+  parent: ClothingNeckMetallicChameleonableBase # Moffstation - Fix neck slot parenting
   id: ClothingNeckClownmedal
   name: clown medal
   description: Given for the best joke in the universe. HONK!
   components:
   - type: Sprite
-    sprite: Clothing/Neck/Medals/clownmedal.rsi
+    sprite: _Moffstation/Clothing/Neck/Medals/clownmedal.rsi # Moffstation - Swapped out medal sprites
   - type: Clothing
-    sprite: Clothing/Neck/Medals/clownmedal.rsi
+    sprite: _Moffstation/Clothing/Neck/Medals/clownmedal.rsi # Moffstation - Swapped out medal sprites
   - type: StealTarget
     stealGroup: ClothingNeckClownmedal
   - type: Tag
     tags:
       - Medal
       - WhitelistChameleon
+  # Moffstation - Start - Examinable Clothing
+  - type: PhysicalComposition
+    materialComposition:
+      Bananium: 10
+  - type: ExtraExaminable
+    wornText: clothing-medal-clown
+  # Moffstation - End

@@ -16,9 +16,9 @@
   description: An artist's favorite headwear.
   components:
   - type: Sprite
-    sprite: Clothing/Head/Hats/beret.rsi
+    sprite: _Moffstation/Clothing/Head/Hats/beret.rsi # Moffstation
   - type: Clothing
-    sprite: Clothing/Head/Hats/beret.rsi
+    sprite: _Moffstation/Clothing/Head/Hats/beret.rsi # Moffstation
   - type: Tag
     tags:
     - PetWearable
@@ -35,9 +35,9 @@
   description: A French beret. "Vive la France!"
   components:
   - type: Sprite
-    sprite: Clothing/Head/Hats/beret_french.rsi
+    sprite: _Moffstation/Clothing/Head/Hats/beret_french.rsi # Moffstation
   - type: Clothing
-    sprite: Clothing/Head/Hats/beret_french.rsi
+    sprite: _Moffstation/Clothing/Head/Hats/beret_french.rsi # Moffstation
   - type: FrenchAccent
     relayAccent: true
   - type: Tag
@@ -55,9 +55,9 @@
   description: A beret with the security department's insignia. For officers that are more inclined towards style than safety.
   components:
   - type: Sprite
-    sprite: Clothing/Head/Hats/beret_security.rsi
+    sprite: _Moffstation/Clothing/Head/Hats/beret-sec.rsi # Moffstation
   - type: Clothing
-    sprite: Clothing/Head/Hats/beret_security.rsi
+    sprite: _Moffstation/Clothing/Head/Hats/beret-sec.rsi # Moffstation
   - type: Tag
     tags:
     - ClothMade
@@ -74,9 +74,9 @@
   description: A campaign hat for the Nanotrasen Troopers. It's supposed to come with a case, too...
   components:
   - type: Sprite
-    sprite: Clothing/Head/Hats/security_trooper_hat.rsi
+    sprite: _Moffstation/Clothing/Head/Hats/security_trooper_hat.rsi # Moffstation
   - type: Clothing
-    sprite: Clothing/Head/Hats/security_trooper_hat.rsi
+    sprite: _Moffstation/Clothing/Head/Hats/security_trooper_hat.rsi # Moffstation
   - type: Tag
     tags:
     - ClothMade
@@ -104,9 +104,9 @@
   description: A beret for real scientists.
   components:
   - type: Sprite
-    sprite: Clothing/Head/Hats/beret_rnd.rsi
+    sprite: _Moffstation/Clothing/Head/Hats/beret_rnd.rsi # Moffstation
   - type: Clothing
-    sprite: Clothing/Head/Hats/beret_rnd.rsi
+    sprite: _Moffstation/Clothing/Head/Hats/beret_rnd.rsi # Moffstation
   - type: Tag
     tags:
     - PetWearable
@@ -123,9 +123,9 @@
   description: A beret with the engineering department's insignia. For engineers that are more inclined towards style than safety.
   components:
   - type: Sprite
-    sprite: Clothing/Head/Hats/beret_engineering.rsi
+    sprite: _Moffstation/Clothing/Head/Hats/beret_engineering.rsi # Moffstation
   - type: Clothing
-    sprite: Clothing/Head/Hats/beret_engineering.rsi
+    sprite: _Moffstation/Clothing/Head/Hats/beret_engineering.rsi # Moffstation
   - type: Tag
     tags:
     - PetWearable
@@ -142,9 +142,9 @@
   description: A beret with the cargo department's insignia.
   components:
   - type: Sprite
-    sprite: Clothing/Head/Hats/beret_qm.rsi
+    sprite: _Moffstation/Clothing/Head/Hats/beret_qm.rsi # Moffstation
   - type: Clothing
-    sprite: Clothing/Head/Hats/beret_qm.rsi
+    sprite: _Moffstation/Clothing/Head/Hats/beret_qm.rsi # Moffstation
   - type: Tag
     tags:
     - PetWearable
@@ -161,9 +161,9 @@
   description: A black beret with a commander's rank emblem. For officers that are more inclined towards style than safety.
   components:
   - type: Sprite
-    sprite: Clothing/Head/Hats/beret_hos.rsi
+    sprite: _Moffstation/Clothing/Head/Hats/beret_hos.rsi #Moffstation - New Security Outfits
   - type: Clothing
-    sprite: Clothing/Head/Hats/beret_hos.rsi
+    sprite: _Moffstation/Clothing/Head/Hats/beret_hos.rsi #Moffstation - New Security Outfits
   - type: Tag
     tags:
     - PetWearable
@@ -180,9 +180,9 @@
   description: A corporate-blue beret with a warden's rank emblem. For officers that are more inclined towards style than safety.
   components:
   - type: Sprite
-    sprite: Clothing/Head/Hats/beret_warden.rsi
+    sprite: _Moffstation/Clothing/Head/Hats/beret-warden.rsi # Moffstation
   - type: Clothing
-    sprite: Clothing/Head/Hats/beret_warden.rsi
+    sprite: _Moffstation/Clothing/Head/Hats/beret-warden.rsi # Moffstation
   - type: Tag
     tags:
     - PetWearable
@@ -196,14 +196,15 @@
   description: Donning the colours of medical and chemistry, physicians are the pride of this department!
   components:
   - type: Sprite
-    sprite: Clothing/Head/Hats/beret_physician.rsi
+    sprite: _Moffstation/Clothing/Head/Hats/beret_physician.rsi # Moffstation
   - type: Clothing
-    sprite: Clothing/Head/Hats/beret_physician.rsi
+    sprite: _Moffstation/Clothing/Head/Hats/beret_physician.rsi # Moffstation
   - type: Tag
     tags:
     - PetWearable
     - CorgiWearable
     - WhitelistChameleon
+    - HamsterWearable # Moffstatiob
 
 - type: entity
   parent: ClothingHeadBase
@@ -260,9 +261,9 @@
   description: A stylish bowler hat.
   components:
   - type: Sprite
-    sprite: Clothing/Head/Hats/bowler_hat.rsi
+    sprite: _Moffstation/Clothing/Head/Hats/bowler_hat.rsi # Moffstation
   - type: Clothing
-    sprite: Clothing/Head/Hats/bowler_hat.rsi
+    sprite: _Moffstation/Clothing/Head/Hats/bowler_hat.rsi # Moffstation
   - type: Tag
     tags:
     - PetWearable
@@ -276,9 +277,9 @@
   description: Feels good being the king.
   components:
   - type: Sprite
-    sprite: Clothing/Head/Hats/captain.rsi
+    sprite: _Moffstation/Clothing/Head/Hats/captain.rsi # Moffstation - Command Outfit Resprite
   - type: Clothing
-    sprite: Clothing/Head/Hats/captain.rsi
+    sprite: _Moffstation/Clothing/Head/Hats/captain.rsi # Moffstation - Command Outfit Resprite
   - type: Tag
     tags:
     - PetWearable
@@ -326,9 +327,9 @@
   description: A hat used by chefs to keep their hair out of your food. Judging by the food in the mess, they don't work.
   components:
   - type: Sprite
-    sprite: Clothing/Head/Hats/chefhat.rsi
+    sprite: _Moffstation/Clothing/Head/Hats/chefhat.rsi # Moffstation
   - type: Clothing
-    sprite: Clothing/Head/Hats/chefhat.rsi
+    sprite: _Moffstation/Clothing/Head/Hats/chefhat.rsi # Moffstation
   - type: Storage
     grid:
     - 0,0,0,0
@@ -359,9 +360,9 @@
   description: A brown fedora.
   components:
   - type: Sprite
-    sprite: Clothing/Head/Hats/brownfedora.rsi
+    sprite: _Moffstation/Clothing/Head/Hats/brownfedora.rsi # Moffstation
   - type: Clothing
-    sprite: Clothing/Head/Hats/brownfedora.rsi
+    sprite: _Moffstation/Clothing/Head/Hats/brownfedora.rsi # Moffstation
   - type: Tag
     tags:
     - PetWearable
@@ -378,9 +379,19 @@
   description: A grey fedora.
   components:
   - type: Sprite
-    sprite: Clothing/Head/Hats/greyfedora.rsi
+    sprite: _Moffstation/Clothing/Head/Hats/greyfedora.rsi # Moffstation - Detective-Outfit-Sprites
   - type: Clothing
-    sprite: Clothing/Head/Hats/greyfedora.rsi
+    sprite: _Moffstation/Clothing/Head/Hats/greyfedora.rsi # Moffstation - Detective-Outfit-Sprites
+  - type: Tag
+    tags:
+    - PetWearable
+    - CorgiWearable
+    # Moffstation - Start - Detective-Outfit-Sprites
+    - ClothMade
+    - Recyclable
+    - HamsterWearable
+    - WhitelistChameleon
+    # Moffstation - End - Detective-Outfit-Sprites
 
 - type: entity
   parent: ClothingHeadHatFedoraBrown
@@ -389,9 +400,9 @@
   description: It has a little note stuck in the band saying "PRESS". Practically an all-access pass!
   components:
   - type: Sprite
-    sprite: Clothing/Head/Hats/presshat.rsi
+    sprite: _Moffstation/Clothing/Head/Hats/presshat.rsi # Moffstation
   - type: Clothing
-    sprite: Clothing/Head/Hats/presshat.rsi
+    sprite: _Moffstation/Clothing/Head/Hats/presshat.rsi # Moffstation
 
 - type: entity
   parent: ClothingHeadBase
@@ -415,9 +426,9 @@
   description: A stylish cap worn by the Head of Personnel. Shows paperwork who's in charge.
   components:
   - type: Sprite
-    sprite: Clothing/Head/Hats/hopcap.rsi
+    sprite: _Moffstation/Clothing/Head/Hats/hopcap.rsi # Moffstation
   - type: Clothing
-    sprite: Clothing/Head/Hats/hopcap.rsi
+    sprite: _Moffstation/Clothing/Head/Hats/hopcap.rsi # Moffstation
   - type: Tag
     tags:
     - PetWearable
@@ -434,9 +445,9 @@
   description: A stylish cap worn by the Head of Security. Shows the officers who's in charge.
   components:
   - type: Sprite
-    sprite: Clothing/Head/Hats/hoshat.rsi
+    sprite: _Moffstation/Clothing/Head/Hats/hoshat.rsi # Moffstation - New Security Outfits
   - type: Clothing
-    sprite: Clothing/Head/Hats/hoshat.rsi
+    sprite: _Moffstation/Clothing/Head/Hats/hoshat.rsi # Moffstation - New Security Outfits
   - type: Tag
     tags:
     - PetWearable
@@ -498,6 +509,7 @@
   id: ClothingHeadHatPirate
   name: pirate hat
   description: "\"Yo ho ho and a bottle of rum!\""
+  suffix: Pirate  # Moffstation - Adding a pirate tag
   components:
   - type: Sprite
     sprite: Clothing/Head/Hats/pirate.rsi
@@ -602,13 +614,35 @@
 - type: entity
   parent: ClothingHeadBase
   id: ClothingHeadHatSurgcapBlue
-  name: blue surgical cap
-  description: A blue cap surgeons wear during operations. Keeps their hair from tickling your internal organs.
+  name: physcian cap # Moffstation - Start
+  description: A blue cap physcians wear during examinations. Keeps their hair from tickling your face.
   components:
   - type: Sprite
-    sprite: Clothing/Head/Hats/surgcap_blue.rsi
+    sprite: _Moffstation/Clothing/Head/Hats/surgcap.rsi
+    layers:
+    - state: icon
+      color: &blue-scrubs "#65b5f2"
+  - type: Item
+    inhandVisuals:
+      left:
+      - state: inhand-left
+        color: *blue-scrubs
+      right:
+      - state: inhand-right
+        color: *blue-scrubs
   - type: Clothing
-    sprite: Clothing/Head/Hats/surgcap_blue.rsi
+    sprite: _Moffstation/Clothing/Head/Hats/surgcap.rsi
+    clothingVisuals:
+      head:
+      - state: equipped-HELMET
+        color: *blue-scrubs
+      head-vox:
+      - state: equipped-HELMET-vox
+        color: *blue-scrubs
+      head-hamster:
+      - state: equipped-HELMET-hamster
+        color: *blue-scrubs
+# Moffstation - End
   - type: Tag
     tags:
     - ClothMade
@@ -618,40 +652,84 @@
   - type: HideLayerClothing
     layers:
       Hair: HEAD
-      HeadTop : HEAD
-      HeadSide : HEAD
+      HeadTop : HEAD #Moffstation
+      HeadSide : HEAD #Moffstation
 
 - type: entity
   parent: ClothingHeadBase
   id: ClothingHeadHatSurgcapGreen
-  name: green surgical cap
+  name: surgical cap # Moffstation - Start
   description: A green cap surgeons wear during operations. Keeps their hair from tickling your internal organs.
   components:
   - type: Sprite
-    sprite: Clothing/Head/Hats/surgcap_green.rsi
+    sprite: _Moffstation/Clothing/Head/Hats/surgcap.rsi
+    layers:
+    - state: icon
+      color: &green-scrubs "#77ed94"
+  - type: Item
+    inhandVisuals:
+      left:
+      - state: inhand-left
+        color: *green-scrubs
+      right:
+      - state: inhand-right
+        color: *green-scrubs
   - type: Clothing
-    sprite: Clothing/Head/Hats/surgcap_green.rsi
+    sprite: _Moffstation/Clothing/Head/Hats/surgcap.rsi
+    clothingVisuals:
+      head:
+      - state: equipped-HELMET
+        color: *green-scrubs
+      head-vox:
+      - state: equipped-HELMET-vox
+        color: *green-scrubs
+      head-hamster:
+      - state: equipped-HELMET-hamster
+        color: *green-scrubs
+  # Moffstation - End
   - type: HideLayerClothing
     layers:
       Hair: HEAD
-      HeadTop : HEAD
-      HeadSide : HEAD
+      HeadTop : HEAD #Moffstation
+      HeadSide : HEAD #Moffstation
 
 - type: entity
   parent: ClothingHeadBase
   id: ClothingHeadHatSurgcapPurple
-  name: purple surgical cap
-  description: A purple cap surgeons wear during operations. Keeps their hair from tickling your internal organs.
+  name: specialist cap # Moffstation - Start
+  description: A pink cap urgent care professionals wear during treatment. Keeps their hair from tickling your insides.
   components:
   - type: Sprite
-    sprite: Clothing/Head/Hats/surgcap_purple.rsi
+    sprite: _Moffstation/Clothing/Head/Hats/surgcap.rsi
+    layers:
+    - state: icon
+      color: &pink-scrubs "#e681a4"
+  - type: Item
+    inhandVisuals:
+      left:
+      - state: inhand-left
+        color: *pink-scrubs
+      right:
+      - state: inhand-right
+        color: *pink-scrubs
   - type: Clothing
-    sprite: Clothing/Head/Hats/surgcap_purple.rsi
+    sprite: _Moffstation/Clothing/Head/Hats/surgcap.rsi
+    clothingVisuals:
+      head:
+      - state: equipped-HELMET
+        color: *pink-scrubs
+      head-vox:
+      - state: equipped-HELMET-vox
+        color: *pink-scrubs
+      head-hamster:
+      - state: equipped-HELMET-hamster
+        color: *pink-scrubs
+  # Moffstation - End
   - type: HideLayerClothing
     layers:
       Hair: HEAD
-      HeadTop : HEAD
-      HeadSide : HEAD
+      HeadTop : HEAD #Moffstation
+      HeadSide : HEAD #Moffstation
 
 - type: entity
   parent: ClothingHeadBase
@@ -660,9 +738,9 @@
   description: A stylish black tophat.
   components:
   - type: Sprite
-    sprite: Clothing/Head/Hats/tophat.rsi
+    sprite: _Moffstation/Clothing/Head/Hats/tophat.rsi # Moffstation
   - type: Clothing
-    sprite: Clothing/Head/Hats/tophat.rsi
+    sprite: _Moffstation/Clothing/Head/Hats/tophat.rsi # Moffstation
   - type: Tag
     tags:
     - PetWearable
@@ -679,7 +757,7 @@
   description: "\"Perfect for winter in Siberia, da?\""
   components:
   - type: Clothing
-    sprite: Clothing/Head/Hats/ushanka.rsi
+    sprite: _Moffstation/Clothing/Head/Hats/ushanka.rsi # Moffstation - For Arstotzka
   - type: RussianAccent
     relayAccent: true
   - type: Foldable
@@ -688,7 +766,7 @@
     foldedEquippedPrefix: up
     foldedHeldPrefix: up
   - type: Sprite
-    sprite: Clothing/Head/Hats/ushanka.rsi
+    sprite: _Moffstation/Clothing/Head/Hats/ushanka.rsi # Moffstation - For Arstotzka
     layers:
     - state: icon
       map: [ "unfoldedLayer" ]
@@ -757,9 +835,9 @@
   description: This hat emphasizes that you are THE LAW.
   components:
   - type: Sprite
-    sprite: Clothing/Head/Hats/warden.rsi
+    sprite: _Moffstation/Clothing/Head/Hats/warden.rsi #Moffstation - New Security Outfits
   - type: Clothing
-    sprite: Clothing/Head/Hats/warden.rsi
+    sprite: _Moffstation/Clothing/Head/Hats/warden.rsi #Moffstation - New Security Outfits
   - type: StealTarget
     stealGroup: ClothingHeadHatWarden
   - type: Tag
@@ -767,6 +845,7 @@
     - PetWearable
     - CorgiWearable
     - WhitelistChameleon
+    - HamsterWearable # Moffstation - New Security Outfits
 
 - type: entity
   parent: ClothingHeadBase
@@ -964,9 +1043,9 @@
   description: Somehow I feel I'm not supposed to leave this place.
   components:
   - type: Sprite
-    sprite: Clothing/Head/Hats/nursehat.rsi
+    sprite: _Moffstation/Clothing/Head/Hats/nursehat.rsi # Moffstation
   - type: Clothing
-    sprite: Clothing/Head/Hats/nursehat.rsi
+    sprite: _Moffstation/Clothing/Head/Hats/nursehat.rsi # Moffstation
   - type: Tag
     tags:
     - ClothMade
@@ -1005,21 +1084,33 @@
   parent: ClothingHeadBase
   id: ClothingHeadHatJester
   name: jester hat
-  description: A hat with bells, to add some merriness to your head.
+  description: A jingly hat to distract from your terrible juggling skills. # Moffstation - New Clown Outfit
   components:
     - type: Sprite
-      sprite: Clothing/Head/Hats/jester.rsi
+# Moffstation - Begin - New Clown Outfit
+      sprite: _Moffstation/Clothing/Head/Hats/jester.rsi
     - type: Clothing
-      sprite: Clothing/Head/Hats/jester.rsi
+      clothingVisuals:
+        head:
+        - state: equipped-HELMET
+          offset: "0, 0.07"
+      sprite: _Moffstation/Clothing/Head/Hats/jester.rsi
+# Moffstation - End - New Clown Outfit
 
 - type: entity
-  parent: ClothingHeadHatJester
+  parent: ClothingHeadBase # Moffstation - New Clown Outfit
   id: ClothingHeadHatJesterAlt
+# Moffstation - Begin - New Clown Outfit
+  name: jester hood
+  description: A hood to contain all your whimsical thoughts in.
+  # Moffstation - End - New Clown Outfit
   components:
     - type: Sprite
-      sprite: Clothing/Head/Hats/jester2.rsi
+  # Moffstation - Begin - New Clown Outfit
+      sprite: _Moffstation/Clothing/Head/Hats/jester2.rsi
     - type: Clothing
-      sprite: Clothing/Head/Hats/jester2.rsi
+      sprite: _Moffstation/Clothing/Head/Hats/jester2.rsi
+  # Moffstation - End - New Clown Outfit
     - type: HideLayerClothing
       layers:
         Hair: HEAD
@@ -1050,6 +1141,7 @@
   id: ClothingHeadHatPirateTricord
   name: pirate hat
   description: "\"Yo ho ho and a bottle of rum!\""
+  suffix: Pirate  # Moffstation - Adding a pirate tag
   components:
   - type: Sprite
     sprite: Clothing/Head/Hats/piratetricord.rsi
@@ -1177,11 +1269,11 @@
   description: A grand, stylish cap worn by the Captain. Shows the station who's in charge.
   components:
   - type: Sprite
-    sprite: Clothing/Head/Hats/capcap.rsi
+    sprite: _Moffstation/Clothing/Head/Hats/capcap.rsi # Moffstation - Command Outfit Resprite
   - type: Clothing
-    sprite: Clothing/Head/Hats/capcap.rsi
+    sprite: _Moffstation/Clothing/Head/Hats/capcap.rsi # Moffstation - Command Outfit Resprite
   - type: Item
-    sprite: Clothing/Head/Hats/capcap.rsi
+    sprite: _Moffstation/Clothing/Head/Hats/capcap.rsi # Moffstation - Command Outfit Resprite
   - type: Tag
     tags:
     - PetWearable
@@ -1480,14 +1572,15 @@
   description: A sterile white beret.
   components:
   - type: Sprite
-    sprite: Clothing/Head/Hats/beret_medic.rsi
+    sprite: _Moffstation/Clothing/Head/Hats/beret_medic.rsi # Moffstation
   - type: Clothing
-    sprite: Clothing/Head/Hats/beret_medic.rsi
+    sprite: _Moffstation/Clothing/Head/Hats/beret_medic.rsi # Moffstation
   - type: Tag
     tags:
     - PetWearable
     - CorgiWearable
     - WhitelistChameleon
+    - HamsterWearable # Moffstation
 
 - type: entity
   parent: ClothingHeadBase
@@ -1548,6 +1641,28 @@
   description: It's hard for parishoners to see a banana peel on the floor when they're looking up at your glorious chapeau.
   components:
   - type: Sprite
-    sprite: Clothing/Head/Hats/mitre_clown.rsi
+    sprite: _Moffstation/Clothing/Head/Hats/mitre_clown.rsi # Moffstation
   - type: Clothing
-    sprite: Clothing/Head/Hats/mitre_clown.rsi
+    # Moffstation - Begin - New sprites
+    sprite: _Moffstation/Clothing/Head/Hats/mitre_clown.rsi
+    clothingVisuals:
+      head:
+      - state: equipped-HELMET
+        offset: "0, 0.24"
+    # Moffstation - End
+
+- type: entity
+  parent: ClothingHeadBase
+  id: ClothingHeadHatTramDriver
+  name: tram driver hat
+  description: It smells like confidence.
+  components:
+  - type: Sprite
+    sprite: Clothing/Head/Hats/tramdriver.rsi
+  - type: Clothing
+    sprite: Clothing/Head/Hats/tramdriver.rsi
+  - type: Tag
+    tags:
+    - ClothMade
+    - Recyclable
+    - WhitelistChameleon

@@ -1,0 +1,27 @@
+﻿# Player: Centronias - Character: Ryker Ximenez
+
+- type: entity
+  name: ivory fountain pen
+  parent: PenHop
+  id: PersonalItemRykerPen
+  description: A luxurious fountain pen made of polished ivory and silver. Something is inscribed on it.
+  suffix: PersonalItem
+  components:
+  - type: Sprite
+    sprite: _Moffstation/PersonalItems/Items/Centronias/Ryker_Ximenez/rykerpen.rsi
+    state: pen
+  - type: Item
+    sprite: _Moffstation/PersonalItems/Items/Centronias/Ryker_Ximenez/rykerpen.rsi
+    heldPrefix: pen
+  - type: DetailExaminable
+    content: The inscription reads "Congratulations, Ryker - Love, Mom". Upon closer inspection, it appears to be some kind of resin, not actual ivory. The silver of the grip is tarnished, as though it's been well-used and not-so-perfectly maintained.
+
+- type: loadout
+  id: PersonalItemRykerPen
+  storage:
+    back:
+    - PersonalItemRykerPen
+  effects:
+  - !type:PersonalItemLoadoutEffect
+    character:
+    - Ryker Ximenez

@@ -28,17 +28,21 @@
 # Jamjar
 - type: loadout
   id: GlassesJamjar
-  effects:
-  - !type:GroupLoadoutEffect
-    proto: JamjarTimer
+  # Moffstation - Start - Timer removal
+  # effects:
+  # - !type:GroupLoadoutEffect
+  #   proto: JamjarTimer
+  # Moffstation - End
   equipment:
     eyes: ClothingEyesGlassesJamjar
 
 # Jensen
 - type: loadout
   id: GlassesJensen
-  effects:
-  - !type:GroupLoadoutEffect
-    proto: JensenTimer
+  # Moffstation - Start - Timer removal
+  # effects:
+  # - !type:GroupLoadoutEffect
+  #   proto: JensenTimer
+  # Moffstation - End
   equipment:
     eyes: ClothingEyesGlassesJensen

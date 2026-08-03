@@ -4,13 +4,20 @@
   description: job-description-warden
   playTimeTracker: JobWarden
   requirements:
+    # Moffstation - Start - Change role timers
+    - !type:OverallPlaytimeRequirement
+      time: 20h
+    # Moffstation - End
     - !type:RoleTimeRequirement
       role: JobSecurityOfficer
       time: 5h
     - !type:DepartmentTimeRequirement
       department: Security
       time: 10h
-  weight: 5
+  # Moff start - no job weights
+#  weight: 5
+  displayWeight: 5
+  # Moff end
   startingGear: WardenGear
   icon: "JobIconWarden"
   supervisors: job-supervisors-hos
@@ -31,9 +38,9 @@
 - type: startingGear
   id: WardenGear
   equipment:
-    eyes: ClothingEyesGlassesSecurity
-    id: WardenPDA
-    ears: ClothingHeadsetSecurity
+  # eyes: ClothingEyesGlassesSecurity # Moffstation - Eyepatches!
+  # id: WardenPDA # Moffstation - PDA loadouts
+    ears: ClothingHeadsetAltSecurity # Moffstation - (Give Warden Command Comms)
     pocket1: WeaponPistolMk58
   storage:
     back:

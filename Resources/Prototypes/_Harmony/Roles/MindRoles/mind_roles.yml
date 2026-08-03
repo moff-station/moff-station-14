@@ -1,0 +1,31 @@
+- type: entity
+  parent: BaseMindRoleAntag
+  id: MindRoleBloodBrother
+  name: Blood Brother Role
+  components:
+  - type: BloodBrotherRole
+  - type: MindRole
+    antagPrototype: BloodBrother
+    exclusiveAntag: true
+    roleType: TeamAntagonist
+    # Moffstation - Start - Character menu UI rework
+    # subtype: role-subtype-blood-brother
+    subtype: role-subtype-faction-blood-brothers
+    subtypeColor: mediumvioletred
+    # Moffstation - End
+
+- type: entity
+  parent: BaseMindRoleAntag
+  id: MindRoleConspirator
+  name: Conspirator Role
+  components:
+  - type: ConspiratorRole
+  - type: MindRole
+    antagPrototype: Conspirator
+    exclusiveAntag: true
+    roleType: TeamAntagonist
+    # Moffstation - Start - Character menu UI rework
+    # subtype: role-subtype-conspirator
+    subtype: role-subtype-faction-conspiracy
+    subtypeColor: '#7f8c8d'
+    # Moffstation - End

@@ -204,7 +204,6 @@
   - type: IgnoreUIRange
   - type: ComplexInteraction
   - type: MindContainer
-  - type: SiliconLawBound
   - type: Actions
   - type: ActionGrant
     actions:
@@ -212,6 +211,7 @@
   - type: SiliconLawProvider
     laws: MothershipCoreLawset # custom laws here
     subverted: true
+  - type: SiliconLawBound
   - type: Stripping
   - type: Access
     enabled: true

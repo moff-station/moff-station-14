@@ -1,6 +1,6 @@
 - type: entity
   name: BaseWeaponHeavyMachineGun
-  parent: BaseItem
+  parent: [ BaseItem, BasePointerCrosshair ] # MACRO add crosshair
   id: BaseWeaponHeavyMachineGun
   description: Spray and pray.
   abstract: true
@@ -44,6 +44,11 @@
     - 1,3,4,4
   - type: Gun
     fireRate: 15
+    # Moffstation - Begin - Add gun recoil.
+    recoilKick:
+      impulse: 10
+      staminaMultiplier: 7
+    # Moffstation - End - Add gun recoil.
     soundGunshot:
       path: /Audio/Weapons/Guns/Gunshots/minigun.ogg
   - type: BallisticAmmoProvider

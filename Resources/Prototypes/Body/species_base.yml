@@ -72,8 +72,6 @@
   - type: StatusEffects
     allowed:
     - Electrocution
-    - PressureImmunity
-    - Muted
     - Pacified
     - Flashed
     - Adrenaline
@@ -222,3 +220,10 @@
   - type: FireVisuals
     alternateState: Standing
   - type: StunVisuals
+  - type: SetExamine # Umbra Change, all species can set additional examine text.
+  # Moff start - Funky footprints
+  - type: FootprintOwner
+  - type: SolutionManager
+    solutions:
+    - SolutionPrint
+  # Moff end

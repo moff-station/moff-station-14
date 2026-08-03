@@ -1,0 +1,21 @@
+# Player: thefrostbite / Character: Machell Erivane
+- type: entity
+  parent: ClothingHandsGlovesColorBlack
+  id: PersonalItemMachellGlove
+  name: singular glove
+  suffix: PersonalItem
+  description: One left-handed black glove, one of a pair. Serves double-duty as a potential asymmetrical fashion statement, or as a convenient way to hide any sinistral-specific personal secrets.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/PersonalItems/Wearables/thefrostbite/Machell_Erivane/singularglove.rsi
+  - type: Clothing
+    sprite: _Moffstation/PersonalItems/Wearables/thefrostbite/Machell_Erivane/singularglove.rsi
+
+- type: loadout
+  id: PersonalItemMachellGlove
+  equipment:
+    gloves: PersonalItemMachellGlove
+  effects:
+  - !type:PersonalItemLoadoutEffect
+    character:
+    - Machell Erivane

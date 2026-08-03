@@ -14,6 +14,15 @@
   - MedicalDoctorBackpack
   - MedicalDoctorSatchel
   - MedicalDoctorDuffel
+  # Moffstation - Begin (Nox Loadout Improvements) - People wanted viro and genetics bags.
+  - VirologyBackpack
+  - VirologySatchel
+  - VirologyDuffel
+  - GeneticsBackpack
+  - GeneticsSatchel
+  - GeneticsDuffel
+  # Moffstation - End
+  - LeatherSatchel  # Moffstation - Allow picking leather satchel
 
 - type: loadoutGroup
   id: MedicalShoes
@@ -21,6 +30,7 @@
   loadouts:
   - WhiteShoes
   - MedicalWinterBoots
+  - NurseHeels # Moffstation
 
 - type: loadoutGroup
   id: SurvivalMedical
@@ -30,6 +40,7 @@
   loadouts:
   - EmergencyNitrogenMedical
   - EmergencyOxygenMedical
+  - EmergencyOxygenMedicalAmmonia # Moffstation - Allow avali to drink ammonia
   - LoadoutSpeciesVoxNitrogen
 
 # Chief Medical Officer
@@ -50,6 +61,13 @@
   - ChiefMedicalOfficerJumpskirt
   - ChiefMedicalOfficerTurtleneckJumpsuit
   - ChiefMedicalOfficerTurtleneckJumpskirt
+  # Moffstation - Start - New drip
+  - CMOJumpsuitShell
+  - CMOJumpskirtShell
+  - CMOJumpsuitFormal
+  - CMOJumpsuitFlowing
+  - CMOJumpskirtFlowing
+  # Moffstation - End
 
 - type: loadoutGroup
   id: ChiefMedicalOfficerOuterClothing
@@ -58,6 +76,27 @@
   loadouts:
   - ChiefMedicalOfficerLabCoat
   - ChiefMedicalOfficerWintercoat
+  - CmoFestivecoat # Moffstation
+
+# Moffstation - Start - Department Heads can use any department Bag
+- type: loadoutGroup
+  id: ChiefMedicalOfficerBackpack
+  name: loadout-group-chief-medical-officer-backpack
+  loadouts:
+  - MedicalDoctorBackpack
+  - MedicalDoctorSatchel
+  - MedicalDoctorDuffel
+  - ChemistBackpack
+  - ChemistSatchel
+  - ChemistDuffel
+  - VirologyBackpack
+  - VirologySatchel
+  - VirologyDuffel
+  - GeneticsBackpack
+  - GeneticsSatchel
+  - GeneticsDuffel
+  - LeatherSatchel
+# Moffstation - End - Department Heads can use any department Bag
 
 - type: loadoutGroup
   id: ChiefMedicalOfficerNeck
@@ -66,6 +105,7 @@
   loadouts:
   - ChiefMedicalOfficerCloak
   - ChiefMedicalOfficerMantle
+  - ChiefMedicalOfficerScarf  # Moffstation - CMO scarf
 
 - type: loadoutGroup
   id: ChiefMedicalOfficerShoes
@@ -93,6 +133,10 @@
   - BlueSurgeryCap
   - GreenSurgeryCap
   - PurpleSurgeryCap
+  #Moffstation - Start
+  - BurgundySurgeryCap
+  - BlackSurgeryCap
+  #Moffstation - End
   - NurseHat
 
 - type: loadoutGroup
@@ -106,6 +150,15 @@
   - MedicalBlueScrubs
   - MedicalGreenScrubs
   - MedicalPurpleScrubs
+  # Moffstation - Start
+  - MedicalBurgundyScrubs
+  - MedicalBlackScrubs
+  - MedicalDoctorJumpskirtNurse
+  - MedicalDoctorJumpsuitGenetics
+  - MedicalDoctorJumpsuitVirology
+  - MedicalDoctorJumpskirtGenetics
+  - MedicalDoctorJumpskirtVirology
+  # Moffstation - End
 
 - type: loadoutGroup
   id: MedicalDoctorOuterClothing
@@ -115,13 +168,27 @@
   - RegularLabCoat
   - MedicalDoctorWintercoat
   - SeniorPhysicianLabCoat
+  # Moffstation - Start
+  - LabCoatGene
+  - LabCoatViro
+  # Moffstation - End
 
 - type: loadoutGroup
   id: MedicalDoctorPDA
   name: loadout-group-medical-doctor-id
   loadouts:
+  - MedicalInternPDA # Moffstation - remove intern roles, rework them into base roles (top of list for priority)
   - MedicalDoctorPDA
   - SeniorPhysicianPDA
+  # Moffstation - Start - Additional job title loadouts
+  - GeneticistPDA
+  - VirologistPDA
+  - ClinicianPDA
+  - CoronerPDA
+  - CryogenicsSpecialistPDA
+  - NursePDA
+  - SurgeonPDA
+  # Moffstation - End
 
 #- type: loadoutGroup
 #  id: MedicalDoctorJobTrinkets
@@ -138,13 +205,23 @@
   - WhiteJumpsuit
   - WhiteJumpskirt
 
-#- type: loadoutGroup
-#  id: MedicalInternJobTrinkets
-#  name: loadout-group-jobtrinkets
-#  minLimit: 0
-#  loadouts:
+  #- type: loadoutGroup
+  #  id: MedicalInternJobTrinkets
+  #  name: loadout-group-jobtrinkets
+  #  minLimit: 0
+  #  loadouts:
 
-# Chemist
+  # Chemist
+
+  #Moffstation - Begin - Chemist Outfits
+- type: loadoutGroup
+  id: ChemistMask
+  name: loadout-group-chemist-mask
+  minLimit: 0
+  loadouts:
+  - SterileMask
+  - ChemistMask
+  #Moffstation - End - Chemist Outfits
 
 - type: loadoutGroup
   id: ChemistJumpsuit
@@ -152,6 +229,7 @@
   loadouts:
   - ChemistJumpsuit
   - ChemistJumpskirt
+  - ChemistSweater # Moffstation - Chemist outfits
 
 - type: loadoutGroup
   id: ChemistOuterClothing
@@ -161,6 +239,25 @@
   - RegularLabCoat
   - ChemistLabCoat
   - ChemistWintercoat
+  - ChemistApron # Moffstation - Chemist outfits
+
+# Moffstation - Begin - Chemist Outfits
+#- type: loadoutGroup
+  #id: ChemistGloves
+  #name: loadout-group-chemist-gloves
+  #minLimit: 0
+  #loadouts:
+  #- LatexGloves
+  #- NitrileGloves
+  #- ChemistGloves
+
+- type: loadoutGroup
+  id: ChemistShoes
+  name: loadout-group-chemist-shoes
+  loadouts:
+  - BlackShoes
+  - MedicalWinterBoots
+# Moffstation - End - Chemist Outfits
 
 - type: loadoutGroup
   id: ChemistBackpack
@@ -169,6 +266,7 @@
   - ChemistBackpack
   - ChemistSatchel
   - ChemistDuffel
+  - LeatherSatchel  # Moffstation - Allow picking leather satchel
 
 #- type: loadoutGroup
 #  id: ChemistJobTrinkets
@@ -191,6 +289,7 @@
   loadouts:
   - ParamedicJumpsuit
   - ParamedicJumpskirt
+  - ParamedicSpeedsuit # Moffstation
 
 - type: loadoutGroup
   id: ParamedicOuterClothing

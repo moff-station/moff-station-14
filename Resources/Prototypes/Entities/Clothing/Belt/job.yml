@@ -43,8 +43,9 @@
       - TrayScanner
       - GasAnalyzer
       - HandLabeler
+      - LawProgrammer # Moffstation - Cyborg Programmation
   - type: ItemMapper
-    sprite: &BeltOverlay Clothing/Belt/belt_overlay.rsi
+    sprite: _Moffstation/Clothing/Belt/belt_overlay.rsi # Moffstation
     mapLayers:
       drill:
         whitelist:
@@ -141,7 +142,7 @@
       - LightReplacer
       - CleanerGrenade
   - type: ItemMapper
-    sprite: *BeltOverlay
+    sprite: &BeltOverlay "Clothing/Belt/belt_overlay.rsi"  # Moffstation
     mapLayers:
       bottle:
         whitelist:
@@ -200,9 +201,9 @@
   description: Can hold various medical equipment.
   components:
   - type: Sprite
-    sprite: Clothing/Belt/medical.rsi
+    sprite: _Moffstation/Clothing/Belt/medical.rsi # Moffstation
   - type: Clothing
-    sprite: Clothing/Belt/medical.rsi
+    sprite: _Moffstation/Clothing/Belt/medical.rsi # Moffstation
   - type: Storage
     whitelist:
       tags:
@@ -328,9 +329,9 @@
   description: A belt used to hold kitchen knives and condiments for quick access.
   components:
   - type: Sprite
-    sprite: Clothing/Belt/chef.rsi
+    sprite: _Moffstation/Clothing/Belt/chef.rsi # Moffstation
   - type: Clothing
-    sprite: Clothing/Belt/chef.rsi
+    sprite: _Moffstation/Clothing/Belt/chef.rsi # Moffstation
   - type: Storage
     whitelist:
       tags:

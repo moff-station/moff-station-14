@@ -1,6 +1,7 @@
 using Content.Shared.Administration.Logs;
 using Content.Shared.Audio;
 using Content.Shared.Body;
+using Content.Shared.Damage.Components; //Moffstation - recycler damage change
 using Content.Shared.Chemistry.Components;
 using Content.Shared.Chemistry.EntitySystems;
 using Content.Shared.Construction.EntitySystems;

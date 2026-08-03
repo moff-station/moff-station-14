@@ -6,15 +6,29 @@
   description: job-description-station-ai
   playTimeTracker: JobStationAi
   requirements:
+  # Moffstation - Start - Change role timers
+  - !type:OverallPlaytimeRequirement
+    time: 20h
+  # Moffstation - End
   - !type:RoleTimeRequirement
     role: JobBorg
     time: 5h
-  weight: 10
+  # Moff start - no job weights
+#  weight: 10
+  displayWeight: 10
+  # Moff end
   icon: JobIconStationAi
   supervisors: job-supervisors-rd
   jobEntity: StationAiBrain
   jobPreviewEntity: PlayerStationAiPreview
   applyTraits: false
+  ignoreArrivals: true  # Moffstation - AI ignores arrivals
+  # CD: Skip records
+  special:
+  - !type:AddComponentSpecial
+    components:
+    - type: SkipLoadingCharacterRecords
+  # end CD
 
 - type: job
   id: Borg
@@ -28,3 +42,9 @@
   supervisors: job-supervisors-rd
   jobEntity: PlayerBorgBattery
   applyTraits: false
+  # CD: Skip records
+  special:
+  - !type:AddComponentSpecial
+    components:
+    - type: SkipLoadingCharacterRecords
+  # end CD

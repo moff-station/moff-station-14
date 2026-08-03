@@ -1,4 +1,5 @@
 using System.Linq;
+using Content.Server._Moffstation.SpawnedFromTracker;
 using Content.Server.Administration.Logs;
 using Content.Server.Administration.Managers;
 using Content.Server.EUI;
@@ -784,6 +785,10 @@ public sealed partial class GhostRoleSystem : EntitySystem
 
         var spawnedEvent = new GhostRoleSpawnerUsedEvent(uid, mob);
         RaiseLocalEvent(mob, ref spawnedEvent);
+        // Moffstation - Begin - Ghost role spawner usage tracking
+        var spawnerEvent = new UsedGhostRoleSpawnerEvent(mob);
+        RaiseLocalEvent(uid, ref spawnerEvent);
+        // Moffstation - End
 
         if (ghostRole.MakeSentient)
             _mindSystem.MakeSentient(mob, ghostRole.AllowMovement, ghostRole.AllowSpeech);

@@ -1,0 +1,24 @@
+- type: reagent #This is just nocturine for xenoborgs w/ a delay.
+  id: NocturineXenoborg
+  name: reagent-name-moff-xenoborg-nocturine
+  group: Narcotics
+  desc: reagent-desc-moff-xenoborg-nocturine
+  physicalDesc: reagent-physical-desc-powdery
+  contrabandSeverity: Major
+  color: "#128e80"
+  boilingPoint: 444.0
+  meltingPoint: 128.0
+  metabolisms:
+    Bloodstream:
+      effects: # It would be nice to have speech slurred or mumbly, but accents are a bit iffy atm. Same for distortion effects.
+      - !type:MovementSpeedModifier
+        walkSpeedModifier: 0.65
+        sprintSpeedModifier: 0.65
+      - !type:ModifyStatusEffect
+        conditions:
+        - !type:ReagentCondition
+          reagent: NocturineXenoborg
+          min: 8
+        effectProto: StatusEffectForcedSleeping
+        time: 9
+        delay: 5

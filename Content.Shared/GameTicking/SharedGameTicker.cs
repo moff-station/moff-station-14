@@ -1,3 +1,4 @@
+using Content.Shared.Damage.Prototypes;
 using Content.Shared.Roles;
 using Robust.Shared.Network;
 using Robust.Shared.Prototypes;
@@ -8,6 +9,9 @@ using Robust.Shared.Serialization.Markdown.Value;
 using Robust.Shared.Timing;
 using Robust.Shared.Audio;
 using Content.Shared.GameTicking.Prototypes;
+// Goob Station - Round End Screen
+using Content.Shared.Mobs;
+using Content.Shared.FixedPoint;
 
 namespace Content.Shared.GameTicking
 {
@@ -191,6 +195,16 @@ namespace Content.Shared.GameTicking
             public bool Observer;
 
             public bool Connected;
+
+            // Goobstation - Start - cool player manifest
+            public string? LastWords;
+
+            public MobState EntMobState;
+
+#pragma warning disable CS0618 // Type or member is obsolete // Moffstation - The obsolescense is saying "only use this for grouping in the UI", which is what this is used for.
+            public IReadOnlyDictionary<ProtoId<DamageGroupPrototype>, FixedPoint2> DamagePerGroup;
+#pragma warning restore CS0618 // Type or member is obsolete
+            // Goobstation - End
         }
 
         public string GamemodeTitle { get; }

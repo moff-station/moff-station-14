@@ -35,7 +35,8 @@ public sealed partial class CCVars
     /// </summary>
     [CVarControl(AdminFlags.VarEdit, min: 0f, max: float.MaxValue)]
     public static readonly CVarDef<float> AfkTime =
-        CVarDef.Create("afk.time", 300f, CVar.SERVER | CVar.REPLICATED);
+        CVarDef.Create("afk.time", 600f, CVar.SERVER | CVar.REPLICATED);
+        // If afk players become an issue again, implement using a more aggressive time limit when server pop is near full
 
     /// <summary>
     ///     How long a player has to confirm they are not AFK before being disconnected.
@@ -102,7 +103,7 @@ public sealed partial class CCVars
         CVarDef.Create("entgc.maximum_time_ms", 5, CVar.SERVERONLY);
 
     public static readonly CVarDef<string> TippyEntity =
-        CVarDef.Create("tippy.entity", "Tippy", CVar.SERVER | CVar.REPLICATED);
+        CVarDef.Create("tippy.entity", "Moffy", CVar.SERVER | CVar.REPLICATED); // Moffstation - Changed Tippy to Moffy
 
     /// <summary>
     ///     The number of seconds that must pass for a single entity to be able to point at something again.

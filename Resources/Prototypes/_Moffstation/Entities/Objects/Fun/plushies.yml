@@ -1,0 +1,124 @@
+- type: entity
+  parent: BasePlushie
+  id: PlushieBorg
+  name: cyborg plushie
+  description: A cute stuffed toy that resembles a cyborg. Doesn't seem to state their laws however.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Objects/Fun/toys.rsi
+    state: plushie_borg
+  - type: Item
+    heldPrefix: borg
+  - type: EmitSoundOnUse
+    sound:
+      path: /Audio/Effects/Cargo/ping.ogg
+      params:
+        variation: 0.125
+        volume: -2
+  - type: EmitSoundOnLand
+    sound:
+      path: /Audio/Effects/Cargo/ping.ogg
+      params:
+        variation: 0.125
+        volume: -2
+  - type: EmitSoundOnActivate
+    sound:
+      path: /Audio/Effects/Cargo/ping.ogg
+      params:
+        variation: 0.125
+        volume: -2
+  - type: EmitSoundOnTrigger
+    sound:
+      path: /Audio/Effects/Cargo/ping.ogg
+      params:
+        variation: 0.125
+        volume: -2
+  - type: EmitSoundOnCollide
+    sound:
+      path: /Audio/Effects/Cargo/ping.ogg
+      params:
+        variation: 0.125
+        volume: -2
+  - type: Edible
+    requiresSpecialDigestion: true
+    useSound:
+      path: /Audio/Effects/Cargo/ping.ogg
+      params:
+        variation: 0.125
+        volume: -2
+  - type: MeleeWeapon
+    wideAnimationRotation: 180
+    soundHit:
+      path: /Audio/Effects/Cargo/ping.ogg
+      params:
+        variation: 0.125
+        volume: -2
+  - type: Clothing
+    quickEquip: false
+    sprite: _Moffstation/Objects/Fun/toys.rsi
+    equippedPrefix: borg
+    slots:
+    - HEAD
+
+- type: entity
+  parent: PlushieSharkBlue
+  id: PlushieSharkPirate
+  name: pirate shark soft toy
+  description: Yoho yarg :)
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Objects/Fun/Plushies/shark.rsi
+    state: pirate
+  - type: Item
+    heldPrefix: pirate
+  - type: Tag
+    tags:
+    - PlushieSharkPirate
+    - Payload
+    - ClothMade
+
+- type: entity
+  parent: BasePlushie
+  id: PlushieSillyDeer
+  name: silly deer plushie
+  description: A stuffed toy deer that appears to be rather silly.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Objects/Fun/Plushies/sillydeer.rsi
+    state: icon
+  - type: Item
+    size: Huge
+  - type: ScaleVisuals
+    scale: 0.8, 0.8
+
+- type: entity
+  parent: BasePlushie
+  id: PlushieKitten
+  name: kitten plushie
+  description: A cute stuffed toy that resembles a kitten. Meow...mrrp.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Objects/Fun/Plushies/kitten.rsi
+    state: icon
+  - type: Item
+    sprite: _Moffstation/Objects/Fun/Plushies/kitten.rsi
+    heldPrefix: kitten
+  - type: EmitSoundOnUse
+    sound:
+      collection: CatMeows
+  - type: EmitSoundOnLand
+    sound:
+      collection: CatMeows
+  - type: EmitSoundOnActivate
+    sound:
+      collection: CatMeows
+  - type: EmitSoundOnTrigger
+    sound:
+      collection: CatMeows
+  - type: EmitSoundOnCollide
+    sound:
+      collection: CatMeows
+  - type: MeleeWeapon
+    wideAnimationRotation: 180
+    soundHit:
+      collection: CatMeows

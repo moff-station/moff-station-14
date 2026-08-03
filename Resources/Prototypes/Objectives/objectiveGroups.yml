@@ -2,21 +2,23 @@
 - type: weightedRandom
   id: TraitorObjectiveGroups
   weights:
-    TraitorObjectiveGroupSteal: 1
+    # Moffstation - Start - Reweighing tables for picker. Keep original proto so we can keep up with any upstream changes
+    TraitorObjectiveGroupSteal: 0.25
     TraitorObjectiveGroupKill: 1
-    TraitorObjectiveGroupState: 1 #As in, something about your character. Alive, dead, arrested, gained an ability...
-    TraitorObjectiveGroupSocial: 1 #Involves helping/harming others without killing them or stealing their stuff
-    TraitorObjectiveGroupSabotage: 1
-    TraitorObjectiveGroupOther: 1
+    #TraitorObjectiveGroupState: 0.25 # Moff - QUIT FUCKIN UP MY ODDS (Rolls DAGD too often)
+    TraitorObjectiveGroupSocial: 0.5 #Involves helping/harming others without killing them or stealing their stuff
+    TraitorObjectiveGroupSabotage: 0.5
+    TraitorObjectiveGroupOther: 0.5
+    # Moffstation - End
 
 - type: weightedRandom
   id: TraitorObjectiveGroupSteal
   weights:
-    CaptainIDStealObjective: 1
+    CaptainIDStealObjective: 0.5  # Moffstation - Objective picker adjustments
     CMOHyposprayStealObjective: 1
     CMOCrewMonitorStealObjective: 1
     RDHardsuitStealObjective: 1
-    NukeDiskStealObjective: 1
+    NukeDiskStealObjective: 0.25  # Moffstation - Objective picker adjustments
     MagbootsStealObjective: 1
     CorgiMeatStealObjective: 1
     ClipboardStealObjective: 1
@@ -30,26 +32,39 @@
   id: TraitorObjectiveGroupKill
   weights:
     KillRandomPersonObjective: 1
-    KillStationAiObjective: 0.25
+    KillStationAiObjective: 0.125 # Moffstation - Lower Kill Station Ai chance by half
     KillRandomHeadObjective: 0.25
+    TeachLessonObjective: 1 # Moffstation - teach lesson objective
 
-- type: weightedRandom
-  id: TraitorObjectiveGroupState
-  weights:
-    EscapeShuttleObjective: 1
-    DieObjective: 0.2
+# Moff start - Dont embed this table because it makes DAGD way higher prob than it should be
+#- type: weightedRandom
+#  id: TraitorObjectiveGroupState
+#  weights:
+#    EscapeShuttleObjective: 1
+#    DieObjective: 0.01 # Moffstation - Objective picker adjustments
     #HijackShuttleObjective: 0.02
+# Moff end
 
 - type: weightedRandom
   id: TraitorObjectiveGroupSocial
   weights:
 #    RandomTraitorAliveObjective: 1 - Removed because the objective was boring and didn't progress the round.
     RandomTraitorProgressObjective: 1
+    # Moffstation - Start - Social traitor objectives
+    GatherIntelObjective: 1
+    JailbreakObjective: 0.5
+    LeaveCallingCardObjective: 0.5
+    LeaveCallingCardOnPersonObjective: 0.5
+    # Moffstation - End
 
 - type: weightedRandom
   id: TraitorObjectiveGroupSabotage
   weights:
     SupercritAnomaliesObjective: 1
+    # Moffstation - Sabotage objectives
+    DisruptDepartmentObjective: 1
+    SabotageObjective: 0.5
+    # Moffstation - End
 
 #misc objectives that don't fall other another category
 - type: weightedRandom
@@ -57,6 +72,13 @@
   weights:
     HijackTradeStationObjective: 1
     MailFraudObjective: 1
+    # Moffstation - Location based objectives
+    TrashRoomObjective: 1
+    ClaimLocationObjective: 1
+    # Despite them not being "social", die and escape moved here so that their weights are respected
+    DieObjective: 0.01
+    EscapeShuttleObjective: 0.1
+    # Moffstation - End
 
 
 #Thief groups
@@ -65,6 +87,7 @@
   weights:
     ThiefObjectiveGroupCollection: 1
     ThiefObjectiveGroupItem: 1
+    ThiefObjectiveOpenEnded: 0.5  # Moffstation - open ended objectives
 
 - type: weightedRandom
   id: ThiefBigObjectiveGroups
@@ -83,7 +106,7 @@
     TechnologyDiskStealCollectionObjective: 1           #sci
     MailStealCollectionObjective: 1                     #cargo
     IDCardsStealCollectionObjective: 1
-    LAMPStealCollectionObjective: 0.1                   #only for moth, weight decreased cause boring and insanely easy
+    #LAMPStealCollectionObjective: 0.05        # Moffstation - Meme objective, not needed given our objective picker
 
 - type: weightedRandom
   id: ThiefObjectiveGroupItem

@@ -30,7 +30,7 @@
   - type: Damageable
     damageModifierSet: Metallic
   - type: Injurable
-    damageContainer: Inorganic
+    damageContainer: StructuralInorganic # Moffstation - Structural damagetype fix
   - type: StaticPrice
     price: 50
 
@@ -465,6 +465,12 @@
   - type: Construction
     graph: Seat
     node: chairWoodBench
+    # Moffstation - Begin - Changing WoodenBench to be Wooden
+  - type: Damageable
+    damageModifierSet: Wood
+  - type: Injurable
+    damageContainer: StructuralInorganic
+    # Moffstation - End
   - type: Destructible
     thresholds:
     - trigger:

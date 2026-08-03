@@ -1,0 +1,19 @@
+- type: quickPhrase
+  parent: [ BaseSecurityPhrase, BaseSubjectPhrase ]
+  abstract: true
+  id: BaseSecuritySubjectPhrase
+
+- { type: quickPhrase, parent: BaseSecuritySubjectPhrase, id: HandcuffsPhrase }
+- { type: quickPhrase, parent: BaseSecuritySubjectPhrase, id: StunBatonPhrase }
+- { type: quickPhrase, parent: BaseSecuritySubjectPhrase, id: DisablerPhrase }
+- { type: quickPhrase, parent: BaseSecuritySubjectPhrase, id: FlashPhrase }
+- { type: quickPhrase, parent: BaseSecuritySubjectPhrase, id: FlashbangPhrase }
+- { type: quickPhrase, parent: BaseSecuritySubjectPhrase, id: ArrestPhrase }
+- { type: quickPhrase, parent: BaseSecuritySubjectPhrase, id: WarrantPhrase }
+- { type: quickPhrase, parent: BaseSecuritySubjectPhrase, id: wantedPhrase }
+- { type: quickPhrase, parent: BaseSecuritySubjectPhrase, id: SearchPhrase }
+- { type: quickPhrase, parent: BaseSecuritySubjectPhrase, id: DetainPhrase }
+- { type: quickPhrase, parent: BaseSecuritySubjectPhrase, id: SuspectPhrase }
+- { type: quickPhrase, parent: BaseSecuritySubjectPhrase, id: ForensicScannerPhrase }
+- { type: quickPhrase, parent: BaseSecuritySubjectPhrase, id: ForensicPadPhrase }
+- { type: quickPhrase, parent: BaseSecuritySubjectPhrase, id: LogProbePhrase }

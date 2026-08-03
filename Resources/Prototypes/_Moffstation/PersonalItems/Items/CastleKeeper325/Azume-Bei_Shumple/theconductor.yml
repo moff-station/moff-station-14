@@ -1,0 +1,31 @@
+﻿# Player: CastleKeeper325 - Character: Azume-Bei Shumple
+- type: entity
+  parent: ElectricGuitarInstrument
+  id: PersonalItemAzumeGuitar
+  name: The Conductor
+  description: "Stygian sends their regards!"
+  suffix: PersonalItem
+  components:
+  - type: Sprite
+    sprite: _Moffstation/PersonalItems/Items/CastleKeeper325/Azume-Bei_Shumple/theconductor.rsi
+    state: icon
+  - type: Item
+    sprite: _Moffstation/PersonalItems/Items/CastleKeeper325/Azume-Bei_Shumple/theconductor.rsi
+  - type: Clothing
+    quickEquip: false
+    slots:
+    - back
+    - suitStorage
+    sprite: _Moffstation/PersonalItems/Items/CastleKeeper325/Azume-Bei_Shumple/theconductor.rsi
+  - type: DetailExaminable
+    content: Etched along the back side of the fingerboard is the image of a train with a zombified clown holding a stop sign as the driver.
+
+- type: loadout
+  id: PersonalItemAzumeGuitar
+  storage:
+    back:
+    - PersonalItemAzumeGuitar
+  effects:
+  - !type:PersonalItemLoadoutEffect
+    character:
+    - Azume-Bei Shumple

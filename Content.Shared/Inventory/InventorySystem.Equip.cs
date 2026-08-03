@@ -1,4 +1,5 @@
 using System.Diagnostics.CodeAnalysis;
+using Content.Shared._Moffstation.Armor; // Moffstation
 using Content.Shared.Armor;
 using Content.Shared.Clothing.Components;
 using Content.Shared.DoAfter;
@@ -34,6 +35,8 @@ public abstract partial class InventorySystem
     [Dependency] private SharedTransformSystem _transform = default!;
     [Dependency] private EntityWhitelistSystem _whitelistSystem = default!;
     [Dependency] private SharedStrippableSystem _strippable = default!;
+
+    [Dependency] private SuitStorageAttachmentSystem _suitStorageAttachment = default!; // Moffstation
 
     private static readonly ProtoId<ItemSizePrototype> PocketableItemSize = "Small";
 
@@ -259,12 +262,27 @@ public abstract partial class InventorySystem
             {
                 foreach (var (_, entry) in componentRegistry)
                 {
-                    if (!HasComp(slotEntity, entry.Component.GetType()))
-                        return false;
-
-                    if (TryComp<AllowSuitStorageComponent>(slotEntity, out var comp) &&
-                        _whitelistSystem.IsWhitelistFailOrNull(comp.Whitelist, itemUid))
-                        return false;
+                    // Moffstation - Start - Attachable suit storage
+                    // if (!HasComp(slotEntity, entry.Component.GetType()))
+                    //     return false;
+                    //
+                    // if (TryComp<AllowSuitStorageComponent>(slotEntity, out var comp) &&
+                    //     _whitelistSystem.IsWhitelistFailOrNull(comp.Whitelist, itemUid))
+                    //     return false;
+                    if (HasComp(slotEntity, entry.Component.GetType()))
+                    {
+                        // Entity in slot has the storage-allowing component itself. Check that component's whitelist.
+                        if (TryComp<AllowSuitStorageComponent>(slotEntity, out var comp) &&
+                            _whitelistSystem.IsWhitelistFailOrNull(comp.Whitelist, itemUid))
+                            return false;
+                    }
+                    else
+                    {
+                        // Entity in slot DOES NOT have the storage-allowing component. Check if it has attachments instead.
+                        if (!_suitStorageAttachment.IsEntityAllowedInSuitStorageByAttachment(slotEntity.Value, itemUid))
+                            return false;
+                    }
+                    // Moffstation - End
                 }
             }
         }
@@ -580,7 +598,7 @@ public abstract partial class InventorySystem
     {
         foreach (var item in _handsSystem.EnumerateHeld(uid))
         {
-            _interactionSystem.DoContactInteraction(uid, item);
+            _interactionSystem.DoContactInteraction(uid, item, null, true); // Stellar - Interaction particles
         }
     }
 

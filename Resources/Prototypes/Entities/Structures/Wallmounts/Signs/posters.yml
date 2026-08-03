@@ -4,7 +4,7 @@
   id: PosterBase
   components:
   - type: Sprite
-    sprite: Structures/Wallmounts/posters.rsi
+    sprite: _Moffstation/Structures/Wallmounts/posters.rsi # Moffstation - Posters
   - type: Damageable
     damageModifierSet: Card
   - type: Destructible

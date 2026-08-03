@@ -178,8 +178,10 @@ public sealed partial class AntagSelectionSystem
         if (!_whitelist.CheckBoth(uid, def.Blacklist, def.Whitelist))
             return false;
 
-        if (_arrivals.IsOnArrivals((uid.Value, null)))
-            return false;
+        // Moffstation - Begin - Roundstart players spawn at arrivals, so roundstart antags (eg. traitors) shouldn't be blocked.
+        // if (_arrivals.IsOnArrivals((uid.Value, null)))
+        //     return false;
+        // Moffstation - End
 
         // No ghosts!!!
         if (HasComp<GhostComponent>(uid))

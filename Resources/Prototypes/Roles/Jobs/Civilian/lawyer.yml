@@ -3,9 +3,11 @@
   name: job-name-lawyer
   description: job-description-lawyer
   playTimeTracker: JobLawyer
-  requirements:
-    - !type:OverallPlaytimeRequirement
-      time: 2.5h
+  # Moffstation - Start - Change role timers
+  #requirements:
+  #  - !type:OverallPlaytimeRequirement
+  #    time: 2.5h
+  # Moffstation - End
   startingGear: LawyerGear
   icon: "JobIconLawyer"
   supervisors: job-supervisors-hop
@@ -19,14 +21,19 @@
   id: LawyerGear
   equipment:
     shoes: ClothingShoesBootsLaceup
-    id: LawyerPDA
-    ears: ClothingHeadsetSecurity
+#    id: LawyerPDA # Moffstation - PDA loadouts
+    ears: ClothingHeadsetService # Moffstation
   inhand:
     - BriefcaseBrownFilled
   storage:
     back:
     - RubberStampLawyer
     - BookSpaceLaw
+    # Moffstation - Start
+    - TapeRecorder
+    - CassetteTape
+    - CassetteTape
+    # Moffstation - End
 
 - type: chameleonOutfit
   id: LawyerChameleonOutfit

@@ -1,0 +1,110 @@
+﻿# ID
+- type: loadout
+  id: DetectivePDA
+  equipment:
+    id: DetectivePDA
+
+- type: loadout
+  id: InvestigatorPDA
+  equipment:
+    id: InvestigatorPDA
+
+- type: loadout
+  id: ForensicsTechnicianPDA
+  equipment:
+    id: ForensicsTechnicianPDA
+
+# Head
+- type: loadout
+  id: DetectiveFedoraSleuth
+  equipment:
+    head: ClothingHeadHatFedoraSleuth
+
+# Mask
+
+# Neck
+- type: loadout
+  id: DetectiveBadge
+  equipment:
+    neck: ClothingNeckDetBadge
+
+- type: loadout
+  id: DetectiveHorrendousTie
+  equipment:
+    neck: ClothingNeckTieDetHorrendous
+# Jumpsuit
+- type: loadout
+  id: SleuthSuit
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitDetSleuth
+  groupBy: "detective jumpsuits"
+
+- type: loadout
+  id: SleuthSkirt
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtDetSleuth
+  groupBy: "detective jumpskirts"
+
+- type: loadout
+  id: InvestigatorJumpsuit
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitDetInvestigator
+  groupBy: "detective jumpsuits"
+
+- type: loadout
+  id: InvestigatorJumpskirt
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtDetInvestigator
+  groupBy: "detective jumpskirts"
+
+# Back
+
+# Belt
+- type: loadout
+  id: DetectiveHolster
+  equipment:
+    belt: ClothingBeltHolster
+
+- type: loadout
+  id: DetectiveSecBelt
+  equipment:
+    belt: ClothingBeltSecurity
+
+- type: loadout
+  id: DetectiveSecWebbing
+  equipment:
+    belt: ClothingBeltSecurityWebbing
+
+- type: loadout
+  id: DetectiveSecWebbingAlt
+  equipment:
+    belt: ClothingBeltSecurityWebbingAlt
+
+# Outer Clothing
+- type: loadout
+  id: DetectiveCoatSleuth
+  equipment:
+    outerClothing: ClothingOuterCoatSleuth
+
+# Gloves
+
+# Shoes
+
+# Eyewear
+
+# Fills
+- type: loadout
+  id: DetectivePistolInspector
+  dummyEntity: WeaponRevolverInspector
+  storage:
+    belt:
+    - WeaponRevolverInspector
+    - SpeedLoaderMagnum
+
+- type: loadout
+  id: DetectivePistolPM
+  dummyEntity: WeaponPistolPM
+  storage:
+    belt:
+    - WeaponPistolPM
+    - MagazinePistol

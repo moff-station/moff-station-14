@@ -3,6 +3,7 @@
   startingInventory:
     # Essential
     ClothingEyesGlassesChemical: 1
+    ClothingMaskGasChem : 1 # Moffstation - Chemistry Outfits
     # Optional
     ClothingHeadsetMedical: 1
     ClothingBackpackChemistry: 1
@@ -11,9 +12,16 @@
     ChemBag: 1
     ClothingUniformJumpsuitChemistry: 1
     ClothingUniformJumpskirtChemistry: 1
+    ClothingUniformJumpsuitChemistSweater: 1 # Moffstation - Chemistry Outfits
     ClothingOuterCoatLabChem: 1
     ClothingOuterWinterChem: 1
     ClothingHandsGlovesLatex: 1
-    ClothingShoesColorWhite: 1
+    #ClothingShoesColorWhite: 1 # Moffstation - Chemistry Outfits - White shoes look silly now
+    # Moffstation - Begin - Chemistry Outfits
+    ClothingShoesColorBlack: 1
+    ClothingOuterApronChemist: 1
+    ClothingHandsGlovesChemist: 1
+    # Moffstation - End
   contrabandInventory:
     ToyFigurineChemist: 1
+    ClothingUniformJumpskirtMaidChem: 1 # MOFFSTATION - Adds department maid dresses

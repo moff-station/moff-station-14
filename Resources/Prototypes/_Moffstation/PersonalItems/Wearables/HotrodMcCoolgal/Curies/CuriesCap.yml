@@ -1,0 +1,26 @@
+﻿# Player: HotrodMcCoolgal / Characters: Euler Curie, Starling Curie
+- type: entity
+  parent: ClothingHeadBase
+  id: PersonalItemCuriesCap
+  name: uniform cap
+  suffix: PersonalItem
+  description: A simple red and black cap with three red stars sewn in, a memento from home.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/PersonalItems/Wearables/HotrodMcCoolgal/Curies/curiescap.rsi
+  - type: Clothing
+    sprite: _Moffstation/PersonalItems/Wearables/HotrodMcCoolgal/Curies/curiescap.rsi
+  - type: DetailExaminable
+    content: The tag inside reads "R-42XX", the last two digits are faded. This cap seems massed produced...
+
+- type: loadout
+  id: PersonalItemCuriesCap
+  storage:
+    back:
+    - PersonalItemCuriesCap
+  effects:
+  - !type:PersonalItemLoadoutEffect
+    character:
+    - Euler Curie
+    - Starling Curie
+

@@ -1,0 +1,19 @@
+- type: entity
+  parent: SeedBase
+  name: packet of coffee seeds
+  id: CoffeeSeeds
+  components:
+  - type: Seed
+    seedId: coffee
+  - type: Sprite
+    sprite: _Moffstation/Objects/Specific/Hydroponics/coffee_plant.rsi
+
+- type: entity
+  parent: SeedBase
+  name: packet of mug tree seeds
+  id: MugTreeSeeds
+  components:
+  - type: Seed
+    seedId: mugtree
+  - type: Sprite
+    sprite: _Moffstation/Objects/Specific/Hydroponics/mug_plant.rsi

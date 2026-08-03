@@ -1,0 +1,60 @@
+- type: entity
+  parent: FoodBurgerBase
+  id: FoodBurgerTar
+  name: tarburger
+  description: Apparently the glasses can be cooked?
+  components:
+  - type: FlavorProfile
+    flavors:
+    - bun
+    - meaty
+    - glass
+  - type: Sprite
+    sprite: _Moffstation/Objects/Consumable/Food/burger.rsi
+    state: tarburger
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: Nutriment
+        Quantity: 40
+      - ReagentId: Vitamin
+        Quantity: 8
+      - ReagentId: Razorium
+        Quantity: 2
+  - type: Tag
+    tags:
+    - Meat
+
+- type: entity
+  name: mothroachburger
+  parent: FoodBurgerMothRoach
+  id: FoodBurgerMothRoachDeathshead
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Objects/Consumable/Food/burger.rsi
+    state: mothroach-deathshead
+  - type: Item
+    inhandVisuals:
+      left:
+      - sprite: _Moffstation/Objects/Consumable/Food/burger.rsi
+        state: mothroach-deathshead-inhand-left
+      right:
+      - sprite: _Moffstation/Objects/Consumable/Food/burger.rsi
+        state: mothroach-deathshead-inhand-right
+
+- type: entity
+  name: mothroachburger
+  parent: FoodBurgerMothRoach
+  id: FoodBurgerMothRoachRosy
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Objects/Consumable/Food/burger.rsi
+    state: mothroach-rosy
+  - type: Item
+    inhandVisuals:
+      left:
+      - sprite: _Moffstation/Objects/Consumable/Food/burger.rsi
+        state: mothroach-rosy-inhand-left
+      right:
+      - sprite: _Moffstation/Objects/Consumable/Food/burger.rsi
+        state: mothroach-rosy-inhand-right

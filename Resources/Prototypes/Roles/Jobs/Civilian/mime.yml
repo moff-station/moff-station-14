@@ -3,9 +3,11 @@
   name: job-name-mime
   description: job-description-mime
   playTimeTracker: JobMime
-  requirements:
-    - !type:OverallPlaytimeRequirement
-      time: 4h
+  # Moffstation - Start - Change role timers
+  #requirements:
+  #  - !type:OverallPlaytimeRequirement
+  #    time: 4h
+  # Moffstation - End
   startingGear: MimeGear
   icon: "JobIconMime"
   supervisors: job-supervisors-hop
@@ -23,13 +25,14 @@
   id: MimeGear
   equipment:
     gloves: ClothingHandsGlovesColorWhite
-    shoes: ClothingShoesColorWhite
-    id: MimePDA
+#    shoes: ClothingShoesColorWhite # Moffstation - Mime Loadouts
+#    id: MimePDA # Moffstation - PDA loadouts
     pocket1: CrayonMime
     ears: ClothingHeadsetService
   storage:
     back:
     - RubberStampMime
+    - FoodBreadBaguette # Moffstation - (Survival Box Improvements)
 
 - type: entity
   parent: BaseAction

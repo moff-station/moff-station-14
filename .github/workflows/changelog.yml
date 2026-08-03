@@ -1,0 +1,44 @@
+name: Update Changelog
+concurrency: commit_action
+on:
+  pull_request_target:
+    types: [closed]
+  workflow_dispatch:
+
+jobs:
+  changelog:
+    if: github.event.pull_request.merged == true || github.event.pull_request == null
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+    - name: Pull repository
+      uses: actions/checkout@v3
+      with:
+        token: ${{ secrets.CHANGELOG_TOKEN }}
+        ref: ${{ vars.CHANGELOG_BRANCH }}
+
+    - name: Configure git
+      run: |
+        git config --global user.name "${{ vars.CHANGELOG_USER }}"
+        git config --global user.email "${{ vars.CHANGELOG_EMAIL }}"
+
+    - name: Authenticate Github CLI
+      run: echo "${{ secrets.GITHUB_TOKEN }}" | gh auth login --with-token
+
+    - name: Setup Python
+      run: |
+        python -m pip install --upgrade pip
+        pip install pyyaml python-dateutil
+
+    - name: Update Changelog
+      run: python Tools/_Moffstation/changelog_update.py
+      continue-on-error: true
+
+    - name: Commit Changelog
+      run: |
+        git add *.yml
+        git commit -m "${{ vars.CHANGELOG_MESSAGE }}"
+        git push
+      continue-on-error: true
+

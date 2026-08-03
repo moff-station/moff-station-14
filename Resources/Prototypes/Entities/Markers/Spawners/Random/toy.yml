@@ -39,6 +39,8 @@
     - id: PlushieArachind
     - id: PlushiePenguin
     - id: PlushieVulp
+    - id: PlushieBorg # MOFFSTATION - adds borg plushie
+    - id: PlushieKitten # Moffstation
     - id: PlushieSheep
     - id: PlushieSpaceSheep
     - !type:GroupSelector
@@ -75,6 +77,7 @@
       - id: PlushieHuman
       - id: PlushieGhost
       - id: PlushieLamp
+      - id: PlushieSillyDeer # Moffstation - Added silly deer plushie
     - !type:GroupSelector # Legendary plushies
       weight: 0.002 # 1 in >10,500
       children:
@@ -199,6 +202,7 @@
     - id: ToyFigurineHamlet
     # Other
     - id: MysteryFigureBox # More suspense
+    - id: MysteryFigureBoxMoff # Moffstation - Adds moffstation themed figurines
       weight: 10
     - id: ToyFigurineWizardFake
     - id: ToyFigurineSkeleton
@@ -302,6 +306,7 @@
     - id: ClothingShoesSkates
     - id: CrazyGlue
     - id: CrazyLube
+    - id: WaterBalloonBox # MiraSector change! added to the table so it can be considered a toy and spawn in the toy box etc.
     - !type:NestedSelector
       tableId: AllBoardGamesTable
     - !type:GroupSelector # Where there's Chips there's Dips

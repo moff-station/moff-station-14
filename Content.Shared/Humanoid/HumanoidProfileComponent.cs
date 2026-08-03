@@ -34,4 +34,19 @@ public sealed partial class HumanoidProfileComponent : Component
 
     [DataField, AutoNetworkedField]
     public ProtoId<SpeciesPrototype> Species = HumanoidCharacterProfile.DefaultSpecies;
+
+    // Moffstation Start - CD Height
+    // Centronias migrated this after NuBody appearance stuff and feels like maybe this isn't _exactly_ the right place for this data to live since it's more concretely biometric info than the other fiels. But eh.
+    /// <summary>
+    ///     The height of this humanoid.
+    /// </summary>
+    [DataField, AutoNetworkedField]
+    public float Height = 1f;
+    // Moffstation End
+
+    //Moffstation Start - Re-add Geras
+    //Cent was right, this is basically the only half-decent way to make this available
+    [DataField, AutoNetworkedField]
+    public Color SkinColor = Color.White;
+    //Moffstation End
 }

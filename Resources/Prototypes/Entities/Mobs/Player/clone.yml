@@ -21,10 +21,11 @@
   - Narcolepsy
   - ImpairedMobility
   # - LegsParalyzed (you get healed)
-  - Muted
   - PermanentBlindness
   - Snoring
   - Unrevivable
+  - Uncloneable # Moffstation - Add uncloneable (wait, how are clones supposed to get uncloneable??)
+  - DisarmProne # Moffstation - Add feeble trait
 
 - type: cloningSettings
   parent: [TraitsMental, TraitsPhysical]

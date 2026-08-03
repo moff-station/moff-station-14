@@ -19,6 +19,11 @@
   - type: AmmoCounter
   - type: Gun
     fireRate: 5
+    # Moffstation - Begin - Add gun recoil.
+    recoilKick:
+      impulse: 12
+      staminaMultiplier: 10
+    # Moffstation - End - Add gun recoil.
     selectedMode: FullAuto
     availableModes:
       - FullAuto
@@ -69,6 +74,11 @@
   - type: Gun
     soundGunshot:
       path: /Audio/Weapons/Guns/Gunshots/rifle2.ogg
+    # Moffstation - Begin - Add gun recoil.
+    recoilKick:
+      impulse: 16
+      staminaMultiplier: 10
+    # Moffstation - End - Add gun recoil.
   - type: ChamberMagazineAmmoProvider
     soundRack:
       path: /Audio/Weapons/Guns/Cock/ltrifle_cock.ogg

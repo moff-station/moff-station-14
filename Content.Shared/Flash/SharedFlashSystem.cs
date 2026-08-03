@@ -1,6 +1,8 @@
 using System.Linq;
+using Content.Shared._Starlight.Flash.Components;
 using Content.Shared.Charges.Components;
 using Content.Shared.Charges.Systems;
+using Content.Shared.Clothing;
 using Content.Shared.Clothing.Components;
 using Content.Shared.Examine;
 using Content.Shared.Flash.Components;
@@ -8,11 +10,12 @@ using Content.Shared.IdentityManagement;
 using Content.Shared.Interaction;
 using Content.Shared.Interaction.Events;
 using Content.Shared.Inventory;
+using Content.Shared.Inventory.Events;
 using Content.Shared.Light;
 using Content.Shared.Movement.Systems;
 using Content.Shared.Popups;
 using Content.Shared.Random.Helpers;
-using Content.Shared.StatusEffectNew;
+using Content.Shared.StatusEffect;
 using Content.Shared.Stunnable;
 using Content.Shared.Tag;
 using Content.Shared.Timing;
@@ -20,6 +23,7 @@ using Content.Shared.Traits.Assorted;
 using Content.Shared.Weapons.Melee.Events;
 using Robust.Shared.Audio;
 using Robust.Shared.Audio.Systems;
+using Robust.Shared.Containers;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Timing;
 
@@ -37,10 +41,14 @@ public abstract partial class SharedFlashSystem : EntitySystem
     [Dependency] private SharedStunSystem _stun = default!;
     [Dependency] private MovementModStatusSystem _movementMod = default!;
     [Dependency] private TagSystem _tag = default!;
-    [Dependency] private StatusEffectsSystem _statusEffectsSystem = default!;
+    [Dependency] private StatusEffectNew.StatusEffectsSystem _statusEffectsSystem = default!;
     [Dependency] private IGameTiming _timing = default!;
     [Dependency] private UseDelaySystem _useDelay = default!;
 
+    [Dependency] private InventorySystem _inventory = default!; // Moffstation
+    [Dependency] private SharedContainerSystem _container = default!; // Moffstation
+
+    [Dependency] private EntityQuery<StatusEffectsComponent> _statusEffectsQuery = default!;
     [Dependency] private EntityQuery<DamagedByFlashingComponent> _damagedByFlashingQuery = default!;
 
     private readonly HashSet<EntityUid> _entSet = [];
@@ -73,7 +81,28 @@ public abstract partial class SharedFlashSystem : EntitySystem
     {
         base.Initialize();
         Subs.SubscribeWithRelay<FlashImmunityComponent, FlashAttemptEvent>(OnFlashImmunityFlashAttempt, held: false);
+
+        // Moffstation - Start - Night Vision blocked by flash immunity
+        SubscribeLocalEvent<DidEquipEvent>(OnDidEquip);
+        SubscribeLocalEvent<DidUnequipEvent>(OnDidUnequip);
+        SubscribeLocalEvent<FlashImmunityComponent, ItemMaskToggledEvent>(OnItemMaskToggled);
+        SubscribeLocalEvent<FlashImmunityComponent, ComponentStartup>(OnFlashImmunityStartup);
+        SubscribeLocalEvent<FlashImmunityComponent, ComponentRemove>(OnFlashImmunityRemove);
+        // Moffstation - End
     }
+
+    // Moffstation - Start
+    /// <summary>
+    /// Returns true if the given entity CANNOT be affected by flashes. This is generally the result of the entity
+    /// having <see cref="FlashImmunityComponent">flash immune</see> equipment on.
+    /// </summary>
+    public bool IsFlashImmune(EntityUid uid)
+    {
+        var ev = new FlashAttemptEvent(uid, User: null, Used: null);
+        RaiseLocalEvent(uid, ref ev);
+        return ev.Cancelled;
+    }
+    // Moffstation - End
 
     [SubscribeLocalEvent]
     private void OnFlashMeleeHit(Entity<FlashComponent> ent, ref MeleeHitEvent args)
@@ -218,6 +247,13 @@ public abstract partial class SharedFlashSystem : EntitySystem
         bool melee = false,
         TimeSpan? stunDuration = null)
     {
+		// Startlight - Start - Resomi Flash Vulnerability
+        if (TryComp<FlashModifierComponent>(target, out var CompUser))
+        {
+            flashDuration *= CompUser.Modifier;
+        }
+		// Starlight - End - Resomi Flash Vulnerability
+
         var attempt = new FlashAttemptEvent(target, user, used);
         RaiseLocalEvent(target, ref attempt, true);
 
@@ -284,4 +320,56 @@ public abstract partial class SharedFlashSystem : EntitySystem
 
         _audio.PlayPredicted(sound, source, user, AudioParams.Default.WithVolume(1f).WithMaxDistance(3f));
     }
+
+    // Moffstation - Start - Night Vision blocked by flash immunity
+    private void OnDidEquip(DidEquipEvent args)
+    {
+        if (!IsFlashImmune(args.EquipTarget))
+            return;
+
+        var ev = new FlashImmunityChangedEvent(true);
+        RaiseLocalEvent(args.EquipTarget, ref ev);
+    }
+
+    private void OnDidUnequip(DidUnequipEvent args)
+    {
+        if (IsFlashImmune(args.EquipTarget))
+            return;
+
+        var ev = new FlashImmunityChangedEvent(false);
+        RaiseLocalEvent(args.EquipTarget, ref ev);
+    }
+
+    // Handle cases where toggling a mask also toggles flash immunity.
+    private void OnItemMaskToggled(Entity<FlashImmunityComponent> entity, ref ItemMaskToggledEvent args)
+    {
+        if (!_inventory.TryGetContainingSlot(entity.Owner, out _) ||
+            !_container.TryGetContainingContainer(entity.Owner, out var container))
+            return;
+
+        var wearer = container.Owner;
+        var ev = new FlashImmunityChangedEvent(IsFlashImmune(wearer));
+        RaiseLocalEvent(wearer, ref ev);
+    }
+
+    private void OnFlashImmunityStartup(Entity<FlashImmunityComponent> entity, ref ComponentStartup args)
+    {
+        if (!entity.Comp.Enabled)
+            return;
+
+        var ev = new FlashImmunityChangedEvent(true);
+        RaiseLocalEvent(entity.Owner, ref ev);
+    }
+
+    private void OnFlashImmunityRemove(Entity<FlashImmunityComponent> entity, ref ComponentRemove args)
+    {
+        if (!entity.Comp.Enabled ||
+            // If we still can't be flashed after removing the component, there's no change.
+            IsFlashImmune(entity))
+            return;
+
+        var ev = new FlashImmunityChangedEvent(false);
+        RaiseLocalEvent(entity.Owner, ref ev);
+    }
+    // Moffstation - End
 }

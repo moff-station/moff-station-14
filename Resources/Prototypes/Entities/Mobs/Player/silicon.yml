@@ -35,6 +35,7 @@
     actions:
     - ActionJumpToCore
     - ActionAIViewLaws
+    - ActionToggleAiShellControllerUi # Moffstation - Ai Shells
   - type: UserInterface
     interfaces:
       enum.RadarConsoleUiKey.Key:
@@ -47,6 +48,10 @@
         type: SiliconLawBoundUserInterface
       enum.CommunicationsConsoleUiKey.Key:
         type: CommunicationsConsoleBoundUserInterface
+      # Moffstation - Begin - Ai Shells
+      enum.ShellUiKey.Key:
+        type: AiShellControllerBoundUserInterface
+      # Moffstation - Ai Shells- End
   - type: IntrinsicUI
     uis:
       enum.RadarConsoleUiKey.Key:
@@ -57,7 +62,15 @@
         toggleAction: ActionAGhostShowStationRecords
       enum.CommunicationsConsoleUiKey.Key:
         toggleAction: ActionAGhostShowCommunications
+  # Moffstation - Begin - Ai warp
+  - type: Warp
+  - type: NavMapWarp
+  - type: RadioWarp
+  # Moffstation - End
   - type: CrewMonitoringConsole
+    sensorTypes: # Moffstation - Borg sensors
+    - SuitSensor
+    - NTBorgSensor
   - type: GeneralStationRecordConsole
   - type: DeviceNetwork
     deviceNetId: Wireless
@@ -253,7 +266,7 @@
   - type: InteractionOutline
   - type: Sprite
     snapCardinals: true
-    sprite: Mobs/Silicon/station_ai.rsi
+    sprite: _Moffstation/Mobs/Silicon/StationAi/station_ai_core.rsi # Moffstation
     layers:
     - state: base
     - state: ai_empty
@@ -350,7 +363,7 @@
   - type: Rotatable
   - type: Sprite
     snapCardinals: true
-    sprite: Mobs/Silicon/station_ai.rsi
+    sprite: _Moffstation/Mobs/Silicon/StationAi/station_ai_core.rsi # Moffstation
     layers:
     - state: frame_0
       map: [ "enum.ConstructionVisuals.Layer" ]
@@ -412,7 +425,7 @@
 # The actual brain inside the core
 - type: entity
   id: StationAiBrain
-  parent: PositronicBrain
+  parent: PositronicBrain # Moffstation - let them be ion'd!
   categories: [ HideSpawnMenu, DoNotMap ]
   components:
   - type: Sprite
@@ -424,11 +437,16 @@
   - type: ActionGrant
     actions:
     - ActionViewLaws
+    - ActionToggleAiShellControllerUi # Moffstation - Ai Shells
   - type: UserInterface
     interfaces:
       enum.SiliconLawsUiKey.Key:
         type: SiliconLawBoundUserInterface
         requireInputValidation: false
+      # Moffstation - Begin - Ai Shells
+      enum.ShellUiKey.Key:
+        type: AiShellControllerBoundUserInterface
+      # Moffstation - End
   - type: ComplexInteraction
   - type: Actions
   - type: Access
@@ -451,6 +469,7 @@
     - HideContextMenu
     - StationAi
     - NoConsoleSound
+    - CanPilot # Moffstation - Expanded Ai Whitelist
   - type: StartingMindRole
     mindRole: "MindRoleSiliconBrain"
     silent: true
@@ -460,7 +479,7 @@
       StationAiHolograms: StationAiHologramFemale
   - type: HolographicAvatar
     layerData:
-    - sprite: Mobs/Silicon/holograms.rsi
+    - sprite: _Moffstation/Mobs/Silicon/holograms.rsi # Moffstation
       state: ai_female
   - type: NameIdentifier
     group: StationAi
@@ -471,6 +490,16 @@
     mindRoles:
     - MindRoleGhostRoleSilicon
     job: StationAi
+  # Moffstation - Begin - Ai Shells
+  - type: AiShellController
+  - type: ActionsContainer
+  - type: ContainerContainer
+    containers:
+      actions: !type:Container
+        showEnts: False
+        occludes: True
+        ents: []
+  # Moffstation - End
 
 # Hologram projection that the AI's eye tracks.
 - type: entity
@@ -500,7 +529,7 @@
   - type: Visibility
     layer: 2
   - type: Sprite
-    sprite: Mobs/Silicon/station_ai.rsi
+    sprite: _Moffstation/Mobs/Silicon/StationAi/station_ai_core.rsi # Moffstation
     layers:
     - state: ai_camera
       shader: unshaded
@@ -534,10 +563,12 @@
   parent: BorgChassisSelectable
   suffix: Battery
   components:
-  - type: ContainerFill
-    containers:
-      borg_brain:
-      - PositronicBrain
+  # Moffstation - Begin - Borg brain loadout
+  #- type: ContainerFill
+  #  containers:
+  #    borg_brain:
+  #    - PositronicBrain
+  # Moffstation - End
   - type: ItemSlots
     slots:
       cell_slot:
@@ -556,7 +587,7 @@
   - type: ContainerFill
     containers:
       borg_brain:
-        - PositronicBrain
+        - PositronicBrainSyndicate
       borg_module:
         - BorgModuleOperative
         - BorgModuleL6C
@@ -640,7 +671,7 @@
   - type: ContainerFill
     containers:
       borg_brain:
-      - PositronicBrain
+      - PositronicBrainIonStormed
       borg_module:
       - BorgModulePrying
       - BorgModuleTool
@@ -648,6 +679,7 @@
       - BorgModuleConstruction
       - BorgModuleRCD
       - BorgModuleCable
+      - BorgModuleGravity # Moffstation - Magboots module
   - type: ItemSlots
     slots:
       cell_slot:
@@ -679,7 +711,7 @@
   - type: ContainerFill
     containers:
       borg_brain:
-        - PositronicBrain
+        - PositronicBrainIonStormed
       borg_module:
         - BorgModulePrying
         - BorgModuleTool
@@ -715,7 +747,7 @@
   - type: ContainerFill
     containers:
       borg_brain:
-      - PositronicBrain
+      - PositronicBrainIonStormed
       borg_module:
       - BorgModulePrying
       - BorgModuleTool
@@ -753,7 +785,7 @@
   - type: ContainerFill
     containers:
       borg_brain:
-      - PositronicBrain
+      - PositronicBrainIonStormed
       borg_module:
       - BorgModulePrying
       - BorgModuleTool
@@ -792,13 +824,14 @@
   - type: ContainerFill
     containers:
       borg_brain:
-      - PositronicBrain
+      - PositronicBrainIonStormed
       borg_module:
       - BorgModulePrying
       - BorgModuleTool #No fire extinguisher, traversal is better
       - BorgModuleMining
       - BorgModuleTraversal
       - BorgModuleAppraisal
+      - BorgModuleGravity # Moffstation - Magboots module
   - type: ItemSlots
     slots:
       cell_slot:
@@ -830,7 +863,7 @@
   - type: ContainerFill
     containers:
       borg_brain:
-      - PositronicBrain
+      - PositronicBrainSyndicateIonStormed
       borg_module:
       - BorgModuleOperative
       - BorgModuleC20r

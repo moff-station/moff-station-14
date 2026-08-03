@@ -13,7 +13,9 @@ public sealed partial class IFFConsoleWindow : FancyWindow,
     IComputerWindow<IFFConsoleBoundUserInterfaceState>
 {
     private readonly ButtonGroup _showIFFButtonGroup = new();
+    private readonly ButtonGroup _showVesselButtonGroup = new(); // Moffstation - Revert IFF changes
     public event Action<bool>? ShowIFF;
+    public event Action<bool>? ShowVessel; // Moffstation - Revert IFF changes
 
     public IFFConsoleWindow()
     {
@@ -22,6 +24,13 @@ public sealed partial class IFFConsoleWindow : FancyWindow,
         ShowIFFOnButton.Group = _showIFFButtonGroup;
         ShowIFFOnButton.OnPressed += args => ShowIFFPressed(true);
         ShowIFFOffButton.OnPressed += args => ShowIFFPressed(false);
+
+        // Moffstation - Start - Revert IFF changes
+        ShowVesselOffButton.Group = _showVesselButtonGroup;
+        ShowVesselOnButton.Group = _showVesselButtonGroup;
+        ShowVesselOnButton.OnPressed += args => ShowVesselPressed(true);
+        ShowVesselOffButton.OnPressed += args => ShowVesselPressed(false);
+        // Moffstation - End
     }
 
     private void ShowIFFPressed(bool pressed)
@@ -29,14 +38,21 @@ public sealed partial class IFFConsoleWindow : FancyWindow,
         ShowIFF?.Invoke(pressed);
     }
 
+    // Moffstation - Start - Revert IFF changes
+    private void ShowVesselPressed(bool pressed)
+    {
+        ShowVessel?.Invoke(pressed);
+    }
+    // Moffstation - End - Revert IFF changes
+
     public void UpdateState(IFFConsoleBoundUserInterfaceState state)
     {
-        if ((state.AllowedFlags & IFFFlags.HideLabel) != 0x0 || (state.AllowedFlags & IFFFlags.Hide) != 0x0)
+        if ((state.AllowedFlags & IFFFlags.HideLabel) != 0x0) // Moffstation - Revert IFF changes
         {
             ShowIFFOffButton.Disabled = false;
             ShowIFFOnButton.Disabled = false;
 
-            if ((state.Flags & IFFFlags.HideLabel) != 0x0 || (state.Flags & IFFFlags.Hide) != 0x0)
+            if ((state.Flags & IFFFlags.HideLabel) != 0x0) // Moffstation - Revert IFF changes
             {
                 ShowIFFOffButton.Pressed = true;
             }
@@ -50,5 +66,27 @@ public sealed partial class IFFConsoleWindow : FancyWindow,
             ShowIFFOffButton.Disabled = true;
             ShowIFFOnButton.Disabled = true;
         }
+
+        // Moffstation - Start - Revert IFF changes
+        if ((state.AllowedFlags & IFFFlags.Hide) != 0x0)
+        {
+            ShowVesselOffButton.Disabled = false;
+            ShowVesselOnButton.Disabled = false;
+
+            if ((state.Flags & IFFFlags.Hide) != 0x0)
+            {
+                ShowVesselOffButton.Pressed = true;
+            }
+            else
+            {
+                ShowVesselOnButton.Pressed = true;
+            }
+        }
+        else
+        {
+            ShowVesselOffButton.Disabled = true;
+            ShowVesselOnButton.Disabled = true;
+        }
+        // Moffstation - End
     }
 }

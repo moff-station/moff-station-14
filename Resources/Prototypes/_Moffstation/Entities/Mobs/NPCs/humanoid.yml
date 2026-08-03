@@ -1,0 +1,59 @@
+- type: entity
+  id: MobWildHumanoid
+  abstract: true
+  components:
+  - type: RandomHumanoidAppearance
+  - type: RandomMetadata
+    nameSegments:
+    - NamesDeathCommandoFirst
+    - NamesDeathCommandoLast
+  - type: GhostRole
+    makeSentient: true
+    name: ghost-role-information-wild-human-name
+    description: ghost-role-information-wild-human-description
+    rules: ghost-role-information-freeagent-rules
+    mindRoles:
+    - MindRoleGhostRoleFreeAgent
+    raffle:
+      settings: default
+  - type: GhostTakeoverAvailable
+  - type: InputMover
+  - type: MobMover
+  - type: HTN
+    rootTask:
+      task: SimpleHumanoidHostileCompound
+    blackboard:
+      NavClimb: !type:Bool
+        true
+      NavInteract: !type:Bool
+        true
+      NavPry: !type:Bool
+        true
+      NavSmash: !type:Bool
+        true
+  - type: NPCRetaliation
+  - type: FactionException
+  - type: NpcFactionMember
+    factions:
+    - Passive
+
+- type: entity
+  id: MobWildHuman
+  parent: [ MobHuman, MobWildHumanoid ]
+  components:
+  - type: MonkeyAccent
+
+
+- type: entity
+  id: MobWildReptilian
+  parent: [ MobReptilian, MobWildHumanoid ]
+  components:
+  - type: ReplacementAccent
+    accent: kobold
+
+- type: entity
+  id: MobWildSlimePerson
+  parent: [ MobSlimePerson, MobWildHumanoid ]
+  components:
+  - type: ReplacementAccent
+    accent: slimes

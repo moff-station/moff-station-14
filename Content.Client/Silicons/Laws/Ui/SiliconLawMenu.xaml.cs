@@ -4,6 +4,7 @@ using Content.Client.UserInterface.Controls;
 using Content.Shared.ActionBlocker;
 using Content.Shared.Chat;
 using Content.Shared.Radio;
+using Content.Shared.Radio.Components;
 using Content.Shared.Silicons.Laws;
 using Content.Shared.Silicons.Laws.Components;
 using Content.Shared.Speech;
@@ -26,6 +27,8 @@ public sealed partial class SiliconLawMenu : FancyWindow
     [Dependency] private EntityManager _entityManager = default!;
     [Dependency] private IRobustRandom _random = default!;
 
+    private readonly SharedSiliconLawSystem _lawSystem;
+
     private static readonly TimeSpan AnnounceBaseCooldown = TimeSpan.FromSeconds(1);
     private static readonly float MinChatCooldown = 1;
     private static readonly float MaxChatCooldown = 2;
@@ -47,6 +50,8 @@ public sealed partial class SiliconLawMenu : FancyWindow
         RobustXamlLoader.Load(this);
         IoCManager.InjectDependencies(this);
 
+        _lawSystem = _entityManager.System<SiliconLawSystem>();
+
         LawChatChannelOption.OnItemSelected += OnLawChatChannelSelected;
         LawSelectAllButton.OnPressed += _ => OnMassSelectPressed(true);
         LawSelectNoneButton.OnPressed += _ => OnMassSelectPressed(false);
@@ -61,7 +66,7 @@ public sealed partial class SiliconLawMenu : FancyWindow
         LawAnnounceButton.Disabled = curTime < _nextAllowedAnnouncePress;
         // Don't want to change the channel while currently announcing laws
         LawChatChannelOption.Disabled = curTime < _nextAllowedAnnouncePress;
-        
+
         // Announce laws
         // Skip if no queued laws or delay still active
         if (_queuedLaws.Count < 1 || _queuedLaws.Peek().announceTime > curTime)
@@ -93,13 +98,17 @@ public sealed partial class SiliconLawMenu : FancyWindow
         }
     }
 
-    public void Update(EntityUid uid, SiliconLawBuiState state)
+    public void Update(EntityUid uid)
     {
         _owner = uid;
+        var laws = _lawSystem.GetBoundLaws(uid);
 
-        state.Laws.Sort();
+        laws.Laws.Sort();
         LawDisplayContainer.Children.Clear();
-        Version.Text = Loc.GetString("laws-window-footer-right", ("version", state.Version));
+        if (_lawSystem.GetVersion(uid) is {} version )
+        {
+            Version.Text = Loc.GetString("laws-window-footer-right", ("version", version));
+        }
 
         LawChatChannelOption.Clear();
         foreach (var chatChannel in SelectableChatChannels)
@@ -107,21 +116,21 @@ public sealed partial class SiliconLawMenu : FancyWindow
             LawChatChannelOption.AddItem(chatChannel.ToString());
         }
 
-        if (state.RadioChannels is not null)
+        var channels = _entityManager.TryGetComponent<IntrinsicRadioTransmitterComponent>(uid, out var radio)
+            ? new PrototypeFlags<RadioChannelPrototype>(radio.Channels.Select(it => it.Id))
+            : [];
+        foreach (var radioChannel in channels)
         {
-            foreach (var radioChannel in state.RadioChannels)
-            {
-                if (!_prototypeManager.TryIndex(radioChannel, out var radioChannelProto))
-                    continue;
+            if (!_prototypeManager.TryIndex<RadioChannelPrototype>(radioChannel, out var radioChannelProto))
+                continue;
 
-                _selectableRadioChannels.Add(radioChannelProto);
-                LawChatChannelOption.AddItem(Loc.GetString(radioChannelProto.Name));
-            }
+            _selectableRadioChannels.Add(radioChannelProto);
+            LawChatChannelOption.AddItem(Loc.GetString(radioChannelProto.Name));
         }
 
         LawChatChannelOption.Select(_selectedChatChannelIdx);
 
-        foreach (var law in state.Laws)
+        foreach (var law in laws.Laws)
         {
             var control = new LawDisplay(law);
             control.OnPressed += _ =>

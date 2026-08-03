@@ -281,9 +281,12 @@
   components:
   - type: EntityTableContainerFill
     containers:
-      entity_storage:
-        id: MobMothroach
-        amount: 4
+      # Moffstation - Start - Random mothroaches
+      entity_storage: !type:NestedSelector
+        tableId: RandomMothroach
+        rolls: !type:ConstantNumberSelector
+          value: 4
+      # Moffstation - End
 
 - type: entity
   parent: CrateLivestock

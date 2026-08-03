@@ -1,4 +1,5 @@
 using Content.Server.Medical.Components;
+using Content.Shared._Moffstation.Traits.Assorted;
 using Content.Shared.Body.Components;
 using Content.Shared.Chemistry.EntitySystems;
 using Content.Shared.Damage.Components;
@@ -236,6 +237,7 @@ public sealed partial class HealthAnalyzerSystem : EntitySystem
         var bloodAmount = float.NaN;
         var bleeding = false;
         var unrevivable = false;
+        var uncloneable = false; //moffstation change - uncloneable
 
         if (TryComp<BloodstreamComponent>(entity, out var bloodstream) &&
             _solutionContainerSystem.ResolveSolution(entity, bloodstream.BloodSolutionName,
@@ -248,13 +250,17 @@ public sealed partial class HealthAnalyzerSystem : EntitySystem
         if (TryComp<UnrevivableComponent>(entity, out var unrevivableComp) && unrevivableComp.Analyzable)
             unrevivable = true;
 
+        if (TryComp<UncloneableComponent>(target, out var uncloneableComp) && uncloneableComp.Analyzable) //Moffstation start - uncloneable
+            uncloneable = true; //Moffstation end - uncloneable
+
         return new HealthAnalyzerUiState(
             GetNetEntity(entity),
             bodyTemperature,
             bloodAmount,
             null,
             bleeding,
-            unrevivable
+            unrevivable,
+            uncloneable //Moffstation change - uncloneable
         );
     }
 }

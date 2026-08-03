@@ -27,9 +27,10 @@ DISCORD_SPLIT_LIMIT = 2000
 DISCORD_WEBHOOK_URL = os.environ.get("DISCORD_WEBHOOK_URL")
 TRUNCATION_SUFFIX = " [...]"
 
-CHANGELOG_FILE = "Resources/Changelog/Changelog.yml"
+CHANGELOG_FILE = "Resources/Changelog/Mofflog.yml"
 
-TYPES_TO_EMOJI = {"Fix": "🐛", "Add": "🆕", "Remove": "❌", "Tweak": "⚒️"}
+# moffstation - lowercase for changelog
+TYPES_TO_EMOJI = {"fix": "<:barry:1333171778872279153>", "add": ":new:", "remove": "<:killsmite:1322919674413056081>", "tweak": "<:godo:1378009287321976912>️"}
 
 EXPERIMENTAL_LABEL = "Intent: Experimental"
 EXPERIMENTAL_EMOJI = "🧪"
@@ -239,11 +240,11 @@ def changelog_entries_to_message_lines(entries: Iterable[ChangelogEntry]) -> lis
                 url = None
 
             for change in entry["changes"]:
-                emoji = TYPES_TO_EMOJI.get(change["type"], "❓")
+                emoji = TYPES_TO_EMOJI.get(change["type"].lower(), "❓") # moffstation - lower case
                 message = change["message"]
 
-                if EXPERIMENTAL_LABEL in entry["labels"]
-                emoji = f"{emoji}{EXPERIMENTAL_EMOJI}"
+                if EXPERIMENTAL_LABEL in entry["labels"]:
+                    emoji = f"{emoji}{EXPERIMENTAL_EMOJI}"
 
                 message_lines.append(create_change_line(emoji, message, url))
 

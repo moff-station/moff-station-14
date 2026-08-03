@@ -1,0 +1,106 @@
+- type: mapModification
+  id: MetaModificationsLaundry
+  applyOn:
+  - Meta
+  removals:
+  - !type:EntityPrototypeSelector
+    prototype: ClosetMaintenanceFilledRandom
+    bounds: "-11,-44,-5,-39"
+  - !type:EntityPrototypeSelector
+    prototype: ComfyChair
+    bounds: "-11,-44,-5,-39"
+  - !type:EntityPrototypeSelector
+    prototype: CigCartonRed
+    bounds: "-11,-44,-5,-39"
+  - !type:EntityPrototypeSelector
+    prototype: CigCartonGreen
+    bounds: "-11,-44,-5,-39"
+  - !type:EntityPrototypeSelector
+    prototype: CigCartonBlack
+    bounds: "-11,-44,-5,-39"
+  - !type:EntityPrototypeSelector
+    prototype: CigCartonBlue
+    bounds: "-11,-44,-5,-39"
+  - !type:EntityPrototypeSelector
+    prototype: CigPackRed
+    bounds: "-11,-44,-5,-39"
+  - !type:EntityPrototypeSelector
+    prototype: CigPackBlue
+    bounds: "-11,-44,-5,-39"
+  - !type:EntityPrototypeSelector
+    prototype: CigPackGreen
+    bounds: "-11,-44,-5,-39"
+  - !type:EntityPrototypeSelector
+    prototype: CigPackBlack
+    bounds: "-11,-44,-5,-39"
+  - !type:EntityPrototypeSelector
+    prototype: Paper
+    bounds: "-11,-44,-5,-39"
+  - !type:EntityPrototypeSelector
+    prototype: CrateServiceCustomSmokable
+    bounds: "-11,-44,-5,-39"
+  - !type:EntityPrototypeSelector
+    prototype: VendingMachineCigs
+    bounds: "-11,-44,-5,-39"
+  - !type:EntityPrototypeSelector
+    prototype: ShuttersNormal
+    bounds: "-11,-44,-5,-39"
+  - !type:EntityPrototypeSelector
+    prototype: SignalButton
+    bounds: "-11,-44,-5,-39"
+  - !type:EntityPrototypeSelector
+    prototype: ButtonFrameCaution
+    bounds: "-11,-44,-5,-39"
+  - !type:EntityPrototypeSelector
+    prototype: Table
+    bounds: "-6,-44,-3,-39"
+  - !type:EntityPrototypeSelector
+    prototype: StoolBar
+    bounds: "-6,-44,-3,-39"
+  - !type:EntityPrototypeSelector
+    prototype: WallSolid
+    bounds: "-6,-43,-5,-42"
+  additions:
+    # Add the actual Laundromat
+  - prototype: WashingMachine
+    position: -8.5, -40.5
+  - prototype: WashingMachine
+    position: -9.5, -40.5
+  - prototype: SignLaundromat
+    position: -5.5, -39.5
+  - prototype: DefaultStationBeaconLaundromat
+    position: -7.5, -40.5
+    # Additional Visual Improvements
+  - prototype: ClosetMaintenanceFilledRandom
+    position: -8.5, -38.5
+  - prototype: Grille
+    position: -5.5, -40.5
+  - prototype: ReinforcedWindow
+    position: -5.5, -40.5
+  - prototype: Grille
+    position: -5.5, -42.5
+  - prototype: ReinforcedWindow
+    position: -5.5, -42.5
+  - prototype: Airlock
+    position: -5.5, -41.5
+  - prototype: SpaceVillainArcadeFilled
+    position: -6.5, -42.5
+    rotation: 270
+  - prototype: Stool
+    position: -7.5, -42.5
+    rotation: 90
+  - prototype: Stool
+    position: -9.5, -41.5
+    rotation: 90
+  - prototype: Rack
+    position: -6.5, -40.5
+  - prototype: RandomSoap
+    position: -6.5, -40.5
+  - prototype: DrinkTeapot
+    position: -9.6, -42.1
+  - prototype: DrinkTeacupEmpty
+    position: -9.44, -42.59
+  - prototype: DrinkTeacupEmpty
+    position: -9.17, -42.35
+  - prototype: FoodBoxDonut
+    position: -8.5, -42.3

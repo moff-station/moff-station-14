@@ -101,7 +101,10 @@ public sealed partial class CargoOrderConsoleComponent : Component
     /// <summary>
     /// Secondary radio channel which always receives order announcements.
     /// </summary>
-    public static readonly ProtoId<RadioChannelPrototype> BaseAnnouncementChannel = "Supply";
+    // Moffstation - Start - Changed from static to a datafield so we can change it for pirates
+    [DataField]
+    public ProtoId<RadioChannelPrototype> BaseAnnouncementChannel = "Supply";
+    // Moffstation - End
 
     /// <summary>
     /// The behaviour of the cargo console regarding orders

@@ -1,6 +1,6 @@
 - type: entity
   abstract: true
-  parent: [SolutionFood, SolutionToolSmall, Clothing]
+  parent: [SolutionFood, SolutionToolSmall, Clothing, MoffStainableClothingBase] # Moffstation - mixed in MoffStainableClothingBase
   id: ClothingHeadBase
   components:
   - type: Clothing
@@ -22,6 +22,16 @@
     tags:
     - ClothMade
     - WhitelistChameleon
+  # Forky - start - clothing stains
+  - type: Stainable
+    clothingVisuals:
+      head:
+      - sprite: _Funkystation/Effects/blood.rsi
+        state: helmetblood
+    iconVisuals:
+    - sprite: _Funkystation/Effects/blood.rsi
+      state: helmetbloodicon
+  # Forky - end
 
 - type: entity
   abstract: true
@@ -65,7 +75,7 @@
     enabled: false
     radius: 3
     energy: 1
-    mask: /Textures/Effects/LightMasks/cone.png
+    lightMask: ConeSingle
     autoRot: true
     netsync: false
   - type: Appearance
@@ -135,10 +145,14 @@
     - HeadTop
     - HeadSide
     - FacialHair
+  # Forky - start - clothing stains
+  - type: StainBlocker
+    slots: [MASK]
+  # Forky - End
 
 - type: entity
   abstract: true
-  parent: TemperatureProtection
+  parent: [ TemperatureProtection, MoffStainableClothingBase ] # Moffstation - mixed in MoffStainableClothingBase
   id: ClothingHeadHardsuitBase
   name: base hardsuit helmet
   categories: [ HideSpawnMenu ]
@@ -181,6 +195,18 @@
     - HeadTop
     - HeadSide
     - FacialHair
+  # Forky - start - clothing stains
+  - type: Stainable
+    clothingVisuals:
+      head:
+      - sprite: _Funkystation/Effects/blood.rsi
+        state: helmetblood
+    iconVisuals:
+    - sprite: _Funkystation/Effects/blood.rsi
+      state: helmetbloodicon
+  - type: StainBlocker
+    slots: [MASK]
+  # Forky - end
 
 - type: entity
   abstract: true
@@ -213,7 +239,7 @@
     enabled: false
     radius: 3
     energy: 2
-    mask: /Textures/Effects/LightMasks/cone.png
+    lightMask: ConeSingle
     autoRot: true
     netsync: false
   - type: Appearance
@@ -246,7 +272,7 @@
 
 - type: entity
   abstract: true
-  parent: TemperatureProtectionMinimal
+  parent: [ TemperatureProtectionMinimal, MoffStainableClothingBase ] # Moffstation - mixed in MoffStainableClothingBase
   id: ClothingHeadHatHoodWinterBase
   name: base winter coat hood
   description: A hood, made to keep your head warm.
@@ -271,3 +297,13 @@
     - Hair
     - HeadTop
     - HeadSide
+  # Forky - start - clothing stains
+  - type: Stainable
+    clothingVisuals:
+      head:
+      - sprite: _Funkystation/Effects/blood.rsi
+        state: helmetblood
+    iconVisuals:
+    - sprite: _Funkystation/Effects/blood.rsi
+      state: helmetbloodicon
+  # Forky - end

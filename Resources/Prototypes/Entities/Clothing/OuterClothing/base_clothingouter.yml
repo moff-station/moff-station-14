@@ -1,6 +1,6 @@
 - type: entity
   abstract: true
-  parent: Clothing
+  parent: [ Clothing, MoffStainableClothingBase ] # Moffstation - mixed in MoffStainableClothingBase
   id: ClothingOuterBase
   components:
   - type: Clothing
@@ -8,6 +8,25 @@
     - outerClothing
   - type: Sprite
     state: icon
+  # Forky - start - clothing stains
+  - type: Stainable
+    clothingVisuals:
+      outerClothing:
+      - sprite: _Funkystation/Effects/blood.rsi
+        state: outerclothing
+    iconVisuals:
+    - sprite: _Funkystation/Effects/blood.rsi
+      state: outerclothing
+  - type: Solution
+    id: food
+    solution:
+      maxVol: 30
+      reagents:
+      - ReagentId: Fiber
+        Quantity: 30
+  - type: StainBlocker
+    slots: [INNERCLOTHING]
+  # Forky - end
 
 - type: entity
   abstract: true
@@ -23,6 +42,18 @@
     walkModifier: 0.9
     sprintModifier: 0.9
   - type: HeldSpeedModifier
+  # Forky - start - clothing stains
+  - type: Stainable
+    clothingVisuals:
+      outerClothing:
+      - sprite: _Funkystation/Effects/blood.rsi
+        state: suitblood
+    iconVisuals:
+    - sprite: _Funkystation/Effects/blood.rsi
+      state: suitbloodicon
+  - type: StainBlocker
+    slots: [INNERCLOTHING, FEET, GLOVES]
+  # Forky - end
 
 - type: entity
   abstract: true
@@ -60,6 +91,16 @@
         type: StorageBoundUserInterface
   - type: StaticPrice
     price: 70
+  # Forky - start - clothing stains
+  - type: Stainable
+    clothingVisuals:
+      outerClothing:
+      - sprite: _Funkystation/Effects/blood.rsi
+        state: coatblood
+    iconVisuals:
+    - sprite: _Funkystation/Effects/blood.rsi
+      state: coatbloodicon
+    # Forky - end
 
 - type: entity
   abstract: true
@@ -81,7 +122,7 @@
 
 - type: entity
   abstract: true
-  parent: [ClothingOuterStorageBase, BaseFoldable]
+  parent: [ClothingOuterStorageSuitStorageAttachableBase, BaseFoldable] # Moffstation - Attachable suit storage
   id: ClothingOuterStorageFoldableBase
   components:
   - type: Foldable
@@ -98,6 +139,23 @@
     - state: icon-open
       map: ["foldedLayer"]
       visible: false
+  # Moffstation - Begin - Merge container definitions for attachable suit storage
+  - type: ContainerContainer
+    containers:
+      storagebase: !type:Container
+        ents: [ ]
+      suit-storage-attachment: !type:ContainerSlot { }
+  # Moffstation - End
+  # Forky - start - clothing stains
+  - type: Stainable
+    clothingVisuals:
+      outerClothing:
+      - sprite: _Funkystation/Effects/blood.rsi
+        state: outerclothing
+    iconVisuals:
+    - sprite: _Funkystation/Effects/blood.rsi
+      state: outerclothing
+  # Forky - end
 
 - type: entity
   abstract: true
@@ -159,6 +217,10 @@
   - type: HideLayerClothing
     slots:
     - Tail
+  # Forky - start - clothing stains
+  - type: StainBlocker
+    slots: [INNERCLOTHING, FEET, GLOVES]
+  # Forky - end
 
 - type: entity
   abstract: true

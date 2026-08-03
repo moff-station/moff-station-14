@@ -41,6 +41,12 @@ namespace Content.IntegrationTests.Tests
         private const bool SkipTestMaps = true;
         private const string TestMapsPath = "/Maps/Test/";
 
+        // Moffstation - Whitelist for jobs that don't need to be mapped
+        private static readonly ProtoId<JobPrototype>[] NoSpawnJobs =
+        [
+            "Prisoner",
+        ];
+
         private static readonly string[] NoSpawnMaps =
         {
             "CentComm",
@@ -69,6 +75,16 @@ namespace Content.IntegrationTests.Tests
             {"/Maps/Shuttles/ShuttleEvent/syndie_evacpod.yml", ["RubberStampSyndicate"]},
             {"/Maps/Shuttles/ShuttleEvent/cruiser.yml", ["ShuttleGunPerforator"]},
             {"/Maps/Shuttles/ShuttleEvent/instigator.yml", ["ShuttleGunFriendship"]},
+            // Moffstation - Start
+            {"/Maps/_Moffstation/Shuttles/shuttle-nt-grimebreaker.yml", ["ClosetJanitorBombFilled", "ShuttleGunFriendship"]},
+            {"/Maps/_Moffstation/PreCrewed/shuttle-nt-grimebreaker.yml", ["ClosetJanitorBombFilled", "ShuttleGunFriendship"]},
+            {"/Maps/_Moffstation/Shuttles/shuttle-nt-businessclass.yml", ["BoxFolderCentCom"]},
+            {"/Maps/_Moffstation/Shuttles/shuttle-nt-gunboat.yml", ["ShuttleGunDuster", "ShuttleGunPerforator"]},
+            {"/Maps/_Moffstation/PreCrewed/shuttle-nt-gunboat.yml", ["ShuttleGunDuster", "ShuttleGunPerforator"]},
+            {"/Maps/_Moffstation/Nonstations/d1_logic.yml", ["ShuttleGunSvalinnMachineGun"]},
+            {"/Maps/_Moffstation/frezon.yml", ["HandheldCrewMonitor"]},
+            {"/Maps/_Moffstation/skeld.yml", ["ShuttleGunDuster"]},
+            // Moffstation - End
         };
 
         /// <summary>
@@ -81,7 +97,21 @@ namespace Content.IntegrationTests.Tests
         private static readonly string[] DoNotMapWhitelist =
         {
             "/Maps/centcomm.yml",
-            "/Maps/Shuttles/AdminSpawn/**" // admin gaming
+            "/Maps/_Moffstation/centcomm.yml", // Moff Centcomm
+            "/Maps/_Umbra/Misc/terminal.yml",  // Umbra Arrivals
+            "/Maps/Shuttles/AdminSpawn/**", // admin gaming
+            "/Maps/bagel.yml", // Contains mime's rubber stamp --> Either fix this, remove the category, or remove this comment if intentional.
+            "/Maps/reach.yml", // Contains handheld crew monitor
+            "/Maps/Shuttles/ShuttleEvent/cruiser.yml", // Contains LSE-1200c "Perforator"
+            "/Maps/Shuttles/ShuttleEvent/honki.yml", // Contains golden honker, clown's rubber stamp
+            "/Maps/Shuttles/ShuttleEvent/instigator.yml", // Contains EXP-320g "Friendship"
+            "/Maps/Shuttles/ShuttleEvent/syndie_evacpod.yml", // Contains syndicate rubber stamp
+            "/Maps/_Moffstation/Shuttles/shuttle-nt-grimebreaker.yml", // Contains EXP-320g "Friendship"
+            "/Maps/_Moffstation/PreCrewed/shuttle-nt-grimebreaker.yml", // Variant of grimebreaker
+            "/Maps/_Moffstation/Shuttles/shuttle-nt-businessclass.yml", // Contains CentComm folder
+            "/Maps/_Moffstation/frezon.yml", // Contains handheld crew monitor & other head of staff items
+            "/Maps/_Moffstation/Nonstations/d1_logic.yml", // Contains LSE-400c "Svalinn machine gun" defanged and renamed
+            "/Maps/_Moffstation/ossuary.yml" // Contains head of staff items
         };
 
         /// <summary>
@@ -409,6 +439,8 @@ namespace Content.IntegrationTests.Tests
                     // This is done inside gamemap test because loading the map takes ages and we already have it.
                     var comp = entManager.GetComponent<StationJobsComponent>(station);
                     var jobs = new HashSet<ProtoId<JobPrototype>>(comp.SetupAvailableJobs.Keys);
+
+                    jobs.ExceptWith(NoSpawnJobs);   // Moffstation - filter out our custom jobs
 
                     var spawnPoints = entManager.EntityQuery<SpawnPointComponent>()
                         .Where(x => x.SpawnType == SpawnPointType.Job && x.Job != null)

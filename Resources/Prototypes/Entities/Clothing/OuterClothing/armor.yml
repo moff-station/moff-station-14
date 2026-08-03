@@ -23,6 +23,16 @@
         Heat: 0.80
   - type: ExplosionResistance
     damageCoefficient: 0.90
+  # Forky - Start - Clothing stains
+  - type: Stainable
+    clothingVisuals:
+      outerClothing:
+      - sprite: _Funkystation/Effects/blood.rsi
+        state: armorblood
+    iconVisuals:
+    - sprite: _Funkystation/Effects/blood.rsi
+      state: armorbloodicon
+  # Forky - End
 
 #Standard armor vest, allowed for security only
 - type: entity
@@ -97,9 +107,9 @@
   description: A hard-boiled private investigator's armored vest.
   components:
   - type: Sprite
-    sprite: Clothing/OuterClothing/Vests/detvest.rsi
+    sprite: _Moffstation/Clothing/OuterClothing/Armor/detvest.rsi #  sprite: Clothing/OuterClothing/Vests/detvest.rsi  Moffstation - (New Detective Outfits)
   - type: Clothing
-    sprite: Clothing/OuterClothing/Vests/detvest.rsi
+    sprite: _Moffstation/Clothing/OuterClothing/Armor/detvest.rsi #  sprite: Clothing/OuterClothing/Vests/detvest.rsi  Moffstation - (New Detective Outfits)
 
 - type: entity
   parent: [ ClothingOuterBaseMedium, AllowSuitStorageClothing ]
@@ -123,9 +133,9 @@
   description: An armored chestpiece that provides protection whilst still offering maximum mobility and flexibility. Issued only to the station's finest.
   components:
   - type: Sprite
-    sprite: Clothing/OuterClothing/Armor/captain_carapace.rsi
+    sprite: _Moffstation/Clothing/OuterClothing/Armor/captain_carapace.rsi # Moffstation - Command Outfit Resprite
   - type: Clothing
-    sprite: Clothing/OuterClothing/Armor/captain_carapace.rsi
+    sprite: _Moffstation/Clothing/OuterClothing/Armor/captain_carapace.rsi # Moffstation - Command Outfit Resprite
   - type: Tag
     tags:
     - WhitelistChameleon
@@ -143,7 +153,7 @@
 
 #Web vest
 - type: entity
-  parent: [ClothingOuterArmorBase, ClothingOuterStorageBase, BaseSyndicateContraband]
+  parent: [ BaseSyndicateContraband, ClothingOuterArmorBase, ClothingOuterStorageBase ] # Moffstation - Fix contra status
   id: ClothingOuterVestWeb
   name: web vest
   description: A synthetic armor vest. This one has added webbing and ballistic plates.
@@ -257,7 +267,7 @@
     color: "#80ff80"
     radius: 5
     energy: 2
-    mask: /Textures/Effects/LightMasks/cone.png
+    lightMask: ConeSingle
     autoRot: true
     netsync: false
   - type: LightBehaviour

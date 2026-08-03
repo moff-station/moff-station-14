@@ -1,3 +1,4 @@
+using System.Globalization;
 using System.Linq;
 using Content.Client.UserInterface.Systems.Guidebook;
 using Content.Shared.Chat.Prototypes;
@@ -165,6 +166,31 @@ public sealed partial class HumanoidProfileEditor
         }
     }
 
+    // Moffstation Start - CD Height
+    private void UpdateHeightControls()
+    {
+        if (Profile == null)
+        {
+            return;
+        }
+
+        var species = _species.Find(x => x.ID == Profile.Species);
+        if (species != null)
+            _defaultHeight = species.DefaultHeight;
+
+        // This dirty hack deals with "uninitialized" height values. Without this, preexisting or weirdly imported
+        // characters' heights default to the minimum value on the slider.
+        if (Profile.Height == 0.0)
+            Profile.Height = _defaultHeight;
+
+        var prototype = _prototypeManager.Index(Profile.Species);
+        var sliderPercent = (Profile.Height - prototype.MinHeight) /
+                            (prototype.MaxHeight - prototype.MinHeight);
+        CDHeightSlider.Value = sliderPercent;
+        CDHeight.Text = Profile.Height.ToString(CultureInfo.InvariantCulture);
+    }
+    // Moffstation End
+
     private void UpdateSpawnPriorityControls()
     {
         if (Profile == null)
@@ -268,6 +294,15 @@ public sealed partial class HumanoidProfileEditor
         Profile = Profile?.WithGender(newGender);
         ReloadPreview();
     }
+
+    // Moffstation Start - CD Height
+    private void SetProfileHeight(float height)
+    {
+        Profile = Profile?.WithHeight(height);
+        SetDirty();
+        ReloadProfilePreview();
+    }
+    // Moffstation End
 
     private void SetSpawnPriority(SpawnPriorityPreference newSpawnPriority)
     {

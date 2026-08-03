@@ -24,6 +24,7 @@ using Robust.Shared.Timing;
 using Robust.Shared.Utility;
 using System.Linq;
 using Content.Shared.Power.EntitySystems;
+using Content.Server._Moffstation.Warp; // Moffstation - AI Warp
 
 namespace Content.Server.Holopad;
 
@@ -74,13 +75,14 @@ public sealed partial class HolopadSystem : SharedHolopadSystem
 
         // Misc events
         SubscribeLocalEvent<HolopadUserComponent, EmoteEvent>(OnEmote);
-        SubscribeLocalEvent<HolopadUserComponent, JumpToCoreEvent>(OnJumpToCore);
         SubscribeLocalEvent<HolopadComponent, GetVerbsEvent<AlternativeVerb>>(AddToggleProjectorVerb);
         SubscribeLocalEvent<HolopadComponent, EntRemovedFromContainerMessage>(OnAiRemove);
         SubscribeLocalEvent<HolopadComponent, MapUidChangedEvent>(OnMapUidChanged);
         SubscribeLocalEvent<HolopadComponent, PowerChangedEvent>(OnPowerChanged);
         SubscribeLocalEvent<HolopadComponent, AnchorStateChangedEvent>(OnAnchorChanged);
         SubscribeLocalEvent<HolopadUserComponent, MobStateChangedEvent>(OnMobStateChanged);
+
+        SubscribeLocalEvent<HolopadUserComponent, WarpEvent>(OnWarp); // Moffstation - AI warp
     }
 
     #region: Holopad UI bound user interface messages
@@ -388,19 +390,18 @@ public sealed partial class HolopadSystem : SharedHolopadSystem
         }
     }
 
-    private void OnJumpToCore(Entity<HolopadUserComponent> entity, ref JumpToCoreEvent args)
+    // Moffstation - Begin - Ai Warp
+    private void OnWarp(Entity<HolopadUserComponent> ent, ref WarpEvent ev)
     {
-        if (!TryComp<StationAiHeldComponent>(entity, out var entityStationAiHeld))
+        if (!ev.Success ||
+            !HasComp<StationAiHeldComponent>(ent) ||
+            !_stationAiSystem.TryGetCore(ent, out var aiCore) ||
+            !TryComp<TelephoneComponent>(aiCore, out var aiTelephone))
             return;
 
-        if (!_stationAiSystem.TryGetCore(entity, out var stationAiCore))
-            return;
-
-        if (!TryComp<TelephoneComponent>(stationAiCore, out var stationAiCoreTelephone))
-            return;
-
-        _telephoneSystem.EndTelephoneCalls((stationAiCore, stationAiCoreTelephone));
+        _telephoneSystem.EndTelephoneCalls((aiCore, aiTelephone));
     }
+    // Moffstation - End
 
     private void AddToggleProjectorVerb(Entity<HolopadComponent> entity, ref GetVerbsEvent<AlternativeVerb> args)
     {

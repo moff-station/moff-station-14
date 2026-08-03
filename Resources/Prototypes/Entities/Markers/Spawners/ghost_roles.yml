@@ -203,7 +203,7 @@
   - type: GhostRole
     name: ghost-role-information-paradox-clone-name
     description: ghost-role-information-paradox-clone-description
-    rules: ghost-role-information-antagonist-rules
+    rules: ghost-role-information-freeagent-rules # Moffstation - Free agent paradox clone
     mindRoles:
     - MindRoleParadoxClone
     raffle:
@@ -244,7 +244,7 @@
     sprite: Markers/jobs.rsi
     layers:
     - state: green
-    - sprite: Mobs/Silicon/chassis.rsi
+    - sprite: _Moffstation/Mobs/Silicon/Chassis/derelict.rsi # Moffstation - Early merge of Borg RSI fix
       state: derelict_icon
 
 - type: entity

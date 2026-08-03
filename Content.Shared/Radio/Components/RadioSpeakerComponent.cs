@@ -24,4 +24,9 @@ public sealed partial class RadioSpeakerComponent : Component
 
     [DataField, AutoNetworkedField]
     public bool Enabled;
+
+    // Moffstation - Start - Allow speech to be full volume
+    [DataField]
+    public bool LouderSpeech;
+    // Moffstation - End
 }

@@ -6,6 +6,8 @@ using Content.Shared.Preferences.Loadouts;
 using Content.Shared.Roles;
 using Content.Shared.Storage;
 using Content.Shared.Storage.EntitySystems;
+using Robust.Shared.Collections;
+using Robust.Shared.Containers;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 
@@ -19,6 +21,8 @@ public abstract partial class SharedStationSpawningSystem : EntitySystem
     [Dependency] private MetaDataSystem _metadata = default!;
     [Dependency] private SharedStorageSystem _storage = default!;
     [Dependency] private SharedTransformSystem _xformSystem = default!;
+
+    [Dependency] private SharedContainerSystem _container = default!; // Moffstation - Allow container gear
 
     [Dependency] private EntityQuery<HandsComponent> _handsQuery = default!;
     [Dependency] private EntityQuery<InventoryComponent> _inventoryQuery = default!;
@@ -47,6 +51,31 @@ public abstract partial class SharedStationSpawningSystem : EntitySystem
 
         EquipRoleName(entity, loadout, roleProto);
     }
+
+    // Moffstation - Begin - Enable special per-role loadouts on loadout protos. Enables personal items on cyborgs.
+    public void EquipSpecialRoleLoadout(EntityUid entity, RoleLoadout loadout, RoleLoadoutPrototype roleProto)
+    {
+        // Order loadout selections by the order they appear on the prototype.
+        foreach (var group in loadout.SelectedLoadouts.OrderBy(x => roleProto.Groups.FindIndex(e => e == x.Key)))
+        {
+            foreach (var items in group.Value)
+            {
+                if (!ProtoMan.TryIndex(items.Prototype, out var loadoutProto))
+                {
+                    Log.Error($"Unable to find loadout prototype for {items.Prototype}");
+                    continue;
+                }
+
+                if (loadoutProto.SpecialJobLoadouts.TryGetValue(roleProto.ID, out var specialLoadout))
+                {
+                    EquipStartingGear(entity, specialLoadout, raiseEvent: false);
+                }
+            }
+        }
+
+        EquipRoleName(entity, loadout, roleProto);
+    }
+    // Moffstation - End
 
     /// <summary>
     /// Applies the role's name as applicable to the entity.
@@ -159,6 +188,19 @@ public abstract partial class SharedStationSpawningSystem : EntitySystem
                 }
             }
         }
+
+        // Moffstation - Begin - allow starting gear in container
+        if (startingGear is SpecialLoadout { Containers.Count: > 0 } specialGear)
+        {
+            foreach (var (containerId, entProtos) in specialGear.Containers)
+            {
+                foreach (var entProto in entProtos)
+                {
+                    SpawnInContainerOrDrop(entProto, entity, containerId);
+                }
+            }
+        }
+        // Moffstation - End
 
         if (raiseEvent)
         {

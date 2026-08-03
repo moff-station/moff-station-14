@@ -7,7 +7,7 @@
   abstract: true
   components:
   - type: Sprite
-    sprite: Objects/Tools/Decoys/operative_decoy.rsi
+    sprite: _Moffstation/Objects/Tools/Decoys/operative_decoy.rsi # Moffstation - Uncabinetification
     layers:
     - state: oballoon
       map: ["unfoldedLayer"]
@@ -71,7 +71,7 @@
   description: Upon closer inspection, this Syndicate operative is actually a balloon.
   components:
   - type: Sprite
-    sprite: Objects/Tools/Decoys/operative_decoy.rsi
+    sprite: _Moffstation/Objects/Tools/Decoys/operative_decoy.rsi # Moffstation - Uncabinetification
     layers:
     - state: oballoon
       map: ["unfoldedLayer"]
@@ -86,7 +86,7 @@
   description: Upon closer inspection, this Syndicate corpsman is actually a balloon.
   components:
   - type: Sprite
-    sprite: Objects/Tools/Decoys/agent_decoy.rsi
+    sprite: _Moffstation/Objects/Tools/Decoys/agent_decoy.rsi # Moffstation - Uncabinetification
     layers:
     - state: aballoon
       map: ["unfoldedLayer"]
@@ -101,7 +101,7 @@
   description: Upon closer inspection, this Syndicate elite operative is actually a balloon.
   components:
   - type: Sprite
-    sprite: Objects/Tools/Decoys/elite_decoy.rsi
+    sprite: _Moffstation/Objects/Tools/Decoys/elite_decoy.rsi # Moffstation - Uncabinetification
     layers:
     - state: eballoon
       map: ["unfoldedLayer"]
@@ -118,7 +118,7 @@
   description: Upon closer inspection, this Syndicate juggernaut is actually a balloon.
   components:
   - type: Sprite
-    sprite: Objects/Tools/Decoys/juggernaut_decoy.rsi
+    sprite: _Moffstation/Objects/Tools/Decoys/juggernaut_decoy.rsi # Moffstation - Uncabinetification
     layers:
     - state: jballoon
       map: ["unfoldedLayer"]
@@ -133,7 +133,7 @@
   description: Upon closer inspection, this Syndicate commander is actually a balloon.
   components:
   - type: Sprite
-    sprite: Objects/Tools/Decoys/commander_decoy.rsi
+    sprite: _Moffstation/Objects/Tools/Decoys/commander_decoy.rsi # Moffstation - Uncabinetification
     layers:
     - state: cballoon
       map: ["unfoldedLayer"]

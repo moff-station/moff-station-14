@@ -10,6 +10,9 @@
   - AllHostile
   - Wizard
   - Xenoborg
+  - BloodBrother # Harmony
+  - Pirate # Moffstation
+  - FeralSlime # Moffstation
 
 - type: npcFaction
   id: NanoTrasen
@@ -23,6 +26,10 @@
   - AllHostile
   - Wizard
   - Xenoborg
+  - BloodBrother # Harmony
+  - Pirate # Moffstation
+  - FeralSlime # Moffstation
+  - Replicator # imp
 
 - type: npcFaction
   id: Mouse
@@ -45,6 +52,8 @@
   - Xeno
   - AllHostile
   - Dragon
+  - FeralSlime # Moffstation
+  - Replicator # imp
 
 - type: npcFaction
   id: SimpleHostile
@@ -60,6 +69,10 @@
   - AllHostile
   - Wizard
   - Xenoborg
+  - BloodBrother # Harmony
+  - Pirate # Moffstation
+  - FeralSlime # Moffstation
+  - Replicator # imp
 
 - type: npcFaction
   id: SimpleNeutral
@@ -76,6 +89,9 @@
   - AllHostile
   - Wizard
   - Xenoborg
+  - Pirate # Moffstation
+  - FeralSlime # Moffstation
+  - Replicator # imp
 
 - type: npcFaction
   id: Xeno
@@ -90,6 +106,10 @@
   - Wizard
   - Dragon
   - Xenoborg
+  - BloodBrother # Harmony
+  - Pirate # Moffstation
+  - FeralSlime # Moffstation
+  - Replicator # imp
 
 - type: npcFaction
   id: Zombie
@@ -105,6 +125,10 @@
   - Wizard
   - Dragon
   - Xenoborg
+  - BloodBrother # Harmony
+  - Pirate # Moffstation
+  - FeralSlime # Moffstation
+  - Replicator # imp
 
 - type: npcFaction
   id: Revolutionary
@@ -116,6 +140,8 @@
   - AllHostile
   - Wizard
   - Xenoborg
+  - FeralSlime # Moffstation
+  - Replicator # imp
 
 - type: npcFaction
   id: AllHostile
@@ -133,6 +159,10 @@
   - Revolutionary
   - Wizard
   - Xenoborg
+  - BloodBrother # Harmony
+  - Pirate # Moffstation
+  - FeralSlime # Moffstation
+  - Replicator # imp
 
 - type: npcFaction
   id: Wizard
@@ -150,6 +180,10 @@
   - Revolutionary
   - AllHostile
   - Xenoborg
+  - BloodBrother # Harmony
+  - Pirate # Moffstation
+  - FeralSlime # Moffstation
+  - Replicator # imp
 
 - type: npcFaction
   id: Xenoborg
@@ -160,9 +194,12 @@
   - Zombie
   - Revolutionary
   - Wizard
+  - BloodBrother # Harmony
+  - Pirate # Moffstation
 
   - Xeno # rivalry
 
   # cause they are hostile to them
   - SimpleHostile
   - AllHostile
+  - FeralSlime # Moffstation

@@ -1,6 +1,8 @@
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Numerics;
+using Content.Shared._ES.Camera;
+using Content.Shared._Moffstation.Traits.Components;
 using Content.Shared.ActionBlocker;
 using Content.Shared.Actions.Events;
 using Content.Shared.Administration.Components;
@@ -11,6 +13,7 @@ using Content.Shared.Damage.Components;
 using Content.Shared.Damage.Events;
 using Content.Shared.Damage.Systems;
 using Content.Shared.Database;
+using Content.Shared.EntityEffects;
 using Content.Shared.FixedPoint;
 using Content.Shared.Hands;
 using Content.Shared.Hands.Components;
@@ -65,6 +68,9 @@ public abstract partial class SharedMeleeWeaponSystem : EntitySystem
     [Dependency] protected SharedTransformSystem TransformSystem = default!;
     [Dependency] private SharedStaminaSystem _stamina = default!;
     [Dependency] private DamageExamineSystem _damageExamine = default!;
+    [Dependency] private SharedEntityEffectsSystem _effects = default!;
+
+    [Dependency] private SharedESScreenshakeSystem _shake = default!; // ES
 
     [Dependency] private EntityQuery<DamageableComponent> _damageQuery = default!;
 
@@ -91,7 +97,6 @@ public abstract partial class SharedMeleeWeaponSystem : EntitySystem
         SubscribeLocalEvent<BonusMeleeDamageComponent, GetMeleeDamageEvent>(OnGetBonusMeleeDamage);
         SubscribeLocalEvent<BonusMeleeDamageComponent, GetHeavyDamageModifierEvent>(OnGetBonusHeavyDamageModifier);
         SubscribeLocalEvent<BonusMeleeAttackRateComponent, GetMeleeAttackRateEvent>(OnGetBonusMeleeAttackRate);
-
         SubscribeLocalEvent<ItemToggleMeleeWeaponComponent, ItemToggledEvent>(OnItemToggle);
 
         SubscribeAllEvent<HeavyAttackEvent>(OnHeavyAttack);
@@ -108,6 +113,15 @@ public abstract partial class SharedMeleeWeaponSystem : EntitySystem
         if (component.NextAttack > Timing.CurTime)
             Log.Warning($"Initializing a map that contains an entity that is on cooldown. Entity: {ToPrettyString(uid)}");
 #endif
+    }
+
+    [SubscribeLocalEvent]
+    private void EntityEffectMeleeHit(Entity<EntityEffectMeleeComponent> ent, ref MeleeHitEvent args)
+    {
+        foreach (var entity in args.HitEntities)
+        {
+            _effects.ApplyEffects(entity, ent.Comp.Effects, 1f, args.User);
+        }
     }
 
     private void OnMeleeShotAttempted(EntityUid uid, MeleeWeaponComponent comp, ref ShotAttemptedEvent args)
@@ -538,11 +552,11 @@ public abstract partial class SharedMeleeWeaponSystem : EntitySystem
         var weapon = GetEntity(ev.Weapon);
 
         // We skip weapon -> target interaction, as forensics system applies DNA on hit
-        Interaction.DoContactInteraction(user, weapon);
+        Interaction.DoContactInteraction(user, weapon, null, true); // Stellar - Interaction particles
 
         // If the user is using a long-range weapon, this probably shouldn't be happening? But I'll interpret melee as a
         // somewhat messy scuffle. See also, heavy attacks.
-        Interaction.DoContactInteraction(user, target);
+        Interaction.DoContactInteraction(user, target, weapon, true, interactionParticles: false); // Stellar/ES - Interaction particles
 
         // For stuff that cares about it being attacked.
         var attackedEvent = new AttackedEvent(meleeUid, user, targetXform.Coordinates);
@@ -578,8 +592,17 @@ public abstract partial class SharedMeleeWeaponSystem : EntitySystem
         if (damageResult.GetTotal() > FixedPoint2.Zero && !TerminatingOrDeleted(target.Value))
         {
             DoDamageEffect(targets, user, targetXform);
+
+            // Moffstation - start - Tweaked screenshake changes
+            var targetMap = TransformSystem.ToMapCoordinates(GetCoordinates(ev.Coordinates));
+            var userPos = TransformSystem.GetWorldPosition(Transform(user));
+            var direction = targetMap.Position - userPos;
+
+            DoScreenShake(direction, user, targets);
+            // Moffstation - End
         }
     }
+
 
     protected abstract void DoDamageEffect(List<EntityUid> targets, EntityUid? user,  TransformComponent targetXform);
 
@@ -677,7 +700,7 @@ public abstract partial class SharedMeleeWeaponSystem : EntitySystem
 
         var weapon = GetEntity(ev.Weapon);
 
-        Interaction.DoContactInteraction(user, weapon);
+        Interaction.DoContactInteraction(user, weapon, null, true); // Stellar - Interaction particles
 
         // For stuff that cares about it being attacked.
         foreach (var target in targets)
@@ -686,7 +709,7 @@ public abstract partial class SharedMeleeWeaponSystem : EntitySystem
 
             // If the user is using a long-range weapon, this probably shouldn't be happening? But I'll interpret melee as a
             // somewhat messy scuffle. See also, light attacks.
-            Interaction.DoContactInteraction(user, target);
+            Interaction.DoContactInteraction(user, target, weapon, true, interactionParticles: false); // Stellar/ES - Interaction particles
         }
 
         var appliedDamage = new DamageSpecifier();
@@ -742,7 +765,9 @@ public abstract partial class SharedMeleeWeaponSystem : EntitySystem
         {
             var target = entities.First();
             _meleeSound.PlayHitSound(target, user, GetHighestDamageSound(appliedDamage, ProtoMan), hitEvent.HitSoundOverride, component);
+            DoScreenShake(direction, user, targets); // Moffstation - Tweaked screenshake changes
         }
+
 
         if (appliedDamage.GetTotal() > FixedPoint2.Zero && targets.Count > 0)
         {
@@ -832,7 +857,7 @@ public abstract partial class SharedMeleeWeaponSystem : EntitySystem
         if (HasComp<DisarmProneComponent>(disarmer))
             return 1.0f;
 
-        if (HasComp<DisarmProneComponent>(disarmed))
+        if (HasComp<DisarmProneComponent>(disarmed) || HasComp<FeebleComponent>(disarmed)) // Moffstation - Feeble Component
             return 0.0f;
 
         var chance = disarmerComp.BaseDisarmFailChance;
@@ -929,7 +954,7 @@ public abstract partial class SharedMeleeWeaponSystem : EntitySystem
             return false;
         }
 
-        Interaction.DoContactInteraction(user, target);
+        Interaction.DoContactInteraction(user, target, null, true); // Stellar - Interaction particles
         AdminLogger.Add(LogType.DisarmedAction, $"{ToPrettyString(user):user} used disarm on {ToPrettyString(target):target}");
 
         AdminLogger.Add(LogType.DisarmedAction, $"{ToPrettyString(user):user} used disarm on {ToPrettyString(target):target}");
@@ -1062,4 +1087,23 @@ public abstract partial class SharedMeleeWeaponSystem : EntitySystem
             }
         }
     }
+
+    // Moffstation - Start - Fancy Screenshake
+    // This is still magic numbers bs but slightly better because its not straight up repeat code.
+    // Maybe it's worse if you want to use different numbers for the different melee attacks, but rn idc
+    private void DoScreenShake(Vector2 direction, EntityUid user, List<EntityUid> targets)
+    {
+        var trauma = 0.2f;
+        var decayRate = 5.0f;
+
+        var shakeRotation = new ESScreenshakeParameters { Trauma = 0.06f, DecayRate = 0.5f, Frequency = 0.004f };
+        var userShakeTranslation = new ESScreenshakeParameters { Trauma = trauma, DecayRate = decayRate, Frequency = 0.001f, Direction = direction };
+        var otherShakeTranslation = new ESScreenshakeParameters { Trauma = trauma, DecayRate = decayRate, Frequency = 0.001f, Direction = direction };
+        _shake.Screenshake(user, userShakeTranslation, shakeRotation);
+        foreach (var shakeTarget in targets)
+        {
+            _shake.Screenshake(shakeTarget, otherShakeTranslation, shakeRotation);
+        }
+    }
+    // Moffstation - End - Fancy Screenshake
 }

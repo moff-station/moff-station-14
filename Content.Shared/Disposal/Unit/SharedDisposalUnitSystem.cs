@@ -3,6 +3,7 @@ using Content.Shared.Administration.Logs;
 using Content.Shared.Climbing.Systems;
 using Content.Shared.Containers;
 using Content.Shared.Database;
+using Content.Shared.DeviceLinking.Events; // Moffstation - Signal network for disposal units
 using Content.Shared.Disposal.Components;
 using Content.Shared.Disposal.Holder;
 using Content.Shared.Disposal.Tube;
@@ -82,10 +83,26 @@ public abstract partial class SharedDisposalUnitSystem : EntitySystem
         SubscribeLocalEvent<DisposalUnitComponent, DragDropTargetEvent>(OnDragDropOn);
         SubscribeLocalEvent<DisposalUnitComponent, GetDumpableVerbEvent>(OnGetDumpableVerb);
         SubscribeLocalEvent<DisposalUnitComponent, DumpEvent>(OnDump);
+        SubscribeLocalEvent<DisposalUnitComponent, SignalReceivedEvent>(OnSignalReceived); // Moffstation - Signal network for disposal units
 
         // See SharedDisposalUnitSystem.Visuals
         SubscribeLocalEvent<DisposalUnitComponent, DisposalUnitUiButtonPressedMessage>(OnUiButtonPressed);
     }
+
+    // Moffstation - Begin - Signal network for disposal units
+    private void OnSignalReceived(Entity<DisposalUnitComponent> entity, ref SignalReceivedEvent args)
+    {
+        if (args.Port == entity.Comp.FlushPort)
+            ToggleEngage((entity.Owner, entity.Comp));
+        else if (args.Port == entity.Comp.AutoFlushOnPort)
+            entity.Comp.AutomaticEngage = true;
+        else if (args.Port == entity.Comp.AutoFlushOffPort)
+            entity.Comp.AutomaticEngage = false;
+        else if (args.Port == entity.Comp.AutoFlushTogglePort)
+            entity.Comp.AutomaticEngage = !entity.Comp.AutomaticEngage;
+        Dirty(entity);
+    }
+    // Moffstation - End
 
     #region: Event handling
 

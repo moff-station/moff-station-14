@@ -1,0 +1,9 @@
+- type: polymorph
+  id: PirateSkeletonMorph
+  configuration:
+    entity: MobSkeletonPerson
+    forced: true
+    transferName: true
+    transferHumanoidAppearance: false
+    inventory: Transfer
+    allowRepeatedMorphs: false

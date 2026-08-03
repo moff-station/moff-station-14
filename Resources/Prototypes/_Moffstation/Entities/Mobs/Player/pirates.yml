@@ -1,0 +1,70 @@
+# Pirates
+- type: entity
+  parent: MobHuman
+  id: MobHumanPirate
+  name: Pirate
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Pirate
+  - type: RandomHumanoidAppearance
+  - type: NpcFactionMember
+    factions:
+    - Pirate
+
+- type: entity
+  parent: MobHuman
+  id: MobHumanPirateReinforcement
+  name: Human Pirate
+  suffix: Human, Pirate
+  components:
+  - type: Pirate
+  - type: RandomHumanoidAppearance
+  - type: Loadout
+    prototypes: [PirateReinforcementGear]
+    roleLoadout: [ RoleSurvivalNukie ]
+  - type: RandomMetadata
+    nameSegments:
+    - NamesFirst
+    - Adjectives
+    nameFormat: name-format-pirate-crew
+  - type: NpcFactionMember
+    factions:
+    - Pirate
+
+- type: entity
+  parent: MobSkeletonPerson
+  id: MobSkeletonPirateReinforcement
+  name: skeleton pirate
+  suffix: Skeleton, Pirate
+  components:
+  - type: Pirate
+  - type: Loadout
+    prototypes: [PirateReinforcementGear]
+    roleLoadout: [ RoleSurvivalNukie ]
+  - type: RandomMetadata
+    nameSegments:
+    - NamesFirst
+    - Adjectives
+    nameFormat: name-format-pirate-crew
+  - type: NpcFactionMember
+    factions:
+    - Pirate
+
+- type: entity
+  parent: MobMonkey
+  id: MobMonkeyPirateReinforcement
+  name: Monkey Pirate
+  suffix: Monkey, Pirate
+  components:
+  - type: Pirate
+  - type: Loadout
+    prototypes: [PirateReinforcementGear]
+    roleLoadout: [ RoleSurvivalNukie ]
+  - type: RandomMetadata
+    nameSegments:
+    - NamesFirst
+    - Adjectives
+    nameFormat: name-format-pirate-crew
+  - type: NpcFactionMember
+    factions:
+    - Pirate

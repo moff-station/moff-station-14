@@ -6,9 +6,9 @@
   description: A lightweight space suit with the basic ability to protect the wearer from the vacuum of space.
   components:
   - type: Sprite
-    sprite: Clothing/OuterClothing/Suits/eva.rsi
+    sprite: _Moffstation/Clothing/OuterClothing/Suits/eva.rsi # Moffstation - New Softsuit Sprites
   - type: Clothing
-    sprite: Clothing/OuterClothing/Suits/eva.rsi
+    sprite: _Moffstation/Clothing/OuterClothing/Suits/eva.rsi # Moffstation - New Softsuit Sprites
   - type: Tag
     tags:
     - SuitEVA
@@ -23,9 +23,9 @@
   description: "Has a tag on the back that reads: 'Totally not property of an enemy corporation, honest!'"
   components:
   - type: Sprite
-    sprite: Clothing/OuterClothing/Suits/eva_syndicate.rsi
+    sprite: _Moffstation/Clothing/OuterClothing/Suits/eva_syndicate.rsi # Moffstation - New Softsuit Sprites
   - type: Clothing
-    sprite: Clothing/OuterClothing/Suits/eva_syndicate.rsi
+    sprite: _Moffstation/Clothing/OuterClothing/Suits/eva_syndicate.rsi # Moffstation - New Softsuit Sprites
   - type: Tag
     tags:
     - SuitEVA
@@ -42,9 +42,9 @@
   description: This bulky, uninsulated pressure suit was clearly not meant for extended use in outer space, despite NanoTrasen's claims that it passes corporate regulations.
   components:
   - type: Sprite
-    sprite: Clothing/OuterClothing/Suits/eva_emergency.rsi
+    sprite: _Moffstation/Clothing/OuterClothing/Suits/eva_emergency.rsi # Moffstation - New Softsuit Sprites
   - type: Clothing
-    sprite: Clothing/OuterClothing/Suits/eva_emergency.rsi
+    sprite: _Moffstation/Clothing/OuterClothing/Suits/eva_emergency.rsi # Moffstation - New Softsuit Sprites
   - type: ClothingSpeedModifier
     walkModifier: 0.7
     sprintModifier: 0.7
@@ -65,9 +65,9 @@
   description: An emergency pressure suit meant for prisoners. It's not fully rated for extended use in outer space, but some wardens consider the lack of thermal insulation a feature.
   components:
   - type: Sprite
-    sprite: Clothing/OuterClothing/Suits/eva_prisoner.rsi
+    sprite: _Moffstation/Clothing/OuterClothing/Suits/eva_prisoner.rsi # Moffstation - New Softsuit Sprites
   - type: Clothing
-    sprite: Clothing/OuterClothing/Suits/eva_prisoner.rsi
+    sprite: _Moffstation/Clothing/OuterClothing/Suits/eva_prisoner.rsi # Moffstation - New Softsuit Sprites
   - type: ClothingSpeedModifier
     walkModifier: 0.7
     sprintModifier: 0.7
@@ -101,12 +101,12 @@
   description: A void suit made for paramedics.
   components:
   - type: Sprite
-    sprite: Clothing/OuterClothing/Hardsuits/paramed.rsi
+    sprite: _Moffstation/Clothing/OuterClothing/Hardsuits/paramed.rsi # Moffstation - New Softsuit Sprites
     layers:
     - state: icon
   - type: Appearance
   - type: Clothing
-    sprite: Clothing/OuterClothing/Hardsuits/paramed.rsi
+    sprite: _Moffstation/Clothing/OuterClothing/Hardsuits/paramed.rsi # Moffstation - New Softsuit Sprites
   - type: ClothingSpeedModifier
     walkModifier: 0.9
     sprintModifier: 0.9
@@ -142,8 +142,8 @@
     enabled: false
     radius: 2
     energy: 2
-    color: blue
-    mask: /Textures/Effects/LightMasks/double_cone.png
+    color: aquamarine # Moffstation
+    lightMask: ConeDouble
   - type: RotatingLight
     speed: 360
   - type: Tag

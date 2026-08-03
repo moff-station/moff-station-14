@@ -1,0 +1,29 @@
+﻿# Player: DrBadvice - Character: Kim Web
+- type: entity
+  parent: BassGuitarInstrument
+  id: PersonalItemKimBass
+  name: bass-boosted bass
+  description: Mayonnaise is an instrument and this bass is one too! It has almost invisible strings on it, and it’s kinda slimy...
+  suffix: PersonalItem
+  components:
+  - type: Sprite
+    sprite: _Moffstation/PersonalItems/Items/DrBadvice/Kim_Web/kimbass.rsi
+    state: icon
+  - type: Item
+    sprite: _Moffstation/PersonalItems/Items/DrBadvice/Kim_Web/kimbass.rsi
+  - type: Clothing
+    quickEquip: false
+    slots:
+    - back
+    - suitStorage
+    sprite: _Moffstation/PersonalItems/Items/DrBadvice/Kim_Web/kimbass.rsi
+
+- type: loadout
+  id: PersonalItemKimBass
+  storage:
+    back:
+    - PersonalItemKimBass
+  effects:
+  - !type:PersonalItemLoadoutEffect
+    character:
+    - Kim Web

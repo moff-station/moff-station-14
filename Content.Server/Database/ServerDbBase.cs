@@ -19,6 +19,8 @@ using Robust.Shared.Network;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization.Manager;
 using Robust.Shared.Utility;
+using Content.Server._CD.Records;
+using Content.Shared._CD.Records;
 
 namespace Content.Server.Database
 {
@@ -47,6 +49,11 @@ namespace Content.Server.Database
                 .Include(p => p.Profiles).ThenInclude(h => h.Jobs)
                 .Include(p => p.Profiles).ThenInclude(h => h.Antags)
                 .Include(p => p.Profiles).ThenInclude(h => h.Traits)
+                // CD: Store CD info
+                .Include(p => p.Profiles)
+                    .ThenInclude(h => h.CDProfile)
+                    .ThenInclude(cd => cd != null ? cd.CharacterRecordEntries : null)
+                // END CD
                 .Include(p => p.Profiles)
                     .ThenInclude(h => h.Loadouts)
                     .ThenInclude(l => l.Groups)
@@ -100,6 +107,10 @@ namespace Content.Server.Database
             }
 
             var oldProfile = db.DbContext.Profile
+                // Moffstation Start - Add CD Profile
+                .Include(p => p.CDProfile) // CD: Store CD info
+                    .ThenInclude(cd => cd != null ? cd.CharacterRecordEntries : null)
+                // Moffstation End
                 .Include(p => p.Preference)
                 .Where(p => p.Preference.UserId == userId.UserId)
                 .Include(p => p.Jobs)
@@ -259,6 +270,18 @@ namespace Content.Server.Database
                 humanoid.TraitPreferences
                         .Select(t => new Trait {TraitName = t})
             );
+
+            // CD: CD Character Data
+            profile.CDProfile ??= new CDModel.CDProfile();
+            profile.CDProfile.Height = humanoid.Height;
+            // There are JsonIgnore annotations to ensure that entries are not stored as JSON.
+            profile.CDProfile.CharacterRecords = JsonSerializer.SerializeToDocument(humanoid.CDCharacterRecords ?? PlayerProvidedCharacterRecords.DefaultRecords());
+            if (humanoid.CDCharacterRecords != null)
+            {
+                profile.CDProfile.CharacterRecordEntries.Clear();
+                profile.CDProfile.CharacterRecordEntries.AddRange(RecordsSerialization.GetEntries(humanoid.CDCharacterRecords));
+            }
+            // END CD
 
             profile.Loadouts.Clear();
 
@@ -1626,6 +1649,82 @@ INSERT INTO player_round (players_id, rounds_id) VALUES ({players[player]}, {id}
             await db.DbContext.IPIntelCache
                 .Where(w => w.Time <= cutoffTime)
                 .ExecuteDeleteAsync();
+
+            await db.DbContext.SaveChangesAsync();
+            return true;
+        }
+
+        #endregion
+
+        #region AntagWeights
+        // Moffstation - Everything in this region is moff
+
+        public async Task<int> GetAntagWeight(NetUserId userId, CancellationToken cancel = default)
+        {
+            await using var db = await GetDb(cancel);
+            var player = await db.DbContext.Player.Include(player => player.MoffPlayer)
+                .SingleOrDefaultAsync(p => p.UserId == userId, cancel);
+            return player?.MoffPlayer?.AntagWeight ?? 1;
+        }
+
+        public async Task<bool> SetAntagWeight(NetUserId userId, int weight)
+        {
+            await using var db = await GetDb();
+
+            var player = await db.DbContext.Player
+                .Include(player => player.MoffPlayer)
+                .SingleOrDefaultAsync(p => p.UserId == userId);
+
+            if (player is null)
+                return false;
+
+            if (player.MoffPlayer == null)
+            {
+                player.MoffPlayer = new MoffModel.MoffPlayer
+                {
+                    PlayerUserId = userId,
+                    AntagWeight = weight,
+                };
+            } else {
+                player.MoffPlayer.AntagWeight = weight;
+            }
+
+            await db.DbContext.SaveChangesAsync();
+            return true;
+        }
+
+        public async Task<string?> GetDiscordId(NetUserId userId, CancellationToken cancel = default)
+        {
+            await using var db = await GetDb(cancel);
+            var player = await db.DbContext.Player
+                .Include(player => player.MoffPlayer)
+                .SingleOrDefaultAsync(p => p.UserId == userId, cancel);
+            return player?.MoffPlayer?.DiscordId;
+        }
+
+        public async Task<bool> SetDiscordId(NetUserId userId, string? discordId)
+        {
+            await using var db = await GetDb();
+
+            var player = await db.DbContext.Player
+                .Include(player => player.MoffPlayer)
+                .SingleOrDefaultAsync(p => p.UserId == userId);
+
+            if (player is null)
+                return false;
+
+            if (player.MoffPlayer == null)
+            {
+                player.MoffPlayer = new MoffModel.MoffPlayer
+                {
+                    PlayerUserId = userId,
+                    DiscordId = discordId,
+                };
+            }
+            else
+            {
+                player.MoffPlayer.DiscordId = discordId;
+            }
 
             await db.DbContext.SaveChangesAsync();
             return true;

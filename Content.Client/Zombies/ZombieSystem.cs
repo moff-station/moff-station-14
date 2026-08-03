@@ -1,14 +1,16 @@
 using System.Linq;
+using Content.Shared._Starlight.CollectiveMind; // Moffstation - Zombies not getting added to their Hivemind
 using Content.Shared.Body;
 using Content.Shared.StatusIcon.Components;
 using Content.Shared.Zombies;
 using Robust.Client.GameObjects;
-
 namespace Content.Client.Zombies;
 
 public sealed partial class ZombieSystem : SharedZombieSystem
 {
     [Dependency] private SpriteSystem _sprite = default!;
+
+    [Dependency] private CollectiveMindUpdateSystem _collectiveMindUpdateSystem = default!; // Moffstation - Zombies not getting added to their Hivemind
 
     public override void Initialize()
     {
@@ -36,6 +38,7 @@ public sealed partial class ZombieSystem : SharedZombieSystem
 
     private void OnStartup(EntityUid uid, ZombieComponent component, ComponentStartup args)
     {
+        _collectiveMindUpdateSystem.UpdateCollectiveMind(uid); // Moffstation - Give collective mind
         if (HasComp<VisualBodyComponent>(uid))
             return;
 

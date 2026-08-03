@@ -1,0 +1,325 @@
+﻿# Chest
+
+- type: marking
+  id: DwarfChestHair
+  bodyPart: Chest
+  groupWhitelist: [ Dwarf ]
+  sprites:
+  - sprite: _CD/Mobs/Customization/Dwarf/chest.rsi
+    state: chesthair
+
+- type: marking
+  id: DwarfConstellationChest
+  bodyPart: Chest
+  groupWhitelist: [ Dwarf ]
+  coloring:
+    default:
+      type:
+        !type:SimpleColoring
+        color: "#FFFFFF"
+  sprites:
+  - sprite: _CD/Mobs/Customization/Dwarf/chest.rsi
+    state: constellation
+  shaders:
+    constellation: unshaded
+
+- type: marking
+  id: DwarfMarkBear
+  bodyPart: Chest
+  groupWhitelist: [ Dwarf ]
+  coloring:
+    default:
+      type:
+        !type:SimpleColoring
+        color: "#FFFFFF"
+  sprites:
+  - sprite: _CD/Mobs/Customization/Dwarf/chest.rsi
+    state: markbear
+  shaders:
+    markbear: unshaded
+
+- type: marking
+  id: DwarfMarkCobra
+  bodyPart: Chest
+  groupWhitelist: [ Dwarf ]
+  coloring:
+    default:
+      type:
+        !type:SimpleColoring
+        color: "#FFFFFF"
+  sprites:
+  - sprite: _CD/Mobs/Customization/Dwarf/chest.rsi
+    state: markcobra
+  shaders:
+    markcobra: unshaded
+
+- type: marking
+  id: DwarfMarkSpider
+  bodyPart: Chest
+  groupWhitelist: [ Dwarf ]
+  coloring:
+    default:
+      type:
+        !type:SimpleColoring
+        color: "#FFFFFF"
+  sprites:
+  - sprite: _CD/Mobs/Customization/Dwarf/chest.rsi
+    state: markspider
+  shaders:
+    markspider: unshaded
+
+- type: marking
+  id: DwarfTattooShootingStar
+  bodyPart: Chest
+  groupWhitelist: [ Dwarf ]
+  coloring:
+    default:
+      type:
+        !type:SimpleColoring
+        color: "#FFFFFF"
+  sprites:
+  - sprite: _CD/Mobs/Customization/Dwarf/chest.rsi
+    state: shootingstar
+  shaders:
+    shootingstar: unshaded
+
+# Head
+
+- type: marking
+  id: DwarfBearCheeks
+  bodyPart: Head
+  groupWhitelist: [ Dwarf ]
+  forcedColoring: true
+  sprites:
+  - sprite: _CD/Mobs/Customization/Dwarf/head.rsi
+    state: bearcheeks
+  shaders:
+    bearcheeks: unshaded
+
+- type: marking
+  id: DwarfConstellationHead
+  bodyPart: Head
+  groupWhitelist: [ Dwarf ]
+  coloring:
+    default:
+      type:
+        !type:SimpleColoring
+        color: "#FFFFFF"
+  sprites:
+  - sprite: _CD/Mobs/Customization/Dwarf/head.rsi
+    state: constellation
+  shaders:
+    constellation: unshaded
+
+- type: marking
+  id: DwarfHeadGlow
+  bodyPart: Head
+  groupWhitelist: [ Dwarf ]
+  forcedColoring: true
+  sprites:
+  - sprite: _CD/Mobs/Customization/Dwarf/head.rsi
+    state: glow
+  shaders:
+    glow: unshaded
+
+# Snout
+
+# Eyes
+
+# RArm
+
+- type: marking
+  id: DwarfConstellationRArm
+  bodyPart: RArm
+  groupWhitelist: [ Dwarf ]
+  coloring:
+    default:
+      type:
+        !type:SimpleColoring
+        color: "#FFFFFF"
+  sprites:
+  - sprite: _CD/Mobs/Customization/Dwarf/rarm.rsi
+    state: constellation
+  shaders:
+    constellation: unshaded
+
+# LArm
+
+- type: marking
+  id: DwarfArmHair
+  bodyPart: LArm
+  groupWhitelist: [ Dwarf ]
+  sprites:
+  - sprite: _CD/Mobs/Customization/Dwarf/larm.rsi
+    state: hair
+
+- type: marking
+  id: DwarfConstellationLArm
+  bodyPart: LArm
+  groupWhitelist: [ Dwarf ]
+  coloring:
+    default:
+      type:
+        !type:SimpleColoring
+        color: "#FFFFFF"
+  sprites:
+  - sprite: _CD/Mobs/Customization/Dwarf/larm.rsi
+    state: constellation
+  shaders:
+    constellation: unshaded
+
+# RLeg
+
+- type: marking
+  id: DwarfConstellationRLeg
+  bodyPart: RLeg
+  groupWhitelist: [ Dwarf ]
+  coloring:
+    default:
+      type:
+        !type:SimpleColoring
+        color: "#FFFFFF"
+  sprites:
+  - sprite: _CD/Mobs/Customization/Dwarf/rleg.rsi
+    state: constellation
+  shaders:
+    constellation: unshaded
+
+# LLeg
+
+- type: marking
+  id: DwarfConstellationLLeg
+  bodyPart: LLeg
+  groupWhitelist: [ Dwarf ]
+  coloring:
+    default:
+      type:
+        !type:SimpleColoring
+        color: "#FFFFFF"
+  sprites:
+  - sprite: _CD/Mobs/Customization/Dwarf/lleg.rsi
+    state: constellation
+  shaders:
+    constellation: unshaded
+
+- type: marking
+  id: DwarfLegHair
+  bodyPart: LLeg
+  groupWhitelist: [ Dwarf ]
+  sprites:
+  - sprite: _CD/Mobs/Customization/Dwarf/lleg.rsi
+    state: hair
+
+# UndergarmentBottom
+
+# UndergarmentTop
+
+# LFoot
+
+- type: marking
+  id: DwarfConstellationLFoot
+  bodyPart: LFoot
+  groupWhitelist: [ Dwarf ]
+  coloring:
+    default:
+      type:
+        !type:SimpleColoring
+        color: "#FFFFFF"
+  sprites:
+  - sprite: _CD/Mobs/Customization/Dwarf/lfoot.rsi
+    state: constellation
+  shaders:
+    constellation: unshaded
+
+# RFoot
+
+- type: marking
+  id: DwarfConstellationRFoot
+  bodyPart: RFoot
+  groupWhitelist: [ Dwarf ]
+  coloring:
+    default:
+      type:
+        !type:SimpleColoring
+        color: "#FFFFFF"
+  sprites:
+  - sprite: _CD/Mobs/Customization/Dwarf/rfoot.rsi
+    state: constellation
+  shaders:
+    constellation: unshaded
+
+# LHand
+
+- type: marking
+  id: DwarfConstellationLHand
+  bodyPart: LHand
+  groupWhitelist: [ Dwarf ]
+  coloring:
+    default:
+      type:
+        !type:SimpleColoring
+        color: "#FFFFFF"
+  sprites:
+  - sprite: _CD/Mobs/Customization/Dwarf/lhand.rsi
+    state: constellation
+  shaders:
+    constellation: unshaded
+
+- type: marking
+  id: DwarfMarkKangarooLHand
+  bodyPart: LHand
+  groupWhitelist: [ Dwarf ]
+  coloring:
+    default:
+      type:
+        !type:SimpleColoring
+        color: "#FFFFFF"
+  sprites:
+  - sprite: _CD/Mobs/Customization/Dwarf/lhand.rsi
+    state: markkangaroo
+  shaders:
+    markkangaroo: unshaded
+
+# RHand
+
+- type: marking
+  id: DwarfConstellationRHand
+  bodyPart: RHand
+  groupWhitelist: [ Dwarf ]
+  coloring:
+    default:
+      type:
+        !type:SimpleColoring
+        color: "#FFFFFF"
+  sprites:
+  - sprite: _CD/Mobs/Customization/Dwarf/rhand.rsi
+    state: constellation
+  shaders:
+    constellation: unshaded
+
+- type: marking
+  id: DwarfMarkKangarooRHand
+  bodyPart: RHand
+  groupWhitelist: [ Dwarf ]
+  coloring:
+    default:
+      type:
+        !type:SimpleColoring
+        color: "#FFFFFF"
+  sprites:
+  - sprite: _CD/Mobs/Customization/Dwarf/rhand.rsi
+    state: markkangaroo
+  shaders:
+    markkangaroo: unshaded
+
+# FacialHair
+
+# Hair
+
+# HeadSide
+
+# HeadTop
+
+# Tail
+
+# RArmExtension

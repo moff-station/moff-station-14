@@ -1,0 +1,120 @@
+# Our own arrivals spawners
+
+
+# Service
+- type: entity
+  parent: ArrivalsSpawnPointJobBase
+  id: ArrivalsSpawnPointReporter
+  suffix: reporter
+  components:
+  - type: ArrivalsSpawnPoint
+    jobs:
+    - Reporter
+  - type: Sprite
+    layers:
+    - state: green
+    - state: reporter
+
+- type: entity
+  parent: ArrivalsSpawnPointJobBase
+  id: ArrivalsSpawnPointClown
+  suffix: clown
+  components:
+  - type: ArrivalsSpawnPoint
+    jobs:
+    - Clown
+  - type: Sprite
+    layers:
+    - state: green
+    - state: clown
+
+- type: entity
+  parent: ArrivalsSpawnPointJobBase
+  id: ArrivalsSpawnPointMime
+  suffix: mime
+  components:
+  - type: ArrivalsSpawnPoint
+    jobs:
+    - Mime
+  - type: Sprite
+    layers:
+    - state: green
+    - state: mime
+
+- type: entity
+  parent: ArrivalsSpawnPointJobBase
+  id: ArrivalsSpawnPointServiceWorker
+  suffix: service worker
+  components:
+  - type: ArrivalsSpawnPoint
+    jobs:
+    - ServiceWorker
+  - type: Sprite
+    layers:
+    - state: green
+    - state: serviceworker
+
+- type: entity
+  parent: ArrivalsSpawnPointJobBase
+  id: ArrivalsSpawnPointBartender
+  suffix: bartender
+  components:
+  - type: ArrivalsSpawnPoint
+    jobs:
+    - Bartender
+  - type: Sprite
+    layers:
+    - state: green
+    - state: bartender
+
+- type: entity
+  parent: ArrivalsSpawnPointJobBase
+  id: ArrivalsSpawnPointChef
+  suffix: chef
+  components:
+  - type: ArrivalsSpawnPoint
+    jobs:
+    - Chef
+  - type: Sprite
+    layers:
+    - state: green
+    - state: chef
+
+- type: entity
+  parent: ArrivalsSpawnPointJobBase
+  id: ArrivalsSpawnPointBotanist
+  suffix: botanist
+  components:
+  - type: ArrivalsSpawnPoint
+    jobs:
+    - Botanist
+  - type: Sprite
+    layers:
+    - state: green
+    - state: botanist
+
+- type: entity
+  parent: ArrivalsSpawnPointJobBase
+  id: ArrivalsSpawnPointJanitor
+  suffix: janitor
+  components:
+  - type: ArrivalsSpawnPoint
+    jobs:
+    - Janitor
+  - type: Sprite
+    layers:
+    - state: green
+    - state: janitor
+
+- type: entity
+  parent: ArrivalsSpawnPointJobBase
+  id: ArrivalsSpawnPointMusician
+  suffix: musician
+  components:
+  - type: ArrivalsSpawnPoint
+    jobs:
+    - Musician
+  - type: Sprite
+    layers:
+    - state: green
+    - state: musician

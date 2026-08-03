@@ -1,6 +1,6 @@
 - type: entity
   abstract: true
-  parent: [SolutionFood, SolutionToolNormal, Clothing]
+  parent: [SolutionFood, SolutionToolNormal, Clothing, MoffStainableClothingBase] # Moffstation - mixed in MoffStainableClothingBase
   id: ClothingShoesBase
   components:
   - type: Clothing
@@ -23,6 +23,16 @@
     - Recyclable
     - WhitelistChameleon
   - type: ProtectedFromStepTriggers
+  # Forky - start - clothing stains
+  - type: Stainable
+    clothingVisuals:
+      shoes:
+      - sprite: _Funkystation/Effects/blood.rsi
+        state: shoeblood
+    iconVisuals:
+    - sprite: _Funkystation/Effects/blood.rsi
+      state: shoebloodicon
+  # Forky - end
 
 - type: entity
   abstract: true

@@ -1,0 +1,175 @@
+﻿# Wreck game rule table
+
+- type: entityTable
+  id: WreckEventTable
+  table: !type:AllSelector
+    children:
+    - id: WreckAbandonedOutpost
+    - id: WreckAtmosInterchange
+    - id: WreckChunkedTComms
+    - id: WreckBiodomeSatellite
+    - id: WreckDerelict
+    - id: WreckDJStation
+    - id: WreckEmptyFlagship
+    - id: WreckHydroOutpost
+    - id: WreckOldAISat
+    - id: WreckRuinedPrisonShip
+    - id: WreckSyndicateDropship
+    - id: WreckWhiteshipAncient
+    - id: WreckWhiteshipBluespaceJumper
+    - id: WreckWrecklaimer
+    - id: WreckDisplacedTelescience
+
+# Wreck game rule base
+
+- type: entity
+  abstract: true
+  parent: BaseGameRule
+  id: BasewreckRule
+  components:
+  - type: DummyRule
+  - type: StationEvent
+    startAnnouncement: station-event-wreck-incoming
+    startAudio:
+      path: /Audio/Announcements/attention.ogg
+    weight: 10 # 10 default
+    reoccurrenceDelay: 30
+    duration: 1
+    maxOccurrences: 1
+
+# Wreck game rules
+
+- type: entity
+  parent: BasewreckRule
+  id: WreckAbandonedOutpost
+  components:
+  - type: LoadGridRule
+    gridPath: /Maps/Ruins/abandoned_outpost.yml
+    minimumDistance: 250
+    maximumDistance: 750
+
+- type: entity
+  parent: BasewreckRule
+  id: WreckAtmosInterchange
+  components:
+  - type: LoadGridRule
+    gridPath: /Maps/Ruins/atmos_interchange.yml
+    minimumDistance: 250
+    maximumDistance: 750
+
+- type: entity
+  parent: BasewreckRule
+  id: WreckChunkedTComms
+  components:
+  - type: LoadGridRule
+    gridPath: /Maps/Ruins/chunked_tcomms.yml
+    minimumDistance: 250
+    maximumDistance: 750
+
+- type: entity
+  parent: BasewreckRule
+  id: WreckBiodomeSatellite
+  components:
+  - type: LoadGridRule
+    gridPath: /Maps/Ruins/biodome_satellite.yml
+    minimumDistance: 250
+    maximumDistance: 750
+
+- type: entity
+  parent: BasewreckRule
+  id: WreckDerelict
+  components:
+  - type: LoadGridRule
+    gridPath: /Maps/Ruins/derelict.yml
+    minimumDistance: 250
+    maximumDistance: 750
+
+- type: entity
+  parent: BasewreckRule
+  id: WreckDJStation
+  components:
+  - type: LoadGridRule
+    gridPath: /Maps/Ruins/djstation.yml
+    minimumDistance: 250
+    maximumDistance: 750
+
+- type: entity
+  parent: BasewreckRule
+  id: WreckEmptyFlagship
+  components:
+  - type: LoadGridRule
+    gridPath: /Maps/Ruins/empty_flagship.yml
+    minimumDistance: 250
+    maximumDistance: 750
+
+- type: entity
+  parent: BasewreckRule
+  id: WreckHydroOutpost
+  components:
+  - type: LoadGridRule
+    gridPath: /Maps/Ruins/hydro_outpost.yml
+    minimumDistance: 250
+    maximumDistance: 750
+
+- type: entity
+  parent: BasewreckRule
+  id: WreckOldAISat
+  components:
+  - type: LoadGridRule
+    gridPath: /Maps/Ruins/old_ai_sat.yml
+    minimumDistance: 250
+    maximumDistance: 750
+
+- type: entity
+  parent: BasewreckRule
+  id: WreckRuinedPrisonShip
+  components:
+  - type: LoadGridRule
+    gridPath: /Maps/Ruins/ruined_prison_ship.yml
+    minimumDistance: 250
+    maximumDistance: 750
+
+- type: entity
+  parent: BasewreckRule
+  id: WreckSyndicateDropship
+  components:
+  - type: LoadGridRule
+    gridPath: /Maps/Ruins/syndicate_dropship.yml
+    minimumDistance: 250
+    maximumDistance: 750
+
+- type: entity
+  parent: BasewreckRule
+  id: WreckWhiteshipAncient
+  components:
+  - type: LoadGridRule
+    gridPath: /Maps/Ruins/whiteship_ancient.yml
+    minimumDistance: 250
+    maximumDistance: 750
+
+- type: entity
+  parent: BasewreckRule
+  id: WreckWhiteshipBluespaceJumper
+  components:
+  - type: LoadGridRule
+    gridPath: /Maps/Ruins/whiteship_bluespacejumper.yml
+    minimumDistance: 250
+    maximumDistance: 750
+
+- type: entity
+  parent: BasewreckRule
+  id: WreckWrecklaimer
+  components:
+  - type: LoadGridRule
+    gridPath: /Maps/Ruins/wrecklaimer.yml
+    minimumDistance: 250
+    maximumDistance: 750
+
+- type: entity
+  parent: BasewreckRule
+  id: WreckDisplacedTelescience
+  components:
+  - type: LoadGridRule
+    gridPath: /Maps/Ruins/displaced_telescience.yml
+    minimumDistance: 250
+    maximumDistance: 750

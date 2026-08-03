@@ -28,6 +28,8 @@ public sealed partial class HumanoidProfileSystem : EntitySystem
         ent.Comp.Species = profile.Species;
         ent.Comp.Voice = profile.Voice;
         ent.Comp.Sex = profile.Sex;
+        ent.Comp.Height = profile.Height; // Moffstation - CD Height
+        ent.Comp.SkinColor = profile.Appearance.SkinColor; // Moffstation - Re-add Geras
         Dirty(ent);
 
         var voiceChanged = new VoiceChangedEvent(ent.Comp.Voice, profile.Voice);

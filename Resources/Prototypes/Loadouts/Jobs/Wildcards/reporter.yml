@@ -3,11 +3,13 @@
   id: ReporterJumpsuit
   equipment:
     jumpsuit: ClothingUniformJumpsuitReporter
+  groupBy: "reporter jumpsuits" # Moffstation
 
 - type: loadout
   id: JournalistJumpsuit
   equipment:
     jumpsuit: ClothingUniformJumpsuitJournalist
+  groupBy: "reporter jumpsuits" # Moffstation
 
 # Head
 - type: loadout

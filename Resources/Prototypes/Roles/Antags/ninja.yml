@@ -52,7 +52,7 @@
     pocket2: PinpointerStation
     belt: EnergyKatana
   inhand:
-    - JetpackBlackFilled
+    - WeaponNinjaChainSickle  # MoffStation - Grapple to get to station instead.
   storage:
     back: # belt holds katana so satchel has the tools for sabotaging things
     - Crowbar
@@ -64,7 +64,7 @@
     - EmergencyMedipen
     - Flare
     - FoodSnackNutribrick
-    - DrinkWaterBottleFull
+    # - DrinkWaterBottleFull # Moffstation - Avali Ninjas get ammonia
 
 - type: chameleonOutfit
   id: NinjaChameleonOutfit

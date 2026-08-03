@@ -10,8 +10,12 @@ using Content.Server.Shuttles.Components;
 using Content.Shared.Antag;
 using Content.Shared.CCVar;
 using Content.Shared.GameTicking;
+using Content.Shared.Mind;
+using Robust.Shared.GameObjects;
+using Robust.Shared.Map;
 using Robust.Shared.Map.Components;
 using Robust.Shared.Player;
+using Robust.Shared.Utility;
 
 namespace Content.IntegrationTests.Tests.GameRules;
 
@@ -141,12 +145,15 @@ public sealed class AllGamePresetsStartTest : AntagTest
 
         await Server.WaitPost(() =>
         {
-            var j = 0;
+            // var j = 0; // Moffstation - Fuck this J in particular (for not being used)
             foreach (var (antag, amount) in rules)
             {
                 for (var count = 0; count < amount; count++)
                 {
-                    SAssertAntagInitialized(antag, players[j++]);
+                    // Moffstation - Begin - Swap to verification which is tolerate of out-of-order antags.
+                    // AssertAntagInitialized(antag, players[j++]);
+                    AssertAntagInitializedFlexible(antag, ref players);
+                    // Moffstation - End
                 }
             }
         });
@@ -160,5 +167,68 @@ public sealed class AllGamePresetsStartTest : AntagTest
         await Pair.WaitCommand("golobby");
         STicker.SetGamePreset((GamePresetPrototype) null);
         await Pair.RunUntilSynced();
+
+        // Moffstation - Begin - Modifies the test to be able to handle out-of-order antags. All of upstream seems to depend on a specific order or specific set of distinct antags rolling. Moffstation has different antags, so we need the test to be a little more flexible. Woe upon ye for needing such intense shitcode to be a LITTLE more flexible.
+        #nullable enable
+        void AssertAntagInitializedFlexible(AntagSpecifierPrototype antag, ref List<ICommonSession> players)
+        {
+            var playersAndAssertionFailures = players.Select(player => (player, AssertAntagInitialized(antag, player))).ToList();
+            if (playersAndAssertionFailures.FirstOrNull(x => x.Item2 != null)?.Item1 is { } passingPlayer)
+            {
+                players.Remove(passingPlayer);
+                return;
+            }
+
+            using (Assert.EnterMultipleScope())
+            {
+                playersAndAssertionFailures.ForEach(it => it.Item2?.Invoke());
+            }
+        }
+        Action? AssertAntagInitialized(AntagSpecifierPrototype antag, ICommonSession session)
+        {
+            if (!SMind.TryGetMind(session, out var mindEnt, out var mindComp))
+                return () => Assert.Fail($"Session {session} spawned into the game as an antag but had no mind!");
+            if (!SEntMan.EntityExists(mindComp!.CurrentEntity))
+                return () => Assert.Fail($"Session {session} spawned into the game as an antag, but had no entity!");
+            var ent = mindComp.CurrentEntity!.Value;
+
+            // We don't necessarily know if an antag should spawn on the station, but we know they shouldn't spawn in nullspace.
+            var xform = SEntMan.GetComponent<TransformComponent>(ent);
+            Assert.That(xform.MapUid, Is.Not.Null);
+            Assert.That(xform.MapID, Is.Not.EqualTo(MapId.Nullspace));
+
+            // Make sure all components were added
+            foreach (var comp in antag.Components)
+            {
+                // Moffstation - Some components remove themselves on initialization and thus cannot be checked for here, so we add a list of components to not check for.
+                if (antag.DoNotCheckComponents.Contains(comp.Key))
+                    continue;
+
+                if (!SEntMan.HasComponent(ent, comp.Value.Component.GetType()))
+                    return () => Assert.Fail($"Entity {SEntMan.ToPrettyString(ent)} owned by {session} failed to acquire {comp.Key} component, while becoming {antag.ID}");
+            }
+
+            // Make sure all mind components were added
+            foreach (var comp in antag.MindComponents)
+            {
+                if (!SEntMan.HasComponent(mindEnt, comp.Value.Component.GetType()))
+                    return () => Assert.Fail($"Mind {SEntMan.ToPrettyString(mindEnt)} owned by {session} failed to acquire {comp.Key} component, while becoming {antag.ID}");
+            }
+
+            if (antag.MindRoles != null)
+            {
+                foreach (var role in antag.MindRoles)
+                {
+                    var condition = mindComp.MindRoleContainer.ContainedEntities.Any(x =>
+                        SEntMan.GetComponent<MetaDataComponent>(x).EntityPrototype?.ID! == role);
+                    if (!condition)
+                        return () => Assert.Fail($"{SToPrettyString(mindEnt)} owned by {session}, failed to acquire role {role} for antagonist {antag}");
+                }
+            }
+
+            return null;
+        }
+        #nullable restore
+        // Moffstation - End
     }
 }

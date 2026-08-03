@@ -1,6 +1,6 @@
 - type: entity
   name: flare gun
-  parent: BaseItem
+  parent: [ BaseItem, BasePointerCrosshair ] # MACRO add crosshair
   id: WeaponFlareGun
   description: A compact, single-shot pistol that fires shotgun shells. Comes with a safety feature that prevents the user from fitting lethal shells inside.
   components:
@@ -44,6 +44,11 @@
   - type: Appearance
   - type: Gun
     fireRate: 8
+    # Moffstation - Begin - Add gun recoil.
+    recoilKick:
+      impulse: 300
+      staminaMultiplier: 8
+    # Moffstation - End - Add gun recoil.
     selectedMode: SemiAuto
     availableModes:
       - SemiAuto

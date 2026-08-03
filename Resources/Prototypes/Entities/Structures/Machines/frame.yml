@@ -37,9 +37,8 @@
       machine_board: !type:Container
       machine_parts: !type:Container
   - type: Damageable
-    damageModifierSet: Metallic
+    damageModifierSet: StructuralMetallic # Moffstation - Harder to break a solid frame
   - type: Injurable
-    damageContainer: StructuralInorganic
   - type: Destructible
     thresholds:
     - trigger:
@@ -93,7 +92,7 @@
     - machine_board
     - machine_parts
   - type: Damageable
-    damageModifierSet: Metallic
+    damageModifierSet: Electronic # Moffstation - Easier to break electronics into a frame
   - type: Injurable
     damageContainer: StructuralInorganic
   - type: Destructible
@@ -144,7 +143,7 @@
     graph: Machine
     node: destroyedMachineFrame
   - type: Damageable
-    damageModifierSet: Metallic
+    damageModifierSet: StructuralMetallic # Moffstation - Harder to break solid metal
   - type: Injurable
     damageContainer: StructuralInorganic
   - type: Destructible

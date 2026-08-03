@@ -2,7 +2,7 @@
 
 #Hazard vest
 - type: entity
-  parent: ClothingOuterStorageBase
+  parent: ClothingOuterStorageSuitStorageAttachableBase # Moffstation - Allow suit storage attachment
   id: ClothingOuterVestHazard
   name: hi-viz vest
   description: A high-visibility vest used in work zones.
@@ -28,6 +28,12 @@
       - state: equipped-OUTERCLOTHING-unshaded
         shader: shaded
         #same trick here
+      outerClothing-vox: # Moffstation - Begin - this makes the vox sprites actually get used!
+      - state: equipped-OUTERCLOTHING-vox
+      - state: equipped-OUTERCLOTHING-unshaded-vox
+        shader: unshaded
+      - state: equipped-OUTERCLOTHING-unshaded-vox
+        shader: shaded # Moffstation - End
   - type: Reflect
     reflectProb: 0.02
     reflects:
@@ -40,19 +46,19 @@
 
 #(Bartender) vest
 - type: entity
-  parent: ClothingOuterBase
+  parent: ClothingOuterStorageSuitStorageAttachableBase # Moffstation
   id: ClothingOuterVest
   name: vest
   description: A thick vest with a rubbery, water-resistant shell.
   components:
   - type: Sprite
-    sprite: Clothing/OuterClothing/Vests/vest.rsi
+    sprite: _Moffstation/Clothing/OuterClothing/Vests/vest.rsi # Moffstation
   - type: Clothing
-    sprite: Clothing/OuterClothing/Vests/vest.rsi
+    sprite: _Moffstation/Clothing/OuterClothing/Vests/vest.rsi # Moffstation
 
 #Tank Harness
 - type: entity
-  parent: [ClothingOuterBase, AllowSuitStorageClothingGasTanks]
+  parent: [ClothingOuterBase, AllowSuitStorageClothingGasTanks, SuitStorageClothingGasTanksAttachment] # Moffstation - Suit storage attachment for gas tanks
   id: ClothingOuterVestTank
   name: tank harness
   description: A simple harness that can hold a gas tank.
@@ -74,7 +80,7 @@
   description: A cloth vest for the fearless reporter in the field. Go land an interview with that space dragon!
   components:
   - type: Sprite
-    sprite: Clothing/OuterClothing/Vests/pressvest.rsi
+    sprite: _Moffstation/Clothing/OuterClothing/Vests/pressvest.rsi # Moffstation
     layers:
     - state: icon
     - state: icon-unshaded # See ClothingOuterVestHazard for why we double-add these unshaded states this way
@@ -82,7 +88,7 @@
     - state: icon-unshaded
       shader: shaded
   - type: Clothing
-    sprite: Clothing/OuterClothing/Vests/pressvest.rsi
+    sprite: _Moffstation/Clothing/OuterClothing/Vests/pressvest.rsi # Moffstation
     clothingVisuals:
       outerClothing:
       - state: equipped-OUTERCLOTHING

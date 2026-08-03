@@ -1,0 +1,19 @@
+- type: quickPhrase
+  parent: BaseThreatPhrase
+  abstract: true
+  id: BaseHostileThreatPhrase
+  group: phrase-group-hostiles
+  styleClass: SecurityButton
+
+- { type: quickPhrase, parent: BaseHostileThreatPhrase, id: HostileEnemyPhrase }
+- { type: quickPhrase, parent: BaseHostileThreatPhrase, id: HostilePhrase }
+- { type: quickPhrase, parent: BaseHostileThreatPhrase, id: HostileAttackerPhrase }
+- { type: quickPhrase, parent: BaseHostileThreatPhrase, id: HostileLifeformPhrase }
+- { type: quickPhrase, parent: BaseHostileThreatPhrase, id: HostileEntityPhrase }
+- { type: quickPhrase, parent: BaseHostileThreatPhrase, id: HostileBombPhrase }
+- { type: quickPhrase, parent: BaseHostileThreatPhrase, id: HostileCriminalPhrase }
+- { type: quickPhrase, parent: BaseHostileThreatPhrase, id: HostileIntruderPhrase }
+- { type: quickPhrase, parent: BaseHostileThreatPhrase, id: HostileInfiltratorPhrase }
+- { type: quickPhrase, parent: BaseHostileThreatPhrase, id: HostileFugitivePhrase }
+- { type: quickPhrase, parent: BaseHostileThreatPhrase, id: HostileWeaponPhrase }
+- { type: quickPhrase, parent: BaseHostileThreatPhrase, id: HostileGunPhrase }

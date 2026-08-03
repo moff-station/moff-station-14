@@ -1,0 +1,32 @@
+- type: quickPhrase
+  parent: [ BaseLogisticsPhrase, BaseSubjectPhrase ]
+  abstract: true
+  id: BaseLogisticsSubjectPhrase
+
+- { type: quickPhrase, parent: BaseLogisticsSubjectPhrase, id: BountyPhrase }
+- { type: quickPhrase, parent: BaseLogisticsSubjectPhrase, id: CargoShuttlePhrase }
+- { type: quickPhrase, parent: BaseLogisticsSubjectPhrase, id: CratePhrase }
+- { type: quickPhrase, parent: BaseLogisticsSubjectPhrase, id: MailPhrase }
+- { type: quickPhrase, parent: BaseLogisticsSubjectPhrase, id: OrderPhrase }
+- { type: quickPhrase, parent: BaseLogisticsSubjectPhrase, id: OreProcessorPhrase }
+- { type: quickPhrase, parent: BaseLogisticsSubjectPhrase, id: RequestPhrase }
+- { type: quickPhrase, parent: BaseLogisticsSubjectPhrase, id: SpesosPhrase }
+- { type: quickPhrase, parent: BaseLogisticsSubjectPhrase, id: RestockPhrase }
+- { type: quickPhrase, parent: BaseLogisticsSubjectPhrase, id: FultonPhrase }
+- { type: quickPhrase, parent: BaseLogisticsSubjectPhrase, id: JetpackPhrase }
+- { type: quickPhrase, parent: BaseLogisticsSubjectPhrase, id: CrusherPhrase }
+- { type: quickPhrase, parent: BaseLogisticsSubjectPhrase, id: PkaPhrase }
+- { type: quickPhrase, parent: BaseLogisticsSubjectPhrase, id: PickaxePhrase }
+- { type: quickPhrase, parent: BaseLogisticsSubjectPhrase, id: DrillPhrase }
+- { type: quickPhrase, parent: BaseLogisticsSubjectPhrase, id: OreBagPhrase }
+- { type: quickPhrase, parent: BaseLogisticsSubjectPhrase, id: SalvMagnetPhrase }
+- { type: quickPhrase, parent: BaseLogisticsSubjectPhrase, id: ExpeditionPhrase }
+
+# Ores
+- { type: quickPhrase, parent: BaseLogisticsSubjectPhrase, id: IronPhrase }
+- { type: quickPhrase, parent: BaseLogisticsSubjectPhrase, id: CoalPhrase }
+- { type: quickPhrase, parent: BaseLogisticsSubjectPhrase, id: QuartzPhrase }
+- { type: quickPhrase, parent: BaseLogisticsSubjectPhrase, id: SaltPhrase }
+- { type: quickPhrase, parent: BaseLogisticsSubjectPhrase, id: ArtifactFragmentPhrase }
+- { type: quickPhrase, parent: BaseLogisticsSubjectPhrase, id: BluespaceCrystalPhrase }
+- { type: quickPhrase, parent: BaseLogisticsSubjectPhrase, id: DiamondPhrase }

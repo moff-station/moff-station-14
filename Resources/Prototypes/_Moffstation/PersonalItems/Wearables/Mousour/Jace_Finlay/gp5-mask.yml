@@ -1,0 +1,27 @@
+﻿# Player Mousour / Character: Jace Finlay
+
+- type: entity
+  parent: ClothingMaskBase
+  id: PersonalItemJaceFinlayMask
+  name: GP-5 gas mask
+  description: A simple GP-5 gas mask with a broken filter and broken goggles, crudely re-sealed with black cloth.
+  suffix: PersonalItem
+  components:
+  - type: Sprite
+    sprite: &path _Moffstation/PersonalItems/Wearables/Mousour/Jace_Finlay/mask.rsi
+  - type: Clothing
+    sprite: *path
+  - type: HideLayerClothing
+    slots:
+    - HeadTop
+    - HeadSide
+
+- type: loadout
+  id: PersonalItemJaceFinlayMask
+  storage:
+    back:
+    - PersonalItemJaceFinlayMask
+  effects:
+  - !type:PersonalItemLoadoutEffect
+    character:
+    - Jace Finlay

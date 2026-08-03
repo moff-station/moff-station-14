@@ -292,6 +292,11 @@ public sealed partial class PullingSystem : EntitySystem
 
     private void OnRefreshMovespeed(EntityUid uid, PullerComponent component, RefreshMovementSpeedModifiersEvent args)
     {
+        // Moffstation - Begin - togglable speed modifier
+        if (!component.ApplyHeldSpeedModifier)
+            return;
+        // Moffstation - End
+
         if (TryComp<HeldSpeedModifierComponent>(component.Pulling, out var heldMoveSpeed) && component.Pulling.HasValue)
         {
             var (walkMod, sprintMod) =
@@ -545,7 +550,7 @@ public sealed partial class PullingSystem : EntitySystem
 
         // Pulling confirmed
 
-        _interaction.DoContactInteraction(pullableUid, pullerUid);
+        _interaction.DoContactInteraction(pullableUid, pullerUid, null, true); // Stellar - Interaction particles
 
         // Use net entity so it's consistent across client and server.
         pullableComp.PullJointId = $"pull-joint-{GetNetEntity(pullableUid)}";

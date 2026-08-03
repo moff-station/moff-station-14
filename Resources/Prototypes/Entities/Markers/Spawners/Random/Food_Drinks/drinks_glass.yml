@@ -123,6 +123,26 @@
         - id: DrinkShakeWhite
         - id: DrinkTheMartinez
         - id: DrinkMoonshineGlass
+        # Moffstation - Start - Add Lemon, Lime and Bitters.
+        - id: LemonLimeBittersGlass
+        - id: PinkGinGlass
+        - id: PlatersPunchGlass
+        - id: BreathalyzerGlass
+        - id: CorpseReviverGlass
+        - id: PrairieCocktailGlass
+        - id: MossySpecialGlass
+        - id: DrinkScrantonSpecialGlass
+        - id: ApexColaGlass
+        - id: CocoonGlass
+        - id: CoughDropGlass
+        - id: FertilizerGlass
+        - id: GelatinGlass
+        - id: MeatAnomalyGlass
+        - id: MeatPulpGlass
+        - id: RussianMothroachGlass
+        - id: SolarHurricaneGlass
+        - id: UprootingGlass
+        # Moffstation - End
       - !type:GroupSelector #rare
         weight: 0.05
         children:
@@ -140,4 +160,5 @@
         - id: DrinkHoochGlass
         - id: DrinkBeepskySmashGlass
         - id: DrinkBacchusBlessing
+        - id: DrinkWizardAleFull # Moffstation - Species Drinks
     offset: 0.0

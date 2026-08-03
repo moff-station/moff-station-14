@@ -6,6 +6,7 @@ using Content.Shared.Verbs;
 using Robust.Shared.Serialization;
 using Robust.Shared.Utility;
 using System.Diagnostics.CodeAnalysis;
+using Content.Shared._Moffstation.Warp; // Moffstation - Ai Warp
 
 namespace Content.Shared.Silicons.StationAi;
 
@@ -14,6 +15,7 @@ public abstract partial class SharedStationAiSystem
     /*
      * Added when an entity is inserted into a StationAiCore.
      */
+    [Dependency] private SharedWarpSystem _warp = default!; // Moffstation - Ai warp
 
     private void InitializeHeld()
     {
@@ -39,10 +41,9 @@ public abstract partial class SharedStationAiSystem
 
     private void OnCoreJump(Entity<StationAiHeldComponent> ent, ref JumpToCoreEvent args)
     {
-        if (!TryGetCore(ent.Owner, out var core) || core.Comp?.RemoteEntity == null)
+        if (!TryGetCore(ent.Owner, out var core))
             return;
-
-        _xforms.DropNextTo(core.Comp.RemoteEntity.Value, core.Owner);
+        _warp.RequestWarpToEntity(GetNetEntity(core)); // Moffstation - Ai warp
     }
 
     /// <summary>

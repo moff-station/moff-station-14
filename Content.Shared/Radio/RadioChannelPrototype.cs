@@ -35,4 +35,10 @@ public sealed partial class RadioChannelPrototype : IPrototype
     /// </summary>
     [DataField("longRange"), ViewVariables]
     public bool LongRange = false;
+
+    /// <summary>
+    /// Whether headsets are able to transmit the channel
+    /// </summary>
+    [DataField]
+    public bool HeadsetTransmittable = true;
 }

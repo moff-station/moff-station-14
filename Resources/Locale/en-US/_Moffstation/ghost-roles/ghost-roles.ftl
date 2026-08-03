@@ -1,0 +1,1 @@
+ghost-role-information-rules-default-team-antagonist = You are a [color={role-type-team-antagonist-color}][bold]{role-type-team-antagonist-name}[/bold][/color]. Coordinate with your teammates as necessary.

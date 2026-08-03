@@ -2,6 +2,7 @@ using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using Content.Server.Station.Components;
+using Content.Shared._Moffstation.Pirate.Components;
 using Content.Shared.GameTicking.Components;
 using Content.Shared.Station.Components;
 using Robust.Shared.Collections;
@@ -43,6 +44,12 @@ public abstract partial class GameRuleSystem<T> where T: IComponent
 
         while (query.MoveNext(out var uid, out _))
         {
+            // Moffstation - Start - Pirate "stations" are not real stations
+            // TODO: Fix pirates so we don't have to use this hack
+            if (HasComp<PirateStationComponent>(uid))
+                continue;
+            // Moffstation - End
+
             if (!filter(uid))
                 continue;
 
@@ -63,7 +70,11 @@ public abstract partial class GameRuleSystem<T> where T: IComponent
     protected bool TryFindRandomTile(out Vector2i tile,
         [NotNullWhen(true)] out EntityUid? targetStation,
         out EntityUid targetGrid,
-        out EntityCoordinates targetCoords)
+        out EntityCoordinates targetCoords,
+        // Moffstation - Add Largestgrid and safeatmos options
+        bool largestGrid = false,
+        bool safeAtmos = false)
+        // Moffstation - End
     {
         tile = default;
         targetStation = EntityUid.Invalid;
@@ -74,7 +85,11 @@ public abstract partial class GameRuleSystem<T> where T: IComponent
             return TryFindRandomTileOnStation((targetStation.Value, Comp<StationDataComponent>(targetStation.Value)),
                 out tile,
                 out targetGrid,
-                out targetCoords);
+                out targetCoords,
+                // Moffstation - Added largestGrid and safeatmos options
+                largestGrid: largestGrid,
+                safeAtmos: safeAtmos);
+                // Moffstation - End
         }
 
         return false;
@@ -84,7 +99,11 @@ public abstract partial class GameRuleSystem<T> where T: IComponent
         out Vector2i tile,
         out EntityUid targetGrid,
         out EntityCoordinates targetCoords,
-        int numAttempts = 10)
+        int numAttempts = 10,
+        // Moffstation - Add Largestgrid and safeatmos options
+        bool largestGrid = false,
+        bool safeAtmos = false)
+        // Moffstation - End
     {
         tile = default;
         targetCoords = EntityCoordinates.Invalid;
@@ -164,7 +183,12 @@ public abstract partial class GameRuleSystem<T> where T: IComponent
 
             // Invalid tile, try again.
             if (_atmosphere.IsTileSpace(targetGrid, Transform(targetGrid).MapUid, tileRef.GridIndices)
-                || _atmosphere.IsTileAirBlockedCached(targetGrid, tileRef.GridIndices))
+                || _atmosphere.IsTileAirBlockedCached(targetGrid, tileRef.GridIndices)
+                // Moffstation - Start - Add Largestgrid and safeatmos options
+                || _station.GetLargestGrid(station.Owner) != targetGrid && largestGrid
+                || Transform(targetGrid).MapUid is not { } map
+                || !_atmosphere.IsTileMixtureProbablySafe(targetGrid, map, tile) && safeAtmos)
+                // Moffstation - End
             {
                 continue;
             }

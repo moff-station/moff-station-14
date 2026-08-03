@@ -17,6 +17,10 @@ using Content.Shared.StationRecords.Components;
 using Content.Shared.StationRecords.Events;
 using Content.Shared.StationRecords.Systems;
 
+// CD: imports
+using Content.Server._CD.Records;
+using Content.Shared._CD.Records;
+
 namespace Content.Server.CriminalRecords.Systems;
 
 /// <summary>
@@ -39,6 +43,7 @@ public sealed partial class CriminalRecordsConsoleSystem : SharedCriminalRecords
         SubscribeLocalEvent<CriminalRecordsConsoleComponent, RecordModifiedEvent>(UpdateUserInterface);
         SubscribeLocalEvent<CriminalRecordsConsoleComponent, GeneralRecordCreatedEvent>(UpdateUserInterface);
 
+        /* CD: We disable the wizden Criminal Records computer and reuse some of the Bui events
         Subs.BuiEvents<CriminalRecordsConsoleComponent>(CriminalRecordsConsoleKey.Key, subs =>
         {
             subs.Event<BoundUIOpenedEvent>(UpdateUserInterface);
@@ -48,7 +53,21 @@ public sealed partial class CriminalRecordsConsoleSystem : SharedCriminalRecords
             subs.Event<CriminalRecordAddHistory>(OnAddHistory);
             subs.Event<CriminalRecordDeleteHistory>(OnDeleteHistory);
             subs.Event<CriminalRecordSetStatusFilter>(OnStatusFilterPressed);
+        }); */
+
+        // Moffstation - Start - CD: also subscribe to status changes from the CD records console
+        Subs.BuiEvents<CriminalRecordsConsoleComponent>(CharacterRecordConsoleKey.Key, subs =>
+        {
+            subs.Event<SelectStationRecord>(OnKeySelected);
+            subs.Event((Entity<CriminalRecordsConsoleComponent> ent, ref CriminalRecordChangeStatus args) =>
+            {
+                OnChangeStatus(ent, ref args);
+                RaiseLocalEvent(ent, new CharacterRecordsModifiedEvent());
+            });
+            subs.Event<CriminalRecordAddHistory>(OnAddHistory);
+            subs.Event<CriminalRecordDeleteHistory>(OnDeleteHistory);
         });
+        // Moffstation - End
     }
 
     private void UpdateUserInterface<T>(Entity<CriminalRecordsConsoleComponent> ent, ref T args)
@@ -85,7 +104,10 @@ public sealed partial class CriminalRecordsConsoleSystem : SharedCriminalRecords
         // prevent malf client violating wanted/reason nullability
         if (msg.Status == SecurityStatus.Wanted != (msg.Reason != null) &&
             msg.Status == SecurityStatus.Suspected != (msg.Reason != null) &&
-            msg.Status == SecurityStatus.Hostile != (msg.Reason != null))
+            msg.Status == SecurityStatus.Hostile != (msg.Reason != null) &&
+            // Additional Harmony statuses
+            msg.Status == SecurityStatus.Monitor != (msg.Reason != null) &&
+            msg.Status == SecurityStatus.Search != (msg.Reason != null))
             return;
 
         if (!CheckSelected(ent, msg.Actor, out var mob, out var key))
@@ -150,6 +172,12 @@ public sealed partial class CriminalRecordsConsoleSystem : SharedCriminalRecords
             (_, SecurityStatus.Wanted) => "wanted",
             (SecurityStatus.Hostile, SecurityStatus.None) => "not-hostile",
             (SecurityStatus.Eliminated, SecurityStatus.None) => "not-eliminated",
+            // Umbra: Additional Harmony statuses
+            // person is being monitored
+            (_, SecurityStatus.Monitor) => "monitor",
+            // person needs to be searched
+            (_, SecurityStatus.Search) => "search",
+            // End of Additional Harmony statuses
             // person is no longer sus
             (SecurityStatus.Suspected, SecurityStatus.None) => "not-suspected",
             // going from wanted to none, must have been a mistake
@@ -158,6 +186,12 @@ public sealed partial class CriminalRecordsConsoleSystem : SharedCriminalRecords
             (SecurityStatus.Detained, SecurityStatus.None) => "released",
             // criminal is no longer on parole
             (SecurityStatus.Paroled, SecurityStatus.None) => "not-parole",
+            // Umbra: Additional Harmony statuses
+            // person is no longer monitored
+            (SecurityStatus.Monitor, SecurityStatus.None) => "not-monitor",
+            // person no longer needs to be searched
+            (SecurityStatus.Search, SecurityStatus.None) => "not-search",
+            // End of Additional Harmony statuses
             // this is impossible
             _ => "not-wanted"
         };

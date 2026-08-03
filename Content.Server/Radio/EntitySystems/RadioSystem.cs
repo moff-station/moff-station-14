@@ -7,6 +7,7 @@ using Content.Shared.Chat;
 using Content.Shared.Database;
 using Content.Shared.Radio;
 using Content.Shared.Radio.Components;
+using Content.Shared.Radio.EntitySystems;
 using Content.Shared.Speech;
 using Robust.Shared.Map;
 using Robust.Shared.Network;
@@ -15,13 +16,12 @@ using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 using Robust.Shared.Replays;
 using Robust.Shared.Utility;
+using Content.Shared._Moffstation.Radio; // Moffstation - Radio warp
 
 namespace Content.Server.Radio.EntitySystems;
 
-/// <summary>
-///     This system handles intrinsic radios and the general process of converting radio messages into chat messages.
-/// </summary>
-public sealed partial class RadioSystem : EntitySystem
+/// <inheritdoc/>
+public sealed partial class RadioSystem : SharedRadioSystem
 {
     [Dependency] private INetManager _netMan = default!;
     [Dependency] private IReplayRecordingManager _replay = default!;
@@ -118,6 +118,19 @@ public sealed partial class RadioSystem : EntitySystem
             ("name", name),
             ("message", content));
 
+        // Moffstation - Begin - Radio warp
+        var wrappedWarpMessage = Loc.GetString(
+            speech.Bold ? "chat-radio-warp-message-wrap-bold" : "chat-radio-warp-message-wrap",
+            ("color", channel.Color),
+            ("fontType", speech.FontId),
+            ("fontSize", speech.FontSize),
+            ("verb", Loc.GetString(_random.Pick(speech.SpeechVerbStrings))),
+            ("channel", $"\\[{channel.LocalizedName}\\]"),
+            ("name", name),
+            ("message", content),
+            ("source", GetNetEntity(messageSource)));
+        // Moffstation - End
+
         // most radios are relayed to chat, so lets parse the chat message beforehand
         var chat = new ChatMessage(
             ChatChannel.Radio,
@@ -162,6 +175,15 @@ public sealed partial class RadioSystem : EntitySystem
             if (attemptEv.Cancelled)
                 continue;
 
+            // Moffstation - Begin - Radio warp
+            var quer = new RadioWarpEnabledQuery();
+            RaiseLocalEvent(receiver, ref quer);
+
+            ev.ChatMsg.Message.WrappedMessage = quer.Enabled
+                ? wrappedWarpMessage
+                : wrappedMessage;
+            // Moffstation - End
+
             // send the message
             RaiseLocalEvent(receiver, ref ev);
         }
@@ -176,7 +198,7 @@ public sealed partial class RadioSystem : EntitySystem
     }
 
     /// <inheritdoc cref="TelecomServerComponent"/>
-    private bool HasActiveServer(MapId mapId, string channelId)
+    public bool HasActiveServer(MapId mapId, string channelId) // Moffstation - made public
     {
         var servers = EntityQuery<TelecomServerComponent, EncryptionKeyHolderComponent, ApcPowerReceiverComponent, TransformComponent>();
         foreach (var (_, keys, power, transform) in servers)

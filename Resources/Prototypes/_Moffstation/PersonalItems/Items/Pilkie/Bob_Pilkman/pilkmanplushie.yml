@@ -1,0 +1,37 @@
+﻿- type: entity
+  parent: BasePlushie
+  id: PersonalItemPilkmanPlushie
+  name: Tickle Me Pilkman
+  description: A plush with the uncanny likeness of a grumpy, middle-aged man in his underwear; forever caught between exhaustion and psychotic outrage. Squeeze him, and he lets out an unsettling giggle that sounds far too real. Why this thing hasn't been recalled yet, nobody knows!
+  suffix: PersonalItem
+  components:
+  - type: Sprite
+    sprite: _Moffstation/PersonalItems/Items/Pilkie/Bob_Pilkman/pilkmanplushie.rsi
+    state: icon
+  - type: EmitSoundOnUse
+    sound: &PlushiePilkman
+      path: "/Audio/_Moffstation/PersonalItems/Items/Pilkie/Bob_Pilkman/pilkman.ogg" # FUCK!!!
+      params:
+        volume: -8
+  - type: EmitSoundOnLand
+    sound: *PlushiePilkman
+  - type: EmitSoundOnActivate
+    sound: *PlushiePilkman
+  - type: Edible
+    useSound: *PlushiePilkman
+  - type: MeleeWeapon
+    soundHit: *PlushiePilkman
+  - type: EmitSoundOnTrigger
+    sound: *PlushiePilkman
+  - type: UseDelay
+    delay: 3.0
+
+- type: loadout
+  id: PersonalItemPilkmanPlushie
+  storage:
+    back:
+    - PersonalItemPilkmanPlushie
+  effects:
+  - !type:PersonalItemLoadoutEffect
+    character:
+    - Bob Pilkman

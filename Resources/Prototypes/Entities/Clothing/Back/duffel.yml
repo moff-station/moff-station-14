@@ -49,7 +49,7 @@
   description: A large duffel bag for holding extra captainly goods.
   components:
   - type: Sprite
-    sprite: Clothing/Back/Duffels/captain.rsi
+    sprite: _Moffstation/Clothing/Back/Duffels/captain.rsi # Moffstation - Command Outfit Resprite
 
 - type: entity
   parent: ClothingBackpackDuffel
@@ -151,7 +151,7 @@
   description: A large duffel bag for stealing cargo's precious loot.
   components:
     - type: Sprite
-      sprite: Clothing/Back/Duffels/cargo.rsi
+      sprite: _Moffstation/Clothing/Back/Duffels/cargo.rsi # Moffstation
 
 - type: entity
   parent: ClothingBackpackDuffel

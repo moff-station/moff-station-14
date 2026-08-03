@@ -1,6 +1,6 @@
 - type: entity
   name: BaseWeaponShotgun
-  parent: BaseItem
+  parent: [ BaseItem, BasePointerCrosshair ] # MACRO add crosshair
   id: BaseWeaponShotgun
   description: A rooty tooty point and shooty.
   abstract: true
@@ -22,6 +22,11 @@
   - type: AmmoCounter
   - type: Gun
     fireRate: 2
+    # Moffstation - Begin - Add gun recoil.
+    recoilKick:
+      impulse: 200
+      staminaMultiplier: 5
+    # Moffstation - End - Add gun recoil.
     selectedMode: SemiAuto
     availableModes:
     - SemiAuto
@@ -29,6 +34,7 @@
       path: /Audio/Weapons/Guns/Gunshots/shotgun.ogg
     soundEmpty:
       path: /Audio/Weapons/Guns/Empty/empty.ogg
+    cameraRecoilScalar: 1.5 # Moffstation - higher screenshake on shotguns
   - type: CustomSpriteAmmoCounter
     loadedAmmoSprite: Interface/ItemStatus/Shotgun_Shells/not_spent.png
     spentAmmoSprite: Interface/ItemStatus/Shotgun_Shells/spent.png
@@ -75,6 +81,11 @@
     spentAmmoSprite: Interface/ItemStatus/Shotgun_Shells/spent.png
   - type: GunRequiresWield #remove when inaccuracy on spreads is fixed
   - type: Gun
+    # Moffstation - Begin - Add gun recoil.
+    recoilKick:
+      impulse: 200
+      staminaMultiplier: 3
+    # Moffstation - End - Add gun recoil.
     fireRate: 2
     selectedMode: FullAuto
     availableModes:
@@ -201,6 +212,11 @@
     sprite: Objects/Weapons/Guns/Shotguns/sawn_inhands_64x.rsi
   - type: Gun
     fireRate: 3
+    # Moffstation - Begin - Add gun recoil.
+    recoilKick:
+      impulse: 250
+      staminaMultiplier: 6
+    # Moffstation - End - Add gun recoil.
   - type: GunSpreadModifier
     spread: 1.4
   - type: BallisticAmmoProvider
@@ -242,6 +258,11 @@
     sprite: Objects/Weapons/Guns/Shotguns/hm_pistol.rsi
   - type: Gun
     fireRate: 4
+    # Moffstation - Begin - Add gun recoil.
+    recoilKick:
+      impulse: 300
+      staminaMultiplier: 8
+    # Moffstation - End - Add gun recoil.
   - type: BallisticAmmoProvider
     capacity: 1
   - type: Construction
@@ -283,12 +304,20 @@
   - type: GunRequiresWield #remove when inaccuracy on spreads is fixed
   - type: Gun
     fireRate: 4 #No reason to stifle the firerate since you have to manually reload every time anyways.
+    # Moffstation - Begin - Add gun recoil.
+    recoilKick:
+      impulse: 300
+      staminaMultiplier: 8
+    # Moffstation - End - Add gun recoil.
   - type: BallisticAmmoProvider
     capacity: 1
     proto: null
   - type: Construction
-    graph: ImprovisedShotgunGraph
-    node: shotgun
+    # Moffstation - Start - ShotgunCutting
+    graph: ImprovisedShotgunSawn
+    node: start
+    deconstructionTarget: null
+    # Moffstation - End
   - type: StaticPrice
     price: 20
 

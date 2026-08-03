@@ -40,6 +40,7 @@
     - Zombie
     - Wizard
     - Xenoborgs
+    - Pirates # Moffstation
     - KesslerSyndromeScheduler
     - RampingStationEventScheduler
     - SpaceTrafficControlEventScheduler
@@ -62,6 +63,7 @@
     - Zombie
     - Wizard
     - Xenoborgs
+    - Pirates # Moffstation
     - BasicStationEventScheduler
     - KesslerSyndromeScheduler
     - MeteorSwarmMildScheduler
@@ -83,6 +85,7 @@
   - MeteorSwarmScheduler
   - SpaceTrafficControlEventScheduler
   - BasicRoundstartVariation
+  - ExtendedNotificationEvent # Moffstation - For the notification
 
 - type: gamePreset
   id: Greenshift
@@ -145,7 +148,7 @@
   rules:
   - DummyNonAntagChance
   - Traitor
-  - SubGamemodesRuleNoWizard
+  - SubGamemodesRuleSyndicate # Moffstation - LPO only during syndicate rounds
   - BasicStationEventScheduler
   - MeteorSwarmScheduler
   - SpaceTrafficControlEventScheduler
@@ -174,7 +177,7 @@
   rules:
   - Nukeops
   - DummyNonAntagChance
-  - SubGamemodesRuleNoWizard
+  - SubGamemodesRuleSyndicate # Moffstation - LPO only during syndicate rounds
   - BasicStationEventScheduler
   - MeteorSwarmScheduler
   - SpaceTrafficControlEventScheduler

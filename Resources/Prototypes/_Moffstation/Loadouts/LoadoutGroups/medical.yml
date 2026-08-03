@@ -1,0 +1,38 @@
+# Generic
+
+# CMO
+- type: loadoutGroup
+  id: ChiefMedicalOfficerPDA
+  name: loadout-group-chief-medical-officer-id
+  loadouts:
+  - CMOPDA # Keep default PDA on top of the list
+  - MedicalDirectorPDA
+
+# Chemist
+- type: loadoutGroup
+  id: ChemistryPDA
+  name: loadout-group-chemist-id
+  loadouts:
+  - ChemistryPDA # Keep default PDA on top of the list
+  - PharmacistPDA
+  - PharmacologistPDA
+  - ToxicologistPDA
+
+# Paramedic
+- type: loadoutGroup
+  id: ParamedicPDA
+  name: loadout-group-paramedic-id
+  loadouts:
+  - ParamedicPDA # Keep default PDA on top of the list
+  - FieldMedicPDA
+  - EmergencyResponseTechnicianPDA
+
+# Psychologist
+- type: loadoutGroup
+  id: PsychologistPDA
+  name: loadout-group-psychologist-id
+  loadouts:
+  - PsychologistPDA # Keep default PDA on top of the list
+  - PsychiatristPDA
+  - TherapistPDA
+  - SocialWorkerPDA

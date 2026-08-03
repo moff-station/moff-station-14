@@ -1,8 +1,9 @@
 - type: entity
+  abstract: true # Moffstation - Cabinetification - moved to be in namespace
   name: first aid kit
   description: It's an emergency medical kit for those serious boo-boos.
   parent: BaseStorageItem
-  id: Medkit
+  id: MedkitUpstream # Moffstation - Uncabinetification
   components:
   - type: Sprite
     sprite: Objects/Specific/Medical/firstaidkits.rsi
@@ -23,10 +24,11 @@
     - Medkit
 
 - type: entity
+  abstract: true # Moffstation - Cabinetification - moved to be in namespace
   name: burn treatment kit
   description: "A specialized medical kit for when the toxins lab spontaneously burns down."
   parent: Medkit
-  id: MedkitBurn
+  id: MedkitBurnUpstream # Moffstation - Uncabinetification
   components:
   - type: Sprite
     state: burnkit
@@ -34,10 +36,11 @@
     heldPrefix: burnkit
 
 - type: entity
+  abstract: true # Moffstation - Cabinetification - moved to be in namespace
   name: toxin treatment kit
   description: "Used to treat toxic blood content."
   parent: Medkit
-  id: MedkitToxin
+  id: MedkitToxinUpstream # Moffstation - Uncabinetification
   components:
   - type: Sprite
     state: toxinkit
@@ -45,10 +48,11 @@
     heldPrefix: toxinkit
 
 - type: entity
+  abstract: true # Moffstation - Cabinetification - moved to be in namespace
   name: oxygen deprivation treatment kit
   description: "A box full of oxygen goodies."
   parent: Medkit
-  id: MedkitO2
+  id: MedkitO2Upstream # Moffstation - Uncabinetification
   components:
   - type: Sprite
     state: o2kit
@@ -56,10 +60,11 @@
     heldPrefix: o2kit
 
 - type: entity
+  abstract: true # Moffstation - Cabinetification - moved to be in namespace
   name: brute trauma treatment kit
   description: "A first aid kit for when you get toolboxed."
   parent: Medkit
-  id: MedkitBrute
+  id: MedkitBruteUpstream # Moffstation - Uncabinetification
   components:
   - type: Sprite
     state: brutekit
@@ -67,10 +72,11 @@
     heldPrefix: brutekit
 
 - type: entity
+  abstract: true # Moffstation - Cabinetification - moved to be in namespace
   name: advanced first aid kit
   description: "An advanced kit to help deal with advanced wounds."
   parent: Medkit
-  id: MedkitAdvanced
+  id: MedkitAdvancedUpstream # Moffstation - Uncabinetification
   components:
   - type: Sprite
     state: advkit
@@ -78,10 +84,11 @@
     heldPrefix: advkit
 
 - type: entity
+  abstract: true # Moffstation - Cabinetification - moved to be in namespace
   name: radiation treatment kit
   description: "If you took your Rad-X you wouldn't need this."
   parent: Medkit
-  id: MedkitRadiation
+  id: MedkitRadiationUpstream # Moffstation - Uncabinetification
   components:
   - type: Sprite
     state: radkit
@@ -89,10 +96,11 @@
     heldPrefix: radkit
 
 - type: entity
+  abstract: true # Moffstation - Cabinetification - moved to be in namespace
   name: combat medical kit
   description: "For the big weapons among us."
   parent: Medkit
-  id: MedkitCombat
+  id: MedkitCombatUpstream # Moffstation - Uncabinetification
   components:
   - type: Sprite
     state: blackkit

@@ -1,4 +1,5 @@
 using System.Numerics;
+using Content.Shared._Funkystation.Footprints;
 using Content.Shared.Chemistry.Components;
 using Content.Shared.Chemistry.EntitySystems;
 using Content.Shared.FixedPoint;
@@ -79,8 +80,9 @@ public abstract partial class SharedAbsorbentSystem : EntitySystem
         if (other > FixedPoint2.Zero)
             ent.Comp.Progress[otherColor] = other.Float();
 
+        // Fill the empty part of the reagents bar with Color.Transparent (so that the background is visible in the UI)
         if (solution.AvailableVolume > FixedPoint2.Zero)
-            ent.Comp.Progress[Color.DarkGray] = solution.AvailableVolume.Float();
+            ent.Comp.Progress[Color.Transparent] = solution.AvailableVolume.Float();
 
         Dirty(ent);
         _item.VisualsChanged(ent);
@@ -355,6 +357,18 @@ public abstract partial class SharedAbsorbentSystem : EntitySystem
         localPos = userXform.LocalRotation.RotateVec(localPos);
 
         _melee.DoLunge(user, absorbEnt, Angle.Zero, localPos, null);
+
+        // Funky start - Footprints
+        var ev = new FootprintCleanEvent();
+        RaiseLocalEvent(target, ref ev);
+        // Funky end
+
+        // Moff start - Footprint cleaning sounds
+        if (ev.Handled)
+        {
+            _audio.PlayPredicted(absorber.PickupSound, user, user);
+        }
+        // Moff end
 
         return true;
     }

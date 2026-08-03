@@ -1,0 +1,25 @@
+# Player: Tezzaide - Character: Iris Steelewing
+- type: entity
+  parent: ClothingHandsBase
+  id: PersonalItemIrisRing
+  name: Iris' Wedding Ring
+  description: A small silver ring, set with a Blue Moonstone gem.
+  suffix: PersonalItem
+  components:
+  - type: Sprite
+    sprite: _Moffstation/PersonalItems/Wearables/Tezzaide/Iris_Steelewing/irisring.rsi
+  - type: Clothing
+    quickEquip: True
+    sprite: _Moffstation/PersonalItems/Wearables/Tezzaide/Iris_Steelewing/irisring.rsi
+  - type: Item
+    size: Tiny
+
+- type: loadout
+  id: PersonalItemIrisRing
+  storage:
+    back:
+    - PersonalItemIrisRing
+  effects:
+  - !type:PersonalItemLoadoutEffect
+    character:
+    - Iris Steelewing

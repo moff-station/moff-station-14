@@ -1,0 +1,19 @@
+- type: entity
+  parent: [ WeaponLauncherChinaLake, BaseCargoContraband ]
+  id: NFWeaponLauncherMail
+  name: RPDS
+  description: The Rapid Parcel Delivery System, a mail carrier's right hand. Launches mail capsules.
+  components:
+  - type: Sprite
+    sprite: _NF/Objects/Weapons/Guns/Launchers/mail.rsi
+  - type: Clothing
+    sprite: _NF/Objects/Weapons/Guns/Launchers/mail.rsi
+    slots:
+    - Back
+    - Belt
+    - suitStorage
+  - type: BallisticAmmoProvider
+    proto: null
+    whitelist:
+      tags:
+      - MailCapsule

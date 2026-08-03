@@ -73,7 +73,7 @@
   - type: Damageable
     damageModifierSet: Metallic
   - type: Injurable
-    damageContainer: Inorganic
+    damageContainer: StructuralInorganic # Moffstation - Structural damagetype fix
   - type: Repairable
     fuelCost: 10
     doAfterDelay: 5

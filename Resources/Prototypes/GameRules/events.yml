@@ -13,15 +13,17 @@
     - id: GreytideVirus
     - id: IonStorm # its calm like 90% of the time smh
     - id: KudzuGrowth
+    - id: LightOverloadRule # Moffstation - New events
+    - id: LightOverloadRuleBlinking # Moffstation - New events
     - id: MassHallucinations
     - id: MouseMigration
     - id: PowerGridCheck
     - id: RandomSentience
-    - id: SlimesSpawnHorde
+    #- id: SlimesSpawnHorde # Moffstation - Move to pests table
     - id: SolarFlare
-    - id: SnakeSpawnHorde
-    - id: SpiderClownSpawnHorde
-    - id: SpiderSpawnHorde
+    #- id: SnakeSpawnHorde # Moffstation - Move to pests table
+    #- id: SpiderClownSpawnHorde # Moffstation - Move to pests table
+    #- id: SpiderSpawnHorde # Moffstation - Move to pests table
     - id: VentClog
 
 - type: entityTable
@@ -33,6 +35,11 @@
     - id: RevenantSpawn
     - !type:NestedSelector
       tableId: DerelictBorgEventTable
+    # Moffstation - Start - Moffstation basic antag events
+    - id: SyndicateDeadDrop
+    - id: SyndieVentSoldierSpawn
+    - id: LawBreakerVirus
+    # Moffstation - End
 
 - type: entityTable
   id: ModerateAntagEventsTable
@@ -44,30 +51,38 @@
     - id: SleeperAgents
     - id: ZombieOutbreak
     - id: LoneOpsSpawn
-    - id: WizardSpawn
+    # - id: WizardSpawn # Moffstation
+    - id: EeepEvent # imp
     - !type:NestedSelector
       tableId: DerelictBorgEventTable
+    # Moffstation - Start - Moffstation ghostrole antags
+    - id: SyndicateListeningOutpostSpawn
+    - id: PirateCorsairSpawn
+    - id: HellPortalSpawn
+    - id: ReplicatorSpawn
+    # Moffstation - End
 
 - type: entityTable
   id: DerelictBorgEventTable #For Derelict Borg spawns
   table: !type:GroupSelector
     children:
     - !type:GroupSelector # Standard NT Borgs
-      weight: 85
+      weight: 90 # moffstation - need to reduce assault borg chance so it doesn't become statistically more likely than derelict individual NT borgs
       children:
         - id: DerelictEngineerCyborgSpawn
         - id: DerelictGenericCyborgSpawn
         - id: DerelictJanitorCyborgSpawn
         - id: DerelictMedicalCyborgSpawn
         - id: DerelictMiningCyborgSpawn
+        - id: DerelictServiceCyborgSpawn # Moffstation
     - !type:GroupSelector # Other Borgs
-      weight: 15
+      weight: 10 # moffstation - need to reduce assault borg chance so it doesn't become statistically more likely than derelict individual NT borgs
       children:
         - id: DerelictSyndicateAssaultCyborgSpawn
 
 - type: entity
   abstract: true
-  parent: BaseGameRule
+  parent: BaseUnweightedAntagRule # Moff - ghost roles are NOT weighted
   id: BaseAntagGhostRoleRule
   components:
   - type: AntagSelection
@@ -200,7 +215,7 @@
     weight: 6.5
     earliestStart: 40
     reoccurrenceDelay: 20
-    minimumPlayers: 20
+    minimumPlayers: 30  # Moffstation - Tune down antags
     duration: null
     occursDuringRoundEnd: false
   - type: SpaceSpawnRule
@@ -259,7 +274,7 @@
     occursDuringRoundEnd: false
     earliestStart: 20
     reoccurrenceDelay: 20
-    minimumPlayers: 15
+    minimumPlayers: 20  # Moffstation - Tune down antags
   - type: ParadoxCloneRule
     objectiveBlacklist:
       tags:
@@ -267,6 +282,7 @@
   - type: AntagObjectives
     objectives:
     - ParadoxCloneKillObjective
+    - ParadoxCloneCoexistObjective  # Moffstation - Paradox clone free agents
     - ParadoxCloneLivingObjective
   - type: AntagRandomSpawn # TODO: improve spawning so they only start in maints
   - type: AntagSelection
@@ -412,9 +428,11 @@
     table: !type:GroupSelector
       rolls: 4, 8
       children:
-      - id: MobAdultSlimesBlueAngry
-      - id: MobAdultSlimesGreenAngry
-      - id: MobAdultSlimesYellowAngry
+      # Moffstation - Start - Make mobs smash stuff
+      - id: MobAdultSlimesBlueAngrySmasher
+      - id: MobAdultSlimesGreenAngrySmasher
+      - id: MobAdultSlimesYellowAngrySmasher
+      # Moffstation - End
 
 - type: entity
   id: SnakeSpawnHorde
@@ -433,9 +451,11 @@
     table: !type:GroupSelector
       rolls: 4, 8
       children:
-      - id: MobPurpleSnake
-      - id: MobSmallPurpleSnake
-      - id: MobCobraSpace
+      # Moffstation - Start - Make mobs smash stuff
+      - id: MobPurpleSnakeSmasher
+      - id: MobSmallPurpleSnakeSmasher
+      - id: MobCobraSpaceSmasher
+      # Moffstation - End
 
 - type: entity
   id: SpiderSpawnHorde
@@ -454,7 +474,7 @@
     table: !type:GroupSelector
       rolls: 4, 8
       children:
-      - id: MobGiantSpiderAngry
+      - id: MobGiantSpiderAngrySmasher # Moffstation - Make mobs smash stuff
 
 - type: entity
   id: SpiderClownSpawnHorde
@@ -473,7 +493,7 @@
     table: !type:GroupSelector
       rolls: 4, 8
       children:
-      - id: MobClownSpider
+      - id: MobClownSpiderSmasher # Moffstation - Make mobs smash stuff
 
 - type: entity
   id: ZombieOutbreak
@@ -503,7 +523,7 @@
   - type: StationEvent
     earliestStart: 35
     weight: 5.5
-    minimumPlayers: 20
+    minimumPlayers: 30 # Moffstation - Tune down antags
     duration: null # LoneOpsSpawn needs an infinite duration so that it inherits the NukeOpsRule things of an actually appropriate end screen (not always "Neutral outcome!") and... ending the game if the station is nuked.
     occursDuringRoundEnd: false
   - type: RuleGrids
@@ -525,7 +545,7 @@
   - type: StationEvent
     earliestStart: 30
     weight: 8
-    minimumPlayers: 15
+    minimumPlayers: 25  # Moffstation - Tune down antags
     maxOccurrences: 1 # can only happen once per round
     startAnnouncement: station-event-communication-interception
     startAudio:

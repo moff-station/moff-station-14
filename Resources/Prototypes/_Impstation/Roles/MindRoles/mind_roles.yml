@@ -1,0 +1,11 @@
+﻿# Tourist
+- type: entity
+  parent: MindRoleGhostRoleFreeAgent
+  id: MindRoleTourist
+  name: Tourist Role
+  components:
+  - type: MindRole
+    antag: true
+    antagPrototype: Tourist
+    roleType: FreeAgent
+  - type: TouristRole

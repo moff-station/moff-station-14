@@ -1,0 +1,9 @@
+﻿construction-graph-tag-cheap-sun-glasses = cheap sunglasses
+construction-graph-tag-crayon = a crayon
+construction-graph-tag-cyborg-module = a cyborg module
+construction-graph-tag-engineering-goggles = engineering goggles
+construction-graph-tag-folder = a folder
+
+construction-graph-tag-capacitor = capacitor
+construction-graph-tag-magboots = magboots
+construction-graph-tag-sharkminnow-leather = sharkminnow leather

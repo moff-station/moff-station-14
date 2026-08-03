@@ -55,8 +55,9 @@
   - type: Storage
     grid:
     - 0,0,4,3
-    areaInsert: true
+#    areaInsert: true # Moffstation
     maxItemSize: Tiny
+  - type: AreaPickup # Moffstation
   - type: EntityTableContainerFill
     containers:
       storagebase:
@@ -167,7 +168,9 @@
   - type: VentriloquistPuppet
   - type: Item
     size: Normal
-  - type: Muted
+  - type: PermanentStatusEffects
+    statusEffects:
+    - StatusEffectVentriloquistPuppetMuted
   - type: TypingIndicator
     proto: robot
   - type: Actions

@@ -305,7 +305,7 @@ public sealed partial class DockingSystem : SharedDockingSystem
 
         if (TryComp(dockAUid, out DoorComponent? doorA))
         {
-            if (_doorSystem.TryOpen(dockAUid, doorA))
+            if (_doorSystem.TryOpen(dockAUid, doorA, ignorePower: true)) // Moffstation - Hack to fix evac pods
             {
                 if (TryComp<DoorBoltComponent>(dockAUid, out var airlockA))
                 {
@@ -317,7 +317,7 @@ public sealed partial class DockingSystem : SharedDockingSystem
 
         if (TryComp(dockBUid, out DoorComponent? doorB))
         {
-            if (_doorSystem.TryOpen(dockBUid, doorB))
+            if (_doorSystem.TryOpen(dockBUid, doorB, ignorePower: true)) // Moffstation - Hack to fix evac pods
             {
                 if (TryComp<DoorBoltComponent>(dockBUid, out var airlockB))
                 {

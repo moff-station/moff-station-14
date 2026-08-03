@@ -4,13 +4,20 @@
   description: job-description-rd
   playTimeTracker: JobResearchDirector
   requirements:
+  # Moffstation - Start - Change role timers
+  - !type:OverallPlaytimeRequirement
+    time: 20h
+  # Moffstation - End
   - !type:RoleTimeRequirement
     role: JobScientist
     time: 5h
   - !type:DepartmentTimeRequirement
     department: Science
     time: 10h
-  weight: 10
+  # Moff start - no job weights
+#  weight: 10
+  displayWeight: 10
+  # Moff end
   startingGear: ResearchDirectorGear
   icon: "JobIconResearchDirector"
   supervisors: job-supervisors-captain
@@ -31,7 +38,7 @@
 - type: startingGear
   id: ResearchDirectorGear
   equipment:
-    id: RnDPDA
+    #id: RnDPDA # Moffstation - New PDAs
     ears: ClothingHeadsetRD
   storage:
     back:

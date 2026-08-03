@@ -1,6 +1,8 @@
 using Content.Shared.Administration.Logs;
+using Content.Shared.Atmos.EntitySystems;
 using Content.Shared.Atmos.Piping.Trinary.Components;
 using Content.Shared.Database;
+using Content.Shared.Examine;
 
 namespace Content.Shared.Atmos.Piping.Trinary.EntitySystems;
 
@@ -8,6 +10,42 @@ public abstract partial class SharedGasFilterSystem : EntitySystem
 {
     [Dependency] private ISharedAdminLogManager _adminLogger = default!;
     [Dependency] private SharedAppearanceSystem _appearance = default!;
+    [Dependency] private SharedAtmosphereSystem _atmosphereSystem = default!;
+
+    public override void Initialize()
+    {
+        base.Initialize();
+
+        SubscribeLocalEvent<GasFilterComponent, ExaminedEvent>(OnExamined);
+    }
+
+    private void OnExamined(Entity<GasFilterComponent> ent, ref ExaminedEvent args)
+    {
+        if (Loc.TryGetString("gas-volume-pump-system-examined",
+                out var transferRateStr,
+                ("statusColor", "lightblue"),
+                ("rate", ent.Comp.TransferRate.ToString("G"))
+            ))
+        {
+            args.PushMarkup(transferRateStr);
+        }
+
+        var gasName = Loc.GetString("comp-gas-filter-ui-filter-gas-none");
+        if (ent.Comp.FilteredGas.HasValue)
+        {
+            var gas = _atmosphereSystem.GetGas((Gas)ent.Comp.FilteredGas);
+            gasName = Loc.GetString(gas.Name);
+        }
+
+        if (Loc.TryGetString("comp-gas-filter-filtered-gas-examine",
+                out var filteredGasStr,
+                ("statusColor", "lightblue"),
+                ("filteredGas", gasName)
+            ))
+        {
+            args.PushMarkup(filteredGasStr);
+        }
+    }
 
     [SubscribeLocalEvent]
     private void OnToggleStatusMessage(Entity<GasFilterComponent> ent, ref GasFilterToggleStatusMessage args)
@@ -35,26 +73,49 @@ public abstract partial class SharedGasFilterSystem : EntitySystem
     [SubscribeLocalEvent]
     private void OnSelectGasMessage(Entity<GasFilterComponent> ent, ref GasFilterSelectGasMessage args)
     {
-        if (args.Gas.HasValue)
+        // Moff start - Filter multiple gasses
+        if (!Enum.IsDefined(args.Gas))
         {
-            if (!Enum.IsDefined(typeof(Gas), args.Gas))
-            {
-                Log.Warning($"{ToPrettyString(ent.Owner)} received GasFilterSelectGasMessage with an invalid ID: {args.Gas}");
-                return;
-            }
+            Log.Warning($"{ToPrettyString(ent.Owner)} received GasFilterSelectGasMessage with an invalid ID: {args.Gas}");
+            return;
+        }
 
-            ent.Comp.FilteredGas = args.Gas;
-            _adminLogger.Add(LogType.AtmosFilterChanged, LogImpact.Medium,
-                $"{ToPrettyString(args.Actor):player} set the filter on {ToPrettyString(ent.Owner):device} to {args.Gas.ToString()}");
+        if (args.Filtered)
+        {
+            ent.Comp.FilteredGases.Add(args.Gas);
         }
         else
         {
-            ent.Comp.FilteredGas = null;
-            _adminLogger.Add(LogType.AtmosFilterChanged, LogImpact.Medium,
-                $"{ToPrettyString(args.Actor):player} set the filter on {ToPrettyString(ent.Owner):device} to none");
+            ent.Comp.FilteredGases.Remove(args.Gas);
         }
 
-        DirtyField(ent.Owner, ent.Comp, nameof(GasFilterComponent.FilteredGas));
+        _adminLogger.Add(
+            LogType.AtmosFilterChanged,
+            LogImpact.Medium,
+            $"{ToPrettyString(args.Actor):player} set the filter of {args.Gas.ToString()} on {ToPrettyString(ent.Owner):device} to {args.Filtered.ToString()}"
+        );
+
+        // if (args.Gas.HasValue)
+        // {
+        //     if (!Enum.IsDefined(typeof(Gas), args.Gas))
+        //     {
+        //         Log.Warning($"{ToPrettyString(ent.Owner)} received GasFilterSelectGasMessage with an invalid ID: {args.Gas}");
+        //         return;
+        //     }
+        //
+        //     ent.Comp.FilteredGas = args.Gas;
+        //     _adminLogger.Add(LogType.AtmosFilterChanged, LogImpact.Medium,
+        //         $"{ToPrettyString(args.Actor):player} set the filter on {ToPrettyString(ent.Owner):device} to {args.Gas.ToString()}");
+        // }
+        // else
+        // {
+        //     ent.Comp.FilteredGas = null;
+        //     _adminLogger.Add(LogType.AtmosFilterChanged, LogImpact.Medium,
+        //         $"{ToPrettyString(args.Actor):player} set the filter on {ToPrettyString(ent.Owner):device} to none");
+        // }
+        //
+        // DirtyField(ent.Owner, ent.Comp, nameof(GasFilterComponent.FilteredGas));
+        // Moff end
         UpdateUi(ent);
     }
 

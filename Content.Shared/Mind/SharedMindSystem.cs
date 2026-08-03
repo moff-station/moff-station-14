@@ -44,6 +44,8 @@ public abstract partial class SharedMindSystem : EntitySystem
     [Dependency] private SharedPhysicsSystem _physics = default!;
     [Dependency] private SharedPlayerSystem _player = default!;
 
+    [Dependency] private SharedTransformSystem _transform = default!;
+
     [ViewVariables]
     protected readonly Dictionary<NetUserId, EntityUid> UserMinds = new();
 
@@ -709,6 +711,21 @@ public abstract partial class SharedMindSystem : EntitySystem
             allHumans.Add((mind, mindComp));
         }
     }
+
+    // Moffstation - Start - Helper for selecting Paradox Clone targets on the same map.
+    /// <summary>
+    /// Gets all minds whose current entity is on <paramref name="map"/>.
+    /// </summary>>
+    public HashSet<Entity<MindComponent>> GetAliveHumansOnMap(EntityUid map)
+    {
+        return GetAliveHumans()
+            .Where(candidateMind =>
+                candidateMind.Comp.CurrentEntity is { } candidateEntity &&
+                _transform.GetMap(candidateEntity) == map
+            )
+            .ToHashSet();
+    }
+    // Moffstation - End
 
     /// <summary>
     /// Picks a random mind from a pool after applying a list of filters.

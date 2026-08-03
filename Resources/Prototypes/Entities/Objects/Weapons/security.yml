@@ -13,10 +13,12 @@
     energyPerUse: 50
   - type: ItemToggle
     onActivate: false
-    soundActivate:
-      collection: sparks
-      params:
-        variation: 0.250
+# ES START
+#    soundActivate:
+#      collection: sparks
+#      params:
+#        variation: 0.250
+# ES END
     soundDeactivate:
       collection: sparks
       params:
@@ -39,7 +41,11 @@
         Blunt: 7
     bluntStaminaDamageFactor: 2.0
     angle: 60
-    animation: WeaponArcThrust
+    wideAnimation: WeaponArcThrust
+# ES START
+  - type: ESSparkOnItemToggle
+    count: 1
+# ES END
   - type: StaminaDamageOnHit
     damage: 35
     sound: /Audio/Weapons/egloves.ogg
@@ -90,6 +96,10 @@
     guides:
     - Security
     - Antagonists
+  # Imp - Begin - Tourists
+  - type: StealTarget
+    stealGroup: StunBaton
+  # Imp - End
 
 - type: entity
   name: truncheon
@@ -239,3 +249,9 @@
         - !type:PlaySoundBehavior
           sound:
             collection: MetalGlassBreak
+    # Moffstation - Start
+    - type: TriggerOnSignal
+    - type: DeviceLinkSink
+      ports:
+      - Trigger
+    # Moffstation - End

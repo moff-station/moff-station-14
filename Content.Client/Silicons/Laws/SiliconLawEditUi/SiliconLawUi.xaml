@@ -9,10 +9,12 @@
     ????
     <!-->
     <BoxContainer
-        Orientation="Vertical">
+        Orientation="Vertical" Margin="5">
         <BoxContainer
             Orientation="Horizontal"
             Align="Center">
+            <Button Name="OverrideProviderButton" Text="{Loc silicon-law-ui-modify-provider}" ToolTip="{Loc silicon-law-ui-modify-provider-tooltip}" ToggleMode="True" Pressed="True" MaxSize="256 64" Access="Public" StyleClasses="OpenLeft"></Button>
+            <Control HorizontalExpand="True"/>
             <Button
                 Name="NewLawButton"
                 Text="{Loc silicon-law-ui-new-law}"

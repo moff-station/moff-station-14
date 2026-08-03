@@ -4,10 +4,11 @@
   id: JobChiefMedicalOfficer
   groups:
   - GroupTankHarness
+  - ChiefMedicalOfficerPDA #Moffstation - New PDAs
   - ChiefMedicalOfficerHead
   - MedicalMask
   - ChiefMedicalOfficerJumpsuit
-  - MedicalBackpack
+  - ChiefMedicalOfficerBackpack # Moffstation - Department Heads can wear any bag from their department
   - ChiefMedicalOfficerOuterClothing
   - ChiefMedicalOfficerNeck
   - ChiefMedicalOfficerShoes
@@ -15,26 +16,29 @@
   - AssistiveItems
   - SurvivalMedical
   - Trinkets
-#  - ChiefMedicalOfficerJobTrinkets
+  #  - ChiefMedicalOfficerJobTrinkets
   - GroupSpeciesBreathToolMedical
+  - PersonalItemsJobAgnostic # Umbra
 
 - type: roleLoadout
   id: JobMedicalDoctor
   groups:
   - GroupTankHarness
+  - MedicalDoctorPDA # Moffstation - Additional job title loadouts
   - MedicalDoctorHead
   - MedicalMask
   - MedicalDoctorJumpsuit
   - MedicalBackpack
   - MedicalDoctorOuterClothing
   - MedicalShoes
-  - MedicalDoctorPDA
+  # - MedicalDoctorPDA # Moffstation - Moved up in list for title loadouts
   - Glasses
   - AssistiveItems
   - SurvivalMedical
   - Trinkets
-#  - MedicalDoctorJobTrinkets
+  #  - MedicalDoctorJobTrinkets
   - GroupSpeciesBreathToolMedical
+  - PersonalItemsJobAgnostic # Umbra
 
 - type: roleLoadout
   id: JobMedicalIntern
@@ -46,29 +50,32 @@
   - AssistiveItems
   - SurvivalMedical
   - Trinkets
-#  - MedicalInternJobTrinkets
+  #  - MedicalInternJobTrinkets
   - GroupSpeciesBreathToolMedical
 
 - type: roleLoadout
   id: JobChemist
   groups:
   - GroupTankHarness
+  - ChemistryPDA # Moffstation - Additional job title loadouts
   - MedicalMask
   - ChemistJumpsuit
   - ChemistBackpack
   - ChemistOuterClothing
-  - MedicalShoes
+  - ChemistShoes
   - Glasses
   - AssistiveItems
   - SurvivalMedical
   - Trinkets
-#  - ChemistJobTrinkets
+  #  - ChemistJobTrinkets
   - GroupSpeciesBreathToolMedical
+  - PersonalItemsJobAgnostic # Umbra
 
 - type: roleLoadout
   id: JobParamedic
   groups:
   - GroupTankHarness
+  - ParamedicPDA # Moffstation - Additional job title loadouts
   - ParamedicHead
   - MedicalMask
   - ParamedicJumpsuit
@@ -79,5 +86,6 @@
   - AssistiveItems
   - SurvivalMedical
   - Trinkets
-#  - ParamedicJobTrinkets
+  #  - ParamedicJobTrinkets
   - GroupSpeciesBreathToolMedical
+  - PersonalItemsJobAgnostic # Umbra

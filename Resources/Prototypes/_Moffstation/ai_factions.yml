@@ -1,0 +1,29 @@
+- type: npcFaction
+  id: Pirate
+  hostile:
+  - NanoTrasen
+  - SimpleHostile
+  - Xeno
+  - PetsNT
+  - Zombie
+  - Dragon
+  - AllHostile
+  - Wizard
+  - Xenoborg
+  - Syndicate
+
+- type: npcFaction
+  id: FeralSlime
+  hostile:
+  - AllHostile
+  - BloodBrother
+  - Dragon
+  - NanoTrasen
+  - PetsNT
+  - Pirate
+  - SimpleHostile
+  - Syndicate
+  - Wizard
+  - Xeno
+  - Xenoborg
+  - Zombie

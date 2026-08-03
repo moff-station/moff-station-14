@@ -1,7 +1,10 @@
+using Content.Shared._Moffstation.CCVar;
+using Content.Shared._Moffstation.Speech;
 using Content.Shared.Chat;
 using Content.Shared.Random.Helpers;
 using Robust.Shared.Audio;
 using Robust.Shared.Audio.Systems;
+using Robust.Shared.Configuration;
 using Robust.Shared.Random;
 using Robust.Shared.Timing;
 
@@ -11,6 +14,9 @@ public sealed partial class SpeechSoundSystem : EntitySystem
 {
     [Dependency] private IGameTiming _gameTiming = default!;
     [Dependency] private SharedAudioSystem _audio = default!;
+
+    [Dependency] private LongSpeechSystem _longSpeech = default!;  // Moffstation - Long speech
+    [Dependency] private IConfigurationManager _configurationManager = default!; // Moffstation - Long speech
 
     [SubscribeLocalEvent]
     private void OnEntitySpoke(Entity<SpeechComponent> ent, ref EntitySpokeEvent args)
@@ -27,7 +33,14 @@ public sealed partial class SpeechSoundSystem : EntitySystem
 
         var sound = GetSpeechSound(ent, args.Message);
         ent.Comp.LastTimeSoundPlayed = currentTime;
-        _audio.PlayPredicted(sound, ent, ent);
+
+
+        // Moffstation - Start - Longspeech
+        if (_configurationManager.GetCVar(MoffCCVars.LongSpeech))
+            _longSpeech.SpeakSentence(ent, args.Message);
+        else
+            _audio.PlayPredicted(sound, ent, ent);
+        // Moffstation - End
     }
 
     /// <summary>

@@ -30,6 +30,11 @@ public sealed partial class DockingComponent : SharedDockingComponent
     [DataField, ViewVariables(VVAccess.ReadWrite)]
     public Color HighlightedRadarColor = Color.Magenta;
 
+    // Moffstation - Start - Allows detection if something else is queued to be docked
+    [DataField]
+    public bool Queued = false;
+    // Moffstation - End
+
     [ViewVariables]
     public int PathfindHandle = -1;
 }

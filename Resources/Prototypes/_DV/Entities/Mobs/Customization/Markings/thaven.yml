@@ -1,0 +1,26 @@
+# Head
+- type: marking
+  id: ThavenCheekBarbels
+  bodyPart: HeadTop
+  groupWhitelist: [Thaven]
+  coloring: # macro edit
+    default:
+      type:
+        !type:SimpleColoring
+          color: "#FFFFFF"
+  sprites:
+  - sprite: _DV/Mobs/Customization/thaven/thaven.rsi
+    state: cheek_barbels
+
+- type: marking
+  id: ThavenEyebrowBarbels
+  bodyPart: HeadTop
+  groupWhitelist: [Thaven]
+  coloring: # macro edit
+    default:
+      type:
+        !type:SimpleColoring
+          color: "#FFFFFF"
+  sprites:
+  - sprite: _DV/Mobs/Customization/thaven/thaven.rsi
+    state: eyebrow_barbels

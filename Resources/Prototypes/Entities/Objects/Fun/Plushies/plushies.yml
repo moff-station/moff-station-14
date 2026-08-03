@@ -21,9 +21,9 @@
   - type: EmitSoundOnTrigger
     sound: *BasePlushieSound
   - type: UseDelay
-    delay: 3.0
+    delay: 1.0 # MoffStation: Reverts Plushie nerf
   - type: MeleeWeapon
-    attackRate: 0.333
+    # attackRate: 0.333 # MoffStation: Reverts Plushie nerf
     wideAnimationRotation: 180
     soundHit: *BasePlushieSound
     damage:
@@ -356,6 +356,10 @@
     sprite: Objects/Fun/Plushies/lizard.rsi
     slots:
     - HEAD
+    clothingVisuals:
+      head:
+      - state: equipped-HELMET
+        offset: "0, 0.03"
   - type: Speech
     speechVerb: Reptilian # for pais (In the secret stash)
   - type: FoodSequenceElement
@@ -449,6 +453,7 @@
       head:
       - state: rainbowlizardplush-equipped-HELMET
         shader: unshaded
+        offset: "0, 0.03"
   - type: Item
     inhandVisuals:
       left:
@@ -504,7 +509,7 @@
     clothingVisuals:
       head:
       - state: spacelizard-equipped-HELMET
-        offset: "0, 0.03"
+        offset: "0, 0.09"
   - type: FoodSequenceElement
     entries:
       CottonBurger: SpaceLizardPlushie
@@ -554,6 +559,10 @@
     equippedPrefix: plushielizardinversed
     slots:
     - HEAD
+    clothingVisuals:
+      head:
+      - state: plushielizardinversed-equipped-HELMET
+        offset: "0, 0.03"
   - type: FoodSequenceElement
     entries:
       CottonBurger: InversedLizardPlushie
@@ -871,9 +880,13 @@
   name: slime plushie
   description: An adorable stuffed toy that resembles a slime. It's basically a hacky sack.
   components:
+  #  Moffstation - Start - Added custom slime sprite
   - type: Sprite
-    sprite: Objects/Fun/Plushies/slime.rsi
+    sprite: _Moffstation/Objects/Fun/Plushies/slime.rsi
     state: icon
+  - type: Item
+    sprite: _Moffstation/Objects/Fun/Plushies/slime.rsi
+  #  Moffstation - End
   - type: EmitSoundOnUse
     sound: &PlushieSlimeSound
       path: /Audio/Voice/Slime/slime_squish.ogg

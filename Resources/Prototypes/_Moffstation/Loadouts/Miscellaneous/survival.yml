@@ -1,0 +1,181 @@
+# Species
+- type: loadoutEffectGroup
+  id: EffectSpeciesAvali
+  effects:
+  - !type:SpeciesLoadoutEffect
+    species:
+    - Avali
+
+- type: loadoutEffectGroup
+  id: WaterDrinker
+  effects:
+  - !type:SpeciesLoadoutEffect
+    species:
+    - Arachnid
+    - Diona
+    - Dwarf
+    - Gray
+    - Human
+    - Moth
+    - Reptilian
+    - Resomi
+    - SlimePerson
+    - Thaven
+    - Vox
+    - Vulpkanin
+
+# EVA Tanks
+- type: loadout
+  id: LoadoutSpeciesEVAOxygenAvali
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: EffectSpeciesAvali
+  equipment:
+    suitstorage: OxygenTankFilled
+
+- type: loadout
+  id: LoadoutSpeciesPocketDoubleOxygenAvali
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: EffectSpeciesAvali
+  equipment:
+    pocket1: DoubleEmergencyOxygenTankFilled
+
+# Drink Bottles
+- type: loadout
+  id: LoadoutSpeciesBottleAmmonia
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: EffectSpeciesAvali
+  storage:
+    back:
+    - DrinkAmmoniaBottleFull
+
+- type: loadout
+  id: LoadoutSpeciesBottleWater
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: WaterDrinker
+  storage:
+    back:
+    - DrinkWaterBottleFull
+
+# Basic Survival Box
+- type: loadout
+  id: EmergencyAmmonia
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: EffectSpeciesAvali
+  storage:
+    back:
+    - BoxSurvivalAmmonia
+
+# Clown
+- type: loadout
+  id: EmergencyOxygenClownAmmonia
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: EffectSpeciesAvali
+  storage:
+    back:
+    - BoxHugAmmonia
+
+# Mime
+- type: loadoutEffectGroup
+  id: EffectSpeciesAvaliMime
+  effects:
+  - !type:SpeciesLoadoutEffect
+    species:
+    - Avali
+
+- type: loadout
+  id: EmergencyOxygenMimeAmmonia
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: EffectSpeciesAvaliMime
+  storage:
+    back:
+    - BoxMimeAmmonia
+
+# Engineering / Extended
+- type: loadout
+  id: EmergencyOxygenExtendedAmmonia
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: EffectSpeciesAvali
+  storage:
+    back:
+    - BoxSurvivalEngineeringAmmonia
+
+# Medical
+- type: loadout
+  id: EmergencyOxygenMedicalAmmonia
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: EffectSpeciesAvali
+  storage:
+    back:
+    - BoxSurvivalMedicalAmmonia
+
+# Security
+- type: loadout
+  id: EmergencyOxygenSecurityAmmonia
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: EffectSpeciesAvali
+  storage:
+    back:
+    - BoxSurvivalSecurityAmmonia
+
+# Stowaway
+- type: loadout
+  id: EmergencyAmmoniaStowaway
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: EffectSpeciesAvali
+  storage:
+    back:
+    - Crowbar
+    - DrinkAmmoniaBottleFull
+    - EmergencyOxygenTankFilled
+    - FoodSnackNutribrick
+    - Multitool
+    - Screwdriver
+
+- type: loadout
+  id: EmergencyNitrogenStowaway
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: NitrogenBreather
+  storage:
+    back:
+    - Crowbar
+    - DrinkWaterBottleFull
+    - EmergencyNitrogenTankFilled
+    - FoodSnackNutribrick
+    - Multitool
+    - Screwdriver
+
+- type: loadout
+  id: EmergencyOxygenStowaway
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: OxygenBreather
+  storage:
+    back:
+    - Crowbar
+    - DrinkWaterBottleFull
+    - EmergencyOxygenTankFilled
+    - FoodSnackNutribrick
+    - Multitool
+    - Screwdriver
+
+# Syndicate
+- type: loadout
+  id: EmergencyOxygenSyndicateAmmonia
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: EffectSpeciesAvali
+  storage:
+    back:
+    - BoxSurvivalSyndicateAmmonia

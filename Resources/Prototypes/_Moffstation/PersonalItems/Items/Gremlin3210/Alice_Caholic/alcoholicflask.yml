@@ -1,0 +1,18 @@
+# Player Gremlin3210 - Character: Alice Caholic
+
+- type: entity
+  parent: FlaskBase
+  id: PersonalItemAliceCaholicFlask
+  suffix: PersonalItem
+  name: alcoholic's flask
+  description: "A flask owned by a hefty drinker, it has seen a lot of use."
+
+- type: loadout
+  id: PersonalItemAliceCaholicFlask
+  storage:
+    back:
+    - PersonalItemAliceCaholicFlask
+  effects:
+  - !type:PersonalItemLoadoutEffect
+    character:
+    - Alice Caholic

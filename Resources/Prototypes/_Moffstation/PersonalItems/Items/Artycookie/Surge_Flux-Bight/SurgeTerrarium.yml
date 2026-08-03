@@ -1,0 +1,26 @@
+# Player: Artycookie / Character: Surge_Flux-Bight
+
+- type: entity
+  parent: BaseItem
+  id: PersonalItemSurgeTerrarium
+  name: mini terrarium
+  description: A small container-like object that's kinda pretty to look at.
+  suffix: PersonalItem
+  components:
+  - type: Sprite
+    sprite: _Moffstation/PersonalItems/Items/Artycookie/Surge_Flux-Bight/SurgeTerrarium.rsi
+    state: icon
+  - type: Item
+    sprite: _Moffstation/PersonalItems/Items/Artycookie/Surge_Flux-Bight/SurgeTerrarium.rsi
+  - type: DetailExaminable
+    content: A tiny hand-crafted terrarium of what looks to be an underwater environment, filled with color-shifting crystals and more in very tiny details. Made with many pieces of high quality material, one can only see the true beauty of the object close up. 'SFB' is engraved on the side of it along with words in another language. 'Leuria'
+
+- type: loadout
+  id: PersonalItemSurgeTerrarium
+  storage:
+    back:
+    - PersonalItemSurgeTerrarium
+  effects:
+  - !type:PersonalItemLoadoutEffect
+    character:
+    - "Surge Flux-Bight"

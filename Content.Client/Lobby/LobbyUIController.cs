@@ -112,10 +112,10 @@ public sealed partial class LobbyUIController : UIController, IOnStateEntered<Lo
                 _profileEditor.RefreshSpecies();
             }
 
-            if (obj.WasModified<TraitPrototype>())
-            {
-                _profileEditor.RefreshTraits();
-            }
+            // if (obj.WasModified<TraitPrototype>()) // DeltaV - Refreshed in TraitsTab
+            // {
+            //     _profileEditor.RefreshTraits();
+            // }
         }
     }
 

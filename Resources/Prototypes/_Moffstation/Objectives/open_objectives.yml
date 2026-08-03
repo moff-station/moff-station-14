@@ -1,0 +1,27 @@
+# Base objective for selecting a department for open-ended objectives
+- type: entity
+  abstract: true
+  parent: BaseObjective
+  id: BaseLocationObjective
+  components:
+  - type: EscapeShuttleCondition
+  - type: ObjectiveBlacklistRequirement
+    blacklist:
+      components:
+      - LocationObjective # dont combine with other open endeds
+
+# Base objective for selecting a department for open-ended objectives
+- type: entity
+  abstract: true
+  parent: BaseLocationObjective
+  id: BaseDepartmentObjective
+  components:
+  - type: PickDepartmentObjective
+
+# Base objective for selecting a room for open-ended objectives
+- type: entity
+  abstract: true
+  parent: BaseLocationObjective
+  id: BaseRoomObjective
+  components:
+  - type: PickRoomObjective

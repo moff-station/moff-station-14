@@ -27,7 +27,7 @@
 - type: marking
   id: ScarTopSurgeryShort
   bodyPart: Chest
-  groupWhitelist: [Human, Reptilian, Moth, Arachnid, Diona]
+  groupWhitelist: [Human, Reptilian, Moth, Arachnid, Diona, Thaven] #macro thaven
   sexRestriction: [Male]
   sprites:
   - sprite: Mobs/Customization/scars.rsi
@@ -41,7 +41,7 @@
 - type: marking
   id: ScarTopSurgeryLong
   bodyPart: Chest
-  groupWhitelist: [Human, Reptilian, Moth, Arachnid, Diona]
+  groupWhitelist: [Human, Reptilian, Moth, Arachnid, Diona, Thaven] #macro thaven
   sexRestriction: [Male]
   sprites:
   - sprite: Mobs/Customization/scars.rsi
@@ -55,7 +55,7 @@
 - type: marking
   id: ScarChest
   bodyPart: Chest
-  groupWhitelist: [Human, Reptilian, Moth, Arachnid, Diona]
+  groupWhitelist: [Human, Reptilian, Moth, Arachnid, Diona, Thaven] #macro thaven
   sprites:
   - sprite: Mobs/Customization/scars.rsi
     state: scar_chest
@@ -81,7 +81,7 @@
 - type: marking
   id: ScarChestBullets
   bodyPart: Chest
-  groupWhitelist: [Human, Reptilian, Moth, Arachnid]
+  groupWhitelist: [Human, Reptilian, Moth, Arachnid, Thaven] #macro thaven
   sprites:
   - sprite: Mobs/Customization/scars.rsi
     state: scar_chest_bullets
@@ -94,7 +94,7 @@
 - type: marking
   id: ScarStomachBullets
   bodyPart: Chest
-  groupWhitelist: [Human, Reptilian, Moth, Arachnid]
+  groupWhitelist: [Human, Reptilian, Moth, Arachnid, Thaven] #macro thaven
   sprites:
   - sprite: Mobs/Customization/scars.rsi
     state: scar_stomach_bullets

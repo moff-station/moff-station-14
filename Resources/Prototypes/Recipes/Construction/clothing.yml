@@ -61,11 +61,13 @@
   graph: BananaClownShoes
   targetNode: shoes
 
-- type: construction
-  parent: BaseClothing
-  id: ClothingEyesHudMedSec
-  graph: HudMedSec
-  targetNode: medsecHud
+# Moffstation - Begin - Constructible HUDs removed in favor of modular HUDs
+#- type: construction
+#  parent: BaseClothing
+#  id: ClothingEyesHudMedSec
+#  graph: HudMedSec
+#  targetNode: medsecHud
+# Moffstation - End
 
 - type: construction
   parent: BaseClothing
@@ -79,11 +81,13 @@
   graph: ClothingShoeSlippersLizard
   targetNode: shoes
 
-- type: construction
-  parent: BaseClothing
-  id: ClothingEyesGlassesSecurity
-  graph: GlassesSecHUD
-  targetNode: glassesSec
+# Moffstation - Begin - Constructible HUDs removed in favor of modular HUDs
+#- type: construction
+#  parent: BaseClothing
+#  id: ClothingEyesGlassesSecurity
+#  graph: GlassesSecHUD
+#  targetNode: glassesSec
+# Moffstation - End
 
 - type: construction
   parent: BaseClothing

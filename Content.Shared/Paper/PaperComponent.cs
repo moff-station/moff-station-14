@@ -23,6 +23,11 @@ public sealed partial class PaperComponent : Component
     [DataField("stampState"), AutoNetworkedField]
     public string? StampState { get; set; }
 
+    // Moffstation - Begin
+    [DataField, AutoNetworkedField]
+    public bool StampingEnabled = true;
+    // Moffstation - End
+
     [DataField, AutoNetworkedField]
     public bool EditingDisabled;
 

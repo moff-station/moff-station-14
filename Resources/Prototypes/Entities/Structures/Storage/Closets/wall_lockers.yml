@@ -19,6 +19,19 @@
     stateBaseClosed: emergency
     stateDoorOpen: emergency_open
     stateDoorClosed: emergency_door
+  # Moffstation - Begin - wall closet resprite
+  - type: Sprite
+    sprite: _Moffstation/Structures/Storage/wall_locker.rsi
+    layers:
+    - state: emergency
+      map: ["enum.StorageVisualLayers.Base"]
+    - state: emergency_door
+      map: ["enum.StorageVisualLayers.Door"]
+    - state: welded
+      visible: false
+      sprite: Structures/Storage/wall_locker.rsi
+      map: ["enum.WeldableLayers.BaseWelded"]
+   # Moffstation - End
 
 - type: entity
   parent: BaseWallCloset
@@ -30,6 +43,19 @@
     stateBaseClosed: n2
     stateDoorOpen: n2_open
     stateDoorClosed: n2_door
+  # Moffstation - Begin - wall closet resprite
+  - type: Sprite
+    sprite: _Moffstation/Structures/Storage/wall_locker.rsi
+    layers:
+    - state: n2
+      map: ["enum.StorageVisualLayers.Base"]
+    - state: n2_door
+      map: ["enum.StorageVisualLayers.Door"]
+    - state: welded
+      visible: false
+      sprite: Structures/Storage/wall_locker.rsi
+      map: ["enum.WeldableLayers.BaseWelded"]
+   # Moffstation - End
 
 - type: entity
   id: ClosetWallFire
@@ -41,6 +67,19 @@
     stateBaseClosed: fire
     stateDoorOpen: fire_open
     stateDoorClosed: fire_door
+  # Moffstation - Begin - wall closet resprite
+  - type: Sprite
+    sprite: _Moffstation/Structures/Storage/wall_locker.rsi
+    layers:
+    - state: fire
+      map: ["enum.StorageVisualLayers.Base"]
+    - state: fire_door
+      map: ["enum.StorageVisualLayers.Door"]
+    - state: welded
+      visible: false
+      sprite: Structures/Storage/wall_locker.rsi
+      map: ["enum.WeldableLayers.BaseWelded"]
+   # Moffstation - End
 
 - type: entity
   id: ClosetWallBlue

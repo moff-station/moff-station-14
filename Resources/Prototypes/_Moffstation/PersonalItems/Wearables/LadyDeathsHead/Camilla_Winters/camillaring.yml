@@ -1,0 +1,25 @@
+# Player: LadyDeathsHead / Character: Camilla Winters
+- type: entity
+  parent: ClothingHandsBase
+  id: PersonalItemCamillaRing
+  name: Camilla's Wedding Ring
+  description: A red tinted silver ring. The engraving reads "Camilla & Malenia".
+  suffix: PersonalItem
+  components:
+  - type: Sprite
+    sprite: _Moffstation/PersonalItems/Wearables/LadyDeathsHead/Camilla_Winters/camillaring.rsi
+  - type: Clothing
+    quickEquip: true
+    sprite: _Moffstation/PersonalItems/Wearables/LadyDeathsHead/Camilla_Winters/camillaring.rsi
+  - type: Item
+    size: Tiny
+
+- type: loadout
+  id: PersonalItemCamillaRing
+  storage:
+    back:
+    - PersonalItemCamillaRing
+  effects:
+  - !type:PersonalItemLoadoutEffect
+    character:
+    - Camilla Winters

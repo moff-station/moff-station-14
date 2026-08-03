@@ -133,8 +133,10 @@
   - type: Storage
     grid:
     - 0,0,7,3
-    quickInsert: true
-    areaInsert: true
+    # Moffstation - Begin
+#    quickInsert: true
+#    areaInsert: true
+    # Moffstation - End
     whitelist:
       tags:
         - Sheet
@@ -148,3 +150,7 @@
     blacklist:
       components:
       - SiliconLawProvider
+  # Moffstation - Start
+  - type: QuickPickup
+  - type: AreaPickup
+  # Moffstation - End

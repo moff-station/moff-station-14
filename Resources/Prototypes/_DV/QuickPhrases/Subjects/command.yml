@@ -1,0 +1,11 @@
+- type: quickPhrase
+  parent: [ BaseCommandPhrase, BaseSubjectPhrase ]
+  id: BaseCommandSubjectPhrase
+  abstract: true
+
+- { type: quickPhrase, parent: BaseCommandSubjectPhrase, id: AccessPhrase }
+- { type: quickPhrase, parent: BaseCommandSubjectPhrase, id: EncryptionKeyPhrase }
+- { type: quickPhrase, parent: BaseCommandSubjectPhrase, id: IdCardPhrase }
+- { type: quickPhrase, parent: BaseCommandSubjectPhrase, id: PdaPhrase }
+- { type: quickPhrase, parent: BaseCommandSubjectPhrase, id: StampPhrase }
+- { type: quickPhrase, parent: BaseCommandSubjectPhrase, id: ImplantPhrase }

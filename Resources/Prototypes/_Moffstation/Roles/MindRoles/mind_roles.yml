@@ -1,0 +1,89 @@
+# Pirates
+- type: entity
+  parent: BaseMindRoleAntag
+  id: MindRolePirate
+  name: Pirate Role
+  components:
+  - type: MindRole
+    roleType: TeamAntagonist
+    subtype: role-subtype-faction-pirates
+    subtypeColor: '#a15608'
+    exclusiveAntag: true
+    antagPrototype: PirateCrew
+  - type: PirateRole
+
+- type: entity
+  parent: MindRolePirate
+  id: MindRolePirateCaptain
+  name: Pirate Captain Role
+  components:
+  - type: MindRole
+    antagPrototype: PirateCaptain
+
+- type: entity
+  parent: MindRolePirate
+  id: MindRolePirateCorsair
+  name: Pirate Corsair Role
+  components:
+  - type: MindRole
+    roleType: SoloAntagonist
+
+# Syndicate
+- type: entity
+  parent: BaseMindRoleAntag
+  id: MindRoleSyndicateSpy
+  name: Syndicate Spy Role
+  components:
+  - type: MindRole
+    roleType: TeamAntagonist
+    exclusiveAntag: true
+    antagPrototype: SyndicateSpy
+    subtype: role-subtype-faction-syndicate
+    subtypeColor: darkred
+  - type: SyndicateSpyRole
+
+- type: entity
+  parent: BaseMindRoleAntag
+  id: MindRoleSyndieSoldier
+  name: Syndicate Vent Soldier Role
+  components:
+  - type: MindRole
+    roleType: TeamAntagonist
+    antagPrototype: SyndieVentSoldier
+    exclusiveAntag: true
+    subtype: role-subtype-faction-syndicate
+    subtypeColor: darkred
+
+# Wizard Duelists
+- type: entity
+  parent: MindRoleWizard
+  id: MindRoleWizardDuelistBase
+  name: Wizard Duelist Role
+  components:
+  - type: MindRole
+    roleType: FreeAgent
+    antagPrototype: Wizard
+    exclusiveAntag: true
+    subtype: role-subtype-faction-wizards
+    subtypeColor: turquoise
+
+- type: entity
+  parent: MindRoleWizardDuelistBase
+  id: MindRoleWizardDuelistRed
+  name: Red Wizard Duelist Role
+  components:
+  - type: WizardDuelistRedRole
+
+- type: entity
+  parent: MindRoleWizardDuelistBase
+  id: MindRoleWizardDuelistBlue
+  name: Blue Wizard Duelist Role
+  components:
+  - type: WizardDuelistBlueRole
+
+- type: entity
+  parent: MindRoleWizardDuelistBase
+  id: MindRoleWizardDuelistViolet
+  name: Violet Wizard Duelist Role
+  components:
+  - type: WizardDuelistVioletRole

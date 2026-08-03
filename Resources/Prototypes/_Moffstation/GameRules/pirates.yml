@@ -1,0 +1,100 @@
+- type: entity
+  abstract: true
+  parent: BaseGameRule
+  id: BasePiratesRule
+  components:
+  - type: PiratesRule
+  - type: LoadGridRule
+    gridPath: /Maps/_Moffstation/Nonstations/pirate-cove.yml
+    minimumDistance: 750
+    maximumDistance: 1000
+  - type: RuleGrids
+  - type: AntagSelection
+  - type: AntagLoadProfileRule
+  - type: DynamicRuleCost
+    cost: 150
+
+- type: entity
+  parent: BasePiratesRule
+  id: Pirates
+  components:
+  - type: LoadMapRule
+    gridPath: /Maps/_Moffstation/Shuttles/shuttle-sp-scurvydog.yml
+  - type: GameRule
+    minPlayers: 20 # Midpop gamemode
+  - type: AntagSelection
+    selectionTime: PrePlayerSpawn
+    antags:
+    - !type:FixedAntagCount
+      proto: PirateCaptain
+    - !type:LinearAntagCount
+      proto: PirateCrew
+      range:
+        min: 2
+        max: 4
+
+- type: antagSpecifier
+  abstract: true
+  parent: RestrictedAntag
+  id: BasePirates
+  prefRoles:
+  - GenericTeamAntagonist # For antag ban purposes
+  roleLoadout:
+  - RoleSurvivalNukie
+  briefing:
+    text: pirate-role-greeting
+    color: "#a15608"
+    sound:
+      path: "/Audio/Ambience/Antag/pirate_start.ogg"
+      params:
+        volume: -12
+  components:
+  - type: Pirate
+  - type: NpcFactionMember
+    factions:
+    - Pirate
+
+- type: antagSpecifier
+  parent: BasePirates
+  id: PirateCaptain
+  prefRoles:
+  - PirateCaptain
+  spawnerPrototype: SpawnPointPirateCaptain
+  startingGear: PirateCaptainGear
+  roleLoadout:
+  - RoleSurvivalNukie
+  - JobPirateCaptain
+  components:
+  - type: RandomMetadata
+    nameSegments:
+    - Adjectives
+    nameFormat: name-format-pirate-captain
+  mindRoles:
+  - MindRoleNukeopsCommander
+
+- type: antagSpecifier
+  parent: BasePirates
+  id: PirateCrew
+  prefRoles:
+  - PirateCrew
+  spawnerPrototype: SpawnPointPirateCrew
+  startingGear: PirateGear
+  roleLoadout:
+  - RoleSurvivalNukie
+  - JobPirateCrew
+  components:
+  - type: RandomMetadata
+    nameSegments:
+    - NamesFirst
+    - Adjectives
+    nameFormat: name-format-pirate-crew
+  mindRoles:
+  - MindRolePirate
+
+- type: antagSpecifier
+  parent: PirateCrew
+  id: PirateCorsair
+  spawnerPrototype: SpawnPointPirateCorsair
+  pickPlayer: false
+  mindRoles:
+  - MindRolePirateCorsair

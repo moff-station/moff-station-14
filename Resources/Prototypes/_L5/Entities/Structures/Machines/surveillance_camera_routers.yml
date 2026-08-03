@@ -1,0 +1,58 @@
+- type: entity
+  abstract: true
+  id: BaseSurveillanceCameraRouter
+  name: abstract camera router
+  description: A surveillance camera router. It routes. Perhaps.
+  components:
+  - type: DeviceNetwork
+    deviceNetId: Wired
+    receiveFrequencyId: SurveillanceCamera
+    transmitFrequencyId: SurveillanceCamera
+  # Moffstation - Start - Listening outpost remote viewing
+  #- type: WiredNetworkConnection
+  - type: WirelessNetworkConnection
+    range: 10000
+  # Moffstation - End
+  - type: DeviceNetworkRequiresPower
+  - type: UserInterface
+    interfaces:
+      enum.SurveillanceCameraSetupUiKey.Router:
+        type: SurveillanceCameraSetupBoundUi
+  - type: GenericVisualizer
+    visuals:
+      enum.PowerDeviceVisuals.Powered:
+        enum.PowerDeviceVisualLayers.Powered:
+          True: { visible: true }
+          False: { visible: false }
+  - type: Appearance
+  - type: WiresVisuals
+  - type: WiresPanel
+
+- type: entity
+  abstract: true
+  id: BaseSurveillanceCameraWirelessRouter
+  name: abstract wireless camera router
+  description: A wireless surveillance camera router. It routes. Perhaps.
+  components:
+  - type: DeviceNetwork
+    deviceNetId: Wireless
+    receiveFrequencyId: SurveillanceCamera
+    transmitFrequencyId: SurveillanceCamera
+  # Moffstation - Listening post remote viewing
+#  - type: WirelessNetworkConnection
+#    range: 200
+  # Moffstation - Listening post remote viewing
+  - type: DeviceNetworkRequiresPower
+  - type: UserInterface
+    interfaces:
+      enum.SurveillanceCameraSetupUiKey.Router:
+        type: SurveillanceCameraSetupBoundUi
+  - type: GenericVisualizer
+    visuals:
+      enum.PowerDeviceVisuals.Powered:
+        enum.PowerDeviceVisualLayers.Powered:
+          True: { visible: true }
+          False: { visible: false }
+  - type: Appearance
+  - type: WiresVisuals
+  - type: WiresPanel

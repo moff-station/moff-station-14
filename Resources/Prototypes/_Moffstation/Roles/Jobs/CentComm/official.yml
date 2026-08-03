@@ -1,0 +1,34 @@
+- type: startingGear
+  parent: CentcommGear
+  id: CentcomExecutiveGear
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitCentcomFormal
+    head: ClothingHeadHatCentcomcap
+    neck: ClothingNeckCloakCentcom
+
+- type: startingGear
+  id: CentcomOfficerGear
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitCentcomFormal
+    back: ClothingBackpackSatchelLeather
+    gloves: ClothingHandsGlovesHop
+    id: CentcomPDA
+    shoes: ClothingShoesBootsLaceup
+    mask: ClothingMaskGasCentcom
+    eyes: ClothingEyesGlassesCommand
+    ears: ClothingHeadsetCentCom
+    pocket1: WeaponDisabler
+    pocket2: BoxFolderCentComClipboard
+  storage:
+    back:
+      - Flash
+      - Crowbar
+
+- type: startingGear
+  parent: CentcomOfficerGear
+  id: CentcomRepresentativeGear
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitCentcomAgent
+    gloves: ClothingHandsGlovesColorBlack
+  inhand:
+  - BriefcaseBrownFilled

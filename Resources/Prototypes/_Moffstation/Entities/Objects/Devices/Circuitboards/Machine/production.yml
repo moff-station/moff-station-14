@@ -1,0 +1,25 @@
+- type: entity
+  id: CircuitImprinterLawMatrixMachineCircuitboard
+  parent: BaseMachineCircuitboard
+  name: law matrix imprinter machine board
+  components:
+  - type: Sprite
+    state: science
+  - type: MachineBoard
+    prototype: CircuitImprinterLawMatrix
+    stackRequirements:
+      MatterBin: 1
+      Plasma: 1
+    tagRequirements:
+      GlassBeaker:
+        amount: 2
+        defaultPrototype: Beaker
+
+- type: entity
+  parent: WeaponCapacitorRechargerCircuitboard
+  id: WeaponCapacitorRechargerPirateCircuitboard
+  description: A machine printed circuit board for a recharger. Seems to have a skull and crossbones engraved on it?
+  suffix: Machine Board, Pirate
+  components:
+  - type: MachineBoard
+    prototype: WeaponCapacitorRechargerPirate

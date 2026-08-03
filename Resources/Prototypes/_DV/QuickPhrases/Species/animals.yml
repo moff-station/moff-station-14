@@ -1,0 +1,38 @@
+- type: quickPhrase
+  parent: BaseSpeciesPhrase
+  id: BaseAnimalSpeciesPhrase
+  abstract: true
+  group: phrase-group-animals
+
+- { type: quickPhrase, parent: BaseAnimalSpeciesPhrase, id: SpeciesDogPhrase }
+- { type: quickPhrase, parent: BaseAnimalSpeciesPhrase, id: SpeciesCatPhrase }
+- { type: quickPhrase, parent: BaseAnimalSpeciesPhrase, id: SpeciesOpossumPhrase }
+- { type: quickPhrase, parent: BaseAnimalSpeciesPhrase, id: SpeciesLizardPhrase }
+- { type: quickPhrase, parent: BaseAnimalSpeciesPhrase, id: SpeciesBatPhrase }
+- { type: quickPhrase, parent: BaseAnimalSpeciesPhrase, id: SpeciesSlimePhrase }
+- { type: quickPhrase, parent: BaseAnimalSpeciesPhrase, id: SpeciesMousePhrase }
+- { type: quickPhrase, parent: BaseAnimalSpeciesPhrase, id: SpeciesMothroachPhrase }
+- { type: quickPhrase, parent: BaseAnimalSpeciesPhrase, id: SpeciesCockroachPhrase }
+- { type: quickPhrase, parent: BaseAnimalSpeciesPhrase, id: SpeciesSpiderPhrase }
+- { type: quickPhrase, parent: BaseAnimalSpeciesPhrase, id: SpeciesTarantulaPhrase }
+- { type: quickPhrase, parent: BaseAnimalSpeciesPhrase, id: SpeciesBirdPhrase }
+- { type: quickPhrase, parent: BaseAnimalSpeciesPhrase, id: SpeciesParrotPhrase }
+- { type: quickPhrase, parent: BaseAnimalSpeciesPhrase, id: SpeciesSnakePhrase }
+- { type: quickPhrase, parent: BaseAnimalSpeciesPhrase, id: SpeciesPigPhrase }
+- { type: quickPhrase, parent: BaseAnimalSpeciesPhrase, id: SpeciesMonkeyPhrase }
+- { type: quickPhrase, parent: BaseAnimalSpeciesPhrase, id: SpeciesKoboldPhrase }
+- { type: quickPhrase, parent: BaseAnimalSpeciesPhrase, id: SpeciesFerretPhrase }
+- { type: quickPhrase, parent: BaseAnimalSpeciesPhrase, id: SpeciesCarpPhrase }
+- { type: quickPhrase, parent: BaseAnimalSpeciesPhrase, id: SpeciesXenoPhrase }
+- { type: quickPhrase, parent: BaseAnimalSpeciesPhrase, id: SpeciesHamsterPhrase }
+- { type: quickPhrase, parent: BaseAnimalSpeciesPhrase, id: SpeciesIfritPhrase }
+- { type: quickPhrase, parent: BaseAnimalSpeciesPhrase, id: SpeciesRaccoonPhrase }
+- { type: quickPhrase, parent: BaseAnimalSpeciesPhrase, id: SpeciesRounyPhrase }
+- { type: quickPhrase, parent: BaseAnimalSpeciesPhrase, id: SpeciesFoxPhrase }
+- { type: quickPhrase, parent: BaseAnimalSpeciesPhrase, id: SpeciesCrabPhrase }
+- { type: quickPhrase, parent: BaseAnimalSpeciesPhrase, id: SpeciesKangarooPhrase }
+- { type: quickPhrase, parent: BaseAnimalSpeciesPhrase, id: SpeciesCowPhrase }
+- { type: quickPhrase, parent: BaseAnimalSpeciesPhrase, id: SpeciesDuckPhrase }
+- { type: quickPhrase, parent: BaseAnimalSpeciesPhrase, id: SpeciesBearPhrase }
+- { type: quickPhrase, parent: BaseAnimalSpeciesPhrase, id: SpeciesPenguinPhrase }
+- { type: quickPhrase, parent: BaseAnimalSpeciesPhrase, id: SpeciesGoatPhrase }

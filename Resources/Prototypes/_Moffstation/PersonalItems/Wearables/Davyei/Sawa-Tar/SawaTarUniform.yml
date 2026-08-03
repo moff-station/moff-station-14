@@ -1,0 +1,23 @@
+# Player: Davyei - Character: Sawa-Tar
+- type: entity
+  parent: ClothingUniformSkirtBase
+  id: PersonalItemSawaTarUniform
+  name: PTP jumpskirt
+  description: The uniform for the NanoTrasen Personal Tar Program clones.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/PersonalItems/Wearables/Davyei/Sawa-Tar/sawataruniform.rsi
+  - type: Clothing
+    sprite: _Moffstation/PersonalItems/Wearables/Davyei/Sawa-Tar/sawataruniform.rsi
+  - type: DetailExaminable
+    content: A small badge is attached to the blazer inscribed "Tar clone".
+
+- type: loadout
+  id: PersonalItemSawaTarUniform
+  storage:
+    back:
+    - PersonalItemSawaTarUniform
+  effects:
+  - !type:PersonalItemLoadoutEffect
+    character:
+    - Sawa-Tar

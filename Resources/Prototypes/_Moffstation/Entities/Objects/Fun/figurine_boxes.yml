@@ -1,0 +1,21 @@
+- type: entity
+  parent: BaseItem
+  id: MysteryFigureBoxMoff
+  name: moff edition minifigure box
+  description: A box containing a mystery minifigure, themed after various spessmen. There's some blacked out silloettes of rare figurines on the side of the box, including one which looks like... a bucket?
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Objects/Fun/figurines.rsi
+    layers:
+    - state: fig-box
+  - type: SpawnTableOnUse
+    table: !type:AllSelector
+      children:
+      - id: MysteryFigureBoxTrash
+      - !type:NestedSelector
+        tableId: MoffFigurineTable
+      - id: MobMothroach # Sometimes the box contains a poor mothroach which fell in during production
+        prob: 0.05 # 1 in 20
+  - type: EmitSoundOnUse
+    sound:
+      path: /Audio/Effects/unwrap.ogg

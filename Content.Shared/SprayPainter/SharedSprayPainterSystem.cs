@@ -33,6 +33,7 @@ public abstract partial class SharedSprayPainterSystem : EntitySystem
     public override void Initialize()
     {
         base.Initialize();
+        InitializeGasTankPainting(); // Moffstation
 
         SubscribeLocalEvent<SprayPainterComponent, MapInitEvent>(OnMapInit);
 

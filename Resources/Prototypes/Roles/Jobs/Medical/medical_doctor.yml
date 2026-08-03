@@ -3,10 +3,12 @@
   name: job-name-doctor
   description: job-description-doctor
   playTimeTracker: JobMedicalDoctor
-  requirements:
-    - !type:DepartmentTimeRequirement
-      department: Medical
-      time: 2.5h
+  # Moffstation - Start - Change role timers
+  #requirements:
+  #  - !type:DepartmentTimeRequirement
+  #    department: Medical
+  #    time: 2.5h
+  # Moffstation - End
   startingGear: DoctorGear
   icon: "JobIconMedicalDoctor"
   supervisors: job-supervisors-cmo

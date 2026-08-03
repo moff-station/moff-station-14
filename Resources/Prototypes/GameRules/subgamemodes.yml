@@ -3,11 +3,18 @@
   id: Thief
   components:
   - type: ThiefRule
-  - type: AntagObjectives
-    objectives:
-    - EscapeThiefShuttleObjective
+  # Moffstation - Start - Objective picker
+  #- type: AntagObjectives
+  #  objectives:
+  #  - EscapeThiefShuttleObjective
+  # Moffstation - End
   - type: AntagRandomObjectives
     sets:
+    # Moffstation - Start - Objective Picker
+    - groups: ThiefObjectiveGroupEscape
+      prob: 1
+      maxPicks: 1
+    # Moffstation - End
     - groups: ThiefBigObjectiveGroups
       prob: 0.7
       maxPicks: 1

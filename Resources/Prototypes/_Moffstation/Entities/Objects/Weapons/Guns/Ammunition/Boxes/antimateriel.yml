@@ -1,0 +1,15 @@
+- type: entity
+  parent: BaseMagazineBoxAntiMateriel
+  id: MagazineBoxAntiVampirical
+  name: ammunition box (.60 anti-vampirical)
+  components:
+  - type: BallisticAmmoProvider
+    proto: CartridgeAntiVampirical
+  - type: Sprite
+    sprite: _Moffstation/Objects/Weapons/Guns/Ammunition/Boxes/anti_materiel.rsi
+    layers:
+    - state: base
+      map: [ "enum.GunVisualLayers.Base" ]
+    - state: mag-1
+      map: [ "enum.GunVisualLayers.Mag" ]
+    - state: silver 

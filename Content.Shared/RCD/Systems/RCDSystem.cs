@@ -22,6 +22,9 @@ using Robust.Shared.Physics.Dynamics;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization;
 using System.Linq;
+// ES START
+using Content.Shared._ES.Sparks;
+// ES END
 
 namespace Content.Shared.RCD.Systems;
 
@@ -43,6 +46,9 @@ public sealed partial class RCDSystem : EntitySystem
     [Dependency] private SharedMapSystem _mapSystem = default!;
     [Dependency] private SharedTransformSystem _transform = default!;
     [Dependency] private TagSystem _tags = default!;
+    // ES START
+    [Dependency] private ESSparksSystem _esSparks = default!;
+    // ES END
 
     private readonly int _instantConstructionDelay = 0;
     private readonly EntProtoId _instantConstructionFx = "EffectRCDConstruct0";
@@ -93,6 +99,9 @@ public sealed partial class RCDSystem : EntitySystem
 
         // Set the current RCD prototype to the one supplied
         component.ProtoId = args.ProtoId;
+// ES START
+        _esSparks.DoSparks(uid, 1, user: args.Actor);
+// ES END
 
         _adminLogger.Add(LogType.RCD, LogImpact.Low, $"{args.Actor} set RCD mode to: {prototype.Mode} : {prototype.Prototype}");
 
@@ -426,7 +435,7 @@ public sealed partial class RCDSystem : EntitySystem
             // Check rule: Respect baseTurf and baseWhitelist
             if (prototype.Prototype != null && _tileDefMan.TryGetDefinition(prototype.Prototype, out var replacementDef))
             {
-                var replacementContentDef = (ContentTileDefinition) replacementDef;
+                var replacementContentDef = (ContentTileDefinition)replacementDef;
 
                 if (replacementContentDef.BaseTurf != tileDef.ID && !replacementContentDef.BaseWhitelist.Contains(tileDef.ID))
                 {
@@ -499,7 +508,7 @@ public sealed partial class RCDSystem : EntitySystem
                 foreach (var fixture in fixtures.Fixtures.Values)
                 {
                     // Continue if no collision is possible
-                    if (!fixture.Hard || fixture.CollisionLayer <= 0 || (fixture.CollisionLayer & (int) prototype.CollisionMask) == 0)
+                    if (!fixture.Hard || fixture.CollisionLayer <= 0 || (fixture.CollisionLayer & (int)prototype.CollisionMask) == 0)
                         continue;
 
                     // Continue if our custom collision bounds are not intersected
@@ -590,25 +599,28 @@ public sealed partial class RCDSystem : EntitySystem
                 if (!_tileDefMan.TryGetDefinition(prototype.Prototype, out var tileDef))
                     return;
 
-                _tile.ReplaceTile(tile, (ContentTileDefinition) tileDef, gridUid, mapGrid);
+                _tile.ReplaceTile(tile, (ContentTileDefinition)tileDef, gridUid, mapGrid);
                 _adminLogger.Add(LogType.RCD, LogImpact.High, $"{ToPrettyString(user):user} used RCD to set grid: {gridUid} {position} to {prototype.Prototype}");
                 break;
 
             case RcdMode.ConstructObject:
-                var ent = Spawn(prototype.Prototype, _mapSystem.GridTileToLocal(gridUid, mapGrid, position));
-
+                Angle rotation;
                 switch (prototype.Rotation)
                 {
                     case RcdRotation.Fixed:
-                        Transform(ent).LocalRotation = Angle.Zero;
+                        rotation = Angle.Zero;
                         break;
                     case RcdRotation.Camera:
-                        Transform(ent).LocalRotation = Transform(uid).LocalRotation;
+                        rotation = Transform(uid).LocalRotation;
                         break;
                     case RcdRotation.User:
-                        Transform(ent).LocalRotation = direction.ToAngle();
+                        rotation = direction.ToAngle();
                         break;
+                    default:
+                        throw new NotImplementedException($"Rotation type {prototype.Rotation} in RCD prototype {prototype.ID} does not have a direction conversion.");
                 }
+
+                var ent = SpawnAttachedTo(prototype.Prototype, _mapSystem.GridTileToLocal(gridUid, mapGrid, position), rotation: rotation);
 
                 _adminLogger.Add(LogType.RCD, LogImpact.High, $"{ToPrettyString(user):user} used RCD to spawn {ToPrettyString(ent)} at {position} on grid {gridUid}");
                 break;
@@ -654,7 +666,7 @@ public sealed partial class RCDDoAfterEvent : DoAfterEvent
     public NetCoordinates Location { get; private set; }
 
     [DataField(required: true)]
-    public NetEntity TargetGridId {get ; private set; }
+    public NetEntity TargetGridId { get; private set; }
 
     [DataField]
     public Direction Direction { get; private set; }

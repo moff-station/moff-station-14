@@ -1,0 +1,137 @@
+- type: entity
+  abstract: true
+  id: BaseSmasherHostile
+  suffix: AI, Angry, Smasher
+  components:
+  - type: HTN
+    rootTask:
+      task: SimpleHostileCompound
+    blackboard:
+      NavClimb: !type:Bool
+        true
+      NavInteract: !type:Bool
+        true
+      NavPry: !type:Bool
+        true
+      NavSmash: !type:Bool
+        true
+
+- type: entity
+  parent: [BaseSmasherHostile, MobAdultSlimesBlueAngry]
+  id: MobAdultSlimesBlueAngrySmasher
+
+- type: entity
+  parent: [BaseSmasherHostile, MobAdultSlimesGreenAngry]
+  id: MobAdultSlimesGreenAngrySmasher
+
+- type: entity
+  parent: [BaseSmasherHostile, MobAdultSlimesYellowAngry]
+  id: MobAdultSlimesYellowAngrySmasher
+
+- type: entity
+  parent: [BaseSmasherHostile, MobPurpleSnake]
+  id: MobPurpleSnakeSmasher
+
+- type: entity
+  parent: [BaseSmasherHostile, MobSmallPurpleSnake]
+  id: MobSmallPurpleSnakeSmasher
+
+- type: entity
+  parent: [BaseSmasherHostile, MobCobraSpace]
+  id: MobCobraSpaceSmasher
+
+- type: entity
+  parent: [BaseSmasherHostile, MobGiantSpiderAngry]
+  id: MobGiantSpiderAngrySmasher
+
+- type: entity
+  parent: [BaseSmasherHostile, MobClownSpider]
+  id: MobClownSpiderSmasher
+
+- type: entity
+  parent: [BaseSmasherHostile, MobGorilla]
+  id: MobGorillaHostile
+  components:
+  - type: NpcFactionMember
+    factions:
+    - SimpleHostile
+
+- type: entity
+  parent: [BaseSmasherHostile, MobCatSyndy]
+  id: MobCatSyndySmasher
+
+- type: entity
+  parent: [BaseSmasherHostile, MobCarp]
+  id: MobCarpSmasher
+
+- type: entity
+  parent: [BaseSmasherHostile, MobCarpMagic]
+  id: MobCarpMagicSmasher
+
+- type: entity
+  parent: [BaseSmasherHostile, MobCarpHolo]
+  id: MobCarpHoloSmasher
+
+- type: entity
+  parent: [BaseSmasherHostile, MobShark]
+  id: MobSharkSmasher
+
+- type: entity
+  parent: [BaseSmasherHostile, MobDragonDungeon]
+  id: MobDragonDungeonSmasher
+
+- type: entity
+  parent: [BaseSmasherHostile, MobArgocyteSkitter]
+  id: MobArgocyteSkitterSmasher
+
+- type: entity
+  parent: [BaseSmasherHostile, MobArgocyteSwiper]
+  id: MobArgocyteSwiperSmasher
+
+- type: entity
+  parent: [BaseSmasherHostile, MobArgocyteMolder]
+  id: MobArgocyteMolderSmasher
+
+- type: entity
+  parent: [BaseSmasherHostile, MobArgocytePouncer]
+  id: MobArgocytePouncerSmasher
+
+- type: entity
+  parent: [BaseSmasherHostile, MobArgocyteGlider]
+  id: MobArgocyteGliderSmasher
+
+- type: entity
+  parent: [BaseSmasherHostile, MobArgocyteCrawler]
+  id: MobArgocyteCrawlerSmasher
+
+- type: entity
+  parent: [BaseSmasherHostile, MobArgocyteHarvester]
+  id: MobArgocyteHarvesterSmasher
+
+- type: entity
+  parent: [BaseSmasherHostile, MobArgocyteEnforcer]
+  id: MobArgocyteEnforcerSmasher
+
+- type: entity
+  parent: [BaseSmasherHostile, MobHivebot]
+  id: MobHivebotSmasher
+
+- type: entity
+  parent: [BaseSmasherHostile, MobHivebotStrong]
+  id: MobHivebotStrongSmasher
+
+- type: entity
+  parent: [BaseSmasherHostile, MobBat]
+  id: MobBatSmasher
+
+- type: entity
+  parent: [BaseSmasherHostile, MobSpiderSpace]
+  id: MobSpiderSpaceSmasher
+
+- type: entity
+  parent: [BaseSmasherHostile, MobBearSpace]
+  id: MobBearSpaceSmasher
+
+- type: entity
+  parent: [BaseSmasherHostile, MobKangarooSpace]
+  id: MobKangarooSpaceSmasher

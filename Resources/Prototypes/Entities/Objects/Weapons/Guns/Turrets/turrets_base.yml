@@ -53,6 +53,7 @@
   id: BaseTurretDestructible
   components:
   - type: Damageable
+    damageModifierSet: Metallic # Moffstation - Fixing Container and adding a Modifier
   - type: Injurable
     damageContainer: StructuralInorganic
   - type: Destructible

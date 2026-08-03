@@ -1,0 +1,31 @@
+﻿# Player: lilly_the_ratty - Character: Lilith Mothette
+- type: entity
+  parent: AcousticGuitarInstrument
+  id: PersonalItemLilithGuitar
+  name: heavily used guitar
+  description: This guitar looks like it has seen better days. It's covered in suspicious stickers.
+  suffix: PersonalItem
+  components:
+  - type: Sprite
+    sprite: _Moffstation/PersonalItems/Items/LillianMothette/Lilith_Mothette/lilithguitar.rsi
+    state: icon
+  - type: Item
+    sprite: _Moffstation/PersonalItems/Items/LillianMothette/Lilith_Mothette/lilithguitar.rsi
+  - type: Clothing
+    quickEquip: false
+    slots:
+    - back
+    - suitStorage
+    sprite: _Moffstation/PersonalItems/Items/LillianMothette/Lilith_Mothette/lilithguitar.rsi
+  - type: DetailExaminable
+    content: The guitar is covered in crayon marks that seem to be left by a child. The strings are heavily scratched, with one string looking like a cheap replacement. The head is taped on and somehow still holding. On the base, there are two stickers; one you find familiar, but can't put your finger on it. The other has the letters LT in a bright pink. On the back of the body is an engraving of the name Lilith Mothette.
+
+- type: loadout
+  id: PersonalItemLilithGuitar
+  storage:
+    back:
+    - PersonalItemLilithGuitar
+  effects:
+  - !type:PersonalItemLoadoutEffect
+    character:
+    - Lilith Mothette

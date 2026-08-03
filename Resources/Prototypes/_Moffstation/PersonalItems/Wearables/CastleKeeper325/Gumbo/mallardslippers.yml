@@ -1,0 +1,24 @@
+# Player: CastleKeeper325 - Character: Gumbo
+- type: entity
+  parent: ClothingShoeSlippersDuck
+  id: PersonalItemGumboSlippers
+  name: mallard slippers
+  description: "Mallards don't normally quack, but these two do!"
+  suffix: PersonalItem
+  components:
+  - type: Sprite
+    sprite: _Moffstation/PersonalItems/Wearables/CastleKeeper325/Gumbo/mallardslippers.rsi
+  - type: Clothing
+    sprite: _Moffstation/PersonalItems/Wearables/CastleKeeper325/Gumbo/mallardslippers.rsi
+  - type: Item
+    sprite: _Moffstation/PersonalItems/Wearables/CastleKeeper325/Gumbo/mallardslippers.rsi
+
+- type: loadout
+  id: PersonalItemGumboSlippers
+  storage:
+    back:
+    - PersonalItemGumboSlippers
+  effects:
+  - !type:PersonalItemLoadoutEffect
+    character:
+    - Gumbo

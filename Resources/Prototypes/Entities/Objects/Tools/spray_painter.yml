@@ -5,10 +5,10 @@
   description: A spray painter for painting airlocks, pipes, and other items.
   components:
   - type: Sprite
-    sprite: Objects/Tools/spray_painter.rsi
+    sprite: &spray_painter_rsi "_Moffstation/Objects/Tools/spray_painter.rsi" # Moffstation
     state: spray_painter
   - type: Item
-    sprite: Objects/Tools/spray_painter.rsi
+    sprite: *spray_painter_rsi # Moffstation
   - type: ActivatableUI
     key: enum.SprayPainterUiKey.Key
   - type: UserInterface
@@ -25,11 +25,25 @@
       blue: '#0335FCFF'
       white: '#FFFFFFFF'
       black: '#333333FF'
+      # Moffstation - Start - Gas Color Painter
+      oxygen: '#2788E8FF'
+      nitrogen: '#D90F0FFF'
+      nitrous oxide: '#F66A6AFF'
+      carbon dioxide: '#4F4F4FFF'
+      water vapor: '#A0A0DAFF'
+      plasma: '#FC32A0FF'
+      tritium: '#17FF0BFF'
+      frezon: '#47CDFFFF'
+      # Moffstation - End
       # standard atmos pipes
       waste: '#990000'
       distro: '#0055cc'
       air: '#03fcd3'
       mix: '#947507'
+    # Moffstation - Start
+    gasTankVisuals: !type:GasTankVisualsPrototype
+      id: Default
+    # Moffstation - End
   - type: StaticPrice
     price: 40
   - type: LimitedCharges

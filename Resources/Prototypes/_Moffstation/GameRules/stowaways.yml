@@ -1,0 +1,34 @@
+- type: entity
+  parent: BaseUnweightedAntagRule
+  id: Stowaways
+  components:
+  - type: GameRule
+    minPlayers: 30
+    cancelPresetOnTooFewPlayers: false
+  - type: AntagRandomSpawn
+  - type: AntagLoadProfileRule
+    preserveName: true
+  - type: AntagSelection
+    selectionTime: PrePlayerSpawn
+    antags:
+    - !type:LinearAntagCount
+      proto: Stowaway
+      range:
+        min: 1
+        max: 2
+        playerRatio: 20
+
+- type: antagSpecifier
+  parent: RestrictedAntag
+  id: Stowaway
+  prefRoles:
+  - Stowaway
+  startingGear: StowawayGear
+  roleLoadout:
+  - JobStowaway
+  briefing:
+    text: roles-antag-stowaway-greeting
+    color: Salmon
+  mindRoles:
+  - MindRoleGhostRoleFreeAgent
+

@@ -1,0 +1,15 @@
+- type: antag
+  id: Stowaway
+  name: roles-antag-stowaway-name
+  antagonist: false
+  setPreference: true
+  objective: roles-antag-stowaway-objective
+
+- type: startingGear
+  id: StowawayGear
+  equipment:
+    jumpsuit: ClothingUniformRandomStandard
+    shoes: ClothingShoesColorBlack
+    mask: ClothingMaskGas
+    gloves: ClothingHandsGlovesColorYellow
+    id: CardboardIDCard

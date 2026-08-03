@@ -1,0 +1,11 @@
+<controls:ReadyManifestEntry
+    xmlns="https://spacestation14.io"
+    xmlns:controls="clr-namespace:Content.Client._Moffstation.ReadyManifest.UI"
+    HorizontalExpand="True"
+    Columns="2">
+    <BoxContainer Name="JobContainer" Orientation="Horizontal">
+        <TextureRect Name="EntryIcon" TextureScale="2 2" VerticalAlignment="Center" Margin="0 0 4 0" />
+        <RichTextLabel Name="EntryTitle" HorizontalExpand="True" Text="{Loc ready-manifest-job-unknown}"/>
+    </BoxContainer>
+    <RichTextLabel Name="ReadyCount" Text="{Loc ready-manifest-count-unknown}"/>
+</controls:ReadyManifestEntry>

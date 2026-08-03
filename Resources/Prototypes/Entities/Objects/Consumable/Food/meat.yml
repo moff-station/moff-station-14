@@ -78,6 +78,13 @@
   components:
   - type: Sprite
     state: plain
+  # Moffstation - Begin - Meat Pulp
+  - type: Extractable
+    juiceSolution:
+      reagents:
+      - ReagentId: MeatPulp
+        Quantity: 18
+  # Moffstation - End
   - type: ToolRefinable
     refineResult:
     - id: FoodMeatCutlet
@@ -105,6 +112,13 @@
   components:
   - type: Sprite
     state: plain
+  # Moffstation - Begin - Meat Pulp
+  - type: Extractable
+    juiceSolution:
+      reagents:
+      - ReagentId: MeatPulp
+        Quantity: 9
+  # Moffstation - End
   - type: ToolRefinable
     refineResult:
     - id: FoodMeatCutlet
@@ -186,6 +200,13 @@
       - state: generic-pink-inhand-left
       right:
       - state: generic-pink-inhand-right
+  # Moff start - Meat pulp
+  - type: Extractable
+    juiceSolution:
+      reagents:
+      - ReagentId: MeatPulp
+        Quantity: 11
+  # Moff end
 
 - type: entity
   parent: [FoodMeatRawBase, BaseSlicingRefinableFood]
@@ -195,6 +216,13 @@
   components:
   - type: Sprite
     state: bear
+  # Moffstation - Begin - Meat Pulp
+  - type: Extractable
+    juiceSolution:
+      reagents:
+      - ReagentId: MeatPulp
+        Quantity: 18
+  # Moffstation - End
   - type: ToolRefinable
     refineResult:
     - id: FoodMeatBearCutlet
@@ -221,6 +249,13 @@
   components:
   - type: Sprite
     state: bird
+  # Moffstation - Begin - Meat Pulp
+  - type: Extractable
+    juiceSolution:
+      reagents:
+      - ReagentId: MeatPulp
+        Quantity: 18
+  # Moffstation - End
   - type: ToolRefinable
     refineResult:
     - id: FoodMeatPenguinCutlet
@@ -245,6 +280,13 @@
   components:
   - type: Sprite
     state: bird
+  # Moffstation - Begin - Meat Pulp
+  - type: Extractable
+    juiceSolution:
+      reagents:
+      - ReagentId: MeatPulp
+        Quantity: 18
+  # Moffstation - End
   - type: ToolRefinable
     refineResult:
     - id: FoodMeatChickenCutlet
@@ -269,6 +311,13 @@
   components:
   - type: Sprite
     state: bird
+  # Moffstation - Begin - Meat Pulp
+  - type: Extractable
+    juiceSolution:
+      reagents:
+      - ReagentId: MeatPulp
+        Quantity: 18
+  # Moffstation - End
   - type: ToolRefinable
     refineResult:
     - id: FoodMeatDuckCutlet
@@ -304,7 +353,7 @@
       reagents:
       - ReagentId: Nutriment
         Quantity: 10
-      - ReagentId: Bicaridine
+      - ReagentId: Vestine #Moffstation - Bicardine isnt very useful and Vestine gives Syndis a reason to go after Ian outside of the objective.
         Quantity: 20
   - type: StaticPrice
     price: 750
@@ -330,6 +379,13 @@
       - crabby
   - type: Sprite
     state: crab
+  # Moffstation - Begin - Meat Pulp
+  - type: Extractable
+    juiceSolution:
+      reagents:
+      - ReagentId: MeatPulp
+        Quantity: 3
+  # Moffstation - End
   - type: Construction
     graph: CrabSteak
     node: start
@@ -354,6 +410,13 @@
       - state: plain-inhand-left
       right:
       - state: plain-inhand-right
+  # Moffstation - Begin - Meat Pulp
+  - type: Extractable
+    juiceSolution:
+      reagents:
+      - ReagentId: MeatPulp
+        Quantity: 8
+  # Moffstation - End
 
 - type: entity
   parent: [FoodMeatBase, BaseSlicingRefinableFood]
@@ -415,6 +478,13 @@
         Quantity: 4
       - ReagentId: Fat
         Quantity: 1
+  # Moffstation - Begin - Meat Pulp
+  - type: Extractable
+    juiceSolution:
+      reagents:
+      - ReagentId: MeatPulp
+        Quantity: 6
+  # Moffstation - End
   - type: ToolRefinable
     refineResult:
     - id: FoodMeatCutlet
@@ -434,6 +504,13 @@
   components:
   - type: Sprite
     state: lizard
+  # Moffstation - Begin - Meat Pulp
+  - type: Extractable
+    juiceSolution:
+      reagents:
+      - ReagentId: MeatPulp
+        Quantity: 18
+  # Moffstation - End
   - type: ToolRefinable
     refineResult:
     - id: FoodMeatLizardCutlet
@@ -500,6 +577,13 @@
   components:
   - type: Sprite
     state: spider
+  # Moffstation - Begin - Meat Pulp
+  - type: Extractable
+    juiceSolution:
+      reagents:
+      - ReagentId: MeatPulp
+        Quantity: 18
+  # Moffstation - End
   - type: ToolRefinable
     refineResult:
     - id: FoodMeatSpiderCutlet
@@ -544,6 +628,13 @@
       reagents:
       - ReagentId: UncookedAnimalProteins
         Quantity: 15
+  # Moffstation - Begin - Meat Pulp
+  - type: Extractable
+    juiceSolution:
+      reagents:
+      - ReagentId: MeatPulp
+        Quantity: 15
+  # Moffstation - End
   - type: Item
     size: Tiny
     shape:
@@ -833,6 +924,13 @@
         Quantity: 320
       - ReagentId: Fat
         Quantity: 80
+  # Moffstation - Meat Pulp
+  - type: Extractable
+    juiceSolution:
+      reagents:
+      - ReagentId: MeatAnomaly
+        Quantity: 320
+  # Moffstation - End
   - type: ToolRefinable
     refineTime: 5
     refineResult:

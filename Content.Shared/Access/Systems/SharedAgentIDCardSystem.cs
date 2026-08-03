@@ -1,3 +1,4 @@
+using Content.Shared._CD.NanoChat;
 using Content.Shared.Access.Components;
 using Content.Shared.Interaction;
 using Content.Shared.Inventory;
@@ -22,6 +23,10 @@ public abstract partial class SharedAgentIdCardSystem : EntitySystem
     [Dependency] private SharedJobSystem _job = default!;
     [Dependency] private SharedJobStatusSystem _jobStatus = default!;
 
+    [Dependency] private SharedNanoChatSystem _nanoChat = default!; // CD
+
+    [Dependency] private EntityQuery<NanoChatCardComponent> _nanoChatQuery; // Moff - nanochat
+
     /// <summary>
     /// Steals access from interacted ids.
     /// </summary>
@@ -40,7 +45,35 @@ public abstract partial class SharedAgentIdCardSystem : EntitySystem
         access.Tags.UnionWith(targetAccess.Tags);
         var addedLength = access.Tags.Count - beforeLength;
 
-        _popup.PopupPredicted(Loc.GetString("agent-id-new", ("number", addedLength), ("card", args.Target)),
+        // CD - Copy NanoChat data if available
+        if (_nanoChatQuery.TryComp(args.Target, out var targetNanoChat) &&
+            _nanoChatQuery.TryComp(ent, out var agentNanoChat))
+        {
+            // First clear existing data
+            _nanoChat.Clear((ent, agentNanoChat));
+
+            // Copy the number
+            if (_nanoChat.GetNumber((args.Target.Value, targetNanoChat)) is { } number)
+                _nanoChat.SetNumber((ent, agentNanoChat), number);
+
+            // Copy all recipients and their messages
+            foreach (var (recipientNumber, recipient) in _nanoChat.GetRecipients((args.Target.Value, targetNanoChat)))
+            {
+                _nanoChat.SetRecipient((ent, agentNanoChat), recipientNumber, recipient);
+
+                if (_nanoChat.GetMessagesForRecipient((args.Target.Value, targetNanoChat), recipientNumber) is not
+                    { } messages)
+                    continue;
+
+                foreach (var message in messages)
+                {
+                    _nanoChat.AddMessage((ent, agentNanoChat), recipientNumber, message);
+                }
+            }
+        }
+        // End CD
+
+        _popup.PopupEntity(Loc.GetString("agent-id-new", ("number", addedLength), ("card", args.Target)),
             args.Target.Value,
             args.User);
         if (addedLength > 0)
@@ -92,6 +125,17 @@ public abstract partial class SharedAgentIdCardSystem : EntitySystem
         UpdateUi(ent);
     }
 
+    // CD - Add number change handler
+    [SubscribeLocalEvent]
+    private void OnNumberChanged(Entity<AgentIDCardComponent> ent, ref AgentIDCardNumberChangedMessage args)
+    {
+        if (!TryComp<NanoChatCardComponent>(ent, out var comp))
+            return;
+
+        _nanoChat.SetNumber((ent, comp), args.Number);
+        Dirty(ent, comp);
+    }
+
     /// <summary>
     /// Update the agent id UI with new component info.
     /// </summary>
@@ -136,4 +180,11 @@ public sealed class AgentIDCardJobChangedMessage(string job) : BoundUserInterfac
 public sealed class AgentIDCardJobIconChangedMessage(ProtoId<JobIconPrototype> icon) : BoundUserInterfaceMessage
 {
     public ProtoId<JobIconPrototype> JobIconId { get; } = icon;
+}
+
+// CD - Add number change message
+[Serializable, NetSerializable]
+public sealed class AgentIDCardNumberChangedMessage(uint number) : BoundUserInterfaceMessage
+{
+    public uint Number { get; } = number;
 }

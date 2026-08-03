@@ -1,0 +1,40 @@
+# Frames
+- type: latheRecipePack
+  id: ModularHudFramesStatic
+  recipes:
+  - ClothingEyesModularHudGlasses
+  - ClothingEyesModularHudJamjars
+  - ClothingEyesModularHudPatch
+  - ClothingEyesModularHudVisor
+
+# Modules
+- type: latheRecipePack
+  id: ModularHudModulesStatic
+  recipes:
+  - HudModuleCheapSunglasses
+  - HudModuleShowAccessReaderSettings
+  - HudModuleShowInorganicHealthBars
+
+- type: latheRecipePack
+  id: MedicalModularHudModulesStatic
+  recipes:
+  - HudModuleCheapSunglasses
+  - HudModuleShowMedicalIcons
+  - HudModuleSolutionScanner
+  - HudModuleVisionCorrection
+
+- type: latheRecipePack
+  id: ScienceModularHudModulesStatic
+  recipes:
+  - HudModuleBlackAndWhiteOverlay
+  - HudModuleSolutionScanner
+
+- type: latheRecipePack
+  id: SecurityModularHudModulesStatic
+  recipes:
+  - HudModuleBlackAndWhiteOverlay
+  - HudModuleCheapSunglasses
+  - HudModuleFlashImmunity
+  - HudModuleNoirOverlay
+  - HudModuleSecurity
+  - HudModuleShowJobIcons

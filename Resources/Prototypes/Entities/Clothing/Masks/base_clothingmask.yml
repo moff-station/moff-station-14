@@ -1,16 +1,26 @@
 - type: entity
   abstract: true
-  parent: Clothing
+  parent: [ Clothing, MoffStainableClothingBase ] # Moffstation - mixed in MoffStainableClothingBase
   id: ClothingMaskBase
   components:
   - type: Sprite
     state: icon
   - type: Item
-    size: Small
+    size: Tiny # Moffstation - (Survival Box Improvements)
   - type: Clothing
     slots: [mask]
   - type: StaticPrice
     price: 25
+  # Forky - start - clothing stains
+  - type: Stainable
+    clothingVisuals:
+      mask:
+      - sprite: _Funkystation/Effects/blood.rsi
+        state: maskblood
+    iconVisuals:
+    - sprite: _Funkystation/Effects/blood.rsi
+      state: maskbloodicon
+  # Forky - end
 
 - type: entity
   abstract: true

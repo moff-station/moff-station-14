@@ -1,0 +1,92 @@
+# Tabs
+
+- type: quickPhrase
+  id: BaseCommonPhrase
+  abstract: true
+  tab: phrase-tab-common-phrases
+
+- type: quickPhrase
+  id: BaseLetterAndNumberPhrase
+  abstract: true
+  tab: phrase-tab-letters-and-numbers
+
+- type: quickPhrase
+  id: BaseJobPhrase
+  abstract: true
+  tab: phrase-tab-jobs
+
+- type: quickPhrase
+  id: BaseLocationPhrase
+  abstract: true
+  tab: phrase-tab-locations
+
+- type: quickPhrase
+  id: BaseSubjectPhrase
+  abstract: true
+  tab: phrase-tab-subjects
+  group: phrase-group-misc
+
+- type: quickPhrase
+  id: BaseThreatPhrase
+  abstract: true
+  tab: phrase-tab-safety
+
+- type: quickPhrase
+  id: BaseSpeciesPhrase
+  abstract: true
+  tab: phrase-tab-species
+
+# Departments
+
+- type: quickPhrase
+  id: BaseCivilianPhrase
+  abstract: true
+  group: phrase-group-civilian
+
+- type: quickPhrase
+  id: BaseCommandPhrase
+  abstract: true
+  group: phrase-group-command
+  styleClass: CommandButton
+
+- type: quickPhrase
+  id: BaseEngineeringPhrase
+  abstract: true
+  group: phrase-group-engineering
+  styleClass: EngineeringButton
+
+- type: quickPhrase
+  id: BaseEpistemicsPhrase
+  abstract: true
+  group: phrase-group-epistemics
+  styleClass: EpistemicsButton
+
+- type: quickPhrase
+  id: BaseJusticePhrase
+  abstract: true
+  group: phrase-group-justice
+  styleClass: JusticeButton
+
+- type: quickPhrase
+  id: BaseLogisticsPhrase
+  abstract: true
+  group: phrase-group-logistics
+  styleClass: LogisticsButton
+
+- type: quickPhrase
+  id: BaseMedicalPhrase
+  abstract: true
+  group: phrase-group-medical
+  styleClass: MedicalButton
+
+- type: quickPhrase
+  id: BaseSecurityPhrase
+  abstract: true
+  group: phrase-group-security
+  styleClass: SecurityButton
+
+- type: quickPhrase
+  id: BaseServicePhrase
+  abstract: true
+  group: phrase-group-service
+  styleClass: ServiceButton

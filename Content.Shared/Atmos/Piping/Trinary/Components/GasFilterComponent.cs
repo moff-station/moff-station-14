@@ -48,6 +48,17 @@ public sealed partial class GasFilterComponent : Component
     /// <summary>
     /// Indicates gas type to be filtered out into the secondary outlet
     /// </summary>
+    /// <!-- Moff start -->
+    /// <remark>
+    /// Moffstation - this is left here to ensure compatibility with maps
+    /// starting with pre-set gas filters.
+    /// </remark>
+    /// <!-- Moff end -->
     [DataField, AutoNetworkedField]
     public Gas? FilteredGas;
+
+    // Moff start - Filter multiple gases
+    [DataField, AutoNetworkedField]
+    public HashSet<Gas> FilteredGases = [];
+    // Moff end
 }

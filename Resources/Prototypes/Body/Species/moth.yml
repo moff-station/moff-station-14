@@ -13,8 +13,13 @@
       limit: 1
       required: true
       default: [ MothWingsDefault ]
+    # Moffstation - Begin - More markings
+    enum.HumanoidVisualLayers.TailOverlay:
+      limit: 1
+      required: false
+    # Moffstation - End
     enum.HumanoidVisualLayers.Chest:
-      limit: 2
+      limit: 4 # Moffstation - Increase Markings
       required: false
     enum.HumanoidVisualLayers.HeadTop:
       limit: 1
@@ -24,10 +29,10 @@
       limit: 1
       required: false
     enum.HumanoidVisualLayers.LArm:
-      limit: 1
+      limit: 4 # Moffstation - Increase Markings
       required: false
     enum.HumanoidVisualLayers.RArm:
-      limit: 1
+      limit: 4 # Moffstation - Increase Markings
       required: false
     enum.HumanoidVisualLayers.LHand:
       limit: 1
@@ -36,10 +41,10 @@
       limit: 1
       required: false
     enum.HumanoidVisualLayers.LLeg:
-      limit: 1
+      limit: 4 # Moffstation - Increase Markings
       required: false
     enum.HumanoidVisualLayers.RLeg:
-      limit: 1
+      limit: 4 # Moffstation - Increase Markings
       required: false
     enum.HumanoidVisualLayers.LFoot:
       limit: 1
@@ -47,6 +52,11 @@
     enum.HumanoidVisualLayers.RFoot:
       limit: 1
       required: false
+    # Moffstation - Begin - More markings
+    enum.HumanoidVisualLayers.Head:
+      limit: 3
+      required: false
+    # Moffstation - End
 
 - type: entity
   parent: BaseSpeciesAppearance
@@ -145,8 +155,9 @@
   - type: ZombieAccentOverride
     accent: zombieMoth
   - type: Speech
+    speechSounds: UnisexMoth
     speechVerb: Moth
-    allowedEmotes: ['Chitter', 'Squeak', 'Flap']
+    allowedEmotes: ['Chitter', 'Squeak', 'Flap', 'Sneeze']
   - type: TypingIndicator
     proto: moth
   - type: CreamPied
@@ -177,7 +188,7 @@
   - type: Flammable
     damage:
       types:
-        Heat: 2.5 # moths burn more easily
+        Heat: 4.5 # Moffstation - Revert moth fire stack damage reduction
   - type: TemperatureDamage # Moths hate the heat and thrive in the cold.
     heatDamageThreshold: 320
     coldDamageThreshold: 230

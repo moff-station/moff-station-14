@@ -1,0 +1,246 @@
+- type: reagent
+  parent: BaseAlcohol
+  id: AstrosturaBitters
+  name: reagent-name-astrosturabitters
+  desc: reagent-desc-astrosturabitters
+  physicalDesc: reagent-physical-desc-strong-smelling
+  flavor: alcohol
+  color: "#200a02"
+  recognizable: true
+  metabolisms:
+    Digestion:
+      metabolites:
+        Ethanol: 0.6
+      effects:
+      - !type:SatiateThirst
+        factor: 1
+
+- type: reagent
+  parent: BaseAlcohol
+  id: PinkGin
+  name: reagent-name-pink-gin
+  desc: reagent-desc-pink-gin
+  physicalDesc: reagent-physical-desc-strong-smelling
+  flavor: pinkgin
+  color: "#ffcbf7"
+  metamorphicSprite:
+    sprite: _Moffstation/Objects/Consumable/Drinks/ginpink.rsi
+    state: icon_empty
+  metamorphicMaxFillLevels: 4
+  metamorphicFillBaseName: fill-
+  metamorphicChangeColor: false
+  metabolisms:
+    Digestion:
+      metabolites:
+        Ethanol: 0.4
+      effects:
+      - !type:SatiateThirst
+        factor: 2
+
+- type: reagent
+  parent: BaseAlcohol
+  id: PlantersPunch
+  name: reagent-name-planters-punch
+  desc: reagent-desc-planters-punch
+  physicalDesc: reagent-physical-desc-strong-smelling
+  flavor: planterspunch
+  color: "#fd7b00"
+  metamorphicSprite:
+    sprite: _Moffstation/Objects/Consumable/Drinks/planterspunch.rsi
+    state: icon_empty
+  metamorphicMaxFillLevels: 4
+  metamorphicFillBaseName: fill-
+  metamorphicChangeColor: false
+  metabolisms:
+    Digestion:
+      metabolites:
+        Ethanol: 0.266
+      effects:
+      - !type:SatiateThirst
+        factor: 2
+
+- type: reagent
+  parent: BaseEthyl
+  id: CorpseReviver
+  name: reagent-name-corpse-reviver
+  desc: reagent-desc-corpse-reviver
+  physicalDesc: reagent-physical-desc-ghostly
+  flavor: corpsereviver
+  color: "#cddcd5"
+  metamorphicSprite:
+    sprite: _Moffstation/Objects/Consumable/Drinks/corpsereviver.rsi
+    state: icon_empty
+  metamorphicMaxFillLevels: 3
+  metamorphicFillBaseName: fill-
+  metamorphicChangeColor: false
+  metabolisms:
+    Digestion:
+      metabolites:
+        Ethanol: 0.6
+        Ethylredoxrazine: 0.6
+      effects:
+      - !type:SatiateThirst
+        factor: 2
+
+- type: reagent
+  parent: BaseEthyl
+  id: MossySpecial
+  name: reagent-name-mossy-special
+  desc: reagent-desc-mossy-special
+  physicalDesc: reagent-physical-desc-leafy
+  flavor: mossyspecial
+  color: "#664300"
+  metamorphicSprite:
+    sprite: _Moffstation/Objects/Consumable/Drinks/mossyspecial.rsi
+    state: icon_empty
+  metamorphicMaxFillLevels: 2
+  metamorphicFillBaseName: fill-
+  metamorphicChangeColor: false
+  metabolisms:
+    Digestion:
+      metabolites:
+        Ethanol: 0.2
+        Ethylredoxrazine: 0.6
+      effects:
+      - !type:SatiateThirst
+        factor: 3
+
+- type: reagent
+  parent: BaseAlcohol
+  id: ScrantonSpecial
+  name: reagent-name-scranton-special
+  desc: reagent-desc-scranton-special
+  physicalDesc: reagent-physical-desc-pungent
+  flavor: scrantonspecial
+  color: "#71619d"
+  metamorphicSprite:
+    sprite: _Moffstation/Objects/Consumable/Drinks/scrantonspecial.rsi
+    state: icon_empty
+  metamorphicMaxFillLevels: 5
+  metamorphicFillBaseName: fill-
+  metamorphicChangeColor: false
+  metabolisms:
+    Digestion:
+      metabolites:
+        Ethanol: 0.3
+      effects:
+      - !type:HealthChange
+        damage:
+          types:
+            Poison: .15
+      - !type:SatiateThirst
+        factor: 1
+
+- type: reagent
+  parent: BaseAlcohol
+  id: RussianMothroach
+  name: reagent-name-russian-mothroach
+  desc: reagent-desc-russian-mothroach
+  physicalDesc: reagent-physical-desc-fibrous
+  flavor: russianmothroach
+  color: "#fdf9f3"
+  metamorphicSprite:
+    sprite: _Moffstation/Objects/Consumable/Drinks/russianmothroach.rsi
+    state: icon_empty
+  metamorphicMaxFillLevels: 3
+  metamorphicFillBaseName: fill-
+  metamorphicChangeColor: false
+  metabolisms:
+    Digestion:
+      metabolites:
+        Ethanol: 0.2
+        Fiber: 0.4
+      effects:
+      - !type:SatiateThirst
+        factor: 1
+
+- type: reagent
+  parent: BaseAlcohol
+  id: Fertilizer
+  name: reagent-name-fertilizer
+  desc: reagent-desc-fertilizer
+  physicalDesc: reagent-physical-desc-verdant
+  flavor: fertilizer
+  color: "#296c22"
+  metamorphicSprite:
+    sprite: _Moffstation/Objects/Consumable/Drinks/fertilizer.rsi
+    state: icon_empty
+  metamorphicMaxFillLevels: 3
+  metamorphicFillBaseName: fill-
+  metamorphicChangeColor: false
+  metabolisms:
+    Digestion:
+      metabolites:
+        Ethanol: 0.2
+        RobustHarvest: 0.4
+        Theobromine: 0.1
+  plantMetabolism:
+  - !type:PlantAdjustNutrition
+    amount: 1
+  - !type:PlantAdjustHealth
+    amount: 5
+
+- type: reagent
+  parent: BaseAlcohol
+  id: SolarHurricane
+  name: reagent-name-solar-hurricane
+  desc: reagent-desc-solar-hurricane
+  physicalDesc: reagent-physical-desc-glistening
+  flavor: solarhurricane
+  color: "#326bc2"
+  metamorphicSprite:
+    sprite: _Moffstation/Objects/Consumable/Drinks/solarhurricane.rsi
+    state: icon_empty
+  metamorphicMaxFillLevels: 5
+  metamorphicFillBaseName: fill-
+  metamorphicChangeColor: false
+  metabolisms:
+    Digestion:
+      metabolites:
+        Ethanol: 0.2
+      effects:
+      - !type:SatiateThirst
+        factor: 5
+        conditions:
+        - !type:MetabolizerTypeCondition
+          type: [ Avali ]
+
+- type: reagent
+  parent: BaseAlcohol
+  id: WizardAle
+  name: reagent-name-wizard-ale
+  desc: reagent-desc-wizard-ale
+  physicalDesc: reagent-physical-desc-secret
+  flavor: wizardale
+  color: "#7b3326"
+  metabolisms:
+    Digestion:
+      metabolites:
+        Ethanol: 0.8
+      effects:
+      - !type:SatiateThirst
+        factor: 4
+
+- type: reagent
+  parent: BaseAlcohol
+  id: MeatAnomaly
+  name: reagent-name-meat-anomaly
+  desc: reagent-desc-meat-anomaly
+  physicalDesc: reagent-physical-desc-alive
+  flavor: meatanomaly
+  color: "#913a3a"
+  metamorphicSprite:
+    sprite: _Moffstation/Objects/Consumable/Drinks/meatanomaly.rsi
+    state: icon_empty
+  metamorphicMaxFillLevels: 5
+  metamorphicFillBaseName: fill-
+  metamorphicChangeColor: false
+  metabolisms:
+    Digestion:
+      metabolites:
+        Ethanol: 0.2
+        Fat: 0.2
+        UncookedAnimalProteins: 0.5
+      effects:
+      - !type:SatiateThirst
+        factor: 1

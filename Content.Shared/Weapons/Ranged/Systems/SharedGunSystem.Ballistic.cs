@@ -1,9 +1,12 @@
+using Content.Shared._Moffstation.Storage; // Moffstation
+using Content.Shared._Moffstation.Storage.EntitySystems; // Moffstation
 using Content.Shared.DoAfter;
 using Content.Shared.Emp;
 using Content.Shared.Examine;
 using Content.Shared.Interaction;
 using Content.Shared.Interaction.Events;
 using Content.Shared.Stacks;
+using Content.Shared.Storage; // Moffstation
 using Content.Shared.Verbs;
 using Content.Shared.Weapons.Ranged.Components;
 using Content.Shared.Weapons.Ranged.Events;
@@ -19,6 +22,9 @@ public abstract partial class SharedGunSystem
     [Dependency] private SharedInteractionSystem _interaction = default!;
     [Dependency] private SharedStackSystem _stack = null!;
 
+    [Dependency] private AreaPickupSystem _areaPickup = default!; // Moffstation
+    [Dependency] private QuickPickupSystem _quickPickup = default!; // Moffstation
+
     [MustCallBase]
     protected virtual void InitializeBallistic()
     {
@@ -28,11 +34,19 @@ public abstract partial class SharedGunSystem
         SubscribeLocalEvent<BallisticAmmoProviderComponent, GetAmmoCountEvent>(OnBallisticAmmoCount);
 
         SubscribeLocalEvent<BallisticAmmoProviderComponent, ExaminedEvent>(OnBallisticExamine);
-        SubscribeLocalEvent<BallisticAmmoProviderComponent, GetVerbsEvent<Verb>>(OnBallisticVerb);
+        // Moffstation - Start - allow ammo providers to be cyclable on the ground with altclick
+        //SubscribeLocalEvent<BallisticAmmoProviderComponent, GetVerbsEvent<Verb>>(OnBallisticVerb); - Moffstation
+        SubscribeLocalEvent<BallisticAmmoProviderComponent, GetVerbsEvent<AlternativeVerb>>(OnBallisticVerb);
+        // Moffstation - End
         SubscribeLocalEvent<BallisticAmmoProviderComponent, InteractUsingEvent>(OnBallisticInteractUsing);
         SubscribeLocalEvent<BallisticAmmoProviderComponent, AfterInteractEvent>(OnBallisticAfterInteract);
         SubscribeLocalEvent<BallisticAmmoProviderComponent, AmmoFillDoAfterEvent>(OnBallisticAmmoFillDoAfter);
         SubscribeLocalEvent<BallisticAmmoProviderComponent, UseInHandEvent>(OnBallisticUse);
+        // Moffstation - Start
+        SubscribeLocalEvent<BallisticAmmoProviderComponent, QuickPickupEvent>(OnQuickPickup);
+        SubscribeLocalEvent<BallisticAmmoProviderComponent, BeforeAreaPickupEvent>(OnBeforeAreaPickup);
+        SubscribeLocalEvent<BallisticAmmoProviderComponent, AreaPickupDoAfterEvent>(OnAreaPickupDoAfter);
+        // Moffstation - End
 
         SubscribeLocalEvent<BallisticAmmoSelfRefillerComponent, MapInitEvent>(OnBallisticRefillerMapInit);
         SubscribeLocalEvent<BallisticAmmoSelfRefillerComponent, EmpPulseEvent>(OnRefillerEmpPulsed);
@@ -143,8 +157,13 @@ public abstract partial class SharedGunSystem
             }
             else
             {
-                // play sound to be cool
-                Audio.PlayPredicted(component.SoundInsert, uid, args.User);
+                // Moffstation - Start - Add silent insert user tag
+                if (!TagSystem.HasTag(args.User, component.SilentInsertUserTag))
+                {
+                    // play sound to be cool
+                    Audio.PlayPredicted(component.SoundInsert, uid, args.User);
+                }
+                // Moffstation - End
                 SimulateInsertAmmo(ent.Value, args.Target.Value, Transform(args.Target.Value).Coordinates);
             }
 
@@ -158,14 +177,17 @@ public abstract partial class SharedGunSystem
         args.Repeat = moreSpace && moreAmmo;
     }
 
-    private void OnBallisticVerb(EntityUid uid, BallisticAmmoProviderComponent component, GetVerbsEvent<Verb> args)
+    // Moffstation - Start - allow ammo providers to be cyclable on the ground with altclick
+    //private void OnBallisticVerb(EntityUid uid, BallisticAmmoProviderComponent component, GetVerbsEvent<Verb> args) - Moffstation
+    private void OnBallisticVerb(EntityUid uid, BallisticAmmoProviderComponent component, GetVerbsEvent<AlternativeVerb> args)
     {
         if (!args.CanAccess || !args.CanInteract || args.Hands == null || !component.Cycleable)
             return;
 
         if (component.Cycleable)
         {
-            args.Verbs.Add(new Verb()
+            //args.Verbs.Add(new Verb() - Moffstation
+            args.Verbs.Add(new AlternativeVerb
             {
                 Text = Loc.GetString("gun-ballistic-cycle"),
                 Disabled = GetBallisticShots(component) == 0,
@@ -174,6 +196,7 @@ public abstract partial class SharedGunSystem
 
         }
     }
+    // Moffstation - End
 
     private void OnBallisticExamine(Entity<BallisticAmmoProviderComponent> ent, ref ExaminedEvent args)
     {
@@ -274,6 +297,52 @@ public abstract partial class SharedGunSystem
         args.Count = GetBallisticShots(ent.Comp);
         args.Capacity = ent.Comp.Capacity;
     }
+
+    // Moffstation - Start
+    private void OnQuickPickup(Entity<BallisticAmmoProviderComponent> entity, ref QuickPickupEvent args)
+    {
+        if (args.Handled)
+            return;
+
+        // Copy event fields because the lambda doesn't like capturing `ref` values.
+        var user = args.User;
+        var pickedUp = args.PickedUp;
+        args.Handled = _quickPickup.TryDoQuickPickup(args, () => TryBallisticInsert(entity, pickedUp, user));
+    }
+
+    private void OnBeforeAreaPickup(Entity<BallisticAmmoProviderComponent> entity, ref BeforeAreaPickupEvent args)
+    {
+        if (args.Handled)
+            return;
+
+        args.Handled = _areaPickup.DoBeforeAreaPickup(
+            ref args,
+            pickupCandidate => CanInsertBallistic(entity, pickupCandidate)
+        );
+    }
+
+    private void OnAreaPickupDoAfter(Entity<BallisticAmmoProviderComponent> entity, ref AreaPickupDoAfterEvent args)
+    {
+        if (args.Handled ||
+            args.Cancelled)
+            return;
+
+        // Copy event fields because the lambda doesn't like capturing `ref` values.
+        var user = args.User;
+
+        // Don't play a sound if the user has the silent user tag.
+        var insertSound = ProtoMan.TryIndex(entity.Comp.SilentInsertUserTag, out var tag) &&
+                          TagSystem.HasTag(args.User, tag)
+            ? null
+            : entity.Comp.SoundInsert;
+        args.Handled = _areaPickup.TryDoAreaPickup(
+            ref args,
+            entity.Owner,
+            insertSound,
+            entityToInsert => TryBallisticInsert(entity, entityToInsert, user, suppressInsertionSound: true)
+        );
+    }
+    // Moffstation - End
 
     /// <summary>
     /// Causes <paramref name="entity"/> to pause its refilling for either at least <paramref name="overridePauseDuration"/>

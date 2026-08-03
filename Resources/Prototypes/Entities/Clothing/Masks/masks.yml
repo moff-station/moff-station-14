@@ -4,6 +4,10 @@
   name: gas mask
   description: A face-covering mask that can be connected to an air supply.
   components:
+  # Moffstation - Begin (Survival Box Improvements)
+  - type: Item
+    size: Tiny
+  # Moffstation - End
   - type: Sprite
     sprite: Clothing/Mask/gas.rsi
   - type: Clothing
@@ -13,6 +17,7 @@
   - type: IdentityBlocker
   - type: Tag
     tags:
+    - SurvivalBoxInsertable # Moffstation - (Survival Box Improvements)
     - HamsterWearable
     - WhitelistChameleon
   - type: HideLayerClothing
@@ -26,12 +31,14 @@
   name: security gas mask
   description: A standard issue Security gas mask.
   components:
-  - type: Item
-    size: Tiny
+  # Moffstation - Begin (Survival Box Improvements)
+#  - type: Item
+#      size: Tiny
+  # Moffstation - End
   - type: Sprite
     sprite: Clothing/Mask/gassecurity.rsi
   - type: Clothing
-    sprite: Clothing/Mask/gassecurity.rsi
+    sprite: _Moffstation/Clothing/Mask/gassecurity.rsi # Moffstation - (New Security Helmets) - The new military helmet leaves a single pixel blank which the mask also doesn't fill, so we need to use our own with that pixel filled in.
   - type: Armor
     modifiers:
       coefficients:
@@ -82,9 +89,9 @@
   description: Nanotrasen cut corners and repainted a spare atmospheric gas mask, but don't tell anyone.
   components:
   - type: Sprite
-    sprite: Clothing/Mask/gascaptain.rsi
+    sprite: _Moffstation/Clothing/Mask/gascaptain.rsi # Moffstation - Command Outfit Resprite
   - type: Clothing
-    sprite: Clothing/Mask/gascaptain.rsi
+    sprite: _Moffstation/Clothing/Mask/gascaptain.rsi # Moffstation - Command Outfit Resprite
   - type: BreathMask
   - type: IngestionBlocker
 
@@ -137,6 +144,7 @@
     tags:
     - PetWearable
     - WhitelistChameleon
+    - SurvivalBoxInsertable # Moffstation - (Survival Box Improvements)
   - type: PhysicalComposition
     materialComposition:
       Steel: 50
@@ -180,25 +188,27 @@
     tags:
     - PetWearable
     - WhitelistChameleon
+    - SurvivalBoxInsertable # Moffstation - (Survival Box Improvements)
   - type: PhysicalComposition
     materialComposition:
       Steel: 50
       Plastic: 100
   - type: StaticPrice
     price: 30 # increases in price after decomposed into raw materials
+  - type: MoffStainRepellent # Moff - Mostly solid plastic, and it means Vox don't look like they just climed out of the dumpster constantly
 
 - type: entity
   parent: ClothingMaskBase
   id: ClothingMaskClownBase
   abstract: true
-  name: clown wig and mask
-  description: A true prankster's facial attire. A clown is incomplete without his wig and mask.
+  name: clown mask #Moffstation - No more wig
+  description: A true prankster's facial attire. A clown is incomplete without their mask. # Moffstation - No more wig :3
   components:
   - type: Appearance
   - type: Sprite
-    sprite: Clothing/Mask/clown.rsi
+    sprite: _Moffstation/Clothing/Mask/clown.rsi
   - type: Clothing
-    sprite: Clothing/Mask/clown.rsi
+    sprite: _Moffstation/Clothing/Mask/clown.rsi
   - type: BreathMask
   - type: IdentityBlocker
   - type: Tag
@@ -208,33 +218,32 @@
   - type: HideLayerClothing
     slots:
     - Snout
+  # Imp - Begin - Tourists
+  - type: StealTarget
+    stealGroup: ClownMask
+  # Imp - Begin - Tourists
 
+#Moffstation - Start - No more wig so not need to be able to fold it
 - type: entity
-  parent: [ClothingMaskClownBase, BaseFoldable]
+  parent: [ClothingMaskClownBase]
   id: ClothingMaskClown
-  description: A clown mask featuring a foldable wig; a true prankster's attire.
   components:
-  - type: Foldable
-    canFoldInsideContainer: true
-  - type: FoldableClothing
-    foldedEquippedPrefix: opened
-    foldedHeldPrefix: opened
   - type: Sprite
-    sprite: Clothing/Mask/clown.rsi
-    layers:
-    - state: icon
-      map: [ "unfoldedLayer" ]
-    - state: icon-opened
-      map: [ "foldedLayer" ]
-      visible: false
+    sprite: _Moffstation/Clothing/Mask/clown.rsi
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Mask/clown.rsi
+  - type: BreathMask
+  - type: IdentityBlocker
+  - type: HideLayerClothing
+    slots:
+    - Snout
   - type: Tag
     tags:
     - ClownMask
     - HamsterWearable
     - WhitelistChameleon
-  - type: HideLayerClothing
-    slots:
-    - Snout
+    - SurvivalBoxInsertable # Moffstation - (Survival Box Improvements)
+# Moffstation - End - No more wig so not need to be able to fold it
 
 - type: entity
   parent: ClothingMaskClownBase
@@ -242,9 +251,9 @@
   name: banana clown wig and mask
   components:
   - type: Sprite
-    sprite: Clothing/Mask/clown_banana.rsi
+    sprite: _Moffstation/Clothing/Mask/clown_banana.rsi
   - type: Clothing
-    sprite: Clothing/Mask/clown_banana.rsi
+    sprite: _Moffstation/Clothing/Mask/clown_banana.rsi
   - type: Construction
     graph: BananaClownMask
     node: mask
@@ -258,22 +267,23 @@
     - Snout
 
 - type: entity
-  parent: [ClothingMaskClownBase, BaseSecurityContraband]
+  parent: [ClothingMaskClownBase] #Moffstation - Clown Mask in Loadout
   id: ClothingMaskClownSecurity
-  name: security clown wig and mask
-  description: A debatably oxymoronic but protective mask and wig.
+  name: cool clown wig and mask # Moffstation - Clown Mask renamed to be Cool
+  description: A debatably oxymoronic but protective mask. # Moffstation - No more wig
   components:
   - type: Sprite
-    sprite: Clothing/Mask/clown_security.rsi
+    sprite: _Moffstation/Clothing/Mask/clown_security.rsi # Moffstation
   - type: Clothing
-    sprite: Clothing/Mask/clown_security.rsi
-  - type: Armor
-    modifiers:
-      coefficients:
-        Blunt: 0.95
-        Slash: 0.95
-        Piercing: 0.95
-        Heat: 0.95
+    sprite: _Moffstation/Clothing/Mask/clown_security.rsi # Moffstation
+#  - type: Armor  # Moffstation - Begin - This is going into the Loadouts & a Clown don't need all that when they look cool
+#    modifiers:
+#      coefficients:
+#        Blunt: 0.95
+#        Slash: 0.95
+#        Piercing: 0.95
+#        Heat: 0.95
+# Moffstation - End
   - type: Tag
     tags:
     - ClownMask
@@ -315,6 +325,7 @@
     tags:
     - HamsterWearable
     - WhitelistChameleon
+    - SurvivalBoxInsertable # Moffstation - (Survival Box Improvements)
   - type: HideLayerClothing
     slots:
     - Snout
@@ -339,6 +350,7 @@
       Plastic: 25
   - type: StaticPrice
     price: 5
+  - type: MoffStainRepellent # Moff - Mostly solid plastic, and it means Vox don't look like they just climed out of the dumpster constantly
 
 - type: entity
   parent: ClothingMaskBase
@@ -385,14 +397,14 @@
 - type: entity
   parent: ClothingMaskClownBase
   id: ClothingMaskCluwne
-  name: cluwne face and hair
+  name: cluwne face # Moffstation - No more wig
   suffix: Unremoveable
-  description: Cursed cluwne face and hair.
+  description: a disfigured joyless snarl covers the cluwne face, what joy can they truely even feel? # Moffstation - No more wig
   components:
   - type: Sprite
-    sprite: Clothing/Mask/cluwne.rsi
+    sprite: _Moffstation/Clothing/Mask/cluwne.rsi # Moffstation
   - type: Clothing
-    sprite: Clothing/Mask/cluwne.rsi
+    sprite: _Moffstation/Clothing/Mask/cluwne.rsi # Moffstation
   - type: Unremoveable
   - type: StutteringAccent
     relayAccent: true
@@ -410,6 +422,7 @@
   - type: Tag
     tags:
     - WhitelistChameleon
+    - SurvivalBoxInsertable # Moffstation - (Survival Box Improvements)
   - type: HideLayerClothing
     slots:
     - Hair
@@ -456,6 +469,7 @@
   - type: Tag
     tags:
     - WhitelistChameleon
+    - SurvivalBoxInsertable # Moffstation - (Survival Box Improvements)
   - type: HideLayerClothing
     slots:
     - Hair
@@ -643,9 +657,9 @@
   description: A mask for a blushing clown.
   components:
   - type: Sprite
-    sprite: Clothing/Mask/blushingclown.rsi
+    sprite: _Moffstation/Clothing/Mask/blushingclown.rsi # Moffstation
   - type: Clothing
-    sprite: Clothing/Mask/blushingclown.rsi
+    sprite: _Moffstation/Clothing/Mask/blushingclown.rsi # Moffstation
 
 - type: entity
   parent: ClothingMaskMime
@@ -654,9 +668,9 @@
   description: Those ruddy cheeks just want to be rubbed.
   components:
   - type: Sprite
-    sprite: Clothing/Mask/blushingmime.rsi
+    sprite: _Moffstation/Clothing/Mask/blushingmime.rsi # Moffstation
   - type: Clothing
-    sprite: Clothing/Mask/blushingmime.rsi
+    sprite: _Moffstation/Clothing/Mask/blushingmime.rsi # Moffstation
 
 - type: entity
   parent: ClothingMaskMime
@@ -665,9 +679,9 @@
   description: Many people think this is what a real mime mask looks like.
   components:
   - type: Sprite
-    sprite: Clothing/Mask/sadmime.rsi
+    sprite: _Moffstation/Clothing/Mask/sadmime.rsi # Moffstation
   - type: Clothing
-    sprite: Clothing/Mask/sadmime.rsi
+    sprite: _Moffstation/Clothing/Mask/sadmime.rsi # Moffstation
 
 - type: entity
   parent: ClothingMaskMime
@@ -676,27 +690,28 @@
   description: Looks like it would scream if it wasn't a mask.
   components:
   - type: Sprite
-    sprite: Clothing/Mask/scaredmime.rsi
+    sprite: _Moffstation/Clothing/Mask/scaredmime.rsi # Moffstation
   - type: Clothing
-    sprite: Clothing/Mask/scaredmime.rsi
+    sprite: _Moffstation/Clothing/Mask/scaredmime.rsi # Moffstation
 
 - type: entity
-  parent: [ClothingMaskMime, BaseSecurityContraband]
+  parent: [ClothingMaskMime] # Moffstation - Mime Mask in the Loadout
   id: ClothingMaskMimeSecurity
-  name: security mime mask
+  name: cool mime mask # Moffstation - Mime Mask renamed to be Cool
   description: You have the right to remain silent.
   components:
   - type: Sprite
-    sprite: Clothing/Mask/mime_security.rsi
+    sprite: _Moffstation/Clothing/Mask/mime_security.rsi # Moffstation
   - type: Clothing
-    sprite: Clothing/Mask/mime_security.rsi
-  - type: Armor
-    modifiers:
-      coefficients:
-        Blunt: 0.95
-        Slash: 0.95
-        Piercing: 0.95
-        Heat: 0.95
+    sprite: _Moffstation/Clothing/Mask/mime_security.rsi # Moffstation
+#  - type: Armor   #Moffstation - Begin - The Mime does not need protection when they are cool looking (adding it to the loadout)
+#    modifiers:
+#      coefficients:
+#        Blunt: 0.95
+#        Slash: 0.95
+#        Piercing: 0.95
+#        Heat: 0.95
+# Moffstation - End
 
 - type: entity
   parent: ClothingMaskBase
@@ -710,6 +725,11 @@
     sprite: Clothing/Mask/italian_moustache.rsi
   - type: Item
     storedRotation: -90
+  # Moffstation - Begin - Re-add word replacement accents
+  - type: ReplacementAccent
+    accent: italian
+    relayAccent: true
+  # Moffstation - End
 
 - type: entity
   parent: ClothingMaskBase
@@ -740,6 +760,8 @@
     sprite: Clothing/Mask/welding-gas.rsi
   - type: FlashImmunity
   - type: EyeProtection
+  - type: WeldingMaskOverlay # Moff - Funky welding masks
+    texture: /Textures/_Funkystation/Clothing/Head/Welding/weldingOverlayWeak.png # Moff - Funky welding masks
   - type: PhysicalComposition
     materialComposition:
       Steel: 200
@@ -749,6 +771,7 @@
   - type: Tag
     tags:
     - WhitelistChameleon
+    - SurvivalBoxInsertable # Moffstation - (Survival Box Improvements)
 
 # Entity tables
 - type: entityTable

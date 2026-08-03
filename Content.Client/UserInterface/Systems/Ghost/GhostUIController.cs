@@ -1,10 +1,11 @@
-﻿using Content.Client.Gameplay;
+using Content.Client.Gameplay;
 using Content.Client.Ghost;
 using Content.Client.UserInterface.Systems.Gameplay;
 using Content.Client.UserInterface.Systems.Ghost.Widgets;
 using Content.Shared.Ghost;
 using Robust.Client.UserInterface;
 using Robust.Client.UserInterface.Controllers;
+using Robust.Shared.Console; // Moffstation
 
 namespace Content.Client.UserInterface.Systems.Ghost;
 
@@ -12,6 +13,8 @@ namespace Content.Client.UserInterface.Systems.Ghost;
 public sealed partial class GhostUIController : UIController, IOnSystemChanged<GhostSystem>
 {
     [Dependency] private IEntityNetworkManager _net = default!;
+
+    [Dependency] private IConsoleHost _consoleHost = default!; // Moffstation - respawn button
 
     [UISystemDependency] private readonly GhostSystem? _system = default;
 
@@ -74,6 +77,7 @@ public sealed partial class GhostUIController : UIController, IOnSystemChanged<G
 
     private void OnPlayerUpdated(GhostComponent component)
     {
+        UpdateTimeOfDeath(component.TimeOfDeath); // Moffstation - respawn button
         UpdateGui();
     }
 
@@ -83,6 +87,7 @@ public sealed partial class GhostUIController : UIController, IOnSystemChanged<G
             return;
 
         Gui.Visible = true;
+        UpdateTimeOfDeath(component.TimeOfDeath); // Moffstation - respawn button
         UpdateGui();
     }
 
@@ -141,6 +146,7 @@ public sealed partial class GhostUIController : UIController, IOnSystemChanged<G
         Gui.TargetWindow.OnGhostnadoClicked += OnGhostnadoClicked;
         Gui.TargetWindow.OnWarpToRandomFollowedClicked += OnWarpToRandomFollowedClicked;
         Gui.TargetWindow.OnWarpToRandomClicked += OnWarpToRandomClicked;
+        Gui.GhostRespawnRulesWindow.GhostRespawnPressed += GuiOnGhostRespawnPressed; // Moffstation - respawn button
 
         UpdateGui();
     }
@@ -174,4 +180,16 @@ public sealed partial class GhostUIController : UIController, IOnSystemChanged<G
     {
         _system?.OpenGhostRoles();
     }
+
+    // Moffstation - Start - Respawn Button
+    private void UpdateTimeOfDeath(TimeSpan timeOfDeath)
+    {
+        Gui?.UpdateTimeOfDeath(timeOfDeath);
+    }
+
+    private void GuiOnGhostRespawnPressed()
+    {
+        _consoleHost.ExecuteCommand("ghostrespawn");
+    }
+    // Moffstation - End
 }

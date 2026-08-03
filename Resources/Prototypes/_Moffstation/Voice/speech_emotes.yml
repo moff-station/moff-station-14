@@ -1,0 +1,130 @@
+# resomi
+- type: emote
+  id: Trill
+  name: chat-emote-name-trill
+  category: Vocal
+  available: false
+  icon: { sprite: _Moffstation/Actions/resomi.rsi, state: bird_call }
+  whitelist:
+    components:
+    - Vocal
+  blacklist:
+    components:
+    - BorgChassis
+  chatMessages: ["chat-emote-msg-trill"]
+  chatTriggers:
+  - trill
+  - trills
+  - trilling
+
+- type: emote
+  id: Scree
+  name: chat-emote-name-scree
+  category: Vocal
+  available: false
+  icon: { sprite: _Moffstation/Actions/resomi.rsi, state: bird_call }
+  whitelist:
+    components:
+    - Vocal
+  blacklist:
+    components:
+    - BorgChassis
+  chatMessages: ["chat-emote-msg-scree"]
+  chatTriggers:
+  - scree
+  - screeing
+  - screes
+
+- type: emote
+  id: Call
+  name: chat-emote-name-call
+  category: Vocal
+  available: false
+  icon: { sprite: _Moffstation/Actions/resomi.rsi, state: bird_call }
+  whitelist:
+    components:
+    - Vocal
+  blacklist:
+    components:
+    - BorgChassis
+  chatMessages: ["chat-emote-msg-call"]
+  chatTriggers:
+  - call
+  - calling
+  - calls
+
+- type: emote
+  id: Squawk
+  name: chat-emote-name-squawk
+  category: Vocal
+  available: false
+  icon: { sprite: _Moffstation/Actions/resomi.rsi, state: bird_call }
+  whitelist:
+    components:
+    - Vocal
+  blacklist:
+    components:
+    - BorgChassis
+  chatMessages: ["chat-emote-msg-squawk"]
+  chatTriggers:
+  - squawk
+  - squawking
+  - squawks
+
+# vocal emotes
+- type: emote
+  id: Hiss
+  name: chat-emote-name-hiss
+  category: Vocal
+  available: false
+  icon: { sprite: _Moffstation/Actions/avali.rsi, state: hiss }
+  whitelist:
+    components:
+    - Vocal
+  blacklist:
+    components:
+    - BorgChassis
+  chatMessages: ["chat-emote-msg-hiss"]
+  chatTriggers:
+  - hiss
+  - hisses
+  - hissing
+
+# vox
+- type: emote
+  id: Caw
+  name: chat-emote-name-caw
+  category: Vocal
+  icon: _Moffstation/Interface/Emotes/caw.png
+  available: false
+  whitelist:
+    components:
+    - Vocal
+  blacklist:
+    tags:
+    - SiliconEmotes
+  chatMessages: [chat-emote-msg-caw]
+  chatTriggers:
+   - caw
+   - caws
+   - cawed
+   - cawing
+
+- type: emote
+  id: Crow
+  name: chat-emote-name-crow
+  category: Vocal
+  icon: Interface/Emotes/vocal.png
+  available: false
+  whitelist:
+    components:
+    - Vocal
+  blacklist:
+    tags:
+    - SiliconEmotes
+  chatMessages: [chat-emote-msg-crow]
+  chatTriggers:
+   - crow
+   - crows
+   - crowed
+   - crowing

@@ -70,7 +70,7 @@
 - type: entity
   name: captain's sabre
   parent: [ BaseSword, BaseCommandContraband ]
-  id: CaptainSabre
+  id: CaptainSabreUpstream # Moffstation - YML declutter
   description: A ceremonial weapon belonging to the captain of the station.
   components:
   - type: Sprite
@@ -95,11 +95,13 @@
     tags:
     - CaptainSabre
   - type: DisarmMalus
-  - type: SentienceTarget
-    flavorKind: station-event-random-sentience-flavor-inanimate
-    weight: 0.0002 # 5,000 times less likely than 1 regular animal
-  - type: PirateAccent
-    # not putting a BlockMovement component here cause that's funny.
+  # Moffstation - Begin (Persona Saber)
+#  - type: SentienceTarget
+#    flavorKind: station-event-random-sentience-flavor-inanimate
+#    weight: 0.0002 # 5,000 times less likely than 1 regular animal
+#  - type: PirateAccent
+#    # not putting a BlockMovement component here cause that's funny.
+  # Moffstation - End
   - type: StealTarget
     stealGroup: CaptainSword
 
@@ -174,14 +176,22 @@
   description: An ancient war blade.
   components:
   - type: Sprite
-    sprite: Objects/Weapons/Melee/claymore.rsi
+    sprite: _Moffstation/Objects/Weapons/Melee/claymore.rsi # Moff
+    state: icon # Moff
   - type: MeleeWeapon
     attackRate: 0.75
     damage:
       types:
-        Slash: 20
+        Slash: 5 # Moff - Claymore updates
     soundHit:
         path: /Audio/Weapons/bladeslice.ogg
+  # Moff - Start - Move damage to wielding
+  - type: Wieldable
+  - type: IncreaseDamageOnWield
+    damage:
+      types:
+        Slash: 25
+  # Moff - End
   - type: Item
     storedSprite:
       state: storage

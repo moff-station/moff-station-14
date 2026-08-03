@@ -1,3 +1,4 @@
+using Content.Client._Moffstation.ReadyManifest;    // Moffstation
 using Content.Client.Audio;
 using Content.Client.GameTicking.Managers;
 using Content.Client.LateJoin;
@@ -33,6 +34,7 @@ namespace Content.Client.Lobby
 
         private ClientGameTicker _gameTicker = default!;
         private ContentAudioSystem _contentAudioSystem = default!;
+        private ReadyManifestSystem _readyManifest = default!;  // Moffstation - Ready manifest
 
         protected override Type? LinkedScreenType { get; } = typeof(LobbyGui);
         public LobbyGui? Lobby;
@@ -50,6 +52,7 @@ namespace Content.Client.Lobby
             _gameTicker = _entityManager.System<ClientGameTicker>();
             _contentAudioSystem = _entityManager.System<ContentAudioSystem>();
             _contentAudioSystem.LobbySoundtrackChanged += UpdateLobbySoundtrackInfo;
+            _readyManifest = _entityManager.EntitySysManager.GetEntitySystem<ReadyManifestSystem>(); // Moffstation - Ready manifest
 
             chatController.SetMainChat(true);
 
@@ -69,6 +72,7 @@ namespace Content.Client.Lobby
             UpdateLobbyUi();
 
             Lobby.CharacterPreview.CharacterSetupButton.OnPressed += OnSetupPressed;
+            Lobby.ManifestButton.OnPressed += OnManifestPressed;    // Moffstation - Ready manifest
             Lobby.ReadyButton.OnPressed += OnReadyPressed;
             Lobby.ReadyButton.OnToggled += OnReadyToggled;
 
@@ -89,6 +93,7 @@ namespace Content.Client.Lobby
             _voteManager.ClearPopupContainer();
 
             Lobby!.CharacterPreview.CharacterSetupButton.OnPressed -= OnSetupPressed;
+            Lobby!.ManifestButton.OnPressed -= OnManifestPressed;   // Moffstation - Ready manifest
             Lobby!.ReadyButton.OnPressed -= OnReadyPressed;
             Lobby!.ReadyButton.OnToggled -= OnReadyToggled;
 
@@ -122,6 +127,13 @@ namespace Content.Client.Lobby
             SetReady(args.Pressed);
         }
 
+        // Moffstation - Start - Ready manifest
+        private void OnManifestPressed(BaseButton.ButtonEventArgs args)
+        {
+            _readyManifest.RequestReadyManifest();
+        }
+        // Moffstation - End
+
         public override void FrameUpdate(FrameEventArgs e)
         {
             if (_gameTicker.IsGameStarted)
@@ -132,7 +144,8 @@ namespace Content.Client.Lobby
                 return;
             }
 
-            Lobby!.StationTime.Text = Loc.GetString("lobby-state-player-status-round-not-started");
+            // Moffstation - Chat window time counter
+            // Lobby!.StationTime.Text = Loc.GetString("lobby-state-player-status-round-not-started");
             string text;
 
             if (_gameTicker.Paused)
@@ -161,8 +174,15 @@ namespace Content.Client.Lobby
                     text = $"{difference.Minutes}:{difference.Seconds:D2}";
                 }
             }
+            // Moffstation - Start - Lobby text countdown
+            Lobby!.StationTime.Text = Loc.GetString(
+                "lobby-state-round-start-countdown-text-moffstation",
+                ("timeLeft", text));
 
-            Lobby!.StartTime.Text = Loc.GetString("lobby-state-round-start-countdown-text", ("timeLeft", text));
+            Lobby.StartTime.Text = Loc.GetString(
+                "lobby-state-round-start-countdown-text",
+                ("timeLeft", text));
+            // Moffstation - End
         }
 
         private void LobbyStatusUpdated()
@@ -184,6 +204,7 @@ namespace Content.Client.Lobby
                 Lobby!.ReadyButton.ToggleMode = false;
                 Lobby!.ReadyButton.Pressed = false;
                 Lobby!.ObserveButton.Disabled = false;
+                Lobby!.ManifestButton.Disabled = true;  // Moffstation - Ready manifest
             }
             else
             {
@@ -192,6 +213,7 @@ namespace Content.Client.Lobby
                 Lobby!.ReadyButton.Text = Loc.GetString(Lobby!.ReadyButton.Pressed ? "lobby-state-player-status-ready": "lobby-state-player-status-not-ready");
                 Lobby!.ReadyButton.ToggleMode = true;
                 Lobby!.ReadyButton.Disabled = false;
+                Lobby!.ManifestButton.Disabled = false; // Moffstation - Ready manifest
                 Lobby!.ObserveButton.Disabled = true;
             }
 
@@ -205,17 +227,16 @@ namespace Content.Client.Lobby
             {
                 Lobby!.PlaytimeComment.Visible = true;
 
-                var hoursToday = Math.Round(minutesToday / 60f, 1);
+                // Moffstation - Start - Custom playtime remarks
+                var chosenString =
+                    minutesToday < 720
+                        ? "chat-manager-client-hourly-playtime-notice"
+                        : "lobby-state-playtime-comment-too-much";
 
-                var chosenString = minutesToday switch
-                {
-                    < 180 => "lobby-state-playtime-comment-normal",
-                    < 360 => "lobby-state-playtime-comment-concerning",
-                    < 720 => "lobby-state-playtime-comment-grasstouchless",
-                    _ => "lobby-state-playtime-comment-selfdestructive"
-                };
-
-                Lobby.PlaytimeComment.SetMarkup(Loc.GetString(chosenString, ("hours", hoursToday)));
+                var playtime = TimeSpan.FromMinutes(minutesToday);
+                var localTime = DateTime.Now.ToString("t");
+                Lobby.PlaytimeComment.SetMarkup(Loc.GetString(chosenString, ("hours", playtime.Hours), ("minutes", playtime.Minutes), ("time", localTime)));
+                // Moffstation - End
             }
             else
                 Lobby!.PlaytimeComment.Visible = false;

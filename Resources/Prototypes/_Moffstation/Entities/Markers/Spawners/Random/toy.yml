@@ -1,0 +1,110 @@
+- type: entity
+  parent: MarkerBase
+  id: MoffstationFigureSpawner
+  name: Moffstation Minifigure Spawner
+  components:
+  - type: Sprite
+    layers:
+    - state: green
+    - sprite: _Moffstation/Objects/Fun/figurines.rsi
+      state: fig-box
+  - type: EntityTableSpawner
+    table: !type:NestedSelector
+      tableId: MoffFigurineTable
+      offset: 0.2
+
+- type: entityTable
+  id: MoffFigurineTable
+  table: !type:GroupSelector
+    children:
+      - !type:GroupSelector
+        weight: 20
+        children:
+        - id: ToyFigurineAlfredo
+        - id: ToyFigurineAurora
+        - id: ToyFigurineAudrina
+        - id: ToyFigurineAwana
+        - id: ToyFigurineBenny
+        - id: ToyFigurineBoxcar
+        - id: ToyFigurineBrad
+        - id: ToyFigurineBrisbane
+        - id: ToyFigurineBuck
+        - id: ToyFigurineBuckshot
+        - id: ToyFigurineCamilla
+        - id: ToyFigurineCassiel
+        - id: ToyFigurineCatAi
+        - id: ToyFigurineCinnabar
+        - id: ToyFigurineCooks
+        - id: ToyFigurineCory
+        - id: ToyFigurineCrux
+        - id: ToyFigurineDarnell
+        - id: ToyFigurineDelana
+        - id: ToyFigurineDelivers
+        - id: ToyFigurineDies
+        - id: ToyFigurineEchiara
+        - id: ToyFigurineEclipse
+        - id: ToyFigurineEclispe
+        - id: ToyFigurineFaces
+        - id: ToyFigurineFails
+        - id: ToyFigurineFred
+        - id: ToyFigurineFrostwing
+        - id: ToyFigurineGigs
+        - id: ToyFigurineHercyn
+        - id: ToyFigurineHeather
+        - id: ToyFigurineHot
+        - id: ToyFigurineIcarus
+        - id: ToyFigurineIchabod
+        - id: ToyFigurineIo
+        - id: ToyFigurineIris
+        - id: ToyFigurineJelob
+        - id: ToyFigurineJessGerr
+        - id: ToyFigurineJobs
+        - id: ToyFigurineJupiter
+        - id: ToyFigurineKatie
+        - id: ToyFigurineKaza
+        - id: ToyFigurineKazo
+        - id: ToyFigurineKim
+        - id: ToyFigurineKrakatoa
+        - id: ToyFigurineKylie
+        - id: ToyFigurineLesbot
+        - id: ToyFigurineLight
+        - id: ToyFigurineLightsSeeker
+        - id: ToyFigurineLilith
+        - id: ToyFigurineMalenia
+        - id: ToyFigurineMolar
+        - id: ToyFigurineMoonlight
+        - id: ToyFigurineNyxie
+        - id: ToyFigurineNyxilath
+        - id: ToyFigurinePeedee
+        - id: ToyFigurinePeriwinkle
+        - id: ToyFigurinePolly
+        - id: ToyFigurineRareel
+        - id: ToyFigurineRevri
+        - id: ToyFigurineRoomba
+        - id: ToyFigurineSamantha
+        - id: ToyFigurineSapphire
+        - id: ToyFigurineSaprophyte
+        - id: ToyFigurineSawa
+        - id: ToyFigurineScribbles
+        - id: ToyFigurineSean
+        - id: ToyFigurineSeikret
+        - id: ToyFigurineSigerthe
+        - id: ToyFigurineSiliconwing
+        - id: ToyFigurineSouthbridge
+        - id: ToyFigurineStella
+        - id: ToyFigurineStrawberry
+        - id: ToyFigurineSwims
+        - id: ToyFigurineTalvi
+        - id: ToyFigurineTania
+        - id: ToyFigurineTar
+        - id: ToyFigurineTusk
+        - id: ToyFigurineVortex
+        - id: ToyFigurineWallace
+        - id: ToyFigurineWiggles
+        - id: ToyFigurineZara
+        - id: ToyFigurineZoey
+      - !type:GroupSelector
+        weight: 1 # 1/20 chance for rare figurines. I assume that for every 20 of a particular regular figurine, there's 1 chance for a rare figurine?
+        children:
+        - id: ToyFigurineBradBucket
+        - id: ToyFigurineBrisbaneBigHat

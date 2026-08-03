@@ -38,7 +38,7 @@
     thresholds:
     - trigger:
         !type:DamageTrigger
-        damage: 100
+        damage: 50 # Moffstation - Easier to break the glass into a frame
       behaviors:
       - !type:PlaySoundBehavior
         sound:
@@ -55,7 +55,7 @@
   description: A computer under construction.
   components:
   - type: Sprite
-    sprite: Structures/Machines/parts.rsi
+    sprite: _Moffstation/Structures/Machines/computers.rsi # Moffstation
     layers:
     - state: 0
       map: [ "enum.ConstructionVisuals.Layer" ]
@@ -79,15 +79,25 @@
   - type: Construction
     graph: Computer
     node: monitorBroken
+  - type: Damageable
+    damageModifierSet: Electronic
+  - type: Injurable
+    damageContainer: StructuralInorganic
   - type: Sprite
-    sprite: Structures/Machines/computers.rsi
+    sprite: _Moffstation/Structures/Machines/computers.rsi # Moffstation
     drawdepth: Objects
     state: broken
   - type: Destructible
     thresholds:
     - trigger:
         !type:DamageTrigger
-        damage: 50
+        damage: 200 # Moffstation - Harder to break a frame into smithereens
+      behaviors:
+        - !type:DoActsBehavior
+          acts: [ "Destruction" ]
+    - trigger:
+        !type:DamageTrigger
+        damage: 100 # Moffstation - Harder to break the frame
       behaviors:
       - !type:PlaySoundBehavior
         sound:

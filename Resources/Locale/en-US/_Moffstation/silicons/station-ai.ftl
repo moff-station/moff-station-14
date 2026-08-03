@@ -1,0 +1,60 @@
+station-ai-icon-alien = Alien
+station-ai-icon-angryface = Angryface
+station-ai-icon-bloodylove = Bloodylove
+station-ai-icon-boxfort = Boxfort
+station-ai-icon-cat = Cat
+station-ai-icon-cheerful = Cheerful
+station-ai-icon-database = Database
+station-ai-icon-fabulous = Fabulous
+station-ai-icon-floppycat = Floppycat
+station-ai-icon-glitchman = Glitchman
+station-ai-icon-hades = Hades
+station-ai-icon-helios = Helios
+station-ai-icon-hephaestus = Hephaestus
+station-ai-icon-honeycomb = Honeycomb
+station-ai-icon-hourglass = Hourglass
+station-ai-icon-lonestar = Lonestar
+station-ai-icon-magma = Magma
+station-ai-icon-matrix = Matrix
+station-ai-icon-mono = Mono
+station-ai-icon-nanotrasen = Nanotrasen
+station-ai-icon-president = President
+station-ai-icon-ravensdale = Ravensdale
+station-ai-icon-royal = Royal
+station-ai-icon-sheltered = Sheltered
+station-ai-icon-terminal = Terminal
+station-ai-icon-text = Text
+station-ai-icon-thinking = Thinking
+station-ai-icon-triumvirate = Triumvirate
+station-ai-icon-u = U
+station-ai-icon-wasp = Wasp
+station-ai-icon-darling = Darling
+station-ai-icon-aol = Dancer
+
+station-ai-hologram-angel = Angel form
+station-ai-hologram-arachnid = Arachnid form
+station-ai-hologram-avali = Avali form
+station-ai-hologram-diona = Diona form
+station-ai-hologram-dwarf = Dwarf form
+station-ai-hologram-elf = Elf form
+station-ai-hologram-gray = Gray form
+station-ai-hologram-justice = Justice form
+station-ai-hologram-moth = Moth form
+station-ai-hologram-reptilian = Reptilian form
+station-ai-hologram-resomi = Resomi form
+station-ai-hologram-thaven = Thaven form
+station-ai-hologram-vox = Vox form
+station-ai-hologram-vulpkanin = Vulpkanin form
+
+# AI shells
+ai-shell-verb-text-link = Link to
+
+ai-shell-brain-empty = empty shell
+ai-shell-brain-uncontrolled = empty shell
+
+ai-shell-guideentry = AI Shells
+
+# AI warp
+ai-warp-fail-no-eye = Eye unavailable
+ai-warp-fail-out-reach = Target out of reach
+ai-warp-fail-no-coords = Target without coordinates

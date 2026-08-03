@@ -1,0 +1,33 @@
+- type: quickPhrase
+  parent: [ BaseServicePhrase, BaseSubjectPhrase ]
+  abstract: true
+  id: BaseServiceSubjectPhrase
+
+- { type: quickPhrase, parent: BaseServiceSubjectPhrase, id: MeatPhrase }
+- { type: quickPhrase, parent: BaseServiceSubjectPhrase, id: FlourPhrase }
+- { type: quickPhrase, parent: BaseServiceSubjectPhrase, id: RicePhrase }
+- { type: quickPhrase, parent: BaseServiceSubjectPhrase, id: DoughPhrase }
+- { type: quickPhrase, parent: BaseServiceSubjectPhrase, id: BreadPhrase }
+- { type: quickPhrase, parent: BaseServiceSubjectPhrase, id: MilkPhrase }
+- { type: quickPhrase, parent: BaseServiceSubjectPhrase, id: EggPhrase }
+- { type: quickPhrase, parent: BaseServiceSubjectPhrase, id: WheatPhrase }
+- { type: quickPhrase, parent: BaseServiceSubjectPhrase, id: VegetablePhrase }
+- { type: quickPhrase, parent: BaseServiceSubjectPhrase, id: FruitPhrase }
+- { type: quickPhrase, parent: BaseServiceSubjectPhrase, id: SugarPhrase }
+- { type: quickPhrase, parent: BaseServiceSubjectPhrase, id: AlcoholPhrase }
+- { type: quickPhrase, parent: BaseServiceSubjectPhrase, id: NonAlcoholicPhrase }
+- { type: quickPhrase, parent: BaseServiceSubjectPhrase, id: JuicePhrase }
+- { type: quickPhrase, parent: BaseServiceSubjectPhrase, id: MopPhrase }
+- { type: quickPhrase, parent: BaseServiceSubjectPhrase, id: BucketPhrase }
+- { type: quickPhrase, parent: BaseServiceSubjectPhrase, id: SpaceCleanerPhrase }
+- { type: quickPhrase, parent: BaseServiceSubjectPhrase, id: SoapPhrase }
+- { type: quickPhrase, parent: BaseServiceSubjectPhrase, id: TrashPhrase }
+- { type: quickPhrase, parent: BaseServiceSubjectPhrase, id: StagePhrase }
+- { type: quickPhrase, parent: BaseServiceSubjectPhrase, id: SeedPhrase }
+- { type: quickPhrase, parent: BaseServiceSubjectPhrase, id: PlantPhrase }
+- { type: quickPhrase, parent: BaseServiceSubjectPhrase, id: MutagenPhrase }
+- { type: quickPhrase, parent: BaseServiceSubjectPhrase, id: RobustPhrase }
+- { type: quickPhrase, parent: BaseServiceSubjectPhrase, id: WeedPhrase }
+- { type: quickPhrase, parent: BaseServiceSubjectPhrase, id: KnifePhrase }
+- { type: quickPhrase, parent: BaseServiceSubjectPhrase, id: MicrowavePhrase }
+- { type: quickPhrase, parent: BaseServiceSubjectPhrase, id: GrillPhrase }

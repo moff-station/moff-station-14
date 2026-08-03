@@ -24,16 +24,19 @@
   id: BlueSurgeryCap
   equipment:
     head: ClothingHeadHatSurgcapBlue
+  groupBy: "medical doctor caps" # Moffstation
 
 - type: loadout
   id: GreenSurgeryCap
   equipment:
     head: ClothingHeadHatSurgcapGreen
+  groupBy: "medical doctor caps" # Moffstation
 
 - type: loadout
   id: PurpleSurgeryCap
   equipment:
     head: ClothingHeadHatSurgcapPurple
+  groupBy: "medical doctor caps" # Moffstation
 
 - type: loadout
   id: NurseHat
@@ -45,11 +48,13 @@
   id: MedicalDoctorJumpsuit
   equipment:
     jumpsuit: ClothingUniformJumpsuitMedicalDoctor
+  groupBy: "medical doctor jumpsuits" # Moffstation
 
 - type: loadout
   id: MedicalDoctorJumpskirt
   equipment:
     jumpsuit: ClothingUniformJumpskirtMedicalDoctor
+  groupBy: "medical doctor jumpskirts" # Moffstation
 
 - type: loadout
   id: SeniorPhysicianJumpsuit
@@ -58,6 +63,7 @@
     proto: SeniorPhysician
   equipment:
     jumpsuit: ClothingUniformJumpsuitSeniorPhysician
+  groupBy: "medical doctor jumpsuits" # Moffstation
 
 - type: loadout
   id: SeniorPhysicianJumpskirt
@@ -66,37 +72,44 @@
     proto: SeniorPhysician
   equipment:
     jumpsuit: ClothingUniformJumpskirtSeniorPhysician
+  groupBy: "medical doctor jumpskirts" # Moffstation
 
 - type: loadout
   id: MedicalBlueScrubs
   equipment:
     jumpsuit: UniformScrubsColorBlue
+  groupBy: "medical doctor scrubs" # Moffstation
 
 - type: loadout
   id: MedicalGreenScrubs
   equipment:
     jumpsuit: UniformScrubsColorGreen
+  groupBy: "medical doctor scrubs" # Moffstation
 
 - type: loadout
   id: MedicalPurpleScrubs
   equipment:
     jumpsuit: UniformScrubsColorPurple
+  groupBy: "medical doctor scrubs" # Moffstation
 
 # Back
 - type: loadout
   id: MedicalDoctorBackpack
   equipment:
     back: ClothingBackpackMedical
+  groupBy: "doctor backpacks" # Moffstation - New Drip
 
 - type: loadout
   id: MedicalDoctorSatchel
   equipment:
     back: ClothingBackpackSatchelMedical
+  groupBy: "doctor backpacks" # Moffstation - New Drip
 
 - type: loadout
   id: MedicalDoctorDuffel
   equipment:
     back: ClothingBackpackDuffelMedical
+  groupBy: "doctor backpacks" # Moffstation - New Drip
 
 # OuterClothing
 - type: loadout
@@ -123,6 +136,7 @@
   id: MedicalDoctorPDA
   equipment:
     id: MedicalPDA
+  groupBy: "doctor roles" # Moffstation - Additional Roles
 
 - type: loadout
   id: SeniorPhysicianPDA
@@ -131,6 +145,7 @@
     proto: SeniorPhysician
   equipment:
     id: SeniorPhysicianPDA
+  groupBy: "doctor roles" # Moffstation - Additional Roles
 
 #Masks
 - type: loadout

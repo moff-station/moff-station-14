@@ -1,6 +1,7 @@
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using Content.Server.Cargo.Components;
+using Content.Shared._Moffstation.Cargo.Events; // Moffstation
 using Content.Shared.Cargo;
 using Content.Shared.Cargo.BUI;
 using Content.Shared.Cargo.Components;
@@ -246,8 +247,10 @@ namespace Content.Server.Cargo.Systems
                     ("approver", order.Approver ?? string.Empty),
                     ("cost", cost));
                 _radio.SendRadioMessage(uid, message, account.RadioChannel, uid, escapeMarkup: false);
-                if (CargoOrderConsoleComponent.BaseAnnouncementChannel != account.RadioChannel)
-                    _radio.SendRadioMessage(uid, message, CargoOrderConsoleComponent.BaseAnnouncementChannel, uid, escapeMarkup: false);
+                // Moffstation - Start - change component from being static
+                if (component.BaseAnnouncementChannel != account.RadioChannel)
+                    _radio.SendRadioMessage(uid, message, component.BaseAnnouncementChannel, uid, escapeMarkup: false);
+                // Moffstation - End
             }
 
             _popup.PopupCursor(Loc.GetString("cargo-console-trade-station", ("destination", MetaData(ev.FulfillmentEntity.Value).EntityName)), args.Actor);
@@ -425,6 +428,11 @@ namespace Content.Server.Cargo.Systems
             if (!TryComp<StationCargoOrderDatabaseComponent>(station, out var orderDatabase))
                 return;
 
+            // Moffstation - Start - Railguard since it can cause errors with pirates
+            if (!orderDatabase.Orders.ContainsKey(console.Account))
+                return;
+            // Moffstation - End
+
             if (_uiSystem.HasUi(consoleUid, CargoConsoleUiKey.Orders))
             {
                 _uiSystem.SetUiState(consoleUid,
@@ -478,6 +486,11 @@ namespace Content.Server.Cargo.Systems
 
             if (!TryComp<StationBankAccountComponent>(station, out var bank))
                 return amount;
+
+            // Moffstation - Start - Railguard since it can cause errors with pirates
+            if (!bank.Accounts.ContainsKey(account))
+                return amount;
+            // Moffstation - End
 
             foreach (var order in station.Comp.Orders[account])
             {
@@ -674,6 +687,8 @@ namespace Content.Server.Cargo.Systems
                     _slots.TryInsert(item, label.LabelSlot, printed, null);
                 }
             }
+
+            RaiseLocalEvent(item, new CargoOrderFulfilledEvent()); // Moffstation
 
             return true;
 

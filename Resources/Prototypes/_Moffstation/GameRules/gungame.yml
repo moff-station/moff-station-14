@@ -1,0 +1,46 @@
+- type: entity
+  id: GunGame
+  parent: BaseGameRule
+  components:
+  - type: GunGameRule
+    rewardSpawnsQueue: # These are defined in Resources/Prototypes/_Moffstation/Loadouts/gungame_loadouts.yml
+    - GunGameDualAtredies
+    - GunGameDeathSquad
+    - GunGameHoS
+    - GunGameSyndicateAssaultCyborg
+    - GunGameSyndicateVanguard
+    - GunGameSyndicateBreacher
+    - GunGameWarden
+    - GunGameERTRifleman
+    - GunGameSecurityBreacher
+    - GunGameSecuritySMG
+    - GunGameSyndicateMarksman
+    - GunGameCCRepresentative
+    - GunGameMercenary
+    - GunGameCaptain
+    - GunGameNinja
+    - GunGameWarOpsCrew
+    - GunGameBotanist
+    - GunGamePirate
+    - GunGameSyndicateLibrarian
+    - GunGamePoacher
+    - GunGameGreenSec
+    - GunGameSyndicateAssassin
+    - GunGameBartender
+    - GunGameHoP
+    - GunGameAtmosian
+    - GunGameScientist
+    - GunGameJanitor
+    - GunGameChef
+    - GunGameParamedic
+    - GunGameQM
+    - GunGameTider
+  - type: KillCalloutRule
+  - type: RespawnDeadRule
+  - type: RespawnTracker
+    respawnDelay: 4
+  - type: AvoidantSpawning
+    range: 10.0
+    blacklist:
+      components:
+      - HumanoidProfile

@@ -1,6 +1,9 @@
 - type: entity
   parent: SalvageHumanCorpse
-  id: MobRandomServiceCorpse
+  # Moffstation - Start - Namespaced
+  id: MobRandomServiceCorpseUpstream
+  abstract: true
+  # Moffstation - End
   suffix: Dead, Service
   components:
   - type: Loadout
@@ -18,18 +21,33 @@
 
 - type: entity
   parent: SalvageHumanCorpse
-  id: MobRandomEngineerCorpse
+  # Moffstation - Start - Namespaced
+  id: MobRandomEngineerCorpseUpstream
+  abstract: true
+  # Moffstation - End
   suffix: Dead, Engineer
   components:
   - type: Loadout
     prototypes:
-    - TechnicalAssistantGear
-    - AtmosphericTechnicianGear
-    - StationEngineerGear
+    # Moffstation - Start - Corpse loadouts
+    # - TechnicalAssistantGear
+    # - AtmosphericTechnicianGear
+    # - StationEngineerGear
+    - AtmosphericTechnicianCorpseGear
+    - ChiefEngineerCorpseGear
+    - CoolAtmosphericTechnicianCorpseGear
+    - CoolStationEngineerCorpseGear
+    - FiresuitAtmosphericTechnicianCorpseGear
+    - StationEngineerCorpseGear
+    - TechnicalAssistantCorpseGear
+    # Moffstation - End
 
 - type: entity
   parent: SalvageHumanCorpse
-  id: MobRandomCargoCorpse
+  # Moffstation - Start - Namespaced
+  id: MobRandomCargoCorpseUpstream
+  abstract: true
+  # Moffstation - End
   suffix: Dead, Cargo
   components:
   - type: Loadout
@@ -39,7 +57,10 @@
 
 - type: entity
   parent: SalvageHumanCorpse
-  id: MobRandomMedicCorpse
+  # Moffstation - Start - Namespaced
+  id: MobRandomMedicCorpseUpstream
+  abstract: true
+  # Moffstation - End
   suffix: Dead, Medic
   components:
   - type: Loadout
@@ -51,7 +72,10 @@
 
 - type: entity
   parent: SalvageHumanCorpse
-  id: MobRandomScienceCorpse
+  # Moffstation - Start - Namespaced
+  id: MobRandomScienceCorpseUpstream
+  abstract: true
+  # Moffstation - End
   suffix: Dead, Science
   components:
   - type: Loadout
@@ -61,7 +85,10 @@
 
 - type: entity
   parent: SalvageHumanCorpse
-  id: MobRandomSecurityCorpse
+  # Moffstation - Start - Namespaced
+  id: MobRandomSecurityCorpseUpstream
+  abstract: true
+  # Moffstation - End
   suffix: Dead, Security
   components:
   - type: Loadout
@@ -73,7 +100,10 @@
 
 - type: entity
   parent: SalvageHumanCorpse
-  id: MobRandomCommandCorpse
+  # Moffstation - Start - Namespaced
+  id: MobRandomCommandCorpseUpstream
+  abstract: true
+  # Moffstation - End
   suffix: Dead, Command
   components:
   - type: Loadout

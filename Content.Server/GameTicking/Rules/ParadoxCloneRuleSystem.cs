@@ -3,6 +3,7 @@ using Content.Server.Cloning;
 using Content.Server.GameTicking.Rules.Components;
 using Content.Server.Medical.SuitSensors;
 using Content.Server.Objectives.Components;
+using Content.Shared._Starlight.CollectiveMind; // Starlight - Collective Minds
 using Content.Shared.GameTicking.Components;
 using Content.Shared.Gibbing.Components;
 using Content.Shared.Medical.SuitSensor;
@@ -19,6 +20,8 @@ public sealed partial class ParadoxCloneRuleSystem : GameRuleSystem<ParadoxClone
     [Dependency] private SharedMindSystem _mind = default!;
     [Dependency] private SuitSensorSystem _sensor = default!;
     [Dependency] private AliveHumanoidTargetSystem _target = default!;
+
+    [Dependency] private CollectiveMindUpdateSystem _collectiveMindUpdate = default!; // Starlight - Collective Minds
 
     public override void Initialize()
     {
@@ -90,6 +93,8 @@ public sealed partial class ParadoxCloneRuleSystem : GameRuleSystem<ParadoxClone
         _sensor.SetAllSensors(clone.Value, SuitSensorMode.SensorOff);
 
         args.Entity = clone;
+
+        _collectiveMindUpdate.ForceCloneFrom(ent.Comp.OriginalBody.Value, clone.Value); // Starlight - Collective Minds - Copy collective mind data from original to clone.
     }
 
     private void AfterAntagEntitySelected(Entity<ParadoxCloneRuleComponent> ent, ref AfterAntagEntitySelectedEvent args)

@@ -1,0 +1,16 @@
+﻿- type: construction
+  id: BorgModuleCardboard
+  graph: BorgModuleCardboard
+  startNode: start
+  targetNode: BorgModuleCardboard
+  category: construction-category-tools
+  objectType: Item
+
+- type: construction
+  id: BoxHugEmpty
+  graph: BoxHugEmpty
+  startNode: start
+  targetNode: BoxHugEmpty
+  category: construction-category-storage
+  objectType: Item
+

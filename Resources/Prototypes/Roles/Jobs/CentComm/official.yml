@@ -5,7 +5,7 @@
   playTimeTracker: JobCentralCommandOfficial
   setPreference: false
   startingGear: CentcommGear
-  icon: "JobIconNanotrasen"
+  icon: "JobIconCentralCommandOfficial" # Moffstation
   supervisors: job-supervisors-hos
   accessGroups:
   - AllAccess
@@ -18,23 +18,32 @@
 - type: startingGear
   id: CentcommGear
   equipment:
-    jumpsuit: ClothingUniformJumpsuitCentcomOfficial
-    shoes: ClothingShoesBootsCombatFilled
-    head: ClothingHeadHatCentcom
+    # Moffstation - Begin (New CentComm Loadouts)
+    head: ClothingHeadHatCentcomcap
+    jumpsuit: ClothingUniformJumpsuitCentcomFormal
+    back: ClothingBackpackSatchelLeather
+    shoes: ClothingShoesBootsLaceup
     eyes: ClothingEyesGlassesCommand
-    gloves: ClothingHandsGlovesColorBlack
+    gloves: ClothingHandsGlovesHop
     outerClothing: ClothingOuterArmorCentcommCarapace
     id: CentcomPDA
     ears: ClothingHeadsetAltCentCom
-    belt: WeaponPistolN1984
-    pocket1: BoxFolderCentComClipboardThreePapers
-    pocket2: PenCentcom
-
+    belt: ClothingBeltHolsterFilledN1984
+    pocket1: WeaponDisabler
+    pocket2: BoxFolderCentComClipboardThreePapers
+  inhand:
+  - BriefcaseBrownFilled
+  storage:
+    back:
+    - Flash
+    - Crowbar
+    - PenCentcom
+    # Moffstation - End
 
 - type: chameleonOutfit
   id: CentralCommandOfficialOutfit
   job: CentralCommandOfficial
   hasMindShield: true
   equipment:
-    neck: ClothingNeckScarfStripedCentcom
+    neck: ClothingNeckMantleCentcomm
     mask: ClothingMaskGasCentcom

@@ -4,6 +4,10 @@
   description: job-description-hop
   playTimeTracker: JobHeadOfPersonnel
   requirements:
+    # Moffstation - Start - Change role timers
+    - !type:OverallPlaytimeRequirement
+      time: 20h
+    # Moffstation - End
     - !type:DepartmentTimeRequirement
       department: Engineering
       time: 2.5h
@@ -19,7 +23,10 @@
     - !type:DepartmentTimeRequirement
       department: Command
       time: 2.5h
-  weight: 20
+  # Moff start - no job weights
+#  weight: 20
+  displayWeight: 20
+  # Moff end
   startingGear: HoPGear
   icon: "JobIconHeadOfPersonnel"
   supervisors: job-supervisors-captain
@@ -63,11 +70,11 @@
   id: HoPGear
   equipment:
     shoes: ClothingShoesColorBrown
-    id: HoPPDA
+    #id: HoPPDA # Moffstation - New PDAs
     gloves: ClothingHandsGlovesHop
     ears: ClothingHeadsetAltCommand
     belt: BoxFolderClipboardThreePapers
-    eyes: ClothingEyesHudCommand
+  # eyes: ClothingEyesHudCommand # Moffstation - Eyepatches!
   storage:
     back:
     - Flash

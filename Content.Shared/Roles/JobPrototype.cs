@@ -55,8 +55,22 @@ public sealed partial class JobPrototype : IPrototype
     [DataField]
     public bool JoinNotifyCrew;
 
+    // Moffstation - Begin
     /// <summary>
-    /// When true - the player will recieve a message about importancy of their job.
+    ///     Moffstation - the text of the special announcement of this player's arrival
+    /// </summary>
+    [DataField]
+    public string JoinNotifyCrewText { get; private set; } = "latejoin-arrival-announcement-special";
+
+    /// <summary>
+    ///     Moffstation - the color of the player's special announcement text
+    /// </summary>
+    [DataField]
+    public Color JoinNotifyCrewColor { get; private set; } = Color.Gold;
+    // Moffstation - End
+
+    /// <summary>
+    ///     When true - the player will recieve a message about importancy of their job.
     /// </summary>
     [DataField]
     public bool RequireAdminNotify;
@@ -149,7 +163,15 @@ public sealed partial class JobPrototype : IPrototype
     /// </summary>
     [DataField]
     public List<ProtoId<GuideEntryPrototype>>? Guides;
-}
+
+    // Moffstation - Begin
+    /// <summary>
+    /// Moffstation - If this is enabled, the job will not use the arrivals spawners
+    /// </summary>
+    [DataField]
+    public bool IgnoreArrivals;
+    // Moffstation - End
+    }
 
 /// <summary>
 /// Sorts <see cref="JobPrototype"/>s appropriately for display in the UI,

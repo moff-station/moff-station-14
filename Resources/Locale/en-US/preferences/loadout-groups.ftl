@@ -106,6 +106,8 @@ loadout-group-cargo-technician-outerclothing = Cargo Technician outer clothing
 loadout-group-cargo-technician-shoes = Cargo Technician shoes
 loadout-group-cargo-technician-id = Cargo Technician ID
 
+loadout-group-salvage-specialist-head = Salvage Specialist head
+loadout-group-salvage-specialist-jumpsuit = Salvage Specialist jumpsuit
 loadout-group-salvage-specialist-backpack = Salvage Specialist backpack
 loadout-group-salvage-specialist-outerclothing = Salvage Specialist outer clothing
 loadout-group-salvage-specialist-shoes = Salvage Specialist shoes
@@ -208,3 +210,8 @@ loadout-group-reporter-head = Reporter hat
 loadout-group-reporter-outerclothing = Reporter vest
 
 loadout-group-psychologist-jumpsuit = Psychologist jumpsuit
+
+loadout-group-tramdriver-jumpsuit = Tram driver jumpsuit
+loadout-group-tramdriver-outerclothing = Tram driver suit
+loadout-group-tramdriver-hat = Tram driver hat
+loadout-group-tramdriver-gloves = Tram driver gloves

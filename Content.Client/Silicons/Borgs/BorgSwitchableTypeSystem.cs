@@ -2,6 +2,10 @@
 using Content.Shared.Silicons.Borgs;
 using Content.Shared.Silicons.Borgs.Components;
 using Robust.Client.GameObjects;
+// Moffstation - Start - Early merge of Borg RSI fix
+using Robust.Client.ResourceManagement;
+using Robust.Shared.Serialization.TypeSerializers.Implementations;
+// Moffstation - End
 
 namespace Content.Client.Silicons.Borgs;
 
@@ -14,7 +18,9 @@ public sealed partial class BorgSwitchableTypeSystem : SharedBorgSwitchableTypeS
 {
     [Dependency] private BorgSystem _borgSystem = default!;
     [Dependency] private AppearanceSystem _appearance = default!;
-    [Dependency] private SpriteSystem _sprite = default!;
+    // [Dependency] private SpriteSystem _sprite = default!; // Moffstation - No longer used
+
+    [Dependency] private IResourceCache _resourceCache = default!; // Moffstation - Early merge of Borg RSI fix
 
     public override void Initialize()
     {
@@ -40,8 +46,14 @@ public sealed partial class BorgSwitchableTypeSystem : SharedBorgSwitchableTypeS
     {
         if (TryComp(entity, out SpriteComponent? sprite))
         {
-            _sprite.LayerSetRsiState((entity, sprite), BorgVisualLayers.Body, prototype.SpriteBodyState);
-            _sprite.LayerSetRsiState((entity, sprite), BorgVisualLayers.LightStatus, prototype.SpriteToggleLightState);
+            // Moffstation - Start - Early merge of Borg RSI fix
+            if (_resourceCache.TryGetResource<RSIResource>(
+                    SpriteSpecifierSerializer.TextureRoot / prototype.SpritePath,
+                    out var res))
+            {
+                sprite.BaseRSI = res.RSI;
+            }
+            // Moffstation - End
         }
 
         if (TryComp(entity, out BorgChassisComponent? chassis))

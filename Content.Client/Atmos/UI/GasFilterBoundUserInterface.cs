@@ -23,11 +23,12 @@ public sealed partial class GasFilterBoundUserInterface(EntityUid owner, Enum ui
         base.Open();
 
         _window = this.CreateWindow<GasFilterWindow>();
-        _window.PopulateGasList(_atmosphere.Gases);
+        // _window.PopulateGasList(_atmosphere.Gases); // Mof - filter multiple gases
 
         _window.ToggleStatusButtonPressed += OnToggleStatusButtonPressed;
         _window.FilterTransferRateChanged += OnFilterTransferRatePressed;
-        _window.SelectGasPressed += OnSelectGasPressed;
+        // _window.SelectGasPressed += OnSelectGasPressed; // Mof - filter multiple gases
+        _window.FilterGasToggled += OnToggleGasPressed; // Mof - filter multiple gases
 
         Update();
     }
@@ -43,15 +44,19 @@ public sealed partial class GasFilterBoundUserInterface(EntityUid owner, Enum ui
         _window.SetFilterStatus(filter.Enabled);
         _window.SetTransferRate(filter.TransferRate);
 
-        if (filter.FilteredGas is { } filtered)
-        {
-            var gas = _atmosphere.GetGas(filtered);
-            _window.SetGasFiltered(gas.ID, Loc.GetString(gas.Name));
-        }
-        else
-        {
-            _window.SetGasFiltered(null, Loc.GetString("comp-gas-filter-ui-filter-gas-none"));
-        }
+        // Moff start - Filter multiple gasses
+        _window.SetFilteredGases(filter.FilteredGases);
+
+        // if (filter.FilteredGas is { } filtered)
+        // {
+        //     var gas = _atmosphere.GetGas(filtered);
+        //     _window.SetGasFiltered(gas.ID, Loc.GetString(gas.Name));
+        // }
+        // else
+        // {
+        //     _window.SetGasFiltered(null, Loc.GetString("comp-gas-filter-ui-filter-gas-none"));
+        // }
+        // Moff end
     }
 
     private void OnToggleStatusButtonPressed(bool status)
@@ -66,21 +71,31 @@ public sealed partial class GasFilterBoundUserInterface(EntityUid owner, Enum ui
         SendPredictedMessage(new GasFilterChangeRateMessage(rate));
     }
 
-    private void OnSelectGasPressed()
+    // Moff start - Filter multiple gassses
+    private void OnToggleGasPressed(Gas gas, bool filtered)
     {
         if (_window is null)
             return;
 
-        if (_window.SelectedGas is null)
-        {
-            SendPredictedMessage(new GasFilterSelectGasMessage(null));
-        }
-        else
-        {
-            if (!Enum.TryParse<Gas>(_window.SelectedGas, out var gas))
-                return;
-
-            SendPredictedMessage(new GasFilterSelectGasMessage(gas));
-        }
+        SendPredictedMessage(new GasFilterSelectGasMessage(gas, filtered));
     }
+
+    // private void OnSelectGasPressed()
+    // {
+    //     if (_window is null)
+    //         return;
+    //
+    //     if (_window.SelectedGas is null)
+    //     {
+    //         SendPredictedMessage(new GasFilterSelectGasMessage(null));
+    //     }
+    //     else
+    //     {
+    //         if (!Enum.TryParse<Gas>(_window.SelectedGas, out var gas))
+    //             return;
+    //
+    //         SendPredictedMessage(new GasFilterSelectGasMessage(gas));
+    //     }
+    // }
+    // Moff end
 }

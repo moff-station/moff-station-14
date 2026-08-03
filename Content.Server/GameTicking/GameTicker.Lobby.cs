@@ -76,8 +76,10 @@ namespace Content.Server.GameTicking
             var desc = (Decoy == null) ? Loc.GetString(preset.Description) : Loc.GetString(Decoy.Description);
             return Loc.GetString(
                 RunLevel == GameRunLevel.PreRoundLobby
-                    ? "game-ticker-get-info-preround-text"
-                    : "game-ticker-get-info-text",
+                    // Moffstation - Start - Moff text
+                    ? "game-ticker-get-info-preround-text-moff"
+                    : "game-ticker-get-info-text-moff",
+                    // Moffstation - End
                 ("roundId", RoundId),
                 ("playerCount", playerCount),
                 ("readyCount", readyCount),
@@ -128,12 +130,13 @@ namespace Content.Server.GameTicking
             {
                 _pauseTime = _gameTiming.CurTime;
             }
-            else if (_pauseTime != default)
+            else // if (_pauseTime != default) // Moffstation - Remove exception for if pausetime is 0
             {
                 _roundStartTime += _gameTiming.CurTime - _pauseTime;
             }
 
             RaiseNetworkEvent(new TickerLobbyCountdownEvent(_roundStartTime, Paused));
+            RaiseLocalEvent(new TickerLobbyCountdownEvent(_roundStartTime, Paused)); // Moffstation - Raise to server as well
 
             _chatManager.DispatchServerAnnouncement(Loc.GetString(Paused
                 ? "game-ticker-pause-start"
@@ -153,10 +156,14 @@ namespace Content.Server.GameTicking
             var status = ready ? PlayerGameStatus.ReadyToPlay : PlayerGameStatus.NotReadyToPlay;
             foreach (var playerUserId in _playerGameStatuses.Keys)
             {
-                _playerGameStatuses[playerUserId] = status;
-                if (!_playerManager.TryGetSessionById(playerUserId, out var playerSession))
+                if (!_playerManager.TryGetSessionById(playerUserId, out var playerSession) || _playerGameStatuses[playerUserId] == status)  // Moffstation - Ready manifest
                     continue;
+                _playerGameStatuses[playerUserId] = status; // Moffstation - Ready Manifest
                 RaiseNetworkEvent(GetStatusMsg(playerSession), playerSession.Channel);
+                // Moffstation - Start - Ready manifest
+                var ev = new PlayerToggleReadyEvent(playerSession);
+                RaiseLocalEvent(ref ev);
+                // Moffstation - End
             }
         }
 
@@ -173,8 +180,21 @@ namespace Content.Server.GameTicking
                 return;
             }
 
+            // Moffstation - Ready manifest
+            var status = ready ? PlayerGameStatus.ReadyToPlay : PlayerGameStatus.NotReadyToPlay;
+            // No need to update anything or raise events if the player is already (un)readied
+            if (_playerGameStatuses[player.UserId] == status)
+            {
+                return;
+            }
+            // Moffstatation - End
+
             _playerGameStatuses[player.UserId] = ready ? PlayerGameStatus.ReadyToPlay : PlayerGameStatus.NotReadyToPlay;
             RaiseNetworkEvent(GetStatusMsg(player), player.Channel);
+            // Moffstation - Start - Ready Manifest
+            var ev = new PlayerToggleReadyEvent(player);
+            RaiseLocalEvent(ref ev);
+            // Moffstation - End
             // update server info to reflect new ready count
             UpdateInfoText();
         }
@@ -185,4 +205,9 @@ namespace Content.Server.GameTicking
         public bool UserHasJoinedGame(NetUserId userId)
             => PlayerGameStatuses.TryGetValue(userId, out var status) && status == PlayerGameStatus.JoinedGame;
     }
+
+    // Moffstation - Start - Ready Manifest
+    [ByRefEvent]
+    public record struct PlayerToggleReadyEvent(ICommonSession PlayerSession);
+    // Moffstation - End
 }

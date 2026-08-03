@@ -1,3 +1,4 @@
+using Content.Shared._CD.Records;
 using Robust.Client.UserInterface.Controls;
 using Robust.Shared.Utility;
 
@@ -39,6 +40,15 @@ public sealed partial class HumanoidProfileEditor
             _flavorTextEdit = null;
             _flavorText = null;
         }
+    }
+
+    // CD: Records editor
+    private void UpdateProfileRecords(PlayerProvidedCharacterRecords records)
+    {
+        if (Profile is null)
+            return;
+        Profile = Profile.WithCDCharacterRecords(records);
+        IsDirty = true;
     }
 
     private void OnFlavorTextChange(string content)

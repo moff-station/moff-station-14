@@ -47,6 +47,16 @@
       cleanCost: 0.1
     - !type:CleanDecalsReaction
       cleanCost: 0.1
+  # Moffstation start - Allow avali to drink ammonia
+  metabolisms:
+    Digestion:
+      effects:
+      - !type:SatiateThirst
+        factor: 2
+        conditions:
+        - !type:MetabolizerTypeCondition
+          type: [ Avali ]
+  # Moffstation end
 
 - type: reagent
   id: SoapReagent
@@ -123,9 +133,8 @@
         type: Add
     Digestion:
       effects:
-      - !type:GenericStatusEffect
-        key: Muted
-        component: Muted
+      - !type:ModifyStatusEffect
+        effectProto: StatusEffectMuted
         time: 5
   footstepSound:
     collection: FootstepSlime

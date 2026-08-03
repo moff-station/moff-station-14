@@ -60,3 +60,7 @@ pg_password = "postgres"
 [net]
 max_rapid_connections = 413
 max_ip_connections = 413
+
+[audio] # DeltaV
+attenuation = 4 # inversedistanceclamped 1 << 2, see audioparams.cs
+z_offset = -2

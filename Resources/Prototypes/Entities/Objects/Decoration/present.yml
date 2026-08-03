@@ -5,7 +5,7 @@
   abstract: true
   components:
   - type: Sprite
-    sprite: Objects/Decoration/present.rsi
+    sprite: _Moffstation/Objects/Decoration/present.rsi # Moffstation
     layers:
       - state: present
 
@@ -98,6 +98,10 @@
         orGroup: GiftPool
       - id: PlushieArachind
         orGroup: GiftPool
+      - id: PlushieBorg # MOFFSTATION - adds borg plushie
+        orGroup: GiftPool # MOFFSTATION - adds borg plushie
+      - id: PlushieKitten # Moffstation
+        orGroup: GiftPool # Moffstation
       - id: PlushieSheep
         orGroup: GiftPool
       - id: PlushieSpaceSheep

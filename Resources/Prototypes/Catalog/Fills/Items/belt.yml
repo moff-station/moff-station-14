@@ -104,18 +104,17 @@
     containers:
       storagebase: !type:AllSelector
         children:
+        # Moffstation - Start - MedbayBelt Rework
         - id: Brutepack
         - id: Ointment
         - id: Gauze
+        - id: Bloodpack
         # Reagents reflect the bottles in CoreMedicineReagentBottleTable
-        - id: ChemistryBottleSaline
-        - id: ChemistryBottleBicaridine
         - id: ChemistryBottleDexalin
         - id: ChemistryBottleDylovene
         - id: ChemistryBottleHyronalin
         - id: ChemistryBottleKelotane
-        - id: ChemistryBottleEpinephrine # A power item for medical players that feels thematic and worth stealing
-        - id: PillCanisterTricordrazine
+        # Moffstation - End
 
 - type: entity
   parent: ClothingBeltMedicalEMT
@@ -126,16 +125,18 @@
     containers:
       storagebase: !type:AllSelector
         children:
-        - id: Bloodpack
-          amount: 2
+        # Moffstation - Start - MedbayBelt Rework
         - id: Gauze
         # Reagents focused on emergency response rather than outright healing
         - id: ChemistryBottleInaprovaline
           amount: 2
-        - id: ChemistryBottleHaloperidol
-        - id: ChemistryBottleEthylredoxrazine
+        - id: ChemistryBottleBicaridine
+        - id: ChemistryBottleSaline
+        - id: ChemistryBottleTricordrazine
+        - id: ChemistryBottleEpinephrine
         - id: ChemistryBottleIpecac
         - id: ChemistryBottleCharcoal
+        # Moffstation - End
 
 - type: entity
   id: ClothingBeltPlantFilled

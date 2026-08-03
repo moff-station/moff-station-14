@@ -1,0 +1,45 @@
+# Empty jetpack
+- type: entity
+  parent: [ BaseHighlyIllegalContraband , JetpackBlack ]
+  id: PirateJetpack
+  name: pirate jetpack
+  suffix: Pirate
+  components:
+  - type: Item
+    sprite: _Moffstation/Objects/Tanks/Jetpacks/pirate_jetpack.rsi
+  - type: Sprite
+    sprite: _Moffstation/Objects/Tanks/Jetpacks/pirate_jetpack.rsi
+  - type: Clothing
+    sprite: _Moffstation/Objects/Tanks/Jetpacks/pirate_jetpack.rsi
+    slots:
+    - Back
+
+# Filled
+- type: entity
+  parent: PirateJetpack
+  id: PirateJetpackFilled
+  suffix: Filled, Pirate
+  components:
+  - type: GasTank
+    releasePressure: 42.6
+    air:
+      # 13 minutes of thrust
+      volume: 5
+      temperature: 293.15
+      moles:
+      - 1.025689525 # oxygen
+      - 1.025689525 # nitrogen
+
+- type: entity
+  parent: JetpackBlue
+  id: JetpackSalvageborg
+  name: salvageborg jetpack
+  suffix: Infinite
+  components:
+  - type: GasTank
+    releasePressure: 21.3
+    air:
+      volume: 5
+      temperature: 293.15
+  - type: Jetpack
+    moleUsage: 0

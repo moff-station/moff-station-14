@@ -1,0 +1,63 @@
+- type: gameMap
+  id: Amber
+  mapName: 'Amber'
+  mapPath: /Maps/_Moffstation/amber.yml
+  minPlayers: 26 # Low Pop
+  maxPlayers: 60 # Low Pop
+  stations:
+    Amber:
+      stationProto: StandardNanotrasenStation
+      components:
+      - type: StationNameSetup
+        mapNameTemplate: '{0} Amber Station {1}'
+        nameGenerator:
+          !type:NanotrasenNameGenerator
+          prefixCreator: '14-SB'
+      - type: StationEmergencyShuttle
+        emergencyShuttlePath: /Maps/Shuttles/emergency_amber.yml
+      - type: StationJobs
+        availableJobs: # 61 jobs total w/o latejoins, 70 jobs total w/ latejoins
+          #command (7)
+          Captain: [ 1, 1 ]
+          HeadOfPersonnel: [ 1, 1 ]
+          HeadOfSecurity: [ 1, 1 ]
+          ChiefMedicalOfficer: [ 1, 1 ]
+          ChiefEngineer: [ 1, 1 ]
+          ResearchDirector: [ 1, 1 ]
+          Quartermaster: [ 1, 1 ]
+          #service (14)
+          Bartender: [ 2, 2 ]
+          Botanist: [ 3, 3 ]
+          Chef: [ 2, 2 ]
+          Janitor: [ 2, 2 ]
+          Chaplain: [ 1, 1 ]
+          Librarian: [ 1, 1 ]
+          ServiceWorker: [ 2, 2 ]
+          Reporter: [ 1, 1 ]
+          #engineering (5 - 7)
+          AtmosphericTechnician: [ 3, 3 ]
+          StationEngineer: [ 2, 4 ]
+          #medical (9 - 11)
+          Chemist: [ 2, 2 ]
+          MedicalDoctor: [ 4, 6 ]
+          Paramedic: [ 2, 2 ]
+          Psychologist: [ 1, 1 ]
+          #science (4 - 6)
+          Scientist: [ 4, 6 ]
+          #security (9 - 11)
+          Warden: [ 1, 1 ]
+          SecurityOfficer: [ 4, 6 ]
+          Detective: [ 1, 1 ]
+          Lawyer: [ 2, 2 ]
+          Prisoner: [ 1, 1 ]
+          #supply (6 - 7)
+          SalvageSpecialist: [ 3, 3 ]
+          CargoTechnician: [ 3, 4 ]
+          #civilian (3+)
+          Passenger: [ -1, -1 ] #infinite, not counted
+          Clown: [ 1, 1 ]
+          Mime: [ 1, 1 ]
+          Musician: [ 1, 1 ]
+          #silicon (4)
+          StationAi: [ 1, 1 ]
+          Borg: [ 3, 3 ]

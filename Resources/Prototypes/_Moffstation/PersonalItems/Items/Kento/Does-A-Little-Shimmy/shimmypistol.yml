@@ -1,0 +1,50 @@
+# Player: Kento - Character: Does-A-Little-Shimmy
+- type: entity
+  parent: BaseWeaponPersonalItemPistol
+  id: &id PersonalItemShimmyPistol
+  name: XP-01 'Aurora'
+  description: The inscriptions "XP-01" and  "Aurora" are stamped on the slide. It also features the Sunshade Armories logo on the frame.
+  suffix: PersonalItem
+  components:
+  - type: Sprite
+    sprite: &sprite _Moffstation/PersonalItems/Items/Kento/Does-A-Little-Shimmy/shimmypistol.rsi
+  - type: Clothing
+    sprite: *sprite
+  - type: DetailExaminable
+    content: It seems to be a one of a kind experimental pistol produced outside of this sector. It also features an electronic sight, laser pointer, and an integrated ammo counter on the frame. You would question how a security officer managed to obtain this unusual sidearm.
+  - type: MagazineVisuals
+    magState: mag
+    steps: 6
+    zeroVisible: true
+
+- type: entity
+  parent: BasePersonalItemPistolCase
+  id: &case-id PersonalItemShimmyPistolCase
+  name: XP-01 gun case
+  description: A slim, portable gun case intended to protect its contents. "XP-01" is inscribed on the top of the case.
+  suffix: PersonalItem
+  components:
+  - type: Sprite
+    sprite: &case _Moffstation/PersonalItems/Items/Kento/Does-A-Little-Shimmy/shimmypistolcase.rsi
+  - type: Item
+    sprite: *case
+  - type: EntityTableContainerFill
+    containers:
+      storagebase:
+        id: *id
+        amount: 1
+
+- type: loadout
+  id: *case-id
+  storage:
+    back:
+    - *case-id
+  effects:
+  - !type:PersonalItemLoadoutEffect
+    character:
+    - Does-A-Little-Shimmy
+    jobs:
+    - JobSecurityOfficer
+    - JobDetective
+    - JobWarden
+    - JobHeadOfSecurity

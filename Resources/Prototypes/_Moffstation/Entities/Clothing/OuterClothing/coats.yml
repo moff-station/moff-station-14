@@ -1,0 +1,157 @@
+# Pirates
+- type: entity
+  parent: ClothingOuterCoatPirate
+  id: ClothingOuterCoatPirateRed
+  name: red pirate garb
+  components:
+  - type: Sprite
+    sprite: _NF/Clothing/OuterClothing/Coats/pirate_captain.rsi
+  - type: Clothing
+    sprite: _NF/Clothing/OuterClothing/Coats/pirate_captain.rsi
+
+# Captain
+- type: entity
+  parent: [ClothingOuterArmorCaptainCarapace, BaseCommandContraband]
+  id: ClothingOuterCoatCaptainLongcoat
+  name: captain's longcoat
+  description: A longcoat befitting of a captain sailing the galaxy, weaved with specially resistant durathread.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/OuterClothing/Coats/captainlongcoat.rsi
+  - type: Clothing
+    sprite: _Moffstation/Clothing/OuterClothing/Coats/captainlongcoat.rsi
+
+- type: entity
+  parent: [ClothingOuterStorageFoldableBase, BaseCommandContraband]
+  id: ClothingOuterCaptainTrenchcoat
+  name: captain's trenchcoat
+  description: A trenchcoat befitting of a captain commanding a galactic fleet, weaved with specially resistant durathread.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/OuterClothing/Coats/captaintrenchcoat.rsi
+  - type: Clothing
+    sprite: _Moffstation/Clothing/OuterClothing/Coats/captaintrenchcoat.rsi
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.5
+        Slash: 0.5
+        Piercing: 0.6
+        Heat: 0.5
+        Caustic: 0.9
+
+# RD
+- type: entity
+  parent: [ClothingOuterStorageFoldableBase, BaseCommandContraband]
+  id: ClothingOuterCoatRDVisionary
+  name: research director's visionary coat
+  description: A black cloak with violet stripes, showing off your impeccable intellect and fashion sense.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/OuterClothing/Coats/rdvisionary.rsi
+  - type: Clothing
+    sprite: _Moffstation/Clothing/OuterClothing/Coats/rdvisionary.rsi
+
+#Detective
+- type: entity
+  parent: ClothingOuterCoatDetective
+  id: ClothingOuterCoatSleuth
+  name: sleuth trenchcoat
+  description: A 20th-century multi-purpose trenchcoat. Someone who wears this is looking to see who is at Falk.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/OuterClothing/Coats/sleuth.rsi
+  - type: Clothing
+    sprite: _Moffstation/Clothing/OuterClothing/Coats/sleuth.rsi
+
+#Scientist
+- type: entity
+  parent: ClothingOuterCoatRobo
+  id: ClothingOuterCoatMach
+  name: machinist lab coat
+  description: A very aberrant labcoat. Helps pass off blood & grease stains as fashionable.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/OuterClothing/Coats/labcoat-mach.rsi
+  - type: Clothing
+    sprite: _Moffstation/Clothing/OuterClothing/Coats/labcoat-mach.rsi
+
+#Centcomm
+- type: entity
+  parent: [ClothingOuterStorageFoldableBase, BaseCentcommContraband]
+  id: ClothingOuterCoatExpensiver
+  name: expensiver coat
+  description: A coat remarked as the reason for the extinction of at least three species of large game.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/OuterClothing/Coats/expensiver-coat.rsi
+  - type: Clothing
+    sprite: _Moffstation/Clothing/OuterClothing/Coats/expensiver-coat.rsi
+  - type: ClothingSpeedModifier
+    walkModifier: 0.5
+    sprintModifier: 0.5
+
+- type: entity
+  parent: ClothingOuterStorageFoldableBase
+  id: ClothingOuterCoatCent
+  name: central command lab coat
+  description: A very aberrant labcoat. Helps pass off blood & sweat as successful scientific medical practice.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/OuterClothing/Coats/labcoat-cent.rsi
+  - type: Clothing
+    sprite: _Moffstation/Clothing/OuterClothing/Coats/labcoat-cent.rsi
+  - type: Armor
+    modifiers:
+      coefficients:
+        Caustic: 0.75
+
+# Security
+
+#Hos
+
+- type: entity
+  parent: [ClothingOuterCoatHoSTrench]
+  id: ClothingOuterCoatHoSSummer
+  name: head of security's armored summercoat
+  description: A greatcoat enhanced with a special alloy for some extra protection and style for those with a commanding presence.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/OuterClothing/Coats/hos_summercoat.rsi
+  - type: Clothing
+    sprite: _Moffstation/Clothing/OuterClothing/Coats/hos_summercoat.rsi
+
+#Medical
+- type: entity
+  parent: [ClothingOuterStorageFoldableBase, BaseCommandContraband, TemperatureProtection]
+  id: ClothingOuterWinterCMO
+  name: chief medical officer's insulated labcoat
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/OuterClothing/Coats/large-labcoat-cmo.rsi
+  - type: Clothing
+    sprite: _Moffstation/Clothing/OuterClothing/Coats/large-labcoat-cmo.rsi
+  - type: Armor
+    modifiers:
+      coefficients:
+        Caustic: 0.75
+
+- type: entity
+  parent: ClothingOuterWinterCMO
+  id: ClothingOuterWinterMed
+  name: medical doctor's insulated labcoat
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/OuterClothing/Coats/large-labcoat.rsi
+  - type: Clothing
+    sprite: _Moffstation/Clothing/OuterClothing/Coats/large-labcoat.rsi
+
+- type: entity
+  parent: ClothingOuterWinterCMO
+  id: ClothingOuterWinterChem
+  name: chemist's insulated labcoat
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/OuterClothing/Coats/large-labcoat-chem.rsi
+  - type: Clothing
+    sprite: _Moffstation/Clothing/OuterClothing/Coats/large-labcoat-chem.rsi

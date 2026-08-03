@@ -19,7 +19,10 @@ public sealed record PlayerInfo(
     NetUserId SessionId,
     bool Connected,
     bool ActiveThisRound,
-    TimeSpan? OverallPlaytime)
+    // Moffstation - Start - visible watchlist
+    TimeSpan? OverallPlaytime,
+    bool HasWatchlist)
+    // Moffstation - End
 {
     private string? _playtimeString;
 

@@ -1,0 +1,13 @@
+- type: entity
+  parent: GunpetInstrument
+  id: MayoInstrument
+  name: mayonnaise
+  description: Is mayonnaise an instrument?
+  suffix: instrument
+  components:
+  - type: Sprite
+    sprite: Objects/Consumable/Food/ingredients.rsi
+    state: mayo
+  - type: Tag
+    tags:
+    - Mayo

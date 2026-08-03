@@ -59,6 +59,16 @@ public abstract partial class SharedVisualBodySystem
         if (!Resolve(source, ref source.Comp) || !Resolve(target, ref target.Comp))
             return;
 
+        // Moffstation - Begin - Cloning copies height. We apply height scaling directly rather than through
+        // ApplyProfile / ApplyOrganProfileDataEvent as those apply an entire profile, which would apply sex, skin
+        // color, etc., which we don't want to do here.
+        if (TryComp<HumanoidProfileComponent>(source, out var profile) &&
+            TryComp<HumanoidProfileComponent>(target, out var targetProfile))
+        {
+            ApplyHeightScale((target, targetProfile), profile.Height);
+        }
+        // Moffstation - End
+
         var sourceOrgans = _container.EnsureContainer<Container>(source, BodyComponent.ContainerID);
 
         foreach (var sourceOrgan in sourceOrgans.ContainedEntities)
@@ -144,7 +154,7 @@ public abstract partial class SharedVisualBodySystem
         RaiseLocalEvent(ent, ref markingsEvt);
     }
 
-    private void ApplyAppearanceTo(Entity<VisualBodyComponent?> ent, HumanoidCharacterAppearance appearance, Sex sex)
+    private void ApplyAppearanceTo(Entity<VisualBodyComponent?> ent, HumanoidCharacterAppearance appearance, Sex sex, float height) // Moffstation - CD Height
     {
         if (!Resolve(ent, ref ent.Comp))
             return;
@@ -155,6 +165,7 @@ public abstract partial class SharedVisualBodySystem
             Sex = sex,
             SkinColor = appearance.SkinColor,
             EyeColor = appearance.EyeColor,
+            Height = height, // Moffstation - CD Height
         });
 
         var markingsEvt = new ApplyOrganMarkingsEvent(appearance.Markings);
@@ -170,7 +181,7 @@ public abstract partial class SharedVisualBodySystem
     [PublicAPI]
     public void ApplyProfileTo(Entity<VisualBodyComponent?> ent, HumanoidCharacterProfile profile)
     {
-        ApplyAppearanceTo(ent, profile.Appearance, profile.Sex);
+        ApplyAppearanceTo(ent, profile.Appearance, profile.Sex, profile.Height);
     }
 
     /// <summary>

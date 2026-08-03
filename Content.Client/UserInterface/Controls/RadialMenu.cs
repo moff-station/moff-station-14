@@ -249,6 +249,7 @@ public abstract class RadialMenuButtonBase : BaseButton
         if (args.Function.IsClickOrAltClick())
             base.KeyBindDown(args);
     }
+    //MoffStation - End
 }
 
 /// <summary>
@@ -299,6 +300,7 @@ public sealed class RadialMenuContextualCentralTextureButton : TextureButton
         if (args.Function.IsClickOrAltClick())
             base.KeyBindDown(args);
     }
+    // MoffStation - End
 }
 
 /// <summary>

@@ -64,6 +64,13 @@
       enum.GeneralStationRecordConsoleKey.Key:
       # who the fuck named this bruh
         type: GeneralStationRecordConsoleBoundUserInterface
+      # Moffstation - Begin - Replace normal records with CD records
+      enum.CharacterRecordConsoleKey.Key:
+        type: CharacterRecordConsoleBoundUserInterface
+      # Moffstation - event voting
+      enum.ESVoterUiKey.Key:
+        type: ESVoterBui
+      # Moffstation - End
   - type: IntrinsicUI
     uis:
       enum.SolarControlConsoleUiKey.Key:
@@ -76,8 +83,14 @@
         toggleAction: ActionAGhostShowCargo
       enum.CrewMonitoringUIKey.Key:
         toggleAction: ActionAGhostShowCrewMonitoring
-      enum.GeneralStationRecordConsoleKey.Key:
-        toggleAction: ActionAGhostShowStationRecords
+      # Moffstation - Begin - Replace normal records with CD records
+#      enum.GeneralStationRecordConsoleKey.Key:
+#        toggleAction: ActionAGhostShowStationRecords
+      enum.CharacterRecordConsoleKey.Key:
+        toggleAction: ActionAGhostShowCharacterRecords
+      enum.ESVoterUiKey.Key:
+        toggleAction: ESActionStagehandVote
+      # Moffstation - End
   - type: SolarControlConsole # look ma i AM the computer!
   - type: CommunicationsConsole
     title: comms-console-announcement-title-centcom
@@ -89,6 +102,9 @@
     followEntity: true
   - type: CargoOrderConsole
   - type: CrewMonitoringConsole
+    sensorTypes: # Moffstation - Borg sensors
+    - SuitSensor
+    - NTBorgSensor
   - type: GeneralStationRecordConsole
     canDeleteEntries: true
   - type: DeviceNetwork
@@ -115,6 +131,13 @@
     damageCoefficient: 0
   - type: GluedImmune
   - type: LubedImmune
+  # Moffstation - Begin - The ghost needs to be a console to view the UI
+  - type: CharacterRecordConsole
+    consoleType: Admin
+    # Needed for security records console functionality
+  - type: CriminalRecordsConsole
+  # Moffstation - End
+  - type: ESVoter # Moffstation - Event voting
 
 - type: entity
   abstract: true

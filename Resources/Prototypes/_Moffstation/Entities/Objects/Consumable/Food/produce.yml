@@ -1,0 +1,48 @@
+- type: entity
+  parent: FoodProduceBase
+  id: FoodCoffeeCherries
+  name: coffee cherries
+  description: Small berries from the Robusta coffee plant
+  components:
+  - type: FlavorProfile
+    flavors:
+    - coffee
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: Nutriment
+        Quantity: 2
+  - type: Sprite
+    sprite: _Moffstation/Objects/Specific/Hydroponics/coffee_plant.rsi
+  - type: Produce
+    seedId: coffee
+  - type: SpawnItemsOnUse
+    items:
+    - id: FoodCoffeeBeans
+    sound:
+      path: /Audio/Effects/packetrip.ogg
+  - type: Tag
+    tags:
+    - Fruit
+
+- type: entity
+  parent: FoodProduceBase
+  id: FoodMugFruit
+  name: Mug Fruit
+  description: An oddly mug-shaped fruit
+  components:
+  - type: FlavorProfile
+    flavors:
+    - coffee
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: Coffee
+        Quantity: 20
+  - type: Sprite
+    sprite: _Moffstation/Objects/Specific/Hydroponics/mug_plant.rsi
+  - type: Produce
+    seedId: mugtree
+  - type: Tag
+    tags:
+    - Fruit

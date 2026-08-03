@@ -1,32 +1,88 @@
 - type: entity
   parent: ClothingUniformBase
   id: UniformScrubsColorPurple
-  name: purple scrubs
-  description: A combination of comfort and utility intended to make removing every last organ someone has and selling them to a space robot much more official looking.
+  name: specialist scrubs # Moffstation - Start
+  description: A combination of comfort and utility designed for dealing urgent care & juggling between treating multiple patients.
   components:
   - type: Sprite
-    sprite: Clothing/Uniforms/Scrubs/purple.rsi
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/scrubs.rsi
+    layers:
+    - state: icon
+      color: &pink-scrubs "#e681a4"
+    - state: trinkets-icon
+  - type: Item
+    inhandVisuals:
+      left:
+      - state: inhand-left
+        color: *pink-scrubs
+      right:
+      - state: inhand-right
+        color: *pink-scrubs
   - type: Clothing
-    sprite: Clothing/Uniforms/Scrubs/purple.rsi
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/scrubs.rsi
+    clothingVisuals:
+      jumpsuit:
+      - state: equipped-INNERCLOTHING
+        color: *pink-scrubs
+      - state: trinkets-equipped-INNERCLOTHING
+# Moffstation - End
+
 
 - type: entity
   parent: ClothingUniformBase
   id: UniformScrubsColorGreen
-  name: green scrubs
+  name: surgeon scrubs # Moffstation
   description: A combination of comfort and utility intended to make removing every last organ someone has and selling them to a space robot much more official looking.
-  components:
+  components: # Moffstation - Start
   - type: Sprite
-    sprite: Clothing/Uniforms/Scrubs/green.rsi
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/scrubs.rsi
+    layers:
+    - state: icon
+      color: &green-scrubs "#77ed94"
+    - state: trinkets-icon
+  - type: Item
+    inhandVisuals:
+      left:
+      - state: inhand-left
+        color: *green-scrubs
+      right:
+      - state: inhand-right
+        color: *green-scrubs
   - type: Clothing
-    sprite: Clothing/Uniforms/Scrubs/green.rsi
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/scrubs.rsi
+    clothingVisuals:
+      jumpsuit:
+      - state: equipped-INNERCLOTHING
+        color: *green-scrubs
+      - state: trinkets-equipped-INNERCLOTHING
+# Moffstation - End
+
 
 - type: entity
   parent: ClothingUniformBase
   id: UniformScrubsColorBlue
-  name: blue scrubs
-  description: A combination of comfort and utility intended to make removing every last organ someone has and selling them to a space robot much more official looking.
+  name: physician scrubs # Moffstation - Start
+  description: A combination of comfort and utility intended to make your accidental incorrect diagnosis sound like it is 100% real & not incorrect.
   components:
   - type: Sprite
-    sprite: Clothing/Uniforms/Scrubs/blue.rsi
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/scrubs.rsi
+    layers:
+    - state: icon
+      color: &blue-scrubs "#65b5f2"
+    - state: trinkets-icon
+  - type: Item
+    inhandVisuals:
+      left:
+      - state: inhand-left
+        color: *blue-scrubs
+      right:
+      - state: inhand-right
+        color: *blue-scrubs
   - type: Clothing
-    sprite: Clothing/Uniforms/Scrubs/blue.rsi
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/scrubs.rsi
+    clothingVisuals:
+      jumpsuit:
+      - state: equipped-INNERCLOTHING
+        color: *blue-scrubs
+      - state: trinkets-equipped-INNERCLOTHING
+# Moffstation - End

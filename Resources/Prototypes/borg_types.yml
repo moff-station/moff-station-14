@@ -10,23 +10,31 @@
   moduleWhitelist:
     tags:
     - BorgModuleGeneric
-    - BorgModuleScience #until sciborgs are added
+    - BorgModuleScience # Moffstation - Scienceborgs
 
   defaultModules:
   - BorgModulePrying
   - BorgModuleTool
-  - BorgModuleInflatable
-  - BorgModuleArtifact
-  - BorgModuleAnomaly
+  # Moffstation - Start - Scienceborgs
+  # - BorgModuleInflatable # also why tf do they have this baseline?
+  # - BorgModuleArtifact
+  # - BorgModuleAnomaly
+  # Moffstation - End
+
   radioChannels:
   - Science
 
   # Visual
-  inventoryTemplateId: borgShort
-  spriteBodyState: robot
-  spriteHasMindState: robot_e
-  spriteNoMindState: robot_e_r
-  spriteToggleLightState: robot_l
+  inventoryTemplateId: borg # Moffstation
+  # Moffstation - Start - Add neck slots and displacements
+  inventoryDisplacements:
+    neck:
+      sizeMaps:
+        32:
+          sprite: _Moffstation/Mobs/Silicon/Displacements/generic.rsi
+          state: neck
+  # Moffstation - End
+  spritePath: _Moffstation/Mobs/Silicon/Chassis/generic.rsi # Moffstation - Early merge of Borg RSI fix
 
   # Pet
   petSuccessString: petting-success-generic-cyborg
@@ -53,6 +61,13 @@
   - BorgModuleConstruction
   - BorgModuleRCD
   - BorgModuleCable
+  - BorgModuleGravity # Moffstation - Magboots module
+
+  requiredModules:
+  - simpleDescription: borg-module-requirement-tool
+    whitelist:
+      tags:
+      - CyborgToolModule
 
   radioChannels:
   - Engineering
@@ -60,10 +75,15 @@
 
   # Visual
   inventoryTemplateId: borgShort
-  spriteBodyState: engineer
-  spriteHasMindState: engineer_e
-  spriteNoMindState: engineer_e_r
-  spriteToggleLightState: engineer_l
+  # Moffstation - Start - Add neck slots and displacements
+  inventoryDisplacements:
+    neck:
+      sizeMaps:
+        32:
+          sprite: _Moffstation/Mobs/Silicon/Displacements/engineer.rsi
+          state: neck
+  # Moffstation - End
+  spritePath: _Moffstation/Mobs/Silicon/Chassis/engineer.rsi # Moffstation - Early merge of Borg RSI fix
 
   # Pet
   petSuccessString: petting-success-engineer-cyborg
@@ -90,19 +110,84 @@
   - BorgModuleMining
   - BorgModuleTraversal
   - BorgModuleAppraisal
+  - BorgModuleGravity # Moffstation - Magboots module
+
+  requiredModules:
+  - simpleDescription: borg-module-requirement-mining
+    whitelist:
+      tags:
+      - CyborgMiningModule
+  # Moffstation - Start - Advanced Traversal Module
+  - simpleDescription: borg-module-requirement-traversal
+    whitelist:
+      tags:
+      - CyborgTraversalModule
+  # Moffstation - End
 
   radioChannels:
   - Supply
   - Science
 
+  # Moffstation - Start - Salvage Borg Resprite
+  addComponents:
+  - type: MovementSpeedModifier
+    baseWalkSpeed: 2.5
+    baseSprintSpeed: 3.5 # Slower because haha big stompy sounds
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      165: Critical # Just enough to not be oneshot by a mine
+      495: Dead # Same as destruction threshold. Borgs act exactly like crit when dead, except for ghosting on move
+    stateAlertDict:
+      Alive: BorgHealth
+      Critical: BorgCrit
+      Dead: BorgDead
+    showOverlays: false
+    allowRevives: true
+  - type: Destructible # Redefine all of this with the new thresholds!
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 125
+      behaviors:
+      - !type:PlaySoundBehavior
+        sound:
+          path: /Audio/Machines/warning_buzzer.ogg
+          params:
+            volume: 5
+    - trigger:
+        !type:DamageTrigger
+        damage: 495
+      behaviors:
+      - !type:PlaySoundBehavior
+        sound:
+          collection: MetalBreak
+      - !type:EmptyContainersBehaviour
+        containers:
+        - borg_brain
+        - borg_module
+        - cell_slot
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+  footstepCollection:
+    path: /Audio/Mecha/sound_mecha_powerloader_step.ogg
+    params:
+      variation: 0.05
+      volume: -10
+  # Moffstation - End
+
   # Visual
   inventoryTemplateId: borgTall
-  spriteBodyState: miner
-  spriteBodyMovementState: miner_moving
-  spriteHasMindState: miner_e
-  spriteNoMindState: miner_e_r
-  spriteToggleLightState: miner_l
-
+  # Moffstation - Start - Add neck slots and displacements
+  inventoryDisplacements:
+    neck:
+      sizeMaps:
+        32:
+          sprite: _Moffstation/Mobs/Silicon/Displacements/mining.rsi
+          state: neck
+  # Moffstation - End
+  spritePath: _Moffstation/Mobs/Silicon/Chassis/miner.rsi # Moffstation - Early merge of Borg RSI fix
+  # spriteBodyMovementState: miner_moving # Moffstation - Salvage Borg Resprite
   # Pet
   petSuccessString: petting-success-salvage-cyborg
   petFailureString: petting-failure-salvage-cyborg
@@ -127,17 +212,28 @@
   - BorgModuleCleaning
   - BorgModuleCustodial
 
+  requiredModules:
+  - simpleDescription: borg-module-requirement-cleaning
+    whitelist:
+      tags:
+      - CyborgCleaningModule
+
   radioChannels:
   - Science
   - Service
 
   # Visual
   inventoryTemplateId: borgShort
-  spriteBodyState: janitor
-  spriteBodyMovementState: janitor_moving
-  spriteHasMindState: janitor_e
-  spriteNoMindState: janitor_e_r
-  spriteToggleLightState: janitor_l
+  # Moffstation - Start - Add neck slots and displacements
+  inventoryDisplacements:
+    neck:
+      sizeMaps:
+        32:
+          sprite: _Moffstation/Mobs/Silicon/Displacements/janitor.rsi
+          state: neck
+  # Moffstation - End
+  spritePath: _Moffstation/Mobs/Silicon/Chassis/janitor.rsi # Moffstation - Early merge of Borg RSI fix
+  spriteBodyMovementState: borg_moving # Moffstation - Early merge of Borg RSI fix
 
   # Pet
   petSuccessString: petting-success-janitor-cyborg
@@ -164,6 +260,12 @@
   - BorgModuleTopicals
   - BorgModuleRescue
 
+  requiredModules:
+  - simpleDescription: borg-module-requirement-topical
+    whitelist:
+      tags:
+      - CyborgTopicalModule
+
   radioChannels:
   - Science
   - Medical
@@ -179,11 +281,16 @@
 
   # Visual
   inventoryTemplateId: borgDutch
-  spriteBodyState: medical
-  spriteBodyMovementState: medical_moving
-  spriteHasMindState: medical_e
-  spriteNoMindState: medical_e_r
-  spriteToggleLightState: medical_l
+  # Moffstation - Start - Add neck slots and displacements
+  inventoryDisplacements:
+    neck:
+      sizeMaps:
+        32:
+          sprite: _Moffstation/Mobs/Silicon/Displacements/medical.rsi
+          state: neck
+  # Moffstation - End
+  spritePath: _Moffstation/Mobs/Silicon/Chassis/medical.rsi # Moffstation - Early merge of Borg RSI fix
+  spriteBodyMovementState: borg_moving # Moffstation - Early merge of Borg RSI fix
 
   # Pet
   petSuccessString: petting-success-medical-cyborg
@@ -219,13 +326,22 @@
   - Science
   - Service
 
-  # Visual
-  inventoryTemplateId: borgTall
-  spriteBodyState: service
-  spriteHasMindState: service_e
-  spriteNoMindState: service_e_r
-  spriteToggleLightState: service_l
+# Moffstation - Start - Give service borgs some love
+  addComponents:
+  - type: SolutionScanner
+# Moffstation - End
 
+  # Visual
+  inventoryTemplateId: borg  # Moffstation
+  spritePath: _Moffstation/Mobs/Silicon/Chassis/service.rsi # Moffstation - Early merge of Borg RSI fix
+  # Moffstation - Start - Add neck slots and displacements
+  inventoryDisplacements:
+    neck:
+      sizeMaps:
+        32:
+          sprite: _Moffstation/Mobs/Silicon/Displacements/service.rsi
+          state: neck
+# Moffstation - End
   # Pet
-  petSuccessString: petting-success-service-cyborg
+  petSuccessString: petting-success-service-cyborg-moffstation
   petFailureString: petting-failure-service-cyborg

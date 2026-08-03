@@ -75,6 +75,14 @@ namespace Content.Client.Power.APC.UI
                 var chargePercentage = (castState.Charge / ChargeBar.MaxValue);
                 ChargePercentage.Text = Loc.GetString("apc-menu-charge-label",("percent",  chargePercentage.ToString("P0")));
             }
+            // Moffstation - Start - potato APC cooking
+            if (castState.PermaTripped)
+            {
+                BreakerButton.Disabled = true;
+                BreakerButton.ToolTip = Loc.GetString("apc-component-permatripped-tooltip");
+                PowerLabel?.Text = Loc.GetString("apc-menu-power-state-label-dead");
+            }
+            // Moffstation - End
         }
 
         public void SetAccessEnabled(bool hasAccess)

@@ -27,9 +27,13 @@
 
 - type: entity
   id: BriefcaseSyndieLobbyingBundleFilled
-  parent: BriefcaseSyndie
+  parent: BriefcaseBrown # Moffstation - Needed Change due to briefcase resprite
   suffix: Syndicate, Spesos
   components:
+  # Moffstation - Begin
+  - type: Item
+    size: Huge
+  # Moffstation - End
   - type: EntityTableContainerFill
     containers:
       storagebase: !type:AllSelector
@@ -46,9 +50,13 @@
 
 - type: entity
   id: BriefcaseThiefBribingBundleFilled
-  parent: BriefcaseSyndie
+  parent: BriefcaseBrown # Moffstation (New Briefcases)
   suffix: Thief, Spesos
   components:
+  # Moffstation - Begin
+  - type: Item
+    size: Huge
+  # Moffstation - End
   - type: EntityTableContainerFill
     containers:
       storagebase: !type:AllSelector
@@ -60,7 +68,7 @@
 
 - type: entity
   id: BriefcaseWeaponHushpupFilled
-  parent: BriefcaseWeaponSmall
+  parent: BriefcaseWeaponMedium # Moffstation - Hushup rebalance
   name: secure hushpup case
   components:
   - type: EntityTableContainerFill
@@ -68,7 +76,11 @@
       storagebase: !type:AllSelector
         children:
         - id: WeaponShotgunHushpup
-        - id: TreasureCoinIron
+        # Moffstation - Start - Hushup rebalance
+        - id: TreasureCoinMarked
+        - id: ShellShotgun
+          amount: 5
+        # Moffstation - End
 
 - type: entity
   id: BriefcaseWeaponC20Filled

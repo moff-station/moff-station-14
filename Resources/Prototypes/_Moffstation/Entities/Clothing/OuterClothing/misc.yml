@@ -1,0 +1,16 @@
+- type: entity
+  parent: ClothingOuterStorageBase
+  id: ClothingOuterApronChemist
+  name: apron
+  suffix: Chemistry
+  description: A thick rubber-apron, perfect for insulating your soft flesh from spills.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/OuterClothing/Misc/apronchemist.rsi
+  - type: Clothing
+    sprite: _Moffstation/Clothing/OuterClothing/Misc/apronchemist.rsi
+  - type: Tag
+    tags:
+    - Apron
+    - WhitelistChameleon
+

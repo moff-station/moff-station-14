@@ -1,0 +1,49 @@
+- type: entity
+  parent: EncryptionKey
+  id: EncryptionKeyPirate
+  name: pirate encryption key
+  description: An encryption key used by pirates, scallywags, and other foul bandits.
+  components:
+  - type: EncryptionKey
+    channels:
+    - Pirate
+    defaultChannel: Pirate
+  - type: Sprite
+    layers:
+    - state: crypt_rusted
+    - state: pirate_label
+
+# Freelance encryption key for the intercom-based radios. They are unobtainable by normal means
+- type: entity
+  parent: EncryptionKey
+  id: EncryptionKeyHandheld
+  name: handheld encryption key
+  description: A encryption key for handheld radios
+  suffix: DO NOT MAP
+  components:
+  - type: EncryptionKey
+    channels:
+    - Handheld
+    defaultChannel: Handheld
+  - type: Sprite
+    layers:
+    - state: crypt_rusted
+    - state: pirate_label
+
+- type: entity
+  parent: EncryptionKey
+  id: EncryptionKeyTraffic
+  name: space traffic encryption key
+  description: An encryption key used to coordinate flight paths between shuttles and docks. Outgoing transmissions are incompatible with headsets.
+  components:
+  - type: EncryptionKey
+    channels:
+    - Traffic
+    defaultChannel: Traffic
+  - type: Sprite
+    sprite: _Moffstation/Objects/Devices/encryption_keys.rsi
+    layers:
+    - state: crypt_orange
+    - state: traffic_label
+  - type: Item
+    sprite: _Moffstation/Objects/Devices/encryption_keys.rsi

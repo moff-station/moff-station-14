@@ -1,0 +1,26 @@
+# Player: MissKay1994 - Character: Steals-The-Buckshot/Kethendachuak
+- type: entity
+  parent: ClothingUniformBase
+  id: PersonalItemKethendachuakJumpskirt
+  name: Kethendachuaks' jumpskirt
+  description: A worn and noticably stained Chief Engineer jumpskirt with "Kethendachuak" printed on it
+  suffix: PersonalItem
+  components:
+  - type: Sprite
+    sprite: _Moffstation/PersonalItems/Wearables/MissKay1994/Kethendachuak/buckshotjumpskirt.rsi
+  - type: Clothing
+    sprite: _Moffstation/PersonalItems/Wearables/MissKay1994/Kethendachuak/buckshotjumpskirt.rsi
+
+- type: loadout
+  id: PersonalItemKethendachuakJumpskirt
+  storage:
+    back:
+    - PersonalItemKethendachuakJumpskirt
+  effects:
+  - !type:PersonalItemLoadoutEffect
+    character:
+    - Kethendachuak
+    jobs:
+    - JobChiefEngineer
+
+

@@ -3,7 +3,7 @@ using System.Threading;
 using Content.IntegrationTests.Fixtures;
 using Content.Server.Database;
 using Content.Server.Preferences.Managers;
-using Content.Shared.Body;
+using Content.Shared._CD.Records;
 using Content.Shared.Humanoid;
 using Content.Shared.Humanoid.Markings;
 using Content.Shared.Humanoid.Prototypes;
@@ -47,11 +47,14 @@ namespace Content.IntegrationTests.Tests.Preferences
                 Name = "Charlie Charlieson",
                 FlavorText = "The biggest boy around.",
                 Species = "Human",
+                Height = 1, // Moffstation - CD Height
                 Age = 21,
                 Appearance = new(
                     Color.Azure,
                     Color.Beige,
-                    new ())
+                    new ()),
+                // CD: test records
+                CDCharacterRecords = PlayerProvidedCharacterRecords.DefaultRecords()
             };
         }
 

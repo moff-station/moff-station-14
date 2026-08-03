@@ -183,7 +183,7 @@
   id: HumanCrit
   category: Health
   icons:
-  - sprite: /Textures/Interface/Alerts/human_critical.rsi
+  - sprite: /Textures/_Moffstation/Interface/Alerts/offmedgui_critical.rsi # Moffstation - Use offmed's alert icons
     state: critical
   name: alerts-crit-name
   description: alerts-crit-desc
@@ -192,7 +192,7 @@
   id: HumanDead
   category: Health
   icons:
-  - sprite: /Textures/Interface/Alerts/human_dead.rsi
+  - sprite: /Textures/_Moffstation/Interface/Alerts/offmedgui_dead.rsi # Moffstation - Use offmed's alert icons
     state: dead
   name: alerts-dead-name
   description: alerts-dead-desc
@@ -201,15 +201,15 @@
   id: HumanHealth
   category: Health
   icons:
-  - sprite: /Textures/Interface/Alerts/human_alive.rsi
+  - sprite: /Textures/_Moffstation/Interface/Alerts/offmedgui_alive.rsi # Moffstation - Use offmed's alert icons
     state: health0
-  - sprite: /Textures/Interface/Alerts/human_alive.rsi
+  - sprite: /Textures/_Moffstation/Interface/Alerts/offmedgui_alive.rsi # Moffstation - Use offmed's alert icons
     state: health1
-  - sprite: /Textures/Interface/Alerts/human_alive.rsi
+  - sprite: /Textures/_Moffstation/Interface/Alerts/offmedgui_alive.rsi # Moffstation - Use offmed's alert icons
     state: health2
-  - sprite: /Textures/Interface/Alerts/human_alive.rsi
+  - sprite: /Textures/_Moffstation/Interface/Alerts/offmedgui_alive.rsi # Moffstation - Use offmed's alert icons
     state: health3
-  - sprite: /Textures/Interface/Alerts/human_alive.rsi
+  - sprite: /Textures/_Moffstation/Interface/Alerts/offmedgui_alive.rsi # Moffstation - Use offmed's alert icons
     state: health4
   name: alerts-health-name
   description: alerts-health-desc

@@ -1,0 +1,73 @@
+<Document>
+  # Pirates
+
+  <Box>
+    [color=#a15608][italic]"SHIVER ME TIMBERS![/italic][/color]
+  </Box>
+  <Box>
+    [color=#a15608][italic]YOU BE A PIRATE SENT TO ROB THE STATION. STEAL, LOOT, PILLAGE, AND MAKE US ALL RICH."[/italic][/color]
+  </Box>
+  <Box>
+    <GuideEntityEmbed Entity="OrganSkeletonPersonHead"/>
+  </Box>
+
+  You are a [color=#a15608]Pirate[/color] in dire need of some cash. Your goal is to loot the station and sell its belongings to make as much money as you can.
+
+  ## Pirate Crew
+  The pirate crew falls into two different roles, which are:
+  - The [bold]Crewmates[/bold], who obey the captain's orders.
+  - [bold]The Captain[/bold], who is in charge of managing and commanding the crew.
+
+  <Box>
+    <GuideEntityEmbed Entity="ClothingOuterHardsuitPirateBuccaneer" Caption="Buccaneer hardsuit"/>
+    <GuideEntityEmbed Entity="ClothingOuterHardsuitPirateCap" Caption="Captain's hardsuit"/>
+    <GuideEntityEmbed Entity="ClothingOuterHardsuitPirateEVA" Caption="Deep space EVA suit"/>
+  </Box>
+
+  If you have been selected as the captain but don't feel ready, one of your crew can take responsibility.
+
+  ## Making Money
+
+  Making money as pirates is very similar to making money as cargo. The pirate ship is equipped with both a sell and bounty console, which function in the same way as their cargo counterparts.
+  The bounty console is your primary way of making money, it will offer bounties on things that can be stolen from the station. The bounties offered will have varying degrees of reward generally depending on their difficulty.
+
+  <Box>
+    <GuideEntityEmbed Entity="ComputerPalletConsolePirate" Caption="sell console"/>
+    <GuideEntityEmbed Entity="ComputerPirateBounty" Caption="bounty console"/>
+    <GuideEntityEmbed Entity="SpaceCash" Caption="money"/>
+  </Box>
+
+  ## Purchasing Equipment
+  As pirates, your starting equipment isn't the greatest, but that doesn't mean it'll stay that way the entire round.
+  Similar to your bounty and sell consoles, the pirate ship is also equipped with a buy console. Using funds from the station's stolen goods, you can purchase a variety of equipment from the pirate buy console.
+
+  <Box>
+    <GuideEntityEmbed Entity="ComputerCargoOrdersPirate" Caption="buy console"/>
+  </Box>
+
+  The gear you can buy has a large variance in price, quality, and utility. Similar to normal request computers, you can filter through them by catagory.
+  <Box>
+    <GuideEntityEmbed Entity="ClothingOuterHardsuitPirateBlackbeard" State="icon" Caption="Armor"/>
+    <GuideEntityEmbed Entity="MagazineBoxLightRifle" State="icon" Caption="Ammo"/>
+    <GuideEntityEmbed Entity="GunpowderCharge" Caption="Explosives"/>
+    <GuideEntityEmbed Entity="WeaponLauncherPirateCannon" Caption="Weapons"/>
+    <GuideEntityEmbed Entity="MedkitAdvancedFilled" Caption="Meds"/>
+  </Box>
+  <Box>
+    <GuideEntityEmbed Entity="AccessBreakerPirate" Caption="Tools"/>
+    <GuideEntityEmbed Entity="ReinforcementRadioPirateMonkey" Caption="Reinforcements"/>
+    <GuideEntityEmbed Entity="PlushieSharkPirate" Caption="Fun!"/>
+  </Box>
+
+  ## Getting to the Station
+  Once you are your crew are prepared to steal from the stationlubbers, it's time to set sail!
+
+  Among other things you may need, you'll find an [bold]IFF Computer[/bold] on the shuttle. It allows you to hide from other ships and mass scanners when [italic]Show IFF[/italic] and [italic]Show Vessel[/italic] are toggled off.
+
+  When everyone is ready, FTL to the station and jump aboard! Make sure to keep your ship in a safe place, lest it be boarded by the station's crew.
+
+  ## Surviving the round
+
+  Remember that your goal is to steal from the station, not kill everyone. Security and the crew will likely have you outmanned and outgunned at the start, so don't be afraid to run if things are getting heated.
+  Using a combination of hit-and-run and stealth tactics is the best course of action for most pirates. Even when your crewmates go down, running away and potentially freeing them later is better than all of you going down and being completely defeated by the station.
+</Document>

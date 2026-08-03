@@ -1,10 +1,12 @@
-﻿using Content.Shared.Interaction.Components;
+﻿using Content.Shared.DisplacementMap; // Moffstation - Adding field for DisplacementMaps
+using Content.Shared.Interaction.Components;
 using Content.Shared.Inventory;
 using Content.Shared.Radio;
 using Content.Shared.Silicons.Borgs.Components;
 using Content.Shared.Whitelist;
 using Robust.Shared.Audio;
 using Robust.Shared.Prototypes;
+using Robust.Shared.Serialization;
 
 namespace Content.Shared.Silicons.Borgs;
 
@@ -62,6 +64,14 @@ public sealed partial class BorgTypePrototype : IPrototype
     [DataField]
     public ProtoId<InventoryTemplatePrototype> InventoryTemplateId { get; set; } = "borgShort";
 
+    // Moffstation - Start - Giving borgs displacement maps
+    /// <summary>
+    /// The displacement maps for the borgs. These should be compatible with the borg inventory templates.
+    /// </summary>
+    [DataField]
+    public Dictionary<string, DisplacementData> InventoryDisplacements { get; set; } = new();
+    // Moffstation - End
+
     /// <summary>
     /// Radio channels that this borg will gain access to from this module.
     /// </summary>
@@ -76,11 +86,19 @@ public sealed partial class BorgTypePrototype : IPrototype
     /// Borg module types that are always available to borgs of this type.
     /// </summary>
     /// <remarks>
-    /// These modules still work like modules, although they cannot be removed from the borg.
+    /// These modules still work like modules, although they cannot be removed from the borg unless allowed by <see cref="ModuleTypeRequirements"/>.
     /// </remarks>
-    /// <seealso cref="BorgModuleComponent.DefaultModule"/>
+    /// <seealso cref="BorgModuleComponent.Required"/>
     [DataField]
     public EntProtoId[] DefaultModules = [];
+
+    /// <summary>
+    /// The modules required by this borg type. Default modules which don't match any of these requirements are
+    /// implicitly always required.
+    /// </summary>
+    /// <seealso cref="CyborgModuleRequirement"/>
+    [DataField]
+    public CyborgModuleRequirement[] RequiredModules = [];
 
     /// <summary>
     /// Additional components to add to the borg entity when this type is selected.
@@ -92,11 +110,19 @@ public sealed partial class BorgTypePrototype : IPrototype
     // Visual information
     //
 
+    // Moffstation - Start - Early merge of Borg RSI fix
+    /// <summary>
+    /// The path to the borg type's sprites.
+    /// </summary>
+    [DataField]
+    public string SpritePath { get; set; } = "_Moffstation/Mobs/Silicon/Chassis/generic.rsi";
+    // Moffstation - End
+
     /// <summary>
     /// The sprite state for the main borg body.
     /// </summary>
     [DataField]
-    public string SpriteBodyState { get; set; } = "robot";
+    public string SpriteBodyState { get; set; } = "borg"; // Moffstation - Early merge of Borg RSI fix
 
     /// <summary>
     /// An optional movement sprite state for the main borg body.
@@ -109,20 +135,20 @@ public sealed partial class BorgTypePrototype : IPrototype
     /// </summary>
     /// <seealso cref="BorgChassisComponent.HasMindState"/>
     [DataField]
-    public string SpriteHasMindState { get; set; } = "robot_e";
+    public string SpriteHasMindState { get; set; } = "borg_e"; // Moffstation - Early merge of Borg RSI fix
 
     /// <summary>
     /// Sprite state used to indicate that the borg has no mind in it.
     /// </summary>
     /// <seealso cref="BorgChassisComponent.NoMindState"/>
     [DataField]
-    public string SpriteNoMindState { get; set; } = "robot_e_r";
+    public string SpriteNoMindState { get; set; } = "borg_e_r"; // Moffstation - Early merge of Borg RSI fix
 
     /// <summary>
     /// Sprite state used when the borg's flashlight is on.
     /// </summary>
     [DataField]
-    public string SpriteToggleLightState { get; set; } = "robot_l";
+    public string SpriteToggleLightState { get; set; } = "borg_l"; // Moffstation - Early merge of Borg RSI fix
 
     //
     // Minor information
@@ -151,4 +177,21 @@ public sealed partial class BorgTypePrototype : IPrototype
     /// </summary>
     [DataField]
     public SoundSpecifier FootstepCollection { get; set; } = new SoundCollectionSpecifier(DefaultFootsteps);
+}
+
+/// <summary>
+/// A description of modules required by a <seealso cref="BorgTypePrototype"/>. A cyborg must contain at least one
+/// module which matches the <seealso cref="Whitelist"/> of all of its
+/// <seealso cref="BorgTypePrototype.RequiredModules"/>. One module may satisfy multiple requirements.
+/// When a module is not required (either it does not match any requirements, or there are multiple modules which match
+/// a single requirement), it can be removed from the chassis.
+/// </summary>
+[DataRecord, Serializable, NetSerializable]
+public partial record CyborgModuleRequirement
+{
+    [DataField(required: true)]
+    public EntityWhitelist Whitelist = default!;
+
+    [DataField(required: true)]
+    public LocId SimpleDescription;
 }

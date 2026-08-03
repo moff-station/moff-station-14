@@ -1,4 +1,8 @@
 ﻿using Robust.Shared.Prototypes;
+// Moffstation - Start - Infectious blood
+using Content.Shared.Chemistry.Components;
+using Content.Shared.Chemistry.Reagent;
+// Moffstation - End
 
 namespace Content.Shared.Zombies;
 
@@ -14,4 +18,11 @@ public sealed partial class IncurableZombieComponent : Component
 
     [DataField]
     public EntityUid? Action;
+
+    // Moffstation - Start - Infectious blood
+    private static ProtoId<ReagentPrototype> _ZombieBlood = "ZombieBlood";
+
+    [DataField]
+    public Solution InfectedBloodReagents = new([new(_ZombieBlood, 1)]);
+    // Moffstation - End
 }

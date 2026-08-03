@@ -1,0 +1,32 @@
+- type: reagent
+  id: GreenTeaPowder
+  name: reagent-name-green-tea-powder
+  desc: reagent-desc-green-tea-powder
+  physicalDesc: reagent-physical-desc-powdery
+  flavor: tea
+  color: "#32612D"
+  group: Foods
+  metabolisms:
+    Digestion:
+      metabolites:
+        Nutriment: 0.2
+      effects:
+      - !type:SatiateThirst
+        factor: -0.1
+
+- type: reagent
+  id: GroundCoffee
+  name: reagent-name-ground-coffee
+  desc: reagent-desc-ground-coffee
+  physicalDesc: reagent-physical-desc-powdery
+  flavor: coffee
+  color: "#2D1A07"
+  group: Foods
+  metabolisms:
+    Digestion:
+      metabolites:
+        Nutriment: 0.2
+        Theobromine: 0.1
+      effects:
+      - !type:SatiateThirst
+        factor: -0.1

@@ -52,6 +52,8 @@
   - SurveillanceWirelessCameraMonitorCircuitboard
   - TelecomServerCircuitboard
   - HolopadMachineCircuitboard
+  - SurveillanceWirelessCameraHandheld # MOFFSTATION CHANGE - Adds wireless handheld camera
+  - BladeServerRackMachineCircuitboard # Moffstation - Blade Server Rack constructible
 
 - type: technology
   id: AdvancedEntertainment
@@ -68,6 +70,7 @@
     - DawInstrumentMachineCircuitboard
     - MassMediaCircuitboard
     - JukeboxCircuitBoard
+    - BorgModuleMusiqueGeneric # Moffstation - specialty lite modules
 
 - type: technology
   id: MeatManipulation
@@ -135,6 +138,7 @@
   recipeUnlocks:
   - BorgModuleAdvancedTopical
   - AdvancedJetInjector
+  - BorgModuleTopicalsGeneric # Moffstation - specialty lite modules
 
 - type: technology
   id: AdvancedCleaning
@@ -150,6 +154,7 @@
   - MegaSprayBottle
   - BorgModuleAdvancedCleaning
   - TrashBagHolding
+  - BorgModuleCustodialGeneric # Moff
 
 - type: technology
   id: HONKMech
@@ -191,7 +196,7 @@
     sprite: Structures/cargo_telepad.rsi
     state: display
   discipline: CivilianServices
-  tier: 2
+  tier: 3 # Moffstation
   cost: 15000
   recipeUnlocks:
   - CargoTelepadMachineCircuitboard
@@ -208,6 +213,7 @@
   recipeUnlocks:
   - PushHorn
   - BorgModuleAdvancedClowning
+  - BorgModuleFoamForceGallant # Moffstation
 
 # Tier 3
 
@@ -230,11 +236,12 @@
     sprite: Objects/Specific/Chemistry/beaker_bluespace.rsi
     state: beakerbluespace
   discipline: CivilianServices
-  tier: 3
+  tier: 2 # Moffstation
   cost: 10000
   recipeUnlocks:
   - BluespaceBeaker
   - SyringeBluespace
+  - BluespaceVial # Moffstation - Bluespace Vial
 
 - type: technology
   id: LauncherSyringe

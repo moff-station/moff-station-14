@@ -1,0 +1,23 @@
+- type: startingGear
+  id: SyndicateFootsoldierGearArmed
+  parent: SyndicateOperativeGearCivilian
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitOperative
+    head: ClothingHeadHelmetSwatSyndicate
+    outerClothing: ClothingOuterArmorBasic
+    gloves: ClothingHandsGlovesColorBlack
+    back: ClothingBackpackSyndicate
+    shoes: ClothingShoesBootsCombatFilled
+    ears: ClothingHeadsetSyndicateInfiltrator
+  inhand:
+  - CombatKnife
+
+# Pizza Delivery Scurret
+- type: startingGear
+  id: PizzaDeliveryScurretGear
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitChef
+    back: ClothingBackpackElectropack
+    head: ClothingHeadHatRedsoftFlipped
+    id: ArnoldsPizzaPDA
+    ears: ClothingHeadsetFreelance

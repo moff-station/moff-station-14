@@ -2,6 +2,7 @@ using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using Content.Server.GameTicking;
+using Content.Shared._Moffstation.CCVar; // Moffstation
 using Content.Shared.CCVar;
 using Content.Shared.Maps;
 using Robust.Server.Player;
@@ -34,6 +35,8 @@ public sealed partial class GameMapManager : IGameMapManager
     private int _mapQueueDepth = 1;
 
     private ISawmill _log = default!;
+
+    private readonly Dictionary<ProtoId<GameMapPrototype>, int> _rollOverVotes = new(); // Moffstation - Rollover votes stored here
 
     public void Initialize()
     {
@@ -194,7 +197,8 @@ public sealed partial class GameMapManager : IGameMapManager
         return map.MaxPlayers >= _playerManager.PlayerCount &&
                map.MinPlayers <= _playerManager.PlayerCount &&
                map.Conditions.All(x => x.Check(map)) &&
-               _entityManager.System<GameTicker>().IsMapEligible(map);
+               _entityManager.System<GameTicker>().IsMapEligible(map) &&
+               (_configurationManager.GetCVar(MoffCCVars.AllowDoublePickMap) || map.ID != _previousMaps.Last());    // Moffstation - Checks if we're either allowing double picks, or the map was the one previously played on
     }
 
     private bool TryLookupMap(string gameMap, [NotNullWhen(true)] out GameMapPrototype? map)
@@ -242,4 +246,13 @@ public sealed partial class GameMapManager : IGameMapManager
             _previousMaps.Dequeue();
         }
     }
+
+    // Moffstation - Start - setters and getters for the rollover votes
+    public int GetRollOverVotes(GameMapPrototype map) => _rollOverVotes.GetOrNew(map);
+
+    public void SetRollOverVotes(GameMapPrototype map, int votes)
+    {
+        _rollOverVotes[map] = votes;
+    }
+    // Moffstation - End
 }

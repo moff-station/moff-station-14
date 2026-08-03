@@ -14,7 +14,7 @@
   - type: Storage
     grid:
     - 0,0,15,7
-    quickInsert: true
+    #quickInsert: true # Moffstation - Quick insert is its own component
     maxItemSize: Huge
     whitelist:
       components:
@@ -25,6 +25,7 @@
       - Document
       - BoxCardboard
       - Folder
+  - type: QuickPickup # Moffstation - Quick insert is its own component
   - type: Fixtures
     fixtures:
       fix1:

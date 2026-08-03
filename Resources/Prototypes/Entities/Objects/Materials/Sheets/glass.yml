@@ -6,9 +6,9 @@
   description: A sheet of glass, used often on the station in various applications.
   components:
   - type: Sprite
-    sprite: Objects/Materials/Sheets/glass.rsi
+    sprite: _Moffstation/Objects/Materials/Sheets/glass.rsi # Moffstation
   - type: Item
-    sprite: Objects/Materials/Sheets/glass.rsi
+    sprite: _Moffstation/Objects/Materials/Sheets/glass.rsi # Moffstation
   - type: Damageable
     damageModifierSet: Glass
 
@@ -433,10 +433,8 @@
       reagents:
       - ReagentId: Silicon
         Quantity: 10
-      - ReagentId: Zinc
-        Quantity: 3.3
-      - ReagentId: Copper
-        Quantity: 6.7
+      - ReagentId: Brass
+        Quantity: 10
 
 - type: entity
   parent: SheetClockworkGlass

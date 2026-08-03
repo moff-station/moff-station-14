@@ -1,0 +1,60 @@
+﻿- type: gameMap
+  id: MW-Dock
+  mapName: MW Dock
+  mapPath: /Maps/_Moffstation/Nonstations/Dock.yml
+  minPlayers: 0
+  stations:
+    MW-Dock:
+      stationProto: StandardStationArena
+      components:
+      - type: StationNameSetup
+        mapNameTemplate: "MW Dock"
+      - type: StationJobs
+        availableJobs:
+          Passenger: [ -1, -1 ]
+
+- type: gameMap
+  id: CS-Dust2
+  mapName: CS Dust 2
+  mapPath: /Maps/_Moffstation/Nonstations/Dust2.yml
+  minPlayers: 0
+  stations:
+    CS-Dust2:
+      stationProto: StandardStationArena
+      components:
+      - type: StationNameSetup
+        mapNameTemplate: "CS Dust"
+      - type: StationJobs
+        availableJobs:
+          Passenger: [ -1, -1 ]
+
+- type: gameMap
+  id: TF2-2Fort
+  mapName: ctf_2fort
+  mapPath: /Maps/_Moffstation/Nonstations/ctf_2fort.yml
+  minPlayers: 0
+  stations:
+    TF2-2Fort:
+      stationProto: StandardStationArena
+      components:
+      - type: StationNameSetup
+        mapNameTemplate: "2Fort"
+      - type: StationJobs
+        availableJobs:
+          Passenger: [ -1, -1 ]
+
+- type: gameMap
+  id: D1-Logic
+  mapName: d1_logic
+  mapPath: /Maps/_Moffstation/Nonstations/d1_logic.yml
+  minPlayers: 0
+  maxPlayers: 10
+  stations:
+    D1-Logic:
+      stationProto: StandardStationArena
+      components:
+      - type: StationNameSetup
+        mapNameTemplate: "Logic"
+      - type: StationJobs
+        availableJobs:
+          Passenger: [ -1, -1 ]

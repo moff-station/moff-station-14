@@ -254,6 +254,11 @@
         Quantity: 15
       - ReagentId: TranexamicAcid
         Quantity: 5
+  # Moffstation - Begin(Survival Box Improvements)
+  - type: Tag
+    tags:
+    - SurvivalBoxInsertable
+  # Moffstation - End
 
 - type: entity
   parent: ChemicalMedipen

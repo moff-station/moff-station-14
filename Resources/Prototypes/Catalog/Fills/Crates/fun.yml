@@ -384,6 +384,17 @@
         - id: ClothingHeadBandRed
         - id: FoamCutlass
           amount: 2
+        # Moffstation - Start - added a lot more thematic loot to the chest.
+        - id: PirateHandyFlag
+          amount: 2
+        - id: ClothingNeckCloakPirateCap
+        - id: RobotParrot
+        - id: ClothingHandsShoddyPirateHook
+          amount: 2
+        - id: DrinkRumBottleFull
+        - id: ClothingEyesEyepatch
+          amount: 2
+        # Moffstation - End
 
 - type: entity
   parent: CrateToyBox
@@ -431,8 +442,12 @@
     containers:
       entity_storage: !type:AllSelector
         children:
+        # Moffstation - Begin - Added player figurines
         - id: MysteryFigureBox
-          amount: 10
+          amount: 5
+        - id: MysteryFigureBoxMoff
+          amount: 5
+        # Moffstation - End
         - id: MysteryFigureBox
           amount: 15
           prob: 0.05

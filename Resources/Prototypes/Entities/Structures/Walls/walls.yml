@@ -22,9 +22,7 @@
       Heat:
         collection:
           MetalLaserImpact
-  - type: Tag
-    tags:
-    - Wall
+  - type: Wall
   - type: IsRoof
   - type: Sprite
     drawdepth: Walls
@@ -72,7 +70,6 @@
   components:
   - type: Tag
     tags:
-    - Wall
     - Diagonal
   - type: IconSmooth
     mode: Diagonal
@@ -208,7 +205,6 @@
   components:
   - type: Tag
     tags:
-    - Wall
     - Structure
   - type: Sprite
     sprite: Structures/Walls/meat.rsi
@@ -266,9 +262,6 @@
   name: debug wall
   suffix: DEBUG
   components:
-  - type: Tag
-    tags:
-    - Wall
   - type: Sprite
     sprite: Structures/Walls/debug.rsi
   - type: Icon
@@ -565,9 +558,9 @@
   name: reinforced wall
   components:
   - type: Sprite
-    sprite: Structures/Walls/solid.rsi
+    sprite: _Moffstation/Structures/Walls/solid.rsi # Moffstation
   - type: Icon
-    sprite: Structures/Walls/solid.rsi
+    sprite: _Moffstation/Structures/Walls/solid.rsi # Moffstation
     state: rgeneric
   - type: Construction
     graph: Girder
@@ -627,9 +620,9 @@
   suffix: rusted
   components:
   - type: Sprite
-    sprite: Structures/Walls/solid_rust.rsi
+    sprite: _Moffstation/Structures/Walls/solid_rust.rsi # Moffstation
   - type: Icon
-    sprite: Structures/Walls/solid_rust.rsi
+    sprite: _Moffstation/Structures/Walls/solid_rust.rsi # Moffstation
     state: rgeneric
   - type: Construction
     graph: Girder
@@ -647,10 +640,10 @@
   components:
   - type: Sprite
     drawdepth: Walls
-    sprite: Structures/Walls/reinforced_diagonal.rsi
+    sprite: _Moffstation/Structures/Walls/reinforced_diagonal.rsi #Moffstation
     state: state0
   - type: Icon
-    sprite: Structures/Walls/reinforced_diagonal.rsi
+    sprite: _Moffstation/Structures/Walls/reinforced_diagonal.rsi #Moffstation
     state: state0
   - type: Damageable
     damageModifierSet: StructuralMetallicStrong
@@ -897,13 +890,13 @@
   name: solid wall
   components:
   - type: Sprite
-    sprite: Structures/Walls/solid.rsi
+    sprite: _Moffstation/Structures/Walls/solid.rsi # Moffstation
   - type: WallReplacementMarker
   - type: Construction
     graph: Girder
     node: wall
   - type: Icon
-    sprite: Structures/Walls/solid.rsi
+    sprite: _Moffstation/Structures/Walls/solid.rsi # Moffstation
   - type: RCDDeconstructable
     cost: 6
     delay: 8
@@ -932,10 +925,10 @@
   components:
   - type: Sprite
     drawdepth: Walls
-    sprite: Structures/Walls/solid_diagonal.rsi
+    sprite: _Moffstation/Structures/Walls/solid_diagonal.rsi #Moffstation
     state: state0
   - type: Icon
-    sprite: Structures/Walls/solid_diagonal.rsi
+    sprite: _Moffstation/Structures/Walls/solid_diagonal.rsi #Moffstation
     state: state0
   - type: Destructible
     thresholds:
@@ -957,9 +950,9 @@
   suffix: rusted
   components:
   - type: Sprite
-    sprite: Structures/Walls/solid_rust.rsi
+    sprite: _Moffstation/Structures/Walls/solid_rust.rsi # Moffstation
   - type: Icon
-    sprite: Structures/Walls/solid_rust.rsi
+    sprite: _Moffstation/Structures/Walls/solid_rust.rsi # Moffstation
     state: full
   - type: Construction
     graph: Girder
@@ -975,9 +968,6 @@
   id: WallSolidChitin
   name: solid chitin
   components:
-  - type: Tag
-    tags:
-    - Wall
   - type: Destructible
     thresholds:
     - trigger:
@@ -1334,9 +1324,7 @@
   components:
   - type: TimedDespawn
     lifetime: 15
-  - type: Tag
-    tags:
-    - Wall
+  - type: Wall
   - type: Physics
     bodyType: Static
   - type: Fixtures
@@ -1357,9 +1345,7 @@
   components:
   - type: TimedDespawn
     lifetime: 10
-  - type: Tag
-    tags:
-    - Wall
+  - type: Wall
   - type: Physics
     bodyType: Static
   - type: Fixtures
@@ -1534,9 +1520,7 @@
       Brute:
         path:
           "/Audio/Weapons/pierce.ogg"
-  - type: Tag
-    tags:
-    - Wall
+  - type: Wall
   - type: Sprite
     drawdepth: SmallObjects #so bullets pass 'through'
     sprite: Structures/Walls/card.rsi

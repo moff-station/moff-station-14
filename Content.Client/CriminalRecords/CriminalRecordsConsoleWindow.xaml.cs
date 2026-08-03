@@ -276,7 +276,9 @@ public sealed partial class CriminalRecordsConsoleWindow : FancyWindow
 
     private void SetStatus(SecurityStatus status)
     {
-        if (status == SecurityStatus.Wanted || status == SecurityStatus.Suspected || status == SecurityStatus.Hostile)
+        if (status == SecurityStatus.Wanted || status == SecurityStatus.Suspected || status == SecurityStatus.Hostile
+            // Harmony additional statuses
+            || status == SecurityStatus.Monitor || status == SecurityStatus.Search)
         {
             GetReason(status);
             return;
@@ -324,6 +326,10 @@ public sealed partial class CriminalRecordsConsoleWindow : FancyWindow
             SecurityStatus.Suspected => "hud_suspected",
             SecurityStatus.Hostile => "hud_hostile",
             SecurityStatus.Eliminated => "hud_eliminated",
+            // Moffstation - Begin - Add harmony statuses. I'm not sure why this wasn't here, maybe a merge ate it.
+            SecurityStatus.Monitor => "hud_monitor",
+            SecurityStatus.Search => "hud_search",
+            // Moffstation - End
             _ => "SecurityIconNone"
         };
     }

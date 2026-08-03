@@ -1,0 +1,28 @@
+# Thief open-ended objectives
+- type: weightedRandom
+  id: ThiefObjectiveOpenEnded
+  weights:
+    StealEverythingObjective: 0.5
+    StealMoneyObjective: 0.5
+    RobDepartmentObjective: 1
+    InfiltrateThiefObjective: 1
+
+# Blood brother Moffstation objectives
+- type: weightedRandom
+  id: BloodBrotherObjectiveGroupSocial
+  weights:
+    BloodBrotherJailbreakObjective: 0.5
+    BloodBrotherLeaveCallingCardObjective: 0.2
+
+- type: weightedRandom
+  id: BloodBrotherObjectiveGroupSabotage
+  weights:
+    BloodBrotherSupercritAnomaliesObjective: 1
+    BloodBrotherDisruptDepartmentObjective: 1
+    BloodBrotherSabotageObjective: 0.5
+
+- type: weightedRandom
+  id: BloodBrotherObjectiveGroupOther
+  weights:
+    BloodBrotherTrashRoomObjective: 1
+    BloodBrotherClaimLocationObjective: 1

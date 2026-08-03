@@ -150,7 +150,7 @@ public sealed partial class MaterialReclaimerComponent : Component
     {
         DamageDict = new Dictionary<ProtoId<DamageTypePrototype>, FixedPoint2>
         {
-            ["Slash"] = 35.0,
+            ["Slash"] = 500.0, // Moff - emagged recycler doesn't gib, but instead cuts you up
         },
     };
 
@@ -158,7 +158,7 @@ public sealed partial class MaterialReclaimerComponent : Component
     /// If it should gib creatures when they enter and the machine is emagged
     /// </summary>
     [DataField]
-    public bool GibOnEmag = true;
+    public bool GibOnEmag = false; // Moff - emagged recycler doesn't gib, but instead cuts you up
 }
 
 [NetSerializable, Serializable]

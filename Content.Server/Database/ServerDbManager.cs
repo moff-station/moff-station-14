@@ -309,6 +309,20 @@ namespace Content.Server.Database
 
         #endregion
 
+        #region AntagWeights
+
+        Task<int> GetAntagWeight(NetUserId userId);
+        Task<bool> SetAntagWeight(NetUserId userId, int weight);
+
+        #endregion
+
+        #region DiscordId
+
+        Task<string?> GetDiscordId(NetUserId userId);
+        Task<bool> SetDiscordId(NetUserId userId, string? discordId);
+
+        #endregion
+
         #region DB Notifications
 
         void SubscribeToNotifications(Action<DatabaseNotification> handler);
@@ -1017,6 +1031,34 @@ namespace Content.Server.Database
             DbWriteOpsMetric.Inc();
             return RunDbCommand(() => _db.CleanIPIntelCache(range));
         }
+
+        // Moffstation - Begin - Weighted Antags
+        public Task<int> GetAntagWeight(NetUserId userId)
+        {
+            DbReadOpsMetric.Inc();
+            return RunDbCommand(() => _db.GetAntagWeight(userId));
+        }
+
+        public Task<bool> SetAntagWeight(NetUserId userId, int weight)
+        {
+            DbWriteOpsMetric.Inc();
+            return RunDbCommand(() => _db.SetAntagWeight(userId, weight));
+        }
+        // Moffstation - End - Weighted Antags
+
+        // Moffstation - Begin - Discord ID
+        public Task<string?> GetDiscordId(NetUserId userId)
+        {
+            DbReadOpsMetric.Inc();
+            return RunDbCommand(() => _db.GetDiscordId(userId));
+        }
+
+        public Task<bool> SetDiscordId(NetUserId userId, string? discordId)
+        {
+            DbWriteOpsMetric.Inc();
+            return RunDbCommand(() => _db.SetDiscordId(userId, discordId));
+        }
+        // Moffstation - End - Discord ID
 
         public void SubscribeToNotifications(Action<DatabaseNotification> handler)
         {

@@ -1,3 +1,6 @@
+// DV - File Completely rewritten
+// Accept any upstream changes
+/*
 using System.Linq;
 using Content.Client.Lobby.UI.Roles;
 using Content.Client.Stylesheets;
@@ -122,3 +125,4 @@ public sealed partial class HumanoidProfileEditor
         }
     }
 }
+*/

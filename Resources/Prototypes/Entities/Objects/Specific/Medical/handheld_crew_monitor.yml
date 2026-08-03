@@ -18,12 +18,14 @@
       enum.CrewMonitoringUIKey.Key:
         type: CrewMonitoringBoundUserInterface
   - type: CrewMonitoringConsole
+    sensorTypes:
+    - SuitSensor # Moffstation - Borg sensors
   - type: DeviceNetwork
     deviceNetId: Wireless
     receiveFrequencyId: CrewMonitor
   - type: WirelessNetworkConnection
-    range: 500
-  - type: StationLimitedNetwork
+    range: 1200 # Moffstation - LPO tweaks
+  #- type: StationLimitedNetwork # Moffstation - LPO tweaks
   - type: StaticPrice
     price: 500
   - type: Tag

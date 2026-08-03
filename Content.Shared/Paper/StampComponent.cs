@@ -22,8 +22,23 @@ public partial struct StampDisplayInfo
 
     [DataField("stampedColor")]
     public Color StampedColor;
+
+    // Umbra - Begin - Stamp types
+    [DataField]
+    public StampType Type = StampType.RubberStamp;
+    // Umbra - End
 };
 
+/// Umbra - Begin - Stamp types
+/// <summary>
+/// Stamp "types". Currently, rubber stamp and signatures.
+/// </summary>
+public enum StampType
+{
+    RubberStamp,
+    Signature,
+}
+// Umbra - End
 [RegisterComponent]
 public sealed partial class StampComponent : Component
 {

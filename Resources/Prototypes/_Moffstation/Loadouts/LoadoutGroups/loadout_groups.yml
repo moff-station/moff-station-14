@@ -1,0 +1,29 @@
+# Generic
+- type: loadoutGroup
+  id: GroupDrinkBottle
+  name: loadout-group-drink-bottle
+  hidden: true
+  loadouts:
+  - LoadoutSpeciesBottleAmmonia
+  - LoadoutSpeciesBottleWater
+
+# Captain
+- type: loadoutGroup
+  id: CaptainPDA
+  name: loadout-group-captain-id
+  loadouts:
+  - CaptainPDA # Keep default PDA on top of the list
+  - CommandingOfficerPDA
+
+# Passenger
+- type: loadoutGroup
+  id: PassengerPDA
+  name: loadout-group-passenger-id
+  loadouts:
+  - PassengerPDA # Keep default PDA on top of the list
+  - OffDutyCrewPDA
+  - VisitorCrewPDA
+  - OffDutyStaffPDA
+  - AssistantPDA
+  - FreelancerPDA
+  - TouristPDA

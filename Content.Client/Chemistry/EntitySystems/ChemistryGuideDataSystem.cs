@@ -30,7 +30,7 @@ public sealed partial class ChemistryGuideDataSystem : SharedChemistryGuideDataS
 
         SubscribeNetworkEvent<ReagentGuideRegistryChangedEvent>(OnReceiveRegistryUpdate);
         SubscribeLocalEvent<PrototypesReloadedEventArgs>(OnPrototypesReloaded);
-        OnPrototypesReloaded(null);
+        LoadPrototypes(null);
     }
 
     private void OnReceiveRegistryUpdate(ReagentGuideRegistryChangedEvent message)
@@ -47,7 +47,12 @@ public sealed partial class ChemistryGuideDataSystem : SharedChemistryGuideDataS
         }
     }
 
-    private void OnPrototypesReloaded(PrototypesReloadedEventArgs? ev)
+    private void OnPrototypesReloaded(PrototypesReloadedEventArgs ev)
+    {
+        LoadPrototypes(ev);
+    }
+
+    private void LoadPrototypes(PrototypesReloadedEventArgs? args)
     {
         // this doesn't check what prototypes are being reloaded because, to be frank, we use a lot of them.
         _reagentSources.Clear();
@@ -66,7 +71,23 @@ public sealed partial class ChemistryGuideDataSystem : SharedChemistryGuideDataS
                 reaction);
             foreach (var product in reaction.Products.Keys)
             {
-                _reagentSources[product].Add(data);
+                // Moffstation - Begin - Scaffolding for helping diagnose reagent issues.
+                if (_reagentSources.TryGetValue(product, out var productSourceData))
+                {
+                    productSourceData.Add(data);
+                }
+                else
+                {
+                    // If you have malformed reagent YAML, this throw will kill the linter before it tells you why the
+                    // YAML is malformed. Temporarily comment out this throw statement to allow the linter to emit its
+                    // complaints.
+                    throw new KeyNotFoundException(
+                        $"Failed to load prototype for reagent \"{product}\" referenced by reaction \"{reaction.ID}\". " +
+                        $"This is usually the result of malformed YAML. See the comment in the C# source where this " +
+                        $"is thrown from, or ask in Moffstation's #contributing channel for help!"
+                    );
+                }
+                // Moffstation - End
             }
         }
 

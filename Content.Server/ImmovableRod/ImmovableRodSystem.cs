@@ -7,6 +7,8 @@ using Content.Shared.Damage.Systems;
 using Content.Shared.Database;
 using Content.Shared.Examine;
 using Content.Shared.Gibbing;
+using Content.Shared.Item; // Moffstation
+using Content.Shared.Maps; // Moffstation
 using Content.Shared.Popups;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Map;
@@ -32,6 +34,8 @@ public sealed partial class ImmovableRodSystem : EntitySystem
     [Dependency] private SharedMapSystem _map = default!;
     [Dependency] private ISharedAdminLogManager _adminLogger = default!;
 
+    [Dependency] private TileSystem _tile = default!;  // Moffstation - Immovable rod changes
+
     public override void Update(float frameTime)
     {
         base.Update(frameTime);
@@ -39,11 +43,25 @@ public sealed partial class ImmovableRodSystem : EntitySystem
         // we are deliberately including paused entities. rod hungers for all
         foreach (var (rod, trans) in EntityQuery<ImmovableRodComponent, TransformComponent>(true))
         {
+            // Moffstation - Start - Immovable rod changes
+            if (trans.GridUid is not {} gridUid ||
+                !TryComp<MapGridComponent>(gridUid, out var grid))
+                continue;
+
+            if (rod.PryTiles)
+            {
+                var tileRef = _map.GetTileRef((gridUid, grid), trans.Coordinates);
+                _tile.PryTile(tileRef);
+            }
+            // Moffstation - End
+
             if (!rod.DestroyTiles)
                 continue;
 
-            if (!TryComp<MapGridComponent>(trans.GridUid, out var grid))
-                continue;
+            // Moffstation - Begin - Moved higher
+            // if (!TryComp<MapGridComponent>(trans.GridUid, out var grid))
+                // continue;
+            // Moffstation - End
 
             _map.SetTile(trans.GridUid.Value, grid, trans.Coordinates, Tile.Empty);
         }
@@ -66,7 +84,6 @@ public sealed partial class ImmovableRodSystem : EntitySystem
             _physics.SetFriction(uid, phys, 0f);
             _physics.SetBodyStatus(uid, phys, BodyStatus.InAir);
 
-            var xform = Transform(uid);
             var (worldPos, worldRot) = _transform.GetWorldPositionRotation(uid);
             var vel = worldRot.ToWorldVec() * component.MaxSpeed;
 
@@ -80,7 +97,7 @@ public sealed partial class ImmovableRodSystem : EntitySystem
             }
 
             _physics.ApplyLinearImpulse(uid, vel, body: phys);
-            xform.LocalRotation = (vel - worldPos).ToWorldAngle() + MathHelper.PiOver2;
+            _transform.SetLocalRotationNoLerp(uid, (vel - worldPos).ToWorldAngle() + MathHelper.PiOver2);
         }
     }
 
@@ -133,10 +150,19 @@ public sealed partial class ImmovableRodSystem : EntitySystem
                 return;
             }
 
-            _gibbing.Gib(ent);
-            _popup.PopupEntity(Loc.GetString("immovable-rod-penetrated-mob", ("rod", uid), ("mob", ent)), uid, PopupType.LargeCaution);
+            _gibbing.Gib(ent, dropGiblets: true); // Moffstation - Allow organs to drop
             return;
         }
+
+        // Moffstation - Start - Rods drop peoples stuff
+        if (component.PreserveItems && HasComp<ItemComponent>(ent))
+        {
+            var scatterVector = _random.NextAngle()
+                .ToVec() * (component.FlingVelocity + _random.NextFloat(-component.FlingVariation,  component.FlingVariation));
+            _physics.ApplyLinearImpulse(ent, scatterVector);
+            return;
+        }
+        // Moffstation - End
 
         _destructible.DestroyEntity(ent);
     }

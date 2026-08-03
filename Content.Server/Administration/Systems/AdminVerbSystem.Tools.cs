@@ -35,6 +35,9 @@ using Robust.Shared.Physics.Components;
 using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Utility;
+using Content.Server._MACRO.StrangeMoods.Eui; // MACRO
+using Content.Shared._MACRO.StrangeMoods; // MACRO
+using Robust.Shared.Random; // MACRO
 
 namespace Content.Server.Administration.Systems;
 
@@ -234,7 +237,7 @@ public sealed partial class AdminVerbSystem
             {
                 Text = Loc.GetString("admin-verbs-refill-internals-oxygen"),
                 Category = VerbCategory.Tricks,
-                Icon = new SpriteSpecifier.Rsi(new("/Textures/Objects/Tanks/oxygen.rsi"), "icon"),
+                Icon = new SpriteSpecifier.EntityPrototype("OxygenTank"), // Moffstation
                 Act = () =>
                 {
                     RefillGasTank(args.Target, Gas.Oxygen, tank);
@@ -249,7 +252,7 @@ public sealed partial class AdminVerbSystem
             {
                 Text = Loc.GetString("admin-verbs-refill-internals-nitrogen"),
                 Category = VerbCategory.Tricks,
-                Icon = new SpriteSpecifier.Rsi(new("/Textures/Objects/Tanks/red.rsi"), "icon"),
+                Icon = new SpriteSpecifier.EntityPrototype("NitrogenTank"), // Moffstation
                 Act = () =>
                 {
                     RefillGasTank(args.Target, Gas.Nitrogen, tank);
@@ -264,7 +267,7 @@ public sealed partial class AdminVerbSystem
             {
                 Text = Loc.GetString("admin-verbs-refill-internals-plasma"),
                 Category = VerbCategory.Tricks,
-                Icon = new SpriteSpecifier.Rsi(new("/Textures/Objects/Tanks/plasma.rsi"), "icon"),
+                Icon = new SpriteSpecifier.EntityPrototype("PlasmaTank"), // Moffstation
                 Act = () =>
                 {
                     RefillGasTank(args.Target, Gas.Plasma, tank);
@@ -282,7 +285,7 @@ public sealed partial class AdminVerbSystem
             {
                 Text = Loc.GetString("admin-verbs-refill-internals-oxygen"),
                 Category = VerbCategory.Tricks,
-                Icon = new SpriteSpecifier.Rsi(new("/Textures/Objects/Tanks/oxygen.rsi"), "icon"),
+                Icon = new SpriteSpecifier.EntityPrototype("OxygenTank"), // Moffstation
                 Act = () => RefillEquippedTanks(args.User, Gas.Oxygen),
                 Impact = LogImpact.Extreme,
                 Message = Loc.GetString("admin-trick-internals-refill-oxygen-description"),
@@ -294,7 +297,7 @@ public sealed partial class AdminVerbSystem
             {
                 Text = Loc.GetString("admin-verbs-refill-internals-nitrogen"),
                 Category = VerbCategory.Tricks,
-                Icon = new SpriteSpecifier.Rsi(new("/Textures/Objects/Tanks/red.rsi"), "icon"),
+                Icon = new SpriteSpecifier.EntityPrototype("NitrogenTank"), // Moffstation
                 Act = () => RefillEquippedTanks(args.User, Gas.Nitrogen),
                 Impact = LogImpact.Extreme,
                 Message = Loc.GetString("admin-trick-internals-refill-nitrogen-description"),
@@ -306,7 +309,7 @@ public sealed partial class AdminVerbSystem
             {
                 Text = Loc.GetString("admin-verbs-refill-internals-plasma"),
                 Category = VerbCategory.Tricks,
-                Icon = new SpriteSpecifier.Rsi(new("/Textures/Objects/Tanks/plasma.rsi"), "icon"),
+                Icon = new SpriteSpecifier.EntityPrototype("PlasmaTank"), // Moffstation
                 Act = () => RefillEquippedTanks(args.User, Gas.Plasma),
                 Impact = LogImpact.Extreme,
                 Message = Loc.GetString("admin-trick-internals-refill-plasma-description"),
@@ -730,6 +733,54 @@ public sealed partial class AdminVerbSystem
             };
             args.Verbs.Add(setCapacity);
         }
+
+        // Begin MACRO Additions
+        if (TryComp<StrangeMoodsComponent>(args.Target, out var moods))
+        {
+            if (moods.StrangeMood.Datasets.Count <= 0)
+                return;
+
+            Verb addRandomMood = new()
+            {
+                Text = "Add Random Mood",
+                Category = VerbCategory.Tricks,
+                Icon = new SpriteSpecifier.Rsi(new ResPath("Interface/Actions/actions_borg.rsi"), "state-laws"),
+                Act = () =>
+                {
+                    _moods.TryAddRandomMood((args.Target, moods), _random.Pick(moods.StrangeMood.Datasets).Key);
+                },
+                Impact = LogImpact.High,
+                Message = Loc.GetString("admin-trick-add-random-mood-description"),
+                Priority = (int) TricksVerbPriorities.AddRandomMood,
+            };
+            args.Verbs.Add(addRandomMood);
+        }
+        else
+        {
+            Verb giveMoods = new()
+            {
+                Text = "Give Moods",
+                Category = VerbCategory.Tricks,
+                Icon = new SpriteSpecifier.Rsi(new ResPath("Interface/Actions/actions_borg.rsi"), "state-laws"),
+                Act = () =>
+                {
+                    if (HasComp<StrangeMoodsComponent>(args.Target))
+                        return;
+
+                    var ui = new StrangeMoodsInitEui(_moods, EntityManager, ProtoMan, _random, _adminManager, _playerManager, _euiManager, args.User);
+                    if (!_playerManager.TryGetSessionByEntity(args.User, out var session))
+                        return;
+
+                    _euiManager.OpenEui(ui, session);
+                    ui.SetTarget(args.Target);
+                },
+                Impact = LogImpact.High,
+                Message = Loc.GetString("admin-trick-give-moods-description"),
+                Priority = (int) TricksVerbPriorities.AddRandomMood,
+            };
+            args.Verbs.Add(giveMoods);
+        }
+        // End MACRO Additions
     }
 
     private void RefillEquippedTanks(EntityUid target, Gas gasType)
@@ -875,5 +926,9 @@ public sealed partial class AdminVerbSystem
         SnapJoints = -27,
         MakeMinigun = -28,
         SetBulletAmount = -29,
+        // macro adds
+        AddRandomMood = -30,
+        AddCustomMood = -31,
+        // macro end
     }
 }

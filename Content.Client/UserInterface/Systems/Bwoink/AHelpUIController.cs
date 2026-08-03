@@ -577,7 +577,7 @@ public sealed class UserAHelpUIHandler : IAHelpUIHandler
         _window.OnOpen += () => { OnOpen?.Invoke(); };
         _window.Contents.AddChild(_chatPanel);
 
-        var introText = Loc.GetString("bwoink-system-introductory-message");
+        var introText = Loc.GetString("bwoink-system-introductory-message-moffstation");    // Moffstation - new ahelp message
         var introMessage = new SharedBwoinkSystem.BwoinkTextMessage( _ownerId, SharedBwoinkSystem.SystemUserId, introText);
         Receive(introMessage);
     }

@@ -13,12 +13,19 @@
 - type: startingGear
   id: ReporterGear
   equipment:
-    shoes: ClothingShoesColorWhite
-    id: ReporterPDA
+    shoes: ClothingShoesBootsLaceup # Moffstation
+#    id: ReporterPDA # Moffstation - PDA loadouts
     ears: ClothingHeadsetService
   #storage:
     #back:
     #- Stuff
+  # DeltaV: Give reporters tape recording equipment
+  storage:
+    back:
+    - TapeRecorder
+    - CassetteTape
+    - CassetteTape
+  # DeltaV end
 
 - type: chameleonOutfit
   id: ReporterChameleonOutfit

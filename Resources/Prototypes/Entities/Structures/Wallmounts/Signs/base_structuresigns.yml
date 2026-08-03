@@ -16,7 +16,7 @@
       - !type:DoActsBehavior
         acts: ["Destruction"]
   - type: Sprite
-    sprite: Structures/Wallmounts/signs.rsi
+    sprite: _Moffstation/Structures/Wallmounts/signs.rsi # Moffstation - Signage stuff
     snapCardinals: true
   - type: StaticPrice
     price: 20

@@ -69,7 +69,7 @@ public abstract partial class SharedDeliverySystem : EntitySystem
             var multiplier = GetDeliveryMultiplier(ent);
             var totalSpesos = Math.Round(ent.Comp.BaseSpesoReward * multiplier);
 
-            args.PushMarkup(Loc.GetString("delivery-earnings-examine", ("spesos", totalSpesos)), -1);
+            // args.PushMarkup(Loc.GetString("delivery-earnings-examine", ("spesos", totalSpesos)), -1); // Moffstation - Mail changes
         }
     }
 

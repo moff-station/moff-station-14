@@ -1,11 +1,11 @@
-using System.Numerics;
+using Content.Shared._CD.Records;
+using Content.Shared._DV.Traits;
 using Content.Shared.Chat.Prototypes;
 using Content.Shared.Humanoid.Markings;
 using Content.Shared.Humanoid.Prototypes;
 using Content.Shared.Preferences;
 using Content.Shared.Preferences.Loadouts;
 using Content.Shared.Roles;
-using Content.Shared.Traits;
 using Robust.Shared.Enums;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Utility;
@@ -80,9 +80,17 @@ public sealed partial class HumanoidCharacterProfileV1
     [DataField]
     public PreferenceUnavailableMode PreferenceUnavailable;
 
+    // Moffstation Start - CD Profile
+    [DataField("cosmaticDriftCharacterHeight")]
+    public float Height = 1f;
+
+    [DataField("cosmaticDriftCharacterRecords")]
+    public PlayerProvidedCharacterRecords? CDCharacterRecords;
+    // Moffstation End
+
     public HumanoidCharacterProfile ToV2()
     {
-        return new(Name, FlavorText, Species, Age, Sex, GetDefaultVoice(Species, Sex), Gender, Appearance.ToV2(Species), SpawnPriority, JobPriorities, PreferenceUnavailable, AntagPreferences, TraitPreferences, Loadouts);
+        return new(Name, FlavorText, Species, Height, Age, Sex, GetDefaultVoice(Species, Sex), Gender, Appearance.ToV2(Species), SpawnPriority, JobPriorities, PreferenceUnavailable, AntagPreferences, TraitPreferences, Loadouts, CDCharacterRecords);
     }
 
     // In V2 voices are stored as a separate database entry, this picks the default for the species and sex, which would give the same voice as pre-nubody.

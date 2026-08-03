@@ -1,0 +1,10 @@
+﻿reagent-physical-desc-airy = airy
+reagent-physical-desc-ghostly = ghostly
+reagent-physical-desc-unappetizing = unappetizing
+reagent-physical-desc-leafy = leafy
+reagent-physical-desc-wobbly = wobbly
+reagent-physical-desc-fleshy = fleshy
+reagent-physical-desc-verdant = verdant
+reagent-physical-desc-glistening = glistening
+reagent-physical-desc-secret = secret
+reagent-physical-desc-alive = alive

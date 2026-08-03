@@ -101,22 +101,25 @@
 - type: reagent
   id: Ethylredoxrazine
   name: reagent-name-ethylredoxrazine
+  parent: BaseEthyl # Moffstation - Ethyl Hotfix
   group: Medicine
   desc: reagent-desc-ethylredoxrazine
   physicalDesc: reagent-physical-desc-opaque
   flavor: medicine
   color: "#2d5708"
   metabolisms:
-    Bloodstream:
+    Metabolites: # Moffstation - Make Ethylredoxrazine neutralize alcohol in metabolism
+      metabolismRate: 0.05
       effects:
       - !type:ModifyStatusEffect
         effectProto: StatusEffectDrunk
         time: 6.0
         type: Remove
-      - !type:HealthChange
-        damage:
-          types:
-            Poison: -0.5
+      # Moffstation - Begin - Make Ethylredoxrazine neutralize alcohol in metabolism
+      - !type:AdjustReagent
+        reagent: Ethanol
+        amount: -5
+      # Moffstation - End
 
 - type: reagent
   id: Arithrazine
@@ -389,9 +392,8 @@
       - !type:ModifyKnockdown
         time: 0.75
         type: Remove
-      - !type:GenericStatusEffect
-        key: Adrenaline # Guess what epinephrine is...
-        component: IgnoreSlowOnDamage
+      - !type:ModifyStatusEffect
+        effectProto: StatusEffectAdrenaline # Guess what epinephrine is...
         time: 5 # lingers less than hivemind reagent to give it a niche
 
 - type: reagent
@@ -567,9 +569,9 @@
           - !type:ReagentCondition
             reagent: Barozine
             min: 30
-      - !type:GenericStatusEffect
-        key: PressureImmunity
-        component: PressureImmunity
+      - !type:ModifyStatusEffect
+        effectProto: StatusEffectPressureImmunity
+        type: Add
       - !type:GenericStatusEffect
         key: Stutter
         component: StutteringAccent
@@ -1498,6 +1500,11 @@
       - !type:AdjustReagent
         reagent: MindbreakerToxin
         amount: -3.0
+      # Moffstation Start - Phenylpiperidine (Fentanyl)
+      - !type:AdjustReagent
+        reagent: Phenylpiperidine
+        amount: -3.0
+      # Moffstation End
 
 - type: reagent
   id: Heparin

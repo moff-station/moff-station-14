@@ -23,6 +23,7 @@ public sealed class IFFConsoleBoundUserInterface : BoundUserInterface
 
         _window = this.CreateWindowCenteredLeft<IFFConsoleWindow>();
         _window.ShowIFF += SendIFFMessage;
+        _window.ShowVessel += SendVesselMessage; // Moffstation - Revert IFF changes
     }
 
     protected override void UpdateState(BoundUserInterfaceState state)
@@ -42,6 +43,16 @@ public sealed class IFFConsoleBoundUserInterface : BoundUserInterface
             Show = obj,
         });
     }
+
+    // Moffstation - Start - Revert IFF changes
+    private void SendVesselMessage(bool obj)
+    {
+        SendMessage(new IFFShowVesselMessage()
+        {
+            Show = obj,
+        });
+    }
+    // Moffstation - End
 
     protected override void Dispose(bool disposing)
     {

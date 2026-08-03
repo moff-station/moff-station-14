@@ -37,7 +37,7 @@
   - type: Damageable
     damageModifierSet: Metallic
   - type: Injurable
-    damageContainer: Inorganic
+    damageContainer: StructuralInorganic # Moffstation - Structural damagetype fix
   - type: RCDDeconstructable
     cost: 4
     delay: 2
@@ -69,6 +69,9 @@
           collection: GlassBreak
   - type: PlacementReplacement
     key: lights
+  # ES START
+  - type: ESSparkOnHit
+  # ES END
 
 - type: entity
   parent: BaseWallLight
@@ -443,7 +446,7 @@
     energy: 0.6
     offset: "0, 0.4"
     color: "#7CFC00"
-    mask: /Textures/Effects/LightMasks/double_cone.png
+    lightMask: ConeDouble
   - type: ApcPowerReceiver
   - type: ExtensionCableReceiver
   - type: Battery

@@ -1,0 +1,86 @@
+- type: entity
+  id: ActionReplicatorSpawnNest
+  name: Manufacture Nest
+  description: Create a new nest for your hive.
+  components:
+  - type: Action
+    itemIconStyle: NoItem
+    useDelay: 20
+  - type: InstantAction
+    event: !type:ReplicatorSpawnNestActionEvent
+  - type: ConfirmableAction
+    popup: replicator-nest-confirm
+  - type: Sprite
+    sprite: &action_rsi _Impstation/Interface/Actions/replicator.rsi
+    state: spawn_nest
+
+- type: entity
+  id: BaseReplicatorLevelupAction
+  categories: [HideSpawnMenu]
+  components:
+  - type: ConfirmableAction
+    popup: replicator-levelup-confirm
+
+- type: entity
+  id: ActionReplicatorUpgrade1
+  parent: BaseReplicatorLevelupAction
+  name: Downgrade (Replicator)
+  description: Shed nanites. Reconfigure.
+  components:
+  - type: Action
+    itemIconStyle: NoItem
+    useDelay: 20
+  - type: InstantAction
+    event: !type:ReplicatorUpgradeActionEvent
+      nextStage: MobReplicatorTier1
+  - type: Sprite
+    sprite: *action_rsi
+    state: replicator_level1
+
+- type: entity
+  id: ActionReplicatorUpgrade2
+  parent: BaseReplicatorLevelupAction
+  name: Upgrade (Deconstructor)
+  description: Gather nanites. Gain manipulation.
+  components:
+  - type: Action
+    itemIconStyle: NoItem
+    useDelay: 20
+  - type: InstantAction
+    event: !type:ReplicatorUpgradeActionEvent
+      nextStage: MobReplicatorTier2Utility
+  - type: Sprite
+    sprite: *action_rsi
+    state: replicator_level2
+
+- type: entity
+  id: ActionReplicatorUpgrade2Alt
+  parent: BaseReplicatorLevelupAction
+  name: Upgrade (Defender)
+  description: Gather nanites. Gain weaponry.
+  components:
+  - type: Action
+    itemIconStyle: NoItem
+    useDelay: 20
+  - type: InstantAction
+    event: !type:ReplicatorUpgradeActionEvent
+      nextStage: MobReplicatorTier2Combat
+  - type: Sprite
+    sprite: *action_rsi
+    state: replicator_level2alt
+
+- type: entity
+  id: ActionReplicatorUpgrade3
+  parent: BaseReplicatorLevelupAction
+  name: Upgrade (Protector)
+  description: Gather nanites. Become stronger.
+  components:
+  - type: Action
+    itemIconStyle: NoItem
+    useDelay: 20
+  - type: InstantAction
+    event: !type:ReplicatorUpgradeActionEvent
+      nextStage: MobReplicatorTier3
+  - type: Sprite
+    sprite: *action_rsi
+    state: replicator_level3

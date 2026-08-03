@@ -1,0 +1,39 @@
+# Player: SeaWyrm
+# Character: Swims-In-Deep-Waters/Ara-Earo
+
+- type: entity
+  parent: ClothingHeadBase
+  id: PersonalItemSwimsWizardHat
+  name: gray wizard hat
+  description: A floppy, wide-brimmed wizard hat with a blue hatband
+  suffix: PersonalItem
+  components:
+    - type: Sprite
+      sprite: _Moffstation/PersonalItems/Wearables/SeaWyrm/Swims-In-Deep-Waters/swims_wizard_hat.rsi
+      state: icon
+    - type: Clothing
+      sprite: _Moffstation/PersonalItems/Wearables/SeaWyrm/Swims-In-Deep-Waters/swims_wizard_hat.rsi
+    - type: Item
+      sprite: _Moffstation/PersonalItems/Wearables/SeaWyrm/Swims-In-Deep-Waters/swims_wizard_hat.rsi
+    - type: DetailExaminable
+      content: A strange-looking gray hat that most certainly belongs to Swims-In-Deep-Waters. (It has a nametag.) It's well-worn and probably quite comfortable. There are a couple of hemmed holes in it for Swims' horns to poke out through.
+    - type: WizardClothes
+    - type: Tag
+      tags:
+      - PetWearable
+      - CorgiWearable
+      - HamsterWearable
+    - type: HideLayerClothing
+      layers:
+        HeadSide : HEAD
+
+- type: loadout
+  id: PersonalItemSwimsWizardHat
+  storage:
+    back:
+      - PersonalItemSwimsWizardHat
+  effects:
+  - !type:PersonalItemLoadoutEffect
+    character:
+    - Swims-In-Deep-Waters
+    - Ara-Earo 

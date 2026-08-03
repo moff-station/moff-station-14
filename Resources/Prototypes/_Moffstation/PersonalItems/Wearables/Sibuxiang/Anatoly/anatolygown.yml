@@ -1,0 +1,20 @@
+﻿# Player: Sibuxiang / Character: Anatoly
+- type: entity
+  parent: ClothingOuterHospitalGown
+  id: PersonalItemAnatolyGown
+  name: general use medical gown
+  description: A hospital gown made to be used in daily life, in case of emergency retreat into a hospital.
+  suffix: PersonalItem
+  components:
+  - type: DetailExaminable
+    content: It has a label poking out of its lower half, INT-288.
+
+- type: loadout
+  id: PersonalItemAnatolyGown
+  storage:
+    back:
+    - PersonalItemAnatolyGown
+  effects:
+  - !type:PersonalItemLoadoutEffect
+    character:
+    - Anatoly

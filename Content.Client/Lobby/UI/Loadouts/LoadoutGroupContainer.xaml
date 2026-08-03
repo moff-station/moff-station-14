@@ -1,6 +1,13 @@
 <BoxContainer xmlns="https://spacestation14.io"
+         xmlns:controls="clr-namespace:Content.Client.UserInterface.Controls"
          xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
          Orientation="Vertical">
+    <!-- Moffstation - Personal items hider -->
+    <BoxContainer Name="LoadoutsToggleContainer" Orientation="Horizontal" Margin="4">
+        <controls:OnOffButton Name="ShowAllLoadouts" HorizontalExpand="True"/>
+        <Label Text="{Loc 'loadout-show-all'}" HorizontalExpand="True"/>
+    </BoxContainer>
+    <!-- End Moffstation -->
     <PanelContainer StyleClasses="BackgroundPanel" HorizontalExpand="True" Margin="5">
         <BoxContainer Name="LoadoutsContainer" Orientation="Vertical" VerticalExpand="True" HorizontalExpand="True"/>
     </PanelContainer>

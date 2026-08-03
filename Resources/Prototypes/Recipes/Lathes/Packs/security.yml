@@ -3,13 +3,14 @@
 - type: latheRecipePack
   id: SecurityEquipmentStatic
   recipes:
-  - ClothingEyesHudSecurity
+  # - ClothingEyesHudSecurity # Moffstation - Replaced by modular HUDs
   - ForensicPad
   - Handcuffs
   - TargetClown
   - TargetHuman
   - TargetSyndicate
   - Zipties
+  - SecurityBola
 
 # Practice ammo/mags and practice weapons
 - type: latheRecipePack
@@ -139,3 +140,4 @@
   recipes:
   - WeaponDisabler
   - WeaponDisablerSMG
+  - ClothingHandsKnuckleDustersStun # Moffstation - Stun Knuckles are cool

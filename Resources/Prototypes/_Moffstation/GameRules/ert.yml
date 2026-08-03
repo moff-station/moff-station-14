@@ -1,0 +1,130 @@
+- type: entity
+  parent: BaseGameRule
+  id: ERTGeneral
+  components:
+  - type: StationEvent
+    startAnnouncement: ert-sec
+    startAudio:
+      path: /Audio/Misc/notice1.ogg
+  - type: LoadMapRule
+    gridPath: /Maps/_Moffstation/PreCrewed/dart.yml
+  - type: RuleGrids
+
+- type: entity # 4 soldiers in a large transport
+  parent: BaseGameRule
+  id: ERTSecTransport
+  components:
+  - type: StationEvent
+    startAnnouncement: ert-sec
+    startAudio:
+      path: /Audio/Misc/notice1.ogg
+  - type: LoadMapRule
+    gridPath: /Maps/_Moffstation/PreCrewed/shuttle-nt-transport-ertsec-team.yml
+  - type: RuleGrids
+
+- type: entity # 8 soldiers in a large transport
+  parent: BaseGameRule
+  id: ERTSecLargeTransport
+  components:
+  - type: StationEvent
+    startAnnouncement: ert-sec
+    startAudio:
+      path: /Audio/Misc/notice1.ogg
+  - type: LoadMapRule
+    gridPath: /Maps/_Moffstation/PreCrewed/shuttle-nt-transport-ertsec-squad.yml
+  - type: RuleGrids
+
+- type: entity # 4 soldiers in a small dropship
+  parent: BaseGameRule
+  id: ERTSecDropship
+  components:
+  - type: StationEvent
+    startAnnouncement: ert-sec
+    startAudio:
+      path: /Audio/Misc/notice1.ogg
+  - type: LoadMapRule
+    gridPath: /Maps/_Moffstation/PreCrewed/shuttle-nt-dropship-ertsec-team.yml
+  - type: RuleGrids
+
+- type: entity # 8 soldiers in a small dropship
+  parent: BaseGameRule
+  id: ERTSecLargeDropship
+  components:
+  - type: StationEvent
+    startAnnouncement: ert-sec
+    startAudio:
+      path: /Audio/Misc/notice1.ogg
+  - type: LoadMapRule
+    gridPath: /Maps/_Moffstation/PreCrewed/shuttle-nt-dropship-ertsec-squad.yml
+  - type: RuleGrids
+
+- type: entity
+  parent: BaseGameRule
+  id: ERTJani
+  components:
+  - type: StationEvent
+    startAnnouncement: ert-jani
+    startAudio:
+      path: /Audio/Misc/notice1.ogg
+  - type: LoadMapRule
+    gridPath: /Maps/_Moffstation/PreCrewed/shuttle-nt-grimebreaker.yml
+  - type: RuleGrids
+
+- type: entity
+  parent: BaseGameRule
+  id: ERTMed
+  components:
+  - type: StationEvent
+    startAnnouncement: ert-med
+    startAudio:
+      path: /Audio/Misc/notice1.ogg
+  - type: LoadMapRule
+    gridPath: /Maps/_Moffstation/PreCrewed/shuttle-nt-equilibrium.yml
+  - type: RuleGrids
+
+- type: entity
+  parent: BaseGameRule
+  id: ERTEngi
+  components:
+  - type: StationEvent
+    startAnnouncement: ert-engi
+    startAudio:
+      path: /Audio/Misc/notice1.ogg
+  - type: LoadMapRule
+    gridPath: /Maps/_Moffstation/PreCrewed/shuttle-tbe-artificer.yml
+  - type: RuleGrids
+
+- type: entity
+  parent: BaseGameRule
+  id: ERTCBURNDropship
+  components:
+  - type: StationEvent
+    startAnnouncement: ert-jani
+    startAudio:
+      path: /Audio/Misc/notice1.ogg
+  - type: LoadMapRule
+    gridPath: /Maps/_Moffstation/PreCrewed/shuttle-nt-dropship-cburn-team.yml
+  - type: RuleGrids
+
+- type: entity
+  parent: BaseGameRule
+  id: ERTDeathSquadDropship
+  components:
+  - type: LoadMapRule
+    gridPath: /Maps/_Moffstation/PreCrewed/shuttle-nt-dropship-deathsquad-team.yml
+  - type: RuleGrids
+  - type: AlertLevelInterceptionRule
+    alertLevel: Epsilon
+
+# Nanotrasen Corporate Fleet
+- type: entity # One cannon, one laser - can seriously fuck up pirates or xenoborgs, if it can find them.
+  parent: BaseGameRule
+  id: NTCFGunboat
+  components:
+  - type: StationEvent
+    startAnnouncement: ntcf-gunboat
+    startAudio:
+      path: /Audio/Misc/notice1.ogg
+  - type: LoadMapRule
+    gridPath: /Maps/_Moffstation/PreCrewed/shuttle-nt-gunboat.yml
+  - type: RuleGrids

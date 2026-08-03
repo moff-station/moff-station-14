@@ -1,6 +1,8 @@
+using Content.Shared._Moffstation.Weapons.Ranged.Components; // Moffstation
 using Content.Shared.Administration.Logs;
 using Content.Shared.Damage.Systems;
 using Content.Shared.Database;
+using Content.Shared.Gravity; // Moffstation
 using Content.Shared.Inventory;
 using Content.Shared.Movement.Components;
 using Content.Shared.Movement.Systems;
@@ -31,6 +33,8 @@ public sealed partial class SlipperySystem : EntitySystem
     [Dependency] private SharedPhysicsSystem _physics = default!;
     [Dependency] private SpeedModifierContactsSystem _speedModifier = default!;
 
+    [Dependency] private SharedGravitySystem _gravity = default!; // Moffstation
+
     [Dependency] private EntityQuery<KnockedDownComponent> _knockedDownQuery = default!;
     [Dependency] private EntityQuery<PhysicsComponent> _physicsQuery = default!;
     [Dependency] private EntityQuery<SlidingComponent> _slidingQuery = default!;
@@ -48,6 +52,10 @@ public sealed partial class SlipperySystem : EntitySystem
         SubscribeLocalEvent<SlowedOverSlipperyComponent, InventoryRelayedEvent<SlipAttemptEvent>>((e, c, ev) => OnSlowedOverSlipAttempt(e, c, ev.Args));
         SubscribeLocalEvent<SlowedOverSlipperyComponent, InventoryRelayedEvent<GetSlowedOverSlipperyModifierEvent>>(OnGetSlowedOverSlipperyModifier);
         SubscribeLocalEvent<SlipperyComponent, EndCollideEvent>(OnEntityExit);
+        // Moffstation - Start
+        SubscribeLocalEvent<NoSlipComponent, RecoilKickAttemptEvent>(OnRecoilKickAttempt);
+        SubscribeLocalEvent((Entity<NoSlipComponent> ent, ref InventoryRelayedEvent<RecoilKickAttemptEvent> args) => OnRecoilKickAttempt(ent, ref args.Args));
+        // Moffstation - End
     }
 
     private void HandleStepTrigger(EntityUid uid, SlipperyComponent component, ref StepTriggeredOffEvent args)
@@ -154,6 +162,18 @@ public sealed partial class SlipperySystem : EntitySystem
 
         _adminLogger.Add(LogType.Slip, LogImpact.Low, $"{ToPrettyString(other):mob} slipped on collision with {ToPrettyString(uid):entity}");
     }
+
+    // Moffstation - Start
+    private void OnRecoilKickAttempt(Entity<NoSlipComponent> ent, ref RecoilKickAttemptEvent args)
+    {
+        // Do not modify kick effects if the entity is off-grid.
+        if (!_gravity.EntityOnGravitySupportingGridOrMap(ent.Owner))
+            return;
+
+        // Noslips mitigate the effect by half
+        args.ImpulseEffectivenessFactor *= 0.5f;
+    }
+    // Moffstation - End
 }
 
 /// <summary>

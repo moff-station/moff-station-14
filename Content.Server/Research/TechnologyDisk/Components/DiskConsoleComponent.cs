@@ -28,5 +28,5 @@ public sealed partial class DiskConsoleComponent : Component
     /// The sound made when printing occurs
     /// </summary>
     [DataField]
-    public SoundSpecifier PrintSound = new SoundPathSpecifier("/Audio/Machines/printer.ogg");
+    public SoundSpecifier PrintSound = new SoundPathSpecifier("/Audio/_Moffstation/Machines/floppy_disk_eject.ogg", new AudioParams { Volume = -5, RolloffFactor = 3f}); // Moffstation - Stop being so loud
 }

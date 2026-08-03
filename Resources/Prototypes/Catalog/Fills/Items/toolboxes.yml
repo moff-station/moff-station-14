@@ -165,6 +165,7 @@
   components:
   - type: EntityTableContainerFill
     sort: true
+    skipFillsWhichDontFit: true # Moffstation - If the table rolls too much or too big of things, just delete those rolls. I am so tired of the foolbox failing tests because we have so much garbage in it.
     containers:
       storagebase: !type:NestedSelector
         tableId: FoolboxTable

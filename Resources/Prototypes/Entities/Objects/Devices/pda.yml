@@ -11,7 +11,7 @@
        !type:String
        pda
   - type: Sprite
-    sprite: Objects/Devices/pda.rsi
+    sprite: _Moffstation/Objects/Devices/pda.rsi #Moffstation - New PDAs
     layers:
     - map: [ "enum.PdaVisualLayers.Base" ]
       state: "pda"
@@ -24,7 +24,7 @@
       shader: "unshaded"
       visible: false
   - type: Icon
-    sprite: Objects/Devices/pda.rsi
+    sprite: _Moffstation/Objects/Devices/pda.rsi #Moffstation - New PDAs
     state: pda
   - type: Pda
     paiSlot:
@@ -65,8 +65,10 @@
   - type: UnpoweredFlashlight
   - type: PointLight
     enabled: false
-    radius: 1.7
-    falloff: 3
+    # Moffstation - Start - Dim PDA lights
+    radius: 1.5
+    #falloff: 3
+    # Moffstation - End
     softness: 5
     autoRot: true
   - type: Ringer
@@ -96,6 +98,8 @@
         - id: NotekeeperCartridge
         - id: NanoTaskCartridge
         - id: NewsReaderCartridge
+        - id: NanoChatCartridge # CD
+        - id: SOSCartridge # Imp
   - type: ActivatableUI
     key: enum.PdaUiKey.Key
     singleUser: true
@@ -135,7 +139,7 @@
   abstract: true
   components:
   - type: Sprite
-    sprite: Objects/Devices/pda.rsi
+    sprite: _Moffstation/Objects/Devices/pda.rsi #Moffstation - New PDAs
     layers:
     - map: [ "enum.PdaVisualLayers.Base" ]
       state: "pda"
@@ -162,7 +166,8 @@
         - id: NanoTaskCartridge
         - id: NewsReaderCartridge
         - id: WantedListCartridge
-
+        - id: NanoChatCartridge # CD
+        - id: SOSCartridge # Imp
 - type: entity
   parent: BasePDA
   id: BaseMedicalPDA
@@ -177,6 +182,8 @@
         - id: NanoTaskCartridge
         - id: NewsReaderCartridge
         - id: MedTekCartridge
+        - id: NanoChatCartridge # CD
+        - id: SOSCartridge # Imp
 
 - type: entity
   parent: BasePDA
@@ -207,6 +214,11 @@
     accentVColor: "#949137"
   - type: Icon
     state: pda-interntech
+    #Moffstation - Start - Remove Intern Roles, rework them into loadouts
+  - type: RenameId
+    value: job-name-technical-assistant
+    newIcon: "JobIconTechnicalAssistant"
+    #Moffstation - End
 
 - type: entity
   parent: BaseMedicalPDA
@@ -229,6 +241,11 @@
   - type: GuideHelp
     guides:
     - MedicalDoctor
+  #Moffstation - Start - Remove Intern Roles, rework them into loadouts
+  - type: RenameId
+    value: job-name-intern
+    newIcon: "JobIconMedicalIntern"
+  #Moffstation - End
 
 - type: entity
   parent: BaseSecurityPDA
@@ -248,6 +265,11 @@
     accentVColor: "#A32D26"
   - type: Icon
     state: pda-interncadet
+  #Moffstation - Start - Remove Intern Roles, rework them into loadouts
+  - type: RenameId
+    value: job-name-cadet
+    newIcon: "JobIconSecurityCadet"
+  #Moffstation - End
 
 - type: entity
   parent: BasePDA
@@ -267,6 +289,11 @@
     accentVColor: "#8900c9"
   - type: Icon
     state: pda-internsci
+  #Moffstation - Start - Remove Intern Roles, rework them into loadouts
+  - type: RenameId
+    value: job-name-research-assistant
+    newIcon: "JobIconResearchAssistant"
+  #Moffstation - End
 
 - type: entity
   parent: BasePDA
@@ -304,6 +331,10 @@
     borderColor: "#d7d7d0"
   - type: Icon
     state: pda-cook
+  # Moffstation - Begin - Re-add word replacement accents
+  - type: ReplacementAccent
+    accent: italian
+  # Moffstation - End
 
 - type: entity
   parent: BasePDA
@@ -431,13 +462,17 @@
     accentHColor: "#333333"
   - type: Icon
     state: pda-mime
-  - type: Muted # for random sentience event
   - type: EntityTableContainerFill
     containers:
       preinstalled-program-container: !type:AllSelector
         children:
         - id: CrewManifestCartridge
         - id: NewsReaderCartridge
+        - id: NanoChatCartridge # CD
+        - id: SOSCartridge # Imp
+  - type: PermanentStatusEffects # for random sentience event
+    statusEffects:
+    - TraitStatusEffectMuted
 
 - type: entity
   name: chaplain PDA
@@ -495,6 +530,8 @@
         - id: NanoTaskCartridge
         - id: NewsReaderCartridge
         - id: AstroNavCartridge
+        - id: NanoChatCartridge # CD
+        - id: SOSCartridge # Imp
 
 - type: entity
   parent: BasePDA
@@ -541,6 +578,8 @@
         - id: NanoTaskCartridge
         - id: NewsReaderCartridge
         - id: AstroNavCartridge
+        - id: NanoChatCartridge # CD
+        - id: SOSCartridge # Imp
 
 - type: entity
   parent: BasePDA
@@ -668,7 +707,8 @@
        !type:String
        pda-captain
   - type: PdaBorderColor
-    borderColor: "#7C5D00"
+    borderColor: "#101947" #Moffstation - New PDAs
+    accentVColor: "#7C5D00" #Moffstation - New PDAs
   - type: Icon
     state: pda-captain
 
@@ -893,6 +933,8 @@
         - id: NewsReaderCartridge
         - id: WantedListCartridge
         - id: LogProbeCartridge
+        - id: NanoChatCartridge # CD
+        - id: SOSCartridge # Imp
 
 - type: entity
   parent: BaseSecurityPDA
@@ -902,14 +944,16 @@
   components:
   - type: Pda
     id: WardenIDCard
+    noAdverts: true # Moffstation - PDA ads
   - type: Appearance
     appearanceDataInit:
      enum.PdaVisuals.PdaType:
        !type:String
        pda-warden
   - type: PdaBorderColor
-    borderColor: "#A32D26"
-    accentVColor: "#949137"
+    borderColor: "#5261a0" #Moffstation - Start - New PDAs
+    accentVColor: "#cc4242"
+    accentHColor: "#23acc4" #Moffstation - End - New PDAs
   - type: Icon
     state: pda-warden
 
@@ -966,6 +1010,8 @@
         - id: WantedListCartridge
         - id: LogProbeCartridge
         - id: AstroNavCartridge
+        - id: NanoChatCartridge # CD
+        - id: SOSCartridge # Imp
 
 - type: entity
   parent: CentcomPDA
@@ -976,6 +1022,11 @@
   components:
   - type: Pda
     id: UniversalIDCard
+  - type: Appearance #Moffstation - Start -New PDAs
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-admin #Moffstation - End - New PDAs
   - type: HealthAnalyzer
     maxScanRange: null
     scanDelay: 0
@@ -994,6 +1045,8 @@
         - id: WantedListCartridge
         - id: MedTekCartridge
         - id: AstroNavCartridge
+        - id: NanoChatCartridge # CD
+        - id: SOSCartridge # Imp
   - type: Tag #  Ignore Chameleon tags
     tags:
     - DoorBumpOpener
@@ -1005,6 +1058,11 @@
   components:
   - type: Pda
     id: CentcomIDCardDeathsquad
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-deathsquad #Moffstation - New PDAs
   - type: Tag #  Ignore Chameleon tags
     tags:
     - DoorBumpOpener
@@ -1098,6 +1156,7 @@
   components:
   - type: Pda
     id: SyndicateIDCard
+    noAdverts: true # Moffstation - PDA ads
   - type: Appearance
     appearanceDataInit:
      enum.PdaVisuals.PdaType:
@@ -1113,6 +1172,7 @@
         children:
         - id: NotekeeperCartridge
         - id: NanoTaskCartridge
+        - id: NanoChatCartridge # CD
 
 - type: entity
   parent: [ SyndiPDA, BaseSyndicateContraband ]
@@ -1152,6 +1212,7 @@
         - id: NotekeeperCartridge
         - id: NanoTaskCartridge
         - id: MedTekCartridge
+        - id: NanoChatCartridge # CD
 
 - type: entity
   parent: [ SyndiOperativePDA, BaseSyndicateContraband ]
@@ -1182,13 +1243,13 @@
     appearanceDataInit:
      enum.PdaVisuals.PdaType:
        !type:String
-       pda-ert
+       pda-ert-leader #Moffstation - New PDAs
   - type: PdaBorderColor
     borderColor: "#A32D26"
     accentHColor: "#447987"
     accentVColor: "#447987"
   - type: Icon
-    state: pda-ert
+    state: pda-ert-leader #Moffstation - New PDAs
   - type: EntityTableContainerFill
     containers:
       preinstalled-program-container: !type:AllSelector
@@ -1201,6 +1262,8 @@
         - id: WantedListCartridge
         - id: LogProbeCartridge
         - id: AstroNavCartridge
+        - id: NanoChatCartridge # CD
+        - id: SOSCartridge # Imp
 
 - type: entity
   parent: ERTLeaderPDA
@@ -1211,6 +1274,11 @@
   components:
   - type: Pda
     id: ERTChaplainIDCard
+  - type: Appearance #Moffstation - Start - New PDAs
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-ert-chaplain #Moffstation - End - New PDAs
 
 - type: entity
   parent: ERTLeaderPDA
@@ -1221,6 +1289,11 @@
   components:
   - type: Pda
     id: ERTEngineerIDCard
+  - type: Appearance #Moffstation - Start - New PDAs
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-ert-engineer #Moffstation - End - New PDAs
 
 - type: entity
   parent: ERTLeaderPDA
@@ -1231,6 +1304,11 @@
   components:
   - type: Pda
     id: ERTJanitorIDCard
+  - type: Appearance #Moffstation - Start - New PDAs
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-ert-janitor #Moffstation - End -New PDAs
 
 - type: entity
   parent: ERTLeaderPDA
@@ -1241,6 +1319,11 @@
   components:
   - type: Pda
     id: ERTMedicIDCard
+  - type: Appearance #Moffstation - Start - New PDAs
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-ert-medic #Moffstation - End - New PDAs
 
 - type: entity
   parent: ERTLeaderPDA
@@ -1251,6 +1334,11 @@
   components:
   - type: Pda
     id: ERTSecurityIDCard
+  - type: Appearance #Moffstation - Start - New PDAs
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-ert-security #Moffstation - End - New PDAs
 
 - type: entity
   parent: ERTLeaderPDA
@@ -1260,6 +1348,11 @@
   components:
   - type: Pda
     id: CBURNIDcard
+  - type: Appearance #Moffstation - Start -New PDAs
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-cburn #Moffstation - End - New PDAs
   - type: PdaBorderColor
     borderColor: "#A32D26"
     accentHColor: "#447987"
@@ -1277,12 +1370,33 @@
     appearanceDataInit:
      enum.PdaVisuals.PdaType:
        !type:String
-       pda-medical
+       pda-psychologist #Moffstation - New PDAs
   - type: PdaBorderColor
     borderColor: "#d7d7d0"
     accentVColor: "#447987"
   - type: Icon
     state: pda-medical
+
+# Moff Start - Need to figure out how this will fit into our space first.
+# - type: entity
+#   parent: BasePDA
+#   id: TramDriverPDA
+#   name: tram driver PDA
+#   description: A serious driver will always arrive on time.
+#   components:
+#   - type: Pda
+#     id: TramDriverIDCard
+#   - type: Appearance
+#     appearanceDataInit:
+#      enum.PdaVisuals.PdaType:
+#        !type:String
+#        pda-tramdriver
+#   - type: PdaBorderColor
+#     borderColor: "#454a50"
+#     accentVColor: "#ffc500"
+#   - type: Icon
+#     state: pda-tramdriver
+# Moff End
 
 - type: entity
   parent: BasePDA
@@ -1372,6 +1486,8 @@
         - id: NewsReaderCartridge
         - id: WantedListCartridge
         - id: LogProbeCartridge
+        - id: NanoChatCartridge # CD
+        - id: SOSCartridge # Imp
 
 - type: entity
   parent: BaseMedicalPDA
@@ -1402,6 +1518,8 @@
         - id: NewsReaderCartridge
         - id: WantedListCartridge
         - id: MedTekCartridge
+        - id: NanoChatCartridge # CD
+        - id: SOSCartridge # Imp
 
 - type: entity
   parent: ClownPDA
@@ -1448,6 +1566,10 @@
     accentVColor: "#CD6900"
   - type: Icon
     state: pda-seniorengineer
+  # Moffstation - Start - Additional job title loadouts
+  - type: RenameId
+    value: job-name-station-engineer-senior-station-engineer
+  # Moffstation - End
 
 - type: entity
   parent: BasePDA
@@ -1468,6 +1590,10 @@
     accentVColor: "#8900c9"
   - type: Icon
     state: pda-seniorresearcher
+  # Moffstation - Start - Job title loadouts from Cosmic Drift
+  - type: RenameId
+    value: job-name-scientist-senior-researcher
+  # Moffstation - End
 
 - type: entity
   parent: BaseMedicalPDA
@@ -1488,6 +1614,10 @@
     accentVColor: "#B34200"
   - type: Icon
     state: pda-seniorphysician
+  # Moffstation - Start - Job title loadouts from Cosmic Drift
+  - type: RenameId
+    value: job-name-medical-doctor-senior-physician
+  # Moffstation - End
 
 - type: entity
   parent: BaseSecurityPDA
@@ -1507,6 +1637,10 @@
     accentVColor: "#DFDFDF"
   - type: Icon
     state: pda-seniorofficer
+  # Moffstation - Start - Job title loadouts from Cosmic Drift
+  - type: RenameId
+    value: job-name-security-officer-senior-officer
+  # Moffstation - End
 
 - type: entity
   parent: BasePDA
@@ -1526,6 +1660,10 @@
     accentVColor: "#DFDFDF"
   - type: Icon
     state: pda-seniorcourier
+  # Moffstation - Start - Job title loadouts from Cosmic Drift
+  - type: RenameId
+    value: job-name-cargo-technician-senior-courier
+  # Moffstation - End
 
 - type: entity
   parent: [ BaseHighlyIllegalContraband, BasePDA ]
@@ -1541,6 +1679,7 @@
         !type:String
         pda-ninja
   - type: Icon
+    sprite: _Moffstation/Objects/Devices/pda.rsi # Moffstation
     state: pda-ninja
 
 - type: entity

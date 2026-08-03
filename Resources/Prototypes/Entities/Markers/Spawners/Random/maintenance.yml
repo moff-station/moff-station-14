@@ -160,7 +160,7 @@
         - id: ClothingNeckGoldAutismPin
     # Rare Group
     - !type:GroupSelector
-      weight: 2
+      weight: 15
       children:
       - id: DrinkMugDog
       - id: CigarGold
@@ -168,6 +168,11 @@
       - id: WristwatchGold
       - id: RubberStampGreytide
       - id: MysteryLighterBox
+      # Moffstation - Start - custom maints loot
+      - id: CrayonInfinite
+      - !type:NestedSelector
+        tableId: CorpseFill
+      # Moffstation - End
 
 - type: entity
   name: Maint Loot Spawner
@@ -283,6 +288,7 @@
     - !type:GroupSelector
       weight: 2
       children:
+      - id: FoolboxFilled   # Moffstation - Added Foolbox to maints
       - id: Binoculars
       - id: LanternFlash
       - id: PowerCellHigh
@@ -297,6 +303,7 @@
       - id: SpectralLocator
       - id: LidSalami
         weight: 0.05
+      - id: BriefcaseFigurine # Mirasector - Figurine case to maints.
 
 - type: entity
   name: Maint Loot Spawner
@@ -356,6 +363,7 @@
       - id: SawImprov
       - id: HydroponicsToolMiniHoe
       - id: ClothingHandsKnuckleDusters
+      - id: WeaponRifleLeverMagnum # Moffstation - (Crestfall Repeater) - We want it to be rare maints loot, but it's not Syndicate contrband, so it goes here. This table is extremely rarely picked, so it's a good choice for our purposes.
       - !type:NestedSelector
         tableId: AllToyWeaponsTable
 

@@ -40,7 +40,7 @@
   - type: Damageable
     damageModifierSet: Metallic
   - type: Injurable
-    damageContainer: Inorganic
+    damageContainer: StructuralInorganic # Moffstation - Structural damagetype fix
   - type: Destructible
     thresholds:
     - trigger:

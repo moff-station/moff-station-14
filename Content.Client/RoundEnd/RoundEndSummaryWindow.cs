@@ -13,7 +13,7 @@ namespace Content.Client.RoundEnd;
 /// <summary>
 /// Window displaying round end information including player manifest.
 /// </summary>
-public sealed partial class RoundEndSummaryWindow : DefaultWindow
+public sealed partial class RoundEndSummaryWindowUpstream : DefaultWindow // Moff - Renamed as this whole class was rewritten.
 {
     [Dependency] private IEntityManager _entityManager = default!;
 
@@ -34,7 +34,7 @@ public sealed partial class RoundEndSummaryWindow : DefaultWindow
     private SortField _currentSortField = SortField.PlayerType;
     private bool _sortDescending;
 
-    public RoundEndSummaryWindow(string gm, string roundEnd, TimeSpan roundTimeSpan, int roundId, RoundEndPlayerInfo[] info)
+    public RoundEndSummaryWindowUpstream(string gm, string roundEnd, TimeSpan roundTimeSpan, int roundId, RoundEndPlayerInfo[] info)
     {
         IoCManager.InjectDependencies(this);
         _playersInfo = info;

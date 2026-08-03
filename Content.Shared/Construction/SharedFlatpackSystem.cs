@@ -8,7 +8,9 @@ using Content.Shared.Examine;
 using Content.Shared.Interaction;
 using Content.Shared.Materials;
 using Content.Shared.Popups;
+using Content.Shared.Tools.Components;
 using Content.Shared.Tools.Systems;
+using JetBrains.Annotations;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Containers;
 using Robust.Shared.Map.Components;
@@ -22,7 +24,7 @@ namespace Content.Shared.Construction;
 public abstract partial class SharedFlatpackSystem : EntitySystem
 {
     [Dependency] private ISharedAdminLogManager _adminLogger = default!;
-    [Dependency] private INetManager _net = default!;
+    // [Dependency] private INetManager _net = default!; // Moffstation - Now Unused
     [Dependency] private AnchorableSystem _anchorable = default!;
     [Dependency] private MetaDataSystem _metaData = default!;
     [Dependency] private SharedAudioSystem _audio = default!;
@@ -38,6 +40,7 @@ public abstract partial class SharedFlatpackSystem : EntitySystem
     public override void Initialize()
     {
         SubscribeLocalEvent<FlatpackComponent, InteractUsingEvent>(OnFlatpackInteractUsing);
+        SubscribeLocalEvent<FlatpackComponent, ActivateInWorldEvent>(OnFlatpackActivateInWorld);
         SubscribeLocalEvent<FlatpackComponent, ExaminedEvent>(OnFlatpackExamined);
 
         SubscribeLocalEvent<FlatpackCreatorComponent, ItemSlotInsertAttemptEvent>(OnInsertAttempt);
@@ -59,58 +62,36 @@ public abstract partial class SharedFlatpackSystem : EntitySystem
 
     private void OnFlatpackInteractUsing(Entity<FlatpackComponent> ent, ref InteractUsingEvent args)
     {
-        var (uid, comp) = ent;
-        if (!_tool.HasQuality(args.Used, comp.QualityNeeded) || _container.IsEntityInContainer(ent))
+        if (args.Handled)
             return;
 
-        var xform = Transform(ent);
+        args.Handled = Unpack(ent, args.User, args.Used, out _);
+    }
 
-        if (xform.GridUid is not { } grid || !TryComp<MapGridComponent>(grid, out var gridComp))
+    private void OnFlatpackActivateInWorld(Entity<FlatpackComponent> ent, ref ActivateInWorldEvent args)
+    {
+        if (args.Handled)
             return;
 
-        args.Handled = true;
-
-        if (comp.Entity == null)
-        {
-            Log.Error($"No entity prototype present for flatpack {ToPrettyString(ent)}.");
-
-            if (_net.IsServer)
-                QueueDel(ent);
-            return;
-        }
-
-        if (!ProtoMan.Resolve(comp.Entity, out var proto) ||
-            !proto.TryComp<FixturesComponent>(out var fixture, EntityManager.ComponentFactory))
-        {
-            return;
-        }
-
-        var (layer, mask) = SharedPhysicsSystem.GetHardCollision(fixture);
-        var buildPos = _map.TileIndicesFor(grid, gridComp, xform.Coordinates);
-
-        if (!_anchorable.TileFree((grid, gridComp), buildPos, layer, mask))
-        {
-            _popup.PopupEntity(Loc.GetString("flatpack-unpack-no-room"), uid, args.User);
-            return;
-        }
-
-        if (_net.IsServer)
-        {
-            var spawn = Spawn(comp.Entity, _map.GridTileToLocal(grid, gridComp, buildPos));
-            _adminLogger.Add(LogType.Construction,
-                LogImpact.Low,
-                $"{ToPrettyString(args.User):player} unpacked {ToPrettyString(spawn):entity} at {xform.Coordinates} from {ToPrettyString(uid):entity}");
-            QueueDel(uid);
-        }
-
-        _audio.PlayPredicted(comp.UnpackSound, args.Used, args.User);
+        args.Handled = Unpack(ent, args.User, used: null, out _);
     }
 
     private void OnFlatpackExamined(Entity<FlatpackComponent> ent, ref ExaminedEvent args)
     {
         if (!args.IsInDetailsRange)
             return;
-        args.PushMarkup(Loc.GetString("flatpack-examine"));
+
+        if (ent.Comp.QualityNeeded is { } qualityNeeded)
+        {
+            if (ProtoMan.Resolve(qualityNeeded, out var quality))
+            {
+                args.PushMarkup(Loc.GetString("flatpack-examine", ("qualityNeeded", Loc.GetString(quality.Name))));
+            }
+        }
+        else
+        {
+            args.PushMarkup(Loc.GetString("flatpack-examine", ("qualityNeeded", "NO-TOOL")));
+        }
     }
 
     protected void SetupFlatpack(Entity<FlatpackComponent?> ent, EntProtoId proto, EntityUid board)
@@ -168,6 +149,81 @@ public abstract partial class SharedFlatpackSystem : EntitySystem
             cost[mat] -= amount;
         }
 
+        return true;
+    }
+
+    /// <summary>
+    /// Attempts to unpack <paramref name="flatpack"/> at its current location.
+    /// </summary>
+    /// <param name="flatpack">The flatpack to unpack</param>
+    /// <param name="user">The entity which is unpacking the flatpack; used for logging and player interaction feedback</param>
+    /// <param name="used">The entity being used to unpack, usually a tool</param>
+    /// <param name="unpacked">The entity which is created by a successful unpacking. May be client-side-predicted</param>
+    /// <returns>
+    /// Whether or not interaction with the flatpack occurred. Note that a true return <b>does not</b> imply
+    /// <paramref name="unpacked"/> is not null. In the case that the correct tool is used to on the flatpack but there
+    /// is not enough space to unpack, this will be true. This is used to enable event-handlers to correctly set
+    /// <see cref="HandledEntityEventArgs.Handled"/>.
+    /// </returns>
+    [PublicAPI]
+    public bool Unpack(
+        Entity<FlatpackComponent> flatpack,
+        EntityUid user,
+        Entity<ToolComponent?>? used,
+        out EntityUid? unpacked
+    )
+    {
+        unpacked = null;
+
+        if (flatpack.Comp.QualityNeeded is { } qualityNeeded)
+        {
+            if (used is not {} u || !_tool.HasQuality(u, qualityNeeded, u.Comp))
+            {
+                return false;
+            }
+        }
+        else if (used != null)
+        {
+            return false;
+        }
+
+        if (_container.IsEntityInContainer(flatpack))
+            return false;
+
+        var xform = Transform(flatpack);
+
+        if (xform.GridUid is not { } grid || !TryComp<MapGridComponent>(grid, out var gridComp))
+            return false;
+
+        if (flatpack.Comp.Entity == null)
+        {
+            Log.Error($"No entity prototype present for flatpack {ToPrettyString(flatpack)}.");
+            PredictedQueueDel(flatpack);
+            return true;
+        }
+
+        if (!ProtoMan.Resolve(flatpack.Comp.Entity, out var proto) ||
+            !proto.TryComp<FixturesComponent>(out var fixture, EntityManager.ComponentFactory))
+        {
+            return true;
+        }
+
+        var (layer, mask) = SharedPhysicsSystem.GetHardCollision(fixture);
+        var buildPos = _map.TileIndicesFor(grid, gridComp, xform.Coordinates);
+
+        if (!_anchorable.TileFree((grid, gridComp), buildPos, layer, mask))
+        {
+            _popup.PopupEntity(Loc.GetString("flatpack-unpack-no-room"), flatpack, user);
+            return true;
+        }
+
+        unpacked = PredictedSpawnAtPosition(flatpack.Comp.Entity, _map.GridTileToLocal(grid, gridComp, buildPos));
+        _adminLogger.Add(LogType.Construction,
+            LogImpact.Low,
+            $"{ToPrettyString(user):player} unpacked {ToPrettyString(unpacked):entity} at {xform.Coordinates} from {ToPrettyString(flatpack):entity}");
+        PredictedQueueDel(flatpack);
+
+        _audio.PlayPredicted(flatpack.Comp.UnpackSound, used?.Owner ?? flatpack, user);
         return true;
     }
 }

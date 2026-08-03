@@ -79,9 +79,9 @@
   description: An expensive firesuit that protects against even the most deadly of station fires. Designed to protect even if the wearer is set aflame.
   components:
   - type: Sprite
-    sprite: Clothing/OuterClothing/Suits/atmos_firesuit.rsi
+    sprite: _Moffstation/Clothing/OuterClothing/Suits/atmos_firesuit.rsi # Moffstation - New Softsuit Sprites
   - type: Clothing
-    sprite: Clothing/OuterClothing/Suits/atmos_firesuit.rsi
+    sprite: _Moffstation/Clothing/OuterClothing/Suits/atmos_firesuit.rsi # Moffstation - New Softsuit Sprites
   - type: FireProtection
     reduction: 0.8 # atmos firesuit offers best protection, hardsuits are a little vulnerable
   - type: Armor
@@ -308,3 +308,13 @@
   - type: StaticPrice
     price: 1500
 
+- type: entity
+  parent: ClothingOuterBase
+  id: ClothingOuterSuitTramDriver
+  name: tram driver suit
+  description: It protects from everything that could distract you. That is, nothing at all.
+  components:
+  - type: Sprite
+    sprite: Clothing/OuterClothing/Suits/tramdriver.rsi
+  - type: Clothing
+    sprite: Clothing/OuterClothing/Suits/tramdriver.rsi

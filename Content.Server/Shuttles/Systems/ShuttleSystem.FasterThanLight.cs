@@ -37,14 +37,14 @@ public sealed partial class ShuttleSystem
     [Dependency] private EntityQuery<MapComponent> _mapQuery = default!;
     [Dependency] private EntityWhitelistSystem _whitelistSystem = default!;
 
-    private readonly SoundSpecifier _startupSound = new SoundPathSpecifier("/Audio/Effects/Shuttle/hyperspace_begin.ogg")
+    private readonly SoundSpecifier _startupSound = new SoundPathSpecifier("/Audio/_Moffstation/Effects/Shuttle/hyperspace_begin.ogg") // Moffstation - Custom FTL noises
     {
-        Params = AudioParams.Default.AddVolume(-5f),
+        Params = AudioParams.Default.AddVolume(-2f), // Moffstation
     };
 
-    private readonly SoundSpecifier _arrivalSound = new SoundPathSpecifier("/Audio/Effects/Shuttle/hyperspace_end.ogg")
+    private readonly SoundSpecifier _arrivalSound = new SoundPathSpecifier("/Audio/_Moffstation/Effects/Shuttle/hyperspace_end.ogg") // Moffstation - custom FTL noises
     {
-        Params = AudioParams.Default.AddVolume(-5f),
+        Params = AudioParams.Default.AddVolume(-2f), // Moffstation
     };
 
     public float DefaultStartupTime;
@@ -224,7 +224,7 @@ public sealed partial class ShuttleSystem
         {
 
             // Too large to FTL
-            if (FTLMassLimit > 0 &&  shuttlePhysics.Mass > FTLMassLimit)
+            if (FTLMassLimit > 0 && shuttlePhysics.Mass > FTLMassLimit)
             {
                 reason = Loc.GetString("shuttle-console-mass");
                 return false;
@@ -316,6 +316,14 @@ public sealed partial class ShuttleSystem
         // Valid dock for now time so just use that as the target.
         if (config != null)
         {
+            // Moffstation - Start - Valid dock so mark each one as queued
+            foreach (var dock in config.Docks)
+            {
+                dock.DockA.Queued = true;
+                dock.DockB.Queued = true;
+            }
+            // Moffstation - End
+
             hyperspace.TargetCoordinates = config.Coordinates;
             hyperspace.TargetAngle = config.Angle;
         }
@@ -499,6 +507,13 @@ public sealed partial class ShuttleSystem
             else
             {
                 FTLDock((uid, xform), config);
+                // Moffstation - Start - Mark each dock as unqueued
+                foreach (var dock in config.Docks)
+                {
+                    dock.DockA.Queued = false;
+                    dock.DockB.Queued = false;
+                }
+                // Moffstation - End
             }
 
             mapId = mapCoordinates.MapId;
@@ -706,7 +721,7 @@ public sealed partial class ShuttleSystem
     {
         config = null;
 
-        if (!TryComp(shuttleUid, out TransformComponent?  shuttleXform) ||
+        if (!TryComp(shuttleUid, out TransformComponent? shuttleXform) ||
             !TryComp(targetUid, out TransformComponent? targetXform) ||
             targetXform.MapUid == null ||
             !targetXform.MapUid.Value.IsValid())

@@ -1,0 +1,12 @@
+﻿- type: cargoProduct
+  id: EngineeringCommonRadioKeys
+  icon:
+    sprite: Objects/Devices/encryption_keys.rsi
+    state: common_label
+  product: BoxEncryptionKeyPassenger
+  container:
+    entity: WrappedParcel
+    containerId: contents
+  cost: 450
+  category: cargoproduct-category-name-engineering
+  group: market

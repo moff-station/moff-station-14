@@ -28,6 +28,7 @@
   id: BaseMachineDestructible
   components:
   - type: Damageable
+    damageModifierSet: Electronic # Moffstation - Easier to break into a machine frame
   - type: Injurable
     damageContainer: StructuralInorganic
   - type: Destructible
@@ -54,6 +55,11 @@
   - type: ExtensionCableReceiver
   - type: LightningTarget
     priority: 1
+# ES Start
+  - type: ESSparkOnHit
+    prob: 0.25
+    count: 2
+# ES End
 
 - type: entity
   abstract: true

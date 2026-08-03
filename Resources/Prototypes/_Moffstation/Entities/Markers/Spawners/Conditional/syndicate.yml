@@ -1,0 +1,11 @@
+- type: entity
+  parent: MarkerBase
+  id: SpawnPointSyndicateSpy
+  name: Syndicate Spy spawn point
+  components:
+  - type: SpawnPoint
+  - type: Sprite
+    layers:
+    - state: green
+    - sprite: Structures/Decoration/banner.rsi
+      state: banner_syndicate

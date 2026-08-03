@@ -1,4 +1,6 @@
 using System.Linq;
+using Content.Server._CD.Records;
+using Content.Server._Moffstation.Players;
 using Content.Server.Administration.Managers;
 using Content.Server.Chat.Managers;
 using Content.Server.GameTicking;
@@ -53,6 +55,10 @@ public sealed partial class AdminSystem : EntitySystem
     [Dependency] private SharedAudioSystem _audio = default!;
     [Dependency] private StationRecordsSystem _stationRecords = default!;
     [Dependency] private TransformSystem _transform = default!;
+    [Dependency] private WatchListTracker _watchList = default!;   // Moffstation
+
+    // CD: for erasing records on erase ban
+    [Dependency] private CharacterRecordsSystem _cdRecords = default!;
 
     private readonly Dictionary<NetUserId, PlayerInfo> _playerList = new();
 
@@ -262,6 +268,11 @@ public sealed partial class AdminSystem : EntitySystem
             overallPlaytime = playTime;
         }
 
+        // Moffstation - Start - Get watchlist status
+        // Second check so we don't modify upstream code
+        var watchListed = session != null ? _watchList.GetWatchListed(session) : false;
+        // Moffstation - End
+
         return new PlayerInfo(
             name,
             entityName,
@@ -275,7 +286,10 @@ public sealed partial class AdminSystem : EntitySystem
             data.UserId,
             connected,
             _roundActivePlayers.Contains(data.UserId),
-            overallPlaytime);
+            // Moffstation - Start - Visible watchlist
+            overallPlaytime,
+            watchListed);
+            // Moffstation - End
     }
 
     private void OnPanicBunkerChanged(bool enabled)
@@ -445,6 +459,9 @@ public sealed partial class AdminSystem : EntitySystem
                 {
                     _hands.TryDrop((entity, hands), hand, checkActionBlocker: false, doDropInteraction: false);
                 }
+
+                // CD: Erase Character Records on ban
+                _cdRecords.DeleteAllRecords(entity);
             }
 
             _minds.WipeMind(mindId, mind);

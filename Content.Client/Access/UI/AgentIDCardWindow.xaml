@@ -29,6 +29,10 @@
                             <LineEdit Name="NameLineEdit" SelectAllOnFocus="True" />
                             <Label Margin="4 2" Text="{Loc 'agent-id-ui-input-job'}" />
                             <LineEdit Name="JobLineEdit" SelectAllOnFocus="True" />
+                            <!-- CD - Add NanoChat number field -->
+                            <Label Name="CurrentNumber" Text="{Loc 'agent-id-card-current-number'}" />
+                            <LineEdit Name="NumberLineEdit" PlaceHolder="#0000" />
+                            <!-- CD end -->
                         </BoxContainer>
                     </ScrollContainer>
 

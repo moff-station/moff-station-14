@@ -1,0 +1,127 @@
+- type: entity
+  parent: TableCard
+  id: FoldingTable
+  name: folding table
+  description: A folded table. It's sturdy, unless you punch it, and can support the weight of Resomis and Avalis. To fold it, follow the minature instructions on its underside.
+  components:
+  - type: StaticPrice
+    price: 300
+  - type: Sprite
+    sprite: _Moffstation/Structures/Furniture/Tables/folding_table.rsi
+  - type: Icon
+    sprite: Structures/Furniture/Tables/card.rsi
+  - type: Damageable
+    damageModifierSet: Metallic
+  - type: Injurable
+    damageContainer: StructuralInorganic
+  - type: Clickable
+  - type: InteractionOutline
+  - type: GlassTable #they named it that cause 'it would never be used elsewhere' or something, smh
+    climberDamage:
+      types:
+        Blunt: 5
+        Piercing: 5
+    tableDamage:
+      types:
+        Blunt: 40
+    tableMassLimit: 40
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 40
+        acts: [ "Destruction" ]
+    - trigger:
+        !type:DamageTrigger
+        damage: 20
+      behaviors:
+      - !type:PlaySoundBehavior
+        sound:
+          collection: MetalBreak
+          params:
+            volume: -6
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          SheetPlastic1:
+            min: 1
+            max: 2
+          PartRodMetal1:
+            min: 1
+            max: 2
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+  - type: DisassembleOnAltVerb
+    prototypeToSpawn: FoldingTableFolded
+    disassembleTime: 5
+  - type: InflatableSafeDisassembly
+  - type: Transform
+    anchored: true
+  placement:
+    mode: SnapgridCenter
+
+- type: entity
+  id: FoldingTableFolded
+  parent: BaseItem
+  name: folding table
+  suffix: folded
+  description: A folding table with the logo of "SKEA" that can easily be assembled in the blink of an arachnid's eyes.
+  components:
+  - type: StaticPrice
+    price: 300
+  - type: Sprite
+    sprite: _Moffstation/Structures/Furniture/Tables/folding_table_inhands.rsi
+    noRot: true
+    state: icon
+  - type: Item
+    size: Ginormous
+    storedRotation: 90
+  - type: MeleeWeapon
+    damage:
+      types:
+        Blunt: 8
+    soundHit:
+      collection: MetalThud
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 40
+      behaviors:
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+    - trigger:
+        !type:DamageTrigger
+        damage: 20
+      behaviors:
+      - !type:PlaySoundBehavior
+        sound:
+          collection: MetalBreak
+          params:
+            volume: -6
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          SheetPlastic1:
+            min: 1
+            max: 2
+          PartRodMetal1:
+            min: 1
+            max: 2
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+  - type: Fixtures
+    fixtures:
+      item: # For the folded, carriable table
+        shape: !type:PhysShapeAabb
+          bounds: "-0.25,-0.25,0.25,0.25"
+        density: 60
+        mask:
+        - ItemMask
+        restitution: 0.3
+        friction: 0.2
+        hard: false
+  - type: SpawnAfterInteract
+    prototype: FoldingTable
+    doAfter: 2
+    removeOnInteract: true
+  - type: Clickable
+  - type: PhysicalComposition

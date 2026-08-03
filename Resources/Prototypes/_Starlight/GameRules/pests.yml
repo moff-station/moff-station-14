@@ -1,0 +1,17 @@
+# Starlight - Moproaches added as fun pet purchaseable through cargo.
+- type: entity
+  id: MoproachMigration
+  parent: BaseStationEventShortDelay
+  components:
+  - type: StationEvent
+    startAnnouncement: station-event-vent-creatures-start-horde-announcement
+    startAudio:
+      path: /Audio/Announcements/attention.ogg
+    weight: 6
+    duration: 30 # Moffstation - used as delay
+  # Moff start - Swap to vent horde rule
+  - type: VentHordeRule
+    table:
+      id: MobMoproachHat
+      rolls: 5, 10
+  # Moff end

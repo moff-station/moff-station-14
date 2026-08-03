@@ -1,3 +1,4 @@
+using Content.Shared._Moffstation.DamageState;//Moffstation - Re-add Geras
 using Content.Shared.Mobs;
 
 namespace Content.Client.DamageState;
@@ -10,8 +11,4 @@ public sealed partial class DamageStateVisualsComponent : Component
     [DataField("states")] public Dictionary<MobState, Dictionary<DamageStateVisualLayers, string>> States = new();
 }
 
-public enum DamageStateVisualLayers : byte
-{
-    Base,
-    BaseUnshaded,
-}
+//Moffstation - Re-add Geras (enum moved to Content.Shared._Moffstation.DamageState.DamageStateVisualLayers.cs to make it available to shared systems)

@@ -11,6 +11,10 @@
       - id: MobMouse2
       - id: MobMouseCancer
         weight: 0.05
+# Moffstation - Start - Snakeee.... Eater.....
+      - id: MobCheeseEater
+        weight: 0.05
+# Moffstation - End
     - !type:GroupSelector
       children:
       - id: MobSnail

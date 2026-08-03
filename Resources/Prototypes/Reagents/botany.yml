@@ -212,9 +212,24 @@
   - !type:PlantAdjustHealth
     amount: 0.5
   metabolisms:
+    # Moffstation start - Allow avali to drink ammonia
+    Digestion:
+      effects:
+      - !type:SatiateThirst
+        factor: 4
+        conditions:
+        - !type:MetabolizerTypeCondition
+          type: [ Avali ]
+    # Moffstation end
     Bloodstream:
       effects:
       - !type:HealthChange
+        # Moffstation start - Allow avali to drink ammonia
+        conditions:
+        - !type:MetabolizerTypeCondition
+          type: [ Avali ]
+          inverted: true
+        # Moffstation end
         damage:
           types:
             Caustic: 1
@@ -276,6 +291,11 @@
         - !type:MetabolizerTypeCondition
           type: [ Vox ]
         factor: -4
+      - !type:Oxygenate #macro, thaven don't suffocate from any gases
+        scaling: true
+        conditions:
+        - !type:MetabolizerTypeCondition
+          type: [ Thaven ]
 
 
 - type: reagent
@@ -301,9 +321,32 @@
     amount: 1
   - !type:PlantDiethylamine {}
   metabolisms:
+    # Moffstation start - Allow avali to drink ammonia
+    Digestion:
+      metabolites:
+        Ethanol: 0.4
+      effects:
+      - !type:SatiateThirst
+        factor: 2
+        conditions:
+        - !type:MetabolizerTypeCondition
+          type: [ Avali ]
+      - !type:AdjustReagent
+        reagent: Ethanol
+        amount: 0.2
+        conditions:
+        - !type:MetabolizerTypeCondition
+          type: [ Avali ]
+    # Moffstation end
     Bloodstream:
       effects:
       - !type:HealthChange
+        # Moffstation start - Allow avali to drink ammonia
+        conditions:
+        - !type:MetabolizerTypeCondition
+          type: [ Avali ]
+          inverted: true
+        # Moffstation end
         damage:
           types:
             Caustic: 1

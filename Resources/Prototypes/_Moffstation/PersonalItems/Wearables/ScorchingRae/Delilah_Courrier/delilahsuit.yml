@@ -1,0 +1,22 @@
+﻿# Player: ScorchingRae - Character: Delilah Courrier
+- type: entity
+  parent: [ClothingUniformBase, ClothingUniformFoldableBase]
+  id: PersonalItemDelilahSuit
+  name: XXL Casual Wear
+  description: A practical option for the more generously proportioned crewmate.
+  suffix: PersonalItem
+  components:
+  - type: Sprite
+    sprite: _Moffstation/PersonalItems/Wearables/ScorchingRae/Delilah_Courrier/delilahsuit.rsi
+  - type: Clothing
+    sprite: _Moffstation/PersonalItems/Wearables/ScorchingRae/Delilah_Courrier/delilahsuit.rsi
+
+- type: loadout
+  id: PersonalItemDelilahSuit
+  storage:
+    back:
+    - PersonalItemDelilahSuit
+  effects:
+  - !type:PersonalItemLoadoutEffect
+    character:
+    - Delilah Courrier

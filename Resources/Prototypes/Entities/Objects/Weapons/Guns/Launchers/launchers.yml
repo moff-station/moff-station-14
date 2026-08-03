@@ -29,6 +29,11 @@
     - SemiAuto
     soundGunshot:
       path: /Audio/Weapons/Guns/Gunshots/grenade_launcher.ogg
+    # Moffstation - Begin - Add gun recoil.
+    recoilKick:
+      impulse: 200
+      staminaMultiplier: 6
+    # Moffstation - End - Add gun recoil.
 
 - type: entity
   parent: [ BaseWeaponLauncher, BaseSyndicateContraband ]
@@ -124,6 +129,11 @@
     sprite: Objects/Weapons/Guns/Launchers/rocket.rsi
   - type: Gun
     fireRate: 0.5
+    # Moffstation - Begin - Add gun recoil.
+    recoilKick:
+      impulse: 700
+      staminaMultiplier: 100
+    # Moffstation - End - Add gun recoil.
     soundGunshot:
       path: /Audio/Weapons/Guns/Gunshots/rpgfire.ogg
   - type: BallisticAmmoProvider
@@ -157,6 +167,11 @@
     sprite: Objects/Weapons/Guns/Launchers/rocket.rsi
   - type: Gun
     fireRate: 6
+    # Moffstation - Begin - Add gun recoil.
+    recoilKick:
+      impulse: 300
+      staminaMultiplier: 5
+    # Moffstation - End - Add gun recoil.
     selectedMode: FullAuto
     availableModes:
     - FullAuto
@@ -196,6 +211,11 @@
     sprite: Objects/Weapons/Guns/Launchers/pirate_cannon.rsi
   - type: Gun
     fireRate: 1
+    # Moffstation - Begin - Add gun recoil.
+    recoilKick:
+      impulse: 850
+      staminaMultiplier: 7
+    # Moffstation - End - Add gun recoil.
     soundGunshot:
       path: /Audio/Weapons/Guns/Gunshots/mateba.ogg
   - type: BallisticAmmoProvider
@@ -208,7 +228,7 @@
       path: /Audio/Weapons/Guns/Gunshots/grenade_launcher.ogg
 
 - type: entity
-  parent: BaseItem
+  parent: [ BaseItem, BasePointerCrosshair ]
   id: WeaponGrapplingGun
   name: grappling gun
   components:

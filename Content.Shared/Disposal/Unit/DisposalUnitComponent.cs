@@ -6,6 +6,7 @@ using Robust.Shared.Containers;
 using Robust.Shared.GameStates;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization;
+using Content.Shared.DeviceLinking; // Moffstation - Signal network for disposal units
 
 namespace Content.Shared.Disposal.Components;
 
@@ -161,6 +162,21 @@ public sealed partial class DisposalUnitComponent : Component
     /// </summary>
     [DataField, AutoNetworkedField, AutoPausedField]
     public TimeSpan? NextFlush;
+
+
+    // Moffstation - Begin - Signal network for disposal units
+    [DataField]
+    public ProtoId<SinkPortPrototype> FlushPort = "DisposalUnitFlush";
+
+    [DataField]
+    public ProtoId<SinkPortPrototype> AutoFlushOnPort = "DisposalUnitAutoFlushOn";
+
+    [DataField]
+    public ProtoId<SinkPortPrototype> AutoFlushOffPort = "DisposalUnitAutoFlushOff";
+
+    [DataField]
+    public ProtoId<SinkPortPrototype> AutoFlushTogglePort = "DisposalUnitAutoFlushToggle";
+    // Moffstation - End
 
     /// <summary>
     /// The max number of entities that can be inserted in the unit before it needs to be flushed.

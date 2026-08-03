@@ -1,0 +1,29 @@
+<DefaultWindow xmlns="https://spacestation14.io"
+               Title="{Loc 'moff-patreon-panel-title'}"
+               MinSize="450 350">
+    <BoxContainer Orientation="Vertical" SeparationOverride="4" Margin="4">
+        <!-- Online player row -->
+        <BoxContainer Orientation="Horizontal" SeparationOverride="4">
+            <OptionButton Name="OnlinePlayerDropdown" HorizontalExpand="True" MinSize="200 0" />
+            <Button Name="AddOnlineButton" Text="{Loc 'moff-patreon-panel-add-online'}" MinSize="120 0" />
+        </BoxContainer>
+        <!-- ID input row -->
+        <BoxContainer Orientation="Horizontal" SeparationOverride="4">
+            <LineEdit Name="IdInput" PlaceHolder="{Loc 'moff-patreon-panel-id-placeholder'}" HorizontalExpand="True" />
+            <Button Name="AddIdButton" Text="{Loc 'moff-patreon-panel-add-id'}" MinSize="120 0" />
+        </BoxContainer>
+        <!-- Status label -->
+        <Label Name="StatusLabel" Visible="False" />
+        <!-- Patron list label -->
+        <Label Text="{Loc 'moff-patreon-panel-patron-list-label'}" StyleClasses="LabelHeading" Margin="0 4 0 0" />
+        <!-- Search input -->
+        <LineEdit Name="SearchInput"
+                  PlaceHolder="{Loc 'moff-patreon-panel-search-placeholder'}"
+                  HorizontalExpand="True"
+                  Margin="0 0 0 2" />
+        <!-- Scrollable patron list -->
+        <ScrollContainer HorizontalExpand="True" VerticalExpand="True" HScrollEnabled="True">
+            <BoxContainer Name="PatronList" Orientation="Vertical" SeparationOverride="2" />
+        </ScrollContainer>
+    </BoxContainer>
+</DefaultWindow>

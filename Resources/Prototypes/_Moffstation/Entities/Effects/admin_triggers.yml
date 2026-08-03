@@ -1,0 +1,15 @@
+﻿- type: entity
+  parent: AdminInstantEffectBase
+  id: AdminInstantEffectRedspace
+  suffix: RedspaceFlash
+  components:
+  - type: SpawnOnTrigger
+    proto: EffectFlashRedspace
+
+- type: entity
+  parent: AdminInstantEffectFlash
+  id: AdminInstantEffectFlashSound
+  suffix: Flash with sound
+  components:
+  - type: EmitSoundOnTrigger
+    sound: /Audio/Weapons/flash.ogg

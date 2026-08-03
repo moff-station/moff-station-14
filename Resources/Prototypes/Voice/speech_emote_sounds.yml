@@ -255,6 +255,14 @@
       path: /Audio/Effects/Gasp/vox_gasp.ogg
     DefaultDeathgasp:
       path: /Audio/Effects/Gasp/vox_DeathGasp.ogg
+    # Moffstation - Start - Vox emotes
+    Hiss:
+      path: /Audio/_Moffstation/Voice/Vox/vox_hiss.ogg
+    Caw:
+      path: /Audio/_Moffstation/Voice/Vox/vox_caw.ogg
+    Crow:
+      path: /Audio/_Moffstation/Voice/Vox/vox_cawf.ogg
+    # Moffstation - End
   params:
     variation: 0.125
     # TODO: We need vox sounds for the other emotes
@@ -398,7 +406,7 @@
     pitch: 0.75
 
 - type: emoteSounds
-  id: UnisexMoth
+  id: UnisexMothUpstream # Moffstation - Namespaced, our version inherits from this in case of upstream additions
   voiceSelectorName: humanoid-profile-editor-voice-neutral
   params:
     variation: 0.125

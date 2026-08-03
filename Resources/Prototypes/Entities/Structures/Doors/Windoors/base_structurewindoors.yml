@@ -107,6 +107,8 @@
       path: /Audio/Machines/windoor_open.ogg
     denySound:
       path: /Audio/Machines/airlock_deny.ogg
+    checkFixtureCollision: true
+    allowMachineLayer: true
   - type: Airlock
     keepOpenIfClicked: true
     openPanelVisible: true
@@ -152,6 +154,11 @@
     tags:
     - DoorRemoteWhitelist
     # This tag is used by door remotes to allow or not a door remote to normally be able to interact with a door
+# ES Start
+  - type: ESSparkOnHit
+    prob: 0.25
+    count: 2
+# ES End
 
 - type: entity
   abstract: true

@@ -8,6 +8,7 @@ public sealed class EnvelopeSystem : VisualizerSystem<EnvelopeComponent>
     public override void Initialize()
     {
         base.Initialize();
+        SubscribeLocalEvent((Entity<EnvelopeComponent> ent, ref ComponentInit _) => UpdateAppearance(ent)); // Moffstation - Update appearance on initialization.
         SubscribeLocalEvent<EnvelopeComponent, AfterAutoHandleStateEvent>(OnAfterAutoHandleState);
     }
 

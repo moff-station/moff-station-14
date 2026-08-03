@@ -1,0 +1,10 @@
+- type: entity
+  parent: ClothingHeadHelmetERTLeader
+  id: ClothingHeadHelmetERTMailCarrier
+  name: ERT mail carrier helmet
+  description: An in-atmosphere helmet worn by mail carriers of the Nanotrasen Emergency Response Team. Has blue, white and red highlights.
+  components:
+  - type: Sprite
+    sprite: _NF/Clothing/Head/Helmets/ert_mailcarrier.rsi
+  - type: Clothing
+    sprite: _NF/Clothing/Head/Helmets/ert_mailcarrier.rsi

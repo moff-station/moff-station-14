@@ -2,6 +2,7 @@ using Content.Server.Antag;
 using Content.Server.GameTicking.Rules.Components;
 using Content.Server.Preferences.Managers;
 using Content.Shared.Body;
+using Content.Shared.DetailExaminable;
 using Content.Shared.Humanoid;
 using Content.Shared.Humanoid.Prototypes;
 using Content.Shared.Preferences;
@@ -14,6 +15,7 @@ public sealed partial class AntagLoadProfileRuleSystem : GameRuleSystem<AntagLoa
     [Dependency] private HumanoidProfileSystem _humanoidProfile = default!;
     [Dependency] private IServerPreferencesManager _prefs = default!;
     [Dependency] private SharedVisualBodySystem _visualBody = default!;
+    [Dependency] private MetaDataSystem _metaData = default!;  // Moffstation
 
     public override void Initialize()
     {
@@ -48,6 +50,14 @@ public sealed partial class AntagLoadProfileRuleSystem : GameRuleSystem<AntagLoa
         {
             _visualBody.ApplyProfileTo(args.Entity.Value, humanoidProfile);
             _humanoidProfile.ApplyProfileTo(args.Entity.Value, humanoidProfile);
+            // Moffstation - Start - Preserve character info option
+            if (ent.Comp.PreserveName)
+            {
+                _metaData.SetEntityName(args.Entity.Value, humanoidProfile.Name);
+                var details = EnsureComp<DetailExaminableComponent>(args.Entity.Value);
+                details.Content = humanoidProfile.FlavorText;
+            }
+            // Moffstation - End
         }
     }
 }

@@ -2,6 +2,7 @@ using System.Linq;
 using System.Numerics;
 using Content.Client.Lobby.UI.Loadouts;
 using Content.Client.Lobby.UI.Roles;
+using Content.Shared.Antag;
 using Content.Shared.Clothing;
 using Content.Shared.Preferences;
 using Content.Shared.Preferences.Loadouts;
@@ -62,7 +63,13 @@ public sealed partial class HumanoidProfileEditor
 
         _loadoutWindow = new LoadoutWindow(Profile, roleLoadout, roleLoadoutProto, _playerManager.LocalSession, collection)
         {
-            Title = Loc.GetString("loadout-window-title-loadout", ("job", $"{jobProto?.LocalizedName}")),
+            // Moffstation Start
+            Title = jobProto?.ID switch
+            {
+                null => "loadout",
+                _ => Loc.GetString("loadout-window-title-loadout", ("job", $"{jobProto.LocalizedName}")),
+            },
+            // Moffstation End
         };
 
         // Refresh the buttons etc.
@@ -165,14 +172,14 @@ public sealed partial class HumanoidProfileEditor
 
                 category.AddChild(new PanelContainer
                 {
-                    PanelOverride = new StyleBoxFlat { BackgroundColor = Color.FromHex("#464966") },
+                    PanelOverride = new StyleBoxFlat { BackgroundColor = department.Color }, // Moffstation - Colored job list
                     Children =
                         {
-                            new Label
+                            new RichTextLabel // Moffstation - Colored job list
                             {
-                                Text = Loc.GetString("humanoid-profile-editor-department-jobs-label",
+                                Text = Loc.GetString("humanoid-profile-editor-department-jobs-label-moffstation", // Moffstation - Colored job list
                                     ("departmentName", departmentName)),
-                                Margin = new Thickness(5f, 0, 0, 0)
+                                Margin = new Thickness(5f, 2f, 0, 2f), // Moffstation - Colored job list
                             }
                         }
                 });
@@ -249,7 +256,7 @@ public sealed partial class HumanoidProfileEditor
 
                 var loadoutWindowBtn = new Button()
                 {
-                    Text = Loc.GetString("loadout-window"),
+                    Text = Loc.GetString("loadout-window-moffstation"), // Moffstation - loadout gear button
                     HorizontalAlignment = HAlignment.Right,
                     VerticalAlignment = VAlignment.Center,
                     Margin = new Thickness(3f, 3f, 0f, 0f),
@@ -294,6 +301,31 @@ public sealed partial class HumanoidProfileEditor
         UpdateJobPriorities();
     }
 
+    // Moffstation - Start - Antag loadout button
+    private void OnAntagLoadoutPressed(ProtoId<AntagPrototype> antagId)
+    {
+        var jobProtoId = LoadoutSystem.GetJobPrototype(antagId);
+        if (!_prototypeManager.TryIndex<RoleLoadoutPrototype>(jobProtoId, out var roleLoadoutProto))
+            return;
+
+        var loadout = new RoleLoadout();
+        Profile?.Loadouts.TryGetValue(jobProtoId, out loadout);
+
+        // Clone so we dont modify the underlying loadout
+        loadout = loadout?.Clone();
+
+        if (loadout == null)
+        {
+            loadout = new RoleLoadout(roleLoadoutProto.ID);
+            loadout.SetDefault(Profile, _playerManager.LocalSession, _prototypeManager);
+        }
+
+        OpenLoadout(null, loadout, roleLoadoutProto);
+    }
+    // Moffstation - End
+
+    // Moffstation - Start - New antagonist tab replaces this
+    /*
     public void RefreshAntags()
     {
         AntagList.RemoveAllChildren();
@@ -346,15 +378,44 @@ public sealed partial class HumanoidProfileEditor
 
             antagContainer.AddChild(selector);
 
-            antagContainer.AddChild(new Button()
+            var loadoutWindowBtn = new Button()
             {
-                Disabled = true,
-                Text = Loc.GetString("loadout-window"),
+                // Disabled = true,
+                Text = Loc.GetString("loadout-window-moffstation"), // Moffstation
                 HorizontalAlignment = HAlignment.Right,
                 Margin = new Thickness(3f, 0f, 0f, 0f),
-            });
+            };
 
+            antagContainer.AddChild(loadoutWindowBtn);
+
+            var protoManager = IoCManager.Instance!.Resolve<IPrototypeManager>();
+
+            // If no loadout found then disabled button
+            if (!protoManager.TryIndex<RoleLoadoutPrototype>(LoadoutSystem.GetJobPrototype(antag.ID), out var roleLoadoutProto))
+            {
+                loadoutWindowBtn.Disabled = true;
+            }
+            else
+            {
+                loadoutWindowBtn.OnPressed += _ =>
+                {
+                    RoleLoadout loadout;
+                    if (Profile != null && Profile.Loadouts.TryGetValue(LoadoutSystem.GetJobPrototype(antag.ID), out var roleLoadout))
+                    {
+                        // Clone so we don't modify the underlying loadout.
+                        loadout = roleLoadout.Clone();
+                    }
+                    else
+                    {
+                        loadout = new RoleLoadout(roleLoadoutProto.ID);
+                        loadout.SetDefault(Profile, _playerManager.LocalSession, _prototypeManager);
+                    }
+
+                    OpenLoadout(null, loadout, roleLoadoutProto);
+                };
+            }
             AntagList.AddChild(antagContainer);
         }
     }
+    */ // Moffstation - End
 }

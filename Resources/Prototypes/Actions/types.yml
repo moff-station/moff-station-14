@@ -80,6 +80,7 @@
   - type: Action
     useDelay: 10
     checkCanInteract: false
+    priority: -99 # Moffstation - scream priority in the action bar
   - type: Sprite
     layers:
     - texture: Interface/Actions/scream.png
@@ -464,6 +465,7 @@
     itemIconStyle: NoItem
     useDelay: 1 # emote spam
     checkCanInteract: false
+    priority: 1000 # Moffstation - RP actions go last in the bar
   - type: Sprite
     sprite: Mobs/Customization/reptilian_parts.rsi
     layers:
@@ -503,7 +505,7 @@
     useDelay: 1
     itemIconStyle: BigAction
   - type: Sprite
-    sprite: Clothing/OuterClothing/Hardsuits/paramed.rsi
+    sprite: _Moffstation/Clothing/OuterClothing/Hardsuits/paramed.rsi # Moffstation
     layers:
     - state: icon-siren
 

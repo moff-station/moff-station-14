@@ -1,0 +1,34 @@
+- type: entity
+  parent: [ BaseItem, PersonalAIGhostRoleBase ]
+  id: RobotParrot
+  name: robot parrot
+  description: A pirates best friend!
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Objects/Fun/robotparrot.rsi
+    state: icon
+  - type: Clothing
+    sprite: _Moffstation/Objects/Fun/robotparrot.rsi
+    slots:
+    - neck
+
+- type: entity
+  parent: [ BaseItem, PersonalAIGhostRoleBase ]
+  id: PersonalAI
+  name: personal ai device
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Objects/Fun/pai.rsi
+    layers:
+    - state: pai-base
+    - state: pai-off-overlay
+      shader: unshaded
+      map: [ "screen" ]
+  - type: Appearance
+  - type: GenericVisualizer
+    visuals:
+      enum.ToggleableGhostRoleVisuals.Status:
+        screen:
+          Off: { state: pai-off-overlay }
+          Searching: { state: pai-searching-overlay }
+          On: { state: pai-on-overlay }

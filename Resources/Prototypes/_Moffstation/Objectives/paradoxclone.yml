@@ -1,0 +1,12 @@
+- type: entity
+  parent: [BaseParadoxCloneObjective]
+  id: ParadoxCloneCoexistObjective
+  name: Coexist with your original self.
+  description: Convince your original to accept your existence. But beware, the time paradox will cause you to perish at the end of the shift!
+  components:
+  - type: Objective
+    icon:
+      sprite: Objects/Misc/folders.rsi
+      state: folder-colormap
+  - type: SimpleObjective
+    title: objective-condition-coexist

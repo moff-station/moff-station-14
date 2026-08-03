@@ -34,6 +34,9 @@ using Robust.Shared.Serialization;
 using Robust.Shared.Timing;
 using Robust.Shared.Utility;
 
+using Content.Server._Moffstation.Antag; // Moffstation
+using Content.Server._Moffstation.Discord.GuildEvent; // Moffstation
+
 namespace Content.Server.Entry
 {
     public sealed partial class EntryPoint : GameServer
@@ -42,6 +45,7 @@ namespace Content.Server.Entry
         private const string ConfigPresetsDirBuild = $"{ConfigPresetsDir}Build/";
 
         [Dependency] private CVarControlManager _cvarCtrl = default!;
+        [Dependency] private DiscordGuildEventManager _discordGuildEventManager = default!; // Moffstation
         [Dependency] private ContentLocalizationManager _loc = default!;
         [Dependency] private ContentNetworkResourceManager _netResMan = default!;
         [Dependency] private DiscordChatLink _discordChatLink = default!;
@@ -77,6 +81,8 @@ namespace Content.Server.Entry
         [Dependency] private ServerInfoManager _serverInfo = default!;
         [Dependency] private ServerUpdateManager _updateManager = default!;
         [Dependency] private ServerFeedbackManager _feedbackManager = null!;
+
+        [Dependency] private IWeightedAntagManager _weightedAntags = default!; // Moffstation
 
         public override void PreInit()
         {
@@ -168,6 +174,7 @@ namespace Content.Server.Entry
             _multiServerKick.Initialize();
             _cvarCtrl.Initialize();
             _feedbackManager.Initialize();
+            _weightedAntags.Initialize(); // Moffstation - Weighted antags
         }
 
         public override void Update(ModUpdateLevel level, FrameEventArgs frameEventArgs)
@@ -199,6 +206,7 @@ namespace Content.Server.Entry
             {
                 _playTimeTracking.Shutdown();
                 _dbManager.Shutdown();
+                _weightedAntags.Shutdown(); // Moffstation - Weighted antags
             }
 
             _serverApi.Shutdown();
@@ -206,6 +214,7 @@ namespace Content.Server.Entry
             // We don't care when or how this finishes, just spin the task off into the void.
             _ = _discordLink.Shutdown();
             _discordChatLink.Shutdown();
+            _discordGuildEventManager.Shutdown(); // Moffstation - end Discord guild event on shutdown
         }
 
         private static void LoadConfigPresets(IConfigurationManager cfg, IResourceManager res, ISawmill sawmill)

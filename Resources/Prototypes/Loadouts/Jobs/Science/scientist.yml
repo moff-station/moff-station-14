@@ -43,21 +43,25 @@
   id: ScientistJumpsuit
   equipment:
     jumpsuit: ClothingUniformJumpsuitScientist
+  groupBy: "scientist jumpsuits" # Moffstation
 
 - type: loadout
   id: ScientistJumpskirt
   equipment:
     jumpsuit: ClothingUniformJumpskirtScientist
+  groupBy: "scientist jumpskirts" # Moffstation
 
 - type: loadout
   id: RoboticistJumpsuit
   equipment:
     jumpsuit: ClothingUniformJumpsuitRoboticist
+  groupBy: "scientist jumpsuits" # Moffstation
 
 - type: loadout
   id: RoboticistJumpskirt
   equipment:
     jumpsuit: ClothingUniformJumpskirtRoboticist
+  groupBy: "scientist jumpskirts" # Moffstation
 
 - type: loadout
   id: SeniorResearcherJumpsuit
@@ -66,6 +70,7 @@
     proto: SeniorResearcher
   equipment:
     jumpsuit: ClothingUniformJumpsuitSeniorResearcher
+  groupBy: "scientist jumpsuits" # Moffstation
 
 - type: loadout
   id: SeniorResearcherJumpskirt
@@ -74,22 +79,26 @@
     proto: SeniorResearcher
   equipment:
     jumpsuit: ClothingUniformJumpskirtSeniorResearcher
+  groupBy: "scientist jumpskirts" # Moffstation
 
 # Back
 - type: loadout
   id: ScientistBackpack
   equipment:
     back: ClothingBackpackScience
+  groupBy: "scientist backpacks" # Moffstation - New Drip
 
 - type: loadout
   id: ScientistSatchel
   equipment:
     back: ClothingBackpackSatchelScience
+  groupBy: "scientist backpacks" # Moffstation - New Drip
 
 - type: loadout
   id: ScientistDuffel
   equipment:
     back: ClothingBackpackDuffelScience
+  groupBy: "scientist backpacks" # Moffstation - New Drip
 
 # OuterClothing
 - type: loadout
@@ -147,6 +156,7 @@
   id: ScientistPDA
   equipment:
     id: SciencePDA
+  groupBy: "scientist roles"  # Moffstation - Additional Roles
 
 - type: loadout
   id: SeniorResearcherPDA
@@ -155,3 +165,4 @@
     proto: SeniorResearcher
   equipment:
     id: SeniorResearcherPDA
+  groupBy: "scientist roles"  # Moffstation - Additional Roles

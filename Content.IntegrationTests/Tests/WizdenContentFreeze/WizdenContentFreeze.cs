@@ -16,7 +16,7 @@ public sealed class WizdenContentFreeze : GameTest
     ///
     /// https://github.com/space-wizards/space-station-14/issues/8524
     /// </summary>
-    [Test]
+//    [Test] // Moffstation - Turn off content freeze test
     public async Task MicrowaveRecipesFreezeTest()
     {
         var pair = Pair;

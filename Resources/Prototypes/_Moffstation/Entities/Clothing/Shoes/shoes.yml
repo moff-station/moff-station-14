@@ -1,0 +1,156 @@
+# Clown
+- type: entity
+  parent: ClothingShoesClown
+  id: ClothingShoesHarlequin
+  name: harlequin shoes
+  description: A harlequin's shoes, specialised to help with acrobatic tomfoolery.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Shoes/harlequin-shoes.rsi
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Shoes/harlequin-shoes.rsi
+  - type: FootstepModifier
+    footstepSoundCollection:
+      collection: FootstepJester
+      params:
+        variation: 0.07
+
+- type: entity
+  parent: ClothingShoesJester
+  id: ClothingShoesJesterAlt
+  name: jester shoes
+  description: A court jester's shoes, installed with the latest in Jingle Technology.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Shoes/jester.rsi
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Shoes/jester.rsi
+
+# Syndicate
+- type: entity
+  parent: [ ClothingShoesBase , BaseSyndicateContraband ]
+  id: ClothingShoesSkatesSyndicate
+  name: syndicate rocket skates
+  description: Blood-red, stylish, and fast. Just avoid hitting any walls.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Shoes/skatessyndicate.rsi
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Shoes/skatessyndicate.rsi
+    clothingVisuals:
+      shoes:
+      - state: equipped-FEET
+        offset: "0, -0.04"
+  - type: Item
+    sprite: _Moffstation/Clothing/Shoes/skatessyndicate.rsi
+  - type: ClothingSpeedModifier
+    walkModifier: 1.2
+    sprintModifier: 1.2
+  - type: Skates
+    stunSeconds: 0.75
+  - type: FootstepModifier
+    footstepSoundCollection:
+      collection: FootstepSkates
+      params:
+        variation: 0.08
+  - type: JumpAbility
+    jumpDistance: 2
+    jumpSound: /Audio/Effects/stealthoff.ogg
+  - type: ActionGrant
+    actions:
+    - ActionGravityJump
+  - type: ItemActionGrant
+    actions:
+    - ActionGravityJump
+    activeIfWorn: true
+  - type: Tag
+    tags: []
+
+# Security
+- type: entity
+  parent: [ClothingShoesBootsJack, ClothingShoesHighheelBoots, BaseSecurityContraband]
+  id: ClothingShoesBootsJackHeels
+  name: high-heeled jackboots
+  description: Specialized high-heeled boots intended for use in combat scenarios, while somehow passing equipment standards. Now, you can kick ass in style!
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Shoes/high-heeled-jackboots.rsi
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Shoes/high-heeled-jackboots.rsi
+    clothingVisuals:
+      shoes:
+      - state: equipped-FEET
+        offset: "0, -0.0275"
+      shoes-vox:
+      - state: equipped-FEET-vox
+  - type: ClothingSlowOnDamageModifier
+    modifier: 0.3
+  - type: MeleeWeapon
+    damage:
+      types:
+        Piercing: 8
+
+- type: entity
+  parent: ClothingShoesHighheelBoots
+  id: ClothingShoesBootsNurse
+  name: nurse heels
+  description: high heels designed for nurses looking to make their presence known in the medical ward.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Shoes/nurse_heels.rsi
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Shoes/nurse_heels.rsi
+    clothingVisuals:
+      shoes:
+      - state: equipped-FEET
+        offset: "0, -0.03"
+      shoes-vox:
+      - state: equipped-FEET-vox
+        offset: "0, -0.03"
+
+- type: entity
+  parent: [ClothingShoesBootsMagBase, BaseCargoContraband]
+  id: ClothingShoesBootsMagSharkminnow
+  name: Sharkminnow magboots
+  description: A pair of modified magboots covered in the leather of a Sharkminnow. It's slip and slide properties still temporarily active reduce almost all of the friction while keeping the user firmly attached.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Shoes/magboots-sharkminnow.rsi
+    state: icon
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Shoes/magboots-sharkminnow.rsi
+  - type: ClothingSpeedModifier
+    walkModifier: 0.95
+    sprintModifier: 0.95
+  - type: Item
+    sprite: null
+    size: Normal
+  - type: StaticPrice
+    price: 5000
+  - type: Construction
+    graph: ClothingShoesBootsMagSharkminnow
+    node: shoes
+
+# Red Performer (Kasane Teto)
+- type: entity
+  parent: ClothingShoesBaseButcherable
+  id: ClothingShoesBootsPerformerRed
+  name: red performer's boots
+  description: Just wearing them makes you feel a little hot-headed.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Shoes/performer-red.rsi
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Shoes/performer-red.rsi
+
+# Yellow Performer (Akita Neru)
+- type: entity
+  parent: ClothingShoesBaseButcherable
+  id: ClothingShoesBootsPerformerYellow
+  name: yellow performer's boots
+  description: They're jet-black, just waiting to be obscured by darkness.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Shoes/performer-yellow.rsi
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Shoes/performer-yellow.rsi

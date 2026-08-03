@@ -409,6 +409,11 @@
   components:
     - type: GhostRole
       name: job-name-chef
+      # Moffstation - Freeagent visitors
+      rules: ghost-role-information-freeagent-rules
+      mindRoles:
+      - MindRoleGhostRoleFreeAgent
+      # Moffstation - Freeagent visitors
     - type: Loadout
       prototypes: [ VisitorChef, VisitorChefAlt ]
       roleLoadout: [ RoleSurvivalStandard ]
@@ -420,6 +425,11 @@
   components:
     - type: GhostRole
       name: job-name-clown
+      # Moffstation - Freeagent visitors
+      rules: ghost-role-information-freeagent-rules
+      mindRoles:
+      - MindRoleGhostRoleFreeAgent
+      # Moffstation - Freeagent visitors
     - type: Loadout
       prototypes: [ VisitorClown ]
       roleLoadout: [ RoleSurvivalClown ]
@@ -854,7 +864,7 @@
       raffle:
         settings: default
     - type: Loadout
-      prototypes: [ VisitorBlackmarketeer, VisitorBlackmarketeer ]
+      prototypes: [ MercenaryBasicGear, MercenaryBasicGear ] # Moffstation - (Mercenary Loadouts)
       roleLoadout: [ RoleSurvivalStandard ]
 
 - type: randomHumanoidSettings

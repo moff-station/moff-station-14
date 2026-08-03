@@ -28,10 +28,11 @@ public struct HealthAnalyzerUiState
     public bool? ScanMode;
     public bool? Bleeding;
     public bool? Unrevivable;
+    public bool? Uncloneable; //Moffstation change - uncloneable (duh)
 
     public HealthAnalyzerUiState() {}
 
-    public HealthAnalyzerUiState(NetEntity? targetEntity, float temperature, float bloodLevel, bool? scanMode, bool? bleeding, bool? unrevivable)
+    public HealthAnalyzerUiState(NetEntity? targetEntity, float temperature, float bloodLevel, bool? scanMode, bool? bleeding, bool? unrevivable, bool? uncloneable) //Moffstation change - uncloneable
     {
         TargetEntity = targetEntity;
         Temperature = temperature;
@@ -39,5 +40,6 @@ public struct HealthAnalyzerUiState
         ScanMode = scanMode;
         Bleeding = bleeding;
         Unrevivable = unrevivable;
+        Uncloneable = uncloneable; //Moffstation change - uncloneable
     }
 }

@@ -1,0 +1,57 @@
+﻿- type: gamePreset
+  id: GunGame
+  alias:
+  - gungame
+  - gg
+  name: gun-game-title
+  description: gun-game-description
+  maxPlayers: 5
+  showInVote: true
+  supportedMaps: GunGameMapPool
+  rules:
+  - GunGame
+
+- type: gamePreset
+  id: Pirates
+  alias:
+  - pirates
+  - pierats
+  name: pirates-title
+  description: pirates-description
+  showInVote: false
+  rules:
+  - DummyNonAntagChance
+  - Pirates
+  - SubGamemodesRuleNoWizard
+  - BasicStationEventScheduler
+  - MeteorSwarmScheduler
+  - SpaceTrafficControlEventScheduler
+  - BasicRoundstartVariation
+
+- type: gamePreset
+  id: ExtendedAdmin
+  name: extended-title
+  showInVote: false #2boring2vote
+  description: extended-description
+  rules:
+  - BasicStationEventScheduler
+  - MeteorSwarmScheduler
+  - SpaceTrafficControlEventScheduler
+  - BasicRoundstartVariation
+
+- type: gamePreset
+  id: WizardDuel
+  alias:
+  - MagicFistFight
+  - ThreeStooges
+  name: wizard-duel-title
+  description: wizard-duel-description
+  showInVote: false
+  rules:
+  - DummyNonAntagChance
+  - WizardDuel
+  - SubGamemodesRuleNoWizard
+  - BasicStationEventScheduler
+  - MeteorSwarmScheduler
+  - SpaceTrafficControlEventScheduler
+  - BasicRoundstartVariation

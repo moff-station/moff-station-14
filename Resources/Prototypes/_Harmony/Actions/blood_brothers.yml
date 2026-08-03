@@ -1,0 +1,39 @@
+- type: entity
+  id: ActionBloodBrotherConvert
+  name: Convert
+  description: Convert a crewmember to your blood oath.
+  components:
+  - type: Action
+    itemIconStyle: BigAction
+  - type: TargetAction
+    repeat: false
+    deselectOnMiss: false
+  - type: EntityTargetAction
+    event: !type:BloodBrotherConvertActionEvent
+    whitelist:
+      components:
+      - HumanoidProfile
+    canTargetSelf: false
+  - type: Sprite
+    sprite: /Textures/Interface/Alerts/bleed.rsi
+    state: bleed10
+
+- type: entity
+  id: ActionBloodBrotherCheckConvert
+  name: Check If Convertible
+  description: Check if a crewmember is susceptible to conversion.
+  components:
+  - type: Action
+    itemIconStyle: BigAction
+  - type: TargetAction
+    repeat: true
+    deselectOnMiss: false
+  - type: EntityTargetAction
+    event: !type:BloodBrotherCheckConvertActionEvent
+    whitelist:
+      components:
+      - HumanoidProfile
+    canTargetSelf: false
+  - type: Sprite
+    sprite: _Umbra/Interface/Actions/set-pose.rsi # I'm stealing this since upstream changed how action icons work
+    state: eyeopen

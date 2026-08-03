@@ -24,7 +24,7 @@
 
 - type: entity
   parent: BaseGameRule
-  id: SubGamemodesRule
+  id: SubGamemodesRuleUpstream  # Moffstation - Moved to our namespace
   components:
   - type: SubGamemodes
     rules:
@@ -37,7 +37,7 @@
 
 - type: entity
   parent: BaseGameRule
-  id: SubGamemodesRuleNoWizard
+  id: SubGamemodesRuleNoWizardUpstream # Moffstation - Use our own version
   components:
   - type: SubGamemodes
     rules:
@@ -236,7 +236,12 @@
   parent: [BaseGameRule, BaseRoundstartAntagRule]
   components:
   - type: GameRule
-    minPlayers: 15
+    minPlayers: 30 # Moff - Highpop Gamemode
+    # Moffstation - Begin - Delay revs so that everyone spawning at the arrivals terminal doesn't end the round
+    delay:
+      min: 300
+      max: 300
+    # Moffstation - End
   - type: RevolutionaryRule
   - type: AntagSelection
     selectionTime: PrePlayerSpawn
@@ -296,7 +301,7 @@
   parent: [ BaseGameRule, BaseRoundstartAntagRule]
   components:
   - type: GameRule
-    minPlayers: 20
+    minPlayers: 20 # Moff - Midpop Gamemode
     delay:
       min: 600
       max: 900
@@ -341,13 +346,13 @@
   id: Xenoborgs
   components:
   - type: GameRule
-    minPlayers: 30
+    minPlayers: 30 # Moff - Highpop Gamemode
 
 # This rule makes the chosen players unable to get other antag rules, as a way to prevent metagaming job rolls.
 # Put this before antags assigned to station jobs, but after non-job antags (NukeOps/Wiz).
 - type: entity
   id: DummyNonAntag
-  parent: BaseGameRule
+  parent: BaseUnweightedAntagRule # Moffstation - Antag Weights
   components:
   - type: GameRule
     minPlayers: 5
@@ -370,6 +375,7 @@
   - Traitor
   - Thief
   - HeadRev
+  - BloodBrother
 
 # event schedulers
 
@@ -385,6 +391,10 @@
         tableId: ModerateAntagEventsTable
       - !type:NestedSelector
         tableId: CargoGiftsTable
+      # Moffstation Start - Cargo Packing Error
+      - !type:NestedSelector
+        tableId: CargoPackingErrorTable
+      # Moffstation End - Cargo Packing Error
       - !type:NestedSelector
         tableId: CalmPestEventsTable
       - !type:NestedSelector
@@ -400,6 +410,10 @@
       tableId: BasicAntagEventsTable
     - !type:NestedSelector
       tableId: CargoGiftsTable
+    # Moffstation Start - Cargo Packing Error
+    - !type:NestedSelector
+      tableId: CargoPackingErrorTable
+    # Moffstation End - Cargo Packing Error
     - !type:NestedSelector
       tableId: CalmPestEventsTable
     - !type:NestedSelector
@@ -407,8 +421,14 @@
 
 - type: entityTable
   id: SpaceTrafficControlTable
-  table: !type:NestedSelector # we need to pass a list of rules, since rules have further restrictions to consider via StationEventComp
-    tableId: UnknownShuttlesHostileTable
+  # Moffstation - Begin - Wrecks as space traffic events
+  table: !type:AllSelector # we need to pass a list of rules, since rules have further restrictions to consider via StationEventComp
+    children:
+      - !type:NestedSelector
+        tableId: UnknownShuttlesHostileTable
+      - !type:NestedSelector
+        tableId: WreckEventTable
+  # Moffstation - End
 
 - type: entity
   id: BasicStationEventScheduler
@@ -439,8 +459,8 @@
   parent: BaseGameRule                  # we can remerge this with the other schedulers, but it will silently fail due to that limitation without a separate scheduler to balance atm.
   components:
   - type: BasicStationEventScheduler
-    minimumTimeUntilFirstEvent: 2700 # 45 mins #shows up like half way through shift.
-    maximumSpanUntilFirstEvent: 900 # At longest takes an hour to show up.
+    minimumTimeUntilFirstEvent: 1200 # 20 minutes # Moffstation - They show up earlier now
+    maximumSpanUntilFirstEvent: 1400 # At longest takes an hour to show up. # Moffstation - compensate for earlier first apperance time
     minMaxEventTiming:
       min: 1200 # 20 mins
       max: 7200 # 120 mins # you probably arent getting a second visitor shuttle in one round, but it is possible.
@@ -478,3 +498,20 @@
     - id: BasicDecalDirtMonospaceVariationPass
       prob: 0.50
       orGroup: monospaceDecals
+    # Moffstation - Start - Stowaways
+    - id: Stowaways
+      prob: 0.20
+    - id: MoffFilthyStationDecalVariationPass
+      prob: 0.10
+    - id: MoffRustyStationVariationPass
+      prob: 0.10
+    - id: MoffReinforcedRustyStationVariationPass
+      prob: 0.10
+    - id: MoffWaterloggedStationVariationPass
+      prob: 0.10
+    - id: MoffTrashedStationVariationPass
+      prob: 0.10
+    # Disable this one... for now...
+    #  - id: MoffDamagedHullVariationPass
+    #    prob: 0.10
+    # Moffstation - End

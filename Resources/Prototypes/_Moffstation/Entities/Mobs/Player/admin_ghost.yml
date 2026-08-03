@@ -1,0 +1,20 @@
+﻿# CD Record viewer for aghosts
+- type: entity
+  id: ActionAGhostShowCharacterRecords
+  name: Character Records Interface
+  description: View all of the character records
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Action
+    keywords: [ "AI", "console", "interface" ]
+    priority: -10
+  - type: Sprite
+    sprite: Structures/Machines/parts.rsi
+    layers:
+    - state: box_0
+      map: ["enum.ActionVisuals.Icon"]
+    - state: box_2
+      map: ["enum.ActionVisuals.IconToggled"]
+      visible: false
+  - type: InstantAction
+    event: !type:ToggleIntrinsicUIEvent { key: enum.CharacterRecordConsoleKey.Key }

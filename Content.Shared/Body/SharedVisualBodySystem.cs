@@ -1,6 +1,8 @@
 using System.Linq;
-using Content.Shared.Humanoid.Markings;
+using System.Numerics;
 using Content.Shared.Humanoid;
+using Content.Shared.Humanoid.Markings;
+using Content.Shared.Sprite;
 using Robust.Shared.Containers;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Utility;
@@ -15,6 +17,8 @@ public abstract partial class SharedVisualBodySystem : EntitySystem
     [Dependency] private MarkingManager _marking = default!;
     [Dependency] private SharedContainerSystem _container = default!;
 
+    [Dependency] private SharedScaleVisualsSystem _scaleVisuals = default!; // Moffstation - Height scaling
+
     public override void Initialize()
     {
         base.Initialize();
@@ -23,6 +27,8 @@ public abstract partial class SharedVisualBodySystem : EntitySystem
         SubscribeLocalEvent<VisualOrganMarkingsComponent, BodyRelayedEvent<OrganCopyAppearanceEvent>>(OnMarkingsOrganCopyAppearance);
         SubscribeLocalEvent<VisualOrganComponent, BodyRelayedEvent<ApplyOrganProfileDataEvent>>(OnVisualOrganApplyProfile);
         SubscribeLocalEvent<VisualOrganMarkingsComponent, BodyRelayedEvent<ApplyOrganMarkingsEvent>>(OnMarkingsOrganApplyMarkings);
+        SubscribeLocalEvent<HumanoidProfileComponent, ApplyOrganProfileDataEvent>(OnApplyOrganProfileData); // Moffstation - Height scaling
+        SubscribeLocalEvent<VisualOrganComponent, ForceUpdateOrganVisualsEvent>(OnForceOrganUpdate);//Moffstation - Re-add Geras
 
         InitializeModifiers();
         InitializeInitial();
@@ -74,6 +80,14 @@ public abstract partial class SharedVisualBodySystem : EntitySystem
         Dirty(ent);
     }
 
+    //Moffstation - Re-add Geras - Begin
+    private void OnForceOrganUpdate(Entity<VisualOrganComponent> ent, ref ForceUpdateOrganVisualsEvent args)
+    {
+        ent.Comp.Data.State = args.State;
+        Dirty(ent);
+    }
+    //Moffstation - End
+
     protected virtual void SetOrganAppearance(Entity<VisualOrganComponent> ent, PrototypeLayerData data)
     {
         ent.Comp.Data = data;
@@ -107,6 +121,42 @@ public abstract partial class SharedVisualBodySystem : EntitySystem
 
         SetOrganMarkings(ent, other.Markings);
     }
+
+    // Moffstation - Begin - Height Scaling
+    private void OnApplyOrganProfileData(Entity<HumanoidProfileComponent> entity, ref ApplyOrganProfileDataEvent args)
+    {
+        if (args.Base?.Height is not { } height)
+            return;
+
+        ApplyHeightScale(entity, height);
+    }
+
+    /// <summary>
+    /// Sets <paramref name="entity"/>'s <see cref="HumanoidProfileComponent.Height"/> to <paramref name="height"/>, via
+    /// <see cref="SharedScaleVisualsSystem"/>, respecting species' limits.
+    /// </summary>
+    private void ApplyHeightScale(Entity<HumanoidProfileComponent> entity, float height)
+    {
+        if (!HasComp<VisualBodyComponent>(entity) ||
+            !ProtoMan.Resolve(entity.Comp.Species, out var species))
+            return;
+
+        // If the height is the default, don't worry about scaling.
+        if (Math.Abs(species.DefaultHeight - height) < 0.001f)
+            return;
+
+        var heightClamped = Math.Clamp(
+            MathF.Round(height, 2),
+            species.MinHeight,
+            species.MaxHeight
+        );
+
+        _scaleVisuals.SetSpriteScale(
+            entity,
+            new Vector2(species.ScaleHeight ? heightClamped : 1f, heightClamped)
+        );
+    }
+    // Moffstation - End
 
     private void OnVisualOrganApplyProfile(Entity<VisualOrganComponent> ent, ref BodyRelayedEvent<ApplyOrganProfileDataEvent> args)
     {

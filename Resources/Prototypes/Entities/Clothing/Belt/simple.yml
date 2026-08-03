@@ -23,10 +23,10 @@
   description: For holding your pants up.
   components:
   - type: Sprite
-    sprite: Clothing/Belt/suspenders_red.rsi
+    sprite: _Moffstation/Clothing/Belt/suspenders_red.rsi # Moffstation
     state: icon
   - type: Clothing
-    sprite: Clothing/Belt/suspenders_red.rsi
+    sprite: _Moffstation/Clothing/Belt/suspenders_red.rsi # Moffstation
     quickEquip: true
   - type: Tag
     tags:
@@ -39,6 +39,6 @@
   name: black suspenders
   components:
   - type: Sprite
-    sprite: Clothing/Belt/suspenders_black.rsi
+    sprite: _Moffstation/Clothing/Belt/suspenders_black.rsi # Moffstation
   - type: Clothing
-    sprite: Clothing/Belt/suspenders_black.rsi
+    sprite: _Moffstation/Clothing/Belt/suspenders_black.rsi # Moffstation

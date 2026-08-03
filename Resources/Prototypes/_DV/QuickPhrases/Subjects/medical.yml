@@ -1,0 +1,48 @@
+- type: quickPhrase
+  parent: [ BaseMedicalPhrase, BaseSubjectPhrase ]
+  abstract: true
+  id: BaseMedicalSubjectPhrase
+
+- type: quickPhrase
+  parent: BaseMedicalSubjectPhrase
+  abstract: true
+  id: BaseDamageTypePhrase
+
+- type: quickPhrase
+  parent: BaseMedicalSubjectPhrase
+  abstract: true
+  id: BaseMedicinePhrase
+
+- { type: quickPhrase, parent: BaseDamageTypePhrase, id: DamageBrutePhrase }
+- { type: quickPhrase, parent: BaseDamageTypePhrase, id: DamageBurnPhrase }
+- { type: quickPhrase, parent: BaseDamageTypePhrase, id: DamageAirlossPhrase }
+- { type: quickPhrase, parent: BaseDamageTypePhrase, id: DamageToxinPhrase }
+- { type: quickPhrase, parent: BaseDamageTypePhrase, id: DamageGeneticPhrase }
+- { type: quickPhrase, parent: BaseDamageTypePhrase, id: DamageBloodlossPhrase }
+- { type: quickPhrase, parent: BaseDamageTypePhrase, id: DamageRadiationPhrase }
+- { type: quickPhrase, parent: BaseMedicinePhrase, id: ChemDylovenePhrase }
+- { type: quickPhrase, parent: BaseMedicinePhrase, id: ChemArithrazinePhrase }
+- { type: quickPhrase, parent: BaseMedicinePhrase, id: ChemBicaridinePhrase }
+- { type: quickPhrase, parent: BaseMedicinePhrase, id: ChemDermalinePhrase }
+- { type: quickPhrase, parent: BaseMedicinePhrase, id: ChemDexalinPhrase }
+- { type: quickPhrase, parent: BaseMedicinePhrase, id: ChemKelotanePhrase }
+- { type: quickPhrase, parent: BaseMedicinePhrase, id: ChemTricordrazinePhrase }
+- { type: quickPhrase, parent: BaseMedicinePhrase, id: ChemOmnizinePhrase }
+- { type: quickPhrase, parent: BaseMedicinePhrase, id: ChemPyrazinePhrase }
+- { type: quickPhrase, parent: BaseMedicinePhrase, id: TopicalPhrase }
+- { type: quickPhrase, parent: BaseMedicinePhrase, id: TopicalBrutePackPhrase }
+- { type: quickPhrase, parent: BaseMedicinePhrase, id: TopicalGauzePhrase }
+- { type: quickPhrase, parent: BaseMedicinePhrase, id: TopicalBloodpackPhrase }
+- { type: quickPhrase, parent: BaseMedicinePhrase, id: DefibrillatorPhrase }
+- { type: quickPhrase, parent: BaseMedicinePhrase, id: CryopodPhrase }
+- { type: quickPhrase, parent: BaseMedicinePhrase, id: StasisBedPhrase }
+- { type: quickPhrase, parent: BaseMedicinePhrase, id: FirstAidKitPhrase }
+- { type: quickPhrase, parent: BaseMedicinePhrase, id: ClonePhrase }
+- { type: quickPhrase, parent: BaseMedicinePhrase, id: CloningPodPhrase }
+- { type: quickPhrase, parent: BaseMedicinePhrase, id: BiomassPhrase }
+- { type: quickPhrase, parent: BaseMedicinePhrase, id: SyringePhrase }
+- { type: quickPhrase, parent: BaseMedicinePhrase, id: PillPhrase }
+- { type: quickPhrase, parent: BaseMedicinePhrase, id: AlivePhrase }
+- { type: quickPhrase, parent: BaseMedicinePhrase, id: CritPhrase }
+- { type: quickPhrase, parent: BaseMedicinePhrase, id: DeadPhrase }
+- { type: quickPhrase, parent: BaseMedicinePhrase, id: HealthyPhrase }

@@ -1,0 +1,160 @@
+﻿# ID
+- type: loadout
+  id: VirologistPDA
+  equipment:
+    id: VirologistPDA
+  groupBy: "doctor roles"
+
+- type: loadout
+  id: GeneticistPDA
+  equipment:
+    id: GeneticistPDA
+  groupBy: "doctor roles"
+
+- type: loadout
+  id: ClinicianPDA
+  equipment:
+    id: ClinicianPDA
+  groupBy: "doctor roles"
+
+- type: loadout
+  id: CoronerPDA
+  equipment:
+    id: CoronerPDA
+  groupBy: "doctor roles"
+
+- type: loadout
+  id: CryogenicsSpecialistPDA
+  equipment:
+    id: CryogenicsSpecialistPDA
+  groupBy: "doctor roles"
+
+- type: loadout
+  id: NursePDA
+  equipment:
+    id: NursePDA
+  groupBy: "doctor roles"
+
+- type: loadout
+  id: SurgeonPDA
+  equipment:
+    id: SurgeonPDA
+  groupBy: "doctor roles"
+
+# Head
+- type: loadout
+  id: BurgundySurgeryCap
+  equipment:
+    head: ClothingHeadHatSurgcapBurgundy
+  groupBy: "medical doctor caps"
+
+- type: loadout
+  id: BlackSurgeryCap
+  equipment:
+    head: ClothingHeadHatSurgcapBlack
+  groupBy: "medical doctor caps"
+# Mask
+
+# Neck
+
+# Jumpsuit
+- type: loadout
+  id: MedicalBurgundyScrubs
+  equipment:
+    jumpsuit: UniformScrubsColorBurgundy
+  groupBy: "medical doctor scrubs"
+
+- type: loadout
+  id: MedicalBlackScrubs
+  equipment:
+    jumpsuit: UniformScrubsColorBlack
+  groupBy: "medical doctor scrubs"
+
+- type: loadout
+  id: MedicalDoctorJumpskirtNurse
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtNurse
+  groupBy: "medical doctor jumpskirts"
+
+- type: loadout
+  id: MedicalDoctorJumpsuitGenetics
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitGenetics
+  groupBy: "medical doctor jumpsuits"
+
+- type: loadout
+  id: MedicalDoctorJumpsuitVirology
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitVirology
+  groupBy: "medical doctor jumpsuits"
+
+- type: loadout
+  id: MedicalDoctorJumpskirtGenetics
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtGenetics
+  groupBy: "medical doctor jumpskirts"
+
+- type: loadout
+  id: MedicalDoctorJumpskirtVirology
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtVirology
+  groupBy: "medical doctor jumpskirts"
+
+# Back
+- type: loadout
+  id: VirologyBackpack
+  equipment:
+    back: ClothingBackpackVirology
+  groupBy: "virology backpacks"
+
+- type: loadout
+  id: VirologySatchel
+  equipment:
+    back: ClothingBackpackSatchelVirology
+  groupBy: "virology backpacks"
+
+- type: loadout
+  id: VirologyDuffel
+  equipment:
+    back: ClothingBackpackDuffelVirology
+  groupBy: "virology backpacks"
+
+- type: loadout
+  id: GeneticsBackpack
+  equipment:
+    back: ClothingBackpackGenetics
+  groupBy: "genetics backpacks"
+
+- type: loadout
+  id: GeneticsSatchel
+  equipment:
+    back: ClothingBackpackSatchelGenetics
+  groupBy: "genetics backpacks"
+
+- type: loadout
+  id: GeneticsDuffel
+  equipment:
+    back: ClothingBackpackDuffelGenetics
+  groupBy: "genetics backpacks"
+
+# Belt
+
+# Outer Clothing
+- type: loadout
+  id: LabCoatViro
+  equipment:
+    outerClothing: ClothingOuterCoatLabViro
+
+- type: loadout
+  id: LabCoatGene
+  equipment:
+    outerClothing: ClothingOuterCoatLabGene
+
+# Gloves
+
+# Shoes
+- type: loadout
+  id: NurseHeels
+  equipment:
+    shoes: ClothingShoesBootsNurse
+# Eyewear

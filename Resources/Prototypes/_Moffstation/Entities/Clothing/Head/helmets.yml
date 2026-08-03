@@ -1,0 +1,24 @@
+- type: entity
+  id: FoldableHelmetBase
+  abstract: true
+  components:
+  - type: Foldable
+    unfoldVerbText: fold-untuck-hair-verb
+    foldVerbText: fold-tuck-hair-verb
+    canFoldInsideContainer: true
+  - type: FoldableClothing
+    foldedHideLayers:
+    - Hair
+  - type: HideLayerClothing
+    slots: []
+
+- type: entity
+  parent: ClothingHeadHelmetBasic
+  id: ClothingHeadHelmetMilitary
+  name: military helmet
+  description: A bulkier, older helmet, it provides decent protection against most forms of attack, and comes with a detachable visor. It has been repainted in security colors.
+  components:
+  - type: Sprite
+    sprite: &security-military_rsi _Moffstation/Clothing/Head/Helmets/security-military.rsi
+  - type: Clothing
+    sprite: *security-military_rsi

@@ -1,0 +1,32 @@
+using Content.Shared._DV.Traits.Effects;
+using Content.Shared.Roles;
+using Content.Shared.StatusEffectNew;
+using JetBrains.Annotations;
+using Robust.Shared.Prototypes;
+
+namespace Content.Shared._Moffstation.Jobs;
+
+/// <summary>
+/// Adds permanent status effects to the entity.
+/// </summary>
+[UsedImplicitly]
+public sealed partial class ApplyStatusEffectSpecial : JobSpecial, IBaseTraitEffect
+{
+    [DataField(required: true)]
+    public HashSet<EntProtoId> StatusEffects = new();
+
+    public override void AfterEquip(EntityUid mob)
+    {
+        var entMan = IoCManager.Resolve<IEntityManager>();
+        var statusSystem = entMan.System<StatusEffectsSystem>();
+        foreach (var effect in StatusEffects)
+        {
+            statusSystem.TrySetStatusEffectDuration(mob, effect);
+        }
+    }
+
+    public void Apply(TraitEffectContext ctx)
+    {
+        AfterEquip(ctx.Player);
+    }
+}

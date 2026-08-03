@@ -23,16 +23,19 @@
   id: BartenderJumpsuit
   equipment:
     jumpsuit: ClothingUniformJumpsuitBartender
+  groupBy: "bartender jumpsuits" # Moffstation
 
 - type: loadout
   id: BartenderJumpskirt
   equipment:
     jumpsuit: ClothingUniformJumpskirtBartender
+  groupBy: "bartender jumpskirts" # Moffstation
 
 - type: loadout
   id: BartenderJumpsuitPurple
   equipment:
     jumpsuit: ClothingUniformJumpsuitBartenderPurple
+  groupBy: "bartender jumpsuits" # Moffstation
 
 # Outer clothing
 - type: loadout

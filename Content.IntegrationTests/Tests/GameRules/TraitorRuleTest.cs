@@ -1,11 +1,13 @@
 using System.Linq;
 using Content.IntegrationTests.Fixtures;
+using Content.Server._Moffstation.Objectives.Components; // Moffstation - Objective Selection
 using Content.Server.Antag.Components;
 using Content.Server.GameTicking;
 using Content.Server.GameTicking.Rules;
 using Content.Server.GameTicking.Rules.Components;
 using Content.Server.Mind;
 using Content.Server.Roles;
+using Content.Shared._Moffstation.Objectives; // Moffstation
 using Content.Shared.GameTicking;
 using Content.Shared.GameTicking.Components;
 using Content.Shared.Mind;
@@ -119,6 +121,7 @@ public sealed class TraitorRuleTest : GameTest
         Assert.That(traitorRule.TotalTraitors, Is.EqualTo(1));
         Assert.That(traitorRule.TraitorMinds[0], Is.EqualTo(mind));
 
+        /* Moffstation - Start - Test irrelevant
         // Check total objective difficulty
         Assert.That(entMan.TryGetComponent<MindComponent>(mind, out var mindComp));
         var totalDifficulty = mindComp.Objectives.Sum(o => entMan.GetComponent<ObjectiveComponent>(o).Difficulty);
@@ -126,6 +129,13 @@ public sealed class TraitorRuleTest : GameTest
             $"MaxDifficulty exceeded! Objectives: {string.Join(", ", mindComp.Objectives.Select(o => FormatObjective(o, entMan)))}");
         Assert.That(mindComp.Objectives, Is.Not.Empty,
             $"No objectives assigned!");
+        */ // Moffstation - End
+
+        // Moffstation - Start - PotentialObjectives test
+        // Check objectives were delivered to the PotentialObjective component properly
+        Assert.That(entMan.TryGetComponent<PotentialObjectivesComponent>(mind, out var potentialObjectivesComp));
+        Assert.That(potentialObjectivesComp!.ObjectiveOptions, Is.Not.Empty, "No potential objective options found!");
+        // Moffstation - End
     }
 
     private static string FormatObjective(Entity<ObjectiveComponent> entity, IEntityManager entMan)
