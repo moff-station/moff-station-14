@@ -1,0 +1,25 @@
+﻿#Player: OrbitSystem / Character: The Wind Of Perserverance
+- type: entity
+  parent: PanFluteInstrument
+  id: &id MoffPersonalItemRhytidomeFlute
+  name: rhytidome flute
+  suffix: PersonalItem
+  description:  a set of pipes carved out of a dionas own biomass, carefully formed to aid in one's song.
+  components:
+  - type: Sprite
+    sprite: &sprite _Moffstation/PersonalItems/Items/OrbitSystem/The_Wind_Of_Perserverance/rhytidomeflute.rsi
+    state: base
+  - type: Item
+    sprite: *sprite
+  - type: DetailExaminable
+    content: Carved into the wood is writing saying "Remember what was lost".
+
+- type: loadout
+  id: *id
+  storage:
+    back:
+    - *id
+  effects:
+  - !type:PersonalItemLoadoutEffect
+    character:
+    - The Wind Of Perserverance
