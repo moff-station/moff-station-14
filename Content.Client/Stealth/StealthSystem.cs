@@ -1,5 +1,4 @@
 using Content.Client.Interactable.Components;
-using Content.Client.Graphics;
 using Content.Shared.Stealth;
 using Content.Shared.Stealth.Components;
 using Robust.Client.GameObjects;
@@ -43,19 +42,9 @@ public sealed partial class StealthSystem : SharedStealthSystem
             return;
 
         _sprite.SetColor((uid, sprite), Color.White);
-        if (enabled)
-        {
-            _sprite.SetPostShader((uid, sprite), new SpriteComponent.PostShaderArgs(ContentPostShaderIds.Stealth, _shader)
-            {
-                GetScreenTexture = true,
-                RaiseShaderEvent = true,
-                Before = ContentPostShaderIds.BeforeOutlines,
-            });
-        }
-        else
-        {
-            _sprite.RemovePostShader((uid, sprite), ContentPostShaderIds.Stealth);
-        }
+        sprite.PostShader = enabled ? _shader : null;
+        sprite.GetScreenTexture = enabled;
+        sprite.RaiseShaderEvent = enabled;
 
         if (!enabled)
         {
@@ -64,8 +53,11 @@ public sealed partial class StealthSystem : SharedStealthSystem
             return;
         }
 
-        if (HasComp<InteractionOutlineComponent>(uid))
+        if (TryComp(uid, out InteractionOutlineComponent? outline))
+        {
+            RemCompDeferred(uid, outline);
             component.HadOutline = true;
+        }
     }
 
     private void OnStartup(EntityUid uid, StealthComponent component, ComponentStartup args)

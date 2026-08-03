@@ -1,7 +1,6 @@
 using System.Numerics;
 using Content.Client.CombatMode;
 using Content.Client.Gameplay;
-using Content.Client.Graphics;
 using Content.Client.Outline;
 using Content.Shared.ActionBlocker;
 using Content.Shared.CCVar;
@@ -102,8 +101,7 @@ public sealed partial class DragDropSystem : SharedDragDropSystem
     private ShaderInstance? _dropTargetInRangeShader;
     private ShaderInstance? _dropTargetOutOfRangeShader;
 
-    private readonly HashSet<SpriteComponent> _highlightedSprites = new();
-    private readonly HashSet<SpriteComponent> _nextHighlightedSprites = new();
+    private readonly List<SpriteComponent> _highlightedSprites = new();
 
     public override void Initialize()
     {
@@ -424,7 +422,8 @@ public sealed partial class DragDropSystem : SharedDragDropSystem
         // highlights the possible targets which are visible
         // and able to be dropped on by the current dragged entity
 
-        _nextHighlightedSprites.Clear();
+        // remove current highlights
+        RemoveHighlights();
 
         // find possible targets on screen even if not reachable
         // TODO: Duplicated in SpriteSystem and TargetOutlineSystem. Should probably be cached somewhere for a frame?
@@ -456,52 +455,32 @@ public sealed partial class DragDropSystem : SharedDragDropSystem
                         && _interactionSystem.InRangeUnobstructed(user.Value, entity);
             }
 
-            // highlight depending on whether its in or out of range
-            SetDragDropPostShader((entity, inRangeSprite), valid.Value ? _dropTargetInRangeShader! : _dropTargetOutOfRangeShader!);
-            inRangeSprite.RenderOrder = EntityManager.CurrentTick.Value;
-            _nextHighlightedSprites.Add(inRangeSprite);
-        }
-
-        foreach (var highlightedSprite in _highlightedSprites)
-        {
-            if (_nextHighlightedSprites.Contains(highlightedSprite))
+            if (inRangeSprite.PostShader != null &&
+                inRangeSprite.PostShader != _dropTargetInRangeShader &&
+                inRangeSprite.PostShader != _dropTargetOutOfRangeShader)
+            {
                 continue;
+            }
 
-            _sprite.RemovePostShader(highlightedSprite, ContentPostShaderIds.DragDropOutline);
-            highlightedSprite.RenderOrder = 0;
+            // highlight depending on whether its in or out of range
+            inRangeSprite.PostShader = valid.Value ? _dropTargetInRangeShader : _dropTargetOutOfRangeShader;
+            inRangeSprite.RenderOrder = EntityManager.CurrentTick.Value;
+            _highlightedSprites.Add(inRangeSprite);
         }
-
-        _highlightedSprites.Clear();
-        foreach (var highlightedSprite in _nextHighlightedSprites)
-        {
-            _highlightedSprites.Add(highlightedSprite);
-        }
-    }
-
-    private void SetDragDropPostShader(Entity<SpriteComponent?> sprite, ShaderInstance shader)
-    {
-        if (_sprite.TryGetPostShader(sprite, ContentPostShaderIds.DragDropOutline, out var entry) &&
-            entry.Shader == shader)
-        {
-            return;
-        }
-
-        _sprite.SetPostShader(sprite, new SpriteComponent.PostShaderArgs(ContentPostShaderIds.DragDropOutline, shader)
-        {
-            After = ContentPostShaderIds.AfterBaseEffects,
-        });
     }
 
     private void RemoveHighlights()
     {
         foreach (var highlightedSprite in _highlightedSprites)
         {
-            _sprite.RemovePostShader(highlightedSprite, ContentPostShaderIds.DragDropOutline);
+            if (highlightedSprite.PostShader != _dropTargetInRangeShader && highlightedSprite.PostShader != _dropTargetOutOfRangeShader)
+                continue;
+
+            highlightedSprite.PostShader = null;
             highlightedSprite.RenderOrder = 0;
         }
 
         _highlightedSprites.Clear();
-        _nextHighlightedSprites.Clear();
     }
 
     /// <summary>
