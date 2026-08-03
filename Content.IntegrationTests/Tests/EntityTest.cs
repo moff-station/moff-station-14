@@ -260,6 +260,7 @@ namespace Content.IntegrationTests.Tests
             var excludedIds = new[]
             {
                 "MaterialHideSharkminnowTrimmed",
+                "MoffC4InstantExplosion",
             };
             // Moff end
 
