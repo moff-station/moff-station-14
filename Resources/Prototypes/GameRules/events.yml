@@ -335,6 +335,11 @@
     earliestStart: 30
     reoccurrenceDelay: 60
     minimumPlayers: 30
+  # Moff start - antag enrollment
+  - type: ESSynchronizedVoteManager
+    votes:
+    - WizardEnroller
+  # Moff end
 
 # disabled until event is rewritten to be more interesting
 #- type: entity

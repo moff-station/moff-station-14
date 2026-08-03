@@ -50,8 +50,8 @@ public sealed partial class AntagGhostRoleTest : AntagTest
         // Moff start - Enrolls don't spawn ghost roles. instead we check if vote entities were spawned
         if (antag!.SelectionTime == AntagSelectionTime.Enroll)
         {
-            Assert.That(rule.TryComp<ESSynchronizedVoteManagerComponent>(out var voteManager, SEntMan.ComponentFactory), Is.True);
-            Assert.That(voteManager!.VoteEntities.Count, Is.Not.Count.Zero);
+            Assert.That(STryComp<ESSynchronizedVoteManagerComponent>(gameRule, out var voteManager), Is.True);
+            Assert.That(voteManager!.VoteEntities, Is.Not.Empty);
             return;
         }
         // Moff end
