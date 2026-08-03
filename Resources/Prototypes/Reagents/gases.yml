@@ -445,9 +445,8 @@
         conditions:
         - &ExclusivelyAvali !type:MetabolizerTypeCondition
           type: [ Avali ]
-      - !type:GenericStatusEffect
-        key: Adrenaline
-        component: IgnoreSlowOnDamage
+      - !type:ModifyStatusEffect
+        effectProto: StatusEffectAdrenaline
         time: 1
         conditions:
         - *ExclusivelyAvali
