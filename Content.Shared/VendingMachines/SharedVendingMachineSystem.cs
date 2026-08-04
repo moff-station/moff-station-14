@@ -205,20 +205,19 @@ public abstract partial class SharedVendingMachineSystem : EntitySystem
                 restock = (uint) Math.Floor(amount * result / chanceOfMissingStock);
             }
 
-                if (inventory.TryGetValue(id, out var entry))
-                    // Prevent a machine's stock from going over three times
-                    // the prototype's normal amount. This is an arbitrary
-                    // number and meant to be a convenience for someone
-                    // restocking a machine who doesn't want to force vend out
-                    // all the items just to restock one empty slot without
-                    // losing the rest of the restock.
-                    entry.Amount = Math.Min(entry.Amount + amount, 3 * restock);
-                else
-                    inventory.Add(id, new VendingMachineInventoryEntry(type, id, restock));
-            }
+            if (inventory.TryGetValue(id, out var entry))
+                // Prevent a machine's stock from going over three times
+                // the prototype's normal amount. This is an arbitrary
+                // number and meant to be a convenience for someone
+                // restocking a machine who doesn't want to force vend out
+                // all the items just to restock one empty slot without
+                // losing the rest of the restock.
+                entry.Amount = Math.Min(entry.Amount + amount, 3 * restock);
+            else
+                inventory.Add(id, new VendingMachineInventoryEntry(type, id, restock));
 
             // Moffstation - Start - Allow use of entityTables in vending machine inventories
-            else if (ProtoMan.TryIndex<EntityTablePrototype>(id, out var table))
+            if (ProtoMan.TryIndex<EntityTablePrototype>(id, out var table))
             {
                 AddInventoryFromPrototype(uid,
                     Enumerable.Repeat(table, (int)amount)
@@ -232,5 +231,4 @@ public abstract partial class SharedVendingMachineSystem : EntitySystem
             // Moffstation - End
         }
     }
-
 }
