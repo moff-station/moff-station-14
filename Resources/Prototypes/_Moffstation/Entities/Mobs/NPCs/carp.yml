@@ -7,9 +7,9 @@
 # Wizard Polymorphs
 - type: entity
   parent: BaseMobDragon
-  id: MobDragonMagic
+  id: MoffMobDragonMagic
   name: magidragon
-  suffix: Wizard Polymorph
+  suffix: Wizard
   description: Looks like some kind of dragon. Might be magical.
   components:
   - type: TypingIndicator
@@ -42,9 +42,9 @@
 
 - type: entity
   parent: MobShark
-  id: MobSharkMagic
+  id: MoffMobSharkMagic
   name: magishark
-  suffix: Wizard Polymorph
+  suffix: Wizard
   description: Looks like some kind of shark. Might be magical.
   components:
   - type: TypingIndicator

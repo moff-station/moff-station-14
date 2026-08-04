@@ -1,4 +1,4 @@
-﻿using Content.Shared.EntityTable; // Moff - Entity table integration
+﻿using Content.Shared.EntityTable;
 using Content.Shared.Weapons.Ranged.Components;
 using Content.Shared.Weapons.Ranged.Events;
 

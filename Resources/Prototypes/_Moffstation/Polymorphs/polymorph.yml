@@ -1,6 +1,6 @@
 ﻿- type: polymorph
   abstract: true
-  id: WizardForcedFishBase
+  id: MoffWizardForcedFishBase
   configuration:
     entity: MobCarpMagic
     forced: true
@@ -15,17 +15,17 @@
       path: /Audio/Magic/forcewall.ogg
 
 - type: polymorph
-  parent: WizardForcedFishBase
-  id: WizardForcedCarp
+  parent: MoffWizardForcedFishBase
+  id: MoffWizardForcedCarp
 
 - type: polymorph
-  parent: WizardForcedFishBase
-  id: WizardForcedDragon
+  parent: MoffWizardForcedFishBase
+  id: MoffWizardForcedDragon
   configuration:
-    entity: MobDragonMagic
+    entity: MoffMobDragonMagic
 
 - type: polymorph
-  parent: WizardForcedFishBase
-  id: WizardForcedShark
+  parent: MoffWizardForcedFishBase
+  id: MoffWizardForcedShark
   configuration:
-    entity: MobSharkMagic
+    entity: MoffMobSharkMagic
