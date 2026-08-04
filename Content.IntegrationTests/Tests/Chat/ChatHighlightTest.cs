@@ -7,9 +7,11 @@ using Content.Client.UserInterface.Systems.Chat;
 using Content.IntegrationTests.Fixtures;
 using Content.IntegrationTests.Fixtures.Attributes;
 using Content.Shared.CCVar;
+using Content.Shared.Roles;
 using NUnit.Framework;
 using Robust.Client.UserInterface;
 using Robust.Shared.Configuration;
+using Robust.Shared.Prototypes;
 
 namespace Content.IntegrationTests.Tests.Chat;
 
@@ -17,6 +19,7 @@ public sealed class ChatHighlightTest : GameTest
 {
     [SidedDependency(Side.Client)] private readonly IConfigurationManager _configManager = null!;
     [SidedDependency(Side.Client)] private readonly IUserInterfaceManager _uiManager = null!;
+    private static readonly ProtoId<JobPrototype> Captain = "Captain";
 
     [Test]
     [RunOnSide(Side.Client)]
@@ -37,10 +40,10 @@ public sealed class ChatHighlightTest : GameTest
         // 3. Simulate character update
         var characterData = new CharacterInfoSystem.CharacterData(
             default,
-            "Captain",
             new Dictionary<string, List<Shared.Objectives.ObjectiveInfo>>(),
             null, // Moff - Collective minds
             null,
+            Captain,
             "John Doe"
         );
 
@@ -122,10 +125,10 @@ public sealed class ChatHighlightTest : GameTest
         // 4. Simulate character update (spawning into round)
         var characterData = new CharacterInfoSystem.CharacterData(
             default,
-            "Captain",
             new Dictionary<string, List<Shared.Objectives.ObjectiveInfo>>(),
             null, // Moff - Collective minds
             null,
+            Captain,
             "John Doe"
         );
 
