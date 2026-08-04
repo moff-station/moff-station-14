@@ -520,3 +520,13 @@
       - state: professional-trinkets-equipped-INNERCLOTHING
       - state: color-trinkets-equipped-INNERCLOTHING
         color: *color-purple
+
+# Schoolgirl
+- type: entity
+  parent: ClothingUniformSkirtBase
+  id: ClothingUniformJumpskirtSerafuku
+  name: sailor schoolgirl uniform
+  description: A schoolgirl uniform with a sailor collar. You feel ready to gain knowledge (or something like that).
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Uniforms/Jumpskirt/serafuku.rsi
