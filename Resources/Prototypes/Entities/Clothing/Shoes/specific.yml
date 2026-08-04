@@ -19,6 +19,7 @@
     slots:
       item:
         name: clothing-boots-sidearm
+        ejectOnBreak: true
         whitelist:
           tags:
           - ToyKnife
@@ -128,6 +129,8 @@
   - type: SpeedModifierContactCapClothing
     maxContactSprintSlowdown: 0.7
     maxContactWalkSlowdown: 0.7
+  - type: NoFootprints # Funky change
+  - type: MoffStainRepellent # Moff - Can't be stained
 
 - type: entity
   parent: [ClothingShoesBaseButcherable, BaseHighlyIllegalContraband]
@@ -211,7 +214,7 @@
 - type: entity
   parent: ClothingShoesChameleon
   id: ClothingShoesChameleonNoSlips
-  name: black shoes #actual name and description in uplink_catalog.yml
+  name: black shoes #actual name and description in wearables.yml
   suffix: No-slip, Chameleon
   description: Stylish black shoes.
   components:

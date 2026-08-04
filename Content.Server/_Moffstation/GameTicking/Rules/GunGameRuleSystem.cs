@@ -9,6 +9,7 @@ using Content.Server.Mind;
 using Content.Server.Power.Components;
 using Content.Server.RoundEnd;
 using Content.Server.Station.Systems;
+using Content.Shared.Administration.Systems;
 using Content.Shared.Containers.ItemSlots;
 using Content.Shared.GameTicking;
 using Content.Shared.GameTicking.Components;
@@ -47,6 +48,7 @@ public sealed partial class GunGameRuleSystem : GameRuleSystem<GunGameRuleCompon
     [Dependency] private IRobustRandom _random = default!;
     [Dependency] private EntityLookupSystem _lookup = default!;
     [Dependency] private ItemSlotsSystem _itemSlots = default!;
+    [Dependency] private RejuvenateSystem _rejuvenate = default!;
 
     public override void Initialize()
     {
@@ -79,7 +81,6 @@ public sealed partial class GunGameRuleSystem : GameRuleSystem<GunGameRuleCompon
             var mob = mobMaybe!.Value;
 
             _mind.TransferTo(mindId.Value, mob);
-            _outfitSystem.SetOutfit(mob, gunGame.Gear);
             EnsureComp<KillTrackerComponent>(mob);
             EnsureComp<GunGameTrackerComponent>(mob);
 
@@ -130,6 +131,11 @@ public sealed partial class GunGameRuleSystem : GameRuleSystem<GunGameRuleCompon
             killerInfo.Kills = 0;
             ProgressPlayerReward(killerInfo, gunGame);
             RefreshPlayerLoadout(killerInfo, gunGame);
+
+            // Rejuvenate the killer
+            if (_player.TryGetSessionById(killer.PlayerId, out var session)
+                && session.AttachedEntity is { } killerUid)
+                _rejuvenate.PerformRejuvenate(killerUid);
         }
     }
 

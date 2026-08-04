@@ -6,7 +6,7 @@ using Robust.Shared.Animations;
 namespace Content.Client.Chasm;
 
 /// <summary>
-/// Handles the falling animation for entities that fall into a chasm.
+/// Handles the falling animation for entities that fall into an entity with <see cref="ChasmComponent"/>.
 /// </summary>
 public sealed partial class ChasmFallingVisualsSystem : EntitySystem
 {
@@ -39,7 +39,7 @@ public sealed partial class ChasmFallingVisualsSystem : EntitySystem
         // Moffstation - Begin - Add `EnsureComp<AnimationPlayerComponent>` because previously many entities did not play the animation
         var player = EnsureComp<AnimationPlayerComponent>(entity);
         if (_anim.HasRunningAnimation(player, ChasmFallAnimationKey))
-        // Moffstation - End
+            // Moffstation - End
         {
             return;
         }

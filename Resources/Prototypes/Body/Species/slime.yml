@@ -5,7 +5,7 @@
     enum.HumanoidVisualLayers.Hair:
       limit: 1
       required: false
-      randomChance: 1.0 # Moffstation - Random markings
+      weight: 1
     enum.HumanoidVisualLayers.FacialHair:
       limit: 1
       required: false
@@ -15,35 +15,35 @@
     enum.HumanoidVisualLayers.LArm:
       limit: 4 # Moffstation - Increase Markings
       required: false
-      randomChance: 0.1 # Moffstation - Random markings
+      weight: 0.1 # Moffstation - Random markings
     enum.HumanoidVisualLayers.RArm:
       limit: 4 # Moffstation - Increase Markings
       required: false
-      randomChance: 0.1 # Moffstation - Random markings
+      weight: 0.1 # Moffstation - Random markings
     enum.HumanoidVisualLayers.LHand:
       limit: 1
       required: false
-      randomChance: 0.1 # Moffstation - Random markings
+      weight: 0.1 # Moffstation - Random markings
     enum.HumanoidVisualLayers.RHand:
       limit: 1
       required: false
-      randomChance: 0.1 # Moffstation - Random markings
+      weight: 0.1 # Moffstation - Random markings
     enum.HumanoidVisualLayers.LLeg:
       limit: 4 # Moffstation - Increase Markings
       required: false
-      randomChance: 0.1 # Moffstation - Random markings
+      weight: 0.1 # Moffstation - Random markings
     enum.HumanoidVisualLayers.RLeg:
       limit: 4 # Moffstation - Increase Markings
       required: false
-      randomChance: 0.1 # Moffstation - Random markings
+      weight: 0.1 # Moffstation - Random markings
     enum.HumanoidVisualLayers.LFoot:
       limit: 1
       required: false
-      randomChance: 0.1 # Moffstation - Random markings
+      weight: 0.1 # Moffstation - Random markings
     enum.HumanoidVisualLayers.RFoot:
       limit: 1
       required: false
-      randomChance: 0.1 # Moffstation - Random markings
+      weight: 0.1 # Moffstation - Random markings
   appearances:
     enum.HumanoidVisualLayers.Hair:
       layerAlpha: 0.72
@@ -78,8 +78,8 @@
       FootLeft: OrganSlimePersonFootLeft
       FootRight: OrganSlimePersonFootRight
       Brain: OrganSlimePersonCore
+      Eyes: OrganSlimePersonEyes
       Lungs: OrganSlimePersonLungs
-      Eyes: OrganHumanEyes # Moffstation - Hackfix to make slime eyes colorable; expect upstream to do this in some better way.
   - type: HumanoidProfile
     species: SlimePerson
 
@@ -273,6 +273,14 @@
     maxReagents: 6
     metabolizerTypes: [ Slime ]
     stages: [ Digestion, Bloodstream, Metabolites ]
+
+- type: entity
+  parent: [ OrganBaseEyes, OrganSlimePersonInternal, OrganSlimePersonExternal ]
+  id: OrganSlimePersonEyes
+  components:
+  - type: VisualOrgan
+    data:
+      sprite: Mobs/Customization/eyes.rsi
 
 - type: entity
   parent: [ OrganBaseLungs, OrganSlimePersonInternal, OrganSlimePersonMetabolizer ]
