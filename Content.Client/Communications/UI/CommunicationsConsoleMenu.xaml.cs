@@ -20,7 +20,6 @@ namespace Content.Client.Communications.UI
         [Dependency] private IGameTiming _timing = default!;
         [Dependency] private ILocalizationManager _loc = default!;
         [Dependency] private IPrototypeManager _protoMan = default!;
-
         [Dependency] private IEntitySystemManager _entitySystem = default!; // Moffstation - Communications console clock
 
         private readonly ClientGameTicker _gameTicker; // Moffstation - Communications console clock
