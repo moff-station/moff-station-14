@@ -40,18 +40,8 @@ public partial class MobStateSystem
         SubscribeLocalEvent<MobStateComponent, UpdateCanMoveEvent>(CheckAct);
         SubscribeLocalEvent<MobStateComponent, StandAttemptEvent>(CheckAct);
         SubscribeLocalEvent<MobStateComponent, PointAttemptEvent>(CheckAct);
-        SubscribeLocalEvent<MobStateComponent, TryingToSleepEvent>(OnSleepAttempt);
-        SubscribeLocalEvent<MobStateComponent, CombatModeShouldHandInteractEvent>(OnCombatModeShouldHandInteract);
-        SubscribeLocalEvent<MobStateComponent, AttemptPacifiedAttackEvent>(OnAttemptPacifiedAttack);
-        SubscribeLocalEvent<MobStateComponent, DamageModifyEvent>(OnDamageModify);
-        SubscribeLocalEvent<MobStateComponent, AttemptToolRefineEvent>(OnAttemptToolRefine);
-
-        SubscribeLocalEvent<MobStateComponent, UnbuckleAttemptEvent>(OnUnbuckleAttempt);
 
         SubscribeLocalEvent<MobStateComponent, BodyRelayedEvent<MobStateChangedEvent>>(OnRelayedStateChange);//Moffstation - Re-add Geras
-
-        // Actions
-        SubscribeLocalEvent<ActionRequireMobStateComponent, ActionAttemptEvent>(OnMobStateActionAttempt);
     }
 
     //Moffstation - Re-add Geras - Begin
