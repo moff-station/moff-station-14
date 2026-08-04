@@ -10,7 +10,7 @@ using Content.Shared._Moffstation.Voting.Components;
 using Content.Shared.Antag;
 using Content.Shared.EntityTable;
 using Content.Shared.GameTicking.Components;
-using Content.Shared.Ghost;
+using Content.Shared.Ghost.Components;
 using Content.Shared.Roles.Components;
 using Robust.Server.Player;
 using Robust.Shared.Map;
