@@ -55,6 +55,7 @@
     - id: ReagentContainerSugar
     - id: FoodCondimentBottleEnzyme
     - id: DrinkSoyMilkCarton
+    - id: BoxFolderCateringDigiboard # Moff - it has to spawn SOMEWHERE after all!
     - !type:AllSelector
       rolls: 2
       children:
