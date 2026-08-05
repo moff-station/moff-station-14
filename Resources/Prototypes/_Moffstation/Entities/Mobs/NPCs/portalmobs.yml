@@ -33,10 +33,30 @@
   id: MobFleshJaredSmasher
   categories: [ HideSpawnMenu ]
 
+# REMEMBER TO FIX LATER
 - type: entity
-  parent: [ BaseHellportalMob, MobAbomination ]
+  #parent: [ BaseHellportalMob, MobAbomination ]
+  parent: MobAbomination
   id: MobAbominationSmasher
-  categories: [ HideSpawnMenu ]
+  #categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    drawdepth: Mobs
+    sprite: _Moffstation/Mobs/Demons/juggernaut.rsi
+    layers:
+    - map: [ "enum.DamageStateVisualLayers.Base" ]
+      state: juggernaut
+    - map: [ "enum.DamageStateVisualLayers.BaseUnshaded" ]
+      state: juggernaut_red
+      shader: unshaded
+  - type: DamageStateVisuals
+    states:
+      Alive:
+        Base: juggernaut
+        BaseUnshaded: juggernaut_red
+      Dead:
+        Base: juggernaut
+        BaseUnshaded: null
 
 - type: entity
   parent: [ BaseHellportalMob, MobCorgiNarsi ]
