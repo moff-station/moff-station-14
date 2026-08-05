@@ -284,6 +284,11 @@
   inventoryTemplateId: borgDutch
   # Moffstation - Start - Add neck slots and displacements
   inventoryDisplacements:
+    head:
+      sizeMaps:
+        32:
+          sprite: _Moffstation/Mobs/Silicon/Displacements/medical.rsi
+          state: head
     neck:
       sizeMaps:
         32:
