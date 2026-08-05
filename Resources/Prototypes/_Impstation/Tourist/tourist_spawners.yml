@@ -1,44 +1,74 @@
-- type: randomHumanoidSettings
-  id: Tourist
-  parent: EventHumanoid
-  components:
-    - type: GhostRole
-      name: ghost-role-information-tourist-name
-      description: ghost-role-information-tourist-description
-      rules: ghost-role-information-freeagent-rules
-      raffle:
-        settings: default
-    - type: Loadout
-      prototypes: [ TouristRedShirt, TouristBlueShirt, TouristYellowShirt, TouristBlackShirt, TouristHatRedShirt, TouristHatBlueShirt, TouristHatYellowShirt, TouristHatBlackShirt ]
-      roleLoadout: [ RoleSurvivalStandard ]
-    - type: Tourist
-    - type: AutoTraitor #this is weirdly named but works for more than just traitors
-      profile: TouristRule
-
 - type: entity
-  id: RandomTourist
-  name: tourist ghost role
-  components:
-    - type: Sprite
-      sprite: Clothing/Uniforms/Jumpsuit/hawaired.rsi
-      state: icon
-    - type: RandomHumanoidSpawner
-      settings: Tourist
-
-- type: entity
-  name: tourist spawner
-  id: TouristSpawner
   parent: MarkerBase
+  id: SpawnPointTourist
+  categories: [ HideSpawnMenu, Spawner ]
+  name: tourist spawn point
   components:
+  - type: SpawnPoint
   - type: Sprite
     layers:
       - state: red
       - sprite: Clothing/Uniforms/Jumpsuit/hawaired.rsi
         state: icon
-  - type: RandomSpawner
-    prototypes:
-    - RandomTourist
 
+- type: entity
+  parent: BaseAntagSpawner
+  id: SpawnPointGhostTourist
+  categories: [ HideSpawnMenu, Spawner ]
+  name: ghost role spawn point
+  suffix: tourist
+  components:
+  - type: GhostRole
+    name: ghost-role-information-tourist-name
+    description: ghost-role-information-tourist-description
+    rules: ghost-role-information-freeagent-rules
+    mindRoles:
+    - MindRoleTourist
+    raffle:
+      settings: default
+  - type: Sprite
+    layers:
+      - state: red
+      - sprite: Clothing/Uniforms/Jumpsuit/hawaired.rsi
+        state: icon
+
+- type: entity
+  parent: MarkerBase
+  id: TouristSpawner
+  categories: [ HideSpawnMenu, Spawner ]
+  name: tourist spawner
+  components:
+  - type: GhostRole
+    name: ghost-role-information-tourist-name
+    description: ghost-role-information-tourist-description
+    rules: ghost-role-information-freeagent-rules
+    raffle:
+      settings: default
+    mindRoles:
+    - MindRoleTourist
+  - type: GhostRoleMobSpawner
+    prototype: RandomTourist
+  - type: Sprite
+    layers:
+      - state: red
+      - sprite: Clothing/Uniforms/Jumpsuit/hawaired.rsi
+        state: icon
+
+- type: entity
+  id: RandomTourist
+  name: tourist ghost role
+  components:
+  - type: Sprite
+    sprite: Clothing/Uniforms/Jumpsuit/hawaired.rsi
+    state: icon
+  - type: RandomHumanoidSpawner
+    settings: Tourist
+
+- type: randomHumanoidSettings
+  id: Tourist
+  parent: EventHumanoid
+  components:
+  - type: Tourist
 
 # Tourist starting gear options. Currently differentiated by color of shirt and whether or not they're wearing hats, but they could get other stuff too
 - type: startingGear
