@@ -1,4 +1,4 @@
-﻿#Player: OrbitSystem / Character: The Wind Of Perserverance
+﻿#Player: OrbitSystem / Character: The Wind Of Perseverance
 - type: entity
   parent: PanFluteInstrument
   id: &id MoffPersonalItemRhytidomeFlute
@@ -7,7 +7,7 @@
   description: A set of pipes carved out of a dionas own biomass, carefully formed to aid in one's song.
   components:
   - type: Sprite
-    sprite: &sprite _Moffstation/PersonalItems/Items/OrbitSystem/The_Wind_Of_Perserverance/rhytidomeflute.rsi
+    sprite: &sprite _Moffstation/PersonalItems/Items/OrbitSystem/The_Wind_Of_Perseverance/rhytidomeflute.rsi
     state: base
   - type: Item
     sprite: *sprite
@@ -22,4 +22,4 @@
   effects:
   - !type:PersonalItemLoadoutEffect
     character:
-    - The Wind Of Perserverance
+    - The Wind Of Perseverance
