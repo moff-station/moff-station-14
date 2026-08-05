@@ -1,84 +1,96 @@
-- type: entityTable
-  id: BasicCalmEventsTable
-  table: !type:AllSelector # we need to pass a list of rules, since rules have further restrictions to consider via StationEventComp
-    children:
-    - id: AnomalySpawn
-    - id: BluespaceArtifact
-    - id: BluespaceLocker
-    - id: BreakerFlip
-    - id: BureaucraticError
-    - id: ClericalError
-    - id: CockroachMigration
-    - id: GasLeak
-    - id: GreytideVirus
-    - id: IonStorm # its calm like 90% of the time smh
-    - id: KudzuGrowth
-    - id: LightOverloadRule # Moffstation - New events
-    - id: LightOverloadRuleBlinking # Moffstation - New events
-    - id: MassHallucinations
-    - id: MouseMigration
-    - id: PowerGridCheck
-    - id: RandomSentience
-    #- id: SlimesSpawnHorde # Moffstation - Move to pests table
-    - id: SolarFlare
-    #- id: SnakeSpawnHorde # Moffstation - Move to pests table
-    #- id: SpiderClownSpawnHorde # Moffstation - Move to pests table
-    #- id: SpiderSpawnHorde # Moffstation - Move to pests table
-    - id: VentClog
+# Moff start - namespaced, commented out so we get conflicts and can update our own table in the future
+# put future additions into relevant table in Moffstation event_tables.yml
+#- type: entityTable
+#  id: BasicCalmEventsTable
+#  table: !type:AllSelector # we need to pass a list of rules, since rules have further restrictions to consider via StationEventComp
+#    children:
+#    - id: AnomalySpawn
+#    - id: BluespaceArtifact
+#    - id: BluespaceLocker
+#    - id: BreakerFlip
+#    - id: BureaucraticError
+#    - id: ClericalError
+#    - id: CockroachMigration
+#    - id: GasLeak
+#    - id: GreytideVirus
+#    - id: IonStorm # its calm like 90% of the time smh
+#    - id: KudzuGrowth
+#    - id: LightOverloadRule # Moffstation - New events
+#    - id: LightOverloadRuleBlinking # Moffstation - New events
+#    - id: MassHallucinations
+#    - id: MouseMigration
+#    - id: PowerGridCheck
+#    - id: RandomSentience
+#    #- id: SlimesSpawnHorde # Moffstation - Move to pests table
+#    - id: SolarFlare
+#    #- id: SnakeSpawnHorde # Moffstation - Move to pests table
+#    #- id: SpiderClownSpawnHorde # Moffstation - Move to pests table
+#    #- id: SpiderSpawnHorde # Moffstation - Move to pests table
+#    - id: VentClog
+# Moff end
 
-- type: entityTable
-  id: BasicAntagEventsTable
-  table: !type:AllSelector # we need to pass a list of rules, since rules have further restrictions to consider via StationEventComp
-    children:
-    - id: ClosetSkeleton
-    - id: KingRatMigration
-    - id: RevenantSpawn
-    - !type:NestedSelector
-      tableId: DerelictBorgEventTable
-    # Moffstation - Start - Moffstation basic antag events
-    - id: SyndicateDeadDrop
-    - id: SyndieVentSoldierSpawn
-    - id: LawBreakerVirus
-    # Moffstation - End
+# Moff start - namespaced, commented out so we get conflicts and can update our own table in the future
+# put future additions into relevant table in Moffstation event_tables.yml
+#- type: entityTable
+#  id: BasicAntagEventsTable
+#  table: !type:AllSelector # we need to pass a list of rules, since rules have further restrictions to consider via StationEventComp
+#    children:
+#    - id: ClosetSkeleton
+#    - id: KingRatMigration
+#    - id: RevenantSpawn
+#    - !type:NestedSelector
+#      tableId: DerelictBorgEventTable
+#    # Moffstation - Start - Moffstation basic antag events
+#    - id: SyndicateDeadDrop
+#    - id: SyndieVentSoldierSpawn
+#    - id: LawBreakerVirus
+#    # Moffstation - End
+# Moff end
 
-- type: entityTable
-  id: ModerateAntagEventsTable
-  table: !type:AllSelector # we need to pass a list of rules, since rules have further restrictions to consider via StationEventComp
-    children:
-    - id: DragonSpawn
-    - id: NinjaSpawn
-    - id: ParadoxCloneSpawn
-    - id: SleeperAgents
-    - id: ZombieOutbreak
-    - id: LoneOpsSpawn
-    # - id: WizardSpawn # Moffstation
-    - id: EeepEvent # imp
-    - !type:NestedSelector
-      tableId: DerelictBorgEventTable
-    # Moffstation - Start - Moffstation ghostrole antags
-    - id: SyndicateListeningOutpostSpawn
-    - id: PirateCorsairSpawn
-    - id: HellPortalSpawn
-    - id: ReplicatorSpawn
-    # Moffstation - End
+# Moff start - namespaced, commented out so we get conflicts and can update our own table in the future
+# put future additions into relevant table in Moffstation event_tables.yml
+#- type: entityTable
+#  id: ModerateAntagEventsTable
+#  table: !type:AllSelector # we need to pass a list of rules, since rules have further restrictions to consider via StationEventComp
+#    children:
+#    - id: DragonSpawn
+#    - id: NinjaSpawn
+#    - id: ParadoxCloneSpawn
+#    - id: SleeperAgents
+#    - id: ZombieOutbreak
+#    - id: LoneOpsSpawn
+#    # - id: WizardSpawn # Moffstation
+#    - id: EeepEvent # imp
+#    - !type:NestedSelector
+#      tableId: DerelictBorgEventTable
+#    # Moffstation - Start - Moffstation ghostrole antags
+#    - id: SyndicateListeningOutpostSpawn
+#    - id: PirateCorsairSpawn
+#    - id: HellPortalSpawn
+#    - id: ReplicatorSpawn
+#    # Moffstation - End
+# Moff end
 
-- type: entityTable
-  id: DerelictBorgEventTable #For Derelict Borg spawns
-  table: !type:GroupSelector
-    children:
-    - !type:GroupSelector # Standard NT Borgs
-      weight: 90 # moffstation - need to reduce assault borg chance so it doesn't become statistically more likely than derelict individual NT borgs
-      children:
-        - id: DerelictEngineerCyborgSpawn
-        - id: DerelictGenericCyborgSpawn
-        - id: DerelictJanitorCyborgSpawn
-        - id: DerelictMedicalCyborgSpawn
-        - id: DerelictMiningCyborgSpawn
-        - id: DerelictServiceCyborgSpawn # Moffstation
-    - !type:GroupSelector # Other Borgs
-      weight: 10 # moffstation - need to reduce assault borg chance so it doesn't become statistically more likely than derelict individual NT borgs
-      children:
-        - id: DerelictSyndicateAssaultCyborgSpawn
+# Moff start - namespaced, commented out so we get conflicts and can update our own table in the future
+# put future additions into relevant table in Moffstation event_tables.yml
+#- type: entityTable
+#  id: DerelictBorgEventTable #For Derelict Borg spawns
+#  table: !type:GroupSelector
+#    children:
+#    - !type:GroupSelector # Standard NT Borgs
+#      weight: 90 # moffstation - need to reduce assault borg chance so it doesn't become statistically more likely than derelict individual NT borgs
+#      children:
+#        - id: DerelictEngineerCyborgSpawn
+#        - id: DerelictGenericCyborgSpawn
+#        - id: DerelictJanitorCyborgSpawn
+#        - id: DerelictMedicalCyborgSpawn
+#        - id: DerelictMiningCyborgSpawn
+#        - id: DerelictServiceCyborgSpawn # Moffstation
+#    - !type:GroupSelector # Other Borgs
+#      weight: 10 # moffstation - need to reduce assault borg chance so it doesn't become statistically more likely than derelict individual NT borgs
+#      children:
+#        - id: DerelictSyndicateAssaultCyborgSpawn
+# Moff end
 
 - type: entity
   abstract: true

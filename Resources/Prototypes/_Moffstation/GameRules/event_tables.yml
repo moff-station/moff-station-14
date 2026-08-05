@@ -1,0 +1,93 @@
+# Passive/Neutral Player-Controlled events
+- type: entityTable
+  id: MoffCalmPlayerEventsTable
+  table: !type:AllSelector
+    children:
+      - id: RandomSentience
+      - id: DerelictEngineerCyborgSpawn
+      - id: DerelictGenericCyborgSpawn
+      - id: DerelictJanitorCyborgSpawn
+      - id: DerelictMedicalCyborgSpawn
+      - id: DerelictMiningCyborgSpawn
+      - id: DerelictServiceCyborgSpawn
+
+# Hostile Player-Controlled events
+- type: entityTable
+  id: MoffSpicyPlayerEventsTable
+  table: !type:AllSelector
+    children:
+      - id: ClosetSkeleton
+      - id: RevenantSpawn
+      - id: SyndieVentSoldierSpawn
+      - id: DerelictSyndicateAssaultCyborgSpawn
+      - id: KingRatMigration
+      - id: DragonSpawn
+      - id: NinjaSpawn
+      - id: ParadoxCloneSpawn
+      - id: SleeperAgents
+      - id: ZombieOutbreak
+      - id: LoneOpsSpawn
+      - id: SyndicateListeningOutpostSpawn
+      - id: PirateCorsairSpawn
+      - id: ReplicatorSpawn
+      - id: EeepEvent
+
+# Good/Neutral NPC events
+- type: entityTable
+  id: MoffCalmNonPlayerEventsTable
+  table: !type:AllSelector
+    children:
+      - id: BureaucraticError
+      - id: ClericalError
+      - id: BluespaceLocker
+      - !type:NestedSelector
+        tableId: CargoGiftsTable
+      - !type:NestedSelector
+        tableId: CalmCargoPackingErrorTable
+      - !type:NestedSelector
+        tableId: CalmPestEventsTable
+
+# Hostile NPC events
+- type: entityTable
+  id: MoffSpicyNonPlayerEventsTable
+  table: !type:AllSelector
+    children:
+      - id: AnomalySpawn
+      - id: BluespaceArtifact
+      - id: BreakerFlip
+      - id: PowerGridCheck
+      - id: SolarFlare
+      - id: GasLeak
+      - id: KudzuGrowth
+      - id: VentClog
+      - id: GreytideVirus
+      - id: IonStorm
+      - id: MassHallucinations
+      - id: LightOverloadRule
+      - id: LightOverloadRuleBlinking
+      - id: SyndicateDeadDrop
+      - id: LawBreakerVirus
+      - id: HellPortalSpawn
+      - !type:NestedSelector
+        tableId: SpicyCargoPackingErrorTable
+      - !type:NestedSelector
+        tableId: SpicyPestEventsTable
+
+- type: entityTable
+  id: SpicyPestEventsTable
+  table: !type:AllSelector
+    children:
+    - id: SnailMigration
+    - id: SlimesSpawnHorde
+    - id: SnakeSpawnHorde
+    - id: SpiderClownSpawnHorde
+    - id: SpiderSpawnHorde
+    - id: CarpSpawnHorde
+    - id: GorillaSpawnHorde
+    - id: SyndyCatSpawnHorde
+    - id: FleshSpawnHorde
+    - id: ArgocyteSpawnHorde
+    - id: HivebotSpawnHorde
+    - id: BatSpawnHorde
+    - id: SpaceCreatureSpawnHorde
+    - id: XenoSpawnHorde
