@@ -67,8 +67,8 @@
       - !type:NestedSelector
         tableId: CalmPestEventsTable
       - !type:NestedSelector
-        prob: 0.05
         tableId: WreckEventTable
+        prob: 0.05
 
 # Hostile NPC events
 - type: entityTable
