@@ -38,24 +38,25 @@
   #parent: [ BaseHellportalMob, MobAbomination ]
   parent: MobAbomination
   id: MobAbominationSmasher
+
   #categories: [ HideSpawnMenu ]
   components:
   - type: Sprite
     drawdepth: Mobs
-    sprite: _Moffstation/Mobs/Demons/juggernaut.rsi
+    sprite: _Moffstation/Mobs/Demons/artificer.rsi
     layers:
     - map: [ "enum.DamageStateVisualLayers.Base" ]
-      state: juggernaut
+      state: artificer
     - map: [ "enum.DamageStateVisualLayers.BaseUnshaded" ]
-      state: juggernaut_red
+      state: artificer_red
       shader: unshaded
   - type: DamageStateVisuals
     states:
       Alive:
-        Base: juggernaut
-        BaseUnshaded: juggernaut_red
+        Base: artificer
+        BaseUnshaded: artificer_red
       Dead:
-        Base: juggernaut
+        Base: artificer
         BaseUnshaded: null
 
 - type: entity
@@ -78,3 +79,12 @@
   parent: [ BaseHellportalMob, MobHellspawn ]
   id: MobHellspawnSmasher
   name: hellspawn
+
+# Nar'Sie demons
+- type: entity
+  abstract: true
+  parent: [ SimpleSpaceMobBase, BaseMobDestructible ]
+  id: MoffMobDemonNarsieBase
+  name: narsian demon
+  description: A runecarved fiend of blood and shadow.
+  #components:
