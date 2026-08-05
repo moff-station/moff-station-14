@@ -96,3 +96,218 @@
   components:
   - type: WirelessNetworkConnection
     range: 10000
+
+# Pirate consoles
+- type: entity
+  parent: ComputerCargoOrders
+  id: ComputerCargoOrdersPirate
+  name: pirate request computer
+  suffix: Pirate
+  description: Used by pirates to purchase new booty.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Structures/Machines/computers.rsi
+    layers:
+    - map: ["computerLayerBody"]
+      state: computer_pirate
+    - map: [ "computerLayerKeyboard" ]
+      state: generic_keyboard_pirate
+    - map: [ "computerLayerScreen" ]
+      state: pirate_request
+    - map: [ "computerLayerKeys" ]
+      state: pirate_key
+    - map: [ "enum.WiresVisualLayers.MaintenancePanel" ]
+      state: generic_panel_open
+  - type: CargoOrderConsole
+    allowedGroups: [ "pirateMarket" ]
+    account: Pirates
+    baseAnnouncementChannel: "Pirate"
+    announcementChannel: "Pirate"
+  - type: Computer
+    board: PirateRequestComputerCircuitboard
+  - type: PointLight
+    color: "#c9c042"
+  - type: AccessReader
+    access: [["Pirate"]]
+
+- type: entity
+  parent: ComputerIFF
+  id: MoffComputerIFFPirate
+  suffix: Pirate
+  components:
+  - type: Sprite
+    layers:
+    - map: [ "computerLayerBody" ]
+      state: computer_pirate
+    - map: [ "computerLayerKeyboard" ]
+      state: generic_keyboard_pirate
+    - map: [ "computerLayerScreen" ]
+      state: helm
+    - map: [ "computerLayerKeys" ]
+      state: pirate_key
+    - map: [ "enum.WiresVisualLayers.MaintenancePanel" ]
+  - type: IFFConsole
+    allowedFlags:
+    - Hide
+    - HideLabel
+  - type: ActivatableUI
+    key: enum.IFFConsoleUiKey.Key
+  - type: UserInterface
+    interfaces:
+      enum.IFFConsoleUiKey.Key:
+        type: IFFConsoleBoundUserInterface
+      enum.WiresUiKey.Key:
+        type: WiresBoundUserInterface
+  - type: Computer
+    board: MoffComputerIFFPirateCircuitboard
+
+- type: entity
+  parent: ComputerPalletConsole
+  id: ComputerPalletConsolePirate
+  name: pirate sale computer
+  suffix: Pirate
+  description: Used to sell goods loaded onto cargo pallets.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Structures/Machines/computers.rsi
+    layers:
+    - map: ["computerLayerBody"]
+      state: computer_pirate
+    - map: ["computerLayerKeyboard"]
+      state: generic_keyboard_pirate
+    - map: ["computerLayerScreen"]
+      state: pirate_transfer
+    - map: ["computerLayerKeys"]
+      state: pirate_key
+    - map: [ "enum.WiresVisualLayers.MaintenancePanel" ]
+      state: generic_panel_open
+  - type: Anchorable
+    flags:
+    - Anchorable
+  - type: CargoPalletConsole
+  - type: ActivatableUI
+    key: enum.CargoPalletConsoleUiKey.Sale
+  - type: UserInterface
+    interfaces:
+      enum.CargoPalletConsoleUiKey.Sale:
+        type: CargoPalletConsoleBoundUserInterface
+      enum.WiresUiKey.Key:
+        type: WiresBoundUserInterface
+  - type: Computer
+    board: PirateSaleComputerCircuitboard
+  - type: PointLight
+    radius: 1.5
+    energy: 1.6
+    color: "#b89f25"
+  - type: GuideHelp
+    guides:
+    - Cargo
+
+- type: entity
+  parent: ComputerCargoBounty
+  id: ComputerPirateBounty
+  name: pirate bounty computer
+  suffix: Pirate
+  description: Used to manage currently active bounties.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Structures/Machines/computers.rsi
+    layers:
+    - map: ["computerLayerBody"]
+      state: computer_pirate
+    - map: ["computerLayerKeyboard"]
+      state: tech_key_off
+    - map: ["computerLayerScreen"]
+      state: pirate_bounty
+    - map: ["computerLayerKeys"]
+      state: tech_key
+    - map: [ "enum.WiresVisualLayers.MaintenancePanel" ]
+      state: generic_panel_open
+  - type: CargoBountyConsole
+  - type: ActivatableUI
+    key: enum.CargoConsoleUiKey.Bounty
+  - type: UserInterface
+    interfaces:
+      enum.CargoConsoleUiKey.Bounty:
+        type: CargoBountyConsoleBoundUserInterface
+      enum.WiresUiKey.Key:
+        type: WiresBoundUserInterface
+  - type: Computer
+    board: PirateBountyComputerCircuitboard
+  - type: PointLight
+    radius: 1.5
+    energy: 1.6
+    color: "#b89f25"
+  - type: AccessReader
+    access: [["Pirate"]]
+  - type: GuideHelp
+    guides:
+    - CargoBounties
+    - Cargo
+
+- type: entity
+  parent: BaseComputerShuttle
+  id: ComputerPirateShuttle
+  name: pirate ship console
+  suffix: Pirate
+  description: Used to pilot a pirate ship.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Structures/Machines/computers.rsi
+    layers:
+    - map: ["computerLayerBody"]
+      state: computer_pirate
+    - map: ["computerLayerKeyboard"]
+      state: syndie_key_off
+    - map: ["computerLayerScreen"]
+      state: pirate_shuttle
+    - map: ["computerLayerKeys"]
+      state: syndie_key
+    - map: [ "enum.WiresVisualLayers.MaintenancePanel" ]
+      state: generic_panel_open
+  - type: Tag
+    tags:
+    - Pirate
+  - type: RadarConsole
+    maxRange: 384
+  - type: PointLight
+    radius: 1.5
+    energy: 1.6
+    color: "#c94242"
+  - type: Computer
+    board: PirateShuttleCircuitboard
+
+- type: entity
+  parent: SyndicateComputerComms
+  id: PirateComputerComms
+  name: pirate communications computer
+  suffix: Pirate
+  description: A computer capable of remotely hacking into the station's communications systems. Using this to make an announcement will alert the station to your presence.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Structures/Machines/computers.rsi
+    layers:
+    - map: ["computerLayerBody"]
+      state: computer_pirate
+    - map: ["computerLayerKeyboard"]
+      state: syndie_key_off
+    - map: ["computerLayerScreen"]
+      state: pirate_comm
+    - map: ["computerLayerKeys"]
+      state: syndie_key
+    - map: [ "enum.WiresVisualLayers.MaintenancePanel" ]
+      state: generic_panel_open
+  - type: AccessReader
+    access: [["Pirate"]]
+  - type: CommunicationsConsole
+    title: comms-console-announcement-title-pirate
+    color: "#a15608"
+    canShuttle: false
+    global: true
+    sound: /Audio/Announcements/war.ogg
+  - type: Computer
+    board: PirateCommsCircuitboard
+  - type: PointLight
+    radius: 1.5
+    energy: 1.6
+    color: "#f71713"
