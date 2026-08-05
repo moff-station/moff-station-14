@@ -64,7 +64,7 @@ public sealed partial class AntagRandomObjectivesSystem : EntitySystem
         ApplySelectedObjectives(GetEntity(ev.MindId), ev.SelectedObjectives);
     }
 
-    public void ApplySelectedObjectives(EntityUid mindId, HashSet<NetEntity> selectedObjectives)
+    public void ApplySelectedObjectives(EntityUid mindId, IEnumerable<NetEntity> selectedObjectives)
     {
         if (!TryComp<MindComponent>(mindId, out var mindComp))
             return;
