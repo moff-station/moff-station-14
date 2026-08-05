@@ -323,6 +323,14 @@
     state: Zookeeper
   jobName: job-name-zookeeper
 
+- type: jobIcon
+  parent: JobIcon
+  id: JobIconTramDriver
+  icon:
+    sprite: /Textures/Interface/Misc/job_icons.rsi # Moff
+    state: TramDriver
+  jobName: job-name-tramdriver
+
 # Entertainer (like service, but not actually service)
 
 - type: jobIcon
@@ -607,3 +615,11 @@
     state: Unknown
   jobName: job-name-unknown
   isCrewJob: false
+
+- type: jobIcon
+  parent: JobIcon
+  id: JobIconSus
+  icon:
+    sprite: Interface/Misc/job_icons.rsi # Moff - Use upstream's RSI instead of moff's
+    state: Sus
+  jobName: job-name-sus

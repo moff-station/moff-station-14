@@ -124,8 +124,6 @@
         Piercing: 0.6
         Heat: 0.5
         Caustic: 0.9
-  - type: ExplosionResistance
-    damageCoefficient: 0.65
   - type: GroupExamine
 
 - type: entity
@@ -176,7 +174,7 @@
 
 #Elite web vest
 - type: entity
-  parent: [ClothingOuterArmorBase, ClothingOuterStorageBase, BaseSyndicateContraband]
+  parent: [ClothingOuterArmorBase, TemperatureProtection, ClothingOuterStorageBase, BaseSyndicateContraband]
   id: ClothingOuterVestWebElite
   name: elite web vest
   description: A synthetic armor vest. This one has added webbing and heat resistant fibers.
@@ -185,9 +183,6 @@
     sprite: Clothing/OuterClothing/Vests/elitevest.rsi
   - type: Clothing
     sprite: Clothing/OuterClothing/Vests/elitevest.rsi
-  - type: TemperatureProtection
-    heatingCoefficient: 0.1
-    coolingCoefficient: 0.1
   - type: Armor
     modifiers:
       coefficients:
@@ -197,8 +192,6 @@
         Heat: 0.3
         Radiation: 0.5
         Caustic: 0.5
-  - type: ExplosionResistance
-    damageCoefficient: 0.5
   - type: FireProtection
     reduction: 0.85
   - type: StaticPrice
@@ -248,8 +241,6 @@
         Piercing: 0.35
         Heat: 0.35
         Caustic: 0.5
-  - type: ExplosionResistance
-    damageCoefficient: 0.35
   - type: StaminaResistance # do not add these to other equipment or mobs, we don't want to microbalance these everywhere
     damageCoefficient: 0.45
   - type: ClothingSpeedModifier
@@ -276,7 +267,7 @@
     color: "#80ff80"
     radius: 5
     energy: 2
-    mask: /Textures/Effects/LightMasks/cone.png
+    lightMask: ConeSingle
     autoRot: true
     netsync: false
   - type: LightBehaviour
@@ -435,7 +426,7 @@
     sprintModifier: 0.65
   - type: HeldSpeedModifier
   - type: ExplosionResistance
-    damageCoefficient: 0.5
+    damageCoefficient: 0.75
   - type: GroupExamine
   - type: ProtectedFromStepTriggers
     slots: WITHOUT_POCKET
@@ -461,7 +452,7 @@
     sprintModifier: 0.8
   - type: HeldSpeedModifier
   - type: ExplosionResistance
-    damageCoefficient: 0.4
+    damageCoefficient: 0.6
   - type: GroupExamine
   - type: Construction
     graph: BoneArmor

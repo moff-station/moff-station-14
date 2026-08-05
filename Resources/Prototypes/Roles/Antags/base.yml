@@ -71,3 +71,7 @@
   abstract: true
   parent: [ MindshieldRestrictedAntag, CyborgBlacklistedAntag, InternBlacklistedAntag ]
   id: RestrictedAntag
+  # Moff Start - Need to figure out how this will fit into our space first.
+  # jobBlacklist:
+  # - TramDriver
+  # Moff End
