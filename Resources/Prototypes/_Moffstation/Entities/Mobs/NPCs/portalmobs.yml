@@ -87,4 +87,58 @@
   id: MoffMobDemonNarsieBase
   name: narsian demon
   description: A runecarved fiend of blood and shadow.
-  #components:
+  components:
+  - type: Sprite
+    drawdepth: Mobs
+    sprite: _Moffstation/Mobs/Demons/shade.rsi
+    layers:
+    - map: [ "enum.DamageStateVisualLayers.Base" ]
+      state: construct_body
+    - map: [ "enum.DamageStateVisualLayers.BaseUnshaded" ]
+      state: glow_red
+      shader: unshaded
+  - type: DamageStateVisuals
+    states:
+      Alive:
+        Base: construct_body
+        BaseUnshaded: glow_red
+      Dead:
+        Base: construct_body
+        BaseUnshaded: null
+
+- type: entity
+  parent: MoffMobDemonNarsieBase
+  id: MoffMobDemonNarsieArtificer
+  name: narsian artificer
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Mobs/Demons/artificer.rsi
+
+- type: entity
+  parent: MoffMobDemonNarsieBase
+  id: MoffMobDemonNarsieHarvester
+  name: narsian harvester
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Mobs/Demons/harvester.rsi
+
+- type: entity
+  parent: MoffMobDemonNarsieBase
+  id: MoffMobDemonNarsieJuggernaut
+  name: narsian juggernaut
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Mobs/Demons/juggernaut.rsi
+
+- type: entity
+  parent: MoffMobDemonNarsieBase
+  id: MoffMobDemonNarsieShade
+  name: narsian shade
+
+- type: entity
+  parent: MoffMobDemonNarsieBase
+  id: MoffMobDemonNarsieWraith
+  name: narsian wraith
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Mobs/Demons/wraith.rsi
