@@ -78,6 +78,18 @@
     subtype: role-subtype-faction-syndicate
     subtypeColor: darkred
 
+- type: entity
+  parent: BaseMindRoleAntag
+  id: MindRoleSyndieVisitor
+  name: Syndicate Disaster Victim Role
+  components:
+  - type: MindRole
+    roleType: TeamAntagonist
+    antagPrototype: ShuttleSyndieVisitor
+    exclusiveAntag: true
+    subtype: role-subtype-faction-syndicate
+    subtypeColor: darkred
+
 # Wizard Duelists
 - type: entity
   parent: MindRoleWizard

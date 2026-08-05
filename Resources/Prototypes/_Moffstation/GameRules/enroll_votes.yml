@@ -1,19 +1,32 @@
 # Moffstation - Enroll votes spawned by an antag rule's ESSynchronizedVoteManager. When the timer runs out,
-# MoffEnrollEventSystem starts the owning rule and turns the enrolled players into its antags. One enroller
-# per rule so each can tune its own timing, min/max enrollment, and fallback rules.
+# MoffEnrollEventSystem starts the owning rule and turns the enrolled players into its antags.
 
-- type: entity # Variant for events which have no delay between announcing and starting
+
+- type: entity
   id: MoffBaseEntry
   abstract: true
   components:
   - type: MoffVoteEntry
 
-- type: entity # Variant for events which have no delay between announcing and starting
+- type: entity
   parent: MoffBaseEntry
   id: MoffBaseEnroll
   abstract: true
   components:
   - type: MoffEnrollEvent
+
+- type: entity
+  parent: MoffBaseEntry
+  id: MoffBaseEnrollCalm
+  abstract: true
+  components:
+  - type: MoffEnrollEvent
+    fallbackRules: !type:NestedSelector
+      tableId: MoffCalmNonPlayerEventsTable
+
+# Split into spicy and calm, so that it reflects our tables
+
+# Spicy
 
 - type: entity
   parent: MoffBaseEnroll
@@ -38,12 +51,6 @@
   id: SyndieVentSoldierEnroller
   name: Syndicate Vent Soldier
   description: You, the first person the syndicate could find, have been sent on a mission to the station.
-
-- type: entity
-  parent: MoffBaseEnroll
-  id: DerelictCyborgEnroller
-  name: Derelict Cyborg
-  description: You are a cyborg that got lost in space. After years of exposure to ion storms you find yourself near a space station.
 
 - type: entity
   parent: MoffBaseEnroll
@@ -86,10 +93,67 @@
 
 - type: entity
   parent: MoffBaseEnroll
+  id: ClosetSkeletonEnroller
+  name: Closet Skeleton
+  description: You are arguably one of the oldest members of the station! Get your old job back, or cause chaos! The world is yours to shape.
+
+- type: entity
+  parent: MoffBaseEnroll
+  id: RevenantEnroller
+  name: Revenant
+  description: You are a Revenant. Use your powers to harvest souls and unleash chaos upon the crew. Unlock new abilities with the essence you harvest.
+
+- type: entity
+  parent: MoffBaseEnroll
+  id: RatKingEnroller
+  name: Rat King
+  description: You are the Rat King, your interests are food, food, and more food. Fight against the station for food. Did I say food interests you?
+
+- type: entity
+  parent: MoffBaseEnroll
+  id: InstigatorEnroller
+  name: Cybersun Assault Ship
+  description: You are a soldier from Cybersun sent on an assault ship to a Nanotrasen station.
+  components:
+  - type: MoffEnrollEvent
+    minEnrolled: 3
+
+# Calm
+- type: entity
+  parent: MoffBaseEnroll
   id: TouristEnroller
   name: Tourists
   description: Have careless fun on your vacation to a Nanotrasen station!
-#  components:
-#  - type: MoffEnrollEvent
-#    minEnrolled: 2
+  components:
+  - type: MoffEnrollEvent
+    minEnrolled: 2
+    fallbackRules: !type:NestedSelector
+      tableId: MoffCalmNonPlayerEventsTable
 
+- type: entity
+  parent: MoffBaseEnroll
+  id: SyndieVisitorEnroller
+  name: Syndicate Disaster Victim
+  description: You're a regular passenger from a syndicate station. Unfortunately, your evacuation pod has thrown you into an enemy sector...
+  components:
+  - type: MoffEnrollEvent
+    minEnrolled: 2
+    fallbackRules: !type:NestedSelector
+      tableId: MoffCalmNonPlayerEventsTable
+
+- type: entity
+  parent: MoffBaseEnroll
+  id: CossackEnroller
+  name: Ancient Traveler
+  description: From a history lost to time, you find yourself cast into this day and age.
+  components:
+  - type: MoffEnrollEvent
+    minEnrolled: 2
+    fallbackRules: !type:NestedSelector
+      tableId: MoffCalmNonPlayerEventsTable
+
+- type: entity
+  parent: MoffBaseEnroll
+  id: DerelictCyborgEnroller
+  name: Derelict Cyborg
+  description: You are a cyborg that got lost in space. After years of exposure to ion storms you find yourself near a space station.

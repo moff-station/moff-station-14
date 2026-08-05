@@ -8,7 +8,7 @@
   rules:
     - MeteorSwarmScheduler
     - RampingStationEventScheduler
-    - SpaceTrafficControlEventScheduler
+#    - SpaceTrafficControlEventScheduler # Moff - Merged into BasicStationEventScheduler
     - BasicRoundstartVariation
 
 - type: gamePreset
@@ -23,7 +23,7 @@
   rules:
     - KesslerSyndromeScheduler
     - RampingStationEventScheduler
-    - SpaceTrafficControlEventScheduler
+#    - SpaceTrafficControlEventScheduler # Moff - Merged into BasicStationEventScheduler
     - BasicRoundstartVariation
 
 - type: gamePreset
@@ -43,7 +43,7 @@
     - Pirates # Moffstation
     - KesslerSyndromeScheduler
     - RampingStationEventScheduler
-    - SpaceTrafficControlEventScheduler
+#    - SpaceTrafficControlEventScheduler # Moff - Merged into BasicStationEventScheduler
     - BasicRoundstartVariation
 
 - type: gamePreset
@@ -69,7 +69,7 @@
     - MeteorSwarmMildScheduler
     - MeteorSwarmScheduler
     - RampingStationEventScheduler
-    - SpaceTrafficControlEventScheduler
+#    - SpaceTrafficControlEventScheduler # Moff - Merged into BasicStationEventScheduler
     - BasicRoundstartVariation
 
 - type: gamePreset
@@ -83,7 +83,7 @@
   rules:
   - BasicStationEventScheduler
   - MeteorSwarmScheduler
-  - SpaceTrafficControlEventScheduler
+#  - SpaceTrafficControlEventScheduler # Moff - Merged into BasicStationEventScheduler
   - BasicRoundstartVariation
   - ExtendedNotificationEvent # Moffstation - For the notification
 
@@ -112,7 +112,7 @@
   - DummyNonAntag
   - DynamicStationEventScheduler
   - MeteorSwarmScheduler
-  - SpaceTrafficControlEventScheduler
+#  - SpaceTrafficControlEventScheduler # Moff - Merged into BasicStationEventScheduler
   - BasicRoundstartVariation
 
 - type: gamePreset
@@ -151,7 +151,7 @@
   - SubGamemodesRuleSyndicate # Moffstation - LPO only during syndicate rounds
   - BasicStationEventScheduler
   - MeteorSwarmScheduler
-  - SpaceTrafficControlEventScheduler
+#  - SpaceTrafficControlEventScheduler # Moff - Merged into BasicStationEventScheduler
   - BasicRoundstartVariation
 
 - type: gamePreset
@@ -180,7 +180,7 @@
   - SubGamemodesRuleSyndicate # Moffstation - LPO only during syndicate rounds
   - BasicStationEventScheduler
   - MeteorSwarmScheduler
-  - SpaceTrafficControlEventScheduler
+#  - SpaceTrafficControlEventScheduler # Moff - Merged into BasicStationEventScheduler
   - BasicRoundstartVariation
 
 - type: gamePreset
@@ -198,7 +198,7 @@
   - SubGamemodesRuleNoWizard
   - BasicStationEventScheduler
   - MeteorSwarmScheduler
-  - SpaceTrafficControlEventScheduler
+#  - SpaceTrafficControlEventScheduler # Moff - Merged into BasicStationEventScheduler
   - BasicRoundstartVariation
 
 - type: gamePreset
@@ -214,7 +214,7 @@
   - SubGamemodesRuleNoWizard #No Dual Wizards at the start, midround is fine
   - BasicStationEventScheduler
   - MeteorSwarmScheduler
-  - SpaceTrafficControlEventScheduler
+#  - SpaceTrafficControlEventScheduler # Moff - Merged into BasicStationEventScheduler
   - BasicRoundstartVariation
 
 - type: gamePreset
@@ -230,7 +230,7 @@
   - SubGamemodesRuleNoWizardNoXenoborg # no two motherships
   - BasicStationEventScheduler
   - MeteorSwarmScheduler
-  - SpaceTrafficControlEventScheduler
+#  - SpaceTrafficControlEventScheduler # Moff - Merged into BasicStationEventScheduler
   - BasicRoundstartVariation
 
 - type: gamePreset
@@ -248,7 +248,7 @@
   - Zombie
   - BasicStationEventScheduler
   - MeteorSwarmScheduler
-  - SpaceTrafficControlEventScheduler
+#  - SpaceTrafficControlEventScheduler # Moff - Merged into BasicStationEventScheduler
   - BasicRoundstartVariation
 
 - type: gamePreset
@@ -264,5 +264,5 @@
   - Zombie
   - BasicStationEventScheduler
   - KesslerSyndromeScheduler
-  - SpaceTrafficControlEventScheduler
+#  - SpaceTrafficControlEventScheduler # Moff - Merged into BasicStationEventScheduler
   - BasicRoundstartVariation

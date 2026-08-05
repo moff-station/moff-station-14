@@ -1,3 +1,17 @@
+# Namespaced from roundstart.yml - the scheduler pool, now built from our four categories
+- type: entityTable
+  id: BasicGameRulesTable
+  table: !type:AllSelector # we need to pass a list of rules, since rules have further restrictions to consider via StationEventComp
+    children:
+      - !type:NestedSelector
+        tableId: MoffCalmPlayerEventsTable
+      - !type:NestedSelector
+        tableId: MoffSpicyPlayerEventsTable
+      - !type:NestedSelector
+        tableId: MoffCalmNonPlayerEventsTable
+      - !type:NestedSelector
+        tableId: MoffSpicyNonPlayerEventsTable
+
 # Passive/Neutral Player-Controlled events
 - type: entityTable
   id: MoffCalmPlayerEventsTable
@@ -10,6 +24,10 @@
       - id: DerelictMedicalCyborgSpawn
       - id: DerelictMiningCyborgSpawn
       - id: DerelictServiceCyborgSpawn
+      - id: TouristSpawn
+      - id: UnknownShuttleSyndieEvacPod
+      - id: UnknownShuttleManOWar
+        prob: 0.05
 
 # Hostile Player-Controlled events
 - type: entityTable
@@ -20,7 +38,7 @@
       - id: RevenantSpawn
       - id: SyndieVentSoldierSpawn
       - id: DerelictSyndicateAssaultCyborgSpawn
-      - id: KingRatMigration
+      - id: RatKingSpawn
       - id: DragonSpawn
       - id: NinjaSpawn
       - id: ParadoxCloneSpawn
@@ -30,7 +48,9 @@
       - id: SyndicateListeningOutpostSpawn
       - id: PirateCorsairSpawn
       - id: ReplicatorSpawn
-      - id: EeepEvent
+      - id: EeepSpawn
+      - id: UnknownShuttleInstigator
+        prob: 0.05
 
 # Good/Neutral NPC events
 - type: entityTable
@@ -46,6 +66,9 @@
         tableId: CalmCargoPackingErrorTable
       - !type:NestedSelector
         tableId: CalmPestEventsTable
+      - !type:NestedSelector
+        prob: 0.05
+        tableId: WreckEventTable
 
 # Hostile NPC events
 - type: entityTable

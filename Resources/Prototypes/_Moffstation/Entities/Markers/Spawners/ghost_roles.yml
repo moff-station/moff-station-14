@@ -11,6 +11,116 @@
     raffle:
       settings: default
 
+# Revenant spawn point
+- type: entity
+  parent: BaseAntagSpawner
+  id: SpawnPointGhostRevenant
+  suffix: revenant
+  categories: [ HideSpawnMenu, Spawner ]
+  components:
+  - type: GhostRole
+    name: ghost-role-information-revenant-name
+    description: ghost-role-information-revenant-description
+    rules: ghost-role-information-antagonist-rules
+    mindRoles:
+    - MindRoleGhostRoleSoloAntagonist
+  - type: Sprite
+    sprite: Markers/jobs.rsi
+    layers:
+    - state: green
+    - sprite: Mobs/Ghosts/revenant.rsi
+      state: active
+
+# Rat king spawn point
+- type: entity
+  parent: BaseAntagSpawner
+  id: SpawnPointGhostRatKingAntag
+  suffix: rat king, antag
+  categories: [ HideSpawnMenu, Spawner ]
+  components:
+  - type: GhostRole
+    name: ghost-role-information-rat-king-name
+    description: ghost-role-information-rat-king-description
+    rules: ghost-role-information-antagonist-rules
+    mindRoles:
+    - MindRoleGhostRoleSoloAntagonist
+  - type: Sprite
+    sprite: Markers/jobs.rsi
+    layers:
+    - state: green
+    - sprite: _Moffstation/Mobs/Animals/regalrat.rsi
+      state: regalrat
+
+# Closet skeleton spawn point
+- type: entity
+  parent: BaseAntagSpawner
+  id: SpawnPointGhostClosetSkeleton
+  suffix: closet skeleton
+  categories: [ HideSpawnMenu, Spawner ]
+  components:
+  - type: GhostRole
+    name: ghost-role-information-closet-skeleton-name
+    description: ghost-role-information-closet-skeleton-description
+    rules: ghost-role-information-freeagent-rules
+    mindRoles:
+    - MindRoleGhostRoleFreeAgent
+
+# Pirate Cossack
+- type: entity
+  parent: BaseAntagSpawner
+  id: SpawnPointGhostCossack
+  suffix: cossack
+  categories: [ HideSpawnMenu, Spawner ]
+  components:
+  - type: GhostRole
+    name: ghost-role-information-cossack-name
+    description: ghost-role-information-cossack-description
+    rules: ghost-role-information-freeagent-rules
+    mindRoles:
+    - MindRoleGhostRoleFreeAgent
+
+# Instigator Leader
+- type: entity
+  parent: BaseAntagSpawner
+  id: SpawnPointGhostSyndieSoldierTeamLeader
+  suffix: syndicate team leader
+  categories: [ HideSpawnMenu, Spawner ]
+  components:
+  - type: GhostRole
+    name: ghost-role-information-syndie-soldier-teamlead-name
+    description: ghost-role-information-syndie-soldier-teamlead-description
+    rules: ghost-role-information-rules-team-antagonist
+    mindRoles:
+    - MindRoleGhostRoleTeamAntagonist
+
+# Instigator Solider
+- type: entity
+  parent: BaseAntagSpawner
+  id: SpawnPointGhostSyndieSoldier
+  suffix: syndicate soldier
+  categories: [ HideSpawnMenu, Spawner ]
+  components:
+  - type: GhostRole
+    name: ghost-role-information-syndie-soldier-name
+    description: ghost-role-information-syndie-soldier-description
+    rules: ghost-role-information-rules-team-antagonist
+    mindRoles:
+    - MindRoleGhostRoleTeamAntagonist
+
+# Evac pod disaster victim
+- type: entity
+  parent: BaseAntagSpawner
+  id: SpawnPointGhostSyndieVisitor
+  suffix: syndie disaster victim
+  categories: [ HideSpawnMenu, Spawner ]
+  components:
+  - type: GhostRole
+    name: ghost-role-information-syndie-disaster-victim-name
+    description: ghost-role-information-syndie-disaster-victim-description
+    rules: ghost-role-information-rules-team-antagonist
+    mindRoles:
+    - MindRoleSyndieVisitor
+
 # Pizza delivery scurret spawn point
 - type: entity
   parent: MarkerBase

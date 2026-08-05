@@ -209,7 +209,10 @@
 
 - type: entity
   parent: BaseGameRule
-  id: ClosetSkeleton
+  # Moff start - Namespaced
+  id: ClosetSkeletonUpstream
+  abstract: true
+  # Moff end
   components:
   - type: StationEvent
     weight: 5
@@ -325,7 +328,10 @@
 
 - type: entity
   parent: BaseGameRule
-  id: RevenantSpawn
+  # Moff start - Namespaced
+  id: RevenantSpawnUpstream
+  abstract: true
+  # Moff end
   components:
   - type: StationEvent
     weight: 7.5

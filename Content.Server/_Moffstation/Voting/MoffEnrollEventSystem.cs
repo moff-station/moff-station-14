@@ -2,6 +2,7 @@ using System.Linq;
 using Content.Server.Antag;
 using Content.Server.Antag.Components;
 using Content.Server.GameTicking;
+using Content.Server.GameTicking.Rules;
 using Content.Server.GameTicking.Rules.Components;
 using Content.Shared._ES.Voting;
 using Content.Shared._ES.Voting.Components;
@@ -32,6 +33,7 @@ public sealed partial class MoffEnrollEventSystem : EntitySystem
     [Dependency] private EntityTableSystem _entityTable = default!;
     [Dependency] private IPrototypeManager _proto = default!;
     [Dependency] private SharedTransformSystem _transform = default!;
+    [Dependency] private RuleGridsSystem _ruleGrids = default!;
 
     [Dependency] private EntityQuery<AntagSelectionComponent> _antagSelectionQuery;
     [Dependency] private EntityQuery<AntagLoadProfileRuleComponent> _antagProfileRuleQuery;
@@ -154,6 +156,9 @@ public sealed partial class MoffEnrollEventSystem : EntitySystem
             rule is not { } ruleUid ||
             !_antagSelectionQuery.TryComp(ruleUid, out var antag))
         {
+            if (rule is { } unstartedRule)
+                _ruleGrids.DeleteRuleGrids(unstartedRule);
+
             FireFallbackRule(ent);
             TryQueueDel(rule);
             return;
