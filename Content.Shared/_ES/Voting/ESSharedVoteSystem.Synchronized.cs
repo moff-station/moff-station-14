@@ -18,6 +18,13 @@ public abstract partial class ESSharedVoteSystem
             var voteEnt = Spawn(proto);
             ent.Comp.VoteEntities.Add(voteEnt);
             ent.Comp.Results.Add(null);
+
+            // Moff Start - notify the vote entity now that it's registered in VoteEntities, so handlers
+            // (e.g. enroll resolution) can walk back to this manager. Spawn() above ran the entity's own
+            // MapInit synchronously, before this Add, so its MapInit is too early for that lookup.
+            var spawnedEv = new ESVoteEntitySpawnedEvent(ent.Owner);
+            RaiseLocalEvent(voteEnt, ref spawnedEv);
+            // Moff end
         }
     }
 
@@ -53,3 +60,10 @@ public abstract partial class ESSharedVoteSystem
         }
     }
 }
+
+// Moff Start - raised on a synchronized vote entity right after it's registered in its manager's
+// VoteEntities, carrying the manager entity (which is also the game rule). Lets handlers resolve back to
+// the manager at a point the vote entity's own MapInit is too early for.
+[ByRefEvent]
+public readonly record struct ESVoteEntitySpawnedEvent(EntityUid Manager);
+// Moff end
