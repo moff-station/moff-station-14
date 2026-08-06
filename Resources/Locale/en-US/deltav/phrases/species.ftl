@@ -51,7 +51,8 @@ phrase-species-human = Human
 phrase-species-diona = Diona
 phrase-species-slime-person = Slime person
 phrase-species-vox = Vox
-phrase-species-reptilian = Reptilian
+# Moff - lizardpeople renamed to unathi
+phrase-species-reptilian = Unathi
 phrase-species-resomi = Resomi
 phrase-species-ai = AI
 phrase-species-cyborg = Cyborg

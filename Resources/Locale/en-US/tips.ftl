@@ -81,7 +81,8 @@ tips-dataset-80 = As a Scientist, you can utilize upgraded versions of machines 
 tips-dataset-81 = As a Scientist, you can build cyborgs using positronic brains and a chassis; they are just as useful as a new crew member.
 tips-dataset-82 = As a Medical Doctor, try to be wary of overdosing your patients, especially if someone else has already been on the scene. Overdoses are often lethal to patients in crit!
 tips-dataset-83 = As a Medical Doctor, don't underestimate your cryo pods! They heal almost every type of damage, making them very useful when you are overloaded or need to heal someone in a pinch.
-tips-dataset-84 = As a Medical Doctor, exercise caution when putting reptilians in cryopods. They will take a lot of extra cold damage, but you can mitigate this with some burn medicine or leporazine.
+# Moff - lizardpeople renamed to unathi
+tips-dataset-84 = As a Medical Doctor, exercise caution when putting unathi in cryopods. They will take a lot of extra cold damage, but you can mitigate this with some burn medicine or leporazine.
 tips-dataset-85 = As a Medical Doctor, remember that the health analyzer can be used if you lose your PDA.
 tips-dataset-86 = As a Chemist, once you've made everything you've needed to, don't be afraid to make more silly reagents. Have you tried desoxyephedrine or licoxide?
 tips-dataset-87 = As a Medical Doctor, Chemist, or Chief Medical Officer, you can use chloral hydrate to nonlethally sedate unruly patients.
