@@ -12,6 +12,20 @@
       - !type:NestedSelector
         tableId: MoffSpicyNonPlayerEventsTable
 
+# Namespaced from roundstart.yml - the scheduler pool, now built from our four categories
+- type: entityTable
+  id: DynamicGameRulesTable
+  table: !type:AllSelector # we need to pass a list of rules, since rules have further restrictions to consider via StationEventComp
+    children:
+      - !type:NestedSelector
+        tableId: MoffCalmPlayerEventsTable
+      - !type:NestedSelector
+        tableId: MoffSpicyPlayerEventsTable
+      - !type:NestedSelector
+        tableId: MoffCalmNonPlayerEventsTable
+      - !type:NestedSelector
+        tableId: MoffSpicyNonPlayerEventsTable
+
 # Passive/Neutral Player-Controlled events
 - type: entityTable
   id: MoffCalmPlayerEventsTable
