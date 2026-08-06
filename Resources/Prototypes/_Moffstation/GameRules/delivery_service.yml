@@ -48,7 +48,6 @@
     - MindRoleGhostRoleNeutral
 
 # The delivery was paid for, so if nobody wants to drive the shuttle cargo just sends the pizza instead.
-# Ungated compared to the upstream version, which was scheduler-driven rather than bought.
 - type: entity
   id: InstantPizzaDelivery
   parent: CargoGiftsBase
@@ -70,7 +69,6 @@
   id: SpawnPointGhostPizzaDeliveryScurret
   name: ghost role spawn point
   components:
-  # The scurret comes from antag enrollment on PizzaDeliverySpawn now, so this is just where RuleGrids puts them
   - type: AntagGridSpawnPoint
     whitelist:
     - PizzaDeliveryScurret
