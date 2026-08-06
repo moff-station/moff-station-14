@@ -59,8 +59,7 @@
     earliestStart: 0
     reoccurrenceDelay: 0
   - type: CargoGiftsRule
-    description: cargo-gift-pizza-small
-    dest: cargo-gift-dest-bar
+    announce: cargo-gift-pizza-instant-delivery
     gifts:
       FoodPizza: 1      # 4 pizzas (32 slices total)
       FoodSoftdrinks: 1 # 16 sodas
