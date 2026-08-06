@@ -24,6 +24,14 @@
     fallbackRules: !type:NestedSelector
       tableId: MoffCalmNonPlayerEventsTable
 
+- type: entity
+  parent: MoffBaseEntry
+  id: MoffBaseEnrollNoFallback
+  abstract: true
+  components:
+  - type: MoffEnrollEvent
+    fallbackRules: null
+
 # Split into spicy and calm, so that it reflects our tables
 
 # Spicy
@@ -157,3 +165,26 @@
   id: DerelictCyborgEnroller
   name: Derelict Cyborg
   description: You are a cyborg that got lost in space. After years of exposure to ion storms you find yourself near a space station.
+
+# Emergency Response Teams
+
+- type: entity
+  parent: MoffBaseEnrollNoFallback
+  id: ERTGeneralEnroller
+  name: Emergency Response Team
+  description: You are part of a team of emergency specialists sent by Nanotrasen to solve the mess the station has gotten itself into.
+  components:
+  - type: MoffEnrollEvent
+    minEnrolled: 3
+    fallbackRules: null
+
+- type: entity
+  parent: MoffBaseEnrollNoFallback
+  id: ERTDeathSquadEnroller
+  name: Death Squad
+  description: A member of a Nanotrasen deathsquad being deployed to the station. Leave no one alive.
+  components:
+  - type: MoffEnrollEvent
+    minEnrolled: 3
+    fallbackRules: null
+

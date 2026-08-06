@@ -90,6 +90,17 @@
     subtype: role-subtype-faction-syndicate
     subtypeColor: darkred
 
+# Emergency Response Teams
+- type: entity
+  parent: MindRoleGhostRoleNeutral
+  id: MindRoleERT
+  name: ERT Role
+  components:
+  - type: MindRole
+    roleType: Neutral
+    subtype: role-subtype-faction-central-command
+    subtypeColor: green
+
 # Wizard Duelists
 - type: entity
   parent: MindRoleWizard
