@@ -11,12 +11,31 @@
   - Wizard
   - Xenoborg
   - Syndicate
+  - NarsianDemon
 
 - type: npcFaction
   id: FeralSlime
   hostile:
   - AllHostile
   - BloodBrother
+  - Dragon
+  - NanoTrasen
+  - PetsNT
+  - Pirate
+  - SimpleHostile
+  - Syndicate
+  - Wizard
+  - Xeno
+  - Xenoborg
+  - Zombie
+  - NarsianDemon
+
+- type: npcFaction
+  id: NarsianDemon
+  friendly:
+  - BloodBrother
+  hostile:
+  - AllHostile
   - Dragon
   - NanoTrasen
   - PetsNT

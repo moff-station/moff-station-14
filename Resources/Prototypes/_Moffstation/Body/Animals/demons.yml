@@ -1,4 +1,22 @@
 ﻿- type: entity
+  parent: [ Ash, OrganBaseBrain ]
+  id: OrganDemonicEssence
+  name: demonic essence
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Objects/Materials/demonic_essence.rsi
+    layers:
+    - state: demonic_essence
+  - type: SolutionManager
+    solutions:
+    - SolutionStomach
+  - type: Stomach
+  - type: Lung
+  - type: Metabolizer
+    metabolizerTypes: [ Bloodsucker ] # They can 'drink' blood to heal
+    stages: [ Digestion, Bloodstream, Metabolites ]
+
+- type: entity
   id: BaseMobDemons
   abstract: true
   components:
@@ -7,5 +25,4 @@
     containers:
       body_organs: !type:AllSelector
         children:
-        - id: OrganSlimePersonCore
-        - id: OrganSlimePersonLungs
+        - id: OrganDemonicEssence

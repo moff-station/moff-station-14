@@ -33,31 +33,10 @@
   id: MobFleshJaredSmasher
   categories: [ HideSpawnMenu ]
 
-# REMEMBER TO FIX LATER
 - type: entity
-  #parent: [ BaseHellportalMob, MobAbomination ]
-  parent: MobAbomination
+  parent: [ BaseHellportalMob, MobAbomination ]
   id: MobAbominationSmasher
-
-  #categories: [ HideSpawnMenu ]
-  components:
-  - type: Sprite
-    drawdepth: Mobs
-    sprite: _Moffstation/Mobs/Demons/artificer.rsi
-    layers:
-    - map: [ "enum.DamageStateVisualLayers.Base" ]
-      state: artificer
-    - map: [ "enum.DamageStateVisualLayers.BaseUnshaded" ]
-      state: artificer_red
-      shader: unshaded
-  - type: DamageStateVisuals
-    states:
-      Alive:
-        Base: artificer
-        BaseUnshaded: artificer_red
-      Dead:
-        Base: artificer
-        BaseUnshaded: null
+  categories: [ HideSpawnMenu ]
 
 - type: entity
   parent: [ BaseHellportalMob, MobCorgiNarsi ]
@@ -83,11 +62,15 @@
 # Nar'Sie demons
 - type: entity
   abstract: true
-  parent: [ SimpleSpaceMobBase, BaseMobDestructible ]
+  parent: [ BaseSmasherHostile, BaseMobDemons, SimpleSpaceMobBase, BaseMobDestructible ]
   id: MoffMobDemonNarsieBase
   name: narsian demon
   description: A runecarved fiend of blood and shadow.
   components:
+  - type: HellportalMob
+  - type: NpcFactionMember
+    factions:
+    - NarsianDemon
   - type: Sprite
     drawdepth: Mobs
     sprite: _Moffstation/Mobs/Demons/shade.rsi
@@ -105,6 +88,18 @@
       Dead:
         Base: construct_body
         BaseUnshaded: null
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      100: Dead
+  - type: TriggerOnMobstateChange
+    mobState:
+    - Dead
+  - type: GibOnTrigger
+    deleteItems: true
+  - type: SpawnOnTrigger
+    proto: Acidifier
+    predicted: true
 
 - type: entity
   parent: MoffMobDemonNarsieBase
