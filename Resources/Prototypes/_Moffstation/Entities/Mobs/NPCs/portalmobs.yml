@@ -61,9 +61,10 @@
   name: hellspawn
 
 # Nar'Sie demons
+# Base Prototypes
 - type: entity
   abstract: true
-  parent: [ BaseSmasherHostile, BaseMobDemons, SimpleSpaceMobBase, BaseMobDestructible ]
+  parent: [ BaseMobDemons, SimpleSpaceMobBase, BaseMobDestructible ]
   id: MoffMobDemonNarsieBase
   name: narsian demon
   suffix: Hellportal
@@ -73,23 +74,6 @@
   - type: NpcFactionMember
     factions:
     - NarsianDemon
-  - type: Sprite
-    drawdepth: Mobs
-    sprite: _Moffstation/Mobs/Demons/shade.rsi
-    layers:
-    - map: [ "enum.DamageStateVisualLayers.Base" ]
-      state: construct_body
-    - map: [ "enum.DamageStateVisualLayers.BaseUnshaded" ]
-      state: glow_red
-      shader: unshaded
-  - type: DamageStateVisuals
-    states:
-      Alive:
-        Base: construct_body
-        BaseUnshaded: glow_red
-      Dead:
-        Base: construct_body
-        BaseUnshaded: null
   - type: MobState
     allowedStates:
     - Alive
@@ -120,6 +104,8 @@
   - type: ComplexInteraction
   - type: Speech
     speechVerb: Ghost
+    #speechSounds: SyndieBorg
+    speechSounds: Slime
   - type: Prying
     pryPowered: true
     force: true
@@ -130,11 +116,79 @@
   - type: MovementSpeedModifier
     baseWalkSpeed: 1
     baseSprintSpeed: 1.5
-  - type: ReplacementAccent
-    accent: genericAggressive
+  - type: Vocalizer
+  - type: DatasetVocalizer
+    dataset: NarSiePrayers
+  - type: HTN
+    rootTask:
+      task: SimpleNarsieDemonCompound
+    blackboard:
+      NavClimb: !type:Bool
+        true
+      NavInteract: !type:Bool
+        true
+      NavPry: !type:Bool
+        true
+      NavSmash: !type:Bool
+        true
+      MinimumIdleTime: !type:Single
+        0.5
+      MaximumIdleTime: !type:Single
+        0.5
+      Count: !type:Single
+        0
 
 - type: entity
+  abstract: true
   parent: MoffMobDemonNarsieBase
+  id: MoffMobDemonNarsieFleshBase
+  components:
+  - type: Speech
+    speechSounds: Slime
+  - type: Sprite
+    drawdepth: Mobs
+    sprite: Mobs/Aliens/flesh.rsi
+
+- type: entity
+  abstract: true
+  parent: MoffMobDemonNarsieBase
+  id: MoffMobDemonNarsieConstructBase
+  components:
+  - type: Sprite
+    drawdepth: Mobs
+    sprite: _Moffstation/Mobs/Demons/shade.rsi
+    layers:
+    - map: [ "enum.DamageStateVisualLayers.Base" ]
+      state: construct_body
+    - map: [ "enum.DamageStateVisualLayers.BaseUnshaded" ]
+      state: glow_red
+      shader: unshaded
+  - type: DamageStateVisuals
+    states:
+      Alive:
+        Base: construct_body
+        BaseUnshaded: glow_red
+      Dead:
+        Base: construct_body
+        BaseUnshaded: null
+  - type: Speech
+    speechSounds: SyndieBorg
+
+# Specific Demons
+
+# Flesh Golems
+- type: entity
+  parent: MoffMobDemonNarsieFleshBase
+  id: MoffMobDemonNarsieFlesh
+  components:
+  - type: Sprite
+    layers:
+    - map: [ "enum.DamageStateVisualLayers.Base" ]
+      state: golem
+
+# Nar'Sie Constructs
+- type: entity
+  parent: MoffMobDemonNarsieConstructBase
   id: MoffMobDemonNarsieArtificer
   name: narsian artificer
   components:
@@ -142,7 +196,7 @@
     sprite: _Moffstation/Mobs/Demons/artificer.rsi
 
 - type: entity
-  parent: MoffMobDemonNarsieBase
+  parent: MoffMobDemonNarsieConstructBase
   id: MoffMobDemonNarsieHarvester
   name: narsian harvester
   components:
@@ -152,7 +206,7 @@
     needsHands: false
 
 - type: entity
-  parent: MoffMobDemonNarsieBase
+  parent: MoffMobDemonNarsieConstructBase
   id: MoffMobDemonNarsieJuggernaut
   name: narsian juggernaut
   components:
@@ -160,12 +214,12 @@
     sprite: _Moffstation/Mobs/Demons/juggernaut.rsi
 
 - type: entity
-  parent: MoffMobDemonNarsieBase
+  parent: MoffMobDemonNarsieConstructBase
   id: MoffMobDemonNarsieShade
   name: narsian shade
 
 - type: entity
-  parent: MoffMobDemonNarsieBase
+  parent: MoffMobDemonNarsieConstructBase
   id: MoffMobDemonNarsieWraith
   name: narsian wraith
   components:

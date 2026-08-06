@@ -60,9 +60,15 @@
 - type: entity
   parent: BaseHostilePortal
   id: HellPortal
-  name: hell portal
+  name: hellportal
   description: a portal letting loose the worst hell has to offer.
   components:
+  - type: Sprite
+    sprite: Structures/Specific/Anomalies/shadow_anom.rsi
+    layers:
+    - state: pulse
+      color: "#78090b"
+      shader: unshaded
   - type: WarpPoint
     location: moff-hell-portal-name
   - type: Hellportal
