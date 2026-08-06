@@ -2,6 +2,7 @@
   abstract: true
   parent: BaseSmasherHostile
   id: BaseHellportalMob
+  suffix: Hellportal
   components:
   - type: HellportalMob
   - type: TriggerOnMobstateChange
@@ -16,7 +17,7 @@
 - type: entity
   parent: [ BaseHellportalMob, MobFleshLover ]
   id: MobFleshLoverSmasher
-  categories: [ HideSpawnMenu ]
+  #categories: [ HideSpawnMenu ]
 
 - type: entity
   parent: [ BaseHellportalMob, MobFleshGolem ]
@@ -65,6 +66,7 @@
   parent: [ BaseSmasherHostile, BaseMobDemons, SimpleSpaceMobBase, BaseMobDestructible ]
   id: MoffMobDemonNarsieBase
   name: narsian demon
+  suffix: Hellportal
   description: A runecarved fiend of blood and shadow.
   components:
   - type: HellportalMob
@@ -88,10 +90,17 @@
       Dead:
         Base: construct_body
         BaseUnshaded: null
+  - type: MobState
+    allowedStates:
+    - Alive
+    - Dead
   - type: MobThresholds
     thresholds:
       0: Alive
       100: Dead
+  - type: SlowOnDamage
+    speedModifierThresholds:
+      80: 0.7
   - type: TriggerOnMobstateChange
     mobState:
     - Dead
@@ -100,6 +109,29 @@
   - type: SpawnOnTrigger
     proto: Acidifier
     predicted: true
+  - type: MeleeWeapon
+    soundHit:
+      path: /Audio/Weapons/Xeno/alien_claw_flesh3.ogg
+    animation: WeaponArcClaw
+    damage:
+      types:
+        Slash: 6
+  - type: Hands
+  - type: ComplexInteraction
+  - type: Speech
+    speechVerb: Ghost
+  - type: Prying
+    pryPowered: true
+    force: true
+    speedModifier: 1.5
+    useSound:
+      path: /Audio/Items/crowbar.ogg
+  - type: MovementAlwaysTouching
+  - type: MovementSpeedModifier
+    baseWalkSpeed: 1
+    baseSprintSpeed: 1.5
+  - type: ReplacementAccent
+    accent: genericAggressive
 
 - type: entity
   parent: MoffMobDemonNarsieBase
@@ -116,6 +148,8 @@
   components:
   - type: Sprite
     sprite: _Moffstation/Mobs/Demons/harvester.rsi
+  - type: Puller
+    needsHands: false
 
 - type: entity
   parent: MoffMobDemonNarsieBase
