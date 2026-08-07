@@ -47,8 +47,7 @@ public sealed partial class StationRadioReceiverSystem : EntitySystem
 
     private void OnMediaPlayed(EntityUid uid, StationRadioReceiverComponent comp, StationRadioMediaPlayedEvent args)
     {
-        var startParams = comp.DefaultParams.WithVolume(-100f);
-        var sound = _audio.PlayPvs(args.MediaPlayed, uid, comp.DefaultParams);
+        var sound = _audio.PlayPvs(args.MediaPlayed, uid, comp.DefaultParams.WithVolume(-100f));
         if (sound == null)
             return;
 
