@@ -232,7 +232,11 @@
     rechargeCooldown: 0
     rechargeSound: null
   - type: BasicEntityAmmoProvider
-    proto: MobHivelordBrood
+    # Moff Start - Entity table integration
+    # proto: MobHivelordBrood
+    ammoTable:
+      id: MobHivelordBrood
+    # Moff End
     capacity: 1
     count: 1
   - type: NpcFactionMember
@@ -402,7 +406,11 @@
     rechargeCooldown: 0
     rechargeSound: null
   - type: BasicEntityAmmoProvider
-    proto: BasiliskRay
+    # Moff Start - Entity table integration
+    # proto: BasiliskRay
+    ammoTable:
+      id: BasiliskRay
+    # Moff End
     capacity: 1
     count: 1
   - type: Bloodstream
