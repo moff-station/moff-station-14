@@ -74,21 +74,23 @@
   - type: Hellportal
     basicSpawnTable: !type:AllSelector
       children:
+      - id: MoffMobDemonNarsieArtificer
       - !type:GroupSelector
         rolls: !type:RangeNumberSelector
           range: 3, 5
         children:
-        - id: MobFleshLoverSmasher
-        - id: MobFleshGolemSmasher
-        - id: MobFleshClampSmasher
-        - id: MobFleshJaredSmasher
-        - id: MobAbominationSmasher
+        - id: MoffMobDemonNarsieFleshClamp
+        - id: MoffMobDemonNarsieFleshGolem
+        - id: MoffMobDemonNarsieFleshJared
+        - id: MoffMobDemonNarsieFleshLover
       - !type:GroupSelector
         prob: 0.3
         children:
-        - id: MobHellhound
-        - id: MobHellGoliath
-        - id: MobHellspawnSmasher
-          weight: 0.05
+        - id: MoffMobDemonNarsieHarvester
+        - id: MoffMobDemonNarsieJuggernaut
+        - id: MoffMobDemonNarsieShade
+        - id: MoffMobDemonNarsieWraith
+        #- id: MobHellspawnSmasher
+        #  weight: 0.05
     sound:
       collection: RadiationPulse
