@@ -39,7 +39,7 @@ public sealed partial class VinylSummonRuleSystem : EntitySystem
     [Dependency] private SharedPopupSystem _popups = default!;
     [Dependency] private ChatSystem _chat = default!;
 
-    [Dependency] private readonly StationRadioReceiverSystem _stationRadio = default!; // Moffstation - Move Station Radio Server Check to StationRadioReceiverSystem
+    [Dependency] private StationRadioReceiverSystem _stationRadio = default!; // Moffstation - Move Station Radio Server Check to StationRadioReceiverSystem
 
     private record struct TrackingData(EntityUid VinylPlayerUid, TimeSpan EndTime);
     private readonly Dictionary<EntityUid, TrackingData> _trackingVinyls = new();
