@@ -7503,6 +7503,15 @@ Entries:
   id: 1747
   time: '2026-07-30T19:50:22.000'
   url: https://github.com/moff-station/moff-station-14/pull/1747
+- author: Centronias
+  changes:
+  - message: Certain markings with multiple sprite layers no longer fail to apply
+      species' displacement maps to layers beyond the first. For example, Dwarves
+      no longer have floating cat-ear insides above their heads.
+    type: fix
+  id: 1748
+  time: '2026-08-07T18:28:55.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1748
 - author: Nyxilath
   changes:
   - message: Reach has returned.
