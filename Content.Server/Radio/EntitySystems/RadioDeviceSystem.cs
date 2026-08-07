@@ -176,7 +176,7 @@ public sealed partial class RadioDeviceSystem : SharedRadioDeviceSystem
 
     private void OnReceiveRadio(EntityUid uid, RadioSpeakerComponent component, ref RadioReceiveEvent args)
     {
-        if (uid == args.RadioSource || component.PowerRequired && !_power.IsPowered(uid)) // Goobstation - Radio Host - Powered required
+        if (uid == args.RadioSource || !_power.IsPowered(uid)) // Goobstation - Radio Host - Powered required
             return;
 
         var nameEv = new TransformSpeakerNameEvent(args.MessageSource, Name(args.MessageSource));

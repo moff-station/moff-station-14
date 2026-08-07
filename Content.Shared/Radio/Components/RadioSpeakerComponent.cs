@@ -30,12 +30,4 @@ public sealed partial class RadioSpeakerComponent : Component
     [DataField, AutoNetworkedField]
     public bool LouderSpeech;
     // Moffstation - End
-
-    // Goobstation - Start - Radio Host
-    /// <summary>
-    /// Does the radio need to be on a power grid to work?
-    /// </summary>
-    [DataField]
-    public bool PowerRequired;
-    // Goobstation - End - Radio Host
 }
