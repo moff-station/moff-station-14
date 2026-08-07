@@ -1,0 +1,9 @@
+﻿- type: entity
+  id: EffectWraithJaunt
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Mobs/Demons/wraith.rsi
+    state: jaunt_out
+  - type: TriggerOnSpawn
+  - type: TimedDespawn
+    lifetime: 1
