@@ -6,8 +6,9 @@ using Content.Shared.Power;
 using Content.Shared.Power.EntitySystems;
 using Robust.Shared.Audio;
 using Robust.Shared.Audio.Systems;
-using Robust.Shared.Containers;
+using Robust.Shared.Containers; // Moffstation - Add Resume Play
 using Robust.Shared.Network;
+using Robust.Shared.Timing; // Moffstation - Add Resume Play
 
 namespace Content.Shared._Goobstation.StationRadio.Systems; // Moffstation - _Goob -> _Goobstation
 
@@ -17,6 +18,10 @@ public sealed partial class VinylPlayerSystem : EntitySystem
     [Dependency] private INetManager _net = default!;
     [Dependency] private SharedAudioSystem _audio = default!;
     [Dependency] private SharedPowerReceiverSystem _power = default!;
+
+     [Dependency] private StationRadioReceiverSystem _stationRadio = default!; // Moffstation - Add Resume Play
+
+    [Dependency] private IGameTiming _timing = default!; // Moffstation - Add Resume Play
 
     public override void Initialize()
     {
@@ -32,8 +37,14 @@ public sealed partial class VinylPlayerSystem : EntitySystem
         if (comp.SoundEntity != null && !args.Powered)
             comp.SoundEntity = _audio.Stop(comp.SoundEntity);
 
-        if (!CheckForRadioRig(uid))
+        // Moffstation - Add Resume Play
+        if (!_stationRadio.TryGetLinkedPoweredServer(uid, out var server) || !TryComp<StationRadioServerComponent>(server, out var serverComp))
             return;
+
+        serverComp.CurrentSong = null;
+        serverComp.PlaybackStartTime = null;
+        Dirty(server, serverComp);
+        // Moffstation - Add Resume Play
 
         var query = EntityQueryEnumerator<StationRadioReceiverComponent>();
         while (query.MoveNext(out var receiver, out _))
@@ -44,8 +55,14 @@ public sealed partial class VinylPlayerSystem : EntitySystem
 
     private void OnDestruction(EntityUid uid, VinylPlayerComponent comp, DestructionEventArgs args)
     {
-        if (!CheckForRadioRig(uid))
+        // Moffstation - Add Resume Play
+        if (!_stationRadio.TryGetLinkedPoweredServer(uid, out var server) || !TryComp<StationRadioServerComponent>(server, out var serverComp))
             return;
+
+        serverComp.CurrentSong = null;
+        serverComp.PlaybackStartTime = null;
+        Dirty(server, serverComp);
+        // Moffstation - Add Resume Play
 
         var query = EntityQueryEnumerator<StationRadioReceiverComponent>();
         while (query.MoveNext(out var receiver, out var _))
@@ -67,8 +84,14 @@ public sealed partial class VinylPlayerSystem : EntitySystem
         var ev = new VinylInsertedEvent(args.Entity);
         RaiseLocalEvent(uid, ref ev);
 
-        if (!CheckForRadioRig(uid))
+        // Moffstation - Add Resume Play
+        if (!_stationRadio.TryGetLinkedPoweredServer(uid, out var server) || !TryComp<StationRadioServerComponent>(server, out var serverComp))
             return;
+
+        serverComp.CurrentSong = vinylcomp.Song;
+        serverComp.PlaybackStartTime = _timing.CurTime;
+        Dirty(server, serverComp);
+        // Moffstation - Add Resume Play
 
         var query = EntityQueryEnumerator<StationRadioReceiverComponent>();
         while (query.MoveNext(out var receiver, out var receiverComponent))
@@ -89,6 +112,15 @@ public sealed partial class VinylPlayerSystem : EntitySystem
 
         if (!CheckForRadioRig(uid))
             return;
+
+        // Moffstation - Add Resume Play
+        if (!_stationRadio.TryGetLinkedPoweredServer(uid, out var server) || !TryComp<StationRadioServerComponent>(server, out var serverComp))
+            return;
+
+        serverComp.CurrentSong = null;
+        serverComp.PlaybackStartTime = null;
+        Dirty(server, serverComp);
+        // Moffstation - Add Resume Play
 
         var query = EntityQueryEnumerator<StationRadioReceiverComponent>();
         while (query.MoveNext(out var receiver, out var _))
