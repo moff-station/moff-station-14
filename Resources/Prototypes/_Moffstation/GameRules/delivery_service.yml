@@ -1,7 +1,81 @@
-﻿- type: entity
+- type: entity
   parent: BaseGameRule
   id: PizzaDeliverySpawn
   components:
   - type: RuleGrids
   - type: LoadMapRule
     gridPath: /Maps/_Moffstation/Shuttles/shuttle-ap-schwarz.yml
+  - type: AntagSpawner
+    prototype: MobPizzaDeliveryScurret
+  - type: AntagSelection
+    selectionTime: Enroll
+    antags:
+    - !type:FixedAntagCount
+      proto: PizzaDeliveryScurret
+  - type: ESSynchronizedVoteManager
+    votes:
+    - PizzaScurretEnroller
+
+- type: antagSpecifier
+  parent: RestrictedAntag
+  id: PizzaDeliveryScurret
+  spawnerPrototype: SpawnPointGhostPizzaScurretAntag
+  pickPlayer: false
+  allowNonHumans: true # the assigned scurret body is non-humanoid
+  mindRoles:
+  - MindRoleGhostRoleNeutral
+
+- type: entity
+  parent: MoffBaseEnroll
+  id: PizzaScurretEnroller
+  name: Arnold's Pizza Delivery Scurret
+  description: Delivery guaranteed within 30 minutes or less!
+  components:
+  - type: MoffEnrollEvent
+    fallbackRules: !type:EntSelector
+      id: InstantPizzaDelivery
+
+- type: entity
+  parent: BaseAntagSpawner
+  id: SpawnPointGhostPizzaScurretAntag
+  categories: [ HideSpawnMenu, Spawner ]
+  components:
+  - type: GhostRole
+    name: ghost-role-information-pizza-delivery-scurret-name
+    description: ghost-role-information-pizza-delivery-scurret-description
+    rules: ghost-role-information-nonantagonist-rules
+    mindRoles:
+    - MindRoleGhostRoleNeutral
+
+# The delivery was paid for, so if nobody wants to drive the shuttle cargo just sends the pizza instead.
+- type: entity
+  id: InstantPizzaDelivery
+  parent: CargoGiftsBase
+  components:
+  - type: StationEvent
+    weight: 5
+    duration: 120
+    earliestStart: 0
+    reoccurrenceDelay: 0
+  - type: CargoGiftsRule
+    announce: cargo-gift-pizza-instant-delivery
+    gifts:
+      FoodPizza: 1      # 4 pizzas (32 slices total)
+      FoodSoftdrinks: 1 # 16 sodas
+
+# Pizza delivery scurret spawn point
+- type: entity
+  parent: MarkerBase
+  id: SpawnPointGhostPizzaDeliveryScurret
+  name: ghost role spawn point
+  components:
+  - type: AntagGridSpawnPoint
+    whitelist:
+    - PizzaDeliveryScurret
+  - type: SpawnPoint
+  - type: Sprite
+    sprite: Markers/jobs.rsi
+    layers:
+    - state: green
+    - sprite: Objects/Consumable/Food/Baked/pizza.rsi
+      state: margherita-slice
