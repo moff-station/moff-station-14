@@ -191,7 +191,7 @@ public sealed partial class RadioDeviceSystem : SharedRadioDeviceSystem
         component.LouderSpeech ? InGameICChatType.Speak : InGameICChatType.Whisper, // Moffstation - Added component-dependent chatType
         ChatTransmitRange.GhostRangeLimit,
         nameOverride: name,
-        checkRadioPrefix: component.LouderSpeech); // Goobstation/Moffstation - SpeakNormally -> LouderSpeech
+        checkRadioPrefix: false);
     }
 
     private void OnIntercomEncryptionChannelsChanged(Entity<IntercomComponent> ent, ref EncryptionChannelsChangedEvent args)
