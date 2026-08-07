@@ -155,6 +155,19 @@
   - type: ToggleableClothing
     clothingPrototype: ClothingHeadHatHoodWinterCaptain
 
+#HOP
+- type: entity
+  parent: [ClothingOuterWinterCoatToggleable, ClothingOuterStorageFoldableBase, BaseCommandContraband]
+  id: ClothingOuterWinterHoP
+  name: head of personnel's winter coat
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/OuterClothing/WinterCoats/wintercoathop.rsi
+  - type: Clothing
+    sprite: _Moffstation/Clothing/OuterClothing/WinterCoats/wintercoathop.rsi
+  - type: ToggleableClothing
+    clothingPrototype: ClothingHeadHatHoodWinterHOP
+
 #CMO
 - type: entity
   parent: ClothingOuterWinterCoatToggleable
