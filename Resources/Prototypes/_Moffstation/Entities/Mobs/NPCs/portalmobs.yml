@@ -273,7 +273,7 @@
   parent: BaseMobJaunt
   id: WraithJaunt
   name: narsian wraith
-  suffix: Hellportal
+  suffix: Hellportal, Jaunt
   components:
   - type: Sprite
     sprite: Mobs/Ghosts/ghost_human.rsi
@@ -290,3 +290,16 @@
   - type: TriggerOnSpawn
   - type: SpawnOnTrigger
     proto: EffectWraithJaunt
+  - type: NpcFactionMember
+    factions:
+    - NarsianDemon
+  - type: CombatMode
+  - type: MeleeWeapon
+    damage:
+      types:
+        Blunt: 0
+    hitSound: null
+    attackRate: 0.1
+  - type: HTN
+    rootTask:
+      task: NarsieWraithJauntCompound
