@@ -18,14 +18,16 @@ roles-antag-initial-infected-objective = Once you turn, infect as many other cre
 roles-antag-zombie-name = Zombie
 roles-antag-zombie-objective = Turn as many humans as possible into zombies.
 
-roles-antag-nuclear-operative-commander-name = Nuclear operative commander
-roles-antag-nuclear-operative-commander-objective = Lead your team to the destruction of the station.
+#Moff start - rename them to gorlex
+roles-antag-nuclear-operative-commander-name = Gorlex Commander
+roles-antag-nuclear-operative-commander-objective = Lead a strike team of Gorlex Marauders in an assault against the station.
 
-roles-antag-nuclear-operative-agent-name = Nuclear operative corpsman
-roles-antag-nuclear-operative-agent-objective = The medic of the nuclear operative team. Heal your team to victory!
+roles-antag-nuclear-operative-agent-name = Gorlex Medic
+roles-antag-nuclear-operative-agent-objective = The medic of the Gorlex Marauder strike team. Heal your team to victory!
 
-roles-antag-nuclear-operative-name = Nuclear operative
-roles-antag-nuclear-operative-objective = Find the nuke disk and blow up the station.
+roles-antag-nuclear-operative-name = Gorlex Marauder
+roles-antag-nuclear-operative-objective = A professional solider of a Gorlex Marauder strike team. Follow your commander to victory!
+#Moff end
 
 roles-antag-subverted-silicon-name = Subverted silicon
 roles-antag-subverted-silicon-objective = Follow your new laws and do bad unto the station.

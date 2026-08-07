@@ -28,6 +28,10 @@ public sealed partial class AntagRandomObjectivesSystem : EntitySystem
         if (args.Session == null)
             return;
 
+        // See if objectives are only given to specific antag defs.
+        if (ent.Comp.OnlyForDefs is { Count: > 0 } antagDefs && !antagDefs.Contains(args.Def.ID))
+            return;
+
         if (!_mind.TryGetMind(args.Session, out var mindId, out var mind))
         {
             Log.Error($"Antag {ToPrettyString(args.EntityUid):player} was selected by {ToPrettyString(ent):rule} but had no mind attached!");
