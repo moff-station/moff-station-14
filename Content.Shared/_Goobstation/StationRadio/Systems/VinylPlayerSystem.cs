@@ -6,9 +6,10 @@ using Content.Shared.Power;
 using Content.Shared.Power.EntitySystems;
 using Robust.Shared.Audio;
 using Robust.Shared.Audio.Systems;
-using Robust.Shared.Containers; // Moffstation - Add Resume Play
-using Robust.Shared.Network;
+using Robust.Shared.Containers;
+using Robust.Shared.Network; // Moffstation - Add Resume Play
 using Robust.Shared.Timing; // Moffstation - Add Resume Play
+using Content.Shared.Examine; // Moffstation - Shift Click to view what Vinyl is inserted.
 
 namespace Content.Shared._Goobstation.StationRadio.Systems; // Moffstation - _Goob -> _Goobstation
 
@@ -19,9 +20,9 @@ public sealed partial class VinylPlayerSystem : EntitySystem
     [Dependency] private SharedAudioSystem _audio = default!;
     [Dependency] private SharedPowerReceiverSystem _power = default!;
 
-     [Dependency] private StationRadioReceiverSystem _stationRadio = default!; // Moffstation - Add Resume Play
-
+    [Dependency] private StationRadioReceiverSystem _stationRadio = default!; // Moffstation - Add Resume Play
     [Dependency] private IGameTiming _timing = default!; // Moffstation - Add Resume Play
+    [Dependency] private readonly SharedContainerSystem _container = default!; // Moffstation - Shift Click to view what Vinyl is inserted.
 
     public override void Initialize()
     {
@@ -158,4 +159,22 @@ public sealed partial class VinylPlayerSystem : EntitySystem
         }
         return false;
     }
+
+    // Moffstation - Start - Shift Click to view what Vinyl is inserted.
+
+    /// <summary>
+    /// Show what vinyl is currently inserted when examined.
+    /// </summary>
+    private void OnExamined(EntityUid uid, VinylPlayerComponent comp, ref ExaminedEvent args)
+    {
+        if (!_container.TryGetContainer(uid, "vinyl", out var container) || container.ContainedEntities.Count == 0) // confirm actual container ID
+        {
+            args.PushMarkup(Loc.GetString("vinyl-player-examine-empty"));
+            return;
+        }
+
+        var vinyl = container.ContainedEntities[0];
+        args.PushMarkup(Loc.GetString("vinyl-player-examine-loaded", ("vinyl", Name(vinyl))));
+    }
+    // Moffstation - End
 }

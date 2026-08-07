@@ -6,6 +6,7 @@ using Content.Shared.Power.EntitySystems;
 using Robust.Shared.Audio.Systems;
 using Content.Shared.DeviceLinking; // Moffstation - Move Station Radio Server Check to StationRadioReceiverSystem
 using Content.Shared.Radio.Components; // Moffstation - Alt Click to Lower Volume.
+using Content.Shared.Examine; // Moffstation - Shift Click to view what volume the radio is at.
 using Content.Shared.Verbs; // Moffstation - Alt Click to Lower Volume.
 using Robust.Shared.Network; // Moffstation - Add Resume Play
 using Robust.Shared.Timing; // Moffstation - Add Resume Play
@@ -36,6 +37,7 @@ public sealed partial class StationRadioReceiverSystem : EntitySystem
         SubscribeLocalEvent<StationRadioReceiverComponent, MapInitEvent>(OnReceiverMapInit); // Moffstation - Add Resume Play
 
         SubscribeLocalEvent<StationRadioReceiverComponent, GetVerbsEvent<AlternativeVerb>>(OnGetAltVerbs); // Moffstation - Alt click to lower volume.
+        SubscribeLocalEvent<StationRadioReceiverComponent, ExaminedEvent>(OnExamined); // Moffstation - Shift Click to view what volume the radio is at.
     }
 
     private void OnPowerChanged(EntityUid uid, StationRadioReceiverComponent comp, PowerChangedEvent args)
@@ -232,6 +234,16 @@ public sealed partial class StationRadioReceiverSystem : EntitySystem
         {
             RaiseLocalEvent(receiver, new StationRadioMediaStoppedEvent());
         }
+    }
+
+    /// <summary>
+    /// Display whether or not the station radio is at full or low volume when examined.
+    /// </summary>
+    private void OnExamined(EntityUid uid, StationRadioReceiverComponent comp, ref ExaminedEvent args)
+    {
+        args.PushMarkup(Loc.GetString(comp.LowVolume
+            ? "station-radio-receiver-examine-low-volume"
+            : "station-radio-receiver-examine-full-volume"));
     }
     // Moffstation - End
 }
