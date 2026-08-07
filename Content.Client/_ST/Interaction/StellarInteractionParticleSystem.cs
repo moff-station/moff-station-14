@@ -2,8 +2,10 @@
 //
 // SPDX-License-Identifier: MIT
 
+using System.Linq;
 using System.Numerics;
 using Content.Client._Moffstation.Interaction;
+using Content.Shared._Moffstation.Interaction;
 using Content.Shared._ST.Interaction;
 using Robust.Client.Animations;
 using Robust.Client.GameObjects;
@@ -38,11 +40,15 @@ public sealed partial class StellarInteractionParticleSystem : EntitySystem
         var used = GetEntity(ev.Used);
         var target = GetEntity(ev.Target);
 
-
         if (!Exists(performer) || !Exists(target))
             return;
 
-        // Moffstation - start - Add in cooldown
+        // Moff Start - Add in cooldown, secret doors remain secret
+        if (TryComp<HideInteractionParticleComponent>(target, out var hide))
+        {
+            return;
+        }
+
         if (TryComp<InteractionParticleTrackerComponent>(performer, out var tracker))
         {
             if (_timing.CurTime < tracker.ExpireTime)
