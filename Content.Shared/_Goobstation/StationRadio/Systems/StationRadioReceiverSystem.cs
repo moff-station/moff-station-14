@@ -1,5 +1,5 @@
-using Content.Shared._Goob.StationRadio.Components;
-using Content.Shared._Goob.StationRadio.Events;
+using Content.Shared._Goobstation.StationRadio.Components; // Moffstation - _Goob -> _Goobstation
+using Content.Shared._Goobstation.StationRadio.Events; // Moffstation - _Goob -> _Goobstation
 using Content.Shared.Interaction;
 using Content.Shared.Power;
 using Content.Shared.Power.EntitySystems;
@@ -7,7 +7,7 @@ using Robust.Shared.Audio.Systems;
 using Content.Shared.Radio.Components; // Moffstation
 using Content.Shared.Verbs; // Moffstation
 
-namespace Content.Shared._Goob.StationRadio.Systems;
+namespace Content.Shared._Goobstation.StationRadio.Systems; // Moffstation - _Goob -> _Goobstation
 
 public sealed partial class StationRadioReceiverSystem : EntitySystem
 {

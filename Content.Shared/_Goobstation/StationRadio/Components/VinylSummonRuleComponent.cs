@@ -1,7 +1,7 @@
 using Robust.Shared.Audio;
 using Robust.Shared.GameStates;
 
-namespace Content.Shared._Goob.StationRadio.Components;
+namespace Content.Shared._Goobstation.StationRadio.Components; // Moffstation - _Goob -> _Goobstation
 
 /// <summary>
 /// Component that allows a vinyl disk to spawn a game rule when it finishes playing.

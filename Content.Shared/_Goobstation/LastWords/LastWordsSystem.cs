@@ -2,7 +2,7 @@ using Content.Shared.Chat;
 using Content.Shared.Mind;
 using Content.Shared.Mobs.Components;
 
-namespace Content.Shared._Goob.LastWords;
+namespace Content.Shared._Goobstation.LastWords; // Moffstation - _Goob -> _Goobstation
 
 public sealed partial class LastWordsSystem : EntitySystem
 {

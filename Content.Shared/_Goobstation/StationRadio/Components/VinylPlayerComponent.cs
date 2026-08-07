@@ -1,6 +1,6 @@
 using Robust.Shared.GameStates;
 
-namespace Content.Shared._Goob.StationRadio.Components;
+namespace Content.Shared._Goobstation.StationRadio.Components; // Moffstation - _Goob -> _Goobstation
 
 [RegisterComponent, NetworkedComponent, AutoGenerateComponentState]
 public sealed partial class VinylPlayerComponent : Component
