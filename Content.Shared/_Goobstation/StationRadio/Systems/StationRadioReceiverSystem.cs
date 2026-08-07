@@ -86,7 +86,7 @@ public sealed partial class StationRadioReceiverSystem : EntitySystem
 
         args.Verbs.Add(new AlternativeVerb
         {
-            Text = comp.LowVolume ? "Lower Volume" : "Increase Volume",
+            Text = comp.LowVolume ? "station-radio-receiver-increase-volume" : "station-radio-receiver-decrease-volume",
             Act = () =>
             {
                 if (TryComp<RadioSpeakerComponent>(uid, out var speaker))
@@ -158,7 +158,7 @@ public sealed partial class StationRadioReceiverSystem : EntitySystem
     /// When the Radio Rig is destroyed, stop all station radio receivers.
     /// </summary>
     private void OnRigTerminating(EntityUid uid, RadioRigComponent comp, ref EntityTerminatingEvent args) => StopAllReceivers();
-    
+
     /// <summary>
     /// Stop the broadcast on server destruction.
     /// </summary>
