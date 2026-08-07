@@ -22,7 +22,8 @@ public sealed partial class StationRadioReceiverSystem : EntitySystem
         SubscribeLocalEvent<StationRadioReceiverComponent, ActivateInWorldEvent>(OnRadioToggle);
         SubscribeLocalEvent<StationRadioReceiverComponent, PowerChangedEvent>(OnPowerChanged);
 
-        SubscribeLocalEvent<StationRadioServerComponent, EntityTerminatingEvent>(OnServerTerminating); // Moffstation - Stop the broadcast when StationRadioServer is deconstructed/destroyed.
+        SubscribeLocalEvent<StationRadioServerComponent, EntityTerminatingEvent>(OnServerTerminating); // Moffstation - When Server is destroyed, it should stop broadcasting.
+        SubscribeLocalEvent<RadioRigComponent, EntityTerminatingEvent>(OnRigTerminating); // Moffstation - When Rig is destroyed, it should stop broadcasting.
 
         SubscribeLocalEvent<StationRadioServerComponent, PowerChangedEvent>(OnServerPowerChanged); // Moffstation - If StationRadioServer has no power, broadcast stops.
 
@@ -150,9 +151,19 @@ public sealed partial class StationRadioReceiverSystem : EntitySystem
     }
 
     /// <summary>
+    /// When the Radio Server is destroyed, stop all station radio receivers.
+    /// </summary>
+    private void OnServerTerminating(EntityUid uid, StationRadioServerComponent comp, ref EntityTerminatingEvent args) => StopAllReceivers();
+
+    /// <summary>
+    /// When the Radio Rig is destroyed, stop all station radio receivers.
+    /// </summary>
+    private void OnRigTerminating(EntityUid uid, RadioRigComponent comp, ref EntityTerminatingEvent args) => StopAllReceivers();
+    
+    /// <summary>
     /// Stop the broadcast on server destruction.
     /// </summary>
-    private void OnServerTerminating(EntityUid uid, StationRadioServerComponent comp, ref EntityTerminatingEvent args)
+    private void StopAllReceivers()
     {
         var query = EntityQueryEnumerator<StationRadioReceiverComponent>();
         while (query.MoveNext(out var receiver, out _))
