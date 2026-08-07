@@ -1,5 +1,5 @@
-using Content.Shared._Goob.StationRadio.Components;
-using Content.Shared._Goob.StationRadio.Events;
+using Content.Shared._Goobstation.StationRadio.Components; // Moffstation - _Goob -> _Goobstation
+using Content.Shared._Goobstation.StationRadio.Events; // Moffstation - _Goob -> _Goobstation
 using Content.Server.GameTicking;
 using Content.Server.Station.Systems;
 using Content.Shared.Communications;
@@ -18,8 +18,9 @@ using Robust.Shared.Timing;
 using System.Linq;
 using Content.Shared.Radio.Components;
 using Content.Server.Chat.Systems;
+using Content.Shared._Goobstation.StationRadio.Systems; // Moffstation - Move Station Radio Server Check to StationRadioReceiverSystem
 
-namespace Content.Shared._Goob.StationRadio;
+namespace Content.Server._Goobstation.StationRadio; // Moffstation - _Goob -> _Goobstation
 
 /// <summary>
 /// System that handles spawning game rules when vinyl disks finish playing.
@@ -37,6 +38,8 @@ public sealed partial class VinylSummonRuleSystem : EntitySystem
     [Dependency] private ItemSlotsSystem _itemSlots = default!;
     [Dependency] private SharedPopupSystem _popups = default!;
     [Dependency] private ChatSystem _chat = default!;
+
+    [Dependency] private readonly StationRadioReceiverSystem _stationRadio = default!; // Moffstation - Move Station Radio Server Check to StationRadioReceiverSystem
 
     private record struct TrackingData(EntityUid VinylPlayerUid, TimeSpan EndTime);
     private readonly Dictionary<EntityUid, TrackingData> _trackingVinyls = new();
@@ -82,7 +85,7 @@ public sealed partial class VinylSummonRuleSystem : EntitySystem
         }
 
         // Check if vinyl player is connected to the radio system
-        if (!CheckForRadioConnection(playerUid))
+        if (!_stationRadio.TryGetLinkedPoweredServer(playerUid, out _)) // Moffstation - Move Station Radio Server Check to StationRadioReceiverSystem
         {
             _popups.PopupPredicted(Loc.GetString("vinyl-popout-no-radio-connection"), playerUid, null, PopupType.Medium);
             QueueSafeEject();
@@ -139,7 +142,7 @@ public sealed partial class VinylSummonRuleSystem : EntitySystem
             }
 
             // Check if vinyl player is still connected to the radio system
-            if (!CheckForRadioConnection(data.VinylPlayerUid))
+            if (!_stationRadio.TryGetLinkedPoweredServer(data.VinylPlayerUid, out _)) // Moffstation - Move Station Radio Server Check to StationRadioReceiverSystem
             {
                 _trackingVinyls.Remove(vinylUid);
                 _popups.PopupPredicted(Loc.GetString("vinyl-popout-no-radio-connection"), data.VinylPlayerUid, null, PopupType.Medium);
@@ -225,31 +228,5 @@ public sealed partial class VinylSummonRuleSystem : EntitySystem
 
         // Assume it's a direct game rule entity ID
         return gameRuleIdentifier;
-    }
-
-    private bool CheckForRadioConnection(EntityUid uid)
-    {
-        if (!TryComp<DeviceLinkSourceComponent>(uid, out var source))
-            return false;
-
-        foreach (var linkedRig in source.LinkedPorts.Keys)
-        {
-            // Check if the radio rig is connected.
-            if (!HasComp<RadioRigComponent>(linkedRig)
-                || !TryComp<DeviceLinkSinkComponent>(linkedRig, out var sink))
-                continue;
-
-            // Check if the radio server is connected.
-            foreach (var linkedServer in sink.LinkedSources)
-            {
-                if (!TryComp<StationRadioServerComponent>(linkedServer, out var _)
-                    || !_power.IsPowered(linkedServer))
-                    continue;
-
-                return true;
-            }
-        }
-
-        return false;
     }
 }

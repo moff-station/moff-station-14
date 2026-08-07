@@ -4,8 +4,9 @@ using Content.Shared.Interaction;
 using Content.Shared.Power;
 using Content.Shared.Power.EntitySystems;
 using Robust.Shared.Audio.Systems;
-using Content.Shared.Radio.Components; // Moffstation
-using Content.Shared.Verbs; // Moffstation
+using Content.Shared.DeviceLinking; // Moffstation - Move Station Radio Server Check to StationRadioReceiverSystem
+using Content.Shared.Radio.Components; // Moffstation - Alt Click to Lower Volume.
+using Content.Shared.Verbs; // Moffstation - Alt Click to Lower Volume.
 
 namespace Content.Shared._Goobstation.StationRadio.Systems; // Moffstation - _Goob -> _Goobstation
 
@@ -20,6 +21,10 @@ public sealed partial class StationRadioReceiverSystem : EntitySystem
         SubscribeLocalEvent<StationRadioReceiverComponent, StationRadioMediaStoppedEvent>(OnMediaStopped);
         SubscribeLocalEvent<StationRadioReceiverComponent, ActivateInWorldEvent>(OnRadioToggle);
         SubscribeLocalEvent<StationRadioReceiverComponent, PowerChangedEvent>(OnPowerChanged);
+
+        SubscribeLocalEvent<StationRadioServerComponent, EntityTerminatingEvent>(OnServerTerminating); // Moffstation - Stop the broadcast when StationRadioServer is deconstructed/destroyed.
+
+        SubscribeLocalEvent<StationRadioServerComponent, PowerChangedEvent>(OnServerPowerChanged); // Moffstation - If StationRadioServer has no power, broadcast stops.
 
         SubscribeLocalEvent<StationRadioReceiverComponent, GetVerbsEvent<AlternativeVerb>>(OnGetAltVerbs); // Moffstation - Alt click to lower volume.
     }
@@ -58,7 +63,11 @@ public sealed partial class StationRadioReceiverSystem : EntitySystem
         comp.SoundEntity = _audio.Stop(comp.SoundEntity);
     }
 
-    // Moffstation - Start - Alt click to lower volume.
+    // Moffstation - Start
+
+    /// <summary>
+    /// Method for getting the current volume of the station radio.
+    /// </summary>
     private static float GetGain(StationRadioReceiverComponent comp, bool powered)
     {
         if (!comp.Active || !powered)
@@ -67,6 +76,9 @@ public sealed partial class StationRadioReceiverSystem : EntitySystem
         return comp.LowVolume ? 0.1f : 1f;
     }
 
+    /// <summary>
+    /// Alt Click / Context Menu Verb for turning down the volume of the radio.
+    /// </summary>
     private void OnGetAltVerbs(EntityUid uid, StationRadioReceiverComponent comp, GetVerbsEvent<AlternativeVerb> args)
     {
         if (!args.CanAccess || !args.CanInteract)
@@ -88,6 +100,65 @@ public sealed partial class StationRadioReceiverSystem : EntitySystem
                     _audio.SetGain(comp.SoundEntity, GetGain(comp, _power.IsPowered(uid)));
             }
         });
+    }
+
+    /// <summary>
+    /// Resolves whether Radio Rig is connected to a Radio Server that has power,
+    /// and whether or not it can broadcast.
+    /// </summary>
+    public bool TryGetLinkedPoweredServer(EntityUid uid, out EntityUid server)
+    {
+        server = default;
+
+        if (!TryComp<DeviceLinkSourceComponent>(uid, out var source))
+            return false;
+
+        foreach (var linkedRig in source.LinkedPorts.Keys)
+        {
+            if (!HasComp<RadioRigComponent>(linkedRig) || !TryComp<DeviceLinkSinkComponent>(linkedRig, out var sink))
+                continue;
+
+            foreach (var linkedServer in sink.LinkedSources)
+            {
+                var hasComp = HasComp<StationRadioServerComponent>(linkedServer);
+                var powered = _power.IsPowered(linkedServer);
+
+                if (!hasComp || !powered)
+                    continue;
+
+                server = linkedServer;
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    /// <summary>
+    /// Stop broadcasting if the Radio Server loses power, despite the Vinyl Player and Rig still being powered.
+    /// </summary>
+    private void OnServerPowerChanged(EntityUid uid, StationRadioServerComponent comp, PowerChangedEvent args)
+    {
+        if (args.Powered)
+            return;
+
+        var query = EntityQueryEnumerator<StationRadioReceiverComponent>();
+        while (query.MoveNext(out var receiver, out _))
+        {
+            RaiseLocalEvent(receiver, new StationRadioMediaStoppedEvent());
+        }
+    }
+
+    /// <summary>
+    /// Stop the broadcast on server destruction.
+    /// </summary>
+    private void OnServerTerminating(EntityUid uid, StationRadioServerComponent comp, ref EntityTerminatingEvent args)
+    {
+        var query = EntityQueryEnumerator<StationRadioReceiverComponent>();
+        while (query.MoveNext(out var receiver, out _))
+        {
+            RaiseLocalEvent(receiver, new StationRadioMediaStoppedEvent());
+        }
     }
     // Moffstation - End
 }
