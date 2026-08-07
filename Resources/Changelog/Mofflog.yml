@@ -7514,6 +7514,16 @@ Entries:
   url: https://github.com/moff-station/moff-station-14/pull/1748
 - author: Nyxilath
   changes:
+  - message: BasicEntityAmmoProviders now use a table for prototype definitions.
+    type: tweak
+  - message: Wand of Carp Polymorph now has a rare chance to wildly turn victims into
+      more powerful forms of carp.
+    type: tweak
+  id: 1753
+  time: '2026-08-07T18:55:16.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1753
+- author: Nyxilath
+  changes:
   - message: Reach has returned.
     type: add
   id: 1760
@@ -7540,6 +7550,15 @@ Entries:
   id: 1765
   time: '2026-08-04T18:51:54.000'
   url: https://github.com/moff-station/moff-station-14/pull/1765
+- author: Nyxilath
+  changes:
+  - message: Telesci consoles now uses our moffstation-style console.
+    type: tweak
+  - message: pirates now have their own unique IFF console
+    type: add
+  id: 1776
+  time: '2026-08-07T18:55:16.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1776
 - author: gummyema
   changes:
   - message: Added schoolgirl outfit to DramaDrobe
