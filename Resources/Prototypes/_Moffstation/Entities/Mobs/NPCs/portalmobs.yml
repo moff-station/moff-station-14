@@ -42,8 +42,7 @@
   - type: ComplexInteraction
   - type: Speech
     speechVerb: Ghost
-    #speechSounds: SyndieBorg
-    speechSounds: Slime
+    speechSounds: Arachnid
   - type: Prying
     pryPowered: true
     force: true
@@ -55,6 +54,7 @@
     baseWalkSpeed: 1
     baseSprintSpeed: 1.5
   - type: Vocalizer
+    hideChat: true
   - type: DatasetVocalizer
     dataset: NarSiePrayers
   - type: HTN
@@ -69,12 +69,6 @@
         true
       NavSmash: !type:Bool
         true
-      MinimumIdleTime: !type:Single
-        0.5
-      MaximumIdleTime: !type:Single
-        0.5
-      Count: !type:Single
-        0
   - type: Bloodstream
     bloodReferenceSolution:
       reagents:
@@ -90,8 +84,6 @@
   id: MoffMobDemonNarsieFleshBase
   name: writhing flesh
   components:
-  - type: Speech
-    speechSounds: Arachnid
   - type: Sprite
     drawdepth: Mobs
     sprite: Mobs/Aliens/flesh.rsi
@@ -215,6 +207,18 @@
   components:
   - type: Sprite
     sprite: _Moffstation/Mobs/Demons/artificer.rsi
+  - type: HTN
+    rootTask:
+      task: NarsieArtificerCompound
+    blackboard:
+      NavClimb: !type:Bool
+        true
+      NavInteract: !type:Bool
+        true
+      NavPry: !type:Bool
+        true
+      NavSmash: !type:Bool
+        true
 
 - type: entity
   parent: MoffMobDemonNarsieConstructBase

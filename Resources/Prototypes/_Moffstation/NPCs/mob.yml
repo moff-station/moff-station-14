@@ -7,3 +7,23 @@
   - tasks:
     - !type:HTNCompoundTask
       task: IdleCompound
+
+- type: htnCompound
+  id: NarsieArtificerCompound
+  branches:
+  - tasks:
+    - !type:HTNCompoundTask
+      task: MeleeWallAttackCompound
+  - tasks:
+    - !type:HTNCompoundTask
+      task: IdleCompound
+
+- type: htnCompound
+  id: MeleeWallAttackCompound
+  branches:
+  - tasks:
+    - !type:HTNPrimitiveTask
+      operator: !type:UtilityOperator
+        proto: NearbySimpleBarriers
+    - !type:HTNCompoundTask
+      task: BeforeMeleeAttackTargetCompound

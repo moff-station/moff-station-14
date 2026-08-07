@@ -1,0 +1,19 @@
+﻿- type: utilityQuery
+  id: NearbySimpleBarriers
+  query:
+  - !type:ComponentQuery
+    components:
+    - type: Wall
+  considerations:
+  - !type:TargetIsVisibleCon
+    curve: !type:BoolCurve
+  - !type:TargetDistanceCon
+    curve: !type:PresetCurve
+      preset: TargetDistance
+  #- !type:TargetHealthCon
+  #  curve: !type:PresetCurve
+  #    preset: TargetHealth
+  - !type:TargetAccessibleCon
+    curve: !type:BoolCurve
+  - !type:TargetInLOSOrCurrentCon
+    curve: !type:BoolCurve
