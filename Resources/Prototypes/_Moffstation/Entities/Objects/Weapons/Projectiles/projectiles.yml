@@ -47,3 +47,93 @@
         mask:
         - Impassable
         - BulletImpassable
+
+# TODO Add material composition + recycling
+- type: entity
+  parent: BaseArrow
+  id: MetalBoltAmmo
+  name: metal bolt
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Objects/Weapons/Guns/Projectiles/metal_bolts.rsi
+    layers:
+    - map: [ "enum.TemperatureVisuals.Layer" ]
+    state: icon
+  - type: Projectile
+    damage:
+      types:
+        Blunt: 25
+  - type: TriggerOnTemperatureAbove
+    keyOut: heated
+    temperature: 800
+  - type: TriggerOnTemperatureBelow
+    keyOut: cooled
+    temperature: 800
+  - type: DamageOnTrigger
+    keysIn:
+    - heated-collide
+    targetUser: true
+    damage:
+      types:
+        Heat: 15
+  - type: AddComponentsOnTrigger
+    keysIn:
+    - heated
+    components:
+    - type: TriggerOnCollide
+      keyOut: heated-collide
+      fixtureID: projectile
+      maxTriggers: 1
+  - type: RemoveComponentsOnTrigger
+    keysIn:
+    - cooled
+    components:
+    - type: TriggerOnCollide
+      fixtureID: projectile
+  - type: AtmosExposed # Causes heating/cooling from atmospheric temperature
+  - type: Temperature
+    currentTemperature: 290
+    specificHeat: 502 # Carbon steel on https://www.engineersedge.com/materials/specific_heat_capacity_of_metals_13259.htm
+  - type: TemperatureVisuals
+    visuals:
+      0: cold
+      800: hot
+  - type: Appearance
+  - type: GenericVisualizer
+    visuals:
+      enum.TemperatureVisuals.Key:
+        enum.TemperatureVisuals.Layer:
+          cold: { state: metal_bolts }
+          hot: { state: heated_metal_bolts }
+  - type: EmitSoundOnTrigger
+    sound: /Audio/Effects/sizzle.ogg
+    keysIn:
+    - heated
+  - type: Damageable
+  - type: Injurable
+    damageContainer: Inorganic
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 5
+      behaviors:
+      - !type:PlaySoundBehavior
+        sound:
+          collection: GlassBreak
+          params:
+            volume: -4
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          PartRodMetal1:
+            min: 1
+            max: 1
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+  - type: DamageOnLand
+    damage:
+      types:
+        Blunt: 5
+  - type: Construction
+    graph: MetalBoltAmmo
+    node: metalBoltAmmo
