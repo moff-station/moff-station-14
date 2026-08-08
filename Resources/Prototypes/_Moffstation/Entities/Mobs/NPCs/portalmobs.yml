@@ -51,8 +51,8 @@
       path: /Audio/Items/crowbar.ogg
   - type: MovementAlwaysTouching
   - type: MovementSpeedModifier
-    baseWalkSpeed: 1
-    baseSprintSpeed: 1.5
+    baseWalkSpeed: 1.25
+    baseSprintSpeed: 2.25
   - type: Vocalizer
     hideChat: true
   - type: DatasetVocalizer
@@ -94,6 +94,9 @@
   - type: SlowOnDamage
     speedModifierThresholds:
       60: 0.7
+  - type: MovementSpeedModifier
+    baseWalkSpeed: 0.625
+    baseSprintSpeed: 1.125
   - type: Tag
     tags:
     - DoorBumpOpener
@@ -144,8 +147,8 @@
       0: Alive
       30: Dead
   - type: MovementSpeedModifier
-    baseWalkSpeed: 2
-    baseSprintSpeed: 2.5
+    baseWalkSpeed: 1.25
+    baseSprintSpeed: 2.25
 
 - type: entity
   parent: MoffMobDemonNarsieFleshBase
@@ -196,8 +199,8 @@
       0: Alive
       30: Dead
   - type: MovementSpeedModifier
-    baseWalkSpeed: 2
-    baseSprintSpeed: 2.5
+    baseWalkSpeed: 1.25
+    baseSprintSpeed: 2.25
 
 # Narsian constructs
 - type: entity
@@ -237,11 +240,54 @@
   components:
   - type: Sprite
     sprite: _Moffstation/Mobs/Demons/juggernaut.rsi
+  - type: MeleeThrowOnHit
+    distance: 1
+    speed: 1
+  - type: MeleeWeapon
+    soundHit:
+      path: "/Audio/Effects/metal_slam4.ogg"
+    animation: WeaponArcClaw
+    attackRate: 0.5
+    damage:
+      types:
+        Blunt: 33
+        Structural: 45
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      150: Dead
+  - type: SlowOnDamage
+    speedModifierThresholds:
+      120: 0.7
+  - type: MovementSpeedModifier
+    baseWalkSpeed: 0.625
+    baseSprintSpeed: 1.125
 
 - type: entity
   parent: MoffMobDemonNarsieConstructBase
   id: MoffMobDemonNarsieShade
   name: narsian shade
+  components:
+  - type: Gun
+    fireRate: 0.25
+    projectileSpeed: 15.0
+    selectedMode: SemiAuto
+    showExamineText: false
+    availableModes: [ SemiAuto ]
+    soundGunshot: /Audio/Weapons/Guns/Gunshots/syringe_gun.ogg
+  - type: BasicEntityAmmoProvider
+    ammoTable:
+      id: MoffBloodBolt
+    capacity: 1
+    count: 1
+  - type: RechargeBasicEntityAmmo
+    showExamineText: false
+    rechargeCooldown: 0
+    rechargeSound: null
+  - type: HTN
+    rootTask:
+      task: GlockroachCompound
+
 
 - type: entity
   parent: MoffMobDemonNarsieConstructBase
@@ -252,6 +298,9 @@
     sprite: _Moffstation/Mobs/Demons/wraith.rsi
   - type: NPCUseActionOnTarget
     actionId: ActionPolymorphWraithJaunt
+  - type: MovementSpeedModifier
+    baseWalkSpeed: 1.875
+    baseSprintSpeed: 3.375
 
 - type: entity
   parent: BaseActionPolymorph
@@ -260,7 +309,7 @@
   description: Melt into the the shadows, ambush your prey
   components:
   - type: Action
-    useDelay: 30
+    useDelay: 10
   - type: Sprite
     sprite: Objects/Magic/magicactions.rsi
     layers:
@@ -285,8 +334,8 @@
     overrideContainerOcclusion: true
     drawdepth: Ghosts
   - type: MovementSpeedModifier
-    baseSprintSpeed: 6
     baseWalkSpeed: 4
+    baseSprintSpeed: 6
   - type: TriggerOnSpawn
   - type: SpawnOnTrigger
     proto: EffectWraithJaunt
