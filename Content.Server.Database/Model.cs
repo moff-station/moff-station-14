@@ -309,6 +309,8 @@ namespace Content.Server.Database
                 .HasPrincipalKey<Player>(p => p.UserId);
             // Moffstation - End
 
+            MoffModel.Configure(modelBuilder); // Moff - Multi-character selection
+
             modelBuilder.Entity<ConnectionLog>()
                 .OwnsOne(p => p.HWId)
                 .Property(p => p.Hwid)
@@ -344,6 +346,8 @@ namespace Content.Server.Database
         public string AdminOOCColor { get; set; } = null!;
         public List<string> ConstructionFavorites { get; set; } = new();
         public List<Profile> Profiles { get; } = new();
+
+        public MoffModel.MoffPreference? MoffPreference { get; set; } // Moff - Multi-character selection
     }
 
     public class Profile
@@ -378,6 +382,8 @@ namespace Content.Server.Database
         public Preference Preference { get; set; } = null!;
 
         public CDModel.CDProfile? CDProfile { get; set; } // Moffstation - Add CD Profile
+
+        public MoffModel.MoffProfile? MoffProfile { get; set; } // Moff - Multi-character selection
     }
 
     public class Job

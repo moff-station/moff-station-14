@@ -118,6 +118,7 @@ namespace Content.Server.GameTicking
                 if (job == null)
                     continue;
 
+                // The character that actually spawns is picked inside SpawnPlayer. // Moffstation - Multi-character selection
                 SpawnPlayer(_playerManager.GetSessionById(player), profiles[player], station, job, false);
             }
 
@@ -216,6 +217,14 @@ namespace Content.Server.GameTicking
                 // had no available job priorities (ie Captain on Dev) set, then the player will spawn as a ghost
             }
 
+            // Moff Start - Multi-character selection: a late join names its character, so apply that
+            // before anything downstream reads the profile.
+            var moffExplicit = _moffCharacterPicker.TakeExplicitChoice(player.UserId);
+
+            if (moffExplicit != null)
+                character = moffExplicit;
+            // Moff end
+
             // We raise this event to allow other systems to handle spawning this player themselves. (e.g. late-join wizard, etc)
             var bev = new PlayerBeforeSpawnEvent(player, character, jobId, lateJoin, station);
             RaiseLocalEvent(bev);
@@ -237,10 +246,19 @@ namespace Content.Server.GameTicking
                 restrictedRoles.UnionWith(jobBans);
 
             // Pick best job best on prefs.
+            // Moff Start - Multi-character selection: priorities are player-global and every active
+            // character contributes the jobs it is willing to take.
+            /*
             jobId ??= _stationJobs.PickBestAvailableJobWithPriority(station,
                 character.JobPriorities,
                 true,
                 restrictedRoles);
+            */
+            jobId ??= _stationJobs.PickBestAvailableJobWithPriority(station,
+                _moffCharacterPicker.GetJobPriorities(player.UserId, character),
+                true,
+                restrictedRoles);
+            // Moff end
             // If no job available, stay in lobby, or if no lobby spawn as observer
             if (jobId is null)
             {
@@ -256,6 +274,18 @@ namespace Content.Server.GameTicking
                     Loc.GetString("game-ticker-player-no-jobs-available-when-joining"));
                 return;
             }
+
+            // Moff Start - Multi-character selection: spawn whichever active character wants this
+            // job, not whoever is selected in the lobby. Randomized characters are left alone, and
+            // a readied player always spawns, so the lobby-selected character is the last resort.
+            if (!_randomizeCharacters && moffExplicit == null)
+            {
+                if (_moffCharacterPicker.PickProfile(player, jobId) is { } picked)
+                    character = picked;
+                else
+                    Log.Warning($"No active character of {player} will take {jobId}; using their selected one.");
+            }
+            // Moff end
 
             DoSpawn(player, character, station, jobId, silent, out var mob, out var jobPrototype, out var jobName);
 
