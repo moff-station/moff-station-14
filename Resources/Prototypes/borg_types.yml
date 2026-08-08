@@ -301,11 +301,11 @@
   # Pet
   petSuccessString: petting-success-medical-cyborg
   petFailureString: petting-failure-medical-cyborg
-
+# Moffstation - Start - Medical Borgs don't float now
   # Sounds
-  footstepCollection:
-    collection: FootstepHoverBorg
-
+  #footstepCollection:
+  #  collection: FootstepHoverBorg
+# Moffstation - End - Medical Borgs don't float now
 
 # Service borg
 - type: borgType
