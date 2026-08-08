@@ -7600,6 +7600,14 @@ Entries:
   url: https://github.com/moff-station/moff-station-14/pull/1787
 - author: Centronias
   changes:
+  - message: Secret doors can no longer be meta-gamed by trying to touch every wall
+      and then finding a wall that your hand flies at.
+    type: tweak
+  id: 1789
+  time: '2026-08-08T04:00:40.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1789
+- author: Centronias
+  changes:
   - message: Mime and Mime alternative PDAs no longer incorrectly have Nanochat installed.
     type: fix
   id: 1791
