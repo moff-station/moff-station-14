@@ -47,7 +47,11 @@
     rechargeSound:
       path: /Audio/Weapons/Guns/MagIn/kinetic_reload.ogg
   - type: BasicEntityAmmoProvider
-    proto: XenoborgOilChemistryAmpoule
+    # Moff Start - Entity table integration
+    # proto: XenoborgOilChemistryAmpoule
+    ammoTable:
+      id: XenoborgOilChemistryAmpoule
+    # Moff End
     capacity: 5
     count: 5
   - type: IgniteOnMeleeHit
