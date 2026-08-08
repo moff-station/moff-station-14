@@ -26,21 +26,15 @@
           tags:
           - CartridgePistol
 
-# Base container for personal item pistols, because people seem to like them coming with cases.
+
 - type: entity
   parent: [BaseStorageItem, BaseBagOpenClose, BaseSecurityContraband]
   id: BasePersonalItemPistolCase
   abstract: true
+  name: Mk9 gun case
+  description: A slim, portable gun case intended to protect its contents. The outside is wrapped in blue tape.
   components:
   - type: Sprite
-    layers:
-    - state: closed
-      map: ["closeLayer"]
-    - state: open
-      map: ["openLayer"]
+    sprite: &case "_Moffstation/PersonalItems/Items/shared/personalpistolcase.rsi"
   - type: Item
-    size: Normal
-  - type: Storage
-    grid:
-    - 0,0,1,0
-    - 0,1,0,1
+    sprite: *case
