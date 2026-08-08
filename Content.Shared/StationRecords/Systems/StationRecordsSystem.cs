@@ -1,7 +1,5 @@
-using Content.Shared._CD.Loadouts;
 using Content.Shared.Access.Components;
 using Content.Shared.Access.Systems;
-using Content.Shared.Clothing;
 using Content.Shared.Forensics.Components;
 using Content.Shared.GameTicking;
 using Content.Shared.Inventory;
@@ -100,16 +98,10 @@ public sealed partial class StationRecordsSystem : EntitySystem
         _fingerprintQuery.TryComp(player, out var fingerprintComponent);
         _dnaQuery.TryComp(player, out var dnaComponent);
 
-        // Moffstation - Start - If the loadout specifies a name override, use that instead of the profile name for in the record.
-        var loadoutNameOrProfileName =
-            profile.Loadouts.GetValueOrDefault(LoadoutSystem.GetJobPrototype(jobId))?.EntityName
-            ?? profile.Name;
-        // Moffstation - End
-
         CreateGeneralRecord(
             station,
             idUid.Value,
-            loadoutNameOrProfileName, // Moff - use the name override
+            profile.Name,
             profile.Age,
             profile.Species,
             profile.Gender,
@@ -168,9 +160,6 @@ public sealed partial class StationRecordsSystem : EntitySystem
             return;
         }
 
-        // CD: Job titles. We need to inject it here for the manifest and records.
-        var jobTitle = TryComp<RenameIdComponent>(idUid, out var rename) ? Loc.GetString(rename.Value) : jobPrototype.LocalizedName;
-
         var jobWeights = TryComp<StationDataComponent>(station, out var stationData)
             ? stationData.JobWeights
             : null;
@@ -182,7 +171,7 @@ public sealed partial class StationRecordsSystem : EntitySystem
         {
             Name = name,
             Age = age,
-            JobTitle = jobTitle, // CD: Job Titles
+            JobTitle = jobPrototype.LocalizedName,
             JobIcon = jobPrototype.Icon,
             JobPrototype = jobId,
             Species = species,

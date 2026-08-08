@@ -1,12 +1,9 @@
 using System.Diagnostics.CodeAnalysis;
-using System.Linq;
-using System.Runtime.CompilerServices;
 using Content.Shared.Access;
 using Content.Shared.Guidebook;
 using Content.Shared.Players.PlayTimeTracking;
 using Content.Shared.StatusIcon;
 using Robust.Shared.Prototypes;
-using Robust.Shared.Utility;
 
 namespace Content.Shared.Roles;
 
@@ -59,22 +56,8 @@ public sealed partial class JobPrototype : IPrototype
     [DataField]
     public bool JoinNotifyCrew;
 
-    // Moffstation - Begin
     /// <summary>
-    ///     Moffstation - the text of the special announcement of this player's arrival
-    /// </summary>
-    [DataField]
-    public string JoinNotifyCrewText { get; private set; } = "latejoin-arrival-announcement-special";
-
-    /// <summary>
-    ///     Moffstation - the color of the player's special announcement text
-    /// </summary>
-    [DataField]
-    public Color JoinNotifyCrewColor { get; private set; } = Color.Gold;
-    // Moffstation - End
-
-    /// <summary>
-    ///     When true - the player will recieve a message about importancy of their job.
+    /// When true - the player will recieve a message about importancy of their job.
     /// </summary>
     [DataField]
     public bool RequireAdminNotify;
@@ -151,15 +134,7 @@ public sealed partial class JobPrototype : IPrototype
     /// </summary>
     [DataField]
     public List<ProtoId<GuideEntryPrototype>>? Guides;
-
-    // Moffstation - Begin
-    /// <summary>
-    /// Moffstation - If this is enabled, the job will not use the arrivals spawners
-    /// </summary>
-    [DataField]
-    public bool IgnoreArrivals;
-    // Moffstation - End
-    }
+}
 
 /// <summary>
 /// Sorts <see cref="JobPrototype"/>s appropriately for display using a map's job weighting profile.
@@ -188,29 +163,17 @@ public sealed class JobUIComparer : IComparer<JobPrototype>
             return false;
         }
 
-        // Moff start - Readd display weights
-        var weights = defaultProfile.DisplayWeights.ShallowClone();
-        Overlay(weights, defaultProfile.DisplayWeights);
+        var weights = new Dictionary<ProtoId<JobPrototype>, int>(defaultProfile.Weights);
         if (jobWeights != null && prototypes.TryIndex(jobWeights.Value, out var mapProfile))
         {
-            Overlay(weights, mapProfile.Weights);
-            Overlay(weights, mapProfile.DisplayWeights);
+            foreach (var (job, weight) in mapProfile.Weights)
+            {
+                weights[job] = weight;
+            }
         }
-        // Moff end
 
         comparer = new JobUIComparer(weights);
         return true;
-
-        // Moff start - Readd display weights.
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        void Overlay(Dictionary<ProtoId<JobPrototype>, int> baseValues, Dictionary<ProtoId<JobPrototype>, int> overlay)
-        {
-            foreach (var (job, weight) in overlay)
-            {
-                baseValues[job] = weight;
-            }
-        }
-        // Moff end
     }
 
     /// <summary>
