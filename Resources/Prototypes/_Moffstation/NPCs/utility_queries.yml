@@ -3,7 +3,12 @@
   query:
   - !type:ComponentQuery
     components:
+    - type: Destructible
+  - !type:ComponentFilter
+    retainWithComp: false
+    components:
     - type: Wall
+    - type: MobState
   considerations:
   - !type:TargetIsVisibleCon
     curve: !type:BoolCurve

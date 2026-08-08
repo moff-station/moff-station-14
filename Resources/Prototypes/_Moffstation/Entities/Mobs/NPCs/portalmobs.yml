@@ -74,6 +74,17 @@
       reagents:
       - ReagentId: Blood
         Quantity: 100
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeCircle
+          radius: 0.35
+        density: 185
+        mask:
+        - MobMask
+        layer:
+        - MobLayer
   - type: Tag
     tags:
     - DoorBumpOpener
@@ -104,6 +115,31 @@
 
 - type: entity
   abstract: true
+  parent: MoffMobDemonNarsieFleshBase
+  id: MoffMobDemonNarsieFleshFlyingBase
+  name: writhing flesh
+  components:
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      30: Dead
+  - type: MovementSpeedModifier
+    baseWalkSpeed: 1.25
+    baseSprintSpeed: 2.25
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeCircle
+          radius: 0.35
+        density: 135
+        mask:
+        - FlyingMobMask
+        layer:
+        - FlyingMobLayer
+
+- type: entity
+  abstract: true
   parent: MoffMobDemonNarsieBase
   id: MoffMobDemonNarsieConstructBase
   components:
@@ -126,10 +162,40 @@
         BaseUnshaded: null
   - type: Speech
     speechSounds: SyndieBorg
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeCircle
+          radius: 0.35
+        density: 370
+        restitution: 0.0
+        mask:
+        - MobMask
+        layer:
+        - MobLayer
+
+- type: entity
+  abstract: true
+  parent: MoffMobDemonNarsieConstructBase
+  id: MoffMobDemonNarsieConstructFlyingBase
+  components:
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeCircle
+          radius: 0.35
+        density: 185
+        restitution: 0.0
+        mask:
+        - FlyingMobMask
+        layer:
+        - FlyingMobLayer
 
 # Fleshlings
 - type: entity
-  parent: MoffMobDemonNarsieFleshBase
+  parent: MoffMobDemonNarsieFleshFlyingBase
   id: MoffMobDemonNarsieFleshClamp
   components:
   - type: Sprite
@@ -142,13 +208,6 @@
         Base: clamp
       Dead:
         Base: dead
-  - type: MobThresholds
-    thresholds:
-      0: Alive
-      30: Dead
-  - type: MovementSpeedModifier
-    baseWalkSpeed: 1.25
-    baseSprintSpeed: 2.25
 
 - type: entity
   parent: MoffMobDemonNarsieFleshBase
@@ -181,7 +240,7 @@
         Base: dead
 
 - type: entity
-  parent: MoffMobDemonNarsieFleshBase
+  parent: MoffMobDemonNarsieFleshFlyingBase
   id: MoffMobDemonNarsieFleshLover
   components:
   - type: Sprite
@@ -194,13 +253,6 @@
         Base: lover
       Dead:
         Base: dead
-  - type: MobThresholds
-    thresholds:
-      0: Alive
-      30: Dead
-  - type: MovementSpeedModifier
-    baseWalkSpeed: 1.25
-    baseSprintSpeed: 2.25
 
 # Narsian constructs
 - type: entity
@@ -210,10 +262,23 @@
   components:
   - type: Sprite
     sprite: _Moffstation/Mobs/Demons/artificer.rsi
+  - type: Insulated
+  - type: MeleeWeapon
+    soundHit:
+      path: "/Audio/Effects/metal_slam4.ogg"
+    animation: WeaponArcClaw
+    damage:
+      types:
+        Shock: 5
+        Structural: 25
   - type: HTN
     rootTask:
       task: NarsieArtificerCompound
     blackboard:
+      VisionRadius: !type:Single
+        0.5
+      AggroVisionRadius: !type:Single
+        0.5
       NavClimb: !type:Bool
         true
       NavInteract: !type:Bool
@@ -244,28 +309,14 @@
   - type: EmbeddableProjectile
     sound: /Audio/Weapons/bolathrow.ogg
     offset: -0.15,0.0
-  - type: LandAtCursor
-  - type: Ensnaring
-    freeTime: 2.0
-    breakoutTime: 30 # punishing chains
-    walkSpeed: 0.5
-    sprintSpeed: 0.75
-    staminaDamage: 100
-    canThrowTrigger: true
-    canMoveBreakout: true
-    maxEnsnares: 1
   - type: Gun
     soundGunshot: /Audio/Weapons/utilityknifeopen.ogg
     fireRate: 0.1
     soundEmpty: /Audio/_Moffstation/Surgery/retractor1.ogg
   - type: BasicEntityAmmoProvider
     ammoTable:
-      id: ChainSickle
+      id: MoffDemonicChainHook
     capacity: 1
-  #- type: RechargeBasicEntityAmmo
-  #  showExamineText: false
-  #  rechargeCooldown: 10
-  #  rechargeSound: null
   - type: HTN
     rootTask:
       task: NarsieHarvesterCompound
@@ -308,7 +359,7 @@
     baseSprintSpeed: 1.125
 
 - type: entity
-  parent: MoffMobDemonNarsieConstructBase
+  parent: MoffMobDemonNarsieConstructFlyingBase
   id: MoffMobDemonNarsieShade
   name: narsian shade
   components:
@@ -335,7 +386,7 @@
 
 
 - type: entity
-  parent: MoffMobDemonNarsieConstructBase
+  parent: MoffMobDemonNarsieConstructFlyingBase
   id: MoffMobDemonNarsieWraith
   name: narsian wraith
   components:
