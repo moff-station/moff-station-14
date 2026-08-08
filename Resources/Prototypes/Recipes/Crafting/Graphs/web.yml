@@ -48,6 +48,14 @@
         amount: 2
         doAfter: 4
 
+    # Moffstation start - more web items
+    - to: bungeeweb
+      steps:
+      - material: WebSilk
+        amount: 8
+        doAfter: 6
+    # Moffstation end
+
   # Deconstruction
   - node: tile
     entity: FloorTileItemWeb
@@ -69,3 +77,8 @@
 
   - node: boots
     entity: ClothingShoesBootsWinterWeb
+
+  # Moffstation start - more web items
+  - node: bungeeweb
+    entity: WeaponWebRope
+  # Moffstation end

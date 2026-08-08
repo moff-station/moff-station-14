@@ -47,3 +47,14 @@
         mask:
         - Impassable
         - BulletImpassable
+
+- type: entity
+  parent: StickyHandPalm
+  id: BungeeWeb
+  name: web rope
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Objects/Weapons/Guns/Launchers/bungeeweb.rsi
+  - type: Ammo
+    muzzleFlash: null
