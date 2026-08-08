@@ -33,6 +33,7 @@
   # TODO GUIDEBOOK Maybe allow duplicate entries?
   - Botanicals
   - AdvancedBrute
+  - Topicals # Moffstation - guidebook topicals
 
 - type: guideEntry
   id: Medicine
@@ -50,3 +51,10 @@
   id: AdvancedBrute
   name: guide-entry-brute
   text: "/ServerInfo/Guidebook/Medical/AdvancedBrute.xml"
+
+# Moffstation - guidebook topicals - start
+- type: guideEntry
+  id: Topicals
+  name: guide-entry-topicals
+  text: "/ServerInfo/_Moffstation/Guidebook/Medical/Topicals.xml"
+# Moffstation - guidebook topicals - end

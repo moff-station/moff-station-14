@@ -116,6 +116,9 @@ guide-entry-biological = Biological
 guide-entry-botanical = Botanical
 guide-entry-special = Special
 guide-entry-others = Others
+# Moffstation - guidebook topicals:
+guide-entry-topicals = Topicals
+# Moffstation - end
 
 guide-entry-pizza-recipes = Pizzas
 guide-entry-savory-recipes = Savory Foods
