@@ -17,3 +17,23 @@
     curve: !type:BoolCurve
   - !type:TargetInLOSOrCurrentCon
     curve: !type:BoolCurve
+
+- type: utilityQuery
+  id: NearbyCritMeleeTargets
+  query:
+  - !type:NearbyHostilesQuery
+  considerations:
+  - !type:TargetIsCritCon
+    curve: !type:InverseBoolCurve
+  - !type:TargetIsAliveCon
+    curve: !type:BoolCurve
+  - !type:TargetDistanceCon
+    curve: !type:PresetCurve
+      preset: TargetDistance
+  - !type:TargetHealthCon
+    curve: !type:PresetCurve
+      preset: TargetHealth
+  - !type:TargetAccessibleCon
+    curve: !type:BoolCurve
+  - !type:TargetInLOSOrCurrentCon
+    curve: !type:BoolCurve

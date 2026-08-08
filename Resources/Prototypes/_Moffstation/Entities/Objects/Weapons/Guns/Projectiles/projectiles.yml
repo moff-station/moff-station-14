@@ -15,21 +15,20 @@
 - type: entity
   parent: [SolutionAmmo, BaseBullet]
   id: MoffBloodBolt
-  categories: [ HideSpawnMenu ]
+  # categories: [ HideSpawnMenu ]
   name: blood bolt
-  description: This'll hurt.
+  description: gross.
   components:
-  - type: Reflective
-    reflective:
-    - NonEnergy
   - type: Ammo
     muzzleFlash: null
   - type: Sprite
-    sprite: Objects/Weapons/Guns/Projectiles/projectiles2.rsi
+    sprite: Objects/Weapons/Guns/Projectiles/magic.rsi
     layers:
-    - state: crossbowbolt
-      shader: unshaded
+    - state: chronobolt
+      color: "#690d2a"
   - type: Projectile
+    soundHit: /Audio/Effects/Fluids/splat.ogg
+    impactEffect: null
     damage:
       types:
         Piercing: 2

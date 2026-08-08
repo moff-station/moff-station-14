@@ -232,6 +232,50 @@
     sprite: _Moffstation/Mobs/Demons/harvester.rsi
   - type: Puller
     needsHands: false
+  - type: GrapplingGun
+    reelMassCoefficient: 200 # You can pull everyone.
+    reelForce: 20000 # STRONG reeling, you can now make them GET OVER HERE
+    reelRate: 7.5 # Fast reeling - can move very quickly in combat with this
+    ropeBreakPoint: 250000 # Demonic chain
+    cycleSound: /Audio/_Moffstation/Surgery/retractor1.ogg
+    ropeSprite:
+      sprite: _Moffstation/Objects/Weapons/Guns/Launchers/chainsickle.rsi
+      state: rope
+  - type: EmbeddableProjectile
+    sound: /Audio/Weapons/bolathrow.ogg
+    offset: -0.15,0.0
+  - type: LandAtCursor
+  - type: Ensnaring
+    freeTime: 2.0
+    breakoutTime: 30 # punishing chains
+    walkSpeed: 0.5
+    sprintSpeed: 0.75
+    staminaDamage: 100
+    canThrowTrigger: true
+    canMoveBreakout: true
+    maxEnsnares: 1
+  - type: Gun
+    soundGunshot: /Audio/Weapons/utilityknifeopen.ogg
+    fireRate: 0.1
+    soundEmpty: /Audio/_Moffstation/Surgery/retractor1.ogg
+  - type: BasicEntityAmmoProvider
+    ammoTable:
+      id: ChainSickle
+    capacity: 1
+  #- type: RechargeBasicEntityAmmo
+  #  showExamineText: false
+  #  rechargeCooldown: 10
+  #  rechargeSound: null
+  - type: HTN
+    rootTask:
+      task: NarsieHarvesterCompound
+    blackboard:
+      VisionRadius: !type:Single
+        7
+      AggroVisionRadius: !type:Single
+        12
+      NavSmash: !type:Bool
+        true
 
 - type: entity
   parent: MoffMobDemonNarsieConstructBase
@@ -270,11 +314,12 @@
   components:
   - type: Gun
     fireRate: 0.25
-    projectileSpeed: 15.0
+    projectileSpeed: 10.0
     selectedMode: SemiAuto
     showExamineText: false
     availableModes: [ SemiAuto ]
-    soundGunshot: /Audio/Weapons/Guns/Gunshots/syringe_gun.ogg
+    soundGunshot:
+      collection: blood
   - type: BasicEntityAmmoProvider
     ammoTable:
       id: MoffBloodBolt

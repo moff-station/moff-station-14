@@ -89,6 +89,32 @@
         proto: NearbyMeleeTargets
         key: Target
 
+## Narsian Harvester
+
+- type: htnCompound
+  id: NarsieHarvesterCompound
+  branches:
+  - tasks:
+    - !type:HTNCompoundTask
+      task: HarvesterHookCompound
+  - tasks:
+    - !type:HTNCompoundTask
+      task: MeleeCombatCompound
+  - tasks:
+    - !type:HTNCompoundTask
+      task: IdleCompound
+
+- type: htnCompound
+  id: HarvesterHookCompound
+  branches:
+  - tasks:
+    - !type:HTNPrimitiveTask
+      operator: !type:UtilityOperator
+        proto: NearbyCritMeleeTargets
+    - !type:HTNCompoundTask
+      task: InnateRangedCombatCompound
+
+
 ## Narsian Wraith
 - type: htnCompound
   id: NarsieWraithJauntCompound
