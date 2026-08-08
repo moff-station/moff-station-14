@@ -18,9 +18,14 @@ public abstract partial class MoffSharedVoteEntrySystem : EntitySystem
         // Add a session override for all the present voters
         foreach (var voter in EntityQueryEnumerator<ESVoterComponent, ActorComponent>().AsEnumerable())
         {
+            SendVoteStartAnnouncement(ent, voter);
             _pvsOverride.AddSessionOverride(ent, voter.Comp2.PlayerSession);
-            _uiSystem.TryOpenUi(voter.Owner, ESVoterUiKey.Key, voter.Owner);
+
+            if (voter.Comp1.NotificationsEnabled)
+                _uiSystem.TryOpenUi(voter.Owner, ESVoterUiKey.Key, voter.Owner);
         }
+
+        OnVoteStart(ent);
         Dirty(ent);
     }
 
@@ -45,5 +50,17 @@ public abstract partial class MoffSharedVoteEntrySystem : EntitySystem
     public IEnumerable<Entity<MoffVoteEntryComponent>> EnumerateEntries()
     {
         return EntityQueryEnumerator<MoffVoteEntryComponent>().AsEnumerable();
+    }
+
+    protected virtual void SendVoteStartAnnouncement(
+        Entity<MoffVoteEntryComponent> ent,
+        Entity<ESVoterComponent, ActorComponent> voter)
+    {
+
+    }
+
+    protected virtual void OnVoteStart(Entity<MoffVoteEntryComponent> ent)
+    {
+
     }
 }
