@@ -16,6 +16,10 @@
   - Lawyer
   - Brig
   - Maintenance
+  special: #Moffstation Start
+  - !type:AddComponentSpecial
+    components:
+    - type: NecronomiconUser #Moffstation End
 
 - type: startingGear
   id: LawyerGear
