@@ -31,7 +31,7 @@ public abstract partial class SharedSiliconLawSystem : EntitySystem
     [Dependency] private IPrototypeManager _prototype = default!;
     [Dependency] private ISharedAdminLogManager _adminLogger = default!;
 
-    [Dependency] private readonly EntityQuery<SiliconLawBoundComponent> _siliconLawBoundQuery;
+    [Dependency] private EntityQuery<SiliconLawBoundComponent> _siliconLawBoundQuery;
     // Moffstation - End
 
     /// <summary>
