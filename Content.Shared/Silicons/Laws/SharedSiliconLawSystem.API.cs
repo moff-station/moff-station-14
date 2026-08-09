@@ -1,3 +1,4 @@
+using Content.Shared._Moffstation.Extensions;
 using Content.Shared.Database;
 using Content.Shared.Overlays;
 using Content.Shared.Roles.Components;
@@ -313,15 +314,17 @@ public abstract partial class SharedSiliconLawSystem
 
         foreach (var lawboundEnt in iteratedEntities)
         {
-            if (!TryComp<SiliconLawBoundComponent>(lawboundEnt, out var lawboundComp))
+            // Moff start - Lawbound query
+            if (_siliconLawBoundQuery.ResolveOrNull(lawboundEnt, logMissing: false) is not {} lawbound)
             {
-                UnlinkFromProvider((lawboundEnt, lawboundComp));
+                UnlinkFromProvider(lawboundEnt);
                 continue;
             }
 
-            lawboundComp.LawsetProvider = ent.Owner;
-            UpdateLaws((lawboundEnt, lawboundComp));
-            NotifyLawsChanged((ent, ent.Comp), cue);
+            lawbound.Comp.LawsetProvider = ent.Owner;
+            UpdateLaws(lawbound.Owner);
+            NotifyLawsChanged(lawbound, cue);
+            // Moff end
         }
 
         Dirty(ent);
@@ -332,7 +335,7 @@ public abstract partial class SharedSiliconLawSystem
     /// </summary>
     /// <param name="uid">The entity to notify.</param>
     /// <param name="cue">The sound to play. Will play no sound if null.</param>
-    public virtual void NotifyLawsChanged(Entity<SiliconLawProviderComponent> ent, SoundSpecifier? cue = null)
+    public virtual void NotifyLawsChanged(Entity<SiliconLawBoundComponent> ent, SoundSpecifier? cue = null) // Moff - Borg laws on brain, not chassis
     {
 
     }

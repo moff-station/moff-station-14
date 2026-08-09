@@ -73,7 +73,7 @@ public sealed partial class SiliconLawSystem : SharedSiliconLawSystem
         UpdateSiliconRoles(owner, args.Mind);
     }
 
-    public override void NotifyLawsChanged(Entity<SiliconLawProviderComponent> ent, SoundSpecifier? cue = null)
+    public override void NotifyLawsChanged(Entity<SiliconLawBoundComponent> ent, SoundSpecifier? cue = null) // Moff - Borg laws on brain, not chassis
     {
         base.NotifyLawsChanged(ent, cue);
 
@@ -115,15 +115,19 @@ public sealed partial class SiliconLawSystem : SharedSiliconLawSystem
     /// </summary>
     public void SetLaws(List<SiliconLaw> newLaws, EntityUid target, SoundSpecifier? cue = null)
     {
-        if (!TryComp<SiliconLawProviderComponent>(target, out var component))
-            return;
+        // Moff start - Borg laws on brain, not chassis
+        SetProviderLaws(target, newLaws, false, cue);
 
-        if (component.Lawset == null)
-            component.Lawset = new SiliconLawset();
-
-        component.Lawset.Laws = newLaws;
-        RankLaws(component.Lawset.Laws);
-        NotifyLawsChanged((target,component), cue);
+        // if (!TryComp<SiliconLawProviderComponent>(target, out var component))
+        //     return;
+        //
+        // if (component.Lawset == null)
+        //     component.Lawset = new SiliconLawset();
+        //
+        // component.Lawset.Laws = newLaws;
+        // RankLaws(component.Lawset.Laws);
+        // NotifyLawsChanged((target,component), cue);
+        // Moff end
     }
 
     protected override void OnUpdaterInsert(Entity<SiliconLawUpdaterComponent> ent, ref EntInsertedIntoContainerMessage args)
