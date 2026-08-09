@@ -425,6 +425,7 @@
   components:
   - type: Action
     useDelay: 10
+  - type: TargetAction
   - type: Sprite
     sprite: Objects/Magic/magicactions.rsi
     layers:
@@ -462,7 +463,7 @@
     damage:
       types:
         Blunt: 0
-    hitSound: null
+    soundHit: null
     attackRate: 0.1
   - type: HTN
     rootTask:
