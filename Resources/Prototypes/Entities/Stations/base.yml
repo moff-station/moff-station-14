@@ -17,7 +17,6 @@
         Science: [ ]
         Security: [ ]
         Service: [ ]
-        Pirates: [ ] # Moffstation
     - type: StationCargoBountyDatabase
 
 - type: entity
@@ -39,7 +38,6 @@
   abstract: true
   components:
     - type: StationArrivals
-      shuttlePath: /Maps/_Moffstation/Shuttles/arrivals.yml # Moffstation - Changed the arrivals shuttle
 
 - type: entity
   id: BaseStationShuttles
@@ -85,11 +83,6 @@
           minCount: 12
           maxCount: 16
           addComponents:
-          # Moffstation - Begin (Remove Inherent Gravity) - Wrecks shouldn't be getting free gravity without any reason, only if they have a powered generator.
-          #- type: Gravity
-            #enabled: true
-            #inherent: true
-          # Moffstation - End
           - type: IFF
             flags: HideLabel
             color: "#88b0d1"
