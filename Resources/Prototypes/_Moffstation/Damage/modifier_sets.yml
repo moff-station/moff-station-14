@@ -17,13 +17,13 @@
     Radiation: 0.1
 
 - type: damageModifierSet
-  id: DemonFlesh
+  id: MoffDemonFlesh
   coefficients:
     Heat: 0.5
     Holy: 1.5
 
 - type: damageModifierSet
-  id: DemonConstruct
+  id: MoffDemonConstruct
   coefficients:
     Blunt: 0.8
     Slash: 0.8
@@ -35,7 +35,7 @@
     Heat: 3
 
 - type: damageModifierSet
-  id: NarSieJuggernaut
+  id: MoffNarSieJuggernaut
   coefficients:
     Blunt: 0.5
     Slash: 0.5

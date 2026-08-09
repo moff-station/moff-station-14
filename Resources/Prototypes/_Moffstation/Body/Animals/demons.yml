@@ -1,6 +1,6 @@
 ﻿- type: entity
   parent: [ Ash, OrganBaseBrain ]
-  id: OrganDemonicEssence
+  id: MoffOrganDemonicEssence
   name: demonic essence
   components:
   - type: Sprite
@@ -17,7 +17,7 @@
     stages: [ Digestion, Bloodstream, Metabolites ]
 
 - type: entity
-  id: BaseMobDemons
+  id: MoffBaseMobDemons
   abstract: true
   components:
   - type: Body
@@ -25,4 +25,4 @@
     containers:
       body_organs: !type:AllSelector
         children:
-        - id: OrganDemonicEssence
+        - id: MoffOrganDemonicEssence

@@ -2,7 +2,7 @@
 # Base Prototypes
 - type: entity
   abstract: true
-  parent: [ BaseMobDemons, SimpleSpaceMobBase, BaseMobDestructible ]
+  parent: [ MoffBaseMobDemons, SimpleSpaceMobBase, BaseMobDestructible ]
   id: MoffMobDemonNarsieBase
   name: narsian demon
   suffix: Hellportal
@@ -11,7 +11,7 @@
   - type: HellportalMob
   - type: NpcFactionMember
     factions:
-    - NarsianDemon
+    - MoffNarsianDemon
   - type: MobState
     allowedStates:
     - Alive
@@ -57,7 +57,7 @@
   - type: Vocalizer
     hideChat: true
   - type: DatasetVocalizer
-    dataset: NarSiePrayers
+    dataset: MoffNarSiePrayers
   - type: NarSieDemonAccent
   - type: HTN
     rootTask:
@@ -133,9 +133,9 @@
     - Flesh
     - FootstepSound
   - type: Injurable
-    damageContainer: DemonBiological
+    damageContainer: MoffDemonBiological
   - type: Damageable
-    damageModifierSet: DemonFlesh
+    damageModifierSet: MoffDemonFlesh
   - type: AmbientSound
     range: 1
     volume: -10
@@ -213,9 +213,9 @@
         layer:
         - MobLayer
   - type: Injurable
-    damageContainer: DemonInorganic
+    damageContainer: MoffDemonInorganic
   - type: Damageable
-    damageModifierSet: DemonConstruct
+    damageModifierSet: MoffDemonConstruct
   - type: FootstepModifier
     footstepSoundCollection:
       collection: FootstepBorg
@@ -361,7 +361,7 @@
     baseWalkSpeed: 0.625
     baseSprintSpeed: 1.125
   - type: Damageable
-    damageModifierSet: NarSieJuggernaut
+    damageModifierSet: MoffNarSieJuggernaut
   - type: FootstepModifier
     footstepSoundCollection:
       path: /Audio/Mecha/sound_mecha_powerloader_step.ogg
@@ -403,7 +403,7 @@
   - type: Sprite
     sprite: _Moffstation/Mobs/Demons/wraith.rsi
   - type: NPCUseActionOnTarget
-    actionId: ActionPolymorphWraithJaunt
+    actionId: MoffActionPolymorphWraithJaunt
   - type: MovementSpeedModifier
     baseWalkSpeed: 1.875
     baseSprintSpeed: 3.375
@@ -416,55 +416,3 @@
       types:
         Slash: 16
         Structural: 5
-
-- type: entity
-  parent: BaseActionPolymorph
-  id: ActionPolymorphWraithJaunt
-  name: Abyssal Jaunt
-  description: Melt into the the shadows, ambush your prey
-  components:
-  - type: Action
-    useDelay: 10
-  - type: TargetAction
-  - type: Sprite
-    sprite: Objects/Magic/magicactions.rsi
-    layers:
-    - state: jaunt
-  - type: InstantAction
-    event: !type:PolymorphActionEvent
-      protoId: WraithJaunt
-
-- type: entity
-  parent: BaseMobJaunt
-  id: WraithJaunt
-  name: narsian wraith
-  suffix: Hellportal, Jaunt
-  components:
-  - type: Sprite
-    sprite: Mobs/Ghosts/ghost_human.rsi
-    color: "#690d2a"
-    layers:
-    - state: animated
-      shader: unshaded
-    noRot: true
-    overrideContainerOcclusion: true
-    drawdepth: Ghosts
-  - type: MovementSpeedModifier
-    baseWalkSpeed: 4
-    baseSprintSpeed: 6
-  - type: TriggerOnSpawn
-  - type: SpawnOnTrigger
-    proto: EffectWraithJaunt
-  - type: NpcFactionMember
-    factions:
-    - NarsianDemon
-  - type: CombatMode
-  - type: MeleeWeapon
-    damage:
-      types:
-        Blunt: 0
-    soundHit: null
-    attackRate: 0.1
-  - type: HTN
-    rootTask:
-      task: SimpleHostileCompound
