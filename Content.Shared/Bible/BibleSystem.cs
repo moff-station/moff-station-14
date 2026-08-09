@@ -92,7 +92,7 @@ public sealed partial class BibleSystem : EntitySystem
         var userEnt = Identity.Entity(args.User, EntityManager);
         var targetEnt = Identity.Entity(args.Target.Value, EntityManager);
 
-        if (ent.Comp.RequiresNecronomiconUser) //Moffstation Start - checkc if the user can use the necronomicon if its a necronomicon item
+        if (ent.Comp.RequiresNecronomiconUser) //Moffstation Start - check if the user can use the necronomicon if its a necronomicon item
         {
             if (!HasComp<NecronomiconUserComponent>(args.User))
             {
