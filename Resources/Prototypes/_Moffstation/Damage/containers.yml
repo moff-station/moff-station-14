@@ -1,0 +1,18 @@
+﻿- type: damageContainer
+  id: DemonBiological
+  supportedGroups:
+  - Brute
+  - Metaphysical
+  supportedTypes:
+  - Heat
+  - Shock
+  - Caustic
+
+- type: damageContainer
+  id: DemonInorganic # Infernal machine, if you will
+  supportedGroups:
+  - Brute
+  - Metaphysical
+  supportedTypes:
+  - Heat
+  - Shock

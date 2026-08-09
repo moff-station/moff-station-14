@@ -74,7 +74,6 @@
   - type: Hellportal
     basicSpawnTable: !type:AllSelector
       children:
-      - id: MoffMobDemonNarsieArtificer
       - !type:GroupSelector
         rolls: !type:RangeNumberSelector
           range: 3, 5
@@ -84,13 +83,16 @@
         - id: MoffMobDemonNarsieFleshJared
         - id: MoffMobDemonNarsieFleshLover
       - !type:GroupSelector
-        prob: 0.3
         children:
+        - id: MoffMobDemonNarsieArtificer
         - id: MoffMobDemonNarsieHarvester
         - id: MoffMobDemonNarsieJuggernaut
         - id: MoffMobDemonNarsieShade
         - id: MoffMobDemonNarsieWraith
-        #- id: MobHellspawnSmasher
-        #  weight: 0.05
     sound:
       collection: RadiationPulse
+  - type: AmbientSound
+    range: 10
+    volume: -5
+    sound:
+      path: /Audio/_Moffstation/Ambience/hellportal_drone.ogg

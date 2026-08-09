@@ -40,6 +40,12 @@
     revertOnDeath: true
     revertOnCrit: true
     allowRepeatedMorphs: false
-    polymorphSound: /Audio/Magic/ethereal_enter.ogg
-    exitPolymorphSound: /Audio/Magic/ethereal_exit.ogg
+    polymorphSound:
+      path: /Audio/Magic/ethereal_enter.ogg
+      params:
+        volume: -6
+    exitPolymorphSound:
+      path: /Audio/Magic/ethereal_exit.ogg
+      params:
+        volume: -6
     duration: 3
