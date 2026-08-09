@@ -22,7 +22,7 @@ public sealed partial class VinylPlayerSystem : EntitySystem
 
     [Dependency] private StationRadioReceiverSystem _stationRadio = default!; // Moffstation - Add Resume Play
     [Dependency] private IGameTiming _timing = default!; // Moffstation - Add Resume Play
-    [Dependency] private readonly SharedContainerSystem _container = default!; // Moffstation - Shift Click to view what Vinyl is inserted.
+    [Dependency] private SharedContainerSystem _container = default!; // Moffstation - Shift Click to view what Vinyl is inserted.
 
     public override void Initialize()
     {
