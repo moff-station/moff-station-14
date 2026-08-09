@@ -16,6 +16,7 @@ using Content.Shared.Speech.Components;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Utility; // Moffstation
 using Content.Shared.Power.EntitySystems; // Goobstation - Radio Host
+using Content.Shared._Goobstation.StationRadio.Components; // Moffstation
 
 namespace Content.Server.Radio.EntitySystems;
 
@@ -186,10 +187,15 @@ public sealed partial class RadioDeviceSystem : SharedRadioDeviceSystem
             ("speaker", Name(uid)),
             ("originalName", nameEv.VoiceName));
 
+        var transmitRange = ChatTransmitRange.GhostRangeLimit; // Default, all ghosts can hear whispers from radios.
+        if (TryComp<StationRadioReceiverComponent>(uid, out var receiverComp))
+        {
+            transmitRange = ChatTransmitRange.HideChat; // Message hidden from chat if from a Station Radio.
+        }
         // log to chat so people can identity the speaker/source, but avoid clogging ghost chat if there are many radios
         _chat.TrySendInGameICMessage(uid, args.Message,
         component.LouderSpeech ? InGameICChatType.Speak : InGameICChatType.Whisper, // Moffstation - Added component-dependent chatType
-        ChatTransmitRange.GhostRangeLimit,
+        transmitRange,
         nameOverride: name,
         checkRadioPrefix: false);
     }
