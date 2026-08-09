@@ -1,0 +1,80 @@
+﻿# Pirate circuitboards
+- type: entity
+  parent: [ BaseComputerCircuitboard, MoffBasePirateContraband ]
+  id: MoffComputerIFFPirateCircuitboard
+  name: pirate IFF console board
+  suffix: Pirate
+  description: Allows you to control the IFF and stealth characteristics of this vessel.
+  components:
+  - type: ComputerBoard
+    prototype: MoffComputerIFFPirate
+
+- type: entity
+  parent: [ BaseComputerCircuitboard , MoffBasePirateContraband ]
+  id: PirateBountyComputerCircuitboard
+  name: pirate bounty computer board
+  suffix: Pirate
+  description: A computer printed circuit board for a pirate bounty computer.
+  components:
+  - type: Sprite
+    state: cpu_syndicate
+  - type: ComputerBoard
+    prototype: ComputerPirateBounty
+  - type: StaticPrice
+    price: 750
+
+- type: entity
+  parent: [ BaseComputerCircuitboard , MoffBasePirateContraband ]
+  id: PirateCommsCircuitboard
+  name: pirate communication console board
+  suffix: Pirate
+  description: A computer printed circuit board for a pirate communications console.
+  components:
+  - type: Sprite
+    state: cpu_syndicate
+  - type: ComputerBoard
+    prototype: PirateComputerComms
+  - type: StaticPrice
+    price: 750
+
+- type: entity
+  parent: [ BaseComputerCircuitboard , MoffBasePirateContraband ]
+  id: PirateRequestComputerCircuitboard
+  name: pirate request computer board
+  suffix: Pirate
+  description: A computer printed circuit board for a pirate request computer.
+  components:
+  - type: Sprite
+    state: cpu_syndicate
+  - type: ComputerBoard
+    prototype: ComputerCargoOrdersPirate
+  - type: StaticPrice
+    price: 750
+
+- type: entity
+  parent: [ BaseComputerCircuitboard , MoffBasePirateContraband ]
+  id: PirateSaleComputerCircuitboard
+  name: pirate sale computer board
+  suffix: Pirate
+  description: A computer printed circuit board for a pirate sale computer.
+  components:
+  - type: Sprite
+    state: cpu_syndicate
+  - type: ComputerBoard
+    prototype: ComputerPalletConsolePirate
+  - type: StaticPrice
+    price: 750
+
+- type: entity
+  parent: [ BaseComputerCircuitboard , MoffBasePirateContraband ]
+  id: PirateShuttleCircuitboard
+  name: pirate ship console board
+  suffix: Pirate
+  description: A computer printed circuit board for a pirate ship console.
+  components:
+  - type: Sprite
+    state: cpu_syndicate
+  - type: ComputerBoard
+    prototype: ComputerPirateShuttle
+  - type: StaticPrice
+    price: 750

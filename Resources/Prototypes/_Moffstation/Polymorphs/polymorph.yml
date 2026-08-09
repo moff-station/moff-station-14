@@ -1,0 +1,31 @@
+﻿- type: polymorph
+  abstract: true
+  id: MoffWizardForcedFishBase
+  configuration:
+    entity: MobCarpMagic
+    forced: true
+    inventory: None
+    transferName: false # No vibechecking the ID of the fish
+    transferDamage: true
+    revertOnCrit: false
+    revertOnDeath: true
+    polymorphSound: !type:SoundPathSpecifier
+      path: /Audio/Magic/forcewall.ogg
+    exitPolymorphSound: !type:SoundPathSpecifier
+      path: /Audio/Magic/forcewall.ogg
+
+- type: polymorph
+  parent: MoffWizardForcedFishBase
+  id: MoffWizardForcedCarp
+
+- type: polymorph
+  parent: MoffWizardForcedFishBase
+  id: MoffWizardForcedDragon
+  configuration:
+    entity: MoffMobDragonMagic
+
+- type: polymorph
+  parent: MoffWizardForcedFishBase
+  id: MoffWizardForcedShark
+  configuration:
+    entity: MoffMobSharkMagic

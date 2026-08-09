@@ -517,14 +517,13 @@
   description: Used to monitor station teleport system operations.
   components:
   - type: Sprite
-    sprite: Structures/Machines/computers.rsi # Moffstation
     layers:
     - map: ["computerLayerBody"]
       state: computer
     - map: ["computerLayerKeyboard"]
       state: generic_keyboard
     - map: ["computerLayerScreen"]
-      state: teleporters_station
+      state: telesci # Moff
     - map: ["computerLayerKeys"]
       state: telesci_key
     - map: [ "enum.WiresVisualLayers.MaintenancePanel" ]
@@ -591,11 +590,11 @@
   - type: Sprite
     layers:
     - map: ["computerLayerBody"]
-      state: computer
+      state: syndicate_computer # Moff
     - map: ["computerLayerKeyboard"]
-      state: generic_keyboard
+      state: syndie_key_off # Moff
     - map: ["computerLayerScreen"]
-      state: teleporters_syndicate
+      state: telesci # Moff
     - map: ["computerLayerKeys"]
       state: syndie_key
     - map: [ "enum.WiresVisualLayers.MaintenancePanel" ]
