@@ -187,15 +187,18 @@ public sealed partial class RadioDeviceSystem : SharedRadioDeviceSystem
             ("speaker", Name(uid)),
             ("originalName", nameEv.VoiceName));
 
+        // Moffstation - Start - Radio Host, stop ghosts from being spammed by messages.
         var transmitRange = ChatTransmitRange.GhostRangeLimit; // Default, all ghosts can hear whispers from radios.
         if (TryComp<StationRadioReceiverComponent>(uid, out var receiverComp))
         {
             transmitRange = ChatTransmitRange.HideChat; // Message hidden from chat if from a Station Radio.
         }
+        // Moffstaion - End
+
         // log to chat so people can identity the speaker/source, but avoid clogging ghost chat if there are many radios
         _chat.TrySendInGameICMessage(uid, args.Message,
         component.LouderSpeech ? InGameICChatType.Speak : InGameICChatType.Whisper, // Moffstation - Added component-dependent chatType
-        transmitRange,
+        transmitRange, // Moffstation - Radio Host (ChatTransmitRange.GhostRangeLimit -> trasmitRange)
         nameOverride: name,
         checkRadioPrefix: false);
     }
