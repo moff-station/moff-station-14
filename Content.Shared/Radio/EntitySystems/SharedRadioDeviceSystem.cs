@@ -71,7 +71,6 @@ public abstract partial class SharedRadioDeviceSystem : EntitySystem
             ? "station-radio-server-examine-recording"
             : "station-radio-server-examine-not-recording"));
     }
-    #endregion
     // Moffstation - End
 }
 
