@@ -88,6 +88,8 @@
     healSuccessSelfText: necro-heal-success-self
     healSound: "/Audio/Effects/lightburn.ogg"
     healingLightEffect: EvilLightEffect
+  - type: Prayable #Moffstation Change
+    bibleUserOnly: false #Moffstation Change
   - type: Summonable
     summonEntity: SpawnPointGhostCerberus
     respawnTime: 300
