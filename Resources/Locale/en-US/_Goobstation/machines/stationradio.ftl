@@ -16,5 +16,3 @@ vinyl-player-examine-loaded = There's a copy of { $vinyl } inside.
 
 station-radio-receiver-examine-full-volume = It's playing at full volume.
 station-radio-receiver-examine-low-volume = It's playing at low volume.
-station-radio-receiver-increase-volume = Increase volume
-station-radio-receiver-decrease-volume = Decrease volume
