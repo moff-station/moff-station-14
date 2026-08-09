@@ -105,7 +105,7 @@ public sealed partial class BibleSystem : EntitySystem
                 return;
             }
         } //Moffstation End
-        else if (!HasComp<BibleUserComponent>(args.User))
+        else if (!HasComp<BibleUserComponent>(args.User)) // Sizzle user if they are not a Bible user.
         {
             _popup.PopupEntity(Loc.GetString(ent.Comp.SizzleText, ("user", userEnt), ("target", targetEnt), ("bible", ent)), args.User, args.User);
 
