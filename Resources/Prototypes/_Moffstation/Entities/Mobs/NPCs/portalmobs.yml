@@ -38,6 +38,7 @@
     damage:
       types:
         Slash: 8
+        Structural: 10
   - type: Hands
   - type: ComplexInteraction
   - type: Speech
@@ -60,7 +61,7 @@
   - type: NarSieDemonAccent
   - type: HTN
     rootTask:
-      task: SimpleNarsieDemonCompound
+      task: SimpleHostileCompound #TODO: Make custom HTN
     blackboard:
       NavClimb: !type:Bool
         true
@@ -172,6 +173,7 @@
     damage:
       types:
         Slash: 6
+        Structural: 10
 
 - type: entity
   abstract: true
@@ -319,9 +321,10 @@
     damage:
       types:
         Slash: 19
+        Structural: 10
   - type: HTN
     rootTask:
-      task: NarsieHarvesterCompound
+      task: MoffNarsieHarvesterCompound
     blackboard: # Based on Basilisk, may need tuning
       VisionRadius: !type:Single
         7
@@ -389,7 +392,7 @@
     rechargeSound: null
   - type: HTN
     rootTask:
-      task: GlockroachCompound
+      task: SimpleRangedHostileCompound
 
 
 - type: entity
@@ -412,6 +415,7 @@
     damage:
       types:
         Slash: 16
+        Structural: 5
 
 - type: entity
   parent: BaseActionPolymorph
@@ -462,4 +466,4 @@
     attackRate: 0.1
   - type: HTN
     rootTask:
-      task: NarsieWraithJauntCompound
+      task: SimpleHostileCompound
