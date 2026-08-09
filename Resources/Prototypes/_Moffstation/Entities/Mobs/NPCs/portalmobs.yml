@@ -57,6 +57,7 @@
     hideChat: true
   - type: DatasetVocalizer
     dataset: NarSiePrayers
+  - type: NarSieDemonAccent
   - type: HTN
     rootTask:
       task: SimpleNarsieDemonCompound
@@ -93,11 +94,27 @@
   abstract: true
   parent: MoffMobDemonNarsieBase
   id: MoffMobDemonNarsieFleshBase
-  name: writhing flesh
+  name: runecarved flesh
+  description: A writhing mass of muscle and sinew, etched with blodied scars.
   components:
   - type: Sprite
     drawdepth: Mobs
-    sprite: Mobs/Aliens/flesh.rsi
+    sprite: _Moffstation/Mobs/Demons/flesh_lover.rsi # lover gets default because it's my favorite
+    layers:
+    - map: [ "enum.DamageStateVisualLayers.Base" ]
+      state: flesh_body
+    - map: [ "enum.DamageStateVisualLayers.BaseUnshaded" ]
+      state: runes
+      shader: unshaded
+      color: "#aa1c34"
+  - type: DamageStateVisuals
+    states:
+      Alive:
+        Base: flesh_body
+        BaseUnshaded: runes
+      Dead:
+        Base: dead
+        BaseUnshaded: null
   - type: MobThresholds
     thresholds:
       0: Alive
@@ -117,7 +134,6 @@
   abstract: true
   parent: MoffMobDemonNarsieFleshBase
   id: MoffMobDemonNarsieFleshFlyingBase
-  name: writhing flesh
   components:
   - type: MobThresholds
     thresholds:
@@ -199,60 +215,26 @@
   id: MoffMobDemonNarsieFleshClamp
   components:
   - type: Sprite
-    layers:
-    - map: [ "enum.DamageStateVisualLayers.Base" ]
-      state: clamp
-  - type: DamageStateVisuals
-    states:
-      Alive:
-        Base: clamp
-      Dead:
-        Base: dead
+    sprite: _Moffstation/Mobs/Demons/flesh_clamp.rsi
 
 - type: entity
   parent: MoffMobDemonNarsieFleshBase
   id: MoffMobDemonNarsieFleshGolem
   components:
   - type: Sprite
-    layers:
-    - map: [ "enum.DamageStateVisualLayers.Base" ]
-      state: golem
-  - type: DamageStateVisuals
-    states:
-      Alive:
-        Base: golem
-      Dead:
-        Base: dead
+    sprite: _Moffstation/Mobs/Demons/flesh_golem.rsi
 
 - type: entity
   parent: MoffMobDemonNarsieFleshBase
   id: MoffMobDemonNarsieFleshJared
   components:
   - type: Sprite
-    layers:
-    - map: [ "enum.DamageStateVisualLayers.Base" ]
-      state: jared
-  - type: DamageStateVisuals
-    states:
-      Alive:
-        Base: jared
-      Dead:
-        Base: dead
+    sprite: _Moffstation/Mobs/Demons/flesh_jared.rsi
 
 - type: entity
   parent: MoffMobDemonNarsieFleshFlyingBase
   id: MoffMobDemonNarsieFleshLover
-  components:
-  - type: Sprite
-    layers:
-    - map: [ "enum.DamageStateVisualLayers.Base" ]
-      state: lover
-  - type: DamageStateVisuals
-    states:
-      Alive:
-        Base: lover
-      Dead:
-        Base: dead
+  #components:
 
 # Narsian constructs
 - type: entity
@@ -262,7 +244,7 @@
   components:
   - type: Sprite
     sprite: _Moffstation/Mobs/Demons/artificer.rsi
-  - type: Insulated
+  - type: Insulated # Worker
   - type: MeleeWeapon
     soundHit:
       path: "/Audio/Effects/metal_slam4.ogg"
@@ -298,17 +280,14 @@
   - type: Puller
     needsHands: false
   - type: GrapplingGun
-    reelMassCoefficient: 200 # You can pull everyone.
-    reelForce: 20000 # STRONG reeling, you can now make them GET OVER HERE
-    reelRate: 7.5 # Fast reeling - can move very quickly in combat with this
-    ropeBreakPoint: 250000 # Demonic chain
+    #reelMassCoefficient: 200 # You can pull everyone.
+    #reelForce: 20000 # STRONG reeling, you can now make them GET OVER HERE
+    #reelRate: 7.5 # Fast reeling - can move very quickly in combat with this
+    ropeBreakPoint: 150000 # Demonic chain
     cycleSound: /Audio/_Moffstation/Surgery/retractor1.ogg
     ropeSprite:
-      sprite: _Moffstation/Objects/Weapons/Guns/Launchers/chainsickle.rsi
+      sprite: _Moffstation/Mobs/Demons/harvester.rsi
       state: rope
-  - type: EmbeddableProjectile
-    sound: /Audio/Weapons/bolathrow.ogg
-    offset: -0.15,0.0
   - type: Gun
     soundGunshot: /Audio/Weapons/utilityknifeopen.ogg
     fireRate: 0.1
@@ -320,13 +299,11 @@
   - type: HTN
     rootTask:
       task: NarsieHarvesterCompound
-    blackboard:
+    blackboard: # Based on Basilisk, may need tuning
       VisionRadius: !type:Single
         7
       AggroVisionRadius: !type:Single
         12
-      NavSmash: !type:Bool
-        true
 
 - type: entity
   parent: MoffMobDemonNarsieConstructBase
