@@ -68,8 +68,8 @@ public abstract partial class SharedRadioDeviceSystem : EntitySystem
             return;
 
         args.PushMarkup(Loc.GetString(mic.Enabled
-            ? "station-radio-server-examine-recording"
-            : "station-radio-server-examine-not-recording"));
+            ? "station-radio-server-examine-not-recording"
+            : "station-radio-server-examine-recording"));
     }
     // Moffstation - End
 }
