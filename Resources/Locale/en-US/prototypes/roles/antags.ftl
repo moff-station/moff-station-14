@@ -26,7 +26,7 @@ roles-antag-nuclear-operative-agent-name = Gorlex Medic
 roles-antag-nuclear-operative-agent-objective = The medic of the Gorlex Marauder strike team. Heal your team to victory!
 
 roles-antag-nuclear-operative-name = Gorlex Marauder
-roles-antag-nuclear-operative-objective = A professional solider of a Gorlex Marauder strike team. Follow your commander to victory!
+roles-antag-nuclear-operative-objective = A professional soldier of a Gorlex Marauder strike team. Follow your commander to victory!
 #Moff end
 
 roles-antag-subverted-silicon-name = Subverted silicon
