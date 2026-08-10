@@ -2,7 +2,7 @@
 
 - type: entity
   parent: [ClothingUniformBase, ClothingUniformFoldableBase]
-  id: PersonalItemEx1Suit
+  id: &id PersonalItemEx1Suit
   name: dichromatic suit
   description: A hand-made black-and-white tailored suit, shipped all the way from Earth. "EX1" is sewn into the left
     lapel. Smells like citrus. Comes with a tangerine coloured tie, dashing striped shirt, and a belt, with the word
@@ -10,15 +10,15 @@
   suffix: PersonalItem
   components:
   - type: Sprite
-    sprite: _Moffstation/PersonalItems/Wearables/TheSythe/EX1-BARD_EX1-DY/dichromaticsuit.rsi
+    sprite: &sprite _Moffstation/PersonalItems/Wearables/TheSythe/EX1/dichromaticsuit.rsi
   - type: Clothing
-    sprite: _Moffstation/PersonalItems/Wearables/TheSythe/EX1-BARD_EX1-DY/dichromaticsuit.rsi
+    sprite: *sprite
 
 - type: loadout
-  id: PersonalItemEx1Suit
+  id: *id
   storage:
     back:
-    - PersonalItemEx1Suit
+    - *id
   effects:
   - !type:PersonalItemLoadoutEffect
     character:
