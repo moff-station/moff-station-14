@@ -4,9 +4,10 @@ using Content.Shared.Preferences;
 using Robust.Shared.Console;
 using Robust.Shared.Player;
 
+// ReSharper disable once CheckNamespace // Moff - Adds to existing class in non-moff namespace
 namespace Content.Server.GameTicking.Commands;
 
-sealed partial class JoinGameCommand
+internal sealed partial class JoinGameCommand
 {
     [Dependency] private IServerPreferencesManager _moffPreferences = default!;
 
@@ -43,13 +44,8 @@ sealed partial class JoinGameCommand
     /// </summary>
     private bool TrySetMoffCharacter(IConsoleShell shell, ICommonSession player, int slot)
     {
-        if (_moffPreferences.GetPreferencesOrNull(player.UserId) is not { } prefs)
-        {
-            shell.WriteError(Loc.GetString("moff-join-game-no-character-in-slot", ("slot", slot)));
-            return false;
-        }
-
-        if (!prefs.Characters.TryGetValue(slot, out var profile) || profile is not HumanoidCharacterProfile humanoid)
+        if (_moffPreferences.GetPreferencesOrNull(player.UserId) is not { } prefs ||
+            !prefs.Characters.TryGetValue(slot, out var profile))
         {
             shell.WriteError(Loc.GetString("moff-join-game-no-character-in-slot", ("slot", slot)));
             return false;
