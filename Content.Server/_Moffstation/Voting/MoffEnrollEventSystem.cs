@@ -7,7 +7,6 @@ using Content.Shared._ES.Voting;
 using Content.Shared._ES.Voting.Components;
 using Content.Shared._Moffstation.Extensions;
 using Content.Shared._Moffstation.Voting.Components;
-using Content.Shared.Antag;
 using Content.Shared.EntityTable;
 using Content.Shared.GameTicking.Components;
 using Content.Shared.Ghost.Components;
@@ -43,7 +42,7 @@ public sealed partial class MoffEnrollEventSystem : EntitySystem
     {
         base.Update(frameTime);
 
-        foreach (var enroll in EntityQueryEnumerator<MoffEnrollEventComponent>().AsEnumerable().ToList())
+        foreach (var enroll in EntityQueryEnumerator<MoffEnrollEventComponent>())
         {
             if (_timing.CurTime < enroll.Comp.EndTime)
                 continue;
