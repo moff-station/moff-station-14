@@ -8,7 +8,7 @@ namespace Content.Server._Moffstation.Objectives.Components;
 /// By default, the authority will be an entity spawned by the same gamerule with the <see cref="MoffCommonObjectiveAuthorityComponent"/>
 /// If there are potential multiple authorities within a single gamerule, or you are not using a gamerule, set the authority manually in C#
 /// </summary>
-[RegisterComponent, AutoGenerateComponentPause]
+[RegisterComponent]
 public sealed partial class MoffCommonObjectivesComponent : Component
 {
     /// <summary>
