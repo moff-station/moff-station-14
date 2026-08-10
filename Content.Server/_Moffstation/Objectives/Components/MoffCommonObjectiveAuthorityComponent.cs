@@ -6,4 +6,13 @@ namespace Content.Server._Moffstation.Objectives.Components;
 /// "authority" within a single rule, or you are not using a gamerule, set it via C# instead of this component.
 /// </summary>
 [RegisterComponent]
-public sealed partial class MoffCommonObjectiveAuthorityComponent : Component;
+public sealed partial class MoffCommonObjectiveAuthorityComponent : Component
+{
+    /// <summary>
+    /// Entities copying objectives from this mind.
+    /// This is simply to make it easier to track the current followers
+    /// <see cref="MoffCommonObjectivesComponent.AuthorityMind"/> should be treated as the source of truth.
+    /// </summary>
+    [ViewVariables]
+    public HashSet<EntityUid> Followers = new();
+}

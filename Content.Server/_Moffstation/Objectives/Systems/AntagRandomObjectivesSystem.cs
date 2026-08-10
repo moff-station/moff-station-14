@@ -29,7 +29,7 @@ public sealed partial class AntagRandomObjectivesSystem : EntitySystem
             return;
 
         // See if objectives are only given to specific antag defs.
-        if (ent.Comp.OnlyForDefs is { Count: > 0 } antagDefs && !antagDefs.Contains(args.Def.ID))
+        if (ent.Comp.OnlyForDefs.Count > 0 && !ent.Comp.OnlyForDefs.Contains(args.Def.ID))
             return;
 
         if (!_mind.TryGetMind(args.Session, out var mindId, out var mind))

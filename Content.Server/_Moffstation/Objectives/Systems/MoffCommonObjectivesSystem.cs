@@ -2,8 +2,8 @@ using System.Linq;
 using Content.Server._Moffstation.Objectives.Components;
 using Content.Server.Antag;
 using Content.Server.Antag.Components;
+using Content.Shared._Moffstation.Extensions;
 using Content.Shared._Moffstation.Objectives;
-using Content.Shared.GameTicking.Components;
 using Content.Shared.Mind;
 using Content.Shared.Objectives.Systems;
 using Robust.Shared.Player;
@@ -16,42 +16,39 @@ public sealed partial class MoffCommonObjectivesSystem : EntitySystem
     [Dependency] private SharedMindSystem _mind = default!;
     [Dependency] private SharedObjectivesSystem _objectives = default!;
     [Dependency] private AntagSelectionSystem _antag = default!;
-    [Dependency] private IGameTiming _timing = default!;
 
-    private static readonly TimeSpan SyncInterval = TimeSpan.FromSeconds(1);
-    private TimeSpan _nextSync;
+    [Dependency] private EntityQuery<MoffCommonObjectivesComponent> _followerQuery;
+    [Dependency] private EntityQuery<MoffCommonObjectiveAuthorityComponent> _authorityQuery;
 
-    public override void Update(float frameTime)
+    [SubscribeLocalEvent]
+    private void OnAntagSelected(ref AfterAntagEntitySelectedEvent ev)
     {
-        if (_timing.CurTime < _nextSync)
-            return;
-        _nextSync = _timing.CurTime + SyncInterval;
-
-        var query = EntityQueryEnumerator<MoffCommonObjectivesComponent>();
-        while (query.MoveNext(out var uid, out var comp))
+        if (_authorityQuery.HasComp(ev.EntityUid))
+            BindRuleFollowers(ev.GameRule, ev.EntityUid);
+        else if (_followerQuery.TryComp(ev.EntityUid, out var follower))
         {
-            if (comp.Authority == null &&
-                TryResolveAuthority((uid, comp), out var found))
-            {
-                comp.Authority = found;
-            }
+            BindToRuleAuthority((ev.EntityUid, follower), ev.GameRule);
+            SetupPlaceholderObjective((ev.EntityUid, follower));
         }
     }
 
-    [SubscribeLocalEvent]
-    private void OnPlayerAttached(Entity<MoffCommonObjectivesComponent> ent, ref PlayerAttachedEvent ev)
+    /// <summary>
+    /// Binds every follower already selected in <paramref name="rule"/> to a newly selected authority.
+    /// </summary>
+    private void BindRuleFollowers(Entity<AntagSelectionComponent> rule, EntityUid authority)
     {
-        if (ent.Comp.PlaceHolder != null)
+        if (!_mind.TryGetMind(authority, out var authorityMind, out _))
             return;
 
-        if (!_mind.TryGetMind(ev.Player, out var mindId, out var mindComp))
-            return;
-
-        if (_objectives.TryCreateObjective(mindId, mindComp, ent.Comp.PlaceholderProtoId) is not { } objective)
-            return;
-
-        ent.Comp.PlaceHolder = objective;
-        _mind.AddObjective(mindId, mindComp, objective);
+        foreach (var member in _antag.GetAntagMinds(rule.Owner))
+        {
+            if (member.Comp.CurrentEntity is { } mob &&
+                mob != authority &&
+                _followerQuery.TryComp(mob, out var follower))
+            {
+                SetAuthority((mob, follower), authorityMind);
+            }
+        }
     }
 
     [SubscribeLocalEvent]
@@ -67,80 +64,98 @@ public sealed partial class MoffCommonObjectivesSystem : EntitySystem
     }
 
     /// <summary>
+    /// Binds a newly selected follower to <paramref name="rule"/>'s authority, if one was selected already.
+    /// </summary>
+    private void BindToRuleAuthority(Entity<MoffCommonObjectivesComponent> ent, Entity<AntagSelectionComponent> rule)
+    {
+        foreach (var member in _antag.GetAntagMinds(rule.Owner))
+        {
+            if (member.Comp.CurrentEntity is { } mob && mob != ent.Owner && _authorityQuery.HasComp(mob))
+            {
+                SetAuthority(ent, member.Owner);
+                return;
+            }
+        }
+    }
+
+    /// <summary>
+    /// Makes <paramref name="ent"/> copy its objectives from <paramref name="authorityMind"/> from now on.
+    /// </summary>
+    public void SetAuthority(Entity<MoffCommonObjectivesComponent> ent, EntityUid authorityMind)
+    {
+        if (ent.Comp.AuthorityMind == authorityMind)
+            return;
+
+        if (ent.Comp.AuthorityMind is { } old && _authorityQuery.TryComp(old, out var oldAuthority))
+            oldAuthority.Followers.Remove(ent);
+
+        ent.Comp.AuthorityMind = authorityMind;
+        EnsureComp<MoffCommonObjectiveAuthorityComponent>(authorityMind).Followers.Add(ent);
+        SyncObjectives(ent);
+    }
+
+    /// <summary>
     /// Re-syncs every follower that is currently following <paramref name="authorityMind"/>.
     /// </summary>
     private void SyncFollowersOf(EntityUid authorityMind)
     {
-        var query = EntityQueryEnumerator<MoffCommonObjectivesComponent>();
-        while (query.MoveNext(out var uid, out var comp))
+        if (!_authorityQuery.TryComp(authorityMind, out var authority))
+            return;
+
+        foreach (var follower in authority.Followers.ToArray())
         {
-            if (comp.Authority is not { } authority ||
-                !_mind.TryGetMind(authority, out var mindId, out _) ||
-                mindId != authorityMind)
-                continue;
-
-            SyncObjectives((uid, comp));
-        }
-    }
-
-    private bool TryResolveAuthority(Entity<MoffCommonObjectivesComponent> ent, out EntityUid authority)
-    {
-        authority = default;
-
-        if (!_mind.TryGetMind(ent.Owner, out var mindId, out _))
-            return false;
-
-        var rules = EntityQueryEnumerator<AntagSelectionComponent, ActiveGameRuleComponent>();
-        while (rules.MoveNext(out var ruleUid, out _, out _))
-        {
-            var members = _antag.GetAntagMinds(ruleUid).ToList();
-
-            if (members.All(member => member.Owner != mindId))
-                continue;
-
-            foreach (var member in members)
+            // Drop followers that were deleted or bound to someone else.
+            if (!_followerQuery.TryComp(follower, out var comp) || comp.AuthorityMind != authorityMind)
             {
-                if (member.Comp.CurrentEntity is { } mob &&
-                    mob != ent.Owner &&
-                    HasComp<MoffCommonObjectiveAuthorityComponent>(mob))
-                {
-                    authority = mob;
-                    SyncObjectives(ent);
-                    return true;
-                }
+                authority.Followers.Remove(follower);
+                continue;
             }
-        }
 
-        return false;
+            SyncObjectives((follower, comp));
+        }
     }
 
     private void SyncObjectives(Entity<MoffCommonObjectivesComponent> ent)
     {
-        var comp = ent.Comp;
-
         if (!_mind.TryGetMind(ent, out var ownerMindId, out var ownerMind))
             return;
 
-        var target = comp.Authority is { } authority &&
-                     _mind.TryGetMind(authority, out _, out var authMind)
-            ? authMind.Objectives.ToList()
-            : [];
-
-        if (target.Count == 0)
-            return;
-
-        foreach (var objective in ownerMind.Objectives.ToArray())
+        if (ent.Comp.AuthorityMind is not { } authorityMind ||
+            !TryComp<MindComponent>(authorityMind, out var authMind))
         {
-            if (target.Contains(objective))
-                continue;
-
-            _mind.TryRemoveObjective(ownerMindId, ownerMind, ownerMind.Objectives.IndexOf(objective));
+            return;
         }
 
-        foreach (var objective in target)
+        var authorityObjectives = authMind.Objectives.ToList();
+        if (authorityObjectives.Count == 0)
+            return;
+
+        // Backwards, since removing shifts every index after it.
+        for (var i = ownerMind.Objectives.Count - 1; i >= 0; i--)
+        {
+            if (!authorityObjectives.Contains(ownerMind.Objectives[i]))
+                _mind.TryRemoveObjective(ownerMindId, ownerMind, i);
+        }
+
+        foreach (var objective in authorityObjectives)
         {
             if (!ownerMind.Objectives.Contains(objective))
                 _mind.AddObjective(ownerMindId, ownerMind, objective);
         }
+    }
+
+    private void SetupPlaceholderObjective(Entity<MoffCommonObjectivesComponent> ent)
+    {
+        if (ent.Comp.PlaceHolderObject != null)
+            return;
+
+        if (!_mind.TryGetMind(ent.Owner, out var mindId, out var mindComp))
+            return;
+
+        if (_objectives.TryCreateObjective(mindId, mindComp, ent.Comp.PlaceholderProtoId) is not { } objective)
+            return;
+
+        ent.Comp.PlaceHolderObject = objective;
+        _mind.AddObjective(mindId, mindComp, objective);
     }
 }

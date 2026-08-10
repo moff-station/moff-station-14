@@ -13,11 +13,11 @@ public sealed partial class MoffObjectivePackComponent : Component
     /// Entity table of the objectives that can be given
     /// </summary>
     [DataField]
-    public EntityTableSelector Objectives;
+    public EntityTableSelector Objectives = default!;
 
     /// <summary>
     /// Whether this objective should be kept
     /// </summary>
     [DataField]
-    public bool KeepOriginal;
+    public bool KeepOriginalObjective;
 }

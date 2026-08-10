@@ -8,7 +8,7 @@ namespace Content.Server._Moffstation.Objectives.Components;
 /// By default, the authority will be an entity spawned by the same gamerule with the <see cref="MoffCommonObjectiveAuthorityComponent"/>
 /// If there are potential multiple authorities within a single gamerule, or you are not using a gamerule, set the authority manually in C#
 /// </summary>
-[RegisterComponent]
+[RegisterComponent, AutoGenerateComponentPause]
 public sealed partial class MoffCommonObjectivesComponent : Component
 {
     /// <summary>
@@ -18,11 +18,11 @@ public sealed partial class MoffCommonObjectivesComponent : Component
     public EntProtoId PlaceholderProtoId = "MoffSharedObjectivesPlaceholder";
 
     /// <summary>
-    /// What entity are objectives copied from
+    /// What mind are objectives copied from
     /// </summary>
     [ViewVariables]
-    public EntityUid? Authority;
+    public EntityUid? AuthorityMind;
 
     [ViewVariables]
-    public EntityUid? PlaceHolder;
+    public EntityUid? PlaceHolderObject;
 }

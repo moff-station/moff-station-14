@@ -19,7 +19,7 @@ public sealed partial class AntagRandomObjectivesComponent : Component
     /// When empty, it goes to everyone part of the rule
     /// </summary>
     [DataField]
-    public HashSet<ProtoId<AntagSpecifierPrototype>>? OnlyForDefs;
+    public HashSet<ProtoId<AntagSpecifierPrototype>> OnlyForDefs = [];
 
     /// <summary>
     /// Selection time for objectives, set to 0 to have them be instantly picked randomly

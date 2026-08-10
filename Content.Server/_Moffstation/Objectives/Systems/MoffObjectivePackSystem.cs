@@ -26,7 +26,7 @@ public sealed partial class MoffObjectivePackSystem : EntitySystem
             _mindSystem.TryAddObjective(ev.Mind, mind, spawn);
         }
 
-        if (!ent.Comp.KeepOriginal)
+        if (!ent.Comp.KeepOriginalObjective)
             _mindSystem.TryRemoveObjective(ev.Mind, mind, mind.Objectives.IndexOf(ent.Owner));
     }
 }
