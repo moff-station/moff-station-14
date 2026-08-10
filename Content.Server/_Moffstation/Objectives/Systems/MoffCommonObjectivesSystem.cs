@@ -27,7 +27,7 @@ public sealed partial class MoffCommonObjectivesSystem : EntitySystem
             BindRuleFollowers(ev.GameRule, ev.EntityUid);
         else if (_followerQuery.TryComp(ev.EntityUid, out var follower))
         {
-            BindToRuleAuthority((ev.EntityUid, follower), ev.GameRule);
+            BindToAuthorityByRule((ev.EntityUid, follower), ev.GameRule);
             SetupPlaceholderObjective((ev.EntityUid, follower));
         }
     }
@@ -64,9 +64,9 @@ public sealed partial class MoffCommonObjectivesSystem : EntitySystem
     }
 
     /// <summary>
-    /// Binds a newly selected follower to <paramref name="rule"/>'s authority, if one was selected already.
+    /// Binds a newly selected follower to <paramref name="rule"/>'s authority, if one exists.
     /// </summary>
-    private void BindToRuleAuthority(Entity<MoffCommonObjectivesComponent> ent, Entity<AntagSelectionComponent> rule)
+    private void BindToAuthorityByRule(Entity<MoffCommonObjectivesComponent> ent, Entity<AntagSelectionComponent> rule)
     {
         foreach (var member in _antag.GetAntagMinds(rule.Owner))
         {
