@@ -189,7 +189,7 @@
   categories: [ HideSpawnMenu ]
   components:
   - type: PolymorphOnTrigger
-    polymorph: WizardForcedCarp
+    polymorph: MoffWizardForcedCarp # Moff
   - type: WhitelistTriggerCondition
     userWhitelist:
       components:
@@ -228,7 +228,6 @@
       components:
       - Airlock
       - Firelock
-      tags:
       - Wall
 
 - type: entity

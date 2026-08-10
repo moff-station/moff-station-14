@@ -316,9 +316,6 @@
       types:
         Blunt: 0.25
         Heat: 0.1
-  - type: TemperatureProtection
-    heatingCoefficient: 1.2
-    coolingCoefficient: 0.50
   - type: Bloodstream
     bloodReferenceSolution:
         reagents:

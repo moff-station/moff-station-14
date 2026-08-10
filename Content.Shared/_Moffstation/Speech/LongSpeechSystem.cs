@@ -1,0 +1,58 @@
+using Content.Shared.Speech;
+using Content.Shared.Speech.EntitySystems;
+using Robust.Shared.Audio.Systems;
+using Robust.Shared.Timing;
+
+namespace Content.Shared._Moffstation.Speech;
+
+public sealed partial class LongSpeechSystem : EntitySystem
+{
+    [Dependency] private SpeechSoundSystem _speechSound = default!;
+    [Dependency] private SharedAudioSystem _audio = default!;
+    [Dependency] private IGameTiming _gameTiming = default!;
+
+    public override void Update(float frameTime)
+    {
+        base.Update(frameTime);
+
+        var query = EntityQueryEnumerator<SpeechComponent, LongSpeechComponent>();
+        while (query.MoveNext(out var uid, out _, out var longSpeech))
+        {
+            if (longSpeech.NextSpeak > _gameTiming.CurTime)
+                continue;
+
+            if (longSpeech.WordCount <= 0)
+            {
+                RemCompDeferred<LongSpeechComponent>(uid);
+                continue;
+            }
+
+            longSpeech.WordCount--;
+            longSpeech.NextSpeak = _gameTiming.CurTime + longSpeech.Cooldown;
+            _audio.PlayPredicted(longSpeech.Sound, uid, uid, longSpeech.Params);
+        }
+    }
+
+    public void SpeakSentence(Entity<SpeechComponent> ent, string message)
+    {
+        //If we're already speaking, finish the current sentence.
+        if (HasComp<LongSpeechComponent>(ent))
+            return;
+
+        if (_speechSound.GetSpeechSound(ent, message) is not { } sound)
+            return;
+
+        var longSpeech = EnsureComp<LongSpeechComponent>(ent);
+
+        longSpeech.Params = sound.Params.WithVariation(longSpeech.PitchVariation);
+        longSpeech.Sound = sound;
+        longSpeech.Cooldown = _audio.GetAudioLength(_audio.ResolveSound(sound));
+        longSpeech.WordCount = message.Split(' ').Length;
+
+        // Decrease the wordcount until it fits within the speechtime
+        while (longSpeech.WordCount * longSpeech.Cooldown > longSpeech.MaxSpeechTime && longSpeech.WordCount > 1)
+        {
+            longSpeech.WordCount--;
+        }
+    }
+}

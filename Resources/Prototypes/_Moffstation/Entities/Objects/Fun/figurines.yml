@@ -37,6 +37,17 @@
 
 - type: entity
   parent: BaseFigurineMoff
+  id: ToyFigurineAineLucia
+  name: extremely marketable moth figurine
+  description: A figurine depicting a short moth person in a special medical uniform and cat-eared beret. The figure looks as though it's been used heavily, and it has Nanotrasen branding etched into it in several places. Smells like watermelon and plasma.
+  components:
+  - type: Sprite
+    state: ainelucia
+  - type: SpeakOnTrigger
+    pack: FigurinesAineLucia
+
+- type: entity
+  parent: BaseFigurineMoff
   id: ToyFigurineAlfredo
   name: sinister atmospherics technician figurine
   description: A figurine depicting an atmospherics technician with a streak of building overly complex spaghetti messes of pipes. Smells faintly of frezon.

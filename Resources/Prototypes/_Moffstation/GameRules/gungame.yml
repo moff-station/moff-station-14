@@ -1,4 +1,4 @@
-﻿- type: entity
+- type: entity
   id: GunGame
   parent: BaseGameRule
   components:
@@ -21,24 +21,24 @@
     - GunGameNinja
     - GunGameWarOpsCrew
     - GunGameBotanist
+    - GunGamePirate
     - GunGameSyndicateLibrarian
     - GunGamePoacher
     - GunGameGreenSec
     - GunGameSyndicateAssassin
-    - GunGameSalvage
     - GunGameBartender
-    - GunGamePursuer
     - GunGameHoP
     - GunGameAtmosian
     - GunGameScientist
+    - GunGameJanitor
     - GunGameChef
-    - GunGameQM
     - GunGameParamedic
+    - GunGameQM
     - GunGameTider
   - type: KillCalloutRule
   - type: RespawnDeadRule
   - type: RespawnTracker
-    respawnDelay: 5
+    respawnDelay: 4
   - type: AvoidantSpawning
     range: 10.0
     blacklist:
