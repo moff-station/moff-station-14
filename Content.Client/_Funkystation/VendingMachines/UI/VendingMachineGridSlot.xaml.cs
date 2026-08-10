@@ -12,8 +12,9 @@ namespace Content.Client._Funkystation.VendingMachines.UI;
 [GenerateTypedNameReferences]
 public sealed partial class VendingMachineGridSlot : PanelContainer
 {
-    [Dependency] private IPrototypeManager _protoManager = null!;
-    [Dependency] private ILocalizationManager _loc = null!;
+    [Dependency] private IPrototypeManager _protoManager = default!;
+    [Dependency] private ILocalizationManager _loc = default!;
+    [Dependency] private IComponentFactory _compFactory = default!;
 
     private const float SlotSize = 84f;
     private const float ItemSize = 64f;
@@ -27,9 +28,9 @@ public sealed partial class VendingMachineGridSlot : PanelContainer
     private bool _pendingSoldOut;
 
     // highlighting
-    private readonly StyleBoxFlat _normalStyle = new() { BackgroundColor = new Color(30, 30, 40), BorderColor = new Color(90, 90, 105), BorderThickness = new Thickness(1) };
-    private readonly StyleBoxFlat _rowMatchStyle = new() { BackgroundColor = new Color(40, 50, 70), BorderColor = new Color(120, 140, 190), BorderThickness = new Thickness(2) };
-    private readonly StyleBoxFlat _exactMatchStyle = new() { BackgroundColor = new Color(40, 70, 40), BorderColor = new Color(100, 255, 100), BorderThickness = new Thickness(2) };
+    private static readonly StyleBoxFlat NormalStyle = new() { BackgroundColor = new Color(30, 30, 40), BorderColor = new Color(90, 90, 105), BorderThickness = new Thickness(1) };
+    private static readonly StyleBoxFlat RowMatchStyle = new() { BackgroundColor = new Color(40, 50, 70), BorderColor = new Color(120, 140, 190), BorderThickness = new Thickness(2) };
+    private static readonly StyleBoxFlat ExactMatchStyle = new() { BackgroundColor = new Color(40, 70, 40), BorderColor = new Color(100, 255, 100), BorderThickness = new Thickness(2) };
 
     public bool SoldOut { get; private set; }
 
@@ -41,7 +42,7 @@ public sealed partial class VendingMachineGridSlot : PanelContainer
 
         MinSize = SetSize = new Vector2(SlotSize, SlotSize);
 
-        PanelOverride = _normalStyle;
+        PanelOverride = NormalStyle;
 
         SlotLayout.SetSize = new Vector2(SlotSize, SlotSize);
         LayoutContainer.SetPosition(SlotLayout, Vector2.Zero);
@@ -69,15 +70,11 @@ public sealed partial class VendingMachineGridSlot : PanelContainer
         {
             var tooltipText = proto.Name;
 
-            if (proto.Components.TryGetValue("Label", out var labelEntry) &&
-                labelEntry.Component is LabelComponent label &&
-                !string.IsNullOrWhiteSpace(label.CurrentLabel))
+            if (proto.TryComp<LabelComponent>(out var label, _compFactory) && label.LocalizedLabel is { } locId)
             {
-                var labelText = _loc.TryGetString(label.CurrentLabel, out var localized)
-                    ? localized
-                    : label.CurrentLabel;
-
-                tooltipText = $"{proto.Name} ({labelText})";
+                tooltipText = _loc.GetString("comp-label-format",
+                    ("baseName", proto.Name),
+                    ("label", _loc.GetString(locId)));
             }
 
             ToolTip = string.IsNullOrWhiteSpace(proto.Description)
@@ -105,17 +102,16 @@ public sealed partial class VendingMachineGridSlot : PanelContainer
     public void SetHighlight(bool isRowMatch, bool isExactMatch)
     {
         if (isExactMatch)
-            PanelOverride = _exactMatchStyle;
+            PanelOverride = ExactMatchStyle;
         else if (isRowMatch)
-            PanelOverride = _rowMatchStyle;
+            PanelOverride = RowMatchStyle;
         else
-            PanelOverride = _normalStyle;
+            PanelOverride = NormalStyle;
     }
 
     private void ApplySoldOutState(bool soldOut)
     {
         SoldOverlay.Visible = soldOut;
-        ItemSprite.Visible = true;
         ItemSprite.Modulate = soldOut ? Color.White.WithAlpha(0.3f) : Color.White;
         AmountBadge.Visible = !soldOut;
     }
@@ -124,9 +120,13 @@ public sealed partial class VendingMachineGridSlot : PanelContainer
     {
         _animating = true;
         _animElapsed = 0f;
-        _pendingSoldOut = SoldOverlay.Visible;
+        _pendingSoldOut = SoldOut;
 
-        ItemSprite.Visible = true;
+        ResetSprite();
+    }
+
+    private void ResetSprite()
+    {
         ItemSprite.Modulate = Color.White;
         LayoutContainer.SetPosition(ItemSprite, _restingPos);
     }
@@ -148,9 +148,7 @@ public sealed partial class VendingMachineGridSlot : PanelContainer
         if (t >= 1f)
         {
             _animating = false;
-            LayoutContainer.SetPosition(ItemSprite, _restingPos);
-            ItemSprite.Modulate = Color.White;
-
+            ResetSprite();
             ApplySoldOutState(_pendingSoldOut);
         }
     }
