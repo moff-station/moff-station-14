@@ -150,7 +150,7 @@ public sealed partial class VendingMachineKeypadMenu : FancyWindow
 
         BuildLetterGrid();
         ClearBuffer();
-        UpdateSearchDim();
+        UpdateSearchMatches();
     }
 
     private void OnSearchChanged(LineEdit.LineEditEventArgs args)
@@ -158,18 +158,20 @@ public sealed partial class VendingMachineKeypadMenu : FancyWindow
         _searchFilter = args.Text.ToUpperInvariant();
         SearchBar.SetText(_searchFilter);
 
-        UpdateSearchDim();
+        UpdateSearchMatches();
     }
 
-    // search never filters, since the A0/B3 codes are positional and would renumber
-    private void UpdateSearchDim()
+    private void UpdateSearchMatches()
     {
         var searching = !string.IsNullOrWhiteSpace(_searchFilter);
 
         foreach (var slot in _slots)
         {
-            slot.SetSearchDimmed(searching &&
-                                 !slot.ItemName.Contains(_searchFilter, StringComparison.CurrentCultureIgnoreCase));
+            var matched = searching &&
+                          slot.ItemName.Contains(_searchFilter, StringComparison.CurrentCultureIgnoreCase);
+
+            slot.SetSearchDimmed(searching && !matched);
+            slot.SetSearchHighlight(matched);
         }
     }
 

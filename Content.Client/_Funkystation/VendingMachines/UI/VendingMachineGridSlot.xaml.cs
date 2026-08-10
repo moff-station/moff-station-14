@@ -26,6 +26,9 @@ public sealed partial class VendingMachineGridSlot : PanelContainer
     private bool _animating;
     private float _animElapsed;
     private bool _pendingSoldOut;
+    private bool _rowMatch;
+    private bool _exactMatch;
+    private bool _searchMatch;
 
     // highlighting
     private static readonly StyleBoxFlat NormalStyle = new() { BackgroundColor = new Color(30, 30, 40), BorderColor = new Color(90, 90, 105), BorderThickness = new Thickness(1) };
@@ -33,7 +36,7 @@ public sealed partial class VendingMachineGridSlot : PanelContainer
     private static readonly StyleBoxFlat ExactMatchStyle = new() { BackgroundColor = new Color(40, 70, 40), BorderColor = new Color(100, 255, 100), BorderThickness = new Thickness(2) };
 
     // modulating the slot itself cascades to every child, so it composes with the sold-out sprite dim
-    private static readonly Color SearchDimModulate = Color.White.WithAlpha(0.25f);
+    private static readonly Color SearchDimModulate = Color.White.WithAlpha(0.4f);
 
     public bool SoldOut { get; private set; }
 
@@ -113,11 +116,25 @@ public sealed partial class VendingMachineGridSlot : PanelContainer
         Modulate = dimmed ? SearchDimModulate : Color.White;
     }
 
+    public void SetSearchHighlight(bool matched)
+    {
+        _searchMatch = matched;
+        UpdatePanel();
+    }
+
     public void SetHighlight(bool isRowMatch, bool isExactMatch)
     {
-        if (isExactMatch)
+        _rowMatch = isRowMatch;
+        _exactMatch = isExactMatch;
+        UpdatePanel();
+    }
+
+    // keypad state outranks the search, since those are the imminent vend
+    private void UpdatePanel()
+    {
+        if (_exactMatch)
             PanelOverride = ExactMatchStyle;
-        else if (isRowMatch)
+        else if (_rowMatch || _searchMatch)
             PanelOverride = RowMatchStyle;
         else
             PanelOverride = NormalStyle;
