@@ -18,7 +18,7 @@ roles-antag-initial-infected-objective = Once you turn, infect as many other cre
 roles-antag-zombie-name = Zombie
 roles-antag-zombie-objective = Turn as many humans as possible into zombies.
 
-#Moff start - rename them to gorlex
+#Moff start - rename them to Gorlex
 roles-antag-nuclear-operative-commander-name = Gorlex Commander
 roles-antag-nuclear-operative-commander-objective = Lead a strike team of Gorlex Marauders in an assault against the station.
 
