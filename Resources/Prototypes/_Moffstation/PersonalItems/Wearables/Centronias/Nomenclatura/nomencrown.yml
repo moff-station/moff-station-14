@@ -1,0 +1,250 @@
+﻿# Player: Centronias / Character: Nomenclatura
+- type: entity
+  parent: ClothingHeadBase
+  id: &id PersonalItemNomenCrown
+  name: holographic diadem
+  suffix: PersonalItem
+  description: An unusually heavy circle of plasteel, about the diameter of the crown of a human's head.
+  components:
+  - type: DetailExaminable
+    content: 'Something is written on it: "ὀνοματοποιός 3".'
+  - type: Sprite
+    sprite: &sprite _Moffstation/PersonalItems/Wearables/Centronias/Nomenclatura/nomencrown.rsi
+    layers:
+    - state: icon
+    - state: icon-static
+      map: [ "enum.ToggleableVisuals.Layer" ]
+      visible: false
+      shader: unshaded
+  - type: Item
+    sprite: *sprite
+  - type: Clothing
+    sprite: *sprite
+    clothingVisuals:
+      head:
+      - state: equipped-HEAD-static
+        map: [ "enum.ToggleableVisuals.Layer" ]
+        visible: false
+        shader: unshaded
+      - state: equipped-HEAD
+  - type: EmitSoundOnTrigger
+    sound: /Audio/Items/flashlight_on.ogg
+    predicted: true
+    keysIn:
+    - click-sound
+  - type: PointLight
+    enabled: false
+    radius: 2
+    energy: 0.25
+    falloff: 10
+    color: white
+  - type: MoffStainRepellent
+  # Appearance and generic visualizers cause yaml-specified `Appearance` data actually affect clothing and sprite layers.
+  - type: Appearance
+  - type: GenericVisualizer
+    visuals:
+      enum.FoldedVisuals.State:
+        enum.ToggleableVisuals.Layer:
+          off:
+            visible: false
+          static:
+            state: icon-static
+            visible: true
+          monochrome:
+            state: icon-monochrome
+            visible: true
+          cycling:
+            state: icon-static # Too lazy to make a cycling icon
+            visible: true
+  - type: GenericVisualizerExtended
+    clothingVisuals:
+      head:
+        enum.FoldedVisuals.State:
+          enum.ToggleableVisuals.Layer:
+            off:
+              visible: false
+            static:
+              state: equipped-HEAD-static
+              visible: true
+              shader: unshaded
+            monochrome:
+              state: equipped-HEAD-monochrome
+              visible: true
+              shader: unshaded
+            cycling:
+              state: equipped-HEAD-cycling
+              visible: true
+              shader: unshaded
+  # Toggle `SynchronizeLayerColorToAppearance` with `synch-on`/`synch-off` triggers.
+  # This component is used to make the color selection (which modifies `Appearance` data) immediately apply to visuals.
+  - type: AddComponentsOnTrigger
+    keysIn: [ synch-on ]
+    components:
+    - type: SynchronizeLayerColorToAppearance
+      layers:
+        enum.ToggleableVisuals.Layer: enum.ToggleableVisuals.Color
+      clothingLayers:
+        head:
+          enum.ToggleableVisuals.Layer: enum.ToggleableVisuals.Color
+  - type: RemoveComponentsOnTrigger
+    keysIn: [ synch-off ]
+    components:
+    - type: SynchronizeLayerColorToAppearance
+  # `EffectiveAlternativeVerbs` adds the verbs for setting the style and color of the crown.
+  - type: EffectiveAlternativeVerbs
+    categories:
+    # "Set Style" category
+    - text: moff-personalitem-centronias-nomenclatura-crown-category
+      options:
+      # Off
+      - text: moff-personalitem-centronias-nomenclatura-crown-off
+        effects:
+        - effect: !type:SetAppearance # Turn off the actual corona visuals
+            values: { enum.FoldedVisuals.State: off }
+        - effect: !type:SetLightEnabled # Turn off the light
+            enabled: false
+        - effect: !type:TriggerEffect # Turn off color synching
+            keyOut: synch-off
+        - effect: !type:TriggerEffect # Play the click audio
+            keyOut: click-sound
+       # Monochrome. The corona is one color synched with the light
+      - text: moff-personalitem-centronias-nomenclatura-crown-monochrome
+        effects:
+        - effect: !type:SetAppearance # Set the corona to the monochrome, color-modulatable state
+            values: { enum.FoldedVisuals.State: monochrome }
+        - effect: !type:SetLightEnabled # Turn on the light
+            enabled: true
+        - effect: !type:SetLightColor # Synch the light color
+            appearanceValue: enum.ToggleableVisuals.Color
+        - effect: !type:TriggerEffect # Turn on color synching
+            keyOut: synch-on
+        - effect: !type:TriggerEffect # Play the click audio
+            keyOut: click-sound
+      # RGB. The corona is a uniform color which cycles by way of the RGB controller component
+      - text: moff-personalitem-centronias-nomenclatura-crown-rgb
+        effects:
+        - effect: !type:SetAppearance # Set the corona to the monochrome, color-modulatable state
+            values: { enum.FoldedVisuals.State: monochrome }
+        - effect: !type:SetLightEnabled # Turn on the light
+            enabled: true
+        - effect: !type:SetAppearance # Set the manual color modulation to white
+            values: { enum.ToggleableVisuals.Color: "#FFFFFF" }
+        - effect: !type:SetLightColor # Set the light color to RGB. Due to exactly how the RGB controller works, this affects both the light and the sprite.
+            rgb:
+              cycleRate: 0.33
+              affectedLayers: null # This implicitly applies the RGB effect to all unshaded layers
+        - effect: !type:TriggerEffect # Turn off color synching -- the RGB controller controls the colors now.
+            keyOut: synch-off
+        - effect: !type:TriggerEffect # Play the click audio
+            keyOut: click-sound
+      # Static
+      - text: moff-personalitem-centronias-nomenclatura-crown-static
+        effects:
+        - effect: !type:SetAppearance # Set the corona to the static rainbow state
+            values: { enum.FoldedVisuals.State: static }
+        - effect: !type:SetAppearance # Set the manual color modulation to white
+            values: { enum.ToggleableVisuals.Color: "#FFFFFF" }
+        - effect: !type:SetLightEnabled # Turn on the light
+            enabled: true
+        - effect: !type:SetLightColor # Set the light to a cool white
+            color: "#00B8CC"
+        - effect: !type:TriggerEffect # Turn color synch on -- we do this to ensure the white modulation is applied, which is effectively no modulation
+            keyOut: synch-on
+        - effect: !type:TriggerEffect # Play the click audio
+            keyOut: click-sound
+      - text: moff-personalitem-centronias-nomenclatura-crown-cycling
+        effects:
+        - effect: !type:SetAppearance # Set the corona to the cycling rainbow state
+            values: { enum.FoldedVisuals.State: cycling }
+        - effect: !type:SetAppearance # Set the manual color modulation to white
+            values: { enum.ToggleableVisuals.Color: "#FFFFFF" }
+        - effect: !type:SetLightEnabled # Turn on the light
+            enabled: true
+        - effect: !type:SetLightColor # Set the light to a cool white
+            color: "#00B8CC"
+        - effect: !type:TriggerEffect # Turn color synch on -- we do this to ensure the white modulation is applied, which is effectively no modulation
+            keyOut: synch-on
+        - effect: !type:TriggerEffect # Play the click audio
+            keyOut: click-sound
+    # "Set Color" category. All of these just set `enum.ToggleableVisuals.Color` to a hex code in the `AppearanceData`.
+    - text: moff-personalitem-centronias-nomenclatura-crown-category-colors
+      options:
+      - text: moff-personalitem-centronias-nomenclatura-crown-color-black
+        effects:
+        - effect: !type:SetAppearance
+            values: { enum.ToggleableVisuals.Color: "#1A1A1A" }
+      - text: moff-personalitem-centronias-nomenclatura-crown-color-red
+        effects:
+        - effect: !type:SetAppearance
+            values: { enum.ToggleableVisuals.Color: "#E03030" }
+      - text: moff-personalitem-centronias-nomenclatura-crown-color-green
+        effects:
+        - effect: !type:SetAppearance
+            values: { enum.ToggleableVisuals.Color: "#28A828" }
+      - text: moff-personalitem-centronias-nomenclatura-crown-color-brown
+        effects:
+        - effect: !type:SetAppearance
+            values: { enum.ToggleableVisuals.Color: "#A05020" }
+      - text: moff-personalitem-centronias-nomenclatura-crown-color-blue
+        effects:
+        - effect: !type:SetAppearance
+            values: { enum.ToggleableVisuals.Color: "#2040D8" }
+      - text: moff-personalitem-centronias-nomenclatura-crown-color-purple
+        effects:
+        - effect: !type:SetAppearance
+            values: { enum.ToggleableVisuals.Color: "#9020D0" }
+      - text: moff-personalitem-centronias-nomenclatura-crown-color-cyan
+        effects:
+        - effect: !type:SetAppearance
+            values: { enum.ToggleableVisuals.Color: "#00B8CC" }
+      - text: moff-personalitem-centronias-nomenclatura-crown-color-light-gray
+        effects:
+        - effect: !type:SetAppearance
+            values: { enum.ToggleableVisuals.Color: "#C0C0C0" }
+      - text: moff-personalitem-centronias-nomenclatura-crown-color-gray
+        effects:
+        - effect: !type:SetAppearance
+            values: { enum.ToggleableVisuals.Color: "#686868" }
+      - text: moff-personalitem-centronias-nomenclatura-crown-color-pink
+        effects:
+        - effect: !type:SetAppearance
+            values: { enum.ToggleableVisuals.Color: "#FF5599" }
+      - text: moff-personalitem-centronias-nomenclatura-crown-color-lime
+        effects:
+        - effect: !type:SetAppearance
+            values: { enum.ToggleableVisuals.Color: "#60D020" }
+      - text: moff-personalitem-centronias-nomenclatura-crown-color-yellow
+        effects:
+        - effect: !type:SetAppearance
+            values: { enum.ToggleableVisuals.Color: "#FFD820" }
+      - text: moff-personalitem-centronias-nomenclatura-crown-color-light-blue
+        effects:
+        - effect: !type:SetAppearance
+            values: { enum.ToggleableVisuals.Color: "#30B8F0" }
+      - text: moff-personalitem-centronias-nomenclatura-crown-color-magenta
+        effects:
+        - effect: !type:SetAppearance
+            values: { enum.ToggleableVisuals.Color: "#D030CC" }
+      - text: moff-personalitem-centronias-nomenclatura-crown-color-orange
+        effects:
+        - effect: !type:SetAppearance
+            values: { enum.ToggleableVisuals.Color: "#FF8820" }
+      - text: moff-personalitem-centronias-nomenclatura-crown-color-white
+        effects:
+        - effect: !type:SetAppearance
+            values: { enum.ToggleableVisuals.Color: "#FAFAFA" }
+
+- type: loadout
+  id: *id
+  storage:
+    back:
+    - *id
+  specialJobLoadouts:
+    JobBorg:
+      equipment:
+        head: *id
+  effects:
+  - !type:PersonalItemLoadoutEffect
+    character:
+    - Nōmenclātūra
+    - Nomenclatura

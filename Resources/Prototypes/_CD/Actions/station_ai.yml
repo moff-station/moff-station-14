@@ -12,7 +12,8 @@
     event: !type:ToggleAiShellControllerUiEvent
   - type: Sprite
     sprite: _Moffstation/Interface/Actions/actions_ai.rsi
-    state: actions_entershell
+    layers:
+    - state: actions_entershell
 
 - type: entity
   parent: BaseMentalAction
@@ -27,4 +28,5 @@
     event: !type:StopAiShellControlEvent
   - type: Sprite
     sprite: Interface/Actions/actions_ai.rsi
-    state: ai_core
+    layers:
+    - state: ai_core

@@ -1,9 +1,7 @@
 using Content.Shared._ES.Voting.Components;
-using Content.Shared._Moffstation.Extensions;
 using Content.Shared._Moffstation.Voting.Components;
 using Robust.Shared.GameStates;
 using Robust.Shared.Player;
-using Robust.Shared.Timing;
 
 namespace Content.Shared._Moffstation.Voting.Systems;
 
@@ -16,7 +14,7 @@ public abstract partial class MoffSharedVoteEntrySystem : EntitySystem
     private void OnMapInit(Entity<MoffVoteEntryComponent> ent, ref MapInitEvent args)
     {
         // Add a session override for all the present voters
-        foreach (var voter in EntityQueryEnumerator<ESVoterComponent, ActorComponent>().AsEnumerable())
+        foreach (var voter in EntityQueryEnumerator<ESVoterComponent, ActorComponent>())
         {
             SendVoteStartAnnouncement(ent, voter);
             _pvsOverride.AddSessionOverride(ent, voter.Comp2.PlayerSession);
@@ -32,7 +30,7 @@ public abstract partial class MoffSharedVoteEntrySystem : EntitySystem
     [SubscribeLocalEvent]
     private void OnVoterPlayerAttached(Entity<ESVoterComponent> ent, ref PlayerAttachedEvent args)
     {
-        foreach (var entry in EntityQueryEnumerator<MoffVoteEntryComponent>().AsEnumerable())
+        foreach (var entry in EntityQueryEnumerator<MoffVoteEntryComponent>())
         {
             _pvsOverride.AddSessionOverride(entry, args.Player);
         }
@@ -41,7 +39,7 @@ public abstract partial class MoffSharedVoteEntrySystem : EntitySystem
     [SubscribeLocalEvent]
     private void OnVoterPlayerDetached(Entity<ESVoterComponent> ent, ref PlayerDetachedEvent args)
     {
-        foreach (var entry in EntityQueryEnumerator<MoffVoteEntryComponent>().AsEnumerable())
+        foreach (var entry in EntityQueryEnumerator<MoffVoteEntryComponent>())
         {
             _pvsOverride.RemoveSessionOverride(entry, args.Player);
         }
@@ -49,7 +47,10 @@ public abstract partial class MoffSharedVoteEntrySystem : EntitySystem
 
     public IEnumerable<Entity<MoffVoteEntryComponent>> EnumerateEntries()
     {
-        return EntityQueryEnumerator<MoffVoteEntryComponent>().AsEnumerable();
+        foreach (var entity in EntityQueryEnumerator<MoffVoteEntryComponent>())
+        {
+            yield return entity;
+        }
     }
 
     protected virtual void SendVoteStartAnnouncement(

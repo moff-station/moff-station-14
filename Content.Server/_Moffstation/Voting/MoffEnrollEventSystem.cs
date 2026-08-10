@@ -9,7 +9,6 @@ using Content.Shared._ES.Voting;
 using Content.Shared._ES.Voting.Components;
 using Content.Shared._Moffstation.Extensions;
 using Content.Shared._Moffstation.Voting.Components;
-using Content.Shared.Antag;
 using Content.Shared.GameTicking.Components;
 using Content.Shared.Ghost.Components;
 using Content.Shared.Roles.Components;
@@ -41,11 +40,18 @@ public sealed partial class MoffEnrollEventSystem : EntitySystem
     [Dependency] private EntityQuery<MoffEnrollEventComponent> _enrollEventQuery;
     [Dependency] private EntityQuery<GhostComponent> _ghostQuery;
 
+    private readonly List<Entity<MoffEnrollEventComponent>> _enrollments = new(); // Reuse list for iteration in `Update` without new allocations.
+
     public override void Update(float frameTime)
     {
         base.Update(frameTime);
 
-        foreach (var enroll in EntityQueryEnumerator<MoffEnrollEventComponent>().AsEnumerable().ToList())
+        _enrollments.Clear();
+        foreach (var enrollment in EntityQueryEnumerator<MoffEnrollEventComponent>())
+        {
+            _enrollments.Add(enrollment);
+        }
+        foreach (var enroll in _enrollments)
         {
             if (_timing.CurTime < enroll.Comp.EndTime)
                 continue;
@@ -53,6 +59,7 @@ public sealed partial class MoffEnrollEventSystem : EntitySystem
             ResolveEnrollment(enroll);
             QueueDel(enroll.Owner);
         }
+        _enrollments.Clear();
     }
 
     /// <summary>
