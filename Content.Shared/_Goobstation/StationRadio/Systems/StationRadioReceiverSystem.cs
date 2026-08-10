@@ -133,7 +133,7 @@ public sealed partial class StationRadioReceiverSystem : EntitySystem
 
         args.Verbs.Add(new AlternativeVerb
         {
-            Text = comp.LowVolume ? "station-radio-receiver-increase-volume" : "station-radio-receiver-decrease-volume",
+            Text = comp.LowVolume ? "Increase Volume" : "Decrease Volume",
             Act = () =>
             {
                 if (TryComp<RadioSpeakerComponent>(uid, out var speaker))
