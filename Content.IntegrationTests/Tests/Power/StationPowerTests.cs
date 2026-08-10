@@ -26,6 +26,7 @@ public sealed class StationPowerTests : GameTest
         "Bagel",
         "Box",
         "Elkridge",
+        "Exo",
         "Fland",
         "Marathon",
         "Oasis",
@@ -33,12 +34,13 @@ public sealed class StationPowerTests : GameTest
         "Plasma",
         "Relic",
         "Snowball",
-        "Reach",
-        "Exo",
+        "Sushi",
+        "Tram2",
         "Amber", // Moffstation
         "Frezon", // Moffstation
         "Lambda", // Moffstation
         "Ossuary", // Moffstation
+        "Reach", // Moffstation
         "Skeld", // Moffstation
         "Aspid", // Moffstation (From Harmony)
         "Barratry", // Moffstation (From Harmony)

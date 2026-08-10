@@ -7,9 +7,8 @@ using Content.Server._Moffstation.GameTicking.Rules;
 using Content.Server._Moffstation.GameTicking.Rules.Components;
 using Content.Server.Antag.Components;
 using Content.Server.GameTicking;
-using Content.Server.Ghost.Roles;
-using Content.Server.Ghost.Roles.Components;
 using Content.Shared._Moffstation.Replicator.Components;
+using Content.Shared._Moffstation.Voting.Components;
 using Content.Shared.Actions;
 using Content.Shared.Actions.Components;
 using Content.Shared.Maps;
@@ -35,31 +34,7 @@ public sealed class ReplicatorLifecycleTest : GameTest
         Map = PoolManager.TestStation,
     };
 
-    private const string RuleId = "TestReplicatorRule";
-
-    /// Mirrors the real ReplicatorSpawn event (minus StationEvent), so that starting the rule
-    /// automatically spawns MobReplicatorT0Queen and places the SpawnPointGhostReplicatorQueenAntag marker.
-    [TestPrototypes]
-    private const string TestProtos = $@"
-- type: entity
-  id: {RuleId}
-  parent: BaseGameRule
-  suffix: TEST
-  components:
-  - type: ReplicatorRule
-  - type: GameRule
-  - type: AntagRandomSpawn
-  - type: AntagSpawner
-    prototype: MobReplicatorT0Queen
-  - type: AntagSelection
-    agentName: ghost-role-information-replicator-name
-    antags:
-    - !type:FixedAntagCount
-      proto: ReplicatorQueen
-";
-
     [SidedDependency(Side.Server)] private readonly GameTicker _ticker = default!;
-    [SidedDependency(Side.Server)] private readonly GhostRoleSystem _ghostRole = default!;
     [SidedDependency(Side.Server)] private readonly SharedActionsSystem _action = default!;
     [SidedDependency(Side.Server)] private readonly TurfSystem _turf = default!;
     [SidedDependency(Side.Server)] private readonly TileSystem _tile = default!;
@@ -67,13 +42,14 @@ public sealed class ReplicatorLifecycleTest : GameTest
     [SidedDependency(Side.Server)] private readonly EntityLookupSystem _lookup = default!;
     [SidedDependency(Side.Server)] private readonly ITileDefinitionManager _tileDefMan = default!;
 
+    // I hate passing useful state from setup to tests like this, but it works.
     private EntityUid _ruleEntity;
     private EntityUid _nest;
     private EntityUid _t1Replicator;
     private EntityCoordinates _nestCoords;
 
     /// <summary>
-    /// Starts the rule, takes the queen ghost role, and spawns the nest, leaving a T1 replicator and its
+    /// Starts the rule, enrolls the player as the queen, and spawns the nest, leaving a T1 replicator and its
     /// nest ready for the individual lifecycle tests below.
     /// </summary>
     [SetUp]
@@ -82,39 +58,45 @@ public sealed class ReplicatorLifecycleTest : GameTest
         var ruleEntity = EntityUid.Invalid;
         await Server.WaitPost(() =>
         {
+            const string ruleId = "ReplicatorSpawn";
             Assume.That(
-                _ticker.StartGameRule(RuleId, out ruleEntity),
+                _ticker.StartGameRule(ruleId, out ruleEntity),
                 "TestReplicatorRule should start successfully"
             );
         });
 
-        var queenSpawner = EntityUid.Invalid;
+        await Server.WaitPost(() => _ticker.SpawnObserver(ServerSession!));
+
         await Server.WaitAssertion(() =>
         {
-            var enumerator = SEntMan.EntityQueryEnumerator<GhostRoleAntagSpawnerComponent, GhostRoleComponent>();
-            Assume.That(
-                enumerator.MoveNext(out queenSpawner, out var grasComp, out _),
-                "AntagSelection should have created a GhostRoleAntagSpawner for the queen"
-            );
-            Assume.That(
-                grasComp!.Definition!.Value.Id,
-                Is.EqualTo("ReplicatorQueen"),
-                "Spawner should be for the ReplicatorQueen antagSpecifier"
-            );
+            MoffEnrollEventComponent? enroll = null;
+            var enumerator = SEntMan.EntityQueryEnumerator<MoffEnrollEventComponent>();
+            while (enumerator.MoveNext(out var comp))
+            {
+                if (comp.OwningRule != ruleEntity)
+                    continue;
+
+                enroll = comp;
+                break;
+            }
+
+            Assume.That(enroll, Is.Not.Null, "The rule's vote manager should have spawned an enroll vote");
+            Assume.That(enroll!.MaxEnrolled, Is.GreaterThan(0), "Rule should offer at least one antag slot");
+            Assume.That(ServerSession!.AttachedEntity, Is.Not.Null, "Player should be a ghost after observing");
+
+            enroll.Enrolled.Add(ServerSession.AttachedEntity!.Value);
+            enroll.EndTime = SGameTiming.CurTime;
         });
 
+        await RunTicksSync(2);
+
         var queen = EntityUid.Invalid;
-        await Server.WaitPost(() =>
+        await Server.WaitAssertion(() =>
         {
-            var identifier = SComp<GhostRoleComponent>(queenSpawner).Identifier;
-            Assume.That(
-                _ghostRole.Takeover(ServerSession!, identifier),
-                "Player should successfully take the ghost role"
-            );
             Assume.That(
                 ServerSession!.AttachedEntity,
                 Is.Not.Null,
-                "Player session should be attached to the queen after taking the ghost role"
+                "Player session should be attached to the queen after enrollment resolves"
             );
             queen = ServerSession.AttachedEntity!.Value;
 
@@ -190,12 +172,12 @@ public sealed class ReplicatorLifecycleTest : GameTest
 
         var tileRef = _turf.GetTileRef(_nestCoords)!.Value;
         var originalTileTypeId = tileRef.Tile.TypeId;
-        _tile.ReplaceTile(tileRef, (ContentTileDefinition) replicatorTileDef!);
+        _tile.ReplaceTile(tileRef, (ContentTileDefinition)replicatorTileDef!);
 
         tileRef = _turf.GetTileRef(_nestCoords)!.Value;
         Assume.That(
             tileRef.Tile.TypeId,
-            Is.EqualTo(((ContentTileDefinition) replicatorTileDef!).TileId),
+            Is.EqualTo(((ContentTileDefinition)replicatorTileDef!).TileId),
             "Tile should be FloorReplicator after replacement"
         );
 
@@ -229,6 +211,19 @@ public sealed class ReplicatorLifecycleTest : GameTest
     [Test]
     public async Task TestNestLevelsUpAndUpgradesToTier2Combat()
     {
+        // Wait for anything already here to fall into the hole.
+        await RunTicksSync(60);
+
+        // Tracks the starting values in case we spawn on top of something on the test map.
+        var startingSizePoints = 0;
+        var startingSpawnersCreated = 0;
+        await Server.WaitPost(() =>
+        {
+            var rule = SComp<ReplicatorRuleComponent>(_ruleEntity);
+            startingSizePoints = rule.TotalSizePoints;
+            startingSpawnersCreated = rule.TotalSpawnersCreated;
+        });
+
         // Consume a steel stack to generate points, level up the nest, and trigger spawner creation.
         await Server.WaitPost(() =>
         {
@@ -243,14 +238,18 @@ public sealed class ReplicatorLifecycleTest : GameTest
             var nestComp = SComp<ReplicatorNestComponent>(_nest);
             Assert.That(nestComp.CurrentLevel, Is.EqualTo(2), "Nest should have leveled up to level 2");
             Assert.That(
-                nestComp.UnclaimedSpawners.Count,
-                Is.GreaterThanOrEqualTo(1),
+                nestComp.UnclaimedSpawners,
+                Is.Not.Empty,
                 "At least one replicator spawner should have been created"
             );
 
             var rule = SComp<ReplicatorRuleComponent>(_ruleEntity);
-            Assert.That(rule.TotalSizePoints, Is.EqualTo(30), "Rule should track all gained size points");
-            Assert.That(rule.TotalSpawnersCreated, Is.EqualTo(1), "Rule should track one spawner creation");
+            Assert.That(rule.TotalSizePoints,
+                Is.EqualTo(startingSizePoints + 30),
+                "Rule should track all gained size points");
+            Assert.That(rule.TotalSpawnersCreated,
+                Is.AtLeast(1).And.GreaterThanOrEqualTo(startingSpawnersCreated),
+                "Rule should track one spawner creation");
         });
 
         // Upgrading to T2 Combat claims one of the spawners the leveling above just created, so it

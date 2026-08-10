@@ -22,7 +22,7 @@
     revertOnDeath: true
 
 - type: polymorph
-  id: WizardForcedCarp
+  id: WizardForcedCarpUpstream # Moff
   configuration:
     entity: MobCarpMagic
     forced: true
@@ -135,17 +135,6 @@
     revertOnDeath: true
     inventory: Drop
     cooldown: 160
-
-- type: polymorph
-  id: SmartCorgiMorph
-  configuration:
-    entity: MobCorgiSmart
-    forced: false
-    inventory: Drop
-    transferName: true
-    revertOnCrit: false
-    revertOnDeath: false
-    allowRepeatedMorphs: false
 
 # this is the monkey polymorph for artifact.
 - type: polymorph
