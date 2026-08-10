@@ -32,7 +32,13 @@ public sealed partial class VendingMachineGridSlot : PanelContainer
     private static readonly StyleBoxFlat RowMatchStyle = new() { BackgroundColor = new Color(40, 50, 70), BorderColor = new Color(120, 140, 190), BorderThickness = new Thickness(2) };
     private static readonly StyleBoxFlat ExactMatchStyle = new() { BackgroundColor = new Color(40, 70, 40), BorderColor = new Color(100, 255, 100), BorderThickness = new Thickness(2) };
 
+    // modulating the slot itself cascades to every child, so it composes with the sold-out sprite dim
+    private static readonly Color SearchDimModulate = Color.White.WithAlpha(0.25f);
+
     public bool SoldOut { get; private set; }
+
+    // what the search bar matches against
+    public string ItemName { get; private set; } = string.Empty;
 
     public VendingMachineGridSlot()
     {
@@ -65,6 +71,7 @@ public sealed partial class VendingMachineGridSlot : PanelContainer
     {
         CodeLabel.Text = code;
         ItemSprite.SetPrototype(protoId);
+        ItemName = protoId.Id;
 
         if (_protoManager.TryIndex(protoId, out var proto))
         {
@@ -76,6 +83,8 @@ public sealed partial class VendingMachineGridSlot : PanelContainer
                     ("baseName", proto.Name),
                     ("label", _loc.GetString(locId)));
             }
+
+            ItemName = tooltipText;
 
             ToolTip = string.IsNullOrWhiteSpace(proto.Description)
                 ? tooltipText
@@ -97,6 +106,11 @@ public sealed partial class VendingMachineGridSlot : PanelContainer
         }
 
         ApplySoldOutState(soldOut);
+    }
+
+    public void SetSearchDimmed(bool dimmed)
+    {
+        Modulate = dimmed ? SearchDimModulate : Color.White;
     }
 
     public void SetHighlight(bool isRowMatch, bool isExactMatch)

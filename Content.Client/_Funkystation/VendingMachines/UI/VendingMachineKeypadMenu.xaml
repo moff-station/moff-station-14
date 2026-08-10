@@ -13,9 +13,14 @@
                     <gfx:StyleBoxFlat BackgroundColor="#111115" />
                 </PanelContainer.PanelOverride>
 
-                <ScrollContainer Name="GridScroll" VerticalExpand="True" HorizontalExpand="True" Margin="8" HScrollEnabled="False">
-                    <GridContainer Name="ItemGrid" Columns="5" HSeparationOverride="4" VSeparationOverride="4" HorizontalAlignment="Center" />
-                </ScrollContainer>
+                <BoxContainer Orientation="Vertical" VerticalExpand="True" HorizontalExpand="True">
+                    <LineEdit Name="SearchBar" StyleClasses="MoffDiegeticSearchBar"
+                              PlaceHolder="{Loc 'vending-machine-keypad-search'}" Margin="8 8 8 0" />
+
+                    <ScrollContainer Name="GridScroll" VerticalExpand="True" HorizontalExpand="True" Margin="8" HScrollEnabled="False">
+                        <GridContainer Name="ItemGrid" Columns="5" HSeparationOverride="4" VSeparationOverride="4" HorizontalAlignment="Center" />
+                    </ScrollContainer>
+                </BoxContainer>
             </PanelContainer>
 
             <Control MinHeight="8" />
