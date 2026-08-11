@@ -1,9 +1,28 @@
 - type: entity
-  parent: CratePlastic
+  parent: BaseCrate
   id: CrateWood
-  name: Wood Crate
+  name: wooden crate
   components:
   - type: Icon
-    sprite: Structures/Storage/Crates/woodcrate.rsi
+    sprite: _Moffstation/Structures/Storage/Crates/woodcrate.rsi
   - type: Sprite
-    sprite: Structures/Storage/Crates/woodcrate.rsi
+    sprite: _Moffstation/Structures/Storage/Crates/woodcrate.rsi
+  - type: Damageable
+  - type: Injurable
+    damageContainer: StructuralInorganic
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 15
+      behaviors:
+      - !type:PlaySoundBehavior
+        sound:
+          collection: WoodDestroyHeavy
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          MaterialWoodPlank1:
+            min: 1
+            max: 4
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
