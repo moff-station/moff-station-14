@@ -4,15 +4,15 @@
   graph:
     - node: start
       edges:
-        - to: crategenericwood
+        - to: cratewood
           steps:
             - material: WoodPlank
               amount: 5
               doAfter: 5
 
 
-    - node: crategenericwood
-      entity: CrateGenericWood
+    - node: cratewood
+      entity: CrateWood
       edges:
         - to: start
           steps:
