@@ -39,18 +39,10 @@
     Bloodstream:
       effects:
       - !type:HealthChange
-        conditions: #MACRO, thaven are immune to carpotoxin
-        - !type:MetabolizerTypeCondition
-          type: [ Thaven ]
-          inverted: true
         damage:
           types:
             Poison: 4
       - !type:PopupMessage
-        conditions: #MACRO, thaven are immune to carpotoxin
-        - !type:MetabolizerTypeCondition
-          type: [ Thaven ]
-          inverted: true
         type: Local
         visualType: MediumCaution
         messages: [ "generic-reagent-effect-burning-insides" ]
@@ -80,16 +72,15 @@
         effectProto: StatusEffectDrowsiness
         time: 4
         type: Update
-      # Moffstation start - Make ChloralHydrate sleep
-      - !type:GenericStatusEffect
+      - !type:HealthChange
         conditions:
         - !type:ReagentCondition
           reagent: ChloralHydrate
-          min: 26
-        key: ForcedSleep
-        component: ForcedSleeping
-        type: Add
-      # Moffstation End - Make ChloralHydrate sleep
+          min: 20
+        damage:
+          types:
+            Poison: 1.5
+
 - type: reagent
   id: GastroToxin
   name: reagent-name-gastrotoxin
@@ -138,7 +129,6 @@
   contrabandSeverity: Major
   flavor: acid
   color: "#a1000b"
-  worksOnTheDead: true # Moffstation - Acids burn
   boilingPoint: 78.2 # This isn't a real chemical...
   meltingPoint: -19.4
   plantMetabolism:
@@ -184,7 +174,6 @@
   desc: reagent-desc-ferrochromic-acid
   flavor: sour
   color: "#48b3b8"
-  worksOnTheDead: true # Moffstation - Acids burn
   physicalDesc: reagent-physical-desc-ferrous
   metabolisms:
     Bloodstream:
@@ -208,7 +197,6 @@
   contrabandSeverity: Minor
   flavor: acid
   color: "#5050ff"
-  worksOnTheDead: true # Moffstation - Acids burn
   boilingPoint: 165
   meltingPoint: -87
   reactiveEffects:
@@ -250,7 +238,6 @@
   - Chemist
   flavor: acid
   color: "#BF8C00"
-  worksOnTheDead: true # Moffstation - Acids burn
   recognizable: true
   boilingPoint: 337.0
   meltingPoint: 10.31
@@ -426,15 +413,15 @@
       - !type:HealthChange
         conditions:
         - !type:MetabolizerTypeCondition
-          type: [Animal] # Applying damage to the mobs with lower metabolism capabilities
+          type: [ Animal, Arachnid ] # Applying damage to the mobs with lower metabolism capabilities
         damage:
           types:
             Poison: 0.4
       - !type:Vomit
         probability: 0.04 #Scaled for time, not metabolismrate.
         conditions:
-          - !type:MetabolizerTypeCondition
-            type: [Animal]
+        - !type:MetabolizerTypeCondition
+          type: [ Animal, Arachnid ]
 
 - type: reagent
   id: Amatoxin
@@ -502,7 +489,7 @@
       - !type:PopupMessage
         conditions:
         - !type:MetabolizerTypeCondition
-          type: [ Animal, Bloodsucker, Vox ] # Moff
+          type: [ Animal, Vox, Arachnid ]
           inverted: true
         type: Local
         visualType: MediumCaution
@@ -512,12 +499,12 @@
         probability: 0.1
         conditions:
         - !type:MetabolizerTypeCondition
-          type: [ Animal, Bloodsucker, Vox, Plant ] # Moff
+          type: [ Animal, Vox, Plant, Arachnid ]
           inverted: true
       - !type:HealthChange
         conditions:
         - !type:MetabolizerTypeCondition
-          type: [ Animal, Bloodsucker, Vox, Plant ] # Moff
+          type: [ Animal, Vox, Plant, Arachnid ]
           inverted: true
         damage:
           types:
@@ -532,7 +519,7 @@
       - !type:AdjustReagent
         conditions:
         - !type:MetabolizerTypeCondition
-          type: [ Animal, Bloodsucker ] # Moff
+          type: [ Animal, Arachnid ]
         reagent: Protein
         amount: 0.5
       - !type:AdjustReagent
@@ -560,7 +547,7 @@
           reagent: Allicin
           min: 1
         - !type:MetabolizerTypeCondition
-          type: [Animal]
+          type: [ Animal ]
         damage:
           types:
             Poison: 0.06
@@ -607,7 +594,7 @@
           reagent: Honk
           min: 1
         - !type:MetabolizerTypeCondition
-          type: [ Animal ]
+          type: [ Animal, Arachnid ]
         damage:
           types:
             Poison: 0.06
