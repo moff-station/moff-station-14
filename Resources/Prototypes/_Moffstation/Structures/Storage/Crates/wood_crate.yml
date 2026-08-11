@@ -7,6 +7,17 @@
     sprite: _Moffstation/Structures/Storage/Crates/woodcrate.rsi
   - type: Sprite
     sprite: _Moffstation/Structures/Storage/Crates/woodcrate.rsi
+    layers:
+    - state: base
+      map: ["enum.StorageVisualLayers.Base"]
+    - state: closed
+      map: ["enum.StorageVisualLayers.Door"]
+    - state: welded
+      visible: false
+      map: ["enum.WeldableLayers.BaseWelded"]
+    - state: paper
+      sprite: Structures/Storage/Crates/labels.rsi
+      map: ["enum.PaperLabelVisuals.Layer"]
   - type: Damageable
   - type: Injurable
     damageContainer: StructuralInorganic
@@ -26,3 +37,8 @@
             max: 4
       - !type:DoActsBehavior
         acts: [ "Destruction" ]
+  - type: Construction
+    graph: CrateGenericWood
+    node: crategenericwood
+    containers:
+    - entity_storage
