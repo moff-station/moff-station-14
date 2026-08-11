@@ -1,7 +1,7 @@
 ﻿#nullable enable
 using System.Collections.Generic;
 using System.Linq;
-using Content.Server._Moffstation.Preferences; // Moffstation - Multi-character selection
+using Content.Server._Moffstation.Preferences;
 using Content.Server.Preferences.Managers;
 using Content.Shared.Preferences;
 using Content.Shared.Roles;

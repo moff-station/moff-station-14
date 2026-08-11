@@ -301,14 +301,6 @@ namespace Content.Server.Database
                 .Property(p => p.Type)
                 .HasDefaultValue(HwidType.Legacy);
 
-            // Moffstation - Start - Weighted Antags
-            modelBuilder.Entity<MoffModel.MoffPlayer>()
-                .HasOne(mp => mp.Player)
-                .WithOne(p => p.MoffPlayer)
-                .HasForeignKey<MoffModel.MoffPlayer>(mp => mp.PlayerUserId)
-                .HasPrincipalKey<Player>(p => p.UserId);
-            // Moffstation - End
-
             MoffModel.Configure(modelBuilder); // Moff - Multi-character selection
 
             modelBuilder.Entity<ConnectionLog>()

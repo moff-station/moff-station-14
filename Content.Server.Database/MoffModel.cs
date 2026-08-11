@@ -35,6 +35,12 @@ public static class MoffModel
             .WithOne(p => p.MoffProfile)
             .HasForeignKey<MoffProfile>(mp => mp.ProfileId)
             .IsRequired();
+
+        modelBuilder.Entity<MoffPlayer>()
+            .HasOne(mp => mp.Player)
+            .WithOne(p => p.MoffPlayer)
+            .HasForeignKey<MoffPlayer>(mp => mp.PlayerUserId)
+            .HasPrincipalKey<Player>(p => p.UserId);
     }
 
     public class MoffPlayer
