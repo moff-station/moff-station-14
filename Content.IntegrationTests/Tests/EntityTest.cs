@@ -254,6 +254,7 @@ namespace Content.IntegrationTests.Tests
                 "ESTimedDespawn",
                 "ESSparkOnTrigger",
                 "BluespaceLocker", // Spawns bluespace farticles in its code
+                "ElectricityAnomaly", // Creates sparks periodically
             };
 
             // Moff start

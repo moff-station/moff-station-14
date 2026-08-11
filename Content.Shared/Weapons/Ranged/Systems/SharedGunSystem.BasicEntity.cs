@@ -1,10 +1,13 @@
-﻿using Content.Shared.Weapons.Ranged.Components;
+﻿using Content.Shared.EntityTable;
+using Content.Shared.Weapons.Ranged.Components;
 using Content.Shared.Weapons.Ranged.Events;
 
 namespace Content.Shared.Weapons.Ranged.Systems;
 
 public abstract partial class SharedGunSystem
 {
+    [Dependency] private EntityTableSystem _entityTable = default!; // Moff - Entity table integration
+
     protected virtual void InitializeBasicEntity()
     {
         SubscribeLocalEvent<BasicEntityAmmoProviderComponent, MapInitEvent>(OnBasicEntityMapInit);
@@ -33,8 +36,13 @@ public abstract partial class SharedGunSystem
             if (ent.Comp.Count != null)
                 ent.Comp.Count--;
 
-            var ammoEnt = SpawnAtPosition(ent.Comp.Proto, args.Coordinates);
-            args.Ammo.Add((ammoEnt, EnsureShootable(ammoEnt)));
+            // Moff Start - Entity table integration
+            foreach (var proto in _entityTable.GetSpawns(ent.Comp.AmmoTable))
+            {
+                var ammoEnt = SpawnAtPosition(proto, args.Coordinates);
+                args.Ammo.Add((ammoEnt, EnsureShootable(ammoEnt)));
+            }
+            // Moff End
         }
 
         _recharge.Reset(ent.Owner);
@@ -54,6 +62,7 @@ public abstract partial class SharedGunSystem
             return;
 
         Appearance.SetData(ent, AmmoVisuals.HasAmmo, ent.Comp.Count != 0, appearance);
+        Appearance.SetData(ent, AmmoVisuals.IsFull, ent.Comp.Count == ent.Comp.Capacity, appearance);
         Appearance.SetData(ent, AmmoVisuals.AmmoCount, ent.Comp.Count ?? int.MaxValue, appearance);
         Appearance.SetData(ent, AmmoVisuals.AmmoMax, ent.Comp.Capacity ?? int.MaxValue, appearance);
     }

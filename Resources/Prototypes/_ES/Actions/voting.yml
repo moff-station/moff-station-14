@@ -5,6 +5,7 @@
   description: Control the flow of the round alongside other stagehands.
   components:
   - type: Action
+    priority: 1
     checkCanInteract: false
     checkConsciousness: false
   - type: InstantAction
