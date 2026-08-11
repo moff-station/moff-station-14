@@ -51,7 +51,7 @@ internal sealed partial class JoinGameCommand
             return false;
         }
 
-        _entManager.System<MoffCharacterPickerSystem>().SetExplicitChoice(player.UserId, humanoid);
+        _entManager.System<MoffCharacterPickerSystem>().SetExplicitChoice(player.UserId, profile);
         return true;
     }
 }
