@@ -1,0 +1,9 @@
+- type: entity
+  parent: CratePlastic
+  id: CrateWood
+  name: Wood Crate
+  components:
+  - type: Icon
+    sprite: Structures/Storage/Crates/woodcrate.rsi
+  - type: Sprite
+    sprite: Structures/Storage/Crates/woodcrate.rsi
