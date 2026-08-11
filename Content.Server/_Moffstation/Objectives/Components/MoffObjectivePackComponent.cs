@@ -11,8 +11,7 @@ public sealed partial class MoffObjectivePackComponent : Component
 {
     /// <summary>
     /// Entity table of the objectives that can be given
-    /// </summary>
-    [DataField]
+    [DataField(required: true)]
     public EntityTableSelector Objectives = default!;
 
     /// <summary>

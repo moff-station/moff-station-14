@@ -24,5 +24,5 @@ public sealed partial class MoffCommonObjectivesComponent : Component
     public EntityUid? AuthorityMind;
 
     [ViewVariables]
-    public EntityUid? PlaceHolderObject;
+    public EntityUid? PlaceHolderObjective;
 }
