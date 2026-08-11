@@ -20,5 +20,13 @@ namespace Content.Server.Shuttles.Components
         /// </summary>
         [ViewVariables(VVAccess.ReadWrite), DataField("whitelistSpecific")]
         public List<EntityUid> FTLWhitelist = new List<EntityUid>();
+
+        // Moff Start - Exit Sector button
+        /// <summary>
+        /// Whether this console can permanently leave the sector, destroying the shuttle and ghosting everyone aboard.
+        /// </summary>
+        [DataField]
+        public bool CanExitSector = true;
+        // Moff end
     }
 }

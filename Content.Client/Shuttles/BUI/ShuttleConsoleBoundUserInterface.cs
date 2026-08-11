@@ -1,4 +1,5 @@
 using Content.Client.Shuttles.UI;
+using Content.Shared._Moffstation.Shuttles.Events; // Moff - Exit Sector button
 using Content.Shared.Shuttles.BUIStates;
 using Content.Shared.Shuttles.Events;
 using JetBrains.Annotations;
@@ -26,7 +27,15 @@ public sealed class ShuttleConsoleBoundUserInterface : BoundUserInterface
         _window.RequestBeaconFTL += OnFTLBeaconRequest;
         _window.DockRequest += OnDockRequest;
         _window.UndockRequest += OnUndockRequest;
+        _window.RequestExitSector += OnExitSectorRequest; // Moff - Exit Sector button
     }
+
+    // Moff Start - Exit Sector button
+    private void OnExitSectorRequest()
+    {
+        SendMessage(new ShuttleConsoleExitSectorMessage());
+    }
+    // Moff end
 
     private void OnUndockRequest(NetEntity entity)
     {

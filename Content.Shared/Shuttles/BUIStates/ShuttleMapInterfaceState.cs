@@ -25,6 +25,13 @@ public sealed class ShuttleMapInterfaceState
 
     public List<ShuttleExclusionObject> Exclusions;
 
+    // Moff Start - Exit Sector button
+    /// <summary>
+    /// Whether the console this state came from offers the exit sector button.
+    /// </summary>
+    public bool CanExitSector;
+    // Moff end
+
     public ShuttleMapInterfaceState(
         FTLState ftlState,
         StartEndTime ftlTime,

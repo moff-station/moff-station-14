@@ -270,6 +270,9 @@ public sealed partial class ShuttleConsoleSystem : SharedShuttleConsoleSystem
                 new List<ShuttleExclusionObject>());
         }
 
+        // Moff - Exit Sector button
+        mapState.CanExitSector = TryComp(consoleUid, out ShuttleConsoleComponent? shuttleConsole) && shuttleConsole.CanExitSector;
+
         if (_ui.HasUi(consoleUid, ShuttleConsoleUiKey.Key))
         {
             _ui.SetUiState(consoleUid, ShuttleConsoleUiKey.Key, new ShuttleBoundUserInterfaceState(navState, mapState, dockState));

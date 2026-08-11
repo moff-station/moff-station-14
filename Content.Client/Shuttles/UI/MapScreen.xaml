@@ -50,6 +50,12 @@
                 <controls:Button Name="MapRebuildButton"
                         Text="{controls:Loc 'shuttle-console-map-rebuild'}"
                         TextAlign="Center"/>
+                <!-- Moff Start - Exit Sector button -->
+                <controls:Button Name="ExitSectorButton"
+                        Text="{controls:Loc 'shuttle-console-exit-sector'}"
+                        TextAlign="Center"
+                        Visible="False"/>
+                <!-- Moff end -->
                 <!-- Map objects -->
                 <controls1:StripeBack MinSize="48 48">
                     <controls:Label Name="HyperspaceLabel" Text="{controls:Loc 'shuttle-console-map-objects'}"

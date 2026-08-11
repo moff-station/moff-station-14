@@ -55,6 +55,17 @@ public sealed partial class MapScreen : BoxContainer
     public event Action<MapCoordinates, Angle>? RequestFTL;
     public event Action<NetEntity, Angle>? RequestBeaconFTL;
 
+    // Moff Start - Exit Sector button
+    private static readonly TimeSpan ExitConfirmDuration = TimeSpan.FromSeconds(5);
+
+    /// <summary>
+    /// When the armed exit sector confirmation lapses, or null if it isn't armed.
+    /// </summary>
+    private TimeSpan? _exitConfirmEnd;
+
+    public event Action? RequestExitSector;
+    // Moff end
+
     private readonly Dictionary<MapId, BoxContainer> _mapHeadings = new();
     private readonly Dictionary<MapId, List<IMapObject>> _mapObjects = new();
     private readonly List<(MapId mapId, IMapObject mapobj)> _pendingMapObjects = new();
@@ -100,7 +111,32 @@ public sealed partial class MapScreen : BoxContainer
         {
             MapRadar.ShowBeacons = args.Pressed;
         };
+
+        ExitSectorButton.OnPressed += ExitSectorPressed; // Moff - Exit Sector button
     }
+
+    // Moff Start - Exit Sector button
+    private void ExitSectorPressed(BaseButton.ButtonEventArgs obj)
+    {
+        // First press only arms the button, the second one commits.
+        if (_exitConfirmEnd == null)
+        {
+            SetExitConfirm(_timing.CurTime + ExitConfirmDuration);
+            return;
+        }
+
+        SetExitConfirm(null);
+        RequestExitSector?.Invoke();
+    }
+
+    private void SetExitConfirm(TimeSpan? end)
+    {
+        _exitConfirmEnd = end;
+        ExitSectorButton.Text = Loc.GetString(end == null
+            ? "shuttle-console-exit-sector"
+            : "shuttle-console-exit-sector-confirm");
+    }
+    // Moff end
 
     public void UpdateState(ShuttleMapInterfaceState state)
     {
@@ -112,6 +148,12 @@ public sealed partial class MapScreen : BoxContainer
         _ftlTime = state.FTLTime;
         MapRadar.InFtl = true;
         MapFTLState.Text = Loc.GetString($"shuttle-console-ftl-state-{_state.ToString()}");
+
+        // Moff Start - Exit Sector button
+        ExitSectorButton.Visible = state.CanExitSector;
+        if (!state.CanExitSector)
+            SetExitConfirm(null);
+        // Moff end
 
         switch (_state)
         {
@@ -161,6 +203,8 @@ public sealed partial class MapScreen : BoxContainer
 
     private void SetFTLAllowed(bool value)
     {
+        ExitSectorButton.Disabled = !value; // Moff - Exit Sector button
+
         if (value)
         {
             MapFTLButton.Disabled = false;
@@ -171,6 +215,7 @@ public sealed partial class MapScreen : BoxContainer
             MapFTLButton.Pressed = false;
             MapRadar.FtlMode = false;
             MapFTLButton.Disabled = true;
+            SetExitConfirm(null); // Moff - Exit Sector button
         }
     }
 
@@ -521,6 +566,11 @@ public sealed partial class MapScreen : BoxContainer
         {
             MapRebuildButton.Disabled = false;
         }
+
+        // Moff Start - Exit Sector button
+        if (_exitConfirmEnd < curTime)
+            SetExitConfirm(null);
+        // Moff end
 
         var progress = _ftlTime.ProgressAt(curTime);
         FTLBar.Value = float.IsFinite(progress) ? progress : 1;

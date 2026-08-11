@@ -23,6 +23,8 @@ public sealed partial class ShuttleConsoleWindow : FancyWindow,
     public event Action<NetEntity, NetEntity>? DockRequest;
     public event Action<NetEntity>? UndockRequest;
 
+    public event Action? RequestExitSector; // Moff - Exit Sector button
+
     public ShuttleConsoleWindow()
     {
         RobustXamlLoader.Load(this);
@@ -52,6 +54,13 @@ public sealed partial class ShuttleConsoleWindow : FancyWindow,
         {
             RequestBeaconFTL?.Invoke(ent, angle);
         };
+
+        // Moff Start - Exit Sector button
+        MapContainer.RequestExitSector += () =>
+        {
+            RequestExitSector?.Invoke();
+        };
+        // Moff end
 
         DockContainer.DockRequest += (entity, netEntity) =>
         {
