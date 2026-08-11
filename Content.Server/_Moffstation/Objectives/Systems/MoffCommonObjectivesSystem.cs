@@ -146,7 +146,7 @@ public sealed partial class MoffCommonObjectivesSystem : EntitySystem
 
     private void SetupPlaceholderObjective(Entity<MoffCommonObjectivesComponent> ent)
     {
-        if (ent.Comp.PlaceHolderObject != null)
+        if (ent.Comp.PlaceHolderObjective != null)
             return;
 
         if (!_mind.TryGetMind(ent.Owner, out var mindId, out var mindComp))
@@ -155,7 +155,7 @@ public sealed partial class MoffCommonObjectivesSystem : EntitySystem
         if (_objectives.TryCreateObjective(mindId, mindComp, ent.Comp.PlaceholderProtoId) is not { } objective)
             return;
 
-        ent.Comp.PlaceHolderObject = objective;
+        ent.Comp.PlaceHolderObjective = objective;
         _mind.AddObjective(mindId, mindComp, objective);
     }
 }
