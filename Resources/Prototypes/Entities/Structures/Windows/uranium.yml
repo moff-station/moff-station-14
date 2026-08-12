@@ -4,9 +4,9 @@
   name: uranium window
   components:
   - type: Sprite
-    sprite: _Moffstation/Structures/Windows/uranium_window.rsi # Moffstation
+    sprite: Structures/Windows/window-uranium.rsi
   - type: Icon
-    sprite: _Moffstation/Structures/Windows/uranium_window.rsi # Moffstation
+    sprite: Structures/Windows/window-uranium.rsi
     state: full
   - type: Damageable
     damageModifierSet: Glass
@@ -51,10 +51,10 @@
   name: directional uranium window
   components:
   - type: Sprite
-    sprite: _Moffstation/Structures/Windows/directional.rsi # Moffstation
+    sprite: Structures/Windows/directional.rsi
     state: uranium_window
   - type: Icon
-    sprite: _Moffstation/Structures/Windows/directional.rsi # Moffstation
+    sprite: Structures/Windows/directional.rsi
     state: uranium_window
   - type: Construction
     graph: WindowDirectional
@@ -102,7 +102,7 @@
   components:
   - type: Sprite
     drawdepth: WallTops
-    sprite: _Moffstation/Structures/Windows/uranium_window_diagonal.rsi # Moffstation
+    sprite: Structures/Windows/window-diagonal-uranium.rsi
     state: state0
   - type: Tag
     tags:
@@ -110,10 +110,10 @@
     - Window
   - type: IconSmooth
     mode: Diagonal
-    key: walls # Moffstation
+    key: walls
     base: state
   - type: Icon
-    sprite: _Moffstation/Structures/Windows/uranium_window_diagonal.rsi # Moffstation
+    sprite: Structures/Windows/window-diagonal-uranium.rsi
     state: state0
   - type: Fixtures
     fixtures:
@@ -135,7 +135,7 @@
     - East
   - type: DamageVisuals
     damageOverlay:
-      sprite: Structures/Windows/cracks_diagonal.rsi
+      sprite: Structures/Windows/cracks-diagonal.rsi
   - type: Construction
     graph: WindowDiagonal
     node: uraniumWindowDiagonal
