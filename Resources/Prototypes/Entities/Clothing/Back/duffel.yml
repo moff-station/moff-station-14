@@ -86,41 +86,6 @@
   components:
   - type: Sprite
     sprite: Clothing/Back/Duffels/brigmedic.rsi
-    
-- type: entity
-  parent: ClothingBackpackDuffel
-  id: ClothingBackpackDuffelPrisoner # Moffstation
-  name: prisoner' duffel bag
-  description: A large duffel bag fabricated for prisoner use.
-  components:
-  - type: Sprite
-    sprite: _Moffstation/Clothing/Back/Duffels/prisoner.rsi
-    layers:
-      - state: icon
-      - state: icon-unshaded
-        shader: unshaded
-      - state: icon-unshaded
-        shader: shaded
-  - type: Clothing
-    sprite: _Moffstation/Clothing/Back/Duffels/prisoner.rsi
-    clothingVisuals:
-      back:
-      - state: equipped-BACKPACK
-      - state: equipped-BACKPACK-unshaded
-        shader: unshaded
-      - state: equipped-BACKPACK-unshaded
-        shader: shaded
-  - type: Item
-    sprite: _Moffstation/Clothing/Back/Duffels/prisoner.rsi
-    inhandVisuals:
-      left:
-      - state: inhand-left
-      - state: inhand-left-unshaded
-        shader: unshaded
-      right:
-      - state: inhand-right
-      - state: inhand-right-unshaded
-        shader: unshaded
 
 - type: entity
   parent: ClothingBackpackDuffel

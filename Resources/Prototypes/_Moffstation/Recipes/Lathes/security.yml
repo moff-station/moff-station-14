@@ -2,3 +2,13 @@
   parent: Stunbaton
   id: ClothingHandsKnuckleDustersStun
   result: ClothingHandsKnuckleDustersStun
+
+- type: latheRecipe
+  id: MoffClothingBackpackDuffelPrisoner
+  result: MoffClothingBackpackDuffelPrisoner
+  categories:
+  - Clothing
+  completetime: 2
+  materials:
+    Cloth: 500
+    Steel: 50
