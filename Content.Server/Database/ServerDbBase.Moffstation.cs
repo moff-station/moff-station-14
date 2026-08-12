@@ -100,9 +100,7 @@ public abstract partial class ServerDbBase
             state.EnabledSlots[profile.Slot] = profile.MoffProfile?.Enabled ?? true;
         }
 
-        state.Normalize();
-
-        return state;
+        return state.Normalize();
     }
 
     /// <summary>

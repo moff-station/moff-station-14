@@ -133,7 +133,7 @@ public sealed class MultiCharacterTest : GameTest
                 Is.True,
                 "Selection state was not loaded for the test user.");
 
-            state!.EnabledSlots[slot] = enabled;
+            state.EnabledSlots[slot] = enabled;
         });
     }
 

@@ -11,35 +11,37 @@ namespace Content.Shared._Moffstation.Preferences;
 /// here and is shared across all of the player's characters.
 /// </summary>
 [Serializable, NetSerializable]
-public sealed class MoffCharacterSelectionState
+public readonly record struct MoffCharacterSelectionState
 {
     /// <summary>
     /// Jobs absent from this dictionary count as <see cref="JobPriority.Never"/>.
     /// </summary>
-    public Dictionary<ProtoId<JobPrototype>, JobPriority> JobPriorities = new();
+    public Dictionary<ProtoId<JobPrototype>, JobPriority> JobPriorities { get; init; } = new();
 
     /// <summary>
     /// Slots absent from this set count as enabled, so characters predating multi-character
     /// selection keep working.
     /// </summary>
-    public Dictionary<int, bool> EnabledSlots = new();
+    public Dictionary<int, bool> EnabledSlots { get; init; } = new();
 
     /// <summary>
     /// Whether this came from the database. Plain guests have nowhere to persist priorities and get
     /// a blank non-authoritative state; consumers must fall back to per-character priorities for
     /// them, or they would be eligible for no jobs at all.
     /// </summary>
-    public bool IsAuthoritative;
+    public bool IsAuthoritative { get; init; }
 
     public MoffCharacterSelectionState()
     {
     }
 
-    public MoffCharacterSelectionState(MoffCharacterSelectionState other)
+    public MoffCharacterSelectionState DeepCopy()
     {
-        JobPriorities = new Dictionary<ProtoId<JobPrototype>, JobPriority>(other.JobPriorities);
-        EnabledSlots = new Dictionary<int, bool>(other.EnabledSlots);
-        IsAuthoritative = other.IsAuthoritative;
+        return this with
+        {
+            JobPriorities = new Dictionary<ProtoId<JobPrototype>, JobPriority>(JobPriorities),
+            EnabledSlots = new Dictionary<int, bool>(EnabledSlots),
+        };
     }
 
     public bool IsSlotEnabled(int slot)
@@ -55,25 +57,30 @@ public sealed class MoffCharacterSelectionState
     /// <summary>
     /// Drops explicit Never entries and enforces the single-High rule.
     /// </summary>
-    public void Normalize()
+    public MoffCharacterSelectionState Normalize()
     {
+        var normalized = new Dictionary<ProtoId<JobPrototype>, JobPriority>();
         var seenHigh = false;
 
-        foreach (var (job, priority) in new Dictionary<ProtoId<JobPrototype>, JobPriority>(JobPriorities))
+        foreach (var (job, priority) in JobPriorities)
         {
             if (priority == JobPriority.Never)
-            {
-                JobPriorities.Remove(job);
                 continue;
+
+            if (priority == JobPriority.High)
+            {
+                if (seenHigh)
+                {
+                    normalized[job] = JobPriority.Medium;
+                    continue;
+                }
+
+                seenHigh = true;
             }
 
-            if (priority != JobPriority.High)
-                continue;
-
-            if (seenHigh)
-                JobPriorities[job] = JobPriority.Medium;
-
-            seenHigh = true;
+            normalized[job] = priority;
         }
+
+        return this with { JobPriorities = normalized };
     }
 }

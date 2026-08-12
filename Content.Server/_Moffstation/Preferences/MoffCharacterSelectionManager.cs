@@ -1,4 +1,3 @@
-using System.Diagnostics.CodeAnalysis;
 using System.Threading;
 using System.Threading.Tasks;
 using Content.Server.Database;
@@ -40,7 +39,7 @@ public sealed partial class MoffCharacterSelectionManager : IPostInjectInit
         _netManager.RegisterNetMessage<MsgSetMoffCharacterEnabled>(HandleSetCharacterEnabled);
     }
 
-    public bool TryGetState(NetUserId userId, [NotNullWhen(true)] out MoffCharacterSelectionState? state)
+    public bool TryGetState(NetUserId userId, out MoffCharacterSelectionState state)
     {
         return _cached.TryGetValue(userId, out state);
     }
@@ -122,11 +121,10 @@ public sealed partial class MoffCharacterSelectionManager : IPostInjectInit
             }
 
             state = new MoffCharacterSelectionState();
-            _cached[userId] = state;
         }
 
-        state.JobPriorities = new Dictionary<ProtoId<JobPrototype>, JobPriority>(priorities);
-        state.Normalize();
+        state = (state with { JobPriorities = priorities }).Normalize();
+        _cached[userId] = state;
 
         if (!state.IsAuthoritative)
             return;
@@ -176,7 +174,7 @@ public sealed partial class MoffCharacterSelectionManager : IPostInjectInit
         // A copy, because the message is serialized after this returns and the cached instance may
         // be mutated in between by another message from the same client.
         _netManager.ServerSendMessage(
-            new MsgMoffCharacterSelectionState { State = new MoffCharacterSelectionState(state) },
+            new MsgMoffCharacterSelectionState { State = state.DeepCopy() },
             channel);
     }
 
@@ -213,10 +211,10 @@ public sealed partial class MoffCharacterSelectionManager : IPostInjectInit
         // The client applied its own copy optimistically, so it has to be told what we actually
         // stored -- sanitizing and Normalize may both have changed it, and a failed write below
         // would otherwise leave the two silently disagreeing until the player reconnects.
-        var previous = state.JobPriorities;
+        var previous = state;
 
-        state.JobPriorities = sanitized;
-        state.Normalize();
+        state = (state with { JobPriorities = sanitized }).Normalize();
+        _cached[userId] = state;
 
         if (!ServerPreferencesManager.ShouldStorePrefs(message.MsgChannel.AuthType))
         {
@@ -231,7 +229,10 @@ public sealed partial class MoffCharacterSelectionManager : IPostInjectInit
         catch (Exception e)
         {
             _sawmill.Error($"Failed to save job priorities for {userId}: {e}");
-            state.JobPriorities = previous;
+
+            // Only if they are still connected, or the rollback would resurrect a removed entry.
+            if (_cached.ContainsKey(userId))
+                _cached[userId] = previous;
         }
 
         SendState(message.MsgChannel);

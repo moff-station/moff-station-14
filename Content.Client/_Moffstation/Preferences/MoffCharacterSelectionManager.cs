@@ -88,8 +88,7 @@ public sealed partial class MoffCharacterSelectionManager
     /// <summary>Replaces the priorities and pushes them to the server.</summary>
     public void UpdateJobPriorities(Dictionary<ProtoId<JobPrototype>, JobPriority> priorities)
     {
-        State.JobPriorities = new Dictionary<ProtoId<JobPrototype>, JobPriority>(priorities);
-        State.Normalize();
+        State = (State with { JobPriorities = priorities }).Normalize();
 
         _netManager.ClientSendMessage(new MsgUpdateMoffJobPriorities
         {

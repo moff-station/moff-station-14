@@ -16,7 +16,7 @@ public sealed class MsgMoffCharacterSelectionState : NetMessage
 {
     public override MsgGroups MsgGroup => MsgGroups.Command;
 
-    public MoffCharacterSelectionState State = default!;
+    public MoffCharacterSelectionState State = new();
 
     public override void ReadFromBuffer(NetIncomingMessage buffer, IRobustSerializer serializer)
     {
