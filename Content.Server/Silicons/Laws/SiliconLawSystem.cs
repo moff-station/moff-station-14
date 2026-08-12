@@ -84,7 +84,7 @@ public sealed partial class SiliconLawSystem : SharedSiliconLawSystem
 
         var msg = Loc.GetString("laws-update-notify");
         var wrappedMessage = Loc.GetString("chat-manager-server-wrap-message", ("message", msg));
-        UpdateLawVersion(ent.Owner);
+        // UpdateLawVersion(ent.Owner); // Moff - Updated when laws are pushed from the provider to the lawbound
         _chatManager.ChatMessageToOne(ChatChannel.Server, msg, wrappedMessage, default, false, actor.PlayerSession.Channel, colorOverride: Color.Red);
 
         if (cue != null && _mind.TryGetMind(ent, out var mindId, out _))
@@ -152,17 +152,19 @@ public sealed partial class SiliconLawSystem : SharedSiliconLawSystem
         }
     }
 
-    /// <summary>
-    /// Updates the version on a target SiliconLawBoundComponent. This is used in the law UI as flair to show the
-    /// number of updates a silicon player's laws has had
-    /// </summary>
-    private void UpdateLawVersion(Entity<SiliconLawBoundComponent?> target)
-    {
-        if (!Resolve(target, ref target.Comp))
-            return;
-
-        target.Comp.Version++;
-    }
+    // Moff start - Laws are tracked on bound SiliconLawProvider
+    // /// <summary>
+    // /// Updates the version on a target SiliconLawBoundComponent. This is used in the law UI as flair to show the
+    // /// number of updates a silicon player's laws has had
+    // /// </summary>
+    // private void UpdateLawVersion(Entity<SiliconLawBoundComponent?> target)
+    // {
+    //     if (!Resolve(target, ref target.Comp))
+    //         return;
+    //
+    //     target.Comp.Version++;
+    // }
+    // Moff end
 
     /// <summary>
     /// Given a list of laws, sets all unobfuscated laws' identifier in order from highest to lowest priority.

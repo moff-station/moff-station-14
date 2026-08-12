@@ -188,6 +188,11 @@ public abstract partial class SharedSiliconLawSystem
         cue ??= ent.Comp.LawUploadSound;
 
         ent.Comp.Lawset.Laws = newLaws;
+        // Moff start - implement lawset versioning on law providers
+        ent.Comp.Version += 1;
+        Dirty(ent);
+        // Moff end
+
         _adminLogger.Add(LogType.Action, LogImpact.Medium, $"The provider laws {ent} have been set to {ent.Comp.Lawset.LoggingString() ?? "Empty"}.");
         SyncToLawBound(ent, silent ? null : cue);
     }
@@ -212,6 +217,7 @@ public abstract partial class SharedSiliconLawSystem
         }
 
         ent.Comp.Lawset = provider.Lawset.Clone();
+        ent.Comp.Version = provider.Version; // Moff - implement lawset versioning on law providers
 
         if (TryComp<ShowCrewIconsComponent>(ent, out var crewIcons))
         {
