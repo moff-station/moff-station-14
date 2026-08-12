@@ -1,6 +1,4 @@
-using Content.Shared._ES.Voting;
 using Content.Shared._ES.Voting.Components;
-using Content.Shared._Moffstation.Extensions;
 using Content.Shared._Moffstation.Voting.Components;
 using Content.Shared._Moffstation.Voting.Systems;
 using Robust.Client.GameObjects;
@@ -32,7 +30,7 @@ public sealed partial class MoffVoteEntrySystem : MoffSharedVoteEntrySystem
         if (!_timing.ApplyingState)
             return;
 
-        foreach (var entity in EntityQueryEnumerator<ESVoterComponent, UserInterfaceComponent>().AsEnumerable())
+        foreach (var entity in EntityQueryEnumerator<ESVoterComponent, UserInterfaceComponent>())
         {
             if (_userInterface.TryGetOpenUi((entity, entity), ESVoterUiKey.Key, out var bui))
                 bui.Update();
