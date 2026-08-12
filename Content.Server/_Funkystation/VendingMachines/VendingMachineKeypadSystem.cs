@@ -18,21 +18,17 @@ public sealed partial class VendingMachineKeypadSystem : EntitySystem
 
     private void OnKeypadAudio(EntityUid uid, VendingMachineComponent component, VendingMachineKeypadAudioMessage args)
     {
-        var soundPath = args.SoundType switch
+        var sound = args.SoundType switch
         {
-            VendingMachineKeypadSound.Beep => "/Audio/Machines/Nuke/general_beep.ogg",
-            VendingMachineKeypadSound.Success => "/Audio/Machines/vending_jingle.ogg",
-            VendingMachineKeypadSound.Error => "/Audio/Machines/buzz-two.ogg",
-            VendingMachineKeypadSound.Timeout => "/Audio/Machines/button.ogg",
-            _ => string.Empty
+            VendingMachineKeypadSound.Beep => component.BeepSound,
+            VendingMachineKeypadSound.Success => component.SuccessSound,
+            VendingMachineKeypadSound.Error => component.ErrorSound,
+            VendingMachineKeypadSound.Timeout => component.TimeoutSound,
+            _ => component.BeepSound,
         };
 
-        if (string.IsNullOrEmpty(soundPath))
-            return;
+        var audioParams = sound.Params.WithPitchScale(args.Pitch);
 
-        var volume = args.SoundType == VendingMachineKeypadSound.Timeout ? -6f : -4f;
-        var audioParams = new AudioParams().WithVolume(volume).WithPitchScale(args.Pitch);
-
-        _audio.PlayPredicted(new SoundPathSpecifier(soundPath), uid, args.Actor, audioParams);
+        _audio.PlayPredicted(sound, uid, args.Actor, audioParams);
     }
 }

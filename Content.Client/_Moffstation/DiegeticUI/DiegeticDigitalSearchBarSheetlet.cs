@@ -13,18 +13,14 @@ namespace Content.Client._Moffstation.DiegeticUI;
 public sealed class DiegeticDigitalSearchBarSheetlet<T> : Sheetlet<T> where T : PalettedStylesheet
 {
     private const string StyleClassDiegeticSearchBar = "MoffDiegeticSearchBar";
-
-    private static readonly Color ScreenBackground = Color.FromHex("#0a120a");
-    private static readonly Color ScreenBorder = Color.FromHex("#1a331a");
-    private static readonly Color ScreenText = Color.FromHex("#33ff33");
-    private static readonly Color ScreenTextDim = Color.FromHex("#1a551a");
+    
 
     public override StyleRule[] GetRules(T sheet, object config)
     {
         var box = new StyleBoxFlat
         {
-            BackgroundColor = ScreenBackground,
-            BorderColor = ScreenBorder,
+            BackgroundColor = DiegeticDigitalSearchBarSheetlet.ScreenBackground,
+            BorderColor = DiegeticDigitalSearchBarSheetlet.ScreenBorder,
             BorderThickness = new Thickness(2),
         };
         box.SetContentMarginOverride(StyleBox.Margin.Horizontal, 6);
@@ -35,12 +31,20 @@ public sealed class DiegeticDigitalSearchBarSheetlet<T> : Sheetlet<T> where T : 
             E<LineEdit>()
                 .Class(StyleClassDiegeticSearchBar)
                 .Prop(LineEdit.StylePropertyStyleBox, box)
-                .FontColor(ScreenText)
-                .Prop(LineEdit.StylePropertyCursorColor, ScreenText),
+                .FontColor(DiegeticDigitalSearchBarSheetlet.ScreenText)
+                .Prop(LineEdit.StylePropertyCursorColor, DiegeticDigitalSearchBarSheetlet.ScreenText),
             E<LineEdit>()
                 .Class(StyleClassDiegeticSearchBar)
                 .Pseudo(LineEdit.StylePseudoClassPlaceholder)
-                .FontColor(ScreenTextDim),
+                .FontColor(DiegeticDigitalSearchBarSheetlet.ScreenTextDim),
         ];
     }
+}
+
+static file class DiegeticDigitalSearchBarSheetlet
+{
+    public static readonly Color ScreenBackground = Color.FromHex("#0a120a");
+    public static readonly Color ScreenBorder = Color.FromHex("#1a331a");
+    public static readonly Color ScreenText = Color.FromHex("#33ff33");
+    public static readonly Color ScreenTextDim = Color.FromHex("#1a551a");
 }

@@ -45,7 +45,6 @@ public sealed partial class MoffDiegeticButtonPhysical : ContainerButton
         IoCManager.InjectDependencies(this);
 
         _keyBox = (StyleBoxTexture) StyleBoxOverride!;
-        _keyBox.Texture = _resourceCache.GetResource<TextureResource>("/Textures/_Funkystation/Interface/vending_key.png");
 
         _controlsReady = true;
 
