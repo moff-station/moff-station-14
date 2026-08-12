@@ -21,8 +21,8 @@
   components:
   - type: Objective
     icon:
-      sprite: Objects/Misc/handcuffs.rsi
-      state: handcuff
+      sprite: Objects/Weapons/Guns/SMGs/c20r.rsi
+      state: base
   - type: SimpleObjective
     title: objective-nukeops-show-of-force-title
   - type: MoffObjectivePack
@@ -30,10 +30,10 @@
       children:
       - id: NukeOpsKidnapTargetObjective
         amount: !type:RangeNumberSelector
-          range: 3, 4
+          range: 2, 3
       - id: NukeOpsKillObjective
         amount: !type:RangeNumberSelector
-          range: 2, 3
+          range: 3, 4
       - id: NukeOpsDestroyRoomObjective
         amount: 3
       - id: NukeOpsSurviveObjective
