@@ -281,9 +281,26 @@ namespace Content.Server.GameTicking
             if (!_randomizeCharacters && moffExplicit == null)
             {
                 if (_moffCharacterPicker.PickProfile(player, jobId) is { } picked)
+                {
                     character = picked;
+                }
+                // This is copied and pasted from above, buuuuut the above stuff is just upstream code so like..
+                // I think not putting it in a function is fine
                 else
-                    Log.Warning($"No active character of {player} will take {jobId}; using their selected one.");
+                {
+                    Log.Warning($"No active character of {player} will take {jobId}; You staying in the lobby, twin.");
+                    if (!LobbyEnabled)
+                    {
+                        JoinAsObserver(player);
+                    }
+
+                    var evNoJobs = new NoJobsAvailableSpawningEvent(player); // Used by gamerules to wipe their antag slot, if they got one
+                    RaiseLocalEvent(evNoJobs);
+
+                    _chatManager.DispatchServerMessage(player,
+                        Loc.GetString("game-ticker-player-no-jobs-available-when-joining"));
+                    return;
+                }
             }
             // Moff end
 

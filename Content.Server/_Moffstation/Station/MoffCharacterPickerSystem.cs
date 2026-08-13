@@ -62,34 +62,6 @@ public sealed partial class MoffCharacterPickerSystem : EntitySystem
     /// </summary>
     public HumanoidCharacterProfile? PickProfile(ICommonSession player, ProtoId<JobPrototype> job)
     {
-        var picked = PickProfileOrNull(player, job);
-
-        if (picked != null)
-            _spawnedProfiles[player.UserId] = picked;
-
-        return picked;
-    }
-
-    /// <summary>For picking a job when the caller has not assigned one, e.g. late joins.</summary>
-    public Dictionary<ProtoId<JobPrototype>, JobPriority> GetJobPriorities(
-        NetUserId player,
-        HumanoidCharacterProfile fallback)
-    {
-        return _candidates.GetJobPriorities(player, fallback);
-    }
-
-    /// <summary>Null if they have not spawned this round.</summary>
-    public HumanoidCharacterProfile? GetSpawnedProfile(NetUserId player)
-    {
-        return _spawnedProfiles.GetValueOrDefault(player);
-    }
-
-    /// <summary>
-    /// Narrows in stages and takes the last non-empty one, so a character that misses a
-    /// preference still spawns instead of the player being dropped from the round.
-    /// </summary>
-    private HumanoidCharacterProfile? PickProfileOrNull(ICommonSession player, ProtoId<JobPrototype> job)
-    {
         var eligible = _candidates.GetEligibleProfiles(player.UserId, job);
 
         if (eligible.Count == 0)
@@ -116,9 +88,26 @@ public sealed partial class MoffCharacterPickerSystem : EntitySystem
         if (final.Count == 0)
         {
             Log.Warning($"No active character of {player} wants the antag role they were preselected for.");
-            final = allowed;
+            return null;
         }
 
-        return _random.Pick(final);
+        var picked = _random.Pick(final);
+        _spawnedProfiles[player.UserId] = picked;
+
+        return picked;
+    }
+
+    /// <summary>For picking a job when the caller has not assigned one, e.g. late joins.</summary>
+    public Dictionary<ProtoId<JobPrototype>, JobPriority> GetJobPriorities(
+        NetUserId player,
+        HumanoidCharacterProfile fallback)
+    {
+        return _candidates.GetJobPriorities(player, fallback);
+    }
+
+    /// <summary>Null if they have not spawned this round.</summary>
+    public HumanoidCharacterProfile? GetSpawnedProfile(NetUserId player)
+    {
+        return _spawnedProfiles.GetValueOrDefault(player);
     }
 }
