@@ -1,8 +1,8 @@
-using System.Linq;
+using Content.Server._Moffstation.Preferences;
+using Content.Server._Moffstation.Station;
 using Content.Server.EUI;
 using Content.Server.GameTicking;
 using Content.Server.GameTicking.Events;
-using Content.Server.Preferences.Managers;
 using Content.Server.Station.Systems;
 using Content.Shared._Moffstation.ReadyManifest;
 using Content.Shared.GameTicking;
@@ -18,8 +18,9 @@ public sealed partial class ReadyManifestSystem : EntitySystem
 {
     [Dependency] private EuiManager _euiManager = default!;
     [Dependency] private GameTicker _gameTicker = default!;
-    [Dependency] private IServerPreferencesManager _prefsManager = default!;
     [Dependency] private IPrototypeManager _protoMan = default!;
+    [Dependency] private MoffCharacterSelectionManager _selection = default!;
+    [Dependency] private MoffJobCandidateSystem _candidates = default!;
 
 
     private readonly Dictionary<ICommonSession, ReadyManifestEui> _openEuis = [];
@@ -79,22 +80,24 @@ public sealed partial class ReadyManifestSystem : EntitySystem
         if (_gameTicker.PlayerGameStatuses[userId] != PlayerGameStatus.ReadyToPlay)
             return;
 
-        if (!_prefsManager.TryGetCachedPreferences(userId, out var preferences))
-            return;
+        // A character only records whether it will take a job, so the priority has to come from the
+        // player-global state, and every active character contributes its jobs.
+        var counted = new HashSet<ProtoId<JobPrototype>>();
 
-        var profile = (HumanoidCharacterProfile)preferences.SelectedCharacter;
-        var jobs = profile.JobPriorities.Keys.ToList();
-
-        foreach (var job in jobs)
+        foreach (var profile in _candidates.GetActiveProfiles(userId))
         {
-            if (!_jobCounts.ContainsKey(job) ||
-                !profile.JobPriorities.TryGetValue(job, out var priority))
-                continue;
+            foreach (var job in profile.JobPriorities.Keys)
+            {
+                if (!_jobCounts.ContainsKey(job) || !counted.Add(job))
+                    continue;
 
-            if (priority < JobPriority.High)
-                continue;
+                // GetEffectivePriority, not GetPriority: a guest or a player whose database load
+                // has not finished has an empty priority dictionary, and would count as Never.
+                if (_selection.GetEffectivePriority(userId, job, profile) < JobPriority.High)
+                    continue;
 
-            _jobCounts[job]++;
+                _jobCounts[job]++;
+            }
         }
     }
 
