@@ -1,5 +1,4 @@
 using Content.Client._Moffstation.LateJoin;
-using Content.Client._Moffstation.Preferences;
 using Content.Client.Lobby.UI;
 using Content.Shared.Preferences;
 using Robust.Client.UserInterface;
@@ -11,7 +10,6 @@ namespace Content.Client.LateJoin;
 public sealed partial class LateJoinGui
 {
     [Dependency] private ISharedPlayerManager _moffPlayerManager = default!;
-    [Dependency] private MoffCharacterSelectionManager _moffSelection = default!;
 
     private MoffLateJoinLayout _moffLayout = default!;
 
@@ -61,9 +59,6 @@ public sealed partial class LateJoinGui
                 humanoid,
                 slot == MoffSelectedSlot,
                 simple: true);
-
-            // Inactive characters can still be late joined with; the flag only governs round start.
-            button.ModulateSelfOverride = _moffSelection.IsSlotEnabled(slot) ? null : Color.DarkGray;
 
             button.OnPressed += _ =>
             {
