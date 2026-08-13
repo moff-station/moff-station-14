@@ -7,11 +7,11 @@
   - type: Sprite
     sprite: &duffel-prisoner-rsi _Moffstation/Clothing/Back/Duffels/prisoner.rsi
     layers:
-      - state: icon
-      - state: icon-unshaded
-        shader: unshaded
-      - state: icon-unshaded
-        shader: shaded
+    - state: icon
+    - state: icon-unshaded
+      shader: unshaded
+    - state: icon-unshaded
+      shader: shaded
   - type: Clothing
     sprite: *duffel-prisoner-rsi
     clothingVisuals:
