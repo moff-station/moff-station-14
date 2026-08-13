@@ -31,13 +31,7 @@ public sealed partial class MoffCharacterPickerSystem : EntitySystem
     /// </summary>
     private readonly Dictionary<NetUserId, HumanoidCharacterProfile> _explicitChoices = new();
 
-    public override void Initialize()
-    {
-        base.Initialize();
-
-        SubscribeLocalEvent<RoundRestartCleanupEvent>(OnCleanup);
-    }
-
+    [SubscribeLocalEvent]
     private void OnCleanup(RoundRestartCleanupEvent ev)
     {
         _spawnedProfiles.Clear();
