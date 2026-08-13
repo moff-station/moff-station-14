@@ -102,7 +102,7 @@ public sealed partial class MoffCharacterPickerSystem : EntitySystem
             return null;
 
         // Drop characters that don't meet the job's own requirements, e.g. age or species. This
-        // goes through PlayTimeTrackingSystem so that disabled role timers are honoured.
+        // goes through PlayTimeTrackingSystem so that disabled role timers are honored.
         var allowed = eligible.Where(profile => _playTime.IsAllowed(player, job, profile)).ToList();
 
         if (allowed.Count == 0)
