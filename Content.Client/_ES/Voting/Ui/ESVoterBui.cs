@@ -22,6 +22,8 @@ public sealed class ESVoterBui(EntityUid owner, Enum uiKey) : BoundUserInterface
             SendMessage(new MoffSetEnrollMessage(EntMan.GetNetEntity(enroller), enrolled));
         _window.OnSetRandom += (enroller, random) =>
             SendMessage(new MoffSetEnrollRandomMessage(EntMan.GetNetEntity(enroller), random));
+        _window.OnEarlyStartEnroll += enrollEvent =>
+            SendMessage(new MoffEarlyStartEnrollRequest(EntMan.GetNetEntity(enrollEvent)));
         // Moff end
         _window.Update(Owner);
     }

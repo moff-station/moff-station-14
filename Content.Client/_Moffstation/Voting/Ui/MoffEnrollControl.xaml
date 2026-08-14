@@ -1,6 +1,7 @@
 <controls:MoffEnrollControl
     xmlns="https://spacestation14.io"
     xmlns:controls="clr-namespace:Content.Client._Moffstation.Voting.Ui"
+    xmlns:controls1="clr-namespace:Content.Client.UserInterface.Controls"
     StyleClasses="PanelLight">
     <BoxContainer Name="EnrollmentContainer" Orientation="Vertical" VerticalExpand="True" Margin="10">
         <BoxContainer Name="HeaderRow" Orientation="Horizontal">
@@ -17,6 +18,12 @@
                     <Label Name="EnrollCount" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="4 1"/>
                 </Control>
                 <RichTextLabel Name="RequiredEnrolls"/>
+                <controls1:ConfirmButton Name="EarlyStartEnrollButton"
+                                        Text="{Loc 'moff-vote-enroll-button-start-now'}"
+                                        ToolTip="{Loc 'moff-vote-enroll-button-start-now-tooltip'}"
+                                        Visible="False"
+                                        Margin="0 4 0 0"
+                                        StyleClasses="OpenBoth negative"/>
             </BoxContainer>
         </BoxContainer>
         <RichTextLabel Name="TimeLabel"/>

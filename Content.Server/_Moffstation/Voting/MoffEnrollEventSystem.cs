@@ -1,4 +1,6 @@
 using System.Linq;
+using Content.Server.Administration.Logs;
+using Content.Server.Administration.Managers;
 using Content.Server.Antag;
 using Content.Server.Antag.Components;
 using Content.Server.GameTicking;
@@ -7,6 +9,8 @@ using Content.Shared._ES.Voting;
 using Content.Shared._ES.Voting.Components;
 using Content.Shared._Moffstation.Extensions;
 using Content.Shared._Moffstation.Voting.Components;
+using Content.Shared.Administration;
+using Content.Shared.Database;
 using Content.Shared.EntityTable;
 using Content.Shared.GameTicking.Components;
 using Content.Shared.Ghost.Components;
@@ -23,6 +27,8 @@ namespace Content.Server._Moffstation.Voting;
 
 public sealed partial class MoffEnrollEventSystem : EntitySystem
 {
+    [Dependency] private IAdminLogManager _adminLogger = default!;
+    [Dependency] private IAdminManager _admin = default!;
     [Dependency] private IGameTiming _timing = default!;
     [Dependency] private IPlayerManager _player = default!;
     [Dependency] private IRobustRandom _random = default!;
@@ -135,6 +141,25 @@ public sealed partial class MoffEnrollEventSystem : EntitySystem
             comp.RandomPick.Remove(netAttached);
 
         Dirty(enrollerUid.Value, comp);
+    }
+
+    [SubscribeLocalEvent]
+    private void OnEarlyStartEnrollRequest(Entity<ESVoterComponent> ent, ref MoffEarlyStartEnrollRequest args)
+    {
+        if (!_player.TryGetSessionByEntity(args.Actor, out var session) ||
+            !_admin.HasAdminFlag(session, AdminFlags.Fun))
+            return;
+
+        if (!TryGetEntity(args.EnrollEvent, out var enrollUid) ||
+            !_enrollEventQuery.TryComp(enrollUid, out var comp))
+            return;
+
+        comp.EndTime = _timing.CurTime;
+        Dirty(enrollUid.Value, comp);
+
+        _adminLogger.Add(LogType.Action,
+            LogImpact.Extreme,
+            $"{session:player} started enrollment event {ToPrettyString(enrollUid.Value):enrollEvent} early");
     }
 
     private void ResolveEnrollment(Entity<MoffEnrollEventComponent> ent)
