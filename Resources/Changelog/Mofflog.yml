@@ -7600,6 +7600,14 @@ Entries:
   url: https://github.com/moff-station/moff-station-14/pull/1787
 - author: Centronias
   changes:
+  - message: Secret doors can no longer be meta-gamed by trying to touch every wall
+      and then finding a wall that your hand flies at.
+    type: tweak
+  id: 1789
+  time: '2026-08-08T04:00:40.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1789
+- author: Centronias
+  changes:
   - message: Mime and Mime alternative PDAs no longer incorrectly have Nanochat installed.
     type: fix
   id: 1791
@@ -7613,5 +7621,21 @@ Entries:
   id: 1793
   time: '2026-08-07T21:50:01.000'
   url: https://github.com/moff-station/moff-station-14/pull/1793
+- author: Nyxilath
+  changes:
+  - message: Trashbags of Holding are now visually similar to standard trashbags.
+    type: tweak
+  - message: Trashbags of Holding sprites no longer will display error when filled.
+    type: fix
+  id: 1795
+  time: '2026-08-08T18:50:48.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1795
+- author: Centronias
+  changes:
+  - message: Thavens once again get all of their moods.
+    type: fix
+  id: 1800
+  time: '2026-08-08T19:54:45.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1800
 Name: Mofflog
 Order: -2
