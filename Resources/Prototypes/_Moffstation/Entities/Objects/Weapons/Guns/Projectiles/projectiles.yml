@@ -43,3 +43,30 @@
   - type: SolutionInjectOnProjectileHit
     transferAmount: 10
     solution: ammo
+
+- type: entity
+  abstract: true
+  parent: ProjectilePolyboltBaseUpstream
+  id: ProjectilePolyboltBase
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Objects/Weapons/Guns/Projectiles/magic.rsi
+    layers:
+    - shader: unshaded
+      state: blastwave
+  - type: PointLight
+    radius: 1.5
+    energy: 3
+    falloff: 6
+  - type: RgbLightController
+    cycleRate: 2
+  - type: Projectile
+    soundHit:
+      collection: SpellShimmerImpact
+    impactEffect: SpellImpactEffect
+  - type: SpawnEntityTableOnTrigger
+    table:
+      id: MoffEffectRGBSparksSilent
+      amount: !type:RangeNumberSelector
+        range: 2, 5

@@ -1,0 +1,17 @@
+<BoxContainer xmlns="https://spacestation14.io"
+              xmlns:gfx="clr-namespace:Robust.Client.Graphics;assembly=Robust.Client"
+              Orientation="Vertical"
+              HorizontalExpand="True">
+
+    <!-- Gap from the department above; hidden on the first one. -->
+    <Control Name="Spacer" MinSize="0 23" />
+
+    <PanelContainer Name="HeaderPanel">
+        <PanelContainer.PanelOverride>
+            <gfx:StyleBoxFlat />
+        </PanelContainer.PanelOverride>
+        <RichTextLabel Name="DepartmentLabel" Margin="5 2 0 2" />
+    </PanelContainer>
+
+    <BoxContainer Name="Jobs" Orientation="Vertical" Access="Public" />
+</BoxContainer>

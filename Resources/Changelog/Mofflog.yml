@@ -6357,6 +6357,13 @@ Entries:
   id: 1527
   time: '2026-06-21T00:47:47.000'
   url: https://github.com/moff-station/moff-station-14/pull/1527
+- author: compilatron
+  changes:
+  - message: Added the gungler. Now you will know why you fear the wrath of gods.
+    type: add
+  id: 1528
+  time: '2026-08-09T23:39:12.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1528
 - author: OrbitSystem07
   changes:
   - message: Shells now have two module slots, and start with a tool module
@@ -7340,6 +7347,15 @@ Entries:
   id: 1697
   time: '2026-07-23T02:45:39.000'
   url: https://github.com/moff-station/moff-station-14/pull/1697
+- author: DuckManZach
+  changes:
+  - message: Added Diegetic UI for vending machines
+    type: add
+  - message: Added Diegetic UI for the nuke keypad
+    type: add
+  id: 1698
+  time: '2026-08-13T19:02:38.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1698
 - author: meganerobot
   changes: []
   id: 1699
@@ -7429,6 +7445,16 @@ Entries:
   id: 1724
   time: '2026-07-27T19:54:15.000'
   url: https://github.com/moff-station/moff-station-14/pull/1724
+- author: DuckManZach
+  changes:
+  - message: Nuclear Operatives have been renamed to Gorlex Marauders.
+    type: add
+  - message: 'Gorlex Marauders now have an alternative objective they can choose:
+      "Show of Force"'
+    type: add
+  id: 1725
+  time: '2026-08-12T17:15:16.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1725
 - author: Centronias
   changes:
   - message: People being thrown into the Replicator Nest are no longer removed from
@@ -7463,6 +7489,11 @@ Entries:
   id: 1731
   time: '2026-07-31T20:27:40.000'
   url: https://github.com/moff-station/moff-station-14/pull/1731
+- author: DuckManZach, QuantumCross
+  changes: []
+  id: 1737
+  time: '2026-08-13T23:01:16.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1737
 - author: Centronias
   changes:
   - message: The crew manifest has received a visual update.
@@ -7523,6 +7554,13 @@ Entries:
   id: 1748
   time: '2026-08-07T18:28:55.000'
   url: https://github.com/moff-station/moff-station-14/pull/1748
+- author: DuckManZach
+  changes:
+  - message: Romerol can appear randomly on station!
+    type: add
+  id: 1751
+  time: '2026-08-09T23:16:45.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1751
 - author: Nyxilath
   changes:
   - message: BasicEntityAmmoProviders now use a table for prototype definitions.
@@ -7533,6 +7571,13 @@ Entries:
   id: 1753
   time: '2026-08-07T18:55:16.000'
   url: https://github.com/moff-station/moff-station-14/pull/1753
+- author: Nyxilath
+  changes:
+  - message: Polymorph wand projectiles are now more colorful!
+    type: tweak
+  id: 1755
+  time: '2026-08-13T00:42:19.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1755
 - author: Nyxilath
   changes:
   - message: Reach has returned.
@@ -7591,6 +7636,14 @@ Entries:
   id: 1779
   time: '2026-08-07T19:13:33.000'
   url: https://github.com/moff-station/moff-station-14/pull/1779
+- author: meganerobot
+  changes:
+  - message: The DAW no longer has annoying instrument requirements and can be flatpacked
+      again.
+    type: tweak
+  id: 1782
+  time: '2026-08-10T00:21:00.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1782
 - author: MissKay1994
   changes:
   - message: Removed necronomicon from nonchaplain jobs uplinks
@@ -7621,6 +7674,13 @@ Entries:
   id: 1793
   time: '2026-08-07T21:50:01.000'
   url: https://github.com/moff-station/moff-station-14/pull/1793
+- author: Centronias
+  changes:
+  - message: A new Moff figurine for a certain cat-ear-bereted moff.
+    type: add
+  id: 1794
+  time: '2026-08-09T22:19:47.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1794
 - author: Nyxilath
   changes:
   - message: Trashbags of Holding are now visually similar to standard trashbags.
@@ -7637,5 +7697,46 @@ Entries:
   id: 1800
   time: '2026-08-08T19:54:45.000'
   url: https://github.com/moff-station/moff-station-14/pull/1800
+- author: Centronias
+  changes:
+  - message: Lawbound silicons once again get an audio and chat cue when their laws
+      are changed.
+    type: fix
+  id: 1802
+  time: '2026-08-12T21:19:59.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1802
+- author: DuckManZach
+  changes:
+  - message: Made melee screenshake a bit softer!
+    type: tweak
+  id: 1805
+  time: '2026-08-12T16:22:15.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1805
+- author: Centronias
+  changes:
+  - message: Added EX1-BARD / EX1-DY's personal item.
+    type: add
+  id: 1807
+  time: '2026-08-13T20:41:05.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1807
+- author: Centronias
+  changes:
+  - message: Fixed a state replication issue on gas filters.
+    type: fix
+  id: 1814
+  time: '2026-08-12T21:16:23.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1814
+- author: Elliot Lawrence
+  changes:
+  - message: There is now a prisoner themed duffelbag.
+    type: add
+  - message: One prisoner duffelbag can be found within the warden's locker.
+    type: tweak
+  - message: Secfabs can now print prisoner duffelbags with some cloth and a small
+      amount of steel.
+    type: tweak
+  id: 1815
+  time: '2026-08-13T21:16:32.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1815
 Name: Mofflog
 Order: -2

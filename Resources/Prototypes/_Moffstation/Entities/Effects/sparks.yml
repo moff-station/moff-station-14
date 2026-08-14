@@ -8,6 +8,17 @@
     sound: null
 
 - type: entity
+  parent: MoffEffectSparksSilent
+  id: MoffEffectRGBSparksSilent
+  categories: [ HideSpawnMenu ]
+  name: rainbow sparks
+  components:
+  - type: RgbLightController
+    cycleRate: 1
+  - type: IgnitionSource
+    ignited: false
+
+- type: entity
   parent: ESEffectSparks
   id: MoffEffectSparksWelding
   categories: [ HideSpawnMenu ]
