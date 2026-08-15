@@ -4,23 +4,23 @@
   graph:
     - node: start
       edges:
-    - to: cratewood
-      steps:
-    - material: WoodPlank
-      amount: 5
-      doAfter: 5
+        - to: cratewood
+          steps:
+            - material: WoodPlank
+              amount: 5
+              doAfter: 5
 
 
     - node: cratewood
       entity: CrateWood
       edges:
-    - to: start
-      steps:
-    - tool: Prying
-      doAfter: 5
-      completed:
-    - !type:SpawnPrototype
-      prototype: MaterialWoodPlank1
-      amount: 5
-    - !type:EmptyAllContainers
-    - !type:DeleteEntity
+        - to: start
+          steps:
+            - tool: Prying
+              doAfter: 5
+          completed:
+            - !type:SpawnPrototype
+              prototype: MaterialWoodPlank1
+              amount: 5
+            - !type:EmptyAllContainers
+            - !type:DeleteEntity
