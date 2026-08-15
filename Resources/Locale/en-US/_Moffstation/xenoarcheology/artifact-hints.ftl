@@ -1,6 +1,7 @@
 ﻿## See upstream guidelines for xenoarcheology hints and triggers; reuse what you can, and effects should be more vague than triggers.
 
 ## Effects
+moff-artifact-effect-hint-debug = Test Good!
 
 ## Triggers
 xenoarch-trigger-tip-cleaner = Cleaning solution

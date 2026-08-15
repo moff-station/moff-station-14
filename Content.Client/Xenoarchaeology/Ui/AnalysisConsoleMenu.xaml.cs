@@ -4,6 +4,7 @@ using Content.Client.Resources;
 using Content.Client.UserInterface.Controls;
 using Content.Client.Xenoarchaeology.Artifact;
 using Content.Client.Xenoarchaeology.Equipment;
+using Content.Shared._Moffstation.Xenoarchaeology.Artifact.XAE.Components;
 using Content.Shared.Xenoarchaeology.Artifact.Components;
 using Content.Shared.Xenoarchaeology.Equipment.Components;
 using Robust.Client.Audio;
@@ -202,9 +203,20 @@ public sealed partial class AnalysisConsoleMenu : FancyWindow
 
         var hasInfo = _xenoArtifact.HasUnlockedPredecessor(artifact.Value, node.Value);
 
-        EffectValueLabel.SetMarkup(Loc.GetString("analysis-console-info-effect-value",
-            ("state", hasInfo),
-            ("info", _ent.GetComponentOrNull<MetaDataComponent>(node.Value)?.EntityDescription ?? string.Empty)));
+        // Moff Start - dynamic description
+        if (lockedState >= 1)
+        {
+            EffectValueLabel.SetMarkup(Loc.GetString("analysis-console-info-effect-value",
+                ("state", hasInfo),
+                ("info", _ent.GetComponentOrNull<MetaDataComponent>(node.Value)?.EntityDescription ?? string.Empty)));
+        }
+        else
+        {
+            EffectValueLabel.SetMarkup(Loc.GetString("analysis-console-info-effect-value",
+                ("state", hasInfo),
+                ("info", Loc.GetString(_ent.GetComponentOrNull<XAELocalizedDescriptionComponent>(node.Value)?.Description ?? string.Empty))));
+        }
+        // Moff End
 
         var predecessorNodes = _xenoArtifact.GetPredecessorNodes(artifact.Value.Owner, node.Value);
         if (!hasInfo)

@@ -1,5 +1,5 @@
 - type: entityTable
-  id: XenoArtifactEffectsDefaultTable
+  id: XenoArtifactEffectsDefaultTableDebug
   table: !type:GroupSelector
     children:
     # hijacks use key, prevents from using artifact, sadly
@@ -151,6 +151,13 @@
     - id: XenoArtifactDrill
       weight: 1
 
+- type: entityTable
+  id: XenoArtifactEffectsDefaultTable
+  table: !type:GroupSelector
+    children:
+    - id: XenoArtifactPhasing
+      weight: 10
+
 - type: entity
   id: BaseXenoArtifactEffect
   name: effect
@@ -259,6 +266,8 @@
   description: Metaphysical displacement # Moffstation - Obfuscate xenoarcheology
   components:
   - type: XAERemoveCollision
+  - type: XAELocalizedDescription
+    description: moff-artifact-effect-hint-debug
 
 - type: entity
   parent: BaseOneTimeXenoArtifactEffect
