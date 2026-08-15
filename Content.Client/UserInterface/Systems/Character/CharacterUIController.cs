@@ -153,8 +153,6 @@ public sealed partial class CharacterUIController : UIController, IOnStateEntere
         _window.NameLabel.Text = entityName;
         _window.SubText.Text = job != null ? Loc.GetString(job.Name) : null;
 
-        var jobIcon = _prototypeManager.Index(job!.Icon);
-        _window.JobIcon.Texture = _sprite.Frame0(jobIcon.Icon);
         _window.Objectives.RemoveAllChildren();
         // Moffstation - Start - Character Menu Redesign (removed ObjectivesLabel, added Briefing clear)
         // _window.ObjectivesLabel.Visible = objectives.Any();
