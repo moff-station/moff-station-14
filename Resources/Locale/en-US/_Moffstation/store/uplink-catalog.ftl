@@ -29,3 +29,6 @@ uplink-clothing-infiltrator-headset-desc = A headset combining both chameleon an
 uplink-clothing-rocket-skates-name = Syndicate Rocket Skates
 uplink-clothing-rocket-skates-desc = An experimental prototype from Lumens Technologies, combining the benefits of rollerskates with the thrusting capacities of a rocket for maximum velocity.
 
+# Implants
+uplink-smoke-implant-name = Smoke Implanter
+uplink-smoke-implant-desc = Recharging implant that releases a large cloud of smoke when activated.
