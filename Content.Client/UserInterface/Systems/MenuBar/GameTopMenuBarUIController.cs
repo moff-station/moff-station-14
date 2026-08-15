@@ -18,7 +18,7 @@ public sealed partial class GameTopMenuBarUIController : UIController
 {
     [Dependency] private EscapeUIController _escape = default!;
     [Dependency] private AdminUIController _admin = default!;
-    [Dependency] private _Moffstation.CharacterMenu.CharacterUIController _character = default!;
+    [Dependency] private CharacterUIController _character = default!;
     [Dependency] private CraftingUIController _crafting = default!;
     [Dependency] private AHelpUIController _ahelp = default!;
     [Dependency] private ActionUIController _action = default!;
