@@ -60,6 +60,7 @@
     priority: -20
     raiseOnUser: false
     useDelay: 40 #intent of cooldown is 10 second grace period if spamming. Could be increased to 15 or more if problematic after testing
+  - type: Sprite
     sprite: Objects/Weapons/Grenades/smoke.rsi
     layers:
     - state: icon
