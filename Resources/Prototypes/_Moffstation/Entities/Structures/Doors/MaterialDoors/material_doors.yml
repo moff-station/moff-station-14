@@ -7,7 +7,7 @@
   description: A mysterious door made of rune-etched stone.
   components:
   - type: Sprite
-    sprite: Structures/Doors/MineralDoors/ironstone_door.rsi
+    sprite: _Moffstation/Structures/Doors/MineralDoors/ironstone_door.rsi
   - type: Door
     openSound:
       path: /Audio/Effects/stonedoor_openclose.ogg
@@ -47,7 +47,7 @@
   description: A stone door covered in nacreous blobs of an unknown substance.
   components:
   - type: Sprite
-    sprite: Structures/Doors/MineralDoors/encrusted_ironstone_door.rsi
+    sprite: _Moffstation/Structures/Doors/MineralDoors/encrusted_ironstone_door.rsi
   - type: Destructible
     thresholds:
     - trigger:
