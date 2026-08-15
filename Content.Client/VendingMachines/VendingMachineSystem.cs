@@ -1,5 +1,6 @@
-using System.Diagnostics.CodeAnalysis;
 using System.Linq;
+using System.Diagnostics.CodeAnalysis;
+using Content.Client._Funkystation.VendingMachines; // Funky change
 using Content.Client.VendingMachines.Components;
 using Content.Shared.Power;
 using Content.Shared.Power.EntitySystems;
@@ -245,8 +246,13 @@ public sealed partial class VendingMachineSystem : SharedVendingMachineSystem
         _sprite.LayerSetVisible(sprite.AsNullable(), actualLayer, false);
     }
 
-    private bool TryGetOpenUi(EntityUid uid, [NotNullWhen(true)] out VendingMachineBoundUserInterface? bui)
+    // Funky change - return the shared interface so state also reaches the keypad ui
+    private bool TryGetOpenUi(EntityUid uid, [NotNullWhen(true)] out IVendingMachineBoundUi? bui)
     {
-        return UISystem.TryGetOpenUi(uid, VendingMachineUiKey.Key, out bui);
+        bui = UISystem.TryGetOpenUi<BoundUserInterface>(uid, VendingMachineUiKey.Key, out var baseBui)
+            ? baseBui as IVendingMachineBoundUi
+            : null;
+
+        return bui != null;
     }
 }

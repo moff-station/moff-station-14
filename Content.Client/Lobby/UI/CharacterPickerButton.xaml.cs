@@ -26,20 +26,30 @@ public sealed partial class CharacterPickerButton : ContainerButton
     /// </summary>
     public event Action? OnDeletePressed;
 
+    /// <summary>
+    /// Invoked if we should mark the attached character active or inactive
+    /// </summary>
+    public event Action<bool>? OnEnableToggled; // Moffstation - Multi-character selection
+
     public CharacterPickerButton(
         IPrototypeManager prototypeManager,
         ISharedPlayerManager playerMan,
         ButtonGroup group,
         HumanoidCharacterProfile profile,
-        bool isSelected)
+        bool isSelected,
+        bool simple = false) // Moff - Multi-character selection: late join reuses this without the side buttons
     {
         RobustXamlLoader.Load(this);
         AddStyleClass(StyleClassButton);
         ToggleMode = true;
         Group = group;
-        var description = profile.Name;
 
         View.LoadPreview(profile);
+
+        // Moff Start - Multi-character selection: no job is "High" on a character any more, so the
+        // subtitle comes from the player-global priorities instead.
+        /*
+        var description = profile.Name;
 
         var highPriorityJob = profile.JobPriorities.SingleOrDefault(p => p.Value == JobPriority.High).Key;
         if (highPriorityJob != default)
@@ -47,23 +57,16 @@ public sealed partial class CharacterPickerButton : ContainerButton
             var jobName = prototypeManager.Index(highPriorityJob).LocalizedName;
             description = $"{description}\n{jobName}";
         }
+        */
+        DescriptionLabel.Text = BuildMoffDescription(profile, prototypeManager);
+        // Moff end
 
         Pressed = isSelected;
-        DeleteButton.Visible = !isSelected;
 
-        DescriptionLabel.Text = description;
-
-        ConfirmDeleteButton.OnPressed += _ =>
-        {
-            Parent?.RemoveChild(this);
-            Parent?.RemoveChild(ConfirmDeleteButton);
-            OnDeletePressed?.Invoke();
-        };
-
-        DeleteButton.OnPressed += _ =>
-        {
-            DeleteButton.Visible = false;
-            ConfirmDeleteButton.Visible = true;
-        };
+        // Moff Start - Multi-character selection: delete becomes a ConfirmButton in a side column
+        // shared with the active toggle, built in CharacterPickerButton.MultiCharacter.cs. That
+        // hides upstream's DeleteButton/ConfirmDeleteButton rather than replacing them.
+        SetupMoffButtons(isSelected, simple);
+        // Moff end
     }
 }

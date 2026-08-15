@@ -1,0 +1,153 @@
+# Tables
+
+# this requires a table within a table, so we'll just make one for now
+- type: weightedRandom
+  id: NukeOpsLeaderObjectiveGroups
+  weights:
+    NukeOpsLeaderObjectiveGroupDefault: 1.0
+
+- type: weightedRandom
+  id: NukeOpsLeaderObjectiveGroupDefault
+  weights:
+    NukeOpsDestroyStationObjectivePack: 1.0
+    NukeOpsShowOfForceObjectivePack: 1.0
+
+# Objective Packs
+
+- type: entity
+  parent: BaseNukeOpsObjective
+  id: NukeOpsShowOfForceObjectivePack
+  description: A loud and deadly operation meant to strike fear into the hearts of Nanotrasen.
+  components:
+  - type: Objective
+    icon:
+      sprite: Objects/Weapons/Guns/SMGs/c20r.rsi
+      state: base
+  - type: SimpleObjective
+    title: objective-nukeops-show-of-force-title
+  - type: MoffObjectivePack
+    objectives: !type:AllSelector
+      children:
+      - id: NukeOpsKidnapTargetObjective
+        amount: !type:RangeNumberSelector
+          range: 2, 3
+      - id: NukeOpsKillObjective
+        amount: !type:RangeNumberSelector
+          range: 3, 4
+      - id: NukeOpsDestroyRoomObjective
+        amount: 3
+      - id: NukeOpsSurviveObjective
+
+- type: entity
+  parent: BaseNukeOpsObjective
+  id: NukeOpsDestroyStationObjectivePack
+  description: Arm the nuclear fission explosive device and detonate it on the station.
+  components:
+  - type: Objective
+    icon:
+      sprite: Objects/Devices/nuke.rsi
+      state: nuclearbomb_base
+  - type: SimpleObjective
+    title: objective-nukeops-destroy-station-title
+  - type: MoffObjectivePack
+    objectives: !type:AllSelector
+      children:
+      - id: NukeOpsDestroyStationObjective
+      - id: NukeOpsSurviveObjective
+
+# Objectives
+
+- type: entity
+  abstract: true
+  parent: BaseObjective
+  id: BaseNukeOpsObjective
+  components:
+  - type: Objective
+    difficulty: 1
+    issuer: TheSyndicate
+  - type: RoleRequirement
+    roles:
+    - NukeopsRole
+
+- type: entity
+  parent: BaseNukeOpsObjective
+  id: NukeOpsDestroyStationObjective
+  name: Nuke the station.
+  description: Arm the nuclear fission explosive device and detonate it on the station.
+  components:
+  - type: Objective
+    icon:
+      sprite: Objects/Devices/nuke.rsi
+      state: nuclearbomb_base
+  - type: SimpleObjective
+    title: objective-nukeops-destroy-station-title
+
+- type: entity
+  parent: BaseNukeOpsObjective
+  id: NukeOpsKidnapTargetObjective
+  description: The Syndicate wants a word with them. Take them off the station alive and bring them back with you.
+  components:
+  - type: Objective
+    difficulty: 2
+    unique: false
+    icon:
+      sprite: Objects/Misc/handcuffs.rsi
+      state: handcuff
+  - type: TargetObjective
+    title: objective-nukeops-kidnap-person-title
+  - type: PickRandomPerson
+    conditions:
+    - !type:AntagonistCondition
+      inverted: true
+    - !type:ObjectiveTargetCondition
+      inverted: true
+      whitelist:
+        components:
+        - PickRandomPerson
+  - type: CodeCondition
+
+- type: entity
+  parent: [ BaseNukeOpsObjective, BaseKillRandomObjective ]
+  id: NukeOpsKillObjective
+  description: Gorlex wants this person dead.
+  components:
+  - type: Objective
+    difficulty: 2
+    unique: false
+  - type: TargetObjective
+    title: objective-nukeops-kill-person-title
+  - type: PickRandomPerson
+    conditions:
+    - !type:AntagonistCondition
+      inverted: true
+  - type: KillPersonCondition
+    requireDead: true
+
+- type: entity
+  parent: BaseNukeOpsObjective
+  id: NukeOpsDestroyRoomObjective
+  name: Destroy Room
+  description: We want everything in this room obliterated.
+  components:
+  - type: Objective
+    difficulty: 2
+    unique: false
+    icon:
+      sprite: Objects/Weapons/Bombs/c4.rsi
+      state: icon
+  - type: PickRoomObjective
+  - type: LocationObjective
+    title: objective-nukeops-destroy-room-title
+  - type: CodeCondition
+
+- type: entity
+  parent: [ BaseNukeOpsObjective, BaseSurviveObjective ]
+  id: NukeOpsSurviveObjective
+  name: Escape alive.
+  description: Make it off the station alive.
+  components:
+  - type: Objective
+    difficulty: 1.5
+    icon:
+      sprite: Structures/Furniture/chairs.rsi
+      state: shuttle
