@@ -163,8 +163,8 @@ public sealed partial class MoffEnrollEventSystem : EntitySystem
             !_enrollEventQuery.TryComp(enrollUid, out var comp))
             return;
 
-        comp.EndTime = _timing.CurTime;
-        Dirty(enrollUid.Value, comp);
+        var ev = new MoffEndEnrollEvent();
+        RaiseLocalEvent(enrollUid.Value, ref ev);
 
         _adminLogger.Add(LogType.Action,
             LogImpact.Extreme,
