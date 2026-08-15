@@ -46,6 +46,18 @@ public sealed partial class MoffEnrollEventSystem : EntitySystem
 
     private readonly List<Entity<MoffEnrollEventComponent>> _enrollments = new(); // Reuse list for iteration in `Update` without new allocations.
 
+    public override void Initialize()
+    {
+        base.Initialize();
+
+        Subs.BuiEvents<ESVoterComponent>(ESVoterUiKey.Key, subs =>
+        {
+            subs.Event<MoffSetEnrollMessage>(OnSetEnroll);
+            subs.Event<MoffSetEnrollRandomMessage>(OnSetEnrollRandom);
+            subs.Event<MoffEarlyStartEnrollRequest>(OnEarlyStartEnrollRequest);
+        });
+    }
+
     public override void Update(float frameTime)
     {
         base.Update(frameTime);
@@ -60,8 +72,8 @@ public sealed partial class MoffEnrollEventSystem : EntitySystem
             if (_timing.CurTime < enroll.Comp.EndTime)
                 continue;
 
-            ResolveEnrollment(enroll);
-            QueueDel(enroll.Owner);
+            var ev = new MoffEndEnrollEvent();
+            RaiseLocalEvent(enroll, ref ev);
         }
         _enrollments.Clear();
     }
@@ -96,7 +108,6 @@ public sealed partial class MoffEnrollEventSystem : EntitySystem
         Dirty(ent);
     }
 
-    [SubscribeLocalEvent]
     private void OnSetEnroll(Entity<ESVoterComponent> ent, ref MoffSetEnrollMessage args)
     {
         // Ghosts only - assignment bypasses the mutual-antag check, so this gate is what stops an embodied
@@ -122,7 +133,6 @@ public sealed partial class MoffEnrollEventSystem : EntitySystem
         Dirty(enrollerUid.Value, comp);
     }
 
-    [SubscribeLocalEvent]
     private void OnSetEnrollRandom(Entity<ESVoterComponent> ent, ref MoffSetEnrollRandomMessage args)
     {
         // Ghosts only, matching OnSetEnroll - a random-character pick is only meaningful for an enrollee.
@@ -143,7 +153,6 @@ public sealed partial class MoffEnrollEventSystem : EntitySystem
         Dirty(enrollerUid.Value, comp);
     }
 
-    [SubscribeLocalEvent]
     private void OnEarlyStartEnrollRequest(Entity<ESVoterComponent> ent, ref MoffEarlyStartEnrollRequest args)
     {
         if (!_player.TryGetSessionByEntity(args.Actor, out var session) ||
@@ -162,7 +171,8 @@ public sealed partial class MoffEnrollEventSystem : EntitySystem
             $"{session:player} started enrollment event {ToPrettyString(enrollUid.Value):enrollEvent} early");
     }
 
-    private void ResolveEnrollment(Entity<MoffEnrollEventComponent> ent)
+    [SubscribeLocalEvent]
+    private void OnEnrollEventEnded(Entity<MoffEnrollEventComponent> ent, ref MoffEndEnrollEvent args)
     {
         var rule = ent.Comp.OwningRule;
 
@@ -202,6 +212,7 @@ public sealed partial class MoffEnrollEventSystem : EntitySystem
             // ignoreExclusivity: true - an enrolling ghost may already be an antag. Bans/validity still apply.
             _antag.TryAssignNextAvailableAntag(gameRule, session, players, checkPref: false, ignoreExclusivity: true);
         }
+        TryQueueDel(rule);
     }
 
     /// <summary>
@@ -296,3 +307,6 @@ public sealed partial class MoffEnrollEventSystem : EntitySystem
             ?.Comp.RandomPick.Contains(GetNetEntity(attached)) ?? false;
     }
 }
+
+[ByRefEvent]
+public record struct MoffEndEnrollEvent();
