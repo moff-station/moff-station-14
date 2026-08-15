@@ -234,6 +234,7 @@
     sprite: _Moffstation/Mobs/Silicon/Chassis/engineer_derelict.rsi # Moffstation - Early merge of Borg RSI fix
     layers:
     - state: borg # Moffstation - Early merge of Borg RSI fix
+      map: ["movement"] # Moff
     - state: borg_e_r # Moffstation - Early merge of Borg RSI fix
       map: ["enum.BorgVisualLayers.Light"]
       shader: unshaded
