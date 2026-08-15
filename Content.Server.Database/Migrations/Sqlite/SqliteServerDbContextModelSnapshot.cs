@@ -996,6 +996,35 @@ namespace Content.Server.Database.Migrations.Sqlite
                     b.ToTable("job", (string)null);
                 });
 
+            modelBuilder.Entity("Content.Server.Database.MoffModel+MoffJobPriority", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER")
+                        .HasColumnName("moff_job_priority_id");
+
+                    b.Property<string>("JobName")
+                        .IsRequired()
+                        .HasColumnType("TEXT")
+                        .HasColumnName("job_name");
+
+                    b.Property<int>("MoffPreferenceId")
+                        .HasColumnType("INTEGER")
+                        .HasColumnName("moff_preference_id");
+
+                    b.Property<int>("Priority")
+                        .HasColumnType("INTEGER")
+                        .HasColumnName("priority");
+
+                    b.HasKey("Id")
+                        .HasName("PK_moff_job_priority");
+
+                    b.HasIndex("MoffPreferenceId", "JobName")
+                        .IsUnique();
+
+                    b.ToTable("moff_job_priority", (string)null);
+                });
+
             modelBuilder.Entity("Content.Server.Database.MoffModel+MoffPlayer", b =>
                 {
                     b.Property<int>("Id")
@@ -1022,6 +1051,50 @@ namespace Content.Server.Database.Migrations.Sqlite
                         .IsUnique();
 
                     b.ToTable("moff_player", (string)null);
+                });
+
+            modelBuilder.Entity("Content.Server.Database.MoffModel+MoffPreference", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER")
+                        .HasColumnName("moff_preference_id");
+
+                    b.Property<int>("PreferenceId")
+                        .HasColumnType("INTEGER")
+                        .HasColumnName("preference_id");
+
+                    b.HasKey("Id")
+                        .HasName("PK_moff_preference");
+
+                    b.HasIndex("PreferenceId")
+                        .IsUnique();
+
+                    b.ToTable("moff_preference", (string)null);
+                });
+
+            modelBuilder.Entity("Content.Server.Database.MoffModel+MoffProfile", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER")
+                        .HasColumnName("moff_profile_id");
+
+                    b.Property<bool>("Enabled")
+                        .HasColumnType("INTEGER")
+                        .HasColumnName("enabled");
+
+                    b.Property<int>("ProfileId")
+                        .HasColumnType("INTEGER")
+                        .HasColumnName("profile_id");
+
+                    b.HasKey("Id")
+                        .HasName("PK_moff_profile");
+
+                    b.HasIndex("ProfileId")
+                        .IsUnique();
+
+                    b.ToTable("moff_profile", (string)null);
                 });
 
             modelBuilder.Entity("Content.Server.Database.PlayTime", b =>
@@ -1985,6 +2058,18 @@ namespace Content.Server.Database.Migrations.Sqlite
                     b.Navigation("Profile");
                 });
 
+            modelBuilder.Entity("Content.Server.Database.MoffModel+MoffJobPriority", b =>
+                {
+                    b.HasOne("Content.Server.Database.MoffModel+MoffPreference", "MoffPreference")
+                        .WithMany("JobPriorities")
+                        .HasForeignKey("MoffPreferenceId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired()
+                        .HasConstraintName("FK_moff_job_priority_moff_preference_moff_preference_id");
+
+                    b.Navigation("MoffPreference");
+                });
+
             modelBuilder.Entity("Content.Server.Database.MoffModel+MoffPlayer", b =>
                 {
                     b.HasOne("Content.Server.Database.Player", "Player")
@@ -1996,6 +2081,30 @@ namespace Content.Server.Database.Migrations.Sqlite
                         .HasConstraintName("FK_moff_player_player_player_user_id");
 
                     b.Navigation("Player");
+                });
+
+            modelBuilder.Entity("Content.Server.Database.MoffModel+MoffPreference", b =>
+                {
+                    b.HasOne("Content.Server.Database.Preference", "Preference")
+                        .WithOne("MoffPreference")
+                        .HasForeignKey("Content.Server.Database.MoffModel+MoffPreference", "PreferenceId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired()
+                        .HasConstraintName("FK_moff_preference_preference_preference_id");
+
+                    b.Navigation("Preference");
+                });
+
+            modelBuilder.Entity("Content.Server.Database.MoffModel+MoffProfile", b =>
+                {
+                    b.HasOne("Content.Server.Database.Profile", "Profile")
+                        .WithOne("MoffProfile")
+                        .HasForeignKey("Content.Server.Database.MoffModel+MoffProfile", "ProfileId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired()
+                        .HasConstraintName("FK_moff_profile_profile_profile_id");
+
+                    b.Navigation("Profile");
                 });
 
             modelBuilder.Entity("Content.Server.Database.Player", b =>
@@ -2213,6 +2322,11 @@ namespace Content.Server.Database.Migrations.Sqlite
                     b.Navigation("Options");
                 });
 
+            modelBuilder.Entity("Content.Server.Database.MoffModel+MoffPreference", b =>
+                {
+                    b.Navigation("JobPriorities");
+                });
+
             modelBuilder.Entity("Content.Server.Database.Player", b =>
                 {
                     b.Navigation("AdminLogs");
@@ -2252,6 +2366,8 @@ namespace Content.Server.Database.Migrations.Sqlite
 
             modelBuilder.Entity("Content.Server.Database.Preference", b =>
                 {
+                    b.Navigation("MoffPreference");
+
                     b.Navigation("Profiles");
                 });
 
@@ -2264,6 +2380,8 @@ namespace Content.Server.Database.Migrations.Sqlite
                     b.Navigation("Jobs");
 
                     b.Navigation("Loadouts");
+
+                    b.Navigation("MoffProfile");
 
                     b.Navigation("Traits");
                 });
