@@ -198,6 +198,7 @@ public sealed partial class MoffEnrollEventSystem : EntitySystem
         {
             FireFallbackRule(ent);
             TryQueueDel(rule);
+            TryQueueDel(ent.Owner);
             return;
         }
 
@@ -212,7 +213,7 @@ public sealed partial class MoffEnrollEventSystem : EntitySystem
             // ignoreExclusivity: true - an enrolling ghost may already be an antag. Bans/validity still apply.
             _antag.TryAssignNextAvailableAntag(gameRule, session, players, checkPref: false, ignoreExclusivity: true);
         }
-        TryQueueDel(rule);
+        TryQueueDel(ent.Owner);
     }
 
     /// <summary>
