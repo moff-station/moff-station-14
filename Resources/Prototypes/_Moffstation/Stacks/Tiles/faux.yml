@@ -1,0 +1,12 @@
+- type: stack
+  parent: BaseTileStack
+  id: FloorTileAstroIronsand
+  name: stack-astro-ironsand-floor
+  spawn: FloorTileItemAstroIronsand
+
+- type: stack
+  parent: BaseTileStack
+  id: FloorTileAstroIronsandBorderless
+  name: stack-astro-ironsand-floor-borderless
+  spawn: FloorTileItemAstroIronsandBorderless
+
