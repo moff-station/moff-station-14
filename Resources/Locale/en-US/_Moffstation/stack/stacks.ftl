@@ -9,5 +9,3 @@ stack-poultice-pack = {$amount ->
 stack-ironsand-concrete-tile = ironsand concrete tile
 stack-ironsand-concrete-mono-tile = ironsand concrete mono tile
 stack-ironsand-concrete-smooth = ironsand concrete smooth
-stack-astro-ironsand-floor = astro-ironsand floor
-stack-astro-ironsand-floor-borderless = borderless astro-ironsand floor
