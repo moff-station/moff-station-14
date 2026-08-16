@@ -452,9 +452,8 @@
       rolls: 4, 8
       children:
       # Moffstation - Start - Make mobs smash stuff
-      - id: MobAdultSlimesBlueAngrySmasher
-      - id: MobAdultSlimesGreenAngrySmasher
-      - id: MobAdultSlimesYellowAngrySmasher
+      - id: MobAdultSlimesReformableAngrySmasher
+      - id: MobAdultSlimesReformablePoisonousAngrySmasher
       # Moffstation - End
 
 - type: entity

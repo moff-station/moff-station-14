@@ -52,12 +52,20 @@
       - MobPurpleSnake
       - MobSmallPurpleSnake
       - MobCobraSpace
-      - MobAdultSlimesBlue
-      - MobAdultSlimesBlueAngry
-      - MobAdultSlimesGreen
-      - MobAdultSlimesGreenAngry
-      - MobAdultSlimesYellow
-      - MobAdultSlimesYellowAngry
+      # Moff Start - Migrated slime prototypes
+      # - MobAdultSlimesBlue
+      # - MobAdultSlimesBlueAngry
+      # - MobAdultSlimesGreen
+      # - MobAdultSlimesGreenAngry
+      # - MobAdultSlimesYellow
+      # - MobAdultSlimesYellowAngry
+      - MobAdultSlimesReformable
+      - MobAdultSlimesReformableAngry
+      - MobAdultSlimesReformablePoisonous
+      - MobAdultSlimesReformablePoisonousAngry
+      - MobAdultSlimesReformableAngrySmasher
+      - MobAdultSlimesReformablePoisonousAngrySmasher
+      # Moff End
 
 # nuke
 - type: entity
