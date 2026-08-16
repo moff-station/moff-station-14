@@ -196,22 +196,29 @@ public sealed partial class AnalysisConsoleMenu : FancyWindow
             >= 0.50f => Color.Yellow,
             _ => Color.Red
         };
-        DurabilityValueLabel.SetMarkup(Loc.GetString("analysis-console-info-durability-value",
-            ("color", color),
-            ("current", node.Value.Comp.Durability),
-            ("max", node.Value.Comp.MaxDurability)));
 
         var hasInfo = _xenoArtifact.HasUnlockedPredecessor(artifact.Value, node.Value);
 
         // Moff Start - dynamic description
-        if (lockedState >= 1)
+        if (lockedState >= 1 || !_ent.HasComponent<XAELocalizedDescriptionComponent>(node.Value)) // If our node has been activated or lacks our custom localization string, reveal the default description
         {
+            // Show node durability value
+            DurabilityValueLabel.SetMarkup(Loc.GetString("analysis-console-info-durability-value",
+                ("color", color),
+                ("current", node.Value.Comp.Durability),
+                ("max", node.Value.Comp.MaxDurability)));
+
+            // Show detailed description
             EffectValueLabel.SetMarkup(Loc.GetString("analysis-console-info-effect-value",
                 ("state", hasInfo),
                 ("info", _ent.GetComponentOrNull<MetaDataComponent>(node.Value)?.EntityDescription ?? string.Empty)));
         }
-        else
+        else // If our node has not been activated and possesses a localization string, use this secret hint instead
         {
+            // hide node durability value - No metagaming!
+            DurabilityValueLabel.SetMarkup(Loc.GetString("moff-analysis-console-info-durability-unknown"));
+
+            // Show vague effect hint
             EffectValueLabel.SetMarkup(Loc.GetString("analysis-console-info-effect-value",
                 ("state", hasInfo),
                 ("info", Loc.GetString(_ent.GetComponentOrNull<XAELocalizedDescriptionComponent>(node.Value)?.Description ?? string.Empty))));
