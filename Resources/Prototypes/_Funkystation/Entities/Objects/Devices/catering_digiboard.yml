@@ -25,7 +25,7 @@
   - type: Storage
     grid:
     - 0,0,4,3
-    quickInsert: true
+    # quickInsert: true - Moff: Disable quickInsert, it's failing YAML Linter
   - type: ItemSlots
     slots:
       pen_slot:
@@ -57,3 +57,4 @@
   - type: Tag
     tags:
     - Folder
+  - type: QuickPickup # Moff - Add Quick Pickup for YAML Linter
