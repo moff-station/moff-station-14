@@ -1,5 +1,5 @@
 - type: tile
-  id: PlatingIronsand
+  id: MoffPlatingIronsand
   name: tiles-ironsand-plating
   sprite: /Textures/_Moffstation/Tiles/Ironsand/ironsand_plating.png
   baseTurf: Lattice
@@ -10,7 +10,7 @@
   heatCapacity: 10000
 
 - type: tile
-  id: FloorIronsandTile
+  id: FloorMoffIronsandTile
   name: tiles-ironsand-tile
   sprite: /Textures/_Moffstation/Tiles/Ironsand/ironsand_tile.png
   baseTurf: PlatingIronsand
@@ -21,7 +21,7 @@
   heatCapacity: 10000
 
 - type: tile
-  id: FloorIronsandConcrete
+  id: FloorMoffIronsandConcrete
   name: tiles-ironsand-concrete-tile
   sprite: Textures/_Moffstation/Tiles/Ironsand/ironsandconcrete.png
   variants: 4
@@ -35,11 +35,11 @@
   deconstructTools: [ Prying ]
   footstepSounds:
     collection: FootstepTile
-  itemDrop: FloorTileItemIronsandConcrete
+  itemDrop: FloorTileItemMoffIronsandConcrete
   heatCapacity: 10000
 
 - type: tile
-  id: FloorIronsandConcreteMono
+  id: FloorMoffIronsandConcreteMono
   name: tiles-ironsand-concrete-slab
   sprite: Textures/_Moffstation/Tiles/Ironsand/ironsandconcrete_mono.png
   variants: 4
@@ -53,11 +53,11 @@
   deconstructTools: [ Prying ]
   footstepSounds:
     collection: FootstepTile
-  itemDrop: FloorTileItemIronsandConcreteMono
+  itemDrop: FloorTileItemMoffIronsandConcreteMono
   heatCapacity: 10000
 
 - type: tile
-  id: FloorIronsandConcreteSmooth
+  id: FloorMoffIronsandConcreteSmooth
   name: tiles-ironsand-concrete-smooth
   sprite: Textures/_Moffstation/Tiles/Ironsand/ironsandconcrete_smooth.png
   variants: 4
@@ -71,11 +71,11 @@
   deconstructTools: [ Prying ]
   footstepSounds:
     collection: FootstepTile
-  itemDrop: FloorTileItemIronsandConcreteSmooth
+  itemDrop: FloorTileItemMoffIronsandConcreteSmooth
   heatCapacity: 10000
 
 - type: tile
-  id: IronsandPacked
+  id: MoffIronsandPacked
   name: tiles-ironsand-packed
   sprite: /Textures/_Moffstation/Tiles/Ironsand/ironsand_packed.png
   variants: 4
@@ -92,7 +92,7 @@
   heatCapacity: 10000
 
 - type: tile
-  id: IronsandPaved
+  id: MoffIronsandPaved
   name: tiles-ironsand-paved
   sprite: /Textures/_Moffstation/Tiles/Ironsand/ironsand_uneven_paved.png
   variants: 4

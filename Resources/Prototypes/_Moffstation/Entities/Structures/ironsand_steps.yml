@@ -1,6 +1,6 @@
 - type: entity
   parent: BaseFloorDecoration
-  id: IronsandStep
+  id: MoffIronsandStep
   name: ironsand step
   description: Takes your ironsand up a level.
   components:
@@ -36,16 +36,16 @@
         acts: [ "Destruction" ]
 
 - type: entity
-  parent: IronsandStep
-  id: IronsandStepConvexCorner
+  parent: MoffIronsandStep
+  id: MoffIronsandStepConvexCorner
   name: ironsand step convex corner
   components:
   - type: Sprite
     state: corner_convex
 
 - type: entity
-  parent: IronsandStep
-  id: IronsandStepConcaveCorner
+  parent: MoffIronsandStep
+  id: MoffIronsandStepConcaveCorner
   name: ironsand step concave corner
   components:
   - type: Sprite

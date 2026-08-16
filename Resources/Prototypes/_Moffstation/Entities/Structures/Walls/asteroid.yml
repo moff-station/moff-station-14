@@ -1,7 +1,7 @@
 # Ironsand
 
 - type: entity
-  id: IronSandstone
+  id: MoffIronSandstone
   parent: AsteroidRock
   name: ironsandstone
   suffix: no ore yield
@@ -22,7 +22,7 @@
       state: ironsandstone_west
 
 - type: entity
-  id: IronSandstoneMining
+  id: MoffIronSandstoneMining
   parent: IronSandstone
   name: ironsandstone
   suffix: higher ore yield
