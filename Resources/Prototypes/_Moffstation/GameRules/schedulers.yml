@@ -1,0 +1,45 @@
+# For ye who come to microbalance here:
+# the upstream event scheduler does an event on average every 6.5 minutes
+# This totals to around 14 events per round (assuming 90 minute rounds).
+# This includes the calm ones being in their pile as well.
+# Do the math before microbalancing these values.
+
+- type: entity
+  id: MoffCalmStationEventScheduler
+  parent: BaseGameRule
+  components:
+  - type: MoffStationEventScheduler
+    initialState: normal
+    scheduledGameRules: !type:NestedSelector
+      tableId: MoffCalmEventsTable
+    states:
+      normal:
+        eventTiming:
+          min: 300 # 5 min
+          max: 900 # 15 min
+
+- type: entity
+  id: MoffSpicyStationEventScheduler
+  parent: BaseGameRule
+  components:
+  - type: MoffStationEventScheduler
+    initialState: lull
+    scheduledGameRules: !type:NestedSelector
+      tableId: MoffSpicyEventsTable
+    states:
+      lull: # Downtime between spicy events.
+        duration:
+          min: 900 # 15 min
+          max: 1800 # 25 min
+        nextStates:
+          wave: 1
+      wave: # average of 2 events per wave.
+        duration:
+          min: 180 # 3 min
+          max: 420 # 7 min
+        eventTiming:
+          min: 120 # 2 min
+          max: 180 # 3 min
+        eventOnEnter: true
+        nextStates:
+          lull: 1

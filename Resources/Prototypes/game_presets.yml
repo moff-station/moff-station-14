@@ -64,7 +64,9 @@
     - Wizard
     - Xenoborgs
     - Pirates # Moffstation
-    - BasicStationEventScheduler
+#    - BasicStationEventScheduler # Moff - Split into the calm and spicy schedulers below
+    - MoffCalmStationEventScheduler
+    - MoffSpicyStationEventScheduler
     - KesslerSyndromeScheduler
     - MeteorSwarmMildScheduler
     - MeteorSwarmScheduler
@@ -81,7 +83,9 @@
   showInVote: false #2boring2vote
   description: extended-description
   rules:
-  - BasicStationEventScheduler
+#  - BasicStationEventScheduler # Moff - Split into the calm and spicy schedulers below
+  - MoffCalmStationEventScheduler
+  - MoffSpicyStationEventScheduler
   - MeteorSwarmScheduler
 #  - SpaceTrafficControlEventScheduler # Moff - Merged into BasicStationEventScheduler
   - BasicRoundstartVariation
@@ -149,7 +153,9 @@
   - DummyNonAntagChance
   - Traitor
   - SubGamemodesRuleSyndicate # Moffstation - LPO only during syndicate rounds
-  - BasicStationEventScheduler
+#  - BasicStationEventScheduler # Moff - Split into the calm and spicy schedulers below
+  - MoffCalmStationEventScheduler
+  - MoffSpicyStationEventScheduler
   - MeteorSwarmScheduler
 #  - SpaceTrafficControlEventScheduler # Moff - Merged into BasicStationEventScheduler
   - BasicRoundstartVariation
@@ -178,7 +184,9 @@
   - Nukeops
   - DummyNonAntagChance
   - SubGamemodesRuleSyndicate # Moffstation - LPO only during syndicate rounds
-  - BasicStationEventScheduler
+#  - BasicStationEventScheduler # Moff - Split into the calm and spicy schedulers below
+  - MoffCalmStationEventScheduler
+  - MoffSpicyStationEventScheduler
   - MeteorSwarmScheduler
 #  - SpaceTrafficControlEventScheduler # Moff - Merged into BasicStationEventScheduler
   - BasicRoundstartVariation
@@ -196,7 +204,9 @@
   - DummyNonAntagChance
   - Revolutionary
   - SubGamemodesRuleNoWizard
-  - BasicStationEventScheduler
+#  - BasicStationEventScheduler # Moff - Split into the calm and spicy schedulers below
+  - MoffCalmStationEventScheduler
+  - MoffSpicyStationEventScheduler
   - MeteorSwarmScheduler
 #  - SpaceTrafficControlEventScheduler # Moff - Merged into BasicStationEventScheduler
   - BasicRoundstartVariation
@@ -212,7 +222,9 @@
   - Wizard
   - DummyNonAntagChance
   - SubGamemodesRuleNoWizard #No Dual Wizards at the start, midround is fine
-  - BasicStationEventScheduler
+#  - BasicStationEventScheduler # Moff - Split into the calm and spicy schedulers below
+  - MoffCalmStationEventScheduler
+  - MoffSpicyStationEventScheduler
   - MeteorSwarmScheduler
 #  - SpaceTrafficControlEventScheduler # Moff - Merged into BasicStationEventScheduler
   - BasicRoundstartVariation
@@ -228,7 +240,9 @@
   - Xenoborgs
   - DummyNonAntagChance
   - SubGamemodesRuleNoWizardNoXenoborg # no two motherships
-  - BasicStationEventScheduler
+#  - BasicStationEventScheduler # Moff - Split into the calm and spicy schedulers below
+  - MoffCalmStationEventScheduler
+  - MoffSpicyStationEventScheduler
   - MeteorSwarmScheduler
 #  - SpaceTrafficControlEventScheduler # Moff - Merged into BasicStationEventScheduler
   - BasicRoundstartVariation
@@ -246,7 +260,9 @@
   showInVote: false
   rules:
   - Zombie
-  - BasicStationEventScheduler
+#  - BasicStationEventScheduler # Moff - Split into the calm and spicy schedulers below
+  - MoffCalmStationEventScheduler
+  - MoffSpicyStationEventScheduler
   - MeteorSwarmScheduler
 #  - SpaceTrafficControlEventScheduler # Moff - Merged into BasicStationEventScheduler
   - BasicRoundstartVariation
@@ -262,7 +278,9 @@
   showInVote: false
   rules:
   - Zombie
-  - BasicStationEventScheduler
+#  - BasicStationEventScheduler # Moff - Split into the calm and spicy schedulers below
+  - MoffCalmStationEventScheduler
+  - MoffSpicyStationEventScheduler
   - KesslerSyndromeScheduler
 #  - SpaceTrafficControlEventScheduler # Moff - Merged into BasicStationEventScheduler
   - BasicRoundstartVariation
