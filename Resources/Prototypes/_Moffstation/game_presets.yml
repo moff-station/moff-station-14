@@ -23,7 +23,7 @@
   - DummyNonAntagChance
   - Pirates
   - SubGamemodesRuleNoWizard
-#  - BasicStationEventScheduler # Moff - Split into the calm and spicy schedulers below
+#  - BasicStationEventScheduler # Split into the calm and spicy schedulers below
   - MoffCalmStationEventScheduler
   - MoffSpicyStationEventScheduler
   - MeteorSwarmScheduler
@@ -36,7 +36,7 @@
   showInVote: false #2boring2vote
   description: extended-description
   rules:
-#  - BasicStationEventScheduler # Moff - Split into the calm and spicy schedulers below
+#  - BasicStationEventScheduler # Split into the calm and spicy schedulers below
   - MoffCalmStationEventScheduler
   - MoffSpicyStationEventScheduler
   - MeteorSwarmScheduler
@@ -55,7 +55,7 @@
   - DummyNonAntagChance
   - WizardDuel
   - SubGamemodesRuleNoWizard
-#  - BasicStationEventScheduler # Moff - Split into the calm and spicy schedulers below
+#  - BasicStationEventScheduler # Split into the calm and spicy schedulers below
   - MoffCalmStationEventScheduler
   - MoffSpicyStationEventScheduler
   - MeteorSwarmScheduler
