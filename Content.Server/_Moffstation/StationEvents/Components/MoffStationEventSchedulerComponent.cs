@@ -4,7 +4,7 @@ using Content.Shared.EntityTable.EntitySelectors;
 namespace Content.Server._Moffstation.StationEvents.Components;
 
 /// <summary>
-/// An event scheduler which moves between named <see cref="EventSchedulerState"/>s, each with its own event cadence.
+/// An event scheduler which moves between named <see cref="MoffEventSchedulerState"/>s, each with its own event cadence.
 /// A single never-expiring state behaves like <c>BasicStationEventScheduler</c>, while a lull/wave pair produces bursts.
 /// </summary>
 [RegisterComponent]
@@ -12,10 +12,10 @@ public sealed partial class MoffStationEventSchedulerComponent : Component
 {
     /// <summary>
     /// Every state this scheduler can be in, keyed by the name used in <see cref="InitialState"/> and
-    /// <see cref="EventSchedulerState.NextStates"/>.
+    /// <see cref="MoffEventSchedulerState.NextStates"/>.
     /// </summary>
     [DataField(required: true)]
-    public Dictionary<string, EventSchedulerState> States = new();
+    public Dictionary<string, MoffEventSchedulerState> States = new();
 
     /// <summary>
     /// The state entered when the rule starts.
@@ -58,7 +58,7 @@ public sealed partial class MoffStationEventSchedulerComponent : Component
 /// One state of a <see cref="MoffStationEventSchedulerComponent"/>.
 /// </summary>
 [DataDefinition]
-public sealed partial class EventSchedulerState
+public sealed partial class MoffEventSchedulerState
 {
     /// <summary>
     /// How long this state lasts, in seconds. Null means it never expires.
@@ -83,10 +83,4 @@ public sealed partial class EventSchedulerState
     /// </summary>
     [DataField]
     public bool EventOnEnter;
-
-    /// <summary>
-    /// Overrides <see cref="MoffStationEventSchedulerComponent.ScheduledGameRules"/> while in this state.
-    /// </summary>
-    [DataField]
-    public EntityTableSelector? ScheduledGameRules;
 }

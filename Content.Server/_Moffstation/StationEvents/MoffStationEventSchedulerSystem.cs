@@ -3,7 +3,6 @@ using Content.Server.GameTicking.Rules;
 using Content.Server.StationEvents;
 using Content.Shared.GameTicking.Components;
 using Content.Shared.Random.Helpers;
-using Robust.Shared.Random;
 using Robust.Shared.Timing;
 
 namespace Content.Server._Moffstation.StationEvents;
@@ -74,22 +73,16 @@ public sealed partial class MoffStationEventSchedulerSystem : GameRuleSystem<Mof
                 return;
 
             ent.Comp1.NextEventTime = TimeSpan.FromSeconds(eventTiming.Next(RobustRandom));
-            RunEvent(ent.Comp1, state);
+            _event.RunRandomEvent(ent.Comp1.ScheduledGameRules);
         }
     }
 
-    /// <summary>
-    /// Rolls which state follows <paramref name="state"/>. Null if it has nowhere to go.
-    /// </summary>
-    public string? PickNextState(EventSchedulerState state)
+    private string? PickNextState(MoffEventSchedulerState state)
     {
         return state.NextStates.Count == 0 ? null : RobustRandom.Pick(state.NextStates);
     }
 
-    /// <summary>
-    /// Rolls how long <paramref name="state"/> lasts and how long until its first event, both in seconds.
-    /// </summary>
-    public (TimeSpan? Duration, TimeSpan EventDelay) RollState(EventSchedulerState state)
+    private (TimeSpan? Duration, TimeSpan EventDelay) RollState(MoffEventSchedulerState state)
     {
         // A state can have a duration without event timing, or the other way around, so these roll separately.
         var duration = state.Duration is { } stateDuration
@@ -103,7 +96,7 @@ public sealed partial class MoffStationEventSchedulerSystem : GameRuleSystem<Mof
         return (duration, eventDelay);
     }
 
-    private void ChangeState(EntityUid uid, MoffStationEventSchedulerComponent component, EventSchedulerState state)
+    private void ChangeState(EntityUid uid, MoffStationEventSchedulerComponent component, MoffEventSchedulerState state)
     {
         if (PickNextState(state) is not { } nextId)
         {
@@ -122,17 +115,12 @@ public sealed partial class MoffStationEventSchedulerSystem : GameRuleSystem<Mof
         EnterState(component, nextId, next);
 
         if (next.EventOnEnter)
-            RunEvent(component, next);
+            _event.RunRandomEvent(component.ScheduledGameRules);
     }
 
-    private void EnterState(MoffStationEventSchedulerComponent component, string id, EventSchedulerState state)
+    private void EnterState(MoffStationEventSchedulerComponent component, string id, MoffEventSchedulerState state)
     {
         component.CurrentState = id;
         (component.NextStateTime, component.NextEventTime) = RollState(state);
-    }
-
-    private void RunEvent(MoffStationEventSchedulerComponent component, EventSchedulerState state)
-    {
-        _event.RunRandomEvent(state.ScheduledGameRules ?? component.ScheduledGameRules);
     }
 }
