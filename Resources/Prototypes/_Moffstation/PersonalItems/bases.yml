@@ -28,13 +28,26 @@
 
 
 - type: entity
-  parent: [BaseStorageItem, BaseBagOpenClose, BaseSecurityContraband]
-  id: BasePersonalItemPistolCase
   abstract: true
+  parent: [BaseStorageItem, BaseSecurityContraband]
+  id: BasePersonalItemPistolCase
   name: Mk9 gun case
   description: A slim, portable gun case intended to protect its contents. The outside is wrapped in blue tape.
   components:
+  - type: Appearance
   - type: Sprite
     sprite: &case "_Moffstation/PersonalItems/Items/shared/personalpistolcase.rsi"
+  - type: GenericVisualizer
+    visuals:
+      enum.StorageVisuals.Open:
+        base:
+          True: { state: icon-open }
+          False: { state: icon }
   - type: Item
     sprite: *case
+    size: Large
+  - type: Storage
+    maxItemSize: Large
+    grid:
+    - 0,0,1,0
+    - 0,1,0,1
