@@ -14,7 +14,7 @@
       tableId: MoffCalmEventsTable
     states:
       normal:
-        eventTiming:
+        minMaxEventTiming:
           min: 300 # 5 min
           max: 900 # 15 min
 
@@ -33,13 +33,13 @@
           max: 1800 # 25 min
         nextStates:
           wave: 1
-      wave: # average of 2 events per wave.
+      wave:
         duration:
           min: 180 # 3 min
           max: 420 # 7 min
-        eventTiming:
-          min: 120 # 2 min
+        minMaxEventTiming:
+          min: 60 # 1 min
           max: 180 # 3 min
-        eventOnEnter: true
         nextStates:
           lull: 1
+        eventOnEnd: true

@@ -32,7 +32,7 @@ public sealed partial class MoffStationEventSchedulerSystem : GameRuleSystem<Mof
 
         EnterState(component, component.InitialState, state);
         // The state's own timing doesn't apply to the very first event, so schedulers can be staggered.
-        component.NextEventTime = TimeSpan.FromSeconds(component.InitialDelay.Next(RobustRandom));
+        component.NextEventTime = _timing.CurTime + TimeSpan.FromSeconds(component.InitialDelay.Next(RobustRandom));
     }
 
     protected override void Ended(
@@ -58,21 +58,24 @@ public sealed partial class MoffStationEventSchedulerSystem : GameRuleSystem<Mof
         foreach (var ent in EntityQueryEnumerator<MoffStationEventSchedulerComponent, GameRuleComponent>())
         {
             if (ent.Comp1.CurrentState is not { } stateId || !ent.Comp1.States.TryGetValue(stateId, out var state))
-                return;
+                continue;
 
             if (ent.Comp1.NextStateTime <= _timing.CurTime)
             {
+                if (state.EventOnEnd)
+                    _event.RunRandomEvent(ent.Comp1.ScheduledGameRules);
+
                 ChangeState(ent.Owner, ent.Comp1, state);
-                return;
+                continue;
             }
 
-            if (state.EventTiming is not { } eventTiming)
-                return;
+            if (state.MinMaxEventTiming is not { } eventTiming)
+                continue;
 
             if (ent.Comp1.NextEventTime > _timing.CurTime)
-                return;
+                continue;
 
-            ent.Comp1.NextEventTime = TimeSpan.FromSeconds(eventTiming.Next(RobustRandom));
+            ent.Comp1.NextEventTime = _timing.CurTime + TimeSpan.FromSeconds(eventTiming.Next(RobustRandom));
             _event.RunRandomEvent(ent.Comp1.ScheduledGameRules);
         }
     }
@@ -89,7 +92,7 @@ public sealed partial class MoffStationEventSchedulerSystem : GameRuleSystem<Mof
             ? TimeSpan.FromSeconds(stateDuration.Next(RobustRandom))
             : (TimeSpan?)null;
 
-        var eventDelay = state.EventTiming is { } eventTiming
+        var eventDelay = state.MinMaxEventTiming is { } eventTiming
             ? TimeSpan.FromSeconds(eventTiming.Next(RobustRandom))
             : TimeSpan.Zero;
 
@@ -113,14 +116,15 @@ public sealed partial class MoffStationEventSchedulerSystem : GameRuleSystem<Mof
         }
 
         EnterState(component, nextId, next);
-
-        if (next.EventOnEnter)
-            _event.RunRandomEvent(component.ScheduledGameRules);
     }
 
     private void EnterState(MoffStationEventSchedulerComponent component, string id, MoffEventSchedulerState state)
     {
         component.CurrentState = id;
-        (component.NextStateTime, component.NextEventTime) = RollState(state);
+
+        // These are absolute times, not durations, since Update compares them against CurTime.
+        var (duration, eventDelay) = RollState(state);
+        component.NextStateTime = duration is { } stateDuration ? _timing.CurTime + stateDuration : null;
+        component.NextEventTime = _timing.CurTime + eventDelay;
     }
 }
