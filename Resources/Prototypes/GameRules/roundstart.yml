@@ -142,6 +142,15 @@
   components:
   - type: GameRule
     minPlayers: 20
+  # Moff Start - give only the nuke op commander a random objective table
+  - type: AntagRandomObjectives
+    onlyForDefs:
+    - NukeopsCommander
+    minChoices: 1
+    maxChoices: 1
+    sets:
+    - groups: NukeOpsLeaderObjectiveGroups
+  # Moff end
   - type: LoadMapRule
     mapPath: /Maps/Nonstations/nukieplanet.yml
   - type: AntagSelection

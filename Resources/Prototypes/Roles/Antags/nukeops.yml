@@ -68,6 +68,7 @@
     nameSegments:
     - NamesSyndicateElite
     nameFormat: name-format-nukie-commander
+  - type: MoffCommonObjectiveAuthority
   mindRoles:
   - MindRoleNukeopsCommander
 
@@ -86,6 +87,7 @@
     nameSegments:
     - NamesSyndicateNormal
     nameFormat: name-format-nukie-agent
+  - type: MoffCommonObjectives
   mindRoles:
   - MindRoleNukeopsMedic
 
@@ -101,6 +103,7 @@
     nameSegments:
     - NamesSyndicateNormal
     nameFormat: name-format-nukie-operator
+  - type: MoffCommonObjectives
   mindRoles:
   - MindRoleNukeops
 
