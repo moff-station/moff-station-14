@@ -15,6 +15,12 @@ uplink-clown-spider-grenade-desc = Smuggled out of a Honkmother meeting, the spi
 uplink-flaming-fire-axe-name = Fire Axe
 uplink-flaming-fire-axe-desc = Why fight fire with an axe when you can fight with fire and axe? Now featuring rugged rubberized handle!
 
+uplink-chef-knife-name = Evil Knife
+uplink-chef-knife-desc = A very evil knife. Sharp, great at slicing, lights people on fire, and inhibits a corrupt soul.
+
+ghost-role-information-syndicate-chef-knife-name = Evil Knife
+ghost-role-information-syndicate-chef-knife-description = Be loud, evil and obnoxious. Try to convince the wielder to stab and butcher anything you want.
+
 # Weapons
 uplink-hypereutatic-blade-moff-name = Hypereutactic Blade
 uplink-hypereutatic-blade-moff-desc = A gigantic energy sword with power that matches its looks. Requires two hands to swing. Slow and unwieldy, yet pretty adept at reflecting projectiles and slicing through structures. Makes a lot of noise when turned on. Demons fear its hum.

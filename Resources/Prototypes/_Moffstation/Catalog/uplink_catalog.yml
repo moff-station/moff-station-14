@@ -88,6 +88,24 @@
     whitelist:
     - AtmosphericTechnician
 
+- type: listing
+  id: UplinkChefKnife
+  name: uplink-chef-knife-name
+  description: uplink-chef-knife-desc
+  productEntity: SyndicateChefKnife
+  cost:
+    Telecrystal: 3
+  discountCategory: rareDiscounts
+  discountDownTo:
+    Telecrystal: 1
+  categories:
+  - UplinkJob
+  conditions:
+  - !type:BuyerJobCondition
+    whitelist:
+    - Chef
+    - ServiceWorker
+
 - type: listing #This is the old necronomicon but spicier.
   id: uplinkNecronomicon
   name: uplink-necronomicon-name

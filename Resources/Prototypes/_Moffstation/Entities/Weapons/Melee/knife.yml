@@ -1,0 +1,51 @@
+﻿- type: entity
+  parent: [BaseKnife, BaseMajorContraband]
+  id: SyndicateChefKnife
+  name: evil knife
+  description: A really evil knife.
+  components:
+  - type: Tag
+    tags:
+    - Knife
+    - KitchenKnife
+    - Utensil
+  - type: Execution
+    doAfterDuration: 2.0
+  - type: Sprite
+    sprite: _Moffstation/Weapons/Melee/evil_knife.rsi
+    state: icon
+  - type: Item
+    sprite: _Moffstation/Weapons/Melee/evil_knife.rsi
+    storedOffset: -1,1
+    storedRotation: -45
+  - type: MeleeWeapon
+    wideAnimationRotation: -135
+    attackRate: 1.5
+    damage:
+      types:
+        Slash: 12
+        Heat: 2
+    soundHit:
+      path: /Audio/Weapons/bladeslice.ogg
+  - type: Tool
+    qualities:
+    - Slicing
+    speedModifier: 3.0
+    useSound:
+      path: /Audio/Items/Culinary/chop.ogg
+  - type: IgniteOnMeleeHit
+    fireStacks: 1
+  - type: AllCapsAccent
+    relayAccent: true
+  - type: GhostTakeoverAvailable
+  - type: GhostRole
+    makeSentient: true
+    allowSpeech: true
+    allowMovement: false
+    raffle:
+      settings: short
+    name: ghost-role-information-syndicate-chef-knife-name
+    description: ghost-role-information-syndicate-chef-knife-description
+    rules: ghost-role-information-freeagent-rules
+    mindRoles:
+    - MindRoleGhostRoleFreeAgent
