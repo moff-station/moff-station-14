@@ -33,11 +33,13 @@ uplink-costume-clown-desc = Contains a complete Clown outfit. Includes PDA and s
 uplink-carp-suit-bundle-name = Carp Suit Duffel Bag
 uplink-carp-suit-bundle-desc = Contains a carp suit and some friends to play with.
 
+#Moff Start - rename nukies to gorlex
 uplink-operative-suit-name = Operative Jumpsuit
-uplink-operative-suit-desc = A suit given to our nuclear operatives with fine fabric to make sure you stand out, no other benefits aside from looking cool.
+uplink-operative-suit-desc = A suit given to our gorlex marauders with fine fabric to make sure you stand out, no other benefits aside from looking cool.
 
 uplink-operative-skirt-name = Operative Jumpskirt
-uplink-operative-skirt-desc = A skirt given to our nuclear operatives with fine fabric to make sure you stand out, no other benefits aside from looking cool.
+uplink-operative-skirt-desc = A skirt given to our gorlex marauders with fine fabric to make sure you stand out, no other benefits aside from looking cool.
+#Moff End
 
 uplink-balloon-name = Syndie Balloon
 uplink-balloon-desc = Handed out to the bravest souls who survived the "atomic twister" ride at Syndieland.
