@@ -30,6 +30,9 @@ uplink-exploding-pen-desc = A class IV explosive device contained within a stand
 uplink-exploding-syndicate-bomb-name = Syndicate Bomb
 uplink-exploding-syndicate-bomb-desc = A big, anchored bomb that can create a huge explosion if not defused in time. Useful as a distraction. Has an adjustable timer with a minimum setting of 180 seconds.
 
+uplink-exploding-syndicate-emp-bomb-name = Syndicate EMP Bomb
+uplink-exploding-syndicate-emp-bomb-desc = A big, anchored bomb that emits an almost station-wide disabling EMP pulse if not defused in time. Disables electronics for exactly 3 minutes. Has an adjustable fuse.
+
 uplink-shrapnel-grenade-name = Shrapnel Grenade
 uplink-shrapnel-grenade-desc = Launches a spray of sharp fragments dealing great damage against unarmored targets.
 

@@ -1,0 +1,29 @@
+{
+    "version": 1,
+    "license": "CC-BY-SA-3.0",
+    "copyright": "Wintoli (discord/Github)",
+    "size": {
+        "x": 32,
+        "y": 32
+    },
+    "states": [
+        {
+            "name": "emp-bomb"
+        },
+        {
+            "name": "emp-bomb-wires"
+        },
+        {
+            "name": "emp-bomb-active",
+            "delays": [
+                [
+                    0.25,
+                    0.25,
+                    0.25
+                ]
+            ]
+        }
+            ]
+}
+    
+
