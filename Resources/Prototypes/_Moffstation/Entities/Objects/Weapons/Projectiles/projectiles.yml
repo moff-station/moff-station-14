@@ -94,7 +94,6 @@
   - type: AtmosExposed # Causes heating/cooling from atmospheric temperature
     exposedArea: .009424 # m^2
   - type: Temperature
-    currentTemperature: 290
     specificHeat: 502 # Carbon steel on https://www.engineersedge.com/materials/specific_heat_capacity_of_metals_13259.htm
   - type: TemperatureVisuals
     visuals:
