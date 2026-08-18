@@ -37,6 +37,9 @@
   - type: Appearance
   - type: Sprite
     sprite: &case "_Moffstation/PersonalItems/Items/shared/personalpistolcase.rsi"
+    layers:
+    - map: [ base ]
+      state: icon
   - type: GenericVisualizer
     visuals:
       enum.StorageVisuals.Open:
