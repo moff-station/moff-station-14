@@ -7,10 +7,6 @@ using Robust.Shared.Timing;
 
 namespace Content.Server._Moffstation.StationEvents;
 
-/// <summary>
-/// Runs station events out of a small state machine, so a scheduler can alternate between quiet stretches and
-/// bursts of activity instead of a single flat cadence. See <see cref="MoffStationEventSchedulerComponent"/>.
-/// </summary>
 public sealed partial class MoffStationEventSchedulerSystem : GameRuleSystem<MoffStationEventSchedulerComponent>
 {
     [Dependency] private EventManagerSystem _event = default!;
@@ -31,7 +27,6 @@ public sealed partial class MoffStationEventSchedulerSystem : GameRuleSystem<Mof
         }
 
         EnterState(component, component.InitialState, state);
-        // The state's own timing doesn't apply to the very first event, so schedulers can be staggered.
         component.NextEventTime = _timing.CurTime + TimeSpan.FromSeconds(component.InitialDelay.Next(RobustRandom));
     }
 

@@ -4,8 +4,8 @@ using Content.Shared.EntityTable.EntitySelectors;
 namespace Content.Server._Moffstation.StationEvents.Components;
 
 /// <summary>
-/// An event scheduler which moves between named <see cref="MoffEventSchedulerState"/>s, each with its own event cadence.
-/// A single never-expiring state behaves like <c>BasicStationEventScheduler</c>, while a lull/wave pair produces bursts.
+/// Our beloved custom event scheduler. Well... Not actually sure if its beloved yet, hopefully it will be!
+/// It works in a similar way to the normal event scheduler, except it gives you more tools to change timing midround.
 /// </summary>
 [RegisterComponent]
 public sealed partial class MoffStationEventSchedulerComponent : Component
