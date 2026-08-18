@@ -23,7 +23,7 @@
       - type: PermanentBlindness
         blindness: 4
   - !type:SpawnItemInHandEffect
-    item: HudModuleVisionCorrection
+    item: ClothingEyesGlasses
 
 - type: trait
   id: PainNumbness
@@ -86,6 +86,7 @@
   - !type:AddCompsEffect
     components:
     - type: Clumsy
+      clumsySound: null
 
 - type: trait
   id: Snoring

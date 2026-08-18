@@ -13,6 +13,8 @@
     - id: GreytideVirus
     - id: IonStorm # its calm like 90% of the time smh
     - id: KudzuGrowth
+    - id: LightOverloadRule # Moffstation - New events
+    - id: LightOverloadRuleBlinking # Moffstation - New events
     - id: MassHallucinations
     - id: MouseMigration
     - id: PowerGridCheck
@@ -36,6 +38,7 @@
     # Moffstation - Start - Moffstation basic antag events
     - id: SyndicateDeadDrop
     - id: SyndieVentSoldierSpawn
+    - id: LawBreakerVirus
     # Moffstation - End
 
 - type: entityTable
@@ -48,14 +51,15 @@
     - id: SleeperAgents
     - id: ZombieOutbreak
     - id: LoneOpsSpawn
-    - id: WizardSpawn
-    - id: EeepEvent # imp
+    # - id: WizardSpawn # Moffstation
+    - id: EeepSpawn # imp
     - !type:NestedSelector
       tableId: DerelictBorgEventTable
     # Moffstation - Start - Moffstation ghostrole antags
     - id: SyndicateListeningOutpostSpawn
     - id: PirateCorsairSpawn
     - id: HellPortalSpawn
+    - id: ReplicatorSpawn
     # Moffstation - End
 
 - type: entityTable
@@ -78,11 +82,11 @@
 
 - type: entity
   abstract: true
-  parent: BaseGameRule
+  parent: BaseUnweightedAntagRule # Moff - ghost roles are NOT weighted
   id: BaseAntagGhostRoleRule
   components:
   - type: AntagSelection
-    selectionTime: Never
+    selectionTime: Enroll
 
 - type: entity
   id: BaseStationEvent
@@ -198,6 +202,7 @@
   - type: StationEvent
     weight: 5
     duration: 1
+    occursDuringRoundEnd: false
     minimumPlayers: 10
   - type: RandomEntityStorageSpawnRule
     prototype: MobSkeletonCloset
@@ -212,6 +217,7 @@
     reoccurrenceDelay: 20
     minimumPlayers: 30  # Moffstation - Tune down antags
     duration: null
+    occursDuringRoundEnd: false
   - type: SpaceSpawnRule
     spawnDistance: 0
   - type: AntagSpawner
@@ -222,10 +228,16 @@
     - CarpRiftsObjective
     - DragonSurviveObjective
   - type: AntagSelection
+    selectionTime: Enroll # Moffstation - antag enrollment
     agentName: dragon-round-end-agent-name
     antags:
     - !type:FixedAntagCount
       proto: Dragon
+  # Moffstation - antag enrollment
+  - type: ESSynchronizedVoteManager
+    votes:
+    - DragonEnroller
+  # Moffstation end
   - type: DynamicRuleCost
     cost: 75
 
@@ -236,6 +248,7 @@
   - type: StationEvent
     weight: 6
     duration: null
+    occursDuringRoundEnd: false
     earliestStart: 30
     reoccurrenceDelay: 20
     minimumPlayers: 30
@@ -250,10 +263,16 @@
     - MassArrestObjective
     - NinjaSurviveObjective
   - type: AntagSelection
+    selectionTime: Enroll # Moffstation - antag enrollment
     agentName: ninja-round-end-agent-name
     antags:
     - !type:FixedAntagCount
       proto: SpaceNinja
+  # Moffstation - antag enrollment
+  - type: ESSynchronizedVoteManager
+    votes:
+    - NinjaEnroller
+  # Moffstation end
   - type: DynamicRuleCost
     cost: 75
 
@@ -264,6 +283,7 @@
   - type: StationEvent
     weight: 5
     duration: null
+    occursDuringRoundEnd: false
     earliestStart: 20
     reoccurrenceDelay: 20
     minimumPlayers: 20  # Moffstation - Tune down antags
@@ -278,10 +298,16 @@
     - ParadoxCloneLivingObjective
   - type: AntagRandomSpawn # TODO: improve spawning so they only start in maints
   - type: AntagSelection
+    selectionTime: Enroll # Moffstation - antag enrollment
     agentName: paradox-clone-round-end-agent-name
     antags:
     - !type:FixedAntagCount
       proto: ParadoxClone
+  # Moffstation - antag enrollment
+  - type: ESSynchronizedVoteManager
+    votes:
+    - ParadoxCloneEnroller
+  # Moffstation end
   - type: DynamicRuleCost
     cost: 50
 
@@ -292,6 +318,7 @@
   - type: StationEvent
     weight: 7.5
     duration: 1
+    occursDuringRoundEnd: false
     earliestStart: 45
     minimumPlayers: 20
   - type: RandomSpawnRule
@@ -304,9 +331,15 @@
   - type: StationEvent
     weight: 1 # rare
     duration: null
+    occursDuringRoundEnd: false
     earliestStart: 30
     reoccurrenceDelay: 60
     minimumPlayers: 30
+  # Moff start - antag enrollment
+  - type: ESSynchronizedVoteManager
+    votes:
+    - WizardEnroller
+  # Moff end
 
 # disabled until event is rewritten to be more interesting
 #- type: entity
@@ -515,15 +548,22 @@
     weight: 5.5
     minimumPlayers: 30 # Moffstation - Tune down antags
     duration: null # LoneOpsSpawn needs an infinite duration so that it inherits the NukeOpsRule things of an actually appropriate end screen (not always "Neutral outcome!") and... ending the game if the station is nuked.
+    occursDuringRoundEnd: false
   - type: RuleGrids
   - type: LoadMapRule
     gridPath: /Maps/Shuttles/ShuttleEvent/striker.yml
   - type: NukeopsRule
     roundEndBehavior: Nothing
   - type: AntagSelection
+    selectionTime: Enroll # Moffstation - antag enrollment
     antags:
     - !type:FixedAntagCount
       proto: LoneOp
+  # Moffstation - antag enrollment
+  - type: ESSynchronizedVoteManager
+    votes:
+    - LoneOpEnroller
+  # Moffstation end
   - type: DynamicRuleCost
     cost: 75
 
@@ -621,8 +661,14 @@
     reoccurrenceDelay: 20
     minimumPlayers: 4
     duration: null
+    occursDuringRoundEnd: false
   - type: SpaceSpawnRule
     spawnDistance: 0
+  # Moffstation - antag enrollment (shared across all derelict cyborg variants)
+  - type: ESSynchronizedVoteManager
+    votes:
+    - DerelictCyborgEnroller
+  # Moffstation end
 
 - type: entity
   parent: BaseDerelictCyborgSpawn
@@ -631,6 +677,7 @@
   - type: AntagSpawner
     prototype: PlayerEngineeringBorgDerelictGhostRole
   - type: AntagSelection
+    selectionTime: Enroll # Moffstation - antag enrollment
     antags:
     - !type:FixedAntagCount
       proto: DerelictEngineeringCyborg
@@ -642,6 +689,7 @@
   - type: AntagSpawner
     prototype: PlayerBorgDerelictGhostRole
   - type: AntagSelection
+    selectionTime: Enroll # Moffstation - antag enrollment
     antags:
     - !type:FixedAntagCount
       proto: DerelictGenericCyborg
@@ -653,6 +701,7 @@
   - type: AntagSpawner
     prototype: PlayerJanitorBorgDerelictGhostRole
   - type: AntagSelection
+    selectionTime: Enroll # Moffstation - antag enrollment
     antags:
     - !type:FixedAntagCount
       proto: DerelictJanitorCyborg
@@ -664,6 +713,7 @@
   - type: AntagSpawner
     prototype: PlayerMedicalBorgDerelictGhostRole
   - type: AntagSelection
+    selectionTime: Enroll # Moffstation - antag enrollment
     antags:
     - !type:FixedAntagCount
       proto: DerelictMedicalCyborg
@@ -675,6 +725,7 @@
   - type: AntagSpawner
     prototype: PlayerMiningBorgDerelictGhostRole
   - type: AntagSelection
+    selectionTime: Enroll # Moffstation - antag enrollment
     antags:
     - !type:FixedAntagCount
       proto: DerelictMiningCyborg
@@ -689,6 +740,7 @@
   - type: AntagSpawner
     prototype: PlayerBorgSyndicateDerelictGhostRole
   - type: AntagSelection
+    selectionTime: Enroll # Moffstation - antag enrollment
     antags:
     - !type:FixedAntagCount
       proto: DerelictSyndicateAssaultCyborg

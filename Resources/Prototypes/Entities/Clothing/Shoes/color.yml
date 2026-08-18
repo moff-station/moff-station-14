@@ -8,7 +8,7 @@
   description: Stylish black shoes.
   components:
   - type: Sprite
-    sprite: &shoe.rsi _Moffstation/Clothing/Shoes/color.rsi # Moffstation
+    sprite: &shoe_rsi _Moffstation/Clothing/Shoes/color.rsi # Moffstation
     layers:
     - state: icon
       color: "#3f3f3f" #Different from the worn state for contrast reasons.
@@ -24,7 +24,7 @@
         color: "#3f3f3f"
       - state: soles-inhand-right
   - type: Clothing
-    sprite: *shoe.rsi # Moffstation
+    sprite: *shoe_rsi # Moffstation
     clothingVisuals:
       shoes:
       - state: equipped-FEET
@@ -39,7 +39,7 @@
   description: Don't take them off at your office Christmas party.
   components:
   - type: Sprite
-    sprite: *shoe.rsi # Moffstation
+    sprite: *shoe_rsi # Moffstation
     layers:
     - state: icon
       color: "#e0dee5" #Moffstation
@@ -53,7 +53,7 @@
       - state: inhand-right
         color: "#e0dee5" #Moffstation
   - type: Clothing
-    sprite: *shoe.rsi # Moffstation
+    sprite: *shoe_rsi # Moffstation
     clothingVisuals:
       shoes:
       - state: equipped-FEET
@@ -68,7 +68,7 @@
   description: Stylish blue shoes.
   components:
   - type: Sprite
-    sprite: *shoe.rsi # Moffstation
+    sprite: *shoe_rsi # Moffstation
     layers:
     - state: icon
       color: "#0089EF"
@@ -84,7 +84,7 @@
         color: "#0089EF"
       - state: soles-inhand-right
   - type: Clothing
-    sprite: *shoe.rsi # Moffstation
+    sprite: *shoe_rsi # Moffstation
     clothingVisuals:
       shoes:
       - state: equipped-FEET
@@ -99,7 +99,7 @@
   description: A pair of brown shoes.
   components:
   - type: Sprite
-    sprite: *shoe.rsi # Moffstation
+    sprite: *shoe_rsi # Moffstation
     layers:
     - state: icon
       color: "#723A02"
@@ -115,7 +115,7 @@
         color: "#723A02"
       - state: soles-inhand-right
   - type: Clothing
-    sprite: *shoe.rsi # Moffstation
+    sprite: *shoe_rsi # Moffstation
     clothingVisuals:
       shoes:
       - state: equipped-FEET
@@ -130,7 +130,7 @@
   description: Stylish green shoes.
   components:
   - type: Sprite
-    sprite: *shoe.rsi # Moffstation
+    sprite: *shoe_rsi # Moffstation
     layers:
     - state: icon
       color: "#5ABF2F"
@@ -146,7 +146,7 @@
         color: "#5ABF2F"
       - state: soles-inhand-right
   - type: Clothing
-    sprite: *shoe.rsi # Moffstation
+    sprite: *shoe_rsi # Moffstation
     clothingVisuals:
       shoes:
       - state: equipped-FEET
@@ -161,7 +161,7 @@
   description: Stylish orange shoes.
   components:
   - type: Sprite
-    sprite: *shoe.rsi # Moffstation
+    sprite: *shoe_rsi # Moffstation
     layers:
     - state: icon
       color: "#EF8100"
@@ -177,7 +177,7 @@
         color: "#EF8100"
       - state: soles-inhand-right
   - type: Clothing
-    sprite: *shoe.rsi # Moffstation
+    sprite: *shoe_rsi # Moffstation
     clothingVisuals:
       shoes:
       - state: equipped-FEET
@@ -192,7 +192,7 @@
   description: Stylish red shoes.
   components:
   - type: Sprite
-    sprite: *shoe.rsi # Moffstation
+    sprite: *shoe_rsi # Moffstation
     layers:
     - state: icon
       color: "#940000"
@@ -208,7 +208,7 @@
         color: "#940000"
       - state: soles-inhand-right
   - type: Clothing
-    sprite: *shoe.rsi # Moffstation
+    sprite: *shoe_rsi # Moffstation
     clothingVisuals:
       shoes:
       - state: equipped-FEET
@@ -223,7 +223,7 @@
   description: Stylish yellow shoes.
   components:
   - type: Sprite
-    sprite: *shoe.rsi # Moffstation
+    sprite: *shoe_rsi # Moffstation
     layers:
     - state: icon
       color: "#EBE216"
@@ -239,7 +239,7 @@
         color: "#EBE216"
       - state: soles-inhand-right
   - type: Clothing
-    sprite: *shoe.rsi # Moffstation
+    sprite: *shoe_rsi # Moffstation
     clothingVisuals:
       shoes:
       - state: equipped-FEET
@@ -254,7 +254,7 @@
   description: Stylish purple shoes.
   components:
   - type: Sprite
-    sprite: *shoe.rsi # Moffstation
+    sprite: *shoe_rsi # Moffstation
     layers:
     - state: icon
       color: "#9C0DE1"
@@ -270,7 +270,7 @@
         color: "#9C0DE1"
       - state: soles-inhand-right
   - type: Clothing
-    sprite: *shoe.rsi # Moffstation
+    sprite: *shoe_rsi # Moffstation
     clothingVisuals:
       shoes:
       - state: equipped-FEET

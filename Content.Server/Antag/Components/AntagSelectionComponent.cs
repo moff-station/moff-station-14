@@ -69,14 +69,6 @@ public sealed partial class AntagSelectionComponent : Component
     /// </summary>
     [DataField]
     public bool RemoveUponFailedSpawn = true;
-
-    // Moffstation - Start - Antag Weights
-    /// <summary>
-    /// Should Selection should use the antag weights system?
-    /// </summary>
-    [DataField]
-    public bool UseWeights = true;
-    // Moffstation - End
 }
 
 /// <remarks>
@@ -107,4 +99,11 @@ public enum AntagSelectionTime : byte
     /// Antag roles are *never* selected. Instead, this definition only makes ghost roles.
     /// </summary>
     Never,
+
+    // Moff start - ghost role enrollment
+    /// <summary>
+    /// Antag is determined via enrollment in the ES voting menu
+    /// </summary>
+    Enroll,
+    // Moff end
 }

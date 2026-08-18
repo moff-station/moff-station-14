@@ -1,12 +1,11 @@
 using System.Linq;
+using Content.Server._Moffstation.Preferences; // Moffstation - Multi-character selection
 using Content.Server.Administration.Managers;
 using Content.Server.Antag;
-using Content.Server.Players.PlayTimeTracking;
 using Content.Server.Station.Components;
 using Content.Server.Station.Events;
 using Content.Shared.Preferences;
 using Content.Shared.Roles;
-using Robust.Server.Player;
 using Robust.Shared.Network;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
@@ -17,9 +16,9 @@ namespace Content.Server.Station.Systems;
 // Contains code for round-start spawning.
 public sealed partial class StationJobsSystem
 {
-    [Dependency] private IPrototypeManager _prototypeManager = default!;
     [Dependency] private IBanManager _banManager = default!;
     [Dependency] private AntagSelectionSystem _antag = default!;
+    [Dependency] private MoffCharacterSelectionManager _moffCharacterSelection = default!; // Moff - Multi-character selection
 
     private Dictionary<int, HashSet<string>> _jobsByWeight = default!;
     private List<int> _orderedWeights = default!;
@@ -30,7 +29,7 @@ public sealed partial class StationJobsSystem
     private void InitializeRoundStart()
     {
         _jobsByWeight = new Dictionary<int, HashSet<string>>();
-        foreach (var job in _prototypeManager.EnumeratePrototypes<JobPrototype>())
+        foreach (var job in ProtoMan.EnumeratePrototypes<JobPrototype>())
         {
             if (!_jobsByWeight.ContainsKey(job.Weight))
                 _jobsByWeight.Add(job.Weight, new HashSet<string>());
@@ -364,12 +363,20 @@ public sealed partial class StationJobsSystem
 
             foreach (var jobId in profileJobs)
             {
-                var priority = profile.JobPriorities[jobId];
+                // Moff Start - Job priority is a property of the player, not of the character.
+                // Also note that profileJobs may now contain jobs which came from the player's
+                // *other* active characters (see MoffJobCandidateSystem), so indexing this
+                // profile's own priorities would throw.
+                var priority = _moffCharacterSelection.GetEffectivePriority(player, jobId, profile);
+
+                if (priority == JobPriority.Never)
+                    continue;
+                // Moff end
 
                 if (!(priority == selectedPriority || selectedPriority is null))
                     continue;
 
-                if (!_prototypeManager.Resolve(jobId, out var job))
+                if (!ProtoMan.Resolve(jobId, out var job))
                     continue;
 
                 if (whitelist != null && !whitelist.Contains(jobId))

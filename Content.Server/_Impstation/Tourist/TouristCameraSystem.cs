@@ -4,6 +4,7 @@ using Content.Shared._Impstation.Tourist;
 using Content.Shared._Impstation.Tourist.Components;
 using Content.Shared.Examine;
 using Content.Shared.Eye.Blinding.Components;
+using Content.Shared.Flash;
 using Content.Shared.Flash.Components;
 using Content.Shared.Hands.Components;
 using Content.Shared.IdentityManagement;
@@ -34,7 +35,7 @@ namespace Content.Server._Impstation.Tourist
         [Dependency] private InventorySystem _inventory = default!;
         [Dependency] private PopupSystem _popup = default!;
         [Dependency] private IRobustRandom _random = default!;
-        [Dependency] private StatusEffectsSystem _statusEffectsSystem = default!;
+        [Dependency] private Shared.StatusEffectNew.StatusEffectsSystem _statusEffectsSystem = default!;
         [Dependency] private SharedMindSystem _mind = default!;
         [Dependency] private SharedContainerSystem _container = default!;
         [Dependency] private MovementModStatusSystem _movementMod = default!;
@@ -92,7 +93,7 @@ namespace Content.Server._Impstation.Tourist
                 return;
 
             // don't paralyze, slowdown or convert to rev if the target is immune to flashes
-            if (!_statusEffectsSystem.TryAddStatusEffect<FlashedComponent>(target, FlashedKey, flashDuration, true))
+            if (!_statusEffectsSystem.TryAddStatusEffectDuration(target, SharedFlashSystem.FlashedKey, flashDuration))
                 return;
 
             if (stunDuration != null)

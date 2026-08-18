@@ -1,6 +1,6 @@
 using Content.Shared._ES.Physics.PreventCollide;
 using Content.Shared._ES.Sparks.Components;
-// using Content.Shared._ES.TileFires; // DeltaV - we don't have tilefires
+using Content.Shared._Moffstation.Sparks.Components;
 using Content.Shared.Power.Components;
 using Content.Shared.Power.EntitySystems;
 using Content.Shared.Throwing;
@@ -24,6 +24,8 @@ public sealed partial class ESSparksSystem : EntitySystem
     [Dependency] private ThrowingSystem _throwing = default!;
     [Dependency] private SharedTransformSystem _transform = default!;
 
+    [Dependency] private EntityQuery<TransformComponent> _transformQuery; // Moff
+
     public static readonly EntProtoId DefaultSparks = "ESEffectSparks";
 
     /// <summary>
@@ -37,9 +39,9 @@ public sealed partial class ESSparksSystem : EntitySystem
         Entity<T> ent,
         EntityUid? user = null,
         bool cooldown = true)
-        where T : ESBaseSparkConfigurationComponent
+        where T : ESBaseSparkConfigurationComponent, IComponent // Moffstation - Make ESBaseSparkConfigurationComponent an interface
     {
-        if (!_random.Prob(ent.Comp.Prob))
+        if (!_random.Prob(ent.Comp.SparkConfig.Prob)) // Moffstation - Make ESBaseSparkConfigurationComponent an interface
             return;
 
         SharedApcPowerReceiverComponent? powerReceiver = null;
@@ -48,10 +50,10 @@ public sealed partial class ESSparksSystem : EntitySystem
             return;
 
         DoSparks(ent,
-            number: ent.Comp.Count,
-            ent.Comp.SparkPrototype,
+            number: ent.Comp.SparkConfig.Count, // Moffstation - Make ESBaseSparkConfigurationComponent an interface
+            ent.Comp.SparkConfig.SparkPrototype, // Moffstation - Make ESBaseSparkConfigurationComponent an interface
             user: user,
-            tileFireChance: ent.Comp.TileFireChance,
+            tileFireChance: ent.Comp.SparkConfig.TileFireChance, // Moffstation - Make ESBaseSparkConfigurationComponent an interface
             cooldown: cooldown);
     }
 
@@ -112,6 +114,15 @@ public sealed partial class ESSparksSystem : EntitySystem
         {
             var sparks = Spawn(sparksPrototype, _transform.ToMapCoordinates(coordinates), rotation: angle);
             angle += angleDelta;
+
+            // Moff start - Guard against intermittent test failure where throwing `throw`s :^) because of a lack of
+            // transform component on the sparks. I have no idea how a newly spawned entity can sometimes have a transform and sometimes not.
+            if (!_transformQuery.HasComp(sparks))
+            {
+                Log.Warning($"Skipping throwing sparks for {ToPrettyString(sparks)}, as it lacks a {nameof(TransformComponent)}");
+            }
+            // Moff end
+
             _throwing.TryThrow(sparks, angle.ToVec(), 2f, animated: false);
             _preventCollide.PreventCollide(sparks, ignored);
         }

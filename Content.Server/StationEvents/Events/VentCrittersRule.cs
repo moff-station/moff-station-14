@@ -1,4 +1,3 @@
-/* Moffstation - Completely rewritten, moved to our namespace - accept any upstream changes
 using Content.Server.StationEvents.Components;
 using Content.Shared.GameTicking.Components;
 using Content.Shared.Station.Components;
@@ -14,8 +13,6 @@ public sealed class VentCrittersRule : StationEventSystem<VentCrittersRuleCompon
      * DO NOT COPY PASTE THIS TO MAKE YOUR MOB EVENT.
      * USE THE PROTOTYPE.
      */
-
-/*  Moffstation - Had to put in a second one because the line above cancels the first one
 
     protected override void Started(EntityUid uid, VentCrittersRuleComponent component, GameRuleComponent gameRule, GameRuleStartedEvent args)
     {
@@ -62,4 +59,3 @@ public sealed class VentCrittersRule : StationEventSystem<VentCrittersRuleCompon
         }
     }
 }
-*/

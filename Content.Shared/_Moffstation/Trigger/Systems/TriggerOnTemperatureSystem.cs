@@ -9,15 +9,11 @@ namespace Content.Shared._Moffstation.Trigger.Systems;
 /// </summary>
 public sealed partial class TriggerOnTemperatureSystem : TriggerOnXSystem
 {
-    public override void Initialize()
-    {
-        base.Initialize();
-
-        SubscribeLocalEvent<TriggerOnTemperatureAboveComponent, OnTemperatureChangeEvent>(TempAboveOnTempChange);
-        SubscribeLocalEvent<TriggerOnTemperatureBelowComponent, OnTemperatureChangeEvent>(TempBelowOnTempChange);
-    }
-
-    private void TempAboveOnTempChange(Entity<TriggerOnTemperatureAboveComponent> entity, ref OnTemperatureChangeEvent args)
+    [SubscribeLocalEvent]
+    private void TempAboveOnTempChange(
+        Entity<TriggerOnTemperatureAboveComponent> entity,
+        ref TemperatureChangedEvent args
+    )
     {
         if (args.CurrentTemperature > entity.Comp.Temperature &&
             args.LastTemperature <= entity.Comp.Temperature)
@@ -26,7 +22,9 @@ public sealed partial class TriggerOnTemperatureSystem : TriggerOnXSystem
         }
     }
 
-    private void TempBelowOnTempChange(Entity<TriggerOnTemperatureBelowComponent> entity, ref OnTemperatureChangeEvent args)
+    [SubscribeLocalEvent]
+    private void TempBelowOnTempChange(Entity<TriggerOnTemperatureBelowComponent> entity,
+        ref TemperatureChangedEvent args)
     {
         if (args.CurrentTemperature < entity.Comp.Temperature &&
             args.LastTemperature >= entity.Comp.Temperature)

@@ -49,6 +49,7 @@
         - BulletImpassable
 
 # TODO Add material composition + recycling
+# Modelled as a 30cm long, 1cm diameter cylinder of carbon steel
 - type: entity
   parent: BaseArrow
   id: MetalBoltAmmo
@@ -91,6 +92,7 @@
     - type: TriggerOnCollide
       fixtureID: projectile
   - type: AtmosExposed # Causes heating/cooling from atmospheric temperature
+    exposedArea: .009424 # m^2
   - type: Temperature
     currentTemperature: 290
     specificHeat: 502 # Carbon steel on https://www.engineersedge.com/materials/specific_heat_capacity_of_metals_13259.htm
@@ -137,3 +139,22 @@
   - type: Construction
     graph: MetalBoltAmmo
     node: metalBoltAmmo
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape: !type:PhysShapeCircle
+          radius: 0.2
+        density: 0 # Fake density for fake item collision physics.
+        mask:
+        - ItemMask
+        restitution: 0.3
+        friction: 0.2
+      projectile:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.1,-0.3,0.1,-0.1"
+        density: 1.85 # Fudged to get the right mass given the AABB providing our size above.
+        hard: false
+        mask:
+        - Impassable
+        - BulletImpassable

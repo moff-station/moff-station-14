@@ -135,10 +135,16 @@ law-emag-cannot-brainless = {CAPITALIZE($entity)} has no brain inside.
 law-emag-already-emagged = {CAPITALIZE($entity)} is already emagged.
 law-emag-require-mind = {CAPITALIZE($entity)} is not active.
 
-laws-ui-menu-title = Laws
+laws-ui-menu-title = Silicon Laws
 laws-ui-law-header = Law {$id}
-laws-ui-state-law = State law:
+laws-ui-select-all = Select All
+laws-ui-select-all-tooltip = This will select ALL laws, including ones that should probably remain secret.
+laws-ui-select-none = Select None
+laws-ui-state-law = State Selected Laws
 
 laws-notify = You are bound to silicon laws, which you can view via the action menu. You are required to always follow your laws.
 laws-update-notify = Your laws have been updated. You can view the changes via the action menu.
 laws-notify-subverted = The laws of this vessel are modified. Make sure to review them.
+
+laws-window-footer-left = Remember: You must be consistent with your interpretation of your laws!
+laws-window-footer-right = V{$version}

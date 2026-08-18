@@ -44,7 +44,6 @@ namespace Content.IntegrationTests.Tests
             var server = pair.Server;
 
             var entityMan = server.ResolveDependency<IEntityManager>();
-            var mapManager = server.ResolveDependency<IMapManager>();
             var prototypeMan = server.ResolveDependency<IPrototypeManager>();
             var mapSystem = entityMan.System<SharedMapSystem>();
 
@@ -62,7 +61,7 @@ namespace Content.IntegrationTests.Tests
                 foreach (var protoId in protoIds)
                 {
                     mapSystem.CreateMap(out var mapId);
-                    var grid = mapManager.CreateGridEntity(mapId);
+                    var grid = mapSystem.CreateGridEntity(mapId);
                     // TODO: Fix this better in engine.
                     mapSystem.SetTile(grid.Owner, grid.Comp, Vector2i.Zero, new Tile(1));
                     var coord = new EntityCoordinates(grid.Owner, 0, 0);
@@ -160,7 +159,6 @@ namespace Content.IntegrationTests.Tests
 
             var cfg = server.ResolveDependency<IConfigurationManager>();
             var prototypeMan = server.ResolveDependency<IPrototypeManager>();
-            var mapManager = server.ResolveDependency<IMapManager>();
             var sEntMan = server.ResolveDependency<IEntityManager>();
             var mapSys = server.System<SharedMapSystem>();
 
@@ -179,7 +177,7 @@ namespace Content.IntegrationTests.Tests
                 foreach (var protoId in protoIds)
                 {
                     mapSys.CreateMap(out var mapId);
-                    var grid = mapManager.CreateGridEntity(mapId);
+                    var grid = mapSys.CreateGridEntity(mapId);
                     var ent = sEntMan.SpawnEntity(protoId, new EntityCoordinates(grid.Owner, 0.5f, 0.5f));
                     foreach (var (_, component) in sEntMan.GetNetComponents(ent))
                     {
@@ -250,7 +248,22 @@ namespace Content.IntegrationTests.Tests
 
                 // Moffstation - Portals spawn more stuff on trigger, self-explanatory
                 "SpawnEntityTableOnTrigger",
+                "AddGameRuleOnTrigger",
+                "Hellportal",
+                // ES fancy timed despawn
+                "ESTimedDespawn",
+                "ESSparkOnTrigger",
+                "BluespaceLocker", // Spawns bluespace farticles in its code
+                "ElectricityAnomaly", // Creates sparks periodically
             };
+
+            // Moff start
+            var excludedIds = new[]
+            {
+                "MaterialHideSharkminnowTrimmed",
+                "MoffC4InstantExplosion",
+            };
+            // Moff end
 
             Assert.That(server.CfgMan.GetCVar(CVars.NetPVS), Is.False);
 
@@ -259,6 +272,7 @@ namespace Content.IntegrationTests.Tests
                 .Where(p => !p.Abstract)
                 .Where(p => !pair.IsTestPrototype(p))
                 .Where(p => !excluded.Any(p.Components.ContainsKey))
+                .Where(p => !excludedIds.Contains(p.ID)) // Moff
                 .Where(p => p.Categories.All(x => !IgnoredCategories.Contains(x.ID)))
                 .Select(p => p.ID)
                 .ToList();

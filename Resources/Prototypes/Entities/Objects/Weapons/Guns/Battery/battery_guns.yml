@@ -1,6 +1,6 @@
 - type: entity
   id: BaseWeaponBattery
-  parent: BaseItem
+  parent: [ BaseItem, BasePointerCrosshair ] # MACRO add crosshair
   abstract: true
   components:
   - type: Sprite
@@ -15,6 +15,7 @@
   - type: AmmoCounter
   - type: Gun
     fireRate: 2
+    cameraRecoilScalar: 0.5 # DeltaV - most laser guns have lower screenshake
     selectedMode: SemiAuto
     availableModes:
     - SemiAuto
@@ -63,7 +64,7 @@
 
 - type: entity
   id: BaseWeaponPowerCell
-  parent: BaseItem
+  parent: [ BaseItem, BasePointerCrosshair ] # MACRO add crosshair
   abstract: true
   components:
   - type: Sprite
@@ -344,7 +345,7 @@
   - type: Clothing
     sprite: Objects/Weapons/Guns/Battery/pulse_carbine.rsi
   - type: Gun
-    selectedMode: SemiAuto
+    selectedMode: FullAuto
     fireRate: 3
     availableModes:
       - SemiAuto
@@ -438,6 +439,8 @@
   components:
     - type: Item
       size: Ginormous
+      shape:
+      - 0,0,7,3
     - type: MultiHandedItem
     - type: ClothingSpeedModifier
       walkModifier: 0.6
@@ -500,7 +503,7 @@
   description: A self-defense weapon that exhausts organic targets, weakening them until they collapse. This one has been undertuned for cadets making it mostly harmless.
   components:
   - type: Sprite
-    sprite: Objects/Weapons/Guns/Battery/practice_disabler.rsi
+    sprite: _Moffstation/Objects/Weapons/Guns/Battery/practice_disabler.rsi # Moffstation
     layers:
     - state: base
       map: ["enum.GunVisualLayers.Base"]
@@ -510,7 +513,7 @@
   - type: Item
     storedOffset: -1,-5
   - type: Clothing
-    sprite: Objects/Weapons/Guns/Battery/practice_disabler.rsi
+    sprite: _Moffstation/Objects/Weapons/Guns/Battery/practice_disabler.rsi # Moffstation
     quickEquip: false
     slots:
     - Belt
@@ -522,6 +525,7 @@
   - type: StaticPrice
     price: 100
   - type: Gun
+    cameraRecoilScalar: 0.25 # DeltaV
     fireRate: 2
     projectileSpeed: 35 # any higher and this causes issues in lag
     soundGunshot:
@@ -542,7 +546,7 @@
   description: A self-defense weapon that exhausts organic targets, weakening them until they collapse.
   components:
   - type: Sprite
-    sprite: Objects/Weapons/Guns/Battery/disabler.rsi
+    sprite: _Moffstation/Objects/Weapons/Guns/Battery/disabler.rsi # Moffstation
     layers:
       - state: base
         map: ["enum.GunVisualLayers.Base"]
@@ -550,7 +554,7 @@
         map: ["enum.GunVisualLayers.MagUnshaded"]
         shader: unshaded
   - type: Clothing
-    sprite: Objects/Weapons/Guns/Battery/disabler.rsi
+    sprite: _Moffstation/Objects/Weapons/Guns/Battery/disabler.rsi # Moffstation
     quickEquip: false
     slots:
       - suitStorage
@@ -631,6 +635,7 @@
     - Belt
   - type: Gun
     fireRate: 0.5
+    cameraRecoilScalar: 0.25 # DeltaV
     soundGunshot:
       path: /Audio/Weapons/Guns/Gunshots/taser.ogg
     projectileSpeed: 25
@@ -1001,3 +1006,34 @@
     fireRate: 2
     minAngle: 1
     maxAngle: 2
+
+- type: entity
+  parent: [WeaponAdvancedLaser, BaseXenoborgContraband]
+  id: WeaponBurstFireLaserXenoborg
+  name: xenoborg burst fire laser
+  description: An alien weapon, channelling a burst-fire laser through a prism, causing targets to burst into fire.
+  components:
+  - type: Sprite
+    sprite: Objects/Weapons/Guns/Battery/xenoborg_burstfire.rsi
+    layers:
+    - state: base
+      map: [ "enum.GunVisualLayers.Base" ]
+    - state: mag-unshaded-4
+      map: [ "enum.GunVisualLayers.MagUnshaded" ]
+      shader: unshaded
+  - type: BatterySelfRecharger
+    autoRechargeRate: 60
+  - type: Gun
+    soundGunshot:
+      path: /Audio/Weapons/Guns/Gunshots/xenofirebeam.ogg
+    selectedMode: Burst
+    availableModes:
+    - Burst
+    minAngle: 2
+    maxAngle: 30
+    angleIncrease: 3
+    angleDecay: 15
+    cameraRecoilScalar: .25
+  - type: BatteryAmmoProvider
+    proto: XenoborgFireLaser
+    fireCost: 100

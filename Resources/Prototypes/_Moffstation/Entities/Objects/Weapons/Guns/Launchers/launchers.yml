@@ -48,11 +48,12 @@
   - type: Item
     size: Small
     shape:
-      - 0,1,0,1
-      - 0,0,1,0
+    - 0,1,0,1
+    - 0,0,1,0
     storedOffset: 0,-6
   - type: BasicEntityAmmoProvider
-    proto: ChainSickle
+    ammoTable:
+      id: ChainSickle
     capacity: 1
   - type: Sprite
     sprite: _Moffstation/Objects/Weapons/Guns/Launchers/chainsickle.rsi
@@ -157,19 +158,23 @@
         volume: 5
   - type: ToggleCellDraw # While toggled on, draws power
   - type: PowerCellDraw # power draw definition
-    drawRate: 50
+    drawRate: 235 # Depletes a microreactor in ~3 seconds.
   - type: TriggerOnToggleOn
     keyOut: toggle-on
   - type: TriggerOnToggleOff
     keyOut: toggle-off
   - type: ESSparkOnTrigger
+    keysIn:
+    - toggle-on
   - type: AddComponentsOnTrigger
     keysIn:
     - toggle-on
     components:
     - type: ContainedEntityHeater
       container: projectiles
-      power: 50
+      # ~22kJ to get the desired 600K delta temperature effect on a `MetalBolt`, divided across three seconds of heating.
+      # Space magic means that 235J out of the battery turns into 7430J into the bolt. Wow!
+      power: 7430
       ignoreHeatResistance: true # Assume electroresistive heating doesn't give a shit about insulation
   - type: RemoveComponentsOnTrigger
     keysIn:

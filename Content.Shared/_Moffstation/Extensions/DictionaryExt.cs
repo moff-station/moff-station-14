@@ -5,7 +5,7 @@ public static class DictionaryExt
     extension<TK, TV>(SortedDictionary<TK, TV> dict) where TK : notnull
     {
         /// Returns the entries in this dictionary whose keys are immediately below and above
-        /// <paramref name="comparisonValue"/> as deteremined by the dictionary's comparison function.
+        /// <paramref name="comparisonValue"/> as determined by the dictionary's comparison function.
         /// If the value is lower than all values in the dictionary, the returned value's <c>below</c> value is null,
         /// and vice-versa for <c>above</c>.
         /// If the dictionary is empty, <c>null</c> is returned for both.

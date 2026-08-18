@@ -1,3 +1,4 @@
+using Content.Shared._Moffstation.Extensions;
 using Content.Shared.Database;
 using Content.Shared.Overlays;
 using Content.Shared.Roles.Components;
@@ -145,6 +146,11 @@ public abstract partial class SharedSiliconLawSystem
         return ent.Comp.Lawset;
     }
 
+    public int? GetVersion(Entity<SiliconLawBoundComponent?> ent)
+    {
+        return Resolve(ent, ref ent.Comp) ? ent.Comp.Version : null;
+    }
+
     /// <summary>
     /// Extract all the laws from a lawset's prototype ids.
     /// </summary>
@@ -182,6 +188,11 @@ public abstract partial class SharedSiliconLawSystem
         cue ??= ent.Comp.LawUploadSound;
 
         ent.Comp.Lawset.Laws = newLaws;
+        // Moff start - implement lawset versioning on law providers
+        ent.Comp.Version += 1;
+        Dirty(ent);
+        // Moff end
+
         _adminLogger.Add(LogType.Action, LogImpact.Medium, $"The provider laws {ent} have been set to {ent.Comp.Lawset.LoggingString() ?? "Empty"}.");
         SyncToLawBound(ent, silent ? null : cue);
     }
@@ -206,6 +217,7 @@ public abstract partial class SharedSiliconLawSystem
         }
 
         ent.Comp.Lawset = provider.Lawset.Clone();
+        ent.Comp.Version = provider.Version; // Moff - implement lawset versioning on law providers
 
         if (TryComp<ShowCrewIconsComponent>(ent, out var crewIcons))
         {
@@ -308,15 +320,17 @@ public abstract partial class SharedSiliconLawSystem
 
         foreach (var lawboundEnt in iteratedEntities)
         {
-            if (!TryComp<SiliconLawBoundComponent>(lawboundEnt, out var lawboundComp))
+            // Moff start - Lawbound query
+            if (_siliconLawBoundQuery.ResolveOrNull(lawboundEnt, logMissing: false) is not {} lawbound)
             {
-                UnlinkFromProvider((lawboundEnt, lawboundComp));
+                UnlinkFromProvider(lawboundEnt);
                 continue;
             }
 
-            lawboundComp.LawsetProvider = ent.Owner;
-            UpdateLaws((lawboundEnt, lawboundComp));
-            NotifyLawsChanged(lawboundEnt, cue);
+            lawbound.Comp.LawsetProvider = ent.Owner;
+            UpdateLaws(lawbound.Owner);
+            NotifyLawsChanged(lawbound, cue);
+            // Moff end
         }
 
         Dirty(ent);
@@ -327,7 +341,7 @@ public abstract partial class SharedSiliconLawSystem
     /// </summary>
     /// <param name="uid">The entity to notify.</param>
     /// <param name="cue">The sound to play. Will play no sound if null.</param>
-    public virtual void NotifyLawsChanged(EntityUid uid, SoundSpecifier? cue = null)
+    public virtual void NotifyLawsChanged(Entity<SiliconLawBoundComponent> ent, SoundSpecifier? cue = null) // Moff - Borg laws on brain, not chassis
     {
 
     }

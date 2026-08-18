@@ -13,6 +13,7 @@
     - id: ScurretMigration
     - id: ReptileMigration
     - id: MammalMigration
+    - id: MoproachMigration
     # Moffstation - End
 
 - type: entityTable
@@ -26,10 +27,15 @@
     - id: SnakeSpawnHorde
     - id: SpiderClownSpawnHorde
     - id: SpiderSpawnHorde
-    - id: CarpMigration
-    - id: HostileGorillaMigration
-    - id: SyndyCatMigration
-    - id: FleshMigration
+    - id: CarpSpawnHorde
+    - id: GorillaSpawnHorde
+    - id: SyndyCatSpawnHorde
+    - id: FleshSpawnHorde
+    - id: ArgocyteSpawnHorde
+    - id: HivebotSpawnHorde
+    - id: BatSpawnHorde
+    - id: SpaceCreatureSpawnHorde
+    - id: XenoSpawnHorde
     # Moffstation - End
 
 # events
@@ -66,6 +72,7 @@
     earliestStart: 15
     weight: 6
     duration: 30 # Moffstation - used as delay
+    occursDuringRoundEnd: false
     minimumPlayers: 30 # Hopefully this is enough for the Rat King's potential Army (it was not, raised from 15 -> 30)
   - type: VentCrittersRule # We don't use Horde here to make RK spawns less predictable.
     entries:

@@ -30,7 +30,18 @@ public abstract partial class SharedSiliconLawSystem : EntitySystem
     [Dependency] private SharedUserInterfaceSystem _userInterface = default!;
     [Dependency] private IPrototypeManager _prototype = default!;
     [Dependency] private ISharedAdminLogManager _adminLogger = default!;
+
+    [Dependency] private EntityQuery<SiliconLawBoundComponent> _siliconLawBoundQuery;
     // Moffstation - End
+
+    /// <summary>
+    /// Minimum length of generated ion storm law identifiers.
+    /// </summary>
+    public const int IonStormIdentifierMinLength = 3;
+    /// <summary>
+    /// Maximum length of generated ion storm law identifiers.
+    /// </summary>
+    public const int IonStormIdentifierMaxLength = 10;
 
     /// <inheritdoc/>
     public override void Initialize()

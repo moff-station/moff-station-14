@@ -22,6 +22,18 @@ ghost-role-information-ntcf-engineer-description = Maintain a Nanotrasen Corpora
 ghost-role-information-jokejoke-name = Joke Joke
 ghost-role-information-jokejoke-description = A cut-throat kobold pirate serving drinks and maintaining the cove.
 
+# Pizza delivery scurret
+ghost-role-information-pizza-delivery-scurret-name = Arnold's Pizza Delivery Scurret
+ghost-role-information-pizza-delivery-scurret-description = Delivery guaranteed within 30 minutes or less!
+
+# Syndicate Mothroach
+ghost-role-information-syndicate-mothroach-name = Syndicate Mothroach
+ghost-role-information-syndicate-mothroach-description = A mothroach in its own little blood red suit. How adorable!
+
+# SyndicatReject
+ghost-role-information-SyndiCat-Reject-name = SyndiCat Reject
+ghost-role-information-SyndiCat-Reject-description = You were supposed to be the faithful trained pet of nuclear operatives, but the procedure to implant you with a bomb failed. Your Syndicate trainers dumped you at an animal shelter, red suit and all.
+
 # Vent critters
 ghost-role-information-rod-name-moffstation = Sentient Immovable Rod
 ghost-role-information-rod-description-moffstation = An unstoppable rod currently tearing through the station.
@@ -37,11 +49,3 @@ ghost-role-information-wild-human-description = You are a wild humanoid, illiter
 # Wizards
 ghost-role-information-wizard-duelist-name = Wizard Duelist
 ghost-role-information-wizard-duelist-desc = YER A WIZARD! Prove you're the best the space wizard federation has to offer!
-
-# Syndicate Mothroach
-ghost-role-information-syndicate-mothroach-name = Syndicate Mothroach
-ghost-role-information-syndicate-mothroach-description = A mothroach in its own little blood red suit. How adorable!
-
-# SyndicatReject
-ghost-role-information-SyndiCat-Reject-name = SyndiCat Reject
-ghost-role-information-SyndiCat-Reject-description = You were supposed to be the faithful trained pet of nuclear operatives, but the procedure to implant you with a bomb failed. Your Syndicate trainers dumped you at an animal shelter, red suit and all.

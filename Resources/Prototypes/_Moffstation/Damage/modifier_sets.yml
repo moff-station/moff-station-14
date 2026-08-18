@@ -1,21 +1,4 @@
 ﻿- type: damageModifierSet
-  id: Vampire
-  coefficients:
-    Blunt: 0.3
-    Slash: 0.3
-    Piercing: 0.5
-    Heat: 1.0
-    Shock: 0.1
-    Cold: 0.1
-    Caustic: 0.5
-    Poison: 0.0
-    Radiation: 0.2
-    Asphyxiation: 0.0
-    Bloodloss: 1.0 # Vampires take this damage when they are out of blood
-    Cellular: 0.0
-    Holy: 1.0
-
-- type: damageModifierSet
   id: Resomi
   coefficients:
     Blunt: 1.15

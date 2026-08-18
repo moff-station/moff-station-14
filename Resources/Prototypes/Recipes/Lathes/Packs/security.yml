@@ -3,13 +3,15 @@
 - type: latheRecipePack
   id: SecurityEquipmentStatic
   recipes:
-#  - ClothingEyesHudSecurity # Moffstation - Replaced by modular HUDs
+  # - ClothingEyesHudSecurity # Moffstation - Replaced by modular HUDs
+  - MoffClothingBackpackDuffelPrisoner # Moffstation
   - ForensicPad
   - Handcuffs
   - TargetClown
   - TargetHuman
   - TargetSyndicate
   - Zipties
+  - SecurityBola
 
 # Practice ammo/mags and practice weapons
 - type: latheRecipePack

@@ -141,10 +141,10 @@
     speechVerb: Robotic
     speechSounds: Borg
   - type: Vocal
-    sounds:
-      Unsexed: UnisexSilicon
+    emoteSounds: UnisexSilicon
     wilhelmProbability: 0
   - type: DamagedSiliconAccent
+    damageAtMaxCorruption: 300
   - type: UnblockableSpeech
   - type: FootstepModifier
     footstepSoundCollection:
@@ -219,7 +219,7 @@
       isLooped: true
   - type: PointLight
     enabled: false
-    mask: /Textures/Effects/LightMasks/cone.png
+    lightMask: ConeSingle
     autoRot: true
     radius: 4
     netsync: false
@@ -326,6 +326,17 @@
   - type: InteractionPopup
     interactSuccessSound:
       path: /Audio/Ambience/Objects/periodic_beep.ogg
+  # Moffstation - Begin - Borg sensors
+  - type: BorgSensor
+    sensorType: NTBorgSensor
+  - type: DeviceNetwork
+    deviceNetId: Wireless
+    transmitFrequencyId: SuitSensor
+    savableAddress: false
+  - type: WirelessNetworkConnection
+    range: 1200
+  - type: StationLimitedNetwork
+  # Moffstation - End
 
 - type: entity
   id: BaseBorgChassisSyndicate
@@ -359,8 +370,7 @@
     allowedEmotes:
     - Laugh
   - type: Vocal
-    sounds:
-      Unsexed: UnisexSiliconSyndicate
+    emoteSounds: UnisexSiliconSyndicate
   - type: PointLight
     color: "#dd200b"
   - type: BypassLock
@@ -422,8 +432,7 @@
     allowedEmotes:
     - Laugh
   - type: Vocal
-    sounds:
-      Unsexed: UnisexSiliconSyndicate
+    emoteSounds: UnisexSiliconSyndicate
   - type: PointLight
     color: "#dd200b"
   - type: BypassLock
@@ -483,8 +492,7 @@
     allowedEmotes:
     - Laugh
   - type: Vocal
-    sounds:
-      Unsexed: UnisexSiliconXenoborg
+    emoteSounds: UnisexSiliconXenoborg
     wilhelmProbability: 0
   - type: DamagedSiliconAccent
   - type: UnblockableSpeech
@@ -503,6 +511,32 @@
   - type: NpcFactionMember
     factions:
     - Xenoborg
+  - type: PointLight
+    color: "#3010ff"
+    energy: 7
+  - type: GuideHelp
+    guides:
+    - Cyborgs
+    - Robotics
+    - Xenoborgs
+  - type: Access
+    tags:
+    - Xenoborg
+  - type: AccessReader
+    access: [["Xenoborg"]]
+  - type: ShowJobIcons # not sure if it is needed
+  - type: ShowCrewIcons
+  - type: InteractionPopup
+    interactSuccessSound:
+      path: /Audio/Ambience/Objects/periodic_beep.ogg
+  - type: Xenoborg
+  - type: BypassLock
+    bypassDelay: 15 # We don't want people to easily be able to remove xenoborg brains.
+
+- type: entity
+  abstract: true
+  id: BaseXenoborgDestructible
+  components:
   - type: Destructible
     thresholds:
     - trigger:
@@ -533,27 +567,6 @@
         - cell_slot
       - !type:DoActsBehavior
         acts: [ "Destruction" ]
-  - type: PointLight
-    color: "#3010ff"
-    energy: 7
-  - type: GuideHelp
-    guides:
-    - Cyborgs
-    - Robotics
-    - Xenoborgs
-  - type: Access
-    tags:
-    - Xenoborg
-  - type: AccessReader
-    access: [["Xenoborg"]]
-  - type: ShowJobIcons # not sure if it is needed
-  - type: ShowCrewIcons
-  - type: InteractionPopup
-    interactSuccessSound:
-      path: /Audio/Ambience/Objects/periodic_beep.ogg
-  - type: Xenoborg
-  - type: BypassLock
-    bypassDelay: 15 # We don't want people to easily be able to remove xenoborg brains.
   # Moffstation - Start - Cyborg programming ( to not circumvent the bypassDelay of removing brain)
   - type: LawProgrammerTarget
     durationMultiplier: 10

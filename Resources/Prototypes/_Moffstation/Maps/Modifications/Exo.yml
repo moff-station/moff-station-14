@@ -1,0 +1,48 @@
+- type: mapModification
+  id: ExoModificationsLaundry
+  applyOn:
+  - Exo
+  removals:
+  - !type:EntityPrototypeSelector
+    prototype: Mirror
+    bounds: "12,-51,18,-48"
+  - !type:EntityPrototypeSelector
+    prototype: CurtainSpawner
+    bounds: "12,-51,18,-48"
+  - !type:EntityPrototypeSelector
+    prototype: WindowFrostedDirectional
+    bounds: "12,-51,18,-48"
+  - !type:EntityPrototypeSelector
+    prototype: Stool
+    bounds: "12,-51,18,-48"
+  - !type:EntityPrototypeSelector
+    prototype: ClothingShoesTourist
+    bounds: "12,-51,18,-48"
+  - !type:EntityPrototypeSelector
+    prototype: ClothingOuterCoatJensen
+    bounds: "12,-51,18,-48"
+  - !type:EntityPrototypeSelector
+    prototype: ClothingOuterDameDane
+    bounds: "12,-51,18,-48"
+  additions:
+    # Add the actual Laundromat
+  - prototype: WashingMachine
+    position: 13.5, -48.5
+  - prototype: WashingMachine
+    position: 14.5, -48.5
+  - prototype: SignLaundromat
+    position: 13.5, -51.5
+  - prototype: DefaultStationBeaconLaundromat
+    position: 16.5, -49.5
+    # Additional Visual Improvements
+  - prototype: ChairFolding
+    position: 13.5, -50.5
+    rotation: 90
+  - prototype: Rack
+    position: 16.5, -48.5
+  - prototype: ClothingShoesTourist
+    position: 16.25, -48.75
+  - prototype: ClothingOuterCoatJensen
+    position: 16.5, -48.5
+  - prototype: ClothingOuterDameDane
+    position: 16.75, -48.25

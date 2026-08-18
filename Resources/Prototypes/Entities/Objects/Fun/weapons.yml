@@ -155,7 +155,11 @@
     fireRate: 0.5
     soundEmpty: /Audio/Misc/boing.ogg
   - type: BasicEntityAmmoProvider
-    proto: StickyHandPalm
+    # Moff Start - Entity table integration
+    # proto: StickyHandPalm
+    ammoTable:
+      id: StickyHandPalm
+    # Moff End
     capacity: 1
   - type: Sprite
     sprite: Objects/Weapons/Guns/Launchers/sticky_hand.rsi
@@ -176,7 +180,7 @@
   - type: MeleeWeapon
     damage:
       types:
-        Blunt: 0.3 # Not even close to real damage, but creates the red flash to give the illusion of damage
+        Blunt: 0.0 # Remove damage to avoid pacifism metagaming
 
 - type: entity
   parent: [ BaseItem, BaseToySword ]

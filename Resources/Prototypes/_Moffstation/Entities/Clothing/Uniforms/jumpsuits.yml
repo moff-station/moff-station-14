@@ -131,8 +131,8 @@
     sprite: Clothing/Uniforms/Jumpsuit/pirate.rsi
   - type: Clothing
     sprite: Clothing/Uniforms/Jumpsuit/pirate.rsi
-  - type: AddAccentClothing
-    accent: PirateAccent
+  - type: PirateAccent
+    relayAccent: true
 
 # HoP
 - type: entity
@@ -436,7 +436,7 @@
 
 #Engineering
 - type: entity
-  parent: ClothingUniformBase
+  parent: [ClothingUniformBase, ClothingUniformFoldableBase]
   id: ClothingUniformJumpsuitSeniorAtmos
   name: senior atmospherics jumpsuit
   description: A sign of skill and prestige within the atmospherics department.

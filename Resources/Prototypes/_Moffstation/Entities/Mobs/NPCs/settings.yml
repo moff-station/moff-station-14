@@ -1,0 +1,105 @@
+- type: randomHumanoidSettings
+  parent: EventHumanoid
+  id: MoffRandomHumanoidCorpse
+  components:
+  - type: RandomHumanoidAppearance
+    randomizeName: true
+  - type: RandomDamageOnSpawn
+    min: 201
+    max: 400
+  - type: Inventory
+    templateId: corpse
+
+- type: randomHumanoidSettings
+  parent: MoffRandomHumanoidCorpse
+  id: MoffRandomHumanoidCorpseService
+  components:
+  - type: Loadout
+    prototypes:
+      - CorpseGearHOP
+      - CorpseGearClown
+      - CorpseGearMime
+      - CorpseGearJanitor
+      - CorpseGearServiceWorker
+      - CorpseGearMusician
+      - CorpseGearBotanist
+      - CorpseGearChef
+      - CorpseGearChaplain
+      - CorpseGearLawyer
+      - CorpseGearLibrarian
+      - CorpseGearReporter
+      - CorpseGearZookeeper
+      - CorpseGearBoxer
+      - CorpseGearBartender
+
+- type: randomHumanoidSettings
+  parent: MoffRandomHumanoidCorpse
+  id: MoffRandomHumanoidCorpseEngineer
+  components:
+  - type: Loadout
+    prototypes:
+      - CorpseGearAtmosTech
+      - CorpseGearCE
+      - CorpseGearEngineer
+      - CorpseGearTechAssistant
+
+- type: randomHumanoidSettings
+  parent: MoffRandomHumanoidCorpse
+  id: MoffRandomHumanoidCorpseCargo
+  components:
+  - type: Loadout
+    prototypes:
+      - CorpseGearCargoTech
+      - CorpseGearSalvage
+
+- type: randomHumanoidSettings
+  parent: MoffRandomHumanoidCorpse
+  id: MoffRandomHumanoidCorpseMedic
+  components:
+  - type: Loadout
+    prototypes:
+      - CorpseGearMedIntern
+      - CorpseGearPsychologist
+      - CorpseGearChemist
+      - CorpseGearMedDoctor
+      - CorpseGearDentist
+      - CorpseGearParamedic
+      - CorpseGearScrubsPurple
+      - CorpseGearScrubsGreen
+      - CorpseGearScrubsBlue
+
+- type: randomHumanoidSettings
+  parent: MoffRandomHumanoidCorpse
+  id: MoffRandomHumanoidCorpseScience
+  components:
+  - type: Loadout
+    prototypes:
+      - CorpseGearResearchAssistant
+      - CorpseGearScientist
+      - CorpseGearGeneticist
+      - CorpseGearVirologist
+
+- type: randomHumanoidSettings
+  parent: MoffRandomHumanoidCorpse
+  id: MoffRandomHumanoidCorpseSecurity
+  components:
+  - type: Loadout
+    prototypes:
+      - CorpseGearSecCadet
+      - CorpseGearSecOfficer
+      - CorpseGearDetective
+      - CorpseGearWarden
+
+- type: randomHumanoidSettings
+  parent: MoffRandomHumanoidCorpse
+  id: MoffRandomHumanoidCorpseCommand
+  components:
+  - type: Loadout
+    prototypes:
+      - CorpseGearHOP
+      - CorpseGearCaptain
+      - CorpseGearHOS
+      - CorpseGearRD
+      - CorpseGearCMO
+      - CorpseGearCE
+      - CorpseGearQM

@@ -1,6 +1,6 @@
 - type: entity
   # Moffstation - Begin - Split the existing base winter coat into an abstract base with all of the coat stats; the basic winter coat gets attachable suit storage now, which we don't want to inherit in some cases
-  parent: ClothingOuterStorageEdible
+  parent: [ TemperatureProtection, ClothingOuterJacketBase ]
   id: ClothingOuterWinterCoatBase
 #  id: ClothingOuterWinterCoat # Moffstation - The upstream basic winter coat `ClothingOuterWinterCoat` was moved to our namespace
   abstract: true
@@ -10,11 +10,6 @@
     sprite: Clothing/OuterClothing/WinterCoats/coat.rsi
   - type: Clothing
     sprite: Clothing/OuterClothing/WinterCoats/coat.rsi
-  - type: TemperatureProtection
-    heatingCoefficient: 1.1
-    coolingCoefficient: 0.1
-  - type: Item
-    size: Normal
   - type: Armor
     modifiers:
       coefficients:
@@ -241,7 +236,7 @@
 
 - type: entity
   parent: ClothingOuterWinterCoatToggleable
-  id: ClothingOuterWinterChem
+  id: ClothingOuterWinterChemUpstream # Moffstation
   name: chemistry winter coat
   components:
   - type: Sprite
@@ -276,7 +271,7 @@
 
 - type: entity
   parent: [ClothingOuterWinterCoatToggleable, BaseCommandContraband]
-  id: ClothingOuterWinterCMO
+  id: ClothingOuterWinterCMOUpstream # Moffstation
   name: chief medical officer's winter coat
   components:
   - type: Sprite
@@ -393,7 +388,8 @@
 
 - type: entity
   parent: [ClothingOuterWinterCoatToggleable, BaseCommandContraband]
-  id: ClothingOuterWinterHoP
+  id: ClothingOuterWinterHoPUpstream # Moffstation
+  abstract: true # Moffstation
   name: head of personnel's winter coat
   components:
   - type: Sprite
@@ -517,7 +513,7 @@
 
 - type: entity
   parent: ClothingOuterWinterCoatToggleable
-  id: ClothingOuterWinterMed
+  id: ClothingOuterWinterMedUpstream # Moffstation
   name: medical winter coat
   components:
   - type: Sprite

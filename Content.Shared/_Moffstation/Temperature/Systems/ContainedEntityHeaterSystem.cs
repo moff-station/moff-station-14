@@ -12,13 +12,7 @@ public sealed partial class ContainedEntityHeaterSystem : EntitySystem
     [Dependency] private SharedContainerSystem _container = default!;
     [Dependency] private SharedTemperatureSystem _temperature = default!;
 
-    public override void Initialize()
-    {
-        base.Initialize();
-
-        SubscribeLocalEvent<ContainedEntityHeaterComponent, ComponentInit>(OnComponentInit);
-    }
-
+    [SubscribeLocalEvent]
     private void OnComponentInit(Entity<ContainedEntityHeaterComponent> entity, ref ComponentInit args)
     {
         // Prediction means this sometimes if null. Very cool.
@@ -36,7 +30,7 @@ public sealed partial class ContainedEntityHeaterSystem : EntitySystem
                 continue;
 
             var contents = container.ContainedEntities;
-            var powerPer = comp.Power / frameTime / contents.Count;
+            var powerPer = comp.Power * frameTime / contents.Count;
             foreach (var contained in contents)
             {
                 _temperature.ChangeHeat(contained, powerPer, comp.IgnoreHeatResistance);

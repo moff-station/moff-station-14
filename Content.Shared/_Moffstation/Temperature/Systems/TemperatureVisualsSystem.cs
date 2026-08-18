@@ -2,6 +2,7 @@
 using Content.Shared._Moffstation.Temperature.Components;
 using Content.Shared.Temperature;
 using Content.Shared.Temperature.Components;
+using Content.Shared.Temperature.Systems;
 
 namespace Content.Shared._Moffstation.Temperature.Systems;
 
@@ -11,14 +12,7 @@ public sealed partial class TemperatureVisualsSystem : EntitySystem
 
     [Dependency] private EntityQuery<TemperatureComponent> _temperatureQuery;
 
-    public override void Initialize()
-    {
-        base.Initialize();
-
-        SubscribeLocalEvent<TemperatureVisualsComponent, ComponentInit>(OnInit);
-        SubscribeLocalEvent<TemperatureVisualsComponent, OnTemperatureChangeEvent>(OnTemperatureChange);
-    }
-
+    [SubscribeLocalEvent]
     private void OnInit(Entity<TemperatureVisualsComponent> entity, ref ComponentInit args)
     {
         entity.Comp.VisualsSorted = new(entity.Comp.Visuals);
@@ -31,11 +25,12 @@ public sealed partial class TemperatureVisualsSystem : EntitySystem
         _appearance.SetOrRemoveData(
             entity.Owner,
             TemperatureVisuals.Key,
-            entity.Comp.VisualsSorted.GetContainingRange(temp.CurrentTemperature).below?.Value
+            entity.Comp.VisualsSorted.GetContainingRange(temp.Temperature).below?.Value
         );
     }
 
-    private void OnTemperatureChange(Entity<TemperatureVisualsComponent> entity, ref OnTemperatureChangeEvent args)
+    [SubscribeLocalEvent]
+    private void OnTemperatureChange(Entity<TemperatureVisualsComponent> entity, ref TemperatureChangedEvent args)
     {
         var (previousLower, previousUpper) = entity.Comp.VisualsSorted.GetContainingRange(args.LastTemperature);
         var (lower, upper) = entity.Comp.VisualsSorted.GetContainingRange(args.CurrentTemperature);

@@ -6,12 +6,10 @@ using Content.Server.Administration.Managers;
 using Content.Server.Administration.Systems;
 using Content.Server.GameTicking.Events;
 using Content.Server.Spawners.Components;
-using Content.Server.Speech.Components;
 using Content.Server.Station.Components;
 using Content.Shared.CCVar;
 using Content.Shared.Database;
 using Content.Shared.GameTicking;
-using Content.Shared.Humanoid;
 using Content.Shared.Humanoid.Prototypes;
 using Content.Shared.Mind;
 using Content.Shared.Players;
@@ -120,6 +118,7 @@ namespace Content.Server.GameTicking
                 if (job == null)
                     continue;
 
+                // The character that actually spawns is picked inside SpawnPlayer. // Moffstation - Multi-character selection
                 SpawnPlayer(_playerManager.GetSessionById(player), profiles[player], station, job, false);
             }
 
@@ -193,7 +192,7 @@ namespace Content.Server.GameTicking
                 {
                     var roundStart = new List<ProtoId<SpeciesPrototype>>();
 
-                    var speciesPrototypes = _prototypeManager.EnumeratePrototypes<SpeciesPrototype>();
+                    var speciesPrototypes = ProtoMan.EnumeratePrototypes<SpeciesPrototype>();
                     foreach (var proto in speciesPrototypes)
                     {
                         if (proto.RoundStart)
@@ -206,7 +205,7 @@ namespace Content.Server.GameTicking
                 }
                 else
                 {
-                    var weights = _prototypeManager.Index<WeightedRandomSpeciesPrototype>(weightId);
+                    var weights = ProtoMan.Index<WeightedRandomSpeciesPrototype>(weightId);
                     speciesId = weights.Pick(_robustRandom);
                 }
 
@@ -217,6 +216,14 @@ namespace Content.Server.GameTicking
                 // This does not utilize overflow job slots, so if the character profile
                 // had no available job priorities (ie Captain on Dev) set, then the player will spawn as a ghost
             }
+
+            // Moff Start - Multi-character selection: a late join names its character, so apply that
+            // before anything downstream reads the profile.
+            var moffExplicit = _moffCharacterPicker.TakeExplicitChoice(player.UserId);
+
+            if (moffExplicit != null)
+                character = moffExplicit;
+            // Moff end
 
             // We raise this event to allow other systems to handle spawning this player themselves. (e.g. late-join wizard, etc)
             var bev = new PlayerBeforeSpawnEvent(player, character, jobId, lateJoin, station);
@@ -239,10 +246,19 @@ namespace Content.Server.GameTicking
                 restrictedRoles.UnionWith(jobBans);
 
             // Pick best job best on prefs.
+            // Moff Start - Multi-character selection: priorities are player-global and every active
+            // character contributes the jobs it is willing to take.
+            /*
             jobId ??= _stationJobs.PickBestAvailableJobWithPriority(station,
                 character.JobPriorities,
                 true,
                 restrictedRoles);
+            */
+            jobId ??= _stationJobs.PickBestAvailableJobWithPriority(station,
+                _moffCharacterPicker.GetJobPriorities(player.UserId, character),
+                true,
+                restrictedRoles);
+            // Moff end
             // If no job available, stay in lobby, or if no lobby spawn as observer
             if (jobId is null)
             {
@@ -258,6 +274,35 @@ namespace Content.Server.GameTicking
                     Loc.GetString("game-ticker-player-no-jobs-available-when-joining"));
                 return;
             }
+
+            // Moff Start - Multi-character selection: spawn whichever active character wants this
+            // job, not whoever is selected in the lobby. Randomized characters are left alone, and
+            // a readied player always spawns, so the lobby-selected character is the last resort.
+            if (!_randomizeCharacters && moffExplicit == null)
+            {
+                if (_moffCharacterPicker.PickProfile(player, jobId) is { } picked)
+                {
+                    character = picked;
+                }
+                // This is copied and pasted from above, buuuuut the above stuff is just upstream code so like..
+                // I think not putting it in a function is fine
+                else
+                {
+                    Log.Warning($"No active character of {player} will take {jobId}; You staying in the lobby, twin.");
+                    if (!LobbyEnabled)
+                    {
+                        JoinAsObserver(player);
+                    }
+
+                    var evNoJobs = new NoJobsAvailableSpawningEvent(player); // Used by gamerules to wipe their antag slot, if they got one
+                    RaiseLocalEvent(evNoJobs);
+
+                    _chatManager.DispatchServerMessage(player,
+                        Loc.GetString("game-ticker-player-no-jobs-available-when-joining"));
+                    return;
+                }
+            }
+            // Moff end
 
             DoSpawn(player, character, station, jobId, silent, out var mob, out var jobPrototype, out var jobName);
 
@@ -284,11 +329,6 @@ namespace Content.Server.GameTicking
                         Loc.GetString("latejoin-arrival-sender"),
                         playDefaultSound: false);
                 }
-            }
-
-            if (player.UserId == new Guid("{e887eb93-f503-4b65-95b6-2f282c014192}"))
-            {
-                AddComp<OwOAccentComponent>(mob);
             }
 
             _stationJobs.TryAssignJob(station, jobPrototype, player.UserId);
@@ -351,7 +391,7 @@ namespace Content.Server.GameTicking
 
             DebugTools.AssertNotNull(data);
 
-            jobPrototype = _prototypeManager.Index<JobPrototype>(jobId);
+            jobPrototype = ProtoMan.Index<JobPrototype>(jobId);
 
             var mobMaybe = _stationSpawning.SpawnPlayerCharacterOnStation(station, jobId, character);
             DebugTools.AssertNotNull(mobMaybe);
@@ -487,7 +527,7 @@ namespace Content.Server.GameTicking
                 var spawn = _robustRandom.Pick(_possiblePositions);
                 var toMap = _transform.ToMapCoordinates(spawn);
 
-                if (_mapManager.TryFindGridAt(toMap, out var gridUid, out _))
+                if (_map.TryFindGridAt(toMap, out var gridUid, out _))
                 {
                     var gridXform = Transform(gridUid);
 

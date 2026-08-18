@@ -21,7 +21,7 @@
   - type: LoadMapRule
     gridPath: /Maps/_Moffstation/Shuttles/shuttle-sp-scurvydog.yml
   - type: GameRule
-    minPlayers: 25
+    minPlayers: 20 # Midpop gamemode
   - type: AntagSelection
     selectionTime: PrePlayerSpawn
     antags:

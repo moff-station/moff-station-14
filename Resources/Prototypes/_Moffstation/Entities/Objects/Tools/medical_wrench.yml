@@ -5,14 +5,14 @@
   description: 'A common (medical?) tool for assembly and disassembly. Remember: lefty latchy, righty removey.'
   components:
   - type: Sprite
-    sprite: &wrench.rsi "_Moffstation/Objects/Tools/wrench.rsi"
+    sprite: &wrench_rsi "_Moffstation/Objects/Tools/wrench.rsi"
     layers:
     - state: icon
     - state: icon-medical
   - type: Item
-    sprite: *wrench.rsi
+    sprite: *wrench_rsi
     storedSprite:
-      sprite: *wrench.rsi
+      sprite: *wrench_rsi
       state: storage-medical
   - type: MeleeWeapon
     damage:

@@ -1,4 +1,4 @@
-using Content.Server._Moffstation.GameTicking.Rules.Components; // Moffstation - Added Vampires
+using Content.Server._Moffstation.GameTicking.Rules.Components; // Moffstation
 using Content.Server._Harmony.GameTicking.Rules.Components; // Harmony
 using Content.Server.Antag;
 using Content.Server.GameTicking;
@@ -38,10 +38,7 @@ public sealed partial class AdminVerbSystem
     private static readonly EntProtoId DefaultConspiratorRule = "Conspirators"; // Harmony
     private static readonly ProtoId<StartingGearPrototype> PirateGearId = "PirateGear";
 
-    // Moffstation - Start - Custom antags
-    private static readonly EntProtoId<PiratesRuleComponent> DefaultPirateRule = "Pirates";
-    private static readonly EntProtoId DefaultVampireRule = "Vampire";
-    // Moffstation - End
+    private static readonly EntProtoId<PiratesRuleComponent> DefaultPirateRule = "Pirates"; // Moffstation
 
     // All antag verbs have names so invokeverb works.
     private void AddAntagVerbs(GetVerbsEvent<Verb> args)
@@ -233,25 +230,6 @@ public sealed partial class AdminVerbSystem
 
         if (HasComp<HumanoidProfileComponent>(args.Target)) // only humanoids can be cloned
             args.Verbs.Add(paradox);
-
-        // Moffstation - Start - Added Vampire
-        var vampName = Loc.GetString("admin-verb-text-make-vampire");
-        Verb vampire = new()
-        {
-            Text = vampName,
-            Category = VerbCategory.Antag,
-            Icon = new SpriteSpecifier.Rsi(new ResPath("/Textures/_Moffstation/Interface/Misc/job_icons.rsi"), "Vampire"),
-            Act = () =>
-            {
-                _antag.ForceMakeAntag<VampireRuleComponent>(targetPlayer, DefaultVampireRule);
-            },
-            Impact = LogImpact.High,
-            Message = string.Join(": ", vampName, Loc.GetString("admin-verb-make-vampire")),
-        };
-
-        if (HasComp<HumanoidProfileComponent>(args.Target)) // only humanoids can be vampries
-            args.Verbs.Add(vampire);
-        // Moffstation - End
 
         // Harmony start
         var bloodBrotherName = Loc.GetString("admin-verb-text-make-blood-brother");

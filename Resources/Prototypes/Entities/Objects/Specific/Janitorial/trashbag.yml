@@ -45,9 +45,10 @@
     size: Normal
 
 - type: entity
-  name: trash bag
-  id: TrashBagBlue
+  id: TrashBagHolding
   parent: TrashBag
+  name: trash bag of holding
+  description: A trash bag that opens into a localized pocket of bluespace.
   components:
   - type: Sprite
     layers:
@@ -61,17 +62,8 @@
     slots: [belt]
     sprite: Objects/Specific/Janitorial/trashbag.rsi
     equippedState: blue-equipped-BELT
-  - type: Tag
-    tags:
-    - TrashBagBlue
-
-- type: entity
-  name: spell of all-consuming cleanliness
-  id: BagOfSummoningGarbage
-  parent: TrashBagBlue
-  components:
   - type: Storage
-    maxItemSize: Huge
+    maxItemSize: Large
     grid:
     - 0,0,19,9
   # Moffstation - Start
@@ -79,6 +71,10 @@
   - type: AreaPickup
     radius: 5
   # Moffstation - End
+  - type: Tag
+    tags:
+    - TrashBagHolding
+  - type: MagnetPickup # Moff
 
 - type: entity
   parent: TrashBag

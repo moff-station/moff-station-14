@@ -5,7 +5,7 @@
   description: Finally, some decent reception around here...
   components:
   - type: Sprite
-    noRot: true
+    #noRot: true # Moffstation
     drawdepth: SmallObjects
     layers:
     - map: ["computerLayerBody"]
