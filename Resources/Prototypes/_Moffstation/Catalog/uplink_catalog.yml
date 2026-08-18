@@ -197,3 +197,41 @@
     Telecrystal: 1
   categories:
   - UplinkWearables
+
+# Explosives
+- type: listing
+  id: UplinkSyndicateEmpBomb
+  name: uplink-exploding-syndicate-emp-bomb-name
+  description: uplink-exploding-syndicate-emp-bomb-desc
+  productEntity: SyndicateEmpBomb
+  cost:
+    Telecrystal: 8
+  discountCategory: rareDiscounts
+  discountDownTo:
+    Telecrystal: 4
+  categories:
+    - UplinkExplosives
+  restockTime: 600
+  conditions:
+  - !type:StoreWhitelistCondition
+    blacklist:
+      tags:
+      - NukeOpsUplink
+
+- type: listing
+  id: UplinkSyndicateEmpBombNukie
+  name: uplink-exploding-syndicate-emp-bomb-name
+  description: uplink-exploding-syndicate-emp-bomb-desc
+  productEntity: SyndicateEmpBomb
+  cost:
+    Telecrystal: 8
+  discountCategory: rareDiscounts
+  discountDownTo:
+    Telecrystal: 4
+  categories:
+    - UplinkExplosives
+  conditions:
+  - !type:StoreWhitelistCondition
+    whitelist:
+      tags:
+      - NukeOpsUplink
