@@ -31,4 +31,4 @@ uplink-clothing-rocket-skates-desc = An experimental prototype from Lumens Techn
 
 # Implants
 uplink-smoke-implant-name = Smoke Implanter
-uplink-smoke-implant-desc = Recharging implant that releases a large cloud of smoke when activated.
+uplink-smoke-implant-desc = Implant that releases a large cloud of smoke when activated. Comes with 4 charges.

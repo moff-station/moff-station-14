@@ -62,3 +62,6 @@ thief-backpack-category-smuggler-description =
     Don't forget to link your fulton.
     Includes: Fulton beacon, 10 fultons, 1 smoke implanter,
     and an invisible crate to hide valuable loot.
+<#-- 
+  Moffstation - smoke implant replaces smoke grenades
+-->

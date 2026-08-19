@@ -59,7 +59,9 @@
     checkCanInteract: false
     priority: -20
     raiseOnUser: false
-    useDelay: 40 #intent of cooldown is 10 second grace period if spamming. Could be increased to 15 or more if problematic after testing
+    useDelay: 1
+  - type: LimitedCharges
+    maxcharges: 4
   - type: Sprite
     sprite: Objects/Weapons/Grenades/smoke.rsi
     layers:
