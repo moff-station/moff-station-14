@@ -272,7 +272,7 @@ public sealed partial class LobbyCharacterPreviewPanel
 
         foreach (var (slot, profile) in prefs.Characters)
         {
-            if (profile != null && profile.JobPriorities.ContainsKey(job))
+            if (profile?.JobPriorities.ContainsKey(job) == true)
                 result[slot] = profile;
         }
 
