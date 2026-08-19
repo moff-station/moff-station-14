@@ -13,27 +13,23 @@ public sealed partial class TemperatureVisualsSystem : EntitySystem
     [Dependency] private EntityQuery<TemperatureComponent> _temperatureQuery;
 
     [SubscribeLocalEvent]
-    private void OnInit(Entity<TemperatureVisualsComponent> entity, ref ComponentInit args)
+    private void OnMapInit(Entity<TemperatureVisualsComponent> entity, ref MapInitEvent args)
     {
-        entity.Comp.VisualsSorted = new(entity.Comp.Visuals);
-
-        // Initialize the visuals. This'll be wrong on the client until a state update from the server overwrites it.
-        TemperatureComponent? temp = null;
-        if (!_temperatureQuery.Resolve(entity.Owner, ref temp))
+        if (_temperatureQuery.ResolveOrNull(entity) is not { } temp)
             return;
 
         _appearance.SetOrRemoveData(
             entity.Owner,
             TemperatureVisuals.Key,
-            entity.Comp.VisualsSorted.GetContainingRange(temp.Temperature).below?.Value
+            entity.Comp.Visuals.GetContainingRange(temp.Comp.Temperature).below?.Value
         );
     }
 
     [SubscribeLocalEvent]
     private void OnTemperatureChange(Entity<TemperatureVisualsComponent> entity, ref TemperatureChangedEvent args)
     {
-        var (previousLower, previousUpper) = entity.Comp.VisualsSorted.GetContainingRange(args.LastTemperature);
-        var (lower, upper) = entity.Comp.VisualsSorted.GetContainingRange(args.CurrentTemperature);
+        var (previousLower, previousUpper) = entity.Comp.Visuals.GetContainingRange(args.LastTemperature);
+        var (lower, upper) = entity.Comp.Visuals.GetContainingRange(args.CurrentTemperature);
 
         if (previousLower?.Key == lower?.Key &&
             previousUpper?.Key == upper?.Key)

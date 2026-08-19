@@ -7,23 +7,33 @@ using Robust.Shared.Serialization;
 namespace Content.Shared._Moffstation.Temperature.Components;
 
 /// <summary>
-/// Sets <see cref="AppearanceComponent">appearance data</see> keyed by <see cref="TemperatureVisuals.Key"/> based
-/// on this entity's <see cref="TemperatureComponent.CurrentTemperature"/>. The data set is specified in
-/// <see cref="Visuals"/> such that the entry whose key is just lower or equal to the entity's current temperature is
-/// used.
+/// Sets <see cref="AppearanceComponent">appearance data</see> based on <see cref="TemperatureComponent.Temperature"/>.
 /// </summary>
 [RegisterComponent, NetworkedComponent, Access(typeof(TemperatureVisualsSystem))]
-public sealed partial class TemperatureVisualsComponent : Component
+public sealed partial class TemperatureVisualsComponent : Component, ISerializationHooks
 {
-    [DataField(required: true)]
-    public Dictionary<FixedPoint2, string?> Visuals = new();
-
     /// <summary>
-    /// <see cref="Visuals"/>, sorted by key for efficient lookup later.
+    /// The <see cref="AppearanceComponent">appearance data</see> to set <see cref="TemperatureVisuals.Key"/> to based
+    /// on this entity's <see cref="TemperatureComponent.Temperature"/>. The entry whose key is lower than or equal to
+    /// the entity's temperature is what will be set.
     /// </summary>
-    public SortedDictionary<FixedPoint2, string?> VisualsSorted;
+    [DataField("visuals", required: true)]
+    private Dictionary<FixedPoint2, string?> _visuals = new();
+
+    /// <inheritdoc cref="_visuals"/>
+    [ViewVariables]
+    public SortedDictionary<FixedPoint2, string?> Visuals;
+
+    /// <inheritdoc/>
+    void ISerializationHooks.AfterDeserialization()
+    {
+        Visuals = new SortedDictionary<FixedPoint2, string?>(_visuals);
+    }
 }
 
+/// <summary>
+/// Enum keys for setting sprite visuals related to <see cref="TemperatureComponent"/>.
+/// </summary>
 [Serializable, NetSerializable]
 public enum TemperatureVisuals : byte
 {
