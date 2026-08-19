@@ -161,8 +161,7 @@ public sealed partial class LobbyCharacterPreviewPanel
             var icon = new MoffUI.DraggableJobIcon(job, () => _moffPriorityLock.Pressed, _ => CreateMoffJobTooltip(job));
 
             // A job no character will take can never be assigned, however it is prioritised.
-            var jobProfiles = GetMoffProfilesForJob(job.ID);
-            if (jobProfiles.Count == 0 || jobProfiles.All(p => !_moffSelection.IsSlotEnabled(p.Key)))
+            if (GetMoffProfilesForJob(job.ID).All(p => !_moffSelection.IsSlotEnabled(p.Key)))
                 icon.Modulate = Color.Salmon;
 
             foreach (var priority in Enum.GetValues<JobPriority>())
