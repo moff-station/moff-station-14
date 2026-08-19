@@ -110,22 +110,12 @@ public sealed partial class CharacterUIController : UIController, IOnStateEntere
 
     private void DeactivateButton()
     {
-        if (CharacterButton == null)
-        {
-            return;
-        }
-
-        CharacterButton.Pressed = false;
+        CharacterButton?.Pressed = false;
     }
 
     private void ActivateButton()
     {
-        if (CharacterButton == null)
-        {
-            return;
-        }
-
-        CharacterButton.Pressed = true;
+        CharacterButton?.Pressed = true;
     }
 
     private void CharacterUpdated(CharacterInfoSystem.CharacterData data)
@@ -184,7 +174,7 @@ public sealed partial class CharacterUIController : UIController, IOnStateEntere
         }
 
         // Starlight - Start - Collective Mind
-        if (minds != null && minds.Count > 0)
+        if (minds is { Count: > 0 })
         {
             var mindsControl = new CharacterMindsControl
             {
@@ -239,18 +229,12 @@ public sealed partial class CharacterUIController : UIController, IOnStateEntere
 
     private void UpdateRoleType()
     {
-        if (_window == null || !_window.IsOpen)
+        if (_window is not { IsOpen: true } ||
+            !_ent.TryGetComponent<MindContainerComponent>(_player.LocalEntity, out var container)
+            || container.Mind is null ||
+            !_ent.TryGetComponent<MindComponent>(container.Mind.Value, out var mind) ||
+            !_prototypeManager.Resolve(mind.RoleType, out var proto))
             return;
-
-        if (!_ent.TryGetComponent<MindContainerComponent>(_player.LocalEntity, out var container)
-            || container.Mind is null)
-            return;
-
-        if (!_ent.TryGetComponent<MindComponent>(container.Mind.Value, out var mind))
-            return;
-
-        if (!_prototypeManager.TryIndex(mind.RoleType, out var proto))
-            Log.Error($"Player '{_player.LocalSession}' has invalid Role Type '{mind.RoleType}'. Displaying default instead");
 
         if (mind.Subtype.HasValue)
         {
