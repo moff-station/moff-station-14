@@ -1,0 +1,49 @@
+- type: entity
+  parent: [BaseFoodCondimentPacketDrink, BaseSyndicateContraband]
+  id: SuperHotSaucePacket
+  name: Chef Flay's ULTRA Hot BBQ Sauce
+  tag: Syndicate
+  description: There is a warning label attached along with a legal notice.
+  components:
+  - type: Solution
+    solution:
+      maxVol: 1
+      reagents:
+      - ReagentId: SuperBBQSauce
+        Quantity: 1
+  - type: Icon
+    state: packet-bbq
+  - type: Appearance
+  - type: SolutionContainerVisuals
+    maxFillLevels: 2
+    fillBaseName: packet-trans-
+
+- type: reagent
+  id: SuperBBQSauce
+  name: reagent-name-super-bbq-sauce
+  group: Toxins
+  desc: reagent-desc-super-bbq-sauce
+  flavor: spicy
+  color: "#6e1c32"
+  physicalDesc: reagent-physical-desc-opaque
+  contrabandSeverity: Syndicate
+  metabolisms:
+    Bloodstream:
+      metabolismRate: .025
+      effects:
+      - !type:HealthChange
+        conditions:
+        damage:
+          types:
+            Heat: 4
+      - !type:Flammable
+        multiplier: 1.0
+      - !type:Ignite
+      - !type:PopupMessage
+        type: Local
+        visualType: Large
+        messages: [ "generic-reagent-effect-burning-insides" ]
+        probability: 0.5
+      - !type:Emote
+        emote: Scream
+        probability: 0.5
