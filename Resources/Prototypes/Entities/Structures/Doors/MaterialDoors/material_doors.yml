@@ -285,6 +285,7 @@
           collection: WoodDestroy
       - !type:SpawnEntitiesBehavior
         spawn:
-          MaterialCardboard:
-            min: 3
-            max: 5
+          MaterialCardboard: *BaseDoorSpawn
+  - type: IconSmooth
+    key: cards
+    mode: NoSprite
