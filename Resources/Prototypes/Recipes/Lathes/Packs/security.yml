@@ -58,7 +58,10 @@
   id: SecurityWeaponsStatic
   recipes:
   - Flash
-  #- Stunbaton # Moffstation - no stuns
+  # Moff start - no stuns
+  #- Stunbaton
+  - Nightstick
+  # Moff end
   - CombatKnife
   - RiotShield
 
