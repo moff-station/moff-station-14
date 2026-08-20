@@ -64,6 +64,12 @@ public sealed partial class BibleComponent : Component
     public DamageSpecifier DamageOnUntrainedUse = default!;
 
     /// <summary>
+    /// If true, only entities with "NecronomiconUserComponent" may use this bible. DEfaults to false cause duh.
+    /// </summary>
+    [DataField]
+    public bool RequiresNecronomiconUser = false;
+
+    /// <summary>
     /// Chance theBbible will fail to heal someone with no helmet.
     /// </summary>
     [DataField]

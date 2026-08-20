@@ -2,6 +2,9 @@
 uplink-mobcat-reject-name = SyndiCat Reject Teleporter
 uplink-mobcat-reject-desc = Call in an untrained SyndiCat. It isn't trained, and it doesn't contain a bomb, so it serves best as a distraction. You can only adopt one of them.
 
+uplink-necronomicon-name = Necronomicon
+uplink-necronomicon-desc = A recharging cursed book that allows the wielder to summon a powerful demonic dog from the underworld to do their bidding. The demon has a powerful bite, lights people on fire, and gets faster the closer it is to death. The book can also be used to in a pinch to burn foes or pray to dark forces for assistance.
+
 uplink-spider-grenade-name = Jar of Spiders
 uplink-spider-grenade-desc = An experimental concoction made by the Syndicate. When shattered, the chemical reaction promotes extreme growth of the small spiders located inside. The spiders, classified as Nightfangs, have been biologically engineered to avoid attacking Syndicate agents, but devour any other nearby creature in their sight.
 
@@ -29,3 +32,6 @@ uplink-clothing-infiltrator-headset-desc = A headset combining both chameleon an
 uplink-clothing-rocket-skates-name = Syndicate Rocket Skates
 uplink-clothing-rocket-skates-desc = An experimental prototype from Lumens Technologies, combining the benefits of rollerskates with the thrusting capacities of a rocket for maximum velocity.
 
+# Other 
+uplink-super-surplus-bundle-name = Super Surplus Crate
+uplink-super-surplus-bundle-desc = Contains 125 telecrystals worth of random Syndicate items. No refunds!
