@@ -1,0 +1,32 @@
+# Ironsand
+
+- type: entity
+  id: MoffIronSandstone
+  parent: AsteroidRock
+  name: ironsandstone
+  suffix: no ore yield
+  components:
+  - type: Icon
+    state: ironsandstone
+  - type: Sprite
+    sprite: _Moffstation/Structures/Walls/ironsandstone.rsi
+    layers:
+    - state: ironsandstone
+    - map: [ "enum.EdgeLayer.South" ]
+      state: ironsandstone_south
+    - map: [ "enum.EdgeLayer.East" ]
+      state: ironsandstone_east
+    - map: [ "enum.EdgeLayer.North" ]
+      state: ironsandstone_north
+    - map: [ "enum.EdgeLayer.West" ]
+      state: ironsandstone_west
+
+- type: entity
+  id: MoffIronSandstoneMining
+  parent: IronSandstone
+  name: ironsandstone
+  suffix: higher ore yield
+  components:
+  - type: OreVein
+    oreChance: 0.33
+    oreRarityPrototypeId: RandomOreDistributionStandard
