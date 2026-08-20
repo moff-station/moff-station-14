@@ -16,7 +16,6 @@
                     <ProgressBar Name="EnrollProgress" MinValue="0" MaxValue="1" Value="0" ModulateSelfOverride="#00ff00"/>
                     <Label Name="EnrollCount" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="4 1"/>
                 </Control>
-                <RichTextLabel Name="RequiredEnrolls"/>
             </BoxContainer>
         </BoxContainer>
         <RichTextLabel Name="TimeLabel"/>

@@ -53,15 +53,9 @@ public abstract partial class MoffSharedVoteEntrySystem : EntitySystem
         }
     }
 
-    protected virtual void SendVoteStartAnnouncement(
+    protected abstract void SendVoteStartAnnouncement(
         Entity<MoffVoteEntryComponent> ent,
-        Entity<ESVoterComponent, ActorComponent> voter)
-    {
+        Entity<ESVoterComponent, ActorComponent> voter);
 
-    }
-
-    protected virtual void OnVoteStart(Entity<MoffVoteEntryComponent> ent)
-    {
-
-    }
+    protected abstract void OnVoteStart(Entity<MoffVoteEntryComponent> ent);
 }

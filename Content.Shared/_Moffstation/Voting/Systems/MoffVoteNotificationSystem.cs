@@ -1,5 +1,6 @@
 using Content.Shared._ES.Voting.Components;
 using Content.Shared.Alert;
+using JetBrains.Annotations;
 
 namespace Content.Shared._Moffstation.Voting.Systems;
 
@@ -10,25 +11,19 @@ public sealed partial class MoffVoteNotificationSystem : EntitySystem
 {
     [Dependency] private AlertsSystem _alerts = default!;
 
-    public override void Initialize()
-    {
-        base.Initialize();
-
-        SubscribeLocalEvent<ESVoterComponent, MapInitEvent>(OnMapInit);
-        SubscribeLocalEvent<ESVoterComponent, ComponentRemove>(OnCompRemoved);
-        SubscribeLocalEvent<ESVoterComponent, ToggleVoteNotificationEvent>(OnToggle);
-    }
-
+    [SubscribeLocalEvent]
     private void OnMapInit(Entity<ESVoterComponent> ent, ref MapInitEvent args)
     {
         ShowAlert(ent);
     }
 
+    [SubscribeLocalEvent]
     private void OnCompRemoved(Entity<ESVoterComponent> ent, ref ComponentRemove args)
     {
         _alerts.ClearAlert(ent.Owner, ent.Comp.AlertId);
     }
 
+    [SubscribeLocalEvent]
     private void OnToggle(Entity<ESVoterComponent> ent, ref ToggleVoteNotificationEvent args)
     {
         if (args.Handled)
