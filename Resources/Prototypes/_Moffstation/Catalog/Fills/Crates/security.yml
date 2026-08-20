@@ -1,17 +1,34 @@
+- type: entityTable
+  id: FillSecurityLessLethal
+  table: !type:AllSelector
+    children:
+    - id: Nightstick
+      amount: 3
+    - id: BoxFlashbang
+    - id: Flash
+      amount: 3
+    - id: WeaponFlareGunSecurity
+      amount: 3
+    - id: BoxBeanbag
+      amount: 3
+
 - type: entity
+  parent: CrateSecgear
   id: CrateSecurityNonlethal
   name: less-lethals crate
   description: Contains a mix of nightsticks, flashes, shell guns, and beanbag shells. Requires Security access to open.
   components:
   - type: EntityTableContainerFill
     containers:
-      entity_storage: !type:AllSelector
-        children:
-        - id: Nightstick
-          amount: 3
-        - id: BoxFlashbang
-        - id: Flash
-          amount: 3
-        - id: WeaponFlareGunSecurity
-          amount: 3
-        - id: BoxBeanbag
+      entity_storage: !type:NestedSelector
+        tableId: FillSecurityLessLethal
+
+- type: entity
+  parent: [GunSafeBaseSecure, BaseSecurityContraband]
+  id: GunSafeLessLethal
+  name: less-lethals safe
+  components:
+  - type: EntityTableContainerFill
+    containers:
+      entity_storage: !type:NestedSelector
+        tableId: FillSecurityLessLethal
