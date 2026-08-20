@@ -74,21 +74,12 @@
   - type: Hellportal
     basicSpawnTable: !type:AllSelector
       children:
-      - !type:GroupSelector
+      - !type:NestedSelector
         rolls: !type:RangeNumberSelector
           range: 3, 5
-        children:
-        - id: MoffMobDemonNarsieFleshClamp
-        - id: MoffMobDemonNarsieFleshGolem
-        - id: MoffMobDemonNarsieFleshJared
-        - id: MoffMobDemonNarsieFleshLover
-      - !type:GroupSelector
-        children:
-        - id: MoffMobDemonNarsieArtificer
-        - id: MoffMobDemonNarsieHarvester
-        - id: MoffMobDemonNarsieJuggernaut
-        - id: MoffMobDemonNarsieShade
-        - id: MoffMobDemonNarsieWraith
+        tableId: MoffHellportalFleshlingsTable
+      - !type:NestedSelector
+        tableId: MoffHellportalNarsianConstructsTable
     sound:
       collection: RadiationPulse
   - type: AmbientSound

@@ -3,17 +3,17 @@
   query:
   - !type:NearbyHostilesQuery
   considerations:
-  - !type:TargetIsCritCon
+  - !type:TargetIsCritCon # Target is Critical
     curve: !type:InverseBoolCurve
-  - !type:TargetIsAliveCon
+  - !type:TargetIsAliveCon # Target is Living
     curve: !type:BoolCurve
-  - !type:TargetDistanceCon
+  - !type:TargetDistanceCon # Closer targets
     curve: !type:PresetCurve
       preset: TargetDistance
-  - !type:TargetHealthCon
+  - !type:TargetHealthCon # Target is closer to death
     curve: !type:PresetCurve
       preset: TargetHealth
-  - !type:TargetAccessibleCon
+  - !type:TargetAccessibleCon # Target is reachable
     curve: !type:BoolCurve
-  - !type:TargetInLOSOrCurrentCon
+  - !type:TargetInLOSOrCurrentCon # Target is within line of sight
     curve: !type:BoolCurve

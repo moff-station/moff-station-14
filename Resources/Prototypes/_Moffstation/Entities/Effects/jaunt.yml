@@ -20,8 +20,7 @@
   - type: TargetAction
   - type: Sprite
     sprite: Objects/Magic/magicactions.rsi
-    layers:
-    - state: jaunt
+    state: jaunt
   - type: InstantAction
     event: !type:PolymorphActionEvent
       protoId: MoffDemonWraithJaunt

@@ -20,17 +20,30 @@
     thresholds:
       0: Alive
       100: Dead
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 100
+      behaviors:
+      - !type:PlaySoundBehavior
+        sound:
+          collection: gib #TODO: better sfx for our demons
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          MoffDemonicEssence:
+            min: 0
+            max: 1
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          Acidifier:
+            min: 1
+            max: 1
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
   - type: SlowOnDamage
     speedModifierThresholds:
       80: 0.7
-  - type: TriggerOnMobstateChange
-    mobState:
-    - Dead
-  - type: GibOnTrigger
-    deleteItems: true
-  - type: SpawnOnTrigger
-    proto: Acidifier
-    predicted: true
   - type: MeleeWeapon
     soundHit:
       collection: AlienClaw
@@ -121,6 +134,27 @@
     thresholds:
       0: Alive
       75: Dead
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 75
+      behaviors:
+      - !type:PlaySoundBehavior
+        sound:
+          collection: gib #TODO: better sfx for our demons
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          MoffDemonicEssence:
+            min: 0
+            max: 1
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          Acidifier:
+            min: 1
+            max: 1
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
   - type: SlowOnDamage
     speedModifierThresholds:
       60: 0.7
@@ -151,6 +185,27 @@
     thresholds:
       0: Alive
       30: Dead
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 30
+      behaviors:
+      - !type:PlaySoundBehavior
+        sound:
+          collection: gib #TODO: better sfx for our demons
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          MoffDemonicEssence:
+            min: 0
+            max: 1
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          Acidifier:
+            min: 1
+            max: 1
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
   - type: MovementSpeedModifier
     baseWalkSpeed: 1.25
     baseSprintSpeed: 2.25
@@ -249,6 +304,15 @@
         volume: -4
 
 # Fleshlings
+- type: entityTable
+  id: MoffHellportalFleshlingsTable
+  table: !type:GroupSelector
+    children:
+    - id: MoffMobDemonNarsieFleshClamp
+    - id: MoffMobDemonNarsieFleshGolem
+    - id: MoffMobDemonNarsieFleshJared
+    - id: MoffMobDemonNarsieFleshLover
+
 - type: entity
   parent: MoffMobDemonNarsieFleshFlyingBase
   id: MoffMobDemonNarsieFleshClamp
@@ -275,6 +339,16 @@
   id: MoffMobDemonNarsieFleshLover
 
 # Narsian constructs
+- type: entityTable
+  id: MoffHellportalNarsianConstructsTable
+  table: !type:GroupSelector
+    children:
+    - id: MoffMobDemonNarsieArtificer
+    - id: MoffMobDemonNarsieHarvester
+    - id: MoffMobDemonNarsieJuggernaut
+    - id: MoffMobDemonNarsieShade
+    - id: MoffMobDemonNarsieWraith
+
 - type: entity
   parent: MoffMobDemonNarsieConstructBase
   id: MoffMobDemonNarsieArtificer
@@ -330,6 +404,14 @@
         7
       AggroVisionRadius: !type:Single
         12
+      NavClimb: !type:Bool
+        true
+      NavInteract: !type:Bool
+        true
+      NavPry: !type:Bool
+        true
+      NavSmash: !type:Bool
+        true
 
 - type: entity
   parent: MoffMobDemonNarsieConstructBase
@@ -354,6 +436,27 @@
     thresholds:
       0: Alive
       150: Dead
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 150
+      behaviors:
+      - !type:PlaySoundBehavior
+        sound:
+          collection: gib #TODO: better sfx for our demons
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          MoffDemonicEssence:
+            min: 0
+            max: 1
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          Acidifier:
+            min: 1
+            max: 1
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
   - type: SlowOnDamage
     speedModifierThresholds:
       120: 0.7

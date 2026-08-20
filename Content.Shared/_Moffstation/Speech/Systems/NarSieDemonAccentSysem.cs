@@ -1,8 +1,8 @@
 ﻿using System.Text;
-using Content.Server._Moffstation.Speech.Components;
+using Content.Shared._Moffstation.Speech.Components;
 using Content.Shared.Speech;
 
-namespace Content.Server._Moffstation.Speech.EntitySystems;
+namespace Content.Shared._Moffstation.Speech.Systems;
 
 public sealed partial class NarSieDemonAccentSystem : EntitySystem
 {
