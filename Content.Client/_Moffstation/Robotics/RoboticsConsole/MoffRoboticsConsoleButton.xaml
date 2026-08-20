@@ -1,0 +1,65 @@
+<Button xmlns="https://spacestation14.io"
+        xmlns:customs="clr-namespace:Content.Client.Administration.UI.CustomControls"
+        HorizontalExpand="True">
+    <BoxContainer Orientation="Vertical"
+                  HorizontalExpand="True">
+        <BoxContainer Name="ShortPanel"
+                      Orientation="Horizontal"
+                      HorizontalExpand="True">
+            <BoxContainer SizeFlagsStretchRatio="1.25"
+                          Orientation="Horizontal"
+                          HorizontalExpand="True">
+                <TextureRect Name="CoordsIndicator"
+                             TexturePath="/Textures/Interface/NavMap/beveled_circle.png"
+                             TextureScale="0.25 0.25"
+                             HorizontalAlignment="Center"
+                             VerticalAlignment="Center"/>
+                <AnimatedTextureRect Name="StatusIcon"
+                                     HorizontalAlignment="Center"
+                                     VerticalAlignment="Center"
+                                     Margin="0 1 3 0"/>
+                <Label Name="NameLabel"
+                       HorizontalExpand="True"
+                       ClipText="True"/>
+                <TextureRect Name="JobIcon"
+                             TextureScale="2 2"
+                             VerticalAlignment="Center"
+                             Margin="5 0 5 0"/>
+                <Label Name="ChassisLabel"
+                       HorizontalExpand="True"
+                       ClipText="True"/>
+            </BoxContainer>
+        </BoxContainer>
+        <PanelContainer Name="DetailedPanel"
+                        StyleClasses="BackgroundPanel"
+                        HorizontalExpand="True"
+                        VerticalExpand="True"
+                        Visible="False">
+            <BoxContainer Orientation="Horizontal"
+                          HorizontalExpand="True">
+                <TextureRect Name="BorgSprite"
+                             HorizontalAlignment="Center"
+                             VerticalAlignment="Center"
+                             TextureScale="4 4"/>
+                <customs:VSeparator Margin="4 4 4 4"/>
+                <BoxContainer Orientation="Vertical"
+                              HorizontalExpand="True"
+                              VerticalExpand="True"
+                              VerticalAlignment="Center">
+                    <RichTextLabel Name="BrainLabel"/>
+                    <RichTextLabel Name="IntegrityLabel"/>
+                    <RichTextLabel Name="BatteriesLabel"/>
+                    <RichTextLabel Name="ModulesLabel"/>
+                </BoxContainer>
+                <BoxContainer Orientation="Vertical"
+                              VerticalExpand="True"
+                              VerticalAlignment="Center">
+                    <Button Name="DisableButton"
+                            Text="{Loc 'robotics-console-disable'}"/>
+                    <Button Name="DestroyButton"
+                            Text="{Loc 'robotics-console-destroy'}"/>
+                </BoxContainer>
+            </BoxContainer>
+        </PanelContainer>
+    </BoxContainer>
+</Button>
