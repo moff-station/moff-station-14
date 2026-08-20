@@ -12,8 +12,7 @@
     damageContainer: StructuralInorganic
   - type: Destructible
     thresholds:
-    - trigger:
-        !type:DamageTrigger
+    - trigger: !type:DamageTrigger
         damage: 15
       behaviors:
       - !type:PlaySoundBehavior
