@@ -9,6 +9,8 @@ moff-vote-enroll-button-character-select = Select Character
 moff-vote-enroll-button-goto = Go To
 moff-vote-enroll-time-remaining = Time remaining: {$time}
 moff-vote-enroll-count = {$count} / {$min} Enrolled ({$max} roles)
+moff-vote-enroll-button-start-now = Start Now
+moff-vote-enroll-button-start-now-tooltip = Start the event immediately.
 
 moff-vote-enroll-character-select-title = Select Character
 moff-vote-enroll-character-select-random = Random Character
