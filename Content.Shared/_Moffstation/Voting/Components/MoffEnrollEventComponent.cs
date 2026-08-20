@@ -81,7 +81,10 @@ public sealed partial class MoffEnrollEventComponent : Component
     /// Fallback gamerules if rule doesnt meet the requirements to be ran
     /// </summary>
     [DataField]
-    public EntityTableSelector? FallbackRules;
+    public EntityTableSelector? FallbackRules = new NestedSelector
+    {
+        TableId = "MoffSpicyNonPlayerEventsTable",
+    };
 }
 
 [Serializable, NetSerializable]
