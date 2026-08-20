@@ -4,13 +4,7 @@ using Content.Client.Gameplay;
 using Content.Client.Message;
 using Content.Client.UserInterface.Controls;
 using Content.Client.UserInterface.Systems.Objectives.Controls;
-using Content.Shared._Moffstation.Objectives;
-using Content.Shared.DetailExaminable;
-using Content.Shared.Humanoid;
 using Content.Shared.Input;
-using Content.Shared.Mind;
-using Content.Shared.Mind.Components;
-using Content.Shared.Roles;
 using JetBrains.Annotations;
 using Robust.Client.GameObjects;
 using Robust.Client.Player;
@@ -18,7 +12,6 @@ using Robust.Client.UserInterface;
 using Robust.Client.UserInterface.Controllers;
 using Robust.Client.UserInterface.Controls;
 using Robust.Shared.Input.Binding;
-using Robust.Shared.Prototypes;
 using Robust.Shared.Utility;
 using static Robust.Client.UserInterface.Controls.BaseButton;
 
@@ -27,22 +20,13 @@ namespace Content.Client._Moffstation.CharacterMenu;
 [UsedImplicitly]
 public sealed partial class CharacterUIController : UIController, IOnStateEntered<GameplayState>, IOnStateExited<GameplayState>, IOnSystemChanged<CharacterInfoSystem>
 {
-    [Dependency] private IEntityManager _ent = default!;
     [Dependency] private IPlayerManager _player = default!;
-    [Dependency] private IPrototypeManager _prototypeManager = default!;
-
 
     [UISystemDependency] private readonly CharacterInfoSystem _characterInfo = default!;
+    [UISystemDependency] private readonly MoffCharacterWindowSystem _characterWindow = default!;
     [UISystemDependency] private readonly SpriteSystem _sprite = default!;
 
     private const int DescriptionWordLimit = 40;
-
-    public override void Initialize()
-    {
-        base.Initialize();
-
-        SubscribeNetworkEvent<MindRoleTypeChangedEvent>(OnRoleTypeChanged);
-    }
 
     private MoffCharacterWindow? _window;
     private MenuButton? CharacterButton => UIManager.GetActiveUIWidgetOrNull<UserInterface.Systems.MenuBar.Widgets.GameTopMenuBar>()?.CharacterButton;
@@ -130,39 +114,37 @@ public sealed partial class CharacterUIController : UIController, IOnStateEntere
         _window.SpriteView.SetEntity(entity);
 
         UpdateRoleType();
-        var job = _prototypeManager.Index(jobId);
         _window.NameLabel.SetMarkup(Loc.GetString("character-info-name-format",
             ("name", FormattedMessage.EscapeText(entityName))));
-        if (job != null)
+        if (_characterWindow.GetJobInfo(jobId) is { } job)
         {
             _window.SubText.SetMarkup(Loc.GetString("character-info-job-format", ("job", Loc.GetString(job.Name))));
-            var jobIcon = _prototypeManager.Index(job!.Icon);
-            _window.JobIcon.Texture = _sprite.Frame0(jobIcon.Icon);
+            _window.JobIcon.Texture = job.Icon;
         }
 
-        _window.CharacterInfo.Visible = _ent.TryGetComponent<HumanoidProfileComponent>(entity, out var profile);
-        if (profile != null)
+        var profile = _characterWindow.GetProfileInfo(entity);
+        _window.CharacterInfo.Visible = profile != null;
+        if (profile is { } profileInfo)
         {
             _window.CharacterInfo.Text = Loc.GetString("character-info-details-format",
-                ("gender", profile.Gender),
-                ("age", profile.Age),
-                ("species", Loc.GetString(_prototypeManager.Index(profile.Species).Name)));
+                ("gender", profileInfo.Gender),
+                ("age", profileInfo.Age),
+                ("species", Loc.GetString(profileInfo.Species)));
         }
 
-        _window.DetailedDescription.Visible = _ent.TryGetComponent<DetailExaminableComponent>(entity, out var description);
+        var description = _characterWindow.GetDescription(entity);
+        _window.DetailedDescription.Visible = description != null;
         if (description != null)
         {
             _window.DetailedDescription.SetMarkupPermissive(Loc.GetString("character-info-description-format",
-                ("description", TruncateWords(description.Content, DescriptionWordLimit))));
+                ("description", TruncateWords(description, DescriptionWordLimit))));
         }
 
         _window.Objectives.RemoveAllChildren();
         _window.Briefing.RemoveAllChildren();
         _window.Minds.RemoveAllChildren(); // Starlight - Collective Mind
 
-        var canPickObjectives = _ent.TryGetComponent<MindContainerComponent>(_player.LocalEntity, out var mindContainer)
-            && mindContainer.Mind is not null
-            && _ent.HasComponent<PotentialObjectivesComponent>(mindContainer.Mind);
+        var canPickObjectives = _characterWindow.CanPickObjectives(_player.LocalEntity);
         _window.AddObjectiveButtons(objectives.Count, canPickObjectives);
 
         foreach (var (_, conditions) in objectives)
@@ -174,7 +156,8 @@ public sealed partial class CharacterUIController : UIController, IOnStateEntere
         }
 
         // Starlight - Start - Collective Mind
-        if (minds is { Count: > 0 })
+        var collectiveMinds = _characterWindow.GetCollectiveMinds(minds);
+        if (collectiveMinds.Count > 0)
         {
             var mindsControl = new CharacterMindsControl
             {
@@ -182,15 +165,12 @@ public sealed partial class CharacterUIController : UIController, IOnStateEntere
             };
             var mindDescriptionMessage = new FormattedMessage();
             mindDescriptionMessage.AddText("Available collective minds:");
-            foreach (var mindPrototype in minds)
+            foreach (var collectiveMind in collectiveMinds)
             {
-                if (!_prototypeManager.Resolve(mindPrototype.Key, out var mindProto))
-                    continue;
-
                 mindDescriptionMessage.AddText("\n");
-                mindDescriptionMessage.PushColor(mindProto.Color);
-                mindDescriptionMessage.AddText($"{mindProto.LocalizedName}: +{mindProto.KeyCode}");
-                mindDescriptionMessage.AddText($" (Number {mindPrototype.Value.MindId})");
+                mindDescriptionMessage.PushColor(collectiveMind.Color);
+                mindDescriptionMessage.AddText($"{Loc.GetString(collectiveMind.Name)}: +{collectiveMind.KeyCode}");
+                mindDescriptionMessage.AddText($" (Number {collectiveMind.MindId})");
                 mindDescriptionMessage.Pop();
 
             }
@@ -222,27 +202,13 @@ public sealed partial class CharacterUIController : UIController, IOnStateEntere
         _window.ObjectivesScroll.InvalidateMeasure();
     }
 
-    private void OnRoleTypeChanged(MindRoleTypeChangedEvent ev, EntitySessionEventArgs _)
-    {
-        UpdateRoleType();
-    }
-
-    private void UpdateRoleType()
+    public void UpdateRoleType()
     {
         if (_window is not { IsOpen: true } ||
-            !_ent.TryGetComponent<MindContainerComponent>(_player.LocalEntity, out var container)
-            || container.Mind is null ||
-            !_ent.TryGetComponent<MindComponent>(container.Mind.Value, out var mind) ||
-            !_prototypeManager.Resolve(mind.RoleType, out var proto))
+            _characterWindow.GetRoleType(_player.LocalEntity) is not { } roleType)
             return;
 
-        if (mind.Subtype.HasValue)
-        {
-            SetRoleType(Loc.GetString(mind.Subtype.Value), mind.SubtypeColor ?? proto?.Color ?? Color.White);
-            return;
-        }
-
-        SetRoleType(Loc.GetString(proto?.Name ?? "role-type-crew-aligned-name"), proto?.Color ?? Color.White);
+        SetRoleType(Loc.GetString(roleType.Name), roleType.Color);
     }
 
     private void SetRoleType(string role, Color color)
