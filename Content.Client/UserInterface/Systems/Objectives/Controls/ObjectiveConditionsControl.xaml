@@ -10,10 +10,17 @@ Moff - I changed alot in this file. not worth commenting anything. Dont accept u
         <ProgressBar Name="ProgressBar" MinValue="0" MaxValue="1"
                      LayoutContainer.AnchorRight="1"
                      LayoutContainer.AnchorBottom="1"/>
-        <BoxContainer LayoutContainer.AnchorRight="1" LayoutContainer.AnchorBottom="1">
-            <cc:ProgressTextureRect Name="ProgressTexture" VerticalAlignment="Top" Access="Public" Margin="0 8 0 0"/>
-            <Control MinSize="10 0"/>
-            <RichTextLabel Name="Title" Access="Public" HorizontalExpand="True" HorizontalAlignment="Left" Margin="0 5 5 5"/>
+        <BoxContainer Orientation="Vertical"
+                      Margin="5"
+                      LayoutContainer.AnchorRight="1"
+                      LayoutContainer.AnchorBottom="1">
+            <BoxContainer Orientation="Horizontal">
+                <cc:ProgressTextureRect Name="ProgressTexture" VerticalAlignment="Center" Access="Public"/>
+                <Control MinSize="10 0"/>
+                <RichTextLabel Name="Title" Access="Public" HorizontalExpand="True" HorizontalAlignment="Left"/>
+            </BoxContainer>
+            <PanelContainer StyleClasses="LowDivider" Margin="0 4"/>
+            <RichTextLabel Name="Description" Access="Public" HorizontalExpand="True" HorizontalAlignment="Left"/>
         </BoxContainer>
     </LayoutContainer>
 </controls:ObjectiveConditionsControl>

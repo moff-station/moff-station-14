@@ -104,3 +104,12 @@ public sealed class MoffSetEnrollRandomMessage(NetEntity enroller, bool random) 
     public NetEntity Enroller = enroller;
     public bool Random = random;
 }
+
+/// <summary>
+/// Sent by an admin ending the enrollment countdown, starting the event early.
+/// </summary>
+[Serializable, NetSerializable]
+public sealed class MoffEarlyStartEnrollRequest(NetEntity enrollEvent) : BoundUserInterfaceMessage
+{
+    public NetEntity EnrollEvent = enrollEvent;
+}

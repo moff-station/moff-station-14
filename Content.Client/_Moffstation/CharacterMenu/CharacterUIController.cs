@@ -1,20 +1,10 @@
-// Moff - We stuffed this file into a crate and shipped it to our namespace
-// Take any upstream changes
-/*
-using System.Linq;
-using Content.Client._Starlight.UserInterface.Controls; // Starlight - Collective Mind
+using Content.Client._Starlight.UserInterface.Controls;
 using Content.Client.CharacterInfo;
 using Content.Client.Gameplay;
-using Content.Client.Stylesheets;
+using Content.Client.Message;
 using Content.Client.UserInterface.Controls;
-using Content.Client.UserInterface.Systems.Character.Controls;
-using Content.Client._Moffstation.CharacterMenu; // Moffstation - Character Menu Redesign
 using Content.Client.UserInterface.Systems.Objectives.Controls;
-using Content.Shared._Moffstation.Objectives; // Moffstation
 using Content.Shared.Input;
-using Content.Shared.Mind;
-using Content.Shared.Mind.Components;
-using Content.Shared.Roles;
 using JetBrains.Annotations;
 using Robust.Client.GameObjects;
 using Robust.Client.Player;
@@ -22,48 +12,33 @@ using Robust.Client.UserInterface;
 using Robust.Client.UserInterface.Controllers;
 using Robust.Client.UserInterface.Controls;
 using Robust.Shared.Input.Binding;
-using Robust.Shared.Prototypes;
 using Robust.Shared.Utility;
-using static Content.Client.CharacterInfo.CharacterInfoSystem;
 using static Robust.Client.UserInterface.Controls.BaseButton;
 
-namespace Content.Client.UserInterface.Systems.Character;
+namespace Content.Client._Moffstation.CharacterMenu;
 
 [UsedImplicitly]
 public sealed partial class CharacterUIController : UIController, IOnStateEntered<GameplayState>, IOnStateExited<GameplayState>, IOnSystemChanged<CharacterInfoSystem>
 {
-    [Dependency] private IEntityManager _ent = default!;
     [Dependency] private IPlayerManager _player = default!;
-    [Dependency] private IPrototypeManager _prototypeManager = default!;
-
 
     [UISystemDependency] private readonly CharacterInfoSystem _characterInfo = default!;
+    [UISystemDependency] private readonly MoffCharacterWindowSystem _characterWindow = default!;
     [UISystemDependency] private readonly SpriteSystem _sprite = default!;
 
-    public override void Initialize()
-    {
-        base.Initialize();
+    private const int DescriptionWordLimit = 40;
 
-        SubscribeNetworkEvent<MindRoleTypeChangedEvent>(OnRoleTypeChanged);
-    }
-
-    // Moffstation - Start - Character Menu Redesign
-    // private CharacterWindow? _window;
     private MoffCharacterWindow? _window;
-    // Moffstation - End
-    private MenuButton? CharacterButton => UIManager.GetActiveUIWidgetOrNull<MenuBar.Widgets.GameTopMenuBar>()?.CharacterButton;
+    private MenuButton? CharacterButton => UIManager.GetActiveUIWidgetOrNull<UserInterface.Systems.MenuBar.Widgets.GameTopMenuBar>()?.CharacterButton;
 
     public void OnStateEntered(GameplayState state)
     {
         DebugTools.Assert(_window == null);
 
-        // Moffstation - Start - Character Menu Redesign
-        // _window = UIManager.CreateWindow<CharacterWindow>();
         _window = UIManager.CreateWindow<MoffCharacterWindow>();
         LayoutContainer.SetAnchorPreset(_window, LayoutContainer.LayoutPreset.Center);
         LayoutContainer.SetGrowHorizontal(_window, LayoutContainer.GrowDirection.Both);
         LayoutContainer.SetGrowVertical(_window, LayoutContainer.GrowDirection.Both);
-        // Moffstation - End
 
         _window.OnClose += DeactivateButton;
         _window.OnOpen += ActivateButton;
@@ -119,25 +94,15 @@ public sealed partial class CharacterUIController : UIController, IOnStateEntere
 
     private void DeactivateButton()
     {
-        if (CharacterButton == null)
-        {
-            return;
-        }
-
-        CharacterButton.Pressed = false;
+        CharacterButton?.Pressed = false;
     }
 
     private void ActivateButton()
     {
-        if (CharacterButton == null)
-        {
-            return;
-        }
-
-        CharacterButton.Pressed = true;
+        CharacterButton?.Pressed = true;
     }
 
-    private void CharacterUpdated(CharacterData data)
+    private void CharacterUpdated(CharacterInfoSystem.CharacterData data)
     {
         if (_window == null)
         {
@@ -149,37 +114,50 @@ public sealed partial class CharacterUIController : UIController, IOnStateEntere
         _window.SpriteView.SetEntity(entity);
 
         UpdateRoleType();
-        var job = _prototypeManager.Index(jobId);
-        _window.NameLabel.Text = entityName;
-        _window.SubText.Text = job != null ? Loc.GetString(job.Name) : null;
+        _window.NameLabel.SetMarkup(Loc.GetString("character-info-name-format",
+            ("name", FormattedMessage.EscapeText(entityName))));
+        if (_characterWindow.GetJobInfo(jobId) is { } job)
+        {
+            _window.SubText.SetMarkup(Loc.GetString("character-info-job-format", ("job", Loc.GetString(job.Name))));
+            _window.JobIcon.Texture = job.Icon;
+        }
+
+        var profile = _characterWindow.GetProfileInfo(entity);
+        _window.CharacterInfo.Visible = profile != null;
+        if (profile is { } profileInfo)
+        {
+            _window.CharacterInfo.Text = Loc.GetString("character-info-details-format",
+                ("gender", profileInfo.Gender),
+                ("age", profileInfo.Age),
+                ("species", Loc.GetString(profileInfo.Species)));
+        }
+
+        var description = _characterWindow.GetDescription(entity);
+        _window.DetailedDescription.Visible = description != null;
+        if (description != null)
+        {
+            _window.DetailedDescription.SetMarkupPermissive(Loc.GetString("character-info-description-format",
+                ("description", TruncateWords(description, DescriptionWordLimit))));
+        }
 
         _window.Objectives.RemoveAllChildren();
-        // Moffstation - Start - Character Menu Redesign (removed ObjectivesLabel, added Briefing clear)
-        // _window.ObjectivesLabel.Visible = objectives.Any();
         _window.Briefing.RemoveAllChildren();
-        // Moffstation - End
         _window.Minds.RemoveAllChildren(); // Starlight - Collective Mind
 
-        // Moffstation - Start - Character Menu Redesign (moved button logic to MoffCharacterWindow)
-        var canPickObjectives = _ent.TryGetComponent<MindContainerComponent>(_player.LocalEntity, out var mindContainer)
-            && mindContainer.Mind is not null
-            && _ent.HasComponent<PotentialObjectivesComponent>(mindContainer.Mind);
+        var canPickObjectives = _characterWindow.CanPickObjectives(_player.LocalEntity);
         _window.AddObjectiveButtons(objectives.Count, canPickObjectives);
-        // Moffstation - End
 
-        // Moff Start - New Character UI
-        // Basically this whole foreach loop is rewritten, probably dont take new changes here
-        foreach (var (groupId, conditions) in objectives)
+        foreach (var (_, conditions) in objectives)
         {
             foreach (var condition in conditions)
             {
                 _window.Objectives.AddChild(new ObjectiveConditionsControl(condition, _sprite));
             }
         }
-        // Moff End
 
         // Starlight - Start - Collective Mind
-        if (minds != null && minds.Count > 0)
+        var collectiveMinds = _characterWindow.GetCollectiveMinds(minds);
+        if (collectiveMinds.Count > 0)
         {
             var mindsControl = new CharacterMindsControl
             {
@@ -187,15 +165,12 @@ public sealed partial class CharacterUIController : UIController, IOnStateEntere
             };
             var mindDescriptionMessage = new FormattedMessage();
             mindDescriptionMessage.AddText("Available collective minds:");
-            foreach (var mindPrototype in minds)
+            foreach (var collectiveMind in collectiveMinds)
             {
-                if (!_prototypeManager.Resolve(mindPrototype.Key, out var mindProto))
-                    continue;
-
                 mindDescriptionMessage.AddText("\n");
-                mindDescriptionMessage.PushColor(mindProto.Color);
-                mindDescriptionMessage.AddText($"{mindProto.LocalizedName}: +{mindProto.KeyCode}");
-                mindDescriptionMessage.AddText($" (Number {mindPrototype.Value.MindId})");
+                mindDescriptionMessage.PushColor(collectiveMind.Color);
+                mindDescriptionMessage.AddText($"{Loc.GetString(collectiveMind.Name)}: +{collectiveMind.KeyCode}");
+                mindDescriptionMessage.AddText($" (Number {collectiveMind.MindId})");
                 mindDescriptionMessage.Pop();
 
             }
@@ -211,7 +186,7 @@ public sealed partial class CharacterUIController : UIController, IOnStateEntere
             text.PushColor(Color.Yellow);
             text.AddText(briefing);
             briefingControl.Label.SetMessage(text);
-            _window.Briefing.AddChild(briefingControl); // Moffstation - Character Menu Redesign
+            _window.Briefing.AddChild(briefingControl);
         }
 
         var controls = _characterInfo.GetCharacterInfoControls(entity);
@@ -220,51 +195,37 @@ public sealed partial class CharacterUIController : UIController, IOnStateEntere
             _window.Objectives.AddChild(control);
         }
 
-        // Moffstation - Start - hide "no special roles" placeholder
-        // _window.RolePlaceholder.Visible = briefing == null && !controls.Any() && !objectives.Any();
         _window.RolePlaceholder.Visible = false;
-        // Moffstation - End
 
-        // Moffstation - Start - Character Menu Redesign
-        // The stuff doesnt get refreshed properly when you reopen the window.
-        // This fixes that
         _window.Objectives.InvalidateMeasure();
         _window.ObjectivesWrapper.InvalidateMeasure();
         _window.ObjectivesScroll.InvalidateMeasure();
-        // Moffstation - End
     }
 
-    private void OnRoleTypeChanged(MindRoleTypeChangedEvent ev, EntitySessionEventArgs _)
+    public void UpdateRoleType()
     {
-        UpdateRoleType();
+        if (_window is not { IsOpen: true } ||
+            _characterWindow.GetRoleType(_player.LocalEntity) is not { } roleType)
+            return;
+
+        SetRoleType(Loc.GetString(roleType.Name), roleType.Color);
     }
 
-    private void UpdateRoleType()
+    private void SetRoleType(string role, Color color)
     {
-        if (_window == null || !_window.IsOpen)
-            return;
+        _window!.RoleType.Text = Loc.GetString("character-info-role-type-format",
+            ("color", color.ToHex()),
+            ("role", role));
+    }
 
-        if (!_ent.TryGetComponent<MindContainerComponent>(_player.LocalEntity, out var container)
-            || container.Mind is null)
-            return;
+    private static string TruncateWords(string text, int wordLimit)
+    {
+        var words = text.Split((char[]?) null, wordLimit + 1, StringSplitOptions.RemoveEmptyEntries);
+        if (words.Length <= wordLimit)
+            return text;
 
-        if (!_ent.TryGetComponent<MindComponent>(container.Mind.Value, out var mind))
-            return;
-
-        if (!_prototypeManager.TryIndex(mind.RoleType, out var proto))
-            Log.Error($"Player '{_player.LocalSession}' has invalid Role Type '{mind.RoleType}'. Displaying default instead");
-
-        // Moffstation - Start - Faction subtype display
-        if (mind.Subtype.HasValue)
-        {
-            _window.RoleType.Text = Loc.GetString(mind.Subtype.Value);
-            _window.RoleType.FontColorOverride = mind.SubtypeColor ?? proto?.Color ?? Color.White;
-            return;
-        }
-        // Moffstation - End
-
-        _window.RoleType.Text = Loc.GetString(proto?.Name ?? "role-type-crew-aligned-name");
-        _window.RoleType.FontColorOverride = proto?.Color ?? Color.White;
+        return Loc.GetString("character-info-description-truncated",
+            ("description", string.Join(' ', words[..wordLimit])));
     }
 
     private void CharacterDetached(EntityUid uid)
@@ -280,6 +241,20 @@ public sealed partial class CharacterUIController : UIController, IOnStateEntere
     private void CloseWindow()
     {
         _window?.Close();
+    }
+
+    public void OpenWindow()
+    {
+        if (_window == null)
+            return;
+
+        _characterInfo.RequestCharacterInfo();
+
+        if (_window.IsOpen)
+            return;
+
+        CharacterButton?.SetClickPressed(true);
+        _window.Open();
     }
 
     private void ToggleWindow()
@@ -300,4 +275,3 @@ public sealed partial class CharacterUIController : UIController, IOnStateEntere
         }
     }
 }
-*/
