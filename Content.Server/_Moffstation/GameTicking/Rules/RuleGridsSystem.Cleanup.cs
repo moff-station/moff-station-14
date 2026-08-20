@@ -2,8 +2,6 @@ using Robust.Shared.Player;
 
 // ReSharper disable once CheckNamespace
 namespace Content.Server.GameTicking.Rules;
-
-
 public sealed partial class RuleGridsSystem
 {
     public void DeleteRuleGrids(Entity<RuleGridsComponent?> ent)
@@ -29,7 +27,7 @@ public sealed partial class RuleGridsSystem
         if (_transform.GetMap(grid) is not { } map)
             return;
 
-        var children = Transform(grid).ChildEnumerator;
+        using var children = Transform(grid).ChildEnumerator;
         while (children.MoveNext(out var child))
         {
             if (!HasComp<ActorComponent>(child))
