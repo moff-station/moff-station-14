@@ -50,4 +50,5 @@ public sealed partial class MoffVoteNotificationSystem : EntitySystem
 /// <summary>
 /// Event raised to toggle vote notifications on <see cref="ESVoterComponent"/>.
 /// </summary>
+[PublicAPI] // Referenced in YAML
 public sealed partial class ToggleVoteNotificationEvent : BaseAlertEvent;
