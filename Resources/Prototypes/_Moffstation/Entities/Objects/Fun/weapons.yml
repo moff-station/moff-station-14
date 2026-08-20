@@ -1,0 +1,30 @@
+- type: entity
+  parent: BaseItem
+  id: WeaponWebRope
+  name: web rope
+  description: Swing spidey, swing!
+  components:
+  - type: GrapplingGun
+    cycleSound: /Audio/Misc/woosh.ogg
+    ropeSprite:
+      sprite: _Moffstation/Objects/Weapons/Guns/Launchers/bungeeweb.rsi
+      state: rope
+  - type: Gun
+    clumsyProof: true
+    soundGunshot: /Audio/_Moffstation/Misc/web_shooting.ogg
+    fireRate: 0.5
+    soundEmpty: /Audio/_Moffstation/Misc/web_shooting.ogg
+  - type: PacifismAllowedGun
+  - type: BasicEntityAmmoProvider
+    proto: BungeeWeb
+    capacity: 1
+  - type: Sprite
+    sprite: _Moffstation/Objects/Weapons/Guns/Launchers/bungeeweb.rsi
+    state: base
+  - type: UseDelay
+    delay: 1.5
+  - type: Construction
+    graph: WebObjects
+    node: bungeeweb
+
+
