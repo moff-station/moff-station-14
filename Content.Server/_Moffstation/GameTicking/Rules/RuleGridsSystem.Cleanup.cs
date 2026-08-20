@@ -1,11 +1,14 @@
 using Robust.Shared.Player;
 
+// Extension of an upstream file
 // ReSharper disable once CheckNamespace
 namespace Content.Server.GameTicking.Rules;
 
 
 public sealed partial class RuleGridsSystem
 {
+    [Dependency] private EntityQuery<ActorComponent> _actorQuery;
+
     public void DeleteRuleGrids(Entity<RuleGridsComponent?> ent)
     {
         if (!Resolve(ent, ref ent.Comp, false))
@@ -32,7 +35,7 @@ public sealed partial class RuleGridsSystem
         var children = Transform(grid).ChildEnumerator;
         while (children.MoveNext(out var child))
         {
-            if (!HasComp<ActorComponent>(child))
+            if (!_actorQuery.HasComp(child))
                 continue;
 
             _transform.SetParent(child, map);
