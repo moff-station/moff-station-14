@@ -54,14 +54,14 @@
   name: Release a cloud of smoke
   description: Releases a cloud of smoke around you.
   components:
+  - type: LimitedCharges
+    maxcharges: 4
   - type: Action
     itemIconStyle: BigAction
     checkCanInteract: false
     priority: -20
     raiseOnUser: false
     useDelay: 1
-  - type: LimitedCharges
-    maxcharges: 4
   - type: Sprite
     sprite: Objects/Weapons/Grenades/smoke.rsi
     layers:
