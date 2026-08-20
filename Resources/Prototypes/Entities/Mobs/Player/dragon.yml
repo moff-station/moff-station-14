@@ -45,10 +45,12 @@
     baseWalkSpeed: 3
     baseSprintSpeed: 5
     baseWeightlessModifier: 1.5
-  - type: RandomSprite
-    available:
-    - enum.DamageStateVisualLayers.Base:
-        alive: Rainbow
+  # Moff Start - Moving to children prototypes, not every dragon is a rainbow
+  # - type: RandomSprite
+  #   available:
+  #   - enum.DamageStateVisualLayers.Base:
+  #       alive: Rainbow
+  # Moff End
   - type: Sprite
     sprite: Mobs/Aliens/Carps/dragon.rsi
     noRot: true
@@ -146,7 +148,6 @@
       components:
       - MobState
       - Door
-      tags:
       - Wall
   - type: Tag
     tags:
@@ -160,6 +161,11 @@
     - NamesDragon
     - NamesDragonTitle
     nameFormat: name-format-dragon
+  - type: Grammar
+    attributes:
+      proper: true
+  - type: NameIdentifier
+    group: null  # Strips the numeric identifier from the dragon's name, since they already have randomly-generated names anyway
   - type: Prying
     pryPowered: true
     force: true
@@ -182,6 +188,12 @@
   - type: GuideHelp
     guides:
     - MinorAntagonists
+  # Moff Start - Moving to children prototypes, not every dragon is a rainbow
+  - type: RandomSprite
+    available:
+    - enum.DamageStateVisualLayers.Base:
+        alive: Rainbow
+  # Moff End
 
 - type: entity
   parent: BaseMobDragon
@@ -208,6 +220,12 @@
     damage:
       types:
         Piercing: 12
+  # Moff Start - Moving to children prototypes, not every dragon is a rainbow
+  - type: RandomSprite
+    available:
+    - enum.DamageStateVisualLayers.Base:
+        alive: Rainbow
+  # Moff End
 
 - type: entity
   parent: BaseAction
@@ -249,7 +267,6 @@
       components:
       - MobState
       - Door
-      tags:
       - Wall
     event: !type:DevourActionEvent
 

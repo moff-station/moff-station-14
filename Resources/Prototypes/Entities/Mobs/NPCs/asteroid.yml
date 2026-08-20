@@ -131,7 +131,10 @@
     sprite: Mobs/Aliens/Asteroid/goliath.rsi
     layers:
     - state: goliath_tentacle_wiggle
-  - type: StunOnContact
+  - type: StunOnCollide
+    stunAmount: 1
+    knockdownAmount: 5
+    fixture: fix
     blacklist:
       tags:
       - Goliath
@@ -229,7 +232,11 @@
     rechargeCooldown: 0
     rechargeSound: null
   - type: BasicEntityAmmoProvider
-    proto: MobHivelordBrood
+    # Moff Start - Entity table integration
+    # proto: MobHivelordBrood
+    ammoTable:
+      id: MobHivelordBrood
+    # Moff End
     capacity: 1
     count: 1
   - type: NpcFactionMember
@@ -399,7 +406,11 @@
     rechargeCooldown: 0
     rechargeSound: null
   - type: BasicEntityAmmoProvider
-    proto: BasiliskRay
+    # Moff Start - Entity table integration
+    # proto: BasiliskRay
+    ammoTable:
+      id: BasiliskRay
+    # Moff End
     capacity: 1
     count: 1
   - type: Bloodstream

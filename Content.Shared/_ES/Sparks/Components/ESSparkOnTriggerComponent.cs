@@ -1,3 +1,5 @@
+using Content.Shared._Moffstation.Sparks.Components;
+using Content.Shared.Trigger.Components.Effects;
 using Robust.Shared.GameStates;
 
 namespace Content.Shared._ES.Sparks.Components;
@@ -5,6 +7,12 @@ namespace Content.Shared._ES.Sparks.Components;
 /// <summary>
 /// An entity that sparks when triggered
 /// </summary>
-[RegisterComponent, NetworkedComponent]
+[RegisterComponent, NetworkedComponent, AutoGenerateComponentState]
 [Access(typeof(ESSparksSystem))]
-public sealed partial class ESSparkOnTriggerComponent : ESBaseSparkConfigurationComponent;
+// Moffstation - Begin - Make ESBaseSparkConfigurationComponent an interface
+public sealed partial class ESSparkOnTriggerComponent : BaseXOnTriggerComponent, ESBaseSparkConfigurationComponent
+{
+    [IncludeDataField]
+    public ESBaseSparkConfigurationComponent.Config SparkConfig { get; set; } = new();
+}
+// Moffstation - End

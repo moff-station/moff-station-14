@@ -5,24 +5,15 @@
   setPreference: false
   objective: roles-tourist-objective
 
-- type: entity
-  id: TouristRule
-  parent: BaseGameRule
-  components:
-  - type: AntagSelection
-    agentName: tourist-round-end-agent-name
-    antags:
-    - !type:FixedAntagCount
-      proto: Tourist
-  - type: AntagRandomObjectives
-    sets:
-    - groups: TouristObjectiveGroups
-    maxDifficulty: 5
-
 - type: antagSpecifier
   parent: RestrictedAntag
   id: Tourist
+  spawnerPrototype: SpawnPointGhostTourist
+  pickPlayer: false
   prefRoles:
   - Tourist
   mindRoles:
   - MindRoleTourist
+  components:
+  - type: Tourist
+  startingGear: TouristRedShirt

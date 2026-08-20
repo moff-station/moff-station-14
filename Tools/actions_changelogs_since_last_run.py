@@ -243,7 +243,7 @@ def changelog_entries_to_message_lines(entries: Iterable[ChangelogEntry]) -> lis
                 emoji = TYPES_TO_EMOJI.get(change["type"].lower(), "❓") # moffstation - lower case
                 message = change["message"]
 
-                if EXPERIMENTAL_LABEL in entry["labels"]:
+                if EXPERIMENTAL_LABEL in entry.get("labels", []): # Moffstation - Mofflog.yml entries have no "labels" field
                     emoji = f"{emoji}{EXPERIMENTAL_EMOJI}"
 
                 message_lines.append(create_change_line(emoji, message, url))
