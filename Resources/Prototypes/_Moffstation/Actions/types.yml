@@ -55,7 +55,7 @@
   description: Releases a cloud of smoke around you.
   components:
   - type: LimitedCharges
-    maxcharges: 4
+    maxCharges: 4
   - type: Action
     itemIconStyle: BigAction
     checkCanInteract: false
