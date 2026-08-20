@@ -6,6 +6,7 @@ using Content.Shared.Administration.Logs;
 using Content.Shared.Construction.Components;
 using Content.Shared.Database;
 using Content.Shared.Defusable;
+using Content.Shared.Emp; //Moffstation - EMP bomb
 using Content.Shared.Examine;
 using Content.Shared.Popups;
 using Content.Shared.Trigger.Components;
@@ -27,6 +28,7 @@ public sealed partial class DefusableSystem : SharedDefusableSystem
     [Dependency] private TriggerSystem _trigger = default!;
     [Dependency] private SharedAudioSystem _audio = default!;
     [Dependency] private TransformSystem _transform = default!;
+    [Dependency] private SharedEmpSystem _emp = default!; //Moffstation - EMP bomb
     [Dependency] private ISharedAdminLogManager _adminLogger = default!;
     [Dependency] private WiresSystem _wiresSystem = default!;
 
@@ -157,10 +159,18 @@ public sealed partial class DefusableSystem : SharedDefusableSystem
         if (!comp.Activated)
             return;
 
-        _popup.PopupEntity(Loc.GetString("defusable-popup-boom", ("name", uid)), uid, PopupType.LargeCaution);
-
         RaiseLocalEvent(uid, new BombDetonatedEvent(uid));
 
+        if (TryComp<EmpOnTriggerComponent>(uid, out var empOnTrigger))  //Moffstation - start - EMP bomb
+        {
+            _popup.PopupEntity(Loc.GetString("defusable-popup-boom", ("name", uid)), uid, PopupType.LargeCaution);
+            _emp.EmpPulse(Transform(uid).Coordinates, empOnTrigger.Range, empOnTrigger.EnergyConsumption, empOnTrigger.DisableDuration, detonator);
+            QueueDel(uid);
+            _appearance.SetData(uid, DefusableVisuals.Active, comp.Activated);
+            return;
+        }
+
+        _popup.PopupEntity(Loc.GetString("defusable-popup-boom", ("name", uid)), uid, PopupType.LargeCaution); //Moffstation - end
         _explosion.TriggerExplosive(uid, user: detonator);
         QueueDel(uid);
 
