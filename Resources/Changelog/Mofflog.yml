@@ -7006,6 +7006,15 @@ Entries:
   id: 1634
   time: '2026-07-08T22:40:41.000'
   url: https://github.com/moff-station/moff-station-14/pull/1634
+- author: Dave
+  changes:
+  - message: New Pistol & Revolver Sprites
+    type: add
+  - message: Makarov detached from IRL naming
+    type: tweak
+  id: 1639
+  time: '2026-08-18T00:58:22.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1639
 - author: StudMuffin
   changes:
   - message: Borgs chassis now have integrated sensors that can be interacted with
@@ -7799,6 +7808,13 @@ Entries:
   id: 1816
   time: '2026-08-15T19:44:25.000'
   url: https://github.com/moff-station/moff-station-14/pull/1816
+- author: Centronias
+  changes:
+  - message: Replicators now have a guidebook entry.
+    type: add
+  id: 1817
+  time: '2026-08-18T00:58:22.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1817
 - author: DuckManZach
   changes:
   - message: Map vote will no longer pop up randomly on localhost
@@ -7806,5 +7822,56 @@ Entries:
   id: 1819
   time: '2026-08-14T18:15:14.000'
   url: https://github.com/moff-station/moff-station-14/pull/1819
+- author: DuckManZach
+  changes:
+  - message: Added button for admins to start enroll events early
+    type: add
+  id: 1820
+  time: '2026-08-19T23:06:35.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1820
+- author: DuckManZach
+  changes:
+  - message: Several improvements to Character window UI
+    type: add
+  id: 1821
+  time: '2026-08-20T18:50:11.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1821
+- author: DuckManZach
+  changes:
+  - message: Reach is no longer guaranteed for the first round of the session!
+    type: fix
+  id: 1834
+  time: '2026-08-19T00:56:35.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1834
+- author: Wintoli
+  changes:
+  - message: Hypereutactic Blade bugfix!
+    type: fix
+  id: 1835
+  time: '2026-08-19T00:37:49.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1835
+- author: DuckManZach
+  changes:
+  - message: The job priority list will now properly "red-out" jobs which you don't
+      have selected by active characters.
+    type: fix
+  id: 1837
+  time: '2026-08-19T22:10:48.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1837
+- author: gummyema
+  changes:
+  - message: Fixed small texture issues with the miku, teto and neru outfits
+    type: tweak
+  id: 1839
+  time: '2026-08-20T18:15:50.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1839
+- author: DuckManZach
+  changes:
+  - message: You will no longer role sleeper agent from having it selected on another
+      character
+    type: fix
+  id: 1840
+  time: '2026-08-20T21:07:52.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1840
 Name: Mofflog
 Order: -2
