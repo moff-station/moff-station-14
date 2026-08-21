@@ -105,6 +105,23 @@
     whitelist:
     - Chaplain
 
+- type: listing
+  id: uplinkSuperBBQSauce
+  name: uplink-super-BBQ-name
+  description: uplink-super-BBQ-desc
+  productEntity: SuperHotSaucePacket
+  discountCategory: usualDiscounts
+  discountDownTo:
+    Telecrystal: 3
+  cost:
+    Telecrystal: 5 #Similar in function to minibomb
+  categories:
+  - UplinkJob
+  conditions:
+  - !type:BuyerJobCondition
+    whitelist:
+    - Chef
+
 # Other
 - type: listing
   id: UplinkSuperSurplusBundle
