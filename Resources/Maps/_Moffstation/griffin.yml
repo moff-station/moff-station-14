@@ -58768,12 +58768,12 @@ entities:
       pos: 35.564293,18.394543
     - type: Paper
       content: >-
-        Be sure to send this crate to Ossuary Station! They'll need the supplies. 
+        Be sure to send this crate to Ossuary Station! They'll need the supplies.
 
 
 
 
-        xoxo 
+        xoxo
 
         John Nanotrasen
   - uid: 9592
@@ -79234,17 +79234,11 @@ entities:
     - type: Transform
       parent: 1
       pos: 35.5,11.5
-    - type: DeviceNetwork
-      configurators:
-      - invalid
   - uid: 6470
     components:
     - type: Transform
       parent: 1
       pos: 35.5,17.5
-    - type: DeviceNetwork
-      configurators:
-      - invalid
 - proto: WeaponEnergyTurretSecurityControlPanel
   entities:
   - uid: 8635
