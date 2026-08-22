@@ -6,7 +6,7 @@ using Content.Shared.Administration.Logs;
 using Content.Shared.Construction.Components;
 using Content.Shared.Database;
 using Content.Shared.Defusable;
-using Content.Shared.Emp; //Moffstation - EMP bomb
+using Content.Shared.Emp;
 using Content.Shared.Examine;
 using Content.Shared.Popups;
 using Content.Shared.Trigger.Components;
