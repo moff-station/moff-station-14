@@ -15,6 +15,99 @@
   id: DerelictServiceCyborg
   spawnerPrototype: SpawnPointGhostDerelictServiceCyborg
 
+- type: entity
+  parent: BaseAntagGhostRoleRule
+  id: RevenantSpawn
+  components:
+  - type: StationEvent
+    weight: 7.5
+    duration: null
+    occursDuringRoundEnd: false
+    earliestStart: 45
+    minimumPlayers: 20
+  - type: AntagRandomSpawn
+  - type: AntagSpawner
+    prototype: MobRevenant
+  - type: AntagSelection
+    antags:
+    - !type:FixedAntagCount
+      proto: Revenant
+  - type: ESSynchronizedVoteManager
+    votes:
+    - RevenantEnroller
+  - type: DynamicRuleCost
+    cost: 25
+
+- type: antagSpecifier
+  parent: RestrictedAntag
+  id: Revenant
+  spawnerPrototype: SpawnPointGhostRevenant
+  pickPlayer: false
+  allowNonHumans: true
+  mindRoles:
+  - MindRoleGhostRoleSoloAntagonist
+
+- type: entity
+  parent: BaseAntagGhostRoleRule
+  id: ClosetSkeleton
+  components:
+  - type: StationEvent
+    weight: 5
+    duration: null
+    occursDuringRoundEnd: false
+    minimumPlayers: 10
+  - type: AntagRandomSpawn
+  - type: AntagSpawner
+    prototype: MobSkeletonCloset
+  - type: AntagSelection
+    antags:
+    - !type:FixedAntagCount
+      proto: ClosetSkeleton
+  - type: ESSynchronizedVoteManager
+    votes:
+    - ClosetSkeletonEnroller
+
+- type: antagSpecifier
+  parent: RestrictedAntag
+  id: ClosetSkeleton
+  spawnerPrototype: SpawnPointGhostClosetSkeleton
+  pickPlayer: false
+  allowNonHumans: true
+  mindRoles:
+  - MindRoleGhostRoleFreeAgent
+
+- type: entity
+  parent: BaseAntagGhostRoleRule
+  id: RatKingSpawn
+  components:
+  - type: StationEvent
+    earliestStart: 15
+    weight: 6
+    duration: null
+    occursDuringRoundEnd: false
+    minimumPlayers: 30
+  - type: AntagRandomSpawn
+  - type: AntagSpawner
+    prototype: MobRatKing
+  - type: AntagSelection
+    antags:
+    - !type:FixedAntagCount
+      proto: RatKing
+  - type: ESSynchronizedVoteManager
+    votes:
+    - RatKingEnroller
+  - type: DynamicRuleCost
+    cost: 25
+
+- type: antagSpecifier
+  parent: RestrictedAntag
+  id: RatKing
+  spawnerPrototype: SpawnPointGhostRatKingAntag
+  pickPlayer: false
+  allowNonHumans: true
+  mindRoles:
+  - MindRoleGhostRoleSoloAntagonist
+
 # Pirate corsair
 - type: entity
   parent: BasePiratesRule
