@@ -347,12 +347,13 @@
     difficulty: 1
 
 # stun baton
+# Moff - This is renamed to nightstick on the frontend
 - type: stealTargetGroup
   id: StunBaton
   name: steal-target-groups-stun-baton
   sprite:
-    sprite: Objects/Weapons/Melee/stunbaton.rsi
-    state: stunbaton_off
+    sprite: _Funkystation/Objects/Weapons/Melee/nightstick.rsi
+    state: icon
 
 - type: entity
   parent: BaseTouristStealObjective

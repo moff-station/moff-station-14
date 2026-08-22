@@ -3,6 +3,7 @@
   parent: [BaseItem, BaseSecurityContraband]
   id: Stunbaton
   description: A stun baton for incapacitating people with. Actively harming with this is considered bad tone.
+#  categories: [ DoNotMap ] # Uhhh we'll deal with this later. It's migrated out anyway.
   components:
   - type: Sprite
     sprite: Objects/Weapons/Melee/stunbaton.rsi
@@ -96,10 +97,6 @@
     guides:
     - Security
     - Antagonists
-  # Imp - Begin - Tourists
-  - type: StealTarget
-    stealGroup: StunBaton
-  # Imp - End
 
 - type: entity
   name: truncheon
