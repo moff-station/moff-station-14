@@ -1,10 +1,14 @@
 ﻿- type: entity
+  parent: CrateEngineering # Moff
   id: BoxEngineeringSuitSealant
-  parent: CardboardBoxLarge
   name: PX-33 suit sealant box
   description: Space debris keep stabbing you through your suits? This box of PX-33 suit sealant will make it less of a problem.
   components:
-  - type: StorageFill
-    contents:
-    - id: SuitSealantCanister
-      amount: 8
+  # Moff Start - use EntityTableContainerFill
+  - type: EntityTableContainerFill
+    containers:
+      entity_storage: !type:AllSelector
+        children:
+        - id: SuitSealantCanister
+          amount: 8
+  # Moff End
