@@ -92,8 +92,20 @@ public sealed partial class BibleSystem : EntitySystem
         var userEnt = Identity.Entity(args.User, EntityManager);
         var targetEnt = Identity.Entity(args.Target.Value, EntityManager);
 
-        // Sizzle user if they are not a Bible user.
-        if (!HasComp<BibleUserComponent>(args.User))
+        if (ent.Comp.RequiresNecronomiconUser) //Moffstation Start - check if the user can use the necronomicon if its a necronomicon item
+        {
+            if (!HasComp<NecronomiconUserComponent>(args.User))
+            {
+                _popup.PopupEntity(Loc.GetString(ent.Comp.SizzleText, ("user", userEnt), ("target", targetEnt), ("bible", ent)), args.User, args.User);
+
+                _audio.PlayPredicted(ent.Comp.SizzleSound, ent, args.User);
+                _damageable.TryChangeDamage(args.User, ent.Comp.DamageOnUntrainedUse, true, origin: ent);
+                _delay.TryResetDelay((ent, useDelay));
+
+                return;
+            }
+        } //Moffstation End
+        else if (!HasComp<BibleUserComponent>(args.User)) // Sizzle user if they are not a Bible user.
         {
             _popup.PopupEntity(Loc.GetString(ent.Comp.SizzleText, ("user", userEnt), ("target", targetEnt), ("bible", ent)), args.User, args.User);
 
@@ -250,9 +262,16 @@ public sealed partial class BibleSystem : EntitySystem
     /// </summary>
     private bool CanSummon(Entity<SummonableComponent> ent, EntityUid user)
     {
-        return ent.Comp.CanSummon
-            && ent.Comp.SummonEntityPrototype.HasValue
-            && (!ent.Comp.RequiresBibleUser || HasComp<BibleUserComponent>(user));
+        if (!ent.Comp.CanSummon || !ent.Comp.SummonEntityPrototype.HasValue)
+            return false;
+
+        if (!ent.Comp.RequiresBibleUser)
+            return true;
+
+        if (TryComp<BibleComponent>(ent.Owner, out var bible) && bible.RequiresNecronomiconUser)
+            return HasComp<NecronomiconUserComponent>(user);
+
+        return HasComp<BibleUserComponent>(user);
     }
 
     /// <summary>
