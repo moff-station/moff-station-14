@@ -402,10 +402,6 @@
 #        tableId: ModerateAntagEventsTable
 #      - !type:NestedSelector
 #        tableId: CargoGiftsTable
-#      # Moffstation Start - Cargo Packing Error
-#      - !type:NestedSelector
-#        tableId: CargoPackingErrorTable
-#      # Moffstation End - Cargo Packing Error
 #      - !type:NestedSelector
 #        tableId: CalmPestEventsTable
 #      - !type:NestedSelector
@@ -424,10 +420,6 @@
 #      tableId: BasicAntagEventsTable
 #    - !type:NestedSelector
 #      tableId: CargoGiftsTable
-#    # Moffstation Start - Cargo Packing Error
-#    - !type:NestedSelector
-#      tableId: CargoPackingErrorTable
-#    # Moffstation End - Cargo Packing Error
 #    - !type:NestedSelector
 #      tableId: CalmPestEventsTable
 #    - !type:NestedSelector

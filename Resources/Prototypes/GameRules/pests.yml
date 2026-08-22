@@ -24,21 +24,6 @@
 #    children:
 #    - id: KingRatMigration
 #    - id: SnailMigration
-#    # Moffstation - Start - Extra vent critters
-#    - id: SlimesSpawnHorde
-#    - id: SnakeSpawnHorde
-#    - id: SpiderClownSpawnHorde
-#    - id: SpiderSpawnHorde
-#    - id: CarpSpawnHorde
-#    - id: GorillaSpawnHorde
-#    - id: SyndyCatSpawnHorde
-#    - id: FleshSpawnHorde
-#    - id: ArgocyteSpawnHorde
-#    - id: HivebotSpawnHorde
-#    - id: BatSpawnHorde
-#    - id: SpaceCreatureSpawnHorde
-#    - id: XenoSpawnHorde
-#    # Moffstation - End
 # Moff end
 
 # events
@@ -76,7 +61,7 @@
 #  - type: StationEvent
 #    earliestStart: 15
 #    weight: 6
-#    duration: 30 # Moffstation - used as delay
+#    duration: 50
 #    occursDuringRoundEnd: false
 #    minimumPlayers: 30 # Hopefully this is enough for the Rat King's potential Army (it was not, raised from 15 -> 30)
 #  - type: VentCrittersRule # We don't use Horde here to make RK spawns less predictable.
@@ -89,10 +74,6 @@
 #      prob: 0.02
 #    - id: MobMouseCancer
 #      prob: 0.001
-#    # Moffstation - Start - Snakeee.... Eater.....
-#    - id: MobCheeseEater
-#      prob: 0.005
-#    # Moffstation - End
 #    specialEntries:
 #    - id: SpawnPointGhostRatKing
 #      prob: 0.001
@@ -185,8 +166,4 @@
 #        - id: MobMouse
 #        - id: MobMouse1
 #        - id: MobMouse2
-## Moffstation - Start - Snakeee.... Eater.....
-#        - id: MobCheeseEater
-#          weight: 0.05
-## Moffstation - End
 # Moff end
