@@ -296,7 +296,7 @@
 - type: entity
   parent: BaseOneTimeXenoArtifactEffect
   id: XenoArtifactSolutionStorage
-  description: Obtains ability of container for chemical solutions
+  description: Obtains ability to contain chemical solutions # Moff - Slight retheming
   components:
   - type: XAEApplyComponents
     components:
@@ -346,7 +346,7 @@
 - type: entity
   parent: BaseOneTimeXenoArtifactEffect
   id: XenoArtifactDrill
-  description: Obtains ability of drill
+  description: Obtains the capabilities of a drill # Moff - Slight retheming
   components:
   - type: XAEApplyComponents
     components:

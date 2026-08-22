@@ -200,7 +200,7 @@ public sealed partial class AnalysisConsoleMenu : FancyWindow
         var hasInfo = _xenoArtifact.HasUnlockedPredecessor(artifact.Value, node.Value);
 
         // Moff Start - dynamic description
-        if (lockedState >= 1 || !_ent.HasComponent<XAELocalizedDescriptionComponent>(node.Value)) // If our node has been activated or lacks our custom localization string, reveal the default description
+        if (lockedState >= 1 || !_ent.TryGetComponent<XAELocalizedDescriptionComponent>(node.Value, out var localizedDesc)) // If our node has been activated or lacks our custom localization string, reveal the default description
         {
             // Show node durability value
             DurabilityValueLabel.SetMarkup(Loc.GetString("analysis-console-info-durability-value",
@@ -221,7 +221,7 @@ public sealed partial class AnalysisConsoleMenu : FancyWindow
             // Show vague effect hint
             EffectValueLabel.SetMarkup(Loc.GetString("analysis-console-info-effect-value",
                 ("state", hasInfo),
-                ("info", Loc.GetString(_ent.GetComponentOrNull<XAELocalizedDescriptionComponent>(node.Value)?.Description ?? string.Empty))));
+                ("info", Loc.GetString(localizedDesc.Description))));
         }
         // Moff End
 

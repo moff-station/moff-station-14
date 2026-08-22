@@ -7,5 +7,5 @@
 public sealed partial class XAELocalizedDescriptionComponent : Component
 {
     [DataField(required: true)]
-    public string Description;
+    public LocId Description;
 }
