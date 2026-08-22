@@ -15,8 +15,8 @@
 - type: entity
   parent: BaseAntagSpawner
   id: SpawnPointGhostRevenant
-  suffix: revenant
   categories: [ HideSpawnMenu, Spawner ]
+  suffix: revenant
   components:
   - type: GhostRole
     name: ghost-role-information-revenant-name
@@ -34,8 +34,8 @@
 # Rat king spawn point
 - type: entity
   parent: BaseAntagSpawner
-  id: SpawnPointGhostRatKingAntag
   suffix: rat king, antag
+  id: SpawnPointGhostRatKingAntag
   categories: [ HideSpawnMenu, Spawner ]
   components:
   - type: GhostRole
@@ -55,8 +55,8 @@
 - type: entity
   parent: BaseAntagSpawner
   id: SpawnPointGhostClosetSkeleton
-  suffix: closet skeleton
   categories: [ HideSpawnMenu, Spawner ]
+  suffix: closet skeleton
   components:
   - type: GhostRole
     name: ghost-role-information-closet-skeleton-name
@@ -69,8 +69,8 @@
 - type: entity
   parent: BaseAntagSpawner
   id: SpawnPointGhostCossack
-  suffix: cossack
   categories: [ HideSpawnMenu, Spawner ]
+  suffix: cossack
   components:
   - type: GhostRole
     name: ghost-role-information-cossack-name
@@ -83,8 +83,8 @@
 - type: entity
   parent: BaseAntagSpawner
   id: SpawnPointGhostSyndieSoldierTeamLeader
-  suffix: syndicate team leader
   categories: [ HideSpawnMenu, Spawner ]
+  suffix: syndicate team leader
   components:
   - type: GhostRole
     name: ghost-role-information-syndie-soldier-teamlead-name
@@ -97,8 +97,8 @@
 - type: entity
   parent: BaseAntagSpawner
   id: SpawnPointGhostSyndieSoldier
-  suffix: syndicate soldier
   categories: [ HideSpawnMenu, Spawner ]
+  suffix: syndicate soldier
   components:
   - type: GhostRole
     name: ghost-role-information-syndie-soldier-name
@@ -111,8 +111,8 @@
 - type: entity
   parent: BaseAntagSpawner
   id: SpawnPointGhostSyndieVisitor
-  suffix: syndie disaster victim
   categories: [ HideSpawnMenu, Spawner ]
+  suffix: syndie disaster victim
   components:
   - type: GhostRole
     name: ghost-role-information-syndie-disaster-victim-name
