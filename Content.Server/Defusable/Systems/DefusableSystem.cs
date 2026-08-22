@@ -159,21 +159,30 @@ public sealed partial class DefusableSystem : SharedDefusableSystem
         if (!comp.Activated)
             return;
 
+        _popup.PopupEntity(Loc.GetString("defusable-popup-boom", ("name", uid)), uid, PopupType.LargeCaution);
+
         RaiseLocalEvent(uid, new BombDetonatedEvent(uid));
 
-        if (TryComp<EmpOnTriggerComponent>(uid, out var empOnTrigger))  //Moffstation - start - EMP bomb
+        // Moff start - EMP bomb
+        // TODO This is kinda gross -- just swapping on the presence of a snowflake component is kinda gross. This could
+        //  have a specialized event for "you screwed up defusal" and then tie behavior to that.
+        if (TryComp<EmpOnTriggerComponent>(uid, out var empOnTrigger))
         {
-            _popup.PopupEntity(Loc.GetString("defusable-popup-boom", ("name", uid)), uid, PopupType.LargeCaution);
-            _emp.EmpPulse(Transform(uid).Coordinates, empOnTrigger.Range, empOnTrigger.EnergyConsumption, empOnTrigger.DisableDuration, detonator);
-            QueueDel(uid);
-            _appearance.SetData(uid, DefusableVisuals.Active, comp.Activated);
-            return;
+            _emp.EmpPulse(
+                Transform(uid).Coordinates,
+                empOnTrigger.Range,
+                empOnTrigger.EnergyConsumption,
+                empOnTrigger.DisableDuration,
+                detonator
+            );
         }
+        else
+        {
+            _explosion.TriggerExplosive(uid, user: detonator);
+        }
+        // Moff ened
 
-        _popup.PopupEntity(Loc.GetString("defusable-popup-boom", ("name", uid)), uid, PopupType.LargeCaution); //Moffstation - end
-        _explosion.TriggerExplosive(uid, user: detonator);
         QueueDel(uid);
-
         _appearance.SetData(uid, DefusableVisuals.Active, comp.Activated);
     }
 
