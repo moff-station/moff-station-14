@@ -7766,6 +7766,20 @@ Entries:
   id: 1802
   time: '2026-08-12T21:19:59.000'
   url: https://github.com/moff-station/moff-station-14/pull/1802
+- author: Centronias, Nyxilath
+  changes:
+  - message: Hellportals will no longer spawn Hellhounds, Goliaths, or Hellspawn.
+    type: remove
+  - message: Hellportals will now spawn a unique variant of flesh golems thematic
+      to Nar'Sie.
+    type: tweak
+  - message: Hellportals will now spawn Narsian constructs - be careful!
+    type: add
+  - message: Hellportals have been made at least 5% more ominous.
+    type: tweak
+  id: 1803
+  time: '2026-08-22T21:26:52.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1803
 - author: DuckManZach
   changes:
   - message: Made melee screenshake a bit softer!
