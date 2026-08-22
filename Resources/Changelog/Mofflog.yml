@@ -7887,5 +7887,20 @@ Entries:
   id: 1840
   time: '2026-08-20T21:07:52.000'
   url: https://github.com/moff-station/moff-station-14/pull/1840
+- author: Centronias
+  changes:
+  - message: AAC tablets will now speak the shortest phrase matching the entered text
+      on the search tab.
+    type: tweak
+  - message: AAC tablets now have memory on the search tab, meaning you can navigate
+      through previously spoken phrases with the same controls as the chat box (defaults
+      to arrow keys).
+    type: add
+  - message: AAC tablets now have a little bit of help text to describe how to use
+      the search tab's quick speaking capability.
+    type: tweak
+  id: 1841
+  time: '2026-08-22T21:47:02.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1841
 Name: Mofflog
 Order: -2
