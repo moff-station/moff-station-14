@@ -7,7 +7,16 @@
     sprite: _Moffstation/Structures/Storage/Crates/woodcrate.rsi
   - type: Sprite
     sprite: _Moffstation/Structures/Storage/Crates/woodcrate.rsi
+    layers:
+    - state: base
+      map: [ "enum.StorageVisualLayers.Base" ]
+    - state: closed
+      map: [ "enum.StorageVisualLayers.Door" ]
+    - state: paper
+      sprite: Structures/Storage/Crates/labels.rsi
+      map: [ "enum.PaperLabelVisuals.Layer" ]
   - type: Damageable
+    damageModifierSet: Wood
   - type: Injurable
     damageContainer: StructuralInorganic
   - type: Destructible
