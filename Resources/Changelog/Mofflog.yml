@@ -7696,6 +7696,15 @@ Entries:
   id: 1782
   time: '2026-08-10T00:21:00.000'
   url: https://github.com/moff-station/moff-station-14/pull/1782
+- author: DuckManZach
+  changes:
+  - message: Enroll events now spawn backup events if they dont reach minimum players!
+    type: tweak
+  - message: added togglable audio, chat, and window notifications to enroll events!
+    type: add
+  id: 1786
+  time: '2026-08-23T22:13:48.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1786
 - author: MissKay1994
   changes:
   - message: Removed necronomicon from nonchaplain jobs uplinks
