@@ -121,12 +121,15 @@ public sealed partial class MoffEnrollControl : PanelContainer, IVoteEntryContro
 
         var enrollCount = _enroller.Comp.Enrolled.Count;
         var maxEnrolled = _enroller.Comp.MaxEnrolled;
+        var minEnrolled = _enroller.Comp.MinEnrolled;
 
-        EnrollProgress.MaxValue = Math.Max(1, maxEnrolled);
+        EnrollProgress.MaxValue = Math.Max(1, minEnrolled);
         EnrollProgress.Value = enrollCount;
 
-        EnrollCount.Text = Loc.GetString("moff-vote-enroll-count", ("count", enrollCount), ("max", _enroller.Comp.MinEnrolled));
-        RequiredEnrolls.SetMarkup(Loc.GetString("moff-vote-enroll-slots", ("count", maxEnrolled)));
+        EnrollCount.Text = Loc.GetString("moff-vote-enroll-count",
+            ("count", enrollCount),
+            ("min", minEnrolled),
+            ("max", maxEnrolled));
     }
 
     protected override void FrameUpdate(FrameEventArgs args)
