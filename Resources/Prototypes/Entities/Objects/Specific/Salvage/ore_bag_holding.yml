@@ -24,4 +24,12 @@
     - type: MagnetPickup
       slotFlags: null
       range: 2
-      requireActiveHand: true
+#      requireActiveHand: true # Moff - Magnetize regardless of hand activeness
+    # Moffstation - Begin - Make borg ore bags magnetize in hands and toggleable
+    - type: ItemToggle
+    - type: ComponentToggler
+      components:
+      - type: MagnetPickup
+        slotFlags: null
+        range: 2
+    # Moffstation - End
