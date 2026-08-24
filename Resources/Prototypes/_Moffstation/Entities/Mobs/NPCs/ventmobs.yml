@@ -135,3 +135,28 @@
 - type: entity
   parent: [BaseSmasherHostile, MobKangarooSpace]
   id: MobKangarooSpaceSmasher
+
+- type: entity
+  parent: [ BaseSmasherHostile, MobFleshLover ]
+  id: MobFleshLoverSmasher
+  categories: [ HideSpawnMenu ]
+
+- type: entity
+  parent: [ BaseSmasherHostile, MobFleshGolem ]
+  id: MobFleshGolemSmasher
+  categories: [ HideSpawnMenu ]
+
+- type: entity
+  parent: [ BaseSmasherHostile, MobFleshClamp ]
+  id: MobFleshClampSmasher
+  categories: [ HideSpawnMenu ]
+
+- type: entity
+  parent: [ BaseSmasherHostile, MobFleshJared ]
+  id: MobFleshJaredSmasher
+  categories: [ HideSpawnMenu ]
+
+- type: entity
+  parent: [ BaseSmasherHostile, MobAbomination ]
+  id: MobAbominationSmasher
+  categories: [ HideSpawnMenu ]

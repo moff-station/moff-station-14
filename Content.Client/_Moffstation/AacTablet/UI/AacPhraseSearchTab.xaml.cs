@@ -33,10 +33,10 @@ public sealed partial class AacPhraseSearchTab : BoxContainer
     {
         var width = this.GetControlOfType<AacWindow>(true).FirstOrDefault()?.MinWidth ?? 540;
         Content.Children.Clear();
-        _firstPhrase = null;
-        foreach (var group in _aacTablet.SearchPhrases(args.Text))
+        var (shortest, searchPhrases) = _aacTablet.SearchPhrases(args.Text);
+        _firstPhrase = shortest?.ID;
+        foreach (var group in searchPhrases)
         {
-            _firstPhrase ??= group.Phrases.First();
             Content.Children.Add(AacPhraseButtonsGroup.Create(group, OnPressed, (int)width));
         }
     }
@@ -49,6 +49,7 @@ public sealed partial class AacPhraseSearchTab : BoxContainer
         }
 
         SearchText.Clear();
+        Content.Children.Clear();
     }
 
     private void OnPressed(ProtoId<QuickPhrasePrototype> phrase)

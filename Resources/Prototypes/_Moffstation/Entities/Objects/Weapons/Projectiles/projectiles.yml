@@ -48,7 +48,20 @@
         - Impassable
         - BulletImpassable
 
-# TODO Add material composition + recycling
+- type: entity
+  parent: ChainSickle
+  id: MoffDemonicChainHook
+  categories: [ HideSpawnMenu ]
+  name: demonic chain hook
+  description: That looks painful.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Mobs/Demons/harvester.rsi
+  - type: Projectile
+    damage:
+      types:
+        Piercing: 10
+
 # Modelled as a 30cm long, 1cm diameter cylinder of carbon steel
 - type: entity
   parent: BaseArrow

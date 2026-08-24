@@ -2,11 +2,25 @@
   id: CargoPackingErrorTable
   table: !type:GroupSelector # ~~we need to pass a list of rules, since rules have further restrictions to consider via StationEventComp~~ But we arent doing that shit yet, it picks a random one StationEventComp be damned.
     children:
+    - !type:NestedSelector
+      tableId: CalmCargoPackingErrorTable
+    - !type:NestedSelector
+      tableId: SpicyCargoPackingErrorTable
+
+- type: entityTable
+  id: CalmCargoPackingErrorTable
+  table: !type:GroupSelector
+    children:
     - id: PackingErrorLargeAnimals
     - id: PackingErrorPests
+    - id: PackingErrorItems
+
+- type: entityTable
+  id: SpicyCargoPackingErrorTable
+  table: !type:GroupSelector
+    children:
     - id: PackingErrorAnimalsHostile
     - id: PackingErrorSyndicate
-    - id: PackingErrorItems
     - id: PackingErrorXenoArtifactOrAnomaly
 
 - type: entity
