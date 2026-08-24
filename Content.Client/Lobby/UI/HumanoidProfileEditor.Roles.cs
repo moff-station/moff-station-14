@@ -37,7 +37,7 @@ public sealed partial class HumanoidProfileEditor
         foreach (var (jobId, prioritySelector) in _jobPriorities)
         {
             var priority = Profile?.JobPriorities.GetValueOrDefault(jobId, JobPriority.Never) ?? JobPriority.Never;
-            prioritySelector.Select((int)priority);
+            prioritySelector.Select(MoffFromJobPriority(priority)); // Moff - Yes/no selector
         }
     }
 
@@ -136,6 +136,8 @@ public sealed partial class HumanoidProfileEditor
 
         departments.Sort(DepartmentUIComparer.Instance);
 
+        // Moff Start - Multi-character selection: the four-way selector collapses to yes/no
+        /*
         var items = new[]
         {
                 ("humanoid-profile-editor-job-priority-never-button", (int) JobPriority.Never),
@@ -143,6 +145,10 @@ public sealed partial class HumanoidProfileEditor
                 ("humanoid-profile-editor-job-priority-medium-button", (int) JobPriority.Medium),
                 ("humanoid-profile-editor-job-priority-high-button", (int) JobPriority.High),
             };
+        */
+        var items = MoffJobPreferenceItems;
+        HideMoffPreferenceUnavailable();
+        // Moff end
 
         foreach (var department in departments)
         {
@@ -227,25 +233,18 @@ public sealed partial class HumanoidProfileEditor
 
                 selector.OnSelected += selectedPrio =>
                 {
-                    var selectedJobPrio = (JobPriority)selectedPrio;
+                    // Moff Start - Yes/no selection; the priority itself is player-global.
+                    var selectedJobPrio = MoffToJobPriority(selectedPrio);
+
                     Profile = Profile?.WithJobPriority(job.ID, selectedJobPrio);
 
                     foreach (var (jobId, other) in _jobPriorities)
                     {
                         // Sync other selectors with the same job in case of multiple department jobs
                         if (jobId == job.ID)
-                        {
                             other.Select(selectedPrio);
-                            continue;
-                        }
-
-                        if (selectedJobPrio != JobPriority.High || (JobPriority)other.Selected != JobPriority.High)
-                            continue;
-
-                        // Lower any other high priorities to medium.
-                        other.Select((int)JobPriority.Medium);
-                        Profile = Profile?.WithJobPriority(jobId, JobPriority.Medium);
                     }
+                    // Moff end
 
                     // TODO: Only reload on high change (either to or from).
                     ReloadPreview();

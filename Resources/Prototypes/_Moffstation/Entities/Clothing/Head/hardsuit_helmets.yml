@@ -300,4 +300,9 @@
     event: !type:ToggleHelmetVisorEvent
   - type: Sprite
     sprite: Clothing/Head/Welding/welding.rsi
-    state: icon
+    layers:
+    - state: icon
+      map: ["enum.ActionVisuals.Icon"]
+    - state: ""
+      map: ["enum.ActionVisuals.IconToggled"]
+      visible: false
