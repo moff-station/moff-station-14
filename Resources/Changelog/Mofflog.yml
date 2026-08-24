@@ -7866,6 +7866,19 @@ Entries:
   id: 1821
   time: '2026-08-20T18:50:11.000'
   url: https://github.com/moff-station/moff-station-14/pull/1821
+- author: Centronias, Nyxilath
+  changes:
+  - message: Artifact console effect reports now give more detail post-activation
+    type: tweak
+  - message: Artifact console durability reports now state 'Unknown' prior to activation
+    type: tweak
+  - message: Speed-Artifacts are now moved to handheld-only
+    type: fix
+  - message: Several artifact effect hints have been adjusted according to their thematics
+    type: tweak
+  id: 1828
+  time: '2026-08-24T19:27:04.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1828
 - author: Wintoli
   changes:
   - message: EMP Hardbomb has been added for Syndicates and Nukies alike!
