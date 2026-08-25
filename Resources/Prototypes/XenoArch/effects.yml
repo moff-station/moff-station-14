@@ -1086,7 +1086,7 @@
       deleteSpawnerAfterSpawn: false
       table: !type:GroupSelector
         children:
-        - id: MobAdultSlimesYellowAngry
+        - id: MobAdultSlimesReformableAngrySmasher # Moff - Slime prototype clean-up
         - id: MobAngryBee
           # Moff Start - Bees deserve bee friends
           amount: !type:RangeNumberSelector #NOT THE BEES!
