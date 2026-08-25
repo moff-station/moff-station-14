@@ -29,3 +29,6 @@ uplink-clothing-infiltrator-headset-desc = A headset combining both chameleon an
 uplink-clothing-rocket-skates-name = Syndicate Rocket Skates
 uplink-clothing-rocket-skates-desc = An experimental prototype from Lumens Technologies, combining the benefits of rollerskates with the thrusting capacities of a rocket for maximum velocity.
 
+# Explosives
+uplink-exploding-syndicate-emp-bomb-name = Syndicate EMP Bomb
+uplink-exploding-syndicate-emp-bomb-desc = A big, anchored bomb that emits an almost station-wide disabling EMP pulse if not defused in time. Disables electronics for exactly 3 minutes. Has an adjustable fuse.

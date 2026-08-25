@@ -250,10 +250,13 @@ namespace Content.IntegrationTests.Tests
                 "SpawnEntityTableOnTrigger",
                 "AddGameRuleOnTrigger",
                 "Hellportal",
+                "MoffEnrollEvent",
+                "ESSynchronizedVoteManager",
                 // ES fancy timed despawn
                 "ESTimedDespawn",
                 "ESSparkOnTrigger",
                 "BluespaceLocker", // Spawns bluespace farticles in its code
+                "ElectricityAnomaly", // Creates sparks periodically
             };
 
             // Moff start

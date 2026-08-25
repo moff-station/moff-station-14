@@ -7,9 +7,8 @@ using Content.Server._Moffstation.GameTicking.Rules;
 using Content.Server._Moffstation.GameTicking.Rules.Components;
 using Content.Server.Antag.Components;
 using Content.Server.GameTicking;
-using Content.Server.Ghost.Roles;
-using Content.Server.Ghost.Roles.Components;
 using Content.Shared._Moffstation.Replicator.Components;
+using Content.Shared._Moffstation.Voting.Components;
 using Content.Shared.Actions;
 using Content.Shared.Actions.Components;
 using Content.Shared.Maps;
@@ -36,7 +35,6 @@ public sealed class ReplicatorLifecycleTest : GameTest
     };
 
     [SidedDependency(Side.Server)] private readonly GameTicker _ticker = default!;
-    [SidedDependency(Side.Server)] private readonly GhostRoleSystem _ghostRole = default!;
     [SidedDependency(Side.Server)] private readonly SharedActionsSystem _action = default!;
     [SidedDependency(Side.Server)] private readonly TurfSystem _turf = default!;
     [SidedDependency(Side.Server)] private readonly TileSystem _tile = default!;
@@ -51,7 +49,7 @@ public sealed class ReplicatorLifecycleTest : GameTest
     private EntityCoordinates _nestCoords;
 
     /// <summary>
-    /// Starts the rule, takes the queen ghost role, and spawns the nest, leaving a T1 replicator and its
+    /// Starts the rule, enrolls the player as the queen, and spawns the nest, leaving a T1 replicator and its
     /// nest ready for the individual lifecycle tests below.
     /// </summary>
     [SetUp]
@@ -67,33 +65,38 @@ public sealed class ReplicatorLifecycleTest : GameTest
             );
         });
 
-        var queenSpawner = EntityUid.Invalid;
+        await Server.WaitPost(() => _ticker.SpawnObserver(ServerSession!));
+
         await Server.WaitAssertion(() =>
         {
-            var enumerator = SEntMan.EntityQueryEnumerator<GhostRoleAntagSpawnerComponent, GhostRoleComponent>();
-            Assume.That(
-                enumerator.MoveNext(out queenSpawner, out var grasComp, out _),
-                "AntagSelection should have created a GhostRoleAntagSpawner for the queen"
-            );
-            Assume.That(
-                grasComp!.Definition!.Value.Id,
-                Is.EqualTo("ReplicatorQueen"),
-                "Spawner should be for the ReplicatorQueen antagSpecifier"
-            );
+            MoffEnrollEventComponent? enroll = null;
+            var enumerator = SEntMan.EntityQueryEnumerator<MoffEnrollEventComponent>();
+            while (enumerator.MoveNext(out var comp))
+            {
+                if (comp.OwningRule != ruleEntity)
+                    continue;
+
+                enroll = comp;
+                break;
+            }
+
+            Assume.That(enroll, Is.Not.Null, "The rule's vote manager should have spawned an enroll vote");
+            Assume.That(enroll!.MaxEnrolled, Is.GreaterThan(0), "Rule should offer at least one antag slot");
+            Assume.That(ServerSession!.AttachedEntity, Is.Not.Null, "Player should be a ghost after observing");
+
+            enroll.Enrolled.Add(ServerSession.AttachedEntity!.Value);
+            enroll.EndTime = SGameTiming.CurTime;
         });
 
+        await RunTicksSync(2);
+
         var queen = EntityUid.Invalid;
-        await Server.WaitPost(() =>
+        await Server.WaitAssertion(() =>
         {
-            var identifier = SComp<GhostRoleComponent>(queenSpawner).Identifier;
-            Assume.That(
-                _ghostRole.Takeover(ServerSession!, identifier),
-                "Player should successfully take the ghost role"
-            );
             Assume.That(
                 ServerSession!.AttachedEntity,
                 Is.Not.Null,
-                "Player session should be attached to the queen after taking the ghost role"
+                "Player session should be attached to the queen after enrollment resolves"
             );
             queen = ServerSession.AttachedEntity!.Value;
 

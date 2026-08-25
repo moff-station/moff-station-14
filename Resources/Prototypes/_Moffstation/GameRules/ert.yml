@@ -9,6 +9,27 @@
   - type: LoadMapRule
     gridPath: /Maps/_Moffstation/PreCrewed/dart.yml
   - type: RuleGrids
+  - type: AntagLoadProfileRule
+  - type: AntagSelection
+    selectionTime: Enroll
+    antags:
+    - !type:FixedAntagCount
+      proto: ERTLeaderEVA
+    - !type:FixedAntagCount
+      proto: ERTSecurityEVA
+    - !type:FixedAntagCount
+      proto: ERTMedicalEVA
+      count: 2
+    - !type:FixedAntagCount
+      proto: ERTEngineerEVA
+      count: 2
+    - !type:FixedAntagCount
+      proto: ERTJanitorEVA
+    - !type:FixedAntagCount
+      proto: ERTChaplainEVA
+  - type: ESSynchronizedVoteManager
+    votes:
+    - ERTGeneralEnroller
 
 - type: entity # 4 soldiers in a large transport
   parent: BaseGameRule
@@ -21,6 +42,21 @@
   - type: LoadMapRule
     gridPath: /Maps/_Moffstation/PreCrewed/shuttle-nt-transport-ertsec-team.yml
   - type: RuleGrids
+  - type: AntagLoadProfileRule
+  - type: AntagSelection
+    selectionTime: Enroll
+    antags:
+    - !type:FixedAntagCount
+      proto: ERTLeaderArmedTeam
+    - !type:FixedAntagCount
+      proto: ERTSecurityArmedRifle
+    - !type:FixedAntagCount
+      proto: ERTSecurityArmedVanguard
+    - !type:FixedAntagCount
+      proto: ERTMedicalArmed
+  - type: ESSynchronizedVoteManager
+    votes:
+    - ERTGeneralEnroller
 
 - type: entity # 8 soldiers in a large transport
   parent: BaseGameRule
@@ -33,6 +69,29 @@
   - type: LoadMapRule
     gridPath: /Maps/_Moffstation/PreCrewed/shuttle-nt-transport-ertsec-squad.yml
   - type: RuleGrids
+  - type: AntagLoadProfileRule
+  - type: AntagSelection
+    selectionTime: Enroll
+    antags:
+    - !type:FixedAntagCount
+      proto: ERTLeaderArmed
+    - !type:FixedAntagCount
+      proto: ERTLeaderArmedTeam
+      count: 2
+    - !type:FixedAntagCount
+      proto: ERTSecurityArmedRifle
+      count: 2
+    - !type:FixedAntagCount
+      proto: ERTSecurityArmedVanguard
+    - !type:FixedAntagCount
+      proto: ERTSecurityArmedGrenade
+    - !type:FixedAntagCount
+      proto: ERTMedicalArmed
+    - !type:FixedAntagCount
+      proto: ERTEngineerArmed
+  - type: ESSynchronizedVoteManager
+    votes:
+    - ERTGeneralEnroller
 
 - type: entity # 4 soldiers in a small dropship
   parent: BaseGameRule
@@ -45,6 +104,21 @@
   - type: LoadMapRule
     gridPath: /Maps/_Moffstation/PreCrewed/shuttle-nt-dropship-ertsec-team.yml
   - type: RuleGrids
+  - type: AntagLoadProfileRule
+  - type: AntagSelection
+    selectionTime: Enroll
+    antags:
+    - !type:FixedAntagCount
+      proto: ERTLeaderArmedTeam
+    - !type:FixedAntagCount
+      proto: ERTSecurityArmedRifle
+    - !type:FixedAntagCount
+      proto: ERTSecurityArmedVanguard
+    - !type:FixedAntagCount
+      proto: ERTMedicalArmed
+  - type: ESSynchronizedVoteManager
+    votes:
+    - ERTGeneralEnroller
 
 - type: entity # 8 soldiers in a small dropship
   parent: BaseGameRule
@@ -57,6 +131,29 @@
   - type: LoadMapRule
     gridPath: /Maps/_Moffstation/PreCrewed/shuttle-nt-dropship-ertsec-squad.yml
   - type: RuleGrids
+  - type: AntagLoadProfileRule
+  - type: AntagSelection
+    selectionTime: Enroll
+    antags:
+    - !type:FixedAntagCount
+      proto: ERTLeaderArmed
+    - !type:FixedAntagCount
+      proto: ERTLeaderArmedTeam
+      count: 2
+    - !type:FixedAntagCount
+      proto: ERTSecurityArmedRifle
+      count: 2
+    - !type:FixedAntagCount
+      proto: ERTSecurityArmedVanguard
+    - !type:FixedAntagCount
+      proto: ERTSecurityArmedGrenade
+    - !type:FixedAntagCount
+      proto: ERTMedicalArmed
+    - !type:FixedAntagCount
+      proto: ERTEngineerArmed
+  - type: ESSynchronizedVoteManager
+    votes:
+    - ERTGeneralEnroller
 
 - type: entity
   parent: BaseGameRule
@@ -69,6 +166,18 @@
   - type: LoadMapRule
     gridPath: /Maps/_Moffstation/PreCrewed/shuttle-nt-grimebreaker.yml
   - type: RuleGrids
+  - type: AntagLoadProfileRule
+  - type: AntagSelection
+    selectionTime: Enroll
+    antags:
+    - !type:FixedAntagCount
+      proto: ERTLeaderEVA
+    - !type:FixedAntagCount
+      proto: ERTJanitorEVA
+      count: 3
+  - type: ESSynchronizedVoteManager
+    votes:
+    - ERTGeneralEnroller
 
 - type: entity
   parent: BaseGameRule
@@ -81,6 +190,22 @@
   - type: LoadMapRule
     gridPath: /Maps/_Moffstation/PreCrewed/shuttle-nt-equilibrium.yml
   - type: RuleGrids
+  - type: AntagLoadProfileRule
+  - type: AntagSelection
+    selectionTime: Enroll
+    antags:
+    - !type:FixedAntagCount
+      proto: ERTLeaderEVA
+    - !type:FixedAntagCount
+      proto: ERTMedicalEVA
+      count: 3
+    - !type:FixedAntagCount
+      proto: ERTJanitorEVA
+    - !type:FixedAntagCount
+      proto: ERTChaplainEVA
+  - type: ESSynchronizedVoteManager
+    votes:
+    - ERTGeneralEnroller
 
 - type: entity
   parent: BaseGameRule
@@ -93,6 +218,20 @@
   - type: LoadMapRule
     gridPath: /Maps/_Moffstation/PreCrewed/shuttle-tbe-artificer.yml
   - type: RuleGrids
+  - type: AntagLoadProfileRule
+  - type: AntagSelection
+    selectionTime: Enroll
+    antags:
+    - !type:FixedAntagCount
+      proto: ERTLeaderEVA
+    - !type:FixedAntagCount
+      proto: ERTEngineerEVA
+      count: 6
+    - !type:FixedAntagCount
+      proto: ERTJanitorEVA
+  - type: ESSynchronizedVoteManager
+    votes:
+    - ERTGeneralEnroller
 
 - type: entity
   parent: BaseGameRule
@@ -105,6 +244,16 @@
   - type: LoadMapRule
     gridPath: /Maps/_Moffstation/PreCrewed/shuttle-nt-dropship-cburn-team.yml
   - type: RuleGrids
+  - type: AntagLoadProfileRule
+  - type: AntagSelection
+    selectionTime: Enroll
+    antags:
+    - !type:FixedAntagCount
+      proto: CBURNAgent
+      count: 4
+  - type: ESSynchronizedVoteManager
+    votes:
+    - ERTGeneralEnroller
 
 - type: entity
   parent: BaseGameRule
@@ -115,16 +264,210 @@
   - type: RuleGrids
   - type: AlertLevelInterceptionRule
     alertLevel: Epsilon
+  - type: AntagLoadProfileRule
+  - type: AntagSelection
+    selectionTime: Enroll
+    antags:
+    - !type:FixedAntagCount
+      proto: DeathSquadAgent
+      count: 4
+  - type: ESSynchronizedVoteManager
+    votes:
+    - ERTDeathSquadEnroller
 
-# Nanotrasen Corporate Fleet
-- type: entity # One cannon, one laser - can seriously fuck up pirates or xenoborgs, if it can find them.
-  parent: BaseGameRule
-  id: NTCFGunboat
+# Roles
+# Mirrors the randomHumanoidSettings the ghost role spawners used, so an enrolled responder gets the same
+# gear, implants and callsign the ghost role would have handed out.
+
+- type: antagSpecifier
+  abstract: true
+  parent: RestrictedAntag
+  id: BaseERTAntag
+  pickPlayer: false
+  roleLoadout:
+  - RoleSurvivalMilitaryDouble
   components:
-  - type: StationEvent
-    startAnnouncement: ntcf-gunboat
-    startAudio:
-      path: /Audio/Misc/notice1.ogg
-  - type: LoadMapRule
-    gridPath: /Maps/_Moffstation/PreCrewed/shuttle-nt-gunboat.yml
-  - type: RuleGrids
+  - type: AntagImmune
+  - type: AutoImplant
+    implants:
+    - MindShieldImplant
+    - DeathRattleImplantCentcomm
+  mindRoles:
+  - MindRoleERT
+
+- type: antagSpecifier
+  parent: BaseERTAntag
+  id: ERTLeaderEVA
+  startingGear: ERTLeaderGearEVA
+  components:
+  - type: RandomMetadata
+    nameSegments:
+    - NamesMilitaryLast
+    nameFormat: name-format-ert-leader
+
+- type: antagSpecifier
+  parent: BaseERTAntag
+  id: ERTLeaderArmed
+  startingGear: ERTLeaderGearArmed
+  components:
+  - type: RandomMetadata
+    nameSegments:
+    - NamesMilitaryLast
+    nameFormat: name-format-ert-leader
+
+- type: antagSpecifier
+  parent: BaseERTAntag
+  id: ERTLeaderArmedTeam
+  startingGear: ERTLeaderGearArmedTeam
+  components:
+  - type: RandomMetadata
+    nameSegments:
+    - NamesMilitaryLast
+    nameFormat: name-format-ert-team-leader
+
+- type: antagSpecifier
+  parent: BaseERTAntag
+  id: ERTChaplainEVA
+  startingGear: ERTChaplainGearEVA
+  components:
+  - type: BibleUser
+  - type: RandomMetadata
+    nameSegments:
+    - NamesMilitaryLast
+    nameFormat: name-format-ert-specialist
+
+- type: antagSpecifier
+  parent: BaseERTAntag
+  id: ERTJanitorEVA
+  startingGear: ERTJanitorGearEVA
+  components:
+  - type: RandomMetadata
+    nameSegments:
+    - NamesMilitaryLast
+    nameFormat: name-format-ert-specialist
+
+- type: antagSpecifier
+  parent: BaseERTAntag
+  id: ERTEngineerEVA
+  startingGear: ERTEngineerGearEVA
+  components:
+  - type: RandomMetadata
+    nameSegments:
+    - NamesMilitaryLast
+    nameFormat: name-format-ert-specialist
+
+- type: antagSpecifier
+  parent: BaseERTAntag
+  id: ERTEngineerArmed
+  startingGear: ERTEngineerGearArmed
+  components:
+  - type: RandomMetadata
+    nameSegments:
+    - NamesMilitaryLast
+    nameFormat: name-format-ert-pointman
+
+- type: antagSpecifier
+  parent: BaseERTAntag
+  id: ERTMedicalEVA
+  startingGear: ERTMedicalGearEVA
+  components:
+  - type: RandomMetadata
+    nameSegments:
+    - NamesMilitaryLast
+    nameFormat: name-format-ert-doctor
+
+- type: antagSpecifier
+  parent: BaseERTAntag
+  id: ERTMedicalArmed
+  startingGear: ERTMedicalGearArmed
+  components:
+  - type: RandomMetadata
+    nameSegments:
+    - NamesMilitaryLast
+    nameFormat: name-format-ert-corpsman
+
+- type: antagSpecifier
+  parent: BaseERTAntag
+  id: ERTSecurityEVA
+  startingGear: ERTSecurityGearEVA
+  components:
+  - type: RandomMetadata
+    nameSegments:
+    - NamesMilitaryLast
+    nameFormat: name-format-ert-officer
+
+- type: antagSpecifier
+  parent: BaseERTAntag
+  id: ERTSecurityArmedRifle
+  startingGear: ERTSecurityGearArmedRifle
+  components:
+  - type: RandomMetadata
+    nameSegments:
+    - NamesMilitaryLast
+    nameFormat: name-format-ert-rifle
+
+- type: antagSpecifier
+  parent: BaseERTAntag
+  id: ERTSecurityArmedGrenade
+  startingGear: ERTSecurityGearArmedGrenade
+  components:
+  - type: RandomMetadata
+    nameSegments:
+    - NamesMilitaryLast
+    nameFormat: name-format-ert-grenade
+
+- type: antagSpecifier
+  parent: BaseERTAntag
+  id: ERTSecurityArmedVanguard
+  startingGear: ERTSecurityGearArmedVanguard
+  components:
+  - type: RandomMetadata
+    nameSegments:
+    - NamesMilitaryLast
+    nameFormat: name-format-ert-vanguard
+
+- type: antagSpecifier
+  parent: BaseERTAntag
+  id: CBURNAgent
+  startingGear: CBURNGear
+  roleLoadout:
+  - RoleSurvivalEVA
+  components:
+  - type: RandomMetadata
+    nameSegments:
+    - NamesMilitaryFirst
+    - NamesMilitaryLast
+    nameFormat: name-format-ert
+
+- type: antagSpecifier
+  parent: BaseERTAntag
+  id: DeathSquadAgent
+  startingGear: DeathSquadGear
+  roleLoadout:
+  - RoleSurvivalEVA
+  components:
+  - type: RandomMetadata
+    nameSegments:
+    - NamesMilitaryFirstLeader
+    - NamesMilitaryLast
+    nameFormat: name-format-ert
+
+- type: antagSpecifier
+  parent: BaseERTAntag
+  id: NTCFPilot
+  startingGear: NTCFPilotGear
+  components:
+  - type: RandomMetadata
+    nameSegments:
+    - NamesMilitaryLast
+    nameFormat: name-format-ert-pilot
+
+- type: antagSpecifier
+  parent: BaseERTAntag
+  id: NTCFEngineer
+  startingGear: NTCFEngineerGear
+  components:
+  - type: RandomMetadata
+    nameSegments:
+    - NamesMilitaryLast
+    nameFormat: name-format-ert-flight-engineer

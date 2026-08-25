@@ -1,0 +1,45 @@
+﻿- type: gameMap
+  id: Reach
+  mapName: 'Reach'
+  mapPath: /Maps/reach.yml # Until we make our own
+  minPlayers: 0  # Deadpop
+  maxPlayers: 15 # Deadpop
+  stations:
+    Reach:
+      stationProto: StandardNanotrasenStation
+      components:
+      - type: StationNameSetup
+        mapNameTemplate: '{0} Reach Transport {1}'
+        nameGenerator:
+          !type:NanotrasenNameGenerator
+          prefixCreator: 'SC'
+      - type: StationEmergencyShuttle
+        emergencyShuttlePath: /Maps/Shuttles/emergency.yml
+      - type: StationJobs
+        availableJobs:
+          #command
+          Captain: [ 1, 1 ]
+          HeadOfSecurity: [ 1, 1 ]
+          #service
+          Bartender: [ 1, 1 ]
+          Botanist: [ 1, 1 ]
+          Chef: [ 1, 1 ]
+          Janitor: [ 1, 1 ]
+          #engineering
+          AtmosphericTechnician: [ 1, 1 ]
+          StationEngineer: [ 2, 2 ]
+          #medical
+          Chemist: [ 1, 1 ]
+          MedicalDoctor: [ 2, 2 ]
+          #science
+          Scientist: [ 1, 1 ]
+          #security
+          SecurityOfficer: [ 3, 3 ]
+          #supply
+          CargoTechnician: [ 1, 1 ]
+          SalvageSpecialist: [ 1, 1 ]
+          #civilian
+          Passenger: [ -1, -1 ] #infinite, not counted
+          Clown: [ 1, 1 ]
+          Mime: [ 1, 1 ]
+          Musician: [ 1, 1 ]

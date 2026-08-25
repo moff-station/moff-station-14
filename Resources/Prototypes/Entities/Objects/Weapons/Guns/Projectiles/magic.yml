@@ -159,7 +159,7 @@
         hard: false
 
 - type: entity
-  id: ProjectilePolyboltBase
+  id: ProjectilePolyboltBaseUpstream # Moff
   abstract: true
   parent: BaseBullet
   categories: [ HideSpawnMenu ]
@@ -189,7 +189,7 @@
   categories: [ HideSpawnMenu ]
   components:
   - type: PolymorphOnTrigger
-    polymorph: WizardForcedCarp
+    polymorph: MoffWizardForcedCarp # Moff
   - type: WhitelistTriggerCondition
     userWhitelist:
       components:

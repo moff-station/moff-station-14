@@ -5,6 +5,7 @@
   description: Control the flow of the round alongside other stagehands.
   components:
   - type: Action
+    priority: 1
     checkCanInteract: false
     checkConsciousness: false
   - type: InstantAction
@@ -12,4 +13,5 @@
       key: enum.ESVoterUiKey.Key
   - type: Sprite
     sprite: _ES/Actions/stagehands.rsi
-    state: ballot
+    layers:
+    - state: ballot
