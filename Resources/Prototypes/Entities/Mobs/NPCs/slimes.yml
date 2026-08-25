@@ -140,116 +140,117 @@
     rootTask:
       task: SimpleHostileCompound
 
-- type: entity
-  name: blue slime
-  id: MobAdultSlimesBlue
-  categories: [ HideSpawnMenu ] # Moff - Migrate used slime protos to our namespace
-  parent: MobAdultSlimes
-  components:
-  - type: DamageStateVisuals
-    states:
-      Alive:
-        Base: blue_adult_slime
-      Dead:
-        Base: blue_adult_slime_dead
-
-- type: entity
-  name: blue slime
-  parent: MobAdultSlimesBlue
-  id: MobAdultSlimesBlueAngry
-  categories: [ HideSpawnMenu ] # Moff - Migrate used slime protos to our namespace
-  suffix: Angry
-  components:
-  - type: NpcFactionMember
-    factions:
-    - SimpleHostile
-  - type: GhostRole
-    description: ghost-role-information-angry-slimes-description
-    rules: ghost-role-information-angry-slimes-rules
-    mindRoles:
-    - MindRoleGhostRoleTeamAntagonist
-    raffle:
-      settings: short
-
-- type: entity
-  name: green slime
-  parent: MobAdultSlimes
-  id: MobAdultSlimesGreen
-  categories: [ HideSpawnMenu ] # Moff - Migrate used slime protos to our namespace
-  components:
-  - type: Sprite
-    layers:
-    - map: [ "enum.DamageStateVisualLayers.Base" ]
-      state: green_adult_slime
-  - type: DamageStateVisuals
-    states:
-      Alive:
-        Base: green_adult_slime
-      Dead:
-        Base: green_adult_slime_dead
-  - type: MeleeWeapon
-    damage:
-      types:
-        Blunt: 6
-        Structural: 4
-        Caustic: 1
-        Poison: 4
-
-- type: entity
-  name: green slime
-  parent: MobAdultSlimesGreen
-  id: MobAdultSlimesGreenAngry
-  categories: [ HideSpawnMenu ] # Moff - Migrate used slime protos to our namespace
-  suffix: Angry
-  components:
-  - type: NpcFactionMember
-    factions:
-    - SimpleHostile
-  - type: GhostRole
-    description: ghost-role-information-angry-slimes-description
-    rules: ghost-role-information-angry-slimes-rules
-    mindRoles:
-    - MindRoleGhostRoleTeamAntagonist
-    raffle:
-      settings: short
-
-- type: entity
-  name: yellow slime
-  parent: MobAdultSlimes
-  id: MobAdultSlimesYellow
-  categories: [ HideSpawnMenu ] # Moff - Migrate used slime protos to our namespace
-  components:
-  - type: Sprite
-    layers:
-    - map: [ "enum.DamageStateVisualLayers.Base" ]
-      state: yellow_adult_slime
-  - type: DamageStateVisuals
-    states:
-      Alive:
-        Base: yellow_adult_slime
-      Dead:
-        Base: yellow_adult_slime_dead
-  - type: MeleeWeapon
-    damage:
-      types:
-        Blunt: 6
-        Structural: 4
-        Caustic: 4
-
-- type: entity
-  name: yellow slime
-  parent: MobAdultSlimesYellow
-  id: MobAdultSlimesYellowAngry
-  categories: [ HideSpawnMenu ] # Moff - Migrate used slime protos to our namespace
-  suffix: Angry
-  components:
-  - type: NpcFactionMember
-    factions:
-    - SimpleHostile
-  - type: GhostRole
-    description: ghost-role-information-angry-slimes-description
-    rules: ghost-role-information-angry-slimes-rules
-    mindRoles:
-    - MindRoleGhostRoleTeamAntagonist
-    raffle:
-      settings: short
+# Moff Start
+# Blue and Yellow slimes have been changed to a generic `MobAdultSlimesReformable`
+# Green slimes have been changed to a generic `MobAdultSlimesReformablePoisonous`
+# These new prototypes can be found within _Moffstation/Entities/Mobs/NPCs/slimes.yml
+#
+# - type: entity
+#   name: blue slime
+#   id: MobAdultSlimesBlue
+#   parent: MobAdultSlimes
+#   components:
+#   - type: DamageStateVisuals
+#     states:
+#       Alive:
+#         Base: blue_adult_slime
+#       Dead:
+#         Base: blue_adult_slime_dead
+#
+# - type: entity
+#   name: blue slime
+#   parent: MobAdultSlimesBlue
+#   id: MobAdultSlimesBlueAngry
+#   suffix: Angry
+#   components:
+#   - type: NpcFactionMember
+#     factions:
+#     - SimpleHostile
+#   - type: GhostRole
+#     description: ghost-role-information-angry-slimes-description
+#     rules: ghost-role-information-angry-slimes-rules
+#     mindRoles:
+#     - MindRoleGhostRoleTeamAntagonist
+#     raffle:
+#       settings: short
+#
+# - type: entity
+#   name: green slime
+#   parent: MobAdultSlimes
+#   id: MobAdultSlimesGreen
+#   components:
+#   - type: Sprite
+#     layers:
+#     - map: [ "enum.DamageStateVisualLayers.Base" ]
+#       state: green_adult_slime
+#   - type: DamageStateVisuals
+#     states:
+#       Alive:
+#         Base: green_adult_slime
+#       Dead:
+#         Base: green_adult_slime_dead
+#   - type: MeleeWeapon
+#     damage:
+#       types:
+#         Blunt: 6
+#         Structural: 4
+#         Caustic: 1
+#         Poison: 4
+#
+# - type: entity
+#   name: green slime
+#   parent: MobAdultSlimesGreen
+#   id: MobAdultSlimesGreenAngry
+#   suffix: Angry
+#   components:
+#   - type: NpcFactionMember
+#     factions:
+#     - SimpleHostile
+#   - type: GhostRole
+#     description: ghost-role-information-angry-slimes-description
+#     rules: ghost-role-information-angry-slimes-rules
+#     mindRoles:
+#     - MindRoleGhostRoleTeamAntagonist
+#     raffle:
+#       settings: short
+#
+# - type: entity
+#   name: yellow slime
+#   parent: MobAdultSlimes
+#   id: MobAdultSlimesYellow
+#   components:
+#   - type: Sprite
+#     layers:
+#     - map: [ "enum.DamageStateVisualLayers.Base" ]
+#       state: yellow_adult_slime
+#   - type: DamageStateVisuals
+#     states:
+#       Alive:
+#         Base: yellow_adult_slime
+#       Dead:
+#         Base: yellow_adult_slime_dead
+#   - type: MeleeWeapon
+#     damage:
+#       types:
+#         Blunt: 6
+#         Structural: 4
+#         Caustic: 4
+#
+# - type: entity
+#   name: yellow slime
+#   parent: MobAdultSlimesYellow
+#   id: MobAdultSlimesYellowAngry
+#   suffix: Angry
+#   components:
+#   - type: NpcFactionMember
+#     factions:
+#     - SimpleHostile
+#   - type: GhostRole
+#     description: ghost-role-information-angry-slimes-description
+#     rules: ghost-role-information-angry-slimes-rules
+#     mindRoles:
+#     - MindRoleGhostRoleTeamAntagonist
+#     raffle:
+#       settings: short
+#
+# Moff End

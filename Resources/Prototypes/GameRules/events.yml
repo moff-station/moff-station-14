@@ -453,7 +453,9 @@
       children:
       # Moffstation - Start - Make mobs smash stuff
       - id: MobAdultSlimesReformableAngrySmasher
+        weight: 2 # 'Blue' and 'Yellow' slimes have been condensed down into one prototype, so we need to account for this by doubling the weight
       - id: MobAdultSlimesReformablePoisonousAngrySmasher
+        weight: 1
       # Moffstation - End
 
 - type: entity
