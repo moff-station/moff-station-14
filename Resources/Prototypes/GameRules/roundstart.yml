@@ -388,45 +388,44 @@
 
 # event schedulers
 
-- type: entityTable
-  id: BasicGameRulesTable
-  table: !type:AllSelector # we need to pass a list of rules, since rules have further restrictions to consider via StationEventComp
-    children:
-      - !type:NestedSelector
-        tableId: BasicCalmEventsTable
-      - !type:NestedSelector
-        tableId: BasicAntagEventsTable
-      - !type:NestedSelector
-        tableId: ModerateAntagEventsTable
-      - !type:NestedSelector
-        tableId: CargoGiftsTable
-      # Moffstation Start - Cargo Packing Error
-      - !type:NestedSelector
-        tableId: CargoPackingErrorTable
-      # Moffstation End - Cargo Packing Error
-      - !type:NestedSelector
-        tableId: CalmPestEventsTable
-      - !type:NestedSelector
-        tableId: SpicyPestEventsTable
+# Moff start - namespaced, commented out so we get conflicts and can update our own table in the future
+# put future additions into relevant table in Moffstation event_tables.yml
+#- type: entityTable
+#  id: BasicGameRulesTable
+#  table: !type:AllSelector # we need to pass a list of rules, since rules have further restrictions to consider via StationEventComp
+#    children:
+#      - !type:NestedSelector
+#        tableId: BasicCalmEventsTable
+#      - !type:NestedSelector
+#        tableId: BasicAntagEventsTable
+#      - !type:NestedSelector
+#        tableId: ModerateAntagEventsTable
+#      - !type:NestedSelector
+#        tableId: CargoGiftsTable
+#      - !type:NestedSelector
+#        tableId: CalmPestEventsTable
+#      - !type:NestedSelector
+#        tableId: SpicyPestEventsTable
+# Moff end
 
-- type: entityTable
-  id: DynamicGameRulesTable
-  table: !type:AllSelector # we need to pass a list of rules, since rules have further restrictions to consider via StationEventComp
-    children:
-    - !type:NestedSelector
-      tableId: BasicCalmEventsTable
-    - !type:NestedSelector
-      tableId: BasicAntagEventsTable
-    - !type:NestedSelector
-      tableId: CargoGiftsTable
-    # Moffstation Start - Cargo Packing Error
-    - !type:NestedSelector
-      tableId: CargoPackingErrorTable
-    # Moffstation End - Cargo Packing Error
-    - !type:NestedSelector
-      tableId: CalmPestEventsTable
-    - !type:NestedSelector
-      tableId: SpicyPestEventsTable
+# Moff start - namespaced, commented out so we get conflicts and can update our own table in the future
+# put future additions into relevant table in Moffstation event_tables.yml
+#- type: entityTable
+#  id: DynamicGameRulesTable
+#  table: !type:AllSelector # we need to pass a list of rules, since rules have further restrictions to consider via StationEventComp
+#    children:
+#    - !type:NestedSelector
+#      tableId: BasicCalmEventsTable
+#    - !type:NestedSelector
+#      tableId: BasicAntagEventsTable
+#    - !type:NestedSelector
+#      tableId: CargoGiftsTable
+#    - !type:NestedSelector
+#      tableId: CalmPestEventsTable
+#    - !type:NestedSelector
+#      tableId: SpicyPestEventsTable
+# Moff end
+
 
 - type: entityTable
   id: SpaceTrafficControlTable

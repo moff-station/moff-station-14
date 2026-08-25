@@ -7006,6 +7006,15 @@ Entries:
   id: 1634
   time: '2026-07-08T22:40:41.000'
   url: https://github.com/moff-station/moff-station-14/pull/1634
+- author: Dave
+  changes:
+  - message: New Pistol & Revolver Sprites
+    type: add
+  - message: Makarov detached from IRL naming
+    type: tweak
+  id: 1639
+  time: '2026-08-18T00:58:22.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1639
 - author: StudMuffin
   changes:
   - message: Borgs chassis now have integrated sensors that can be interacted with
@@ -7687,6 +7696,15 @@ Entries:
   id: 1782
   time: '2026-08-10T00:21:00.000'
   url: https://github.com/moff-station/moff-station-14/pull/1782
+- author: DuckManZach
+  changes:
+  - message: Enroll events now spawn backup events if they dont reach minimum players!
+    type: tweak
+  - message: added togglable audio, chat, and window notifications to enroll events!
+    type: add
+  id: 1786
+  time: '2026-08-23T22:13:48.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1786
 - author: MissKay1994
   changes:
   - message: Removed necronomicon from nonchaplain jobs uplinks
@@ -7757,6 +7775,20 @@ Entries:
   id: 1802
   time: '2026-08-12T21:19:59.000'
   url: https://github.com/moff-station/moff-station-14/pull/1802
+- author: Centronias, Nyxilath
+  changes:
+  - message: Hellportals will no longer spawn Hellhounds, Goliaths, or Hellspawn.
+    type: remove
+  - message: Hellportals will now spawn a unique variant of flesh golems thematic
+      to Nar'Sie.
+    type: tweak
+  - message: Hellportals will now spawn Narsian constructs - be careful!
+    type: add
+  - message: Hellportals have been made at least 5% more ominous.
+    type: tweak
+  id: 1803
+  time: '2026-08-22T21:26:52.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1803
 - author: DuckManZach
   changes:
   - message: Made melee screenshake a bit softer!
@@ -7771,6 +7803,13 @@ Entries:
   id: 1807
   time: '2026-08-13T20:41:05.000'
   url: https://github.com/moff-station/moff-station-14/pull/1807
+- author: KentoDaNeko
+  changes:
+  - message: Added Wooden Crates.
+    type: add
+  id: 1809
+  time: '2026-08-24T18:17:01.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1809
 - author: Centronias
   changes:
   - message: Fixed a state replication issue on gas filters.
@@ -7799,6 +7838,13 @@ Entries:
   id: 1816
   time: '2026-08-15T19:44:25.000'
   url: https://github.com/moff-station/moff-station-14/pull/1816
+- author: Centronias
+  changes:
+  - message: Replicators now have a guidebook entry.
+    type: add
+  id: 1817
+  time: '2026-08-18T00:58:22.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1817
 - author: DuckManZach
   changes:
   - message: Map vote will no longer pop up randomly on localhost
@@ -7806,5 +7852,98 @@ Entries:
   id: 1819
   time: '2026-08-14T18:15:14.000'
   url: https://github.com/moff-station/moff-station-14/pull/1819
+- author: DuckManZach
+  changes:
+  - message: Added button for admins to start enroll events early
+    type: add
+  id: 1820
+  time: '2026-08-19T23:06:35.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1820
+- author: DuckManZach
+  changes:
+  - message: Several improvements to Character window UI
+    type: add
+  id: 1821
+  time: '2026-08-20T18:50:11.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1821
+- author: Centronias, Nyxilath
+  changes:
+  - message: Artifact console effect reports now give more detail post-activation
+    type: tweak
+  - message: Artifact console durability reports now state 'Unknown' prior to activation
+    type: tweak
+  - message: Speed-Artifacts are now moved to handheld-only
+    type: fix
+  - message: Several artifact effect hints have been adjusted according to their thematics
+    type: tweak
+  id: 1828
+  time: '2026-08-24T19:27:04.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1828
+- author: Wintoli
+  changes:
+  - message: EMP Hardbomb has been added for Syndicates and Nukies alike!
+    type: add
+  id: 1831
+  time: '2026-08-23T21:51:04.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1831
+- author: DuckManZach
+  changes:
+  - message: Reach is no longer guaranteed for the first round of the session!
+    type: fix
+  id: 1834
+  time: '2026-08-19T00:56:35.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1834
+- author: Wintoli
+  changes:
+  - message: Hypereutactic Blade bugfix!
+    type: fix
+  id: 1835
+  time: '2026-08-19T00:37:49.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1835
+- author: DuckManZach
+  changes:
+  - message: The job priority list will now properly "red-out" jobs which you don't
+      have selected by active characters.
+    type: fix
+  id: 1837
+  time: '2026-08-19T22:10:48.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1837
+- author: gummyema
+  changes:
+  - message: Fixed small texture issues with the miku, teto and neru outfits
+    type: tweak
+  id: 1839
+  time: '2026-08-20T18:15:50.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1839
+- author: DuckManZach
+  changes:
+  - message: You will no longer role sleeper agent from having it selected on another
+      character
+    type: fix
+  id: 1840
+  time: '2026-08-20T21:07:52.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1840
+- author: Centronias
+  changes:
+  - message: AAC tablets will now speak the shortest phrase matching the entered text
+      on the search tab.
+    type: tweak
+  - message: AAC tablets now have memory on the search tab, meaning you can navigate
+      through previously spoken phrases with the same controls as the chat box (defaults
+      to arrow keys).
+    type: add
+  - message: AAC tablets now have a little bit of help text to describe how to use
+      the search tab's quick speaking capability.
+    type: tweak
+  id: 1841
+  time: '2026-08-22T21:47:02.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1841
+- author: OrbitSystem07
+  changes:
+  - message: Ais now no longer show an error sprite while dead
+    type: fix
+  id: 1846
+  time: '2026-08-24T19:47:59.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1846
 Name: Mofflog
 Order: -2
