@@ -7940,6 +7940,14 @@ Entries:
   url: https://github.com/moff-station/moff-station-14/pull/1841
 - author: Centronias
   changes:
+  - message: The Salvage Borg's Advanced Mining Module's Ore Bag Of Holding can now
+      have its magnetism turned off, like the basic ore bag's.
+    type: tweak
+  id: 1844
+  time: '2026-08-26T02:07:20.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1844
+- author: Centronias
+  changes:
   - message: Engineering / Meson goggles no longer continue providing their T-Ray
       effect while enabled and in your pocket. They must be worn on the face to function.
     type: fix
