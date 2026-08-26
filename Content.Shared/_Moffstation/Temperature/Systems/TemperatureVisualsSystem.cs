@@ -2,7 +2,6 @@
 using Content.Shared._Moffstation.Temperature.Components;
 using Content.Shared.Temperature;
 using Content.Shared.Temperature.Components;
-using Content.Shared.Temperature.Systems;
 
 namespace Content.Shared._Moffstation.Temperature.Systems;
 
@@ -10,14 +9,10 @@ public sealed partial class TemperatureVisualsSystem : EntitySystem
 {
     [Dependency] private SharedAppearanceSystem _appearance = default!;
 
-    [Dependency] private EntityQuery<TemperatureComponent> _temperatureQuery;
-
     [SubscribeLocalEvent]
     private void OnMapInit(Entity<TemperatureVisualsComponent> entity, ref MapInitEvent args)
     {
-        if (_temperatureQuery.ResolveOrNull(entity) is not { } temp)
-            return;
-
+        var temp = EntityManager.EnsureComp<TemperatureComponent>(entity);
         _appearance.SetOrRemoveData(
             entity.Owner,
             TemperatureVisuals.Key,
