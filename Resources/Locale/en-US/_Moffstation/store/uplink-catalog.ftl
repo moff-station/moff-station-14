@@ -31,4 +31,4 @@ uplink-clothing-rocket-skates-desc = An experimental prototype from Lumens Techn
 
 # Explosives
 uplink-exploding-syndicate-emp-bomb-name = Syndicate EMP Bomb
-uplink-exploding-syndicate-emp-bomb-desc = A big, anchored bomb that emits an almost station-wide disabling EMP pulse if not defused in time. Disables electronics for exactly 3 minutes. Has an adjustable fuse.
+uplink-exploding-syndicate-emp-bomb-desc = A big, anchored bomb that emits a very large EMP pulse if not defused in time. Disables electronics for exactly 3 minutes. Has an adjustable fuse.
