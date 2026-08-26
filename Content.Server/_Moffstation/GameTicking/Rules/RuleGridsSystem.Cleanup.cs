@@ -3,8 +3,6 @@ using Robust.Shared.Player;
 // Extension of an upstream file
 // ReSharper disable once CheckNamespace
 namespace Content.Server.GameTicking.Rules;
-
-
 public sealed partial class RuleGridsSystem
 {
     [Dependency] private EntityQuery<ActorComponent> _actorQuery;
