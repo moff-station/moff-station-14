@@ -7938,6 +7938,14 @@ Entries:
   id: 1841
   time: '2026-08-22T21:47:02.000'
   url: https://github.com/moff-station/moff-station-14/pull/1841
+- author: Centronias
+  changes:
+  - message: Engineering / Meson goggles no longer continue providing their T-Ray
+      effect while enabled and in your pocket. They must be worn on the face to function.
+    type: fix
+  id: 1845
+  time: '2026-08-26T01:51:16.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1845
 - author: OrbitSystem07
   changes:
   - message: Ais now no longer show an error sprite while dead
