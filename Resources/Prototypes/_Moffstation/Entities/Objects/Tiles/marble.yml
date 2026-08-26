@@ -1,0 +1,47 @@
+- type: entity
+  name: plasmarble tile
+  description: A chiseled, polished square of the finest Space Marble. Plasma-infused for extra... something.
+  parent: FloorTileItemWhiteMarble
+  id: FloorTileItemMoffPlasmaMarble
+  components:
+  - type: Sprite
+    state: plasmarble
+  - type: Item
+    heldPrefix: plasmarble
+  - type: FloorTile
+    outputs:
+      - Plating
+      - FloorPlasmaMarble
+  - type: Stack
+    stackType: FloorTileMoffPlasmaMarble
+  - type: DamageOtherOnHit
+    damage:
+      types:
+        Blunt: 6
+
+- type: entity
+  name: uranium marble tile
+  description: A chiseled, polished square of the finest Space Marble. Uranium-infused to make it extra rad! Pun intended!
+  parent: FloorTileItemWhiteMarble
+  id: FloorTileItemMoffUraniumMarble
+  components:
+  - type: Sprite
+    state: uranium-marble
+  - type: Item
+    heldPrefix: uranium-marble
+  - type: FloorTile
+    outputs:
+      - Plating
+      - FloorUraniumMarble
+  - type: Stack
+    stackType: FloorTileMoffUraniumMarble
+  - type: DamageOtherOnHit
+    damage:
+      types:
+        Blunt: 5
+        Radiation: 1
+  - type: PointLight
+    radius: 1.2
+    energy: 0.8
+    castShadows: false
+    color: "#9be792"
