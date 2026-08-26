@@ -13,7 +13,6 @@ using Content.Shared._Moffstation.Extensions;
 using Content.Shared._Moffstation.Voting.Components;
 using Content.Shared.Administration;
 using Content.Shared.Database;
-using Content.Shared.EntityTable;
 using Content.Shared.GameTicking.Components;
 using Content.Shared.Ghost.Components;
 using Content.Shared.Roles.Components;
