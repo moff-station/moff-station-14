@@ -1,5 +1,5 @@
 - type: entity
-  parent: BaseGameRule
+  parent: BaseAntagGhostRoleRule
   id: ERTGeneral
   components:
   - type: StationEvent
@@ -32,7 +32,7 @@
     - ERTGeneralEnroller
 
 - type: entity # 4 soldiers in a large transport
-  parent: BaseGameRule
+  parent: BaseAntagGhostRoleRule
   id: ERTSecTransport
   components:
   - type: StationEvent
@@ -59,7 +59,7 @@
     - ERTGeneralEnroller
 
 - type: entity # 8 soldiers in a large transport
-  parent: BaseGameRule
+  parent: BaseAntagGhostRoleRule
   id: ERTSecLargeTransport
   components:
   - type: StationEvent
@@ -94,7 +94,7 @@
     - ERTGeneralEnroller
 
 - type: entity # 4 soldiers in a small dropship
-  parent: BaseGameRule
+  parent: BaseAntagGhostRoleRule
   id: ERTSecDropship
   components:
   - type: StationEvent
@@ -121,7 +121,7 @@
     - ERTGeneralEnroller
 
 - type: entity # 8 soldiers in a small dropship
-  parent: BaseGameRule
+  parent: BaseAntagGhostRoleRule
   id: ERTSecLargeDropship
   components:
   - type: StationEvent
@@ -156,7 +156,7 @@
     - ERTGeneralEnroller
 
 - type: entity
-  parent: BaseGameRule
+  parent: BaseAntagGhostRoleRule
   id: ERTJani
   components:
   - type: StationEvent
@@ -180,7 +180,7 @@
     - ERTGeneralEnroller
 
 - type: entity
-  parent: BaseGameRule
+  parent: BaseAntagGhostRoleRule
   id: ERTMed
   components:
   - type: StationEvent
@@ -208,7 +208,7 @@
     - ERTGeneralEnroller
 
 - type: entity
-  parent: BaseGameRule
+  parent: BaseAntagGhostRoleRule
   id: ERTEngi
   components:
   - type: StationEvent
@@ -234,7 +234,7 @@
     - ERTGeneralEnroller
 
 - type: entity
-  parent: BaseGameRule
+  parent: BaseAntagGhostRoleRule
   id: ERTCBURNDropship
   components:
   - type: StationEvent
@@ -256,7 +256,7 @@
     - ERTGeneralEnroller
 
 - type: entity
-  parent: BaseGameRule
+  parent: BaseAntagGhostRoleRule
   id: ERTDeathSquadDropship
   components:
   - type: LoadMapRule

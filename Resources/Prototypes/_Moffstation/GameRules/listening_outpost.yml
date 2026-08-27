@@ -1,6 +1,6 @@
 - type: entity
   abstract: true
-  parent: BaseGameRule
+  parent: BaseUnweightedAntagRule
   id: BaseSyndicateListeningOutpost
   components:
   - type: ListeningOutpostRule
