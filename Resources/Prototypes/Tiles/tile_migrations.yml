@@ -70,3 +70,18 @@
 - type: tileAlias
   id: FloorSteelBurnt
   target: FloorSteelDamaged
+
+# 2026-08-27
+# Porting continuous slats to moff namespace
+
+- type: tileAlias
+  id: FloorSteelSlatsContinuous
+  target: FloorMoffSteelSlatsContinuous
+
+- type: tileAlias
+  id: FloorWhiteSlatsContinuous
+  target: FloorMoffWhiteSlatsContinuous
+
+- type: tileAlias
+  id: FloorDarkSlatsContinuous
+  target: FloorMoffDarkSlatsContinuous
