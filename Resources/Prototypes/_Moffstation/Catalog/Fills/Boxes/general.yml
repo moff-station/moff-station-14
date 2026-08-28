@@ -62,3 +62,27 @@
         - id: ClothingShoesBootsPerformerYellow
         - id: ClothingUniformJumpskirtPerformerYellow
         - id: ClothingHeadPerformerWigYellow
+
+- type: entity
+  name: cirno costume box
+  parent: BoxCardboard
+  id: BoxCostumeCirno
+  description: Contains the personal belongings of a certain ice fairy. Happy Cirno Day!
+  components:
+  - type: EntityTableContainerFill
+    containers:
+      storagebase: !type:AllSelector
+        children:
+        - id: ClothingUniformJumpskirtIceFairy
+        - id: ClothingHeadIceFairyWig
+        - id: ClothingNeckIceFairyWings
+  - type: Sprite
+    layers:
+    - state: cirno
+  - type: Item
+    shape:
+    - 0,0,3,1
+  - type: Storage
+    maxItemSize: Medium
+    grid:
+    - 0,0,3,1
