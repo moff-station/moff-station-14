@@ -35,7 +35,7 @@
     - BoxHug
 
 - type: entity
-  name: kasane teto costume bag
+  name: red performer costume bag
   parent: ClothingBackpackDuffel
   id: BoxPerformerRed
   description: Great for impersonating virtual chimera performers.
@@ -50,7 +50,7 @@
         - id: FoodBreadBaguette
 
 - type: entity
-  name: akita neru costume bag
+  name: yellow performer costume bag
   parent: ClothingBackpackDuffel
   id: BoxPerformerYellow
   description: Great for impersonating... the yellow one?
@@ -64,9 +64,9 @@
         - id: ClothingHeadPerformerWigYellow
 
 - type: entity
-  name: cirno costume box
+  name: ice fairy costume box
   parent: BoxCardboard
-  id: BoxCostumeCirno
+  id: BoxIceFairy
   description: Contains the personal belongings of a certain ice fairy. Happy Cirno Day!
   components:
   - type: EntityTableContainerFill
