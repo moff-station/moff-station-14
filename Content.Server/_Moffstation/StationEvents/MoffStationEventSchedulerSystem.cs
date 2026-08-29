@@ -1,9 +1,9 @@
 using Content.Server._Moffstation.StationEvents.Components;
 using Content.Server.GameTicking.Rules;
 using Content.Server.StationEvents;
+using Content.Shared._Moffstation.Extensions;
 using Content.Shared.GameTicking.Components;
 using Content.Shared.Random.Helpers;
-using Robust.Shared.Timing;
 
 namespace Content.Server._Moffstation.StationEvents;
 
@@ -25,9 +25,9 @@ public sealed partial class MoffStationEventSchedulerSystem : GameRuleSystem<Mof
             return;
         }
 
-        EnterState(component, component.InitialState, state);
+        EnterState((uid, component), component.InitialState);
         // Overrides the first event's time
-        component.NextEventTime = Timing.CurTime + TimeSpan.FromSeconds(component.InitialDelay.Next(RobustRandom));
+        component.NextEventTime = Timing.CurTime + TimeSpan.FromSeconds(component.InitialDelaySeconds.Next(RobustRandom));
     }
 
     protected override void Ended(
@@ -38,7 +38,7 @@ public sealed partial class MoffStationEventSchedulerSystem : GameRuleSystem<Mof
     {
         base.Ended(uid, component, gameRule, args);
 
-        component.CurrentState = null;
+        component.CurrentStateId = null;
         component.NextEventTime = TimeSpan.Zero;
         component.NextStateTime = null;
     }
@@ -55,7 +55,7 @@ public sealed partial class MoffStationEventSchedulerSystem : GameRuleSystem<Mof
             if (!GameTicker.IsGameRuleActive(ent))
                 continue;
 
-            if (ent.Comp1.CurrentState is not { } stateId || !ent.Comp1.States.TryGetValue(stateId, out var state))
+            if (ent.Comp1.CurrentState is not { } state)
                 continue;
 
             if (ent.Comp1.NextStateTime <= Timing.CurTime)
@@ -63,7 +63,7 @@ public sealed partial class MoffStationEventSchedulerSystem : GameRuleSystem<Mof
                 if (state.EventOnEnd)
                     _event.RunRandomEvent(ent.Comp1.ScheduledGameRules);
 
-                ChangeState(ent.Owner, ent.Comp1, state);
+                TransitionToNextState(ent, state);
                 continue;
             }
 
@@ -83,46 +83,51 @@ public sealed partial class MoffStationEventSchedulerSystem : GameRuleSystem<Mof
         return state.NextStates.Count == 0 ? null : RobustRandom.Pick(state.NextStates);
     }
 
-    private (TimeSpan? Duration, TimeSpan EventDelay) RollState(MoffEventSchedulerState state)
+    private void TransitionToNextState(Entity<MoffStationEventSchedulerComponent> ent, MoffEventSchedulerState currentState)
     {
-        // A state can have a duration without event timing, or the other way around, so these roll separately.
-        var duration = state.Duration is { } stateDuration
+        if (currentState.EventOnEnd)
+        {
+            _event.RunRandomEvent(ent.Comp.ScheduledGameRules);
+        }
+
+        if (PickNextState(currentState) is not { } nextId)
+        {
+            // Nowhere to go, so stay put for the rest of the round.
+            ent.Comp.NextStateTime = null;
+            return;
+        }
+
+        if (!ent.Comp.States.TryGetValue(nextId, out var next))
+        {
+            Log.Error($"{ToPrettyString(ent.Owner)} tried to enter unknown state \"{nextId}\"!");
+            ent.Comp.NextStateTime = null;
+            return;
+        }
+
+        EnterState(ent, nextId);
+    }
+
+    private void EnterState(Entity<MoffStationEventSchedulerComponent> entity, string id)
+    {
+        if (!entity.Comp.States.TryGetValue(id, out var next))
+        {
+            this.AssertOrLogError($"{ToPrettyString(entity)} tried to enter unknown state \"{id}\"!");
+            entity.Comp.NextStateTime = null;
+            return;
+        }
+
+        entity.Comp.CurrentStateId = id;
+
+        // These are absolute times, not durations, since Update compares them against CurTime.
+        var duration = next.Duration is { } stateDuration
             ? TimeSpan.FromSeconds(stateDuration.Next(RobustRandom))
             : (TimeSpan?)null;
 
-        var eventDelay = state.MinMaxEventTiming is { } eventTiming
+        var eventDelay = next.MinMaxEventTiming is { } eventTiming
             ? TimeSpan.FromSeconds(eventTiming.Next(RobustRandom))
             : TimeSpan.Zero;
 
-        return (duration, eventDelay);
-    }
-
-    private void ChangeState(EntityUid uid, MoffStationEventSchedulerComponent component, MoffEventSchedulerState state)
-    {
-        if (PickNextState(state) is not { } nextId)
-        {
-            // Nowhere to go, so stay put for the rest of the round.
-            component.NextStateTime = null;
-            return;
-        }
-
-        if (!component.States.TryGetValue(nextId, out var next))
-        {
-            Log.Error($"{ToPrettyString(uid)} tried to enter unknown state \"{nextId}\"!");
-            component.NextStateTime = null;
-            return;
-        }
-
-        EnterState(component, nextId, next);
-    }
-
-    private void EnterState(MoffStationEventSchedulerComponent component, string id, MoffEventSchedulerState state)
-    {
-        component.CurrentState = id;
-
-        // These are absolute times, not durations, since Update compares them against CurTime.
-        var (duration, eventDelay) = RollState(state);
-        component.NextStateTime = duration is { } stateDuration ? Timing.CurTime + stateDuration : null;
-        component.NextEventTime = Timing.CurTime + eventDelay;
+        entity.Comp.NextStateTime = duration;
+        entity.Comp.NextEventTime = Timing.CurTime + eventDelay;
     }
 }

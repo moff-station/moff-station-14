@@ -14,7 +14,6 @@ public sealed class MoffStationEventSchedulerTest : GameTest
 {
     private static readonly string[] Schedulers = GameDataScrounger.EntitiesWithComponent("MoffStationEventScheduler");
 
-    [SidedDependency(Side.Server)] private readonly IPrototypeManager _proto = null!;
     [SidedDependency(Side.Server)] private readonly IComponentFactory _compFactory = null!;
 
     [Test]
@@ -24,7 +23,7 @@ public sealed class MoffStationEventSchedulerTest : GameTest
     {
         await Server.WaitAssertion(() =>
         {
-            var proto = _proto.Index<EntityPrototype>(schedulerId);
+            var proto = SProtoMan.Index<EntityPrototype>(schedulerId);
             Assume.That(proto.TryComp<MoffStationEventSchedulerComponent>(out var scheduler, _compFactory), Is.True);
 
             using (Assert.EnterMultipleScope())

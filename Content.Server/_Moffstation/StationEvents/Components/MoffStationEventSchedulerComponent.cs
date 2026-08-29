@@ -17,13 +17,16 @@ public sealed partial class MoffStationEventSchedulerComponent : Component
     public string InitialState = string.Empty;
 
     [DataField]
-    public MinMax InitialDelay = new(200, 320);
+    public MinMax InitialDelaySeconds = new(200, 320);
 
     [DataField(required: true)]
     public EntityTableSelector ScheduledGameRules = default!;
 
     [ViewVariables]
-    public string? CurrentState;
+    public string? CurrentStateId;
+
+    [ViewVariables]
+    public MoffEventSchedulerState? CurrentState => CurrentStateId is { } cs && States.TryGetValue(cs, out var state) ? state : null;
 
     [ViewVariables]
     public TimeSpan NextEventTime;
@@ -35,18 +38,27 @@ public sealed partial class MoffStationEventSchedulerComponent : Component
 [DataDefinition]
 public sealed partial class MoffEventSchedulerState
 {
+    /// <summary>
+    /// The minimum and maximum time (in seconds) that this scheduler state will last before moving onto a new state
+    /// </summary>
     [DataField]
     public MinMax? Duration;
 
+    /// <summary>
+    /// The minimum and max time (in seconds) between events for this scheduler state
+    /// </summary>
     [DataField]
     public MinMax? MinMaxEventTiming;
 
     /// <summary>
-    /// The next state to move to, this can be multiple states weighted against eachother.
+    /// The IDs of possible next states for this state, paired with their respective weights.
     /// </summary>
     [DataField]
     public Dictionary<string, float> NextStates = new();
 
+    /// <summary>
+    /// Whether an event should be ran when this state ends.
+    /// </summary>
     [DataField]
     public bool EventOnEnd;
 }

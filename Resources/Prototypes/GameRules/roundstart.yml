@@ -439,7 +439,7 @@
   # Moffstation - End
 
 # Moff start - namespaced, commented out so we get conflicts
-# if future gamemodes are added with this scheduler, replace it with our two unique schedulers
+# if future gamemodes are added with this scheduler, replace it with our two unique schedulers: MoffCalmStationEventScheduler or MoffSpicyStationEventScheduler
 #- type: entity
 #  id: BasicStationEventScheduler
 #  parent: BaseGameRule
