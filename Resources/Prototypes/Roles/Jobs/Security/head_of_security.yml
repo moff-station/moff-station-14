@@ -20,10 +20,7 @@
     - !type:DepartmentTimeRequirement
       department: Security
       time: 10h
-  # Moff start - no job weights
-#  weight: 10
-  displayWeight: 10
-  # Moff end
+  displayWeight: 10 # Moff
   startingGear: HoSGear
   icon: "JobIconHeadOfSecurity"
   supervisors: job-supervisors-captain

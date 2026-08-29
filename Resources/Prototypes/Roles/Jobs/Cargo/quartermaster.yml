@@ -17,10 +17,7 @@
     - !type:DepartmentTimeRequirement
       department: Cargo
       time: 10h
-  # Moff start - no job weights
-#  weight: 10
-  displayWeight: 10
-  # Moff end
+  displayWeight: 10 # Moff
   startingGear: QuartermasterGear
   icon: "JobIconQuarterMaster"
   supervisors: job-supervisors-captain
