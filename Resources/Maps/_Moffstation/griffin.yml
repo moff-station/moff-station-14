@@ -7341,8 +7341,6 @@ entities:
     - type: DeviceNetwork
       deviceLists:
       - 55
-      configurators:
-      - invalid
 - proto: AirSensorFreezer
   entities:
   - uid: 399
@@ -52513,8 +52511,6 @@ entities:
     - type: DeviceNetwork
       deviceLists:
       - 55
-      configurators:
-      - invalid
     - type: AtmosPipeColor
       color: '#0055CCFF'
   - uid: 7716
@@ -53328,8 +53324,6 @@ entities:
     - type: DeviceNetwork
       deviceLists:
       - 55
-      configurators:
-      - invalid
     - type: AtmosPipeColor
       color: '#990000FF'
   - uid: 7813
@@ -60657,12 +60651,12 @@ entities:
       pos: 35.564293,18.394543
     - type: Paper
       content: >-
-        Be sure to send this crate to Ossuary Station! They'll need the supplies. 
+        Be sure to send this crate to Ossuary Station! They'll need the supplies.
 
 
 
 
-        xoxo 
+        xoxo
 
         John Nanotrasen
   - uid: 9088
@@ -81188,16 +81182,12 @@ entities:
       parent: 2
       pos: 35.5,11.5
     - type: DeviceNetwork
-      configurators:
-      - invalid
   - uid: 12792
     components:
     - type: Transform
       parent: 2
       pos: 35.5,17.5
     - type: DeviceNetwork
-      configurators:
-      - invalid
 - proto: WeaponEnergyTurretSecurityControlPanel
   entities:
   - uid: 12793
