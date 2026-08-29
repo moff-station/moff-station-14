@@ -4,8 +4,8 @@ meta:
   engineVersion: 286.0.0
   forkId: ""
   forkVersion: ""
-  time: 08/29/2026 03:29:26
-  entityCount: 197
+  time: 08/29/2026 18:24:59
+  entityCount: 209
 maps: []
 grids:
 - 1
@@ -31,7 +31,7 @@ entities:
     - type: MetaData
       name: Station
     - type: Transform
-      parent: invalid
+      # parent: invalid
     - type: MapGrid
       chunks:
         -1,-1:
@@ -243,16 +243,12 @@ entities:
       pos: 2.5,0.5
 - proto: APCBasic
   entities:
-  - uid: 7
-    mapInit: true
-    paused: true
+  - uid: 18
     components:
     - type: Transform
       parent: 1
-      rot: 4.71238898038469 rad
-      pos: 5.5,2.5
-    - type: Battery
-      lastUpdate: -4669.8328665
+      rot: 3.141592653589793 rad
+      pos: -1.5,-1.5
 - proto: AtmosDeviceFanDirectional
   entities:
   - uid: 8
@@ -321,11 +317,6 @@ entities:
       pos: 3.5,3.5
 - proto: CableApcExtension
   entities:
-  - uid: 18
-    components:
-    - type: Transform
-      parent: 1
-      pos: 5.5,2.5
   - uid: 19
     components:
     - type: Transform
@@ -511,6 +502,16 @@ entities:
     - type: Transform
       parent: 1
       pos: -4.5,-2.5
+  - uid: 208
+    components:
+    - type: Transform
+      parent: 1
+      pos: -1.5,-1.5
+  - uid: 209
+    components:
+    - type: Transform
+      parent: 1
+      pos: -1.5,-0.5
 - proto: CableHV
   entities:
   - uid: 56
@@ -570,6 +571,56 @@ entities:
     - type: Transform
       parent: 1
       pos: 5.5,2.5
+  - uid: 198
+    components:
+    - type: Transform
+      parent: 1
+      pos: 3.5,2.5
+  - uid: 199
+    components:
+    - type: Transform
+      parent: 1
+      pos: 2.5,2.5
+  - uid: 200
+    components:
+    - type: Transform
+      parent: 1
+      pos: 1.5,2.5
+  - uid: 201
+    components:
+    - type: Transform
+      parent: 1
+      pos: 0.5,2.5
+  - uid: 202
+    components:
+    - type: Transform
+      parent: 1
+      pos: -0.5,2.5
+  - uid: 203
+    components:
+    - type: Transform
+      parent: 1
+      pos: -1.5,2.5
+  - uid: 204
+    components:
+    - type: Transform
+      parent: 1
+      pos: -1.5,1.5
+  - uid: 205
+    components:
+    - type: Transform
+      parent: 1
+      pos: -1.5,0.5
+  - uid: 206
+    components:
+    - type: Transform
+      parent: 1
+      pos: -1.5,-0.5
+  - uid: 207
+    components:
+    - type: Transform
+      parent: 1
+      pos: -1.5,-1.5
 - proto: Catwalk
   entities:
   - uid: 67
@@ -1239,6 +1290,14 @@ entities:
       parent: 1
       rot: 1.5707963267948966 rad
       pos: -2.5,-0.5
+- proto: SubstationWallBasic
+  entities:
+  - uid: 7
+    components:
+    - type: Transform
+      parent: 1
+      rot: -1.5707963267948966 rad
+      pos: 5.5,2.5
 - proto: TableReinforced
   entities:
   - uid: 148
