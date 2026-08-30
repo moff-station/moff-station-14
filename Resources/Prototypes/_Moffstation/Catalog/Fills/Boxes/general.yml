@@ -1,5 +1,11 @@
 ﻿- type: entity
   parent: BoxCardboardSmall
+  id: BoxSurvivalEmpty
+  name: survival box
+  description: A cardboard box for storing emergency supplies.
+
+- type: entity
+  parent: BoxSurvivalEmpty
   id: BoxHugEmpty
   name: box of hugs
   description: A special box for sensitive people.
