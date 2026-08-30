@@ -4,8 +4,8 @@ meta:
   engineVersion: 286.0.0
   forkId: ""
   forkVersion: ""
-  time: 08/29/2026 03:31:25
-  entityCount: 619
+  time: 08/30/2026 22:41:01
+  entityCount: 630
 maps: []
 grids:
 - 1
@@ -36,7 +36,7 @@ entities:
     paused: true
     components:
     - type: MetaData
-      name: Station
+      name: Griffin Evacuation Shuttle
     - type: Transform
       parent: invalid
       rot: 0.0007018063915893435 rad
@@ -1549,6 +1549,51 @@ entities:
     - type: Transform
       parent: 1
       pos: 2.5,6.5
+  - uid: 152
+    components:
+    - type: Transform
+      parent: 1
+      pos: -0.5,9.5
+  - uid: 623
+    components:
+    - type: Transform
+      parent: 1
+      pos: -0.5,10.5
+  - uid: 624
+    components:
+    - type: Transform
+      parent: 1
+      pos: -1.5,10.5
+  - uid: 625
+    components:
+    - type: Transform
+      parent: 1
+      pos: -2.5,10.5
+  - uid: 626
+    components:
+    - type: Transform
+      parent: 1
+      pos: -3.5,10.5
+  - uid: 627
+    components:
+    - type: Transform
+      parent: 1
+      pos: 3.5,7.5
+  - uid: 628
+    components:
+    - type: Transform
+      parent: 1
+      pos: 4.5,7.5
+  - uid: 629
+    components:
+    - type: Transform
+      parent: 1
+      pos: -6.5,6.5
+  - uid: 630
+    components:
+    - type: Transform
+      parent: 1
+      pos: -6.5,7.5
 - proto: CableHV
   entities:
   - uid: 140
@@ -1601,6 +1646,11 @@ entities:
     - type: Transform
       parent: 1
       pos: 0.5,-11.5
+  - uid: 620
+    components:
+    - type: Transform
+      parent: 1
+      pos: -3.5,-11.5
 - proto: CableMV
   entities:
   - uid: 150
@@ -1613,11 +1663,6 @@ entities:
     - type: Transform
       parent: 1
       pos: -2.5,-10.5
-  - uid: 152
-    components:
-    - type: Transform
-      parent: 1
-      pos: -2.5,-11.5
   - uid: 153
     components:
     - type: Transform
@@ -1938,6 +1983,16 @@ entities:
     - type: Transform
       parent: 1
       pos: 8.5,-8.5
+  - uid: 621
+    components:
+    - type: Transform
+      parent: 1
+      pos: -3.5,-11.5
+  - uid: 622
+    components:
+    - type: Transform
+      parent: 1
+      pos: -3.5,-12.5
 - proto: Catwalk
   entities:
   - uid: 217
@@ -2709,11 +2764,11 @@ entities:
       pos: -0.5,-13.5
 - proto: GravityGeneratorMini
   entities:
-  - uid: 333
+  - uid: 470
     components:
     - type: Transform
       parent: 1
-      pos: -2.5,-11.5
+      pos: -0.5,-12.5
 - proto: Grille
   entities:
   - uid: 334
@@ -3502,13 +3557,6 @@ entities:
       parent: 1
       rot: 1.5707963267948966 rad
       pos: 5.5,-7.5
-- proto: SMESBasic
-  entities:
-  - uid: 470
-    components:
-    - type: Transform
-      parent: 1
-      pos: -0.5,-12.5
 - proto: SodaDispenser
   entities:
   - uid: 471
@@ -3571,6 +3619,14 @@ entities:
       parent: 1
       rot: -1.5707963267948966 rad
       pos: 1.5,3.5
+- proto: SubstationWallBasic
+  entities:
+  - uid: 333
+    components:
+    - type: Transform
+      parent: 1
+      rot: 1.5707963267948966 rad
+      pos: -3.5,-11.5
 - proto: Table
   entities:
   - uid: 480
