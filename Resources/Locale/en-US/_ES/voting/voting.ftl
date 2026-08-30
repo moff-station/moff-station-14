@@ -4,8 +4,9 @@ es-voter-ui-header-text-format = [bold]{$title}[/bold]
 es-voter-ui-button-text-option-format = {$count} | [bold]{$option}[/bold]
 es-voter-ui-button-text-option-format-no-count = [bold]{$option}[/bold]
 
-es-voter-chat-announce-vote-start = Running stagehand vote:
-es-voter-chat-announce-query-default = The vote has concluded. Result:
+#Moff - generalize
+es-voter-chat-announce-vote-start = Running ghost event:
+es-voter-chat-announce-query-default = The ghost event has concluded. Result:
 es-voter-chat-announce-result = {$query} [bold]{$result}[/bold]
 es-voter-chat-announce-wrap-message = [font size=14][bold]{$message}[/bold][/font]
 

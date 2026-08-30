@@ -1,0 +1,204 @@
+# Man o' War
+- type: entity
+  parent: BaseUnknownShuttleAnnouncedRule
+  id: UnknownShuttleManOWar
+  components:
+  - type: StationEvent
+    weight: 1 # lower because antags
+    duration: null
+  - type: LoadMapRule
+    gridPath: /Maps/Shuttles/ShuttleEvent/manowar.yml
+  - type: AntagLoadProfileRule
+    preserveName: true
+  - type: AntagSelection
+    selectionTime: Enroll
+    antags:
+    - !type:FixedAntagCount
+      proto: ShuttleCossack
+      count: 4
+  - type: ESSynchronizedVoteManager
+    votes:
+    - CossackEnroller
+
+- type: antagSpecifier
+  parent: RestrictedAntag
+  id: ShuttleCossack
+  spawnerPrototype: SpawnPointGhostCossack
+  pickPlayer: false
+  startingGear: CossackGear
+  roleLoadout:
+  - RoleSurvivalEVA
+  mindRoles:
+  - MindRoleGhostRoleFreeAgent
+
+# Instigator
+- type: entity
+  parent: BaseUnknownShuttleRule
+  id: UnknownShuttleInstigator
+  components:
+  - type: StationEvent
+    weight: 0.1 #  approximately 1/1000 on the random hostile shuttle table. Golden Legendary!
+    duration: null
+    maxOccurrences: 1
+  - type: LoadMapRule
+    gridPath: /Maps/Shuttles/ShuttleEvent/instigator.yml
+  - type: AntagLoadProfileRule
+  - type: AntagSelection
+    selectionTime: Enroll
+    antags:
+    - !type:FixedAntagCount
+      proto: ShuttleSyndieSoldierTeamLeader
+    - !type:FixedAntagCount
+      proto: ShuttleSyndieSoldier
+      count: 2
+  - type: ESSynchronizedVoteManager
+    votes:
+    - InstigatorEnroller
+
+- type: antagSpecifier
+  parent: RestrictedAntag
+  id: ShuttleSyndieSoldierTeamLeader
+  spawnerPrototype: SpawnPointGhostSyndieSoldierTeamLeader
+  pickPlayer: false
+  startingGear: SyndicateFootsoldierTeamLeaderGear
+  roleLoadout:
+  - RoleSurvivalSyndicate
+  - JobNukeopsCommander
+  components:
+  - type: NpcFactionMember
+    factions:
+    - Syndicate
+  - type: NukeOperative
+  - type: RandomMetadata
+    nameSegments:
+    - NamesSyndicateElite
+    nameFormat: name-format-nukie-commander
+  mindRoles:
+  - MindRoleGhostRoleTeamAntagonist
+
+- type: antagSpecifier
+  parent: RestrictedAntag
+  id: ShuttleSyndieSoldier
+  spawnerPrototype: SpawnPointGhostSyndieSoldier
+  pickPlayer: false
+  startingGear: SyndicateFootsoldierGear
+  roleLoadout:
+  - RoleSurvivalSyndicate
+  - JobNukeops
+  components:
+  - type: NpcFactionMember
+    factions:
+    - Syndicate
+  - type: NukeOperative
+  - type: RandomMetadata
+    nameSegments:
+    - NamesSyndicateNormal
+    nameFormat: name-format-nukie-operator
+  mindRoles:
+  - MindRoleGhostRoleTeamAntagonist
+
+# Syndicate evac pod
+- type: entity
+  parent: BaseUnknownShuttleRule
+  id: UnknownShuttleSyndieEvacPod
+  components:
+  - type: StationEvent
+    weight: 5
+    maxOccurrences: 2
+    duration: null
+  - type: LoadMapRule
+    gridPath: /Maps/Shuttles/ShuttleEvent/syndie_evacpod.yml
+  - type: AntagLoadProfileRule
+    preserveName: true
+  - type: AntagSelection
+    selectionTime: Enroll
+    antags:
+    - !type:FixedAntagCount
+      proto: ShuttleSyndieVisitor
+      count: 3
+  - type: ESSynchronizedVoteManager
+    votes:
+    - SyndieVisitorEnroller
+
+- type: antag
+  id: ShuttleSyndieVisitor
+  name: syndicate disaster victim
+  antagonist: true
+  objective: ghost-role-information-syndie-disaster-victim-description
+  setPreference: false
+
+- type: antagSpecifier
+  parent: RestrictedAntag
+  id: ShuttleSyndieVisitor
+  spawnerPrototype: SpawnPointGhostSyndieVisitor
+  pickPlayer: false
+  startingGear: SyndicateOperativeGearCivilian
+  roleLoadout:
+  - RoleSurvivalSyndicate
+  - JobSyndicateSpy
+  components:
+  - type: NpcFactionMember
+    factions:
+    - Syndicate
+  mindRoles:
+  - MindRoleSyndieVisitor
+
+- type: entity
+  parent: MarkerBase
+  id: SpawnPointShuttleSyndieVisitor
+  name: syndicate disaster victim spawn point
+  components:
+  - type: AntagGridSpawnPoint
+    whitelist:
+    - ShuttleSyndieVisitor
+  - type: SpawnPoint
+  - type: Sprite
+    layers:
+    - state: green
+    - sprite: Structures/Decoration/banner.rsi
+      state: banner_syndicate
+
+- type: entity
+  parent: MarkerBase
+  id: SpawnPointShuttleCossack
+  name: cossack spawn point
+  components:
+  - type: AntagGridSpawnPoint
+    whitelist:
+    - ShuttleCossack
+  - type: SpawnPoint
+  - type: Sprite
+    layers:
+    - state: green
+    - sprite: Structures/Decoration/banner.rsi
+      state: banner-yellow
+
+- type: entity
+  parent: MarkerBase
+  id: SpawnPointShuttleSyndieSoldier
+  name: syndicate soldier spawn point
+  components:
+  - type: AntagGridSpawnPoint
+    whitelist:
+    - ShuttleSyndieSoldier
+  - type: SpawnPoint
+  - type: Sprite
+    layers:
+    - state: green
+    - sprite: Structures/Decoration/banner.rsi
+      state: banner_syndicate
+
+- type: entity
+  parent: MarkerBase
+  id: SpawnPointShuttleSyndieSoldierTeamLeader
+  name: syndicate team leader spawn point
+  components:
+  - type: AntagGridSpawnPoint
+    whitelist:
+    - ShuttleSyndieSoldierTeamLeader
+  - type: SpawnPoint
+  - type: Sprite
+    layers:
+    - state: green
+    - sprite: Structures/Decoration/banner.rsi
+      state: banner_syndicate

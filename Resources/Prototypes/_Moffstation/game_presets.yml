@@ -25,7 +25,7 @@
   - SubGamemodesRuleNoWizard
   - BasicStationEventScheduler
   - MeteorSwarmScheduler
-  - SpaceTrafficControlEventScheduler
+#  - SpaceTrafficControlEventScheduler # Merged into BasicStationEventScheduler
   - BasicRoundstartVariation
 
 - type: gamePreset
@@ -36,7 +36,7 @@
   rules:
   - BasicStationEventScheduler
   - MeteorSwarmScheduler
-  - SpaceTrafficControlEventScheduler
+#  - SpaceTrafficControlEventScheduler # Merged into BasicStationEventScheduler
   - BasicRoundstartVariation
 
 - type: gamePreset
@@ -53,5 +53,5 @@
   - SubGamemodesRuleNoWizard
   - BasicStationEventScheduler
   - MeteorSwarmScheduler
-  - SpaceTrafficControlEventScheduler
+#  - SpaceTrafficControlEventScheduler # Merged into BasicStationEventScheduler
   - BasicRoundstartVariation
