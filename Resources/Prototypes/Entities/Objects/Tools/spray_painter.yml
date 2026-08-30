@@ -86,6 +86,7 @@
   description: A cartridge of highly compressed paint, commonly used in spray painters.
   components:
   - type: SprayPainterAmmo
+    charges: 50 # Moff - increase charges from 15 to 50
   - type: Sprite
     sprite: Objects/Tools/spray_painter.rsi
     state: ammo
