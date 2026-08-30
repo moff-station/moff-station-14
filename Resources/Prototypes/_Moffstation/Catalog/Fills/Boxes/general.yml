@@ -5,24 +5,6 @@
   description: A cardboard box for storing emergency supplies.
 
 - type: entity
-  parent: BoxSurvivalEmpty
-  id: BoxHugEmpty
-  name: box of hugs
-  description: A special box for sensitive people.
-  suffix: Empty
-  components:
-  - type: Sprite
-    layers:
-    - state: box_hug
-    - state: heart
-  - type: Item
-    heldPrefix: hug
-  - type: Tag
-    tags:
-    - BoxCardboard
-    - BoxHug
-
-- type: entity
   name: kasane teto costume bag
   parent: ClothingBackpackDuffel
   id: BoxPerformerRed
