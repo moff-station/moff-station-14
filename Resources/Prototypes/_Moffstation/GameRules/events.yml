@@ -110,7 +110,7 @@
 
 # Pirate corsair
 - type: entity
-  parent: BasePiratesRule
+  parent: [ BasePiratesRule, BaseUnweightedAntagRule ]
   id: PirateCorsairSpawn
   components:
   - type: StationEvent
@@ -154,7 +154,7 @@
 
 # Syndicate soldier spawn
 - type: entity
-  parent: BaseTraitorRule
+  parent: [ BaseTraitorRule, BaseUnweightedAntagRule ]
   id: SyndieVentSoldierSpawn
   components:
   - type: StationEvent
