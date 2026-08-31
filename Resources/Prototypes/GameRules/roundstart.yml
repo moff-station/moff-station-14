@@ -438,13 +438,16 @@
         tableId: WreckEventTable
   # Moffstation - End
 
-- type: entity
-  id: BasicStationEventScheduler
-  parent: BaseGameRule
-  components:
-  - type: BasicStationEventScheduler
-    scheduledGameRules: !type:NestedSelector
-      tableId: BasicGameRulesTable
+# Moff start - namespaced, commented out so we get conflicts
+# if future gamemodes are added with this scheduler, replace it with our two unique schedulers: MoffCalmStationEventScheduler or MoffSpicyStationEventScheduler
+#- type: entity
+#  id: BasicStationEventScheduler
+#  parent: BaseGameRule
+#  components:
+#  - type: BasicStationEventScheduler
+#    scheduledGameRules: !type:NestedSelector
+#      tableId: BasicGameRulesTable
+# Moff end
 
 - type: entity
   id: DynamicStationEventScheduler # this isn't the dynamic mode, but rather the station event scheduler used for dynamic
