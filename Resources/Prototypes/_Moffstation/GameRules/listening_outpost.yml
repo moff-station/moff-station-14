@@ -1,6 +1,6 @@
 - type: entity
   abstract: true
-  parent: BaseUnweightedAntagRule
+  parent: BaseGameRule
   id: BaseSyndicateListeningOutpost
   components:
   - type: ListeningOutpostRule
@@ -28,7 +28,7 @@
       proto: SyndicateSpy
 
 - type: entity
-  parent: BaseSyndicateListeningOutpost
+  parent: [ BaseSyndicateListeningOutpost, BaseUnweightedAntagRule ]
   id: SyndicateListeningOutpostSpawn
   components:
   - type: StationEvent
