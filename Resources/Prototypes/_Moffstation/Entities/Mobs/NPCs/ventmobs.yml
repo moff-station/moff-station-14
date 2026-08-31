@@ -17,16 +17,13 @@
         true
 
 - type: entity
-  parent: [BaseSmasherHostile, MobAdultSlimesBlueAngry]
-  id: MobAdultSlimesBlueAngrySmasher
+  parent: [BaseSmasherHostile, MobAdultSlimesReformableAngry]
+  id: MobAdultSlimesReformableAngrySmasher
 
 - type: entity
-  parent: [BaseSmasherHostile, MobAdultSlimesGreenAngry]
-  id: MobAdultSlimesGreenAngrySmasher
-
-- type: entity
-  parent: [BaseSmasherHostile, MobAdultSlimesYellowAngry]
-  id: MobAdultSlimesYellowAngrySmasher
+  parent: [BaseSmasherHostile, MobAdultSlimesReformablePoisonousAngry]
+  id: MobAdultSlimesReformablePoisonousAngrySmasher
+  suffix: AI, Angry, Smasher, Poisonous
 
 - type: entity
   parent: [BaseSmasherHostile, MobPurpleSnake]
