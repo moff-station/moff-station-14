@@ -70,3 +70,34 @@
 - type: tileAlias
   id: FloorSteelBurnt
   target: FloorSteelDamaged
+
+
+# Moff - 2026-08-18 - Ironsands namespace change
+
+- type: tileAlias
+  id: PlatingIronsand
+  target: MoffPlatingIronsand
+
+- type: tileAlias
+  id: FloorIronsandTile
+  target: FloorMoffIronsandTile
+
+- type: tileAlias
+  id: FloorIronsandConcrete
+  target: FloorMoffIronsandConcrete
+
+- type: tileAlias
+  id: FloorIronsandConcreteMono
+  target: FloorMoffIronsandConcreteMono
+
+- type: tileAlias
+  id: FloorIronsandConcreteSmooth
+  target: FloorMoffIronsandConcreteSmooth
+
+- type: tileAlias
+  id: IronsandPacked
+  target: MoffIronsandPacked
+
+- type: tileAlias
+  id: IronsandPaved
+  target: MoffIronsandPaved
