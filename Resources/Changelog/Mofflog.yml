@@ -7803,6 +7803,13 @@ Entries:
   id: 1807
   time: '2026-08-13T20:41:05.000'
   url: https://github.com/moff-station/moff-station-14/pull/1807
+- author: KentoDaNeko
+  changes:
+  - message: Added Wooden Crates.
+    type: add
+  id: 1809
+  time: '2026-08-24T18:17:01.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1809
 - author: Centronias
   changes:
   - message: Fixed a state replication issue on gas filters.
@@ -7859,6 +7866,27 @@ Entries:
   id: 1821
   time: '2026-08-20T18:50:11.000'
   url: https://github.com/moff-station/moff-station-14/pull/1821
+- author: Centronias, Nyxilath
+  changes:
+  - message: Artifact console effect reports now give more detail post-activation
+    type: tweak
+  - message: Artifact console durability reports now state 'Unknown' prior to activation
+    type: tweak
+  - message: Speed-Artifacts are now moved to handheld-only
+    type: fix
+  - message: Several artifact effect hints have been adjusted according to their thematics
+    type: tweak
+  id: 1828
+  time: '2026-08-24T19:27:04.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1828
+- author: Nyxilath
+  changes:
+  - message: Smile can no longer grow into a colorless Urist McWobble (stay tuned
+      for a unique replacement!)
+    type: fix
+  id: 1830
+  time: '2026-08-31T19:05:21.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1830
 - author: Wintoli
   changes:
   - message: EMP Hardbomb has been added for Syndicates and Nukies alike!
@@ -7866,6 +7894,13 @@ Entries:
   id: 1831
   time: '2026-08-23T21:51:04.000'
   url: https://github.com/moff-station/moff-station-14/pull/1831
+- author: DuckManZach
+  changes:
+  - message: The event scheduler has been reworked!
+    type: add
+  id: 1832
+  time: '2026-08-31T22:21:50.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1832
 - author: DuckManZach
   changes:
   - message: Reach is no longer guaranteed for the first round of the session!
@@ -7918,5 +7953,89 @@ Entries:
   id: 1841
   time: '2026-08-22T21:47:02.000'
   url: https://github.com/moff-station/moff-station-14/pull/1841
+- author: Nyxilath
+  changes:
+  - message: Avali now spawn with the correct number of survival boxes. Again.
+    type: fix
+  id: 1842
+  time: '2026-08-31T19:05:21.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1842
+- author: Centronias
+  changes:
+  - message: The Salvage Borg's Advanced Mining Module's Ore Bag Of Holding can now
+      have its magnetism turned off, like the basic ore bag's.
+    type: tweak
+  id: 1844
+  time: '2026-08-26T02:07:20.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1844
+- author: Centronias
+  changes:
+  - message: Engineering / Meson goggles no longer continue providing their T-Ray
+      effect while enabled and in your pocket. They must be worn on the face to function.
+    type: fix
+  id: 1845
+  time: '2026-08-26T01:51:16.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1845
+- author: OrbitSystem07
+  changes:
+  - message: Ais now no longer show an error sprite while dead
+    type: fix
+  id: 1846
+  time: '2026-08-24T19:47:59.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1846
+- author: Centronias
+  changes:
+  - message: Wallmounted Nanomed vending machines now use the same UI as all other
+      vending machines with the chunky buttons and the beeps and the boops.
+    type: fix
+  id: 1847
+  time: '2026-08-26T00:25:42.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1847
+- author: Pixel8-dev
+  changes:
+  - message: Changed the Bowl reagent capacity to 60
+    type: tweak
+  id: 1848
+  time: '2026-08-26T01:28:07.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1848
+- author: Centronias
+  changes:
+  - message: Added Karla's personal item.
+    type: add
+  id: 1851
+  time: '2026-08-31T14:07:27.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1851
+- author: DuckManZach
+  changes:
+  - message: Fixed certain ghostroles providing antag weight
+    type: fix
+  id: 1853
+  time: '2026-08-31T17:58:53.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1853
+- author: gummyema
+  changes:
+  - message: Added Ice Fairy (Cirno) outfit to DramaDrobe
+    type: add
+  - message: Changed the name of the performer costume bags
+    type: tweak
+  id: 1855
+  time: '2026-08-31T18:41:50.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1855
+- author: gummyema
+  changes:
+  - message: Spray painter capacity increased from 15 to 50
+    type: tweak
+  - message: YouTool now only has 2 cans of compressed paint
+    type: tweak
+  id: 1861
+  time: '2026-08-31T22:44:39.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1861
+- author: gummyema
+  changes:
+  - message: Removed human female jumpsuit displacements
+    type: remove
+  id: 1862
+  time: '2026-08-31T18:22:18.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1862
 Name: Mofflog
 Order: -2

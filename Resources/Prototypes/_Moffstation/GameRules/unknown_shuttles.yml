@@ -1,6 +1,6 @@
 # Man o' War
 - type: entity
-  parent: BaseUnknownShuttleAnnouncedRule
+  parent: [ BaseUnknownShuttleAnnouncedRule, BaseUnweightedAntagRule ]
   id: UnknownShuttleManOWar
   components:
   - type: StationEvent
@@ -33,7 +33,7 @@
 
 # Instigator
 - type: entity
-  parent: BaseUnknownShuttleRule
+  parent: [ BaseUnknownShuttleRule, BaseUnweightedAntagRule ]
   id: UnknownShuttleInstigator
   components:
   - type: StationEvent
@@ -99,7 +99,7 @@
 
 # Syndicate evac pod
 - type: entity
-  parent: BaseUnknownShuttleRule
+  parent: [ BaseUnknownShuttleRule, BaseUnweightedAntagRule ]
   id: UnknownShuttleSyndieEvacPod
   components:
   - type: StationEvent
