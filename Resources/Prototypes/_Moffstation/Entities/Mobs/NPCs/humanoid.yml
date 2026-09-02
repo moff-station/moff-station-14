@@ -1,6 +1,7 @@
 - type: entity
   id: MobWildHumanoid
   abstract: true
+  suffix: Wild
   components:
   - type: RandomHumanoidAppearance
   - type: RandomMetadata
@@ -42,7 +43,6 @@
   parent: [ MobHuman, MobWildHumanoid ]
   components:
   - type: MonkeyAccent
-
 
 - type: entity
   id: MobWildReptilian
