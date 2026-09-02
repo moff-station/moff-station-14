@@ -78,9 +78,9 @@ public sealed partial class MoffEnrollEventComponent : Component
     public EntityUid? OwningRule;
 
     /// <summary>
-    /// Fallback gamerules if rule doesnt meet the requirements to be ran
+    /// Fallback gamerules if rule doesnt meet the requirements to be ran. Null runs nothing in its place.
     /// </summary>
-    [DataField]
+    [DataField(required: true)]
     public EntityTableSelector? FallbackRules;
 }
 
@@ -100,4 +100,13 @@ public sealed class MoffSetEnrollRandomMessage(NetEntity enroller, bool random) 
 {
     public NetEntity Enroller = enroller;
     public bool Random = random;
+}
+
+/// <summary>
+/// Sent by an admin ending the enrollment countdown, starting the event early.
+/// </summary>
+[Serializable, NetSerializable]
+public sealed class MoffEarlyStartEnrollRequest(NetEntity enrollEvent) : BoundUserInterfaceMessage
+{
+    public NetEntity EnrollEvent = enrollEvent;
 }
