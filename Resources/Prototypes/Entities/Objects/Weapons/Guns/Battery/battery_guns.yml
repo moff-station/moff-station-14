@@ -542,7 +542,7 @@
 - type: entity
   name: disabler
   parent: [WeaponDisablerPractice, BaseSecurityCommandContraband]
-  id: WeaponDisabler
+  id: WeaponDisabler # Moff - do NOT put this MF back in
   description: A self-defense weapon that exhausts organic targets, weakening them until they collapse.
   components:
   - type: Sprite
