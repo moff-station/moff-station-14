@@ -544,7 +544,6 @@
   parent: [WeaponDisablerPractice, BaseSecurityCommandContraband]
   id: WeaponDisabler
   description: A self-defense weapon that exhausts organic targets, weakening them until they collapse.
-  categories: [ DoNotMap ]
   components:
   - type: Sprite
     sprite: _Moffstation/Objects/Weapons/Guns/Battery/disabler.rsi # Moffstation
