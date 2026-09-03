@@ -554,3 +554,13 @@
   components:
   - type: Sprite
     sprite: _Moffstation/Clothing/Uniforms/Jumpskirt/serafuku.rsi
+
+# Ice Fairy (Cirno)
+- type: entity
+  parent: ClothingUniformSkirtBase
+  id: ClothingUniformJumpskirtIceFairy
+  name: ice fairy dress
+  description: Everyone! Cirno's perfect station shift is starting!
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Uniforms/Jumpskirt/ice_fairy.rsi

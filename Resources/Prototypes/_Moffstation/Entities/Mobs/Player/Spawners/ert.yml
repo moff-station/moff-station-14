@@ -5,9 +5,10 @@
   name: ERT squad leader spawner
   suffix: Mapping, EVA
   components:
-  - type: RandomSpawner
-    prototypes:
-    - RandomHumanoidSpawnerERTLeaderEVA
+  - type: SpawnPoint
+  - type: AntagGridSpawnPoint
+    whitelist:
+    - ERTLeaderEVA
   - type: Sprite
     layers:
     - state: green
@@ -19,9 +20,9 @@
   id: ERTLeaderSpawnerArmed
   suffix: Mapping, EVA, Armed
   components:
-  - type: RandomSpawner
-    prototypes:
-    - RandomHumanoidSpawnerERTLeaderArmed
+  - type: AntagGridSpawnPoint
+    whitelist:
+    - ERTLeaderArmed
 
 # ERT Team Leaders, with a lower rank - they lead 4-man fireteams within a larger ERT deployment.
 - type: entity
@@ -30,9 +31,9 @@
   name: ERT team leader spawner
   suffix: Mapping, EVA, Armed
   components:
-  - type: RandomSpawner
-    prototypes:
-    - RandomHumanoidSpawnerERTLeaderArmedTeam
+  - type: AntagGridSpawnPoint
+    whitelist:
+    - ERTLeaderArmedTeam
 
 # ERT Chaplain
 - type: entity
@@ -41,9 +42,10 @@
   name: ERT chaplain spawner
   suffix: Mapping, EVA
   components:
-  - type: RandomSpawner
-    prototypes:
-    - RandomHumanoidSpawnerERTChaplainEVA
+  - type: SpawnPoint
+  - type: AntagGridSpawnPoint
+    whitelist:
+    - ERTChaplainEVA
   - type: Sprite
     layers:
     - state: green
@@ -57,9 +59,10 @@
   name: ERT janitor spawner
   suffix: Mapping, EVA
   components:
-  - type: RandomSpawner
-    prototypes:
-    - RandomHumanoidSpawnerERTJanitorEVA
+  - type: SpawnPoint
+  - type: AntagGridSpawnPoint
+    whitelist:
+    - ERTJanitorEVA
   - type: Sprite
     layers:
     - state: green
@@ -73,9 +76,10 @@
   name: ERT engineer spawner
   suffix: Mapping, EVA
   components:
-  - type: RandomSpawner
-    prototypes:
-    - RandomHumanoidSpawnerERTEngineerEVA
+  - type: SpawnPoint
+  - type: AntagGridSpawnPoint
+    whitelist:
+    - ERTEngineerEVA
   - type: Sprite
     layers:
     - state: green
@@ -88,9 +92,9 @@
   name: ERT combat engineer spawner
   suffix: Mapping, EVA
   components:
-  - type: RandomSpawner
-    prototypes:
-    - RandomHumanoidSpawnerERTEngineerArmed
+  - type: AntagGridSpawnPoint
+    whitelist:
+    - ERTEngineerArmed
 
 # ERT Security
 - type: entity
@@ -99,9 +103,10 @@
   name: ERT security officer spawner
   suffix: Mapping, EVA
   components:
-  - type: RandomSpawner
-    prototypes:
-    - RandomHumanoidSpawnerERTSecurityEVA
+  - type: SpawnPoint
+  - type: AntagGridSpawnPoint
+    whitelist:
+    - ERTSecurityEVA
   - type: Sprite
     layers:
     - state: green
@@ -114,9 +119,9 @@
   name: ERT security rifleman spawner
   suffix: Mapping, EVA, Armed
   components:
-  - type: RandomSpawner
-    prototypes:
-    - RandomHumanoidSpawnerERTSecurityArmedRifle
+  - type: AntagGridSpawnPoint
+    whitelist:
+    - ERTSecurityArmedRifle
 
 - type: entity
   parent: ERTSecuritySpawnerEVA
@@ -124,9 +129,9 @@
   name: ERT security grenadier spawner
   suffix: Mapping, EVA, Armed
   components:
-  - type: RandomSpawner
-    prototypes:
-    - RandomHumanoidSpawnerERTSecurityArmedGrenade
+  - type: AntagGridSpawnPoint
+    whitelist:
+    - ERTSecurityArmedGrenade
 
 - type: entity
   parent: ERTSecuritySpawnerEVA
@@ -134,9 +139,9 @@
   name: ERT security vanguard spawner
   suffix: Mapping, EVA, Armed
   components:
-  - type: RandomSpawner
-    prototypes:
-    - RandomHumanoidSpawnerERTSecurityArmedVanguard
+  - type: AntagGridSpawnPoint
+    whitelist:
+    - ERTSecurityArmedVanguard
 
 # ERT Medical
 - type: entity
@@ -145,14 +150,15 @@
   name: ERT medical doctor spawner
   suffix: Mapping, EVA
   components:
+  - type: SpawnPoint
+  - type: AntagGridSpawnPoint
+    whitelist:
+    - ERTMedicalEVA
   - type: Sprite
     layers:
     - state: green
     - sprite: Markers/jobs.rsi
       state: ertmedicaleva
-  - type: RandomSpawner
-    prototypes:
-    - RandomHumanoidSpawnerERTMedicalEVA
 
 - type: entity
   parent: ERTMedicalSpawnerEVA
@@ -160,9 +166,9 @@
   name: ERT medical corpsman spawner
   suffix: Mapping, EVA, Armed
   components:
-  - type: RandomSpawner
-    prototypes:
-    - RandomHumanoidSpawnerERTMedicalArmed
+  - type: AntagGridSpawnPoint
+    whitelist:
+    - ERTMedicalArmed
 
 # CBURN (Chemical, Biological, Undead, Radiological, Nuclear)
 - type: entity
@@ -171,14 +177,15 @@
   parent: MarkerBase
   suffix: Mapping
   components:
+  - type: SpawnPoint
+  - type: AntagGridSpawnPoint
+    whitelist:
+    - CBURNAgent
   - type: Sprite
     layers:
     - state: green
     - sprite: Structures/Decoration/banner.rsi
       state: banner
-  - type: RandomSpawner
-    prototypes:
-    - RandomHumanoidSpawnerCBURNUnit
 
 - type: entity
   name: DeathSquad spawner
@@ -186,14 +193,15 @@
   parent: MarkerBase
   suffix: Mapping
   components:
+  - type: SpawnPoint
+  - type: AntagGridSpawnPoint
+    whitelist:
+    - DeathSquadAgent
   - type: Sprite
     layers:
     - state: green
     - sprite: Structures/Decoration/banner.rsi
       state: banner
-  - type: RandomSpawner
-    prototypes:
-    - RandomHumanoidSpawnerDeathSquad
 
 # Nanotrasen Corporate Fleet
 - type: entity

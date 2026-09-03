@@ -4,14 +4,15 @@ using Content.Server.Administration.Managers;
 using Content.Server.Antag;
 using Content.Server.Antag.Components;
 using Content.Server.GameTicking;
+using Content.Server.GameTicking.Rules;
 using Content.Server.GameTicking.Rules.Components;
+using Content.Server.StationEvents;
 using Content.Shared._ES.Voting;
 using Content.Shared._ES.Voting.Components;
 using Content.Shared._Moffstation.Extensions;
 using Content.Shared._Moffstation.Voting.Components;
 using Content.Shared.Administration;
 using Content.Shared.Database;
-using Content.Shared.EntityTable;
 using Content.Shared.GameTicking.Components;
 using Content.Shared.Ghost.Components;
 using Content.Shared.Roles.Components;
@@ -34,9 +35,10 @@ public sealed partial class MoffEnrollEventSystem : EntitySystem
     [Dependency] private IRobustRandom _random = default!;
     [Dependency] private GameTicker _gameTicker = default!;
     [Dependency] private AntagSelectionSystem _antag = default!;
-    [Dependency] private EntityTableSystem _entityTable = default!;
+    [Dependency] private EventManagerSystem _event = default!;
     [Dependency] private IPrototypeManager _proto = default!;
     [Dependency] private SharedTransformSystem _transform = default!;
+    [Dependency] private RuleGridsSystem _ruleGrids = default!;
 
     [Dependency] private EntityQuery<AntagSelectionComponent> _antagSelectionQuery;
     [Dependency] private EntityQuery<AntagLoadProfileRuleComponent> _antagProfileRuleQuery;
@@ -196,6 +198,9 @@ public sealed partial class MoffEnrollEventSystem : EntitySystem
             rule is not { } ruleUid ||
             !_antagSelectionQuery.TryComp(ruleUid, out var antag))
         {
+            if (rule is { } unstartedRule)
+                _ruleGrids.DeleteRuleGrids(unstartedRule);
+
             FireFallbackRule(ent);
             TryQueueDel(rule);
             TryQueueDel(ent.Owner);
@@ -290,11 +295,8 @@ public sealed partial class MoffEnrollEventSystem : EntitySystem
 
     private void FireFallbackRule(Entity<MoffEnrollEventComponent> ent)
     {
-        // Not enough people enrolled, fire the fallback rule
-        foreach (var proto in _entityTable.GetSpawns(ent.Comp.FallbackRules, _random))
-        {
-            _gameTicker.StartGameRule(proto);
-        }
+        if (ent.Comp.FallbackRules is { } fallback)
+            _event.RunRandomEvent(fallback);
     }
 
     public bool EnrolleeWantsRandom(EntityUid rule, ICommonSession session)
