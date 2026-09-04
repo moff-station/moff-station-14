@@ -129,6 +129,7 @@ public sealed class StationJobsTest : GameTest
 ";
 
     [Test]
+    [Ignore("Moff changes job priority")] // Moff
     public async Task AssignJobsTest()
     {
         var pair = Pair;
@@ -190,6 +191,7 @@ public sealed class StationJobsTest : GameTest
     }
 
     [Test]
+    [Ignore("Moff changes job priority")] // Moff
     public async Task MinimumJobsUseConfiguredFallback()
     {
         var pair = Pair;
@@ -360,4 +362,144 @@ public sealed class StationJobsTest : GameTest
             });
         });
     }
+
+    // Moff start
+    [Test]
+    [Description("Compared to the original tests, this uses Moff's modifications which respect player-set job priorities.")]
+    public async Task AssignJobsTestMoff()
+    {
+        var pair = Pair;
+        var server = pair.Server;
+
+        var prototypeManager = server.ResolveDependency<IPrototypeManager>();
+        var barStationProto = prototypeManager.Index<GameMapPrototype>(SecondStationMapId);
+        var entSysMan = server.ResolveDependency<IEntityManager>().EntitySysManager;
+        var stationJobs = entSysMan.GetEntitySystem<StationJobsSystem>();
+        var stationSystem = entSysMan.GetEntitySystem<StationSystem>();
+
+        var firstStation = EntityUid.Invalid;
+        var secondStation = EntityUid.Invalid;
+        await server.WaitPost(() =>
+        {
+            firstStation = stationSystem.InitializeNewStation(
+                barStationProto.Stations["First"], null, "First", barStationProto);
+            secondStation = stationSystem.InitializeNewStation(
+                barStationProto.Stations["Second"], null, "Second", barStationProto);
+        });
+
+        var dummies = await server.AddDummySessions(5);
+        await server.WaitAssertion(() =>
+        {
+            var fakePlayers = new Dictionary<NetUserId, HumanoidCharacterProfile>
+            {
+                [dummies[0].UserId] = HumanoidCharacterProfile.Random()
+                    .WithJobPriority("TCaptain", JobPriority.Low)
+                    .WithJobPriority("TChaplain", JobPriority.High)
+                    .WithJobPriority("TMime", JobPriority.Medium),
+                [dummies[1].UserId] = HumanoidCharacterProfile.Random()
+                    .WithJobPriority("TChaplain", JobPriority.High),
+                [dummies[2].UserId] = HumanoidCharacterProfile.Random()
+                    .WithJobPriority("TAssistant", JobPriority.High)
+                    .WithJobPriority("TClown", JobPriority.Low),
+                [dummies[3].UserId] = HumanoidCharacterProfile.Random()
+                    .WithJobPriority("TAssistant", JobPriority.High)
+                    .WithJobPriority("TMime", JobPriority.Low),
+                [dummies[4].UserId] = HumanoidCharacterProfile.Random()
+                    .WithJobPriorities(Array.Empty<KeyValuePair<ProtoId<JobPrototype>, JobPriority>>()),
+            };
+
+            var stations = new[] { firstStation, secondStation };
+            var assigned = stationJobs.AssignJobs(fakePlayers, stations);
+            stationJobs.AssignOverflowJobs(ref assigned, fakePlayers.Keys, fakePlayers, stations);
+
+            Assert.Multiple(() =>
+            {
+                // Mime is the highest priority, so 0 gets their medium-choice mime
+                Assert.That(assigned[dummies[0].UserId], Is.EqualTo(((ProtoId<JobPrototype>?) "TMime", secondStation)));
+                // Captain is the second-highest priority, and nobody has it as a preference. 1 has chaplain as their
+                // highest priority, and it's in the same department (in this test) as captain, so it gets transmuted
+                // to that.
+                Assert.That(assigned[dummies[1].UserId], Is.EqualTo(((ProtoId<JobPrototype>?) "TCaptain", firstStation)));
+                // 2's high preference for assistant is meaningless as there are no round-start assistant slots. Instead,
+                // they get their low preference of Clown.
+                Assert.That(assigned[dummies[2].UserId], Is.EqualTo(((ProtoId<JobPrototype>?) "TClown", firstStation)));
+                // 3 would get Mime if there were a second slot, but there's not, so they end up getting the
+                // after-round-start assistant slot.
+                Assert.That(assigned[dummies[3].UserId], Is.EqualTo(((ProtoId<JobPrototype>?) "TAssistant", firstStation)));
+                // `stationJobs.AssignOverflowJobs` assigns Clown here because it's the infinite job available.
+                Assert.That(assigned[dummies[4].UserId], Is.EqualTo(((ProtoId<JobPrototype>?) "TClown", firstStation)));
+            });
+        });
+    }
+
+    [Test]
+    [Description("Compared to the original tests, this uses Moff's modifications which respect player-set job priorities.")]
+    public async Task MinimumJobsUseConfiguredFallbackMoff()
+    {
+        var pair = Pair;
+        var server = pair.Server;
+        var configuration = server.ResolveDependency<IConfigurationManager>();
+        var prototypeManager = server.ResolveDependency<IPrototypeManager>();
+        var barStationProto = prototypeManager.Index<GameMapPrototype>(SecondStationMapId);
+        var entSysMan = server.ResolveDependency<IEntityManager>().EntitySysManager;
+        var stationJobs = entSysMan.GetEntitySystem<StationJobsSystem>();
+        var stationSystem = entSysMan.GetEntitySystem<StationSystem>();
+        var station = EntityUid.Invalid;
+
+        await server.WaitPost(() =>
+        {
+            station = stationSystem.InitializeNewStation(
+                barStationProto.Stations["First"], null, "First", barStationProto);
+        });
+
+        var dummies = await server.AddDummySessions(2);
+        var sameDepartmentDummy = dummies[0];
+        var noPreferenceDummy = dummies[1];
+        var sameDepartmentProfiles = new Dictionary<NetUserId, HumanoidCharacterProfile>
+        {
+            [sameDepartmentDummy.UserId] = new HumanoidCharacterProfile()
+                .WithJobPriority("TChaplain", JobPriority.Low),
+        };
+
+        var noPreferenceProfiles = new Dictionary<NetUserId, HumanoidCharacterProfile>
+        {
+            [noPreferenceDummy.UserId] = new HumanoidCharacterProfile()
+                .WithJobPriorities(Array.Empty<KeyValuePair<ProtoId<JobPrototype>, JobPriority>>()),
+        };
+
+        var anyEligibleProfiles = new Dictionary<NetUserId, HumanoidCharacterProfile>
+        {
+            [sameDepartmentDummy.UserId] = sameDepartmentProfiles[sameDepartmentDummy.UserId],
+            [noPreferenceDummy.UserId] = noPreferenceProfiles[noPreferenceDummy.UserId],
+        };
+
+        var originalValue = configuration.GetCVar(CCVars.GameMinimumJobFallback);
+        try
+        {
+            await server.WaitAssertion(() =>
+            {
+                configuration.SetCVar(CCVars.GameMinimumJobFallback, MinimumJobFallback.SameDepartment);
+                var sameDepartmentAssignments = stationJobs.AssignJobs(sameDepartmentProfiles, [station]);
+                // Top priority is chaplain, but with `MinimumJobFallback.SameDepartment`, that gets transmuted to captain, which is higher priority.
+                Assert.That(sameDepartmentAssignments[sameDepartmentDummy.UserId].Item1, Is.EqualTo((ProtoId<JobPrototype>?) "TCaptain"));
+
+                configuration.SetCVar(CCVars.GameMinimumJobFallback, MinimumJobFallback.AnyEligiblePlayer);
+                var anyEligibleAssignments = stationJobs.AssignJobs(anyEligibleProfiles, [station]);
+                // Chaplain preference gets transmuted to same-dept captain, like above.
+                Assert.That(anyEligibleAssignments[sameDepartmentDummy.UserId].Item1, Is.EqualTo((ProtoId<JobPrototype>?) "TCaptain"));
+                // With captain filled, the next most important job is chaplain.
+                Assert.That(anyEligibleAssignments[noPreferenceDummy.UserId].Item1, Is.EqualTo((ProtoId<JobPrototype>?) "TChaplain"));
+
+                configuration.SetCVar(CCVars.GameMinimumJobFallback, MinimumJobFallback.None);
+                var noFallbackAssignments = stationJobs.AssignJobs(noPreferenceProfiles, [station]);
+                Assert.That(noFallbackAssignments, Is.Empty);
+            });
+        }
+        finally
+        {
+            await server.WaitPost(() =>
+                configuration.SetCVar(CCVars.GameMinimumJobFallback, originalValue));
+        }
+    }
+    // Moff end
 }

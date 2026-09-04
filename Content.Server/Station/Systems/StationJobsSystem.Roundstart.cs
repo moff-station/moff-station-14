@@ -1,5 +1,4 @@
 using System.Linq;
-using Content.Server._Moffstation.Preferences; // Moffstation - Multi-character selection
 using Content.Server.Administration.Managers;
 using Content.Server.Antag;
 using Content.Server.Station.Components;
@@ -22,7 +21,6 @@ public sealed partial class StationJobsSystem
     [Dependency] private IBanManager _banManager = default!;
     [Dependency] private SharedJobSystem _jobs = default!;
     [Dependency] private AntagSelectionSystem _antag = default!;
-    [Dependency] private MoffCharacterSelectionManager _moffCharacterSelection = default!; // Moff - Multi-character selection
 
     private int GetJobWeight(EntityUid station, JobPrototype job)
     {
@@ -67,102 +65,105 @@ public sealed partial class StationJobsSystem
         return ProtoMan.HasIndex<JobWeightPrototype>(JobWeightPrototype.Default);
     }
 
-    /// <summary>
-    /// Assigns jobs based on the given preferences and list of stations to assign for.
-    /// This does NOT change the slots on the station, only figures out where each player should go.
-    /// </summary>
-    /// <param name="profiles">The profiles to use for selection.</param>
-    /// <param name="stations">List of stations to assign for.</param>
-    /// <param name="useRoundStartJobs">Whether or not to use the round-start minimum jobs for the stations.</param>
-    /// <returns>List of players and their assigned jobs.</returns>
-    /// <remarks>
-    /// You probably shouldn't use useRoundStartJobs mid-round if the station has been available to join,
-    /// as there may end up being more round-start slots than available slots, which can cause weird behavior.
-    /// Round-start allocation attempts each station's minimum roles first, ordered by the station's job weights.
-    /// Unpreferred minimum roles can use an eligible random player when configured to do so.
-    /// It then considers remaining players in random order and gives each their highest available preference.
-    /// </remarks>
-    public Dictionary<NetUserId, (ProtoId<JobPrototype>?, EntityUid)> AssignJobs(
-        Dictionary<NetUserId, HumanoidCharacterProfile> profiles,
-        IReadOnlyList<EntityUid> stations,
-        bool useRoundStartJobs = true)
-    {
-        DebugTools.Assert(stations.Count > 0);
-
-        if (profiles.Count == 0)
-            return new();
-
-        // We need to modify this collection later, so make a copy of it.
-        profiles = profiles.ShallowClone();
-
-        // Player <-> (job, station)
-        var assigned = new Dictionary<NetUserId, (ProtoId<JobPrototype>?, EntityUid)>(profiles.Count);
-
-        // The maximum jobs left on each station. This is modified as players are assigned.
-        var stationJobs = new Dictionary<EntityUid, Dictionary<ProtoId<JobPrototype>, int?>>();
-        var stationMinimumJobs = new Dictionary<EntityUid, Dictionary<ProtoId<JobPrototype>, int?>>();
-        foreach (var station in stations)
-        {
-            stationJobs.Add(station, GetJobs(station).ToDictionary(x => x.Key, x => x.Value));
-            stationMinimumJobs.Add(
-                station,
-                useRoundStartJobs
-                    ? GetRoundStartJobs(station)
-                    : new Dictionary<ProtoId<JobPrototype>, int?>());
-        }
-
-        // Jobs assigned after this point must satisfy bans, antag restrictions, and any other candidate filter.
-        // The minimum phase selects players for a job*, and the maximum phase selects jobs for a player.
-        var jobCandidates = GetJobCandidates(profiles);
-        var playerCandidates = GetPlayerCandidates(jobCandidates);
-
-        // Phase one: complete every required role on a station before considering the next station.
-        // Within a station, job priority win over player preference; player preference breaks ties between candidates.
-        var jobFallback = _configurationManager.GetCVar(CCVars.GameMinimumJobFallback);
-
-        foreach (var station in stations)
-        {
-            var requiredJobs = stationMinimumJobs[station]
-                .Where(x => x.Value is > 0)
-                .OrderByDescending(x => GetJobWeight(station, ProtoMan.Index(x.Key)))
-                .ThenBy(x => x.Key.Id)
-                .ToList();
-
-            foreach (var (job, minimum) in requiredJobs)
-            {
-                for (var assignedToJob = 0; assignedToJob < minimum!.Value && profiles.Count > 0; assignedToJob++)
-                {
-                    if (stationJobs[station][job] is <= 0)
-                        break;
-
-                    if (!TryPickCandidate(job, jobCandidates, out var player) &&
-                        !TryPickMinimumJobFallbackCandidate(
-                            job, profiles, jobFallback, out player))
-                    {
-                        break;
-                    }
-
-                    AssignPlayer(player, job, station, stationJobs, jobCandidates, playerCandidates, profiles, assigned);
-                }
-            }
-        }
-
-        // Phase two: each remaining player gets their highest available preference. Shuffle the player order and
-        // equal-priority jobs so contention is still fair, while preserving station-by-station allocation.
-        foreach (var station in stations)
-        {
-            var players = profiles.Keys.ToList();
-            _random.Shuffle(players);
-
-            foreach (var player in players)
-            {
-                if (TryPickJob(player, station, stationJobs, playerCandidates, out var job))
-                    AssignPlayer(player, job, station, stationJobs, jobCandidates, playerCandidates, profiles, assigned);
-            }
-        }
-
-        return assigned;
-    }
+    // Moff start - This function was completely rewritten. Any modifications need to it should be carefully considered
+    //  for merging into the implementation in `StationJobsSystem.Roundstart.Moff.cs`
+    // /// <summary>
+    // /// Assigns jobs based on the given preferences and list of stations to assign for.
+    // /// This does NOT change the slots on the station, only figures out where each player should go.
+    // /// </summary>
+    // /// <param name="profiles">The profiles to use for selection.</param>
+    // /// <param name="stations">List of stations to assign for.</param>
+    // /// <param name="useRoundStartJobs">Whether or not to use the round-start minimum jobs for the stations.</param>
+    // /// <returns>List of players and their assigned jobs.</returns>
+    // /// <remarks>
+    // /// You probably shouldn't use useRoundStartJobs mid-round if the station has been available to join,
+    // /// as there may end up being more round-start slots than available slots, which can cause weird behavior.
+    // /// Round-start allocation attempts each station's minimum roles first, ordered by the station's job weights.
+    // /// Unpreferred minimum roles can use an eligible random player when configured to do so.
+    // /// It then considers remaining players in random order and gives each their highest available preference.
+    // /// </remarks>
+    // public Dictionary<NetUserId, (ProtoId<JobPrototype>?, EntityUid)> AssignJobs(
+    //     Dictionary<NetUserId, HumanoidCharacterProfile> profiles,
+    //     IReadOnlyList<EntityUid> stations,
+    //     bool useRoundStartJobs = true)
+    // {
+    //     DebugTools.Assert(stations.Count > 0);
+    //
+    //     if (profiles.Count == 0)
+    //         return new();
+    //
+    //     // We need to modify this collection later, so make a copy of it.
+    //     profiles = profiles.ShallowClone();
+    //
+    //     // Player <-> (job, station)
+    //     var assigned = new Dictionary<NetUserId, (ProtoId<JobPrototype>?, EntityUid)>(profiles.Count);
+    //
+    //     // The maximum jobs left on each station. This is modified as players are assigned.
+    //     var stationJobs = new Dictionary<EntityUid, Dictionary<ProtoId<JobPrototype>, int?>>();
+    //     var stationMinimumJobs = new Dictionary<EntityUid, Dictionary<ProtoId<JobPrototype>, int?>>();
+    //     foreach (var station in stations)
+    //     {
+    //         stationJobs.Add(station, GetJobs(station).ToDictionary(x => x.Key, x => x.Value));
+    //         stationMinimumJobs.Add(
+    //             station,
+    //             useRoundStartJobs
+    //                 ? GetRoundStartJobs(station)
+    //                 : new Dictionary<ProtoId<JobPrototype>, int?>());
+    //     }
+    //
+    //     // Jobs assigned after this point must satisfy bans, antag restrictions, and any other candidate filter.
+    //     // The minimum phase selects players for a job*, and the maximum phase selects jobs for a player.
+    //     var jobCandidates = GetJobCandidates(profiles);
+    //     var playerCandidates = GetPlayerCandidates(jobCandidates);
+    //
+    //     // Phase one: complete every required role on a station before considering the next station.
+    //     // Within a station, job priority win over player preference; player preference breaks ties between candidates.
+    //     var jobFallback = _configurationManager.GetCVar(CCVars.GameMinimumJobFallback);
+    //
+    //     foreach (var station in stations)
+    //     {
+    //         var requiredJobs = stationMinimumJobs[station]
+    //             .Where(x => x.Value is > 0)
+    //             .OrderByDescending(x => GetJobWeight(station, ProtoMan.Index(x.Key)))
+    //             .ThenBy(x => x.Key.Id)
+    //             .ToList();
+    //
+    //         foreach (var (job, minimum) in requiredJobs)
+    //         {
+    //             for (var assignedToJob = 0; assignedToJob < minimum!.Value && profiles.Count > 0; assignedToJob++)
+    //             {
+    //                 if (stationJobs[station][job] is <= 0)
+    //                     break;
+    //
+    //                 if (!TryPickCandidate(job, jobCandidates, out var player) &&
+    //                     !TryPickMinimumJobFallbackCandidate(
+    //                         job, profiles, jobFallback, out player))
+    //                 {
+    //                     break;
+    //                 }
+    //
+    //                 AssignPlayer(player, job, station, stationJobs, jobCandidates, playerCandidates, profiles, assigned);
+    //             }
+    //         }
+    //     }
+    //
+    //     // Phase two: each remaining player gets their highest available preference. Shuffle the player order and
+    //     // equal-priority jobs so contention is still fair, while preserving station-by-station allocation.
+    //     foreach (var station in stations)
+    //     {
+    //         var players = profiles.Keys.ToList();
+    //         _random.Shuffle(players);
+    //
+    //         foreach (var player in players)
+    //         {
+    //             if (TryPickJob(player, station, stationJobs, playerCandidates, out var job))
+    //                 AssignPlayer(player, job, station, stationJobs, jobCandidates, playerCandidates, profiles, assigned);
+    //         }
+    //     }
+    //
+    //     return assigned;
+    // }
+    // Moff end
 
     private void RemovePlayerFromCandidates(
         NetUserId player,
