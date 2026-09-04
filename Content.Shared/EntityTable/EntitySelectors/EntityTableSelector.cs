@@ -5,6 +5,14 @@ using Robust.Shared.Prototypes;
 
 namespace Content.Shared.EntityTable.EntitySelectors;
 
+/// <summary>
+/// An extensible table for configurable entity selection, both random and deterministic.
+/// </summary>
+/// <remarks>
+/// This is currently the favored way to select multiple entities - generally for spawning.
+/// With its children, it supports returning multiple entities, nested selectors,
+/// groups of entities, conditions, and probabilistic spawns.
+/// </remarks>
 // Moffstation - Begin - Rewrite table selectors with visitors. Early merge of https://github.com/Space-Wizards-Federation/space-station-14/pull/177
 /// <summary>
 /// A table of <see cref="EntProtoId"/>s with various configuration specifying how individual entries are selected.
