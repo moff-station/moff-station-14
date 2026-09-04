@@ -50,8 +50,7 @@ public sealed partial class StationJobsSystem
         var jobFallback = _configurationManager.GetCVar(CCVars.GameMinimumJobFallback);
 
         // Take the most important job from the front of the queue and try to assign it from `candidates`.
-        while (requiredJobsPq.TakeOrNull() is
-               (var job, var station, var priority, var fallbackLevel, var slots, _, _, _) sort)
+        while (requiredJobsPq.TakeOrNull() is (var job, var station, var priority, var slots, _, _, _) sort)
         {
             // If there're no candidates, we can't assign any more jobs.
             if (candidates.IsEmpty())
@@ -59,24 +58,17 @@ public sealed partial class StationJobsSystem
 
             DebugTools.AssertNotEqual(slots, 0);
 
-            var candidateNullable = fallbackLevel switch
+            if (candidates.GetCandidate(job, priority, jobFallback) is not { } candidate)
             {
-                MinimumJobFallback.None => candidates.PickCandidate(job, priority),
-                MinimumJobFallback.SameDepartment => candidates.PickSameDepartmentCandidate(job, priority),
-                MinimumJobFallback.AnyEligiblePlayer => candidates.PickCandidateIgnoringPreferences(job),
-                _ => this.UnknownEnumVariant<MinimumJobFallback, NetUserId?>(fallbackLevel),
-            };
-            if (candidateNullable is not { } candidate)
-            {
-                // If there are absolutely no candidates, relax how strict we are about candidate's preferences.
-                if (DowngradeStrictness(sort, jobFallback) is { } lessStrict)
+                // If there are absolutely no candidates, downgrade the priority we're willing to take.
+                if (priority.NextLower() is { } nextLowerPriority and > JobPriority.Never)
                 {
-                    // Throw the relaxed-criteria job back into the queue. The queue will yield it to be filled
+                    // Throw this job back into the queue with a lower priority. The queue will yield it to be filled
                     // again eventually, after we've given other higher priority jobs a chance to be filled.
-                    requiredJobsPq.Add(lessStrict);
+                    requiredJobsPq.Add(sort with { Priority = nextLowerPriority });
                 }
 
-                // If we couldn't relax the criteria, don't requeue the job -- nobody wants it.
+                // If there's no lower priority, or the next lower is `Never`, don't requeue the job -- nobody wants it.
                 continue;
             }
 
@@ -96,62 +88,6 @@ public sealed partial class StationJobsSystem
         }
 
         return jobAssignments;
-    }
-
-    /// Relaxes the restrictions on which candidates can take the job described by <paramref name="current"/>, returning
-    /// a new <see cref="RoundstartStationJob"/>. In the case that we cannot make the criteria any less strict, returns
-    /// <c>null</c>.
-    /// "relaxing" in this sense means first lowering the <see cref="JobPriority"/> at which we will take candidates and
-    /// then relaxing exactly which job a candidate has to have selected to take the job, according to
-    /// <see cref="MinimumJobFallback"/>. The fallback level will never go lower than
-    /// <paramref name="minimumFallbackLevel"/>.
-    /// When broadening the fallback level, <see cref="RoundstartStationJob.Priority"/> is reset to high. This means
-    /// we'll try to give the job to somebody who has specifically asked to fill a role
-    /// (ie. <see cref="MinimumJobFallback.None"/>) at low priority before we use backup filling methods (eg.
-    /// <see cref="MinimumJobFallback.SameDepartment"/>) at high priority.
-    /// Jobs with unlimited (<c>null</c>) <see cref="RoundstartStationJob.Slots"/> never broaden their fallback level,
-    /// otherwise they would take all candidates available.
-    private RoundstartStationJob? DowngradeStrictness(
-        RoundstartStationJob current,
-        MinimumJobFallback minimumFallbackLevel
-    )
-    {
-        // If we're not already at the minimum priority, reduce the priority we're willing to take candidates at.
-        if (current.Priority != JobPriority.Low)
-        {
-            return current.Priority switch
-            {
-                JobPriority.Never => null,
-                JobPriority.Low => JobPriority.Never,
-                JobPriority.Medium => JobPriority.Low,
-                JobPriority.High => JobPriority.Medium,
-                var e => this.UnknownEnumVariant<JobPriority, JobPriority?>(e),
-            } is { } priority
-                ? current with { Priority = priority }
-                : null;
-        }
-
-        // Unlimited slot jobs cannot use fallbacks, otherwise they would slurp up too many candidates.
-        if (current.Slots == null)
-            return null;
-
-        // If we're not already at the minimum fallback level, broaden the pool of candidates we're willing to take from
-        // and reset the priority to high.
-        if (current.FallbackLevel != minimumFallbackLevel)
-        {
-            return current.FallbackLevel switch
-            {
-                MinimumJobFallback.SameDepartment => MinimumJobFallback.AnyEligiblePlayer,
-                MinimumJobFallback.AnyEligiblePlayer => null,
-                MinimumJobFallback.None => MinimumJobFallback.SameDepartment,
-                var e => this.UnknownEnumVariant<MinimumJobFallback, MinimumJobFallback?>(e),
-            } is { } nextFallback
-                ? current with { FallbackLevel = nextFallback, Priority = JobPriority.High }
-                : null;
-        }
-
-        // We're already at our minimum criteria and nobody took the job. Stop trying to fill this job.
-        return null;
     }
 
     /// Creates and returns a <see cref="RoundstartJobCandidates"/> from <paramref name="profiles"/>.
@@ -238,6 +174,7 @@ public sealed partial class StationJobsSystem
                         new RoundstartStationJob(
                             job,
                             station,
+                            JobPriority.High,
                             roundstartSlots,
                             FillPriority: 0,
                             Salt: _random.Next()
@@ -262,6 +199,7 @@ public sealed partial class StationJobsSystem
                             new RoundstartStationJob(
                                 job,
                                 station,
+                                JobPriority.High,
                                 allSlotsMinusRoundstart,
                                 FillPriority: -1,
                                 Salt: _random.Next()
@@ -283,6 +221,7 @@ public sealed partial class StationJobsSystem
                         new RoundstartStationJob(
                             job,
                             station,
+                            JobPriority.High,
                             allSlots,
                             FillPriority: -1,
                             Salt: _random.Next()
@@ -293,5 +232,22 @@ public sealed partial class StationJobsSystem
         }
 
         return queue;
+    }
+}
+
+static file class JobPriorityExt
+{
+    extension(JobPriority priority)
+    {
+        /// Returns the <see cref="JobPriority"/> that's just lower than the receiver. Returns <c>null</c> if no
+        /// such priority exists.
+        public JobPriority? NextLower() => priority switch
+        {
+            JobPriority.Never => null,
+            JobPriority.Low => JobPriority.Never,
+            JobPriority.Medium => JobPriority.Low,
+            JobPriority.High => JobPriority.Medium,
+            _ => throw new ArgumentOutOfRangeException(nameof(priority), priority, null)
+        };
     }
 }

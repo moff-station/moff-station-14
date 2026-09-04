@@ -77,6 +77,24 @@ public sealed partial class RoundstartJobCandidates(
         return r1 || r2;
     }
 
+    /// Picks a candidate for <paramref name="job"/> from this pool. <paramref name="jobFallback"/> determines exactly
+    /// how this works, but it will always delegate to <see cref="PickCandidate"/>, <see cref="PickSameDepartmentCandidate"/>,
+    /// and/or <see cref="PickCandidateIgnoringPreferences"/>.
+    public NetUserId? GetCandidate(
+        ProtoId<JobPrototype> job,
+        JobPriority priority,
+        MinimumJobFallback jobFallback
+    ) => jobFallback switch
+    {
+        MinimumJobFallback.None => PickCandidate(job, priority),
+        MinimumJobFallback.SameDepartment => PickCandidate(job, priority) ??
+                                             PickSameDepartmentCandidate(job, priority),
+        MinimumJobFallback.AnyEligiblePlayer => PickCandidate(job, priority) ??
+                                                PickSameDepartmentCandidate(job, priority) ??
+                                                PickCandidateIgnoringPreferences(job),
+        _ => throw new ArgumentOutOfRangeException(),
+    };
+
     /// Picks a candidate from this pool for <paramref name="job"/> at <paramref name="priority"/>.
     public NetUserId? PickCandidate(ProtoId<JobPrototype> job, JobPriority priority)
     {
@@ -199,20 +217,11 @@ public sealed partial class RoundstartJobCandidates(
 /// <summary>
 /// A <see cref="RoundstartStationJob.Comparer">sortable</see> <see cref="JobPrototype"/> and related info for use in
 /// <see cref="StationJobsSystem.AssignJobs"/>. Objects are sorted first by <see cref="FillPriority"/>, then by
-/// <see cref="RoundstartStationJob.Comparer.WeightGetter">weight</see>, then by <see cref="FallbackLevel"/>, then by
-/// <see cref="Priority"/>, then by <see cref="Repetition"/>, then by <see cref="Salt"/>.
+/// <see cref="RoundstartStationJob.Comparer.WeightGetter">weight</see>, then by <see cref="Salt"/>.
 /// </summary>
 /// <param name="FillPriority">
 /// A number that exists simply to make some objects sort before others. This is used to prioritize a number of slots to
 /// be filled before others, even when jobs have the same weight. Like job weights, higher priorities are filled earlier.
-/// </param>
-/// <param name="Priority">
-/// The <see cref="JobPriority"/> a candidate must have set for <see cref="Job"/> (or other jobs -- see
-/// <see cref="MinimumJobFallback"/>) in order to be selected.
-/// </param>
-/// <param name="FallbackLevel">
-/// How loosely we're currently willing to match a candidate to <see cref="Job"/>.
-/// See <see cref="StationJobsSystem.DowngradeStrictness"/>.
 /// </param>
 /// <param name="Salt">
 /// A number that exists simply to make some objects sort before others. This is used to make otherwise equal-sorting
@@ -224,35 +233,23 @@ public sealed partial class RoundstartJobCandidates(
 /// This value is used to preserve insertion order when reinserting a value. This effectively causes jobs with the same
 /// priority to be filled in a round-robin fashion.
 /// </param>
-/// <param name="Slots">
-/// The number of slots. Null means an unlimited number, but it also stops <see cref="FallbackLevel"/> from ever
-/// broadening past <see cref="MinimumJobFallback.None"/>; see <see cref="StationJobsSystem.DowngradeStrictness"/>.
-/// </param>
+/// <param name="Slots">The number of slots. Null means an unlimited number.</param>
 public readonly record struct RoundstartStationJob(
     ProtoId<JobPrototype> Job,
     EntityUid Station,
     JobPriority Priority,
-    MinimumJobFallback FallbackLevel,
     int? Slots,
     int FillPriority,
     int Salt,
-    int Repetition
+    int Repetition = 0
 )
 {
-    public RoundstartStationJob(ProtoId<JobPrototype> Job, EntityUid Station, int? Slots, int FillPriority, int Salt) :
-        this(Job, Station, JobPriority.High, MinimumJobFallback.None, Slots, FillPriority, Salt, 0)
-    {
-    }
-
     public override string ToString()
     {
         return $"({Job.Id}, fill={FillPriority}, {Priority})";
     }
 
-    /// A comparer for <see cref="RoundstartStationJob"/>s which uses <see cref="WeightGetter"/>. Sorts by
-    /// <see cref="RoundstartStationJob.FillPriority"/>, then <see cref="WeightGetter"/>, then
-    /// <see cref="RoundstartStationJob.FallbackLevel"/>, then <see cref="RoundstartStationJob.Priority"/>, then
-    /// <see cref="RoundstartStationJob.Repetition"/>, then <see cref="RoundstartStationJob.Salt"/>.
+    /// A comparer for <see cref="RoundstartStationJob"/>s which uses <see cref="WeightGetter"/>.
     public readonly record struct Comparer(
         Func<RoundstartStationJob, int> WeightGetter
     ) : IComparer<RoundstartStationJob>
@@ -264,9 +261,6 @@ public readonly record struct RoundstartStationJob(
 
             if (WeightGetter(x).CompareTo(WeightGetter(y)) is var weightComparison and not 0)
                 return weightComparison;
-
-            if (x.FallbackLevel.CompareTo(y.FallbackLevel) is var fallbackPriorityComparison and not 0)
-                return fallbackPriorityComparison;
 
             if (x.Priority.CompareTo(y.Priority) is var priorityComparison and not 0)
                 return priorityComparison;
