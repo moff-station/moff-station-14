@@ -15,6 +15,12 @@ uplink-clown-spider-grenade-desc = Smuggled out of a Honkmother meeting, the spi
 uplink-flaming-fire-axe-name = Fire Axe
 uplink-flaming-fire-axe-desc = Why fight fire with an axe when you can fight with fire and axe? Now featuring rugged rubberized handle!
 
+uplink-chef-knife-name = Cybersun Devlilsknife 
+uplink-chef-knife-desc = One of many ritual daggers recovered deep in a cave complex during the aftermath of the Kidan war. Very sharp, and crackles with fire. Inhabits very angry spirits, who only desire destruciton and bloodshed. Often sold as an exotic cooking aid across the Sol system. 
+
+ghost-role-information-syndicate-chef-knife-name = Corrupt Kidan Knife
+ghost-role-information-syndicate-chef-knife-description = You are an angry soul from the Kidan war. You have gone mad and desire bloodshed. Be loud, evil and obnoxious. Try to convince the wielder to stab and butcher anything you please, and to indulge in their evil desires.
+
 # Weapons
 uplink-hypereutatic-blade-moff-name = Hypereutactic Blade
 uplink-hypereutatic-blade-moff-desc = A gigantic energy sword with power that matches its looks. Requires two hands to swing. Slow and unwieldy, yet pretty adept at reflecting projectiles and slicing through structures. Makes a lot of noise when turned on. Demons fear its hum.
