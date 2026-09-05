@@ -12,6 +12,9 @@ uplink-syndicate-mothroach-description = The latest and greatest in Syndicate mo
 uplink-clown-spider-grenade-name = Jar of Clown Spiders
 uplink-clown-spider-grenade-desc = Smuggled out of a Honkmother meeting, the spiders floating inside liquid happiness laugh away. Would be funny to throw at someone.
 
+uplink-super-BBQ-name = Chef Flay's ULTRA Hot BBQ Sauce
+uplink-super-BBQ-desc = A disontinued sauce originally sold online by famous chef Flay. Recalled when consumers were lit on fire after consumption. The remaining supply is occasionally used as a torture or assassination device.
+
 uplink-flaming-fire-axe-name = Fire Axe
 uplink-flaming-fire-axe-desc = Why fight fire with an axe when you can fight with fire and axe? Now featuring rugged rubberized handle!
 
