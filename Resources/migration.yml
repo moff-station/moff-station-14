@@ -981,9 +981,15 @@ FireAxeFlaming: SpawnPointNukieDemolitionWeapon
 # Moff - 2026-08-02 - Temporarily disabling tram driver
 SpawnPointTramDriver: null
 
-# Moff - 2026-08-05 - Hostile shuttle crews come from antag enrollment on the rule now. These become plain spawn
-# points so RuleGrids can place enrollees there, instead of spawning ghost roles of their own. 
+# Moff - 2026-08-05 - Enrollment spawners
 CossackSpawner: SpawnPointShuttleCossack
 SyndieVisitorSpawner: SpawnPointShuttleSyndieVisitor
 SyndieSoldierSpawner: SpawnPointShuttleSyndieSoldier
 SyndieSoldierTeamLeaderSpawner: SpawnPointShuttleSyndieSoldierTeamLeader
+
+# 2026-08-01
+Stunbaton: Nightstick
+WeaponDisabler: null
+WeaponTaser: null
+GunSafeDisabler: GunSafeLessLethal
+WeaponDisablerSMG: WeaponShotgunEnforcerRubber # Likely unnecessary, but might as well go all the way
