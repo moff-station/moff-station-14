@@ -47,3 +47,22 @@
     - state: shockwave
   - type: InstantAction
     event: !type:AbilitySonicBoomEvent
+
+- type: entity
+  parent: BaseImplantAction
+  id: ActivateSmokeImplant
+  name: Release a cloud of smoke
+  description: Releases a cloud of smoke around you.
+  components:
+  - type: LimitedCharges
+    maxCharges: 4
+  - type: Action
+    itemIconStyle: BigAction
+    checkCanInteract: false
+    priority: -20
+    raiseOnUser: false
+    useDelay: 1
+  - type: Sprite
+    sprite: Objects/Weapons/Grenades/smoke.rsi
+    layers:
+    - state: icon

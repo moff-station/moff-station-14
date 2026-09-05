@@ -90,6 +90,24 @@
       tags:
       - NukeOpsUplink
 
+- type: listing
+  id: UplinkSyndicateEmpBombNukie
+  name: uplink-exploding-syndicate-emp-bomb-name
+  description: uplink-exploding-syndicate-emp-bomb-desc
+  productEntity: SyndicateEmpBomb
+  cost:
+    Telecrystal: 8
+  discountCategory: rareDiscounts
+  discountDownTo:
+    Telecrystal: 4
+  categories:
+  - UplinkExplosives
+  conditions:
+  - !type:StoreWhitelistCondition
+    whitelist:
+      tags:
+      - NukeOpsUplink
+
 # Job
 - type: listing # Syndicate fireaxe for atmosians
   id: UplinkFireAxeFlamingUpstream
@@ -218,20 +236,15 @@
   categories:
   - UplinkWearables
 
+# Implants
 - type: listing
-  id: UplinkSyndicateEmpBombNukie
-  name: uplink-exploding-syndicate-emp-bomb-name
-  description: uplink-exploding-syndicate-emp-bomb-desc
-  productEntity: SyndicateEmpBomb
+  id: UplinkSmokeImplanter
+  name: uplink-smoke-implant-name
+  description: uplink-smoke-implant-desc
+  icon: { sprite: /Textures/Objects/Weapons/Grenades/smoke.rsi, state: icon }
+  productEntity: SmokeImplanter
   cost:
-    Telecrystal: 8
-  discountCategory: rareDiscounts
-  discountDownTo:
-    Telecrystal: 4
+    Telecrystal: 2
   categories:
-  - UplinkExplosives
-  conditions:
-  - !type:StoreWhitelistCondition
-    whitelist:
-      tags:
-      - NukeOpsUplink
+    - UplinkImplants
+
