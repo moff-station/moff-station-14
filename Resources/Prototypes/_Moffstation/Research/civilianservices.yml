@@ -1,0 +1,13 @@
+# Tier 2
+- type: technology
+  id: MoffTechBallisticPostalMechanisms
+  name: research-technology-ballistic-postal-mechanisms
+  icon:
+    sprite: _Moffstation/Objects/Specific/Robotics/borgmodule.rsi
+    state: icon-mail
+  discipline: CivilianServices
+  tier: 2
+  cost: 4000
+  recipeUnlocks:
+  - BorgModuleAdvancedMail
+  - NFWeaponLauncherMail
