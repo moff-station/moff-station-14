@@ -1,4 +1,4 @@
-using Content.Server._Moffstation.StationEvents.Components;
+﻿using Content.Server._Moffstation.StationEvents.Components;
 using Content.Server.GameTicking.Rules;
 using Content.Server.StationEvents;
 using Content.Shared._Moffstation.Extensions;
@@ -60,9 +60,6 @@ public sealed partial class MoffStationEventSchedulerSystem : GameRuleSystem<Mof
 
             if (ent.Comp1.NextStateTime <= Timing.CurTime)
             {
-                if (state.EventOnEnd)
-                    _event.RunRandomEvent(ent.Comp1.ScheduledGameRules);
-
                 TransitionToNextState(ent, state);
                 continue;
             }
@@ -127,7 +124,7 @@ public sealed partial class MoffStationEventSchedulerSystem : GameRuleSystem<Mof
             ? TimeSpan.FromSeconds(eventTiming.Next(RobustRandom))
             : TimeSpan.Zero;
 
-        entity.Comp.NextStateTime = duration;
+        entity.Comp.NextStateTime = duration is { } d ? Timing.CurTime + d : null;
         entity.Comp.NextEventTime = Timing.CurTime + eventDelay;
     }
 }
