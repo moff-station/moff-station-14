@@ -21,6 +21,8 @@ public sealed partial class JobWeightPrototype : IPrototype
     [DataField]
     public Dictionary<ProtoId<JobPrototype>, int> Weights { get; private set; } = new();
 
+    // Moff start - Readd display weights. We don't have weights, so we need display weights to order things in the UI
     [DataField]
     public Dictionary<ProtoId<JobPrototype>, int> DisplayWeights { get; private set; } = new();
+    // Moff end
 }

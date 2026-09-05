@@ -71,6 +71,7 @@ public sealed class JobTest : GameTest
   id: {JobWeightOverride}
   weights:
     {Passenger}: 30
+    {Captain}: 20
 ";
 
     public override PoolSettings PoolSettings => new()

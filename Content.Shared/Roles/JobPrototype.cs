@@ -1,9 +1,12 @@
 using System.Diagnostics.CodeAnalysis;
+using System.Linq;
+using System.Runtime.CompilerServices;
 using Content.Shared.Access;
 using Content.Shared.Guidebook;
 using Content.Shared.Players.PlayTimeTracking;
 using Content.Shared.StatusIcon;
 using Robust.Shared.Prototypes;
+using Robust.Shared.Utility;
 
 namespace Content.Shared.Roles;
 
@@ -185,17 +188,29 @@ public sealed class JobUIComparer : IComparer<JobPrototype>
             return false;
         }
 
-        var weights = new Dictionary<ProtoId<JobPrototype>, int>(defaultProfile.DisplayWeights); // Moff - Remove job weights, retain UI ordering
+        // Moff start - Readd display weights
+        var weights = defaultProfile.DisplayWeights.ShallowClone();
+        Overlay(weights, defaultProfile.DisplayWeights);
         if (jobWeights != null && prototypes.TryIndex(jobWeights.Value, out var mapProfile))
         {
-            foreach (var (job, weight) in mapProfile.DisplayWeights) // Moff - Remove job weights, retain UI ordering
-            {
-                weights[job] = weight;
-            }
+            Overlay(weights, mapProfile.Weights);
+            Overlay(weights, mapProfile.DisplayWeights);
         }
+        // Moff end
 
         comparer = new JobUIComparer(weights);
         return true;
+
+        // Moff start - Readd display weights.
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        void Overlay(Dictionary<ProtoId<JobPrototype>, int> baseValues, Dictionary<ProtoId<JobPrototype>, int> overlay)
+        {
+            foreach (var (job, weight) in overlay)
+            {
+                baseValues[job] = weight;
+            }
+        }
+        // Moff end
     }
 
     /// <summary>
