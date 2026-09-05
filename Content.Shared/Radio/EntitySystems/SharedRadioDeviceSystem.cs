@@ -1,5 +1,7 @@
 using Content.Shared.Popups;
 using Content.Shared.Radio.Components;
+using Content.Shared._Goobstation.StationRadio.Components; // Moffstation  - Examine the station radio server to see if microphone is active.
+using Content.Shared.Examine; // Moffstation - Examine the station radio server to see if microphone is active.
 
 namespace Content.Shared.Radio.EntitySystems;
 
@@ -49,5 +51,26 @@ public abstract partial class SharedRadioDeviceSystem : EntitySystem
             RemCompDeferred<ActiveRadioComponent>(uid);
     }
     #endregion
+
+    // Moffstation - Start - Add examine text to radio station server.
+    public override void Initialize()
+    {
+        base.Initialize();
+        SubscribeLocalEvent<StationRadioServerComponent, ExaminedEvent>(OnExamined);
+    }
+
+    /// <summary>
+    /// Examining a Radio Station Server will now tell you if it is recording or not.
+    /// </summary>
+    private void OnExamined(EntityUid uid, StationRadioServerComponent comp, ref ExaminedEvent args)
+    {
+        if (!TryComp<RadioMicrophoneComponent>(uid, out var mic))
+            return;
+
+        args.PushMarkup(Loc.GetString(mic.Enabled
+            ? "station-radio-server-examine-not-recording"
+            : "station-radio-server-examine-recording"));
+    }
+    // Moffstation - End
 }
 

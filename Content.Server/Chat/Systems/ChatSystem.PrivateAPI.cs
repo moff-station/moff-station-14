@@ -137,17 +137,20 @@ public sealed partial class ChatSystem
                 continue;
             listener = session.AttachedEntity.Value;
 
-            if (MessageRangeCheck(session, data, range) != MessageRangeCheckResult.Full)
+            // Moffstation - Start - Radio Host
+            var rangeCheck = MessageRangeCheck(session, data, range);
+            if (rangeCheck == MessageRangeCheckResult.Disallowed)
+            // Moffstation - End
                 continue; // Won't get logged to chat, and ghosts are too far away to see the pop-up, so we just won't send it to them.
 
             if (data.Range <= WhisperClearRange || data.Observer)
-                _chatManager.ChatMessageToOne(ChatChannel.Whisper, message, wrappedMessage, source, false, session.Channel);
+                _chatManager.ChatMessageToOne(ChatChannel.Whisper, message, wrappedMessage, source, rangeCheck == MessageRangeCheckResult.HideChat, session.Channel); // Moffstation - Radio Host
             //If listener is too far, they only hear fragments of the message
             else if (_examineSystem.InRangeUnOccluded(source, listener, WhisperMuffledRange))
-                _chatManager.ChatMessageToOne(ChatChannel.Whisper, obfuscatedMessage, wrappedobfuscatedMessage, source, false, session.Channel);
+                _chatManager.ChatMessageToOne(ChatChannel.Whisper, obfuscatedMessage, wrappedobfuscatedMessage, source, rangeCheck == MessageRangeCheckResult.HideChat, session.Channel); // Moffstation - Radio Host
             //If listener is too far and has no line of sight, they can't identify the whisperer's identity
             else
-                _chatManager.ChatMessageToOne(ChatChannel.Whisper, obfuscatedMessage, wrappedUnknownMessage, source, false, session.Channel);
+                _chatManager.ChatMessageToOne(ChatChannel.Whisper, obfuscatedMessage, wrappedUnknownMessage, source, rangeCheck == MessageRangeCheckResult.HideChat, session.Channel); // Moffstation - Radio Host
         }
 
         _replay.RecordServerMessage(new ChatMessage(ChatChannel.Whisper, message, wrappedMessage, GetNetEntity(source), null, MessageRangeHideChatForReplay(range)));
