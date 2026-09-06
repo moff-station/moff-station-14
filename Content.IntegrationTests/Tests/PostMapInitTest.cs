@@ -99,7 +99,7 @@ namespace Content.IntegrationTests.Tests
                 "RubberStampQm",
                 "RubberStampRd",
                 "RubberStampWarden",
-            ]}, // Prize stall souvenirs
+            ]},
             // Moffstation - End
         };
 
