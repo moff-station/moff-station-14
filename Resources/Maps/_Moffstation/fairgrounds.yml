@@ -5,7 +5,7 @@ meta:
   forkId: ""
   forkVersion: ""
   time: 09/06/2026 07:31:27
-  entityCount: 10111
+  entityCount: 10134
 maps:
 - 1
 grids:
@@ -93,6 +93,13 @@ entities:
     - type: ChunkContainer
       chunkEntities: []
     - type: OccluderTree
+    - type: Parallax
+      parallax: Water
+    - type: MapLight
+      ambientLightColor: '#D2C690FF'
+    - type: LightCycle
+      initialOffset: false
+      offset: 15m
   - uid: 2
     components:
     - type: MetaData
@@ -784,6 +791,8 @@ entities:
     - type: ChunkContainer
       chunkEntities: []
     - type: OccluderTree
+    - type: BecomesStation
+      id: Fairgrounds
     - type: TileHistory
       chunkHistory: {}
     - type: SpreaderGrid
@@ -4138,8 +4147,6 @@ entities:
     - type: DeviceNetwork
       deviceLists:
       - 4061
-      configurators:
-      - invalid
     missingComponents:
     - ApcPowerReceiver
 - proto: AirSensorVox
@@ -4153,8 +4160,6 @@ entities:
     - type: DeviceNetwork
       deviceLists:
       - 5333
-      configurators:
-      - invalid
     missingComponents:
     - ApcPowerReceiver
 - proto: AltarBananium
@@ -26115,8 +26120,6 @@ entities:
     - type: DeviceNetwork
       deviceLists:
       - 5333
-      configurators:
-      - invalid
     missingComponents:
     - ApcPowerReceiver
   - uid: 5331
@@ -26144,8 +26147,6 @@ entities:
     - type: DeviceNetwork
       deviceLists:
       - 5333
-      configurators:
-      - invalid
     missingComponents:
     - ApcPowerReceiver
 - proto: GasVentScrubberVox
@@ -26159,8 +26160,6 @@ entities:
     - type: DeviceNetwork
       deviceLists:
       - 5333
-      configurators:
-      - invalid
     missingComponents:
     - ApcPowerReceiver
   - uid: 6322
@@ -26172,8 +26171,6 @@ entities:
     - type: DeviceNetwork
       deviceLists:
       - 5333
-      configurators:
-      - invalid
     missingComponents:
     - ApcPowerReceiver
 - proto: GasVolumePump
@@ -39520,6 +39517,157 @@ entities:
       parent: 2
       rot: 3.141592653589793 rad
       pos: -28.5,28.5
+- proto: SpawnPointBartender
+  entities:
+  - uid: 10112
+    components:
+    - type: Transform
+      parent: 2
+      pos: 23.5,11.5
+- proto: SpawnPointBotanist
+  entities:
+  - uid: 10113
+    components:
+    - type: Transform
+      parent: 2
+      pos: 25.5,11.5
+- proto: SpawnPointCaptain
+  entities:
+  - uid: 10114
+    components:
+    - type: Transform
+      parent: 2
+      pos: 21.5,11.5
+- proto: SpawnPointCargoTechnician
+  entities:
+  - uid: 10115
+    components:
+    - type: Transform
+      parent: 2
+      pos: 22.5,9.5
+- proto: SpawnPointChaplain
+  entities:
+  - uid: 10116
+    components:
+    - type: Transform
+      parent: 2
+      pos: 22.5,10.5
+- proto: SpawnPointChef
+  entities:
+  - uid: 10117
+    components:
+    - type: Transform
+      parent: 2
+      pos: 24.5,11.5
+- proto: SpawnPointClown
+  entities:
+  - uid: 10118
+    components:
+    - type: Transform
+      parent: 2
+      pos: 22.5,8.5
+- proto: SpawnPointDetective
+  entities:
+  - uid: 10119
+    components:
+    - type: Transform
+      parent: 2
+      pos: 26.5,10.5
+- proto: SpawnPointHeadOfPersonnel
+  entities:
+  - uid: 10120
+    components:
+    - type: Transform
+      parent: 2
+      pos: 22.5,11.5
+- proto: SpawnPointJanitor
+  entities:
+  - uid: 10121
+    components:
+    - type: Transform
+      parent: 2
+      pos: 26.5,11.5
+- proto: SpawnPointLatejoin
+  entities:
+  - uid: 10122
+    components:
+    - type: Transform
+      parent: 2
+      pos: 21.5,11.5
+  - uid: 10123
+    components:
+    - type: Transform
+      parent: 2
+      pos: 22.5,11.5
+  - uid: 10124
+    components:
+    - type: Transform
+      parent: 2
+      pos: 23.5,11.5
+  - uid: 10125
+    components:
+    - type: Transform
+      parent: 2
+      pos: 24.5,11.5
+  - uid: 10126
+    components:
+    - type: Transform
+      parent: 2
+      pos: 25.5,11.5
+  - uid: 10127
+    components:
+    - type: Transform
+      parent: 2
+      pos: 26.5,11.5
+- proto: SpawnPointMedicalDoctor
+  entities:
+  - uid: 10128
+    components:
+    - type: Transform
+      parent: 2
+      pos: 24.5,10.5
+- proto: SpawnPointMime
+  entities:
+  - uid: 10129
+    components:
+    - type: Transform
+      parent: 2
+      pos: 25.5,8.5
+- proto: SpawnPointMusician
+  entities:
+  - uid: 10130
+    components:
+    - type: Transform
+      parent: 2
+      pos: 23.5,10.5
+- proto: SpawnPointPassenger
+  entities:
+  - uid: 10131
+    components:
+    - type: Transform
+      parent: 2
+      pos: 24.5,10.5
+- proto: SpawnPointReporter
+  entities:
+  - uid: 10132
+    components:
+    - type: Transform
+      parent: 2
+      pos: 25.5,9.5
+- proto: SpawnPointSecurityOfficer
+  entities:
+  - uid: 10133
+    components:
+    - type: Transform
+      parent: 2
+      pos: 25.5,10.5
+- proto: SpawnPointServiceWorker
+  entities:
+  - uid: 10134
+    components:
+    - type: Transform
+      parent: 2
+      pos: 23.5,10.5
 - proto: SpeedLoaderCap
   entities:
   - uid: 2054
