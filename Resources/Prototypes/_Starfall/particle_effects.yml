@@ -132,7 +132,7 @@
   lifetimeVariance: 0.5
   speed: 0.5
   speedVariance: 0.2
-  particleSize: 0.35
+  particleSize: 0.15
   sizeVariance: 0.3
   emissionRate: 8
   maxCount: 32
@@ -263,8 +263,8 @@
 - type: particleEffect
   id: SfFootstepDust
   sprite:
-    sprite: _Moffstation/Particles/pixel.rsi
-    state: dust_puff
+    sprite: Effects/chemsmoke.rsi
+    state: chemsmoke
   startColor: "#CCCCCC88"
   endColor: "#CCCCCC00"
   sizeOverLifetime:
