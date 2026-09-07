@@ -206,7 +206,7 @@
     relayAccent: true
 
 - type: entity
-  parent: [ ClothingHeadBase, BaseSyndicateContraband ]
+  parent: [ ClothingHeadBase ] # Moffstation - Cat Ears are no longer contraband
   id: ClothingHeadHatCatEars
   name: cat ears
   description: "NYAH!"
