@@ -224,7 +224,10 @@ public sealed partial class RoundstartJobCandidates(
 /// This value is used to preserve insertion order when reinserting a value. This effectively causes jobs with the same
 /// priority to be filled in a round-robin fashion.
 /// </param>
-/// <param name="Slots">The number of slots. Null means an unlimited number.</param>
+/// <param name="Slots">
+/// The number of slots. Null means an unlimited number, but it also stops <see cref="FallbackLevel"/> from ever
+/// broadening past <see cref="MinimumJobFallback.None"/>; see <see cref="StationJobsSystem.DowngradeStrictness"/>.
+/// </param>
 public readonly record struct RoundstartStationJob(
     ProtoId<JobPrototype> Job,
     EntityUid Station,
