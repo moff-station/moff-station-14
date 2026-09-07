@@ -47,7 +47,6 @@ public abstract partial class ESSharedVoteSystem : EntitySystem
     {
         ent.Comp.EndTime = _timing.CurTime + ent.Comp.Duration;
         RefreshVoteOptions(ent.AsNullable());
-        SendVoteStartAnnouncement(ent);
     }
 
     private void OnSetVote(ESSetVoteMessage args, EntitySessionEventArgs ev)
@@ -127,11 +126,6 @@ public abstract partial class ESSharedVoteSystem : EntitySystem
         RaiseLocalEvent(ent, ref ev, true);
 
         PredictedQueueDel(ent);
-    }
-
-    protected virtual void SendVoteStartAnnouncement(Entity<ESVoteComponent> ent)
-    {
-
     }
 
     protected virtual void SendVoteResultAnnouncement(Entity<ESVoteComponent> ent, ESVoteOption result)

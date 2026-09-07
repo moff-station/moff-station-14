@@ -1,7 +1,7 @@
 # eeeplet
 - type: entity
   id: EeepSpawn
-  parent: BaseGameRule
+  parent: BaseAntagGhostRoleRule # Moff - ghost roles are NOT weighted
   components:
   - type: StationEvent
     weight: 3.5
@@ -33,7 +33,7 @@
 
 - type: entity
   id: TouristSpawn #three tourists
-  parent: BaseGameRule
+  parent: BaseAntagGhostRoleRule # Moff - ghost roles are NOT weighted
   components:
   - type: StationEvent
     weight: 2

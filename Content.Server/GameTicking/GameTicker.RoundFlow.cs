@@ -744,7 +744,7 @@ namespace Content.Server.GameTicking
                     Timer.Spawn(delay,
                         () =>
                     {
-                        if (RunLevel != GameRunLevel.PreRoundLobby)
+                        if (RunLevel != GameRunLevel.PreRoundLobby || Paused)
                             return;
                         // There isn't really a better way to identify an already running map vote...
                         if (_voteManager.ActiveVotes.All(x => x.Title != Loc.GetString("ui-vote-map-title")))
