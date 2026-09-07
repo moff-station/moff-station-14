@@ -5,10 +5,11 @@ using Robust.Client.UserInterface;
 using Robust.Shared.Input;
 using System.Linq;
 using Content.Shared.VendingMachines.Components;
+using Content.Client._Funkystation.VendingMachines;
 
 namespace Content.Client.VendingMachines;
 
-public sealed class VendingMachineBoundUserInterface(EntityUid owner, Enum uiKey) : BoundUserInterface(owner, uiKey)
+public sealed class VendingMachineBoundUserInterface(EntityUid owner, Enum uiKey) : BoundUserInterface(owner, uiKey), IVendingMachineBoundUi // Funky - diegetic vending
 {
     [ViewVariables]
     private VendingMachineMenu? _menu;

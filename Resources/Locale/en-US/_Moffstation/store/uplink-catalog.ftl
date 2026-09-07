@@ -2,14 +2,15 @@
 uplink-mobcat-reject-name = SyndiCat Reject Teleporter
 uplink-mobcat-reject-desc = Call in an untrained SyndiCat. It isn't trained, and it doesn't contain a bomb, so it serves best as a distraction. You can only adopt one of them.
 
-uplink-necronomicon-name = Necronomicon
-uplink-necronomicon-desc = A recharging cursed book that allows the wielder to summon a powerful demonic dog from the underworld to do their bidding. The demon has a powerful bite, lights people on fire, and gets faster the closer it is to death. The book can also be used to in a pinch to burn foes or pray to dark forces for assistance.
-
 uplink-spider-grenade-name = Jar of Spiders
 uplink-spider-grenade-desc = An experimental concoction made by the Syndicate. When shattered, the chemical reaction promotes extreme growth of the small spiders located inside. The spiders, classified as Nightfangs, have been biologically engineered to avoid attacking Syndicate agents, but devour any other nearby creature in their sight.
 
 uplink-syndicate-mothroach-name = Syndicate Mothroach
 uplink-syndicate-mothroach-description = The latest and greatest in Syndicate mothroach experimentation. With the use of under-wing sonic enhancers, this creature can send out shockwaves to disrupt the battlefield.
+
+# Explosives
+uplink-exploding-syndicate-emp-bomb-name = Syndicate EMP Bomb
+uplink-exploding-syndicate-emp-bomb-desc = A big, anchored bomb that emits an almost station-wide disabling EMP pulse if not defused in time. Disables electronics for exactly 3 minutes. Has an adjustable fuse.
 
 # Job
 uplink-clown-spider-grenade-name = Jar of Clown Spiders
@@ -17,6 +18,13 @@ uplink-clown-spider-grenade-desc = Smuggled out of a Honkmother meeting, the spi
 
 uplink-flaming-fire-axe-name = Fire Axe
 uplink-flaming-fire-axe-desc = Why fight fire with an axe when you can fight with fire and axe? Now featuring rugged rubberized handle!
+
+uplink-necronomicon-name = Necronomicon
+uplink-necronomicon-desc = A recharging cursed book that allows the wielder to summon a powerful demonic dog from the underworld to do their bidding. The demon has a powerful bite, lights people on fire, and gets faster the closer it is to death. The book can also be used to in a pinch to burn foes or pray to dark forces for assistance.
+
+# Other 
+uplink-super-surplus-bundle-name = Super Surplus Crate
+uplink-super-surplus-bundle-desc = Contains 125 telecrystals worth of random Syndicate items. No refunds!
 
 # Weapons
 uplink-hypereutatic-blade-moff-name = Hypereutactic Blade
@@ -32,6 +40,4 @@ uplink-clothing-infiltrator-headset-desc = A headset combining both chameleon an
 uplink-clothing-rocket-skates-name = Syndicate Rocket Skates
 uplink-clothing-rocket-skates-desc = An experimental prototype from Lumens Technologies, combining the benefits of rollerskates with the thrusting capacities of a rocket for maximum velocity.
 
-# Other 
-uplink-super-surplus-bundle-name = Super Surplus Crate
-uplink-super-surplus-bundle-desc = Contains 125 telecrystals worth of random Syndicate items. No refunds!
+

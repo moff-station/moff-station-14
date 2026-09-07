@@ -1,3 +1,9 @@
+figurines-ainelucia-1 = Just a sec! I gotta revive this red kitty!
+figurines-ainelucia-2 = Meow. Meow. Meow. Meow. Meow. Meow. Meow. Meow. Me- Awhhh fine I'll stop...
+figurines-ainelucia-3 = Officer, I SWEAR I have no clue where all the watermelon juice went! I SWEAR!!
+figurines-ainelucia-4 = Did anyone just hear a bomb go off? ...No? ...Okay.
+figurines-ainelucia-5 = DON'T WORRY, I LIKE TOTALLY GOT THIS ALL HANDLED, TRUST!!
+
 figurines-alfredo-1 = You wanna huff frezon?
 figurines-alfredo-2 = Here's some cold... air...
 figurines-alfredo-3 = Ignore the rotting monkey pit.

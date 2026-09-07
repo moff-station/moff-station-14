@@ -1,0 +1,64 @@
+<Document>
+
+  # Basic Topicals
+  Basic topicals are made in the techfab, or in the case of Gauze can also be crafted by hand.
+
+  ## Brutepack
+  <Box HorizontalAlignment="Left">
+    <GuideEntityEmbed Entity="Brutepack" Caption="" Margin="0 -5 0 0"/>
+    <Box Orientation="Vertical">
+      - 0.25 steel & 0.25 plastic
+      - Heals [color=green]5 Blunt, Piercing and Slash[/color]
+    </Box>
+  </Box>
+
+  ## Ointment
+  <Box HorizontalAlignment="Left">
+    <GuideEntityEmbed Entity="Ointment" Caption="" Margin="0 -5 0 0"/>
+    <Box Orientation="Vertical">
+      - 0.25 glass & 0.25 plastic
+      - Heals [color=green]5 Heat, Cold, and Shock and 1.5 Caustic[/color]
+    </Box>
+  </Box>
+
+  ## Gauze
+  <Box HorizontalAlignment="Left">
+    <GuideEntityEmbed Entity="Gauze" Caption="" Margin="0 -5 0 0"/>
+    <Box Orientation="Vertical">
+      - 1 cloth, or 2 when made by hand
+      - Heals [color=green]10 Piercing, 5 Slash and stops bleeding[/color]
+    </Box>
+  </Box>
+
+  ## Bloodpack
+  <Box HorizontalAlignment="Left">
+    <GuideEntityEmbed Entity="Bloodpack" Caption="" Margin="0 -5 0 0"/>
+    <Box Orientation="Vertical">
+      - Cannot be crafted
+      - Heals [color=green]0.5 bloodloss and restores ~5% blood volume[/color]
+    </Box>
+  </Box>
+
+  ## Tourniquet
+  <Box HorizontalAlignment="Left">
+    <GuideEntityEmbed Entity="Tourniquet" Caption="" Margin="0 -5 0 0"/>
+    <Box Orientation="Vertical">
+      - Cannot be crafted
+      - Does [color=red]5 Blunt and 5 Asphyxiation damage[/color]
+      - [color=green]Stops bleeding. Much faster to apply than Gauze.[/color]
+    </Box>
+  </Box>
+
+  # Advanced Topicals
+  Advanced topicals must be made in the microwave.
+
+  <GuideMicrowaveEmbed Recipe="RecipeMedicatedSuture"/>
+  - Heals [color=green]10 Blunt, Piercing, Slash and stops bleeding[/color]
+  <GuideMicrowaveEmbed Recipe="RecipeRegenerativeMesh"/>
+  - Heals [color=green]10 Heat, Cold, Shock and Caustic[/color]
+  <GuideMicrowaveEmbed Recipe="RecipePoulticePack"/>
+  - Heals the same as Brutepacks
+  <GuideMicrowaveEmbed Recipe="RecipeAloeCream"/>
+  - Heals the same as Ointment
+
+</Document>

@@ -41,7 +41,7 @@ public sealed partial class SiliconLawBoundComponent : Component
     /// <summary>
     /// Version to display on the law panel. Increments whenever the laws are changed
     /// </summary>
-    [DataField]
+    [DataField, AutoNetworkedField] // Moff - Reimplement versioning on law providers. This is networked from the remote law provider.
     public int Version = 1;
 
     // Prevent cheat clients from seeing the laws of other players.

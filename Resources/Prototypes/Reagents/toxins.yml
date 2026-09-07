@@ -501,7 +501,7 @@
       - !type:PopupMessage
         conditions:
         - !type:MetabolizerTypeCondition
-          type: [ Animal, Vox ]
+          type: [ Animal, Bloodsucker, Vox ] # Moff
           inverted: true
         type: Local
         visualType: MediumCaution
@@ -511,12 +511,12 @@
         probability: 0.1
         conditions:
         - !type:MetabolizerTypeCondition
-          type: [ Animal, Vox, Plant ]
+          type: [ Animal, Bloodsucker, Vox, Plant ] # Moff
           inverted: true
       - !type:HealthChange
         conditions:
         - !type:MetabolizerTypeCondition
-          type: [ Animal, Vox, Plant ]
+          type: [ Animal, Bloodsucker, Vox, Plant ] # Moff
           inverted: true
         damage:
           types:
@@ -531,7 +531,7 @@
       - !type:AdjustReagent
         conditions:
         - !type:MetabolizerTypeCondition
-          type: [ Animal ]
+          type: [ Animal, Bloodsucker ] # Moff
         reagent: Protein
         amount: 0.5
       - !type:AdjustReagent

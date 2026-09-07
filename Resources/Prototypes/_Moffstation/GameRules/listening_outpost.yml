@@ -28,7 +28,7 @@
       proto: SyndicateSpy
 
 - type: entity
-  parent: BaseSyndicateListeningOutpost
+  parent: [ BaseSyndicateListeningOutpost, BaseUnweightedAntagRule ]
   id: SyndicateListeningOutpostSpawn
   components:
   - type: StationEvent

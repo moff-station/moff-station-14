@@ -1,0 +1,22 @@
+﻿- type: entity
+  id: SpellImpactEffect
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: TimedDespawn
+    lifetime: 0.25
+  - type: Sprite
+    sprite: _Moffstation/Objects/Weapons/Guns/Projectiles/magic.rsi
+    drawdepth: Effects
+    layers:
+    - shader: unshaded
+      map: ["enum.EffectLayers.Unshaded"]
+      state: bluespace
+  - type: PointLight
+    radius: 1.5
+    energy: 3
+    falloff: 6
+  - type: RgbLightController
+    cycleRate: 1
+  - type: Tag
+    tags:
+    - HideContextMenu

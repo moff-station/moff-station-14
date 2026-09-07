@@ -1,4 +1,5 @@
 using Content.Shared.Actions;
+using Robust.Shared.Audio;
 using Robust.Shared.GameStates;
 using Robust.Shared.Prototypes;
 
@@ -44,6 +45,19 @@ public sealed partial class VendingMachineComponent : Component
     /// </summary>
     [DataField]
     public EntityUid? RestockStream;
+
+    [DataField]
+    public SoundSpecifier BeepSound = new SoundPathSpecifier("/Audio/Machines/Nuke/general_beep.ogg", new AudioParams().WithVolume(-4));
+
+    [DataField]
+    public SoundSpecifier SuccessSound = new SoundPathSpecifier("/Audio/Machines/vending_jingle.ogg", new AudioParams().WithVolume(-4));
+
+    [DataField]
+    public SoundSpecifier ErrorSound = new SoundPathSpecifier("/Audio/Machines/buzz-two.ogg", new AudioParams().WithVolume(-4));
+
+    [DataField]
+    public SoundSpecifier TimeoutSound = new SoundPathSpecifier("/Audio/Machines/button.ogg", new AudioParams().WithVolume(-6));
+
 }
 
 public sealed partial class VendingMachineSelfDispenseEvent : InstantActionEvent;

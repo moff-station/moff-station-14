@@ -94,6 +94,7 @@ public abstract partial class SharedGasFilterSystem : EntitySystem
             LogImpact.Medium,
             $"{ToPrettyString(args.Actor):player} set the filter of {args.Gas.ToString()} on {ToPrettyString(ent.Owner):device} to {args.Filtered.ToString()}"
         );
+        DirtyFields(ent.AsNullable(), null, nameof(GasFilterComponent.FilteredGas), nameof(GasFilterComponent.FilteredGases));
 
         // if (args.Gas.HasValue)
         // {

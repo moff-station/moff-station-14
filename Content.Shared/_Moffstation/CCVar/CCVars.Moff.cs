@@ -33,11 +33,17 @@ public sealed class MoffCCVars
     public static readonly CVarDef<bool> MapVotesRollOver =
         CVarDef.Create("votekick.map_votes_rollover", true, CVar.SERVERONLY);
 
+#if TOOLS
+    private const bool DefaultAutoStartMapVote = false;
+#else
+    private const bool DefaultAutoStartMapVote = true;
+#endif
+
     /// <summary>
     ///     Automatically starts a map vote during the pre-round lobby
     /// </summary>
     public static readonly CVarDef<bool> AutoStartMapVote =
-        CVarDef.Create("votekick.auto_start_map_vote", true, CVar.SERVERONLY);
+        CVarDef.Create("votekick.auto_start_map_vote", DefaultAutoStartMapVote, CVar.SERVERONLY);
 
     /// <summary>
     ///     If false, prevents the previous played map from appearing in votes or being selected

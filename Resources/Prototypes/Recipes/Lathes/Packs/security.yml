@@ -4,6 +4,7 @@
   id: SecurityEquipmentStatic
   recipes:
   # - ClothingEyesHudSecurity # Moffstation - Replaced by modular HUDs
+  - MoffClothingBackpackDuffelPrisoner # Moffstation
   - ForensicPad
   - Handcuffs
   - TargetClown
@@ -57,7 +58,10 @@
   id: SecurityWeaponsStatic
   recipes:
   - Flash
-  - Stunbaton
+  # Moff start - no stuns
+  #- Stunbaton
+  - Nightstick
+  # Moff end
   - CombatKnife
   - RiotShield
 
@@ -135,9 +139,11 @@
   - WeaponXrayCannon
   - WeaponTemperatureGun
 
-- type: latheRecipePack
-  id: SecurityDisablers
-  recipes:
-  - WeaponDisabler
-  - WeaponDisablerSMG
-  - ClothingHandsKnuckleDustersStun # Moffstation - Stun Knuckles are cool
+# Moffstation - Start - no stuns
+#- type: latheRecipePack
+#  id: SecurityDisablers
+#  recipes:
+#  - WeaponDisabler
+#  - WeaponDisablerSMG
+#  - ClothingHandsKnuckleDustersStun # Moffstation - Stun Knuckles are cool
+# Moffstation - End

@@ -1,6 +1,5 @@
 using System.Text;
 using Content.Shared._CD.NanoChat;
-using Content.Shared._Moffstation.Extensions;
 using Content.Shared._Moffstation.LogProbe;
 using Content.Shared.Access.Components;
 using Content.Shared.Administration.Logs;
@@ -187,7 +186,7 @@ public sealed partial class LogProbeCartridgeSystem : EntitySystem // CD - Made 
     {
         using (var queryEnumerator = EntityQueryEnumerator<LogProbeCartridgeComponent, CartridgeComponent>())
         {
-            foreach (var entity in queryEnumerator.AsEnumerable())
+            foreach (var entity in queryEnumerator)
             {
                 yield return (
                     (entity, entity),
@@ -202,7 +201,7 @@ public sealed partial class LogProbeCartridgeSystem : EntitySystem // CD - Made 
 
         using (var entityQueryEnumerator = EntityQueryEnumerator<LogProbeComponent>())
         {
-            foreach (var entity in entityQueryEnumerator.AsEnumerable())
+            foreach (var entity in entityQueryEnumerator)
             {
                 yield return ((entity, entity), () => UpdateUiState(entity));
             }
