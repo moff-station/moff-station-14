@@ -101,9 +101,6 @@ public sealed partial class ParticleEffectPrototype : IPrototype, IInheritingPro
     /// <summary>Draw order. Higher values render on top.</summary>
     [DataField] public int RenderLayer { get; private set; }
 
-    /// <summary>Snaps particles to the 32-pixels-per-tile grid and quantises rotation to 90 degree steps, for pixel-art sprites.</summary>
-    [DataField] public bool PixelSnap { get; private set; }
-
     /// <summary>
     /// When true, this particle effect always renders at full quality regardless of user settings.
     /// Use this ONLY for gameplay-critical particles.

@@ -65,7 +65,6 @@ public sealed partial class ParticleOverlay : Overlay
             var ovr = emitter.Overrides;
             var tex = emitter.Frames[emitter.AnimFrame];
             var baseHalfSize = (ovr?.ParticleSize ?? proto.ParticleSize) * 0.5f;
-            var pixelSnap = proto.PixelSnap;
 
             // Resolve shader override takes precedence, then prototype, then null
             string? wantedShader = ovr?.Shader ?? (string.IsNullOrEmpty(proto.Shader) ? null : proto.Shader);
@@ -134,13 +133,6 @@ public sealed partial class ParticleOverlay : Overlay
                 var origin = proto.WorldSpace ? particle.SpawnOrigin : screenOrigin;
                 var worldPos = origin + worldOffset;
 
-                // Keep low-res sprites sitting on the game's 32-pixel tile grid instead of smearing across it.
-                if (pixelSnap)
-                {
-                    halfSize = MathF.Max(1f, MathF.Round(halfSize * 32f)) / 32f;
-                    worldPos = new Vector2(MathF.Round(worldPos.X * 32f), MathF.Round(worldPos.Y * 32f)) / 32f;
-                }
-
                 // StretchFactor: elongate along velocity direction proportional to speed.
                 // Rotation is derived from the velocity unit vector +precomputed eye cos/sin
                 var stretchFactor = ovr?.StretchFactor ?? proto.StretchFactor;
@@ -187,8 +179,6 @@ public sealed partial class ParticleOverlay : Overlay
 
                 // Draw with rotation applied. Rotation is in radians, positive is clockwise, and 0 means "facing up" (aligned with SCREEN/eye/whatever Y axis).
                 var totalRotation = -eyeAngle + particle.Rotation;
-                if (pixelSnap)
-                    totalRotation = MathF.Round(totalRotation / MathF.PI * 2f) * (MathF.PI * 0.5f);
                 var cosP = MathF.Cos(totalRotation);
                 var sinP = MathF.Sin(totalRotation);
                 handle.SetTransform(new Matrix3x2(cosP, sinP, -sinP, cosP, worldPos.X, worldPos.Y));
