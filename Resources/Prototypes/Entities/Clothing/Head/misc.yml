@@ -220,8 +220,10 @@
     sprite: Clothing/Head/Hats/catears.rsi
   - type: OwOAccent
     relayAccent: true
-  - type: StaticPrice
-    price: 15000
+  # Moffstation start - Cat Ears are worthless now
+  # - type: StaticPrice
+  #  price: 15000
+  # Moffstation end
 
 - type: entity
   parent: [ClothingHeadHatCatEars, BaseToggleClothing]
