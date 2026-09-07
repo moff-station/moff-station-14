@@ -109,6 +109,8 @@ public sealed partial class StationJobsSystem
     /// we'll try to give the job to somebody who has specifically asked to fill a role
     /// (ie. <see cref="MinimumJobFallback.None"/>) at low priority before we use backup filling methods (eg.
     /// <see cref="MinimumJobFallback.SameDepartment"/>) at high priority.
+    /// Jobs with unlimited (<c>null</c>) <see cref="RoundstartStationJob.Slots"/> never broaden their fallback level,
+    /// otherwise they would take all candidates available.
     private RoundstartStationJob? DowngradeStrictness(
         RoundstartStationJob current,
         MinimumJobFallback minimumFallbackLevel
@@ -128,6 +130,10 @@ public sealed partial class StationJobsSystem
                 ? current with { Priority = priority }
                 : null;
         }
+
+        // Unlimited slot jobs cannot use fallbacks, otherwise they would slurp up too many candidates.
+        if (current.Slots == null)
+            return null;
 
         // If we're not already at the minimum fallback level, broaden the pool of candidates we're willing to take from
         // and reset the priority to high.
