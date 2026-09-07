@@ -47,8 +47,8 @@
   - type: StaticPrice
     price: 40
   - type: LimitedCharges
-    maxCharges: 15
-    lastCharges: 15
+    maxCharges: 50 # Moff - increase charges from 15 to 50
+    lastCharges: 50 # Moff - increase charges from 15 to 50
   - type: PhysicalComposition
     materialComposition:
       Steel: 100
@@ -86,6 +86,7 @@
   description: A cartridge of highly compressed paint, commonly used in spray painters.
   components:
   - type: SprayPainterAmmo
+    charges: 50 # Moff - increase charges from 15 to 50
   - type: Sprite
     sprite: Objects/Tools/spray_painter.rsi
     state: ammo
