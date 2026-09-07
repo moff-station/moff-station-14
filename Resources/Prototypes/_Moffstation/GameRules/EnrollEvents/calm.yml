@@ -1,0 +1,38 @@
+- type: entity
+  parent: MoffBaseEnrollCalm
+  id: TouristEnroller
+  name: Tourists
+  description: Have careless fun on your vacation to a Nanotrasen station!
+  components:
+  - type: MoffEnrollEvent
+    minEnrolled: 2
+    fallbackRules: !type:NestedSelector
+      tableId: MoffCalmNonPlayerEventsTable
+
+- type: entity
+  parent: MoffBaseEnrollCalm
+  id: SyndieVisitorEnroller
+  name: Syndicate Disaster Victim
+  description: You're a regular passenger from a syndicate station. Unfortunately, your evacuation pod has thrown you into an enemy sector...
+  components:
+  - type: MoffEnrollEvent
+    minEnrolled: 2
+    fallbackRules: !type:NestedSelector
+      tableId: MoffCalmNonPlayerEventsTable
+
+- type: entity
+  parent: MoffBaseEnrollCalm
+  id: CossackEnroller
+  name: Ancient Traveler
+  description: From a history lost to time, you find yourself cast into this day and age.
+  components:
+  - type: MoffEnrollEvent
+    minEnrolled: 2
+    fallbackRules: !type:NestedSelector
+      tableId: MoffCalmNonPlayerEventsTable
+
+- type: entity
+  parent: MoffBaseEnrollCalm
+  id: DerelictCyborgEnroller
+  name: Derelict Cyborg
+  description: You are a cyborg that got lost in space. After years of exposure to ion storms you find yourself near a space station.

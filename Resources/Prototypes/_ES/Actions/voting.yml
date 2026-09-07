@@ -13,4 +13,5 @@
       key: enum.ESVoterUiKey.Key
   - type: Sprite
     sprite: _ES/Actions/stagehands.rsi
-    state: ballot
+    layers:
+    - state: ballot
