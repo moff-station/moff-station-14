@@ -51,24 +51,22 @@
   - !type:ListingLimitedStockCondition
     stock: 1
 
-- type: listing
-  id: UplinkCatEars
-  name: uplink-cat-ears-name
-  description: uplink-cat-ears-desc
-  productEntity: ClothingHeadHatCatEars
-  cost:
-    # Telecrystal: 5 - Moffstation - Make it free!
-  categories:
-  - UplinkPointless
-  conditions:
-  - !type:BuyerWhitelistCondition
-    blacklist:
-      components:
+# Moffstation start - remove Cat Ears
+# - type: listing
+#  id: UplinkCatEars
+#  name: uplink-cat-ears-name
+#  description: uplink-cat-ears-desc
+#  productEntity: ClothingHeadHatCatEars
+#  cost:
+#    Telecrystal: 5 - Moffstation
+#  categories:
+#  - UplinkPointless
+#  conditions:
+#  - !type:BuyerWhitelistCondition
+#    blacklist:
+#      components:
       #- SurplusBundle # Moffstation - Cat Ears in Surplus is Funny
-  # Moff start - don't let syndies flood the station with cat ears
-  - !type:ListingLimitedStockCondition
-    stock: 1
-  # Moff end
+# Moffstation end
 
 - type: listing
   id: UplinkOutlawHat
