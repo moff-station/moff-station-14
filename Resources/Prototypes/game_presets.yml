@@ -8,7 +8,7 @@
   rules:
     - MeteorSwarmScheduler
     - RampingStationEventScheduler
-#    - SpaceTrafficControlEventScheduler # Moff - Merged into BasicStationEventScheduler
+    - SpaceTrafficControlEventScheduler
     - BasicRoundstartVariation
 
 - type: gamePreset
@@ -23,7 +23,7 @@
   rules:
     - KesslerSyndromeScheduler
     - RampingStationEventScheduler
-#    - SpaceTrafficControlEventScheduler # Moff - Merged into BasicStationEventScheduler
+    - SpaceTrafficControlEventScheduler
     - BasicRoundstartVariation
 
 - type: gamePreset
@@ -43,7 +43,7 @@
     - Pirates # Moffstation
     - KesslerSyndromeScheduler
     - RampingStationEventScheduler
-#    - SpaceTrafficControlEventScheduler # Moff - Merged into BasicStationEventScheduler
+    - SpaceTrafficControlEventScheduler
     - BasicRoundstartVariation
 
 - type: gamePreset
@@ -64,16 +64,12 @@
     - Wizard
     - Xenoborgs
     - Pirates # Moffstation
-# Moff Start - Split into the calm and spicy schedulers below
-#    - BasicStationEventScheduler
-    - MoffCalmStationEventScheduler
-    - MoffSpicyStationEventScheduler
-# Moff end
+    - BasicStationEventScheduler
     - KesslerSyndromeScheduler
     - MeteorSwarmMildScheduler
     - MeteorSwarmScheduler
     - RampingStationEventScheduler
-#    - SpaceTrafficControlEventScheduler # Moff - Merged into BasicStationEventScheduler
+    - SpaceTrafficControlEventScheduler
     - BasicRoundstartVariation
 
 - type: gamePreset
@@ -85,13 +81,9 @@
   showInVote: false #2boring2vote
   description: extended-description
   rules:
-# Moff Start - Split into the calm and spicy schedulers below
-#  - BasicStationEventScheduler
-  - MoffCalmStationEventScheduler
-  - MoffSpicyStationEventScheduler
-# Moff end
+  - BasicStationEventScheduler
   - MeteorSwarmScheduler
-#  - SpaceTrafficControlEventScheduler # Moff - Merged into BasicStationEventScheduler
+  - SpaceTrafficControlEventScheduler
   - BasicRoundstartVariation
   - ExtendedNotificationEvent # Moffstation - For the notification
 
@@ -120,7 +112,7 @@
   - DummyNonAntag
   - DynamicStationEventScheduler
   - MeteorSwarmScheduler
-#  - SpaceTrafficControlEventScheduler # Moff - Merged into BasicStationEventScheduler
+  - SpaceTrafficControlEventScheduler
   - BasicRoundstartVariation
 
 - type: gamePreset
@@ -157,13 +149,9 @@
   - DummyNonAntagChance
   - Traitor
   - SubGamemodesRuleSyndicate # Moffstation - LPO only during syndicate rounds
-# Moff Start - Split into the calm and spicy schedulers below
-#  - BasicStationEventScheduler
-  - MoffCalmStationEventScheduler
-  - MoffSpicyStationEventScheduler
-# Moff end
+  - BasicStationEventScheduler
   - MeteorSwarmScheduler
-#  - SpaceTrafficControlEventScheduler # Moff - Merged into BasicStationEventScheduler
+  - SpaceTrafficControlEventScheduler
   - BasicRoundstartVariation
 
 - type: gamePreset
@@ -190,13 +178,9 @@
   - Nukeops
   - DummyNonAntagChance
   - SubGamemodesRuleSyndicate # Moffstation - LPO only during syndicate rounds
-# Moff Start - Split into the calm and spicy schedulers below
-#  - BasicStationEventScheduler
-  - MoffCalmStationEventScheduler
-  - MoffSpicyStationEventScheduler
-# Moff end
+  - BasicStationEventScheduler
   - MeteorSwarmScheduler
-#  - SpaceTrafficControlEventScheduler # Moff - Merged into BasicStationEventScheduler
+  - SpaceTrafficControlEventScheduler
   - BasicRoundstartVariation
 
 - type: gamePreset
@@ -212,13 +196,9 @@
   - DummyNonAntagChance
   - Revolutionary
   - SubGamemodesRuleNoWizard
-# Moff Start - Split into the calm and spicy schedulers below
-#  - BasicStationEventScheduler
-  - MoffCalmStationEventScheduler
-  - MoffSpicyStationEventScheduler
-# Moff end
+  - BasicStationEventScheduler
   - MeteorSwarmScheduler
-#  - SpaceTrafficControlEventScheduler # Moff - Merged into BasicStationEventScheduler
+  - SpaceTrafficControlEventScheduler
   - BasicRoundstartVariation
 
 - type: gamePreset
@@ -232,13 +212,9 @@
   - Wizard
   - DummyNonAntagChance
   - SubGamemodesRuleNoWizard #No Dual Wizards at the start, midround is fine
-# Moff Start - Split into the calm and spicy schedulers below
-#  - BasicStationEventScheduler
-  - MoffCalmStationEventScheduler
-  - MoffSpicyStationEventScheduler
-# Moff end
+  - BasicStationEventScheduler
   - MeteorSwarmScheduler
-#  - SpaceTrafficControlEventScheduler # Moff - Merged into BasicStationEventScheduler
+  - SpaceTrafficControlEventScheduler
   - BasicRoundstartVariation
 
 - type: gamePreset
@@ -252,13 +228,9 @@
   - Xenoborgs
   - DummyNonAntagChance
   - SubGamemodesRuleNoWizardNoXenoborg # no two motherships
-# Moff Start - Split into the calm and spicy schedulers below
-#  - BasicStationEventScheduler
-  - MoffCalmStationEventScheduler
-  - MoffSpicyStationEventScheduler
-# Moff end
+  - BasicStationEventScheduler
   - MeteorSwarmScheduler
-#  - SpaceTrafficControlEventScheduler # Moff - Merged into BasicStationEventScheduler
+  - SpaceTrafficControlEventScheduler
   - BasicRoundstartVariation
 
 - type: gamePreset
@@ -274,13 +246,9 @@
   showInVote: false
   rules:
   - Zombie
-# Moff Start - Split into the calm and spicy schedulers below
-#  - BasicStationEventScheduler
-  - MoffCalmStationEventScheduler
-  - MoffSpicyStationEventScheduler
-# Moff end
+  - BasicStationEventScheduler
   - MeteorSwarmScheduler
-#  - SpaceTrafficControlEventScheduler # Moff - Merged into BasicStationEventScheduler
+  - SpaceTrafficControlEventScheduler
   - BasicRoundstartVariation
 
 - type: gamePreset
@@ -294,11 +262,7 @@
   showInVote: false
   rules:
   - Zombie
-# Moff Start - Split into the calm and spicy schedulers below
-#  - BasicStationEventScheduler
-  - MoffCalmStationEventScheduler
-  - MoffSpicyStationEventScheduler
-# Moff end
+  - BasicStationEventScheduler
   - KesslerSyndromeScheduler
-#  - SpaceTrafficControlEventScheduler # Moff - Merged into BasicStationEventScheduler
+  - SpaceTrafficControlEventScheduler
   - BasicRoundstartVariation

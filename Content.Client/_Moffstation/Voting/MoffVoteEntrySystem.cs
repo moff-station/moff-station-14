@@ -2,7 +2,6 @@ using Content.Shared._ES.Voting.Components;
 using Content.Shared._Moffstation.Voting.Components;
 using Content.Shared._Moffstation.Voting.Systems;
 using Robust.Client.GameObjects;
-using Robust.Shared.Player;
 using Robust.Shared.Timing;
 
 namespace Content.Client._Moffstation.Voting;
@@ -24,18 +23,6 @@ public sealed partial class MoffVoteEntrySystem : MoffSharedVoteEntrySystem
         SubscribeLocalEvent<ESVoteComponent, AfterAutoHandleStateEvent>(RefreshOpenVoteWindows);
         SubscribeLocalEvent<MoffEnrollEventComponent, AfterAutoHandleStateEvent>(RefreshOpenVoteWindows);
         SubscribeLocalEvent<MoffVoteEntryComponent, ComponentRemove>(RefreshOpenVoteWindows);
-    }
-
-    protected override void SendVoteStartAnnouncement(
-        Entity<MoffVoteEntryComponent> ent,
-        Entity<ESVoterComponent, ActorComponent> voter)
-    {
-        /* client does nothing here */
-    }
-
-    protected override void OnVoteStart(Entity<MoffVoteEntryComponent> ent)
-    {
-        /* client does nothing here */
     }
 
     private void RefreshOpenVoteWindows<TComp, TArgs>(Entity<TComp> ent, ref TArgs args) where TComp : Component

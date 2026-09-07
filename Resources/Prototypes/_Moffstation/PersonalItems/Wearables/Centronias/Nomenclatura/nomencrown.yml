@@ -13,7 +13,7 @@
     layers:
     - state: icon
     - state: icon-static
-      map: [ "corona-layer" ]
+      map: [ "enum.ToggleableVisuals.Layer" ]
       visible: false
       shader: unshaded
   - type: Item
@@ -23,7 +23,7 @@
     clothingVisuals:
       head:
       - state: equipped-HEAD-static
-        map: [ "corona-layer" ]
+        map: [ "enum.ToggleableVisuals.Layer" ]
         visible: false
         shader: unshaded
       - state: equipped-HEAD
@@ -44,7 +44,7 @@
   - type: GenericVisualizer
     visuals:
       enum.FoldedVisuals.State:
-        corona-layer:
+        enum.ToggleableVisuals.Layer:
           off:
             visible: false
           static:
@@ -60,7 +60,7 @@
     clothingVisuals:
       head:
         enum.FoldedVisuals.State:
-          corona-layer:
+          enum.ToggleableVisuals.Layer:
             off:
               visible: false
             static:
@@ -82,10 +82,10 @@
     components:
     - type: SynchronizeLayerColorToAppearance
       layers:
-        corona-layer: enum.ToggleableVisuals.Color
+        enum.ToggleableVisuals.Layer: enum.ToggleableVisuals.Color
       clothingLayers:
         head:
-          corona-layer: enum.ToggleableVisuals.Color
+          enum.ToggleableVisuals.Layer: enum.ToggleableVisuals.Color
   - type: RemoveComponentsOnTrigger
     keysIn: [ synch-off ]
     components:
@@ -107,7 +107,7 @@
             keyOut: synch-off
         - effect: !type:TriggerEffect # Play the click audio
             keyOut: click-sound
-      # Monochrome. The corona is one color synched with the light
+       # Monochrome. The corona is one color synched with the light
       - text: moff-personalitem-centronias-nomenclatura-crown-monochrome
         effects:
         - effect: !type:SetAppearance # Set the corona to the monochrome, color-modulatable state

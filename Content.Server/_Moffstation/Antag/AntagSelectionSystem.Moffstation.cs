@@ -2,6 +2,7 @@ using System.Linq;
 using Content.Server._Moffstation.Preferences;
 using Content.Server._Moffstation.Station;
 using Content.Shared.GameTicking.Components;
+using Content.Shared.Preferences;
 using Content.Shared.Roles;
 using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
@@ -20,19 +21,11 @@ public sealed partial class AntagSelectionSystem
     private MoffCharacterPickerSystem MoffCharacterPicker => EntityManager.System<MoffCharacterPickerSystem>();
 
     /// <summary>
-    /// Every antag preference held by any of the player's active characters, or just the spawned
-    /// character's once one has been picked.
+    /// Every antag preference held by any of the player's active characters.
     /// </summary>
     public HashSet<ProtoId<AntagPrototype>> GetMoffEnabledAntagPreferences(ICommonSession session)
     {
         var result = new HashSet<ProtoId<AntagPrototype>>();
-
-        // If they've already spawned, get the prefs from the spawned profile
-        if (MoffCharacterPicker.GetSpawnedProfile(session.UserId) is { } spawned)
-        {
-            result.UnionWith(spawned.AntagPreferences);
-            return result;
-        }
 
         if (!_pref.TryGetCachedPreferences(session.UserId, out var prefs))
             return result;

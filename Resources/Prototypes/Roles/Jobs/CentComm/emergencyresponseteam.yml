@@ -40,7 +40,7 @@
     ears: ClothingHeadsetAltCentCom
     belt: ClothingBeltMilitaryWebbingERT
     pocket2: CombatKnife
-    #suitstorage: WeaponDisablerSMG # Moffstation - no stuns
+    suitstorage: WeaponDisablerSMG
   storage:
     back:
     - Binoculars
@@ -53,7 +53,7 @@
     - MedkitCombatFilled
     - TelescopicShield
     belt:
-    - Truncheon # Funky
+    - Stunbaton
     - Handcuffs
     - Handcuffs
     - CrowbarRed
@@ -65,7 +65,8 @@
   parent: ERTLeaderGearEVA
   id: ERTLeaderGearArmed
   equipment:
-    suitstorage: WeaponRifleLecterXL8
+    pocket2: WeaponDisabler
+    suitstorage: WeaponRifleLecterDMR # Moffstation - (Lecter Variants) The XL8 is a god-awful monstrosity nerf gun, the Lecter DMR is more balanced, more fun, and more stylish.
   storage:
     back:
     - HoloprojectorField
@@ -306,7 +307,7 @@
     ears: ClothingHeadsetAltCentCom
     belt: ClothingBeltMilitaryWebbingERT
     pocket2: CombatKnife
-    #suitstorage: WeaponDisablerSMG # Moffstation - no stuns
+    suitstorage: WeaponDisablerSMG
   storage:
     back:
     - BoxZiptie
@@ -319,7 +320,7 @@
     - HoloprojectorSecurity
     - PowerCellHigh
     belt:
-    - Truncheon # Funky
+    - Stunbaton
     - Handcuffs
     - Handcuffs
     - CrowbarRed
@@ -359,7 +360,7 @@
   parent: ERTSecurityGearEVA
   id: ERTSecurityGearArmedGrenade
   equipment:
-    #pocket2: WeaponDisabler # Moffstation - no stuns
+    pocket2: WeaponDisabler
     suitstorage: WeaponLauncherHydraLethal
   storage:
     back:
@@ -391,7 +392,7 @@
   parent: ERTSecurityGearEVA
   id: ERTSecurityGearArmedVanguard
   equipment:
-    #pocket2: WeaponDisabler # Moffstation - no stuns
+    pocket2: WeaponDisabler
     suitstorage: WeaponSubMachineGunWt550
   storage:
     back:
@@ -420,7 +421,7 @@
   parent: ERTSecurityGearEVA
   id: ERTSecurityGearArmedShotgun
   equipment:
-    #pocket2: WeaponDisabler Moffstation - no stuns
+    pocket2: WeaponDisabler
     suitstorage: WeaponShotgunEnforcer
   storage:
     back:
@@ -518,7 +519,7 @@
   id: ERTMedicalGearArmed
   equipment:
     suitstorage: WeaponRifleLecter
-    #pocket2: WeaponDisabler # Moffstation - no stuns
+    pocket2: WeaponDisabler
   storage:
     back:
     - Hypospray

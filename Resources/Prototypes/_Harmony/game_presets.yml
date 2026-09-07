@@ -9,11 +9,7 @@
   rules:
   - Conspirators
   - SubGamemodesRuleNoWizard
-# Moff Start - Split into the calm and spicy schedulers below
-#  - BasicStationEventScheduler
-  - MoffCalmStationEventScheduler
-  - MoffSpicyStationEventScheduler
-# Moff end
+  - BasicStationEventScheduler
   - MeteorSwarmScheduler
-#  - SpaceTrafficControlEventScheduler # Merged into BasicStationEventScheduler
+  - SpaceTrafficControlEventScheduler
   - BasicRoundstartVariation

@@ -10,9 +10,6 @@
   placement:
     mode: SnapGridCenter
   components:
-  - type: GuideHelp
-    guides:
-    - Replicators
   - type: ReplicatorHiveLeader
   - type: ReplicatorNest
     lifeBoatProto: MobReplicatorT3Queen

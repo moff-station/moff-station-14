@@ -55,15 +55,13 @@
   categories: [ HideSpawnMenu ]
   name: human appearance
   components:
-# Moff start - remove female displacement maps
-#  - type: Inventory
-#    femaleDisplacements:
-#      jumpsuit:
-#        sizeMaps:
-#          32:
-#            sprite: Mobs/Species/Human/displacement.rsi
-#            state: jumpsuit-female
-# Moff end
+  - type: Inventory
+    femaleDisplacements:
+      jumpsuit:
+        sizeMaps:
+          32:
+            sprite: Mobs/Species/Human/displacement.rsi
+            state: jumpsuit-female
   - type: InitialBody
     organs:
       Torso: OrganHumanTorso

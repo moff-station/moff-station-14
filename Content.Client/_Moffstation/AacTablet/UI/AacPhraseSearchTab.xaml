@@ -2,9 +2,8 @@
                        HorizontalExpand="True"
                        VerticalExpand="True"
                        Orientation="Vertical">
-    <controls:HistoryLineEdit Name="SearchText"
-                              PlaceHolder="{controls:Loc 'aac-window-search-hint'}"
-                              HorizontalExpand="True" />
+    <controls:LineEdit Name="SearchText"
+                       HorizontalExpand="True" />
     <controls:ScrollContainer HorizontalExpand="True"
                               VerticalExpand="True">
         <controls:BoxContainer HorizontalExpand="True"

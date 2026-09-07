@@ -42,7 +42,7 @@
   components:
     - type: MagnetPickup
       slotFlags: null
-#      requireActiveHand: true # Moff - Magnetize regardless of hand activeness
+      requireActiveHand: true
     - type: Storage
       grid:
       - 0,0,9,5

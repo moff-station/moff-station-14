@@ -1,15 +1,12 @@
 {
     "version": 1,
     "license": "CC-BY-SA-4.0",
-    "copyright": "Sprited by Davyei (Github) for Moffstation.",
+    "copyright": "Made by kento_da_neko (Discord).",
     "size": {
         "x": 32,
         "y": 32
     },
     "states": [
-        {
-            "name": "icon"
-        },
         {
             "name": "base"
         },
@@ -17,7 +14,7 @@
             "name": "bolt-open"
         },
         {
-            "name": "mag-0"
+            "name": "icon"
         },
         {
             "name": "inhand-left",
@@ -28,10 +25,13 @@
             "directions": 4
         },
         {
+            "name": "mag-0"
+        },
+        {
             "name": "equipped-BELT",
             "directions": 4
         },
-		{
+        {
             "name": "equipped-SUITSTORAGE",
             "directions": 4
         }

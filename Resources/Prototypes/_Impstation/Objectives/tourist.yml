@@ -52,20 +52,12 @@
       - MobPurpleSnake
       - MobSmallPurpleSnake
       - MobCobraSpace
-      # Moff Start - Migrated slime prototypes
-      # - MobAdultSlimesBlue
-      # - MobAdultSlimesBlueAngry
-      # - MobAdultSlimesGreen
-      # - MobAdultSlimesGreenAngry
-      # - MobAdultSlimesYellow
-      # - MobAdultSlimesYellowAngry
-      - MobAdultSlimesReformable
-      - MobAdultSlimesReformableAngry
-      - MobAdultSlimesReformablePoisonous
-      - MobAdultSlimesReformablePoisonousAngry
-      - MobAdultSlimesReformableAngrySmasher
-      - MobAdultSlimesReformablePoisonousAngrySmasher
-      # Moff End
+      - MobAdultSlimesBlue
+      - MobAdultSlimesBlueAngry
+      - MobAdultSlimesGreen
+      - MobAdultSlimesGreenAngry
+      - MobAdultSlimesYellow
+      - MobAdultSlimesYellowAngry
 
 # nuke
 - type: entity
@@ -355,13 +347,12 @@
     difficulty: 1
 
 # stun baton
-# Moff - This is renamed to nightstick on the frontend
 - type: stealTargetGroup
   id: StunBaton
   name: steal-target-groups-stun-baton
   sprite:
-    sprite: _Funkystation/Objects/Weapons/Melee/nightstick.rsi
-    state: icon
+    sprite: Objects/Weapons/Melee/stunbaton.rsi
+    state: stunbaton_off
 
 - type: entity
   parent: BaseTouristStealObjective

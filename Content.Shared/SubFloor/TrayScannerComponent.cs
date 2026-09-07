@@ -1,4 +1,3 @@
-using Content.Shared.Inventory;
 using Robust.Shared.Audio;
 using Robust.Shared.GameStates;
 using Robust.Shared.Prototypes; // Funky change
@@ -57,17 +56,6 @@ public sealed partial class TrayScannerComponent : Component
     /// </summary>
     [DataField]
     public SoundSpecifier? SoundOff;
-
-    // Moff start - Mesons get t-ray functionality. These defaults preserve the T-ray scanner tool's behavior.
-    /// The slots in which this component functions. For example, the T-Ray scanner works even while it's in the user's
-    /// pocket while Mesons only work while in the user's eyes slot.
-    [DataField]
-    public SlotFlags RequiredSlots = SlotFlags.POCKET;
-
-    /// If true, this component functions while being held, regardless of <see cref="RequiredSlots"/>.
-    [DataField]
-    public bool FunctionsInHand = true;
-    // Moff end
 }
 
 [Serializable, NetSerializable]

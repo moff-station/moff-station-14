@@ -121,7 +121,6 @@
   loadouts:
   - EmergencyNitrogen
   - EmergencyOxygen
-  - EmergencyOxygenAvali # Moff
   - LoadoutSpeciesVoxNitrogen
 
 # nitrogen or oxygen tank, depending on what your species needs
@@ -689,7 +688,7 @@
   loadouts:
   - EmergencyNitrogenClown
   - EmergencyOxygenClown
-  - EmergencyOxygenClownAvali # Moff
+  - EmergencyOxygenClownAmmonia # Moffstation - Allow avali to drink ammonia
   - LoadoutSpeciesVoxNitrogen
 
 - type: loadoutGroup
@@ -1170,7 +1169,7 @@
   loadouts:
   - EmergencyNitrogenExtended
   - EmergencyOxygenExtended
-  - EmergencyOxygenExtendedAvali # Moff
+  - EmergencyOxygenExtendedAmmonia # Moffstation - Allow avali to drink ammonia
   - LoadoutSpeciesVoxNitrogen
 
 # Science
@@ -1580,7 +1579,7 @@
   loadouts:
   - EmergencyNitrogenSecurity
   - EmergencyOxygenSecurity
-  - EmergencyOxygenSecurityAvali # Moff
+  - EmergencyOxygenSecurityAmmonia # Moffstation - Allow avali to drink ammonia
   - LoadoutSpeciesVoxNitrogen
 
 # Wildcards
@@ -1671,7 +1670,6 @@
   loadouts:
   - EmergencyNitrogenExtendedAntag
   - EmergencyOxygenExtendedAntag
-  - EmergencyOxygenExtendedAntagAvali # Moff
   - LoadoutSpeciesVoxNitrogen
 
 - type: loadoutGroup
@@ -1682,7 +1680,7 @@
   loadouts:
   - EmergencyNitrogenSyndicate
   - EmergencyOxygenSyndicate
-  - EmergencyOxygenSyndicateAvali # Moff
+  - EmergencyOxygenSyndicateAmmonia # Moffstation - Allow avali to drink ammonia
   - LoadoutSpeciesVoxNitrogen
 
 - type: loadoutGroup
@@ -1693,7 +1691,6 @@
   loadouts:
   - EmergencyNitrogenMilitaryDouble
   - EmergencyOxygenMilitaryDouble
-  - EmergencyOxygenMilitaryDoubleAvali # Moff
 
 - type: loadoutGroup
   id: GroupSpeciesBreathTool

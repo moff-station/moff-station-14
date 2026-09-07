@@ -62,6 +62,7 @@
   - MagazineShotgunBeanbag
   - BoxShellTranquilizer
   - BoxBeanbag
+  - WeaponDisabler
 
 - type: technology
   id: UraniumMunitions
@@ -97,6 +98,7 @@
   - Truncheon
   - TelescopicShield
   - HoloprojectorSecurity
+  - WeaponDisablerSMG
 
 - type: technology
   id: ExplosiveTechnology
@@ -129,6 +131,7 @@
   cost: 5000
   recipeUnlocks:
   - ClothingBackpackElectropack
+  - ClothingHandsKnuckleDustersStun # Moffstation - Stun Knuckles are cool
 
 # Tier 2
 

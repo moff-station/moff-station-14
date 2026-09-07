@@ -250,8 +250,6 @@ namespace Content.IntegrationTests.Tests
                 "SpawnEntityTableOnTrigger",
                 "AddGameRuleOnTrigger",
                 "Hellportal",
-                "MoffEnrollEvent",
-                "ESSynchronizedVoteManager",
                 // ES fancy timed despawn
                 "ESTimedDespawn",
                 "ESSparkOnTrigger",

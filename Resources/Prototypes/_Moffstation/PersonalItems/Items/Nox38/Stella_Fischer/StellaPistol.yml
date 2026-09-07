@@ -16,20 +16,25 @@
 
 - type: entity
   parent: BasePersonalItemPistolCase
-  id: &case_id "PersonalItemStellaPistolCase"
+  id: PersonalItemStellaPistolCase
   name: Mk9 gun case
+  description: A slim, portable gun case intended to protect its contents. The outside is wrapped in blue tape.
   suffix: PersonalItem
   components:
+  - type: Sprite
+    sprite: _Moffstation/PersonalItems/Items/Nox38/Stella-Fischer/stella-case.rsi
+  - type: Item
+    sprite: _Moffstation/PersonalItems/Items/Nox38/Stella-Fischer/stella-case.rsi
   - type: EntityTableContainerFill
     containers:
       storagebase:
         id: PersonalItemStellaPistol
 
 - type: loadout
-  id: *case_id
+  id: PersonalItemStellaPistol
   storage:
     back:
-    - *case_id
+    - PersonalItemStellaPistolCase
   effects:
   - !type:PersonalItemLoadoutEffect
     character:

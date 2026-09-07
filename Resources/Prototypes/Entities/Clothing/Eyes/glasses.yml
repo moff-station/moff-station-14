@@ -72,8 +72,6 @@
   # Moff start - Funky welding
   - type: TrayScanner
     range: 10
-    requiredSlots: [ EYES ]
-    functionsInHand: false
     toggleAction: ActionToggleTrayScanner
     soundOn:
       path: /Audio/Items/flashlight_on.ogg

@@ -28,12 +28,8 @@
     damage:
       types:
         Blunt: 10
-  # Moff start - beanbag stun now scales with the blunt damage it deals
-  #- type: StaminaDamageOnCollide
-  #  damage: 40 # 3 hits to stun
-  - type: ProjectileScaledStaminaDamage
-    factor: 3.3
-  # Moff end
+  - type: StaminaDamageOnCollide
+    damage: 40 # 3 hits to stun
 
 - type: entity
   parent: BaseBullet
