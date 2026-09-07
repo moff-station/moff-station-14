@@ -65,6 +65,10 @@
     blacklist:
       components:
       #- SurplusBundle # Moffstation - Cat Ears in Surplus is Funny
+  # Moff start - don't let syndies flood the station with cat ears
+  - !type:ListingLimitedStockCondition
+    stock: 1
+  # Moff end
 
 - type: listing
   id: UplinkOutlawHat
