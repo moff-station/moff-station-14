@@ -10,8 +10,8 @@
     heldPrefix: plasmarble
   - type: FloorTile
     outputs:
-      - Plating
-      - FloorMoffPlasmaMarble
+    - Plating
+    - FloorMoffPlasmaMarble
   - type: Stack
     stackType: FloorTileMoffPlasmaMarble
   - type: DamageOtherOnHit
@@ -31,8 +31,8 @@
     heldPrefix: uranium-marble
   - type: FloorTile
     outputs:
-      - Plating
-      - FloorMoffUraniumMarble
+    - Plating
+    - FloorMoffUraniumMarble
   - type: Stack
     stackType: FloorTileMoffUraniumMarble
   - type: DamageOtherOnHit
