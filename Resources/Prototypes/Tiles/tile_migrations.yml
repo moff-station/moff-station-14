@@ -72,7 +72,7 @@
   target: FloorSteelDamaged
 
 # 2026-08-26
-# Moffstation - Uranium/Plasmarble ported to moff namespace
+# Moff start - Uranium/Plasmarble ported to moff namespace
 
 - type: tileAlias
   id: FloorPlasmaMarble
@@ -81,3 +81,5 @@
 - type: tileAlias
   id: FloorUraniumMarble
   target: FloorMoffUraniumMarble
+  
+# Moff end
