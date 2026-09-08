@@ -108,6 +108,7 @@
     exposedArea: .009424 # m^2
   - type: Temperature
     specificHeat: 502 # Carbon steel on https://www.engineersedge.com/materials/specific_heat_capacity_of_metals_13259.htm
+    heatCapacity: 37.148003 # Derived from fixtures, if we don't set this, it'll get mutated and tests complain.
   - type: TemperatureVisuals
     visuals:
       0: cold

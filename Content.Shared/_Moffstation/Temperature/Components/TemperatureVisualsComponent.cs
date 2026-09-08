@@ -22,7 +22,7 @@ public sealed partial class TemperatureVisualsComponent : Component, ISerializat
 
     /// <inheritdoc cref="_visuals"/>
     [ViewVariables]
-    public SortedDictionary<FixedPoint2, string?> Visuals;
+    public SortedDictionary<FixedPoint2, string?> Visuals = new();
 
     /// <inheritdoc/>
     void ISerializationHooks.AfterDeserialization()
