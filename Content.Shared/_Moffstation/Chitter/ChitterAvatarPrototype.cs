@@ -3,7 +3,7 @@ using Robust.Shared.Utility;
 
 namespace Content.Shared._Moffstation.Chitter;
 
-[Prototype("chitterAvatar")]
+[Prototype]
 public sealed partial class ChitterAvatarPrototype : IPrototype
 {
     [IdDataField]
