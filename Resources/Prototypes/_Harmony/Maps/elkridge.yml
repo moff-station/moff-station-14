@@ -35,7 +35,7 @@
             Chaplain: [ 1, 1 ]
             Librarian: [ 1, 1 ]
             Reporter: [ 1, 1 ]
-            ServiceWorker: [ 2, 1 ]
+            ServiceWorker: [ 2, 2 ] # Moff - Job weight rework barfs on initial slots > total slots
             #engineering (5 - 6)
             AtmosphericTechnician: [ 2, 2 ]
             StationEngineer: [ 3, 3 ]

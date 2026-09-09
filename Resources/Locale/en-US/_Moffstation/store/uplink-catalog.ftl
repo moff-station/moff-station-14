@@ -10,7 +10,7 @@ uplink-syndicate-mothroach-description = The latest and greatest in Syndicate mo
 
 # Explosives
 uplink-exploding-syndicate-emp-bomb-name = Syndicate EMP Bomb
-uplink-exploding-syndicate-emp-bomb-desc = A big, anchored bomb that emits an almost station-wide disabling EMP pulse if not defused in time. Disables electronics for exactly 3 minutes. Has an adjustable fuse.
+uplink-exploding-syndicate-emp-bomb-desc = An anchored bomb that emits a very large disabling EMP pulse if not defused in time. Disables electronics for exactly 3 minutes. Has an adjustable fuse.
 
 # Implants
 uplink-smoke-implant-name = Smoke Implanter
