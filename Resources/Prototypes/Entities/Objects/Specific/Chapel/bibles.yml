@@ -80,6 +80,7 @@
     damageOnUntrainedUse:
       types:
         Caustic: 50
+    requiresNecronomiconUser: true #Moffstation Change
     failChance: 0
     healFailOthersText: necro-heal-fail-others
     healFailSelfText: necro-heal-fail-self
@@ -87,6 +88,8 @@
     healSuccessSelfText: necro-heal-success-self
     healSound: "/Audio/Effects/lightburn.ogg"
     healingLightEffect: EvilLightEffect
+  - type: Prayable #Moffstation Change
+    bibleUserOnly: false #Moffstation Change
   - type: Summonable
     summonEntity: SpawnPointGhostCerberus
     respawnTime: 300
