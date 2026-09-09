@@ -168,7 +168,7 @@ public sealed class ChitterCartridgeSystem : EntitySystem
         if (!TryGetServerAndCard(loader, out var serverEnt, out var card))
             return;
 
-        if (_timing.CurTime < ent.Comp.NextMessageAllowed)
+        if (_timing.CurTime < ent.Comp.NextChatAllowed)
             return;
 
         var ownId = card.Comp.AccountId;
@@ -192,7 +192,7 @@ public sealed class ChitterCartridgeSystem : EntitySystem
             return;
         }
 
-        ent.Comp.NextMessageAllowed = _timing.CurTime + MessageCooldown;
+        ent.Comp.NextChatAllowed = _timing.CurTime + MessageCooldown;
 
         var chatId = _server.CreateChat(serverEnt.Comp, participants, msg.ChatName);
         ent.Comp.CurrentChatId = chatId;
