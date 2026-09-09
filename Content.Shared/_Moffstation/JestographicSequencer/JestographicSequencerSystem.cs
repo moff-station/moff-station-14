@@ -26,13 +26,7 @@ public sealed class JestographicSequencerSystem : EntitySystem
     [Dependency] private readonly SharedChargesSystem _charges = default!;
     [Dependency] private readonly SharedPopupSystem _popup = default!;
 
-    public override void Initialize()
-    {
-        base.Initialize();
-
-        SubscribeLocalEvent<JestographicSequencerComponent, AfterInteractEvent>(OnAfterInteract);
-    }
-
+    [LocalEventSubscription]
     private void OnAfterInteract(Entity<JestographicSequencerComponent> ent, ref AfterInteractEvent args)
     {
         if (args.Handled || !args.CanReach || args.Target is not { } target)
