@@ -75,7 +75,7 @@ public sealed class JestographicSequencerSystem : EntitySystem
         _accessReader.SetDenyTags(readerEnt.Value, newDenyTags);
         _accessReader.TrySetAccesses(readerEnt.Value, newAccessLists);
 
-        _charges.TryUseCharge(chargesEnt);
+        _charges.TryUseCharge(ent.Owner);
 
         _audio.PlayPredicted(ent.Comp.ReverseSound, target, args.User);
         _popup.PopupEntity(
