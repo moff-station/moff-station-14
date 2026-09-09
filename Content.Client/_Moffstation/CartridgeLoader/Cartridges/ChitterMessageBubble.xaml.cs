@@ -45,15 +45,15 @@ public sealed partial class ChitterMessageBubble : BoxContainer
         set => FailedLabel.Visible = value;
     }
 
-    public string? ProfilePicture
+    public Texture? ProfilePicture
     {
         set
         {
-            if (string.IsNullOrEmpty(value))
+            if (value == null)
                 return;
 
             AvatarTexture.Visible = true;
-            AvatarTexture.TexturePath = "/" + value;
+            AvatarTexture.Texture = value;
         }
     }
 
