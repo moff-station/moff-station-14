@@ -8,6 +8,7 @@
     enum.HumanoidVisualLayers.Hair:
       limit: 1
       required: false
+      weight: 1
     enum.HumanoidVisualLayers.FacialHair:
       limit: 1
       required: false
@@ -54,13 +55,15 @@
   categories: [ HideSpawnMenu ]
   name: human appearance
   components:
-  - type: Inventory
-    femaleDisplacements:
-      jumpsuit:
-        sizeMaps:
-          32:
-            sprite: Mobs/Species/Human/displacement.rsi
-            state: jumpsuit-female
+# Moff start - remove female displacement maps
+#  - type: Inventory
+#    femaleDisplacements:
+#      jumpsuit:
+#        sizeMaps:
+#          32:
+#            sprite: Mobs/Species/Human/displacement.rsi
+#            state: jumpsuit-female
+# Moff end
   - type: InitialBody
     organs:
       Torso: OrganHumanTorso
@@ -125,10 +128,10 @@
   abstract: true
   components:
   - type: Sprite
-    sprite: Mobs/Species/Human/parts.rsi
+    sprite: _Funkystation/Mobs/Species/Human/parts.rsi # Funkystation - Human Resprite
   - type: VisualOrgan
     data:
-      sprite: Mobs/Species/Human/parts.rsi
+      sprite: _Funkystation/Mobs/Species/Human/parts.rsi # Funkystation - Human Resprite
   - type: VisualOrganMarkings
     markingData:
       group: Human
@@ -145,6 +148,7 @@
     hideableLayers:
     - enum.HumanoidVisualLayers.Hair
     - enum.HumanoidVisualLayers.Snout
+    - enum.HumanoidVisualLayers.FacialHair
 
 - type: entity
   parent: [ OrganBaseArmLeft, OrganHumanExternal ]

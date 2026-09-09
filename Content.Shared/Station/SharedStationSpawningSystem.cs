@@ -2,27 +2,27 @@ using System.Linq;
 using Content.Shared.Hands.Components;
 using Content.Shared.Hands.EntitySystems;
 using Content.Shared.Inventory;
-using Content.Shared.Item;
 using Content.Shared.Preferences.Loadouts;
 using Content.Shared.Roles;
 using Content.Shared.Storage;
 using Content.Shared.Storage.EntitySystems;
 using Robust.Shared.Collections;
+using Robust.Shared.Containers;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
-using Robust.Shared.Utility;
 
 namespace Content.Shared.Station;
 
 public abstract partial class SharedStationSpawningSystem : EntitySystem
 {
-    [Dependency] protected IPrototypeManager PrototypeManager = default!;
     [Dependency] private IRobustRandom _random = default!;
     [Dependency] protected InventorySystem InventorySystem = default!;
     [Dependency] private SharedHandsSystem _handsSystem = default!;
     [Dependency] private MetaDataSystem _metadata = default!;
     [Dependency] private SharedStorageSystem _storage = default!;
     [Dependency] private SharedTransformSystem _xformSystem = default!;
+
+    [Dependency] private SharedContainerSystem _container = default!; // Moffstation - Allow container gear
 
     [Dependency] private EntityQuery<HandsComponent> _handsQuery = default!;
     [Dependency] private EntityQuery<InventoryComponent> _inventoryQuery = default!;
@@ -39,7 +39,7 @@ public abstract partial class SharedStationSpawningSystem : EntitySystem
         {
             foreach (var items in group.Value)
             {
-                if (!PrototypeManager.TryIndex(items.Prototype, out var loadoutProto))
+                if (!ProtoMan.TryIndex(items.Prototype, out var loadoutProto))
                 {
                     Log.Error($"Unable to find loadout prototype for {items.Prototype}");
                     continue;
@@ -60,7 +60,7 @@ public abstract partial class SharedStationSpawningSystem : EntitySystem
         {
             foreach (var items in group.Value)
             {
-                if (!PrototypeManager.TryIndex(items.Prototype, out var loadoutProto))
+                if (!ProtoMan.TryIndex(items.Prototype, out var loadoutProto))
                 {
                     Log.Error($"Unable to find loadout prototype for {items.Prototype}");
                     continue;
@@ -89,7 +89,7 @@ public abstract partial class SharedStationSpawningSystem : EntitySystem
             name = loadout.EntityName;
         }
 
-        if (string.IsNullOrEmpty(name) && PrototypeManager.Resolve(roleProto.NameDataset, out var nameData))
+        if (string.IsNullOrEmpty(name) && ProtoMan.Resolve(roleProto.NameDataset, out var nameData))
         {
             name = Loc.GetString(_random.Pick(nameData.Values));
         }
@@ -111,7 +111,7 @@ public abstract partial class SharedStationSpawningSystem : EntitySystem
     /// </summary>
     public void EquipStartingGear(EntityUid entity, ProtoId<StartingGearPrototype>? startingGear, bool raiseEvent = true)
     {
-        PrototypeManager.Resolve(startingGear, out var gearProto);
+        ProtoMan.Resolve(startingGear, out var gearProto);
         EquipStartingGear(entity, gearProto, raiseEvent);
     }
 
@@ -189,6 +189,19 @@ public abstract partial class SharedStationSpawningSystem : EntitySystem
             }
         }
 
+        // Moffstation - Begin - allow starting gear in container
+        if (startingGear is SpecialLoadout { Containers.Count: > 0 } specialGear)
+        {
+            foreach (var (containerId, entProtos) in specialGear.Containers)
+            {
+                foreach (var entProto in entProtos)
+                {
+                    SpawnInContainerOrDrop(entProto, entity, containerId);
+                }
+            }
+        }
+        // Moffstation - End
+
         if (raiseEvent)
         {
             var ev = new StartingGearEquippedEvent(entity);
@@ -214,7 +227,7 @@ public abstract partial class SharedStationSpawningSystem : EntitySystem
         {
             foreach (var items in group.Value)
             {
-                if (!PrototypeManager.Resolve(items.Prototype, out var loadoutPrototype))
+                if (!ProtoMan.Resolve(items.Prototype, out var loadoutPrototype))
                     return null;
 
                 var gear = ((IEquipmentLoadout) loadoutPrototype).GetGear(slot);

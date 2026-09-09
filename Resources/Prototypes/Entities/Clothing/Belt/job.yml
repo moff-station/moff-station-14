@@ -136,7 +136,7 @@
       - WetFloorSign
       - HolosignProjector
       - Plunger
-      - TrashBagBlue
+      - TrashBagHolding
       - GoldenPlunger
       - WireBrush
       - LightReplacer
@@ -160,10 +160,10 @@
         whitelist:
           tags:
           - TrashBag
-      trashbag_blue:
+      trashbag_holding:
         whitelist:
           tags:
-          - TrashBagBlue
+          - TrashBagHolding
       wetfloorsign:
         whitelist:
           tags:
@@ -442,6 +442,7 @@
         whitelist:
           components:
           - FlashOnTrigger
+      # TODO: Make a stunbaton belt sprite
       stunbaton:
         whitelist:
           components:

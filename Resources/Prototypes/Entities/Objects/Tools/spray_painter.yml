@@ -5,10 +5,10 @@
   description: A spray painter for painting airlocks, pipes, and other items.
   components:
   - type: Sprite
-    sprite: &spray_painter.rsi "_Moffstation/Objects/Tools/spray_painter.rsi" # Moffstation
+    sprite: &spray_painter_rsi "_Moffstation/Objects/Tools/spray_painter.rsi" # Moffstation
     state: spray_painter
   - type: Item
-    sprite: *spray_painter.rsi # Moffstation
+    sprite: *spray_painter_rsi # Moffstation
   - type: ActivatableUI
     key: enum.SprayPainterUiKey.Key
   - type: UserInterface
@@ -47,8 +47,8 @@
   - type: StaticPrice
     price: 40
   - type: LimitedCharges
-    maxCharges: 15
-    lastCharges: 15
+    maxCharges: 50 # Moff - increase charges from 15 to 50
+    lastCharges: 50 # Moff - increase charges from 15 to 50
   - type: PhysicalComposition
     materialComposition:
       Steel: 100
@@ -86,6 +86,7 @@
   description: A cartridge of highly compressed paint, commonly used in spray painters.
   components:
   - type: SprayPainterAmmo
+    charges: 50 # Moff - increase charges from 15 to 50
   - type: Sprite
     sprite: Objects/Tools/spray_painter.rsi
     state: ammo

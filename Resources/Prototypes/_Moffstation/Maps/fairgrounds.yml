@@ -1,0 +1,20 @@
+- type: gameMap
+  id: Fairgrounds
+  mapName: 'Fairgrounds'
+  mapPath: /Maps/_Moffstation/fairgrounds.yml
+  randomRotation: false
+  minPlayers: 0
+  stations:
+    Fairgrounds:
+      stationProto: StandardNanotrasenStation
+      components:
+        - type: StationNameSetup
+          mapNameTemplate: '{0} Fairgrounds {1}'
+          nameGenerator:
+            !type:NanotrasenNameGenerator
+            prefixCreator: '14'
+        - type: StationEmergencyShuttle
+          emergencyShuttlePath: /Maps/Shuttles/emergency_amber.yml
+        - type: StationJobs
+          availableJobs:
+            Passenger: [ -1, -1 ] #infinite, not counted

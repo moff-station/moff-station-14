@@ -94,7 +94,7 @@
   - type: PressureProtection #Better in high pressure areas, although still need air.
     highPressureMultiplier: 0.02
   - type: TemperatureProtection #Better in high heat areas.
-    heatingCoefficient: 0.001
+    coefficient: 0.01
   - type: Puller #Cerberus! Fetch Me Their Souls!
     needsHands: false
   - type: IgniteOnMeleeHit
@@ -131,7 +131,4 @@
   - type: MindExaminable
   - type: Familiar
   - type: Vocal
-    sounds:
-      Male: Cerberus
-      Female: Cerberus
-      Unsexed: Cerberus
+    emoteSounds: Cerberus

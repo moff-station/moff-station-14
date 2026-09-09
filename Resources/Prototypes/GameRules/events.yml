@@ -1,85 +1,104 @@
-- type: entityTable
-  id: BasicCalmEventsTable
-  table: !type:AllSelector # we need to pass a list of rules, since rules have further restrictions to consider via StationEventComp
-    children:
-    - id: AnomalySpawn
-    - id: BluespaceArtifact
-    - id: BluespaceLocker
-    - id: BreakerFlip
-    - id: BureaucraticError
-    - id: ClericalError
-    - id: CockroachMigration
-    - id: GasLeak
-    - id: GreytideVirus
-    - id: IonStorm # its calm like 90% of the time smh
-    - id: KudzuGrowth
-    - id: MassHallucinations
-    - id: MouseMigration
-    - id: PowerGridCheck
-    - id: RandomSentience
-    #- id: SlimesSpawnHorde # Moffstation - Move to pests table
-    - id: SolarFlare
-    #- id: SnakeSpawnHorde # Moffstation - Move to pests table
-    #- id: SpiderClownSpawnHorde # Moffstation - Move to pests table
-    #- id: SpiderSpawnHorde # Moffstation - Move to pests table
-    - id: VentClog
+# Moff start - namespaced, commented out so we get conflicts and can update our own table in the future
+# put future additions into relevant table in Moffstation event_tables.yml
+#- type: entityTable
+#  id: BasicCalmEventsTable
+#  table: !type:AllSelector # we need to pass a list of rules, since rules have further restrictions to consider via StationEventComp
+#    children:
+#    - id: AnomalySpawn
+#    - id: BluespaceArtifact
+#    - id: BluespaceLocker
+#    - id: BreakerFlip
+#    - id: BureaucraticError
+#    - id: ClericalError
+#    - id: CockroachMigration
+#    - id: GasLeak
+#    - id: GreytideVirus
+#    - id: IonStorm # its calm like 90% of the time smh
+#    - id: KudzuGrowth
+#    - id: LightOverloadRule # Moffstation - New events
+#    - id: LightOverloadRuleBlinking # Moffstation - New events
+#    - id: MassHallucinations
+#    - id: MouseMigration
+#    - id: PowerGridCheck
+#    - id: RandomSentience
+#    #- id: SlimesSpawnHorde # Moffstation - Move to pests table
+#    - id: SolarFlare
+#    #- id: SnakeSpawnHorde # Moffstation - Move to pests table
+#    #- id: SpiderClownSpawnHorde # Moffstation - Move to pests table
+#    #- id: SpiderSpawnHorde # Moffstation - Move to pests table
+#    - id: VentClog
+# Moff end
 
-- type: entityTable
-  id: BasicAntagEventsTable
-  table: !type:AllSelector # we need to pass a list of rules, since rules have further restrictions to consider via StationEventComp
-    children:
-    - id: ClosetSkeleton
-    - id: KingRatMigration
-    - id: RevenantSpawn
-    - !type:NestedSelector
-      tableId: DerelictBorgEventTable
-    - id: SyndicateDeadDrop # Moffstation
+# Moff start - namespaced, commented out so we get conflicts and can update our own table in the future
+# put future additions into relevant table in Moffstation event_tables.yml
+#- type: entityTable
+#  id: BasicAntagEventsTable
+#  table: !type:AllSelector # we need to pass a list of rules, since rules have further restrictions to consider via StationEventComp
+#    children:
+#    - id: ClosetSkeleton
+#    - id: KingRatMigration
+#    - id: RevenantSpawn
+#    - !type:NestedSelector
+#      tableId: DerelictBorgEventTable
+#    # Moffstation - Start - Moffstation basic antag events
+#    - id: SyndicateDeadDrop
+#    - id: SyndieVentSoldierSpawn
+#    - id: LawBreakerVirus
+#    # Moffstation - End
+# Moff end
 
-- type: entityTable
-  id: ModerateAntagEventsTable
-  table: !type:AllSelector # we need to pass a list of rules, since rules have further restrictions to consider via StationEventComp
-    children:
-    - id: DragonSpawn
-    - id: NinjaSpawn
-    - id: ParadoxCloneSpawn
-    - id: SleeperAgents
-    - id: ZombieOutbreak
-    - id: LoneOpsSpawn
-    - id: WizardSpawn
-    - id: EeepEvent # imp
-    - !type:NestedSelector
-      tableId: DerelictBorgEventTable
-    # Moffstation - Start - Moffstation ghostrole antags
-    - id: SyndicateListeningOutpostSpawn
-    - id: PirateCorsairSpawn
-    - id: HellPortalSpawn
-    # Moffstation - End
+# Moff start - namespaced, commented out so we get conflicts and can update our own table in the future
+# put future additions into relevant table in Moffstation event_tables.yml
+#- type: entityTable
+#  id: ModerateAntagEventsTable
+#  table: !type:AllSelector # we need to pass a list of rules, since rules have further restrictions to consider via StationEventComp
+#    children:
+#    - id: DragonSpawn
+#    - id: NinjaSpawn
+#    - id: ParadoxCloneSpawn
+#    - id: SleeperAgents
+#    - id: ZombieOutbreak
+#    - id: LoneOpsSpawn
+#    # - id: WizardSpawn # Moffstation
+#    - id: EeepSpawn # imp
+#    - !type:NestedSelector
+#      tableId: DerelictBorgEventTable
+#    # Moffstation - Start - Moffstation ghostrole antags
+#    - id: SyndicateListeningOutpostSpawn
+#    - id: PirateCorsairSpawn
+#    - id: HellPortalSpawn
+#    - id: ReplicatorSpawn
+#    # Moffstation - End
+# Moff end
 
-- type: entityTable
-  id: DerelictBorgEventTable #For Derelict Borg spawns
-  table: !type:GroupSelector
-    children:
-    - !type:GroupSelector # Standard NT Borgs
-      weight: 90 # moffstation - need to reduce assault borg chance so it doesn't become statistically more likely than derelict individual NT borgs
-      children:
-        - id: DerelictEngineerCyborgSpawn
-        - id: DerelictGenericCyborgSpawn
-        - id: DerelictJanitorCyborgSpawn
-        - id: DerelictMedicalCyborgSpawn
-        - id: DerelictMiningCyborgSpawn
-        - id: DerelictServiceCyborgSpawn # Moffstation
-    - !type:GroupSelector # Other Borgs
-      weight: 10 # moffstation - need to reduce assault borg chance so it doesn't become statistically more likely than derelict individual NT borgs
-      children:
-        - id: DerelictSyndicateAssaultCyborgSpawn
+# Moff start - namespaced, commented out so we get conflicts and can update our own table in the future
+# put future additions into relevant table in Moffstation event_tables.yml
+#- type: entityTable
+#  id: DerelictBorgEventTable #For Derelict Borg spawns
+#  table: !type:GroupSelector
+#    children:
+#    - !type:GroupSelector # Standard NT Borgs
+#      weight: 90 # moffstation - need to reduce assault borg chance so it doesn't become statistically more likely than derelict individual NT borgs
+#      children:
+#        - id: DerelictEngineerCyborgSpawn
+#        - id: DerelictGenericCyborgSpawn
+#        - id: DerelictJanitorCyborgSpawn
+#        - id: DerelictMedicalCyborgSpawn
+#        - id: DerelictMiningCyborgSpawn
+#        - id: DerelictServiceCyborgSpawn # Moffstation
+#    - !type:GroupSelector # Other Borgs
+#      weight: 10 # moffstation - need to reduce assault borg chance so it doesn't become statistically more likely than derelict individual NT borgs
+#      children:
+#        - id: DerelictSyndicateAssaultCyborgSpawn
+# Moff end
 
 - type: entity
   abstract: true
-  parent: BaseGameRule
+  parent: BaseUnweightedAntagRule # Moff - ghost roles are NOT weighted
   id: BaseAntagGhostRoleRule
   components:
   - type: AntagSelection
-    selectionTime: Never
+    selectionTime: Enroll
 
 - type: entity
   id: BaseStationEvent
@@ -190,11 +209,15 @@
 
 - type: entity
   parent: BaseGameRule
-  id: ClosetSkeleton
+  # Moff start - Namespaced
+  id: ClosetSkeletonUpstream
+  abstract: true
+  # Moff end
   components:
   - type: StationEvent
     weight: 5
     duration: 1
+    occursDuringRoundEnd: false
     minimumPlayers: 10
   - type: RandomEntityStorageSpawnRule
     prototype: MobSkeletonCloset
@@ -209,6 +232,7 @@
     reoccurrenceDelay: 20
     minimumPlayers: 30  # Moffstation - Tune down antags
     duration: null
+    occursDuringRoundEnd: false
   - type: SpaceSpawnRule
     spawnDistance: 0
   - type: AntagSpawner
@@ -219,10 +243,16 @@
     - CarpRiftsObjective
     - DragonSurviveObjective
   - type: AntagSelection
+    selectionTime: Enroll # Moffstation - antag enrollment
     agentName: dragon-round-end-agent-name
     antags:
     - !type:FixedAntagCount
       proto: Dragon
+  # Moffstation - antag enrollment
+  - type: ESSynchronizedVoteManager
+    votes:
+    - DragonEnroller
+  # Moffstation end
   - type: DynamicRuleCost
     cost: 75
 
@@ -233,6 +263,7 @@
   - type: StationEvent
     weight: 6
     duration: null
+    occursDuringRoundEnd: false
     earliestStart: 30
     reoccurrenceDelay: 20
     minimumPlayers: 30
@@ -247,10 +278,16 @@
     - MassArrestObjective
     - NinjaSurviveObjective
   - type: AntagSelection
+    selectionTime: Enroll # Moffstation - antag enrollment
     agentName: ninja-round-end-agent-name
     antags:
     - !type:FixedAntagCount
       proto: SpaceNinja
+  # Moffstation - antag enrollment
+  - type: ESSynchronizedVoteManager
+    votes:
+    - NinjaEnroller
+  # Moffstation end
   - type: DynamicRuleCost
     cost: 75
 
@@ -261,6 +298,7 @@
   - type: StationEvent
     weight: 5
     duration: null
+    occursDuringRoundEnd: false
     earliestStart: 20
     reoccurrenceDelay: 20
     minimumPlayers: 20  # Moffstation - Tune down antags
@@ -275,20 +313,30 @@
     - ParadoxCloneLivingObjective
   - type: AntagRandomSpawn # TODO: improve spawning so they only start in maints
   - type: AntagSelection
+    selectionTime: Enroll # Moffstation - antag enrollment
     agentName: paradox-clone-round-end-agent-name
     antags:
     - !type:FixedAntagCount
       proto: ParadoxClone
+  # Moffstation - antag enrollment
+  - type: ESSynchronizedVoteManager
+    votes:
+    - ParadoxCloneEnroller
+  # Moffstation end
   - type: DynamicRuleCost
     cost: 50
 
 - type: entity
   parent: BaseGameRule
-  id: RevenantSpawn
+  # Moff start - Namespaced
+  id: RevenantSpawnUpstream
+  abstract: true
+  # Moff end
   components:
   - type: StationEvent
     weight: 7.5
     duration: 1
+    occursDuringRoundEnd: false
     earliestStart: 45
     minimumPlayers: 20
   - type: RandomSpawnRule
@@ -301,9 +349,15 @@
   - type: StationEvent
     weight: 1 # rare
     duration: null
+    occursDuringRoundEnd: false
     earliestStart: 30
     reoccurrenceDelay: 60
     minimumPlayers: 30
+  # Moff start - antag enrollment
+  - type: ESSynchronizedVoteManager
+    votes:
+    - WizardEnroller
+  # Moff end
 
 # disabled until event is rewritten to be more interesting
 #- type: entity
@@ -416,9 +470,10 @@
       rolls: 4, 8
       children:
       # Moffstation - Start - Make mobs smash stuff
-      - id: MobAdultSlimesBlueAngrySmasher
-      - id: MobAdultSlimesGreenAngrySmasher
-      - id: MobAdultSlimesYellowAngrySmasher
+      - id: MobAdultSlimesReformableAngrySmasher
+        weight: 2 # 'Blue' and 'Yellow' slimes have been condensed down into one prototype, so we need to account for this by doubling the weight
+      - id: MobAdultSlimesReformablePoisonousAngrySmasher
+        weight: 1
       # Moffstation - End
 
 - type: entity
@@ -512,15 +567,22 @@
     weight: 5.5
     minimumPlayers: 30 # Moffstation - Tune down antags
     duration: null # LoneOpsSpawn needs an infinite duration so that it inherits the NukeOpsRule things of an actually appropriate end screen (not always "Neutral outcome!") and... ending the game if the station is nuked.
+    occursDuringRoundEnd: false
   - type: RuleGrids
   - type: LoadMapRule
     gridPath: /Maps/Shuttles/ShuttleEvent/striker.yml
   - type: NukeopsRule
     roundEndBehavior: Nothing
   - type: AntagSelection
+    selectionTime: Enroll # Moffstation - antag enrollment
     antags:
     - !type:FixedAntagCount
       proto: LoneOp
+  # Moffstation - antag enrollment
+  - type: ESSynchronizedVoteManager
+    votes:
+    - LoneOpEnroller
+  # Moffstation end
   - type: DynamicRuleCost
     cost: 75
 
@@ -618,8 +680,14 @@
     reoccurrenceDelay: 20
     minimumPlayers: 4
     duration: null
+    occursDuringRoundEnd: false
   - type: SpaceSpawnRule
     spawnDistance: 0
+  # Moffstation - antag enrollment (shared across all derelict cyborg variants)
+  - type: ESSynchronizedVoteManager
+    votes:
+    - DerelictCyborgEnroller
+  # Moffstation end
 
 - type: entity
   parent: BaseDerelictCyborgSpawn
@@ -628,6 +696,7 @@
   - type: AntagSpawner
     prototype: PlayerEngineeringBorgDerelictGhostRole
   - type: AntagSelection
+    selectionTime: Enroll # Moffstation - antag enrollment
     antags:
     - !type:FixedAntagCount
       proto: DerelictEngineeringCyborg
@@ -639,6 +708,7 @@
   - type: AntagSpawner
     prototype: PlayerBorgDerelictGhostRole
   - type: AntagSelection
+    selectionTime: Enroll # Moffstation - antag enrollment
     antags:
     - !type:FixedAntagCount
       proto: DerelictGenericCyborg
@@ -650,6 +720,7 @@
   - type: AntagSpawner
     prototype: PlayerJanitorBorgDerelictGhostRole
   - type: AntagSelection
+    selectionTime: Enroll # Moffstation - antag enrollment
     antags:
     - !type:FixedAntagCount
       proto: DerelictJanitorCyborg
@@ -661,6 +732,7 @@
   - type: AntagSpawner
     prototype: PlayerMedicalBorgDerelictGhostRole
   - type: AntagSelection
+    selectionTime: Enroll # Moffstation - antag enrollment
     antags:
     - !type:FixedAntagCount
       proto: DerelictMedicalCyborg
@@ -672,6 +744,7 @@
   - type: AntagSpawner
     prototype: PlayerMiningBorgDerelictGhostRole
   - type: AntagSelection
+    selectionTime: Enroll # Moffstation - antag enrollment
     antags:
     - !type:FixedAntagCount
       proto: DerelictMiningCyborg
@@ -686,6 +759,7 @@
   - type: AntagSpawner
     prototype: PlayerBorgSyndicateDerelictGhostRole
   - type: AntagSelection
+    selectionTime: Enroll # Moffstation - antag enrollment
     antags:
     - !type:FixedAntagCount
       proto: DerelictSyndicateAssaultCyborg

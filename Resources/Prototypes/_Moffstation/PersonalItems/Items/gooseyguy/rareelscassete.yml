@@ -1,0 +1,30 @@
+# Player: gooseyguy - Character: Rareel
+
+- type: entity 
+  parent: HarmonicaInstrument
+  id: PersonalItemRareelsCassette
+  name: retro cassette player
+  description: A retro style cassette player, which has clearly seen better days. Covered in scratches and dents, with a few stickers on the back.
+  suffix: PersonalItem
+  components:
+  - type: Sprite
+    sprite: _Moffstation/PersonalItems/Items/gooseyguy/Rareel/rareelscassette.rsi
+  - type: Item
+    sprite: _Moffstation/PersonalItems/Items/gooseyguy/Rareel/rareelscassette.rsi
+  - type: Instrument
+    allowPercussion: false
+    handheld: false
+    program: 2
+    bank: 100
+  - type: Tag
+    tags: []
+
+- type: loadout
+  id: PersonalItemRareelsCassette
+  storage:
+    back:
+    - PersonalItemRareelsCassette 
+  effects:
+  - !type:PersonalItemLoadoutEffect
+    character:
+    - Rareel

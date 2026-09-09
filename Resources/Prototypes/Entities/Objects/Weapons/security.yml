@@ -3,6 +3,7 @@
   parent: [BaseItem, BaseSecurityContraband]
   id: Stunbaton
   description: A stun baton for incapacitating people with. Actively harming with this is considered bad tone.
+#  categories: [ DoNotMap ] # Uhhh we'll deal with this later. It's migrated out anyway.
   components:
   - type: Sprite
     sprite: Objects/Weapons/Melee/stunbaton.rsi
@@ -12,7 +13,7 @@
   - type: Stunbaton
     energyPerUse: 50
   - type: ItemToggle
-    predictable: false
+    onActivate: false
 # ES START
 #    soundActivate:
 #      collection: sparks
@@ -96,10 +97,6 @@
     guides:
     - Security
     - Antagonists
-  # Imp - Begin - Tourists
-  - type: StealTarget
-    stealGroup: StunBaton
-  # Imp - End
 
 - type: entity
   name: truncheon
@@ -197,7 +194,7 @@
 
 - type: entity
   name: portable flasher
-  parent: [BaseMachine, BaseSecurityContraband]
+  parent: [BaseMachine, BaseSecurityContraband, BaseMachineDestructible]
   id: PortableFlasher
   description: An ultrabright flashbulb with a proximity trigger, useful for making an area security-only.
   components:
@@ -241,6 +238,14 @@
       guides:
       - Security
       - Antagonists
+    - type: Destructible
+      thresholds:
+      - trigger: !type:DamageTrigger
+          damage: 175
+        behaviors:
+        - !type:PlaySoundBehavior
+          sound:
+            collection: MetalGlassBreak
     # Moffstation - Start
     - type: TriggerOnSignal
     - type: DeviceLinkSink

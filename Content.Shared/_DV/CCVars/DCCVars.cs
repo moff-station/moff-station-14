@@ -31,4 +31,15 @@ public sealed partial class DCCVars
     /// </summary>
     public static readonly CVarDef<bool> SkipDisabledTraitsPopup =
         CVarDef.Create("traits.skip_disabled_traits_popup", false, CVar.CLIENT | CVar.ARCHIVE);
+
+    /*
+     * Gameplay
+     */
+
+    /// <summary>
+    /// Whether the screenshake ported from ES should be disabled.
+    /// False by default, so enabled. Players can change this in accessiblity settings.
+    /// </summary>
+    public static readonly CVarDef<bool> EsScreenshakeDisabled =
+        CVarDef.Create("deltav.es_screenshake.disabled", false, CVar.CLIENTONLY | CVar.ARCHIVE);
 }

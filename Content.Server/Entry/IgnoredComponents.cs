@@ -5,6 +5,7 @@ namespace Content.Server.Entry
     {
         public static string[] List => new[] {
             "GenericVisualizerExtended", // Moffstation - Add client-only visualizer component
+            "SynchronizeLayerColorToAppearance", // Moff - Client-only appearance-sprite synch component
             // ES START
             "ESTimedDespawnLightFade",
             "ESTimedDespawnSpriteFade",
@@ -26,7 +27,8 @@ namespace Content.Server.Entry
             "HolidayRsiSwap",
             "OptionsVisualizer",
             "AnomalyScannerScreen",
-            "MultipartMachineGhost"
+            "MultipartMachineGhost",
+            "DirectionalArrowIndicator"
         };
     }
 }

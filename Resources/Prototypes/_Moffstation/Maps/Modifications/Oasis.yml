@@ -1,0 +1,32 @@
+- type: mapModification
+  id: OasisModificationsLaundry
+  applyOn:
+  - Oasis
+  removals:
+  - !type:EntityPrototypeSelector
+    prototype: WoodDoor
+    bounds: "-36,-3,-34,-2"
+  - !type:EntityPrototypeSelector
+    prototype: SpawnPointMime
+    bounds: "-36,-3,-34,-2"
+  - !type:EntityPrototypeSelector
+    prototype: StationMap
+    bounds: "-40,-2,-39,-1"
+  additions:
+    # Add the actual Laundromat
+  - prototype: WashingMachine
+    position: -37.5, -2.5
+  - prototype: WashingMachine
+    position: -36.5, -2.5
+  - prototype: SignLaundromat
+    position: -39.5, -1.5
+  - prototype: DefaultStationBeaconLaundromat
+    position: -37.5, 3.5
+    # Additional Visual Improvements
+  - prototype: WallSolid
+    position: -35.5, -2.5
+  - prototype: ToyFigurineMime
+    position: -34.5, -2.5
+  - prototype: StationMap
+    position: -39.5, -1.5
+    rotation: 180

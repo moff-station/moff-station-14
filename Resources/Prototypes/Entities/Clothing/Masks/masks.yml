@@ -195,6 +195,7 @@
       Plastic: 100
   - type: StaticPrice
     price: 30 # increases in price after decomposed into raw materials
+  - type: MoffStainRepellent # Moff - Mostly solid plastic, and it means Vox don't look like they just climed out of the dumpster constantly
 
 - type: entity
   parent: ClothingMaskBase
@@ -349,6 +350,7 @@
       Plastic: 25
   - type: StaticPrice
     price: 5
+  - type: MoffStainRepellent # Moff - Mostly solid plastic, and it means Vox don't look like they just climed out of the dumpster constantly
 
 - type: entity
   parent: ClothingMaskBase
@@ -365,8 +367,8 @@
     equipDelay: 3
     unequipDelay: 3
   - type: IngestionBlocker
-  - type: AddAccentClothing
-    accent: MumbleAccent
+  - type: MumbleAccent
+    relayAccent: true
   - type: EmoteBlocker
     blocksCategories:
     - Vocal
@@ -404,8 +406,8 @@
   - type: Clothing
     sprite: _Moffstation/Clothing/Mask/cluwne.rsi # Moffstation
   - type: Unremoveable
-  - type: AddAccentClothing
-    accent: StutteringAccent
+  - type: StutteringAccent
+    relayAccent: true
 
 - type: entity
   parent: [ ClothingMaskGas, BaseSecurityContraband ]
@@ -724,9 +726,9 @@
   - type: Item
     storedRotation: -90
   # Moffstation - Begin - Re-add word replacement accents
-  - type: AddAccentClothing
-    accent: ReplacementAccent
-    replacement: italian
+  - type: ReplacementAccent
+    accent: italian
+    relayAccent: true
   # Moffstation - End
 
 - type: entity
@@ -758,6 +760,8 @@
     sprite: Clothing/Mask/welding-gas.rsi
   - type: FlashImmunity
   - type: EyeProtection
+  - type: WeldingMaskOverlay # Moff - Funky welding masks
+    texture: /Textures/_Funkystation/Clothing/Head/Welding/weldingOverlayWeak.png # Moff - Funky welding masks
   - type: PhysicalComposition
     materialComposition:
       Steel: 200

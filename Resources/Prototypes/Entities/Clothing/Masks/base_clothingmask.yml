@@ -1,6 +1,6 @@
 - type: entity
   abstract: true
-  parent: Clothing
+  parent: [ Clothing, MoffStainableClothingBase ] # Moffstation - mixed in MoffStainableClothingBase
   id: ClothingMaskBase
   components:
   - type: Sprite
@@ -11,6 +11,16 @@
     slots: [mask]
   - type: StaticPrice
     price: 25
+  # Forky - start - clothing stains
+  - type: Stainable
+    clothingVisuals:
+      mask:
+      - sprite: _Funkystation/Effects/blood.rsi
+        state: maskblood
+    iconVisuals:
+    - sprite: _Funkystation/Effects/blood.rsi
+      state: maskbloodicon
+  # Forky - end
 
 - type: entity
   abstract: true
@@ -26,8 +36,14 @@
   description: Handy, but prevents insertion of pie into your pie hole.
   components:
   - type: Action
-    icon: { sprite: Clothing/Mask/gas.rsi, state: icon }
-    iconOn: Interface/Default/blocked.png
+  - type: Sprite
+    sprite: Clothing/Mask/gas.rsi
+    layers:
+    - state: icon
+      map: ["enum.ActionVisuals.Icon"]
+    - texture: Interface/Default/blocked.png
+      map: ["enum.ActionVisuals.IconToggled"]
+      visible: false
   - type: InstantAction
     event: !type:ToggleMaskEvent
 

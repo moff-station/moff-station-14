@@ -114,6 +114,7 @@
 - type: entity
   parent: [SolutionFood, SolutionSmall, ClothingEyesHudBase]
   id: ClothingEyesHudFriedOnion # It's been too long since I've had good onion rings...
+  categories: [ HideSpawnMenu ] # Moffstation - genuine content bloat clogging spawn menu
   name: fried onion goggles
   description: Filler
   components:
@@ -136,6 +137,7 @@
 - type: entity
   parent: ClothingEyesHudBase
   id: ClothingEyesHudOnionBeer
+  categories: [ HideSpawnMenu ] # Moffstation - genuine content bloat clogging spawn menu
   name: thungerst goggles
   description: Filler
   components:
@@ -149,6 +151,7 @@
 - type: entity
   parent: [ClothingEyesHudBase, ShowMedicalIcons]
   id: ClothingEyesHudMedOnion
+  categories: [ HideSpawnMenu ] # Moffstation - genuine content bloat clogging spawn menu
   name: medonion hud
   description: Filler
   components:
@@ -161,6 +164,7 @@
 - type: entity
   parent: [ClothingEyesHudBase, ShowMedicalIcons]
   id: ClothingEyesHudMedOnionBeer
+  categories: [ HideSpawnMenu ] # Moffstation - genuine content bloat clogging spawn menu
   name: medthungerst hud
   description: Filler
   components:
@@ -191,6 +195,7 @@
 - type: entity
   parent: [ClothingEyesHudBase, ShowSecurityIcons, ShowMedicalIcons]
   id: ClothingEyesHudMultiversal
+  categories: [ HideSpawnMenu ] # Moffstation - genuine content bloat clogging spawn menu
   name: multiversal hud
   description: Filler
   components:
@@ -207,6 +212,7 @@
 - type: entity
   parent: [ClothingEyesHudBase, ShowSecurityIcons, ShowMedicalIcons]
   id: ClothingEyesHudOmni
+  categories: [ HideSpawnMenu ] # Moffstation - genuine content bloat clogging spawn menu
   name: omni hud
   description: Filler
   components:
@@ -294,6 +300,7 @@
   # Moffstation - Begin - Replaced by modular HUDs
   parent: [ClothingEyesHudSecurityUpstream, ClothingHeadEyeBaseFlippable]
   id: ClothingEyesEyepatchHudSecurityUpstream
+  categories: [ HideSpawnMenu ]
   # Moffstation - End
   name: security hud eyepatch
   description: A heads-up display that scans the humanoids in view and provides accurate data about their ID status and security records. For true patriots.

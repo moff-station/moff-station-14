@@ -12,7 +12,6 @@ using Content.Shared.Access.Components;
 using Content.Shared.Access.Systems;
 using Content.Shared.Administration;
 using Content.Shared.Administration.Components;
-using Content.Shared.Administration.Systems;
 using Content.Shared.Atmos;
 using Content.Shared.Atmos.Components;
 using Content.Shared.Construction.Components;
@@ -36,6 +35,9 @@ using Robust.Shared.Physics.Components;
 using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Utility;
+using Content.Server._MACRO.StrangeMoods.Eui; // MACRO
+using Content.Shared._MACRO.StrangeMoods; // MACRO
+using Robust.Shared.Random; // MACRO
 
 namespace Content.Server.Administration.Systems;
 
@@ -731,6 +733,54 @@ public sealed partial class AdminVerbSystem
             };
             args.Verbs.Add(setCapacity);
         }
+
+        // Begin MACRO Additions
+        if (TryComp<StrangeMoodsComponent>(args.Target, out var moods))
+        {
+            if (moods.StrangeMood.Datasets.Count <= 0)
+                return;
+
+            Verb addRandomMood = new()
+            {
+                Text = "Add Random Mood",
+                Category = VerbCategory.Tricks,
+                Icon = new SpriteSpecifier.Rsi(new ResPath("Interface/Actions/actions_borg.rsi"), "state-laws"),
+                Act = () =>
+                {
+                    _moods.TryAddRandomMood((args.Target, moods), _random.Pick(moods.StrangeMood.Datasets).Key);
+                },
+                Impact = LogImpact.High,
+                Message = Loc.GetString("admin-trick-add-random-mood-description"),
+                Priority = (int) TricksVerbPriorities.AddRandomMood,
+            };
+            args.Verbs.Add(addRandomMood);
+        }
+        else
+        {
+            Verb giveMoods = new()
+            {
+                Text = "Give Moods",
+                Category = VerbCategory.Tricks,
+                Icon = new SpriteSpecifier.Rsi(new ResPath("Interface/Actions/actions_borg.rsi"), "state-laws"),
+                Act = () =>
+                {
+                    if (HasComp<StrangeMoodsComponent>(args.Target))
+                        return;
+
+                    var ui = new StrangeMoodsInitEui(_moods, EntityManager, ProtoMan, _random, _adminManager, _playerManager, _euiManager, args.User);
+                    if (!_playerManager.TryGetSessionByEntity(args.User, out var session))
+                        return;
+
+                    _euiManager.OpenEui(ui, session);
+                    ui.SetTarget(args.Target);
+                },
+                Impact = LogImpact.High,
+                Message = Loc.GetString("admin-trick-give-moods-description"),
+                Priority = (int) TricksVerbPriorities.AddRandomMood,
+            };
+            args.Verbs.Add(giveMoods);
+        }
+        // End MACRO Additions
     }
 
     private void RefillEquippedTanks(EntityUid target, Gas gasType)
@@ -832,7 +882,7 @@ public sealed partial class AdminVerbSystem
 
     private void GiveAllAccess(EntityUid entity)
     {
-        var allAccess = _prototypeManager
+        var allAccess = ProtoMan
             .EnumeratePrototypes<AccessLevelPrototype>()
             .Select(p => new ProtoId<AccessLevelPrototype>(p.ID)).ToArray();
 
@@ -876,5 +926,9 @@ public sealed partial class AdminVerbSystem
         SnapJoints = -27,
         MakeMinigun = -28,
         SetBulletAmount = -29,
+        // macro adds
+        AddRandomMood = -30,
+        AddCustomMood = -31,
+        // macro end
     }
 }

@@ -120,7 +120,7 @@
   # Moffstation - End
 
 - type: entity
-  parent: ClothingOuterStorageToggleableBase
+  parent: ClothingOuterJacketToggleableBase
   id: ClothingOuterCoatJensen
   name: jensen coat
   description: A jensen coat.
@@ -143,7 +143,7 @@
         id: SyndieHandyFlag
 
 - type: entity
-  parent: [ ClothingOuterStorageSuitStorageAttachableBase, ClothingOuterStorageEdible ] # Moffstation - Allow suit storage attachment
+  parent: [ ClothingOuterStorageSuitStorageAttachableBase, ClothingOuterJacketBase ] # Moffstation - Allow suit storage attachment
   id: ClothingOuterCoatTrench
   name: trench coat
   description: A comfy trench coat.
@@ -152,9 +152,6 @@
     sprite: Clothing/OuterClothing/Coats/trenchcoat.rsi
   - type: Clothing
     sprite: Clothing/OuterClothing/Coats/trenchcoat.rsi
-  - type: TemperatureProtection
-    heatingCoefficient: 0.1
-    coolingCoefficient: 0.1
   - type: Armor
     modifiers:
       coefficients:
@@ -334,8 +331,10 @@
     sprite: Clothing/OuterClothing/Coats/pirate.rsi
   - type: Clothing
     sprite: Clothing/OuterClothing/Coats/pirate.rsi
-  - type: AddAccentClothing #Moffstation - Adding pirate accent
-    accent: PirateAccent #Moffstation - Adding pirate accent
+  # Moff start - Add pirate accent
+  - type: PirateAccent
+    relayAccent: true
+    # Moff end
 
 - type: entity
   parent: [ClothingOuterArmorWarden, BaseSecurityContraband]

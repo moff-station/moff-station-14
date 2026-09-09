@@ -18,12 +18,15 @@
     accentVColor: "#447987"
   - type: CartridgeLoader
     uiKey: enum.PdaUiKey.Key
-    preinstalled:
-    - NotekeeperCartridge
-    - NanoTaskCartridge
-    - ChitterCartridge
-    - WantedListCartridge
-    - AstroNavCartridge
+  - type: EntityTableContainerFill
+    containers:
+      preinstalled-program-container: !type:AllSelector
+        children:
+        - id: NotekeeperCartridge
+        - id: NanoTaskCartridge
+        - id: ChitterCartridge
+        - id: WantedListCartridge
+        - id: AstroNavCartridge
 
 - type: entity
   parent: NTCFPilotPDA

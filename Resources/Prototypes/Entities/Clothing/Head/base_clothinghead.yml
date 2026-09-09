@@ -1,6 +1,6 @@
 - type: entity
   abstract: true
-  parent: [SolutionFood, SolutionToolSmall, Clothing]
+  parent: [SolutionFood, SolutionToolSmall, Clothing, MoffStainableClothingBase] # Moffstation - mixed in MoffStainableClothingBase
   id: ClothingHeadBase
   components:
   - type: Clothing
@@ -22,6 +22,16 @@
     tags:
     - ClothMade
     - WhitelistChameleon
+  # Forky - start - clothing stains
+  - type: Stainable
+    clothingVisuals:
+      head:
+      - sprite: _Funkystation/Effects/blood.rsi
+        state: helmetblood
+    iconVisuals:
+    - sprite: _Funkystation/Effects/blood.rsi
+      state: helmetbloodicon
+  # Forky - end
 
 - type: entity
   abstract: true
@@ -65,7 +75,7 @@
     enabled: false
     radius: 3
     energy: 1
-    mask: /Textures/Effects/LightMasks/cone.png
+    lightMask: ConeSingle
     autoRot: true
     netsync: false
   - type: Appearance
@@ -103,7 +113,7 @@
 
 - type: entity
   abstract: true
-  parent: ClothingHeadBase
+  parent: [ ClothingHeadBase, TemperatureProtection ]
   id: ClothingHeadEVAHelmetBase
   name: base space helmet
   components:
@@ -116,9 +126,6 @@
   - type: PressureProtection
     highPressureMultiplier: 0.6
     lowPressureMultiplier: 1000
-  - type: TemperatureProtection
-    heatingCoefficient: 0.2
-    coolingCoefficient: 0.2
   - type: IngestionBlocker
   - type: Clothing
     #Copies ClothingHeadHardsuitBase behavior
@@ -138,10 +145,14 @@
     - HeadTop
     - HeadSide
     - FacialHair
+  # Forky - start - clothing stains
+  - type: StainBlocker
+    slots: [MASK]
+  # Forky - End
 
 - type: entity
   abstract: true
-  # No parent since we aren't actually an item.
+  parent: [ TemperatureProtection, MoffStainableClothingBase ] # Moffstation - mixed in MoffStainableClothingBase
   id: ClothingHeadHardsuitBase
   name: base hardsuit helmet
   categories: [ HideSpawnMenu ]
@@ -163,9 +174,6 @@
   - type: PressureProtection
     highPressureMultiplier: 0.3
     lowPressureMultiplier: 1000
-  - type: TemperatureProtection
-    heatingCoefficient: 0.1
-    coolingCoefficient: 0.1
   - type: Armor
     modifiers:
       coefficients:
@@ -187,6 +195,23 @@
     - HeadTop
     - HeadSide
     - FacialHair
+  # Forky - start - clothing stains
+  - type: Stainable
+    clothingVisuals:
+      head:
+      - sprite: _Funkystation/Effects/blood.rsi
+        state: helmetblood
+    iconVisuals:
+    - sprite: _Funkystation/Effects/blood.rsi
+      state: helmetbloodicon
+  - type: StainBlocker
+    slots: [MASK]
+  # Forky - end
+
+- type: entity
+  abstract: true
+  parent: [ TemperatureProtection, ClothingHeadHardsuitBase ]
+  id: ClothingHeadHardsuitInsulatedBase
 
 - type: entity
   abstract: true
@@ -214,7 +239,7 @@
     enabled: false
     radius: 3
     energy: 2
-    mask: /Textures/Effects/LightMasks/cone.png
+    lightMask: ConeSingle
     autoRot: true
     netsync: false
   - type: Appearance
@@ -247,6 +272,7 @@
 
 - type: entity
   abstract: true
+  parent: [ TemperatureProtectionMinimal, MoffStainableClothingBase ] # Moffstation - mixed in MoffStainableClothingBase
   id: ClothingHeadHatHoodWinterBase
   name: base winter coat hood
   description: A hood, made to keep your head warm.
@@ -260,9 +286,6 @@
     unequipSound: /Audio/Effects/rustle2.ogg
     quickEquip: false
     slots: [ HEAD ]
-  - type: TemperatureProtection
-    heatingCoefficient: 1.05
-    coolingCoefficient: 0.7
   - type: ZombificationResistance
     zombificationResistanceCoefficient: 0.90
   - type: Armor # so zombification resistance shows up
@@ -274,3 +297,13 @@
     - Hair
     - HeadTop
     - HeadSide
+  # Forky - start - clothing stains
+  - type: Stainable
+    clothingVisuals:
+      head:
+      - sprite: _Funkystation/Effects/blood.rsi
+        state: helmetblood
+    iconVisuals:
+    - sprite: _Funkystation/Effects/blood.rsi
+      state: helmetbloodicon
+  # Forky - end

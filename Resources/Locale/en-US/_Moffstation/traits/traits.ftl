@@ -27,6 +27,9 @@ trait-scandi-accent-desc-moff = Happy Lief Erikson Day! Hinga dinga durgen!
 trait-boston-accent-name-moff = Boston accent
 trait-boston-accent-desc-moff = Are you listening? Okay. Grass grows, birds fly, sun shines, and brother? I hurt people.
 
+trait-gray-accent-name = Gray accent
+trait-gray-accent-desc = Gleep gloorp.
+
 # Medical
 
 trait-clumsy-disability-name = Clumsy

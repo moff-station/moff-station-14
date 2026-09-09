@@ -1,0 +1,33 @@
+{
+    "version": 1,
+    "license": "CC-BY-SA-3.0",
+    "copyright": "ai_hephaestus, ai_hephaestus_purged by FreianOfVoid (Github) for moffstation.",
+    "size": {
+        "x": 32,
+        "y": 32
+    },
+    "states": [
+        {
+            "name": "ai_hephaestus",
+            "delays": [
+                [
+                    0.75,
+                    0.25,
+                    0.25,
+                    0.25,
+                    0.25,
+                    0.25
+                ]
+            ]
+        },
+        {
+            "name": "ai_hephaestus_purged",
+            "delays": [
+                [
+                    0.5,
+                    0.5
+                ]
+            ]
+        }
+    ]
+}

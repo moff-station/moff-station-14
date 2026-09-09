@@ -27,3 +27,13 @@ marking-UndergarmentBottomBriefsAvali = Briefs
 marking-UndergarmentBottomSatinAvali-satin_avali = Satin
 marking-UndergarmentBottomSatinAvali = Satin
 
+marking-UndergarmentBottomPantaloonsGray-pantaloons = Pantaloons
+marking-UndergarmentBottomPantaloonsGray = Pantaloons
+
+marking-UndergarmentBottomOnePieceGray = One Piece
+marking-UndergarmentBottomOnePieceGray-onepiece = One Piece
+marking-UndergarmentBottomOnePieceGray-onepiecestripe = One Piece Stripe
+
+marking-UndergarmentBottomPlasticBagGray = Plastic Bag
+marking-UndergarmentBottomPlasticBagGray-plasticbag = Plastic Bag
+marking-UndergarmentBottomPlasticBagGray-plasticbaglogo = Logo

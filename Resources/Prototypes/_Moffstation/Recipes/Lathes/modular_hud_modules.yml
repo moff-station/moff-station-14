@@ -22,21 +22,15 @@
     Silver: 50
 
 # Tier 1
+- type: latheRecipe
+  parent: BaseModularHudModuleT1Recipe
+  id: HudModuleBlackAndWhiteOverlay
+  result: HudModuleBlackAndWhiteOverlay
 
 - type: latheRecipe
   parent: BaseModularHudModuleT1Recipe
-  id: HudModuleShowAccessReaderSettings
-  result: HudModuleShowAccessReaderSettings
-
-- type: latheRecipe
-  parent: BaseModularHudModuleT1Recipe
-  id: HudModuleShowContrabandDetails
-  result: HudModuleShowContrabandDetails
-
-- type: latheRecipe
-  parent: BaseModularHudModuleT1Recipe
-  id: HudModuleVisionCorrection
-  result: HudModuleVisionCorrection
+  id: HudModuleCheapSunglasses
+  result: HudModuleCheapSunglasses
 
 - type: latheRecipe
   parent: BaseModularHudModuleT1Recipe
@@ -45,38 +39,29 @@
 
 - type: latheRecipe
   parent: BaseModularHudModuleT1Recipe
-  id: HudModuleBlackAndWhiteOverlay
-  result: HudModuleBlackAndWhiteOverlay
+  id: HudModuleShowAccessReaderSettings
+  result: HudModuleShowAccessReaderSettings
 
 - type: latheRecipe
   parent: BaseModularHudModuleT1Recipe
   id: HudModuleShowInorganicHealthBars
   result: HudModuleShowInorganicHealthBars
 
-# Tier 2
-
 - type: latheRecipe
-  parent: BaseModularHudModuleT2Recipe
-  id: HudModuleEyeProtection
-  result: HudModuleEyeProtection
-  materials:
-    Steel: 200
-    Glass: 100
-    Silver: 100 # Eye protection uses silver as a lens filter... or something
+  parent: BaseModularHudModuleT1Recipe
+  id: HudModuleVisionCorrection
+  result: HudModuleVisionCorrection
 
+# Tier 2
 - type: latheRecipe
   parent: BaseModularHudModuleT2Recipe
   id: HudModuleFlashImmunity
   result: HudModuleFlashImmunity
-  materials:
-    Steel: 200
-    Glass: 75
-    Silver: 150 # These are HIGHLY reflective, so you need all that silver for the mirror finish B^)
 
 - type: latheRecipe
   parent: BaseModularHudModuleT2Recipe
-  id: HudModuleSolutionScanner
-  result: HudModuleSolutionScanner
+  id: HudModuleSecurity
+  result: HudModuleSecurity
 
 - type: latheRecipe
   parent: BaseModularHudModuleT2Recipe
@@ -85,25 +70,10 @@
 
 - type: latheRecipe
   parent: BaseModularHudModuleT2Recipe
-  id: HudModuleShowMindShieldIcons
-  result: HudModuleShowMindShieldIcons
-
-- type: latheRecipe
-  parent: BaseModularHudModuleT2Recipe
-  id: HudModuleShowCriminalRecordIcons
-  result: HudModuleShowCriminalRecordIcons
-
-- type: latheRecipe
-  parent: BaseModularHudModuleT2Recipe
   id: HudModuleShowMedicalIcons
   result: HudModuleShowMedicalIcons
 
 - type: latheRecipe
   parent: BaseModularHudModuleT2Recipe
-  id: HudModuleShowHungerIcons
-  result: HudModuleShowHungerIcons
-
-- type: latheRecipe
-  parent: BaseModularHudModuleT2Recipe
-  id: HudModuleShowThirstIcons
-  result: HudModuleShowThirstIcons
+  id: HudModuleSolutionScanner
+  result: HudModuleSolutionScanner

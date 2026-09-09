@@ -9,7 +9,8 @@
 - type: roleType
   id: Neutral
   name: role-type-crew-aligned-name
-  color: '#eeeeee'
+  # color: '#eeeeee' # Moffstation
+  color: LightBlue # Moffstation
   symbol: "🗡" # Should never be antag, but just in case.
 
 - type: roleType

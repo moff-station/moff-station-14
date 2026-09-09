@@ -52,5 +52,9 @@ comp-pda-ui-unknown = Unknown
 
 comp-pda-ui-unassigned = Unassigned
 
+# Moffstation - Begin - PDA Ads
+comp-pda-ui-advertisement-text = This shift brought to you by:
+# Moffstation - End - PDA Ads
+
 pda-notification-message = [font size=12][bold]PDA[/bold] { $header }: [/font]
     "{ $message }"

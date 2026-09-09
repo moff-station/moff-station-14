@@ -12,7 +12,10 @@
     state: icon
     noRot: false
   - type: ImmovableRod
-    pryTiles: true
+    damage:
+      types:
+        Blunt: 190
+    pryTiles: true # Moff
   - type: GravityAffected
   - type: Physics
     bodyType: Dynamic
@@ -35,10 +38,7 @@
         - Opaque
   - type: WarpPoint
     follow: true
-    location: immovable rod
-    blacklist:
-      tags:
-      - GhostOnlyWarp
+    location: location-immovable-rod
 
 - type: entity
   parent: ImmovableRod
@@ -77,9 +77,6 @@
     destroyTiles: false
     randomizeVelocity: false
     shouldGib: false
-    damage:
-      types:
-        Blunt: 190
   - type: Physics
     bodyType: KinematicController
   - type: InputMover

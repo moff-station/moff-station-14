@@ -37,21 +37,31 @@ public sealed partial class AacTabletSystem : EntitySystem
     public IEnumerable<AacTabletPhraseTab> GetPhrases() => _phraseTabs;
 
     /// Returns all <see cref="QuickPhrasePrototype"/>s which contain <paramref name="search"/> in their localized text.
-    public IEnumerable<AacTabletPhraseGroup> SearchPhrases(string search)
+    public (QuickPhrasePrototype? shortestMatch, IEnumerable<AacTabletPhraseGroup> allMatches) SearchPhrases(
+        string search
+    )
     {
-        var matches = search.Length switch
-        {
-            // Fail fast
-            0 => [],
-            // Small search strings match way too much, so do exact matches
-            < 3 => _prototypeManager.EnumeratePrototypes<QuickPhrasePrototype>()
-                .Where(it => it.LocalizedText.Equals(search, StringComparison.OrdinalIgnoreCase)),
-            _ => _prototypeManager.EnumeratePrototypes<QuickPhrasePrototype>()
-                .Where(it => it.LocalizedText.Contains(search, StringComparison.OrdinalIgnoreCase)),
-        };
-        return matches.GroupBy(it => it.Group)
+        if (search.Length == 0)
+            return (null, []);
+
+        var matches = (
+                search.Length switch
+                {
+                    0 => throw new Exception("Unreachable"),
+                    // Small search strings match way too much, so do exact matches
+                    < 3 => _prototypeManager.EnumeratePrototypes<QuickPhrasePrototype>()
+                        .Where(it => it.LocalizedText.Equals(search, StringComparison.OrdinalIgnoreCase)),
+                    _ => _prototypeManager.EnumeratePrototypes<QuickPhrasePrototype>()
+                        .Where(it => it.LocalizedText.Contains(search, StringComparison.OrdinalIgnoreCase)),
+                }
+            ).OrderBy(it => it.LocalizedText)
+            .ToList();
+        var shortest = matches.MinBy(it => it.LocalizedText.Length);
+        var allMatches = matches.GroupBy(it => it.Group)
             .Select(it => AacTabletPhraseGroup.Create(it.Key, it))
             .OrderBy(it => it.Name);
+
+        return (shortest, allMatches);
     }
 
     private void PopulateCaches()

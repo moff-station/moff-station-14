@@ -5,23 +5,23 @@
   abstract: true
   components:
   - type: Sprite
-    sprite: _CD/Structures/Machines/Computers/tabletopcomputer.rsi
+    sprite: _Moffstation/Structures/Machines/computers.rsi # Moffstation
     drawdepth: SmallObjects
     layers:
     - map: ["computerLayerBody"]
-      sprite: _CD/Structures/Machines/Computers/tabletopcomputer.rsi
+      sprite: _Moffstation/Structures/Machines/computers.rsi # Moffstation
       state: computer_tabletop
       offset: 0.043, 0.055
     - map: ["computerLayerKeyboard"]
-      sprite: _CD/Structures/Machines/Computers/tabletopcomputer.rsi
+      sprite: _Moffstation/Structures/Machines/computers.rsi # Moffstation
       state: generic_keyboard_tabletop
       offset: 0.043, 0.055
     - map: ["computerLayerScreen"]
-      sprite: Structures/Machines/computers.rsi
+      sprite: _Moffstation/Structures/Machines/computers.rsi # Moffstation
       state: generic
       offset: 0.043, 0.055
     - map: ["computerLayerKeys"]
-      sprite: Structures/Machines/computers.rsi
+      sprite: _Moffstation/Structures/Machines/computers.rsi # Moffstation
       state: generic_keys
       offset: 0.043, 0.055
   - type: Fixtures
@@ -47,16 +47,16 @@
   - type: Sprite
     layers:
     - map: ["computerLayerBody"]
-      sprite: _CD/Structures/Machines/Computers/tabletopcomputer.rsi
+      #sprite: _CD/Structures/Machines/Computers/tabletopcomputer.rsi # Moffstation
       state: computer_tabletop
     - map: ["computerLayerKeyboard"]
-      sprite: _CD/Structures/Machines/Computers/tabletopcomputer.rsi
+      #sprite: _CD/Structures/Machines/Computers/tabletopcomputer.rsi # Moffstation
       state: generic_keyboard_tabletop
     - map: ["computerLayerScreen"]
-      sprite: Structures/Machines/computers.rsi
+      #sprite: Structures/Machines/computers.rsi # Moffstation
       state: medcomp
     - map: ["computerLayerKeys"]
-      sprite: Structures/Machines/computers.rsi
+      #sprite: Structures/Machines/computers.rsi # Moffstation
       state: med_key
 
 #Criminal Records
@@ -67,16 +67,16 @@
   - type: Sprite
     layers:
     - map: ["computerLayerBody"]
-      sprite: _CD/Structures/Machines/Computers/tabletopcomputer.rsi
+      #sprite: _CD/Structures/Machines/Computers/tabletopcomputer.rsi # Moffstation
       state: computer_tabletop
     - map: ["computerLayerKeyboard"]
-      sprite: _CD/Structures/Machines/Computers/tabletopcomputer.rsi
+      #sprite: _CD/Structures/Machines/Computers/tabletopcomputer.rsi # Moffstation
       state: generic_keyboard_tabletop
     - map: ["computerLayerScreen"]
-      sprite: Structures/Machines/computers.rsi
+      #sprite: Structures/Machines/computers.rsi # Moffstation
       state: explosive
     - map: ["computerLayerKeys"]
-      sprite: Structures/Machines/computers.rsi
+      #sprite: Structures/Machines/computers.rsi # Moffstation
       state: security_key
 
 #Station Records
@@ -87,16 +87,16 @@
   - type: Sprite
     layers:
     - map: ["computerLayerBody"]
-      sprite: _CD/Structures/Machines/Computers/tabletopcomputer.rsi
+      #sprite: _CD/Structures/Machines/Computers/tabletopcomputer.rsi # Moffstation
       state: computer_tabletop
     - map: ["computerLayerKeyboard"]
-      sprite: _CD/Structures/Machines/Computers/tabletopcomputer.rsi
+      #sprite: _CD/Structures/Machines/Computers/tabletopcomputer.rsi # Moffstation
       state: generic_keyboard_tabletop
     - map: ["computerLayerScreen"]
-      sprite: Structures/Machines/computers.rsi
+      #sprite: Structures/Machines/computers.rsi # Moffstation
       state: generic
     - map: ["computerLayerKeys"]
-      sprite: Structures/Machines/computers.rsi
+      #sprite: Structures/Machines/computers.rsi # Moffstation
       state: generic_keys
 
 #Crew Monitoring
@@ -107,16 +107,16 @@
   - type: Sprite
     layers:
     - map: ["computerLayerBody"]
-      sprite: _CD/Structures/Machines/Computers/tabletopcomputer.rsi
+      #sprite: _CD/Structures/Machines/Computers/tabletopcomputer.rsi # Moffstation
       state: computer_tabletop
     - map: ["computerLayerKeyboard"]
-      sprite: _CD/Structures/Machines/Computers/tabletopcomputer.rsi
+      #sprite: _CD/Structures/Machines/Computers/tabletopcomputer.rsi # Moffstation
       state: generic_keyboard_tabletop
     - map: ["computerLayerScreen"]
-      sprite: Structures/Machines/computers.rsi
+      #sprite: Structures/Machines/computers.rsi # Moffstation
       state: crew
     - map: ["computerLayerKeys"]
-      sprite: Structures/Machines/computers.rsi
+      #sprite: Structures/Machines/computers.rsi # Moffstation
       state: med_key
 
 #ID Computer
@@ -127,16 +127,16 @@
   - type: Sprite
     layers:
     - map: ["computerLayerBody"]
-      sprite: _CD/Structures/Machines/Computers/tabletopcomputer.rsi
+      #sprite: _CD/Structures/Machines/Computers/tabletopcomputer.rsi # Moffstation
       state: computer_tabletop
     - map: ["computerLayerKeyboard"]
-      sprite: _CD/Structures/Machines/Computers/tabletopcomputer.rsi
+      #sprite: _CD/Structures/Machines/Computers/tabletopcomputer.rsi # Moffstation
       state: generic_keyboard_tabletop
     - map: ["computerLayerScreen"]
-      sprite: Structures/Machines/computers.rsi
+      #sprite: Structures/Machines/computers.rsi # Moffstation
       state: id
     - map: ["computerLayerKeys"]
-      sprite: Structures/Machines/computers.rsi
+      #sprite: Structures/Machines/computers.rsi # Moffstation
       state: id_key
 
 #Camera Monitor
@@ -147,16 +147,16 @@
   - type: Sprite
     layers:
     - map: ["computerLayerBody"]
-      sprite: _CD/Structures/Machines/Computers/tabletopcomputer.rsi
+      #sprite: _CD/Structures/Machines/Computers/tabletopcomputer.rsi # Moffstation
       state: computer_tabletop
     - map: ["computerLayerKeyboard"]
-      sprite: _CD/Structures/Machines/Computers/tabletopcomputer.rsi
+      #sprite: _CD/Structures/Machines/Computers/tabletopcomputer.rsi # Moffstation
       state: generic_keyboard_tabletop
     - map: ["computerLayerScreen"]
-      sprite: Structures/Machines/computers.rsi
+      #sprite: Structures/Machines/computers.rsi # Moffstation
       state: cameras
     - map: ["computerLayerKeys"]
-      sprite: Structures/Machines/computers.rsi
+      #sprite: Structures/Machines/computers.rsi # Moffstation
       state: tech_key
 
 #Wireless Camera Monitor
@@ -167,16 +167,16 @@
   - type: Sprite
     layers:
     - map: ["computerLayerBody"]
-      sprite: _CD/Structures/Machines/Computers/tabletopcomputer.rsi
+      #sprite: _CD/Structures/Machines/Computers/tabletopcomputer.rsi # Moffstation
       state: computer_tabletop
     - map: ["computerLayerKeyboard"]
-      sprite: _CD/Structures/Machines/Computers/tabletopcomputer.rsi
+      #sprite: _CD/Structures/Machines/Computers/tabletopcomputer.rsi # Moffstation
       state: generic_keyboard_tabletop
     - map: ["computerLayerScreen"]
-      sprite: Structures/Machines/computers.rsi
+      #sprite: Structures/Machines/computers.rsi # Moffstation
       state: cameras
     - map: ["computerLayerKeys"]
-      sprite: Structures/Machines/computers.rsi
+      #sprite: Structures/Machines/computers.rsi # Moffstation
       state: tech_key
 
 #Communications Console
@@ -187,16 +187,16 @@
   - type: Sprite
     layers:
     - map: ["computerLayerBody"]
-      sprite: _CD/Structures/Machines/Computers/tabletopcomputer.rsi
+      #sprite: _CD/Structures/Machines/Computers/tabletopcomputer.rsi # Moffstation
       state: computer_tabletop
     - map: ["computerLayerKeyboard"]
-      sprite: _CD/Structures/Machines/Computers/tabletopcomputer.rsi
+      #sprite: _CD/Structures/Machines/Computers/tabletopcomputer.rsi # Moffstation
       state: generic_keyboard_tabletop
     - map: ["computerLayerScreen"]
-      sprite: Structures/Machines/computers.rsi
+      #sprite: Structures/Machines/computers.rsi # Moffstation
       state: comm
     - map: ["computerLayerKeys"]
-      sprite: Structures/Machines/computers.rsi
+      #sprite: Structures/Machines/computers.rsi # Moffstation
       state: generic_keys
 
 #Air Alarms Computer
@@ -207,16 +207,16 @@
   - type: Sprite
     layers:
     - map: ["computerLayerBody"]
-      sprite: _CD/Structures/Machines/Computers/tabletopcomputer.rsi
+      #sprite: _CD/Structures/Machines/Computers/tabletopcomputer.rsi # Moffstation
       state: computer_tabletop
     - map: ["computerLayerKeyboard"]
-      sprite: _CD/Structures/Machines/Computers/tabletopcomputer.rsi
+      #sprite: _CD/Structures/Machines/Computers/tabletopcomputer.rsi # Moffstation
       state: generic_keyboard_tabletop
     - map: ["computerLayerScreen"]
-      sprite: Structures/Machines/computers.rsi
-      state: alert-2
+      #sprite: Structures/Machines/computers.rsi # Moffstation
+      state: alert_2 # Moffstation
     - map: ["computerLayerKeys"]
-      sprite: Structures/Machines/computers.rsi
+      #sprite: Structures/Machines/computers.rsi # Moffstation
       state: atmos_key
 
 #Power Monitoring Console
@@ -227,16 +227,16 @@
   - type: Sprite
     layers:
     - map: ["computerLayerBody"]
-      sprite: _CD/Structures/Machines/Computers/tabletopcomputer.rsi
+      #sprite: _CD/Structures/Machines/Computers/tabletopcomputer.rsi # Moffstation
       state: computer_tabletop
     - map: ["computerLayerKeyboard"]
-      sprite: _CD/Structures/Machines/Computers/tabletopcomputer.rsi
+      #sprite: _CD/Structures/Machines/Computers/tabletopcomputer.rsi # Moffstation
       state: generic_keyboard_tabletop
     - map: ["computerLayerScreen"]
-      sprite: Structures/Machines/computers.rsi
+      #sprite: Structures/Machines/computers.rsi # Moffstation
       state: power_monitor
     - map: ["computerLayerKeys"]
-      sprite: Structures/Machines/computers.rsi
+      #sprite: Structures/Machines/computers.rsi # Moffstation
       state: power_key
 
 #R&D Console
@@ -247,16 +247,16 @@
   - type: Sprite
     layers:
     - map: ["computerLayerBody"]
-      sprite: _CD/Structures/Machines/Computers/tabletopcomputer.rsi
+      #sprite: _CD/Structures/Machines/Computers/tabletopcomputer.rsi # Moffstation
       state: computer_tabletop
     - map: ["computerLayerKeyboard"]
-      sprite: _CD/Structures/Machines/Computers/tabletopcomputer.rsi
+      #sprite: _CD/Structures/Machines/Computers/tabletopcomputer.rsi # Moffstation
       state: generic_keyboard_tabletop
     - map: ["computerLayerScreen"]
-      sprite: Structures/Machines/computers.rsi
+      #sprite: Structures/Machines/computers.rsi # Moffstation
       state: rdcomp
     - map: ["computerLayerKeys"]
-      sprite: Structures/Machines/computers.rsi
+      #sprite: Structures/Machines/computers.rsi # Moffstation
       state: rd_key
 
 #Analysis Console
@@ -267,16 +267,16 @@
   - type: Sprite
     layers:
     - map: ["computerLayerBody"]
-      sprite: _CD/Structures/Machines/Computers/tabletopcomputer.rsi
+      #sprite: _CD/Structures/Machines/Computers/tabletopcomputer.rsi # Moffstation
       state: computer_tabletop
     - map: ["computerLayerKeyboard"]
-      sprite: _CD/Structures/Machines/Computers/tabletopcomputer.rsi
+      #sprite: _CD/Structures/Machines/Computers/tabletopcomputer.rsi # Moffstation
       state: generic_keyboard_tabletop
     - map: ["computerLayerScreen"]
-      sprite: Structures/Machines/computers.rsi
+      #sprite: Structures/Machines/computers.rsi # Moffstation
       state: artifact
     - map: ["computerLayerKeys"]
-      sprite: Structures/Machines/computers.rsi
+      #sprite: Structures/Machines/computers.rsi # Moffstation
       state: tech_key
 
 #Body Scanner
@@ -285,17 +285,17 @@
   id: ComputerTabletopBodyScanner
   components:
   - type: Sprite
-    sprite: _CD/Structures/Machines/Computers/tabletopcomputer.rsi
+    #sprite: _CD/Structures/Machines/Computers/tabletopcomputer.rsi # Moffstation
     layers:
     - map: ["computerLayerBody"]
       state: computer_tabletop
     - map: ["computerLayerKeyboard"]
       state: generic_keyboard_tabletop
     - map: ["computerLayerScreen"]
-      sprite: Structures/Machines/computers.rsi
+      #sprite: Structures/Machines/computers.rsi # Moffstation
       state: generic
     - map: ["computerLayerKeys"]
-      sprite: Structures/Machines/computers.rsi
+      #sprite: Structures/Machines/computers.rsi # Moffstation
       state: generic_keys
 
 #Syndicate Communications Console
@@ -306,16 +306,16 @@
   - type: Sprite
     layers:
     - map: ["computerLayerBody"]
-      sprite: _CD/Structures/Machines/Computers/tabletopcomputer.rsi
+      #sprite: _CD/Structures/Machines/Computers/tabletopcomputer.rsi # Moffstation
       state: computer_tabletop
     - map: ["computerLayerKeyboard"]
-      sprite: _CD/Structures/Machines/Computers/tabletopcomputer.rsi
+      #sprite: _CD/Structures/Machines/Computers/tabletopcomputer.rsi # Moffstation
       state: generic_keyboard_tabletop
     - map: ["computerLayerScreen"]
-      sprite: Structures/Machines/computers.rsi
+      #sprite: Structures/Machines/computers.rsi # Moffstation
       state: comm_syndie
     - map: ["computerLayerKeys"]
-      sprite: Structures/Machines/computers.rsi
+      #sprite: Structures/Machines/computers.rsi # Moffstation
       state: syndie_key
 
 #Solar Controller
@@ -326,16 +326,16 @@
   - type: Sprite
     layers:
     - map: ["computerLayerBody"]
-      sprite: _CD/Structures/Machines/Computers/tabletopcomputer.rsi
+      #sprite: _CD/Structures/Machines/Computers/tabletopcomputer.rsi # Moffstation
       state: computer_tabletop
     - map: ["computerLayerKeyboard"]
-      sprite: _CD/Structures/Machines/Computers/tabletopcomputer.rsi
+      #sprite: _CD/Structures/Machines/Computers/tabletopcomputer.rsi # Moffstation
       state: generic_keyboard_tabletop
     - map: ["computerLayerScreen"]
-      sprite: Structures/Machines/computers.rsi
+      #sprite: Structures/Machines/computers.rsi # Moffstation
       state: solar_screen
     - map: ["computerLayerKeys"]
-      sprite: Structures/Machines/computers.rsi
+      #sprite: Structures/Machines/computers.rsi # Moffstation
       state: generic_keys
 
 #Mass Scanner
@@ -346,16 +346,16 @@
   - type: Sprite
     layers:
     - map: ["computerLayerBody"]
-      sprite: _CD/Structures/Machines/Computers/tabletopcomputer.rsi
+      #sprite: _CD/Structures/Machines/Computers/tabletopcomputer.rsi # Moffstation
       state: computer_tabletop
     - map: ["computerLayerKeyboard"]
-      sprite: _CD/Structures/Machines/Computers/tabletopcomputer.rsi
+      #sprite: _CD/Structures/Machines/Computers/tabletopcomputer.rsi # Moffstation
       state: generic_keyboard_tabletop
     - map: ["computerLayerScreen"]
-      sprite: Structures/Machines/computers.rsi
+      #sprite: Structures/Machines/computers.rsi # Moffstation
       state: solar_screen
     - map: ["computerLayerKeys"]
-      sprite: Structures/Machines/computers.rsi
+      #sprite: Structures/Machines/computers.rsi # Moffstation
       state: generic_keys
 
 #Cargo Shuttle Computer
@@ -366,16 +366,16 @@
   - type: Sprite
     layers:
     - map: ["computerLayerBody"]
-      sprite: _CD/Structures/Machines/Computers/tabletopcomputer.rsi
+      #sprite: _CD/Structures/Machines/Computers/tabletopcomputer.rsi # Moffstation
       state: computer_tabletop
     - map: ["computerLayerKeyboard"]
-      sprite: _CD/Structures/Machines/Computers/tabletopcomputer.rsi
+      #sprite: _CD/Structures/Machines/Computers/tabletopcomputer.rsi # Moffstation
       state: generic_keyboard_tabletop
     - map: ["computerLayerScreen"]
-      sprite: Structures/Machines/computers.rsi
+      #sprite: Structures/Machines/computers.rsi # Moffstation
       state: supply
     - map: ["computerLayerKeys"]
-      sprite: Structures/Machines/computers.rsi
+      #sprite: Structures/Machines/computers.rsi # Moffstation
       state: tech_key
 
 #Cargo Request Computer
@@ -386,16 +386,16 @@
   - type: Sprite
     layers:
     - map: ["computerLayerBody"]
-      sprite: _CD/Structures/Machines/Computers/tabletopcomputer.rsi
+      #sprite: _CD/Structures/Machines/Computers/tabletopcomputer.rsi # Moffstation
       state: computer_tabletop
     - map: ["computerLayerKeyboard"]
-      sprite: _CD/Structures/Machines/Computers/tabletopcomputer.rsi
+      #sprite: _CD/Structures/Machines/Computers/tabletopcomputer.rsi # Moffstation
       state: generic_keyboard_tabletop
     - map: ["computerLayerScreen"]
-      sprite: Structures/Machines/computers.rsi
+      #sprite: Structures/Machines/computers.rsi # Moffstation
       state: request
     - map: ["computerLayerKeys"]
-      sprite: Structures/Machines/computers.rsi
+      #sprite: Structures/Machines/computers.rsi # Moffstation
       state: tech_key
 
 #Cargo Bounty Computer
@@ -406,16 +406,16 @@
   - type: Sprite
     layers:
     - map: ["computerLayerBody"]
-      sprite: _CD/Structures/Machines/Computers/tabletopcomputer.rsi
+      #sprite: _CD/Structures/Machines/Computers/tabletopcomputer.rsi # Moffstation
       state: computer_tabletop
     - map: ["computerLayerKeyboard"]
-      sprite: _CD/Structures/Machines/Computers/tabletopcomputer.rsi
+      #sprite: _CD/Structures/Machines/Computers/tabletopcomputer.rsi # Moffstation
       state: generic_keyboard_tabletop
     - map: ["computerLayerScreen"]
-      sprite: Structures/Machines/computers.rsi
+      #sprite: Structures/Machines/computers.rsi # Moffstation
       state: bounty
     - map: ["computerLayerKeys"]
-      sprite: Structures/Machines/computers.rsi
+      #sprite: Structures/Machines/computers.rsi # Moffstation
       state: tech_key
 
 #Cloning Console
@@ -426,16 +426,16 @@
   - type: Sprite
     layers:
     - map: ["computerLayerBody"]
-      sprite: _CD/Structures/Machines/Computers/tabletopcomputer.rsi
+      #sprite: _CD/Structures/Machines/Computers/tabletopcomputer.rsi # Moffstation
       state: computer_tabletop
     - map: ["computerLayerKeyboard"]
-      sprite: _CD/Structures/Machines/Computers/tabletopcomputer.rsi
+      #sprite: _CD/Structures/Machines/Computers/tabletopcomputer.rsi # Moffstation
       state: generic_keyboard_tabletop
     - map: ["computerLayerScreen"]
-      sprite: Structures/Machines/computers.rsi
+      #sprite: Structures/Machines/computers.rsi # Moffstation
       state: dna
     - map: ["computerLayerKeys"]
-      sprite: Structures/Machines/computers.rsi
+      #sprite: Structures/Machines/computers.rsi # Moffstation
       state: generic_keys
 
 #Salvage Expedition Computer
@@ -446,16 +446,16 @@
   - type: Sprite
     layers:
     - map: ["computerLayerBody"]
-      sprite: _CD/Structures/Machines/Computers/tabletopcomputer.rsi
+      #sprite: _CD/Structures/Machines/Computers/tabletopcomputer.rsi # Moffstation
       state: computer_tabletop
     - map: ["computerLayerKeyboard"]
-      sprite: _CD/Structures/Machines/Computers/tabletopcomputer.rsi
+      #sprite: _CD/Structures/Machines/Computers/tabletopcomputer.rsi # Moffstation
       state: generic_keyboard_tabletop
     - map: ["computerLayerScreen"]
-      sprite: Structures/Machines/computers.rsi
+      #sprite: Structures/Machines/computers.rsi # Moffstation
       state: mining
     - map: ["computerLayerKeys"]
-      sprite: Structures/Machines/computers.rsi
+      #sprite: Structures/Machines/computers.rsi # Moffstation
       state: tech_key
 
 #Mass Media Console
@@ -466,16 +466,16 @@
   - type: Sprite
     layers:
     - map: ["computerLayerBody"]
-      sprite: _CD/Structures/Machines/Computers/tabletopcomputer.rsi
+      #sprite: _CD/Structures/Machines/Computers/tabletopcomputer.rsi # Moffstation
       state: computer_tabletop
     - map: ["computerLayerKeyboard"]
-      sprite: _CD/Structures/Machines/Computers/tabletopcomputer.rsi
+      #sprite: _CD/Structures/Machines/Computers/tabletopcomputer.rsi # Moffstation
       state: generic_keyboard_tabletop
     - map: ["computerLayerScreen"]
-      sprite: Structures/Machines/computers.rsi
+      #sprite: Structures/Machines/computers.rsi # Moffstation
       state: service
     - map: ["computerLayerKeys"]
-      sprite: Structures/Machines/computers.rsi
+      #sprite: Structures/Machines/computers.rsi # Moffstation
       state: service_keys
 
 #Shuttle Related Computers
@@ -485,18 +485,18 @@
   id: ComputerTabletopEmergencyShuttle
   components:
   - type: Sprite
-    sprite: _CD/Structures/Machines/Computers/tabletopcomputer.rsi
+    #sprite: _CD/Structures/Machines/Computers/tabletopcomputer.rsi # Moffstation
     layers:
     - map: ["computerLayerBody"]
-      sprite: _CD/Structures/Machines/Computers/tabletopcomputer.rsi
+      #sprite: _CD/Structures/Machines/Computers/tabletopcomputer.rsi # Moffstation
       state: computer_tabletop
     - map: ["computerLayerKeyboard"]
       state: generic_keyboard_tabletop
     - map: ["computerLayerScreen"]
-      sprite: Structures/Machines/computers.rsi
+      #sprite: Structures/Machines/computers.rsi # Moffstation
       state: generic
     - map: ["computerLayerKeys"]
-      sprite: Structures/Machines/computers.rsi
+      #sprite: Structures/Machines/computers.rsi # Moffstation
       state: generic_keys
 
 #Shuttle Computer
@@ -507,16 +507,16 @@
   - type: Sprite
     layers:
     - map: ["computerLayerBody"]
-      sprite: _CD/Structures/Machines/Computers/tabletopcomputer.rsi
+      #sprite: _CD/Structures/Machines/Computers/tabletopcomputer.rsi # Moffstation
       state: computer_tabletop
     - map: ["computerLayerKeyboard"]
-      sprite: _CD/Structures/Machines/Computers/tabletopcomputer.rsi
+      #sprite: _CD/Structures/Machines/Computers/tabletopcomputer.rsi # Moffstation
       state: generic_keyboard_tabletop
     - map: ["computerLayerScreen"]
-      sprite: Structures/Machines/computers.rsi
+      #sprite: Structures/Machines/computers.rsi # Moffstation
       state: shuttle
     - map: ["computerLayerKeys"]
-      sprite: Structures/Machines/computers.rsi
+      #sprite: Structures/Machines/computers.rsi # Moffstation
       state: generic_keys
 
 #Syndicate Shuttle Computer
@@ -527,16 +527,16 @@
   - type: Sprite
     layers:
     - map: ["computerLayerBody"]
-      sprite: _CD/Structures/Machines/Computers/tabletopcomputer.rsi
+      #sprite: _CD/Structures/Machines/Computers/tabletopcomputer.rsi # Moffstation
       state: computer_tabletop
     - map: ["computerLayerKeyboard"]
-      sprite: _CD/Structures/Machines/Computers/tabletopcomputer.rsi
+      #sprite: _CD/Structures/Machines/Computers/tabletopcomputer.rsi # Moffstation
       state: generic_keyboard_tabletop
     - map: ["computerLayerScreen"]
-      sprite: Structures/Machines/computers.rsi
+      #sprite: Structures/Machines/computers.rsi # Moffstation
       state: syndishuttle
     - map: ["computerLayerKeys"]
-      sprite: Structures/Machines/computers.rsi
+      #sprite: Structures/Machines/computers.rsi # Moffstation
       state: syndie_key
 
 #IFF Console
@@ -547,16 +547,16 @@
   - type: Sprite
     layers:
     - map: ["computerLayerBody"]
-      sprite: _CD/Structures/Machines/Computers/tabletopcomputer.rsi
+      #sprite: _CD/Structures/Machines/Computers/tabletopcomputer.rsi # Moffstation
       state: computer_tabletop
     - map: ["computerLayerKeyboard"]
-      sprite: _CD/Structures/Machines/Computers/tabletopcomputer.rsi
+      #sprite: _CD/Structures/Machines/Computers/tabletopcomputer.rsi # Moffstation
       state: generic_keyboard_tabletop
     - map: ["computerLayerScreen"]
-      sprite: Structures/Shuttles/iff.rsi
+      #sprite: Structures/Shuttles/iff.rsi # Moffstation
       state: helm
     - map: ["computerLayerKeys"]
-      sprite: Structures/Machines/computers.rsi
+      #sprite: Structures/Machines/computers.rsi # Moffstation
       state: generic_keys
 
 #Syndicate IFF Console
@@ -568,16 +568,16 @@
   - type: Sprite
     layers:
     - map: ["computerLayerBody"]
-      sprite: _CD/Structures/Machines/Computers/tabletopcomputer.rsi
+      #sprite: _CD/Structures/Machines/Computers/tabletopcomputer.rsi # Moffstation
       state: computer_tabletop
     - map: ["computerLayerKeyboard"]
-      sprite: _CD/Structures/Machines/Computers/tabletopcomputer.rsi
+      #sprite: _CD/Structures/Machines/Computers/tabletopcomputer.rsi # Moffstation
       state: generic_keyboard_tabletop
     - map: ["computerLayerScreen"]
-      sprite: Structures/Shuttles/iff.rsi
+      #sprite: Structures/Shuttles/iff.rsi # Moffstation
       state: helm
     - map: ["computerLayerKeys"]
-      sprite: Structures/Machines/computers.rsi
+      #sprite: Structures/Machines/computers.rsi # Moffstation
       state: generic_keys
 
 #Testing/Debugging
@@ -589,14 +589,14 @@
   - type: Sprite
     layers:
     - map: ["computerLayerBody"]
-      sprite: _CD/Structures/Machines/Computers/tabletopcomputer.rsi
+      #sprite: _CD/Structures/Machines/Computers/tabletopcomputer.rsi # Moffstation
       state: computer_tabletop
     - map: ["computerLayerKeyboard"]
-      sprite: _CD/Structures/Machines/Computers/tabletopcomputer.rsi
+      #sprite: _CD/Structures/Machines/Computers/tabletopcomputer.rsi # Moffstation
       state: generic_keyboard_tabletop
     - map: ["computerLayerScreen"]
-      sprite: Structures/Machines/computers.rsi
+      #sprite: Structures/Machines/computers.rsi # Moffstation
       state: sensors
     - map: ["computerLayerKeys"]
-      sprite: Structures/Machines/computers.rsi
+      #sprite: Structures/Machines/computers.rsi # Moffstation
       state: atmos_key

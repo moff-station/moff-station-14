@@ -1,14 +1,21 @@
+using System.Linq;
+using Content.Server._MACRO.StrangeMoods;
+using Content.Server._MACRO.StrangeMoods.Eui;
 using Content.Server.Administration.Logs;
 using Content.Server.Administration.Managers;
 using Content.Server.Administration.UI;
+using Content.Server.Afk;
 using Content.Server.EUI;
 using Content.Server.Ghost.Roles;
 using Content.Server.Mind;
 using Content.Server.Prayer;
 using Content.Server.Silicons.Laws;
 using Content.Server.Station.Systems;
+using Content.Shared._MACRO.StrangeMoods;
+using Content.Shared._Moffstation.Verbs; // Moff - Multi-character selection
 using Content.Shared.Administration;
 using Content.Shared.Administration.Systems;
+using Content.Shared.Chemistry.Components;
 using Content.Shared.Chemistry.Components.SolutionManager;
 using Content.Shared.Chemistry.EntitySystems;
 using Content.Shared.Configurable;
@@ -30,12 +37,9 @@ using Robust.Shared.Console;
 using Robust.Shared.Map.Components;
 using Robust.Shared.Physics.Components;
 using Robust.Shared.Player;
-using Robust.Shared.Prototypes;
 using Robust.Shared.Timing;
 using Robust.Shared.Toolshed;
 using Robust.Shared.Utility;
-using System.Linq;
-using Content.Shared.Chemistry.Components;
 using static Content.Shared.Configurable.ConfigurationComponent;
 
 namespace Content.Server.Administration.Systems
@@ -47,10 +51,10 @@ namespace Content.Server.Administration.Systems
     {
         [Dependency] private IConGroupController _groupController = default!;
         [Dependency] private IConsoleHost _console = default!;
+        [Dependency] private IAdminLogManager _adminLogs = default!;
         [Dependency] private IAdminManager _adminManager = default!;
         [Dependency] private IGameTiming _gameTiming = default!;
         [Dependency] private SharedMapSystem _map = default!;
-        [Dependency] private IPrototypeManager _prototypeManager = default!;
         [Dependency] private AdminSystem _adminSystem = default!;
         [Dependency] private DisposalTubeSystem _disposalTubes = default!;
         [Dependency] private EuiManager _euiManager = default!;
@@ -67,6 +71,9 @@ namespace Content.Server.Administration.Systems
         [Dependency] private AdminFrozenSystem _freeze = default!;
         [Dependency] private IPlayerManager _playerManager = default!;
         [Dependency] private SiliconLawSystem _siliconLawSystem = default!;
+        [Dependency] private AfkConfirmSystem _afkConfirm = default!;
+
+        [Dependency] private StrangeMoodsSystem _moods = default!; // MACRO
 
         private readonly Dictionary<ICommonSession, List<EditSolutionsEui>> _openSolutionUis = new();
 
@@ -134,9 +141,13 @@ namespace Content.Server.Administration.Systems
                     args.Verbs.Add(prayerVerb);
 
                     // Spawn - Like respawn but on the spot.
+                    // Moff Start - Multi-character selection: a player has several characters and no
+                    // "selected" one, so this becomes one entry per character in its own category.
+                    /*
                     args.Verbs.Add(new Verb()
                     {
                         Text = Loc.GetString("admin-player-actions-spawn"),
+                        Message = Loc.GetString("admin-player-actions-spawn-message"),
                         Category = VerbCategory.Admin,
                         Act = () =>
                         {
@@ -158,11 +169,15 @@ namespace Content.Server.Administration.Systems
                         ConfirmationPopup = true,
                         Impact = LogImpact.High,
                     });
+                    */
+                    AddMoffSpawnAsVerbs(args, targetActor.PlayerSession);
+                    // Moff end
 
                     // Clone - Spawn but without the mind transfer, also spawns at the user's coordinates not the target's
                     args.Verbs.Add(new Verb()
                     {
                         Text = Loc.GetString("admin-player-actions-clone"),
+                        Message = Loc.GetString("admin-player-actions-clone-message"),
                         Category = VerbCategory.Admin,
                         Act = () =>
                         {
@@ -174,7 +189,10 @@ namespace Content.Server.Administration.Systems
 
                             var stationUid = _stations.GetOwningStation(args.Target);
 
-                            var profile = _gameTicker.GetPlayerProfile(targetActor.PlayerSession);
+                            // Moff - Multi-character selection: clone the character they actually
+                            // spawned as, not whichever one is selected in the lobby.
+                            var profile = _moffCharacterPicker.GetSpawnedProfile(targetActor.PlayerSession.UserId)
+                                          ?? _gameTicker.GetPlayerProfile(targetActor.PlayerSession);
                             _spawning.SpawnPlayerMob(coords.Value, null, profile, stationUid);
                         },
                         ConfirmationPopup = true,
@@ -187,6 +205,14 @@ namespace Content.Server.Administration.Systems
                         Text = Loc.GetString("admin-player-actions-player-panel"),
                         Category = VerbCategory.Admin,
                         Act = () => _console.ExecuteCommand(player, $"playerpanel \"{targetActor.PlayerSession.UserId}\""),
+                        Impact = LogImpact.Low
+                    });
+
+                    args.Verbs.Add(new Verb
+                    {
+                        Text = Loc.GetString("admin-player-actions-check-afk"),
+                        Category = VerbCategory.Admin,
+                        Act = () => _afkConfirm.TryStartConfirmation(targetActor.PlayerSession, requireAttached: true),
                         Impact = LogImpact.Low
                     });
                 }
@@ -213,7 +239,13 @@ namespace Content.Server.Administration.Systems
                     args.Verbs.Add(new Verb
                     {
                         Text = Loc.GetString("admin-player-actions-respawn"),
-                        Category = VerbCategory.Admin,
+                        Message = Loc.GetString("admin-player-actions-respawn-message"),
+                        // Moff Start - Multi-character selection: sits alongside the per-character
+                        // spawn entries, below them.
+                        // Category = VerbCategory.Admin,
+                        Category = MoffVerbCategory.Spawn,
+                        Priority = -1,
+                        // Moff end
                         Act = () =>
                         {
                             _console.ExecuteCommand(player, $"respawn \"{mindComp.UserId}\"");
@@ -229,6 +261,22 @@ namespace Content.Server.Administration.Systems
                         Icon = new SpriteSpecifier.Texture(new("/Textures/Interface/VerbIcons/sentient.svg.192dpi.png")),
                         Category = VerbCategory.Debug,
                         Act = () => _console.RemoteExecuteCommand(player, $"vv {GetNetEntity(mindId)}"),
+                    });
+                }
+
+                // Player Admin Logs. this is distinct from entity logs above as it will get the logs of the _player_
+                // that last owned the mind of the entity you are right-clicking on. words.
+                if (_mindSystem.TryGetLastMindOwner(args.Target, out var lastOwner))
+                {
+                    args.Verbs.Add(new Verb()
+                    {
+                        Priority = -3,
+                        Text = Loc.GetString("admin-verbs-admin-logs-player"),
+                        Category = VerbCategory.Admin,
+                        Act = () =>
+                        {
+                            _adminLogs.OpenEui(player, targetPlayer: lastOwner);
+                        },
                     });
                 }
 
@@ -409,6 +457,27 @@ namespace Content.Server.Administration.Systems
                     },
                     Impact = LogImpact.Low
                 });
+
+                // Begin MACRO Additions
+                if (TryComp<StrangeMoodsComponent>(args.Target, out var moods))
+                {
+                    args.Verbs.Add(new Verb()
+                    {
+                        Text = Loc.GetString("strange-moods-ui-verb"),
+                        Category = VerbCategory.Admin,
+                        Act = () =>
+                        {
+                            var ui = new StrangeMoodsEui(_moods, EntityManager, _random, _adminManager);
+                            if (!_playerManager.TryGetSessionByEntity(args.User, out var session))
+                                return;
+
+                            _euiManager.OpenEui(ui, session);
+                            ui.UpdateMoods((args.Target, moods));
+                        },
+                        Icon = new SpriteSpecifier.Rsi(new ResPath("/Textures/Interface/Actions/actions_borg.rsi"), "state-laws"),
+                    });
+                }
+                // End MACRO Additions
             }
         }
 

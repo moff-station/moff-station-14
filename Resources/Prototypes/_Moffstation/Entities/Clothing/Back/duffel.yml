@@ -1,0 +1,34 @@
+- type: entity
+  parent: ClothingBackpackDuffel
+  id: MoffClothingBackpackDuffelPrisoner
+  name: prisoner duffel bag
+  description: A large duffel bag fabricated for prisoner use.
+  components:
+  - type: Sprite
+    sprite: &duffel-prisoner-rsi _Moffstation/Clothing/Back/Duffels/prisoner.rsi
+    layers:
+    - state: icon
+    - state: icon-unshaded
+      shader: unshaded
+    - state: icon-unshaded
+      shader: shaded
+  - type: Clothing
+    sprite: *duffel-prisoner-rsi
+    clothingVisuals:
+      back:
+      - state: equipped-BACKPACK
+      - state: equipped-BACKPACK-unshaded
+        shader: unshaded
+      - state: equipped-BACKPACK-unshaded
+        shader: shaded
+  - type: Item
+    sprite: *duffel-prisoner-rsi
+    inhandVisuals:
+      left:
+      - state: inhand-left
+      - state: inhand-left-unshaded
+        shader: unshaded
+      right:
+      - state: inhand-right
+      - state: inhand-right-unshaded
+        shader: unshaded

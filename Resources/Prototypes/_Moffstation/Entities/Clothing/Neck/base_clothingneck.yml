@@ -65,7 +65,7 @@
 # Base, Chameleonable
 - type: entity
   abstract: true
-  parent: ClothingNeckClothBase
+  parent: [ ClothingNeckClothBase, TemperatureProtectionMinimal ] # Moff - Fix neck slot parenting
   id: ClothingNeckClothChameleonableBase
   components:
   - type: Tag

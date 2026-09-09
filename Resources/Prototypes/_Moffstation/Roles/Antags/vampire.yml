@@ -1,9 +1,0 @@
-﻿- type: antag
-  id: Vampire
-  name: roles-antag-vampire-name
-  antagonist: true
-#  setPreference: true # Currently commented out while Vampire is still WIP
-  objective: roles-antag-vampire-objective
-  requirements:
-  - !type:OverallPlaytimeRequirement
-    time: 5h

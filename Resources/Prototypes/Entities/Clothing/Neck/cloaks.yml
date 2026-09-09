@@ -169,8 +169,10 @@
   components:
   - type: Sprite
     sprite: _Moffstation/Clothing/Neck/piratecap.rsi # Moffstation - Command Outfit Resprite
-  - type: AddAccentClothing #Moffstation - Add pirate accent
-    accent: PirateAccent #Moffstation - Add pirate accent
+  # Moff start - Add pirate accent
+  - type: PirateAccent
+    relayAccent: true
+  # Moff end
 
 - type: entity
   parent: ClothingNeckClothChameleonableBase # Moffstation - Fix neck slot parenting

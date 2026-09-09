@@ -54,17 +54,23 @@ namespace Content.Client.Lobby.UI
 
             _createNewCharacterButton.OnPressed += args =>
             {
-                _preferencesManager.CreateCharacter(HumanoidCharacterProfile.Random());
+                // Moff Start - Multi-character selection: go through a wrapper so any stale
+                // "inactive" flag on the slot the new character lands in gets cleared.
+                // _preferencesManager.CreateCharacter(HumanoidCharacterProfile.Random().WithJobFromCvar(_cfg));
+                CreateMoffCharacter(HumanoidCharacterProfile.Random().WithJobFromCvar(_cfg));
+                // Moff end
                 ReloadCharacterPickers();
                 args.Event.Handle();
             };
 
             CharEditor.AddChild(profileEditor);
+            InitializeMoffJobPriorities(); // Moffstation - Multi-character selection
             RulesButton.OnPressed += _ => new RulesAndInfoWindow().Open();
 
             StatsButton.OnPressed += _ => new PlaytimeStatsWindow().OpenCentered();
 
             _cfg.OnValueChanged(CCVars.SeeOwnNotes, p => AdminRemarksButton.Visible = p, true);
+            _cfg.OnValueChanged(CCVars.GameMaxCharacterSlots, _ => ReloadCharacterPickers());
         }
 
         /// <summary>
@@ -78,14 +84,18 @@ namespace Content.Client.Lobby.UI
             var numberOfFullSlots = 0;
             var characterButtonsGroup = new ButtonGroup();
 
+            JobPrioritiesButton.Group = characterButtonsGroup; // Moff - So picking a character unhighlights it
+
             if (!_preferencesManager.ServerDataLoaded)
             {
                 return;
             }
 
+            var maxCharactersSlots = _cfg.GetCVar(CCVars.GameMaxCharacterSlots);
+
             _createNewCharacterButton.ToolTip =
                 Loc.GetString("character-setup-gui-create-new-character-button-tooltip",
-                    ("maxCharacters", _preferencesManager.Settings!.MaxCharacterSlots));
+                    ("maxCharacters", maxCharactersSlots));
 
             var selectedSlot = _preferencesManager.Preferences?.SelectedCharacterIndex;
 
@@ -98,10 +108,21 @@ namespace Content.Client.Lobby.UI
                     character,
                     slot == selectedSlot);
 
+                characterPickerButton.SetupMoffEnabled(slot); // Moffstation - Multi-character selection
+
+                if (slot >= maxCharactersSlots)
+                {
+                    characterPickerButton.SetOnlyStyleClass(ContainerButton.StylePseudoClassDisabled);
+                    characterPickerButton.ToolTip =
+                        Loc.GetString("character-setup-gui-create-new-character-button-tooltip",
+                                      ("maxCharacters", maxCharactersSlots));
+                }
+
                 Characters.AddChild(characterPickerButton);
 
                 characterPickerButton.OnPressed += args =>
                 {
+                    ShowMoffJobPriorities(false); // Moff - Swap the right pane back to the character editor
                     SelectCharacter?.Invoke(slot);
                 };
 
@@ -111,7 +132,7 @@ namespace Content.Client.Lobby.UI
                 };
             }
 
-            _createNewCharacterButton.Disabled = numberOfFullSlots >= _preferencesManager.Settings.MaxCharacterSlots;
+            _createNewCharacterButton.Disabled = numberOfFullSlots >= maxCharactersSlots;
             Characters.AddChild(_createNewCharacterButton);
         }
     }

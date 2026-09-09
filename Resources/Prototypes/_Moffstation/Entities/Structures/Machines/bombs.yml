@@ -1,0 +1,39 @@
+- type: entity
+  parent: SyndicateBomb
+  id: SyndicateEmpBomb
+  name: syndicate EMP bomb
+  description: A bomb for Syndicate operatives and agents alike. Unleashes a devestating EMP blast.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Structures/Machines/emp_bomb.rsi
+    layers:
+    - state: emp-bomb
+    - state: emp-bomb-active
+      visible: false
+      map: [ "primed" ]
+    - state: emp-bomb-wires
+      visible: false
+      map: [ "enum.WiresVisualLayers.MaintenancePanel" ]
+  - type: TimerTrigger
+    delay: 180
+    delayOptions: [ 180, 240, 300, 600, 900 ]
+    initialBeepDelay: 0
+    beepSound: /Audio/Machines/timer.ogg
+  - type: PointLight #The pointlight doesn't work? Neither does normal syndie-bomb. Wish it glowed in the dark.
+    enabled: true
+    color: "#00B1FF"
+    radius: 1.1
+    softness: 1
+  - type: EmpOnTrigger
+    keysIn:
+    - timer
+    range: 60
+    energyConsumption: 1000000
+    disableDuration: 180
+  - type: DeleteOnTrigger
+    keysIn:
+    - timer
+  - type: ExplodeOnTrigger
+    keysIn: [ ]
+  - type: StaticPrice
+    price: 15000 #Ram more expensive than explosives

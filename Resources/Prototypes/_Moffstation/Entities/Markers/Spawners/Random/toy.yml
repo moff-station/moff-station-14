@@ -1,7 +1,7 @@
 - type: entity
-  name: Moffstation Minifigure Spawner
-  id: MoffstationFigureSpawner
   parent: MarkerBase
+  id: MoffstationFigureSpawner
+  name: Moffstation Minifigure Spawner
   components:
   - type: Sprite
     layers:
@@ -20,6 +20,7 @@
       - !type:GroupSelector
         weight: 20
         children:
+        - id: ToyFigurineAineLucia
         - id: ToyFigurineAlfredo
         - id: ToyFigurineAurora
         - id: ToyFigurineAudrina

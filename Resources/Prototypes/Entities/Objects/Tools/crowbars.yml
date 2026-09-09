@@ -31,14 +31,14 @@
     price: 22
   - type: Prying
   - type: Sprite
-    sprite: &crowbar.rsi "_Moffstation/Objects/Tools/crowbar.rsi" # Moffstation
+    sprite: &crowbar_rsi "_Moffstation/Objects/Tools/crowbar.rsi" # Moffstation
   - type: Clothing
-    sprite: *crowbar.rsi # Moffstation
+    sprite: *crowbar_rsi # Moffstation
     quickEquip: false
     slots:
     - Belt
   - type: Item
-    sprite: *crowbar.rsi # Moffstation
+    sprite: *crowbar_rsi # Moffstation
     size: Small
 
 # Standard (grey) Crowbar
@@ -50,7 +50,7 @@
     state: icon
   - type: Item
     storedSprite:
-      sprite: *crowbar.rsi # Moffstation
+      sprite: *crowbar_rsi # Moffstation
       state: storage
 
 # Emergency (red) Crowbar
@@ -70,7 +70,7 @@
   - type: Item
     storedSprite:
       state: red-storage
-      sprite: *crowbar.rsi # Moffstation
+      sprite: *crowbar_rsi # Moffstation
     inhandVisuals:
       left:
       - state: inhand-left
@@ -100,7 +100,7 @@
   - type: Item
     storedSprite:
       state: green-storage
-      sprite: *crowbar.rsi # Moffstation
+      sprite: *crowbar_rsi # Moffstation
     inhandVisuals:
       left:
       - state: inhand-left
@@ -130,7 +130,7 @@
   - type: Item
     storedSprite:
       state: orange-storage
-      sprite: *crowbar.rsi # Moffstation
+      sprite: *crowbar_rsi # Moffstation
     inhandVisuals:
       left:
       - state: inhand-left
@@ -160,7 +160,7 @@
   - type: Item
     storedSprite:
       state: yellow-storage
-      sprite: *crowbar.rsi # Moffstation
+      sprite: *crowbar_rsi # Moffstation
     inhandVisuals:
       left:
       - state: inhand-left

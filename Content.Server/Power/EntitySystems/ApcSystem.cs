@@ -164,7 +164,9 @@ public sealed partial class ApcSystem : EntitySystem
             apc.TripFlag = false;
 
         UpdateUIState(uid, apc);
-        _audio.PlayPvs(apc.OnReceiveMessageSound, uid, AudioParams.Default.WithVolume(-2f));
+        var audioParams = apc.OnReceiveMessageSound?.Params ?? AudioParams.Default;
+        audioParams = audioParams.AddVolume(-2f);
+        _audio.PlayPvs(apc.OnReceiveMessageSound, uid, audioParams);
 
         if (user != null)
         {

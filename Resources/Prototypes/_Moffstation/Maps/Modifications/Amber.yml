@@ -1,0 +1,19 @@
+# Laundromat
+- type: mapModification
+  id: AmberModificationsLaundry
+  applyOn:
+  - Amber
+  removals:
+  - !type:EntityPrototypeSelector
+    prototype: VendingMachineClothing
+    bounds: "15, 3, 16, 4"
+  additions:
+  - prototype: WashingMachine
+    position: 15.5, 3.5
+  - prototype: DefaultStationBeaconLaundromat
+    position: 15.5, 2.5
+  replacements:
+  - from:
+    - !type:EntityPrototypeSelector
+      prototype: SignDirectionalWash
+    newPrototype: SignLaundromat

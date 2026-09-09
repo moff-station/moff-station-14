@@ -1,0 +1,72 @@
+- type: mapModification
+  id: PrimeModificationsLaundry
+  applyOn:
+  - Prime
+  removals:
+  - !type:EntityPrototypeSelector
+    prototype: CarpetSBlue
+    bounds: "-48,-14,-43,-9"
+  - !type:EntityPrototypeSelector
+    prototype: Carpet
+    bounds: "-48,-14,-43,-9"
+  - !type:EntityPrototypeSelector
+    prototype: BedsheetSpawner
+    bounds: "-48,-14,-43,-9"
+  - !type:EntityPrototypeSelector
+    prototype: Bed
+    bounds: "-48,-14,-43,-9"
+  - !type:EntityPrototypeSelector
+    prototype: SpawnPointPassenger
+    bounds: "-48,-14,-43,-9"
+  - !type:EntityPrototypeSelector
+    prototype: ChairWood
+    bounds: "-48,-12,-43,-9"
+  - !type:EntityPrototypeSelector
+    prototype: TableWood
+    bounds: "-48,-12,-43,-9"
+  - !type:EntityPrototypeSelector
+    prototype: ClosetWallMaintenanceFilledRandom
+    bounds: "-48,-14,-43,-9"
+  - !type:EntityPrototypeSelector
+    prototype: ButtonFrameGrey
+    bounds: "-48,-14,-43,-9"
+  - !type:EntityPrototypeSelector
+    prototype: SignalButtonDirectional
+    bounds: "-48,-14,-43,-9"
+  - !type:EntityPrototypeSelector
+    prototype: SignRedFive
+    bounds: "-48,-14,-43,-9"
+  - !type:EntityPrototypeSelector
+    prototype: LootSpawnerIndustrialFluff
+    bounds: "-48,-14,-43,-9"
+  - !type:EntityPrototypeSelector
+    prototype: RandomFoodSingle
+    bounds: "-48,-14,-43,-9"
+  additions:
+    # Add the actual Laundromat
+  - prototype: WashingMachine
+    position: -46.5, -9.5
+  - prototype: WashingMachine
+    position: -45.5, -9.5
+  - prototype: WashingMachine
+    position: -44.5, -9.5
+  - prototype: SignLaundromat
+    position: -47.5, -10.5
+  - prototype: DefaultStationBeaconLaundromat
+    position: -46.5, -11.5
+    # Additional Visual Improvements
+  - prototype: FloorDrain
+    position: -44.5, -11.5
+  - prototype: Sink
+    position: -44.5, -11.5
+    rotation: 90
+  - prototype: Rack
+    position: -44.5, -12.5
+  - prototype: RandomSoap
+    position: -44.25, -12.25
+  - prototype: RandomSoap
+    position: -44.75, -12.75
+  - prototype: RandomFoodSingle
+    position: -46.5, -12.5
+  - prototype: DecalSpawnerDirtSingle
+    position: -44.5, -11.5

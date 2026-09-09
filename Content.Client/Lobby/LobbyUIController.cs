@@ -166,6 +166,8 @@ public sealed partial class LobbyUIController : UIController, IOnStateEntered<Lo
         if (PreviewPanel == null)
             return;
 
+        PreviewPanel.RefreshMoffJobGrid(); // Moff - Multi-character selection
+
         // Get selected character, load it, then set it
         var character = _preferencesManager.Preferences?.SelectedCharacter;
 

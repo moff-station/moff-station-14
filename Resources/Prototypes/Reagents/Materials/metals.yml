@@ -2,7 +2,7 @@
   id: Steel
   stackEntity: SheetSteel1
   name: materials-steel
-  icon: { sprite: Objects/Materials/Sheets/metal.rsi, state: steel }
+  icon: { sprite: _Moffstation/Objects/Materials/Sheets/metal.rsi, state: steel } # Moffstation
   price: 0.15 # $15 for 1 unit
 
 - type: material
@@ -27,7 +27,7 @@
   id: Brass
   stackEntity: SheetBrass1
   name: materials-brass
-  icon: { sprite: Objects/Materials/Sheets/metal.rsi, state: brass }
+  icon: { sprite: _Moffstation/Objects/Materials/Sheets/metal.rsi, state: brass } # Moffstation
   color: "#b18b25"
   price: 0.30 # $30 for 1 unit
 
@@ -35,6 +35,6 @@
   id: Plasteel
   stackEntity: SheetPlasteel1
   name: materials-plasteel
-  icon: { sprite: Objects/Materials/Sheets/metal.rsi, state: plasteel }
+  icon: { sprite: _Moffstation/Objects/Materials/Sheets/metal.rsi, state: plasteel } # Moffstation
   color: "#696969" #Okay, this is epic
   price: 0.5 # 1-1 mix of plasma and steel.

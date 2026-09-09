@@ -17,19 +17,54 @@
       - SurvivalBoxInsertable
 
 - type: entity
-  parent: BoxSurvivalEmpty
-  id: BoxHugEmpty
-  name: box of hugs
-  description: A special box for sensitive people.
-  suffix: Empty
+  name: red performer costume bag
+  parent: ClothingBackpackDuffel
+  id: BoxPerformerRed
+  description: Great for impersonating virtual chimera performers.
   components:
+  - type: EntityTableContainerFill
+    containers:
+      storagebase: !type:AllSelector
+        children:
+        - id: ClothingShoesBootsPerformerRed
+        - id: ClothingUniformJumpskirtPerformerRed
+        - id: ClothingHeadPerformerWigRed
+        - id: FoodBreadBaguette
+
+- type: entity
+  name: yellow performer costume bag
+  parent: ClothingBackpackDuffel
+  id: BoxPerformerYellow
+  description: Great for impersonating... the yellow one?
+  components:
+  - type: EntityTableContainerFill
+    containers:
+      storagebase: !type:AllSelector
+        children:
+        - id: ClothingShoesBootsPerformerYellow
+        - id: ClothingUniformJumpskirtPerformerYellow
+        - id: ClothingHeadPerformerWigYellow
+
+- type: entity
+  name: ice fairy costume box
+  parent: BoxCardboard
+  id: BoxIceFairy
+  description: Contains the personal belongings of a certain ice fairy. Happy Cirno Day!
+  components:
+  - type: EntityTableContainerFill
+    containers:
+      storagebase: !type:AllSelector
+        children:
+        - id: ClothingUniformJumpskirtIceFairy
+        - id: ClothingHeadIceFairyWig
+        - id: ClothingNeckIceFairyWings
   - type: Sprite
     layers:
-    - state: box_hug
-    - state: heart
+    - state: cirno
   - type: Item
-    heldPrefix: hug
-  - type: Tag
-    tags:
-    - BoxCardboard
-    - BoxHug
+    shape:
+    - 0,0,3,1
+  - type: Storage
+    maxItemSize: Normal
+    grid:
+    - 0,0,3,1

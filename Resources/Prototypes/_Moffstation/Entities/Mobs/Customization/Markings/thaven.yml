@@ -1,0 +1,17 @@
+# Arm Markings
+
+- type: marking
+  id: ThavenLArmFin
+  bodyPart: LArm
+  groupWhitelist: [ Thaven ]
+  sprites:
+  - sprite: _Moffstation/Mobs/Customization/Thaven/larm.rsi
+    state: fin
+
+- type: marking
+  id: ThavenRArmFin
+  bodyPart: RArm
+  groupWhitelist: [ Thaven ]
+  sprites:
+  - sprite: _Moffstation/Mobs/Customization/Thaven/rarm.rsi
+    state: fin

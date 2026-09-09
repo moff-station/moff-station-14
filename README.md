@@ -1,4 +1,6 @@
-<p align="center"> <img alt="Moff Station" height="400" src="https://raw.githubusercontent.com/moff-station/moff-station-14/021b361c1c512675ca61592108ec87093d1f28b0/Resources/Textures/_Moffstation/Logo/logo.png" /></p>
+<div class="header" align="center">
+<img alt="Moff Station" height="400" src="https://raw.githubusercontent.com/moff-station/moff-station-14/021b361c1c512675ca61592108ec87093d1f28b0/Resources/Textures/_Moffstation/Logo/logo.png" />
+</div>
 
 Moffstation is a fork of upstream Space Station 14 (Wizard's Den) with a focus on silly antics and custom content, all in an MRP environment.
 
@@ -7,6 +9,8 @@ This is not the official Space Station 14 repository.
 Space Station 14 is a remake of SS13 that runs on Robust Toolbox, a homegrown engine written in C#.
 
 ## Upstream Links
+
+<div class="header" align="center">
 
 [Website](https://spacestation14.com/) | [Discord](https://discord.ss14.io/) | [Forum](https://forum.spacestation14.com/) | [Mastodon](https://mastodon.gamedev.place/@spacestation14) | [Patreon](https://www.patreon.com/spacestation14) | [Steam](https://store.steampowered.com/app/1255460/Space_Station_14/) | [Standalone Download](https://spacestation14.com/about/nightlies/)
 
@@ -24,9 +28,18 @@ We are happy to accept contributions from anybody. Note that because Moffstation
 
 ## Building
 
-1. Clone this repo.
-2. Run `RUN_THIS.py` to init submodules and download the engine.
-3. Compile the solution.
+1. Clone this repo:
+```shell
+git clone https://github.com/space-wizards/space-station-14.git
+```
+2. Go to the project folder and run `RUN_THIS.py` to initialize the submodules and load the engine:
+```shell
+cd space-station-14
+python RUN_THIS.py
+```
+3. Compile the solution:
+
+Build the server using `dotnet build`.
 
 [More detailed instructions on building the project.](https://docs.spacestation14.com/en/general-development/setup.html)
 

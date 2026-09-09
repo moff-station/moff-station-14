@@ -38,13 +38,13 @@
 - type: entity
   parent: ClothingShoesBaseButcherable
   id: ClothingShoesBootsPerformer
-  name: performer's boots
+  name: blue performer's boots # Moff
   description: These boots provide great traction for when you're up on stage.
   components:
   - type: Sprite
-    sprite: Clothing/Shoes/Boots/performer.rsi
+    sprite: _Moffstation/Clothing/Shoes/performer.rsi # Moff
   - type: Clothing
-    sprite: Clothing/Shoes/Boots/performer.rsi
+    sprite: _Moffstation/Clothing/Shoes/performer.rsi # Moff
 
 - type: entity
   parent: [ClothingShoesMilitaryBase, BaseSecurityContraband]
@@ -137,12 +137,13 @@
 - type: entity
   parent: ClothingShoesBaseWinterBoots
   id: ClothingShoesBootsWinterMed
-  name: medical winter boots
+  name: covered boots # Moffstation - Start
+  description: A pair of boots covered in a layer of nitrile to allow for a sterile work environment. # Moffstation
   components:
   - type: Sprite
-    sprite: Clothing/Shoes/Boots/winterbootsmed.rsi
+    sprite: _Moffstation/Clothing/Shoes/winterbootsmed.rsi # Moffstation
   - type: Clothing
-    sprite: Clothing/Shoes/Boots/winterbootsmed.rsi
+    sprite: _Moffstation/Clothing/Shoes/winterbootsmed.rsi # Moffstation
 
 - type: entity
   parent: ClothingShoesBaseWinterBoots

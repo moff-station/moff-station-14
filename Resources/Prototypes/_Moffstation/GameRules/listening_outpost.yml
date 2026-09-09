@@ -28,7 +28,7 @@
       proto: SyndicateSpy
 
 - type: entity
-  parent: BaseSyndicateListeningOutpost
+  parent: [ BaseSyndicateListeningOutpost, BaseUnweightedAntagRule ]
   id: SyndicateListeningOutpostSpawn
   components:
   - type: StationEvent
@@ -38,10 +38,14 @@
     minimumPlayers: 25
     maxOccurrences: 1
   - type: AntagSelection
+    selectionTime: Enroll
     antags:
     - !type:FixedAntagCount
       count: 2
       proto: SyndicateSpyMidround
+  - type: ESSynchronizedVoteManager
+    votes:
+    - SyndicateSpyEnroller
 
 - type: antagSpecifier
   parent: RestrictedAntag

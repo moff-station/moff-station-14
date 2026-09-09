@@ -1,0 +1,24 @@
+﻿moff-personalitem-centronias-nomenclatura-crown-category = Set style
+moff-personalitem-centronias-nomenclatura-crown-off = Off
+moff-personalitem-centronias-nomenclatura-crown-cycling = Cycling
+moff-personalitem-centronias-nomenclatura-crown-static = Static
+moff-personalitem-centronias-nomenclatura-crown-monochrome = Monochrome
+moff-personalitem-centronias-nomenclatura-crown-rgb = RGB
+
+moff-personalitem-centronias-nomenclatura-crown-category-colors = Set color
+moff-personalitem-centronias-nomenclatura-crown-color-black = Black
+moff-personalitem-centronias-nomenclatura-crown-color-red = Red
+moff-personalitem-centronias-nomenclatura-crown-color-green = Green
+moff-personalitem-centronias-nomenclatura-crown-color-brown = Brown
+moff-personalitem-centronias-nomenclatura-crown-color-blue = Blue
+moff-personalitem-centronias-nomenclatura-crown-color-purple = Purple
+moff-personalitem-centronias-nomenclatura-crown-color-cyan = Cyan
+moff-personalitem-centronias-nomenclatura-crown-color-light-gray = Light gray
+moff-personalitem-centronias-nomenclatura-crown-color-gray = Gray
+moff-personalitem-centronias-nomenclatura-crown-color-pink = Pink
+moff-personalitem-centronias-nomenclatura-crown-color-lime = Lime
+moff-personalitem-centronias-nomenclatura-crown-color-yellow = Yellow
+moff-personalitem-centronias-nomenclatura-crown-color-light-blue = Light blue
+moff-personalitem-centronias-nomenclatura-crown-color-magenta = Magenta
+moff-personalitem-centronias-nomenclatura-crown-color-orange = Orange
+moff-personalitem-centronias-nomenclatura-crown-color-white = White

@@ -1,0 +1,146 @@
+#I tried to make a base pdaAd so that they didn't all have to have the sprite path, but it kept crashing :godo:
+
+# WHEN YOU MAKE AN AD, CREATE PROTOTYPE BELOW, AND THEN ADD THE ID AND WEIGHT HERE
+- type: weightedRandom
+  id: AdWeights
+  weights:
+    anti-union: 6 #moomoobeef - nanotrasen anti-union propoganda
+    arcade: 4 #moomoobeef - arcade nostalgia night
+    booze: 3 #moomoobeef - booze general ad
+    buy: 2.5 #drbadvice - buy
+    CARPpockets: 5 #dayvei - carp donk pockets
+    dans-halfoff: 7 #drbadvice - discount dan's half off
+    donk-pockets: 5 #moomoobeef - donk pockets general ad
+    error1: 1.5 #moomoobeef - SSL error
+    getsmore: 7 #drbadvice - getsmore chocolate
+    janitor: 7 #moomoobeef - janitor PSA
+    luxury-pens: 3 #moomoobeef - luxury pens
+    nanomed: 6 #moomoobeef - nanomed, topicals still exist
+    Nomads: 4 #moomoobeef - nomad's brand cigarettes
+    plasteel-chef: 5 #moomoobeef - plasteel chef silverware vendor
+    pride-o-mat: 6 #moomoobeef - pride-o-mat vendor
+    secad: 8 #dayvei - join security!
+    security-watches: 0.75 #moomoobeef - security watches. based on the poster
+    smite: 6 #moomoobeef - You want a smite cranberry?
+    smoke2: 5 #drbadvice - shadycigs general ad
+    smoke3: 5 #moomoobeef - smoking general ad
+
+- type: pdaAd
+  id: anti-union
+  sprite:
+    sprite: _Moffstation/Interface/PDA/advertisements.rsi
+    state: anti-union
+
+- type: pdaAd
+  id: arcade
+  sprite:
+    sprite: _Moffstation/Interface/PDA/advertisements.rsi
+    state: arcade
+
+- type: pdaAd
+  id: booze
+  sprite:
+    sprite: _Moffstation/Interface/PDA/advertisements.rsi
+    state: booze
+
+- type: pdaAd
+  id: buy
+  sprite:
+    sprite: _Moffstation/Interface/PDA/advertisements.rsi
+    state: buy
+
+- type: pdaAd
+  id: CARPpockets
+  sprite:
+    sprite: _Moffstation/Interface/PDA/advertisements.rsi
+    state: CARPpockets
+
+- type: pdaAd
+  id: dans-halfoff
+  sprite:
+    sprite: _Moffstation/Interface/PDA/advertisements.rsi
+    state: dans-halfoff
+
+- type: pdaAd
+  id: donk-pockets
+  sprite:
+    sprite: _Moffstation/Interface/PDA/advertisements.rsi
+    state: donk-pockets
+
+- type: pdaAd
+  id: error1
+  sprite:
+    sprite: _Moffstation/Interface/PDA/advertisements.rsi
+    state: error1
+
+- type: pdaAd
+  id: getsmore
+  sprite:
+    sprite: _Moffstation/Interface/PDA/advertisements.rsi
+    state: getsmore
+
+- type: pdaAd
+  id: janitor
+  sprite:
+    sprite: _Moffstation/Interface/PDA/advertisements.rsi
+    state: janitor
+
+- type: pdaAd
+  id: luxury-pens
+  sprite:
+    sprite: _Moffstation/Interface/PDA/advertisements.rsi
+    state: luxury-pens
+
+- type: pdaAd
+  id: nanomed
+  sprite:
+    sprite: _Moffstation/Interface/PDA/advertisements.rsi
+    state: nanomed
+
+- type: pdaAd
+  id: Nomads
+  sprite:
+    sprite: _Moffstation/Interface/PDA/advertisements.rsi
+    state: Nomads
+
+- type: pdaAd
+  id: plasteel-chef
+  sprite:
+    sprite: _Moffstation/Interface/PDA/advertisements.rsi
+    state: plasteel-chef
+
+- type: pdaAd
+  id: pride-o-mat
+  sprite:
+    sprite: _Moffstation/Interface/PDA/advertisements.rsi
+    state: pride-o-mat
+
+- type: pdaAd
+  id: secad
+  sprite:
+    sprite: _Moffstation/Interface/PDA/advertisements.rsi
+    state: secad
+
+- type: pdaAd
+  id: security-watches
+  sprite:
+    sprite: _Moffstation/Interface/PDA/advertisements.rsi
+    state: security-watches
+
+- type: pdaAd
+  id: smite
+  sprite:
+    sprite: _Moffstation/Interface/PDA/advertisements.rsi
+    state: smite
+
+- type: pdaAd
+  id: smoke2
+  sprite:
+    sprite: _Moffstation/Interface/PDA/advertisements.rsi
+    state: smoke2 #legend has it smoke1 exists (I don't know why the file was named smoke2 to begin with)
+
+- type: pdaAd
+  id: smoke3
+  sprite:
+    sprite: _Moffstation/Interface/PDA/advertisements.rsi
+    state: smoke3

@@ -79,11 +79,27 @@ namespace Content.IntegrationTests.Tests
             {"/Maps/_Moffstation/Shuttles/shuttle-nt-grimebreaker.yml", ["ClosetJanitorBombFilled", "ShuttleGunFriendship"]},
             {"/Maps/_Moffstation/PreCrewed/shuttle-nt-grimebreaker.yml", ["ClosetJanitorBombFilled", "ShuttleGunFriendship"]},
             {"/Maps/_Moffstation/Shuttles/shuttle-nt-businessclass.yml", ["BoxFolderCentCom"]},
-            {"/Maps/_Moffstation/Shuttles/shuttle-nt-gunboat.yml", ["ShuttleGunDuster", "ShuttleGunPerforator"]},
-            {"/Maps/_Moffstation/PreCrewed/shuttle-nt-gunboat.yml", ["ShuttleGunDuster", "ShuttleGunPerforator"]},
             {"/Maps/_Moffstation/Nonstations/d1_logic.yml", ["ShuttleGunSvalinnMachineGun"]},
             {"/Maps/_Moffstation/frezon.yml", ["HandheldCrewMonitor"]},
             {"/Maps/_Moffstation/skeld.yml", ["ShuttleGunDuster"]},
+            {"/Maps/_Moffstation/fairgrounds.yml", [
+                "PlushieGhostRevenant",
+                "RubberStampCaptain",
+                "RubberStampCE",
+                "RubberStampCentcom",
+                "RubberStampChaplain",
+                "RubberStampClown",
+                "RubberStampCMO",
+                "RubberStampDetective",
+                "RubberStampHop",
+                "RubberStampHos",
+                "RubberStampLawyer",
+                "RubberStampMime",
+                "RubberStampPsychologist",
+                "RubberStampQm",
+                "RubberStampRd",
+                "RubberStampWarden",
+            ]},
             // Moffstation - End
         };
 
@@ -359,7 +375,6 @@ namespace Content.IntegrationTests.Tests
             var pair = Pair;
             var server = pair.Server;
 
-            var mapManager = server.ResolveDependency<IMapManager>();
             var entManager = server.ResolveDependency<IEntityManager>();
             var mapLoader = entManager.System<MapLoaderSystem>();
             var mapSystem = entManager.System<SharedMapSystem>();
@@ -386,7 +401,7 @@ namespace Content.IntegrationTests.Tests
                 EntityUid? targetGrid = null;
                 var memberQuery = entManager.GetEntityQuery<StationMemberComponent>();
 
-                var grids = mapManager.GetAllGrids(mapId).ToList();
+                var grids = mapSystem.GetAllGrids(mapId).ToList();
                 var gridUids = grids.Select(o => o.Owner).ToList();
                 targetGrid = gridUids.First();
 

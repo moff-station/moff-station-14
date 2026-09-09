@@ -135,7 +135,8 @@ guide-entry-secret-recipes = Secret
 guide-entry-lawsets = Silicon Lawsets
 
 guide-entry-antagonists = Antagonists
-guide-entry-nuclear-operatives = Nuclear Operatives
+#Moff - Gorlex
+guide-entry-nuclear-operatives = Gorlex Marauders
 guide-entry-traitors = Traitors
 guide-entry-zombies = Zombies
 guide-entry-revolutionaries = Revolutionaries

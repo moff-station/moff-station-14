@@ -10,6 +10,7 @@ station-ai-icon-floppycat = Floppycat
 station-ai-icon-glitchman = Glitchman
 station-ai-icon-hades = Hades
 station-ai-icon-helios = Helios
+station-ai-icon-hephaestus = Hephaestus
 station-ai-icon-honeycomb = Honeycomb
 station-ai-icon-hourglass = Hourglass
 station-ai-icon-lonestar = Lonestar
@@ -36,10 +37,12 @@ station-ai-hologram-avali = Avali form
 station-ai-hologram-diona = Diona form
 station-ai-hologram-dwarf = Dwarf form
 station-ai-hologram-elf = Elf form
+station-ai-hologram-gray = Gray form
 station-ai-hologram-justice = Justice form
 station-ai-hologram-moth = Moth form
 station-ai-hologram-reptilian = Reptilian form
 station-ai-hologram-resomi = Resomi form
+station-ai-hologram-thaven = Thaven form
 station-ai-hologram-vox = Vox form
 station-ai-hologram-vulpkanin = Vulpkanin form
 
@@ -50,3 +53,8 @@ ai-shell-brain-empty = empty shell
 ai-shell-brain-uncontrolled = empty shell
 
 ai-shell-guideentry = AI Shells
+
+# AI warp
+ai-warp-fail-no-eye = Eye unavailable
+ai-warp-fail-out-reach = Target out of reach
+ai-warp-fail-no-coords = Target without coordinates

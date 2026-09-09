@@ -4,7 +4,7 @@ using Content.Shared._Moffstation.CCVar;
 using Content.Shared.Administration;
 using Content.Shared.Administration.Logs;
 using Content.Shared.Database;
-using Content.Shared.Ghost;
+using Content.Shared.Ghost.Components;
 using Robust.Shared.Configuration;
 using Robust.Shared.Console;
 using Robust.Shared.Timing;

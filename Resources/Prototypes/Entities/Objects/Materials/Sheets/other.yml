@@ -9,6 +9,19 @@
   - type: Item
     sprite: Objects/Materials/Sheets/other.rsi
 
+# Moffstation - Start
+- type: entity
+  abstract: true
+  parent: BaseSheet
+  id: SheetOtherBaseMoff
+  description: A sheet of material, used often on the station in various applications.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Objects/Materials/Sheets/other.rsi # Moffstation
+  - type: Item
+    sprite: _Moffstation/Objects/Materials/Sheets/other.rsi # Moffstation
+# Moffstation - End
+
 - type: entity
   parent: SheetOtherBase
   id: SheetPaper
@@ -50,7 +63,7 @@
     count: 1
 
 - type: entity
-  parent: SheetOtherBase
+  parent: SheetOtherBaseMoff # Moffstation
   id: SheetPlasma
   name: plasma
   suffix: Full
@@ -100,7 +113,7 @@
     count: 1
 
 - type: entity
-  parent: SheetOtherBase
+  parent: SheetOtherBaseMoff # Moffstation
   id: SheetPlastic
   name: plastic
   suffix: Full
@@ -158,7 +171,7 @@
     count: 1
 
 - type: entity
-  parent: [SheetOtherBase, FoodBase]
+  parent: [SheetOtherBaseMoff, FoodBase] # Moffstation
   id: SheetUranium
   name: uranium
   suffix: Full

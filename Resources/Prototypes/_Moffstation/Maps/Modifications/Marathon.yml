@@ -1,0 +1,62 @@
+- type: mapModification
+  id: MarathonModificationsLaundry
+  applyOn:
+  - Marathon
+  removals:
+  - !type:EntityPrototypeSelector
+    prototype: WardrobeBlueFilled
+    bounds: "29,39,30,40"
+  - !type:EntityPrototypeSelector
+    prototype: VendingMachineClothing
+    bounds: "18,42,22,45"
+  - !type:EntityPrototypeSelector
+    prototype: RandomVendingClothing
+    bounds: "18,42,22,45"
+  - !type:EntityPrototypeSelector
+    prototype: VendingMachinePride
+    bounds: "18,42,22,45"
+  - !type:EntityPrototypeSelector
+    prototype: Stool
+    bounds: "18,42,22,45"
+  - !type:EntityPrototypeSelector
+    prototype: IntercomCommon
+    bounds: "21, 41, 22, 42"
+  - !type:EntityPrototypeSelector
+    prototype: PottedPlantRandom
+    bounds: "27, 40, 28, 41"
+  - !type:EntityPrototypeSelector
+    prototype: VendingMachineGames
+    bounds: "23, 40, 24, 41"
+  additions:
+    # Add the actual Laundromat
+  - prototype: WashingMachine
+    position: 19.5, 44.5
+  - prototype: WashingMachine
+    position: 20.5, 44.5
+  - prototype: SignLaundromat
+    position: 21.5, 41.5
+  - prototype: DefaultStationBeaconLaundromat
+    position: 20.5, 43.5
+    # Additional Visual Improvements
+  - prototype: VendingMachineClothing
+    position: 22.5, 40.5
+  - prototype: RandomVendingClothing
+    position: 23.5, 40.5
+  - prototype: VendingMachinePride
+    position: 29.5, 39.5
+  - prototype: WardrobeBlueFilled
+    position: 30.5, 39.5
+  - prototype: FloorDrain
+    position: 19.5, 43.5
+  - prototype: Stool
+    position: 19.5, 42.5
+    rotation: 270
+  - prototype: VendingMachineCoffee
+    position: 21.5, 44.5
+  - prototype: IntercomCommon
+    position: 20.5, 32.5
+    rotation: 180
+  - prototype: VendingMachineGames
+    position: 27.5, 40.5
+  - prototype: PottedPlantRandom
+    position: 26.5, 40.5

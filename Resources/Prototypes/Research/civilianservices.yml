@@ -153,10 +153,8 @@
   - AdvMopItem
   - MegaSprayBottle
   - BorgModuleAdvancedCleaning
-  # Moffstation - Start - Expanded Janitorial
-  - BorgModuleCustodialGeneric
-  - TrashBagOfHolding
-  # Moffstation - End
+  - TrashBagHolding
+  - BorgModuleCustodialGeneric # Moff
 
 - type: technology
   id: HONKMech
@@ -242,7 +240,7 @@
   cost: 10000
   recipeUnlocks:
   - BluespaceBeaker
-  - SyringeBluespace 
+  - SyringeBluespace
   - BluespaceVial # Moffstation - Bluespace Vial
 
 - type: technology

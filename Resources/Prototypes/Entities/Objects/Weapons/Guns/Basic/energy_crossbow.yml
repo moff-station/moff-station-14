@@ -1,6 +1,6 @@
 - type: entity
   abstract: true
-  parent: BaseItem
+  parent: [ BaseItem, BasePointerCrosshair ] # MACRO add crosshair
   id: WeaponEnergyCrossbowBase
   components:
   - type: Sprite
@@ -30,7 +30,11 @@
     rechargeSound:
       path: /Audio/Weapons/Guns/MagIn/energycrossbow_reload.ogg
   - type: BasicEntityAmmoProvider
-    proto: EnergyCrossbowBolt
+    # Moff Start - Entity table integration
+    # proto: EnergyCrossbowBolt
+    ammoTable:
+      id: EnergyCrossbowBolt
+    # Moff End
     capacity: 1
     count: 1
 

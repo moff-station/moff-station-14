@@ -1,0 +1,7 @@
+﻿# Used by space pirates
+- type: entity
+  id: MoffBasePirateContraband
+  abstract: true
+  components:
+  - type: Contraband
+    severity: HighlyIllegal

@@ -19,7 +19,7 @@
     containers:
       ballistic-ammo: !type:Container
   - type: Sprite
-    sprite: Objects/Weapons/Guns/Ammunition/Magazine/Pistol/pistol_mag.rsi
+    sprite: _Moffstation/Objects/Weapons/Guns/Ammunition/Magazine/Pistol/pistol_mag.rsi # Moffstation
     layers:
     - state: base
       map: ["enum.GunVisualLayers.Base"]
@@ -52,7 +52,7 @@
     containers:
       ballistic-ammo: !type:Container
   - type: Sprite
-    sprite: Objects/Weapons/Guns/Ammunition/Magazine/Pistol/pistol_high_capacity_mag.rsi
+    sprite: _Moffstation/Objects/Weapons/Guns/Ammunition/Magazine/Pistol/pistol_high_capacity_mag.rsi # Moffstation
     layers:
     - state: base
       map: ["enum.GunVisualLayers.Base"]
@@ -199,17 +199,17 @@
     - state: mag-1
       map: ["enum.GunVisualLayers.Mag"]
     - state: stripe
-      color: "#ff6e52"
+      color: "#c23031" # Moffstation
   - type: Item
     inhandVisuals:
       left:
       - state: inhand-left-mag
       - state: inhand-left-stripe
-        color: "#ff6e52"
+        color: "#c23031" # Moffstation
       right:
       - state: inhand-right-mag
       - state: inhand-right-stripe
-        color: "#ff6e52"
+        color: "#c23031" # Moffstation
 
 - type: entity
   parent: BaseMagazinePistol
@@ -226,17 +226,17 @@
     - state: mag-1
       map: ["enum.GunVisualLayers.Mag"]
     - state: stripe
-      color: "#dbdbdb"
+      color: "#e0dee5" # Moffstation
   - type: Item
     inhandVisuals:
       left:
       - state: inhand-left-mag
       - state: inhand-left-stripe
-        color: "#dbdbdb"
+        color: "#e0dee5" # Moffstation
       right:
       - state: inhand-right-mag
       - state: inhand-right-stripe
-        color: "#dbdbdb"
+        color: "#e0dee5" # Moffstation
 
 - type: entity
   parent: BaseMagazinePistol
@@ -253,17 +253,17 @@
     - state: mag-1
       map: ["enum.GunVisualLayers.Mag"]
     - state: stripe
-      color: "#00cd42"
+      color: "#7cce9b" # Moffstation
   - type: Item
     inhandVisuals:
       left:
       - state: inhand-left-mag
       - state: inhand-left-stripe
-        color: "#00cd42"
+        color: "#7cce9b" # Moffstation
       right:
       - state: inhand-right-mag
       - state: inhand-right-stripe
-        color: "#00cd42"
+        color: "#7cce9b" # Moffstation
 
 - type: entity
   parent: BaseMagazinePistolSubMachineGun
@@ -325,17 +325,17 @@
     - state: mag-1
       map: ["enum.GunVisualLayers.Mag"]
     - state: stripe
-      color: "#dbdbdb"
+      color: "#e0dee5" # Moffstation
   - type: Item
     inhandVisuals:
       left:
       - state: inhand-left-mag
       - state: inhand-left-stripe
-        color: "#dbdbdb"
+        color: "#e0dee5" # Moffstation
       right:
       - state: inhand-right-mag
       - state: inhand-right-stripe
-        color: "#dbdbdb"
+        color: "#e0dee5" # Moffstation
 
 - type: entity
   parent: BaseMagazinePistolSubMachineGun
@@ -449,14 +449,14 @@
     - state: mag-1
       map: ["enum.GunVisualLayers.Mag"]
     - state: stripe
-      color: "#dbdbdb"
+      color: "#e0dee5" # Moffstation
   - type: Item
     inhandVisuals:
       left:
       - state: inhand-left-mag
       - state: inhand-left-stripe
-        color: "#dbdbdb"
+        color: "#e0dee5" # Moffstation
       right:
       - state: inhand-right-mag
       - state: inhand-right-stripe
-        color: "#dbdbdb"
+        color: "#e0dee5" # Moffstation

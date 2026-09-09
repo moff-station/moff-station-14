@@ -1,5 +1,6 @@
 <DefaultWindow xmlns="https://spacestation14.io"
             xmlns:tabs="clr-namespace:Content.Client.Options.UI.Tabs"
+            xmlns:ui="clr-namespace:Content.Client._Moffstation.Options.UI"
             Title="{Loc 'ui-options-title'}"
             MinSize="800 450">
     <TabContainer Name="Tabs" Access="Public">
@@ -9,5 +10,7 @@
         <tabs:AudioTab Name="AudioTab" />
         <tabs:AccessibilityTab Name="AccessibilityTab" />
         <tabs:AdminOptionsTab Name="AdminOptionsTab" />
+        <!-- Moffstation - Fork specific tab -->
+        <ui:ForkSpecificTab Name="ForkSpecificTab" />
     </TabContainer>
 </DefaultWindow>

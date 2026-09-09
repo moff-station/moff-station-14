@@ -33,6 +33,15 @@ public sealed partial class WeightedAntagManager : IWeightedAntagManager //Moffs
         _logger.Info($"Updated antag weight for {userId}: {oldWeight} -> {newWeight}");
     }
 
+    public void IncrementWeight(NetUserId userId, int amount = 1)
+    {
+        // Seed the cache from the DB first so an unseen user increments from their persisted weight, not zero.
+        var oldWeight = GetWeight(userId);
+        var newWeight = _cachedAntagWeight.AddOrUpdate(userId, oldWeight + amount, (_, current) => current + amount);
+
+        _logger.Info($"Incremented antag weight for {userId}: {oldWeight} -> {newWeight}");
+    }
+
     public async Task Save()
     {
         // Defensive copy to avoid concurrent modification during iteration

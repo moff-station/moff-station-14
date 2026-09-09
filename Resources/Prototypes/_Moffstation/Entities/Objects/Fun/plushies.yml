@@ -90,3 +90,35 @@
     size: Huge
   - type: ScaleVisuals
     scale: 0.8, 0.8
+
+- type: entity
+  parent: BasePlushie
+  id: PlushieKitten
+  name: kitten plushie
+  description: A cute stuffed toy that resembles a kitten. Meow...mrrp.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Objects/Fun/Plushies/kitten.rsi
+    state: icon
+  - type: Item
+    sprite: _Moffstation/Objects/Fun/Plushies/kitten.rsi
+    heldPrefix: kitten
+  - type: EmitSoundOnUse
+    sound:
+      collection: CatMeows
+  - type: EmitSoundOnLand
+    sound:
+      collection: CatMeows
+  - type: EmitSoundOnActivate
+    sound:
+      collection: CatMeows
+  - type: EmitSoundOnTrigger
+    sound:
+      collection: CatMeows
+  - type: EmitSoundOnCollide
+    sound:
+      collection: CatMeows
+  - type: MeleeWeapon
+    wideAnimationRotation: 180
+    soundHit:
+      collection: CatMeows
