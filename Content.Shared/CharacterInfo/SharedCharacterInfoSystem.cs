@@ -1,5 +1,6 @@
-﻿using Content.Shared._Starlight.CollectiveMind; // Starlight - Collective Minds
+using Content.Shared._Starlight.CollectiveMind; // Starlight - Collective Minds
 using Content.Shared.Objectives;
+using Content.Shared.Roles;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization;
 
@@ -20,21 +21,17 @@ public sealed class RequestCharacterInfoEvent : EntityEventArgs
 public sealed class CharacterInfoEvent : EntityEventArgs
 {
     public readonly NetEntity NetEntity;
-    public readonly string JobTitle;
+    public readonly ProtoId<JobPrototype>? Job;
     public readonly Dictionary<string, List<ObjectiveInfo>> Objectives;
     public readonly string? Briefing;
     public readonly Dictionary<ProtoId<CollectiveMindPrototype>, CollectiveMindMemberData>? CollectiveMinds; // Starlight - Collective Minds
 
-    public CharacterInfoEvent(NetEntity netEntity,
-        string jobTitle,
-        Dictionary<string, List<ObjectiveInfo>> objectives,
-        string? briefing,
-        Dictionary<ProtoId<CollectiveMindPrototype>, CollectiveMindMemberData>? collectiveMinds) // Starlight - Collective Minds
+    public CharacterInfoEvent(NetEntity netEntity, Dictionary<string, List<ObjectiveInfo>> objectives, string? briefing, ProtoId<JobPrototype>? job, Dictionary<ProtoId<CollectiveMindPrototype>, CollectiveMindMemberData>? collectiveMinds) // Starlight - Collective Minds
     {
         NetEntity = netEntity;
-        JobTitle = jobTitle;
         Objectives = objectives;
         Briefing = briefing;
+        Job = job;
         CollectiveMinds = collectiveMinds; // Starlight - Collective Minds
     }
 }

@@ -1,5 +1,7 @@
+using Content.Shared.Inventory;
 using Robust.Shared.Audio;
 using Robust.Shared.GameStates;
+using Robust.Shared.Prototypes; // Funky change
 using Robust.Shared.Serialization;
 
 namespace Content.Shared.SubFloor;
@@ -27,6 +29,45 @@ public sealed partial class TrayScannerComponent : Component
 
     [DataField]
     public SoundSpecifier SoundSwitchMode = new SoundPathSpecifier("/Audio/Machines/quickbeep.ogg");
+
+    // Funky change
+    /// <summary>
+    ///     The action prototype to give to the user when equipped.
+    /// </summary>
+    [DataField]
+    public EntProtoId? ToggleAction;
+
+    // Funky change
+    /// <summary>
+    ///     The spawned action entity linked to this scanner.
+    /// </summary>
+    [DataField, NonSerialized]
+    public EntityUid? ToggleActionEntity;
+
+    // Funky change
+    /// <summary>
+    ///     Sound played when the scanner is turned on.
+    /// </summary>
+    [DataField]
+    public SoundSpecifier? SoundOn;
+
+    // Funky change
+    /// <summary>
+    ///     Sound played when the scanner is turned off.
+    /// </summary>
+    [DataField]
+    public SoundSpecifier? SoundOff;
+
+    // Moff start - Mesons get t-ray functionality. These defaults preserve the T-ray scanner tool's behavior.
+    /// The slots in which this component functions. For example, the T-Ray scanner works even while it's in the user's
+    /// pocket while Mesons only work while in the user's eyes slot.
+    [DataField]
+    public SlotFlags RequiredSlots = SlotFlags.POCKET;
+
+    /// If true, this component functions while being held, regardless of <see cref="RequiredSlots"/>.
+    [DataField]
+    public bool FunctionsInHand = true;
+    // Moff end
 }
 
 [Serializable, NetSerializable]

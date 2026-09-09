@@ -1,0 +1,18 @@
+- type: entity
+  parent: [ OrganBase, OrganBaseChildInternal, OrganSkeletonPerson ]
+  id: MoffOrganSkeletonPersonStomach
+  name: ribcage
+  components:
+  - type: Sprite
+    sprite: Mobs/Species/Human/organs.rsi
+    layers:
+    - state: stomach
+  - type: Organ
+    category: Stomach
+  - type: Stomach
+  - type: SolutionManager
+    solutions:
+    - SolutionStomach
+  - type: Metabolizer
+    maxReagents: 0
+    stages: []

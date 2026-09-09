@@ -1,0 +1,26 @@
+<BoxContainer xmlns="https://spacestation14.io"
+              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+              xmlns:gfx="clr-namespace:Robust.Client.Graphics;assembly=Robust.Client"
+              xmlns:style="clr-namespace:Content.Client.Stylesheets"
+              Orientation="Horizontal"
+              HorizontalExpand="True"
+              VerticalExpand="True">
+
+    <ScrollContainer VerticalExpand="True" HorizontalExpand="True" SizeFlagsStretchRatio="1">
+        <BoxContainer Name="CharacterList" Orientation="Vertical" Access="Public" />
+    </ScrollContainer>
+
+    <PanelContainer MinSize="2 0">
+        <PanelContainer.PanelOverride>
+            <gfx:StyleBoxFlat BackgroundColor="{x:Static style:StyleNano.NanoGold}" ContentMarginTopOverride="2" />
+        </PanelContainer.PanelOverride>
+    </PanelContainer>
+
+    <BoxContainer Name="JobList"
+                  Orientation="Vertical"
+                  VerticalExpand="True"
+                  HorizontalExpand="True"
+                  SizeFlagsStretchRatio="1.3"
+                  Margin="5 5 0 0"
+                  Access="Public" />
+</BoxContainer>

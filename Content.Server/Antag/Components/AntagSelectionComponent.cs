@@ -99,4 +99,11 @@ public enum AntagSelectionTime : byte
     /// Antag roles are *never* selected. Instead, this definition only makes ghost roles.
     /// </summary>
     Never,
+
+    // Moff start - ghost role enrollment
+    /// <summary>
+    /// Antag is determined via enrollment in the ES voting menu
+    /// </summary>
+    Enroll,
+    // Moff end
 }

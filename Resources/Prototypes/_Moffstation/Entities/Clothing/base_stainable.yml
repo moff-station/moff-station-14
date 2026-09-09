@@ -1,0 +1,15 @@
+- type: entity
+  abstract: true
+  id: MoffStainableClothingBase
+  components:
+  - type: Appearance
+  - type: Stainable
+  - type: SolutionManager
+    solutions:
+    - SolutionStain
+  - type: ExaminableSolution
+    solution: stain
+    locVolume: moff-stain-examine-volume
+    locPhysicalQuality: moff-stain-examine-main-text
+    locRecognizableReagents: moff-stain-examine-recognizable
+    minimumVolumeToBeVisible: 0.05

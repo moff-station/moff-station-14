@@ -16,7 +16,11 @@
       path: /Audio/Weapons/Guns/Gunshots/Magic/staff_healing.ogg
     projectileSpeed: 25
   - type: BasicEntityAmmoProvider
-    proto: ProjectileHealingBolt
+    # Moff Start - Entity table integration
+    # proto: ProjectileHealingBolt
+    ammoTable:
+      id: ProjectileHealingBolt
+    # Moff End
     capacity: 10
     count: 10
   - type: PacifismAllowedGun
@@ -37,6 +41,10 @@
       path: /Audio/Weapons/Guns/Gunshots/Magic/staff_door.ogg
     projectileSpeed: 25
   - type: BasicEntityAmmoProvider
-    proto: ProjectilePolyboltDoor
+    # Moff Start - Entity table integration
+    # proto: ProjectilePolyboltDoor
+    ammoTable:
+      id: ProjectilePolyboltDoor
+    # Moff End
     capacity: 10
     count: 10

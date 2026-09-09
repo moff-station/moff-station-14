@@ -1,6 +1,6 @@
 ﻿using Content.Shared.Damage;
-using Content.Shared.Damage.Prototypes; //Moffstation - recycler damage change
-using Content.Shared.FixedPoint; //Moffstation - recycler damage change
+using Content.Shared.Damage.Prototypes;
+using Content.Shared.FixedPoint;
 using Content.Shared.Whitelist;
 using JetBrains.Annotations;
 using Robust.Shared.Audio;
@@ -142,19 +142,23 @@ public sealed partial class MaterialReclaimerComponent : Component
     [DataField, AutoNetworkedField]
     public int ItemsProcessed;
 
-    // Moffstaton - recycler damage change - begin
     /// <summary>
-    /// What damage the recycler does to people when emagged, due to a bug elsewhere the damage set here is applied twice
+    /// Damage that gets dealt when a creature is in the emagged recycler.
     /// </summary>
     [DataField]
-    public DamageSpecifier DamageOnGrind = new DamageSpecifier
+    public DamageSpecifier? DamageOnEmag = new DamageSpecifier
     {
         DamageDict = new Dictionary<ProtoId<DamageTypePrototype>, FixedPoint2>
         {
-            ["Slash"] = 500.0, //Initial value defined here to avoid mapping conflicts
+            ["Slash"] = 500.0, // Moff - emagged recycler doesn't gib, but instead cuts you up
         },
     };
-    // Moffstation - end
+
+    /// <summary>
+    /// If it should gib creatures when they enter and the machine is emagged
+    /// </summary>
+    [DataField]
+    public bool GibOnEmag = false; // Moff - emagged recycler doesn't gib, but instead cuts you up
 }
 
 [NetSerializable, Serializable]

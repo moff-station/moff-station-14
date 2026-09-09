@@ -6,9 +6,9 @@
   description: A salvaged pirate hardsuit generously donated to NanoTrasen, retrofitted for the Quartermaster.
   components:
   - type: Sprite
-    sprite: _Harmony/Clothing/OuterClothing/Hardsuits/qmsuit.rsi
+    sprite: _Moffstation/Clothing/OuterClothing/Hardsuits/qmsuit.rsi # Moffstation
   - type: Clothing
-    sprite: _Harmony/Clothing/OuterClothing/Hardsuits/qmsuit.rsi
+    sprite: _Moffstation/Clothing/OuterClothing/Hardsuits/qmsuit.rsi # Moffstation
   - type: PressureProtection
     highPressureMultiplier: 0.5
     lowPressureMultiplier: 1000
@@ -31,4 +31,4 @@
     tags:
     - WhitelistChameleon
   - type: ToggleableClothing
-    clothingPrototype: ClothingHeadHelmetHardsuitQM
+    clothingPrototype: ClothingHeadHelmetHardsuitSpatio #Moffstation

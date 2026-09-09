@@ -82,6 +82,9 @@
     channels:
     - Binary
   - type: Actions
+  - type: GuideHelp
+    guides:
+    - Replicators
   - type: ProtectedFromStepTriggers
   - type: InputMover
   - type: MobMover
@@ -187,3 +190,15 @@
   - type: MovementIgnoreGravity
   - type: SyncSprite
   - type: ComplexInteraction
+  - type: NightVision
+    action: ActionReplicatorNightVision
+    lightingColor: "#FFEBB0AA"
+
+- type: entity
+  parent: ActionToggleNightVision
+  id: ActionReplicatorNightVision
+  name: Toggle Night Vision
+  description: Turns night vision on/off.
+  components:
+  - type: Action
+    itemIconStyle: BigAction

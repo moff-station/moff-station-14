@@ -188,11 +188,12 @@ ghost-role-information-cburn-agent-description = A highly trained CentComm agent
 ghost-role-information-centcom-official-name = CentComm Official
 ghost-role-information-centcom-official-description = Perform CentComm related duties such as inspect the station, jotting down performance reviews for heads of staff, and managing the fax machine.
 
-ghost-role-information-nukeop-rules = You are a [color={role-type-team-antagonist-color}][bold]{role-type-team-antagonist-name}[/bold][/color] with all other nuclear operatives. Covert syndicate agents are not guaranteed to help you.
-
-ghost-role-information-loneop-name = Lone Operative
-ghost-role-information-loneop-description = You are a lone nuclear operative. Destroy the station!
+#Moff Start - rename nukies to gorlex
+ghost-role-information-nukeop-rules = You are a [color={role-type-team-antagonist-color}][bold]{role-type-team-antagonist-name}[/bold][/color] with all other gorlex marauders. Covert syndicate agents are not guaranteed to help you.
+ghost-role-information-loneop-name = Lone Gorlex Marauder
+ghost-role-information-loneop-description = You are a lone gorlex marauder. Destroy the station!
 ghost-role-information-loneop-rules = You are a [color={role-type-team-antagonist-color}][bold]{role-type-solo-antagonist-name}[/bold][/color]. Covert syndicate agents are not guaranteed to help you.
+#Moff end
 
 ghost-role-information-behonker-name = Behonker
 ghost-role-information-behonker-description = You are an antagonist, bring death and honks to those who do not follow the honkmother.
@@ -205,7 +206,8 @@ ghost-role-information-Death-Squad-description = One of Nanotrasen's top interna
 ghost-role-information-Death-Squad-rules = You are required to obey orders given by your superior, you are effectively their [color={role-type-familiar-color}][bold]{role-type-familiar-name}[/bold][/color].
 
 ghost-role-information-SyndiCat-name = SyndiCat
-ghost-role-information-SyndiCat-description = You're the faithful trained pet of nuclear operatives with a microbomb. Serve your master to the death!
+#Moff - rename nukies to gorlex
+ghost-role-information-SyndiCat-description = You're the faithful trained pet of gorlex marauders with a microbomb. Serve your master to the death!
 ghost-role-information-SyndiCat-rules = You are a [color={role-type-team-antagonist-color}][bold]{role-type-team-antagonist-name}[/bold][/color] with the agent who summoned you.
 
 ghost-role-information-Cak-name = Cak
@@ -233,9 +235,10 @@ ghost-role-information-syndicate-reinforcement-spy-description = Someone needs r
 ghost-role-information-syndicate-reinforcement-thief-name = Syndicate Thief
 ghost-role-information-syndicate-reinforcement-thief-description = Someone needs reinforcements. Your job is to break in and retrieve something valuable for your agent.
 
-ghost-role-information-nukeop-reinforcement-name = Nuclear Operative
-ghost-role-information-nukeop-reinforcement-description = The nuclear operatives need reinforcements. You, a reserve agent, will help them.
-ghost-role-information-nukeop-reinforcement-rules = You are a [color={role-type-team-antagonist-color}][bold]{role-type-team-antagonist-name}[/bold][/color] with the nuclear operatives who summoned you.
+#Moff Start - rename nukies to gorlex
+ghost-role-information-nukeop-reinforcement-name = Gorlex Marauder
+ghost-role-information-nukeop-reinforcement-description = The Gorlex Marauders need reinforcements. You, a reserve agent, will help them.
+ghost-role-information-nukeop-reinforcement-rules = You are a [color={role-type-team-antagonist-color}][bold]{role-type-team-antagonist-name}[/bold][/color] with the gorlex marauders who summoned you.
 
 ghost-role-information-syndicate-monkey-reinforcement-name = Syndicate Monkey Agent
 ghost-role-information-syndicate-monkey-reinforcement-description = Someone needs reinforcements. You, a trained monkey, will help them.

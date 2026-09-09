@@ -169,7 +169,6 @@ namespace Content.Client.Stylesheets
         public const string ClassLowDivider = "LowDivider";
         public const string ClassAngleRect = "AngleRect";
 
-
         public override Stylesheet Stylesheet { get; }
 
         public StyleNano(IResourceCache resCache) : base(resCache)

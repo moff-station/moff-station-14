@@ -64,6 +64,7 @@
       LegRight: OrganSkeletonPersonLegRight
       FootLeft: OrganSkeletonPersonFootLeft
       FootRight: OrganSkeletonPersonFootRight
+      Stomach: MoffOrganSkeletonPersonStomach # Moff
   - type: HumanoidProfile
     species: Skeleton
 
@@ -216,15 +217,9 @@
       group: Skeleton
   - type: GibbableOrgan
 
-# Moffstation - Start - Skeleton Drinker
 - type: entity
-  parent: [ OrganBaseTorsoSexed, OrganBaseTorso, OrganSkeletonPersonExternal, OrganBaseStomach ]
+  parent: [ OrganBaseTorsoSexed, OrganBaseTorso, OrganSkeletonPersonExternal ]
   id: OrganSkeletonPersonTorso
-  components:
-  - type: Metabolizer
-    maxReagents: 0
-    stages: []
-  # Moffstation - End
 
 - type: entity
   parent: [ OrganBaseHead, OrganSkeletonPersonExternal ]

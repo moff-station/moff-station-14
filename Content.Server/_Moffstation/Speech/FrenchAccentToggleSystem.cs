@@ -1,6 +1,6 @@
-using Content.Server.Speech.Components;
 using Content.Shared._Moffstation.Speech;
 using Content.Shared.Alert;
+using Content.Shared.Speech.Components;
 
 namespace Content.Server._Moffstation.Speech;
 

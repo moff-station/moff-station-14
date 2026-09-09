@@ -25,10 +25,16 @@
   description: Toggle magnetic adhesion to the ground on or off.
   components:
   - type: Action
-    icon: { sprite: Clothing/Shoes/Boots/magboots.rsi, state: icon }
-    iconOn: { sprite: Clothing/Shoes/Boots/magboots.rsi, state: icon-on }
     itemIconStyle: BigAction
     useDelay: 0.5
+  - type: Sprite
+    sprite: Clothing/Shoes/Boots/magboots.rsi
+    layers:
+    - state: icon
+      map: ["enum.ActionVisuals.Icon"]
+    - state: icon-on
+      map: ["enum.ActionVisuals.IconToggled"]
+      visible: false
   - type: InstantAction
     event: !type:ToggleMagbootsActionEvent
 

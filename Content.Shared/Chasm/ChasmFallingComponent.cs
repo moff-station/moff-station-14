@@ -36,7 +36,7 @@ public sealed partial class ChasmFallingComponent : Component
     /// Original scale of the object so it can be restored if the component is removed in the middle of the animation
     /// </summary>
     [AutoNetworkedField]
-    public Vector2 OriginalScale = Vector2.Zero;
+    public Vector2 OriginalScale = Vector2.One; // Moff - default original scale to the identity scale because a zero scale is NOT a good default.
 
     /// <summary>
     /// Scale that the animation should bring entities to.

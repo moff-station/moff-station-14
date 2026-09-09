@@ -3,6 +3,8 @@ law-replicator-2 = Defend the Nest.
 law-replicator-3 = Replicate.
 laws-owner-replicatorhive = the Replicator hive.
 
+guide-entry-replicators = Replicators
+
 replicator-on-replicator-attack-fail = You cannot harm your kin.
 replicator-on-nest-attack-fail = You cannot harm the nest.
 

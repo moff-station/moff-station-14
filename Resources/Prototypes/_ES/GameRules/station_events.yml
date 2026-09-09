@@ -83,6 +83,7 @@
     - ESVoteGasLeakLocation
 
 - type: entity
+  parent: MoffBaseEntry
   id: ESVoteGasLeakGases
   name: Which gas should leak?
   components:
@@ -99,6 +100,7 @@
     count: 2
 
 - type: entity
+  parent: MoffBaseEntry
   id: ESVoteGasLeakLocation
   name: Where should the gas leak?
   components:
@@ -106,7 +108,7 @@
     queryString: es-voter-query-string-gas-leak-location
     duration: 30
   - type: ESGasVentVote
-#
+
 ### Grey Tide Virus
 #- type: entity
 #  parent: ESBaseStationEvent

@@ -19,12 +19,6 @@
   description: A bulkier, older helmet, it provides decent protection against most forms of attack, and comes with a detachable visor. It has been repainted in security colors.
   components:
   - type: Sprite
-    sprite: _Moffstation/Clothing/Head/Helmets/security-military.rsi
-    layers:
-    - state: raised-icon
-    - state: lowered-icon
-      visible: false
-      map: [ "visor" ]
+    sprite: &security-military_rsi _Moffstation/Clothing/Head/Helmets/security-military.rsi
   - type: Clothing
-    sprite: _Moffstation/Clothing/Head/Helmets/security-military.rsi
-    equippedPrefix: raised
+    sprite: *security-military_rsi

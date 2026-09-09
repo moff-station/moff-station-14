@@ -6,10 +6,6 @@
   components:
   - type: VendingMachine
     pack: SwimvendInventory
-    offState: off
-    brokenState: broken
-    normalState: normal-unshaded
-    denyState: deny-unshaded
     initialStockQuality: 0.80
   - type: DatasetVocalizer
     dataset: ClothesMateAds

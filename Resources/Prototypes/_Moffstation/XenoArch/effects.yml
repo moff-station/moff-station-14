@@ -1,7 +1,7 @@
 ﻿- type: entity
   id: XenoArtifactFlashbang
   parent: BaseXenoArtifactEffect
-  description: Visual distortions
+  description: Emits disorienting flash
   components:
   - type: XAEApplyComponents
     applyIfAlreadyHave: true
@@ -11,3 +11,5 @@
       deleteSpawnerAfterSpawn: false
       prototypes:
       - AdminInstantEffectFlashSound
+  - type: XAELocalizedDescription
+    description: artifact-effect-hint-visual

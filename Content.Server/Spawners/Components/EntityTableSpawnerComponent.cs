@@ -27,6 +27,12 @@ public sealed partial class EntityTableSpawnerComponent : Component
     [DataField]
     public bool DeleteSpawnerAfterSpawn = true;
 
+    /// <summary>
+    /// Marker, if produced entities should be spawned stacked if they could be.
+    /// </summary>
+    [DataField]
+    public bool AutoStack = false;
+
     // Moffstation - Random spawner angles
     /// <summary>
     /// Randomizes the rotation of spawns

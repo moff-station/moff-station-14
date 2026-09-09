@@ -93,3 +93,19 @@
             max: 3
       - !type:DoActsBehavior
         acts: [ "Destruction" ]
+
+# Gungame variant of the metal foam grenade for the atmos loadout - faster delay but much smaller foam area
+- type: entity
+  parent: [ MetalFoamGrenade ]
+  id: MoffMetalFoamGrenadeGungame
+  suffix: GunGame
+  description: A variant of the metal foam grenade specialized for use in combat. A message is scratched into the side. 'For Atmosia!'
+  components:
+  - type: TimerTrigger
+    delay: 1.5
+  - type: SmokeOnTrigger
+    keysIn:
+    - timer
+    duration: 1.5
+    spreadAmount: 3
+    smokePrototype: AluminiumMetalFoam # Broken in one hit from basically anything. If you want stronger you could change to IronMetalFoam.

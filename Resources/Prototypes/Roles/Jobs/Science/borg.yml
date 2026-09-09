@@ -13,7 +13,10 @@
   - !type:RoleTimeRequirement
     role: JobBorg
     time: 5h
-  weight: 10
+  # Moff start - no job weights
+#  weight: 10
+  displayWeight: 10
+  # Moff end
   icon: JobIconStationAi
   supervisors: job-supervisors-rd
   jobEntity: StationAiBrain

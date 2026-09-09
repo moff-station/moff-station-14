@@ -187,7 +187,7 @@ public abstract partial class GameRuleSystem<T> where T: IComponent
                 // Moffstation - Start - Add Largestgrid and safeatmos options
                 || _station.GetLargestGrid(station.Owner) != targetGrid && largestGrid
                 || Transform(targetGrid).MapUid is not { } map
-                || !_atmosphere.IsTileMixtureProbablySafe(targetGrid, map, tile) && safeAtmos)
+                || !_atmosphere.IsTileMixtureProbablySafe(targetGrid, map, tileRef.GridIndices) && safeAtmos)
                 // Moffstation - End
             {
                 continue;

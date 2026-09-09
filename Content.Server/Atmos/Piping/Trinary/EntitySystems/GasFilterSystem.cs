@@ -143,6 +143,9 @@ public sealed partial class GasFilterSystem : SharedGasFilterSystem
     private bool TryTransfer(GasMixture source, HashSet<Gas> gasses, GasMixture target)
     {
         var limitMoles = SharedAtmosphereSystem.MolesToMaxPressure(source, target, Atmospherics.MaxOutputPressure);
+        if (limitMoles < 0f)
+            return false;
+
         var availableMoles = gasses.Aggregate(0f, (x, gas) => x + source.GetMoles(gas));
 
         var transferredMoles = Math.Clamp(availableMoles, 0f, limitMoles);

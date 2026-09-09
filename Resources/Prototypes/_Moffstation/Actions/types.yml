@@ -6,9 +6,10 @@
   components:
   - type: Action
     useDelay: 600
-    icon:
-      sprite: Mobs/Aliens/slimes.rsi
-      state: green_adult_slime
+  - type: Sprite
+    sprite: Mobs/Aliens/slimes.rsi
+    layers:
+    - state: green_adult_slime
   - type: InstantAction
     event: !type:ReformEvent {}
 
@@ -23,9 +24,10 @@
     itemIconStyle: BigAction
     useDelay: 30 # prevent spam
     priority: 20
-    icon:
-      sprite: Mobs/Aliens/slimes.rsi
-      state: blue_adult_slime
+  - type: Sprite
+    sprite: Mobs/Aliens/slimes.rsi
+    layers:
+    - state: blue_adult_slime
   - type: InstantAction
     event: !type:MorphGeras
 
@@ -37,10 +39,11 @@
   components:
   - type: Action
     checkCanInteract: false
-    icon:
-      sprite: _Moffstation/Interface/Actions/actions_mothroach.rsi
-      state: shockwave
     itemIconStyle: BigAction
     useDelay: 15.0
+  - type: Sprite
+    sprite: _Moffstation/Interface/Actions/actions_mothroach.rsi
+    layers:
+    - state: shockwave
   - type: InstantAction
     event: !type:AbilitySonicBoomEvent

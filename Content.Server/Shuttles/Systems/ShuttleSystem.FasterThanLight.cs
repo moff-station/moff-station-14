@@ -39,12 +39,12 @@ public sealed partial class ShuttleSystem
 
     private readonly SoundSpecifier _startupSound = new SoundPathSpecifier("/Audio/_Moffstation/Effects/Shuttle/hyperspace_begin.ogg") // Moffstation - Custom FTL noises
     {
-        Params = AudioParams.Default.WithVolume(-2f), // Moffstation
+        Params = AudioParams.Default.AddVolume(-2f), // Moffstation
     };
 
     private readonly SoundSpecifier _arrivalSound = new SoundPathSpecifier("/Audio/_Moffstation/Effects/Shuttle/hyperspace_end.ogg") // Moffstation - custom FTL noises
     {
-        Params = AudioParams.Default.WithVolume(-2f), // Moffstation
+        Params = AudioParams.Default.AddVolume(-2f), // Moffstation
     };
 
     public float DefaultStartupTime;
@@ -224,7 +224,7 @@ public sealed partial class ShuttleSystem
         {
 
             // Too large to FTL
-            if (FTLMassLimit > 0 &&  shuttlePhysics.Mass > FTLMassLimit)
+            if (FTLMassLimit > 0 && shuttlePhysics.Mass > FTLMassLimit)
             {
                 reason = Loc.GetString("shuttle-console-mass");
                 return false;
@@ -721,7 +721,7 @@ public sealed partial class ShuttleSystem
     {
         config = null;
 
-        if (!TryComp(shuttleUid, out TransformComponent?  shuttleXform) ||
+        if (!TryComp(shuttleUid, out TransformComponent? shuttleXform) ||
             !TryComp(targetUid, out TransformComponent? targetXform) ||
             targetXform.MapUid == null ||
             !targetXform.MapUid.Value.IsValid())

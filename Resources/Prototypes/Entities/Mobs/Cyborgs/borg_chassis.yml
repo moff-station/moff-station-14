@@ -234,6 +234,7 @@
     sprite: _Moffstation/Mobs/Silicon/Chassis/engineer_derelict.rsi # Moffstation - Early merge of Borg RSI fix
     layers:
     - state: borg # Moffstation - Early merge of Borg RSI fix
+      map: ["movement"] # Moff
     - state: borg_e_r # Moffstation - Early merge of Borg RSI fix
       map: ["enum.BorgVisualLayers.Light"]
       shader: unshaded
@@ -246,6 +247,15 @@
       shader: unshaded
       map: ["light"]
       visible: false
+  # Moff Start - New Engineering Derelict Borg
+  - type: SpriteMovement
+    movementLayers:
+      movement:
+        state: borg_moving
+    noMovementLayers:
+      movement:
+        state: borg
+  # Moff End - New Engineering Derelict Borg
   - type: BorgChassis
     maxModules: 5 # One less module slot than the regular module to reflect this being a "broken" cyborg.
     moduleWhitelist:

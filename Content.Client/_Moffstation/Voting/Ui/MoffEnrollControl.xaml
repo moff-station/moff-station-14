@@ -1,0 +1,31 @@
+<controls:MoffEnrollControl
+    xmlns="https://spacestation14.io"
+    xmlns:controls="clr-namespace:Content.Client._Moffstation.Voting.Ui"
+    xmlns:controls1="clr-namespace:Content.Client.UserInterface.Controls"
+    StyleClasses="PanelLight">
+    <BoxContainer Name="EnrollmentContainer" Orientation="Vertical" VerticalExpand="True" Margin="10">
+        <BoxContainer Name="HeaderRow" Orientation="Horizontal">
+            <BoxContainer Orientation="Vertical" HorizontalExpand="True" HorizontalAlignment="Left">
+                <RichTextLabel Name="VoteNameLabel" HorizontalExpand="True" RectClipContent="True"/>
+                <RichTextLabel Name="VoteDescriptionLabel" HorizontalExpand="True" RectClipContent="True" MaxWidth="270"/>
+            </BoxContainer>
+            <BoxContainer Name="ButtonsContainer" Orientation="Vertical" HorizontalAlignment="Right" MinWidth="100">
+                <Button Name="EnrollButton" ToggleMode="True" Text="{Loc 'moff-vote-enroll-button-enroll'}"/>
+                <Button Name="CharacterSelectionButton" Text="{Loc 'moff-vote-enroll-button-character-select'}"/>
+                <Button Name="GotoButton" Text="{Loc 'moff-vote-enroll-button-goto'}"/>
+                <Control HorizontalExpand="True" Margin="0 4 0 0">
+                    <ProgressBar Name="EnrollProgress" MinValue="0" MaxValue="1" Value="0" ModulateSelfOverride="#00ff00"/>
+                    <Label Name="EnrollCount" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="4 1"/>
+                </Control>
+                <controls1:ConfirmButton Name="EarlyStartEnrollButton"
+                                        Text="{Loc 'moff-vote-enroll-button-start-now'}"
+                                        ToolTip="{Loc 'moff-vote-enroll-button-start-now-tooltip'}"
+                                        Visible="False"
+                                        Margin="0 4 0 0"
+                                        StyleClasses="negative"/>
+            </BoxContainer>
+        </BoxContainer>
+        <RichTextLabel Name="TimeLabel"/>
+        <ProgressBar Name="TimerProgress" Value="0.5" MinValue="0" MaxValue="1" ModulateSelfOverride="#00ff00" HorizontalExpand="True" SetHeight="5" Margin="0 2 0 5"/>
+    </BoxContainer>
+</controls:MoffEnrollControl>

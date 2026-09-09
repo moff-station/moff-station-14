@@ -16,7 +16,7 @@ using Content.Shared._Harmony.BloodBrothers.Components;
 using Content.Shared.Database;
 using Content.Shared.Humanoid;
 using Content.Shared.IdentityManagement;
-using Content.Shared.Mindshield.Components;
+using Content.Shared.Mindshield;
 using Content.Shared.Mobs.Systems;
 using Content.Shared.NPC.Systems;
 using Content.Shared.Popups;
@@ -35,6 +35,7 @@ public sealed partial class BloodBrotherRuleSystem : GameRuleSystem<BloodBrother
     [Dependency] private IPlayerManager _playerManager = default!;
     [Dependency] private IServerPreferencesManager _preferencesManager = default!;
     [Dependency] private AntagSelectionSystem _antagSystem = default!;
+    [Dependency] private MindShieldSystem _mindShield = default!;
     [Dependency] private MindSystem _mindSystem = default!;
     [Dependency] private MobStateSystem _mobStateSystem = default!;
     [Dependency] private NpcFactionSystem _npcFactionSystem = default!;
@@ -275,7 +276,8 @@ public sealed partial class BloodBrotherRuleSystem : GameRuleSystem<BloodBrother
             return false;
         }
 
-        if (HasComp<MindShieldComponent>(target))
+        _mindShield.GetMindshieldStatus(target, out var targetIsMindshielded, out _);
+        if (targetIsMindshielded)
         {
             errorMessage = "blood-brother-convert-failed-shielded";
             return false;

@@ -123,9 +123,6 @@
       - state: equipped-head-unshaded-reptilian
         shader: unshaded
 # Moffstation - End
-  - type: TemperatureProtection
-    heatingCoefficient: 0.1
-    coolingCoefficient: 0.1
   - type: Armor
     modifiers:
       coefficients:

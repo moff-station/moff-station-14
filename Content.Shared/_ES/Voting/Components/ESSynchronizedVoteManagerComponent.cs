@@ -1,5 +1,6 @@
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
+using Content.Shared._Moffstation.Voting.Components;
 using Robust.Shared.GameStates;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Utility;
@@ -21,7 +22,7 @@ public sealed partial class ESSynchronizedVoteManagerComponent : Component
     /// The vote prototypes that will be spawned
     /// </summary>
     [DataField]
-    public List<EntProtoId<ESVoteComponent>> Votes = new();
+    public List<EntProtoId<MoffVoteEntryComponent>> Votes = new(); // Moff - decouple entries from vote logic
 
     /// <summary>
     /// Currently active votes that are being run

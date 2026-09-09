@@ -132,6 +132,7 @@ public sealed class JobTest : GameTest
         await pair.Server.WaitPost(() => ticker.RestartRound());
     }
 
+    /* Moff start - Disable this test because we don't have weighted jobs
     /// <summary>
     /// Check high priority jobs (e.g., captain) are selected before other roles, even if it means a player does not
     /// get their preferred job.
@@ -161,6 +162,7 @@ public sealed class JobTest : GameTest
 
         await pair.Server.WaitPost(() => ticker.RestartRound());
     }
+    Moff end*/
 
     /// <summary>
     /// Check that jobs are preferentially given to players that have marked those jobs as higher priority.

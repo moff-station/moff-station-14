@@ -4,6 +4,7 @@
 
 using System.Numerics;
 using Content.Client._Moffstation.Interaction;
+using Content.Shared._Moffstation.Interaction;
 using Content.Shared._ST.Interaction;
 using Robust.Client.Animations;
 using Robust.Client.GameObjects;
@@ -20,6 +21,8 @@ public sealed partial class StellarInteractionParticleSystem : EntitySystem
     [Dependency] private SpriteSystem _sprite = default!;
     [Dependency] private AnimationPlayerSystem _animation = default!;
     [Dependency] private IGameTiming _timing = default!;
+
+    [Dependency] private EntityQuery<MoffDisallowInteractionParticlesComponent> _disallowParticlesQuery; // Moff
 
     private const string AnimateKey = "particle-animation";
 
@@ -41,6 +44,11 @@ public sealed partial class StellarInteractionParticleSystem : EntitySystem
 
         if (!Exists(performer) || !Exists(target))
             return;
+
+        // Moff start - "Blacklist" for interaction particles
+        if (_disallowParticlesQuery.HasComp(target))
+            return;
+        // Moff end
 
         // Moffstation - start - Add in cooldown
         if (TryComp<InteractionParticleTrackerComponent>(performer, out var tracker))

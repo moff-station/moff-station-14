@@ -208,6 +208,7 @@
 # Intended for nukies (or similar syndicate operatives).
 # Contains food because we don't want to force nukies to go get lunch in the middle of a mission.
 # Not enough space left to fit the water bottle (syndie gas mask is 1x2), but that's not a problem since the nukies have a whole bar on the nukie planet.
+# Moff Note - Our syndie gas mask is 1x1 instead, so operatives get to have their water bottles. Rejoice!
 - type: entity
   parent: BoxCardboard
   id: BoxSurvivalSyndicate
@@ -223,6 +224,7 @@
         - id: EmergencyMedipen
         - id: Flare
         - id: FoodSnackNutribrick
+        - id: DrinkWaterBottleFull # Moff
   - type: Sprite
     layers:
     - state: internals
@@ -243,6 +245,7 @@
         - id: EmergencyMedipen
         - id: Flare
         - id: FoodSnackNutribrick
+        - id: DrinkWaterBottleFull # Moff
   - type: Sprite
     layers:
     - state: internals

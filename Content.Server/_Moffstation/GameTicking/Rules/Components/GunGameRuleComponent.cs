@@ -47,14 +47,6 @@ public sealed partial class GunGameRuleComponent : Robust.Shared.GameObjects.Com
     public int KillsPerWeapon = 1;
 
     /// <summary>
-    /// The gear all players spawn with.
-    /// This loadout should not include a starting weapon as the starting weapon is selected from the
-    /// <see cref="RewardSpawnsQueue"/>.
-    /// </summary>
-    [DataField, ReadOnly(true)]
-    public ProtoId<StartingGearPrototype> Gear = "GunGameBaseGear";
-
-    /// <summary>
     /// The range to delete casings around a player when they either die or gain their next weapon.
     /// </summary>
     [DataField]

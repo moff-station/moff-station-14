@@ -7,6 +7,7 @@ using Content.Server.Antag.Components;
 using Content.Server.GameTicking;
 using Content.Server.Ghost.Roles;
 using Content.Server.Ghost.Roles.Components;
+using Content.Shared._ES.Voting.Components;
 using Content.Shared.Antag;
 using Content.Shared.Players;
 using Robust.Shared.GameObjects;
@@ -45,6 +46,15 @@ public sealed partial class AntagGhostRoleTest : AntagTest
         STicker.StartGameRule(ruleId, out var gameRule);
 
         Dictionary<ProtoId<AntagSpecifierPrototype>, int> rules = [];
+
+        // Moff start - Enrolls don't spawn ghost roles. instead we check if vote entities were spawned
+        if (antag!.SelectionTime == AntagSelectionTime.Enroll)
+        {
+            Assert.That(STryComp<ESSynchronizedVoteManagerComponent>(gameRule, out var voteManager), Is.True);
+            Assert.That(voteManager!.VoteEntities, Is.Not.Empty);
+            return;
+        }
+        // Moff end
 
         foreach (var selector in antag!.Antags)
         {
@@ -89,6 +99,10 @@ public sealed partial class AntagGhostRoleTest : AntagTest
         {
             var rule = SProtoMan.Index<EntityPrototype>(ruleId);
             Assert.That(rule.TryComp<AntagSelectionComponent>(out var antag, SEntMan.ComponentFactory), Is.True);
+            // Moff start - Enrolls don't spawn ghost roles. instead we check if vote entities were spawned
+            if (antag!.SelectionTime == AntagSelectionTime.Enroll)
+                continue;
+            // Moff end
             STicker.StartGameRule(ruleId);
         }
 

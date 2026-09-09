@@ -14,7 +14,9 @@
         <Label Name="DescriptionLabel"
                ClipText="True"
                HorizontalExpand="True"/>
+        <!-- Moff - Access widened so the enrollment character picker can hide delete -->
         <Button Name="DeleteButton"
+                Access="Public"
                 Text="{Loc 'character-setup-gui-character-picker-button-delete-button'}"/>
         <Button Name="ConfirmDeleteButton"
                 Text="{Loc 'character-setup-gui-character-picker-button-confirm-delete-button'}"
