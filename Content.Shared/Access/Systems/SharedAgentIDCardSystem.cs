@@ -7,7 +7,6 @@ using Content.Shared.Roles.Jobs;
 using Content.Shared.StatusIcon;
 using Content.Shared.VoiceMask;
 using Content.Shared._Moffstation.Chitter;
-using Robust.Shared.Network;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization;
 
@@ -23,7 +22,6 @@ public abstract partial class SharedAgentIdCardSystem : EntitySystem
     [Dependency] private SharedIdCardSystem _card = default!;
     [Dependency] private SharedJobSystem _job = default!;
     [Dependency] private SharedJobStatusSystem _jobStatus = default!;
-    [Dependency] private INetManager _net = default!;
 
     /// <summary>
     /// Steals access from interacted ids.
@@ -96,40 +94,18 @@ public abstract partial class SharedAgentIdCardSystem : EntitySystem
     }
 
     // Moffstation - Add number change handler
+    // Deliberately allows copying a number already claimed by another account: an Agent ID is
+    // already a full identity-spoofing tool (name/job/access), so this is how an agent gains
+    // access to a target's Chitter account, same as their other stolen credentials.
     [SubscribeLocalEvent]
     private void OnNumberChanged(Entity<AgentIDCardComponent> ent, ref AgentIDCardNumberChangedMessage args)
     {
         if (!TryComp<ChitterAccountComponent>(ent, out var comp))
             return;
 
-        // Only the server can see every Chitter account, so only it can actually check for a
-        // collision - reject numbers already claimed by another account so this can't be used to
-        // hijack someone else's. The client just predicts the number is free; if the server
-        // disagrees, the resulting state never changes and the prediction gets corrected back.
-        if (_net.IsServer && IsChitterAccountIdTaken(args.Number, ent.Owner))
-        {
-            _popup.PopupEntity(Loc.GetString("chitter-account-number-taken"), ent, args.Actor);
-            return;
-        }
-
         comp.AccountId = args.Number;
         Dirty(ent, comp);
         UpdateUi(ent);
-    }
-
-    private bool IsChitterAccountIdTaken(uint accountId, EntityUid self)
-    {
-        if (accountId == 0)
-            return false;
-
-        var query = EntityQueryEnumerator<ChitterAccountComponent>();
-        while (query.MoveNext(out var uid, out var comp))
-        {
-            if (uid != self && comp.AccountId == accountId)
-                return true;
-        }
-
-        return false;
     }
 
     /// <summary>
