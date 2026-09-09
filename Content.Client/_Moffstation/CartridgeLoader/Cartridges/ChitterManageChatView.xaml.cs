@@ -53,9 +53,7 @@ public sealed partial class ChitterManageChatView : BoxContainer
         PopulateParticipants();
     }
 
-    /// <summary>
-    /// Replaces this view's chat/contacts data with a fresh server-authoritative copy and re-renders.
-    /// </summary>
+    // Swaps in a fresh server-authoritative copy of the chat/contacts and re-renders.
     public void UpdateData(ChatDetail chat, List<AccountEntry> contacts)
     {
         _chat = chat;

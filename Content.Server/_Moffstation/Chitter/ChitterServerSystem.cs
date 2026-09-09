@@ -21,18 +21,12 @@ public sealed class ChitterServerSystem : SharedChitterSystem
         base.Initialize();
     }
 
-    /// <summary>
-    /// Finds the powered Chitter server serving this loader's grid.
-    /// </summary>
     public bool TryFindServer(EntityUid loader, out Entity<ChitterServerComponent> server)
     {
         return TryFindServer(loader, requirePowered: true, out server);
     }
 
-    /// <summary>
-    /// Finds the Chitter server serving this loader's grid, regardless of whether it currently has power.
-    /// Use this only when the caller itself handles the unpowered case (e.g. to record a failed delivery).
-    /// </summary>
+    // Ignores power so a caller can still resolve the server to e.g. record a failed delivery.
     public bool TryFindServerAnyPower(EntityUid loader, out Entity<ChitterServerComponent> server)
     {
         return TryFindServer(loader, requirePowered: false, out server);
@@ -171,9 +165,7 @@ public sealed class ChitterServerSystem : SharedChitterSystem
 
         chat.Messages.Add(message);
 
-        // Cheaply piggyback the round's Chitter conversations onto the replay stream, mirroring how
-        // RadioSystem/ChatManager record their messages, so they can be pulled out of a saved replay
-        // for report follow-up later even without a dedicated in-round admin action.
+        // Same pattern as RadioSystem/ChatManager - lets messages be pulled from a saved replay later.
         _replay.RecordServerMessage(new ChitterReplayMessageRecord { ChatId = chatId, Message = message });
 
         return true;
@@ -208,10 +200,7 @@ public sealed class ChitterServerSystem : SharedChitterSystem
         chat.Messages[^1].DeliveryFailed = true;
     }
 
-    /// <summary>
-    /// Every Chitter server that currently exists, for the admin log panel to aggregate conversations
-    /// across every station rather than just whichever one a given PDA happens to be linked to.
-    /// </summary>
+    // Used by the admin log panel to list conversations from every station, not just one server.
     public IEnumerable<ChitterServerComponent> GetAllServers()
     {
         var query = EntityQueryEnumerator<ChitterServerComponent>();

@@ -26,10 +26,7 @@ public sealed class ChitterAccountSystem : SharedChitterSystem
         SubscribeLocalEvent<ChitterAccountComponent, ComponentShutdown>(OnAccountShutdown);
     }
 
-    /// <summary>
-    /// Prunes the account from every Chitter server's contact directory when its card is destroyed,
-    /// so a deleted/gibbed card doesn't linger forever as a stale "ghost" contact.
-    /// </summary>
+    // Prunes the account so a destroyed/gibbed card doesn't linger as a ghost contact.
     private void OnAccountShutdown(Entity<ChitterAccountComponent> ent, ref ComponentShutdown args)
     {
         if (ent.Comp.AccountId == 0)

@@ -131,16 +131,13 @@ public sealed class ChitterCartridgeSystem : EntitySystem
         return true;
     }
 
-    /// <summary>
-    /// Gets the chat only if the given account is currently a participant of it. Guards every chat-mutating
-    /// handler against acting on a chat the caller isn't part of.
-    /// </summary>
+    // Only returns the chat if accountId is actually a participant, so every mutating handler can
+    // guard against acting on a chat the caller isn't part of. Archived chats don't count either -
+    // they shouldn't accept renames, new messages, or participant changes.
     private bool TryGetParticipantChat(ChitterServerComponent server, Guid chatId, uint accountId, out ChitterChat chat)
     {
         chat = default!;
 
-        // Only live chats are actionable; an archived chat should not accept renames, new
-        // messages, or participant changes.
         if (!server.Chats.TryGetValue(chatId, out var foundChat))
             return false;
 

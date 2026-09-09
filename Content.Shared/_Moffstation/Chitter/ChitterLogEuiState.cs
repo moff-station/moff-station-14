@@ -3,10 +3,6 @@ using Robust.Shared.Serialization;
 
 namespace Content.Shared._Moffstation.Chitter;
 
-/// <summary>
-/// Everything an admin's Chitter log panel needs to browse every conversation that currently
-/// exists on any Chitter server, for report follow-up.
-/// </summary>
 [Serializable, NetSerializable]
 public sealed class ChitterLogEuiState : EuiStateBase
 {

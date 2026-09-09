@@ -8,10 +8,8 @@ using Content.Shared.Eui;
 
 namespace Content.Server._Moffstation.Chitter;
 
-/// <summary>
-/// Admin-only panel listing every Chitter conversation (live and archived) across every Chitter
-/// server, for moderation/report follow-up. Opened via the "showchitterlog" command.
-/// </summary>
+// Admin-only panel listing every Chitter conversation, live and archived, across every server.
+// Opened via the "showchitterlog" command.
 public sealed partial class ChitterLogEui : BaseEui
 {
     [Dependency] private IAdminManager _adminManager = default!;

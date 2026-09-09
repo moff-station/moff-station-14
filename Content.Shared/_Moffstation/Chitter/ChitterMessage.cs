@@ -22,10 +22,7 @@ public sealed class ChitterMessage
     public bool DeliveryFailed;
 }
 
-/// <summary>
-/// Recorded into the replay stream alongside each Chitter message so conversations can be recovered
-/// from a saved replay later (e.g. for report follow-up), independent of the live admin log panel.
-/// </summary>
+// Recorded alongside each message so conversations can be pulled from a saved replay later.
 [Serializable, NetSerializable]
 public sealed class ChitterReplayMessageRecord
 {
@@ -43,9 +40,7 @@ public sealed class ChitterChat
     public TimeSpan CreatedTime;
     public bool Archived;
 
-    /// <summary>
-    /// How many of this chat's messages each participating account has seen. Keyed by AccountId
-    /// so read state follows the account rather than whichever PDA cartridge last rendered it.
-    /// </summary>
+    // How many messages each participating account has seen, keyed by AccountId so read state
+    // follows the account instead of whichever PDA cartridge last rendered it.
     public Dictionary<uint, int> LastSeenMessageCount = new();
 }
