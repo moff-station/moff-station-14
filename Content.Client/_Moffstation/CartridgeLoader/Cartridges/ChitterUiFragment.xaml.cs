@@ -16,6 +16,7 @@ public sealed partial class ChitterUiFragment : BoxContainer
 {
     private ChitterUiState _currentState = new();
     private Guid? _selectedChatId;
+    private ChitterManageChatView? _openManageChatView;
     private readonly IPrototypeManager _prototypeManager;
 
     public Action<ChitterUiMessageType, Guid?, uint?, List<uint>?, string?, string?, string?>? OnUiMessage;
@@ -73,6 +74,11 @@ public sealed partial class ChitterUiFragment : BoxContainer
 
         PopulateChatList(state);
 
+        // Keep an open manage-chat overlay in sync with the server's authoritative participant list
+        // instead of predicting the change locally (which could drift if the server ever rejects it).
+        if (_openManageChatView != null && state.CurrentChat != null && state.CurrentChat.ChatId == _selectedChatId)
+            _openManageChatView.UpdateData(state.CurrentChat, state.Contacts);
+
         if (OverlayContainer.Visible)
             return;
 
@@ -105,6 +111,7 @@ public sealed partial class ChitterUiFragment : BoxContainer
         OverlayContainer.Visible = false;
         OverlayContainer.RemoveAllChildren();
         MainContent.Visible = true;
+        _openManageChatView = null;
     }
 
     private void PopulateChatList(ChitterUiState state)
@@ -194,35 +201,14 @@ public sealed partial class ChitterUiFragment : BoxContainer
 
         var chatId = _currentState.CurrentChat.ChatId;
         var view = new ChitterManageChatView(_currentState.CurrentChat, _currentState.Contacts);
+        _openManageChatView = view;
         view.OnBack += HideOverlay;
+        // Add/remove participant just fire the request; the view is refreshed from the server's
+        // next authoritative state push (see UpdateState) rather than predicted locally here.
         view.OnAddParticipant += (id) =>
-        {
             OnUiMessage?.Invoke(ChitterUiMessageType.AddParticipant, chatId, id, null, null, null, null);
-            if (_currentState.CurrentChat != null)
-            {
-                var contact = _currentState.Contacts.FirstOrDefault(c => c.AccountId == id);
-                if (contact != null && _currentState.CurrentChat.Participants.All(p => p.AccountId != id))
-                {
-                    _currentState.CurrentChat.Participants.Add(new ParticipantEntry
-                    {
-                        AccountId = contact.AccountId,
-                        Name = contact.Name,
-                        JobTitle = contact.JobTitle,
-                        ProfilePictureId = contact.ProfilePictureId,
-                    });
-                }
-                view.RefreshState();
-            }
-        };
         view.OnRemoveParticipant += (id) =>
-        {
             OnUiMessage?.Invoke(ChitterUiMessageType.RemoveParticipant, chatId, id, null, null, null, null);
-            if (_currentState.CurrentChat != null)
-            {
-                _currentState.CurrentChat.Participants.RemoveAll(p => p.AccountId == id);
-                view.RefreshState();
-            }
-        };
         view.OnLeaveChat += () =>
         {
             OnUiMessage?.Invoke(ChitterUiMessageType.LeaveChat, chatId, null, null, null, null, null);

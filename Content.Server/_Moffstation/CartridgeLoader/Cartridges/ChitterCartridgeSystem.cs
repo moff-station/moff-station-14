@@ -1,5 +1,6 @@
 using System.Linq;
 using Content.Server._Moffstation.Chitter;
+using Content.Server.Station.Systems;
 using Content.Shared.Access.Components;
 using Content.Shared._Moffstation.CartridgeLoader.Cartridges;
 using Content.Shared._Moffstation.Chitter;
@@ -15,6 +16,7 @@ public sealed class ChitterCartridgeSystem : EntitySystem
 {
     [Dependency] private CartridgeLoaderSystem _cartridge = default!;
     [Dependency] private ChitterServerSystem _server = default!;
+    [Dependency] private StationSystem _station = default!;
     [Dependency] private IGameTiming _timing = default!;
     [Dependency] private IPrototypeManager _prototypeManager = default!;
 
@@ -104,11 +106,11 @@ public sealed class ChitterCartridgeSystem : EntitySystem
     private bool TryGetServerAndCard(
         EntityUid loader,
         out Entity<ChitterServerComponent> serverEnt,
-        out ChitterAccountComponent card,
+        out Entity<ChitterAccountComponent> card,
         bool requirePower = true)
     {
         serverEnt = default;
-        card = default!;
+        card = default;
 
         var found = requirePower
             ? _server.TryFindServer(loader, out serverEnt)
@@ -125,7 +127,7 @@ public sealed class ChitterCartridgeSystem : EntitySystem
 
         if (!TryComp<ChitterAccountComponent>(idCard, out var foundCard))
             return false;
-        card = foundCard;
+        card = (idCard, foundCard);
         return true;
     }
 
@@ -154,55 +156,39 @@ public sealed class ChitterCartridgeSystem : EntitySystem
         return TryComp<AccessComponent>(uid, out var access) && access.Tags.Contains("CentralCommand");
     }
 
-    private string GetCardName(EntityUid idCard, EntityUid loader)
+    private string GetCardName(EntityUid idCard)
     {
         return TryComp<IdCardComponent>(idCard, out var idComp) && !string.IsNullOrEmpty(idComp.FullName)
             ? idComp.FullName
             : "Unknown";
     }
 
-    private string GetCardName(EntityUid loader)
-    {
-        return _server.TryGetPdaIdCard(loader, out var idCard)
-            ? GetCardName(idCard, loader)
-            : "Unknown";
-    }
-
     private void HandleNewChat(Entity<ChitterCartridgeComponent> ent, EntityUid loader, ChitterUiMessageEvent msg)
     {
         if (!TryGetServerAndCard(loader, out var serverEnt, out var card))
-        {
-            Log.Error($"[Chitter] HandleNewChat: TryGetServerAndCard failed for loader={loader}");
             return;
-        }
 
         if (_timing.CurTime < ent.Comp.NextMessageAllowed)
             return;
 
-        Log.Info(
-            $"[Chitter] HandleNewChat: card.AccountId={card.AccountId}, TargetNumbers count={msg.TargetNumbers?.Count ?? 0}, TargetNumber={msg.TargetNumber}");
+        var ownId = card.Comp.AccountId;
 
         List<uint> participants;
         if (msg.TargetNumbers != null && msg.TargetNumbers.Count > 0)
         {
-            participants = new List<uint> { card.AccountId };
+            participants = new List<uint> { ownId };
             foreach (var target in msg.TargetNumbers)
             {
-                if (target != card.AccountId && !participants.Contains(target))
+                if (target != ownId && !participants.Contains(target))
                     participants.Add(target);
             }
-
-            Log.Info(
-                $"[Chitter] HandleNewChat: creating group chat with {participants.Count} participants: [{string.Join(",", participants)}]");
         }
-        else if (msg.TargetNumber != null && msg.TargetNumber != card.AccountId)
+        else if (msg.TargetNumber != null && msg.TargetNumber != ownId)
         {
-            participants = new List<uint> { card.AccountId, msg.TargetNumber.Value };
-            Log.Info($"[Chitter] HandleNewChat: creating 1-on-1 chat with {participants[1]}");
+            participants = new List<uint> { ownId, msg.TargetNumber.Value };
         }
         else
         {
-            Log.Warning($"[Chitter] HandleNewChat: no valid targets");
             return;
         }
 
@@ -210,7 +196,6 @@ public sealed class ChitterCartridgeSystem : EntitySystem
 
         var chatId = _server.CreateChat(serverEnt.Comp, participants, msg.ChatName);
         ent.Comp.CurrentChatId = chatId;
-        Log.Info($"[Chitter] HandleNewChat: created chat {chatId} '{msg.ChatName}', auto-selected");
     }
 
     private void HandleSendMessage(Entity<ChitterCartridgeComponent> ent, EntityUid loader, ChitterUiMessageEvent msg)
@@ -226,13 +211,13 @@ public sealed class ChitterCartridgeSystem : EntitySystem
         if (_timing.CurTime < ent.Comp.NextMessageAllowed)
             return;
 
-        if (!TryGetParticipantChat(serverEnt.Comp, msg.ChatId.Value, card.AccountId, out _))
+        if (!TryGetParticipantChat(serverEnt.Comp, msg.ChatId.Value, card.Comp.AccountId, out _))
             return;
 
         ent.Comp.NextMessageAllowed = _timing.CurTime + MessageCooldown;
 
-        var senderName = GetCardName(loader);
-        _server.AddMessage(serverEnt.Comp, msg.ChatId.Value, card.AccountId, senderName, msg.Content);
+        var senderName = GetCardName(card.Owner);
+        _server.AddMessage(serverEnt.Comp, msg.ChatId.Value, card.Comp.AccountId, senderName, msg.Content);
 
         if (!_server.IsServerPowered(serverEnt))
             _server.MarkDeliveryFailed(serverEnt.Comp, msg.ChatId.Value);
@@ -244,7 +229,7 @@ public sealed class ChitterCartridgeSystem : EntitySystem
             return;
 
         if (msg.ChatId != null)
-            _server.RemoveParticipantFromChat(serverEnt.Comp, msg.ChatId.Value, card.AccountId);
+            _server.RemoveParticipantFromChat(serverEnt.Comp, msg.ChatId.Value, card.Comp.AccountId);
     }
 
     private void HandleAddParticipant(Entity<ChitterCartridgeComponent> ent, EntityUid loader, ChitterUiMessageEvent msg)
@@ -255,7 +240,7 @@ public sealed class ChitterCartridgeSystem : EntitySystem
         if (msg.ChatId == null || msg.TargetNumber == null)
             return;
 
-        if (!TryGetParticipantChat(serverEnt.Comp, msg.ChatId.Value, card.AccountId, out _))
+        if (!TryGetParticipantChat(serverEnt.Comp, msg.ChatId.Value, card.Comp.AccountId, out _))
             return;
 
         _server.AddParticipantToChat(serverEnt.Comp, msg.ChatId.Value, msg.TargetNumber.Value);
@@ -269,7 +254,7 @@ public sealed class ChitterCartridgeSystem : EntitySystem
         if (msg.ChatId == null || msg.TargetNumber == null)
             return;
 
-        if (!TryGetParticipantChat(serverEnt.Comp, msg.ChatId.Value, card.AccountId, out _))
+        if (!TryGetParticipantChat(serverEnt.Comp, msg.ChatId.Value, card.Comp.AccountId, out _))
             return;
 
         _server.RemoveParticipantFromChat(serverEnt.Comp, msg.ChatId.Value, msg.TargetNumber.Value);
@@ -283,7 +268,7 @@ public sealed class ChitterCartridgeSystem : EntitySystem
         if (msg.ChatId == null)
             return;
 
-        if (!TryGetParticipantChat(serverEnt.Comp, msg.ChatId.Value, card.AccountId, out _))
+        if (!TryGetParticipantChat(serverEnt.Comp, msg.ChatId.Value, card.Comp.AccountId, out _))
             return;
 
         _server.ArchiveChat(serverEnt.Comp, msg.ChatId.Value);
@@ -297,7 +282,7 @@ public sealed class ChitterCartridgeSystem : EntitySystem
         if (msg.ChatId == null)
             return;
 
-        if (!TryGetParticipantChat(serverEnt.Comp, msg.ChatId.Value, card.AccountId, out _))
+        if (!TryGetParticipantChat(serverEnt.Comp, msg.ChatId.Value, card.Comp.AccountId, out _))
             return;
 
         _server.RenameChat(serverEnt.Comp, msg.ChatId.Value, msg.ChatName);
@@ -305,31 +290,24 @@ public sealed class ChitterCartridgeSystem : EntitySystem
 
     private void HandleSetProfilePicture(Entity<ChitterCartridgeComponent> ent, EntityUid loader, ChitterUiMessageEvent msg)
     {
-        if (!_server.TryFindServer(loader, out var serverEnt))
+        if (!TryGetServerAndCard(loader, out var serverEnt, out var card))
             return;
 
-        if (!_server.TryGetPdaIdCard(loader, out var idCard))
+        if (msg.ProfilePictureId == null || !_prototypeManager.HasIndex<ChitterAvatarPrototype>(msg.ProfilePictureId))
             return;
 
-        if (HasCentComAccess(idCard))
-            return;
+        card.Comp.ProfilePictureId = msg.ProfilePictureId;
+        Dirty(card);
 
-        if (!TryComp<ChitterAccountComponent>(idCard, out var card))
-            return;
-
-        if (msg.ProfilePictureId != null && _prototypeManager.HasIndex<ChitterAvatarPrototype>(msg.ProfilePictureId))
+        var ownerName = "Unknown";
+        var ownerJobTitle = "Unknown";
+        if (TryComp<IdCardComponent>(card.Owner, out var idCardComp))
         {
-            card.ProfilePictureId = msg.ProfilePictureId;
-            Dirty(idCard, card);
-            var ownerName = "Unknown";
-            var ownerJobTitle = "Unknown";
-            if (TryComp<IdCardComponent>(idCard, out var idCardComp))
-            {
-                ownerName = idCardComp.FullName ?? "Unknown";
-                ownerJobTitle = idCardComp.LocalizedJobTitle ?? "Unknown";
-            }
-            _server.RegisterOrUpdateAccount(serverEnt.Comp, card.AccountId, ownerName, ownerJobTitle, msg.ProfilePictureId);
+            ownerName = idCardComp.FullName ?? "Unknown";
+            ownerJobTitle = idCardComp.LocalizedJobTitle ?? "Unknown";
         }
+
+        _server.RegisterOrUpdateAccount(serverEnt.Comp, card.Comp.AccountId, ownerName, ownerJobTitle, msg.ProfilePictureId);
     }
 
     private void UpdateUi(Entity<ChitterCartridgeComponent> ent, EntityUid loader, bool discoverContacts = true)
@@ -365,8 +343,6 @@ public sealed class ChitterCartridgeSystem : EntitySystem
             state.OwnName = ownerName;
             state.OwnJob = ownerJobTitle;
 
-            Log.Info($"[Chitter] UpdateUi: hasIdCard=true, serverOnline={serverOnline}, ownAccountId={account.AccountId}, ownName={ownerName}, job={ownerJobTitle}");
-
             if (serverOnline)
             {
                 var serverComp = serverEnt.Comp;
@@ -375,13 +351,7 @@ public sealed class ChitterCartridgeSystem : EntitySystem
                 // The grid-wide scan below is comparatively expensive; only run it on the periodic
                 // refresh (or an explicit RefreshContacts request), not after every single message.
                 if (discoverContacts)
-                {
-                    var before = serverComp.Accounts.Count;
                     DiscoverAccountsOnGrid(loader, serverComp);
-                    var after = serverComp.Accounts.Count;
-
-                    Log.Info($"[Chitter] UpdateUi: accounts before discovery={before}, after={after}");
-                }
 
                 foreach (var (accId, acc) in serverComp.Accounts)
                 {
@@ -394,19 +364,12 @@ public sealed class ChitterCartridgeSystem : EntitySystem
                         JobTitle = acc.JobTitle,
                         ProfilePictureId = acc.ProfilePictureId,
                     });
-                    Log.Info($"[Chitter] UpdateUi: added contact accId={accId}, name={acc.Name}");
                 }
 
-                Log.Info($"[Chitter] UpdateUi: server has {serverComp.Chats.Count} chats total");
                 foreach (var (chatId, chat) in serverComp.Chats)
                 {
-                    Log.Info($"[Chitter] UpdateUi: checking chat {chatId}, participants=[{string.Join(",", chat.ParticipantAccountIds)}], user's account={account.AccountId}");
-
                     if (!chat.ParticipantAccountIds.Contains(account.AccountId))
-                    {
-                        Log.Info($"[Chitter] UpdateUi: skipping chat {chatId} (user not in participants)");
                         continue;
-                    }
 
                     var lastMsg = chat.Messages.Count > 0 ? chat.Messages[^1].Content : "";
                     var displayName = !string.IsNullOrWhiteSpace(chat.ChatName)
@@ -416,7 +379,7 @@ public sealed class ChitterCartridgeSystem : EntitySystem
                                 .Where(id => id != account.AccountId)
                                 .Select(id => serverComp.Accounts.GetValueOrDefault(id)?.Name ?? $"#{id:D4}"));
 
-                    var lastSeen = ent.Comp.LastSeenMessageCount.GetValueOrDefault(chatId);
+                    var lastSeen = chat.LastSeenMessageCount.GetValueOrDefault(account.AccountId);
                     var unreadCount = chat.Messages.Count - lastSeen;
                     if (unreadCount < 0)
                         unreadCount = 0;
@@ -429,53 +392,33 @@ public sealed class ChitterCartridgeSystem : EntitySystem
                         HasUnread = unreadCount > 0,
                         UnreadCount = unreadCount,
                     });
-                    Log.Info($"[Chitter] UpdateUi: added chat {chatId} to state (displayName='{displayName}')");
 
-                    if (chatId == GetCurrentChatId(ent))
+                    if (chatId == ent.Comp.CurrentChatId)
                     {
-                        var previousLastSeen = ent.Comp.LastSeenMessageCount.GetValueOrDefault(chatId, chat.Messages.Count);
-                        state.CurrentChat = BuildChatDetail(chat, account.AccountId, serverComp, previousLastSeen);
-                        ent.Comp.LastSeenMessageCount[chatId] = chat.Messages.Count;
+                        state.CurrentChat = BuildChatDetail(chat, account.AccountId, serverComp, lastSeen);
+                        chat.LastSeenMessageCount[account.AccountId] = chat.Messages.Count;
                     }
                 }
             }
         }
-        else
-        {
-            Log.Info($"[Chitter] UpdateUi: hasIdCard={hasIdCard}, hasAccount={hasIdCard && TryComp<ChitterAccountComponent>(idCard, out _)}");
-        }
 
-        Log.Info($"[Chitter] UpdateUi: sending state with {state.Contacts.Count} contacts, {state.Chats.Count} chats");
         _cartridge.UpdateCartridgeUiState(loader, state);
     }
 
     private void DiscoverAccountsOnGrid(EntityUid loader, ChitterServerComponent server)
     {
-        var grid = Transform(loader).GridUid;
-        Log.Info($"[Chitter] DiscoverAccountsOnGrid: loader grid = {grid}");
-
-        var found = 0;
-        var skippedZero = 0;
-        var skippedGrid = 0;
+        // Scoped to the owning station (not just the loader's own grid) so PDAs on a docked
+        // shuttle or an away-site grid that's still part of the station can still find contacts.
+        var loaderStation = _station.GetOwningStation(loader);
 
         using (var query = EntityQueryEnumerator<ChitterAccountComponent>())
         while (query.MoveNext(out var uid, out var comp))
         {
             if (comp.AccountId == 0)
-            {
-                skippedZero++;
                 continue;
-            }
 
-            if (grid != null)
-            {
-                var entGrid = Transform(uid).GridUid;
-                if (entGrid != null && entGrid != grid)
-                {
-                    skippedGrid++;
-                    continue;
-                }
-            }
+            if (loaderStation != null && _station.GetOwningStation(uid) != loaderStation)
+                continue;
 
             if (HasCentComAccess(uid))
                 continue;
@@ -484,13 +427,8 @@ public sealed class ChitterCartridgeSystem : EntitySystem
                 ? idCard.LocalizedJobTitle ?? ""
                 : "";
             var accountName = idCard?.FullName ?? "Unknown";
-            _server.RegisterOrUpdateAccount(server, comp.AccountId,
-                accountName, jobTitle, comp.ProfilePictureId);
-            found++;
-            Log.Info($"[Chitter] DiscoverAccountsOnGrid: registered accId={comp.AccountId}, name={accountName}");
+            _server.RegisterOrUpdateAccount(server, comp.AccountId, accountName, jobTitle, comp.ProfilePictureId);
         }
-
-        Log.Info($"[Chitter] DiscoverAccountsOnGrid: found={found}, skippedZeroId={skippedZero}, skippedDiffGrid={skippedGrid}");
     }
 
     private void HandleSelectChat(Entity<ChitterCartridgeComponent> ent, ChitterUiMessageEvent msg)
@@ -499,11 +437,6 @@ public sealed class ChitterCartridgeSystem : EntitySystem
             return;
 
         ent.Comp.CurrentChatId = msg.ChatId;
-    }
-
-    private Guid? GetCurrentChatId(Entity<ChitterCartridgeComponent> ent)
-    {
-        return ent.Comp.CurrentChatId;
     }
 
     private ChatDetail BuildChatDetail(ChitterChat chat, uint ownId, ChitterServerComponent server, int lastSeen = 0)

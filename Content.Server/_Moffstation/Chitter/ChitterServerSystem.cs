@@ -2,6 +2,7 @@ using Content.Server.Power.Components;
 using Content.Server._Moffstation.Power.Components;
 using Content.Shared._Moffstation.Chitter;
 using Content.Shared.PDA;
+using Robust.Shared.Replays;
 using Robust.Shared.Timing;
 
 namespace Content.Server._Moffstation.Chitter;
@@ -9,6 +10,7 @@ namespace Content.Server._Moffstation.Chitter;
 public sealed class ChitterServerSystem : SharedChitterSystem
 {
     [Dependency] private IGameTiming _timing = default!;
+    [Dependency] private IReplayRecordingManager _replay = default!;
 
     private const int MessageCharLimit = 500;
     private const int ChatNameCharLimit = 50;
@@ -168,6 +170,12 @@ public sealed class ChitterServerSystem : SharedChitterSystem
         };
 
         chat.Messages.Add(message);
+
+        // Cheaply piggyback the round's Chitter conversations onto the replay stream, mirroring how
+        // RadioSystem/ChatManager record their messages, so they can be pulled out of a saved replay
+        // for report follow-up later even without a dedicated in-round admin action.
+        _replay.RecordServerMessage(new ChitterReplayMessageRecord { ChatId = chatId, Message = message });
+
         return true;
     }
 
@@ -200,4 +208,16 @@ public sealed class ChitterServerSystem : SharedChitterSystem
         chat.Messages[^1].DeliveryFailed = true;
     }
 
+    /// <summary>
+    /// Every Chitter server that currently exists, for the admin log panel to aggregate conversations
+    /// across every station rather than just whichever one a given PDA happens to be linked to.
+    /// </summary>
+    public IEnumerable<ChitterServerComponent> GetAllServers()
+    {
+        var query = EntityQueryEnumerator<ChitterServerComponent>();
+        while (query.MoveNext(out var server))
+        {
+            yield return server;
+        }
+    }
 }

@@ -23,6 +23,23 @@ public sealed class ChitterAccountSystem : SharedChitterSystem
         SubscribeLocalEvent<ChitterAccountComponent, ExaminedEvent>(OnExamined);
         SubscribeLocalEvent<ChitterAccountComponent, MapInitEvent>(OnMapInit);
         SubscribeLocalEvent<ChitterAccountComponent, BeingMicrowavedEvent>(OnMicrowaved);
+        SubscribeLocalEvent<ChitterAccountComponent, ComponentShutdown>(OnAccountShutdown);
+    }
+
+    /// <summary>
+    /// Prunes the account from every Chitter server's contact directory when its card is destroyed,
+    /// so a deleted/gibbed card doesn't linger forever as a stale "ghost" contact.
+    /// </summary>
+    private void OnAccountShutdown(Entity<ChitterAccountComponent> ent, ref ComponentShutdown args)
+    {
+        if (ent.Comp.AccountId == 0)
+            return;
+
+        var query = EntityQueryEnumerator<ChitterServerComponent>();
+        while (query.MoveNext(out var server))
+        {
+            server.Accounts.Remove(ent.Comp.AccountId);
+        }
     }
 
     private void OnMapInit(Entity<ChitterAccountComponent> ent, ref MapInitEvent args)
