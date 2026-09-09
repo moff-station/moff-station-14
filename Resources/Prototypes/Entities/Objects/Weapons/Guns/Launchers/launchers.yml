@@ -6,8 +6,6 @@
   description: A rooty tooty point and shooty.
   components:
   - type: Sprite
-  - type: Item
-    size: Ginormous
   - type: ContainerContainer
     containers:
       ballistic-ammo: !type:Container
@@ -17,6 +15,10 @@
     quickEquip: false
     slots:
     - Back
+  - type: Item
+    size: Ginormous
+    shape:
+      - 0,0,6,3
   - type: StaticPrice
     price: 500
   - type: Gun
@@ -250,7 +252,11 @@
     fireRate: 1
     clumsyProof: true
   - type: BasicEntityAmmoProvider
-    proto: GrapplingHook
+    # Moff Start - Entity table integration
+    # proto: GrapplingHook
+    ammoTable:
+      id: GrapplingHook
+    # Moff End
     capacity: 1
   - type: UseDelay
     delay: 0.5

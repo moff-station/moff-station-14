@@ -1,3 +1,4 @@
+using Content.Client._Moffstation.Preferences; // Moffstation - Multi-character selection
 using Content.Client.Administration.Managers;
 using Content.Client.Changelog;
 using Content.Client.Chat.Managers;
@@ -13,6 +14,7 @@ using Content.Client.IoC;
 using Content.Client.Launcher;
 using Content.Client.Lobby;
 using Content.Client.MainMenu;
+using Content.Client.Overlays;
 using Content.Client.Parallax.Managers;
 using Content.Client.Players.PlayTimeTracking;
 using Content.Client.Playtime;
@@ -63,6 +65,7 @@ namespace Content.Client.Entry
         [Dependency] private IOverlayManager _overlayManager = default!;
         [Dependency] private IChatManager _chatManager = default!;
         [Dependency] private IClientPreferencesManager _clientPreferencesManager = default!;
+        [Dependency] private MoffCharacterSelectionManager _moffCharacterSelection = default!; // Moffstation - Multi-character selection
         [Dependency] private EuiManager _euiManager = default!;
         [Dependency] private IVoteManager _voteManager = default!;
         [Dependency] private DocumentParsingManager _documentParsingManager = default!;
@@ -106,7 +109,6 @@ namespace Content.Client.Entry
 
             _prototypeManager.RegisterIgnore("utilityQuery");
             _prototypeManager.RegisterIgnore("utilityCurvePreset");
-            _prototypeManager.RegisterIgnore("accent");
             _prototypeManager.RegisterIgnore("gasReaction");
             _prototypeManager.RegisterIgnore("seed"); // Seeds prototypes are server-only.
             _prototypeManager.RegisterIgnore("objective");
@@ -165,8 +167,10 @@ namespace Content.Client.Entry
 
             _overlayManager.AddOverlay(new SingularityOverlay());
             _overlayManager.AddOverlay(new RadiationPulseOverlay());
+            _overlayManager.AddOverlay(new ScreechShockWaveOverlay());
             _chatManager.Initialize();
             _clientPreferencesManager.Initialize();
+            _moffCharacterSelection.Initialize(); // Moffstation - Multi-character selection
             _euiManager.Initialize();
             _voteManager.Initialize();
             _userInterfaceManager.SetDefaultTheme("SS14DefaultTheme");

@@ -8,11 +8,12 @@
   - type: Action
     priority: -9
     itemIconStyle: BigAction
-    icon:
-      sprite: _Moffstation/Interface/Actions/actions_ai.rsi
-      state: actions_entershell
   - type: InstantAction
     event: !type:ToggleAiShellControllerUiEvent
+  - type: Sprite
+    sprite: _Moffstation/Interface/Actions/actions_ai.rsi
+    layers:
+    - state: actions_entershell
 
 - type: entity
   parent: BaseMentalAction
@@ -23,8 +24,9 @@
   - type: Action
     priority: -9
     itemIconStyle: BigAction
-    icon:
-      sprite: Interface/Actions/actions_ai.rsi
-      state: ai_core
   - type: InstantAction
     event: !type:StopAiShellControlEvent
+  - type: Sprite
+    sprite: Interface/Actions/actions_ai.rsi
+    layers:
+    - state: ai_core

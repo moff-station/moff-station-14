@@ -62,7 +62,9 @@
   - type: TemperatureDamage
     heatDamageThreshold: 423
     coldDamageThreshold: 0
-  - type: PressureImmunity
+  - type: PermanentStatusEffects
+    statusEffects:
+    - StatusEffectPressureImmunity
   - type: ProtectedFromStepTriggers
   - type: Insulated
   - type: Respirator

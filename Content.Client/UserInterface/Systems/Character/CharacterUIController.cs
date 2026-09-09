@@ -1,3 +1,6 @@
+// Moff - We stuffed this file into a crate and shipped it to our namespace
+// Take any upstream changes
+/*
 using System.Linq;
 using Content.Client._Starlight.UserInterface.Controls; // Starlight - Collective Mind
 using Content.Client.CharacterInfo;
@@ -141,14 +144,15 @@ public sealed partial class CharacterUIController : UIController, IOnStateEntere
             return;
         }
 
-        var (entity, job, objectives, minds, briefing, entityName) = data; // Starlight - Collective Mind - Added minds variable.
+        var (entity, objectives, minds, briefing, jobId, entityName) = data; // Starlight - Collective Mind - Added minds variable.
 
         _window.SpriteView.SetEntity(entity);
 
         UpdateRoleType();
-
+        var job = _prototypeManager.Index(jobId);
         _window.NameLabel.Text = entityName;
-        _window.SubText.Text = job;
+        _window.SubText.Text = job != null ? Loc.GetString(job.Name) : null;
+
         _window.Objectives.RemoveAllChildren();
         // Moffstation - Start - Character Menu Redesign (removed ObjectivesLabel, added Briefing clear)
         // _window.ObjectivesLabel.Visible = objectives.Any();
@@ -296,3 +300,4 @@ public sealed partial class CharacterUIController : UIController, IOnStateEntere
         }
     }
 }
+*/

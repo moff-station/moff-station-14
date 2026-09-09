@@ -1,0 +1,30 @@
+<Control xmlns="https://spacestation14.io"
+         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+         xmlns:gfx="clr-namespace:Robust.Client.Graphics;assembly=Robust.Client"
+         xmlns:style="clr-namespace:Content.Client.Stylesheets">
+
+    <!-- Shown while an icon is dragged over this target. -->
+    <PanelContainer Name="BackgroundPanel" Visible="False">
+        <PanelContainer.PanelOverride>
+            <gfx:StyleBoxFlat BackgroundColor="{x:Static style:StyleNano.NanoGold}" />
+        </PanelContainer.PanelOverride>
+    </PanelContainer>
+
+    <BoxContainer Orientation="Vertical" Margin="4 0" HorizontalExpand="True" VerticalExpand="True">
+        <Label Name="PriorityLabel" StyleClasses="LabelBig" HorizontalAlignment="Center" Margin="0 6" />
+
+        <!-- Both containers hang from the top so their icons line up under the headers. Only one is
+             ever visible; which depends on Priority. -->
+        <GridContainer Name="IconGrid"
+                       Columns="5"
+                       HorizontalAlignment="Center"
+                       VerticalAlignment="Top"
+                       HSeparationOverride="2"
+                       VSeparationOverride="2" />
+        <BoxContainer Name="HighBox"
+                      HorizontalAlignment="Center"
+                      VerticalAlignment="Top"
+                      MinWidth="64"
+                      Visible="False" />
+    </BoxContainer>
+</Control>

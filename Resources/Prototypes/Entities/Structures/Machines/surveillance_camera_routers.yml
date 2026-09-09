@@ -1,6 +1,6 @@
 - type: entity
   abstract: true
-  parent: [ BaseSurveillanceCameraRouter, BaseMachinePowered, ConstructibleMachine ] # Moffstation - Blade server
+  parent: [ BaseSurveillanceCameraRouter, BaseMachinePowered, ConstructibleMachine, BaseConstructibleMachineDestructible  ] # Moffstation - Blade server
   id: SurveillanceCameraRouterBase
   name: camera router
   description: A surveillance camera router. It routes. Perhaps.
@@ -41,8 +41,16 @@
 #          enum.PowerDeviceVisualLayers.Powered:
 #            True: { visible: true }
 #            False: { visible: false }
-#    - type: Appearance
 # Moffstation - End - Blade server
+    - type: Destructible
+      thresholds:
+      - trigger: !type:DamageTrigger
+          damage: 175
+        behaviors:
+        - !type:PlaySoundBehavior
+          sound:
+            collection: MetalBreak
+  #    - type: Appearance # Moff - Blade server
     - type: AmbientOnPowered
     - type: AmbientSound
       volume: -9
@@ -145,7 +153,7 @@
 
 - type: entity
   abstract: true
-  parent: [ BaseSurveillanceCameraWirelessRouter, BaseMachinePowered, ConstructibleMachine ] # Moffstation - Blade server
+  parent: [ BaseSurveillanceCameraWirelessRouter, BaseMachinePowered, ConstructibleMachine, BaseConstructibleMachineDestructible ] # Moffstation - Blade server
   id: SurveillanceCameraWirelessRouterBase
   name: wireless camera router
   description: A wireless surveillance camera router. It routes. Perhaps.
@@ -184,6 +192,14 @@
 #            True: { visible: true }
 #            False: { visible: false }
 # Moffstation - End
+    - type: Destructible
+      thresholds:
+      - trigger: !type:DamageTrigger
+          damage: 175
+        behaviors:
+        - !type:PlaySoundBehavior
+          sound:
+            collection: MetalBreak
     - type: Appearance
     - type: AmbientOnPowered
     - type: AmbientSound

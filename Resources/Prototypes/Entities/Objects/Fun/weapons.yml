@@ -155,7 +155,11 @@
     fireRate: 0.5
     soundEmpty: /Audio/Misc/boing.ogg
   - type: BasicEntityAmmoProvider
-    proto: StickyHandPalm
+    # Moff Start - Entity table integration
+    # proto: StickyHandPalm
+    ammoTable:
+      id: StickyHandPalm
+    # Moff End
     capacity: 1
   - type: Sprite
     sprite: Objects/Weapons/Guns/Launchers/sticky_hand.rsi

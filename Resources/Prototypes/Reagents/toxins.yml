@@ -501,7 +501,7 @@
       - !type:PopupMessage
         conditions:
         - !type:MetabolizerTypeCondition
-          type: [ Animal, Vox ]
+          type: [ Animal, Bloodsucker, Vox ] # Moff
           inverted: true
         type: Local
         visualType: MediumCaution
@@ -511,12 +511,12 @@
         probability: 0.1
         conditions:
         - !type:MetabolizerTypeCondition
-          type: [ Animal, Vox, Plant ]
+          type: [ Animal, Bloodsucker, Vox, Plant ] # Moff
           inverted: true
       - !type:HealthChange
         conditions:
         - !type:MetabolizerTypeCondition
-          type: [ Animal, Vox, Plant ]
+          type: [ Animal, Bloodsucker, Vox, Plant ] # Moff
           inverted: true
         damage:
           types:
@@ -531,7 +531,7 @@
       - !type:AdjustReagent
         conditions:
         - !type:MetabolizerTypeCondition
-          type: [ Animal ]
+          type: [ Animal, Bloodsucker ] # Moff
         reagent: Protein
         amount: 0.5
       - !type:AdjustReagent
@@ -794,3 +794,52 @@
         type: Update
       - !type:ModifyBleed
         amount: 0.5
+
+- type: reagent
+  id: Hivarol
+  name: reagent-name-hivarol
+  group: Toxins
+  desc: reagent-desc-hivarol
+  physicalDesc: reagent-physical-desc-sickly
+  flavor: sharp
+  color: "#96424f"
+  metabolisms:
+    Bloodstream:
+      effects:
+      - !type:HealthChange
+        conditions:
+        - !type:ReagentCondition
+          reagent: Hivarol
+          min: 4
+        - !type:MetabolizerTypeCondition
+          type: [ Changeling ]
+        damage:
+          types:
+            Shock: 3
+      - !type:PopupMessage
+        conditions:
+        - !type:ReagentCondition
+          reagent: Hivarol
+          min: 4
+        - !type:MetabolizerTypeCondition
+          type: [ Changeling ]
+        type: Local
+        visualType: Large
+        messages: [ "generic-reagent-effect-burning-insides" ]
+        probability: 0.33
+      - !type:Emote
+        conditions:
+        - !type:ReagentCondition
+          reagent: Hivarol
+          min: 4
+        - !type:MetabolizerTypeCondition
+          type: [ Changeling ]
+        emote: Scream
+        probability: 0.5
+      - !type:Jitter
+        conditions:
+        - !type:ReagentCondition
+          reagent: Hivarol
+          min: 4
+        - !type:MetabolizerTypeCondition
+          type: [ Changeling ]

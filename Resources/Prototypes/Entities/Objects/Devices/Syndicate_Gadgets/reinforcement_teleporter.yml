@@ -37,8 +37,10 @@
 - type: entity
   parent: ReinforcementRadio
   id: ReinforcementRadioSyndicateNukeops # Reinforcement radio exclusive to nukeops uplink
-  name: nuclear operative radio
-  description: Call in a nuclear operative of questionable quality, instantly! Basic nukeop equipment provided.
+  # Moff start - rename nukies to gorlex
+  name: gorlex marauder radio
+  description: Call in a gorlex marauder of questionable quality, instantly! Basic combat equipment provided.
+  # Moff end
   suffix: NukeOps
   components:
   - type: GhostRole
@@ -99,7 +101,7 @@
     prototype: MobCatSyndy
   - type: EmitSoundOnUse
     sound: /Audio/Animals/cat_meow.ogg
-  # Moffstation - Start - Syndicat Reject 
+  # Moffstation - Start - Syndicat Reject
   - type: UseDelay
     delay: 2
   # Moffstation - End

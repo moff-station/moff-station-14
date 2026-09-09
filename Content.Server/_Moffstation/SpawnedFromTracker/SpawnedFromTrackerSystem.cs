@@ -1,5 +1,6 @@
-using Content.Server.Ghost.Roles.Events;
 using Content.Shared._Impstation.SpawnedFromTracker;
+using Content.Shared.Ghost;
+using Content.Shared.Ghost.Roles.Components;
 
 namespace Content.Server._Moffstation.SpawnedFromTracker;
 
@@ -20,3 +21,7 @@ public sealed partial class SpawnedFromTrackerSystem : EntitySystem
         RaiseLocalEvent(entity.Comp.SpawnedFrom, ref ev);
     }
 }
+
+/// This event is raised on the entity with <see cref="GhostRoleMobSpawnerComponent"/> when it is used.
+[ByRefEvent]
+public readonly record struct UsedGhostRoleSpawnerEvent(EntityUid Spawned);

@@ -1,0 +1,15 @@
+﻿- type: entity
+  parent: MarkerBase
+  id: SpawnPointNukieDemolitionWeapon
+  name: nuclear operative demolition weapon spawner
+  components:
+  - type: EntityTableSpawner
+    offset: 0.2
+    table:
+      id: Sledgehammer
+  - type: Sprite
+    sprite: Markers/jobs.rsi
+    layers:
+    - state: green
+    - sprite: Objects/Weapons/Melee/sledgehammer.rsi
+      state: icon

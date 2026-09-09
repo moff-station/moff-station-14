@@ -5,6 +5,7 @@ using Content.Server.Atmos.EntitySystems;
 using Content.Server.Body;
 using Content.Server.Inventory;
 using Content.Server.Popups;
+using Content.Server.Temperature.Systems;
 using Content.Server.Traits;
 using Content.Shared._DV.Traits;
 using Content.Shared._Moffstation.Body.Events;
@@ -36,6 +37,7 @@ using Content.Shared.StatusEffectNew.Components;
 using Content.Shared.Storage;
 using Content.Shared.Storage.EntitySystems;
 using Content.Shared.Temperature.Components;
+using Content.Shared.Temperature.HeatContainer;
 using Content.Shared.Zombies;
 using Robust.Server.GameObjects;
 using Robust.Shared.Containers;
@@ -311,7 +313,7 @@ public sealed partial class GerasSystem : EntitySystem
     {
         if (TryComp<TemperatureComponent>(args.Parent, out var parentTemp))
         {
-            ent.Comp.CurrentTemperature = parentTemp.CurrentTemperature;
+            HeatContainerHelpers.ConductHeatToTemp(ref ent.Comp, parentTemp.Temperature);
         }
     }
 

@@ -25,6 +25,10 @@ public sealed partial class SiliconLawProviderComponent : Component
     [DataField, AutoNetworkedField]
     public SiliconLawset Lawset = new ();
 
+    // Moff start - implement lawset version on law provider
+    [DataField, AutoNetworkedField] public int Version = 1;
+    // Moff end
+
     /// <summary>
     /// The sound that plays for the Silicon player
     /// when the law change is processed for the provider.

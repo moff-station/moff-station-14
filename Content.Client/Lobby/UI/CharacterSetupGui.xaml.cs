@@ -54,12 +54,17 @@ namespace Content.Client.Lobby.UI
 
             _createNewCharacterButton.OnPressed += args =>
             {
-                _preferencesManager.CreateCharacter(HumanoidCharacterProfile.Random().WithJobFromCvar(_cfg));
+                // Moff Start - Multi-character selection: go through a wrapper so any stale
+                // "inactive" flag on the slot the new character lands in gets cleared.
+                // _preferencesManager.CreateCharacter(HumanoidCharacterProfile.Random().WithJobFromCvar(_cfg));
+                CreateMoffCharacter(HumanoidCharacterProfile.Random().WithJobFromCvar(_cfg));
+                // Moff end
                 ReloadCharacterPickers();
                 args.Event.Handle();
             };
 
             CharEditor.AddChild(profileEditor);
+            InitializeMoffJobPriorities(); // Moffstation - Multi-character selection
             RulesButton.OnPressed += _ => new RulesAndInfoWindow().Open();
 
             StatsButton.OnPressed += _ => new PlaytimeStatsWindow().OpenCentered();
@@ -78,6 +83,8 @@ namespace Content.Client.Lobby.UI
 
             var numberOfFullSlots = 0;
             var characterButtonsGroup = new ButtonGroup();
+
+            JobPrioritiesButton.Group = characterButtonsGroup; // Moff - So picking a character unhighlights it
 
             if (!_preferencesManager.ServerDataLoaded)
             {
@@ -101,6 +108,8 @@ namespace Content.Client.Lobby.UI
                     character,
                     slot == selectedSlot);
 
+                characterPickerButton.SetupMoffEnabled(slot); // Moffstation - Multi-character selection
+
                 if (slot >= maxCharactersSlots)
                 {
                     characterPickerButton.SetOnlyStyleClass(ContainerButton.StylePseudoClassDisabled);
@@ -113,6 +122,7 @@ namespace Content.Client.Lobby.UI
 
                 characterPickerButton.OnPressed += args =>
                 {
+                    ShowMoffJobPriorities(false); // Moff - Swap the right pane back to the character editor
                     SelectCharacter?.Invoke(slot);
                 };
 

@@ -5,12 +5,14 @@
   components:
   - type: Action
     itemIconStyle: NoItem
-    icon: _Impstation/Interface/Actions/replicator_level1.png
     useDelay: 20
   - type: InstantAction
     event: !type:ReplicatorSpawnNestActionEvent
   - type: ConfirmableAction
     popup: replicator-nest-confirm
+  - type: Sprite
+    sprite: &action_rsi _Impstation/Interface/Actions/replicator.rsi
+    state: spawn_nest
 
 - type: entity
   id: BaseReplicatorLevelupAction
@@ -27,11 +29,13 @@
   components:
   - type: Action
     itemIconStyle: NoItem
-    icon: _Impstation/Interface/Actions/replicator_level1.png
     useDelay: 20
   - type: InstantAction
     event: !type:ReplicatorUpgradeActionEvent
       nextStage: MobReplicatorTier1
+  - type: Sprite
+    sprite: *action_rsi
+    state: replicator_level1
 
 - type: entity
   id: ActionReplicatorUpgrade2
@@ -41,11 +45,13 @@
   components:
   - type: Action
     itemIconStyle: NoItem
-    icon: _Impstation/Interface/Actions/replicator_level2.png
     useDelay: 20
   - type: InstantAction
     event: !type:ReplicatorUpgradeActionEvent
       nextStage: MobReplicatorTier2Utility
+  - type: Sprite
+    sprite: *action_rsi
+    state: replicator_level2
 
 - type: entity
   id: ActionReplicatorUpgrade2Alt
@@ -55,11 +61,13 @@
   components:
   - type: Action
     itemIconStyle: NoItem
-    icon: _Impstation/Interface/Actions/replicator_level2alt.png
     useDelay: 20
   - type: InstantAction
     event: !type:ReplicatorUpgradeActionEvent
       nextStage: MobReplicatorTier2Combat
+  - type: Sprite
+    sprite: *action_rsi
+    state: replicator_level2alt
 
 - type: entity
   id: ActionReplicatorUpgrade3
@@ -69,8 +77,10 @@
   components:
   - type: Action
     itemIconStyle: NoItem
-    icon: _Impstation/Interface/Actions/replicator_level3.png
     useDelay: 20
   - type: InstantAction
     event: !type:ReplicatorUpgradeActionEvent
       nextStage: MobReplicatorTier3
+  - type: Sprite
+    sprite: *action_rsi
+    state: replicator_level3

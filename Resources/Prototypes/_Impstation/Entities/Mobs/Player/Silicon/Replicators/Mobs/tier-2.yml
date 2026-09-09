@@ -25,10 +25,6 @@
     sortedHands:
     - Right
     - Left
-  - type: DamageStateVisuals
-    states:
-      Dead:
-        Base: dead_level2
 
 # Tier 2: Deconstructors. These guys are a little bit tougher, and have tools to take things apart, but they don't have the ability to enter combat mode.
 - type: entity
@@ -53,6 +49,8 @@
     states:
       Alive:
         Base: alive_level2
+      Dead:
+        Base: dead_level2
   - type: Loadout
     prototypes:
     - StartingGearReplicatorTools
@@ -81,6 +79,8 @@
     states:
       Alive:
         Base: alive_level2alt
+      Dead:
+        Base: dead_level2
   - type: Loadout
     prototypes:
     - StartingGearReplicatorT2Alt

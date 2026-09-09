@@ -82,7 +82,7 @@ wizard-duel-description = A battle of might and magic, and you're caught in the 
 guide-entry-wizard-duel = Wizard Duel
 
 # Nukies
-roles-antag-nuclear-operative-commander-objective-moff = Leader of a nuclear operative team. Make the plan, call the shots and destroy the station.
-roles-antag-nuclear-operative-agent-objective-moff = Combat medic of a nuclear operative team. Use complex reagents to keep your team in the fight or make chemical weapons.
-roles-antag-nuclear-operative-objective-moff = Work with a small team of elite operatives to find the authentication disk and destroy the station.
+roles-antag-nuclear-operative-commander-objective-moff = Leader of a Gorlex Marauder strike team. Make the plan, lead your team, and strike fear into the hearts of the station.
+roles-antag-nuclear-operative-agent-objective-moff = Combat medic of a Gorlex Marauder strike team. Use complex reagents to keep your team in the fight or make chemical weapons.
+roles-antag-nuclear-operative-objective-moff = Work together with an elite strike team of the Gorlex Marauders. Follow your leader and strike fear into the hearts of the station.
 roles-antag-syndicate-agent-objective-moff = A syndicate traitor hidden among the crew. Complete your objectives with an arsenal of illegal equipment.

@@ -20,12 +20,16 @@ public sealed partial class AntagRandomObjectivesSystem : EntitySystem
         base.Initialize();
 
         SubscribeLocalEvent<AntagRandomObjectivesComponent, AfterAntagEntitySelectedEvent>(OnAntagSelected);
-        SubscribeAllEvent<ObjectivePickerSelected>(OnObjectivesSelected);
+        SubscribeNetworkEvent<ObjectivePickerSelected>(OnObjectivesSelected);
     }
 
     private void OnAntagSelected(Entity<AntagRandomObjectivesComponent> ent, ref AfterAntagEntitySelectedEvent args)
     {
         if (args.Session == null)
+            return;
+
+        // See if objectives are only given to specific antag defs.
+        if (ent.Comp.OnlyForDefs.Count > 0 && !ent.Comp.OnlyForDefs.Contains(args.Def.ID))
             return;
 
         if (!_mind.TryGetMind(args.Session, out var mindId, out var mind))
@@ -61,8 +65,11 @@ public sealed partial class AntagRandomObjectivesSystem : EntitySystem
 
     private void OnObjectivesSelected(ObjectivePickerSelected ev, EntitySessionEventArgs args)
     {
-        var mindId = GetEntity(ev.MindId);
+        ApplySelectedObjectives(GetEntity(ev.MindId), ev.SelectedObjectives);
+    }
 
+    public void ApplySelectedObjectives(EntityUid mindId, IEnumerable<NetEntity> selectedObjectives)
+    {
         if (!TryComp<MindComponent>(mindId, out var mindComp))
             return;
 
@@ -71,7 +78,7 @@ public sealed partial class AntagRandomObjectivesSystem : EntitySystem
 
         // Verify the objectives are actually in their component
         var objectiveIds = potentialObjectivesComp.ObjectiveOptions.Keys.ToHashSet();
-        foreach (var objective in ev.SelectedObjectives)
+        foreach (var objective in selectedObjectives)
         {
             if (objectiveIds.Contains(objective))
             {

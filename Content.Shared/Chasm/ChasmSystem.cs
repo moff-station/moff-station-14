@@ -57,7 +57,16 @@ public sealed partial class ChasmSystem : EntitySystem
                 DebugTools.Assert($"{ToPrettyString(chasm.FallingInto)} is missing {nameof(ChasmComponent)}");
             }
 
-            PredictedQueueDel(uid);
+            // Moff start - Replicator chasms manage their own deletion
+            if (chasmComp.DeleteEntitiesWhichFallInto)
+            {
+                PredictedQueueDel(uid);
+            }
+            else
+            {
+                RemCompDeferred<ChasmFallingComponent>(uid);
+            }
+            // Moff end
         }
     }
 

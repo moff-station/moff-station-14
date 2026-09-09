@@ -121,6 +121,7 @@
   loadouts:
   - EmergencyNitrogen
   - EmergencyOxygen
+  - EmergencyOxygenAvali # Moff
   - LoadoutSpeciesVoxNitrogen
 
 # nitrogen or oxygen tank, depending on what your species needs
@@ -688,7 +689,7 @@
   loadouts:
   - EmergencyNitrogenClown
   - EmergencyOxygenClown
-  - EmergencyOxygenClownAmmonia # Moffstation - Allow avali to drink ammonia
+  - EmergencyOxygenClownAvali # Moff
   - LoadoutSpeciesVoxNitrogen
 
 - type: loadoutGroup
@@ -1169,7 +1170,7 @@
   loadouts:
   - EmergencyNitrogenExtended
   - EmergencyOxygenExtended
-  - EmergencyOxygenExtendedAmmonia # Moffstation - Allow avali to drink ammonia
+  - EmergencyOxygenExtendedAvali # Moff
   - LoadoutSpeciesVoxNitrogen
 
 # Science
@@ -1579,7 +1580,7 @@
   loadouts:
   - EmergencyNitrogenSecurity
   - EmergencyOxygenSecurity
-  - EmergencyOxygenSecurityAmmonia # Moffstation - Allow avali to drink ammonia
+  - EmergencyOxygenSecurityAvali # Moff
   - LoadoutSpeciesVoxNitrogen
 
 # Wildcards
@@ -1631,6 +1632,35 @@
 #  minLimit: 0
 #  loadouts:
 
+- type: loadoutGroup
+  id: TramDriverJumpsuit
+  name: loadout-group-tramdriver-jumpsuit
+  minLimit: 1
+  maxLimit: 1
+  loadouts:
+  - TramDriverJumpsuit
+
+- type: loadoutGroup
+  id: TramDriverOuterClothing
+  name: loadout-group-tramdriver-outerclothing
+  minLimit: 0
+  loadouts:
+  - TramDriverSuit
+
+- type: loadoutGroup
+  id: TramDriverHat
+  name: loadout-group-tramdriver-hat
+  loadouts:
+  - TramDriverHat
+
+- type: loadoutGroup
+  id: TramDriverGloves
+  name: loadout-group-tramdriver-gloves
+  minLimit: 0
+  loadouts:
+  - TramDriverGlovesWhite
+  - TramDriverGlovesBlack
+
 # Other
 
 - type: loadoutGroup
@@ -1641,6 +1671,7 @@
   loadouts:
   - EmergencyNitrogenExtendedAntag
   - EmergencyOxygenExtendedAntag
+  - EmergencyOxygenExtendedAntagAvali # Moff
   - LoadoutSpeciesVoxNitrogen
 
 - type: loadoutGroup
@@ -1651,7 +1682,7 @@
   loadouts:
   - EmergencyNitrogenSyndicate
   - EmergencyOxygenSyndicate
-  - EmergencyOxygenSyndicateAmmonia # Moffstation - Allow avali to drink ammonia
+  - EmergencyOxygenSyndicateAvali # Moff
   - LoadoutSpeciesVoxNitrogen
 
 - type: loadoutGroup
@@ -1662,6 +1693,7 @@
   loadouts:
   - EmergencyNitrogenMilitaryDouble
   - EmergencyOxygenMilitaryDouble
+  - EmergencyOxygenMilitaryDoubleAvali # Moff
 
 - type: loadoutGroup
   id: GroupSpeciesBreathTool

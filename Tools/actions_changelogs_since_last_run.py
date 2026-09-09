@@ -32,6 +32,9 @@ CHANGELOG_FILE = "Resources/Changelog/Mofflog.yml"
 # moffstation - lowercase for changelog
 TYPES_TO_EMOJI = {"fix": "<:barry:1333171778872279153>", "add": ":new:", "remove": "<:killsmite:1322919674413056081>", "tweak": "<:godo:1378009287321976912>️"}
 
+EXPERIMENTAL_LABEL = "Intent: Experimental"
+EXPERIMENTAL_EMOJI = "🧪"
+
 ChangelogEntry = dict[str, Any]
 
 
@@ -239,6 +242,9 @@ def changelog_entries_to_message_lines(entries: Iterable[ChangelogEntry]) -> lis
             for change in entry["changes"]:
                 emoji = TYPES_TO_EMOJI.get(change["type"].lower(), "❓") # moffstation - lower case
                 message = change["message"]
+
+                if EXPERIMENTAL_LABEL in entry.get("labels", []): # Moffstation - Mofflog.yml entries have no "labels" field
+                    emoji = f"{emoji}{EXPERIMENTAL_EMOJI}"
 
                 message_lines.append(create_change_line(emoji, message, url))
 

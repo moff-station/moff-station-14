@@ -29,6 +29,14 @@ public sealed partial class ChasmComponent : Component
     /// </summary>
     [DataField]
     public SoundSpecifier FallingSound = new SoundPathSpecifier("/Audio/Effects/falling.ogg");
+
+    // Moff start - Replicator nests manage deleting stuff that falls into the chasm
+    /// <summary>
+    /// Whether or not to always delete entities which fall into this chasm.
+    /// </summary>
+    [DataField]
+    public bool DeleteEntitiesWhichFallInto = true;
+    // Moff end
 }
 
 /// <summary>

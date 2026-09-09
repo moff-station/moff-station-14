@@ -195,6 +195,7 @@
       Plastic: 100
   - type: StaticPrice
     price: 30 # increases in price after decomposed into raw materials
+  - type: MoffStainRepellent # Moff - Mostly solid plastic, and it means Vox don't look like they just climed out of the dumpster constantly
 
 - type: entity
   parent: ClothingMaskBase
@@ -349,6 +350,7 @@
       Plastic: 25
   - type: StaticPrice
     price: 5
+  - type: MoffStainRepellent # Moff - Mostly solid plastic, and it means Vox don't look like they just climed out of the dumpster constantly
 
 - type: entity
   parent: ClothingMaskBase
@@ -758,6 +760,8 @@
     sprite: Clothing/Mask/welding-gas.rsi
   - type: FlashImmunity
   - type: EyeProtection
+  - type: WeldingMaskOverlay # Moff - Funky welding masks
+    texture: /Textures/_Funkystation/Clothing/Head/Welding/weldingOverlayWeak.png # Moff - Funky welding masks
   - type: PhysicalComposition
     materialComposition:
       Steel: 200

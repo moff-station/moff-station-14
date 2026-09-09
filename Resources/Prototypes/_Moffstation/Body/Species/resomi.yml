@@ -384,9 +384,6 @@
     heatDamage:
       types:
         Heat: 1.5 # Per second, scales with temperature & other constants
-  - type: TemperatureProtection
-    heatingCoefficient: 1.2
-    coolingCoefficient: 0.50
   - type: Fixtures
     fixtures:
       fix1:

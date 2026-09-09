@@ -8,6 +8,7 @@ on:
 
 jobs:
   hunt:
+    if: github.repository == 'moff-station/moff-station-14'
     runs-on: ubuntu-latest
     outputs:
       matrix: ${{ steps.get_fails.outputs.matrix }}
@@ -67,7 +68,7 @@ jobs:
     strategy:
       matrix:
         value: ${{ fromJSON(needs.hunt.outputs.matrix) }}
-    if: ${{ always() && failure() && (needs.hunt.outputs.count < 5) }}
+    if: ${{ always() && failure() && (needs.hunt.outputs.count < 5) && github.repository == 'moff-station/moff-station-14' }}
     name: Error for ${{ matrix.value.name }}
     steps:
       - name: Checkout Master
@@ -84,4 +85,4 @@ jobs:
         with:
           filename: .github/ISSUE_TEMPLATE/heisentest_template.md
           update_existing: true
-          search_existing: all
+          search_existing: open

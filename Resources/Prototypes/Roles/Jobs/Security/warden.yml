@@ -14,7 +14,10 @@
     - !type:DepartmentTimeRequirement
       department: Security
       time: 10h
-  weight: 5
+  # Moff start - no job weights
+#  weight: 5
+  displayWeight: 5
+  # Moff end
   startingGear: WardenGear
   icon: "JobIconWarden"
   supervisors: job-supervisors-hos

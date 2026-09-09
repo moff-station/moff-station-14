@@ -6,9 +6,10 @@
   components:
   - type: Action
     itemIconStyle: NoItem
-    icon:
-      sprite: Interface/Actions/actions_borg.rsi
-      state: state-laws
     useDelay: 0.5
+  - type: Sprite
+    sprite: Interface/Actions/actions_borg.rsi
+    layers:
+    - state: state-laws
   - type: InstantAction
     event: !type:ToggleMoodsScreenEvent

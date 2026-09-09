@@ -1,4 +1,5 @@
 using System.Linq;
+using Content.Server._Moffstation.Preferences; // Moffstation - Multi-character selection
 using Content.Server.Administration.Managers;
 using Content.Server.Antag;
 using Content.Server.Station.Components;
@@ -17,6 +18,7 @@ public sealed partial class StationJobsSystem
 {
     [Dependency] private IBanManager _banManager = default!;
     [Dependency] private AntagSelectionSystem _antag = default!;
+    [Dependency] private MoffCharacterSelectionManager _moffCharacterSelection = default!; // Moff - Multi-character selection
 
     private Dictionary<int, HashSet<string>> _jobsByWeight = default!;
     private List<int> _orderedWeights = default!;
@@ -361,7 +363,15 @@ public sealed partial class StationJobsSystem
 
             foreach (var jobId in profileJobs)
             {
-                var priority = profile.JobPriorities[jobId];
+                // Moff Start - Job priority is a property of the player, not of the character.
+                // Also note that profileJobs may now contain jobs which came from the player's
+                // *other* active characters (see MoffJobCandidateSystem), so indexing this
+                // profile's own priorities would throw.
+                var priority = _moffCharacterSelection.GetEffectivePriority(player, jobId, profile);
+
+                if (priority == JobPriority.Never)
+                    continue;
+                // Moff end
 
                 if (!(priority == selectedPriority || selectedPriority is null))
                     continue;

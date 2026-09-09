@@ -6,7 +6,7 @@
 - type: ninjaHackingThreat
   id: Eeeplet
   announcement: terror-eeep
-  rule: EeepEvent
+  rule: EeepSpawn
 
 - type: ninjaHackingThreat
   id: LoneOp
@@ -31,4 +31,4 @@
 - type: ninjaHackingThreat
   id: Tourists
   announcement: terror-tourists
-  rule: TouristRule
+  rule: TouristSpawn

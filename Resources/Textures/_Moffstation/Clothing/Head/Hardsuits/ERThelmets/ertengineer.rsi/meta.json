@@ -1,0 +1,36 @@
+{
+	  "version": 1,
+	  "license": "CC-BY-SA-3.0",
+	  "copyright": "Visor versions adapted from welding masks by AraiMaia, taken from /vg/station at commit https://github.com/vgstation-coders/vgstation13/commit/31d6576ba8102135d058ef49c3cb6ecbe8db8a79 | vulpkanin version taken from Paradise station at https://github.com/ParadiseSS13/Paradise/commit/f0fa4e1fd809482fbc104a310aa34cebf7df157d.",
+	  "size": {
+		"x": 32,
+		"y": 32
+	  },
+	  "states": [
+		{
+		  "name": "icon"
+		},
+		{
+		  "name": "icon-up"
+		},
+		{
+		  "name": "icon-flash"
+		},
+		{
+            "name": "equipped-head-up",
+            "directions": 4
+        },
+		{
+            "name": "equipped-head-up-vox",
+            "directions": 4
+        },
+		{
+            "name": "equipped-head-up-reptilian",
+            "directions": 4
+        },
+		{
+            "name": "equipped-head-up-vulpkanin",
+            "directions": 4
+        }
+  ]
+}

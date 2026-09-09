@@ -1,4 +1,5 @@
-﻿using Content.Shared.Nutrition.Components;
+﻿using Content.Shared.FixedPoint;
+using Content.Shared.Nutrition.Components;
 using Robust.Shared.Serialization;
 
 namespace Content.Shared.Chemistry.Components.SolutionManager;
@@ -52,6 +53,14 @@ public sealed partial class ExaminableSolutionComponent : Component
     /// </summary>
     [DataField]
     public LocId LocRecognizableReagents = "examinable-solution-has-recognizable-chemicals";
+
+    // Moff start - Exminable stains
+    /// <summary>
+    /// The minimum `u` of reagents in a solution to be examinable.
+    /// </summary>'
+    [DataField]
+    public FixedPoint2 MinimumVolumeToBeVisible = FixedPoint2.Zero;
+    // Moff end
 }
 
 /// <summary>

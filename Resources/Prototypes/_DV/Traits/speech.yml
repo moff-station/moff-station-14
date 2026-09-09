@@ -58,9 +58,11 @@
     invert: true
     tooltip: trait-condition-borg-not
   effects:
-  - !type:AddCompsEffect
-    components:
-    - type: Muted
+  # Moff Start - Upstream mute status effect
+  - !type:ApplyStatusEffectSpecial
+    statusEffects:
+    - TraitStatusEffectMuted
+  # Moff End
 
 - type: trait
   id: FrenchAccent

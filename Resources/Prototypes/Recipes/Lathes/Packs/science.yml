@@ -24,6 +24,7 @@
   - DeviceQuantumSpinInverter
   - DeviceDesynchronizer
   - ClothingBackpackHarmpack
+  - TeleporterChipBlank
 
 - type: latheRecipePack
   id: ScienceClothing
@@ -83,7 +84,9 @@
   - APECircuitboard
   - ArtifactAnalyzerMachineCircuitboard
   - ArtifactCrusherMachineCircuitboard
-  - CircuitImprinterLawMatrixMachineCircuitboard #Moffstation - Law Matrix Imprinter
+  - StationTeleportersControlCircuitboard
+  - StationTeleporterMachineCircuitboard
+  - CircuitImprinterLawMatrixMachineCircuitboard # Moffstation - Law Matrix Imprinter
 
 - type: latheRecipePack
   id: CameraBoards

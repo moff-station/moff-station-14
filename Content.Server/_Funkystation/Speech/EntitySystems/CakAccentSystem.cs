@@ -1,7 +1,7 @@
 using System.Text.RegularExpressions;
 using Content.Server._Funkystation.Speech.Components;
-using Content.Server.Speech.EntitySystems;
 using Content.Shared.Speech;
+using Content.Shared.Speech.EntitySystems;
 
 namespace Content.Server._Funkystation.Speech.EntitySystems;
 
