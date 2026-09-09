@@ -19,8 +19,9 @@ namespace Content.Shared._Moffstation.JestographicSequencer;
 ///</summary>
 public sealed class JestographicSequencerSystem : EntitySystem
 {
-    [Dependency] private readonly AccessReaderSystem _accessReader = default!;
     [Dependency] private readonly ISharedAdminLogManager _adminLogger = default!;
+
+    [Dependency] private readonly AccessReaderSystem _accessReader = default!;
     [Dependency] private readonly SharedAudioSystem _audio = default!;
     [Dependency] private readonly SharedChargesSystem _charges = default!;
     [Dependency] private readonly SharedPopupSystem _popup = default!;
