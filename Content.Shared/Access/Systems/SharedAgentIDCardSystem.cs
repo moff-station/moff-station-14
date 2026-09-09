@@ -7,6 +7,7 @@ using Content.Shared.Roles.Jobs;
 using Content.Shared.StatusIcon;
 using Content.Shared.VoiceMask;
 using Content.Shared._Moffstation.Chitter;
+using Robust.Shared.Network;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization;
 
@@ -22,6 +23,7 @@ public abstract partial class SharedAgentIdCardSystem : EntitySystem
     [Dependency] private SharedIdCardSystem _card = default!;
     [Dependency] private SharedJobSystem _job = default!;
     [Dependency] private SharedJobStatusSystem _jobStatus = default!;
+    [Dependency] private INetManager _net = default!;
 
     /// <summary>
     /// Steals access from interacted ids.
@@ -100,13 +102,16 @@ public abstract partial class SharedAgentIdCardSystem : EntitySystem
         if (!TryComp<ChitterAccountComponent>(ent, out var comp))
             return;
 
-        // Reject numbers already claimed by another Chitter account so this can't be used to
-        // hijack someone else's account by typing in their number.
-        if (IsChitterAccountIdTaken(args.Number, ent.Owner))
+        // Only the server can see every Chitter account, so only it can actually check for a
+        // collision - reject numbers already claimed by another account so this can't be used to
+        // hijack someone else's. The client just predicts the number is free; if the server
+        // disagrees, the resulting state never changes and the prediction gets corrected back.
+        if (_net.IsServer && IsChitterAccountIdTaken(args.Number, ent.Owner))
             return;
 
         comp.AccountId = args.Number;
         Dirty(ent, comp);
+        UpdateUi(ent);
     }
 
     private bool IsChitterAccountIdTaken(uint accountId, EntityUid self)
