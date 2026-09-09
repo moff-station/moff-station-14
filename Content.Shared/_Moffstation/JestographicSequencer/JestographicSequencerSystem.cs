@@ -1,3 +1,4 @@
+using System.Linq;
 using Content.Shared.Access;
 using Content.Shared.Access.Components;
 using Content.Shared.Access.Systems;
@@ -54,11 +55,7 @@ public sealed class JestographicSequencerSystem : EntitySystem
         }
 
         //Everything that used to grant access now denies it
-        var newDenyTags = new HashSet<ProtoId<AccessLevelPrototype>>();
-        foreach (var accessGroup in reader.AccessLists)
-        {
-            newDenyTags.UnionWith(accessGroup);
-        }
+        var newDenyTags = reader.AccessLists.SelectMany(x => x).ToHashSet();
 
         //Everything that used to deny access now grants it.
         var newAccessLists = new List<HashSet<ProtoId<AccessLevelPrototype>>>();
