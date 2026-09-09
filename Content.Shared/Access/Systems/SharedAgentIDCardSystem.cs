@@ -100,8 +100,28 @@ public abstract partial class SharedAgentIdCardSystem : EntitySystem
         if (!TryComp<ChitterAccountComponent>(ent, out var comp))
             return;
 
+        // Reject numbers already claimed by another Chitter account so this can't be used to
+        // hijack someone else's account by typing in their number.
+        if (IsChitterAccountIdTaken(args.Number, ent.Owner))
+            return;
+
         comp.AccountId = args.Number;
         Dirty(ent, comp);
+    }
+
+    private bool IsChitterAccountIdTaken(uint accountId, EntityUid self)
+    {
+        if (accountId == 0)
+            return false;
+
+        var query = EntityQueryEnumerator<ChitterAccountComponent>();
+        while (query.MoveNext(out var uid, out var comp))
+        {
+            if (uid != self && comp.AccountId == accountId)
+                return true;
+        }
+
+        return false;
     }
 
     /// <summary>

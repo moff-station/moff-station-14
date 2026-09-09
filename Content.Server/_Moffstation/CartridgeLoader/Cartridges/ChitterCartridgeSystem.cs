@@ -6,6 +6,7 @@ using Content.Shared._Moffstation.Chitter;
 using Content.Server.CartridgeLoader;
 using Content.Shared.CartridgeLoader;
 using Content.Shared.IdentityManagement;
+using Robust.Shared.Prototypes;
 using Robust.Shared.Timing;
 
 namespace Content.Server._Moffstation.CartridgeLoader.Cartridges;
@@ -15,9 +16,11 @@ public sealed class ChitterCartridgeSystem : EntitySystem
     [Dependency] private CartridgeLoaderSystem _cartridge = default!;
     [Dependency] private ChitterServerSystem _server = default!;
     [Dependency] private IGameTiming _timing = default!;
+    [Dependency] private IPrototypeManager _prototypeManager = default!;
 
     private TimeSpan _nextRefresh = TimeSpan.Zero;
     private static readonly TimeSpan RefreshInterval = TimeSpan.FromSeconds(3);
+    private static readonly TimeSpan MessageCooldown = TimeSpan.FromSeconds(1);
 
     public override void Initialize()
     {
@@ -59,6 +62,7 @@ public sealed class ChitterCartridgeSystem : EntitySystem
             return;
 
         var loader = GetEntity(args.LoaderUid);
+        var discoverContacts = msg.Type is ChitterUiMessageType.RefreshContacts;
 
         switch (msg.Type)
         {
@@ -94,15 +98,23 @@ public sealed class ChitterCartridgeSystem : EntitySystem
                 break;
         }
 
-        UpdateUi(ent, loader);
+        UpdateUi(ent, loader, discoverContacts);
     }
 
-    private bool TryGetServerAndCard(EntityUid loader, out Entity<ChitterServerComponent> serverEnt, out ChitterAccountComponent card)
+    private bool TryGetServerAndCard(
+        EntityUid loader,
+        out Entity<ChitterServerComponent> serverEnt,
+        out ChitterAccountComponent card,
+        bool requirePower = true)
     {
         serverEnt = default;
         card = default!;
 
-        if (!_server.TryFindServer(loader, out serverEnt))
+        var found = requirePower
+            ? _server.TryFindServer(loader, out serverEnt)
+            : _server.TryFindServerAnyPower(loader, out serverEnt);
+
+        if (!found)
             return false;
 
         if (!_server.TryGetPdaIdCard(loader, out var idCard))
@@ -114,6 +126,26 @@ public sealed class ChitterCartridgeSystem : EntitySystem
         if (!TryComp<ChitterAccountComponent>(idCard, out var foundCard))
             return false;
         card = foundCard;
+        return true;
+    }
+
+    /// <summary>
+    /// Gets the chat only if the given account is currently a participant of it. Guards every chat-mutating
+    /// handler against acting on a chat the caller isn't part of.
+    /// </summary>
+    private bool TryGetParticipantChat(ChitterServerComponent server, Guid chatId, uint accountId, out ChitterChat chat)
+    {
+        chat = default!;
+
+        // Only live chats are actionable; an archived chat should not accept renames, new
+        // messages, or participant changes.
+        if (!server.Chats.TryGetValue(chatId, out var foundChat))
+            return false;
+
+        if (!foundChat.ParticipantAccountIds.Contains(accountId))
+            return false;
+
+        chat = foundChat;
         return true;
     }
 
@@ -144,6 +176,9 @@ public sealed class ChitterCartridgeSystem : EntitySystem
             return;
         }
 
+        if (_timing.CurTime < ent.Comp.NextMessageAllowed)
+            return;
+
         Log.Info(
             $"[Chitter] HandleNewChat: card.AccountId={card.AccountId}, TargetNumbers count={msg.TargetNumbers?.Count ?? 0}, TargetNumber={msg.TargetNumber}");
 
@@ -171,6 +206,8 @@ public sealed class ChitterCartridgeSystem : EntitySystem
             return;
         }
 
+        ent.Comp.NextMessageAllowed = _timing.CurTime + MessageCooldown;
+
         var chatId = _server.CreateChat(serverEnt.Comp, participants, msg.ChatName);
         ent.Comp.CurrentChatId = chatId;
         Log.Info($"[Chitter] HandleNewChat: created chat {chatId} '{msg.ChatName}', auto-selected");
@@ -178,11 +215,21 @@ public sealed class ChitterCartridgeSystem : EntitySystem
 
     private void HandleSendMessage(Entity<ChitterCartridgeComponent> ent, EntityUid loader, ChitterUiMessageEvent msg)
     {
-        if (!TryGetServerAndCard(loader, out var serverEnt, out var card))
+        // Resolve the server regardless of power so an already-unpowered server still gets its
+        // message recorded and marked as failed, instead of the send silently doing nothing.
+        if (!TryGetServerAndCard(loader, out var serverEnt, out var card, requirePower: false))
             return;
 
         if (msg.ChatId == null || string.IsNullOrWhiteSpace(msg.Content))
             return;
+
+        if (_timing.CurTime < ent.Comp.NextMessageAllowed)
+            return;
+
+        if (!TryGetParticipantChat(serverEnt.Comp, msg.ChatId.Value, card.AccountId, out _))
+            return;
+
+        ent.Comp.NextMessageAllowed = _timing.CurTime + MessageCooldown;
 
         var senderName = GetCardName(loader);
         _server.AddMessage(serverEnt.Comp, msg.ChatId.Value, card.AccountId, senderName, msg.Content);
@@ -205,42 +252,55 @@ public sealed class ChitterCartridgeSystem : EntitySystem
         if (!TryGetServerAndCard(loader, out var serverEnt, out var card))
             return;
 
-        if (msg.ChatId != null && msg.TargetNumber != null)
-            _server.AddParticipantToChat(serverEnt.Comp, msg.ChatId.Value, msg.TargetNumber.Value);
+        if (msg.ChatId == null || msg.TargetNumber == null)
+            return;
+
+        if (!TryGetParticipantChat(serverEnt.Comp, msg.ChatId.Value, card.AccountId, out _))
+            return;
+
+        _server.AddParticipantToChat(serverEnt.Comp, msg.ChatId.Value, msg.TargetNumber.Value);
     }
 
     private void HandleRemoveParticipant(Entity<ChitterCartridgeComponent> ent, EntityUid loader, ChitterUiMessageEvent msg)
     {
-        if (!TryGetServerAndCard(loader, out var serverEnt, out var _))
+        if (!TryGetServerAndCard(loader, out var serverEnt, out var card))
             return;
 
-        if (msg.ChatId != null && msg.TargetNumber != null)
-            _server.RemoveParticipantFromChat(serverEnt.Comp, msg.ChatId.Value, msg.TargetNumber.Value);
+        if (msg.ChatId == null || msg.TargetNumber == null)
+            return;
+
+        if (!TryGetParticipantChat(serverEnt.Comp, msg.ChatId.Value, card.AccountId, out _))
+            return;
+
+        _server.RemoveParticipantFromChat(serverEnt.Comp, msg.ChatId.Value, msg.TargetNumber.Value);
     }
 
     private void HandleArchiveChat(Entity<ChitterCartridgeComponent> ent, EntityUid loader, ChitterUiMessageEvent msg)
     {
-        if (!TryGetServerAndCard(loader, out var serverEnt, out var _))
-            return;
-
-        if (msg.ChatId != null)
-            _server.ArchiveChat(serverEnt.Comp, msg.ChatId.Value);
-    }
-
-    private void HandleRenameChat(Entity<ChitterCartridgeComponent> ent, EntityUid loader, ChitterUiMessageEvent msg)
-    {
-        if (!_server.TryFindServer(loader, out var serverEnt))
+        if (!TryGetServerAndCard(loader, out var serverEnt, out var card))
             return;
 
         if (msg.ChatId == null)
             return;
 
-        var serverComp = serverEnt.Comp;
-
-        if (!serverComp.Chats.TryGetValue(msg.ChatId.Value, out var chat))
+        if (!TryGetParticipantChat(serverEnt.Comp, msg.ChatId.Value, card.AccountId, out _))
             return;
 
-        chat.ChatName = msg.ChatName ?? string.Empty;
+        _server.ArchiveChat(serverEnt.Comp, msg.ChatId.Value);
+    }
+
+    private void HandleRenameChat(Entity<ChitterCartridgeComponent> ent, EntityUid loader, ChitterUiMessageEvent msg)
+    {
+        if (!TryGetServerAndCard(loader, out var serverEnt, out var card))
+            return;
+
+        if (msg.ChatId == null)
+            return;
+
+        if (!TryGetParticipantChat(serverEnt.Comp, msg.ChatId.Value, card.AccountId, out _))
+            return;
+
+        _server.RenameChat(serverEnt.Comp, msg.ChatId.Value, msg.ChatName);
     }
 
     private void HandleSetProfilePicture(Entity<ChitterCartridgeComponent> ent, EntityUid loader, ChitterUiMessageEvent msg)
@@ -257,7 +317,7 @@ public sealed class ChitterCartridgeSystem : EntitySystem
         if (!TryComp<ChitterAccountComponent>(idCard, out var card))
             return;
 
-        if (msg.ProfilePictureId != null)
+        if (msg.ProfilePictureId != null && _prototypeManager.HasIndex<ChitterAvatarPrototype>(msg.ProfilePictureId))
         {
             card.ProfilePictureId = msg.ProfilePictureId;
             Dirty(idCard, card);
@@ -272,7 +332,7 @@ public sealed class ChitterCartridgeSystem : EntitySystem
         }
     }
 
-    private void UpdateUi(Entity<ChitterCartridgeComponent> ent, EntityUid loader)
+    private void UpdateUi(Entity<ChitterCartridgeComponent> ent, EntityUid loader, bool discoverContacts = true)
     {
         var hasIdCard = _server.TryGetPdaIdCard(loader, out var idCard);
         var serverOnline = _server.TryFindServer(loader, out var serverEnt);
@@ -312,11 +372,16 @@ public sealed class ChitterCartridgeSystem : EntitySystem
                 var serverComp = serverEnt.Comp;
                 _server.RegisterOrUpdateAccount(serverComp, account.AccountId, ownerName, ownerJobTitle, account.ProfilePictureId);
 
-                var before = serverComp.Accounts.Count;
-                DiscoverAccountsOnGrid(loader, serverComp);
-                var after = serverComp.Accounts.Count;
+                // The grid-wide scan below is comparatively expensive; only run it on the periodic
+                // refresh (or an explicit RefreshContacts request), not after every single message.
+                if (discoverContacts)
+                {
+                    var before = serverComp.Accounts.Count;
+                    DiscoverAccountsOnGrid(loader, serverComp);
+                    var after = serverComp.Accounts.Count;
 
-                Log.Info($"[Chitter] UpdateUi: accounts before discovery={before}, after={after}");
+                    Log.Info($"[Chitter] UpdateUi: accounts before discovery={before}, after={after}");
+                }
 
                 foreach (var (accId, acc) in serverComp.Accounts)
                 {

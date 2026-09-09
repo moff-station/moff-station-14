@@ -11,13 +11,32 @@ public sealed class ChitterServerSystem : SharedChitterSystem
     [Dependency] private IGameTiming _timing = default!;
 
     private const int MessageCharLimit = 500;
+    private const int ChatNameCharLimit = 50;
+    private const int MaxChatParticipants = 20;
 
     public override void Initialize()
     {
         base.Initialize();
     }
 
+    /// <summary>
+    /// Finds the powered Chitter server serving this loader's grid.
+    /// </summary>
     public bool TryFindServer(EntityUid loader, out Entity<ChitterServerComponent> server)
+    {
+        return TryFindServer(loader, requirePowered: true, out server);
+    }
+
+    /// <summary>
+    /// Finds the Chitter server serving this loader's grid, regardless of whether it currently has power.
+    /// Use this only when the caller itself handles the unpowered case (e.g. to record a failed delivery).
+    /// </summary>
+    public bool TryFindServerAnyPower(EntityUid loader, out Entity<ChitterServerComponent> server)
+    {
+        return TryFindServer(loader, requirePowered: false, out server);
+    }
+
+    private bool TryFindServer(EntityUid loader, bool requirePowered, out Entity<ChitterServerComponent> server)
     {
         server = default;
 
@@ -28,7 +47,7 @@ public sealed class ChitterServerSystem : SharedChitterSystem
         using (var query = EntityQueryEnumerator<ChitterServerComponent>())
         while (query.MoveNext(out var uid, out var comp))
         {
-            if (!IsServerPowered((uid, comp)))
+            if (requirePowered && !IsServerPowered((uid, comp)))
                 continue;
 
             var serverGrid = Transform(uid).GridUid;
@@ -99,15 +118,36 @@ public sealed class ChitterServerSystem : SharedChitterSystem
 
     public Guid CreateChat(ChitterServerComponent server, List<uint> participants, string? chatName = null)
     {
+        if (participants.Count > MaxChatParticipants)
+            participants = participants.GetRange(0, MaxChatParticipants);
+
         var chat = new ChitterChat
         {
             ChatId = Guid.NewGuid(),
-            ChatName = chatName ?? string.Empty,
+            ChatName = TruncateChatName(chatName),
             ParticipantAccountIds = participants,
             CreatedTime = _timing.CurTime,
         };
         server.Chats[chat.ChatId] = chat;
         return chat.ChatId;
+    }
+
+    public void RenameChat(ChitterServerComponent server, Guid chatId, string? chatName)
+    {
+        if (!server.Chats.TryGetValue(chatId, out var chat))
+            return;
+
+        chat.ChatName = TruncateChatName(chatName);
+    }
+
+    private static string TruncateChatName(string? chatName)
+    {
+        if (chatName == null)
+            return string.Empty;
+
+        return chatName.Length > ChatNameCharLimit
+            ? chatName[..ChatNameCharLimit]
+            : chatName;
     }
 
     public bool AddMessage(ChitterServerComponent server, Guid chatId, uint senderId, string senderName, string content)

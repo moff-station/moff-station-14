@@ -65,9 +65,9 @@ public sealed partial class ChitterUiFragment : BoxContainer
         PlayerName.Text = state.OwnName;
         PlayerJob.Text = state.OwnJob;
         PlayerChitterId.Text = $"#{state.OwnNumber:D4}";
-        if (state.OwnProfilePicture != null)
+        if (!string.IsNullOrEmpty(state.OwnProfilePicture) &&
+            _prototypeManager.TryIndex<ChitterAvatarPrototype>(state.OwnProfilePicture, out var avatar))
         {
-            var avatar = _prototypeManager.Index<ChitterAvatarPrototype>(state.OwnProfilePicture);
             ProfileButton.TexturePath = "/" + avatar.SpritePath;
         }
 

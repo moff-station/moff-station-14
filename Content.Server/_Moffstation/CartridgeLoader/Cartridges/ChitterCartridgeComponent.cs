@@ -5,4 +5,9 @@ public sealed partial class ChitterCartridgeComponent : Component
 {
     public Guid? CurrentChatId;
     public readonly Dictionary<Guid, int> LastSeenMessageCount = new();
+
+    /// <summary>
+    /// When this cartridge is next allowed to send a message or create a chat.
+    /// </summary>
+    public TimeSpan NextMessageAllowed;
 }
