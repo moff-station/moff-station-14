@@ -52,8 +52,7 @@ public sealed class JestographicSequencerSystem : EntitySystem
             return;
         }
 
-        Entity<LimitedChargesComponent?> chargesEnt = ent.Owner;
-        if (_charges.IsEmpty(chargesEnt))
+        if (_charges.IsEmpty(ent.Owner))
         {
             _popup.PopupEntity(Loc.GetString("jestographic-sequencer-no-charges"), args.User, args.User);
             return;
