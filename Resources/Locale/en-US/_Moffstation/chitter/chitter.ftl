@@ -27,4 +27,7 @@ chitter-leave-chat = Leave Chat
 ## Chitter Account examine
 chitter-account-examine = Chitter Account: {$number}
 
+## Agent ID card number override
+chitter-account-number-taken = That number is already registered to another Chitter account.
+
 

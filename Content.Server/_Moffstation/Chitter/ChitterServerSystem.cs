@@ -16,6 +16,10 @@ public sealed class ChitterServerSystem : SharedChitterSystem
     private const int ChatNameCharLimit = 50;
     private const int MaxChatParticipants = 20;
 
+    // Fired whenever a chat/message/participant mutates, so the admin log panel can push a fresh
+    // state to anyone with it open instead of only showing a snapshot from when it was opened.
+    public event Action? DataChanged;
+
     public override void Initialize()
     {
         base.Initialize();
@@ -40,6 +44,12 @@ public sealed class ChitterServerSystem : SharedChitterSystem
         if (!loaderGrid.HasValue)
             return false;
 
+        // Picks the lowest-UID match instead of just the first one the enumerator happens to hit,
+        // so repeated calls resolve to the same server when more than one is in range - otherwise
+        // a handler and the UpdateUi call right after it could silently disagree on which server a
+        // chat was even created on.
+        var found = false;
+
         using (var query = EntityQueryEnumerator<ChitterServerComponent>())
         while (query.MoveNext(out var uid, out var comp))
         {
@@ -48,22 +58,22 @@ public sealed class ChitterServerSystem : SharedChitterSystem
 
             var serverGrid = Transform(uid).GridUid;
 
-            if (serverGrid == loaderGrid)
-            {
-                server = (uid, comp);
-                return true;
-            }
+            var matches = serverGrid == loaderGrid ||
+                (serverGrid == null && TryComp<InnerCableReceiverComponent>(uid, out var receiver)
+                    && receiver.Provider is {} provider
+                    && Transform(provider.Owner).GridUid == loaderGrid);
 
-            if (serverGrid == null && TryComp<InnerCableReceiverComponent>(uid, out var receiver)
-                && receiver.Provider is {} provider
-                && Transform(provider.Owner).GridUid == loaderGrid)
+            if (!matches)
+                continue;
+
+            if (!found || uid.Id < server.Owner.Id)
             {
                 server = (uid, comp);
-                return true;
+                found = true;
             }
         }
 
-        return false;
+        return found;
     }
 
     public bool IsServerPowered(Entity<ChitterServerComponent> server)
@@ -125,6 +135,7 @@ public sealed class ChitterServerSystem : SharedChitterSystem
             CreatedTime = _timing.CurTime,
         };
         server.Chats[chat.ChatId] = chat;
+        DataChanged?.Invoke();
         return chat.ChatId;
     }
 
@@ -134,6 +145,7 @@ public sealed class ChitterServerSystem : SharedChitterSystem
             return;
 
         chat.ChatName = TruncateChatName(chatName);
+        DataChanged?.Invoke();
     }
 
     private static string TruncateChatName(string? chatName)
@@ -168,6 +180,7 @@ public sealed class ChitterServerSystem : SharedChitterSystem
         // Same pattern as RadioSystem/ChatManager - lets messages be pulled from a saved replay later.
         _replay.RecordServerMessage(new ChitterReplayMessageRecord { ChatId = chatId, Message = message });
 
+        DataChanged?.Invoke();
         return true;
     }
 
@@ -178,18 +191,22 @@ public sealed class ChitterServerSystem : SharedChitterSystem
 
         chat.Archived = true;
         server.ArchivedChats[chatId] = chat;
+        DataChanged?.Invoke();
     }
 
     public void AddParticipantToChat(ChitterServerComponent server, Guid chatId, uint accountId)
     {
         if (server.Chats.TryGetValue(chatId, out var chat) && !chat.ParticipantAccountIds.Contains(accountId))
+        {
             chat.ParticipantAccountIds.Add(accountId);
+            DataChanged?.Invoke();
+        }
     }
 
     public void RemoveParticipantFromChat(ChitterServerComponent server, Guid chatId, uint accountId)
     {
-        if (server.Chats.TryGetValue(chatId, out var chat))
-            chat.ParticipantAccountIds.Remove(accountId);
+        if (server.Chats.TryGetValue(chatId, out var chat) && chat.ParticipantAccountIds.Remove(accountId))
+            DataChanged?.Invoke();
     }
 
     public void MarkDeliveryFailed(ChitterServerComponent server, Guid chatId)

@@ -27,6 +27,7 @@ public sealed partial class ChitterLogEui : BaseEui
     {
         base.Opened();
         _adminManager.OnPermsChanged += OnPermsChanged;
+        _server.DataChanged += StateDirty;
         StateDirty();
     }
 
@@ -34,6 +35,7 @@ public sealed partial class ChitterLogEui : BaseEui
     {
         base.Closed();
         _adminManager.OnPermsChanged -= OnPermsChanged;
+        _server.DataChanged -= StateDirty;
     }
 
     private void OnPermsChanged(AdminPermsChangedEventArgs args)

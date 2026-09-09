@@ -107,7 +107,10 @@ public abstract partial class SharedAgentIdCardSystem : EntitySystem
         // hijack someone else's. The client just predicts the number is free; if the server
         // disagrees, the resulting state never changes and the prediction gets corrected back.
         if (_net.IsServer && IsChitterAccountIdTaken(args.Number, ent.Owner))
+        {
+            _popup.PopupEntity(Loc.GetString("chitter-account-number-taken"), ent, args.Actor);
             return;
+        }
 
         comp.AccountId = args.Number;
         Dirty(ent, comp);
