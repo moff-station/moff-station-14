@@ -7875,6 +7875,13 @@ Entries:
   id: 1821
   time: '2026-08-20T18:50:11.000'
   url: https://github.com/moff-station/moff-station-14/pull/1821
+- author: Wintoli
+  changes:
+  - message: A smoke implanter has been added to the Syndicate store and Thief loadout!
+    type: add
+  id: 1825
+  time: '2026-09-10T17:29:04.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1825
 - author: Centronias, Nyxilath
   changes:
   - message: Artifact console effect reports now give more detail post-activation
@@ -8030,6 +8037,20 @@ Entries:
   id: 1855
   time: '2026-08-31T18:41:50.000'
   url: https://github.com/moff-station/moff-station-14/pull/1855
+- author: Tezzaide
+  changes:
+  - message: Bartenders now start a ammonia jug in the Soda Dispenser.
+    type: add
+  id: 1859
+  time: '2026-09-08T11:50:56.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1859
+- author: OrbitSystem07
+  changes:
+  - message: Boxes of hugs are now the correct size when crafted
+    type: fix
+  id: 1860
+  time: '2026-09-08T19:19:55.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1860
 - author: gummyema
   changes:
   - message: Spray painter capacity increased from 15 to 50
@@ -8048,11 +8069,48 @@ Entries:
   url: https://github.com/moff-station/moff-station-14/pull/1862
 - author: Centronias
   changes:
+  - message: The "advanced mail cyborg module" and mail delivery cannon can be researched
+      as a T2 civilian tech.
+    type: add
+  id: 1864
+  time: '2026-09-10T17:51:20.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1864
+- author: Centronias
+  changes:
   - message: Nomenclatura's personal item is no longer capable of bricking clients
       by being equipped onto certain entities.
     type: fix
   id: 1868
   time: '2026-09-07T05:11:33.000'
   url: https://github.com/moff-station/moff-station-14/pull/1868
+- author: Wintoli
+  changes:
+  - message: The EMP hardbomb had its size and price slightly reduced.
+    type: tweak
+  id: 1872
+  time: '2026-09-09T19:52:23.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1872
+- author: Centronias
+  changes:
+  - message: Boxes of flares are now available for purchase in cargo.
+    type: add
+  id: 1874
+  time: '2026-09-10T17:51:20.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1874
+- author: DuckManZach
+  changes:
+  - message: 'New lobby art: Chad, Where''s the TEG?'
+    type: add
+  id: 1879
+  time: '2026-09-10T19:23:50.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1879
+- author: Centronias
+  changes:
+  - message: MIDI instruments' rendering of MIDIs should be the same as on upstream
+      now.
+    type: fix
+  id: 1880
+  time: '2026-09-10T19:51:08.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1880
 Name: Mofflog
 Order: -2

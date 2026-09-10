@@ -19,10 +19,6 @@
     - !type:DepartmentTimeRequirement
       department: Medical
       time: 10h
-  # Moff start - no job weights
-#  weight: 10
-  displayWeight: 10
-  # Moff end
   startingGear: CMOGear
   icon: "JobIconChiefMedicalOfficer"
   supervisors: job-supervisors-captain
