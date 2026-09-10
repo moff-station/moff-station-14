@@ -10,6 +10,7 @@ using Content.Shared.Power;
 using Content.Shared.Power.EntitySystems;
 using Content.Shared.Whitelist;
 using Robust.Shared.Containers;
+using Robust.Shared.Network;
 using Robust.Shared.Utility;
 
 namespace Content.Shared._Moffstation.BladeServer;
@@ -22,6 +23,7 @@ public abstract partial class SharedBladeServerSystem : EntitySystem
     [Dependency] private SharedContainerSystem _container = default!;
     [Dependency] private SharedInteractionSystem _interaction = default!;
     [Dependency] private ItemSlotsSystem _itemSlots = default!;
+    [Dependency] private INetManager _net = default!;
     [Dependency] private SharedPopupSystem _popup = default!;
     [Dependency] private SharedPowerReceiverSystem _powerReceiver = default!;
     [Dependency] private SharedUserInterfaceSystem _ui = default!;
@@ -69,10 +71,12 @@ public abstract partial class SharedBladeServerSystem : EntitySystem
 
     private void OnComponentInit(Entity<BladeServerRackComponent> entity, ref ComponentInit args)
     {
-        // Fill slots in the rack based on the component's `StartingContents`
+        // Fill slots in the rack based on the component's `StartingContents`. Only the server actually spawns
+        // entities here - the client just creates empty slots and lets normal container networking sync the
+        // server's spawned contents down, same as ContainerFillComponent does for MapInitEvent-based fills.
         InitializeSlots(
             entity,
-            idx => entity.Comp.StartingContents.TryGetValue(idx, out var proto)
+            idx => _net.IsServer && entity.Comp.StartingContents.TryGetValue(idx, out var proto)
                 ? SpawnNextToOrDrop(proto, entity)
                 : null
         );
@@ -400,11 +404,16 @@ public abstract partial class SharedBladeServerSystem : EntitySystem
         if (!TryComp(entity, out entity.Comp2))
             return;
 
-        foreach (var slot in entity.Comp1.BladeSlots)
+        // If the rack itself is being deleted, don't eject its contents - just let them get cascade-deleted along
+        // with it. Ejecting here would instead orphan racked blade servers as loose entities in the world.
+        if (!TerminatingOrDeleted(entity.Owner))
         {
-            slot.Ejecting = true;
-            _itemSlots.TryEject(entity, slot.Slot, user: null, out _);
-            _itemSlots.RemoveItemSlot(entity, slot.Slot, entity);
+            foreach (var slot in entity.Comp1.BladeSlots)
+            {
+                slot.Ejecting = true;
+                _itemSlots.TryEject(entity, slot.Slot, user: null, out _);
+                _itemSlots.RemoveItemSlot(entity, slot.Slot, entity);
+            }
         }
 
         entity.Comp1.BladeSlots.Clear();
