@@ -26,16 +26,14 @@ public static class EntitySystemExt
 
         /// Throws an exception. For typechecking, returns <typeparamref name="T"/> for use in expressions, though it definitely never returns.
         [MethodImpl(MethodImplOptions.AggressiveInlining), DoesNotReturn]
-        public T Unreachable<T>(string msg)
-        {
-            throw new Exception(msg);
-        }
+        public T Unreachable<T>(string msg) => throw new Exception(msg);
 
         /// Throws an exception.
         [MethodImpl(MethodImplOptions.AggressiveInlining), DoesNotReturn]
-        public void Unreachable(string msg)
-        {
-            throw new Exception(msg);
-        }
+        public void Unreachable(string msg) => throw new Exception(msg);
+
+        /// <see cref="Unreachable{T}"/>, specialized for throwing on unknown enum variants.
+        public TRet UnknownEnumVariant<T, TRet>(T variant) where T : Enum =>
+            entSys.Unreachable<TRet>($"Unknown variant of enum {nameof(T)}: {variant}");
     }
 }
