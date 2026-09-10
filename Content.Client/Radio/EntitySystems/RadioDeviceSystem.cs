@@ -13,6 +13,7 @@ public sealed partial class RadioDeviceSystem : SharedRadioDeviceSystem
     /// <inheritdoc/>
     public override void Initialize()
     {
+        base.Initialize(); // Moffstation - Radio Host
         SubscribeLocalEvent<IntercomComponent, AfterAutoHandleStateEvent>(OnAfterHandleState);
     }
 
