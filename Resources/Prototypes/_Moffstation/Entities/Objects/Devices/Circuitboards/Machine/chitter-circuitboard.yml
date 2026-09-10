@@ -8,6 +8,5 @@
     prototype: ChitterBladeServer
   - type: MachineBoard
     prototype: ChitterBladeServer
-    requirements:
+    stackRequirements:
       Capacitor: 1
-      # Add more parts as needed
