@@ -4,6 +4,8 @@
   name: chitter cartridge
   description: A PDA cartridge that gives you access to the Chitter instant messaging network. Requires a Chitter blade server on your station grid.
   components:
+  - type: Sprite
+    state: cart-y
   - type: Cartridge
     programName: chitter-program-name
     icon:
