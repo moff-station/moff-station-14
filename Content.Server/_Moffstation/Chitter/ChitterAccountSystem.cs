@@ -9,7 +9,7 @@ using Robust.Shared.Random;
 
 namespace Content.Server._Moffstation.Chitter;
 
-public sealed class ChitterAccountSystem : SharedChitterSystem
+public sealed partial class ChitterAccountSystem : SharedChitterSystem
 {
     [Dependency] private NameIdentifierSystem _nameIdentifier = default!;
     [Dependency] private IPrototypeManager _prototypeManager = default!;

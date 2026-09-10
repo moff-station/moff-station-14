@@ -7,7 +7,7 @@ using Robust.Shared.Timing;
 
 namespace Content.Server._Moffstation.Chitter;
 
-public sealed class ChitterServerSystem : SharedChitterSystem
+public sealed partial class ChitterServerSystem : SharedChitterSystem
 {
     [Dependency] private IGameTiming _timing = default!;
     [Dependency] private IReplayRecordingManager _replay = default!;

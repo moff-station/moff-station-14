@@ -12,7 +12,7 @@ using Robust.Shared.Timing;
 
 namespace Content.Server._Moffstation.CartridgeLoader.Cartridges;
 
-public sealed class ChitterCartridgeSystem : EntitySystem
+public sealed partial class ChitterCartridgeSystem : EntitySystem
 {
     [Dependency] private CartridgeLoaderSystem _cartridge = default!;
     [Dependency] private ChitterServerSystem _server = default!;
