@@ -8069,6 +8069,14 @@ Entries:
   url: https://github.com/moff-station/moff-station-14/pull/1862
 - author: Centronias
   changes:
+  - message: The "advanced mail cyborg module" and mail delivery cannon can be researched
+      as a T2 civilian tech.
+    type: add
+  id: 1864
+  time: '2026-09-10T17:51:20.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1864
+- author: Centronias
+  changes:
   - message: Nomenclatura's personal item is no longer capable of bricking clients
       by being equipped onto certain entities.
     type: fix
@@ -8082,5 +8090,12 @@ Entries:
   id: 1872
   time: '2026-09-09T19:52:23.000'
   url: https://github.com/moff-station/moff-station-14/pull/1872
+- author: Centronias
+  changes:
+  - message: Boxes of flares are now available for purchase in cargo.
+    type: add
+  id: 1874
+  time: '2026-09-10T17:51:20.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1874
 Name: Mofflog
 Order: -2
