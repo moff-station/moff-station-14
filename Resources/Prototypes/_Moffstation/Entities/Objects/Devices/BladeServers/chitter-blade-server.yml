@@ -5,5 +5,7 @@
   description: A blade server module running the Chitter instant messaging service.
   components:
   - type: ChitterServer
+  - type: Machine
+    board: ChitterBladeServerMachineCircuitboard
   - type: BladeServer
     stripeColor: "#88C040"
