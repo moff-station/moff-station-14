@@ -29,17 +29,3 @@
   - type: GuideHelp
     guides:
     - Science
-
-# Moffstation - Blade Server Rack migration
-# Replaces the standalone R&D server on maps (see Resources/migration.yml) with a rack pre-loaded with the R&D
-# blade server and a Chitter blade server, so every station keeps working R&D and gets Chitter for free.
-- type: entity
-  id: ResearchAndDevelopmentServerRack
-  parent: BladeServerRack
-  name: R&D server rack
-  description: A blade server rack pre-loaded with the station's R&D blade server and a Chitter communications blade.
-  components:
-  - type: BladeServerRack
-    startingContents:
-    - ResearchAndDevelopmentBladeServer
-    - ChitterBladeServer
