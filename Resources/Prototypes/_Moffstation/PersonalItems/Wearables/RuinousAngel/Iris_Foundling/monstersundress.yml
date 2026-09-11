@@ -17,8 +17,8 @@
 
 - type: loadout
   id: *id
-  storage:`
-    back:`
+  storage:
+    back:
     - *id
   effects: &loadout-effect
   - !type:PersonalItemLoadoutEffect
