@@ -113,6 +113,19 @@
       - BorgModuleService
     hasMindState: borg_e
     noMindState: borg_e_r
+  #department radio was missing on derelict borgs
+  - type: IntrinsicRadioTransmitter
+    channels:
+    - Binary
+    - Common
+    - Service
+    - Science
+  - type: ActiveRadio
+    channels:
+    - Binary
+    - Common
+    - Service
+    - Science
 
   #Station Ai Shell
 - type: entity
