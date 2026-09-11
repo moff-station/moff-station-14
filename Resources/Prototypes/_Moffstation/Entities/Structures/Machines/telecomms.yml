@@ -58,3 +58,17 @@
         variant-nokey:
           True: { shader: unshaded }
           False: { shader: shaded }
+
+# Moffstation - Blade Server Rack migration
+# Replaces the standalone general-channel telecom server on maps (see Resources/migration.yml) with a rack
+# pre-loaded with the Common telecom blade server and a Chitter blade server.
+- type: entity
+  id: TelecomServerCommonRack
+  parent: BladeServerRack
+  name: telecommunication server rack
+  description: A blade server rack pre-loaded with the station's general channel telecom blade server and a Chitter communications blade.
+  components:
+  - type: BladeServerRack
+    startingContents:
+    - TelecomBladeServerFilledCommon
+    - ChitterBladeServer
