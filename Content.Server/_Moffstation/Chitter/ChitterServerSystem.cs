@@ -40,6 +40,24 @@ public sealed partial class ChitterServerSystem : SharedChitterSystem
     {
         server = default;
 
+        // A PDA that's manually connected to a private M.P.N. server stays on it exclusively - it never
+        // silently falls back to the station's own server, even if the M.P.N. one is out of power.
+        if (TryComp<ChitterMpnConnectionComponent>(loader, out var mpnConnection) && mpnConnection.ConnectedServer is { } connected)
+        {
+            if (TerminatingOrDeleted(connected) || !TryComp<ChitterServerComponent>(connected, out var connectedComp))
+            {
+                mpnConnection.ConnectedServer = null;
+                Dirty(loader, mpnConnection);
+                return false;
+            }
+
+            if (requirePowered && !IsServerPowered((connected, connectedComp)))
+                return false;
+
+            server = (connected, connectedComp);
+            return true;
+        }
+
         var loaderGrid = Transform(loader).GridUid;
         if (!loaderGrid.HasValue)
             return false;
@@ -53,6 +71,11 @@ public sealed partial class ChitterServerSystem : SharedChitterSystem
         using (var query = EntityQueryEnumerator<ChitterServerComponent>())
         while (query.MoveNext(out var uid, out var comp))
         {
+            // Private M.P.N. servers never show up in the normal grid-wide scan - they're only reachable
+            // by manually connecting to them (see above).
+            if (HasComp<ChitterMpnServerComponent>(uid))
+                continue;
+
             if (requirePowered && !IsServerPowered((uid, comp)))
                 continue;
 
@@ -84,6 +107,10 @@ public sealed partial class ChitterServerSystem : SharedChitterSystem
         if (TryComp<InnerCableReceiverComponent>(server, out var receiver) && receiver.Provider is {} provider)
             return TryComp<ApcPowerReceiverComponent>(provider, out var rackPower) && rackPower.Powered;
 
+        // M.P.N. servers skip the APC/extension-cable network entirely and draw straight off an MV cable.
+        if (TryComp<PowerConsumerComponent>(server, out var consumer))
+            return consumer.ReceivedPower >= consumer.DrawRate;
+
         return false;
     }
 
@@ -96,6 +123,14 @@ public sealed partial class ChitterServerSystem : SharedChitterSystem
 
         idCard = pda.ContainedId.Value;
         return true;
+    }
+
+    // Used when an account swaps over to a private M.P.N. server (or back) - it shouldn't keep showing
+    // up as a contact on a network it's no longer actually reachable through.
+    public void RemoveAccount(ChitterServerComponent server, uint accountId)
+    {
+        if (server.Accounts.Remove(accountId))
+            DataChanged?.Invoke();
     }
 
     public ChitterAccount? GetAccount(ChitterServerComponent server, uint accountId)

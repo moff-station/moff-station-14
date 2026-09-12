@@ -307,6 +307,14 @@ public sealed partial class ChitterCartridgeSystem : EntitySystem
         _server.RegisterOrUpdateAccount(serverEnt.Comp, card.Comp.AccountId, ownerName, ownerJobTitle, msg.ProfilePictureId);
     }
 
+    // Called externally (by ChitterMpnSystem right after connecting/disconnecting a private network) to
+    // force an immediate refresh - otherwise an already-open Chitter window wouldn't pick up the change
+    // until the next periodic Update() poll, or until the player closed and reopened the app.
+    public void RefreshUi(Entity<ChitterCartridgeComponent> ent, EntityUid loader)
+    {
+        UpdateUi(ent, loader);
+    }
+
     private void UpdateUi(Entity<ChitterCartridgeComponent> ent, EntityUid loader, bool discoverContacts = true)
     {
         var hasIdCard = _server.TryGetPdaIdCard(loader, out var idCard);
@@ -347,7 +355,9 @@ public sealed partial class ChitterCartridgeSystem : EntitySystem
 
                 // The grid-wide scan below is comparatively expensive; only run it on the periodic
                 // refresh (or an explicit RefreshContacts request), not after every single message.
-                if (discoverContacts)
+                // Private M.P.N. servers are excluded entirely - auto-adding every ID card on the
+                // station would defeat the point of a private network.
+                if (discoverContacts && !HasComp<ChitterMpnServerComponent>(serverEnt.Owner))
                     DiscoverAccountsOnGrid(loader, serverComp);
 
                 foreach (var (accId, acc) in serverComp.Accounts)

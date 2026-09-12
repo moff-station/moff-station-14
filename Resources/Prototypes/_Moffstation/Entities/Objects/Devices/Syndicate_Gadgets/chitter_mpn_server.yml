@@ -1,0 +1,42 @@
+# A pocket-sized, off-the-books Chitter server. Anchors straight onto MV cabling instead of drawing from
+# an APC, so it can be hidden anywhere with power run under the floor - no need for a room's own APC to
+# cooperate. Never shows up in the station's normal Chitter directory; a PDA has to manually connect to
+# it first (see ChitterMpnSystem).
+- type: entity
+  parent: [ BaseMachine, BaseMachineDestructible, BaseSyndicateContraband ]
+  id: ChitterMpnServer
+  name: M.P.N. chitter server
+  description: A Miniature Private Network chitter server. A palm-sized red case with no manufacturer markings. Needs to be anchored directly onto medium-voltage cabling to power on.
+  components:
+  - type: ChitterServer
+  - type: ChitterMpnServer
+  - type: Item
+    size: Normal
+  - type: Sprite
+    sprite: _Moffstation/Structures/Machines/blade_server.rsi
+    scale: 0.6, 0.6
+    layers:
+    - state: frame
+    - state: stripe
+      color: "#D6221FFF"
+    - state: cover
+    - state: powered
+      visible: false
+      shader: unshaded
+      map: [ "enum.PowerDeviceVisualLayers.Powered" ]
+  - type: Appearance
+  - type: GenericVisualizer
+    visuals:
+      enum.PowerDeviceVisuals.Powered:
+        powered:
+          True: { visible: true }
+          False: { visible: false }
+  - type: NodeContainer
+    examinable: true
+    nodes:
+      input:
+        !type:CableDeviceNode
+        nodeGroupID: MVPower
+  - type: PowerConsumer
+    voltage: Medium
+    drawRate: 50
