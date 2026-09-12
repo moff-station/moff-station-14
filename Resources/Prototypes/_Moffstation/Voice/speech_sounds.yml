@@ -17,6 +17,15 @@
     path: /Audio/_Moffstation/Voice/Talk/lizard_exclaim.ogg
 
 - type: speechSounds
+  id: ShadowCat
+  saySound:
+    path: /Audio/_Moffstation/Animals/cat_meow_shadow2.ogg
+  askSound:
+    path: /Audio/_Moffstation/Animals/cat_meow_shadow.ogg
+  exclaimSound:
+    path: /Audio/_Moffstation/Animals/cat_meow_shadow.ogg
+
+- type: speechSounds
   id: Vox
   saySound:
     path: /Audio/_Moffstation/Voice/Talk/vox.ogg
