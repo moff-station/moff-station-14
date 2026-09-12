@@ -413,13 +413,13 @@ public sealed partial class BloodstreamSystem : EntitySystem
     public void ClearBloodStream(Entity<BloodstreamComponent> ent)
     {
         if(ent.Comp.BloodSolution is {} bloodSolution)
-            SolutionContainer.RemoveAllSolution(bloodSolution);
+            _solutionContainer.RemoveAllSolution(bloodSolution);
 
         if(ent.Comp.MetabolitesSolution is {} metaboliteSolution)
-            SolutionContainer.RemoveAllSolution(metaboliteSolution);
+            _solutionContainer.RemoveAllSolution(metaboliteSolution);
 
         if(ent.Comp.TemporarySolution is {} tempSolution)
-            SolutionContainer.RemoveAllSolution(tempSolution);
+            _solutionContainer.RemoveAllSolution(tempSolution);
     }
     //Moffstation - End
 
