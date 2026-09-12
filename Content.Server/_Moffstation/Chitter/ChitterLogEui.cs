@@ -1,4 +1,3 @@
-using System.Linq;
 using Content.Server.Administration;
 using Content.Server.Administration.Managers;
 using Content.Server.EUI;
@@ -50,32 +49,10 @@ public sealed partial class ChitterLogEui : BaseEui
 
         foreach (var server in _server.GetAllServers())
         {
-            AddChats(server.Chats.Values, server, chats);
-            AddChats(server.ArchivedChats.Values, server, chats);
+            chats.AddRange(ChitterServerSystem.BuildLogChats(server.Chats.Values, server));
+            chats.AddRange(ChitterServerSystem.BuildLogChats(server.ArchivedChats.Values, server));
         }
 
         return new ChitterLogEuiState { Chats = chats };
-    }
-
-    private static void AddChats(IEnumerable<ChitterChat> source, ChitterServerComponent server, List<ChitterLogChat> destination)
-    {
-        foreach (var chat in source)
-        {
-            destination.Add(new ChitterLogChat
-            {
-                ChatId = chat.ChatId,
-                ChatName = chat.ChatName,
-                Archived = chat.Archived,
-                CreatedTime = chat.CreatedTime,
-                Participants = chat.ParticipantAccountIds
-                    .Select(id => new ChitterLogParticipant
-                    {
-                        AccountId = id,
-                        Name = server.Accounts.GetValueOrDefault(id)?.Name ?? $"#{id:D4}",
-                    })
-                    .ToList(),
-                Messages = chat.Messages,
-            });
-        }
     }
 }

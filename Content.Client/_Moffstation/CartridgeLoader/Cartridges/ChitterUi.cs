@@ -41,5 +41,4 @@ public sealed partial class ChitterUi : UIFragment
         if (state is ChitterUiState cast)
             _fragment?.UpdateState(cast);
     }
-
 }

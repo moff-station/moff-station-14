@@ -30,10 +30,13 @@ public sealed partial class ChitterMpnSystem : EntitySystem
     }
 
     // PowerConsumerComponent (unlike ApcPowerReceiverComponent) doesn't drive appearance data on its own,
-    // so the sprite's Powered visual needs to be pushed manually here.
+    // so the sprite's Powered visual needs to be pushed manually here. It also doesn't raise the
+    // ApcPowerReceiver-based PowerChangedEvent ChitterServerSystem otherwise listens for, so anyone
+    // with a Chitter UI open needs to be told about the power flip separately too.
     private void OnPowerChanged(Entity<ChitterMpnServerComponent> ent, ref PowerConsumerReceivedChanged args)
     {
         _appearance.SetData(ent, PowerDeviceVisuals.Powered, args.ReceivedPower >= args.DrawRate);
+        _server.NotifyDataChanged();
     }
 
     private void OnAfterInteract(Entity<ChitterCartridgeComponent> ent, ref CartridgeRelayedEvent<AfterInteractEvent> args)

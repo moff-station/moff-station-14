@@ -1,7 +1,10 @@
+using System.Linq;
 using Content.Server.Power.Components;
 using Content.Server._Moffstation.Power.Components;
+using Content.Shared._Moffstation.BladeServer;
 using Content.Shared._Moffstation.Chitter;
 using Content.Shared.PDA;
+using Content.Shared.Power;
 using Robust.Shared.Replays;
 using Robust.Shared.Timing;
 
@@ -16,13 +19,54 @@ public sealed partial class ChitterServerSystem : SharedChitterSystem
     private const int ChatNameCharLimit = 50;
     private const int MaxChatParticipants = 20;
 
-    // Fired whenever a chat/message/participant mutates, so the admin log panel can push a fresh
-    // state to anyone with it open instead of only showing a snapshot from when it was opened.
+    // Fired whenever anything that could change how a Chitter server looks to a viewer happens - a
+    // chat/message/participant mutates, a server gains/loses power, or a server is destroyed - so
+    // anyone with a Chitter UI open (the admin log panel, PDAs, the AI) can push a fresh state instead
+    // of only showing a snapshot from whenever they last looked.
     public event Action? DataChanged;
 
     public override void Initialize()
     {
         base.Initialize();
+
+        SubscribeLocalEvent<ChitterServerComponent, PowerChangedEvent>(OnServerPowerChanged);
+        SubscribeLocalEvent<ChitterServerComponent, ComponentShutdown>(OnServerShutdown);
+
+        // Racked blade servers (the common case) don't have their own ApcPowerReceiver - they draw
+        // through the rack's, so the rack is what actually receives power changes. M.P.N. servers
+        // report power a third way (PowerConsumerReceivedChanged) and notify via NotifyDataChanged
+        // from ChitterMpnSystem instead, since that event isn't power-receiver-based at all.
+        SubscribeLocalEvent<BladeServerRackComponent, BladeServerRackPowerChangedEvent>(OnRackPowerChanged);
+    }
+
+    private void OnServerPowerChanged(Entity<ChitterServerComponent> ent, ref PowerChangedEvent args)
+    {
+        DataChanged?.Invoke();
+    }
+
+    private void OnServerShutdown(Entity<ChitterServerComponent> ent, ref ComponentShutdown args)
+    {
+        DataChanged?.Invoke();
+    }
+
+    private void OnRackPowerChanged(Entity<BladeServerRackComponent> ent, ref BladeServerRackPowerChangedEvent args)
+    {
+        foreach (var slot in ent.Comp.BladeSlots)
+        {
+            if (slot.Item is { } item && HasComp<ChitterServerComponent>(item))
+            {
+                DataChanged?.Invoke();
+                return;
+            }
+        }
+    }
+
+    // For callers that can't invoke DataChanged directly (it's only invocable from within this class) -
+    // currently just ChitterMpnSystem, whose M.P.N. servers report power via PowerConsumerReceivedChanged
+    // rather than the ApcPowerReceiver-based PowerChangedEvent this system otherwise listens for.
+    public void NotifyDataChanged()
+    {
+        DataChanged?.Invoke();
     }
 
     public bool TryFindServer(EntityUid loader, out Entity<ChitterServerComponent> server)
@@ -250,6 +294,7 @@ public sealed partial class ChitterServerSystem : SharedChitterSystem
             return;
 
         chat.Messages[^1].DeliveryFailed = true;
+        DataChanged?.Invoke();
     }
 
     // Used by the admin log panel to list conversations from every station, not just one server.
@@ -260,5 +305,35 @@ public sealed partial class ChitterServerSystem : SharedChitterSystem
         {
             yield return server;
         }
+    }
+
+    // Shared by the admin log panel and the Chitter P.I. cartridge, which both need to turn a server's
+    // live ChitterChats into read-only log DTOs. Copies each chat's message list rather than aliasing
+    // the server's live one, so a caller holding onto the result (like P.I.'s snapshot) doesn't
+    // silently keep growing as the real conversation continues.
+    public static List<ChitterLogChat> BuildLogChats(IEnumerable<ChitterChat> source, ChitterServerComponent server)
+    {
+        var result = new List<ChitterLogChat>();
+
+        foreach (var chat in source)
+        {
+            result.Add(new ChitterLogChat
+            {
+                ChatId = chat.ChatId,
+                ChatName = chat.ChatName,
+                Archived = chat.Archived,
+                CreatedTime = chat.CreatedTime,
+                Participants = chat.ParticipantAccountIds
+                    .Select(id => new ChitterLogParticipant
+                    {
+                        AccountId = id,
+                        Name = server.Accounts.GetValueOrDefault(id)?.Name ?? $"#{id:D4}",
+                    })
+                    .ToList(),
+                Messages = new List<ChitterMessage>(chat.Messages),
+            });
+        }
+
+        return result;
     }
 }

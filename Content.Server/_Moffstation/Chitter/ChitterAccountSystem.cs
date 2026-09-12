@@ -11,6 +11,7 @@ namespace Content.Server._Moffstation.Chitter;
 
 public sealed partial class ChitterAccountSystem : SharedChitterSystem
 {
+    [Dependency] private ChitterServerSystem _server = default!;
     [Dependency] private NameIdentifierSystem _nameIdentifier = default!;
     [Dependency] private IPrototypeManager _prototypeManager = default!;
     [Dependency] private IRobustRandom _random = default!;
@@ -35,7 +36,7 @@ public sealed partial class ChitterAccountSystem : SharedChitterSystem
         var query = EntityQueryEnumerator<ChitterServerComponent>();
         while (query.MoveNext(out var server))
         {
-            server.Accounts.Remove(ent.Comp.AccountId);
+            _server.RemoveAccount(server, ent.Comp.AccountId);
         }
     }
 

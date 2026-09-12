@@ -48,11 +48,6 @@ public sealed partial class ChitterManageChatView : BoxContainer
         PopulateParticipants();
     }
 
-    public void RefreshState()
-    {
-        PopulateParticipants();
-    }
-
     // Swaps in a fresh server-authoritative copy of the chat/contacts and re-renders.
     public void UpdateData(ChatDetail chat, List<AccountEntry> contacts)
     {

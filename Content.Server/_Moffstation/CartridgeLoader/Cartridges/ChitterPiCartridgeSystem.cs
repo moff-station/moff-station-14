@@ -1,5 +1,5 @@
-using System.Linq;
 using Content.Server.CartridgeLoader;
+using Content.Server._Moffstation.Chitter;
 using Content.Shared._Moffstation.BladeServer;
 using Content.Shared._Moffstation.CartridgeLoader.Cartridges;
 using Content.Shared._Moffstation.Chitter;
@@ -101,37 +101,13 @@ public sealed partial class ChitterPiCartridgeSystem : EntitySystem
         ent.Comp.LastScanTime = _timing.CurTime;
         ent.Comp.Chats.Clear();
 
-        AddChats(serverEnt.Comp.Chats.Values, serverEnt.Comp, ent.Comp.Chats);
-        AddChats(serverEnt.Comp.ArchivedChats.Values, serverEnt.Comp, ent.Comp.Chats);
+        ent.Comp.Chats.AddRange(ChitterServerSystem.BuildLogChats(serverEnt.Comp.Chats.Values, serverEnt.Comp));
+        ent.Comp.Chats.AddRange(ChitterServerSystem.BuildLogChats(serverEnt.Comp.ArchivedChats.Values, serverEnt.Comp));
 
         _audio.PlayPredicted(ScanFinishSound, loader, args.Args.User);
         _popup.PopupEntity(Loc.GetString("chitter-pi-scan-complete", ("server", ent.Comp.ScannedServerName)), loader, args.Args.User);
 
         UpdateUi(ent, loader);
-    }
-
-    private static void AddChats(IEnumerable<ChitterChat> source, ChitterServerComponent server, List<ChitterLogChat> destination)
-    {
-        foreach (var chat in source)
-        {
-            destination.Add(new ChitterLogChat
-            {
-                ChatId = chat.ChatId,
-                ChatName = chat.ChatName,
-                Archived = chat.Archived,
-                CreatedTime = chat.CreatedTime,
-                Participants = chat.ParticipantAccountIds
-                    .Select(id => new ChitterLogParticipant
-                    {
-                        AccountId = id,
-                        Name = server.Accounts.GetValueOrDefault(id)?.Name ?? $"#{id:D4}",
-                    })
-                    .ToList(),
-                // Copy the list rather than aliasing the server's live one, so this stays a point-in-time
-                // snapshot instead of silently growing as the real chat receives new messages.
-                Messages = new List<ChitterMessage>(chat.Messages),
-            });
-        }
     }
 
     private void UpdateUi(Entity<ChitterPiCartridgeComponent> ent, EntityUid loader)

@@ -71,7 +71,7 @@
                     <gfx:StyleBoxFlat BackgroundColor="#1e1e23" BorderColor="#3a3a40" BorderThickness="0 0 0 1" />
                 </PanelContainer.PanelOverride>
                 <BoxContainer Orientation="Horizontal" Margin="4" MinHeight="40">
-                    <BoxContainer Name="ParticipantHeader" HorizontalExpand="True" Orientation="Horizontal" VerticalAlignment="Center" />
+                    <Control Name="HeaderSpacer" HorizontalExpand="True" />
                     <TextureButton Name="SettingsButton" SetSize="32 32" VerticalAlignment="Center" TexturePath="/Textures/_Moffstation/Chitter/Icons/chitter_Settings_Icon.png" />
                 </BoxContainer>
             </PanelContainer>

@@ -7,8 +7,6 @@ using Robust.Client.Graphics;
 using Robust.Client.UserInterface;
 using Robust.Client.UserInterface.Controls;
 using Robust.Client.UserInterface.XAML;
-using System.Numerics;
-using Robust.Shared.Maths;
 using Robust.Shared.Prototypes;
 
 namespace Content.Client._Moffstation.CartridgeLoader.Cartridges;
@@ -157,18 +155,6 @@ public sealed partial class ChitterUiFragment : BoxContainer
 
         NoChatPlaceholder.Visible = false;
         ChatView.Visible = true;
-
-        ParticipantHeader.RemoveAllChildren();
-        foreach (var participant in detail.Participants)
-        {
-            var avatar = new PanelContainer
-            {
-                MinSize = new Vector2(32, 32),
-                Margin = new Thickness(4),
-                ModulateSelfOverride = Color.White,
-            };
-            ParticipantHeader.AddChild(avatar);
-        }
 
         MessageContainer.RemoveAllChildren();
 

@@ -112,6 +112,12 @@ public abstract partial class SharedBladeServerSystem : EntitySystem
     private void OnPowerChanged(Entity<BladeServerRackComponent> entity, ref PowerChangedEvent args)
     {
         UpdateVisuals(entity);
+
+        // Re-broadcast as our own event so other systems (like Chitter) can react to a rack's power
+        // without each needing their own PowerChangedEvent subscription on it - only one subscriber is
+        // allowed per component for a given by-ref event.
+        var rebroadcast = new BladeServerRackPowerChangedEvent();
+        RaiseLocalEvent(entity, ref rebroadcast);
     }
 
     private void OnLockToggled(Entity<BladeServerRackComponent> entity, ref LockToggledEvent args)
@@ -389,8 +395,8 @@ public abstract partial class SharedBladeServerSystem : EntitySystem
 
             _itemSlots.AddItemSlot(entity, entity.Comp.BladeSlotName(idx), slot);
 
-            var inserted = getEntityToInsertForIndex(idx) is { } entityToInsert &&
-                           _itemSlots.TryInsert(entity, slot, entityToInsert, user: null);
+            if (getEntityToInsertForIndex(idx) is { } entityToInsert)
+                _itemSlots.TryInsert(entity, slot, entityToInsert, user: null);
 
             entity.Comp.BladeSlots.Add(new BladeSlot(slot));
         }
