@@ -60,7 +60,7 @@ public sealed partial class ChitterAccountSystem : SharedChitterSystem
 
     private void AssignRandomProfilePicture(Entity<ChitterAccountComponent> ent)
     {
-        var avatars = _prototypeManager.EnumeratePrototypes<ChitterAvatarPrototype>().ToList();
+        var avatars = _prototypeManager.EnumeratePrototypes<ChitterAvatarPrototype>().Where(a => !a.Hidden).ToList();
         if (avatars.Count == 0)
             return;
 

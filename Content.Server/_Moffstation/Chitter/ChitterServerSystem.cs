@@ -3,8 +3,13 @@ using Content.Server.Power.Components;
 using Content.Server._Moffstation.Power.Components;
 using Content.Shared._Moffstation.BladeServer;
 using Content.Shared._Moffstation.Chitter;
+using Content.Shared.Dataset;
+using Content.Shared.Emag.Systems;
 using Content.Shared.PDA;
+using Content.Shared.Popups;
 using Content.Shared.Power;
+using Robust.Shared.Prototypes;
+using Robust.Shared.Random;
 using Robust.Shared.Replays;
 using Robust.Shared.Timing;
 
@@ -14,10 +19,42 @@ public sealed partial class ChitterServerSystem : SharedChitterSystem
 {
     [Dependency] private IGameTiming _timing = default!;
     [Dependency] private IReplayRecordingManager _replay = default!;
+    [Dependency] private IRobustRandom _random = default!;
+    [Dependency] private IPrototypeManager _prototypeManager = default!;
+    [Dependency] private SharedPopupSystem _popup = default!;
 
     private const int MessageCharLimit = 500;
     private const int ChatNameCharLimit = 50;
     private const int MaxChatParticipants = 20;
+
+    // Odds that an emagged server hands out the "Clown" disguise instead of the usual "Syndicate Intern"
+    // one.
+    private const float EmagClownChance = 1f / 5f;
+
+    // Hidden ChitterAvatarPrototype IDs an emagged server disguises every account with - never shown in
+    // the normal profile picture picker (see ChitterAvatarPrototype.Hidden).
+    private static readonly string[] EmagSyndicateAvatars =
+    {
+        "chitter_avatar_49", "chitter_avatar_50", "chitter_avatar_51", "chitter_avatar_52",
+    };
+
+    private static readonly string[] EmagClownAvatars =
+    {
+        "chitter_avatar_53", "chitter_avatar_54", "chitter_avatar_55", "chitter_avatar_56",
+    };
+
+    // Same name-generation ingredients the nukeops "Lone Operative" ghost role uses (see
+    // RandomMetadataSystem) - reused here so a compromised server's fake identities read like
+    // "Operative Delta" instead of a flat "Unknown". Picked deterministically off the account id
+    // rather than through IRobustRandom, so a given account keeps the same fake name across refreshes;
+    // duplicate names between accounts are fine, same as nukeops never bothers to dedupe them.
+    private static readonly ProtoId<LocalizedDatasetPrototype> EmagNamePrefixes = "NamesSyndicatePrefix";
+    private static readonly ProtoId<LocalizedDatasetPrototype> EmagNameWords = "NamesSyndicateNormal";
+
+    // The Clown variant instead draws from the same fully-formed silly-name dataset the game's own
+    // holoclown/visitor-clown ghost roles use (also via RandomMetadataSystem) - e.g. "Bozo" or "Hingle
+    // McCringleberry" rather than a prefix+word combo.
+    private static readonly ProtoId<LocalizedDatasetPrototype> EmagClownNames = "NamesClown";
 
     // Fired whenever anything that could change how a Chitter server looks to a viewer happens - a
     // chat/message/participant mutates, a server gains/loses power, or a server is destroyed - so
@@ -31,6 +68,8 @@ public sealed partial class ChitterServerSystem : SharedChitterSystem
 
         SubscribeLocalEvent<ChitterServerComponent, PowerChangedEvent>(OnServerPowerChanged);
         SubscribeLocalEvent<ChitterServerComponent, ComponentShutdown>(OnServerShutdown);
+        SubscribeLocalEvent<ChitterServerComponent, GotEmaggedEvent>(OnEmagged);
+        SubscribeLocalEvent<BladeServerRackComponent, GotEmaggedEvent>(OnRackEmagged);
 
         // Racked blade servers (the common case) don't have their own ApcPowerReceiver - they draw
         // through the rack's, so the rack is what actually receives power changes. M.P.N. servers
@@ -47,6 +86,83 @@ public sealed partial class ChitterServerSystem : SharedChitterSystem
     private void OnServerShutdown(Entity<ChitterServerComponent> ent, ref ComponentShutdown args)
     {
         DataChanged?.Invoke();
+    }
+
+    // A private M.P.N. server is the antag's own gear, not the station's - emagging it would just be
+    // sabotaging yourself, so it's left alone entirely (no charge spent, no popup).
+    private void OnEmagged(Entity<ChitterServerComponent> ent, ref GotEmaggedEvent args)
+    {
+        if (!TryEmagServer(ent))
+            return;
+
+        args.Handled = true;
+        _popup.PopupEntity(Loc.GetString("chitter-server-emagged"), ent, args.UserUid);
+    }
+
+    // Zapping the rack itself hits every Chitter blade server currently slotted into it, instead of
+    // making the user pull each one out individually first.
+    private void OnRackEmagged(Entity<BladeServerRackComponent> ent, ref GotEmaggedEvent args)
+    {
+        var anyEmagged = false;
+
+        foreach (var slot in ent.Comp.BladeSlots)
+        {
+            if (slot.Item is { } item && TryComp<ChitterServerComponent>(item, out var server) && TryEmagServer((item, server)))
+                anyEmagged = true;
+        }
+
+        if (!anyEmagged)
+            return;
+
+        args.Handled = true;
+        _popup.PopupEntity(Loc.GetString("chitter-server-emagged"), ent, args.UserUid);
+    }
+
+    // Shared by both direct-emag and rack-emag handling. Returns false (and does nothing) for an
+    // already-emagged server or a private M.P.N. one, so callers know whether to spend a charge/show
+    // a popup.
+    private bool TryEmagServer(Entity<ChitterServerComponent> ent)
+    {
+        if (ent.Comp.Emagged || HasComp<ChitterMpnServerComponent>(ent))
+            return false;
+
+        ent.Comp.Emagged = true;
+        ent.Comp.EmaggedClown = _random.Prob(EmagClownChance);
+        DataChanged?.Invoke();
+        return true;
+    }
+
+    // Overwrites the name/job/picture an account would otherwise be shown with once its server has been
+    // compromised - the account's real ID card is never touched, this only affects what Chitter itself
+    // remembers and displays (see RegisterOrUpdateAccount, BuildChatDetail, and HandleSetProfilePicture's
+    // refusal to accept a new picture at all once emagged).
+    private void ApplyEmagDisguise(ChitterServerComponent server, uint accountId, ref string name, ref string jobTitle, ref string profilePictureId)
+    {
+        if (!server.Emagged)
+            return;
+
+        var icons = server.EmaggedClown ? EmagClownAvatars : EmagSyndicateAvatars;
+
+        name = server.EmaggedClown ? GenerateEmagClownName(accountId) : GenerateEmagSyndicateName(accountId);
+        jobTitle = Loc.GetString(server.EmaggedClown ? "chitter-emag-job-clown" : "chitter-emag-job-syndicate-intern");
+        profilePictureId = icons[accountId % icons.Length];
+    }
+
+    private string GenerateEmagSyndicateName(uint accountId)
+    {
+        var prefixes = _prototypeManager.Index(EmagNamePrefixes).Values;
+        var words = _prototypeManager.Index(EmagNameWords).Values;
+
+        var prefix = Loc.GetString(prefixes[(int)(accountId % (uint)prefixes.Count)]);
+        var word = Loc.GetString(words[(int)(accountId / (uint)prefixes.Count % (uint)words.Count)]);
+
+        return Loc.GetString("chitter-emag-fake-name-format", ("prefix", prefix), ("word", word));
+    }
+
+    private string GenerateEmagClownName(uint accountId)
+    {
+        var names = _prototypeManager.Index(EmagClownNames).Values;
+        return Loc.GetString(names[(int)(accountId % (uint)names.Count)]);
     }
 
     private void OnRackPowerChanged(Entity<BladeServerRackComponent> ent, ref BladeServerRackPowerChangedEvent args)
@@ -184,6 +300,8 @@ public sealed partial class ChitterServerSystem : SharedChitterSystem
 
     public void RegisterOrUpdateAccount(ChitterServerComponent server, uint accountId, string name, string jobTitle, string profilePictureId)
     {
+        ApplyEmagDisguise(server, accountId, ref name, ref jobTitle, ref profilePictureId);
+
         server.Accounts[accountId] = new ChitterAccount
         {
             AccountId = accountId,

@@ -240,6 +240,7 @@ public sealed partial class ChitterUiFragment : BoxContainer
     private void ShowProfile()
     {
         var avatars = _prototypeManager.EnumeratePrototypes<ChitterAvatarPrototype>()
+            .Where(p => !p.Hidden)
             .Select(p => (p.ID, _spriteSystem.Frame0(p.Icon)))
             .ToList();
 

@@ -227,7 +227,14 @@ public static class ChitterUiMessageHandler
         if (!resolve(true, out var serverEnt, out var account, out var name, out var jobTitle))
             return;
 
-        if (msg.ProfilePictureId == null || !deps.Prototypes.HasIndex<ChitterAvatarPrototype>(msg.ProfilePictureId))
+        // Once a server's identity records have been scrambled, nobody can pick a new picture on it -
+        // it would just get overwritten by the disguise on the next refresh anyway.
+        if (serverEnt.Comp.Emagged)
+            return;
+
+        if (msg.ProfilePictureId == null
+            || !deps.Prototypes.TryIndex<ChitterAvatarPrototype>(msg.ProfilePictureId, out var avatar)
+            || avatar.Hidden)
             return;
 
         account.Comp.ProfilePictureId = msg.ProfilePictureId;
@@ -352,11 +359,17 @@ public static class ChitterUiMessageHandler
         {
             var msg = chat.Messages[i];
             var senderAcc = server.Accounts.GetValueOrDefault(msg.SenderAccountId);
+
+            // Once emagged, even past messages read back with the current (fake) sender identity rather
+            // than the real name that was baked in when they were sent - it's a live display error on
+            // the compromised server, not a rewrite of history.
+            var senderName = server.Emagged ? senderAcc?.Name ?? msg.SenderName : msg.SenderName;
+
             detail.Messages.Add(new MessageEntry
             {
                 MessageId = msg.MessageId,
                 SenderId = msg.SenderAccountId,
-                SenderName = msg.SenderName,
+                SenderName = senderName,
                 SenderProfilePicture = senderAcc?.ProfilePictureId ?? "",
                 Timestamp = msg.Timestamp,
                 Content = msg.Content,

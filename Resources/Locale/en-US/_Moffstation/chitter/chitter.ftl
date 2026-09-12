@@ -27,4 +27,10 @@ chitter-leave-chat = Leave Chat
 ## Chitter Account examine
 chitter-account-examine = Chitter Account: {$number}
 
+## Chitter emag
+chitter-server-emagged = The server's identity records scramble into static.
+chitter-emag-fake-name-format = { $prefix } { $word }
+chitter-emag-job-syndicate-intern = Syndicate Intern
+chitter-emag-job-clown = Clown
+
 

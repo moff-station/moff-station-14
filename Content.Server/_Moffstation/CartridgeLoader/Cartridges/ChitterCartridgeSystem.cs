@@ -171,6 +171,16 @@ public sealed partial class ChitterCartridgeSystem : EntitySystem
                     discoverContacts,
                     loader,
                     Deps);
+
+                // PopulateState just (re-)registered our own account too, which disguises it the same
+                // as everyone else's if the server's been emagged - reflect that back onto what we show
+                // ourselves instead of the real ID card identity computed above.
+                if (_server.GetAccount(serverEnt.Comp, account.AccountId) is { } ownAccount)
+                {
+                    state.OwnName = ownAccount.Name;
+                    state.OwnJob = ownAccount.JobTitle;
+                    state.OwnProfilePicture = ownAccount.ProfilePictureId;
+                }
             }
         }
 

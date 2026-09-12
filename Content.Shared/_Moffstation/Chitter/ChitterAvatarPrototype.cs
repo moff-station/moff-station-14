@@ -11,4 +11,9 @@ public sealed partial class ChitterAvatarPrototype : IPrototype
 
     [DataField(required: true)]
     public SpriteSpecifier Icon = default!;
+
+    // Excluded from the profile picture picker - used only for the fake identities a Chitter server
+    // hands out to everyone once it's been emagged (see ChitterServerSystem.ApplyEmagDisguise).
+    [DataField]
+    public bool Hidden;
 }
