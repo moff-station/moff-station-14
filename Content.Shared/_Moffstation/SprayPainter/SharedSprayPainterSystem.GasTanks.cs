@@ -1,6 +1,7 @@
 ﻿using Content.Shared._Moffstation.Atmos.Components;
 using Content.Shared._Moffstation.Atmos.EntitySystems;
 using Content.Shared._Moffstation.Atmos.Visuals;
+using Content.Shared._Moffstation.Extensions;
 using Content.Shared.Charges.Components;
 using Content.Shared.Database;
 using Content.Shared.DoAfter;
@@ -11,23 +12,26 @@ using Robust.Shared.Serialization;
 // NOT a moffstation namespace because this partial class appends behavior to an existing class.
 namespace Content.Shared.SprayPainter;
 
-// Additions to SharedSprayPainterSystem which are particular to GasTankVisuals.
+// Additions to SharedSprayPainterSystem which are particular to GasHolderVisuals.
 public abstract partial class SharedSprayPainterSystem
 {
-    [Dependency] private GasTankVisualsSystem _gasTankVisuals = default!;
+    [Dependency] private GasHolderVisualsSystem _gasHolderVisuals = default!;
+
+    [Dependency] private EntityQuery<GasCanVisualsComponent> _gasCanVisualsQuery;
+    [Dependency] private EntityQuery<GasTankVisualsComponent> _gasTankVisualsQuery;
 
     private void InitializeGasTankPainting()
     {
         Subs.BuiEvents<SprayPainterComponent>(
             SprayPainterUiKey.Key,
-            subs => subs.Event<SprayPainterSetGasTankVisualsMessage>(OnPainterConfigUpdated));
+            subs => subs.Event<SprayPainterSetGasHolderVisualsMessage>(OnPainterConfigUpdated));
     }
 
     [SubscribeLocalEvent]
     private void OnPainterInit(Entity<SprayPainterComponent> entity, ref ComponentInit args)
     {
         // Initialize painters' configured visuals to the default.
-        entity.Comp.GasTankVisuals = _gasTankVisuals.DefaultStyle;
+        entity.Comp.GasHolderVisuals = _gasHolderVisuals.DefaultStyle;
     }
 
     [SubscribeLocalEvent]
@@ -38,8 +42,7 @@ public abstract partial class SharedSprayPainterSystem
             args.Args.Target is not { } target)
             return;
 
-        var painted = _gasTankVisuals.TrySetTankVisuals(target, ent.Comp.GasTankVisuals);
-        if (!painted)
+        if (!(TrySetVisuals(_gasCanVisualsQuery) || TrySetVisuals(_gasTankVisualsQuery)))
             return;
 
         Charges.TryUseCharges(
@@ -54,23 +57,36 @@ public abstract partial class SharedSprayPainterSystem
         );
 
         args.Handled = true;
+        return;
+
+        bool TrySetVisuals<T>(EntityQuery<T> query) where T : Component, IGasHolderVisualsComponent =>
+            query.ResolveOrNull(target, logMissing: false) is { } holder &&
+            _gasHolderVisuals.TrySetTankVisuals<T>((holder, holder, null), ent.Comp.GasHolderVisuals);
     }
 
     private void OnPainterConfigUpdated(
         Entity<SprayPainterComponent> ent,
-        ref SprayPainterSetGasTankVisualsMessage args
+        ref SprayPainterSetGasHolderVisualsMessage args
     )
     {
-        if (args.Visuals.Equals(ent.Comp.GasTankVisuals))
+        if (args.Visuals.Equals(ent.Comp.GasHolderVisuals))
             return;
 
-        ent.Comp.GasTankVisuals = args.Visuals;
+        ent.Comp.GasHolderVisuals = args.Visuals;
         Dirty(ent);
         UpdateUi(ent);
     }
 
     [SubscribeLocalEvent]
-    private void OnInteractUsing(Entity<GasTankVisualsComponent> ent, ref InteractUsingEvent args)
+    private void OnInteractUsing(Entity<GasTankVisualsComponent> ent, ref InteractUsingEvent args) =>
+        OnInteractUsing<GasTankVisualsComponent>(ent, ref args);
+
+    [SubscribeLocalEvent]
+    private void OnInteractUsing(Entity<GasCanVisualsComponent> ent, ref InteractUsingEvent args) =>
+        OnInteractUsing<GasCanVisualsComponent>(ent, ref args);
+
+    private void OnInteractUsing<T>(Entity<T> ent, ref InteractUsingEvent args)
+        where T : Component, IGasHolderVisualsComponent
     {
         if (args.Handled ||
             !TryComp<SprayPainterComponent>(args.Used, out var painter))
@@ -96,9 +112,11 @@ public abstract partial class SharedSprayPainterSystem
         args.Handled = true;
 
         // Log the attempt
-        AdminLogger.Add(LogType.Action,
+        AdminLogger.Add(
+            LogType.Action,
             LogImpact.Low,
-            $"{ToPrettyString(args.User):user} is painting {ToPrettyString(ent):target} at {Transform(ent).Coordinates:targetlocation}");
+            $"{ToPrettyString(args.User):user} is painting {ToPrettyString(ent):target} at {Transform(ent).Coordinates:targetlocation}"
+        );
     }
 }
 
@@ -106,9 +124,9 @@ public abstract partial class SharedSprayPainterSystem
 /// This event is raised by the spray painter UI when selected gas tank visuals are changed.
 /// </summary>
 [Serializable, NetSerializable]
-public sealed class SprayPainterSetGasTankVisualsMessage(GasTankVisuals visuals) : BoundUserInterfaceMessage
+public sealed class SprayPainterSetGasHolderVisualsMessage(GasHolderVisuals visuals) : BoundUserInterfaceMessage
 {
-    public readonly GasTankVisuals Visuals = visuals;
+    public readonly GasHolderVisuals Visuals = visuals;
 }
 
 [Serializable, NetSerializable]

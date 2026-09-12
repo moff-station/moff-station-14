@@ -1,5 +1,4 @@
-﻿using Content.Shared._Moffstation.Atmos.Components;
-using Content.Shared._Moffstation.Atmos.EntitySystems;
+﻿using Content.Shared._Moffstation.Atmos.EntitySystems;
 using Content.Shared._Moffstation.Extensions;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization;
@@ -10,7 +9,7 @@ namespace Content.Shared._Moffstation.Atmos.Visuals;
 /// This enum is used to identify layers used for paintable gas tanks' sprites.
 /// </summary>
 [Serializable, NetSerializable]
-public enum GasTankVisualsLayers : byte
+public enum GasHolderVisualsLayers : byte
 {
     /// <summary>
     /// The base tank body.
@@ -40,19 +39,19 @@ public enum GasTankVisualsLayers : byte
 public partial record struct GasTankColorValues
 {
     /// <summary>
-    /// Color of <see cref="GasTankVisualsLayers.Tank"/>.
+    /// Color of <see cref="GasHolderVisualsLayers.Tank"/>.
     /// </summary>
     [DataField(required: true)]
     public Color TankColor;
 
     /// <summary>
-    /// Color of <see cref="GasTankVisualsLayers.StripeMiddle"/>.
+    /// Color of <see cref="GasHolderVisualsLayers.StripeMiddle"/>.
     /// </summary>
     [DataField]
     public Color? MiddleStripeColor = null;
 
     /// <summary>
-    /// Color of <see cref="GasTankVisualsLayers.StripeLow"/>.
+    /// Color of <see cref="GasHolderVisualsLayers.StripeLow"/>.
     /// </summary>
     [DataField]
     public Color? LowerStripeColor = null;
@@ -70,13 +69,13 @@ public partial record struct GasTankColorValues
 /// oxygen and nitrogen tank color styles.
 /// </summary>
 [Prototype]
-public sealed partial class GasTankVisualStylePrototype : IPrototype
+public sealed partial class GasHolderVisualStylePrototype : IPrototype
 {
     /// <summary>
     /// The default style to use if something blows up in the implementation, or if
-    /// <see cref="GasTankVisualsComponent.InitialVisuals"/> is not set in the prototype definition.
+    /// <see cref="GasHolderVisualsComponent.InitialVisuals"/> is not set in the prototype definition.
     /// </summary>
-    public static readonly ProtoId<GasTankVisualStylePrototype> DefaultId = "Default";
+    public static readonly ProtoId<GasHolderVisualStylePrototype> DefaultId = "Default";
 
     [IdDataField]
     public string ID { get; private set; } = default!;
@@ -95,49 +94,49 @@ public sealed partial class GasTankVisualStylePrototype : IPrototype
 }
 
 /// <summary>
-/// A "sum type" which is either a <see cref="GasTankColorValues"/> or a <see cref="GasTankVisualStylePrototype"/> (via
-/// subtypes <see cref="GasTankVisualsColorValues"/> and <see cref="GasTankVisualsPrototype"/> respectively). Those
+/// A "sum type" which is either a <see cref="GasTankColorValues"/> or a <see cref="GasHolderVisualStylePrototype"/> (via
+/// subtypes <see cref="GasHolderVisualsColorValues"/> and <see cref="GasHolderVisualsPrototype"/> respectively). Those
 /// types can implicitly convert into this one. This type can be converted into <see cref="GasTankColorValues"/> via
-/// <see cref="GasTankVisualsSystem.GetColorValues"/> (but that should only happen internally to that system).
+/// <see cref="GasHolderVisualsSystem.GetColorValues"/> (but that should only happen internally to that system).
 /// </summary>
 [ImplicitDataDefinitionForInheritors, Serializable, NetSerializable]
-public abstract partial class GasTankVisuals : ISealedInheritance
+public abstract partial class GasHolderVisuals : ISealedInheritance
 {
-    private GasTankVisuals()
+    private GasHolderVisuals()
     {
         // A private constructor here makes it impossible for anything but nested types to extend this type, effectively
         // sealing its inheritance.
     }
 
-    public static implicit operator GasTankVisuals(GasTankVisualStylePrototype proto) =>
-        new GasTankVisualsPrototype { Prototype = proto };
+    public static implicit operator GasHolderVisuals(GasHolderVisualStylePrototype proto) =>
+        new GasHolderVisualsPrototype { Prototype = proto };
 
-    public static implicit operator GasTankVisuals(GasTankColorValues values) =>
-        new GasTankVisualsColorValues { Values = values };
+    public static implicit operator GasHolderVisuals(GasTankColorValues values) =>
+        new GasHolderVisualsColorValues { Values = values };
 
     /// <summary>
-    /// A <see cref="GasTankVisuals"/> which contains a <see cref="GasTankVisualStylePrototype"/>, <see cref="Prototype"/>.
+    /// A <see cref="GasHolderVisuals"/> which contains a <see cref="GasHolderVisualStylePrototype"/>, <see cref="Prototype"/>.
     /// </summary>
     [Serializable, NetSerializable]
-    public sealed partial class GasTankVisualsPrototype : GasTankVisuals
+    public sealed partial class GasHolderVisualsPrototype : GasHolderVisuals
     {
         [DataField("id")]
-        public ProtoId<GasTankVisualStylePrototype> Prototype;
+        public ProtoId<GasHolderVisualStylePrototype> Prototype;
 
-        public override string ToString() => $"{nameof(GasTankVisualsPrototype)}({nameof(Prototype)}={Prototype.Id})";
+        public override string ToString() => $"{nameof(GasHolderVisualsPrototype)}({nameof(Prototype)}={Prototype.Id})";
     }
 
     /// <summary>
-    /// A <see cref="GasTankVisuals"/> which contains <see cref="GasTankColorValues"/>, <see cref="Values"/>.
+    /// A <see cref="GasHolderVisuals"/> which contains <see cref="GasTankColorValues"/>, <see cref="Values"/>.
     /// </summary>
     [Serializable, NetSerializable]
-    public sealed partial class GasTankVisualsColorValues : GasTankVisuals
+    public sealed partial class GasHolderVisualsColorValues : GasHolderVisuals
     {
         [DataField]
         public GasTankColorValues Values;
 
-        public static implicit operator GasTankColorValues(GasTankVisualsColorValues values) => values.Values;
+        public static implicit operator GasTankColorValues(GasHolderVisualsColorValues values) => values.Values;
 
-        public override string ToString() => $"{nameof(GasTankVisualsColorValues)}({nameof(Values)}={Values})";
+        public override string ToString() => $"{nameof(GasHolderVisualsColorValues)}({nameof(Values)}={Values})";
     }
 }

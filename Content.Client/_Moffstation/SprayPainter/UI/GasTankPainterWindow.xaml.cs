@@ -12,17 +12,18 @@ namespace Content.Client._Moffstation.SprayPainter.UI;
 [GenerateTypedNameReferences]
 public sealed partial class GasTankPainterWindow : Control
 {
-    private event Action<GasTankVisuals>? OnVisualsPicked;
+    private event Action<GasHolderVisuals>? OnVisualsPicked;
 
     [Dependency] private IEntitySystemManager _sysMan = default!;
     [Dependency] private IEntityManager _entMan = default!;
     [Dependency] private ILocalizationManager _loc = default!;
     [Dependency] private IPrototypeManager _proto = default!;
-    private readonly GasTankVisualsSystem _gasTankVisuals;
+    private readonly GasHolderVisualsSystem _gasHolderVisuals;
 
-    private static readonly EntProtoId<GasTankVisualsComponent> DummyPrototype = "OxygenTank";
+    private static readonly EntProtoId<GasTankVisualsComponent> TankDummyProto = "OxygenTank";
+    private static readonly EntProtoId<GasCanVisualsComponent> CanDummyProto = "OxygenCanister";
 
-    private readonly Dictionary<GasTankVisualStylePrototype, int> _stylesToListIndeces = new();
+    private readonly Dictionary<GasHolderVisualStylePrototype, int> _stylesToListIndeces = new();
 
     private bool _suppressSelectingStyleCallback = false;
     private bool _suppressChangingColorsCallbackAndPreviewUpdate = false;
@@ -48,19 +49,20 @@ public sealed partial class GasTankPainterWindow : Control
     }
 
     /// <param name="onVisualsPicked">The behavior to invoke when the configured visuals are changed.</param>
-    public GasTankPainterWindow(Action<GasTankVisuals>? onVisualsPicked)
+    public GasTankPainterWindow(Action<GasHolderVisuals>? onVisualsPicked)
     {
         RobustXamlLoader.Load(this);
         IoCManager.InjectDependencies(this);
-        _gasTankVisuals = _sysMan.GetEntitySystem<GasTankVisualsSystem>();
+        _gasHolderVisuals = _sysMan.GetEntitySystem<GasHolderVisualsSystem>();
 
         OnVisualsPicked = onVisualsPicked;
 
         // Initialize the preview dummy entity.
-        Preview.SetEntity(_entMan.Spawn(DummyPrototype));
+        TankPreview.SetEntity(_entMan.Spawn(TankDummyProto));
+        CanPreview.SetEntity(_entMan.Spawn(CanDummyProto));
 
         // Initialize the list of style prototypes.
-        var sortedStyles = _proto.EnumeratePrototypes<GasTankVisualStylePrototype>()
+        var sortedStyles = _proto.EnumeratePrototypes<GasHolderVisualStylePrototype>()
             .Select(style => (_loc.GetString(style.Name), style))
             .OrderBy(it => it.Item1);
         foreach (var (index, (localizedName, style)) in sortedStyles.Index())
@@ -74,7 +76,7 @@ public sealed partial class GasTankPainterWindow : Control
         // have changed the configuration" callback.
         StyleList.OnItemSelected += args =>
         {
-            var style = (GasTankVisualStylePrototype)args.ItemList[args.ItemIndex].Metadata!;
+            var style = (GasHolderVisualStylePrototype)args.ItemList[args.ItemIndex].Metadata!;
             SetColorSliderValues(style.ColorValues);
             UpdatePreview(style.ColorValues);
             if (!_suppressSelectingStyleCallback)
@@ -92,28 +94,33 @@ public sealed partial class GasTankPainterWindow : Control
 
     private void UpdatePreview(GasTankColorValues colorValues)
     {
-        if (Preview.Entity is { } entity)
+        if (TankPreview.Entity is { } tank)
         {
-            _gasTankVisuals.TrySetTankVisuals(entity.Owner, colorValues);
+            _gasHolderVisuals.TrySetTankVisuals<GasTankVisualsComponent>(tank.Owner, colorValues);
+        }
+
+        if (CanPreview.Entity is { } can)
+        {
+            _gasHolderVisuals.TrySetTankVisuals<GasCanVisualsComponent>(can.Owner, colorValues);
         }
     }
 
-    public void SetVisuals(GasTankVisuals visuals)
+    public void SetVisuals(GasHolderVisuals visuals)
     {
         switch (visuals)
         {
-            case GasTankVisuals.GasTankVisualsPrototype p when _proto.TryIndex(p.Prototype, out var prototype):
+            case GasHolderVisuals.GasHolderVisualsPrototype p when _proto.TryIndex(p.Prototype, out var prototype):
             {
                 SetSelectedStyle(prototype);
                 break;
             }
-            case GasTankVisuals.GasTankVisualsColorValues v:
+            case GasHolderVisuals.GasHolderVisualsColorValues v:
                 SetColorSliderValues(v.Values);
                 break;
         }
     }
 
-    private void SetSelectedStyle(GasTankVisualStylePrototype style)
+    private void SetSelectedStyle(GasHolderVisualStylePrototype style)
     {
         if (!_stylesToListIndeces.TryGetValue(style, out var index))
             return;

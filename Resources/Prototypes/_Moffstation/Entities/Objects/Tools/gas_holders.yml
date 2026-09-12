@@ -1,5 +1,85 @@
 ﻿- type: entity
   abstract: true
+  id: GasCanVisualsBase
+  components:
+  - type: Appearance
+  - type: GasCanVisuals
+    visuals: Default
+  - type: Sprite
+    sprite: _Moffstation/Structures/Storage/gas_canister.rsi
+    layers:
+    - state: tank
+      map: [ "enum.GasHolderVisualsLayers.Tank" ]
+    - state: stripe-low
+      map: [ "enum.GasHolderVisualsLayers.StripeLow" ]
+    - state: stripe-middle
+      map: [ "enum.GasHolderVisualsLayers.StripeMiddle" ]
+    - state: hardware
+    - state: paper
+      visible: false
+      map: [ "enum.PaperLabelVisuals.Layer" ]
+      sprite: Structures/Storage/canister.rsi
+    - state: integrity-unshaded-0
+      map: [ "enum.MaxPressureVisualLayers.BaseUnshaded" ]
+      shader: unshaded
+      visible: false
+      sprite: Structures/Storage/canister.rsi
+    - state: mask-grey
+      map: [ "enum.MaxPressureVisualLayers.Base" ]
+      visible: false
+      sprite: Structures/Storage/canister.rsi
+    - state: can-open
+      map: [ "tankInserted" ]
+      visible: false
+      sprite: Structures/Storage/canister.rsi
+    - state: unlocked
+      map: [ "locked" ]
+      sprite: Structures/Storage/canister.rsi
+    - state: can-o0
+      map: [ "pressureLight" ]
+      sprite: Structures/Storage/canister.rsi
+    - state: can-connector
+      map: [ "connectedToPort" ]
+      visible: false
+      sprite: Structures/Storage/canister.rsi
+  - type: MaxPressureVisuals
+    integrityMask: mask-grey
+  - type: GenericVisualizer
+    visuals:
+      enum.AnchorVisuals.Anchored:
+        connectedToPort:
+          False: { state: can-connector, visible: false }
+          True: { state: can-connector, visible: true }
+      enum.GasCanisterVisuals.TankInserted:
+        tankInserted:
+          False: { state: can-open, visible: false }
+          True: { state: can-open, visible: true }
+      enum.LockVisuals.Locked:
+        locked:
+          False: { state: unlocked, shader: "unshaded" }
+          True: { state: locked, shader: "unshaded" }
+      enum.GasCanisterVisuals.PressureState:
+        pressureLight:
+          0: { state: can-o0, shader: "unshaded" }
+          1: { state: can-o1, shader: "unshaded" }
+          2: { state: can-o2, shader: "unshaded" }
+          3: { state: can-o3, shader: "unshaded" }
+      enum.PaperLabelVisuals.HasLabel:
+        enum.PaperLabelVisuals.Layer:
+          True: { visible: true }
+          False: { visible: false }
+      enum.StorageVisuals.Open:
+        enum.PaperLabelVisuals.Layer:
+          True: { visible: false }
+      enum.PaperLabelVisuals.LabelType:
+        enum.PaperLabelVisuals.Layer:
+          Paper: { state: paper }
+          Bounty: { state: bounty }
+          CaptainsPaper: { state: captains_paper }
+          Invoice: { state: invoice }
+
+- type: entity
+  abstract: true
   id: GasTankVisualsBase
   components:
   - type: Appearance
@@ -19,11 +99,11 @@
     sprite: _Moffstation/Objects/Tanks/tank.rsi
     layers:
     - state: icon-tank
-      map: [ "enum.GasTankVisualsLayers.Tank" ]
+      map: [ "enum.GasHolderVisualsLayers.Tank" ]
     - state: icon-stripe-low
-      map: [ "enum.GasTankVisualsLayers.StripeLow" ]
+      map: [ "enum.GasHolderVisualsLayers.StripeLow" ]
     - state: icon-stripe-middle
-      map: [ "enum.GasTankVisualsLayers.StripeMiddle" ]
+      map: [ "enum.GasHolderVisualsLayers.StripeMiddle" ]
     - state: icon-hardware
     - state: integrity-unshaded-0
       map: [ "enum.MaxPressureVisualLayers.BaseUnshaded" ]
@@ -104,77 +184,101 @@
 
 # Gas Tank Visuals Protos
 
-- type: gasTankVisualStyle
+- type: gasHolderVisualStyle
   id: Default
   name: gastank-unspecified
   colorValues:
     tankColor: '#FFFF32FF'
     lowerStripeColor: '#4C4C4CFF'
 
-- type: gasTankVisualStyle
+- type: gasHolderVisualStyle
   id: Oxygen
   name: gas-oxygen
   colorValues:
     tankColor: '#4CA8FFFF'
     lowerStripeColor: White
 
-- type: gasTankVisualStyle
+- type: gasHolderVisualStyle
+  id: LiquidOxygen
+  name: gas-oxygen-liquid
+  colorValues:
+    tankColor: '#4CA8FFFF'
+    middleStripeColor: '#00FFFFFF'
+    lowerStripeColor: White
+
+- type: gasHolderVisualStyle
   id: Nitrogen
   name: gas-nitrogen
   colorValues:
     tankColor: '#E65C55FF'
     lowerStripeColor: White
 
-- type: gasTankVisualStyle
+- type: gasHolderVisualStyle
+  id: LiquidNitrogen
+  name: gas-nitrogen-liquid
+  colorValues:
+    tankColor: '#E65C55FF'
+    middleStripeColor: '#00FFFFFF'
+    lowerStripeColor: White
+
+- type: gasHolderVisualStyle
   id: NitrousOxide
   name: gas-nitrous-oxide
   colorValues:
     tankColor: '#E6E6E6FF'
     middleStripeColor: '#E65C55FF'
 
-- type: gasTankVisualStyle
+- type: gasHolderVisualStyle
   id: CarbonDioxide
   name: gas-carbon-dioxide
   colorValues:
     tankColor: '#4F4F4FFF'
     lowerStripeColor: '#AF0000FF'
 
-- type: gasTankVisualStyle
+- type: gasHolderVisualStyle
+  id: LiquidCarbonDioxide
+  name: gas-carbon-dioxide-liquid
+  colorValues:
+    tankColor: '#4F4F4FFF'
+    middleStripeColor: '#00FFFFFF'
+    lowerStripeColor: '#AF0000FF'
+
+- type: gasHolderVisualStyle
   id: WaterVapor
   name: gas-water-vapor
   colorValues:
     tankColor: '#4C4C4CFF'
     lowerStripeColor: '#FFB2C0FF'
 
-- type: gasTankVisualStyle
+- type: gasHolderVisualStyle
   id: Plasma
   name: gas-plasma
   colorValues:
     tankColor: VividGamboge
     middleStripeColor: '#FC32A0FF'
 
-- type: gasTankVisualStyle
+- type: gasHolderVisualStyle
   id: Tritium
   name: gas-tritium
   colorValues:
     tankColor: VividGamboge
     middleStripeColor: '#17FF0BFF'
 
-- type: gasTankVisualStyle
+- type: gasHolderVisualStyle
   id: Frezon
   name: gas-frezon
   colorValues:
     tankColor: VividGamboge
     middleStripeColor: '#47CDFFFF'
 
-- type: gasTankVisualStyle
+- type: gasHolderVisualStyle
   id: Ammonia
   name: gas-ammonia
   colorValues:
     tankColor: '#E6E6E6FF'
     middleStripeColor: Green
 
-- type: gasTankVisualStyle
+- type: gasHolderVisualStyle
   id: AirMix
   name: gastank-airmix
   colorValues:
