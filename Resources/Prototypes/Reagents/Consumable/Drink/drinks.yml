@@ -459,7 +459,8 @@
         - !type:MetabolizerTypeCondition
           type: [ Avali ]
           inverted: true
-      - !type:SatiateThirst
+      - !type:Satiate
+        satiationType: Thirst
         factor: 1
         conditions:
         - !type:MetabolizerTypeCondition
@@ -475,16 +476,19 @@
         damage:
           types:
             Heat: 3
+      # Moff Start - Add Thaven
       - !type:Oxygenate
         scaling: true
         conditions:
         - !type:MetabolizerTypeCondition
           type: [ Thaven ]
-      - !type:SatiateThirst # thaven breathing water vapor get thirsty slower
+      - !type:Satiate
+        satiationType: Thirst # thaven breathing water vapor get thirsty slower
         conditions:
         - !type:MetabolizerTypeCondition
           type: [ Thaven ]
         factor: 0.1
+      # Moff End
 
 - type: reagent
   id: Ice

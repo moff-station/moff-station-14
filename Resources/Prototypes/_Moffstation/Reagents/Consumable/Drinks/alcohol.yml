@@ -12,7 +12,8 @@
       metabolites:
         Ethanol: 0.6
       effects:
-      - !type:SatiateThirst
+      - !type:Satiate
+        satiationType: Thirst
         factor: 1
 
 - type: reagent
@@ -34,7 +35,8 @@
       metabolites:
         Ethanol: 0.4
       effects:
-      - !type:SatiateThirst
+      - !type:Satiate
+        satiationType: Thirst
         factor: 2
 
 - type: reagent
@@ -56,7 +58,8 @@
       metabolites:
         Ethanol: 0.266
       effects:
-      - !type:SatiateThirst
+      - !type:Satiate
+        satiationType: Thirst
         factor: 2
 
 - type: reagent
@@ -79,7 +82,8 @@
         Ethanol: 0.6
         Ethylredoxrazine: 0.6
       effects:
-      - !type:SatiateThirst
+      - !type:Satiate
+        satiationType: Thirst
         factor: 2
 
 - type: reagent
@@ -102,7 +106,8 @@
         Ethanol: 0.2
         Ethylredoxrazine: 0.6
       effects:
-      - !type:SatiateThirst
+      - !type:Satiate
+        satiationType: Thirst
         factor: 3
 
 - type: reagent
@@ -128,7 +133,8 @@
         damage:
           types:
             Poison: .15
-      - !type:SatiateThirst
+      - !type:Satiate
+        satiationType: Thirst
         factor: 1
 
 - type: reagent
@@ -151,7 +157,8 @@
         Ethanol: 0.2
         Fiber: 0.4
       effects:
-      - !type:SatiateThirst
+      - !type:Satiate
+        satiationType: Thirst
         factor: 1
 
 - type: reagent
@@ -199,7 +206,8 @@
       metabolites:
         Ethanol: 0.2
       effects:
-      - !type:SatiateThirst
+      - !type:Satiate
+        satiationType: Thirst
         factor: 5
         conditions:
         - !type:MetabolizerTypeCondition
@@ -218,7 +226,8 @@
       metabolites:
         Ethanol: 0.8
       effects:
-      - !type:SatiateThirst
+      - !type:Satiate
+        satiationType: Thirst
         factor: 4
 
 - type: reagent
@@ -242,5 +251,6 @@
         Fat: 0.2
         UncookedAnimalProteins: 0.5
       effects:
-      - !type:SatiateThirst
+      - !type:Satiate
+        satiationType: Thirst
         factor: 1
