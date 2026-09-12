@@ -1,0 +1,62 @@
+# Player: RuinousAngel - Character: Iris 'Monster' Foundling
+
+# Not job locked, no siren.
+- type: entity
+  parent: ClothingUniformSundress
+  id: &id PersonalItemMonsterSundress
+  name: Monster's sundress
+  description: A light green sundress with a red medical cross and the name "Monster" embroidered on the breast. Comes with an armband with a small device attached.
+  suffix: PersonalItem
+  components:
+  - type: Sprite
+    sprite: &sprite _Moffstation/PersonalItems/Wearables/RuinousAngel/Iris_Foundling/monstersundress.rsi
+  - type: Clothing
+    sprite: *sprite
+  - type: DetailExaminable
+    content: Inspecting the device allows one with the knowledge to identify it as a removed Paramed suit siren.
+
+- type: loadout
+  id: *id
+  storage:
+    back:
+    - *id
+  effects: &loadout-effect
+  - !type:PersonalItemLoadoutEffect
+    character:
+    - Iris 'Monster' Foundling
+    - Iris Foundling
+
+# Job locked, siren
+- type: entity
+  parent: *id
+  id: &id-siren PersonalItemMonsterSundressSiren
+  suffix: PersonalItem, Siren
+  components:
+  - type: ItemToggle
+    onUse: false
+    predictable: false # matches the paramedic suit siren; ItemToggleActiveSound desyncs otherwise
+    soundActivate:
+      path: /Audio/Items/flashlight_on.ogg
+    soundDeactivate:
+      path: /Audio/Items/flashlight_off.ogg
+  - type: ItemToggleActiveSound
+    activeSound:
+      path: /Audio/Effects/Vehicle/ambulancesiren.ogg
+      params:
+        volume: -4
+  - type: UseDelay
+    delay: 1.0
+  - type: ToggleClothing
+    action: ActionToggleParamedicSiren
+    mustEquip: false
+
+- type: loadout
+  id: *id-siren
+  storage:
+    back:
+    - *id-siren
+  effects:
+    <<: *loadout-effect
+    jobs:
+    - JobParamedic
+
