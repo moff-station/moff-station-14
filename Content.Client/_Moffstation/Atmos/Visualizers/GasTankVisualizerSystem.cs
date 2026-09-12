@@ -21,35 +21,10 @@ namespace Content.Client._Moffstation.Atmos.Visualizers;
 public sealed partial class GasTankVisualizerSystem : VisualizerSystem<GasTankVisualsComponent>
 {
     [Dependency] private IReflectionManager _reflect = default!;
-    [Dependency] private SharedItemSystem _itemSys = default!;
+    [Dependency] private SharedItemSystem _item = default!;
 
     private static readonly List<GasTankVisualsLayers> ModifiableLayers =
         new() { GasTankVisualsLayers.Tank, GasTankVisualsLayers.StripeMiddle, GasTankVisualsLayers.StripeLow };
-
-    public override void Initialize()
-    {
-        base.Initialize();
-
-        SubscribeLocalEvent<GasTankVisualsComponent, EntGotInsertedIntoContainerMessage>(OnEntGotInsertedIntoContainer);
-        SubscribeLocalEvent<GasTankVisualsComponent, GetInhandVisualsEvent>(
-            OnGetHeldVisuals,
-            after: [typeof(ItemSystem)]
-        );
-        SubscribeLocalEvent<GasTankVisualsComponent, GetEquipmentVisualsEvent>(
-            OnGetEquipmentVisuals,
-            after: [typeof(ClientClothingSystem)]
-        );
-        SubscribeLocalEvent<GasTankVisualsComponent, GetStoredVisualsEvent>(OnGetStoredVisuals);
-    }
-
-    private void OnEntGotInsertedIntoContainer(
-        Entity<GasTankVisualsComponent> entity,
-        ref EntGotInsertedIntoContainerMessage args
-    )
-    {
-        // Update stored visuals.
-        _itemSys.VisualsChanged(entity);
-    }
 
     protected override void OnAppearanceChange(
         EntityUid uid,
@@ -67,7 +42,7 @@ public sealed partial class GasTankVisualizerSystem : VisualizerSystem<GasTankVi
         }
 
         // update clothing & in-hand visuals.
-        _itemSys.VisualsChanged(uid);
+        _item.VisualsChanged(uid);
     }
 
     private void SetLayerVisibilityAndColor(
@@ -92,6 +67,7 @@ public sealed partial class GasTankVisualizerSystem : VisualizerSystem<GasTankVi
         }
     }
 
+    [SubscribeLocalEvent]
     private void OnGetStoredVisuals(Entity<GasTankVisualsComponent> entity, ref GetStoredVisualsEvent args)
     {
         if (!entity.Comp.HasStoredSprite)
@@ -106,6 +82,7 @@ public sealed partial class GasTankVisualizerSystem : VisualizerSystem<GasTankVi
         );
     }
 
+    [SubscribeLocalEvent(after: [typeof(ItemSystem)])]
     private void OnGetHeldVisuals(Entity<GasTankVisualsComponent> entity, ref GetInhandVisualsEvent args)
     {
         // Copy location because the lambda below doesn't want to capture over a `ref` field.
@@ -119,6 +96,7 @@ public sealed partial class GasTankVisualizerSystem : VisualizerSystem<GasTankVi
         );
     }
 
+    [SubscribeLocalEvent(after: [typeof(ClientClothingSystem)])]
     private void OnGetEquipmentVisuals(Entity<GasTankVisualsComponent> entity, ref GetEquipmentVisualsEvent args)
     {
         // If the component says this species uses different clothing, pass in the species ID.
@@ -184,10 +162,8 @@ public sealed partial class GasTankVisualizerSystem : VisualizerSystem<GasTankVi
         _ => null,
     };
 
-    private static string? GetInhandRsiState(GasTankVisualsLayers layer, HandLocation hand)
-    {
-        return LayerToRsiState(layer) is { } state ? $"inhand-{hand.ToString().ToLowerInvariant()}-{state}" : null;
-    }
+    private static string? GetInhandRsiState(GasTankVisualsLayers layer, HandLocation hand) =>
+        LayerToRsiState(layer) is { } state ? $"inhand-{hand.ToString().ToLowerInvariant()}-{state}" : null;
 
     private static string? GetEquippedRsiState(GasTankVisualsLayers layer, string inventorySlot, string? species)
     {

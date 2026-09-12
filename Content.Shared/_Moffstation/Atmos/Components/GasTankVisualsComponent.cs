@@ -12,6 +12,9 @@ namespace Content.Shared._Moffstation.Atmos.Components;
 [RegisterComponent, AutoGenerateComponentState, Access(typeof(GasTankVisualsSystem))]
 public sealed partial class GasTankVisualsComponent : Component
 {
+    /// <summary>
+    /// The current <see cref="GasTankColorValues"/> of this entity. Initialized by <see cref="InitialVisuals"/>.
+    /// </summary>
     [ViewVariables, AutoNetworkedField]
     public GasTankColorValues Visuals = new(default);
 
@@ -34,8 +37,8 @@ public sealed partial class GasTankVisualsComponent : Component
     /// A list of layers which should not attempt to be shown when the gas tank is held in hand. This is provided
     /// because inhand sprites are small and can't have as much detail as is necessary to show all layers.
     /// </summary>
-    [DataField("excludedInhandLayers")]
-    public List<GasTankVisualsLayers> ExcludedInhandLayersData = [];
+    [DataField]
+    public IReadOnlyList<GasTankVisualsLayers> ExcludedInhandLayers = [];
 
     /// <summary>
     /// A list of <see cref="InventoryComponent.SpeciesId">species IDs</see> which require different states be used for
@@ -43,18 +46,6 @@ public sealed partial class GasTankVisualsComponent : Component
     /// </summary>
     /// <remarks>Note that this isn't referring to SpeciesPrototype because animals (eg. Dog) don't actually
     /// get species prototypes.</remarks>
-    [DataField("speciesWithDifferentClothing")]
-    public List<string> SpeciesWithDifferentClothingData = [];
-
-    /// <summary>
-    /// Readonly public accessor of <see cref="ExcludedInhandLayersData"/>.
-    /// </summary>
-    [Access(Other = AccessPermissions.ReadExecute)]
-    public IReadOnlyList<GasTankVisualsLayers> ExcludedInhandLayers => ExcludedInhandLayersData;
-
-    /// <summary>
-    /// Readonly public accessor of <see cref="SpeciesWithDifferentClothingData"/>.
-    /// </summary>
-    [Access(Other = AccessPermissions.ReadExecute)]
-    public IReadOnlyList<string> SpeciesWithDifferentClothing => SpeciesWithDifferentClothingData;
+    [DataField]
+    public IReadOnlyList<string> SpeciesWithDifferentClothing = [];
 }

@@ -63,11 +63,6 @@ public partial record struct GasTankColorValues
         MiddleStripeColor = middleStripeColor;
         LowerStripeColor = lowerStripeColor;
     }
-
-    public static implicit operator GasTankColorValues((Color, Color?, Color?) values)
-    {
-        return new GasTankColorValues(values.Item1, values.Item2, values.Item3);
-    }
 }
 
 /// <summary>
@@ -97,8 +92,6 @@ public sealed partial class GasTankVisualStylePrototype : IPrototype
     /// </summary>
     [DataField]
     public GasTankColorValues ColorValues = new(default);
-
-    public static implicit operator GasTankColorValues(GasTankVisualStylePrototype proto) => proto.ColorValues;
 }
 
 /// <summary>
@@ -131,7 +124,7 @@ public abstract partial class GasTankVisuals : ISealedInheritance
         [DataField("id")]
         public ProtoId<GasTankVisualStylePrototype> Prototype;
 
-        public override string ToString() => $"{GetType().Name}({nameof(Prototype)}={Prototype.Id})";
+        public override string ToString() => $"{nameof(GasTankVisualsPrototype)}({nameof(Prototype)}={Prototype.Id})";
     }
 
     /// <summary>
@@ -145,6 +138,6 @@ public abstract partial class GasTankVisuals : ISealedInheritance
 
         public static implicit operator GasTankColorValues(GasTankVisualsColorValues values) => values.Values;
 
-        public override string ToString() => $"{GetType().Name}({nameof(Values)}={Values})";
+        public override string ToString() => $"{nameof(GasTankVisualsColorValues)}({nameof(Values)}={Values})";
     }
 }

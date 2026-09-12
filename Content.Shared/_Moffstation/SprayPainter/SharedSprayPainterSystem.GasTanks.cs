@@ -18,22 +18,19 @@ public abstract partial class SharedSprayPainterSystem
 
     private void InitializeGasTankPainting()
     {
-        SubscribeLocalEvent<SprayPainterComponent, ComponentInit>(OnPainterInit);
-        SubscribeLocalEvent<SprayPainterComponent, SprayPainterGasTankDoAfterEvent>(OnDoAfter);
-        SubscribeLocalEvent<GasTankVisualsComponent, InteractUsingEvent>(OnInteractUsing);
-        Subs.BuiEvents<SprayPainterComponent>(SprayPainterUiKey.Key,
-            subs =>
-            {
-                subs.Event<SprayPainterSetGasTankVisualsMessage>(OnPainterConfigUpdated);
-            });
+        Subs.BuiEvents<SprayPainterComponent>(
+            SprayPainterUiKey.Key,
+            subs => subs.Event<SprayPainterSetGasTankVisualsMessage>(OnPainterConfigUpdated));
     }
 
+    [SubscribeLocalEvent]
     private void OnPainterInit(Entity<SprayPainterComponent> entity, ref ComponentInit args)
     {
         // Initialize painters' configured visuals to the default.
         entity.Comp.GasTankVisuals = _gasTankVisuals.DefaultStyle;
     }
 
+    [SubscribeLocalEvent]
     private void OnDoAfter(Entity<SprayPainterComponent> ent, ref SprayPainterGasTankDoAfterEvent args)
     {
         if (args.Handled ||
@@ -72,19 +69,22 @@ public abstract partial class SharedSprayPainterSystem
         UpdateUi(ent);
     }
 
+    [SubscribeLocalEvent]
     private void OnInteractUsing(Entity<GasTankVisualsComponent> ent, ref InteractUsingEvent args)
     {
         if (args.Handled ||
             !TryComp<SprayPainterComponent>(args.Used, out var painter))
             return;
 
-        var doAfterEventArgs = new DoAfterArgs(EntityManager,
+        var doAfterEventArgs = new DoAfterArgs(
+            EntityManager,
             args.User,
             painter.GasTankSprayTime,
             new SprayPainterGasTankDoAfterEvent(),
             args.Used,
             target: ent,
-            used: args.Used)
+            used: args.Used
+        )
         {
             BreakOnMove = true,
             BreakOnDamage = true,
