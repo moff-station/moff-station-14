@@ -264,6 +264,20 @@
       - BorgModuleEngineering
     hasMindState: borg_e # Moffstation - Early merge of Borg RSI fix
     noMindState: borg_e_r # Moffstation - Early merge of Borg RSI fix
+  # Moffstation - Start - department radio was missing on derelict borgs, gave this one Engineering comms
+  - type: IntrinsicRadioTransmitter
+    channels:
+    - Binary
+    - Common
+    - Engineering
+    - Science
+  - type: ActiveRadio
+    channels:
+    - Binary
+    - Common
+    - Engineering
+    - Science
+  # Moffstation - End
 
 - type: entity
   parent: BaseBorgChassisDerelict
@@ -299,6 +313,20 @@
       - BorgModuleJanitor
     hasMindState: borg_e # Moffstation - Early merge of Borg RSI fix
     noMindState: borg_e_r # Moffstation - Early merge of Borg RSI fix
+  # Moffstation - Start - department radio was missing on derelict borgs, gave this one Service comms
+  - type: IntrinsicRadioTransmitter
+    channels:
+    - Binary
+    - Common
+    - Service
+    - Science
+  - type: ActiveRadio
+    channels:
+    - Binary
+    - Common
+    - Service
+    - Science
+# Moffstation - End
 
 - type: entity
   parent: BaseBorgChassisDerelict
@@ -341,6 +369,20 @@
   - type: ShowHealthIcons
     damageContainers:
     - Biological
+  # Moffstation - start - department radio was missing on derelict borgs, gave this one Medical comms
+  - type: IntrinsicRadioTransmitter
+    channels:
+    - Binary
+    - Common
+    - Medical
+    - Science
+  - type: ActiveRadio
+    channels:
+    - Binary
+    - Common
+    - Medical
+    - Science
+  # Moffstation - End
 
 - type: entity
   parent: BaseBorgChassisDerelict
@@ -378,6 +420,20 @@
       - BorgModuleCargo
     hasMindState: borg_e # Moffstation - Early merge of Borg RSI fix
     noMindState: borg_e_r # Moffstation - Early merge of Borg RSI fix
+  # Moffstation - Start - department radio was missing on derelict borgs, gave this one cargo comms
+  - type: IntrinsicRadioTransmitter
+    channels:
+    - Binary
+    - Common
+    - Supply
+    - Science
+  - type: ActiveRadio
+    channels:
+    - Binary
+    - Common
+    - Supply
+    - Science
+  # Moffstation - End
   # Moffstation - Start - Salvage Borg Resprite
   - type: MovementSpeedModifier
     baseWalkSpeed: 2.5
