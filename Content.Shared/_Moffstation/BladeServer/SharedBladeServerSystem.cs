@@ -307,11 +307,21 @@ public abstract partial class SharedBladeServerSystem : EntitySystem
     }
 
     /// This prevents blade servers from being picked up while inside a rack.
+    ///
+    /// Server-only: <see cref="BladeSlot.Ejecting"/> is a plain, non-networked flag that only the
+    /// server's OnEjectPressed ever sets true (BUI messages aren't client-predicted), so the client's
+    /// own copy is always false. Letting the client cancel on that stale value made an ordinary eject
+    /// diverge from what the server actually did, which showed up as a client container-prediction
+    /// crash (ContainerSlot.InternalInsert asserting on a slot it wrongly thought was still occupied).
+    /// The server remains the sole enforcer of "no picking a blade server directly out of its rack".
     private void OnGettingPickedUpAttempt(
         Entity<BladeServerComponent> entity,
         ref GettingPickedUpAttemptEvent args
     )
     {
+        if (!_net.IsServer)
+            return;
+
         if (_container.IsEntityInContainer(entity) &&
             TryComp(entity, out TransformComponent? xform) &&
             TryComp<BladeServerRackComponent>(xform.ParentUid, out var parentRack) &&
