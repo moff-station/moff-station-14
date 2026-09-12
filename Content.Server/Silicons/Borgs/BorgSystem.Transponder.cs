@@ -1,3 +1,4 @@
+using System.Diagnostics.CodeAnalysis;
 using Content.Shared.DeviceNetwork;
 using Content.Shared.Damage.Components;
 using Content.Shared.FixedPoint;
@@ -197,4 +198,39 @@ public sealed partial class BorgSystem
 
         return true;
     }
+
+    // Moff start - new robotics console
+    /// <summary>
+    /// If the entity is currently monitored by a transponder, return all the information the transponder can gather.
+    /// Return null if the entity is not monitored by a transponder.
+    /// To be considered monitored, the entity must have <see cref="BorgTransponderComponent"/>, <see cref="BorgChassisComponent"/>
+    /// and <see cref="MetaDataComponent"/>.
+    /// </summary>
+    public CyborgControlData? ControlDataOrNull(EntityUid uid)
+    {
+        if (!TryComp<BorgTransponderComponent>(uid, out var transponder) ||
+            !TryComp<BorgChassisComponent>(uid, out var chassis) ||
+            !TryComp(uid, out MetaDataComponent? metaData))
+            return null;
+
+        var chargeFraction = 0f;
+        if (_powerCell.TryGetBatteryFromSlot(uid, out var battery))
+            chargeFraction = _battery.GetChargeLevel(battery.Value.AsNullable());
+
+        var hpPercent = CalcHP(uid);
+
+        var hasBrain = CheckBrain(chassis.BrainEntity) && !transponder.FakeDisabled;
+        var canDisable = transponder.NextDisable == null && !transponder.FakeDisabling;
+
+        return new CyborgControlData(
+            transponder.Sprite,
+            transponder.Name,
+            metaData.EntityName,
+            chargeFraction,
+            hpPercent,
+            chassis.ModuleCount,
+            hasBrain,
+            canDisable);
+    }
+    // Moff end
 }
