@@ -14,12 +14,14 @@ using Content.Shared.Forensics;
 using Content.Shared.Forensics.Components;
 using Content.Shared.Gibbing;
 using Content.Shared.HealthExaminable;
+using Content.Shared.Inventory; // Forky
 using Content.Shared.Metabolism;
 using Content.Shared.Mobs.Systems;
 using Content.Shared.Popups;
 using Content.Shared.Random.Helpers;
 using Content.Shared.Rejuvenate;
 using Content.Shared.StatusEffectNew;
+using Content.Shared._Funkystation.Fluids; // Forky
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Containers;
 using Robust.Shared.Prototypes;
@@ -41,6 +43,8 @@ public sealed partial class BloodstreamSystem : EntitySystem
     [Dependency] private MobStateSystem _mobStateSystem = default!;
     [Dependency] private DamageableSystem _damageableSystem = default!;
     [Dependency] private MetabolizerSystem _metabolizer = default!;
+
+    [Dependency] private EntityLookupSystem _lookup = default!; // Funky - Stains
 
     public override void Update(float frameTime)
     {
@@ -401,6 +405,24 @@ public sealed partial class BloodstreamSystem : EntitySystem
         return flushedSolution.Volume == 0 ? null : flushedSolution;
     }
 
+    //Moffstation - Geras Patch - Begin
+    /// <summary>
+    /// Removes all reagents from all parts of the bloodstream, used for clearing the stream before refilling it to an arbitrary amount
+    /// </summary>
+    /// <param name="ent">The entity losing all its blood</param>
+    public void ClearBloodStream(Entity<BloodstreamComponent> ent)
+    {
+        if(ent.Comp.BloodSolution is {} bloodSolution)
+            _solutionContainer.RemoveAllSolution(bloodSolution);
+
+        if(ent.Comp.MetabolitesSolution is {} metaboliteSolution)
+            _solutionContainer.RemoveAllSolution(metaboliteSolution);
+
+        if(ent.Comp.TemporarySolution is {} tempSolution)
+            _solutionContainer.RemoveAllSolution(tempSolution);
+    }
+    //Moffstation - End
+
     /// <summary>
     /// A simple helper that tries to move blood volume up or down by a specified amount.
     /// Blood will not go over normal volume for this entity's bloodstream.
@@ -497,6 +519,23 @@ public sealed partial class BloodstreamSystem : EntitySystem
 
         if (tempSolution.Volume > ent.Comp.BleedPuddleThreshold)
         {
+            // Forky - start - Clothing stains
+            var stainEv = new SpilledOnEvent(ent.Owner, tempSolution);
+            RaiseLocalEvent(ent.Owner, stainEv);
+
+            var xform = Transform(ent.Owner);
+            foreach (var neighbor in _lookup.GetEntitiesInRange(xform.Coordinates, 1.5f))
+            {
+                if (neighbor == ent.Owner || !HasComp<InventoryComponent>(neighbor))
+                    continue;
+
+                RaiseLocalEvent(neighbor, new SpilledOnEvent(ent.Owner, tempSolution));
+
+                if (tempSolution.Volume <= 0)
+                    break;
+            }
+            // Forky - end
+
             _puddle.TrySpillAt(ent.Owner, tempSolution, out _, sound: false);
 
             tempSolution.RemoveAllSolution();
@@ -555,6 +594,23 @@ public sealed partial class BloodstreamSystem : EntitySystem
             tempSol.AddSolution(tempSolution, ProtoMan);
             _solutionContainer.RemoveAllSolution(ent.Comp.TemporarySolution.Value);
         }
+
+        // Forky - Start - Clothing stains
+        var stainEv = new SpilledOnEvent(ent.Owner, tempSol);
+        RaiseLocalEvent(ent.Owner, stainEv);
+
+        var xform = Transform(ent.Owner);
+        foreach (var neighbor in _lookup.GetEntitiesInRange(xform.Coordinates, 1.5f))
+        {
+            if (neighbor == ent.Owner || !HasComp<InventoryComponent>(neighbor))
+                continue;
+
+            RaiseLocalEvent(neighbor, new SpilledOnEvent(ent.Owner, tempSol));
+
+            if (tempSol.Volume <= 0)
+                break;
+        }
+        // Forky - End
 
         _puddle.TrySpillAt(ent, tempSol, out _);
     }
