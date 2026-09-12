@@ -1,0 +1,17 @@
+- type: latheRecipe
+  parent: BaseMarbleTileRecipe
+  id: FloorTileItemMoffUraniumMarble
+  result: FloorTileItemMoffUraniumMarble
+  materials:
+    Steel: 25
+    Glass: 25
+    Uranium: 25
+
+- type: latheRecipe
+  parent: BaseMarbleTileRecipe
+  id: FloorTileItemMoffPlasmaMarble
+  result: FloorTileItemMoffPlasmaMarble
+  materials:
+    Steel: 25
+    Glass: 25
+    Plasma: 25

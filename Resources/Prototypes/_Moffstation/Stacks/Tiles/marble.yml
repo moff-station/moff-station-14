@@ -1,0 +1,11 @@
+- type: stack
+  parent: BaseTileStack
+  id: FloorTileMoffPlasmaMarble
+  name: stack-plasma-marble-floor
+  spawn: FloorTileItemMoffPlasmaMarble
+
+- type: stack
+  parent: BaseTileStack
+  id: FloorTileMoffUraniumMarble
+  name: stack-uranium-marble-floor
+  spawn: FloorTileItemMoffUraniumMarble

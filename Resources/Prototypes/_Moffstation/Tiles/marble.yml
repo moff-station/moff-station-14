@@ -1,0 +1,22 @@
+- type: tile
+  id: FloorMoffPlasmaMarble
+  parent: BaseStationTile
+  name: tiles-plasma-marble
+  sprite: /Textures/_Moffstation/Tiles/plasmarble.png
+  variants: 8
+  footstepSounds:
+    collection: FootstepTile
+  friction: 0.8
+  itemDrop: FloorTileItemMoffPlasmaMarble
+
+- type: tile
+  id: FloorMoffUraniumMarble
+  parent: BaseStationTile
+  name: tiles-uranium-marble
+  sprite: /Textures/_Moffstation/Tiles/uranium_marble.png
+  variants: 8
+  footstepSounds:
+    collection: FootstepTile
+  friction: 0.8
+  itemDrop: FloorTileItemMoffUraniumMarble
+
