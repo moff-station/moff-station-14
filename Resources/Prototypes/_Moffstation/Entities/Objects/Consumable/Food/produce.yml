@@ -15,7 +15,7 @@
   - type: Sprite
     sprite: _Moffstation/Objects/Specific/Hydroponics/coffee_plant.rsi
   - type: Produce
-    seedId: coffee
+    plantId: CoffeePlants
   - type: SpawnItemsOnUse
     items:
     - id: FoodCoffeeBeans
@@ -42,7 +42,7 @@
   - type: Sprite
     sprite: _Moffstation/Objects/Specific/Hydroponics/mug_plant.rsi
   - type: Produce
-    seedId: mugtree
+    plantId: MugTreePlants
   - type: Tag
     tags:
     - Fruit
