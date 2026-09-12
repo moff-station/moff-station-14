@@ -284,9 +284,7 @@
   - type: Storage
     whitelist:
       tags:
-      - PlantSampleTaker
       - BotanyShovel
-      - BotanyHoe
       - BotanyHatchet
       - PlantBGone
       - Bottle
@@ -294,6 +292,8 @@
       - CigPack
       - Dropper
       components:
+      - BotanySampleTaker
+      - BotanyHoe
       - Seed
       - Smokable
       - HandLabeler
@@ -306,7 +306,7 @@
           - BotanyHatchet
       hoe:
         whitelist:
-          tags:
+          components:
           - BotanyHoe
       secateurs: # We don't have secateurs and this looks similar enough.
         whitelist:
