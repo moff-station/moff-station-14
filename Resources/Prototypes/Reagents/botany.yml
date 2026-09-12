@@ -12,7 +12,8 @@
   metabolisms:
     Digestion:
       effects:
-      - !type:SatiateHunger
+      - !type:Satiate
+        satiationType: Hunger
         conditions:
         - !type:MetabolizerTypeCondition
           type: [Plant]
@@ -36,7 +37,8 @@
   metabolisms:
     Bloodstream:
       effects:
-      - !type:SatiateHunger
+      - !type:Satiate
+        satiationType: Hunger
         conditions:
         - !type:MetabolizerTypeCondition
           type: [Plant]
@@ -217,7 +219,8 @@
     # Moffstation start - Allow avali to drink ammonia
     Digestion:
       effects:
-      - !type:SatiateThirst
+      - !type:Satiate
+        satiationType: Thirst
         factor: 4
         conditions:
         - !type:MetabolizerTypeCondition
@@ -328,7 +331,8 @@
       metabolites:
         Ethanol: 0.4
       effects:
-      - !type:SatiateThirst
+      - !type:Satiate
+        satiationType: Thirst
         factor: 2
         conditions:
         - !type:MetabolizerTypeCondition
