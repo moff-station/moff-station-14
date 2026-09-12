@@ -13,22 +13,18 @@
   - type: Item
     size: Normal
   - type: Sprite
-    sprite: _Moffstation/Structures/Machines/blade_server.rsi
-    scale: 0.6, 0.6
+    sprite: _Moffstation/Structures/Machines/chitter_mpn_server.rsi
     layers:
-    - state: frame
-    - state: stripe
-      color: "#D6221FFF"
-    - state: cover
-    - state: powered
+    - state: base
+    - state: base-powered
+      unshaded: true
       visible: false
-      shader: unshaded
       map: [ "enum.PowerDeviceVisualLayers.Powered" ]
   - type: Appearance
   - type: GenericVisualizer
     visuals:
       enum.PowerDeviceVisuals.Powered:
-        powered:
+        enum.PowerDeviceVisualLayers.Powered:
           True: { visible: true }
           False: { visible: false }
   - type: NodeContainer
