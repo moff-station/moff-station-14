@@ -70,6 +70,12 @@ public static class ChitterUiMessageHandler
             case ChitterUiMessageType.RenameChat:
                 HandleRenameChat(msg, resolve, deps);
                 break;
+            case ChitterUiMessageType.BlockContact:
+                HandleBlockContact(msg, resolve, deps);
+                break;
+            case ChitterUiMessageType.UnblockContact:
+                HandleUnblockContact(msg, resolve, deps);
+                break;
         }
     }
 
@@ -118,6 +124,12 @@ public static class ChitterUiMessageHandler
         {
             return;
         }
+
+        // Silently drop anyone the caller has blocked rather than rejecting the whole chat - a group
+        // chat with several targets shouldn't fail to create just because one of them is blocked.
+        participants.RemoveAll(id => id != ownId && account.Comp.BlockedAccountIds.Contains(id));
+        if (participants.Count < 2)
+            return;
 
         session.NextChatAllowed = deps.Timing.CurTime + MessageCooldown;
 
@@ -243,6 +255,30 @@ public static class ChitterUiMessageHandler
         deps.Server.RegisterOrUpdateAccount(serverEnt.Comp, account.Comp.AccountId, name, jobTitle, msg.ProfilePictureId);
     }
 
+    // Blocking doesn't need a server reachable at all - it's purely local preference on your own
+    // account - so this resolves without requiring power, same as HandleSendMessage.
+    private static void HandleBlockContact(IChitterUiMessage msg, ChitterContextResolver resolve, ChitterHandlerDeps deps)
+    {
+        if (!resolve(false, out _, out var account, out _, out _))
+            return;
+
+        if (msg.TargetNumber is not { } target || target == account.Comp.AccountId)
+            return;
+
+        account.Comp.BlockedAccountIds.Add(target);
+    }
+
+    private static void HandleUnblockContact(IChitterUiMessage msg, ChitterContextResolver resolve, ChitterHandlerDeps deps)
+    {
+        if (!resolve(false, out _, out var account, out _, out _))
+            return;
+
+        if (msg.TargetNumber is not { } target)
+            return;
+
+        account.Comp.BlockedAccountIds.Remove(target);
+    }
+
     // Populates contacts/chats/current-chat onto an already-initialized ChitterUiState, given a
     // server + account the caller has already resolved its own way. Deliberately doesn't touch
     // state.HasIdCard/ServerOnline or the "own name/job" fields - those need to keep working even when
@@ -258,6 +294,7 @@ public static class ChitterUiMessageHandler
         Guid? currentChatId,
         bool discoverContacts,
         EntityUid discoveryContext,
+        HashSet<uint> blockedAccountIds,
         ChitterHandlerDeps deps)
     {
         var serverComp = server.Comp;
@@ -272,7 +309,7 @@ public static class ChitterUiMessageHandler
 
         foreach (var (accId, acc) in serverComp.Accounts)
         {
-            if (accId == accountId)
+            if (accId == accountId || blockedAccountIds.Contains(accId))
                 continue;
             state.Contacts.Add(new AccountEntry
             {
@@ -280,6 +317,19 @@ public static class ChitterUiMessageHandler
                 Name = acc.Name,
                 JobTitle = acc.JobTitle,
                 ProfilePictureId = acc.ProfilePictureId,
+            });
+        }
+
+        // Surfaced separately (rather than just omitted) so the UI has something to unblock.
+        foreach (var accId in blockedAccountIds)
+        {
+            var acc = serverComp.Accounts.GetValueOrDefault(accId);
+            state.BlockedContacts.Add(new AccountEntry
+            {
+                AccountId = accId,
+                Name = acc?.Name ?? $"#{accId:D4}",
+                JobTitle = acc?.JobTitle ?? "",
+                ProfilePictureId = acc?.ProfilePictureId ?? "",
             });
         }
 
@@ -296,10 +346,15 @@ public static class ChitterUiMessageHandler
                         .Where(id => id != accountId)
                         .Select(id => serverComp.Accounts.GetValueOrDefault(id)?.Name ?? $"#{id:D4}"));
 
+            // Messages from a blocked sender never count as unread - blocking someone shouldn't still
+            // let them light up your chat list, even in a group chat you're staying in. Skip the scan
+            // entirely in the common case of having nobody blocked.
             var lastSeen = chat.LastSeenMessageCount.GetValueOrDefault(accountId);
-            var unreadCount = chat.Messages.Count - lastSeen;
-            if (unreadCount < 0)
-                unreadCount = 0;
+            var unreadCount = lastSeen >= chat.Messages.Count
+                ? 0
+                : blockedAccountIds.Count == 0
+                    ? chat.Messages.Count - lastSeen
+                    : chat.Messages.Skip(lastSeen).Count(m => !blockedAccountIds.Contains(m.SenderAccountId));
 
             state.Chats.Add(new ChatEntry
             {
@@ -313,7 +368,18 @@ public static class ChitterUiMessageHandler
             if (chatId == currentChatId)
             {
                 state.CurrentChat = BuildChatDetail(chat, accountId, serverComp, lastSeen);
-                chat.LastSeenMessageCount[accountId] = chat.Messages.Count;
+
+                if (chat.Messages.Count != lastSeen)
+                {
+                    chat.LastSeenMessageCount[accountId] = chat.Messages.Count;
+
+                    // The sender's own UI won't otherwise learn their message just got read - nothing
+                    // else pushes a refresh to them for this. Re-notifying can trigger this same branch
+                    // again for another viewer already mid-refresh in this broadcast (e.g. another
+                    // participant whose seen count also just changed for the first time), so this may
+                    // legitimately fire more than once per read; it settles once nobody's count changes.
+                    deps.Server.NotifyDataChanged();
+                }
             }
         }
     }
@@ -355,6 +421,12 @@ public static class ChitterUiMessageHandler
             ChatName = chat.ChatName,
         };
 
+        // Each participant's seen-count and profile picture are constant across every message in this
+        // chat - look them up once here instead of once per (message, participant) pair below.
+        var participantSeenInfo = chat.ParticipantAccountIds
+            .Select(id => (id, LastSeen: chat.LastSeenMessageCount.GetValueOrDefault(id), Picture: server.Accounts.GetValueOrDefault(id)?.ProfilePictureId))
+            .ToList();
+
         for (var i = 0; i < chat.Messages.Count; i++)
         {
             var msg = chat.Messages[i];
@@ -364,6 +436,14 @@ public static class ChitterUiMessageHandler
             // than the real name that was baked in when they were sent - it's a live display error on
             // the compromised server, not a rewrite of history.
             var senderName = server.Emagged ? senderAcc?.Name ?? msg.SenderName : msg.SenderName;
+
+            // Everyone else whose LastSeenMessageCount has passed this message's index - for a 1-on-1
+            // chat that's just the other person (if they've read it), for a group chat it can be
+            // several people, each shown as their own small avatar.
+            var seenByProfilePictures = participantSeenInfo
+                .Where(p => p.id != msg.SenderAccountId && p.LastSeen > i && !string.IsNullOrEmpty(p.Picture))
+                .Select(p => p.Picture!)
+                .ToList();
 
             detail.Messages.Add(new MessageEntry
             {
@@ -376,6 +456,7 @@ public static class ChitterUiMessageHandler
                 DeliveryFailed = msg.DeliveryFailed,
                 IsOwn = msg.SenderAccountId == ownId,
                 IsNew = i >= lastSeen,
+                SeenByProfilePictures = seenByProfilePictures,
             });
         }
 

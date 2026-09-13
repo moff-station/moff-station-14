@@ -170,6 +170,7 @@ public sealed partial class ChitterCartridgeSystem : EntitySystem
                     ent.Comp.CurrentChatId,
                     discoverContacts,
                     loader,
+                    account.BlockedAccountIds,
                     Deps);
 
                 // PopulateState just (re-)registered our own account too, which disguises it the same

@@ -17,6 +17,8 @@ public enum ChitterUiMessageType
     SetProfilePicture,
     RefreshContacts,
     RenameChat,
+    BlockContact,
+    UnblockContact,
 }
 
 [Serializable, NetSerializable]

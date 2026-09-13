@@ -8,6 +8,7 @@ public sealed class ChitterUiState : BoundUserInterfaceState
     public List<ChatEntry> Chats = new();
     public ChatDetail? CurrentChat;
     public List<AccountEntry> Contacts = new();
+    public List<AccountEntry> BlockedContacts = new();
     public uint OwnNumber;
     public string OwnName = string.Empty;
     public string OwnJob = string.Empty;
@@ -47,6 +48,10 @@ public sealed class MessageEntry
     public bool DeliveryFailed;
     public bool IsOwn;
     public bool IsNew;
+
+    // Profile picture ids of every other participant who has viewed at least this many messages -
+    // lets the client show a row of small "seen by" avatars the same way most chat apps do.
+    public List<string> SeenByProfilePictures = new();
 }
 
 [Serializable, NetSerializable]

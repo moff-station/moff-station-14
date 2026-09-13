@@ -17,6 +17,7 @@ public sealed partial class ChitterUiFragment : BoxContainer
     private ChitterUiState _currentState = new();
     private Guid? _selectedChatId;
     private ChitterManageChatView? _openManageChatView;
+    private ChitterLookupView? _openLookupView;
     private readonly IPrototypeManager _prototypeManager;
     private readonly SpriteSystem _spriteSystem;
 
@@ -81,6 +82,12 @@ public sealed partial class ChitterUiFragment : BoxContainer
         if (_openManageChatView != null && state.CurrentChat != null && state.CurrentChat.ChatId == _selectedChatId)
             _openManageChatView.UpdateData(state.CurrentChat, state.Contacts);
 
+        // Same idea for an open lookup view - a Block/Unblock press should make the row actually move
+        // between lists right away instead of waiting for the overlay to be closed and reopened.
+        // state.Contacts already excludes our own account (PopulateState filters it server-side).
+        if (_openLookupView != null)
+            _openLookupView.UpdateData(state.Contacts, state.BlockedContacts);
+
         if (OverlayContainer.Visible)
             return;
 
@@ -114,6 +121,7 @@ public sealed partial class ChitterUiFragment : BoxContainer
         OverlayContainer.RemoveAllChildren();
         MainContent.Visible = true;
         _openManageChatView = null;
+        _openLookupView = null;
     }
 
     private void PopulateChatList(ChitterUiState state)
@@ -167,6 +175,18 @@ public sealed partial class ChitterUiFragment : BoxContainer
                 profilePicture = _spriteSystem.Frame0(avatarProto.Icon);
             }
 
+            // Only worth showing on your own messages - like most chat apps, seeing that someone else's
+            // message was "seen" isn't meaningful information.
+            var seenByAvatars = new List<Texture>();
+            if (msg.IsOwn)
+            {
+                foreach (var picId in msg.SeenByProfilePictures)
+                {
+                    if (_prototypeManager.TryIndex<ChitterAvatarPrototype>(picId, out var seenAvatar))
+                        seenByAvatars.Add(_spriteSystem.Frame0(seenAvatar.Icon));
+                }
+            }
+
             var bubble = new ChitterMessageBubble
             {
                 SenderName = msg.SenderName,
@@ -176,6 +196,7 @@ public sealed partial class ChitterUiFragment : BoxContainer
                 DeliveryFailed = msg.DeliveryFailed,
                 ProfilePicture = profilePicture,
                 IsNew = msg.IsNew,
+                SeenByAvatars = seenByAvatars,
             };
             MessageContainer.AddChild(bubble);
         }
@@ -224,15 +245,20 @@ public sealed partial class ChitterUiFragment : BoxContainer
             .Where(c => c.AccountId != _currentState.OwnNumber)
             .ToList();
 
-        if (contacts.Count == 0)
+        if (contacts.Count == 0 && _currentState.BlockedContacts.Count == 0)
             return;
 
-        var view = new ChitterLookupView(contacts);
+        var view = new ChitterLookupView(contacts, _currentState.BlockedContacts);
+        _openLookupView = view;
         view.OnChatCreated += (chatName, targetIds) =>
         {
             OnUiMessage?.Invoke(ChitterUiMessageType.NewChat, null, null, targetIds, null, null, chatName);
             HideOverlay();
         };
+        view.OnBlockContact += id =>
+            OnUiMessage?.Invoke(ChitterUiMessageType.BlockContact, null, id, null, null, null, null);
+        view.OnUnblockContact += id =>
+            OnUiMessage?.Invoke(ChitterUiMessageType.UnblockContact, null, id, null, null, null, null);
         view.OnClose += HideOverlay;
         ShowOverlay(view);
     }

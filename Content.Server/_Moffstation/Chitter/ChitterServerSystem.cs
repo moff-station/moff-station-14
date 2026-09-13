@@ -62,6 +62,39 @@ public sealed partial class ChitterServerSystem : SharedChitterSystem
     // of only showing a snapshot from whenever they last looked.
     public event Action? DataChanged;
 
+    private bool _raisingDataChanged;
+    private bool _dataChangedPending;
+
+    // A subscriber processing one broadcast (e.g. PopulateState marking a chat read) can itself
+    // discover a further change and ask to notify again - most commonly the sender of a message
+    // learning it just got seen, mid-refresh, by whoever they sent it to. Invoking DataChanged again
+    // from inside its own subscriber would recurse arbitrarily deep through every subscriber's full
+    // entity loop for every affected viewer. Instead, a request that arrives while a broadcast is
+    // already running just sets a flag, and the outermost call loops until nothing new comes in -
+    // same end result (everyone affected gets refreshed), flat call stack.
+    private void RaiseDataChanged()
+    {
+        if (_raisingDataChanged)
+        {
+            _dataChangedPending = true;
+            return;
+        }
+
+        _raisingDataChanged = true;
+        try
+        {
+            do
+            {
+                _dataChangedPending = false;
+                DataChanged?.Invoke();
+            } while (_dataChangedPending);
+        }
+        finally
+        {
+            _raisingDataChanged = false;
+        }
+    }
+
     public override void Initialize()
     {
         base.Initialize();
@@ -80,12 +113,12 @@ public sealed partial class ChitterServerSystem : SharedChitterSystem
 
     private void OnServerPowerChanged(Entity<ChitterServerComponent> ent, ref PowerChangedEvent args)
     {
-        DataChanged?.Invoke();
+        RaiseDataChanged();
     }
 
     private void OnServerShutdown(Entity<ChitterServerComponent> ent, ref ComponentShutdown args)
     {
-        DataChanged?.Invoke();
+        RaiseDataChanged();
     }
 
     // A private M.P.N. server is the antag's own gear, not the station's - emagging it would just be
@@ -128,7 +161,7 @@ public sealed partial class ChitterServerSystem : SharedChitterSystem
 
         ent.Comp.Emagged = true;
         ent.Comp.EmaggedClown = _random.Prob(EmagClownChance);
-        DataChanged?.Invoke();
+        RaiseDataChanged();
         return true;
     }
 
@@ -171,7 +204,7 @@ public sealed partial class ChitterServerSystem : SharedChitterSystem
         {
             if (slot.Item is { } item && HasComp<ChitterServerComponent>(item))
             {
-                DataChanged?.Invoke();
+                RaiseDataChanged();
                 return;
             }
         }
@@ -182,7 +215,7 @@ public sealed partial class ChitterServerSystem : SharedChitterSystem
     // rather than the ApcPowerReceiver-based PowerChangedEvent this system otherwise listens for.
     public void NotifyDataChanged()
     {
-        DataChanged?.Invoke();
+        RaiseDataChanged();
     }
 
     public bool TryFindServer(EntityUid loader, out Entity<ChitterServerComponent> server)
@@ -290,7 +323,7 @@ public sealed partial class ChitterServerSystem : SharedChitterSystem
     public void RemoveAccount(ChitterServerComponent server, uint accountId)
     {
         if (server.Accounts.Remove(accountId))
-            DataChanged?.Invoke();
+            RaiseDataChanged();
     }
 
     public ChitterAccount? GetAccount(ChitterServerComponent server, uint accountId)
@@ -332,7 +365,7 @@ public sealed partial class ChitterServerSystem : SharedChitterSystem
             CreatedTime = _timing.CurTime,
         };
         server.Chats[chat.ChatId] = chat;
-        DataChanged?.Invoke();
+        RaiseDataChanged();
         return chat.ChatId;
     }
 
@@ -342,7 +375,7 @@ public sealed partial class ChitterServerSystem : SharedChitterSystem
             return;
 
         chat.ChatName = TruncateChatName(chatName);
-        DataChanged?.Invoke();
+        RaiseDataChanged();
     }
 
     private static string TruncateChatName(string? chatName)
@@ -377,7 +410,7 @@ public sealed partial class ChitterServerSystem : SharedChitterSystem
         // Same pattern as RadioSystem/ChatManager - lets messages be pulled from a saved replay later.
         _replay.RecordServerMessage(new ChitterReplayMessageRecord { ChatId = chatId, Message = message });
 
-        DataChanged?.Invoke();
+        RaiseDataChanged();
         return true;
     }
 
@@ -388,7 +421,7 @@ public sealed partial class ChitterServerSystem : SharedChitterSystem
 
         chat.Archived = true;
         server.ArchivedChats[chatId] = chat;
-        DataChanged?.Invoke();
+        RaiseDataChanged();
     }
 
     public void AddParticipantToChat(ChitterServerComponent server, Guid chatId, uint accountId)
@@ -396,14 +429,14 @@ public sealed partial class ChitterServerSystem : SharedChitterSystem
         if (server.Chats.TryGetValue(chatId, out var chat) && !chat.ParticipantAccountIds.Contains(accountId))
         {
             chat.ParticipantAccountIds.Add(accountId);
-            DataChanged?.Invoke();
+            RaiseDataChanged();
         }
     }
 
     public void RemoveParticipantFromChat(ChitterServerComponent server, Guid chatId, uint accountId)
     {
         if (server.Chats.TryGetValue(chatId, out var chat) && chat.ParticipantAccountIds.Remove(accountId))
-            DataChanged?.Invoke();
+            RaiseDataChanged();
     }
 
     public void MarkDeliveryFailed(ChitterServerComponent server, Guid chatId)
@@ -412,7 +445,7 @@ public sealed partial class ChitterServerSystem : SharedChitterSystem
             return;
 
         chat.Messages[^1].DeliveryFailed = true;
-        DataChanged?.Invoke();
+        RaiseDataChanged();
     }
 
     // Used by the admin log panel to list conversations from every station, not just one server.

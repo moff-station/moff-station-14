@@ -125,6 +125,7 @@ public sealed partial class ChitterAiSystem : EntitySystem
                     ent.Comp.CurrentChatId,
                     discoverContacts,
                     ent.Owner,
+                    account.BlockedAccountIds,
                     Deps);
 
                 // PopulateState just (re-)registered our own account too, which disguises it the same

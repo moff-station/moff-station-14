@@ -23,6 +23,9 @@ chitter-chats = Chats
 chitter-create-chat = Create Chat
 chitter-no-chats = No chats yet, start Chittering!
 chitter-leave-chat = Leave Chat
+chitter-block = Block
+chitter-unblock = Unblock
+chitter-blocked-title = Blocked
 
 ## Chitter Account examine
 chitter-account-examine = Chitter Account: {$number}
