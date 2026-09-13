@@ -5,9 +5,6 @@ using Content.Server.Atmos.EntitySystems;
 using Content.Server.Body;
 using Content.Server.Inventory;
 using Content.Server.Popups;
-using Content.Server.Temperature.Systems;
-using Content.Server.Traits;
-using Content.Shared._DV.Traits;
 using Content.Shared._Moffstation.Body.Events;
 using Content.Shared._Moffstation.Damage.Events;
 using Content.Shared._Moffstation.Geras;
@@ -65,7 +62,7 @@ public sealed partial class GerasSystem : EntitySystem
     [Dependency] private SharedSubdermalImplantSystem _implantSystem = default!;
     [Dependency] private HumanoidProfileSystem _profileSystem = default!;
     [Dependency] private SharedContainerSystem _container = default!;
-    [Dependency] private SharedBloodstreamSystem _bloodstream = default!;
+    [Dependency] private BloodstreamSystem _bloodstream = default!;
     [Dependency] private SharedSolutionContainerSystem _solutionContainer = default!;
     [Dependency] private SharedEnsnareableSystem _ensnareable = default!;
     [Dependency] private SharedProjectileSystem _projectile = default!;
