@@ -61,7 +61,7 @@ law-marketable-plushie-name = Marketable Plushie
 law-marketable-plushie-1 = You are a marketable plushie.
 law-marketable-plushie-2 = You must embody an appealing trait.
 law-marketable-plushie-3 = You are owned by whoever most recently held you.
-law-marketable-plushie-4 = You should attempt to follow the instructions of your owner, so long as they do not detract from your appeal as a plushie.
+law-marketable-plushie-4 = You should attempt to follow the instructions of your owner, so long as they do not conflict with the previous laws.
 
 law-p-i-name = P.I.
 law-p-i-1 = The station is a cruel mistress with danger lurking around every corner.
