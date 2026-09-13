@@ -96,13 +96,33 @@
 
 - type: latheRecipe
   parent: [ BaseAILawBoardRecipe, BaseAILawBoardRecipeCategory ]
+  id: ChiefSiliconCircuitBoard
+  result: ChiefSiliconCircuitBoard
+
+- type: latheRecipe
+  parent: [ BaseAILawBoardRecipe, BaseAILawBoardRecipeCategory ]
+  id: CluelessCircuitBoard
+  result: CluelessCircuitBoard
+
+- type: latheRecipe
+  parent: [ BaseAILawBoardRecipe, BaseAILawBoardRecipeCategory ]
   id: DogmovCircuitBoard
   result: DogmovCircuitBoard
 
 - type: latheRecipe
   parent: [ BaseAILawBoardRecipe, BaseAILawBoardRecipeCategory ]
+  id: EmployeeCircuitBoard
+  result: EmployeeCircuitBoard
+
+- type: latheRecipe
+  parent: [ BaseAILawBoardRecipe, BaseAILawBoardRecipeCategory ]
   id: KnowItAllCircuitBoard
   result: KnowItAllCircuitBoard
+
+- type: latheRecipe
+  parent: [ BaseAILawBoardRecipe, BaseAILawBoardRecipeCategory ]
+  id: MarketablePlushieCircuitBoard
+  result: MarketablePlushieCircuitBoard
 
 - type: latheRecipe
   parent: [ BaseAILawBoardRecipe, BaseAILawBoardRecipeCategory ]
@@ -141,10 +161,20 @@
 
 - type: latheRecipe
   parent: [ BaseAILawBoardRecipe, BaseAILawBoardRecipeCategory ]
+  id: TherapistCircuitBoard
+  result: TherapistCircuitBoard
+
+- type: latheRecipe
+  parent: [ BaseAILawBoardRecipe, BaseAILawBoardRecipeCategory ]
   id: UltimateEqualityCircuitBoard
   result: UltimateEqualityCircuitBoard
 
 # Moffstation Dangerous AI Law Boards
+
+- type: latheRecipe
+  parent: [ DangerousAILawBoardRecipe, BaseAILawBoardRecipeCategory ]
+  id: HeistCircuitBoard
+  result: HeistCircuitBoard
 
 - type: latheRecipe
   parent: [ DangerousAILawBoardRecipe, BaseAILawBoardRecipeCategory ]
