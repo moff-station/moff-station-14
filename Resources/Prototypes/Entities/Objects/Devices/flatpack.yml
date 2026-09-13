@@ -308,6 +308,7 @@
   description: A flatpack used for constructing a xenoborg extractor.
   components:
   - type: Sprite
+    sprite: Objects/Devices/flatpack.rsi # Moff - Need custom sprite
     layers:
     - state: base-xenoborg
     - state: overlay
