@@ -259,7 +259,14 @@ public sealed partial class ChitterServerSystem : SharedChitterSystem
         // so repeated calls resolve to the same server when more than one is in range - otherwise
         // a handler and the UpdateUi call right after it could silently disagree on which server a
         // chat was even created on.
-        var found = false;
+        //
+        // A powered match always wins over an unpowered one, even when requirePowered is false -
+        // callers that pass false (like recording a failed delivery) still want "my server, which
+        // happens to be unpowered right now", not whichever unrelated unpowered blade server anyone's
+        // ever left lying around the grid happens to have the lowest entity ID. The unpowered fallback
+        // only kicks in when nothing powered matches at all.
+        Entity<ChitterServerComponent>? bestPowered = null;
+        Entity<ChitterServerComponent>? bestUnpowered = null;
 
         using (var query = EntityQueryEnumerator<ChitterServerComponent>())
         while (query.MoveNext(out var uid, out var comp))
@@ -267,9 +274,6 @@ public sealed partial class ChitterServerSystem : SharedChitterSystem
             // Private M.P.N. servers never show up in the normal grid-wide scan - they're only reachable
             // by manually connecting to them (see above).
             if (HasComp<ChitterMpnServerComponent>(uid))
-                continue;
-
-            if (requirePowered && !IsServerPowered((uid, comp)))
                 continue;
 
             var serverGrid = Transform(uid).GridUid;
@@ -282,14 +286,22 @@ public sealed partial class ChitterServerSystem : SharedChitterSystem
             if (!matches)
                 continue;
 
-            if (!found || uid.Id < server.Owner.Id)
+            if (IsServerPowered((uid, comp)))
             {
-                server = (uid, comp);
-                found = true;
+                if (bestPowered is not { } powered || uid.Id < powered.Owner.Id)
+                    bestPowered = (uid, comp);
+            }
+            else if (!requirePowered && (bestUnpowered is not { } unpowered || uid.Id < unpowered.Owner.Id))
+            {
+                bestUnpowered = (uid, comp);
             }
         }
 
-        return found;
+        if ((bestPowered ?? bestUnpowered) is not { } best)
+            return false;
+
+        server = best;
+        return true;
     }
 
     public bool IsServerPowered(Entity<ChitterServerComponent> server)
