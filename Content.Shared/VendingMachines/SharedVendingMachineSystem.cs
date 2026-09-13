@@ -223,7 +223,7 @@ public abstract partial class SharedVendingMachineSystem : EntitySystem
                     Enumerable.Repeat(table, (int)amount)
                         .SelectMany(it => _entityTable.GetSpawns(it, Randomizer))
                         .CountBy(it => it)
-                        .ToDictionary(it => it.Key.Id, it => (uint)it.Value),
+                        .ToDictionary(it => (EntProtoId)it.Key.Id, it => (uint)it.Value),
                     type,
                     component,
                     restockQuality);

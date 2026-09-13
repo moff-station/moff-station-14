@@ -9,7 +9,7 @@ namespace Content.Server._Funkystation.WashingMachine;
 public sealed partial class WashingMachineSystem : SharedWashingMachineSystem
 {
     [Dependency] private SharedSolutionContainerSystem _solution = null!;
-    [Dependency] private SharedForensicsSystem _forensics = null!;
+    [Dependency] private ForensicsSystem _forensics = null!;
 
     protected override void UpdateForensics(Entity<WashingMachineComponent> ent, HashSet<EntityUid> items)
     {
