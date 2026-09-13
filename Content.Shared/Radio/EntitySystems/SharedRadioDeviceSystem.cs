@@ -387,20 +387,28 @@ public abstract partial class SharedRadioDeviceSystem : EntitySystem
             return;
 
         var enabled = enabledOverride ?? !ent.Comp.SpeakerEnabled;
-        SetMicrophoneEnabled(ent, user, enabled, true);
-        ent.Comp.MicrophoneEnabled = enabled;
-        Dirty(ent);
+
+        if (TryComp<RadioMicrophoneComponent>(ent, out var mic))
+        {
+            SetSpeakerEnabled(mic.Owner, user, enabled, true);
+            ent.Comp.MicrophoneEnabled = enabled;
+            Dirty(ent);
+        }
     }
 
-    private void ToggleIntercomSpeaker(Entity<IntercomComponent> ent, EntityUid? user, bool? enabledOverride = null)
+    private void ToggleIntercomSpeaker(Entity<IntercomComponent> ent,EntityUid? user, bool? enabledOverride = null)
     {
         if (ent.Comp.RequiresPower && !_power.IsPowered(ent.Owner))
             return;
 
         var enabled = enabledOverride ?? !ent.Comp.SpeakerEnabled;
-        SetSpeakerEnabled(ent, user, enabled, true);
-        ent.Comp.SpeakerEnabled = enabled;
-        Dirty(ent);
+
+        if (TryComp<RadioMicrophoneComponent>(ent, out var mic))
+        {
+            SetSpeakerEnabled(mic.Owner, user, enabled, true);
+            ent.Comp.SpeakerEnabled = enabled;
+            Dirty(ent);
+        }
     }
 
     private void CycleChannel(Entity<IntercomComponent> entity, bool forward)
