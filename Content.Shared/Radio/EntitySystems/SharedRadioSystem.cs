@@ -36,8 +36,11 @@ public abstract partial class SharedRadioSystem : EntitySystem
         RadioChannelPrototype channel,
         EntityUid radioSource,
         bool escapeMarkup = true)
+    {
 
-        /// <summary>
+    }
+
+    /// <summary>
     /// Adds a single <see cref="RadioChannelPrototype"/> to an entity's <see cref="IntrinsicRadioTransmitterComponent"/>.
     /// </summary>
     /// <param name="ent">The entity to add the channel for.</param>
