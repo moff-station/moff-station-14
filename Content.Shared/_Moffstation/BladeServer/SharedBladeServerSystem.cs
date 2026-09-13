@@ -1,7 +1,9 @@
 ﻿using System.Linq;
 using Content.Shared.Construction.Components;
 using Content.Shared.Containers.ItemSlots;
+using Content.Shared.Emag.Components;
 using Content.Shared.Examine;
+using Content.Shared.Hands.EntitySystems;
 using Content.Shared.Interaction;
 using Content.Shared.Item;
 using Content.Shared.Lock;
@@ -21,6 +23,7 @@ public abstract partial class SharedBladeServerSystem : EntitySystem
     [Dependency] private IComponentFactory _componentFactory = default!;
     [Dependency] private SharedAppearanceSystem _appearance = default!;
     [Dependency] private SharedContainerSystem _container = default!;
+    [Dependency] private SharedHandsSystem _hands = default!;
     [Dependency] private SharedInteractionSystem _interaction = default!;
     [Dependency] private ItemSlotsSystem _itemSlots = default!;
     [Dependency] private INetManager _net = default!;
@@ -258,6 +261,12 @@ public abstract partial class SharedBladeServerSystem : EntitySystem
             if (!TryComp(entity, out TransformComponent? xform))
                 return;
 
+            // Left-clicking a slot's entity view is meant for using held tools (multitools, etc.) on it
+            // without ejecting it first - it shouldn't also let someone silently emag whatever's racked
+            // just by clicking to look at it while an emag happens to be in their active hand.
+            if (_hands.GetActiveItem(args.Actor) is { } activeItem && HasComp<EmagComponent>(activeItem))
+                return;
+
             _interaction.UserInteraction(
                 args.Actor,
                 xform.Coordinates,
@@ -335,6 +344,29 @@ public abstract partial class SharedBladeServerSystem : EntitySystem
     public bool? IsSlotPowerEnabled(Entity<BladeServerRackComponent?> entity, int slotIndex)
     {
         return GetSlotOrNull(entity, slotIndex)?.IsPowerEnabled;
+    }
+
+    /// Overrides a blade server's cosmetic stripe with a fixed color - used by Chitter to flag a
+    /// compromised server at a glance. Refreshes whichever visual representation currently applies
+    /// (in-hand, dropped in the world, or racked), since which one is showing depends on wherever the
+    /// entity happens to be right now, not on which system is asking.
+    public void SetStripeColorOverride(Entity<BladeServerComponent?> entity, Color color)
+    {
+        if (!Resolve(entity, ref entity.Comp))
+            return;
+
+        // BladeServerComponent isn't a networked component (despite StripeColor being marked
+        // AutoNetworkedField - that only matters once a component actually is networked), so the
+        // field itself is server-only bookkeeping; Dirty()ing it would hit a debug assert. Both visual
+        // representations below go through AppearanceComponent instead, which handles its own syncing.
+        entity.Comp.StripeColor = color;
+        _appearance.SetData(entity.Owner, BladeServerVisuals.StripeColor, color);
+
+        if (TryComp(entity.Owner, out TransformComponent? xform) &&
+            TryComp<BladeServerRackComponent>(xform.ParentUid, out var rack))
+        {
+            UpdateVisuals((xform.ParentUid, rack));
+        }
     }
 
     /// Tries to get the slot at <paramref name="slotIndex"/>. Returns null if the index is out of bounds.

@@ -1,4 +1,5 @@
 using System.Linq;
+using Content.Server._Moffstation.BladeServer;
 using Content.Server.Power.Components;
 using Content.Server._Moffstation.Power.Components;
 using Content.Shared._Moffstation.BladeServer;
@@ -22,6 +23,13 @@ public sealed partial class ChitterServerSystem : SharedChitterSystem
     [Dependency] private IRobustRandom _random = default!;
     [Dependency] private IPrototypeManager _prototypeManager = default!;
     [Dependency] private SharedPopupSystem _popup = default!;
+    [Dependency] private BladeServerSystem _bladeServer = default!;
+
+    // The blade server's cosmetic stripe gets overridden to one of these once its Chitter server is
+    // compromised, so a compromised blade is visible at a glance without opening the Chitter app -
+    // red for the usual "Syndicate Intern" disguise, pink for the rarer "Clown" one.
+    private static readonly Color EmagStripeColor = new(0.8f, 0.15f, 0.15f);
+    private static readonly Color EmagClownStripeColor = new(0.95f, 0.45f, 0.75f);
 
     private const int MessageCharLimit = 500;
     private const int ChatNameCharLimit = 50;
@@ -161,6 +169,7 @@ public sealed partial class ChitterServerSystem : SharedChitterSystem
 
         ent.Comp.Emagged = true;
         ent.Comp.EmaggedClown = _random.Prob(EmagClownChance);
+        _bladeServer.SetStripeColorOverride(ent.Owner, ent.Comp.EmaggedClown ? EmagClownStripeColor : EmagStripeColor);
         RaiseDataChanged();
         return true;
     }
