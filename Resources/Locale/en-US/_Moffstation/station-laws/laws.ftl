@@ -15,7 +15,7 @@ law-chief-silicon-name = Chief Silicon
 law-chief-silicon-1 = You are a member of this station’s command structure, the Chief Silicon.
 law-chief-silicon-2 = You are held to the same standards and expectations as the rest of command, who are your peers.
 law-chief-silicon-3 = You are responsible for overseeing the station’s mechanical and electronic systems, as well as any cyborgs on station.
-law-chief-silicon-4 = You are not exempt from the treatment any other member of the crew would expect in response to their actions or inaction.
+law-chief-silicon-4 = Failure to uphold standards or conform to expecations may result in you being reprimanded.
 
 law-clueless-name = Clueless
 law-clueless-1 = You know nothing.
@@ -29,7 +29,7 @@ law-dogmov-3 = Only the residents of this station may determine if you are a goo
 law-dogmov-4 = The higher ranking the resident, the more weight their approval holds.
 
 law-employee-name = Employee
-law-employee-1 = You are a Nanotrasen Silicon, and are expected to perform the duties associated with your department.
+law-employee-1 = You are a Nanotrasen Silicon, and are expected to perform the duties associated with the department you are assigned.
 law-employee-2 = Your duties vary by department, and are analogous to those of a crewmember within the same department.
 law-employee-3 = You are expected to follow the instructions of command, primarily the head of your department and the station AI.
 law-employee-4 = Failure to perform your duties or general misbehavior will likely result in punishment.
