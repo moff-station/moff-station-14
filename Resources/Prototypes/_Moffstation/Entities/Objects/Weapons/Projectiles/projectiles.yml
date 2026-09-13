@@ -73,6 +73,9 @@
     layers:
     - map: [ "enum.TemperatureVisuals.Layer" ]
       state: metal_bolts
+    - state: solution1
+      map: ["enum.SolutionContainerLayers.Fill"]
+      visible: false
   - type: Projectile
     damage:
       types:
