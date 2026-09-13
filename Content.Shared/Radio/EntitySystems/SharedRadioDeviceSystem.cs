@@ -1,5 +1,6 @@
 using System.Linq;
 using Content.Shared.Chat;
+using Content.Shared.DeviceLinking.Events;
 using Content.Shared.Examine;
 using Content.Shared.Interaction;
 using Content.Shared.Popups;
@@ -10,6 +11,7 @@ using Content.Shared.Speech;
 using Content.Shared.Speech.Components;
 
 using Robust.Shared.Prototypes;
+using Robust.Shared.Utility;
 
 namespace Content.Shared.Radio.EntitySystems;
 
@@ -356,5 +358,64 @@ public abstract partial class SharedRadioDeviceSystem : EntitySystem
 
         Dirty(ent);
     }
+
+    // Moffstation - Start
+    [SubscribeLocalEvent]
+    private void IntercomOnSignalReceived(Entity<IntercomComponent> ent, ref SignalReceivedEvent args)
+    {
+        if (args.Port == ent.Comp.ToggleMicPort)
+        {
+            ToggleIntercomMicrophone(ent, user: null);
+        }
+        else if (args.Port == ent.Comp.ToggleMicPort)
+        {
+            ToggleIntercomSpeaker(ent, user: null);
+        }
+        else if (args.Port == ent.Comp.ToggleMicPort)
+        {
+            CycleChannel(ent, forward: true);
+        }
+        else if (args.Port == ent.Comp.ToggleMicPort)
+        {
+            CycleChannel(ent, forward: false);
+        }
+    }
+
+    private void ToggleIntercomMicrophone(Entity<IntercomComponent> ent, EntityUid? user, bool? enabledOverride = null)
+    {
+        if (ent.Comp.RequiresPower && !_power.IsPowered(ent.Owner))
+            return;
+
+        var enabled = enabledOverride ?? !ent.Comp.SpeakerEnabled;
+        SetMicrophoneEnabled(ent, user, enabled, true);
+        ent.Comp.MicrophoneEnabled = enabled;
+        Dirty(ent);
+    }
+
+    private void ToggleIntercomSpeaker(Entity<IntercomComponent> ent, EntityUid? user, bool? enabledOverride = null)
+    {
+        if (ent.Comp.RequiresPower && !_power.IsPowered(ent.Owner))
+            return;
+
+        var enabled = enabledOverride ?? !ent.Comp.SpeakerEnabled;
+        SetSpeakerEnabled(ent, user, enabled, true);
+        ent.Comp.SpeakerEnabled = enabled;
+        Dirty(ent);
+    }
+
+    private void CycleChannel(Entity<IntercomComponent> entity, bool forward)
+    {
+        if (entity.Comp.CurrentChannel is not { } currentChannel ||
+            entity.Comp.SupportedChannels.IndexOf(currentChannel) is var idx &&
+            idx == -1)
+            return;
+
+        var nextIdx = (idx + (forward ? 1 : -1)) % entity.Comp.SupportedChannels.Count;
+        if (!entity.Comp.SupportedChannels.TryGetValue(nextIdx, out var nextChannel))
+            return;
+
+        SetIntercomChannel(entity, nextChannel);
+    }
+    // Moffstation - End
 }
 
