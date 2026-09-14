@@ -72,7 +72,7 @@
                 </PanelContainer.PanelOverride>
                 <BoxContainer Orientation="Horizontal" Margin="4" MinHeight="40">
                     <Control Name="HeaderSpacer" HorizontalExpand="True" />
-                    <TextureButton Name="SettingsButton" SetSize="32 32" VerticalAlignment="Center" TexturePath="/Textures/_Moffstation/Chitter/Icons/chitter_Settings_Icon.png" />
+                    <TextureButton Name="SettingsButton" SetSize="32 32" VerticalAlignment="Center" />
                 </BoxContainer>
             </PanelContainer>
 

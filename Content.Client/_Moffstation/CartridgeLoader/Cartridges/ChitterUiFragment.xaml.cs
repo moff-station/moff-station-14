@@ -8,6 +8,7 @@ using Robust.Client.UserInterface;
 using Robust.Client.UserInterface.Controls;
 using Robust.Client.UserInterface.XAML;
 using Robust.Shared.Prototypes;
+using Robust.Shared.Utility;
 
 namespace Content.Client._Moffstation.CartridgeLoader.Cartridges;
 
@@ -28,6 +29,8 @@ public sealed partial class ChitterUiFragment : BoxContainer
         RobustXamlLoader.Load(this);
         _prototypeManager = IoCManager.Resolve<IPrototypeManager>();
         _spriteSystem = IoCManager.Resolve<IEntitySystemManager>().GetEntitySystem<SpriteSystem>();
+
+        SettingsButton.TextureNormal = _spriteSystem.Frame0(new SpriteSpecifier.Rsi(new ResPath("_Moffstation/Chitter/Icons/chitter_settings_icon.rsi"), "cog"));
 
         NewChatButton.OnPressed += _ => ShowNewChat();
         ProfileButton.OnPressed += _ => ShowProfile();
