@@ -1,5 +1,3 @@
-tiles-asteroid-ironsand = asteroid ironsand
-tiles-asteroid-ironsand-borderless = borderless asteroid ironsand
 tiles-ironsand-plating = ironsand plating
 tiles-ironsand-tile = ironsand tile
 tiles-ironsand-concrete-tile = ironsand concrete tile
