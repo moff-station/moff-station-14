@@ -1,4 +1,4 @@
-# This is a basic dictionary that maps old entity prototype ids to new ids. This only works for entity prototypes, and
+﻿# This is a basic dictionary that maps old entity prototype ids to new ids. This only works for entity prototypes, and
 # is intended to allow maps to load without having to manually edit them. An empty or "null" string results in the
 # entity getting deleted.
 
@@ -1042,9 +1042,12 @@ FloorTileItemPlasmaMarble: FloorTileItemWhiteMarble
 FloorTileItemEighties: FloorTileItemArcadeBlue
 FloorTileItemArcadeBlue2: FloorTileItemArcadeBlue
 FloorTileItemElevatorShaft: FloorTileItemDark
-FloorTileItemMining: FloorTileItemDarkPlastic
-FloorTileItemMiningLight: FloorTileItemDarkPlastic
-FloorTileItemMiningDark: FloorTileItemDarkPlastic
+FloorTileItemMining: FloorTileItemDark
+FloorTileItemMiningLight: FloorTileItemDark
+FloorTileItemMiningDark: FloorTileItemDark
+#FloorTileItemMining: FloorTileItemDarkPlastic
+#FloorTileItemMiningLight: FloorTileItemDarkPlastic
+#FloorTileItemMiningDark: FloorTileItemDarkPlastic
 FloorTileItemRockVault: FloorTileItemSteel
 FloorTileItemBrassReebe: null
 FloorTileItemBrassFilled: null

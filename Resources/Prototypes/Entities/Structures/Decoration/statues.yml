@@ -1,12 +1,14 @@
-- type: entity
+﻿- type: entity
   abstract: true
-  parent: [ BaseStructure, StructureHealthFurnitureStrong ]
+  parent: BaseStructure
   id: BaseStatue
   components:
   - type: Sprite
     drawdepth: Mobs
   - type: Damageable
-    damageModifierSet: RockMod
+    damageModifierSet: Rock
+  - type: Injurable
+    damageContainer: StructuralInorganic
   - type: Destructible
     thresholds:
     - trigger:
@@ -16,11 +18,12 @@
       - !type:PlaySoundBehavior
         sound:
           path: /Audio/Effects/break_stone.ogg
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
 
 - type: entity
   parent: BaseStatue
   id: StatueVenusRed
-  parent: BaseStructure
   name: statue of a pure maiden
   suffix: Red
   description: An ancient marble statue. The subject is depicted with a floor-length braid and is wielding a red toolbox.
@@ -63,7 +66,7 @@
     graph: OrnateStatueClown
     node: ornateStatueClown
   - type: Damageable
-    damageModifierSet: PreciousMetalMod
+    damageModifierSet: Metallic # Moff - PreciousMetalMod comes from a later upstream PR
   - type: SpriteFade
   - type: Fixtures
     fixtures:
