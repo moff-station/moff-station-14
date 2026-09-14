@@ -1,9 +1,9 @@
 - type: entity
+  parent: [BaseMobAdultSlimes, StripableInventoryBase]
+  id: MobSlimesGeras
+  categories: [ HideSpawnMenu ]
   name: geras
   description: A geras of a slime - the name is ironic, isn't it?
-  id: MobSlimesGeras
-  parent: [BaseMobAdultSlimes, StripableInventoryBase]
-  categories: [ HideSpawnMenu ]
   components:
   # they portable...
   - type: MovementSpeedModifier
@@ -119,7 +119,6 @@
     - DoorBumpOpener
     - CanPilot
 
-
 - type: entity
   parent: OrganSlimePerson
   id: OrganGerasTorso
@@ -144,3 +143,75 @@
         Base: grey_adult_slime
       Dead:
         Base: grey_adult_slime_dead
+
+- type: entity
+  parent: MobAdultSlimes
+  id: MobAdultSlimesReformable
+  components:
+  - type: Sprite
+    drawdepth: Mobs
+    sprite: _Moffstation/Mobs/Aliens/slimes.rsi
+    layers:
+    - map: [ "enum.DamageStateVisualLayers.Base" ]
+      state: grey_adult_slime
+  - type: DamageStateVisuals
+    states:
+      Alive:
+        Base: grey_adult_slime
+      Dead:
+        Base: grey_adult_slime_dead
+  - type: RandomSprite
+    available:
+    - enum.DamageStateVisualLayers.Base:
+        grey_adult_slime: SixtyFour
+  - type: Reform
+    startDelayed: true
+    actionPrototype: ActionSlimeGrow
+    reformTime: 10
+    popupText: slime-grow-attempt
+    reformPrototype: MobWildSlimePerson
+
+- type: entity
+  parent: MobAdultSlimesReformable
+  id: MobAdultSlimesReformableAngry
+  suffix: AI, Angry
+  components:
+  - type: NpcFactionMember
+    factions:
+    - FeralSlime
+  - type: GhostRole
+    description: ghost-role-information-angry-slimes-description
+    rules: ghost-role-information-freeagent-rules
+    mindRoles:
+    - MindRoleGhostRoleFreeAgent
+    raffle:
+      settings: short
+
+- type: entity
+  parent: MobAdultSlimesReformable
+  id: MobAdultSlimesReformablePoisonous
+  suffix: AI, Poisonous
+  components:
+  - type: MeleeWeapon
+    damage:
+      types:
+        Blunt: 6
+        Structural: 4
+        Caustic: 1
+        Poison: 4
+
+- type: entity
+  parent: MobAdultSlimesReformablePoisonous
+  id: MobAdultSlimesReformablePoisonousAngry
+  suffix: AI, Angry, Poisonous
+  components:
+  - type: NpcFactionMember
+    factions:
+    - FeralSlime
+  - type: GhostRole
+    description: ghost-role-information-angry-slimes-description
+    rules: ghost-role-information-freeagent-rules
+    mindRoles:
+    - MindRoleGhostRoleFreeAgent
+    raffle:
+      settings: short

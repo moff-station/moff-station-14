@@ -1,3 +1,6 @@
+
+# Continuous Slats
+
 - type: latheRecipe
   parent: BaseSteelTileRecipe
   id: FloorTileItemMoffSteelSlatsContinuous
@@ -12,3 +15,20 @@
   parent: BaseWhiteTileRecipe
   id: FloorTileItemMoffWhiteSlatsContinuous
   result: FloorTileItemMoffWhiteSlatsContinuous
+
+# Concrete
+
+- type: latheRecipe
+  parent: BaseConcreteTileRecipe
+  id: FloorTileItemMoffIronsandConcrete
+  result: FloorTileItemMoffIronsandConcrete
+
+- type: latheRecipe
+  parent: BaseConcreteTileRecipe
+  id: FloorTileItemMoffIronsandConcreteMono
+  result: FloorTileItemMoffIronsandConcreteMono
+
+- type: latheRecipe
+  parent: BaseConcreteTileRecipe
+  id: FloorTileItemMoffIronsandConcreteSmooth
+  result: FloorTileItemMoffIronsandConcreteSmooth

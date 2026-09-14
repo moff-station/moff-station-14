@@ -16,7 +16,7 @@
       - !type:Oxygenate
         conditions:
         - !type:MetabolizerTypeCondition
-          type: [ Human, Animal, Rat, Plant, Thaven ] #Macrocosm, add Thaven
+          type: [ Human, Animal, Rat, Plant, Arachnid, Thaven ] #Macrocosm, add Thaven
       # Convert Oxygen into CO2.
       - !type:ModifyLungGas
         conditions:

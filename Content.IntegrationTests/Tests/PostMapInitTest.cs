@@ -82,6 +82,24 @@ namespace Content.IntegrationTests.Tests
             {"/Maps/_Moffstation/Nonstations/d1_logic.yml", ["ShuttleGunSvalinnMachineGun"]},
             {"/Maps/_Moffstation/frezon.yml", ["HandheldCrewMonitor"]},
             {"/Maps/_Moffstation/skeld.yml", ["ShuttleGunDuster"]},
+            {"/Maps/_Moffstation/fairgrounds.yml", [
+                "PlushieGhostRevenant",
+                "RubberStampCaptain",
+                "RubberStampCE",
+                "RubberStampCentcom",
+                "RubberStampChaplain",
+                "RubberStampClown",
+                "RubberStampCMO",
+                "RubberStampDetective",
+                "RubberStampHop",
+                "RubberStampHos",
+                "RubberStampLawyer",
+                "RubberStampMime",
+                "RubberStampPsychologist",
+                "RubberStampQm",
+                "RubberStampRd",
+                "RubberStampWarden",
+            ]},
             // Moffstation - End
         };
 

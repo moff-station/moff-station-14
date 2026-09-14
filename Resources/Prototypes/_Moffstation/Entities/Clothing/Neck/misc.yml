@@ -78,3 +78,15 @@
     sprite: _Moffstation/Clothing/Neck/prosecutorbadge.rsi
   - type: Clothing
     sprite: _Moffstation/Clothing/Neck/prosecutorbadge.rsi
+
+# Ice Fairy (Cirno)
+- type: entity
+  parent: ClothingNeckClothChameleonableBase
+  id: ClothingNeckIceFairyWings
+  name: ice fairy wings
+  description: Like a shining star...
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Neck/ice_fairy.rsi
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Neck/ice_fairy.rsi

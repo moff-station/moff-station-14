@@ -4,8 +4,6 @@
   id: FloorDarkTilesStatic
   recipes:
   - FloorTileItemDark
-  - FloorTileItemDarkDiagonalMini
-  - FloorTileItemDarkDiagonal
   - FloorTileItemDarkHerringbone
   - FloorTileItemDarkMini
   - FloorTileItemDarkMono
@@ -14,22 +12,16 @@
   - FloorTileItemDarkHorizontalSlatsBordered
   - FloorTileItemDarkPavement
   - FloorTileItemDarkPavementVertical
-  - FloorTileItemDarkOffset
-  - FloorTileItemDarkSquiggly
 
 - type: latheRecipePack
   id: FloorSteelTilesStatic
   recipes:
   - FloorTileItemSteel
-  - FloorTileItemSteelOffset
-  - FloorTileItemSteelDiagonalMini
-  - FloorTileItemSteelDiagonal
   - FloorTileItemSteelHerringbone
   - FloorTileItemSteelMini
   - FloorTileItemMoffSteelSlatsContinuous # Moff - keeping continuous tiles when they're removed upstream
   - FloorTileItemSteelVerticalSlatsBordered
   - FloorTileItemSteelHorizontalSlatsBordered
-  - FloorTileItemSteelMono
   - FloorTileItemSteelPavement
   - FloorTileItemSteelPavementVertical
   - FloorTileItemSteelCheckerDark
@@ -39,9 +31,6 @@
   id: FloorWhiteTilesStatic
   recipes:
   - FloorTileItemWhite
-  - FloorTileItemWhiteOffset
-  - FloorTileItemWhiteDiagonalMini
-  - FloorTileItemWhiteDiagonal
   - FloorTileItemWhiteHerringbone
   - FloorTileItemWhiteMini
   - FloorTileItemWhiteMono
@@ -55,21 +44,14 @@
   id: FloorMaintsTilesStatic
   recipes:
   - FloorTileItemGratingMaint
-  - FloorTileItemTechmaint
   - FloorTileItemSteelMaint
   - FloorTileItemTechmaintDark
 
 - type: latheRecipePack
   id: FloorIndustrialTilesStatic
   recipes:
-  - FloorTileItemMining
-  - FloorTileItemMiningDark
-  - FloorTileItemMiningLight
-  - FloorTileItemElevatorShaft
-  - FloorTileItemRockVault
   - FloorTileItemMetalDiamond
   - FloorTileItemFreezer
-  - FloorTileItemShowroom
 
 - type: latheRecipePack
   id: FloorWoodTilesStatic
@@ -84,15 +66,9 @@
   - FloorTileItemConcrete
   - FloorTileItemConcreteMono
   - FloorTileItemConcreteSmooth
-  - FloorTileItemGrayConcrete
-  - FloorTileItemGrayConcreteMono
-  - FloorTileItemGrayConcreteSmooth
-  - FloorTileItemOldConcrete
-  - FloorTileItemOldConcreteMono
-  - FloorTileItemOldConcreteSmooth
-  - FloorTileItemIronsandConcrete
-  - FloorTileItemIronsandConcreteMono
-  - FloorTileItemIronsandConcreteSmooth
+  - FloorTileItemMoffIronsandConcrete # Moff - keeping ironsand when it's removed upstream
+  - FloorTileItemMoffIronsandConcreteMono # Moff - keeping ironsand when it's removed upstream
+  - FloorTileItemMoffIronsandConcreteSmooth # Moff - keeping ironsand when it's removed upstream
 
 - type: latheRecipePack
   id: CircuitFloorsStatic
@@ -106,8 +82,6 @@
   recipes:
   - FloorTileItemWhiteMarble
   - FloorTileItemDarkMarble
-  - FloorTileItemUraniumMarble
-  - FloorTileItemPlasmaMarble
 
 - type: latheRecipePack
   id: FloorShuttleTilesStatic
@@ -131,9 +105,7 @@
   id: CarpetTilesStatic
   recipes:
   - FloorTileItemArcadeBlue
-  - FloorTileItemArcadeBlue2
   - FloorTileItemArcadeRed
-  - FloorTileItemEighties
   - FloorTileItemCarpetClown
   - FloorTileItemCarpetOffice
 
@@ -152,7 +124,6 @@
   - FauxTileMowedAstroGrass
   - FauxTileJungleAstroGrass
   - FauxTileDarkAstroGrass
-  - FauxTileLightAstroGrass
   - FauxTileAstroIce
   - FauxTileAstroSnow
   - FauxTileAstroAsteroidSand
