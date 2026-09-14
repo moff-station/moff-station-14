@@ -44,7 +44,7 @@ public sealed partial class ChitterAccountSystem : SharedChitterSystem
     {
         if (ent.Comp.AccountId == 0)
         {
-            _nameIdentifier.GenerateUniqueName(ent, ChitterGroup, out var number);
+            _nameIdentifier.GenerateUniqueNameModifier(ChitterGroup, out var number);
             SetAccountId(ent, (uint)number);
         }
 
@@ -54,7 +54,7 @@ public sealed partial class ChitterAccountSystem : SharedChitterSystem
 
     private void OnMicrowaved(Entity<ChitterAccountComponent> ent, ref BeingMicrowavedEvent args)
     {
-        _nameIdentifier.GenerateUniqueName(ent, ChitterGroup, out var number);
+        _nameIdentifier.GenerateUniqueNameModifier(ChitterGroup, out var number);
         SetAccountId(ent, (uint)number);
     }
 
