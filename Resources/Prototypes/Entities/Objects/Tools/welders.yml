@@ -80,9 +80,11 @@
   - type: Tool
     useSound:
       collection: Welder
-    qualities: Welding
+    qualities: [ Welding ]
+  # Moff Start - Replicator floor harvesting
   - type: ToolTileCompatible
     delay: 2
+  #  Moff End
   - type: Welder
   - type: PointLight
     enabled: false

@@ -1,0 +1,9 @@
+tiles-asteroid-ironsand = asteroid ironsand
+tiles-asteroid-ironsand-borderless = borderless asteroid ironsand
+tiles-ironsand-plating = ironsand plating
+tiles-ironsand-tile = ironsand tile
+tiles-ironsand-concrete-tile = ironsand concrete tile
+tiles-ironsand-concrete-slab = ironsand concrete slab
+tiles-ironsand-concrete-smooth = smooth ironsand concrete floor
+tiles-ironsand-packed = packed ironsand
+tiles-ironsand-paved = paved ironsand
