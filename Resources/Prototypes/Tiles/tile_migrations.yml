@@ -71,19 +71,6 @@
   id: FloorSteelBurnt
   target: FloorSteelDamaged
 
-# 2026-08-26
-# Moff start - Uranium/Plasmarble ported to moff namespace
-
-- type: tileAlias
-  id: FloorPlasmaMarble
-  target: FloorMoffPlasmaMarble
-
-- type: tileAlias
-  id: FloorUraniumMarble
-  target: FloorMoffUraniumMarble
-
-# Moff end
-
 # 2026/07/22
 # The respritening! With this one simple trick, i give 200 mappers a collective aneurysm.
 
@@ -380,3 +367,17 @@
   target: MoffIronsandPaved
 
 # Moff end
+
+# 2026-08-26
+# Moff start - Uranium/Plasmarble ported to moff namespace
+
+- type: tileAlias
+  id: FloorPlasmaMarble
+  target: FloorMoffPlasmaMarble
+
+- type: tileAlias
+  id: FloorUraniumMarble
+  target: FloorMoffUraniumMarble
+
+# Moff end
+
