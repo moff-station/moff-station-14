@@ -1167,7 +1167,7 @@ BaseAsteroidRock: AsteroidRock
 ButtonFrameExit: ButtonFrameWhite
 
 # 2026-08-12
-#TODO: Moff - uncomment when we actually get this PR
+#TODO: Moff - Moff - we are reversing these because we dont have them yet. Delete the active ones when we have them
 #WindoorSecure: Windoor
 #WindoorSecurePlasma: WindoorPlasma
 #WindoorSecureUranium: WindoorUranium
@@ -1213,7 +1213,36 @@ ButtonFrameExit: ButtonFrameWhite
 #WindoorAssemblySecure: WindoorAssembly
 #WindoorAssemblySecurePlasma: WindoorAssemblyPlasma
 #WindoorAssemblySecureUranium: WindoorAssemblyUranium
+
+WindoorArmoryLocked: WindoorSecureArmoryLocked
+PlasmaWindoorArmoryLocked: PlasmaWindoorSecureArmoryLocked
+WindoorEngineeringLocked: WindoorSecureEngineeringLocked
+PlasmaWindoorEngineeringLocked: PlasmaWindoorSecureEngineeringLocked
+PlasmaWindoorAtmosphericsLocked: PlasmaWindoorSecureAtmosphericsLocked
+WindoorSecurityLocked: WindoorSecureSecurityLocked
+PlasmaWindoorSecurityLocked: PlasmaWindoorSecureSecurityLocked
+WindoorBrigLocked: WindoorSecureBrigLocked
+WindoorDetectiveLocked: WindoorSecureDetectiveLocked
+WindoorSecurityLawyerLocked: WindoorSecureSecurityLawyerLocked
+WindoorSalvageLocked: WindoorSecureSalvageLocked
+WindoorMedicalLocked: WindoorSecureMedicalLocked
+WindoorChemistryLocked: WindoorSecureChemistryLocked
+PlasmaWindoorChemistryLocked: PlasmaWindoorSecureChemistryLocked
+WindoorCommandLocked: WindoorSecureCommandLocked
+PlasmaWindoorCommandLocked: PlasmaWindoorSecureCommandLocked
+WindoorCentralCommandLocked: WindoorSecureCentralCommandLocked
+PlasmaWindoorCentralCommandLocked: PlasmaWindoorSecureCentralCommandLocked
+UraniumWindoorCentralCommandLocked: UraniumWindoorSecureCentralCommandLocked
+UraniumWindoorEngineeringLocked: UraniumWindoorSecureEngineeringLocked
+WindoorExternalLocked: WindoorSecureExternalLocked
+WindoorResearchDirectorLocked: WindoorSecureResearchDirectorLocked
+WindoorScienceLocked: WindoorSecureScienceLocked
+PlasmaWindoorScienceLocked: PlasmaWindoorSecureScienceLocked
+WindoorHeadOfPersonnelLocked: WindoorSecureHeadOfPersonnelLocked
+
+# Moff - we are reversing this because we dont have it yet
 #LightReplacer: LightReplacerFilled
+LightReplacerFilled: LightReplacer
 
 #2026-08-14
 MeteorRock: AsteroidRock
