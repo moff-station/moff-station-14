@@ -1,3 +1,5 @@
+# Marble
+#
 - type: latheRecipe
   parent: BaseMarbleTileRecipe
   id: FloorTileItemMoffUraniumMarble
@@ -15,3 +17,20 @@
     Steel: 25
     Glass: 25
     Plasma: 25
+
+# Concrete
+
+- type: latheRecipe
+  parent: BaseConcreteTileRecipe
+  id: FloorTileItemMoffIronsandConcrete
+  result: FloorTileItemMoffIronsandConcrete
+
+- type: latheRecipe
+  parent: BaseConcreteTileRecipe
+  id: FloorTileItemMoffIronsandConcreteMono
+  result: FloorTileItemMoffIronsandConcreteMono
+
+- type: latheRecipe
+  parent: BaseConcreteTileRecipe
+  id: FloorTileItemMoffIronsandConcreteSmooth
+  result: FloorTileItemMoffIronsandConcreteSmooth
