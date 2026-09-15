@@ -55,27 +55,20 @@ public sealed partial class MoffCharacterPickerSystem : EntitySystem
     }
 
     /// <summary>
-    /// Null only when the player has no active character at all; the caller is expected to fall back
-    /// rather than drop the player.
+    /// Picks a character for a player given a specific job.
     /// </summary>
     public HumanoidCharacterProfile? PickProfile(ICommonSession player, ProtoId<JobPrototype> job)
     {
         var eligible = _candidates.GetEligibleProfiles(player.UserId, job);
-        
-        if (eligible.Count == 0)
-            eligible = _candidates.GetAntagCompatibleProfiles(player.UserId);
 
         if (eligible.Count == 0)
             return null;
 
-        // Drop characters that don't meet the job's own requirements, e.g. age or species. This
-        // goes through PlayTimeTrackingSystem so that disabled role timers are honored.
         var allowed = eligible.Where(profile => _playTime.IsAllowed(player, job, profile)).ToList();
 
         if (allowed.Count == 0)
         {
-            Log.Warning($"No active character of {player} meets the requirements for {job}; spawning one anyway.");
-            allowed = eligible;
+            return null;
         }
 
         var picked = _random.Pick(allowed);
