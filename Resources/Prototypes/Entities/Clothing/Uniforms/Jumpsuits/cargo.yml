@@ -4,8 +4,12 @@
   name: cargo tech jumpsuit
   description: A sturdy jumpsuit, issued to members of the Cargo department.
   components:
+  # Moff Start - Cargo outfits
   - type: Sprite
-    sprite: Clothing/Uniforms/Jumpsuits/Cargo/cargotech.rsi
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/cargo.rsi
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/cargo.rsi
+  # Moff End
 
 - type: entity
   parent: [ClothingUniformBase, ClothingUniformFoldableBase]
@@ -13,8 +17,12 @@
   name: salvage specialist's jumpsuit
   description: It's a snappy jumpsuit with a sturdy set of overalls. It's very dirty.
   components:
+  # Moff Start - Cargo outfits
   - type: Sprite
-    sprite: Clothing/Uniforms/Jumpsuits/Cargo/salvage.rsi
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/salvage-overalls.rsi
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/salvage-overalls.rsi
+  # Moff End
 
 - type: entity
   parent: [ClothingUniformBase, BaseCommandContraband]
@@ -23,9 +31,9 @@
   description: 'What can brown do for you?'
   components:
   - type: Sprite
-    sprite: Clothing/Uniforms/Jumpsuits/Cargo/qm.rsi
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/qm.rsi # Moffstation
   - type: Clothing
-    sprite: Clothing/Uniforms/Jumpsuits/Cargo/qm.rsi
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/qm.rsi # Moffstation
 
 - type: entity
   parent: [ClothingUniformBase, ClothingUniformFoldableBase, BaseCommandContraband]
@@ -34,9 +42,9 @@
   description: A sharp turtleneck made for the hardy work environment of supply.
   components:
   - type: Sprite
-    sprite: Clothing/Uniforms/Jumpsuits/Cargo/qmturtle.rsi
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/qm_turtle.rsi #Moffstation
   - type: Clothing
-    sprite: Clothing/Uniforms/Jumpsuits/Cargo/qmturtle.rsi
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/qm_turtle.rsi #Moffstation
 
 - type: entity
   parent: [ClothingUniformBase, BaseCommandContraband]
@@ -45,6 +53,6 @@
   description: Inspired by the quartermasters of military's past, the perfect outfit for supplying a formal occasion.
   components:
   - type: Sprite
-    sprite: Clothing/Uniforms/Jumpsuits/Cargo/qmformal.rsi
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/qmformal.rsi # Moffstation
   - type: Clothing
-    sprite: Clothing/Uniforms/Jumpsuits/Cargo/qmformal.rsi
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/qmformal.rsi # Moffstation
