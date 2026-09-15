@@ -39,7 +39,7 @@ public sealed partial class AacTabletSystem : EntitySystem
     }
 
     /// Returns all <see cref="AacPhrase"/>s which contain <paramref name="search"/> in their localized text.
-    public (AacPhrase? shortestMatch, IEnumerable<(AacPhrase, string tab, string group)> allMatches) SearchPhrases(
+    public (AacPhrase? shortestMatch, IEnumerable<(AacPhrase, IEnumerable<string>)> allMatches) SearchPhrases(
         string search,
         IEnumerable<AacPhrasePackPrototype> availablePacks
     )
@@ -65,7 +65,7 @@ public sealed partial class AacTabletSystem : EntitySystem
             return (null, []);
 
         var shortest = matches.MinBy(it => it.LocalizedText.Length).Phrase;
-        var allMatches = matches.Select(it => (it.Phrase, it.Tab, it.Group))
+        var allMatches = matches.Select(it => (it.Phrase, (IEnumerable<string>)(string[])[it.Tab, it.Group]))
             .OrderBy(it => it.Phrase.Phrase);
 
         return (shortest, allMatches);

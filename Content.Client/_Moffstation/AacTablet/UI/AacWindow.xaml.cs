@@ -21,8 +21,8 @@ public sealed partial class AacWindow : FancyWindow
         RobustXamlLoader.Load(this);
 
         SearchTab.OnPhrasePressed += OnButtonPressed;
-        SearchTab.Search += (string search) => _entMan.System<AacTabletSystem>().SearchPhrases(search, _packs);
-        Tabs.SetTabTitle(0, Loc.GetString("phrase-tab-search"));
+        SearchTab.Search += search => _entMan.System<AacTabletSystem>().SearchPhrases(search, _packs);
+        Tabs.SetTabTitle(0, Loc.GetString("aac-tab-search"));
     }
 
     public void SetAacPhrasePacks(IEnumerable<AacPhrasePackPrototype> packs)

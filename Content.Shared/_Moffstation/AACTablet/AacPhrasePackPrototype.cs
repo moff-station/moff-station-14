@@ -24,44 +24,27 @@ public sealed partial class AacPhrasePackPrototype : IPrototype
 
 /// A collection of <see cref="AacPhraseGroup"/>s, displayed together as a tab in the tablet.
 [DataRecord]
-public partial record struct AacPhraseTab(
-    [field: DataField("heading")] LocId HeadingLoc,
-    List<AacPhraseGroup> Groups
-)
-{
-    public string Heading => Loc.GetString(HeadingLoc);
-}
+public partial record struct AacPhraseTab(string Heading, List<AacPhraseGroup> Groups);
 
 /// A collection of <see cref="AacPhrase"/>s, displayed as a group in the tablet.
 [DataRecord]
-public partial record struct AacPhraseGroup(
-    [field: DataField("heading")] LocId HeadingLoc,
-    List<AacPhrase> Phrases
-)
-{
-    public string Heading => Loc.GetString(HeadingLoc);
-}
+public partial record struct AacPhraseGroup(string Heading, List<AacPhrase> Phrases);
 
 /// A single AAC phrase.
 [DataRecord, Serializable, NetSerializable]
-public partial record struct AacPhrase([field: DataField("phrase")] LocId PhraseLoc)
-{
-    public string Phrase => Loc.GetString(PhraseLoc);
-}
+public partial record struct AacPhrase(string Phrase);
 
 /// This serializer allows <see cref="AacPhrase"/>s to be read/written as plain LocIds. If anything is ever added to
 /// <see cref="AacPhrase"/>, this will need to be updated.
 [TypeSerializer]
 public sealed partial class AacPhraseSerializer : ITypeSerializer<AacPhrase, ValueDataNode>
 {
-    [Dependency] private LocIdSerializer _delegate = default!;
-
     public ValidationNode Validate(
         ISerializationManager serializationManager,
         ValueDataNode node,
         IDependencyCollection dependencies,
         ISerializationContext? context = null
-    ) => _delegate.Validate(serializationManager, node, dependencies, context);
+    ) => serializationManager.ValidateNode<string>(node, context);
 
     public AacPhrase Read(
         ISerializationManager serializationManager,
@@ -70,14 +53,7 @@ public sealed partial class AacPhraseSerializer : ITypeSerializer<AacPhrase, Val
         SerializationHookContext hookCtx,
         ISerializationContext? context = null,
         ISerializationManager.InstantiationDelegate<AacPhrase>? instanceProvider = null
-    ) => new(_delegate.Read(
-        serializationManager,
-        node,
-        dependencies,
-        hookCtx,
-        context,
-        instanceProvider is { } ip ? () => ip.Invoke().Phrase : null)
-    );
+    ) => new(serializationManager.Read<string>(node, context, notNullableOverride: true));
 
     public DataNode Write(
         ISerializationManager serializationManager,
@@ -85,5 +61,5 @@ public sealed partial class AacPhraseSerializer : ITypeSerializer<AacPhrase, Val
         IDependencyCollection dependencies,
         bool alwaysWrite = false,
         ISerializationContext? context = null
-    ) => _delegate.Write(serializationManager, value.Phrase, dependencies, alwaysWrite, context);
+    ) => serializationManager.WriteValue(value.Phrase, context: context, notNullableOverride: true);
 }

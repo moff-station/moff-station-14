@@ -14,7 +14,7 @@ public sealed partial class AacPhraseSearchTab : BoxContainer
 
     public event Action<AacPhrase>? OnPhrasePressed;
 
-    public event Func<string, (AacPhrase? shortestMatch, IEnumerable<(AacPhrase, string tab, string group)> allMatches)>
+    public event Func<string, (AacPhrase? shortestMatch, IEnumerable<(AacPhrase, IEnumerable<string> path)> allMatches)>
         ? Search;
 
     public AacPhraseSearchTab()
@@ -31,9 +31,10 @@ public sealed partial class AacPhraseSearchTab : BoxContainer
         Content.Children.Clear();
         var (shortest, searchPhrases) = Search?.Invoke(args.Text) ?? (null, []);
         _firstPhrase = shortest;
-        Content.Children.Add(AacPhraseButtonsGroup.Create(
-                Loc.GetString("TODO-LOC-SEARCH-RESULTS"),
-                searchPhrases.Select(it => it.Item1),
+        Content.Children.Add(
+            AacPhraseButtonsGroup.Create(
+                null,
+                searchPhrases.Select(it => (it.Item1, (string?)string.Join(" > ", it.path))),
                 OnPressed,
                 (int)width
             )
