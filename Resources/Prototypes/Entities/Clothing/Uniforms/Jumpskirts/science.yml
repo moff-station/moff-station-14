@@ -22,7 +22,7 @@
     - state: icon
     - state: professional-trinkets-icon # Moffstation
     - state: color-trinkets-icon
-      color: *color-purple
+      color: "#b20dff"
   - type: Item
     inhandVisuals:
       left:
@@ -36,7 +36,7 @@
       - state: equipped-INNERCLOTHING
       - state: professional-trinkets-equipped-INNERCLOTHING
       - state: color-trinkets-equipped-INNERCLOTHING
-        color: *color-purple
+        color: "#b20dff"
   # Moffstation - End
 
 - type: entity
