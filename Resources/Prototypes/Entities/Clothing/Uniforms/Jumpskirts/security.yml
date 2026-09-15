@@ -5,9 +5,9 @@
   description: Someone who wears this means business.
   components:
   - type: Sprite
-    sprite: Clothing/Uniforms/Jumpskirts/Security/detective.rsi
+    sprite: _Moffstation/Clothing/Uniforms/Jumpskirt/detective.rsi # Moffstation
   - type: Clothing
-    sprite: Clothing/Uniforms/Jumpskirts/Security/detective.rsi
+    sprite: _Moffstation/Clothing/Uniforms/Jumpskirt/detective.rsi # Moffstation
 
 - type: entity
   parent: ClothingUniformSkirtBase
@@ -16,9 +16,9 @@
   description: A hard-boiled private investigator's grey suit, complete with tie clip.
   components:
   - type: Sprite
-    sprite: Clothing/Uniforms/Jumpskirts/Security/detective_grey.rsi
+    sprite: _Moffstation/Clothing/Uniforms/Jumpskirt/detective_grey.rsi # Moffstation
   - type: Clothing
-    sprite: Clothing/Uniforms/Jumpskirts/Security/detective_grey.rsi
+    sprite: _Moffstation/Clothing/Uniforms/Jumpskirt/detective_grey.rsi # Moffstation
 
 - type: entity
   parent: [ClothingUniformSkirtBase, BaseCommandContraband]
@@ -27,7 +27,7 @@
   description: It's bright red and rather crisp, much like security's victims tend to be.
   components:
   - type: Sprite
-    sprite: Clothing/Uniforms/Jumpskirts/Security/hos.rsi
+    sprite: _Moffstation/Clothing/Uniforms/Jumpskirt/hos.rsi # Moffstation - New Security Outfits
   - type: Item
     inhandVisuals:
       left:
@@ -43,7 +43,7 @@
       - state: overlay-inhand-right
         sprite: Clothing/Uniforms/Jumpsuits/Security/hos.rsi
   - type: Clothing
-    sprite: Clothing/Uniforms/Jumpskirts/Security/hos.rsi
+    sprite: _Moffstation/Clothing/Uniforms/Jumpskirt/hos.rsi # Moffstation - New Security Outfits
 
 - type: entity
   parent: [ClothingUniformSkirtBase, BaseCommandContraband]
@@ -52,9 +52,9 @@
   description: It's a turtleneck worn by those strong and disciplined enough to achieve the position of Head of Security.
   components:
   - type: Sprite
-    sprite: Clothing/Uniforms/Jumpskirts/Security/hos_alt.rsi
+    sprite: _Moffstation/Clothing/Uniforms/Jumpskirt/hos_alt.rsi # Moffstation - New Security Outfits
   - type: Clothing
-    sprite: Clothing/Uniforms/Jumpskirts/Security/hos_alt.rsi
+    sprite: _Moffstation/Clothing/Uniforms/Jumpskirt/hos_alt.rsi # Moffstation - New Security Outfits
 
 - type: entity
   parent: [ClothingUniformSkirtBase, BaseCommandContraband]
@@ -80,7 +80,7 @@
 
 - type: entity
   parent: ClothingUniformBase
-  id: ClothingUniformJumpskirtPrisoner
+  id: ClothingUniformJumpskirtPrisonerUpstream # Moff
   name: prisoner jumpskirt
   description: A jumpskirt used for prisoners. It has suit sensors automatically enabled at all times.
   components:
@@ -116,7 +116,7 @@
     - ClothMade
     - Recyclable
     - PrisonUniform
-    - WhitelistChameleon
+    # - WhitelistChameleon # Moff - New prisoner outfits
 
 - type: entity
   parent: [ClothingUniformSkirtBase, BaseSecurityContraband]
@@ -125,7 +125,7 @@
   description: A jumpskirt made of strong material, providing robust protection.
   components:
   - type: Sprite
-    sprite: Clothing/Uniforms/Jumpskirts/Security/security.rsi
+    sprite: _Moffstation/Clothing/Uniforms/Jumpskirt/security_red.rsi # Moffstation - New Security Outfits
   - type: Item
     inhandVisuals:
       left:
@@ -141,16 +141,16 @@
       - state: overlay-inhand-right
         sprite: Clothing/Uniforms/Jumpsuits/Security/security.rsi
   - type: Clothing
-    sprite: Clothing/Uniforms/Jumpskirts/Security/security.rsi
+    sprite: _Moffstation/Clothing/Uniforms/Jumpskirt/security_red.rsi # Moffstation - New Security Outfits
 
 - type: entity
   parent: [ClothingUniformSkirtBase, BaseSecurityContraband]
   id: ClothingUniformJumpskirtWarden
-  name: warden's uniform
+  name: warden's jumpskirt # Moffstation - (New Warden Uniforms)
   description: A formal security suit for officers complete with Nanotrasen belt buckle.
   components:
   - type: Sprite
-    sprite: Clothing/Uniforms/Jumpskirts/Security/warden.rsi
+    sprite: _Moffstation/Clothing/Uniforms/Jumpskirt/warden.rsi # Moffstation - New Security Outfits
   - type: Item
     inhandVisuals:
       left:
@@ -166,7 +166,7 @@
       - state: overlay-inhand-right
         sprite: Clothing/Uniforms/Jumpsuits/Security/warden.rsi
   - type: Clothing
-    sprite: Clothing/Uniforms/Jumpskirts/Security/warden.rsi
+    sprite: _Moffstation/Clothing/Uniforms/Jumpskirt/warden.rsi # Moffstation - New Security Outfits
 
 - type: entity
   parent: [ClothingUniformSkirtBase, BaseCommandContraband]
@@ -175,9 +175,9 @@
   description: A dress for special occasions.
   components:
   - type: Sprite
-    sprite: Clothing/Uniforms/Jumpskirts/Security/hosformaldress.rsi
+    sprite: _Moffstation/Clothing/Uniforms/Jumpskirt/hosformaldress.rsi # Moffstation
   - type: Clothing
-    sprite: Clothing/Uniforms/Jumpskirts/Security/hosformaldress.rsi
+    sprite: _Moffstation/Clothing/Uniforms/Jumpskirt/hosformaldress.rsi # Moffstation
 
 - type: entity
   parent: [ClothingUniformSkirtBase, BaseSecurityContraband]
@@ -186,9 +186,9 @@
   description: A sign of skill and prestige within the security department.
   components:
   - type: Sprite
-    sprite: Clothing/Uniforms/Jumpskirts/Security/senior_officer.rsi
+    sprite: _Moffstation/Clothing/Uniforms/Jumpskirt/senior_officer.rsi # Moffstation
   - type: Clothing
-    sprite: Clothing/Uniforms/Jumpskirts/Security/senior_officer.rsi
+    sprite: _Moffstation/Clothing/Uniforms/Jumpskirt/senior_officer.rsi # Moffstation
 
 - type: entity
   parent: [ClothingUniformSkirtBase, BaseSecurityContraband]
@@ -197,6 +197,6 @@
   description: A tactical relic of years past before Nanotrasen decided it was cheaper to dye the suits red instead of washing out the blood.
   components:
   - type: Sprite
-    sprite: Clothing/Uniforms/Jumpskirts/Security/security_grey.rsi
+    sprite: _Moffstation/Clothing/Uniforms/Jumpskirt/security_grey.rsi # Moffstation
   - type: Clothing
-    sprite: Clothing/Uniforms/Jumpskirts/Security/security_grey.rsi
+    sprite: _Moffstation/Clothing/Uniforms/Jumpskirt/security_grey.rsi # Moffstation
