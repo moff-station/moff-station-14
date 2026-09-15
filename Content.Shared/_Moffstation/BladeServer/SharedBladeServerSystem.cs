@@ -42,7 +42,7 @@ public abstract partial class SharedBladeServerSystem : EntitySystem
         };
 
         SubscribeLocalEvent<BladeServerRackComponent, AfterAutoHandleStateEvent>(AfterAutoHandleState);
-        SubscribeLocalEvent<BladeServerRackComponent, ComponentInit>(OnComponentInit);
+        SubscribeLocalEvent<BladeServerRackComponent, MapInitEvent>(OnMapInit);
 
         SubscribeLocalEvent<BladeServerRackComponent, EntInsertedIntoContainerMessage>(OnEntInserted);
         SubscribeLocalEvent<BladeServerRackComponent, EntRemovedFromContainerMessage>(OnEntRemoved);
@@ -72,7 +72,7 @@ public abstract partial class SharedBladeServerSystem : EntitySystem
         SubscribeLocalEvent<BladeServerComponent, AccessibleOverrideEvent>(OnBladeServerAccessibleOverride); // Starlight
     }
 
-    private void OnComponentInit(Entity<BladeServerRackComponent> entity, ref ComponentInit args)
+    private void OnMapInit(Entity<BladeServerRackComponent> entity, ref MapInitEvent args)
     {
         // Fill slots in the rack based on the component's `StartingContents`. Only the server actually spawns
         // entities here - the client just creates empty slots and lets normal container networking sync the
