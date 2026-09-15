@@ -39,6 +39,17 @@
   parent: BasePaper
   id: BasePhotograph
   name: photograph
+  # Moff start - No moff inhand sprites yet
+  components:
+  - type: Item
+    inhandVisuals:
+      left:
+      - state: paper-inhand-left
+        sprite: Objects/Misc/bureaucracy.rsi
+      right:
+      - state: paper-inhand-right
+        sprite: Objects/Misc/bureaucracy.rsi
+  # Moffstation - End
 
 - type: entity
   parent: BasePhotograph
