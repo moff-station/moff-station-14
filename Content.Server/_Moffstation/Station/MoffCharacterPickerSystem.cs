@@ -1,5 +1,4 @@
 using System.Linq;
-using Content.Server.Antag;
 using Content.Server.Players.PlayTimeTracking;
 using Content.Shared.GameTicking;
 using Content.Shared.Preferences;
@@ -16,7 +15,6 @@ namespace Content.Server._Moffstation.Station;
 /// </summary>
 public sealed partial class MoffCharacterPickerSystem : EntitySystem
 {
-    [Dependency] private AntagSelectionSystem _antag = default!;
     [Dependency] private IRobustRandom _random = default!;
     [Dependency] private MoffJobCandidateSystem _candidates = default!;
     [Dependency] private PlayTimeTrackingSystem _playTime = default!;
@@ -57,8 +55,7 @@ public sealed partial class MoffCharacterPickerSystem : EntitySystem
     }
 
     /// <summary>
-    /// Null only when the player has no active character at all willing to take
-    /// <paramref name="job"/>; the caller is expected to fall back rather than drop the player.
+    /// Picks a character for a player given a specific job.
     /// </summary>
     public HumanoidCharacterProfile? PickProfile(ICommonSession player, ProtoId<JobPrototype> job)
     {
@@ -67,31 +64,14 @@ public sealed partial class MoffCharacterPickerSystem : EntitySystem
         if (eligible.Count == 0)
             return null;
 
-        // Drop characters that don't meet the job's own requirements, e.g. age or species. This
-        // goes through PlayTimeTrackingSystem so that disabled role timers are honored.
         var allowed = eligible.Where(profile => _playTime.IsAllowed(player, job, profile)).ToList();
 
         if (allowed.Count == 0)
         {
-            Log.Warning($"No active character of {player} meets the requirements for {job}; spawning one anyway.");
-            allowed = eligible;
-        }
-
-        // A preselected antag should be filled by a character that opted in to it.
-        var final = allowed;
-
-        foreach (var antagSet in _antag.GetMoffPreSelectedAntagPrefRoles(player))
-        {
-            final = final.Where(profile => antagSet.Overlaps(profile.AntagPreferences)).ToList();
-        }
-
-        if (final.Count == 0)
-        {
-            Log.Warning($"No active character of {player} wants the antag role they were preselected for.");
             return null;
         }
 
-        var picked = _random.Pick(final);
+        var picked = _random.Pick(allowed);
         _spawnedProfiles[player.UserId] = picked;
 
         return picked;
