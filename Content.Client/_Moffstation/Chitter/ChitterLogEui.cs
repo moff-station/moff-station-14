@@ -17,6 +17,7 @@ public sealed class ChitterLogEui : BaseEui
 
     public override void Opened()
     {
+        base.Opened();
         _window.OpenCentered();
     }
 
@@ -28,6 +29,8 @@ public sealed class ChitterLogEui : BaseEui
 
     public override void HandleState(EuiStateBase state)
     {
+        base.HandleState(state);
+
         if (state is ChitterLogEuiState s)
             _window.UpdateState(s);
     }

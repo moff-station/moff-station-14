@@ -16,7 +16,7 @@ public sealed partial class OpenChitterLogCommand : LocalizedCommands
     {
         if (shell.Player is not { } admin)
         {
-            shell.WriteError(Loc.GetString("cmd-showchitterlog-server"));
+            shell.WriteError(Loc.GetString("shell-cannot-run-command-from-server"));
             return;
         }
 

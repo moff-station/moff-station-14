@@ -14,10 +14,10 @@ namespace Content.Client._Moffstation.CartridgeLoader.Cartridges;
 [GenerateTypedNameReferences]
 public sealed partial class ChitterMessageBubble : BoxContainer
 {
-    private static readonly Color OwnBgColor = new(0.08f, 0.12f, 0.22f);
-    private static readonly Color OtherBgColor = new(0.13f, 0.14f, 0.16f);
-    private static readonly Color BorderColor = new(0.2f, 0.2f, 0.22f);
-    private static readonly Color OverflowCountColor = new(0.6f, 0.6f, 0.6f);
+    private static readonly Color OwnBgColor = Color.FromHex("#141F38");
+    private static readonly Color OtherBgColor = Color.FromHex("#212429");
+    private static readonly Color BorderColor = Color.FromHex("#333338");
+    private static readonly Color OverflowCountColor = Color.FromHex("#999999");
     private static readonly Vector2 SeenIconSize = new(18, 18);
     private static readonly Thickness SeenIconMargin = new(0, 0, 1, 0);
 
@@ -81,7 +81,7 @@ public sealed partial class ChitterMessageBubble : BoxContainer
         set
         {
             _bubbleStyle.BorderColor = value
-                ? new Color(0.35f, 0.7f, 0.35f)
+                ? Color.FromHex("#59B359")
                 : BorderColor;
         }
     }

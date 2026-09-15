@@ -34,6 +34,12 @@ public sealed partial class ChitterAiSystem : EntitySystem
         _server.DataChanged += OnServerDataChanged;
     }
 
+    public override void Shutdown()
+    {
+        base.Shutdown();
+        _server.DataChanged -= OnServerDataChanged;
+    }
+
     private void OnServerDataChanged()
     {
         var query = EntityQueryEnumerator<ChitterAiComponent>();

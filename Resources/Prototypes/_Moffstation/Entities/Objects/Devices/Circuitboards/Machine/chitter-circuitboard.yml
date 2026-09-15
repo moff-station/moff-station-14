@@ -4,9 +4,9 @@
   name: chitter blade server board
   description: A circuit board for a Chitter blade server.
   components:
-  - type: BladeServerBoard
-    prototype: ChitterBladeServer
   - type: MachineBoard
     prototype: ChitterBladeServer
     stackRequirements:
       Capacitor: 1
+  - type: BladeServerBoard
+    prototype: ChitterBladeServer

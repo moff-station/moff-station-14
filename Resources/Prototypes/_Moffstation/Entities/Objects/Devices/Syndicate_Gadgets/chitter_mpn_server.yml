@@ -3,7 +3,7 @@
 # cooperate. Never shows up in the station's normal Chitter directory; a PDA has to manually connect to
 # it first (see ChitterMpnSystem).
 - type: entity
-  parent: [ BaseMachine, BaseMachineDestructible, BaseSyndicateContraband ]
+  parent: [ BaseMachine, BaseSyndicateContraband, BaseMachineDestructible ]
   id: ChitterMpnServer
   name: M.P.N. chitter server
   description: A Miniature Private Network chitter server. A palm-sized red case with no manufacturer markings. Needs to be anchored directly onto medium-voltage cabling to power on.

@@ -12,7 +12,7 @@
                 <Label Name="NameLabel" Text="" FontColorOverride="#00FF00" HorizontalExpand="True" VerticalAlignment="Center" />
                 <Label Name="UnreadCountLabel" Text="" FontColorOverride="#FFD700" Visible="False" MinWidth="20" VerticalAlignment="Center" />
             </BoxContainer>
-            <Label Name="MessageLabel" Text="" FontColorOverride="#999999" MinHeight="16" />
+            <Label Name="MessageLabel" Text="" StyleClasses="LabelSubText" MinHeight="16" />
         </BoxContainer>
     </PanelContainer>
 </cartridges:ChitterChatListEntry>

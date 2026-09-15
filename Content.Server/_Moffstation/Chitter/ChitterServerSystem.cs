@@ -43,12 +43,12 @@ public sealed partial class ChitterServerSystem : SharedChitterSystem
     // the normal profile picture picker (see ChitterAvatarPrototype.Hidden).
     private static readonly string[] EmagSyndicateAvatars =
     {
-        "chitter_avatar_49", "chitter_avatar_50", "chitter_avatar_51", "chitter_avatar_52",
+        "ChitterAvatar49", "ChitterAvatar50", "ChitterAvatar51", "ChitterAvatar52",
     };
 
     private static readonly string[] EmagClownAvatars =
     {
-        "chitter_avatar_53", "chitter_avatar_54", "chitter_avatar_55", "chitter_avatar_56",
+        "ChitterAvatar53", "ChitterAvatar54", "ChitterAvatar55", "ChitterAvatar56",
     };
 
     // Same name-generation ingredients the nukeops "Lone Operative" ghost role uses (see

@@ -16,7 +16,7 @@
         </BoxContainer>
     </PanelContainer>
 
-    <LineEdit Name="ChatNameInput" PlaceHolder="Chat name (optional)" Margin="6 2" MinHeight="28" />
+    <LineEdit Name="ChatNameInput" PlaceHolder="{Loc chitter-chat-name-placeholder}" Margin="6 2" MinHeight="28" />
 
     <LineEdit Name="SearchInput" PlaceHolder="{Loc chitter-search-placeholder}" Margin="6 2" MinHeight="28" />
 

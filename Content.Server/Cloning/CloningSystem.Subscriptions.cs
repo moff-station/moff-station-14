@@ -23,6 +23,7 @@ using Content.Shared.Storage;
 using Content.Shared.Store;
 using Content.Shared.Store.Components;
 using Content.Shared._Moffstation.Chitter;
+using Content.Shared.Access.Systems;
 using Robust.Shared.Prototypes;
 
 namespace Content.Server.Cloning;
@@ -45,6 +46,7 @@ public sealed partial class CloningSystem
     [Dependency] private PullingSystem _pulling = default!;
     [Dependency] private BloodstreamSystem _bloodstream = default!;
     [Dependency] private ForensicsSystem _forensics = default!;
+    [Dependency] private SharedIdCardSystem _card = default!;
 
     public override void Initialize()
     {
@@ -127,10 +129,8 @@ public sealed partial class CloningSystem
         if (!TryComp<IdCardComponent>(args.CloneUid, out var cloneComp))
             return;
 
-        cloneComp.FullName = ent.Comp.FullName;
-        cloneComp.LocalizedJobTitle = ent.Comp.LocalizedJobTitle;
-        cloneComp.JobTitle = ent.Comp.JobTitle;
-        Dirty(args.CloneUid, cloneComp);
+        _card.TryChangeFullName(args.CloneUid, ent.Comp.FullName, cloneComp);
+        _card.TryChangeJobTitle(args.CloneUid, ent.Comp.LocalizedJobTitle, cloneComp);
     }
 
     private void OnCloneItemChitterAccount(Entity<ChitterAccountComponent> ent, ref CloningItemEvent args)

@@ -31,6 +31,12 @@ public sealed partial class ChitterCartridgeSystem : EntitySystem
         _server.DataChanged += OnServerDataChanged;
     }
 
+    public override void Shutdown()
+    {
+        base.Shutdown();
+        _server.DataChanged -= OnServerDataChanged;
+    }
+
     private void OnServerDataChanged()
     {
         using var query = EntityQueryEnumerator<CartridgeLoaderComponent>();

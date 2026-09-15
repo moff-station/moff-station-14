@@ -4,7 +4,6 @@ admin-player-actions-window-chitter-log = Chitter Log
 
 cmd-showchitterlog-desc = Opens the Chitter conversation log panel
 cmd-showchitterlog-help = Usage: showchitterlog
-cmd-showchitterlog-server = This command cannot be run from the server
 
 chitter-log-title = Chitter Log
 chitter-log-chats-label = Conversations

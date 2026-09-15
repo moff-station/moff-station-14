@@ -30,7 +30,7 @@
                             <Label Margin="4 2" Text="{Loc 'agent-id-ui-input-job'}" />
                             <LineEdit Name="JobLineEdit" SelectAllOnFocus="True" />
                             <!-- Moffstation - Add Chitter account number field -->
-                            <Label Name="CurrentNumber" Text="{Loc 'agent-id-card-current-number'}" />
+                            <Label Margin="4 2" Text="{Loc 'agent-id-card-current-number'}" />
                             <LineEdit Name="NumberLineEdit" PlaceHolder="#0000" />
                             <!-- Moffstation end -->
                         </BoxContainer>

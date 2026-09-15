@@ -26,16 +26,7 @@ public sealed class ChitterAiBoundUserInterface(EntityUid owner, Enum uiKey) : B
 
         _fragment.OnUiMessage += (type, chatId, targetNumber, targetNumbers, content, profilePictureId, chatName) =>
         {
-            SendMessage(new ChitterAiUiMessageEvent
-            {
-                Type = type,
-                ChatId = chatId,
-                TargetNumber = targetNumber,
-                TargetNumbers = targetNumbers,
-                Content = content,
-                ProfilePictureId = profilePictureId,
-                ChatName = chatName,
-            });
+            SendMessage(new ChitterAiUiMessageEvent(type, chatId, targetNumber, targetNumbers, content, profilePictureId, chatName));
         };
     }
 

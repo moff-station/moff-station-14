@@ -10,11 +10,14 @@ chitter-manage = Manage
 chitter-back = Back
 chitter-close = Close
 chitter-search-placeholder = Search by name...
+chitter-chat-name-placeholder = Chat name (optional)
 chitter-lookup-title = Contacts
 chitter-settings = Settings
 chitter-profile-title = Profile
 chitter-current-avatar = Current Avatar
 chitter-manage-chat = Manage Chat
+chitter-chat-name-label = Chat Name:
+chitter-save = Save
 chitter-add-participant = Add Participant
 chitter-remove = Remove
 chitter-archive-chat = Archive Chat
@@ -35,5 +38,3 @@ chitter-server-emagged = The server's identity records scramble into static.
 chitter-emag-fake-name-format = { $prefix } { $word }
 chitter-emag-job-syndicate-intern = Syndicate Intern
 chitter-emag-job-clown = Clown
-
-

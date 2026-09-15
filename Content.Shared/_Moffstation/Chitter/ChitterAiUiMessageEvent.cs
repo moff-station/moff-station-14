@@ -8,11 +8,29 @@ namespace Content.Shared._Moffstation.Chitter;
 [Serializable, NetSerializable]
 public sealed class ChitterAiUiMessageEvent : BoundUserInterfaceMessage, IChitterUiMessage
 {
-    public ChitterUiMessageType Type { get; set; }
-    public Guid? ChatId { get; set; }
-    public uint? TargetNumber { get; set; }
-    public List<uint>? TargetNumbers { get; set; }
-    public string? Content { get; set; }
-    public string? ProfilePictureId { get; set; }
-    public string? ChatName { get; set; }
+    public ChitterUiMessageType Type { get; }
+    public Guid? ChatId { get; }
+    public uint? TargetNumber { get; }
+    public List<uint>? TargetNumbers { get; }
+    public string? Content { get; }
+    public string? ProfilePictureId { get; }
+    public string? ChatName { get; }
+
+    public ChitterAiUiMessageEvent(
+        ChitterUiMessageType type,
+        Guid? chatId,
+        uint? targetNumber,
+        List<uint>? targetNumbers,
+        string? content,
+        string? profilePictureId,
+        string? chatName)
+    {
+        Type = type;
+        ChatId = chatId;
+        TargetNumber = targetNumber;
+        TargetNumbers = targetNumbers;
+        Content = content;
+        ProfilePictureId = profilePictureId;
+        ChatName = chatName;
+    }
 }
