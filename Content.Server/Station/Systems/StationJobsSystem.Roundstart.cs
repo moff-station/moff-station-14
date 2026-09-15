@@ -288,10 +288,23 @@ public sealed partial class StationJobsSystem
             _random.Shuffle(givenStations);
 
             var bannedRoles = _banManager.GetRoleBans(player)?.Select(role => role.RoleId).ToHashSet();
+
+            // Moff Start - Multi-char selection - We need to know antags during job assignment so that both a compatible char and job can be selected
+            var (antagWhitelist, antagBlacklist) = _player.TryGetSessionById(player, out var session)
+                ? _antag.GetAntagJobs(session)
+                : (null, null);
+            // Moff end
+
             foreach (var station in givenStations)
             {
                 // Pick a random overflow job from that station and remove banned roles
-                var overflows = GetOverflowJobs(station).Where(job => bannedRoles == null || !bannedRoles.Contains(job.Id)).ToList();
+                var overflows = GetOverflowJobs(station)
+                    .Where(job => bannedRoles == null || !bannedRoles.Contains(job.Id))
+                    // Moff Start - multi-char selection, use antag black and whitelists
+                    .Where(job => (antagWhitelist == null || antagWhitelist.Contains(job)) &&
+                                  (antagBlacklist == null || !antagBlacklist.Contains(job)))
+                    // Moff end
+                    .ToList();
                 _random.Shuffle(overflows);
 
                 // Stations with no overflow slots should simply get skipped over.
