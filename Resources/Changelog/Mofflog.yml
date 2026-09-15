@@ -8124,6 +8124,14 @@ Entries:
   id: 1882
   time: '2026-09-11T16:47:04.000'
   url: https://github.com/moff-station/moff-station-14/pull/1882
+- author: DuckManZach
+  changes:
+  - message: All of the readied players, and half the unreadied players are counted
+      in gamemode selection.
+    type: tweak
+  id: 1883
+  time: '2026-09-14T16:58:34.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1883
 - author: Centronias
   changes:
   - message: Scurrets of all varieties can now emote, e.g. using "@".
@@ -8131,5 +8139,13 @@ Entries:
   id: 1886
   time: '2026-09-11T22:19:08.000'
   url: https://github.com/moff-station/moff-station-14/pull/1886
+- author: Centronias
+  changes:
+  - message: Replace nonexistant variant tiles on non-Spacewizards maps with existing
+      tiles. AKA no magenta/black texture errors.
+    type: fix
+  id: 1906
+  time: '2026-09-14T19:18:50.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1906
 Name: Mofflog
 Order: -2

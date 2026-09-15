@@ -285,6 +285,10 @@
           collection: WoodDestroy
       - !type:SpawnEntitiesBehavior
         spawn:
+          # TODO: Moff - when BaseDoorSpawn anchor gets merged, replace this with that
           MaterialCardboard:
             min: 3
             max: 5
+  - type: IconSmooth
+    key: cards
+    mode: NoSprite
