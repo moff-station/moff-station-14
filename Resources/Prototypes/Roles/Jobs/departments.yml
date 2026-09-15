@@ -14,6 +14,7 @@
   description: department-Civilian-description
   color: "#7b9f2c"  # Moffstation - Colored job list
   weight: -10
+  ignoreForDepartmentFallback: true
   roles:
   - Bartender
   - Botanist
@@ -32,6 +33,7 @@
   - ServiceWorker
   # - TramDriver # Moff - Need to figure out how this will fit into our space first.
 
+# Please kill this
 - type: department
   id: CentralCommand
   name: department-CentralCommand
@@ -63,6 +65,7 @@
   - HeadOfSecurity
   - ResearchDirector
   - Quartermaster
+  # Please kill these
   - CentralCommandOfficial
   - CBURN
   - ERTLeader
@@ -138,6 +141,7 @@
   description: department-Specific-description
   color: "#b9b4d4"  # Moffstation - Colored job list
   weight: 10
+  ignoreForDepartmentFallback: true
   roles:
   - Reporter
   - Psychologist
