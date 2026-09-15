@@ -24,10 +24,7 @@ public sealed partial class GibMistParticleSystem : EntitySystem
     private void SpawnTinted(ProtoId<ParticleEffectPrototype> effect, GibMistParticleEvent ev)
     {
         var emitter = _particles.SpawnEffect(effect, ev.Coords);
-        if (emitter == null)
-            return;
-
-        emitter.ColorOverride = ev.BloodColor;
+        emitter?.ColorOverride = ev.BloodColor;
     }
 }
 

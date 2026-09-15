@@ -13,9 +13,8 @@ public sealed partial class SpawnParticleEffectSystem : EntityEffectSystem<Trans
 
     protected override void Effect(Entity<TransformComponent> entity, ref EntityEffectEvent<SpawnParticleEffect> args)
     {
-        if (!_proto.TryIndex(args.Effect.Effect, out var proto))
+        if (!ProtoMan.Resolve(args.Effect.Effect, out var proto))
         {
-            Log.Error($"SpawnParticleEffect references unknown particle effect '{args.Effect.Effect}'");
             return;
         }
 
