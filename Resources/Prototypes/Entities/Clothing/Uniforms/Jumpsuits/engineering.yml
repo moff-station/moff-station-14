@@ -29,27 +29,27 @@
     sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/jumpsuit.rsi
     layers:
     - state: icon
-      color: &color-orange "#db542e"
+      color: "#db542e"
     - state: basics-trinkets-icon
     - state: color-trinkets-icon
-      color: &color-darkblue "#547abb"
+      color: "#547abb"
   - type: Item
     inhandVisuals:
       left:
       - state: inhand-left
-        color: *color-orange
+        color: "#db542e"
       right:
       - state: inhand-right
-        color: *color-orange
+        color: "#db542e"
   - type: Clothing
     sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/jumpsuit.rsi
     clothingVisuals:
       jumpsuit:
       - state: equipped-INNERCLOTHING
-        color: *color-orange
+        color: "#db542e"
       - state: basics-trinkets-equipped-INNERCLOTHING
       - state: color-trinkets-equipped-INNERCLOTHING
-        color: *color-darkblue
+        color: "#547abb"
     # Moffstation - End
 
 - type: entity
@@ -72,10 +72,10 @@
     sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/jumpsuit.rsi
     layers:
     - state: icon
-      color: &color-yellow "#ffe335"
+      color: "#ffe335"
     - state: basics-trinkets-icon
     - state: color-trinkets-icon
-      color: &color-atmos "#6ec9c1"
+      color: "#6ec9c1"
   - type: Item
     inhandVisuals:
       left:
@@ -87,10 +87,10 @@
     clothingVisuals:
       jumpsuit:
       - state: equipped-INNERCLOTHING
-        color: *color-yellow
+        color: "#ffe335"
       - state: basics-trinkets-equipped-INNERCLOTHING
       - state: color-trinkets-equipped-INNERCLOTHING
-        color: *color-atmos
+        color: "#6ec9c1"
   # Moffstation - End
 
 - type: entity
@@ -104,12 +104,12 @@
     sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/jumpsuit.rsi
     layers:
     - state: icon
-      color: *color-yellow
+      color: "#ffe335"
     - state: basics-trinkets-icon
     - state: color-trinkets-icon
-      color: *color-atmos
+      color: "#6ec9c1"
     - state: overalls-trinkets-icon
-      color: *color-darkblue
+      color: "#547abb"
   - type: Item
     inhandVisuals:
       left:
@@ -121,12 +121,12 @@
     clothingVisuals:
       jumpsuit:
       - state: equipped-INNERCLOTHING
-        color: *color-yellow
+        color: "#ffe335"
       - state: basics-trinkets-equipped-INNERCLOTHING
       - state: color-trinkets-equipped-INNERCLOTHING
-        color: *color-atmos
+        color: "#6ec9c1"
       - state: overalls-trinkets-equipped-INNERCLOTHING
-        color: *color-darkblue
+        color: "#547abb"
   # Moffstation - End
 
 - type: entity

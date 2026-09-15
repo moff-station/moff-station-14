@@ -18,27 +18,27 @@
     sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/jumpsuit.rsi
     layers:
     - state: icon
-      color: &color-white "#FFFFFF"
+      color: "#FFFFFF"
     - state: professional-trinkets-icon
     - state: color-trinkets-icon
-      color: &green-scrubs "#77ed94"
+      color: "#77ed94"
   - type: Item
     inhandVisuals:
       left:
       - state: inhand-left
-        color: *green-scrubs
+        color: "#77ed94"
       right:
       - state: inhand-right
-        color: *green-scrubs
+        color: "#77ed94"
   - type: Clothing
     sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/scrubs.rsi
     clothingVisuals:
       jumpsuit:
       - state: equipped-INNERCLOTHING
-        color: *color-white
+        color: "#FFFFFF"
       - state: professional-trinkets-equipped-INNERCLOTHING
       - state: color-trinkets-equipped-INNERCLOTHING
-        color: *green-scrubs
+        color: "#77ed94"
   # Moffstation - End
 
 - type: entity
@@ -54,15 +54,15 @@
     - state: icon-light
     - state: professional-trinkets-icon
     - state: color-trinkets-icon
-      color: &blue-scrubs "#65b5f2"
+      color: "#65b5f2"
   - type: Item
     inhandVisuals:
       left:
       - state: inhand-left
-        color: *blue-scrubs
+        color: "#65b5f2"
       right:
       - state: inhand-right
-        color: *blue-scrubs
+        color: "#65b5f2"
   - type: Clothing
     sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/scrubs.rsi
     clothingVisuals:
@@ -70,7 +70,7 @@
       - state: equipped-INNERCLOTHING-light
       - state: professional-trinkets-equipped-INNERCLOTHING
       - state: color-trinkets-equipped-INNERCLOTHING
-        color: *blue-scrubs
+        color: "#65b5f2"
   # Moffstation - End
 
 - type: entity
