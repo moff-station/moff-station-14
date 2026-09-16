@@ -1,10 +1,10 @@
 meta:
   format: 7
   category: Grid
-  engineVersion: 288.0.1
+  engineVersion: 288.1.0
   forkId: ""
   forkVersion: ""
-  time: 09/14/2026 18:39:45
+  time: 09/16/2026 22:52:06
   entityCount: 166
 maps: []
 grids:
@@ -229,21 +229,25 @@ entities:
     components:
     - type: Transform
       parent: 1
+      rot: 1.5707963267948966 rad
       pos: -0.5,-2.5
   - uid: 15
     components:
     - type: Transform
       parent: 1
+      rot: 1.5707963267948966 rad
       pos: -0.5,-6.5
   - uid: 16
     components:
     - type: Transform
       parent: 1
+      rot: 1.5707963267948966 rad
       pos: 6.5,-0.5
   - uid: 17
     components:
     - type: Transform
       parent: 1
+      rot: 1.5707963267948966 rad
       pos: 6.5,-4.5
   - uid: 18
     components:
@@ -909,23 +913,25 @@ entities:
     components:
     - type: Transform
       parent: 1
+      rot: 1.5707963267948966 rad
       pos: -0.5,-2.5
   - uid: 114
     components:
     - type: Transform
       parent: 1
+      rot: 1.5707963267948966 rad
       pos: -0.5,-6.5
   - uid: 115
     components:
     - type: Transform
       parent: 1
-      rot: 3.141592653589793 rad
+      rot: 4.71238898038469 rad
       pos: 6.5,-0.5
   - uid: 116
     components:
     - type: Transform
       parent: 1
-      rot: 3.141592653589793 rad
+      rot: 4.71238898038469 rad
       pos: 6.5,-4.5
 - proto: Poweredlight
   entities:

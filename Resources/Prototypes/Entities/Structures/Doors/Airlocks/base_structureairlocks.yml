@@ -208,6 +208,8 @@
     prob: 0.25
     count: 2
 # ES END
+  - type: StructureAligner
+  - type: StructureAlignerPylon
   placement:
     mode: SnapgridCenter
 
