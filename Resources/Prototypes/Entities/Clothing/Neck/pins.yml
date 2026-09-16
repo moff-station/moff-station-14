@@ -11,6 +11,11 @@
     sprite: Clothing/Neck/Misc/pins.rsi
   - type: Clothing
     sprite: Clothing/Neck/Misc/pins.rsi
+    tags:
+    # - ClothMade # Moff - Pins are metallic
+    - Recyclable # Moffstation - Fix neck slot parenting
+    - MonkeyWearable
+    - WhitelistChameleon
 
 - type: entity
   parent: ClothingNeckPinBase
@@ -28,7 +33,9 @@
         type: ChameleonBoundUserInterface
   - type: Tag
     tags:
+    # - ClothMade # Moff - Pins are metallic
     - Recyclable # Moffstation - Fix neck slot parenting
+    - MonkeyWearable
     - WhitelistChameleon
     - GenderPin
 
