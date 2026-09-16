@@ -1,0 +1,256 @@
+- type: entity
+  parent: ClothingUniformSkirtBase
+  id: ClothingUniformJumpskirtBartender
+  name: bartender's uniform
+  description: A nice and tidy uniform. Shame about the bar though.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Uniforms/Jumpskirt/bartender.rsi # Moffstation
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Uniforms/Jumpskirt/bartender.rsi # Moffstation
+
+- type: entity
+  parent: ClothingUniformSkirtBase
+  id: ClothingUniformJumpskirtChaplain
+  name: chaplain's jumpskirt
+  description: It's a black jumpskirt, often worn by religious folk.
+  components:
+  - type: Sprite
+    sprite: Clothing/Uniforms/Jumpskirts/Service/chaplain.rsi
+  - type: Clothing
+    sprite: Clothing/Uniforms/Jumpskirts/Service/chaplain.rsi
+
+- type: entity
+  parent: ClothingUniformSkirtBase
+  id: ClothingUniformJumpskirtChef
+  name: chef uniform
+  description: Can't cook without this.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Uniforms/Jumpskirt/chef.rsi # Moffstation
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Uniforms/Jumpskirt/chef.rsi # Moffstation
+
+- type: entity
+  parent: ClothingUniformSkirtBase
+  id: ClothingUniformJumpskirtHydroponics
+  name: hydroponics jumpskirt
+  description: Has a strong earthy smell to it. Hopefully it's merely dirty as opposed to soiled.
+  components:
+  # Moffstation - Start
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Uniforms/Jumpskirt/jumpskirt.rsi
+    layers:
+    - state: icon
+      color: "#2abd8e"
+    - state: basics-trinkets-icon
+    - state: color-trinkets-icon
+      color: "#547abb"
+  - type: Item
+    inhandVisuals:
+      left:
+      - state: inhand-left
+      right:
+      - state: inhand-right
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Uniforms/Jumpskirt/jumpskirt.rsi
+    clothingVisuals:
+      jumpsuit:
+      - state: equipped-INNERCLOTHING
+        color: "#2abd8e"
+      - state: basics-trinkets-equipped-INNERCLOTHING
+      - state: color-trinkets-equipped-INNERCLOTHING
+        color: "#547abb"
+# Moffstation - End
+
+- type: entity
+  parent: ClothingUniformSkirtBase
+  id: ClothingUniformJumpskirtJanitor
+  name: janitor jumpskirt
+  description: The jumpskirt for the poor sop with a mop.
+  components:
+  # Moffstation - Start
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Uniforms/Jumpskirt/jumpskirt.rsi
+    layers:
+    - state: icon
+      color: "#9b9b9b"
+    - state: basics-trinkets-icon
+    - state: color-trinkets-icon
+      color: "#ac50e6"
+  - type: Item
+    inhandVisuals:
+      left:
+      - state: inhand-left
+        color: "#9b9b9b"
+      right:
+      - state: inhand-right
+        color: "#9b9b9b"
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Uniforms/Jumpskirt/jumpskirt.rsi
+    clothingVisuals:
+      jumpsuit:
+      - state: equipped-INNERCLOTHING
+        color: "#9b9b9b"
+      - state: basics-trinkets-equipped-INNERCLOTHING
+      - state: color-trinkets-equipped-INNERCLOTHING
+        color: "#ac50e6"
+# Moffstation - End
+
+- type: entity
+  parent: ClothingUniformSkirtBase
+  id: ClothingUniformJumpskirtMime
+  name: mime jumpskirt
+  description: ...
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Uniforms/Jumpskirt/mime.rsi # Moffstation
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Uniforms/Jumpskirt/mime.rsi # Moffstation
+
+- type: entity
+  parent: ClothingUniformSkirtBase
+  id: ClothingUniformJumpskirtLibrarian
+  name: librarian jumpskirt
+  description: A cosy green jumper fit for a curator of books.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Uniforms/Jumpskirt/librarian.rsi # Moffstation
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Uniforms/Jumpskirt/librarian.rsi # Moffstation
+
+- type: entity
+  parent: ClothingUniformSkirtBase
+  id: ClothingUniformJumpskirtCurator
+  name: sensible skirt
+  description: It's sensible. Too sensible...
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Uniforms/Jumpskirt/curator.rsi # Moffstation
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Uniforms/Jumpskirt/curator.rsi # Moffstation
+
+- type: entity
+  parent: ClothingUniformSkirtBase
+  id: ClothingUniformJumpskirtPerformer
+  name: blue performer's jumpskirt # Moff
+  description: Hi, I'm Scott, president of Donk Pizza. Have you heard of [FAMOUS VIRTUAL PERFORMER]?
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Uniforms/Jumpskirt/performer.rsi # Moff
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Uniforms/Jumpskirt/performer.rsi # Moff
+
+- type: entity
+  parent: ClothingUniformSkirtBase
+  id: ClothingUniformJumpskirtJanimaid
+  name: janitorial maid uniform
+  description: For professionals, not the posers.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Uniforms/Jumpskirt/janimaid.rsi # Moffstation
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Uniforms/Jumpskirt/janimaid.rsi # Moffstation
+
+- type: entity
+  parent: ClothingUniformSkirtBase
+  id: ClothingUniformJumpskirtJanimaidmini
+  name: ancient janitorial maid uniform # Moffstation - Rename/redescribe janimaidmini
+  description: Ironically, it has mold growing on it. # Moffstation - Rename/redescribe janimaidmini
+  components:
+  - type: Sprite
+    sprite: Clothing/Uniforms/Jumpskirts/Service/janimaidmini.rsi
+  - type: Clothing
+    sprite: Clothing/Uniforms/Jumpskirts/Service/janimaidmini.rsi
+
+- type: entity
+  parent: ClothingUniformSkirtBase
+  id: ClothingUniformJumpskirtMusician
+  name: musician's skirt
+  description: A fancy skirt for the musically inclined. Perfect for any lounge act!
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Uniforms/Jumpskirt/musician.rsi # Moffstation
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Uniforms/Jumpskirt/musician.rsi # Moffstation
+
+- type: entity
+  parent: ClothingUniformSkirtBase
+  id: ClothingUniformJumpskirtPsychologist
+  name: psychologist suitskirt
+  description: I don't lose things. I place things in locations which later elude me.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Uniforms/Jumpskirt/psychologist.rsi # Moffstation
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Uniforms/Jumpskirt/psychologist.rsi # Moffstation
+
+- type: entity
+  parent: ClothingUniformSkirtBase
+  id: ClothingUniformJumpskirtClown
+  name: clown skirt
+  description: HONK!
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Uniforms/Jumpskirt/clown.rsi # Moffstation
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Uniforms/Jumpskirt/clown.rsi # Moffstation
+  - type: Tag
+    tags:
+    - ClownSuit
+    - WhitelistChameleon
+
+- type: entity
+  parent: ClothingUniformSkirtBase
+  id: ClothingUniformJumpskirtLawyerRed
+  name: red lawyer suitskirt
+  description: A flashy red suitskirt worn by lawyers trained using the chords of plasteel. # Moffstation
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Uniforms/Jumpskirt/lawyerred.rsi # Moffstation
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Uniforms/Jumpskirt/lawyerred.rsi # Moffstation
+
+- type: entity
+  parent: ClothingUniformSkirtBase
+  id: ClothingUniformJumpskirtLawyerBlue
+  name: blue lawyer suitskirt
+  description: A flashy blue suitskirt worn by lawyers and show-offs.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Uniforms/Jumpskirt/lawyerblue.rsi # Moffstation
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Uniforms/Jumpskirt/lawyerblue.rsi # Moffstation
+
+- type: entity
+  parent: ClothingUniformSkirtBase
+  id: ClothingUniformJumpskirtLawyerBlack
+  name: black lawyer suitskirt
+  description: A subtle black suitskirt worn by lawyers and gangsters.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Uniforms/Jumpskirt/lawyerblack.rsi # Moffstation
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Uniforms/Jumpskirt/lawyerblack.rsi # Moffstation
+
+- type: entity
+  parent: ClothingUniformSkirtBase
+  id: ClothingUniformJumpskirtLawyerPurple
+  name: purple lawyer suitskirt
+  description: A stylish purple piece worn by lawyers and show people.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Uniforms/Jumpskirt/lawyerpurple.rsi #Moffstation
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Uniforms/Jumpskirt/lawyerpurple.rsi #Moffstation
+
+- type: entity
+  parent: ClothingUniformSkirtBase
+  id: ClothingUniformJumpskirtLawyerGood
+  name: good lawyer's suitskirt
+  description: A tacky suitskirt perfect for a CRIMINAL lawyer!
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Uniforms/Jumpskirt/lawyergood.rsi # Moffstation
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Uniforms/Jumpskirt/lawyergood.rsi # Moffstation

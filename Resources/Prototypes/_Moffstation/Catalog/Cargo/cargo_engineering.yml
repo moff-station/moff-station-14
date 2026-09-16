@@ -10,3 +10,16 @@
   cost: 450
   category: cargoproduct-category-name-engineering
   group: market
+
+- type: cargoProduct
+  id: BoxFlare
+  icon:
+    sprite: _Moffstation/Objects/Storage/boxes.rsi
+    state: box
+  product: BoxFlare
+  cost: 300
+  category: cargoproduct-category-name-engineering
+  group: market
+  container:
+    entity: WrappedParcel
+    containerId: contents

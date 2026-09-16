@@ -1,0 +1,27 @@
+# Player: RetroCorcoran / Character: Karla
+- type: entity
+  parent: ClothingNeckDogTags
+  id: &id PersonalItemKarlaIdCards
+  name: Karla's Old Identification Cards
+  description: A set of plastic cards strung along a metal chain, the first visible card shows an image of a vulp with "Karla" written under it, the last name is scratched out seemingly by hand.
+  suffix: PersonalItem
+  components:
+  - type: Sprite
+    sprite: &sprite _Moffstation/PersonalItems/Wearables/RetroCorcoran/Karla/karlaidcards.rsi
+  - type: Clothing
+    sprite: *sprite
+  - type: Item
+    sprite: *sprite
+  - type: DetailExaminable
+    content: Inspecting them closer and flipping through them, there are three different IDs. Each one has an image, ID number, rank, name, and a seal with what looks to be a raven. Each card has the last name scratched out, but all of them look weathered and worn. You can make out the rank "Lieutenant" through the wear of one of them. Perhaps a memento of what once was.
+
+- type: loadout
+  id: *id
+  storage:
+    back:
+    - *id
+  effects:
+  - !type:PersonalItemLoadoutEffect
+    character:
+    - Karla
+    - Karla Volkova
