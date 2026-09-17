@@ -11,13 +11,11 @@
 - type: weightedRandom
   id: BloodBrotherObjectiveGroupSocial
   weights:
-    BloodBrotherJailbreakObjective: 0.5
     BloodBrotherLeaveCallingCardObjective: 0.2
 
 - type: weightedRandom
   id: BloodBrotherObjectiveGroupSabotage
   weights:
-    BloodBrotherSupercritAnomaliesObjective: 1
     BloodBrotherDisruptDepartmentObjective: 1
     BloodBrotherSabotageObjective: 0.5
 

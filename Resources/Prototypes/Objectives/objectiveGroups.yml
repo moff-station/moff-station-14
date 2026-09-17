@@ -52,7 +52,6 @@
     RandomTraitorProgressObjective: 1
     # Moffstation - Start - Social traitor objectives
     GatherIntelObjective: 1
-    JailbreakObjective: 0.5
     LeaveCallingCardObjective: 0.5
     LeaveCallingCardOnPersonObjective: 0.5
     # Moffstation - End
@@ -60,7 +59,7 @@
 - type: weightedRandom
   id: TraitorObjectiveGroupSabotage
   weights:
-    SupercritAnomaliesObjective: 1
+    #SupercritAnomaliesObjective: 1 # Moff - objective cleanup
     # Moffstation - Sabotage objectives
     DisruptDepartmentObjective: 1
     SabotageObjective: 0.5
@@ -70,7 +69,7 @@
 - type: weightedRandom
   id: TraitorObjectiveGroupOther
   weights:
-    HijackTradeStationObjective: 1
+    #HijackTradeStationObjective: 1 # Moff - objective cleanup
     MailFraudObjective: 1
     # Moffstation - Location based objectives
     TrashRoomObjective: 1
