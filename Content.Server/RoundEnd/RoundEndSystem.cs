@@ -6,7 +6,7 @@ using Content.Server.Chat.Managers;
 using Content.Server.Chat.Systems;
 using Content.Server.DeviceNetwork.Systems;
 using Content.Server.GameTicking;
-using Content.Server.GameTicking.Events; // Moffstation - RoundStartingEvent
+using Content.Server.GameTicking.Events;
 using Content.Server.Screens.Components;
 using Content.Server.Shuttles.Components;
 using Content.Server.Shuttles.Systems;
