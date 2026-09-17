@@ -32,7 +32,7 @@ public sealed partial class HellportalComponent : Component
     /// the hellportal will not spawn any further entities.
     /// </summary>
     [DataField]
-    public int MaxSpawns = 30;
+    public int MaxSpawns = 50;
 
     /// <summary>
     /// Determines the sound to play on spawn trigger, if not null.
