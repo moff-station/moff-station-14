@@ -50,10 +50,8 @@
 - type: entity
   parent: BaseTraitorObjective
   id: DieObjective
-  # Moff start - Rename Dagd
-  name: Cause mayhem
-  description: Nanotrasen has gotten complacent, demonstrate we are still a force to be reckoned with.
-  # Moff end
+  name: Die a glorious death
+  description: Die.
   components:
   - type: Objective
     difficulty: 0.5
