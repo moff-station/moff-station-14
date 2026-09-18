@@ -77,6 +77,10 @@ entities:
     - type: GridTree
     - type: Broadphase
     - type: OccluderTree
+    - type: MapLight
+      ambientLightColor: '#AA4128'
+    - type: Parallax
+      parallax: Lava
     - type: ChunkContainer
       chunkEntities: []
   - uid: 2
