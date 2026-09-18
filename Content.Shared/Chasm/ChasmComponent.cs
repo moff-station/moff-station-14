@@ -37,6 +37,14 @@ public sealed partial class ChasmComponent : Component
     /// </summary>
     [DataField]
     public ProtoId<EmotePrototype>? Emote = "Scream";
+
+    // Moff start - Replicator nests manage deleting stuff that falls into the chasm
+    /// <summary>
+    /// Whether or not to always delete entities which fall into this chasm.
+    /// </summary>
+    [DataField]
+    public bool DeleteEntitiesWhichFallInto = true;
+    // Moff end
 }
 
 /// <summary>

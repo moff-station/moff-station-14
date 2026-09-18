@@ -1,5 +1,7 @@
+﻿using Content.Shared.EntityTable.EntitySelectors;
 using Robust.Shared.GameStates;
 using Robust.Shared.Prototypes;
+using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom.Prototype;
 
 namespace Content.Shared.Weapons.Ranged.Components;
 
@@ -10,18 +12,33 @@ namespace Content.Shared.Weapons.Ranged.Components;
 [RegisterComponent, NetworkedComponent, AutoGenerateComponentState]
 public sealed partial class BasicEntityAmmoProviderComponent : AmmoProviderComponent
 {
+    // Moff Start - Entity table integration
+    /*
+    [ViewVariables(VVAccess.ReadWrite)]
+    [DataField("proto", required: true, customTypeSerializer:typeof(PrototypeIdSerializer<EntityPrototype>))]
+    public string Proto = default!;
+    */
+
+    /// <summary>
+    /// Entity table for prototype selection.
+    /// </summary>
     [DataField(required: true)]
-    public EntProtoId Proto = default!;
+    public EntityTableSelector AmmoTable;
+    // Moff End
 
     /// <summary>
     ///     Max capacity.
     /// </summary>
-    [DataField, AutoNetworkedField]
+    [ViewVariables(VVAccess.ReadWrite)]
+    [DataField("capacity")]
+    [AutoNetworkedField]
     public int? Capacity = null;
 
     /// <summary>
     ///     Actual ammo left. Initialized to capacity unless they are non-null and differ.
     /// </summary>
-    [DataField, AutoNetworkedField]
+    [ViewVariables(VVAccess.ReadWrite)]
+    [DataField("count")]
+    [AutoNetworkedField]
     public int? Count = null;
 }

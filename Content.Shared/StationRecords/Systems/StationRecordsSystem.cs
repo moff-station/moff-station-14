@@ -167,6 +167,13 @@ public sealed partial class StationRecordsSystem : EntitySystem
             ? comparer.GetWeight(jobPrototype) ?? 0
             : 0;
 
+        var jobWeights = TryComp<StationDataComponent>(station, out var stationData)
+            ? stationData.JobWeights
+            : null;
+        var displayPriority = JobUIComparer.TryCreate(ProtoMan, jobWeights, out var comparer)
+            ? comparer.GetWeight(jobPrototype) ?? 0
+            : 0;
+
         var record = new GeneralStationRecord
         {
             Name = name,

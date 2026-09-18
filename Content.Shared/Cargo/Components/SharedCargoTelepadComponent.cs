@@ -40,4 +40,13 @@ public sealed partial class CargoTelepadComponent : Component
 
     [DataField]
     public ProtoId<SinkPortPrototype> ReceiverPort = "OrderReceiver";
+
+
+    // Moff Start - Thematic Telepads
+    /// <summary>
+    ///     Flash-effect that is created with each package delivered via telepad teleportation.
+    /// </summary>
+    [DataField]
+    public EntProtoId? TelepadFlash = "AdminInstantEffectBluespace";
+    // Moff End
 }

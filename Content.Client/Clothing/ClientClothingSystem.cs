@@ -1,5 +1,6 @@
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
+using Content.Client._Moffstation.Visuals;
 using Content.Client.DisplacementMap;
 using Content.Client.Inventory;
 using Content.Shared.Clothing;
@@ -50,6 +51,8 @@ public sealed partial class ClientClothingSystem : ClothingSystem
     [Dependency] private DisplacementMapSystem _displacement = default!;
     [Dependency] private InventorySystem _inventorySystem = default!;
     [Dependency] private SpriteSystem _sprite = default!;
+
+    [Dependency] private SynchronizeLayerColorToAppearanceSystem _synchronizeLayerColorToAppearance = default!; // Moff
 
     [Dependency] private EntityQuery<InventorySlotsComponent> _inventorySlotsQuery;
     [Dependency] private EntityQuery<SpriteComponent> _spriteQuery;
@@ -314,6 +317,8 @@ public sealed partial class ClientClothingSystem : ClothingSystem
 
         if (!string.IsNullOrEmpty(inventory.SpeciesId))
             SetSpeciesSpecificLayers((equipment, clothingComponent, clothingSprite), inventory.SpeciesId, ev.Layers);
+
+        _synchronizeLayerColorToAppearance.SynchronizeLayerColors(equipment, slot, ref ev.Layers); // Moff - Enable synching of clothing layers to appearance data
 
         // temporary, until layer draw depths get added. Basically: a layer with the key "slot" is being used as a
         // bookmark to determine where in the list of layers we should insert the clothing layers.

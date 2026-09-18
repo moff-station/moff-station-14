@@ -347,8 +347,18 @@ public sealed partial class StationJobsSystem
 
             foreach (var jobId in profileJobs)
             {
-                if (!profile.JobPriorities.TryGetValue(jobId, out var priority) || priority == JobPriority.Never)
+                // Moff Start - Job priority is a property of the player, not of the character.
+                // Also note that profileJobs may now contain jobs which came from the player's
+                // *other* active characters (see MoffJobCandidateSystem), so indexing this
+                // profile's own priorities would throw.
+                var priority = _moffCharacterSelection.GetEffectivePriority(player, jobId, profile);
+
+                if (priority == JobPriority.Never)
                     continue;
+
+                // if (!profile.JobPriorities.TryGetValue(jobId, out var priority) || priority == JobPriority.Never)
+                //     continue;
+                // Moff end
 
                 if (!ProtoMan.Resolve(jobId, out _))
                     continue;

@@ -1,6 +1,6 @@
 - type: entity
   abstract: true
-  parent: ClothingNeckBase
+  parent: ClothingNeckClothChameleonableBase # Moffstation - Fix neck slot parenting
   id: ClothingNeckTieBase
   name: tie
   description: A neosilk clip-on tie.
@@ -35,13 +35,13 @@
   description: A loosely tied necktie, a perfect accessory for the over-worked detective.
   components:
   - type: Sprite
-    sprite: Clothing/Neck/Ties/dettie.rsi
+    sprite: _Moffstation/Clothing/Neck/dettie.rsi # Moffstation
   - type: Clothing
-    sprite: Clothing/Neck/Ties/dettie.rsi
+    sprite: _Moffstation/Clothing/Neck/dettie.rsi # Moffstation
   - type: Item
     storedSprite:
       state: storage
-      sprite: Clothing/Neck/Ties/dettie.rsi
+      sprite: _Moffstation/Clothing/Neck/dettie.rsi # Moffstation
   - type: Tag # We redo the tag list here to remove HamsterWearable because this currently lacks a sprite for it
     tags:
     - ClothMade
@@ -56,13 +56,13 @@
   description: Why do we all have to wear these ridiculous ties?
   components:
   - type: Sprite
-    sprite: Clothing/Neck/Ties/scitie.rsi
+    sprite: _Moffstation/Clothing/Neck/scitie.rsi # Moffstation
   - type: Clothing
-    sprite: Clothing/Neck/Ties/scitie.rsi
+    sprite: _Moffstation/Clothing/Neck/scitie.rsi # Moffstation
   - type: Item
     storedSprite:
       state: storage
-      sprite: Clothing/Neck/Ties/scitie.rsi
+      sprite: _Moffstation/Clothing/Neck/scitie.rsi # Moffstation
 
 - type: entity
   parent: ClothingNeckTieBase

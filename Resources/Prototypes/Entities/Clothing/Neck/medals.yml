@@ -1,6 +1,6 @@
 - type: entity
   abstract: true
-  parent: ClothingNeckBase
+  parent: ClothingNeckMetallicChameleonableBase # Moffstation - Fix neck slot parenting
   id: ClothingNeckMedalBase
   name: medal
   description: A medal to show your mettle. May or may not be made of metal.
@@ -21,6 +21,10 @@
     sprite: Clothing/Neck/Medals/bronzeheart.rsi
   - type: Clothing
     sprite: Clothing/Neck/Medals/bronzeheart.rsi
+  # Moffstation - Start - Examinable Clothing
+  - type: ExtraExaminable
+    wornText: clothing-medal-bronzeheart
+  # Moffstation - End
 
 - type: entity
   parent: ClothingNeckMedalBase
@@ -34,6 +38,13 @@
     sprite: Clothing/Neck/Medals/gold.rsi
   - type: StealTarget
     stealGroup: ClothingNeckGoldmedal
+  # Moffstation - Start - Examinable Clothing
+  - type: PhysicalComposition
+    materialComposition:
+      Gold: 10
+  - type: ExtraExaminable
+    wornText: clothing-medal-crewmanship
+  # Moffstation - End
 
 - type: entity
   parent: ClothingNeckMedalBase
@@ -42,9 +53,13 @@
   description: Given for the best work in the cargo department.
   components:
   - type: Sprite
-    sprite: Clothing/Neck/Medals/cargomedal.rsi
+    sprite: _Moffstation/Clothing/Neck/Medals/cargomedal.rsi # Moffstation - Swapped out medal sprites
   - type: Clothing
-    sprite: Clothing/Neck/Medals/cargomedal.rsi
+    sprite: _Moffstation/Clothing/Neck/Medals/cargomedal.rsi # Moffstation - Swapped out medal sprites
+  # Moffstation - Start - Examinable Clothing
+  - type: ExtraExaminable
+    wornText: clothing-medal-cargo
+  # Moffstation - End
 
 - type: entity
   parent: ClothingNeckMedalBase
@@ -53,9 +68,13 @@
   description: Given for the best work in the engineering department.
   components:
   - type: Sprite
-    sprite: Clothing/Neck/Medals/engineermedal.rsi
+    sprite: _Moffstation/Clothing/Neck/Medals/engineermedal.rsi # Moffstation - Swapped out medal sprites
   - type: Clothing
-    sprite: Clothing/Neck/Medals/engineermedal.rsi
+    sprite: _Moffstation/Clothing/Neck/Medals/engineermedal.rsi # Moffstation - Swapped out medal sprites
+  # Moffstation - Start - Examinable Clothing
+  - type: ExtraExaminable
+    wornText: clothing-medal-engineer
+  # Moffstation - End
 
 - type: entity
   parent: ClothingNeckMedalBase
@@ -64,9 +83,13 @@
   description: Given for the best work in the medical department.
   components:
   - type: Sprite
-    sprite: Clothing/Neck/Medals/medicalmedal.rsi
+    sprite: _Moffstation/Clothing/Neck/Medals/medicalmedal.rsi # Moffstation - Swapped out medal sprites
   - type: Clothing
-    sprite: Clothing/Neck/Medals/medicalmedal.rsi
+    sprite: _Moffstation/Clothing/Neck/Medals/medicalmedal.rsi # Moffstation - Swapped out medal sprites
+  # Moffstation - Start - Examinable Clothing
+  - type: ExtraExaminable
+    wornText: clothing-medal-medical
+  # Moffstation - End
 
 - type: entity
   parent: ClothingNeckMedalBase
@@ -75,9 +98,13 @@
   description: Given for the best work in the science department.
   components:
   - type: Sprite
-    sprite: Clothing/Neck/Medals/sciencemedal.rsi
+    sprite: _Moffstation/Clothing/Neck/Medals/sciencemedal.rsi # Moffstation - Swapped out medal sprites
   - type: Clothing
-    sprite: Clothing/Neck/Medals/sciencemedal.rsi
+    sprite: _Moffstation/Clothing/Neck/Medals/sciencemedal.rsi # Moffstation - Swapped out medal sprites
+  # Moffstation - Start - Examinable Clothing
+  - type: ExtraExaminable
+    wornText: clothing-medal-science
+  # Moffstation - End
 
 - type: entity
   parent: ClothingNeckMedalBase
@@ -86,9 +113,13 @@
   description: Given for the best work in the security department.
   components:
   - type: Sprite
-    sprite: Clothing/Neck/Medals/securitymedal.rsi
+    sprite: _Moffstation/Clothing/Neck/Medals/securitymedal.rsi # Moffstation - Swapped out medal sprites
   - type: Clothing
-    sprite: Clothing/Neck/Medals/securitymedal.rsi
+    sprite: _Moffstation/Clothing/Neck/Medals/securitymedal.rsi # Moffstation - Swapped out medal sprites
+  # Moffstation - Start - Examinable Clothing
+  - type: ExtraExaminable
+    wornText: clothing-medal-security
+  # Moffstation - End
 
 - type: entity
   parent: ClothingNeckMedalBase
@@ -97,8 +128,15 @@
   description: Given for the best joke in the universe. HONK!
   components:
   - type: Sprite
-    sprite: Clothing/Neck/Medals/clownmedal.rsi
+    sprite: _Moffstation/Clothing/Neck/Medals/clownmedal.rsi # Moffstation - Swapped out medal sprites
   - type: Clothing
-    sprite: Clothing/Neck/Medals/clownmedal.rsi
+    sprite: _Moffstation/Clothing/Neck/Medals/clownmedal.rsi # Moffstation - Swapped out medal sprites
   - type: StealTarget
     stealGroup: ClothingNeckClownmedal
+  # Moffstation - Start - Examinable Clothing
+  - type: PhysicalComposition
+    materialComposition:
+      Bananium: 10
+  - type: ExtraExaminable
+    wornText: clothing-medal-clown
+  # Moffstation - End

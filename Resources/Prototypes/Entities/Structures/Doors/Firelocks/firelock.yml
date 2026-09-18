@@ -21,7 +21,7 @@
   - type: DeviceNetworkRequiresPower
   - type: InteractionOutline
   - type: Damageable
-    damageModifierSet: StructuralMetallicStrong
+    damageModifierSet: StrongMetallic # Moffstation - Firelock health change
   - type: Injurable
     damageContainer: StructuralInorganic
   - type: RCDDeconstructable
@@ -102,7 +102,7 @@
       types:
         Blunt: 15
     openSound:
-      path: /Audio/Machines/airlock_open.ogg
+      path: /Audio/_Moffstation/Machines/airlock_open.ogg # Moff - nicer airlock sounds
     closeSound:
       path: /Audio/Machines/airlock_close.ogg
     denySound:
