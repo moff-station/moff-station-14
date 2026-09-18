@@ -1,10 +1,10 @@
 meta:
   format: 7
   category: Grid
-  engineVersion: 288.0.1
+  engineVersion: 288.1.0
   forkId: ""
   forkVersion: ""
-  time: 09/14/2026 18:39:46
+  time: 09/16/2026 22:52:08
   entityCount: 429
 maps: []
 grids:
@@ -223,7 +223,6 @@ entities:
     components:
     - type: Transform
       parent: 1
-      rot: -1.5707963267948966 rad
       pos: -2.5,-13.5
 - proto: AirlockExternalGlass
   entities:
@@ -259,18 +258,18 @@ entities:
     components:
     - type: Transform
       parent: 1
+      rot: 1.5707963267948966 rad
       pos: -0.5,-3.5
   - uid: 140
     components:
     - type: Transform
       parent: 1
-      rot: 3.141592653589793 rad
+      rot: 4.71238898038469 rad
       pos: -0.5,-11.5
   - uid: 190
     components:
     - type: Transform
       parent: 1
-      rot: -1.5707963267948966 rad
       pos: -4.5,-9.5
 - proto: APCBasic
   entities:
@@ -360,21 +359,25 @@ entities:
     components:
     - type: Transform
       parent: 1
+      rot: 1.5707963267948966 rad
       pos: -8.5,-4.5
   - uid: 42
     components:
     - type: Transform
       parent: 1
+      rot: 1.5707963267948966 rad
       pos: -8.5,-6.5
   - uid: 43
     components:
     - type: Transform
       parent: 1
+      rot: 1.5707963267948966 rad
       pos: -8.5,-3.5
   - uid: 124
     components:
     - type: Transform
       parent: 1
+      rot: 1.5707963267948966 rad
       pos: -8.5,-5.5
 - proto: Bucket
   entities:
