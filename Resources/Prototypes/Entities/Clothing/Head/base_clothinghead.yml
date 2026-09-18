@@ -26,10 +26,10 @@
   - type: Stainable
     clothingVisuals:
       head:
-      - sprite: _Funkystation/Effects/blood.rsi
+      - sprite: /Textures/_Funkystation/Effects/blood.rsi
         state: helmetblood
     iconVisuals:
-    - sprite: _Funkystation/Effects/blood.rsi
+    - sprite: /Textures/_Funkystation/Effects/blood.rsi
       state: helmetbloodicon
   # Forky - end
 
@@ -199,10 +199,10 @@
   - type: Stainable
     clothingVisuals:
       head:
-      - sprite: _Funkystation/Effects/blood.rsi
+      - sprite: /Textures/_Funkystation/Effects/blood.rsi
         state: helmetblood
     iconVisuals:
-    - sprite: _Funkystation/Effects/blood.rsi
+    - sprite: /Textures/_Funkystation/Effects/blood.rsi
       state: helmetbloodicon
   - type: StainBlocker
     slots: [MASK]
@@ -301,9 +301,9 @@
   - type: Stainable
     clothingVisuals:
       head:
-      - sprite: _Funkystation/Effects/blood.rsi
+      - sprite: /Textures/_Funkystation/Effects/blood.rsi
         state: helmetblood
     iconVisuals:
-    - sprite: _Funkystation/Effects/blood.rsi
+    - sprite: /Textures/_Funkystation/Effects/blood.rsi
       state: helmetbloodicon
   # Forky - end
