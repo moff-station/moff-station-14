@@ -5,7 +5,6 @@ objective-condition-trash-room = Trash the {$targetName} room
 objective-condition-claim-room = Claim the {$targetName} room for the syndicate
 objective-condition-bb-claim-room = Claim the {$targetName} room for the brotherhood
 objective-condition-infiltrate-department = Infiltrate the {$targetName} department
-objective-condition-jailbreak = Jailbreak prisoners
 objective-condition-distract-sec = Distract Security
 objective-condition-teach-lesson = Teach {$targetName}, {CAPITALIZE($job)} a lesson
 objective-condition-gather-intel = Gather intel on {$targetName}, {CAPITALIZE($job)}

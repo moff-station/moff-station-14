@@ -60,20 +60,6 @@
   - type: LocationObjective
     title: objective-condition-claim-room
 
-# objective to cause/setup a Jailbreak
-- type: entity
-  parent: BaseTraitorObjective
-  id: JailbreakObjective
-  description: It doesn't matter who was locked up or why, we just need you to keep the jails empty.
-  components:
-  - type: Objective
-    difficulty: 1.0
-    icon:
-      sprite: Objects/Tools/access_breaker.rsi
-      state: icon
-  - type: SimpleObjective
-    title: objective-condition-jailbreak
-
 # teach someone a lesson without killing them permanently
 - type: entity
   parent: [ BaseSocialObjective, BaseTraitorObjective ]
