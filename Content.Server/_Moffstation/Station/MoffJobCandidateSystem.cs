@@ -1,5 +1,6 @@
 using System.Linq;
 using Content.Server._Moffstation.Preferences;
+using Content.Server.Antag;
 using Content.Server.Players.JobWhitelist;
 using Content.Server.Players.PlayTimeTracking;
 using Content.Server.Preferences.Managers;
@@ -7,6 +8,7 @@ using Content.Server.Station.Events;
 using Content.Shared.Preferences;
 using Content.Shared.Roles;
 using Robust.Shared.Network;
+using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
 
 namespace Content.Server._Moffstation.Station;
@@ -18,6 +20,8 @@ namespace Content.Server._Moffstation.Station;
 /// </summary>
 public sealed partial class MoffJobCandidateSystem : EntitySystem
 {
+    [Dependency] private AntagSelectionSystem _antag = default!;
+    [Dependency] private ISharedPlayerManager _player = default!;
     [Dependency] private IServerPreferencesManager _prefs = default!;
     [Dependency] private MoffCharacterSelectionManager _selection = default!;
 
@@ -39,7 +43,7 @@ public sealed partial class MoffJobCandidateSystem : EntitySystem
         if (!_selection.TryGetState(ev.Player, out _))
             return;
 
-        var active = GetActiveProfiles(ev.Player);
+        var active = GetAntagCompatibleProfiles(ev.Player);
 
         // Replace rather than add to: the selected character contributes nothing if its slot is
         // inactive, and upstream seeded the list from it unconditionally.
@@ -60,9 +64,34 @@ public sealed partial class MoffJobCandidateSystem : EntitySystem
     /// </summary>
     public List<HumanoidCharacterProfile> GetEligibleProfiles(NetUserId player, ProtoId<JobPrototype> job)
     {
-        return GetActiveProfiles(player)
+        return GetAntagCompatibleProfiles(player)
             .Where(profile => profile.JobPriorities.ContainsKey(job))
             .ToList();
+    }
+
+    /// <summary>
+    /// The profiles compatible with every antag the player has been pre-selected for
+    /// </summary>
+    public List<HumanoidCharacterProfile> GetAntagCompatibleProfiles(NetUserId player)
+    {
+        var profiles = GetActiveProfiles(player);
+
+        if (!_player.TryGetSessionById(player, out var session))
+            return profiles;
+
+        foreach (var antagSet in _antag.GetMoffPreSelectedAntagPrefRoles(session))
+        {
+            var narrowed = profiles
+                .Where(profile => antagSet.Any(role => profile.AntagPreferences.Contains(role)))
+                .ToList();
+
+            if (narrowed.Count == 0)
+                break;
+
+            profiles = narrowed;
+        }
+
+        return profiles;
     }
 
     /// <summary>
