@@ -9,6 +9,12 @@
     booze: 3 #moomoobeef - booze general ad
     buy: 2.5 #drbadvice - buy
     CARPpockets: 5 #dayvei - carp donk pockets
+    chitter1: 5 #dayvei - try chitter, generic
+    chitter2: 5 #dayvei - try chitter, generic
+    chitter3: 5 #dayvei - try chitter, reptilian-accented
+    chitter4: 5 #dayvei - try chitter, vulpkanin groupchats
+    chitter5: 5 #dayvei - try chitter, pirate groupchats
+    chitter6: 5 #dayvei - try chitter, alien mothership
     dans-halfoff: 7 #drbadvice - discount dan's half off
     donk-pockets: 5 #moomoobeef - donk pockets general ad
     error1: 1.5 #moomoobeef - SSL error
@@ -54,6 +60,42 @@
   sprite:
     sprite: _Moffstation/Interface/PDA/advertisements.rsi
     state: CARPpockets
+
+- type: pdaAd
+  id: chitter1
+  sprite:
+    sprite: _Moffstation/Interface/PDA/advertisements.rsi
+    state: chitter1
+
+- type: pdaAd
+  id: chitter2
+  sprite:
+    sprite: _Moffstation/Interface/PDA/advertisements.rsi
+    state: chitter2
+
+- type: pdaAd
+  id: chitter3
+  sprite:
+    sprite: _Moffstation/Interface/PDA/advertisements.rsi
+    state: chitter3
+
+- type: pdaAd
+  id: chitter4
+  sprite:
+    sprite: _Moffstation/Interface/PDA/advertisements.rsi
+    state: chitter4
+
+- type: pdaAd
+  id: chitter5
+  sprite:
+    sprite: _Moffstation/Interface/PDA/advertisements.rsi
+    state: chitter5
+
+- type: pdaAd
+  id: chitter6
+  sprite:
+    sprite: _Moffstation/Interface/PDA/advertisements.rsi
+    state: chitter6
 
 - type: pdaAd
   id: dans-halfoff

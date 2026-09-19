@@ -1,6 +1,7 @@
 <pda:PdaWindow  xmlns="https://spacestation14.io"
                 xmlns:pda="clr-namespace:Content.Client.PDA"
                 xmlns:controls="clr-namespace:Content.Client.UserInterface.Controls"
+                xmlns:graphics="clr-namespace:Robust.Client.Graphics;assembly=Robust.Client"
                 MinSize="576 450"
                 SetSize="576 450">
     <!-- This: (Margin="1 1 3 0") is necessary so the navigation bar doesn't sticks into the black content border. -->
@@ -22,6 +23,16 @@
         <pda:PdaNavigationButton Name="EjectIdButton" Access="Public" SetWidth="32"/>
         <pda:PdaNavigationButton Name="EjectPaiButton" Access="Public" SetWidth="32"/>
     </BoxContainer>
+    <!-- Moffstation - Chitter M.P.N. connection banner -->
+    <PanelContainer Name="MpnBanner" HorizontalExpand="True" Visible="False">
+        <PanelContainer.PanelOverride>
+            <graphics:StyleBoxFlat BackgroundColor="#7A1414FF" />
+        </PanelContainer.PanelOverride>
+        <BoxContainer Orientation="Horizontal" Margin="6 2 6 2" SeparationOverride="8">
+            <Label Name="MpnBannerLabel" HorizontalExpand="True" VerticalAlignment="Center" />
+            <Button Name="MpnDisconnectButton" Access="Public" />
+        </BoxContainer>
+    </PanelContainer>
     <BoxContainer Name="ViewContainer" HorizontalExpand="True" VerticalExpand="True" Access="Public">
         <!-- Moffcode has been all throughout this bit :godo: - PDA ads - begin -->
         <BoxContainer Orientation="Vertical"

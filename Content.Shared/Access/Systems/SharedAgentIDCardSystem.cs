@@ -1,4 +1,3 @@
-using Content.Shared._CD.NanoChat;
 using Content.Shared.Access.Components;
 using Content.Shared.Interaction;
 using Content.Shared.Inventory;
@@ -7,6 +6,7 @@ using Content.Shared.Popups;
 using Content.Shared.Roles.Jobs;
 using Content.Shared.StatusIcon;
 using Content.Shared.VoiceMask;
+using Content.Shared._Moffstation.Chitter;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization;
 
@@ -22,10 +22,6 @@ public abstract partial class SharedAgentIdCardSystem : EntitySystem
     [Dependency] private SharedIdCardSystem _card = default!;
     [Dependency] private SharedJobSystem _job = default!;
     [Dependency] private SharedJobStatusSystem _jobStatus = default!;
-
-    [Dependency] private SharedNanoChatSystem _nanoChat = default!; // CD
-
-    [Dependency] private EntityQuery<NanoChatCardComponent> _nanoChatQuery; // Moff - nanochat
 
     /// <summary>
     /// Steals access from interacted ids.
@@ -44,34 +40,6 @@ public abstract partial class SharedAgentIdCardSystem : EntitySystem
         var beforeLength = access.Tags.Count;
         access.Tags.UnionWith(targetAccess.Tags);
         var addedLength = access.Tags.Count - beforeLength;
-
-        // CD - Copy NanoChat data if available
-        if (_nanoChatQuery.TryComp(args.Target, out var targetNanoChat) &&
-            _nanoChatQuery.TryComp(ent, out var agentNanoChat))
-        {
-            // First clear existing data
-            _nanoChat.Clear((ent, agentNanoChat));
-
-            // Copy the number
-            if (_nanoChat.GetNumber((args.Target.Value, targetNanoChat)) is { } number)
-                _nanoChat.SetNumber((ent, agentNanoChat), number);
-
-            // Copy all recipients and their messages
-            foreach (var (recipientNumber, recipient) in _nanoChat.GetRecipients((args.Target.Value, targetNanoChat)))
-            {
-                _nanoChat.SetRecipient((ent, agentNanoChat), recipientNumber, recipient);
-
-                if (_nanoChat.GetMessagesForRecipient((args.Target.Value, targetNanoChat), recipientNumber) is not
-                    { } messages)
-                    continue;
-
-                foreach (var message in messages)
-                {
-                    _nanoChat.AddMessage((ent, agentNanoChat), recipientNumber, message);
-                }
-            }
-        }
-        // End CD
 
         _popup.PopupEntity(Loc.GetString("agent-id-new", ("number", addedLength), ("card", args.Target)),
             args.Target.Value,
@@ -125,15 +93,19 @@ public abstract partial class SharedAgentIdCardSystem : EntitySystem
         UpdateUi(ent);
     }
 
-    // CD - Add number change handler
+    // Moffstation - Add number change handler
+    // Deliberately allows copying a number already claimed by another account: an Agent ID is
+    // already a full identity-spoofing tool (name/job/access), so this is how an agent gains
+    // access to a target's Chitter account, same as their other stolen credentials.
     [SubscribeLocalEvent]
     private void OnNumberChanged(Entity<AgentIDCardComponent> ent, ref AgentIDCardNumberChangedMessage args)
     {
-        if (!TryComp<NanoChatCardComponent>(ent, out var comp))
+        if (!TryComp<ChitterAccountComponent>(ent, out var comp))
             return;
 
-        _nanoChat.SetNumber((ent, comp), args.Number);
+        comp.AccountId = args.Number;
         Dirty(ent, comp);
+        UpdateUi(ent);
     }
 
     /// <summary>

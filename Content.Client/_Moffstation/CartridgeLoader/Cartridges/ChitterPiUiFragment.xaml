@@ -1,0 +1,34 @@
+<cartridges:ChitterPiUiFragment xmlns="https://spacestation14.io"
+             xmlns:cartridges="clr-namespace:Content.Client._Moffstation.CartridgeLoader.Cartridges"
+             Orientation="Vertical"
+             HorizontalExpand="True"
+             VerticalExpand="True">
+
+    <PanelContainer StyleClasses="BackgroundDark" />
+
+    <BoxContainer Orientation="Vertical" Margin="4" HorizontalExpand="True" VerticalExpand="True">
+        <Label Name="HeaderLabel" Text="{Loc 'chitter-pi-no-scan'}" StyleClasses="LabelHeading" ClipText="True" />
+
+        <BoxContainer Orientation="Horizontal" SeparationOverride="4" HorizontalExpand="True" VerticalExpand="True" Margin="0 4 0 0">
+            <!-- Chat list -->
+            <ScrollContainer MinSize="150 0" HorizontalExpand="True" VerticalExpand="True">
+                <BoxContainer Name="ChatList" Orientation="Vertical" SeparationOverride="2" />
+            </ScrollContainer>
+            <Control MinSize="4 0" />
+            <!-- Selected chat detail -->
+            <BoxContainer Orientation="Vertical" HorizontalExpand="True" VerticalExpand="True" SeparationOverride="2">
+                <Label Name="DetailHeader" Text="{Loc 'chitter-log-select-chat'}" StyleClasses="LabelSubText" ClipText="True" />
+                <ScrollContainer HorizontalExpand="True" VerticalExpand="True">
+                    <BoxContainer Name="MessageList" Orientation="Vertical" SeparationOverride="4" Margin="0 4 0 0" />
+                </ScrollContainer>
+            </BoxContainer>
+        </BoxContainer>
+
+        <Label Name="WarrantyLabel"
+               Text="{Loc 'chitter-pi-warranty-notice'}"
+               StyleClasses="LabelSubText"
+               HorizontalAlignment="Right"
+               FontColorOverride="#808080"
+               Margin="0 4 0 0" />
+    </BoxContainer>
+</cartridges:ChitterPiUiFragment>

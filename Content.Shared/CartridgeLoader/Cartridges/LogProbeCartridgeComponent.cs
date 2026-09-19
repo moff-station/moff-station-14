@@ -1,4 +1,4 @@
-using Content.Shared._CD.CartridgeLoader.Cartridges;
+using Content.Shared.CartridgeLoader.Cartridges;
 using Content.Shared.Paper;
 using Robust.Shared.Audio;
 using Robust.Shared.GameStates;
@@ -30,18 +30,12 @@ public abstract partial class BaseLogProbeComponent : Component // Moffstation -
     public SoundSpecifier SoundScan =
         new SoundPathSpecifier("/Audio/Machines/scan_finish.ogg", AudioParams.Default.WithVariation(0.25f));
 
-    /// <summary>
-    /// Paper to spawn when printing logs.
-    /// </summary>
     [DataField]
     public EntProtoId<PaperComponent> PaperPrototype = "PaperAccessLogs";
 
     [DataField]
     public SoundSpecifier PrintSound = new SoundPathSpecifier("/Audio/Machines/diagnoser_printing.ogg");
 
-    /// <summary>
-    /// How long you have to wait before printing logs again.
-    /// </summary>
     [DataField]
     public TimeSpan PrintCooldown = TimeSpan.FromSeconds(5);
 
@@ -57,12 +51,6 @@ public abstract partial class BaseLogProbeComponent : Component // Moffstation -
     public abstract TimeSpan NextPrintAllowed { get; set; }
 
     // Moffstation - End
-
-    /// <summary>
-    /// CD: The last scanned NanoChat data, if any
-    /// </summary>
-    [DataField]
-    public NanoChatData? ScannedNanoChatData;
 }
 
 // Moffstation - Begin - Split component
@@ -77,4 +65,3 @@ public sealed partial class LogProbeCartridgeComponent : BaseLogProbeComponent
     [DataField(customTypeSerializer: typeof(TimeOffsetSerializer)), AutoNetworkedField, AutoPausedField]
     public override TimeSpan NextPrintAllowed { get; set; } = TimeSpan.Zero;
 }
-// Moffstation - End

@@ -1,0 +1,21 @@
+<cartridges:ChitterMessageBubble xmlns="https://spacestation14.io"
+             xmlns:cartridges="clr-namespace:Content.Client._Moffstation.CartridgeLoader.Cartridges"
+             xmlns:gfx="clr-namespace:Robust.Client.Graphics;assembly=Robust.Client"
+             Orientation="Vertical"
+             SeparationOverride="4"
+             Margin="0 0">
+    <BoxContainer Name="SenderRow" Orientation="Horizontal" Margin="4 4 0 0" SeparationOverride="4">
+        <TextureRect Name="AvatarTexture" SetSize="24 24" Margin="0 0 4 0" Visible="False" />
+        <Label Name="SenderLabel" Text="" FontColorOverride="#aaaaaa" VerticalAlignment="Center" />
+    </BoxContainer>
+    <PanelContainer Name="BubbleBackground" MinWidth="80" Margin="0 2">
+        <BoxContainer Orientation="Vertical" Margin="8 4">
+            <Label Name="MessageLabel" Text="" FontColorOverride="#dddddd" />
+            <BoxContainer Orientation="Horizontal">
+                <Label Name="TimestampLabel" Text="" FontColorOverride="#666666" />
+                <Label Name="FailedLabel" Text="{Loc chitter-delivery-failed}" FontColorOverride="#FF4444" Visible="False" Margin="8 0 0 0" />
+            </BoxContainer>
+        </BoxContainer>
+    </PanelContainer>
+    <BoxContainer Name="SeenAvatarsRow" Orientation="Horizontal" Visible="False" Margin="4 0 0 0" SeparationOverride="1" HorizontalAlignment="Left" />
+</cartridges:ChitterMessageBubble>

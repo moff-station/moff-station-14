@@ -1,4 +1,4 @@
-using Content.Shared._CD.NanoChat;
+using Content.Shared._Moffstation.Chitter;
 using Content.Shared.Access.Components;
 using Content.Shared.Access.Systems;
 using Content.Shared.StatusIcon;
@@ -46,9 +46,9 @@ public sealed class AgentIDCardBoundUserInterface(EntityUid owner, Enum uiKey) :
         if (!EntMan.TryGetComponent<IdCardComponent>(Owner, out var card))
             return;
 
-        EntMan.TryGetComponent<NanoChatCardComponent>(Owner, out var nanochat); // Moff - Nanochat
+        EntMan.TryGetComponent<ChitterAccountComponent>(Owner, out var chitter); // Moffstation - Chitter
 
-        _window.Update(card, nanochat); // Moff - Nanochat
+        _window.Update(card, chitter); // Moffstation - Chitter
     }
 
     // CD - Add number change handlerz

@@ -1,0 +1,42 @@
+<cartridges:ChitterManageChatView xmlns="https://spacestation14.io"
+             xmlns:cartridges="clr-namespace:Content.Client._Moffstation.CartridgeLoader.Cartridges"
+             xmlns:gfx="clr-namespace:Robust.Client.Graphics;assembly=Robust.Client"
+             Orientation="Vertical"
+             VerticalExpand="True"
+             MinWidth="300"
+             Margin="6">
+    <PanelContainer>
+        <PanelContainer.PanelOverride>
+            <gfx:StyleBoxFlat BorderColor="#3a3a40" BorderThickness="0 0 0 1" />
+        </PanelContainer.PanelOverride>
+        <BoxContainer Orientation="Horizontal" Margin="4">
+            <Label Text="{Loc chitter-manage-chat}" HorizontalExpand="True" StyleClasses="LabelHeading" />
+            <Button Name="BackButton" Text="{Loc chitter-back}" Margin="4 0 0 0" />
+        </BoxContainer>
+    </PanelContainer>
+
+    <BoxContainer Orientation="Horizontal" Margin="4 2">
+        <Label Text="{Loc chitter-chat-name-label}" VerticalAlignment="Center" Margin="0 0 4 0" />
+        <LineEdit Name="ChatNameInput" HorizontalExpand="True" MinHeight="28" />
+        <Button Name="RenameButton" Text="{Loc chitter-save}" Margin="4 0 0 0" />
+    </BoxContainer>
+
+    <PanelContainer VerticalExpand="True" Margin="0 4">
+        <PanelContainer.PanelOverride>
+            <gfx:StyleBoxFlat BorderColor="#3a3a40" BorderThickness="1" />
+        </PanelContainer.PanelOverride>
+        <ScrollContainer VerticalExpand="True" Margin="4">
+            <BoxContainer Name="ParticipantsList" Orientation="Vertical" SeparationOverride="2" />
+        </ScrollContainer>
+    </PanelContainer>
+
+    <PanelContainer>
+        <PanelContainer.PanelOverride>
+            <gfx:StyleBoxFlat BorderColor="#3a3a40" BorderThickness="0 1 0 0" />
+        </PanelContainer.PanelOverride>
+        <BoxContainer Name="ManageActions" Orientation="Vertical" SeparationOverride="4" Margin="4">
+            <Button Name="LeaveChatButton" Text="{Loc chitter-leave-chat}" />
+            <Button Name="ArchiveChatButton" Text="{Loc chitter-archive-chat}" />
+        </BoxContainer>
+    </PanelContainer>
+</cartridges:ChitterManageChatView>

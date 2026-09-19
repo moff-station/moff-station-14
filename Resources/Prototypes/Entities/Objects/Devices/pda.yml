@@ -98,7 +98,7 @@
         - id: NotekeeperCartridge
         - id: NanoTaskCartridge
         - id: NewsReaderCartridge
-        - id: NanoChatCartridge # CD
+        - id: ChitterCartridge # Moffstation
         - id: SOSCartridge # Imp
   - type: ActivatableUI
     key: enum.PdaUiKey.Key
@@ -166,7 +166,7 @@
         - id: NanoTaskCartridge
         - id: NewsReaderCartridge
         - id: WantedListCartridge
-        - id: NanoChatCartridge # CD
+        - id: ChitterCartridge # Moffstation
         - id: SOSCartridge # Imp
 - type: entity
   parent: BasePDA
@@ -182,7 +182,7 @@
         - id: NanoTaskCartridge
         - id: NewsReaderCartridge
         - id: MedTekCartridge
-        - id: NanoChatCartridge # CD
+        - id: ChitterCartridge # Moffstation
         - id: SOSCartridge # Imp
 
 - type: entity
@@ -529,7 +529,7 @@
         - id: NanoTaskCartridge
         - id: NewsReaderCartridge
         - id: AstroNavCartridge
-        - id: NanoChatCartridge # CD
+        - id: ChitterCartridge # Moffstation
         - id: SOSCartridge # Imp
 
 - type: entity
@@ -577,7 +577,7 @@
         - id: NanoTaskCartridge
         - id: NewsReaderCartridge
         - id: AstroNavCartridge
-        - id: NanoChatCartridge # CD
+        - id: ChitterCartridge # Moffstation
         - id: SOSCartridge # Imp
 
 - type: entity
@@ -932,7 +932,7 @@
         - id: NewsReaderCartridge
         - id: WantedListCartridge
         - id: LogProbeCartridge
-        - id: NanoChatCartridge # CD
+        - id: ChitterCartridge # Moffstation
         - id: SOSCartridge # Imp
 
 - type: entity
@@ -1009,7 +1009,7 @@
         - id: WantedListCartridge
         - id: LogProbeCartridge
         - id: AstroNavCartridge
-        - id: NanoChatCartridge # CD
+        - id: ChitterCartridge # Moffstation
         - id: SOSCartridge # Imp
 
 - type: entity
@@ -1044,7 +1044,7 @@
         - id: WantedListCartridge
         - id: MedTekCartridge
         - id: AstroNavCartridge
-        - id: NanoChatCartridge # CD
+        - id: ChitterCartridge # Moffstation
         - id: SOSCartridge # Imp
   - type: Tag #  Ignore Chameleon tags
     tags:
@@ -1171,7 +1171,7 @@
         children:
         - id: NotekeeperCartridge
         - id: NanoTaskCartridge
-        - id: NanoChatCartridge # CD
+        - id: ChitterCartridge # Moffstation
 
 - type: entity
   parent: [ SyndiPDA, BaseSyndicateContraband ]
@@ -1211,7 +1211,7 @@
         - id: NotekeeperCartridge
         - id: NanoTaskCartridge
         - id: MedTekCartridge
-        - id: NanoChatCartridge # CD
+        - id: ChitterCartridge # Moffstation
 
 - type: entity
   parent: [ SyndiOperativePDA, BaseSyndicateContraband ]
@@ -1261,7 +1261,7 @@
         - id: WantedListCartridge
         - id: LogProbeCartridge
         - id: AstroNavCartridge
-        - id: NanoChatCartridge # CD
+        - id: ChitterCartridge # Moffstation
         - id: SOSCartridge # Imp
 
 - type: entity
@@ -1485,7 +1485,7 @@
         - id: NewsReaderCartridge
         - id: WantedListCartridge
         - id: LogProbeCartridge
-        - id: NanoChatCartridge # CD
+        - id: ChitterCartridge # Moffstation
         - id: SOSCartridge # Imp
 
 - type: entity
@@ -1517,7 +1517,7 @@
         - id: NewsReaderCartridge
         - id: WantedListCartridge
         - id: MedTekCartridge
-        - id: NanoChatCartridge # CD
+        - id: ChitterCartridge # Moffstation
         - id: SOSCartridge # Imp
 
 - type: entity

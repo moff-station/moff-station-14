@@ -12,7 +12,7 @@ using Robust.Client.UserInterface.XAML;
 using Robust.Shared.Configuration;
 using Robust.Shared.Prototypes;
 using System.Numerics;
-using Content.Shared._CD.NanoChat;
+using Content.Shared._Moffstation.Chitter;
 
 namespace Content.Client.Access.UI;
 
@@ -153,7 +153,7 @@ public sealed partial class AgentIDCardWindow : FancyWindow
         }
     }
 
-    public void Update(IdCardComponent card, NanoChatCardComponent? nanochat) // Moff - Nanochat
+    public void Update(IdCardComponent card, ChitterAccountComponent? chitter) // Moffstation - Chitter
     {
         var name = card.FullName ?? string.Empty;
         var job = card.LocalizedJobTitle ?? string.Empty;
@@ -162,7 +162,7 @@ public sealed partial class AgentIDCardWindow : FancyWindow
         CurrentName.Text = name;
         JobLineEdit.Text = job;
         CurrentJob.Text = job;
-        NumberLineEdit.Text = nanochat?.Number?.ToString("D4") ?? ""; // Moff - Nanochat
+        NumberLineEdit.Text = chitter != null ? chitter.AccountId.ToString("D4") : ""; // Moffstation - Chitter
 
         var jobIconProto = _prototypeManager.Index(card.JobIcon);
         CurrentJobIcon.Texture = _spriteSystem.Frame0(jobIconProto.Icon);

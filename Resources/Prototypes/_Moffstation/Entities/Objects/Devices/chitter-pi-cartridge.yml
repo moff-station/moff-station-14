@@ -1,0 +1,16 @@
+- type: entity
+  parent: BasePDACartridge
+  id: ChitterPiCartridge
+  name: chitter P.I. cartridge
+  description: Chitter Privacy Infiltrators - a "diagnostic" tool for extracting a Chitter server's message logs. Definitely not for spying.
+  components:
+  - type: Sprite
+    state: cart-y
+  - type: Cartridge
+    programName: chitter-pi-program-name
+    icon:
+      sprite: _Moffstation/Chitter/Icons/program_icons.rsi
+      state: chittersec
+  - type: UIFragment
+    ui: !type:ChitterPiUi
+  - type: ChitterPiCartridge

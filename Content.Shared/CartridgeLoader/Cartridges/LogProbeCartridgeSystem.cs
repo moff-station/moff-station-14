@@ -1,5 +1,4 @@
 using System.Text;
-using Content.Shared._CD.NanoChat;
 using Content.Shared._Moffstation.LogProbe;
 using Content.Shared.Access.Components;
 using Content.Shared.Administration.Logs;
@@ -14,7 +13,7 @@ using Robust.Shared.Timing;
 
 namespace Content.Shared.CartridgeLoader.Cartridges;
 
-public sealed partial class LogProbeCartridgeSystem : EntitySystem // CD - Made partial
+public sealed partial class LogProbeCartridgeSystem : EntitySystem
 {
     [Dependency] private CartridgeLoaderSystem _cartridge = default!;
     [Dependency] private IGameTiming _timing = default!;
@@ -83,16 +82,6 @@ public sealed partial class LogProbeCartridgeSystem : EntitySystem // CD - Made 
         if (args.Handled || !args.CanReach || args.Target is not { } target)
             return;
 
-        // CD begin - Add NanoChat card scanning
-        if (TryComp<NanoChatCardComponent>(target, out var nanoChatCard))
-        {
-            ScanNanoChatCard(ent, args.User, (target, nanoChatCard));
-            updateState();
-            args.Handled = true;
-            return;
-        }
-        // CD end
-
         if (!TryComp(target, out AccessReaderComponent? accessReaderComponent))
             return;
 
@@ -102,7 +91,6 @@ public sealed partial class LogProbeCartridgeSystem : EntitySystem // CD - Made 
 
         ent.Comp.EntityName = Name(target);
         ent.Comp.PulledAccessLogs.Clear();
-        ent.Comp.ScannedNanoChatData = null; // CD - Clear any previous NanoChat data
 
         foreach (var accessRecord in accessReaderComponent.AccessLog)
         {
@@ -173,7 +161,7 @@ public sealed partial class LogProbeCartridgeSystem : EntitySystem // CD - Made 
 
     private void UpdateUiState(Entity<LogProbeCartridgeComponent> ent, EntityUid loaderUid)
     {
-        var state = new LogProbeUiState(ent.Comp.EntityName, ent.Comp.PulledAccessLogs, ent.Comp.ScannedNanoChatData); // CD - NanoChat support
+        var state = new LogProbeUiState(ent.Comp.EntityName, ent.Comp.PulledAccessLogs);
         _cartridge.UpdateCartridgeUiState(loaderUid, state);
     }
 

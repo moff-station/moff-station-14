@@ -1,0 +1,15 @@
+- type: entity
+  parent: BaseAGhostAction
+  id: ActionAGhostShowChitter
+  name: Chitter Interface
+  description: View a Chitter Interface.
+  components:
+  - type: Action
+    keywords: [ "AI", "chitter", "chat", "interface" ]
+    priority: -4
+  - type: Sprite
+    sprite: _Moffstation/Chitter/Icons/program_icons.rsi
+    layers:
+    - state: chitter
+  - type: InstantAction
+    event: !type:ToggleIntrinsicUIEvent { key: enum.ChitterAiUiKey.Key }
