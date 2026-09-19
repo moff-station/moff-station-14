@@ -6,6 +6,7 @@ using Content.Server.Chat.Managers;
 using Content.Server.Chat.Systems;
 using Content.Server.DeviceNetwork.Systems;
 using Content.Server.GameTicking;
+using Content.Server.GameTicking.Events;
 using Content.Server.Screens.Components;
 using Content.Server.Shuttles.Components;
 using Content.Server.Shuttles.Systems;
@@ -66,6 +67,7 @@ namespace Content.Server.RoundEnd
         {
             base.Initialize();
             SubscribeLocalEvent<RoundRestartCleanupEvent>(_ => Reset());
+            SubscribeLocalEvent<RoundStartingEvent>(_ => SetAutoCallTime()); // Moffstation - Evac call time fix
             SetAutoCallTime();
         }
 
@@ -377,7 +379,7 @@ namespace Content.Server.RoundEnd
             // Check if we should auto-call.
             int mins = _autoCalledBefore ? _cfg.GetCVar(CCVars.EmergencyShuttleAutoCallExtensionTime)
                                         : _cfg.GetCVar(CCVars.EmergencyShuttleAutoCallTime);
-            if (mins != 0 && _gameTiming.CurTime - _gameTicker.RoundStartTimeSpan - AutoCallStartTime > TimeSpan.FromMinutes(mins)) // Moffstation - fix roundstart recalls
+            if (mins != 0 && _gameTiming.CurTime - AutoCallStartTime > TimeSpan.FromMinutes(mins))
             {
                 if (!_shuttle.EmergencyShuttleArrived && ExpectedCountdownEnd is null)
                 {

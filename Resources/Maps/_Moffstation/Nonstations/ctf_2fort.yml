@@ -1,10 +1,10 @@
 meta:
   format: 7
   category: Map
-  engineVersion: 288.0.1
+  engineVersion: 288.1.0
   forkId: ""
   forkVersion: ""
-  time: 09/14/2026 18:39:39
+  time: 09/16/2026 22:51:55
   entityCount: 2174
 maps:
 - 1
@@ -591,13 +591,13 @@ entities:
     components:
     - type: Transform
       parent: 2
-      rot: 3.141592653589793 rad
+      rot: 4.71238898038469 rad
       pos: 8.5,-0.5
   - uid: 571
     components:
     - type: Transform
       parent: 2
-      rot: 3.141592653589793 rad
+      rot: 4.71238898038469 rad
       pos: 8.5,-1.5
   - uid: 864
     components:
@@ -615,31 +615,31 @@ entities:
     components:
     - type: Transform
       parent: 2
-      rot: 3.141592653589793 rad
+      rot: 4.71238898038469 rad
       pos: 0.5,-13.5
   - uid: 867
     components:
     - type: Transform
       parent: 2
-      rot: 3.141592653589793 rad
+      rot: 4.71238898038469 rad
       pos: 0.5,-14.5
   - uid: 868
     components:
     - type: Transform
       parent: 2
-      rot: 3.141592653589793 rad
+      rot: 4.71238898038469 rad
       pos: 3.5,-13.5
   - uid: 921
     components:
     - type: Transform
       parent: 2
-      rot: 3.141592653589793 rad
+      rot: 4.71238898038469 rad
       pos: -8.5,-5.5
   - uid: 922
     components:
     - type: Transform
       parent: 2
-      rot: 3.141592653589793 rad
+      rot: 4.71238898038469 rad
       pos: -8.5,-6.5
   - uid: 928
     components:
@@ -677,13 +677,11 @@ entities:
     components:
     - type: Transform
       parent: 2
-      rot: -1.5707963267948966 rad
       pos: 3.5,10.5
   - uid: 232
     components:
     - type: Transform
       parent: 2
-      rot: -1.5707963267948966 rad
       pos: 4.5,10.5
   - uid: 233
     components:
@@ -707,13 +705,13 @@ entities:
     components:
     - type: Transform
       parent: 2
-      rot: 1.5707963267948966 rad
+      rot: 3.141592653589793 rad
       pos: 0.5,12.5
   - uid: 315
     components:
     - type: Transform
       parent: 2
-      rot: 1.5707963267948966 rad
+      rot: 3.141592653589793 rad
       pos: -0.5,12.5
   - uid: 316
     components:
@@ -745,7 +743,7 @@ entities:
     components:
     - type: Transform
       parent: 2
-      rot: 1.5707963267948966 rad
+      rot: 3.141592653589793 rad
       pos: 19.5,4.5
     missingComponents:
     - Damageable
@@ -804,7 +802,7 @@ entities:
     components:
     - type: Transform
       parent: 2
-      rot: 1.5707963267948966 rad
+      rot: 3.141592653589793 rad
       pos: -17.5,-3.5
     missingComponents:
     - Damageable
@@ -824,7 +822,7 @@ entities:
     components:
     - type: Transform
       parent: 2
-      rot: 1.5707963267948966 rad
+      rot: 3.141592653589793 rad
       pos: 13.5,27.5
     missingComponents:
     - Damageable
@@ -842,7 +840,7 @@ entities:
     components:
     - type: Transform
       parent: 2
-      rot: 3.141592653589793 rad
+      rot: 4.71238898038469 rad
       pos: 32.5,2.5
     missingComponents:
     - Damageable
@@ -851,7 +849,7 @@ entities:
     components:
     - type: Transform
       parent: 2
-      rot: 3.141592653589793 rad
+      rot: 4.71238898038469 rad
       pos: 32.5,3.5
     missingComponents:
     - Damageable
@@ -6926,31 +6924,31 @@ entities:
     components:
     - type: Transform
       parent: 2
-      rot: 1.5707963267948966 rad
+      rot: 3.141592653589793 rad
       pos: 21.5,4.5
   - uid: 1822
     components:
     - type: Transform
       parent: 2
-      rot: 1.5707963267948966 rad
+      rot: 3.141592653589793 rad
       pos: 22.5,4.5
   - uid: 1823
     components:
     - type: Transform
       parent: 2
-      rot: 1.5707963267948966 rad
+      rot: 3.141592653589793 rad
       pos: 23.5,4.5
   - uid: 1824
     components:
     - type: Transform
       parent: 2
-      rot: 1.5707963267948966 rad
+      rot: 3.141592653589793 rad
       pos: 24.5,4.5
   - uid: 1825
     components:
     - type: Transform
       parent: 2
-      rot: 1.5707963267948966 rad
+      rot: 3.141592653589793 rad
       pos: 25.5,4.5
 - proto: FloorWaterEntity
   entities:
@@ -14548,11 +14546,13 @@ entities:
     components:
     - type: Transform
       parent: 2
+      rot: 1.5707963267948966 rad
       pos: 27.5,24.5
   - uid: 565
     components:
     - type: Transform
       parent: 2
+      rot: 1.5707963267948966 rad
       pos: 27.5,23.5
 - proto: WoodenBench
   entities:

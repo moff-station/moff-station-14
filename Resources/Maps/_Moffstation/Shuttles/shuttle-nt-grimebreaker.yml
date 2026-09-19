@@ -1,10 +1,10 @@
 meta:
   format: 7
   category: Grid
-  engineVersion: 288.0.1
+  engineVersion: 288.1.0
   forkId: ""
   forkVersion: ""
-  time: 09/14/2026 18:39:46
+  time: 09/16/2026 22:52:08
   entityCount: 199
 maps: []
 grids:
@@ -206,52 +206,49 @@ entities:
     components:
     - type: Transform
       parent: 1
-      rot: -1.5707963267948966 rad
       pos: 0.5,5.5
   - uid: 140
     components:
     - type: Transform
       parent: 1
-      rot: -1.5707963267948966 rad
       pos: 2.5,5.5
   - uid: 147
     components:
     - type: Transform
       parent: 1
-      rot: -1.5707963267948966 rad
       pos: 1.5,5.5
   - uid: 164
     components:
     - type: Transform
       parent: 1
+      rot: 1.5707963267948966 rad
       pos: -0.5,4.5
   - uid: 173
     components:
     - type: Transform
       parent: 1
+      rot: 1.5707963267948966 rad
       pos: 3.5,4.5
   - uid: 174
     components:
     - type: Transform
       parent: 1
-      rot: -1.5707963267948966 rad
       pos: 5.5,0.5
   - uid: 175
     components:
     - type: Transform
       parent: 1
+      rot: 1.5707963267948966 rad
       pos: 7.5,-1.5
   - uid: 176
     components:
     - type: Transform
       parent: 1
-      rot: -1.5707963267948966 rad
       pos: 2.5,-3.5
   - uid: 177
     components:
     - type: Transform
       parent: 1
-      rot: -1.5707963267948966 rad
       pos: 1.5,-3.5
 - proto: Bucket
   entities:
@@ -992,6 +989,7 @@ entities:
     components:
     - type: Transform
       parent: 1
+      rot: 1.5707963267948966 rad
       pos: 3.5,-1.5
 - proto: HolopadLongRange
   entities:

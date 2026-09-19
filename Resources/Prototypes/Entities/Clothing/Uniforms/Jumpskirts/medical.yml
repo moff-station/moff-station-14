@@ -1,0 +1,127 @@
+- type: entity
+  parent: ClothingUniformSkirtBase
+  id: ClothingUniformJumpskirtChemistry
+  name: chemistry jumpskirt
+  description: There's some odd stains on this jumpskirt. Hm.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Uniforms/Jumpskirt/chemistry.rsi # Moffstation - Chemistry Outfits
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Uniforms/Jumpskirt/chemistry.rsi # Moffstation - Chemistry Outfits
+
+- type: entity
+  parent: ClothingUniformSkirtBase
+  id: ClothingUniformJumpskirtVirology
+  name: virology jumpskirt
+  description: It's made of a special fiber that gives special protection against biohazards. It has a virologist rank stripe on it.
+  components:
+  # Moffstation - Start
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Uniforms/Jumpskirt/jumpskirt.rsi
+    layers:
+    - state: icon
+      color: "#FFFFFF"
+    - state: professional-trinkets-icon
+    - state: color-trinkets-icon
+      color: "#77ed94"
+  - type: Item
+    inhandVisuals:
+      left:
+      - state: inhand-left
+      right:
+      - state: inhand-right
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Uniforms/Jumpskirt/jumpskirt.rsi
+    clothingVisuals:
+      jumpsuit:
+      - state: equipped-INNERCLOTHING
+        color: "#FFFFFF"
+      - state: professional-trinkets-equipped-INNERCLOTHING
+      - state: color-trinkets-equipped-INNERCLOTHING
+        color: "#77ed94"
+# Moffstation - End
+
+- type: entity
+  parent: ClothingUniformSkirtBase
+  id: ClothingUniformJumpskirtGenetics
+  name: genetics jumpskirt
+  description: It's made of a special fiber that gives special protection against biohazards. It has a geneticist rank stripe on it.
+  components:
+  # Moffstation - Start
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Uniforms/Jumpskirt/jumpskirt.rsi
+    layers:
+    - state: icon
+    - state: professional-trinkets-icon
+    - state: color-trinkets-icon
+      color: "#65b5f2"
+  - type: Item
+    inhandVisuals:
+      left:
+      - state: inhand-left
+      right:
+      - state: inhand-right
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Uniforms/Jumpskirt/jumpskirt.rsi
+    clothingVisuals:
+      jumpsuit:
+      - state: equipped-INNERCLOTHING
+      - state: professional-trinkets-equipped-INNERCLOTHING
+      - state: color-trinkets-equipped-INNERCLOTHING
+        color: "#65b5f2"
+# Moffstation - End
+
+- type: entity
+  parent: [ClothingUniformSkirtBase, BaseCommandContraband]
+  id: ClothingUniformJumpskirtCMO
+  name: chief medical officer's jumpskirt
+  description: It's a jumpskirt worn by those with the experience to be Chief Medical Officer. It provides minor biological protection.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Uniforms/Jumpskirt/cmo.rsi # Moffstation
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Uniforms/Jumpskirt/cmo.rsi # Moffstation
+
+- type: entity
+  parent: [ClothingUniformSkirtBase, BaseCommandContraband]
+  id: ClothingUniformJumpskirtCMOTurtle
+  name: chief medical officer's turtleneck jumpskirt
+  description: It's a turtleneck worn by those with the experience to be Chief Medical Officer. It provides minor biological protection.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Uniforms/Jumpskirt/cmo_turtle.rsi # Moffstation
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Uniforms/Jumpskirt/cmo_turtle.rsi # Moffstation
+
+- type: entity
+  parent: ClothingUniformSkirtBase
+  id: ClothingUniformJumpskirtMedicalDoctor
+  name: medical doctor jumpskirt
+  description: It's made of a special fiber that provides minor protection against biohazards. It has a cross on the chest denoting that the wearer is trained medical personnel.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Uniforms/Jumpskirt/medical.rsi # Moffstation
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Uniforms/Jumpskirt/medical.rsi # Moffstation
+
+- type: entity
+  parent: ClothingUniformSkirtBase
+  id: ClothingUniformJumpskirtParamedic
+  name: paramedic jumpskirt
+  description: It's got a plus on it, that's a good thing right?
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Uniforms/Jumpskirt/paramedic.rsi #Moffstation
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Uniforms/Jumpskirt/paramedic.rsi #Moffstation
+
+- type: entity
+  parent: ClothingUniformSkirtBase
+  id: ClothingUniformJumpskirtSeniorPhysician
+  name: senior physician jumpskirt
+  description: A sign of skill and prestige within the medical department.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Uniforms/Jumpskirt/senior_physician.rsi # Moffstation
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Uniforms/Jumpskirt/senior_physician.rsi # Moffstation
