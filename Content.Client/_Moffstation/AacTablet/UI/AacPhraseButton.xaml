@@ -1,7 +1,11 @@
 ﻿<controls:Button xmlns:controls="https://spacestation14.io"
                  ClipText="False"
                  HorizontalExpand="True">
-    <controls:RichTextLabel Name="PhraseLabel"
-                            Margin="0 5"
-                            StyleClasses="WhiteText"/>
+    <controls:BoxContainer Orientation="Vertical"
+                           Margin="0 5">
+        <controls:RichTextLabel Name="PhraseLabel"
+                                StyleClasses="WhiteText" />
+        <controls:RichTextLabel Name="ParentheticalLabel"
+                                Visible="False" />
+    </controls:BoxContainer>
 </controls:Button>
