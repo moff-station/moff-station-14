@@ -361,3 +361,19 @@
 - type: tileAlias
   id: IronsandPaved
   target: MoffIronsandPaved
+
+# Moff end
+
+# 2026-08-26
+# Moff start - Uranium/Plasmarble ported to moff namespace
+
+- type: tileAlias
+  id: FloorPlasmaMarble
+  target: FloorMoffPlasmaMarble
+
+- type: tileAlias
+  id: FloorUraniumMarble
+  target: FloorMoffUraniumMarble
+
+# Moff end
+
