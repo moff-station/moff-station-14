@@ -1,0 +1,26 @@
+- type: tile
+  parent: BaseStationTile
+  id: FloorMoffSteelSlatsContinuous
+  name: tiles-steel-floor-slats-continuous
+  sprite: /Textures/_Moffstation/Tiles/steel_slats_continuous.png
+  variants: 4
+  itemDrop: FloorTileItemMoffSteelSlatsContinuous
+  allowRotationMirror: true
+
+- type: tile
+  parent: BaseStationTile
+  id: FloorMoffWhiteSlatsContinuous
+  name: tiles-white-floor-slats-continuous
+  sprite: /Textures/_Moffstation/Tiles/white_slats_continuous.png
+  variants: 4
+  itemDrop: FloorTileItemMoffWhiteSlatsContinuous
+  allowRotationMirror: true
+
+- type: tile
+  parent: BaseStationTile
+  id: FloorMoffDarkSlatsContinuous
+  name: tiles-dark-floor-slats-continuous
+  sprite: /Textures/_Moffstation/Tiles/dark_slats_continuous.png
+  variants: 4
+  itemDrop: FloorTileItemMoffDarkSlatsContinuous
+  allowRotationMirror: true

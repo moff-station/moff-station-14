@@ -361,3 +361,20 @@
 - type: tileAlias
   id: IronsandPaved
   target: MoffIronsandPaved
+
+# 2026-08-27
+# Moff start - Porting continuous slats to moff namespace
+
+- type: tileAlias
+  id: FloorSteelSlatsContinuous
+  target: FloorMoffSteelSlatsContinuous
+
+- type: tileAlias
+  id: FloorWhiteSlatsContinuous
+  target: FloorMoffWhiteSlatsContinuous
+
+- type: tileAlias
+  id: FloorDarkSlatsContinuous
+  target: FloorMoffDarkSlatsContinuous
+
+# Moff end
