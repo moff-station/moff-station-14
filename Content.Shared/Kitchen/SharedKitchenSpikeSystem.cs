@@ -178,7 +178,7 @@ public sealed partial class SharedKitchenSpikeSystem : EntitySystem
             args.User,
             PopupType.MediumCaution);
 
-        var delay = TimeSpan.FromSeconds(tool.SpeedModifier * butcherable.ButcherDelay);
+        var delay = TimeSpan.FromSeconds(butcherable.ButcherDelay / tool.SpeedModifier); //Moffstation - bugfix - higher tool speed modifier means higher butcher speed
 
         if (_mobStateSystem.IsAlive(victim.Value))
             delay += ent.Comp.ButcherDelayAlive;
