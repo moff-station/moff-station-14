@@ -181,6 +181,7 @@
     damage:
       types:
         Blunt: 0.0 # Remove damage to avoid pacifism metagaming
+    undamagedAlertThreshold: 0
 
 - type: entity
   parent: [ BaseItem, BaseToySword ]
@@ -237,6 +238,7 @@
       shader: unshaded
       map: [ "blade" ]
   - type: EnergySword
+  - type: ItemToggleExaminableStatus
   - type: ItemToggle
     soundActivate:
       path: /Audio/Weapons/ebladeon.ogg
