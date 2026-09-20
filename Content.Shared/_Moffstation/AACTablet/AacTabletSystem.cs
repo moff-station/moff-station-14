@@ -65,7 +65,7 @@ public sealed partial class AacTabletSystem : EntitySystem
             return (null, []);
 
         var shortest = matches.MinBy(it => it.LocalizedText.Length).Phrase;
-        var allMatches = matches.Select(it => (it.Phrase, (IEnumerable<string>)(string[])[it.Tab, it.Group]))
+        var allMatches = matches.Select(it => (it.Phrase, ((string?[])[it.Tab, it.Group]).OfType<string>()))
             .OrderBy(it => it.Phrase.Phrase);
 
         return (shortest, allMatches);
