@@ -28,7 +28,7 @@ public partial record struct AacPhraseTab(string Heading, List<AacPhraseGroup> G
 
 /// A collection of <see cref="AacPhrase"/>s, displayed as a group in the tablet.
 [DataRecord]
-public partial record struct AacPhraseGroup(string Heading, List<AacPhrase> Phrases);
+public partial record struct AacPhraseGroup(string? Heading, List<AacPhrase> Phrases);
 
 /// A single AAC phrase.
 [DataRecord, Serializable, NetSerializable]

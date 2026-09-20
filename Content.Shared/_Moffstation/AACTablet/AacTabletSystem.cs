@@ -21,7 +21,7 @@ public sealed partial class AacTabletSystem : EntitySystem
         AacPhrase Phrase,
         ProtoId<AacPhrasePackPrototype> Pack,
         string Tab,
-        string Group
+        string? Group
     );
 
     private const string DelayId = nameof(AacTabletComponent);
