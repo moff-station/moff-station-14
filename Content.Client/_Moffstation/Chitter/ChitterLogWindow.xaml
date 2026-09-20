@@ -1,0 +1,25 @@
+<DefaultWindow xmlns="https://spacestation14.io"
+               Title="{Loc 'chitter-log-title'}"
+               MinSize="750 480">
+    <BoxContainer Orientation="Horizontal" SeparationOverride="4" Margin="4">
+        <!-- Chat list -->
+        <BoxContainer Orientation="Vertical" MinSize="240 0" SeparationOverride="2">
+            <Label Text="{Loc 'chitter-log-chats-label'}" StyleClasses="LabelHeading" />
+            <LineEdit Name="SearchInput"
+                      PlaceHolder="{Loc 'chitter-log-search-placeholder'}"
+                      HorizontalExpand="True"
+                      Margin="0 0 0 2" />
+            <ScrollContainer HorizontalExpand="True" VerticalExpand="True">
+                <BoxContainer Name="ChatList" Orientation="Vertical" SeparationOverride="2" />
+            </ScrollContainer>
+        </BoxContainer>
+        <Control MinSize="4 0" />
+        <!-- Selected chat detail -->
+        <BoxContainer Orientation="Vertical" HorizontalExpand="True" SeparationOverride="2">
+            <Label Name="DetailHeader" Text="{Loc 'chitter-log-select-chat'}" StyleClasses="LabelHeading" ClipText="True" />
+            <ScrollContainer HorizontalExpand="True" VerticalExpand="True">
+                <BoxContainer Name="MessageList" Orientation="Vertical" SeparationOverride="4" Margin="0 4 0 0" />
+            </ScrollContainer>
+        </BoxContainer>
+    </BoxContainer>
+</DefaultWindow>

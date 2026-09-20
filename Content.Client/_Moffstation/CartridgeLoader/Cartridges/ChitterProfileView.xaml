@@ -1,0 +1,23 @@
+<cartridges:ChitterProfileView xmlns="https://spacestation14.io"
+             xmlns:cartridges="clr-namespace:Content.Client._Moffstation.CartridgeLoader.Cartridges"
+             xmlns:gfx="clr-namespace:Robust.Client.Graphics;assembly=Robust.Client"
+             Orientation="Vertical"
+             VerticalExpand="True"
+             MinWidth="280"
+             Margin="6">
+    <PanelContainer>
+        <PanelContainer.PanelOverride>
+            <gfx:StyleBoxFlat BorderColor="#3a3a40" BorderThickness="0 0 0 1" />
+        </PanelContainer.PanelOverride>
+        <BoxContainer Orientation="Horizontal" Margin="4">
+            <Label Text="{Loc chitter-profile-title}" HorizontalExpand="True" StyleClasses="LabelHeading" />
+            <Button Name="CloseProfileButton" Text="{Loc chitter-close}" Margin="4 0 0 0" />
+        </BoxContainer>
+    </PanelContainer>
+
+    <Label Name="CurrentAvatarLabel" Text="{Loc chitter-current-avatar}" StyleClasses="LabelSubText" Margin="6 4" />
+
+    <ScrollContainer VerticalExpand="True">
+        <GridContainer Name="AvatarGrid" Columns="4" HSeparationOverride="6" VSeparationOverride="6" Margin="6" />
+    </ScrollContainer>
+</cartridges:ChitterProfileView>

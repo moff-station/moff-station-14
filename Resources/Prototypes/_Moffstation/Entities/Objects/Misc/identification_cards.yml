@@ -33,9 +33,6 @@
   components:
   - type: PresetIdCard
     job: NTCFPilot
-  - type: NanoChatCard # CD
-    listNumber: false
-
 - type: entity
   parent: ERTEngineerIDCard
   id: NTCFEngineerIDCard
@@ -43,9 +40,6 @@
   components:
   - type: PresetIdCard
     job: NTCFEngineer
-  - type: NanoChatCard # CD
-    listNumber: false
-
 #Centcomm & Command
 
 - type: entity
@@ -67,9 +61,6 @@
     heldPrefix: silver
   - type: PresetIdCard
     job: CentralCommandIntern
-  - type: NanoChatCard # CD
-    listNumber: false
-
 - type: entity
   parent: IDCardStandard
   id: CLOIDCard

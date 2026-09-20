@@ -1,7 +1,9 @@
 ﻿using System.Linq;
 using Content.Shared.Construction.Components;
 using Content.Shared.Containers.ItemSlots;
+using Content.Shared.Emag.Components;
 using Content.Shared.Examine;
+using Content.Shared.Hands.EntitySystems;
 using Content.Shared.Interaction;
 using Content.Shared.Item;
 using Content.Shared.Lock;
@@ -10,6 +12,7 @@ using Content.Shared.Power;
 using Content.Shared.Power.EntitySystems;
 using Content.Shared.Whitelist;
 using Robust.Shared.Containers;
+using Robust.Shared.Network;
 using Robust.Shared.Utility;
 
 namespace Content.Shared._Moffstation.BladeServer;
@@ -20,8 +23,10 @@ public abstract partial class SharedBladeServerSystem : EntitySystem
     [Dependency] private IComponentFactory _componentFactory = default!;
     [Dependency] private SharedAppearanceSystem _appearance = default!;
     [Dependency] private SharedContainerSystem _container = default!;
+    [Dependency] private SharedHandsSystem _hands = default!;
     [Dependency] private SharedInteractionSystem _interaction = default!;
     [Dependency] private ItemSlotsSystem _itemSlots = default!;
+    [Dependency] private INetManager _net = default!;
     [Dependency] private SharedPopupSystem _popup = default!;
     [Dependency] private SharedPowerReceiverSystem _powerReceiver = default!;
     [Dependency] private SharedUserInterfaceSystem _ui = default!;
@@ -37,7 +42,7 @@ public abstract partial class SharedBladeServerSystem : EntitySystem
         };
 
         SubscribeLocalEvent<BladeServerRackComponent, AfterAutoHandleStateEvent>(AfterAutoHandleState);
-        SubscribeLocalEvent<BladeServerRackComponent, ComponentInit>(OnComponentInit);
+        SubscribeLocalEvent<BladeServerRackComponent, MapInitEvent>(OnMapInit);
 
         SubscribeLocalEvent<BladeServerRackComponent, EntInsertedIntoContainerMessage>(OnEntInserted);
         SubscribeLocalEvent<BladeServerRackComponent, EntRemovedFromContainerMessage>(OnEntRemoved);
@@ -67,12 +72,14 @@ public abstract partial class SharedBladeServerSystem : EntitySystem
         SubscribeLocalEvent<BladeServerComponent, AccessibleOverrideEvent>(OnBladeServerAccessibleOverride); // Starlight
     }
 
-    private void OnComponentInit(Entity<BladeServerRackComponent> entity, ref ComponentInit args)
+    private void OnMapInit(Entity<BladeServerRackComponent> entity, ref MapInitEvent args)
     {
-        // Fill slots in the rack based on the component's `StartingContents`
+        // Fill slots in the rack based on the component's `StartingContents`. Only the server actually spawns
+        // entities here - the client just creates empty slots and lets normal container networking sync the
+        // server's spawned contents down, same as ContainerFillComponent does for MapInitEvent-based fills.
         InitializeSlots(
             entity,
-            idx => entity.Comp.StartingContents.TryGetValue(idx, out var proto)
+            idx => _net.IsServer && entity.Comp.StartingContents.TryGetValue(idx, out var proto)
                 ? SpawnNextToOrDrop(proto, entity)
                 : null
         );
@@ -108,6 +115,12 @@ public abstract partial class SharedBladeServerSystem : EntitySystem
     private void OnPowerChanged(Entity<BladeServerRackComponent> entity, ref PowerChangedEvent args)
     {
         UpdateVisuals(entity);
+
+        // Re-broadcast as our own event so other systems (like Chitter) can react to a rack's power
+        // without each needing their own PowerChangedEvent subscription on it - only one subscriber is
+        // allowed per component for a given by-ref event.
+        var rebroadcast = new BladeServerRackPowerChangedEvent();
+        RaiseLocalEvent(entity, ref rebroadcast);
     }
 
     private void OnLockToggled(Entity<BladeServerRackComponent> entity, ref LockToggledEvent args)
@@ -248,6 +261,12 @@ public abstract partial class SharedBladeServerSystem : EntitySystem
             if (!TryComp(entity, out TransformComponent? xform))
                 return;
 
+            // Left-clicking a slot's entity view is meant for using held tools (multitools, etc.) on it
+            // without ejecting it first - it shouldn't also let someone silently emag whatever's racked
+            // just by clicking to look at it while an emag happens to be in their active hand.
+            if (_hands.GetActiveItem(args.Actor) is { } activeItem && HasComp<EmagComponent>(activeItem))
+                return;
+
             _interaction.UserInteraction(
                 args.Actor,
                 xform.Coordinates,
@@ -297,11 +316,21 @@ public abstract partial class SharedBladeServerSystem : EntitySystem
     }
 
     /// This prevents blade servers from being picked up while inside a rack.
+    ///
+    /// Server-only: <see cref="BladeSlot.Ejecting"/> is a plain, non-networked flag that only the
+    /// server's OnEjectPressed ever sets true (BUI messages aren't client-predicted), so the client's
+    /// own copy is always false. Letting the client cancel on that stale value made an ordinary eject
+    /// diverge from what the server actually did, which showed up as a client container-prediction
+    /// crash (ContainerSlot.InternalInsert asserting on a slot it wrongly thought was still occupied).
+    /// The server remains the sole enforcer of "no picking a blade server directly out of its rack".
     private void OnGettingPickedUpAttempt(
         Entity<BladeServerComponent> entity,
         ref GettingPickedUpAttemptEvent args
     )
     {
+        if (!_net.IsServer)
+            return;
+
         if (_container.IsEntityInContainer(entity) &&
             TryComp(entity, out TransformComponent? xform) &&
             TryComp<BladeServerRackComponent>(xform.ParentUid, out var parentRack) &&
@@ -315,6 +344,29 @@ public abstract partial class SharedBladeServerSystem : EntitySystem
     public bool? IsSlotPowerEnabled(Entity<BladeServerRackComponent?> entity, int slotIndex)
     {
         return GetSlotOrNull(entity, slotIndex)?.IsPowerEnabled;
+    }
+
+    /// Overrides a blade server's cosmetic stripe with a fixed color - used by Chitter to flag a
+    /// compromised server at a glance. Refreshes whichever visual representation currently applies
+    /// (in-hand, dropped in the world, or racked), since which one is showing depends on wherever the
+    /// entity happens to be right now, not on which system is asking.
+    public void SetStripeColorOverride(Entity<BladeServerComponent?> entity, Color color)
+    {
+        if (!Resolve(entity, ref entity.Comp))
+            return;
+
+        // BladeServerComponent isn't a networked component (despite StripeColor being marked
+        // AutoNetworkedField - that only matters once a component actually is networked), so the
+        // field itself is server-only bookkeeping; Dirty()ing it would hit a debug assert. Both visual
+        // representations below go through AppearanceComponent instead, which handles its own syncing.
+        entity.Comp.StripeColor = color;
+        _appearance.SetData(entity.Owner, BladeServerVisuals.StripeColor, color);
+
+        if (TryComp(entity.Owner, out TransformComponent? xform) &&
+            TryComp<BladeServerRackComponent>(xform.ParentUid, out var rack))
+        {
+            UpdateVisuals((xform.ParentUid, rack));
+        }
     }
 
     /// Tries to get the slot at <paramref name="slotIndex"/>. Returns null if the index is out of bounds.
@@ -385,8 +437,8 @@ public abstract partial class SharedBladeServerSystem : EntitySystem
 
             _itemSlots.AddItemSlot(entity, entity.Comp.BladeSlotName(idx), slot);
 
-            var inserted = getEntityToInsertForIndex(idx) is { } entityToInsert &&
-                           _itemSlots.TryInsert(entity, slot, entityToInsert, user: null);
+            if (getEntityToInsertForIndex(idx) is { } entityToInsert)
+                _itemSlots.TryInsert(entity, slot, entityToInsert, user: null);
 
             entity.Comp.BladeSlots.Add(new BladeSlot(slot));
         }
@@ -400,11 +452,16 @@ public abstract partial class SharedBladeServerSystem : EntitySystem
         if (!TryComp(entity, out entity.Comp2))
             return;
 
-        foreach (var slot in entity.Comp1.BladeSlots)
+        // If the rack itself is being deleted, don't eject its contents - just let them get cascade-deleted along
+        // with it. Ejecting here would instead orphan racked blade servers as loose entities in the world.
+        if (!TerminatingOrDeleted(entity.Owner))
         {
-            slot.Ejecting = true;
-            _itemSlots.TryEject(entity, slot.Slot, user: null, out _);
-            _itemSlots.RemoveItemSlot(entity, slot.Slot, entity);
+            foreach (var slot in entity.Comp1.BladeSlots)
+            {
+                slot.Ejecting = true;
+                _itemSlots.TryEject(entity, slot.Slot, user: null, out _);
+                _itemSlots.RemoveItemSlot(entity, slot.Slot, entity);
+            }
         }
 
         entity.Comp1.BladeSlots.Clear();

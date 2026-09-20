@@ -25,8 +25,7 @@
     - WhitelistChameleonIdCard
   - type: StealTarget
     stealGroup: IDCard
-  - type: NanoChatCard # CD
-
+  - type: ChitterAccount # Moffstation
 #IDs with layers
 
 - type: entity
@@ -1111,9 +1110,6 @@
         type: AgentIDCardBoundUserInterface
       enum.ChameleonUiKey.Key:
         type: ChameleonBoundUserInterface
-  - type: NanoChatCard # CD
-    listNumber: false
-
 - type: entity
   parent: AgentIDCard
   id: NukieAgentIDCard
@@ -1150,9 +1146,6 @@
     tags:
     - NuclearOperative
     - SyndicateAgent
-  - type: NanoChatCard # CD
-    listNumber: false
-
 - type: entity
   parent: [ SyndicateIDCard, BaseSyndicateContraband ]
   id: SyndiOperativeIDCard
@@ -1267,11 +1260,6 @@
     tags:
     - Pirate
   # Moffstation - End
-  # Moffstation - Begin - Nanochat
-  - type: NanoChatCard
-    listNumber: false
-  # Moffstation - End
-
 - type: entity
   parent: IDCardStandard
   id: XenoborgIDCard
@@ -1332,9 +1320,6 @@
     heldPrefix: gold # Moffstation
   - type: PresetIdCard
     job: CentralCommandOfficial
-  - type: NanoChatCard # CD
-    listNumber: false
-
 - type: entity
   parent: IDCardStandard
   id: ERTLeaderIDCard
@@ -1355,9 +1340,6 @@
     heldPrefix: gold
   - type: PresetIdCard
     job: ERTLeader
-  - type: NanoChatCard # CD
-    listNumber: false
-
 - type: entity
   parent: IDCardStandard
   id: ERTChaplainIDCard
@@ -1378,9 +1360,6 @@
     heldPrefix: blue
   - type: PresetIdCard
     job: ERTChaplain
-  - type: NanoChatCard # CD
-    listNumber: false
-
 - type: entity
   parent: IDCardStandard
   id: ERTEngineerIDCard
@@ -1401,9 +1380,6 @@
     heldPrefix: blue
   - type: PresetIdCard
     job: ERTEngineer
-  - type: NanoChatCard # CD
-    listNumber: false
-
 - type: entity
   parent: IDCardStandard
   id: ERTJanitorIDCard
@@ -1424,9 +1400,6 @@
     heldPrefix: blue
   - type: PresetIdCard
     job: ERTJanitor
-  - type: NanoChatCard # CD
-    listNumber: false
-
 - type: entity
   parent: IDCardStandard
   id: ERTMedicIDCard
@@ -1447,9 +1420,6 @@
     heldPrefix: blue
   - type: PresetIdCard
     job: ERTMedical
-  - type: NanoChatCard # CD
-    listNumber: false
-
 - type: entity
   parent: IDCardStandard
   id: ERTSecurityIDCard
@@ -1470,9 +1440,6 @@
     heldPrefix: blue
   - type: PresetIdCard
     job: ERTSecurity
-  - type: NanoChatCard # CD
-    listNumber: false
-
 - type: entity
   parent: IDCardStandard
   id: CentcomIDCardDeathsquad
@@ -1491,9 +1458,6 @@
       state: DeathSquad
   - type: PresetIdCard
     job: DeathSquad
-  - type: NanoChatCard # CD
-    listNumber: false
-
 - type: entity
   parent: IDCardStandard
   id: CBURNIDcard
@@ -1515,9 +1479,6 @@
     heldPrefix: blue
   - type: PresetIdCard
     job: CBURN
-  - type: NanoChatCard # CD
-    listNumber: false
-
 - type: entity
   parent: IDCardStandard
   id: UniversalIDCard
@@ -1577,6 +1538,3 @@
     interfaces:
       enum.AgentIDCardUiKey.Key:
         type: AgentIDCardBoundUserInterface
-  - type: NanoChatCard # CD
-    notificationsMuted: true
-    listNumber: false

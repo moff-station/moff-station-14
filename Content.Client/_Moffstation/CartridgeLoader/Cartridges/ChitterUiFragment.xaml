@@ -1,0 +1,98 @@
+<cartridges:ChitterUiFragment xmlns="https://spacestation14.io"
+             xmlns:cartridges="clr-namespace:Content.Client._Moffstation.CartridgeLoader.Cartridges"
+             xmlns:gfx="clr-namespace:Robust.Client.Graphics;assembly=Robust.Client"
+             Orientation="Vertical"
+             HorizontalExpand="True"
+             VerticalExpand="True">
+
+    <PanelContainer StyleClasses="BackgroundDark" />
+
+    <PanelContainer Name="WarningBanner" Visible="False" HorizontalExpand="True">
+        <PanelContainer.PanelOverride>
+            <gfx:StyleBoxFlat BackgroundColor="#8b2525" />
+        </PanelContainer.PanelOverride>
+        <Label Name="WarningLabel" Margin="6" HorizontalAlignment="Center" />
+    </PanelContainer>
+
+    <PanelContainer Name="OverlayContainer" Visible="False" VerticalExpand="True" StyleClasses="BackgroundDark" />
+
+    <BoxContainer Name="MainContent" Orientation="Horizontal" VerticalExpand="True" HorizontalExpand="True">
+        <!-- Sidebar -->
+        <PanelContainer MinWidth="170" VerticalExpand="True">
+            <PanelContainer.PanelOverride>
+                <gfx:StyleBoxFlat BackgroundColor="#1e1e23" />
+            </PanelContainer.PanelOverride>
+            <BoxContainer Orientation="Vertical" VerticalExpand="True" SeparationOverride="0">
+                <PanelContainer>
+                    <PanelContainer.PanelOverride>
+                        <gfx:StyleBoxFlat BorderColor="#3a3a40" BorderThickness="0 0 0 1" />
+                    </PanelContainer.PanelOverride>
+                    <BoxContainer Orientation="Horizontal" Margin="4">
+                        <TextureButton Name="ProfileButton" MinSize="50 50" SetSize="50 50" />
+                        <BoxContainer Orientation="Vertical" HorizontalExpand="True" Margin="4 0 0 0" SeparationOverride="1">
+                            <Label Name="PlayerName" StyleClasses="LabelBig" />
+                            <Label Name="PlayerJob" StyleClasses="LabelSubText" />
+                            <Label Name="PlayerChitterId" FontColorOverride="#c49a3c" />
+                        </BoxContainer>
+                    </BoxContainer>
+                </PanelContainer>
+
+                <Label Text="{Loc chitter-chats}" Margin="6 4 6 2" FontColorOverride="#888888" />
+
+                <!-- This expands, pushing everything below to the bottom -->
+                <ScrollContainer VerticalExpand="True" HScrollEnabled="False">
+                    <BoxContainer Name="ChatListContainer" Orientation="Vertical" SeparationOverride="2" />
+                </ScrollContainer>
+
+                <!-- Bottom section: pushed down by ScrollContainer above -->
+                <PanelContainer>
+                    <PanelContainer.PanelOverride>
+                        <gfx:StyleBoxFlat BorderColor="#3a3a40" BorderThickness="0 1 0 0" />
+                    </PanelContainer.PanelOverride>
+                    <BoxContainer Orientation="Vertical" Margin="4" SeparationOverride="2">
+                        <Label Name="NoChatPlaceholder" Text="{Loc chitter-no-chats}" FontColorOverride="#888888" />
+                        <Button Name="NewChatButton" Text="{Loc chitter-new-chat}" />
+                    </BoxContainer>
+                </PanelContainer>
+            </BoxContainer>
+        </PanelContainer>
+
+        <!-- Vertical divider -->
+        <PanelContainer MinWidth="1" VerticalExpand="True">
+            <PanelContainer.PanelOverride>
+                <gfx:StyleBoxFlat BackgroundColor="#3a3a40" />
+            </PanelContainer.PanelOverride>
+        </PanelContainer>
+
+        <!-- Chat Window -->
+        <BoxContainer Name="Content" HorizontalExpand="True" VerticalExpand="True" Orientation="Vertical" MinWidth="300">
+            <PanelContainer>
+                <PanelContainer.PanelOverride>
+                    <gfx:StyleBoxFlat BackgroundColor="#1e1e23" BorderColor="#3a3a40" BorderThickness="0 0 0 1" />
+                </PanelContainer.PanelOverride>
+                <BoxContainer Orientation="Horizontal" Margin="4" MinHeight="40">
+                    <Control Name="HeaderSpacer" HorizontalExpand="True" />
+                    <TextureButton Name="SettingsButton" SetSize="32 32" VerticalAlignment="Center" />
+                </BoxContainer>
+            </PanelContainer>
+
+            <!-- This expands, pushing the input area to the bottom -->
+            <PanelContainer VerticalExpand="True">
+                <ScrollContainer Name="ChatView" VerticalExpand="True" HScrollEnabled="False">
+                    <BoxContainer Name="MessageContainer" Orientation="Vertical" SeparationOverride="5" Margin="4" />
+                </ScrollContainer>
+            </PanelContainer>
+
+            <!-- Input area: pushed down by ChatView above -->
+            <PanelContainer>
+                <PanelContainer.PanelOverride>
+                    <gfx:StyleBoxFlat BackgroundColor="#1e1e23" BorderColor="#3a3a40" BorderThickness="0 1 0 0" />
+                </PanelContainer.PanelOverride>
+                <BoxContainer Orientation="Horizontal" Margin="4">
+                    <LineEdit Name="MessageInput" MinHeight="32" HorizontalExpand="True" PlaceHolder="{Loc chitter-message-placeholder}" />
+                    <Button Name="SendButton" Text="{Loc chitter-send}" MinWidth="50" Margin="4 0 0 0" />
+                </BoxContainer>
+            </PanelContainer>
+        </BoxContainer>
+    </BoxContainer>
+</cartridges:ChitterUiFragment>

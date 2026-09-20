@@ -1,5 +1,6 @@
 using Content.Client.GameTicking.Managers;
 using Content.Client.Message;
+using Content.Shared._Moffstation.Chitter; // Moffstation - Chitter M.P.N.
 using Content.Shared._Moffstation.PDA;
 using Content.Shared.AlertLevel;
 using Content.Shared.CartridgeLoader;
@@ -24,6 +25,7 @@ namespace Content.Client.PDA
         [Dependency] private IClipboardManager _clipboard = null!;
         [Dependency] private IGameTiming _gameTiming = default!;
         [Dependency] private IEntitySystemManager _entitySystem = default!;
+        [Dependency] private IEntityManager _entMan = default!; // Moffstation - Chitter M.P.N.
 
         [Dependency] private IPrototypeManager _prototypeManager = default!; // Moffstation - PDA Advertisements
         [Dependency] private IRobustRandom _random = default!; // Moffstation - PDA Advertisements
@@ -46,6 +48,8 @@ namespace Content.Client.PDA
 
 
         private int _currentView;
+        private EntityUid _pdaUid; // Moffstation - Chitter M.P.N.
+        private bool? _mpnConnected; // Moffstation - Chitter M.P.N.
 
         public event Action<EntityUid>? OnProgramItemPressed;
         public event Action<EntityUid>? OnUninstallButtonPressed;
@@ -65,6 +69,10 @@ namespace Content.Client.PDA
             EjectIdButton.IconTexture = new SpriteSpecifier.Texture(new("/Textures/Interface/eject.png"));
             EjectPaiButton.IconTexture = new SpriteSpecifier.Texture(new("/Textures/Interface/pai.png"));
             ProgramCloseButton.IconTexture = new SpriteSpecifier.Texture(new("/Textures/Interface/Nano/cross.svg.png"));
+
+            // Moffstation - Chitter M.P.N. connection banner
+            MpnBannerLabel.Text = Loc.GetString("chitter-mpn-banner-text");
+            MpnDisconnectButton.Text = Loc.GetString("chitter-mpn-banner-leave");
 
             // Moffstation - begin - PDA Advertisements
             //var adPrototype = _prototypeManager.EnumeratePrototypes<PdaAdPrototype>().ElementAt(1);
@@ -217,6 +225,14 @@ namespace Content.Client.PDA
             LockUplinkButton.Visible = state.HasUplink;
         }
 
+        // Moffstation - Chitter M.P.N. connection banner
+        // Called once by PdaBoundUserInterface right after the menu is created, so Draw() below can
+        // check this specific PDA's connection component every frame.
+        public void SetOwner(EntityUid pdaUid)
+        {
+            _pdaUid = pdaUid;
+        }
+
         public void UpdateAvailablePrograms(List<(EntityUid, CartridgeComponent)> programs)
         {
             if (programs.Count == 0)
@@ -348,6 +364,18 @@ namespace Content.Client.PDA
 
             StationTimeLabel.SetMarkup(Loc.GetString("comp-pda-ui-station-time",
                 ("time", stationTime.ToString("hh\\:mm\\:ss"))));
+
+            // Moffstation - Chitter M.P.N. connection banner
+            // Read directly off the networked component rather than through UpdateState - see the
+            // comment on ChitterMpnConnectionComponent for why it can't ride the same channel as the
+            // rest of the PDA's chrome.
+            var connected = _entMan.TryGetComponent<ChitterMpnConnectionComponent>(_pdaUid, out var mpnConnection) &&
+                mpnConnection.ConnectedServer != null;
+            if (_mpnConnected != connected)
+            {
+                _mpnConnected = connected;
+                MpnBanner.Visible = connected;
+            }
         }
 
 

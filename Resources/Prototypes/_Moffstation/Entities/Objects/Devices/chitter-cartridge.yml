@@ -1,0 +1,16 @@
+- type: entity
+  parent: BasePDACartridge
+  id: ChitterCartridge
+  name: chitter cartridge
+  description: A PDA cartridge that gives you access to the Chitter instant messaging network. Requires a Chitter blade server on your station grid.
+  components:
+  - type: Sprite
+    state: cart-y
+  - type: Cartridge
+    programName: chitter-program-name
+    icon:
+      sprite: _Moffstation/Chitter/Icons/program_icons.rsi
+      state: chitter
+  - type: UIFragment
+    ui: !type:ChitterUi
+  - type: ChitterCartridge

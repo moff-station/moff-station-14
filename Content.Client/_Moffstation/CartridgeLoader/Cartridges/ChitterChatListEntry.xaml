@@ -1,0 +1,18 @@
+<cartridges:ChitterChatListEntry xmlns="https://spacestation14.io"
+             xmlns:cartridges="clr-namespace:Content.Client._Moffstation.CartridgeLoader.Cartridges"
+             xmlns:gfx="clr-namespace:Robust.Client.Graphics;assembly=Robust.Client"
+             Orientation="Horizontal"
+             MinHeight="36">
+    <PanelContainer Name="BackgroundPanel" VerticalExpand="True" HorizontalExpand="True">
+        <PanelContainer.PanelOverride>
+            <gfx:StyleBoxFlat />
+        </PanelContainer.PanelOverride>
+        <BoxContainer Name="EntryContent" Orientation="Vertical" HorizontalExpand="True" VerticalExpand="True" Margin="4">
+            <BoxContainer Orientation="Horizontal" VerticalExpand="True">
+                <Label Name="NameLabel" Text="" FontColorOverride="#00FF00" HorizontalExpand="True" VerticalAlignment="Center" />
+                <Label Name="UnreadCountLabel" Text="" FontColorOverride="#FFD700" Visible="False" MinWidth="20" VerticalAlignment="Center" />
+            </BoxContainer>
+            <Label Name="MessageLabel" Text="" StyleClasses="LabelSubText" MinHeight="16" />
+        </BoxContainer>
+    </PanelContainer>
+</cartridges:ChitterChatListEntry>

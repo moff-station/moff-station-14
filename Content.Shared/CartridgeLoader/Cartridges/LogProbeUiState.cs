@@ -1,4 +1,3 @@
-using Content.Shared._CD.CartridgeLoader.Cartridges; // CD
 using Robust.Shared.Serialization;
 
 namespace Content.Shared.CartridgeLoader.Cartridges;
@@ -16,16 +15,10 @@ public sealed class LogProbeUiState : BoundUserInterfaceState
     /// </summary>
     public List<PulledAccessLog> PulledLogs;
 
-    /// <summary>
-    /// CD: The NanoChat data if a card was scanned, null otherwise
-    /// </summary>
-    public NanoChatData? NanoChatData { get; }
-
-    public LogProbeUiState(string entityName, List<PulledAccessLog> pulledLogs, NanoChatData? nanoChatData = null) // CD - NanoChat support
+    public LogProbeUiState(string entityName, List<PulledAccessLog> pulledLogs)
     {
         EntityName = entityName;
         PulledLogs = pulledLogs;
-        NanoChatData = nanoChatData; // CD
     }
 }
 

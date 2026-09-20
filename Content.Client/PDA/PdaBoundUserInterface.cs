@@ -1,4 +1,5 @@
 using Content.Client.CartridgeLoader;
+using Content.Shared._Moffstation.Chitter; // Moffstation - Chitter M.P.N.
 using Content.Shared.CartridgeLoader;
 using Content.Shared.Containers.ItemSlots;
 using Content.Shared.PDA;
@@ -31,6 +32,7 @@ namespace Content.Client.PDA
         private void CreateMenu()
         {
             _menu = this.CreateWindowCenteredLeft<PdaMenu>();
+            _menu.SetOwner(Owner); // Moffstation - Chitter M.P.N.
 
             // Moffstation - Begin - PDA Ads
             var pdaComp = EntMan.GetComponent<PdaComponent>(Owner);
@@ -76,6 +78,12 @@ namespace Content.Client.PDA
             _menu.LockUplinkButton.OnPressed += _ =>
             {
                 SendMessage(new PdaLockUplinkMessage());
+            };
+
+            // Moffstation - Chitter M.P.N. connection banner
+            _menu.MpnDisconnectButton.OnPressed += _ =>
+            {
+                SendMessage(new PdaDisconnectMpnMessage());
             };
 
             _menu.OnProgramItemPressed += ActivateCartridge;

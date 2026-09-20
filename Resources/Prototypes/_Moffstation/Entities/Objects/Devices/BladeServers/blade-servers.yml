@@ -130,6 +130,13 @@
     stripeColor: "#00FFFFFF"
   - type: EncryptionKeyHolder
     keySlots: 1 # Divergence from upstream's philosophy -- we want this to be one key per blade server.
+  # Unlike BaseResearchAndDevelopmentServer/BaseCrewMonitoringServer, BaseTelecomServer gets its power components
+  # from BaseMachinePowered on the standalone TelecomServer instead of declaring them itself, so
+  # ConstructibleBladeServer never picks them up. Without ApcPowerReceiver, RadioSystem.HasActiveServer's
+  # EntityQuery (which requires it) would never match this entity at all - not "unpowered", just invisible to radio.
+  - type: ApcPowerReceiver
+    powerLoad: 1000
+  - type: ExtensionCableReceiver
 
 - type: entity
   parent: TelecomBladeServer

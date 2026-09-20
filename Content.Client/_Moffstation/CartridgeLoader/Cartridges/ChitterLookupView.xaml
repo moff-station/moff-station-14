@@ -1,0 +1,33 @@
+<cartridges:ChitterLookupView xmlns="https://spacestation14.io"
+             xmlns:cartridges="clr-namespace:Content.Client._Moffstation.CartridgeLoader.Cartridges"
+             xmlns:gfx="clr-namespace:Robust.Client.Graphics;assembly=Robust.Client"
+             Orientation="Vertical"
+             VerticalExpand="True"
+             MinWidth="280"
+             Margin="6">
+    <PanelContainer>
+        <PanelContainer.PanelOverride>
+            <gfx:StyleBoxFlat BorderColor="#3a3a40" BorderThickness="0 0 0 1" />
+        </PanelContainer.PanelOverride>
+        <BoxContainer Orientation="Horizontal" Margin="4">
+            <Label Text="{Loc chitter-lookup-title}" HorizontalExpand="True" StyleClasses="LabelHeading" />
+            <Button Name="ShowBlockedButton" Text="{Loc chitter-blocked-title}" ToggleMode="True" Margin="4 0 0 0" />
+            <Button Name="CloseLookupButton" Text="{Loc chitter-close}" Margin="4 0 0 0" />
+        </BoxContainer>
+    </PanelContainer>
+
+    <LineEdit Name="ChatNameInput" PlaceHolder="{Loc chitter-chat-name-placeholder}" Margin="6 2" MinHeight="28" />
+
+    <LineEdit Name="SearchInput" PlaceHolder="{Loc chitter-search-placeholder}" Margin="6 2" MinHeight="28" />
+
+    <ScrollContainer VerticalExpand="True" MinSize="200 200">
+        <BoxContainer Name="SearchResults" Orientation="Vertical" SeparationOverride="1" Margin="0 0 0 4" />
+    </ScrollContainer>
+
+    <PanelContainer>
+        <PanelContainer.PanelOverride>
+            <gfx:StyleBoxFlat BorderColor="#3a3a40" BorderThickness="0 1 0 0" />
+        </PanelContainer.PanelOverride>
+        <Button Name="CreateChatButton" Text="{Loc chitter-create-chat}" Disabled="True" Margin="4" />
+    </PanelContainer>
+</cartridges:ChitterLookupView>
