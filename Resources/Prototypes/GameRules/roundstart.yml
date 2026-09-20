@@ -177,7 +177,7 @@
   # TODO: uplink in yml
   - type: AntagRandomObjectives
     sets:
-    - groups: TraitorObjectiveGroups
+    - groups: MoffTraitorObjectiveGroups # Moff - objective cleanup
     maxDifficulty: 5
   - type: AntagSelection
     agentName: traitor-round-end-agent-name

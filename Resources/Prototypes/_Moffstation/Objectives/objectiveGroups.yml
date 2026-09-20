@@ -11,13 +11,11 @@
 - type: weightedRandom
   id: BloodBrotherObjectiveGroupSocial
   weights:
-    BloodBrotherJailbreakObjective: 0.5
     BloodBrotherLeaveCallingCardObjective: 0.2
 
 - type: weightedRandom
   id: BloodBrotherObjectiveGroupSabotage
   weights:
-    BloodBrotherSupercritAnomaliesObjective: 1
     BloodBrotherDisruptDepartmentObjective: 1
     BloodBrotherSabotageObjective: 0.5
 
@@ -26,3 +24,46 @@
   weights:
     BloodBrotherTrashRoomObjective: 1
     BloodBrotherClaimLocationObjective: 1
+
+# Traitors
+- type: weightedRandom
+  id: MoffTraitorObjectiveGroups
+  weights:
+    MoffTraitorObjectiveGroupAll: 1
+
+- type: weightedRandom
+  id: MoffTraitorObjectiveGroupAll
+  weights:
+    # Steal objectives
+    CaptainIDStealObjective: 1
+    CMOHyposprayStealObjective: 1
+    CMOCrewMonitorStealObjective: 1
+    RDHardsuitStealObjective: 1
+    NukeDiskStealObjective: 0.2
+    MagbootsStealObjective: 1
+    CorgiMeatStealObjective: 1
+    ClipboardStealObjective: 1
+    KnuckleDustersStealObjective: 1
+    CaptainGunStealObjective: 0.5
+    CaptainJetpackStealObjective: 0.5
+    HandTeleporterStealObjective: 0.5
+    EnergyMagnumStealObjective: 0.5
+    # Violence Objectives
+    KillRandomPersonObjective: 15
+    KillStationAiObjective: 1
+    KillRandomHeadObjective: 5
+    TeachLessonObjective: 15
+    # Social Objectives
+    RandomTraitorProgressObjective: 1
+    GatherIntelObjective: 1
+    LeaveCallingCardObjective: 1
+    LeaveCallingCardOnPersonObjective: 1
+    # Sabotage Objectives
+    DisruptDepartmentObjective: 1
+    SabotageObjective: 1
+    # Misc Objectives
+    MailFraudObjective: 1
+    TrashRoomObjective: 1
+    ClaimLocationObjective: 1
+    DieObjective: 0.01
+    EscapeShuttleObjective: 0.50
