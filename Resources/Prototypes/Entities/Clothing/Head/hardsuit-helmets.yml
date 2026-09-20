@@ -576,10 +576,31 @@
   name: blood-red hardsuit helmet
   description: A heavily armored helmet designed for work in special operations. Property of Gorlex Marauders.
   components:
+  # Moff - Start
   - type: Sprite
-    sprite: Clothing/Head/Hardsuits/syndicate.rsi
+    sprite: _Moffstation/Clothing/Head/Hardsuits/syndicate.rsi
+    layers:
+    - state: icon
+    - state: icon-flash
+      visible: false
+      shader: unshaded
+      map: [ "light" ]
+    - state: icon-unshaded
+      shader: unshaded
+  - type: HandheldLight
+    addPrefix: false
+  - type: ToggleableVisuals
+    clothingVisuals:
+      head:
+      - state: on-equipped-HELMET
+        shader: unshaded
   - type: Clothing
-    sprite: Clothing/Head/Hardsuits/syndicate.rsi
+    clothingVisuals:
+      head:
+      - state: off-equipped-HELMET
+      - state: equipped-HELMET-unshaded
+        shader: unshaded
+    # Moff - End
   - type: PointLight
     color: green
     radius: 5
@@ -605,10 +626,31 @@
   name: blood-red medic hardsuit helmet
   description: An advanced red hardsuit helmet specifically designed for field medic operations.
   components:
+  # Moff - Start
   - type: Sprite
-    sprite: Clothing/Head/Hardsuits/syndiemedic.rsi
+    sprite: _Moffstation/Clothing/Head/Hardsuits/syndiemedic.rsi
+    layers:
+    - state: icon
+    - state: icon-flash
+      visible: false
+      shader: unshaded
+      map: [ "light" ]
+    - state: icon-unshaded
+      shader: unshaded
+  - type: HandheldLight
+    addPrefix: false
+  - type: ToggleableVisuals
+    clothingVisuals:
+      head:
+      - state: on-equipped-HELMET
+        shader: unshaded
   - type: Clothing
-    sprite: Clothing/Head/Hardsuits/syndiemedic.rsi
+    clothingVisuals:
+      head:
+      - state: off-equipped-HELMET
+      - state: equipped-HELMET-unshaded
+        shader: unshaded
+    # Moff - End
   - type: PointLight
     color: green
     radius: 5
@@ -631,10 +673,31 @@
   name: syndicate elite helmet
   description: An elite version of the blood-red hardsuit's helmet, with improved radiation resistance and fireproofing. Property of Gorlex Marauders.
   components:
+  # Moff - Start
   - type: Sprite
-    sprite: Clothing/Head/Hardsuits/syndieelite.rsi
+    sprite: _Moffstation/Clothing/Head/Hardsuits/syndieelite.rsi
+    layers:
+    - state: icon
+    - state: icon-flash
+      visible: false
+      shader: unshaded
+      map: [ "light" ]
+    - state: icon-unshaded
+      shader: unshaded
+  - type: HandheldLight
+    addPrefix: false
+  - type: ToggleableVisuals
+    clothingVisuals:
+      head:
+      - state: on-equipped-HELMET
+        shader: unshaded
   - type: Clothing
-    sprite: Clothing/Head/Hardsuits/syndieelite.rsi
+    clothingVisuals:
+      head:
+      - state: off-equipped-HELMET
+      - state: equipped-HELMET-unshaded
+        shader: unshaded
+    # Moff - End
   - type: PointLight
     color: red
     radius: 5
@@ -662,10 +725,31 @@
   name: syndicate commander helmet
   description: A bulked up version of the blood-red hardsuit's helmet, purpose-built for the commander of a syndicate operative squad. Has significantly improved armor for those deadly front-lines firefights.
   components:
+  # Moff - Start
   - type: Sprite
-    sprite: Clothing/Head/Hardsuits/syndiecommander.rsi
+    sprite: _Moffstation/Clothing/Head/Hardsuits/syndiecommander.rsi
+    layers:
+    - state: icon
+    - state: icon-flash
+      visible: false
+      shader: unshaded
+      map: [ "light" ]
+    - state: icon-unshaded
+      shader: unshaded
+  - type: HandheldLight
+    addPrefix: false
+  - type: ToggleableVisuals
+    clothingVisuals:
+      head:
+      - state: on-equipped-HELMET
+        shader: unshaded
   - type: Clothing
-    sprite: Clothing/Head/Hardsuits/syndiecommander.rsi
+    clothingVisuals:
+      head:
+      - state: off-equipped-HELMET
+      - state: equipped-HELMET-unshaded
+        shader: unshaded
+    # Moff - End
   - type: PointLight
     color: green
     radius: 5
@@ -691,10 +775,31 @@
   name: cybersun juggernaut helmet
   description: Made of compressed red matter, this helmet was designed in the Tau chromosphere facility.
   components:
+  # Moff - Start
   - type: Sprite
-    sprite: Clothing/Head/Hardsuits/cybersun.rsi
+    sprite: _Moffstation/Clothing/Head/Hardsuits/cybersun.rsi
+    layers:
+    - state: icon
+    - state: icon-flash
+      visible: false
+      shader: unshaded
+      map: [ "light" ]
+    - state: icon-unshaded
+      shader: unshaded
+  - type: HandheldLight
+    addPrefix: false
+  - type: ToggleableVisuals
+    clothingVisuals:
+      head:
+      - state: on-equipped-HELMET
+        shader: unshaded
   - type: Clothing
-    sprite: Clothing/Head/Hardsuits/cybersun.rsi
+    clothingVisuals:
+      head:
+      - state: off-equipped-HELMET
+      - state: equipped-HELMET-unshaded
+        shader: unshaded
+    # Moff - End
   - type: PointLight
     color: red
     radius: 5
@@ -822,6 +927,11 @@
     sprite: Clothing/Head/Hardsuits/ERThelmets/ertleader.rsi
   - type: PointLight
     color: "#addbff"
+# Moff - Start
+  - type: PressureProtection
+    highPressureMultiplier: 0.08
+    lowPressureMultiplier: 1000
+# Moff - End
   - type: Armor
     modifiers:
       coefficients:
@@ -843,6 +953,18 @@
     sprite: Clothing/Head/Hardsuits/ERThelmets/ertchaplain.rsi
   - type: PointLight
     color: "#ffffff"
+  # Moff - Start
+  - type: PressureProtection
+    highPressureMultiplier: 0.08
+    lowPressureMultiplier: 1000
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.9
+        Slash: 0.9
+        Piercing: 0.9
+        Heat: 0.9
+  # Moff - End
 
 #ERT Engineer Hardsuit
 - type: entity
@@ -859,13 +981,18 @@
     - state: icon-up
       visible: false
       map: [ "visor_icon" ]
-      # Moffstation - End
+    # Moffstation - End
   - type: Clothing
     sprite: Clothing/Head/Hardsuits/ERThelmets/ertengineer.rsi
   - type: PointLight
     color: "#f4ffad"
   - type: FireProtection
     reduction: 0.2
+# Moff - Start
+  - type: PressureProtection
+    highPressureMultiplier: 0.08
+    lowPressureMultiplier: 1000
+# Moff - End
   - type: Armor
     modifiers:
       coefficients:
@@ -887,6 +1014,20 @@
     sprite: Clothing/Head/Hardsuits/ERThelmets/ertmedical.rsi
   - type: PointLight
     color: "#adffec"
+# Moff - Start
+  - type: PressureProtection
+    highPressureMultiplier: 0.08
+    lowPressureMultiplier: 1000
+  - type: FireProtection
+    reduction: 0.2
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.9
+        Slash: 0.9
+        Piercing: 0.9
+        Heat: 0.9
+# Moff - End
 
 #ERT Security Hardsuit
 - type: entity
@@ -901,6 +1042,11 @@
     sprite: Clothing/Head/Hardsuits/ERThelmets/ertsecurity.rsi
   - type: PointLight
     color: "#ffadc6"
+# Moff - Start
+  - type: PressureProtection
+    highPressureMultiplier: 0.08
+    lowPressureMultiplier: 1000
+# Moff - End
   - type: Armor
     modifiers:
       coefficients:
@@ -922,6 +1068,18 @@
     sprite: Clothing/Head/Hardsuits/ERThelmets/ertjanitor.rsi
   - type: PointLight
     color: "#cbadff"
+# Moff - Start
+  - type: PressureProtection
+    highPressureMultiplier: 0.08
+    lowPressureMultiplier: 1000
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.9
+        Slash: 0.9
+        Piercing: 0.9
+        Heat: 0.9
+# Moff - End
 
 #CBURN Hardsuit
 - type: entity
