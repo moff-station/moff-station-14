@@ -35,11 +35,13 @@
         color: "#C12D30"
         sprite: Clothing/Uniforms/Jumpsuits/Color/color.rsi
       - state: overlay-inhand-left
+        sprite: Clothing/Uniforms/Jumpsuits/Security/hos.rsi # Moff - no moff inhand sprites yet
       right:
       - state: inhand-right
         color: "#C12D30"
         sprite: Clothing/Uniforms/Jumpsuits/Color/color.rsi
       - state: overlay-inhand-right
+        sprite: Clothing/Uniforms/Jumpsuits/Security/hos.rsi # Moff - no moff inhand sprites yet
   - type: Clothing
     sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/hos.rsi # Moffstation - New Security Outfits
 
@@ -157,11 +159,13 @@
         color: "#C12D30"
         sprite: Clothing/Uniforms/Jumpsuits/Color/color.rsi
       - state: overlay-inhand-left
+        sprite: Clothing/Uniforms/Jumpsuits/Security/security.rsi # Moff - no moff inhand sprites yet
       right:
       - state: inhand-right
         color: "#C12D30"
         sprite: Clothing/Uniforms/Jumpsuits/Color/color.rsi
       - state: overlay-inhand-right
+        sprite: Clothing/Uniforms/Jumpsuits/Security/security.rsi # Moff - no moff inhand sprites yet
 
 - type: entity
   parent: ClothingUniformBase
@@ -211,11 +215,13 @@
         color: "#C12D30"
         sprite: Clothing/Uniforms/Jumpsuits/Color/color.rsi
       - state: overlay-inhand-left
+        sprite: Clothing/Uniforms/Jumpsuits/Security/warden.rsi # Moff - no moff inhand sprites yet
       right:
       - state: inhand-right
         color: "#C12D30"
         sprite: Clothing/Uniforms/Jumpsuits/Color/color.rsi
       - state: overlay-inhand-right
+        sprite: Clothing/Uniforms/Jumpsuits/Security/warden.rsi # Moff - no moff inhand sprites yet
   - type: Clothing
     sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/warden.rsi # Moffstation - New Security Outfits
 

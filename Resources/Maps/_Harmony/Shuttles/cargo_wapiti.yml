@@ -1,10 +1,10 @@
 meta:
   format: 7
   category: Grid
-  engineVersion: 288.0.1
+  engineVersion: 288.1.0
   forkId: ""
   forkVersion: ""
-  time: 09/14/2026 18:38:23
+  time: 09/16/2026 22:51:21
   entityCount: 200
 maps: []
 grids:
@@ -124,6 +124,7 @@ entities:
     components:
     - type: Transform
       parent: 1
+      rot: 1.5707963267948966 rad
       pos: -3.5,-1.5
 - proto: AirlockGlassShuttle
   entities:
@@ -238,11 +239,13 @@ entities:
     components:
     - type: Transform
       parent: 1
+      rot: 1.5707963267948966 rad
       pos: 2.5,2.5
   - uid: 6
     components:
     - type: Transform
       parent: 1
+      rot: 1.5707963267948966 rad
       pos: 2.5,-1.5
   - uid: 168
     components:
@@ -1113,11 +1116,13 @@ entities:
     components:
     - type: Transform
       parent: 1
+      rot: 1.5707963267948966 rad
       pos: 2.5,2.5
   - uid: 7
     components:
     - type: Transform
       parent: 1
+      rot: 1.5707963267948966 rad
       pos: 2.5,-1.5
 - proto: Poweredlight
   entities:

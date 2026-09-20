@@ -118,6 +118,9 @@
         sound:
           collection: MetalSlam
     # Moffstation - End
+  - type: StructureAligner
+    alignerType:
+    - DoNotAlign
 
 - type: entity
   id: AirlockGlassShuttle

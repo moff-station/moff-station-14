@@ -1,10 +1,10 @@
 meta:
   format: 7
   category: Grid
-  engineVersion: 288.0.1
+  engineVersion: 288.1.0
   forkId: ""
   forkVersion: ""
-  time: 09/14/2026 18:39:47
+  time: 09/16/2026 22:52:09
   entityCount: 874
 maps: []
 grids:
@@ -327,11 +327,13 @@ entities:
     components:
     - type: Transform
       parent: 1
+      rot: 1.5707963267948966 rad
       pos: -0.5,-5.5
   - uid: 14
     components:
     - type: Transform
       parent: 1
+      rot: 1.5707963267948966 rad
       pos: 3.5,-5.5
   - uid: 22
     components:
@@ -342,6 +344,7 @@ entities:
     components:
     - type: Transform
       parent: 1
+      rot: 1.5707963267948966 rad
       pos: -3.5,-9.5
   - uid: 24
     components:
@@ -533,7 +536,6 @@ entities:
     components:
     - type: Transform
       parent: 1
-      rot: -1.5707963267948966 rad
       pos: 5.5,-1.5
     - type: DeviceLinkSink
       invokeCounter: 1
@@ -541,7 +543,6 @@ entities:
     components:
     - type: Transform
       parent: 1
-      rot: -1.5707963267948966 rad
       pos: 6.5,-1.5
     - type: DeviceLinkSink
       invokeCounter: 1
@@ -549,7 +550,6 @@ entities:
     components:
     - type: Transform
       parent: 1
-      rot: -1.5707963267948966 rad
       pos: 7.5,-1.5
     - type: DeviceLinkSink
       invokeCounter: 1
@@ -557,6 +557,7 @@ entities:
     components:
     - type: Transform
       parent: 1
+      rot: 1.5707963267948966 rad
       pos: 8.5,-14.5
     - type: DeviceLinkSink
       invokeCounter: 1
@@ -564,6 +565,7 @@ entities:
     components:
     - type: Transform
       parent: 1
+      rot: 1.5707963267948966 rad
       pos: -3.5,-25.5
     - type: DeviceLinkSink
       invokeCounter: 1
@@ -571,6 +573,7 @@ entities:
     components:
     - type: Transform
       parent: 1
+      rot: 1.5707963267948966 rad
       pos: 6.5,-25.5
     - type: DeviceLinkSink
       invokeCounter: 1
@@ -578,7 +581,6 @@ entities:
     components:
     - type: Transform
       parent: 1
-      rot: -1.5707963267948966 rad
       pos: -3.5,-1.5
     - type: DeviceLinkSink
       invokeCounter: 1
@@ -586,7 +588,6 @@ entities:
     components:
     - type: Transform
       parent: 1
-      rot: -1.5707963267948966 rad
       pos: -2.5,-1.5
     - type: DeviceLinkSink
       invokeCounter: 1
@@ -594,6 +595,7 @@ entities:
     components:
     - type: Transform
       parent: 1
+      rot: 1.5707963267948966 rad
       pos: -1.5,-2.5
     - type: DeviceLinkSink
       invokeCounter: 1
@@ -601,6 +603,7 @@ entities:
     components:
     - type: Transform
       parent: 1
+      rot: 1.5707963267948966 rad
       pos: -5.5,-2.5
     - type: DeviceLinkSink
       invokeCounter: 1
@@ -608,7 +611,6 @@ entities:
     components:
     - type: Transform
       parent: 1
-      rot: -1.5707963267948966 rad
       pos: -4.5,-1.5
     - type: DeviceLinkSink
       invokeCounter: 1
@@ -616,6 +618,7 @@ entities:
     components:
     - type: Transform
       parent: 1
+      rot: 1.5707963267948966 rad
       pos: 8.5,-16.5
     - type: DeviceLinkSink
       invokeCounter: 1
@@ -623,6 +626,7 @@ entities:
     components:
     - type: Transform
       parent: 1
+      rot: 1.5707963267948966 rad
       pos: -6.5,-10.5
     - type: DeviceLinkSink
       invokeCounter: 1
@@ -630,6 +634,7 @@ entities:
     components:
     - type: Transform
       parent: 1
+      rot: 1.5707963267948966 rad
       pos: -6.5,-8.5
     - type: DeviceLinkSink
       invokeCounter: 1
@@ -637,6 +642,7 @@ entities:
     components:
     - type: Transform
       parent: 1
+      rot: 1.5707963267948966 rad
       pos: 8.5,-15.5
     - type: DeviceLinkSink
       invokeCounter: 1
@@ -644,6 +650,7 @@ entities:
     components:
     - type: Transform
       parent: 1
+      rot: 1.5707963267948966 rad
       pos: -6.5,-9.5
     - type: DeviceLinkSink
       invokeCounter: 1
@@ -3881,6 +3888,7 @@ entities:
     components:
     - type: Transform
       parent: 1
+      rot: 1.5707963267948966 rad
       pos: -0.5,-15.5
 - proto: HolopadLongRange
   entities:
@@ -4121,11 +4129,13 @@ entities:
     components:
     - type: Transform
       parent: 1
+      rot: 1.5707963267948966 rad
       pos: 9.5,-6.5
   - uid: 579
     components:
     - type: Transform
       parent: 1
+      rot: 1.5707963267948966 rad
       pos: 9.5,-10.5
 - proto: PlushieSharkPirate
   entities:

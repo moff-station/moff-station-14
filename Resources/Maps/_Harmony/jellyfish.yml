@@ -1,10 +1,10 @@
 meta:
   format: 7
   category: Map
-  engineVersion: 288.0.1
+  engineVersion: 288.1.0
   forkId: ""
   forkVersion: ""
-  time: 09/14/2026 18:37:39
+  time: 09/16/2026 22:51:00
   entityCount: 16480
 maps:
 - 1
@@ -3640,6 +3640,7 @@ entities:
     components:
     - type: Transform
       parent: 2
+      rot: 1.5707963267948966 rad
       pos: 43.5,-44.5
   - uid: 7187
     components:
@@ -3688,7 +3689,6 @@ entities:
     components:
     - type: Transform
       parent: 2
-      rot: -1.5707963267948966 rad
       pos: 27.5,-0.5
 - proto: AirlockArmoryLocked
   entities:
@@ -3696,6 +3696,7 @@ entities:
     components:
     - type: Transform
       parent: 2
+      rot: 1.5707963267948966 rad
       pos: 24.5,-1.5
 - proto: AirlockAtmosphericsGlassLocked
   entities:
@@ -3709,13 +3710,13 @@ entities:
     components:
     - type: Transform
       parent: 2
-      rot: 1.5707963267948966 rad
+      rot: 3.141592653589793 rad
       pos: -22.5,-17.5
   - uid: 3614
     components:
     - type: Transform
       parent: 2
-      rot: 1.5707963267948966 rad
+      rot: 3.141592653589793 rad
       pos: -23.5,-17.5
 - proto: AirlockAtmosphericsLocked
   entities:
@@ -3728,11 +3729,13 @@ entities:
     components:
     - type: Transform
       parent: 2
+      rot: 1.5707963267948966 rad
       pos: -15.5,-10.5
   - uid: 2753
     components:
     - type: Transform
       parent: 2
+      rot: 1.5707963267948966 rad
       pos: -15.5,-14.5
 - proto: AirlockBrigGlassLocked
   entities:
@@ -3740,25 +3743,21 @@ entities:
     components:
     - type: Transform
       parent: 2
-      rot: -1.5707963267948966 rad
       pos: 32.5,-1.5
   - uid: 1623
     components:
     - type: Transform
       parent: 2
-      rot: -1.5707963267948966 rad
       pos: 31.5,-1.5
   - uid: 2164
     components:
     - type: Transform
       parent: 2
-      rot: -1.5707963267948966 rad
       pos: 31.5,-5.5
   - uid: 2165
     components:
     - type: Transform
       parent: 2
-      rot: -1.5707963267948966 rad
       pos: 32.5,-5.5
 - proto: AirlockCaptainLocked
   entities:
@@ -3766,6 +3765,7 @@ entities:
     components:
     - type: Transform
       parent: 2
+      rot: 1.5707963267948966 rad
       pos: 7.5,-43.5
 - proto: AirlockCargoGlassLocked
   entities:
@@ -3773,12 +3773,13 @@ entities:
     components:
     - type: Transform
       parent: 2
-      rot: 3.141592653589793 rad
+      rot: 4.71238898038469 rad
       pos: 23.5,-21.5
   - uid: 15161
     components:
     - type: Transform
       parent: 2
+      rot: 1.5707963267948966 rad
       pos: 28.5,-18.5
 - proto: AirlockCargoLocked
   entities:
@@ -3786,6 +3787,7 @@ entities:
     components:
     - type: Transform
       parent: 2
+      rot: 1.5707963267948966 rad
       pos: 28.5,-21.5
 - proto: AirlockChapelLocked
   entities:
@@ -3793,6 +3795,7 @@ entities:
     components:
     - type: Transform
       parent: 2
+      rot: 1.5707963267948966 rad
       pos: 15.5,-28.5
   - uid: 533
     components:
@@ -3810,6 +3813,7 @@ entities:
     components:
     - type: Transform
       parent: 2
+      rot: 1.5707963267948966 rad
       pos: -2.5,17.5
 - proto: AirlockChiefEngineerLocked
   entities:
@@ -3832,7 +3836,7 @@ entities:
     components:
     - type: Transform
       parent: 2
-      rot: 1.5707963267948966 rad
+      rot: 3.141592653589793 rad
       pos: 1.5,-38.5
   - uid: 508
     components:
@@ -3861,6 +3865,7 @@ entities:
     components:
     - type: Transform
       parent: 2
+      rot: 1.5707963267948966 rad
       pos: -1.5,-36.5
   - uid: 1896
     components:
@@ -3871,11 +3876,13 @@ entities:
     components:
     - type: Transform
       parent: 2
+      rot: 1.5707963267948966 rad
       pos: -45.5,19.5
   - uid: 3771
     components:
     - type: Transform
       parent: 2
+      rot: 1.5707963267948966 rad
       pos: -43.5,15.5
 - proto: AirlockDetectiveLocked
   entities:
@@ -3890,6 +3897,7 @@ entities:
     components:
     - type: Transform
       parent: 2
+      rot: 1.5707963267948966 rad
       pos: -30.5,-11.5
   - uid: 424
     components:
@@ -3909,6 +3917,7 @@ entities:
     components:
     - type: Transform
       parent: 2
+      rot: 1.5707963267948966 rad
       pos: -24.5,-36.5
   - uid: 803
     components:
@@ -3929,31 +3938,37 @@ entities:
     components:
     - type: Transform
       parent: 2
+      rot: 1.5707963267948966 rad
       pos: -8.5,-40.5
   - uid: 2652
     components:
     - type: Transform
       parent: 2
+      rot: 1.5707963267948966 rad
       pos: 26.5,-25.5
   - uid: 2698
     components:
     - type: Transform
       parent: 2
+      rot: 1.5707963267948966 rad
       pos: -21.5,-10.5
   - uid: 2699
     components:
     - type: Transform
       parent: 2
+      rot: 1.5707963267948966 rad
       pos: -21.5,-14.5
   - uid: 2713
     components:
     - type: Transform
       parent: 2
+      rot: 1.5707963267948966 rad
       pos: -24.5,-11.5
   - uid: 2765
     components:
     - type: Transform
       parent: 2
+      rot: 1.5707963267948966 rad
       pos: -34.5,-6.5
   - uid: 2774
     components:
@@ -3964,16 +3979,19 @@ entities:
     components:
     - type: Transform
       parent: 2
+      rot: 1.5707963267948966 rad
       pos: -34.5,-16.5
   - uid: 3070
     components:
     - type: Transform
       parent: 2
+      rot: 1.5707963267948966 rad
       pos: -39.5,-0.5
   - uid: 3130
     components:
     - type: Transform
       parent: 2
+      rot: 1.5707963267948966 rad
       pos: -35.5,-0.5
   - uid: 3240
     components:
@@ -3989,6 +4007,7 @@ entities:
     components:
     - type: Transform
       parent: 2
+      rot: 1.5707963267948966 rad
       pos: -30.5,-6.5
   - uid: 3344
     components:
@@ -4004,21 +4023,25 @@ entities:
     components:
     - type: Transform
       parent: 2
+      rot: 1.5707963267948966 rad
       pos: -1.5,30.5
   - uid: 5988
     components:
     - type: Transform
       parent: 2
+      rot: 1.5707963267948966 rad
       pos: 40.5,-0.5
   - uid: 6041
     components:
     - type: Transform
       parent: 2
+      rot: 1.5707963267948966 rad
       pos: 11.5,24.5
   - uid: 6531
     components:
     - type: Transform
       parent: 2
+      rot: 1.5707963267948966 rad
       pos: 42.5,10.5
   - uid: 6831
     components:
@@ -4029,6 +4052,7 @@ entities:
     components:
     - type: Transform
       parent: 2
+      rot: 1.5707963267948966 rad
       pos: 43.5,-47.5
   - uid: 16325
     components:
@@ -4041,6 +4065,7 @@ entities:
     components:
     - type: Transform
       parent: 2
+      rot: 1.5707963267948966 rad
       pos: 9.5,28.5
 - proto: AirlockExternalGlass
   entities:
@@ -4048,6 +4073,7 @@ entities:
     components:
     - type: Transform
       parent: 2
+      rot: 1.5707963267948966 rad
       pos: -29.5,9.5
     - type: DeviceLinkSink
       invokeCounter: 1
@@ -4090,6 +4116,7 @@ entities:
     components:
     - type: Transform
       parent: 2
+      rot: 1.5707963267948966 rad
       pos: -30.5,-56.5
   - uid: 6807
     components:
@@ -4113,7 +4140,7 @@ entities:
     components:
     - type: Transform
       parent: 2
-      rot: 1.5707963267948966 rad
+      rot: 3.141592653589793 rad
       pos: 41.5,-58.5
     - type: DeviceLinkSink
       invokeCounter: 1
@@ -4126,7 +4153,7 @@ entities:
     components:
     - type: Transform
       parent: 2
-      rot: 1.5707963267948966 rad
+      rot: 3.141592653589793 rad
       pos: 41.5,-60.5
     - type: DeviceLinkSink
       invokeCounter: 1
@@ -4139,7 +4166,7 @@ entities:
     components:
     - type: Transform
       parent: 2
-      rot: 1.5707963267948966 rad
+      rot: 3.141592653589793 rad
       pos: 24.5,-60.5
     - type: DeviceLinkSink
       invokeCounter: 1
@@ -4152,7 +4179,7 @@ entities:
     components:
     - type: Transform
       parent: 2
-      rot: 1.5707963267948966 rad
+      rot: 3.141592653589793 rad
       pos: 24.5,-57.5
     - type: DeviceLinkSink
       invokeCounter: 1
@@ -4165,7 +4192,7 @@ entities:
     components:
     - type: Transform
       parent: 2
-      rot: 3.141592653589793 rad
+      rot: 4.71238898038469 rad
       pos: -39.5,2.5
   - uid: 7657
     components:
@@ -4179,7 +4206,6 @@ entities:
     components:
     - type: Transform
       parent: 2
-      rot: -1.5707963267948966 rad
       pos: -24.5,-26.5
     - type: DeviceLinkSink
       invokeCounter: 1
@@ -4192,7 +4218,6 @@ entities:
     components:
     - type: Transform
       parent: 2
-      rot: -1.5707963267948966 rad
       pos: -24.5,-28.5
     - type: DeviceLinkSink
       invokeCounter: 1
@@ -4233,6 +4258,7 @@ entities:
     components:
     - type: Transform
       parent: 2
+      rot: 1.5707963267948966 rad
       pos: 36.5,-28.5
     - type: DeviceLinkSink
       invokeCounter: 1
@@ -4245,6 +4271,7 @@ entities:
     components:
     - type: Transform
       parent: 2
+      rot: 1.5707963267948966 rad
       pos: 40.5,-28.5
     - type: DeviceLinkSink
       invokeCounter: 1
@@ -4283,6 +4310,7 @@ entities:
     components:
     - type: Transform
       parent: 2
+      rot: 1.5707963267948966 rad
       pos: -31.5,-29.5
     - type: DeviceLinkSink
       invokeCounter: 1
@@ -4298,6 +4326,7 @@ entities:
     components:
     - type: Transform
       parent: 2
+      rot: 1.5707963267948966 rad
       pos: -33.5,-29.5
     - type: DeviceLinkSink
       invokeCounter: 1
@@ -4310,6 +4339,7 @@ entities:
     components:
     - type: Transform
       parent: 2
+      rot: 1.5707963267948966 rad
       pos: -32.5,-19.5
     - type: DeviceLinkSink
       invokeCounter: 1
@@ -4322,6 +4352,7 @@ entities:
     components:
     - type: Transform
       parent: 2
+      rot: 1.5707963267948966 rad
       pos: -30.5,-19.5
     - type: DeviceLinkSink
       invokeCounter: 1
@@ -4334,6 +4365,7 @@ entities:
     components:
     - type: Transform
       parent: 2
+      rot: 1.5707963267948966 rad
       pos: -38.5,-21.5
     - type: DeviceLinkSink
       invokeCounter: 1
@@ -4346,6 +4378,7 @@ entities:
     components:
     - type: Transform
       parent: 2
+      rot: 1.5707963267948966 rad
       pos: -38.5,-19.5
     - type: DeviceLinkSink
       invokeCounter: 1
@@ -4358,6 +4391,7 @@ entities:
     components:
     - type: Transform
       parent: 2
+      rot: 1.5707963267948966 rad
       pos: 3.5,31.5
     - type: DeviceLinkSink
       invokeCounter: 1
@@ -4405,7 +4439,7 @@ entities:
     components:
     - type: Transform
       parent: 2
-      rot: 1.5707963267948966 rad
+      rot: 3.141592653589793 rad
       pos: -41.5,8.5
     - type: DeviceLinkSink
       invokeCounter: 1
@@ -4418,7 +4452,7 @@ entities:
     components:
     - type: Transform
       parent: 2
-      rot: 1.5707963267948966 rad
+      rot: 3.141592653589793 rad
       pos: 4.5,29.5
     - type: DeviceLinkSink
       invokeCounter: 1
@@ -4444,7 +4478,7 @@ entities:
     components:
     - type: Transform
       parent: 2
-      rot: 1.5707963267948966 rad
+      rot: 3.141592653589793 rad
       pos: 4.5,33.5
     - type: DeviceLinkSink
       invokeCounter: 1
@@ -4460,7 +4494,6 @@ entities:
     components:
     - type: Transform
       parent: 2
-      rot: -1.5707963267948966 rad
       pos: -14.5,-60.5
     - type: DeviceLinkSink
       invokeCounter: 1
@@ -4473,7 +4506,6 @@ entities:
     components:
     - type: Transform
       parent: 2
-      rot: -1.5707963267948966 rad
       pos: -14.5,-63.5
     - type: DeviceLinkSink
       invokeCounter: 1
@@ -4645,6 +4677,7 @@ entities:
     components:
     - type: Transform
       parent: 2
+      rot: 1.5707963267948966 rad
       pos: 48.5,8.5
     - type: DeviceLinkSink
       invokeCounter: 1
@@ -4684,6 +4717,7 @@ entities:
     components:
     - type: Transform
       parent: 2
+      rot: 1.5707963267948966 rad
       pos: 44.5,8.5
     - type: DeviceLinkSink
       invokeCounter: 1
@@ -4710,6 +4744,7 @@ entities:
     components:
     - type: Transform
       parent: 2
+      rot: 1.5707963267948966 rad
       pos: -3.5,-23.5
 - proto: AirlockGlass
   entities:
@@ -4727,18 +4762,17 @@ entities:
     components:
     - type: Transform
       parent: 2
+      rot: 1.5707963267948966 rad
       pos: 9.5,-15.5
   - uid: 1070
     components:
     - type: Transform
       parent: 2
-      rot: -1.5707963267948966 rad
       pos: -12.5,-5.5
   - uid: 1071
     components:
     - type: Transform
       parent: 2
-      rot: -1.5707963267948966 rad
       pos: -13.5,-5.5
   - uid: 1422
     components:
@@ -4754,6 +4788,7 @@ entities:
     components:
     - type: Transform
       parent: 2
+      rot: 1.5707963267948966 rad
       pos: 9.5,-16.5
   - uid: 2181
     components:
@@ -4764,13 +4799,12 @@ entities:
     components:
     - type: Transform
       parent: 2
-      rot: 1.5707963267948966 rad
+      rot: 3.141592653589793 rad
       pos: 14.5,-9.5
   - uid: 2429
     components:
     - type: Transform
       parent: 2
-      rot: -1.5707963267948966 rad
       pos: 25.5,-9.5
   - uid: 2853
     components:
@@ -4782,13 +4816,13 @@ entities:
     components:
     - type: Transform
       parent: 2
-      rot: 1.5707963267948966 rad
+      rot: 3.141592653589793 rad
       pos: 21.5,-16.5
   - uid: 3098
     components:
     - type: Transform
       parent: 2
-      rot: 1.5707963267948966 rad
+      rot: 3.141592653589793 rad
       pos: -20.5,-5.5
   - uid: 4140
     components:
@@ -4823,6 +4857,7 @@ entities:
     components:
     - type: Transform
       parent: 2
+      rot: 1.5707963267948966 rad
       pos: 3.5,-36.5
   - uid: 1955
     components:
@@ -4835,7 +4870,6 @@ entities:
     components:
     - type: Transform
       parent: 2
-      rot: -1.5707963267948966 rad
       pos: 31.5,5.5
 - proto: AirlockHeadOfSecurityLocked
   entities:
@@ -4850,11 +4884,13 @@ entities:
     components:
     - type: Transform
       parent: 2
+      rot: 1.5707963267948966 rad
       pos: -1.5,-12.5
   - uid: 1542
     components:
     - type: Transform
       parent: 2
+      rot: 1.5707963267948966 rad
       pos: -7.5,-11.5
 - proto: AirlockJanitorLocked
   entities:
@@ -4862,11 +4898,13 @@ entities:
     components:
     - type: Transform
       parent: 2
+      rot: 1.5707963267948966 rad
       pos: -15.5,4.5
   - uid: 847
     components:
     - type: Transform
       parent: 2
+      rot: 1.5707963267948966 rad
       pos: -10.5,6.5
 - proto: AirlockKitchenLocked
   entities:
@@ -4874,6 +4912,7 @@ entities:
     components:
     - type: Transform
       parent: 2
+      rot: 1.5707963267948966 rad
       pos: 2.5,-18.5
 - proto: AirlockLawyerLocked
   entities:
@@ -4905,6 +4944,7 @@ entities:
     components:
     - type: Transform
       parent: 2
+      rot: 1.5707963267948966 rad
       pos: 19.5,-28.5
 - proto: AirlockMaintChemLocked
   entities:
@@ -4912,6 +4952,7 @@ entities:
     components:
     - type: Transform
       parent: 2
+      rot: 1.5707963267948966 rad
       pos: -10.5,14.5
 - proto: AirlockMaintChiefMedicalOfficerLocked
   entities:
@@ -4926,6 +4967,7 @@ entities:
     components:
     - type: Transform
       parent: 2
+      rot: 1.5707963267948966 rad
       pos: -5.5,-41.5
   - uid: 1902
     components:
@@ -4978,11 +5020,13 @@ entities:
     components:
     - type: Transform
       parent: 2
+      rot: 1.5707963267948966 rad
       pos: 8.5,-26.5
   - uid: 400
     components:
     - type: Transform
       parent: 2
+      rot: 1.5707963267948966 rad
       pos: -7.5,-27.5
   - uid: 432
     components:
@@ -5008,21 +5052,25 @@ entities:
     components:
     - type: Transform
       parent: 2
+      rot: 1.5707963267948966 rad
       pos: -0.5,-26.5
   - uid: 922
     components:
     - type: Transform
       parent: 2
+      rot: 1.5707963267948966 rad
       pos: -11.5,0.5
   - uid: 1132
     components:
     - type: Transform
       parent: 2
+      rot: 1.5707963267948966 rad
       pos: -15.5,0.5
   - uid: 1468
     components:
     - type: Transform
       parent: 2
+      rot: 1.5707963267948966 rad
       pos: 28.5,-12.5
   - uid: 1476
     components:
@@ -5038,16 +5086,19 @@ entities:
     components:
     - type: Transform
       parent: 2
+      rot: 1.5707963267948966 rad
       pos: -14.5,20.5
   - uid: 1666
     components:
     - type: Transform
       parent: 2
+      rot: 1.5707963267948966 rad
       pos: 12.5,11.5
   - uid: 1838
     components:
     - type: Transform
       parent: 2
+      rot: 1.5707963267948966 rad
       pos: -16.5,-35.5
   - uid: 2200
     components:
@@ -5063,6 +5114,7 @@ entities:
     components:
     - type: Transform
       parent: 2
+      rot: 1.5707963267948966 rad
       pos: 37.5,-7.5
   - uid: 2738
     components:
@@ -5073,6 +5125,7 @@ entities:
     components:
     - type: Transform
       parent: 2
+      rot: 1.5707963267948966 rad
       pos: -18.5,0.5
   - uid: 3100
     components:
@@ -5083,6 +5136,7 @@ entities:
     components:
     - type: Transform
       parent: 2
+      rot: 1.5707963267948966 rad
       pos: -27.5,-1.5
   - uid: 3921
     components:
@@ -5093,11 +5147,13 @@ entities:
     components:
     - type: Transform
       parent: 2
+      rot: 1.5707963267948966 rad
       pos: -21.5,25.5
   - uid: 3980
     components:
     - type: Transform
       parent: 2
+      rot: 1.5707963267948966 rad
       pos: 18.5,-46.5
   - uid: 3998
     components:
@@ -5108,26 +5164,31 @@ entities:
     components:
     - type: Transform
       parent: 2
+      rot: 1.5707963267948966 rad
       pos: 23.5,-43.5
   - uid: 4451
     components:
     - type: Transform
       parent: 2
+      rot: 1.5707963267948966 rad
       pos: 42.5,3.5
   - uid: 4461
     components:
     - type: Transform
       parent: 2
+      rot: 1.5707963267948966 rad
       pos: 20.5,22.5
   - uid: 4485
     components:
     - type: Transform
       parent: 2
+      rot: 1.5707963267948966 rad
       pos: -4.5,29.5
   - uid: 4491
     components:
     - type: Transform
       parent: 2
+      rot: 1.5707963267948966 rad
       pos: 17.5,23.5
   - uid: 4938
     components:
@@ -5158,6 +5219,7 @@ entities:
     components:
     - type: Transform
       parent: 2
+      rot: 1.5707963267948966 rad
       pos: 33.5,17.5
   - uid: 6045
     components:
@@ -5183,21 +5245,25 @@ entities:
     components:
     - type: Transform
       parent: 2
+      rot: 1.5707963267948966 rad
       pos: -30.5,-44.5
   - uid: 6771
     components:
     - type: Transform
       parent: 2
+      rot: 1.5707963267948966 rad
       pos: -16.5,-44.5
   - uid: 7293
     components:
     - type: Transform
       parent: 2
+      rot: 1.5707963267948966 rad
       pos: -30.5,-33.5
   - uid: 7348
     components:
     - type: Transform
       parent: 2
+      rot: 1.5707963267948966 rad
       pos: -12.5,-41.5
   - uid: 7359
     components:
@@ -5218,6 +5284,7 @@ entities:
     components:
     - type: Transform
       parent: 2
+      rot: 1.5707963267948966 rad
       pos: 36.5,13.5
   - uid: 8013
     components:
@@ -5235,11 +5302,13 @@ entities:
     components:
     - type: Transform
       parent: 2
+      rot: 1.5707963267948966 rad
       pos: 12.5,14.5
   - uid: 1027
     components:
     - type: Transform
       parent: 2
+      rot: 1.5707963267948966 rad
       pos: 8.5,23.5
   - uid: 1033
     components:
@@ -5257,6 +5326,7 @@ entities:
     components:
     - type: Transform
       parent: 2
+      rot: 1.5707963267948966 rad
       pos: -31.5,12.5
   - uid: 1258
     components:
@@ -5274,6 +5344,7 @@ entities:
     components:
     - type: Transform
       parent: 2
+      rot: 1.5707963267948966 rad
       pos: 29.5,-27.5
 - proto: AirlockMaintSecLocked
   entities:
@@ -5286,6 +5357,7 @@ entities:
     components:
     - type: Transform
       parent: 2
+      rot: 1.5707963267948966 rad
       pos: 38.5,-3.5
 - proto: AirlockMaintServiceLocked
   entities:
@@ -5293,6 +5365,7 @@ entities:
     components:
     - type: Transform
       parent: 2
+      rot: 1.5707963267948966 rad
       pos: 37.5,-11.5
 - proto: AirlockMaintTheatreLocked
   entities:
@@ -5307,25 +5380,25 @@ entities:
     components:
     - type: Transform
       parent: 2
-      rot: 3.141592653589793 rad
+      rot: 4.71238898038469 rad
       pos: 8.5,14.5
   - uid: 680
     components:
     - type: Transform
       parent: 2
-      rot: 3.141592653589793 rad
+      rot: 4.71238898038469 rad
       pos: 8.5,18.5
   - uid: 16424
     components:
     - type: Transform
       parent: 2
-      rot: 1.5707963267948966 rad
+      rot: 3.141592653589793 rad
       pos: 1.5,14.5
   - uid: 16426
     components:
     - type: Transform
       parent: 2
-      rot: 1.5707963267948966 rad
+      rot: 3.141592653589793 rad
       pos: 0.5,14.5
 - proto: AirlockMedicalLocked
   entities:
@@ -5338,11 +5411,13 @@ entities:
     components:
     - type: Transform
       parent: 2
+      rot: 1.5707963267948966 rad
       pos: 4.5,15.5
   - uid: 1218
     components:
     - type: Transform
       parent: 2
+      rot: 1.5707963267948966 rad
       pos: 12.5,7.5
   - uid: 6289
     components:
@@ -5353,6 +5428,7 @@ entities:
     components:
     - type: Transform
       parent: 2
+      rot: 1.5707963267948966 rad
       pos: -6.5,20.5
 - proto: AirlockMedicalMorgueMaintLocked
   entities:
@@ -5360,6 +5436,7 @@ entities:
     components:
     - type: Transform
       parent: 2
+      rot: 1.5707963267948966 rad
       pos: -11.5,18.5
 - proto: AirlockQuartermasterLocked
   entities:
@@ -5367,6 +5444,7 @@ entities:
     components:
     - type: Transform
       parent: 2
+      rot: 1.5707963267948966 rad
       pos: 38.5,-21.5
 - proto: AirlockResearchDirectorGlassLocked
   entities:
@@ -5374,7 +5452,6 @@ entities:
     components:
     - type: Transform
       parent: 2
-      rot: -1.5707963267948966 rad
       pos: -21.5,16.5
   - uid: 1376
     components:
@@ -5387,6 +5464,7 @@ entities:
     components:
     - type: Transform
       parent: 2
+      rot: 1.5707963267948966 rad
       pos: -23.5,17.5
 - proto: AirlockSalvageLocked
   entities:
@@ -5401,6 +5479,7 @@ entities:
     components:
     - type: Transform
       parent: 2
+      rot: 1.5707963267948966 rad
       pos: -23.5,12.5
   - uid: 1380
     components:
@@ -5418,6 +5497,7 @@ entities:
     components:
     - type: Transform
       parent: 2
+      rot: 1.5707963267948966 rad
       pos: -18.5,14.5
   - uid: 889
     components:
@@ -5428,6 +5508,7 @@ entities:
     components:
     - type: Transform
       parent: 2
+      rot: 1.5707963267948966 rad
       pos: -18.5,13.5
   - uid: 1255
     components:
@@ -5459,6 +5540,7 @@ entities:
     components:
     - type: Transform
       parent: 2
+      rot: 1.5707963267948966 rad
       pos: 34.5,3.5
   - uid: 829
     components:
@@ -5469,6 +5551,7 @@ entities:
     components:
     - type: Transform
       parent: 2
+      rot: 1.5707963267948966 rad
       pos: 33.5,-3.5
   - uid: 2275
     components:
@@ -5481,6 +5564,7 @@ entities:
     components:
     - type: Transform
       parent: 2
+      rot: 1.5707963267948966 rad
       pos: 3.5,5.5
   - uid: 2628
     components:
@@ -5491,6 +5575,7 @@ entities:
     components:
     - type: Transform
       parent: 2
+      rot: 1.5707963267948966 rad
       pos: 8.5,5.5
 - proto: AirlockTheatreLocked
   entities:
@@ -5510,6 +5595,7 @@ entities:
     components:
     - type: Transform
       parent: 2
+      rot: 1.5707963267948966 rad
       pos: -8.5,26.5
 - proto: AirSensor
   entities:
@@ -10559,11 +10645,13 @@ entities:
     components:
     - type: Transform
       parent: 2
+      rot: 1.5707963267948966 rad
       pos: -0.5,4.5
   - uid: 438
     components:
     - type: Transform
       parent: 2
+      rot: 1.5707963267948966 rad
       pos: -0.5,6.5
   - uid: 520
     components:
@@ -10579,16 +10667,19 @@ entities:
     components:
     - type: Transform
       parent: 2
+      rot: 1.5707963267948966 rad
       pos: -33.5,5.5
   - uid: 1188
     components:
     - type: Transform
       parent: 2
+      rot: 1.5707963267948966 rad
       pos: -33.5,4.5
   - uid: 1189
     components:
     - type: Transform
       parent: 2
+      rot: 1.5707963267948966 rad
       pos: -33.5,3.5
   - uid: 1627
     components:
@@ -10605,21 +10696,25 @@ entities:
     components:
     - type: Transform
       parent: 2
+      rot: 1.5707963267948966 rad
       pos: 42.5,-18.5
   - uid: 2666
     components:
     - type: Transform
       parent: 2
+      rot: 1.5707963267948966 rad
       pos: 40.5,-14.5
   - uid: 2675
     components:
     - type: Transform
       parent: 2
+      rot: 1.5707963267948966 rad
       pos: 42.5,-14.5
   - uid: 2676
     components:
     - type: Transform
       parent: 2
+      rot: 1.5707963267948966 rad
       pos: 40.5,-18.5
   - uid: 2996
     components:
@@ -10647,31 +10742,37 @@ entities:
     components:
     - type: Transform
       parent: 2
+      rot: 1.5707963267948966 rad
       pos: -37.5,-15.5
   - uid: 2828
     components:
     - type: Transform
       parent: 2
+      rot: 1.5707963267948966 rad
       pos: -37.5,-16.5
   - uid: 2829
     components:
     - type: Transform
       parent: 2
+      rot: 1.5707963267948966 rad
       pos: -37.5,-17.5
   - uid: 2830
     components:
     - type: Transform
       parent: 2
+      rot: 1.5707963267948966 rad
       pos: -37.5,-5.5
   - uid: 2831
     components:
     - type: Transform
       parent: 2
+      rot: 1.5707963267948966 rad
       pos: -37.5,-6.5
   - uid: 2832
     components:
     - type: Transform
       parent: 2
+      rot: 1.5707963267948966 rad
       pos: -37.5,-7.5
   - uid: 15199
     components:
@@ -51164,6 +51265,7 @@ entities:
     components:
     - type: Transform
       parent: 2
+      rot: 1.5707963267948966 rad
       pos: -16.5,23.5
   - uid: 603
     components:
@@ -51174,6 +51276,7 @@ entities:
     components:
     - type: Transform
       parent: 2
+      rot: 1.5707963267948966 rad
       pos: 11.5,21.5
   - uid: 606
     components:
@@ -51204,11 +51307,13 @@ entities:
     components:
     - type: Transform
       parent: 2
+      rot: 1.5707963267948966 rad
       pos: -29.5,0.5
   - uid: 5831
     components:
     - type: Transform
       parent: 2
+      rot: 1.5707963267948966 rad
       pos: 18.5,-43.5
   - uid: 5832
     components:
@@ -51244,6 +51349,7 @@ entities:
     components:
     - type: Transform
       parent: 2
+      rot: 1.5707963267948966 rad
       pos: 11.5,22.5
   - uid: 11727
     components:
@@ -51465,6 +51571,7 @@ entities:
     components:
     - type: Transform
       parent: 2
+      rot: 1.5707963267948966 rad
       pos: -1.5,-13.5
     - type: DeviceNetwork
       deviceLists:
@@ -51476,6 +51583,7 @@ entities:
     components:
     - type: Transform
       parent: 2
+      rot: 1.5707963267948966 rad
       pos: -1.5,-14.5
     - type: DeviceNetwork
       deviceLists:
@@ -51487,6 +51595,7 @@ entities:
     components:
     - type: Transform
       parent: 2
+      rot: 1.5707963267948966 rad
       pos: -3.5,-23.5
     - type: DeviceNetwork
       deviceLists:
@@ -51506,6 +51615,7 @@ entities:
     components:
     - type: Transform
       parent: 2
+      rot: 1.5707963267948966 rad
       pos: -1.5,-12.5
     - type: DeviceNetwork
       deviceLists:
@@ -51539,6 +51649,7 @@ entities:
     components:
     - type: Transform
       parent: 2
+      rot: 1.5707963267948966 rad
       pos: 9.5,-15.5
     - type: DeviceNetwork
       deviceLists:
@@ -51570,6 +51681,7 @@ entities:
     components:
     - type: Transform
       parent: 2
+      rot: 1.5707963267948966 rad
       pos: -6.5,20.5
     - type: DeviceNetwork
       deviceLists:
@@ -51612,6 +51724,7 @@ entities:
     components:
     - type: Transform
       parent: 2
+      rot: 1.5707963267948966 rad
       pos: -2.5,17.5
     - type: DeviceNetwork
       deviceLists:
@@ -51656,6 +51769,7 @@ entities:
     components:
     - type: Transform
       parent: 2
+      rot: 1.5707963267948966 rad
       pos: 8.5,10.5
     - type: DeviceNetwork
       deviceLists:
@@ -51667,6 +51781,7 @@ entities:
     components:
     - type: Transform
       parent: 2
+      rot: 1.5707963267948966 rad
       pos: 8.5,9.5
     - type: DeviceNetwork
       deviceLists:
@@ -51688,6 +51803,7 @@ entities:
     components:
     - type: Transform
       parent: 2
+      rot: 1.5707963267948966 rad
       pos: -0.5,1.5
     - type: DeviceNetwork
       deviceLists:
@@ -51699,6 +51815,7 @@ entities:
     components:
     - type: Transform
       parent: 2
+      rot: 1.5707963267948966 rad
       pos: 2.5,0.5
     - type: DeviceNetwork
       deviceLists:
@@ -51720,6 +51837,7 @@ entities:
     components:
     - type: Transform
       parent: 2
+      rot: 1.5707963267948966 rad
       pos: -0.5,0.5
     - type: DeviceNetwork
       deviceLists:
@@ -51731,6 +51849,7 @@ entities:
     components:
     - type: Transform
       parent: 2
+      rot: 1.5707963267948966 rad
       pos: 2.5,1.5
     - type: DeviceNetwork
       deviceLists:
@@ -51742,6 +51861,7 @@ entities:
     components:
     - type: Transform
       parent: 2
+      rot: 1.5707963267948966 rad
       pos: 9.5,-16.5
     - type: DeviceNetwork
       deviceLists:
@@ -51761,6 +51881,7 @@ entities:
     components:
     - type: Transform
       parent: 2
+      rot: 1.5707963267948966 rad
       pos: -10.5,-6.5
     - type: DeviceNetwork
       deviceLists:
@@ -51772,6 +51893,7 @@ entities:
     components:
     - type: Transform
       parent: 2
+      rot: 1.5707963267948966 rad
       pos: -10.5,-7.5
     - type: DeviceNetwork
       deviceLists:
@@ -51783,6 +51905,7 @@ entities:
     components:
     - type: Transform
       parent: 2
+      rot: 1.5707963267948966 rad
       pos: -10.5,-8.5
     - type: DeviceNetwork
       deviceLists:
@@ -51926,6 +52049,7 @@ entities:
     components:
     - type: Transform
       parent: 2
+      rot: 1.5707963267948966 rad
       pos: -13.5,-31.5
     - type: DeviceNetwork
       deviceLists:
@@ -51937,6 +52061,7 @@ entities:
     components:
     - type: Transform
       parent: 2
+      rot: 1.5707963267948966 rad
       pos: -13.5,-32.5
     - type: DeviceNetwork
       deviceLists:
@@ -51948,6 +52073,7 @@ entities:
     components:
     - type: Transform
       parent: 2
+      rot: 1.5707963267948966 rad
       pos: 8.5,18.5
     - type: DeviceNetwork
       deviceLists:
@@ -51958,6 +52084,7 @@ entities:
     components:
     - type: Transform
       parent: 2
+      rot: 1.5707963267948966 rad
       pos: 8.5,14.5
     - type: DeviceNetwork
       deviceLists:
@@ -51967,6 +52094,7 @@ entities:
     components:
     - type: Transform
       parent: 2
+      rot: 1.5707963267948966 rad
       pos: 4.5,15.5
     - type: DeviceNetwork
       deviceLists:
@@ -51977,6 +52105,7 @@ entities:
     components:
     - type: Transform
       parent: 2
+      rot: 1.5707963267948966 rad
       pos: 4.5,13.5
     - type: DeviceNetwork
       deviceLists:
@@ -51987,6 +52116,7 @@ entities:
     components:
     - type: Transform
       parent: 2
+      rot: 1.5707963267948966 rad
       pos: 4.5,12.5
     - type: DeviceNetwork
       deviceLists:
@@ -52007,6 +52137,7 @@ entities:
     components:
     - type: Transform
       parent: 2
+      rot: 1.5707963267948966 rad
       pos: 12.5,18.5
     - type: DeviceNetwork
       deviceLists:
@@ -52038,6 +52169,7 @@ entities:
     components:
     - type: Transform
       parent: 2
+      rot: 1.5707963267948966 rad
       pos: 12.5,-17.5
     - type: DeviceNetwork
       deviceLists:
@@ -52049,6 +52181,7 @@ entities:
     components:
     - type: Transform
       parent: 2
+      rot: 1.5707963267948966 rad
       pos: 12.5,-18.5
     - type: DeviceNetwork
       deviceLists:
@@ -52122,6 +52255,7 @@ entities:
     components:
     - type: Transform
       parent: 2
+      rot: 1.5707963267948966 rad
       pos: -18.5,14.5
     - type: DeviceNetwork
       deviceLists:
@@ -52131,6 +52265,7 @@ entities:
     components:
     - type: Transform
       parent: 2
+      rot: 1.5707963267948966 rad
       pos: -18.5,13.5
     - type: DeviceNetwork
       deviceLists:
@@ -52149,6 +52284,7 @@ entities:
     components:
     - type: Transform
       parent: 2
+      rot: 1.5707963267948966 rad
       pos: -23.5,17.5
     - type: DeviceNetwork
       deviceLists:
@@ -52187,6 +52323,7 @@ entities:
     components:
     - type: Transform
       parent: 2
+      rot: 1.5707963267948966 rad
       pos: -23.5,12.5
     - type: DeviceNetwork
       deviceLists:
@@ -52205,6 +52342,7 @@ entities:
     components:
     - type: Transform
       parent: 2
+      rot: 1.5707963267948966 rad
       pos: -10.5,6.5
     - type: DeviceNetwork
       deviceLists:
@@ -52215,6 +52353,7 @@ entities:
     components:
     - type: Transform
       parent: 2
+      rot: 1.5707963267948966 rad
       pos: -15.5,4.5
     - type: DeviceNetwork
       deviceLists:
@@ -52225,6 +52364,7 @@ entities:
     components:
     - type: Transform
       parent: 2
+      rot: 1.5707963267948966 rad
       pos: -10.5,3.5
     - type: DeviceNetwork
       deviceLists:
@@ -52235,6 +52375,7 @@ entities:
     components:
     - type: Transform
       parent: 2
+      rot: 1.5707963267948966 rad
       pos: -10.5,4.5
     - type: DeviceNetwork
       deviceLists:
@@ -52277,6 +52418,7 @@ entities:
     components:
     - type: Transform
       parent: 2
+      rot: 1.5707963267948966 rad
       pos: -15.5,-10.5
     - type: DeviceNetwork
       deviceLists:
@@ -52297,6 +52439,7 @@ entities:
     components:
     - type: Transform
       parent: 2
+      rot: 1.5707963267948966 rad
       pos: -15.5,-14.5
     - type: DeviceNetwork
       deviceLists:
@@ -52307,6 +52450,7 @@ entities:
     components:
     - type: Transform
       parent: 2
+      rot: 1.5707963267948966 rad
       pos: -21.5,-14.5
     - type: DeviceNetwork
       deviceLists:
@@ -52317,6 +52461,7 @@ entities:
     components:
     - type: Transform
       parent: 2
+      rot: 1.5707963267948966 rad
       pos: -21.5,-10.5
     - type: DeviceNetwork
       deviceLists:
@@ -52337,6 +52482,7 @@ entities:
     components:
     - type: Transform
       parent: 2
+      rot: 1.5707963267948966 rad
       pos: -24.5,-11.5
     - type: DeviceNetwork
       deviceLists:
@@ -52355,6 +52501,7 @@ entities:
     components:
     - type: Transform
       parent: 2
+      rot: 1.5707963267948966 rad
       pos: -30.5,-6.5
     - type: DeviceNetwork
       deviceLists:
@@ -52364,6 +52511,7 @@ entities:
     components:
     - type: Transform
       parent: 2
+      rot: 1.5707963267948966 rad
       pos: -34.5,-6.5
     - type: DeviceNetwork
       deviceLists:
@@ -52391,6 +52539,7 @@ entities:
     components:
     - type: Transform
       parent: 2
+      rot: 1.5707963267948966 rad
       pos: -34.5,-16.5
     - type: DeviceNetwork
       deviceLists:
@@ -52400,6 +52549,7 @@ entities:
     components:
     - type: Transform
       parent: 2
+      rot: 1.5707963267948966 rad
       pos: -30.5,-15.5
     - type: DeviceNetwork
       deviceLists:
@@ -52410,6 +52560,7 @@ entities:
     components:
     - type: Transform
       parent: 2
+      rot: 1.5707963267948966 rad
       pos: -30.5,-16.5
     - type: DeviceNetwork
       deviceLists:
@@ -52452,6 +52603,7 @@ entities:
     components:
     - type: Transform
       parent: 2
+      rot: 1.5707963267948966 rad
       pos: -25.5,-23.5
     - type: DeviceNetwork
       deviceLists:
@@ -52463,6 +52615,7 @@ entities:
     components:
     - type: Transform
       parent: 2
+      rot: 1.5707963267948966 rad
       pos: -30.5,-11.5
     - type: DeviceNetwork
       deviceLists:
@@ -52502,6 +52655,7 @@ entities:
     components:
     - type: Transform
       parent: 2
+      rot: 1.5707963267948966 rad
       pos: -7.5,-11.5
     - type: DeviceNetwork
       deviceLists:
@@ -52513,6 +52667,7 @@ entities:
     components:
     - type: Transform
       parent: 2
+      rot: 1.5707963267948966 rad
       pos: 2.5,-18.5
     - type: DeviceNetwork
       deviceLists:
@@ -52552,6 +52707,7 @@ entities:
     components:
     - type: Transform
       parent: 2
+      rot: 1.5707963267948966 rad
       pos: 12.5,-14.5
     - type: DeviceNetwork
       deviceLists:
@@ -52562,6 +52718,7 @@ entities:
     components:
     - type: Transform
       parent: 2
+      rot: 1.5707963267948966 rad
       pos: 15.5,-6.5
     - type: DeviceNetwork
       deviceLists:
@@ -52573,6 +52730,7 @@ entities:
     components:
     - type: Transform
       parent: 2
+      rot: 1.5707963267948966 rad
       pos: 15.5,-7.5
     - type: DeviceNetwork
       deviceLists:
@@ -52584,6 +52742,7 @@ entities:
     components:
     - type: Transform
       parent: 2
+      rot: 1.5707963267948966 rad
       pos: 15.5,-8.5
     - type: DeviceNetwork
       deviceLists:
@@ -52635,6 +52794,7 @@ entities:
     components:
     - type: Transform
       parent: 2
+      rot: 1.5707963267948966 rad
       pos: 33.5,-3.5
     - type: DeviceNetwork
       deviceLists:
@@ -52662,6 +52822,7 @@ entities:
     components:
     - type: Transform
       parent: 2
+      rot: 1.5707963267948966 rad
       pos: 29.5,-3.5
     - type: DeviceNetwork
       deviceLists:
@@ -52689,6 +52850,7 @@ entities:
     components:
     - type: Transform
       parent: 2
+      rot: 1.5707963267948966 rad
       pos: 24.5,-1.5
     - type: DeviceNetwork
       deviceLists:
@@ -52753,6 +52915,7 @@ entities:
     components:
     - type: Transform
       parent: 2
+      rot: 1.5707963267948966 rad
       pos: 30.5,3.5
     - type: DeviceNetwork
       deviceLists:
@@ -52780,6 +52943,7 @@ entities:
     components:
     - type: Transform
       parent: 2
+      rot: 1.5707963267948966 rad
       pos: 34.5,3.5
     - type: DeviceNetwork
       deviceLists:
@@ -52798,6 +52962,7 @@ entities:
     components:
     - type: Transform
       parent: 2
+      rot: 1.5707963267948966 rad
       pos: 12.5,7.5
     - type: DeviceNetwork
       deviceLists:
@@ -52808,6 +52973,7 @@ entities:
     components:
     - type: Transform
       parent: 2
+      rot: 1.5707963267948966 rad
       pos: 8.5,5.5
     - type: DeviceNetwork
       deviceLists:
@@ -52840,6 +53006,7 @@ entities:
     components:
     - type: Transform
       parent: 2
+      rot: 1.5707963267948966 rad
       pos: -13.5,10.5
     - type: DeviceNetwork
       deviceLists:
@@ -52851,6 +53018,7 @@ entities:
     components:
     - type: Transform
       parent: 2
+      rot: 1.5707963267948966 rad
       pos: -13.5,9.5
     - type: DeviceNetwork
       deviceLists:
@@ -52862,6 +53030,7 @@ entities:
     components:
     - type: Transform
       parent: 2
+      rot: 1.5707963267948966 rad
       pos: 23.5,-21.5
     - type: DeviceNetwork
       deviceLists:
@@ -52872,6 +53041,7 @@ entities:
     components:
     - type: Transform
       parent: 2
+      rot: 1.5707963267948966 rad
       pos: 23.5,-18.5
     - type: DeviceNetwork
       deviceLists:
@@ -52882,6 +53052,7 @@ entities:
     components:
     - type: Transform
       parent: 2
+      rot: 1.5707963267948966 rad
       pos: 23.5,-19.5
     - type: DeviceNetwork
       deviceLists:
@@ -52892,6 +53063,7 @@ entities:
     components:
     - type: Transform
       parent: 2
+      rot: 1.5707963267948966 rad
       pos: 28.5,-21.5
     - type: DeviceNetwork
       deviceLists:
@@ -52902,6 +53074,7 @@ entities:
     components:
     - type: Transform
       parent: 2
+      rot: 1.5707963267948966 rad
       pos: 28.5,-18.5
     - type: DeviceNetwork
       deviceLists:
@@ -52922,6 +53095,7 @@ entities:
     components:
     - type: Transform
       parent: 2
+      rot: 1.5707963267948966 rad
       pos: 38.5,-21.5
     - type: DeviceNetwork
       deviceLists:
@@ -52940,6 +53114,7 @@ entities:
     components:
     - type: Transform
       parent: 2
+      rot: 1.5707963267948966 rad
       pos: 15.5,-28.5
     - type: DeviceNetwork
       deviceLists:
@@ -52969,6 +53144,7 @@ entities:
     components:
     - type: Transform
       parent: 2
+      rot: 1.5707963267948966 rad
       pos: 3.5,5.5
     - type: DeviceNetwork
       deviceLists:
@@ -52999,6 +53175,7 @@ entities:
     components:
     - type: Transform
       parent: 2
+      rot: 1.5707963267948966 rad
       pos: 15.5,-32.5
     - type: DeviceNetwork
       deviceLists:
@@ -53010,6 +53187,7 @@ entities:
     components:
     - type: Transform
       parent: 2
+      rot: 1.5707963267948966 rad
       pos: 15.5,-31.5
     - type: DeviceNetwork
       deviceLists:
@@ -53065,6 +53243,7 @@ entities:
     components:
     - type: Transform
       parent: 2
+      rot: 1.5707963267948966 rad
       pos: 43.5,-36.5
     - type: DeviceNetwork
       deviceLists:
@@ -53131,6 +53310,7 @@ entities:
     components:
     - type: Transform
       parent: 2
+      rot: 1.5707963267948966 rad
       pos: 43.5,-44.5
     - type: DeviceNetwork
       deviceLists:
@@ -53141,6 +53321,7 @@ entities:
     components:
     - type: Transform
       parent: 2
+      rot: 1.5707963267948966 rad
       pos: 7.5,-43.5
     - type: DeviceNetwork
       deviceLists:
@@ -53161,6 +53342,7 @@ entities:
     components:
     - type: Transform
       parent: 2
+      rot: 1.5707963267948966 rad
       pos: -1.5,-36.5
     - type: DeviceNetwork
       deviceLists:
@@ -53190,6 +53372,7 @@ entities:
     components:
     - type: Transform
       parent: 2
+      rot: 1.5707963267948966 rad
       pos: 3.5,-36.5
     - type: DeviceNetwork
       deviceLists:
@@ -53239,6 +53422,7 @@ entities:
     components:
     - type: Transform
       parent: 2
+      rot: 1.5707963267948966 rad
       pos: -18.5,9.5
     - type: DeviceNetwork
       deviceLists:
@@ -53249,6 +53433,7 @@ entities:
     components:
     - type: Transform
       parent: 2
+      rot: 1.5707963267948966 rad
       pos: -18.5,10.5
     - type: DeviceNetwork
       deviceLists:
@@ -53268,6 +53453,7 @@ entities:
     components:
     - type: Transform
       parent: 2
+      rot: 1.5707963267948966 rad
       pos: -35.5,-0.5
     - type: DeviceNetwork
       deviceLists:
@@ -53276,6 +53462,7 @@ entities:
     components:
     - type: Transform
       parent: 2
+      rot: 1.5707963267948966 rad
       pos: -39.5,-0.5
     - type: DeviceNetwork
       deviceLists:
@@ -53285,6 +53472,7 @@ entities:
     components:
     - type: Transform
       parent: 2
+      rot: 1.5707963267948966 rad
       pos: -7.5,10.5
     - type: DeviceNetwork
       deviceLists:
@@ -53296,6 +53484,7 @@ entities:
     components:
     - type: Transform
       parent: 2
+      rot: 1.5707963267948966 rad
       pos: -7.5,9.5
     - type: DeviceNetwork
       deviceLists:
@@ -53307,6 +53496,7 @@ entities:
     components:
     - type: Transform
       parent: 2
+      rot: 1.5707963267948966 rad
       pos: -39.5,19.5
     - type: DeviceNetwork
       deviceLists:
@@ -53323,6 +53513,7 @@ entities:
     components:
     - type: Transform
       parent: 2
+      rot: 1.5707963267948966 rad
       pos: -43.5,15.5
     - type: DeviceNetwork
       deviceLists:
@@ -53331,6 +53522,7 @@ entities:
     components:
     - type: Transform
       parent: 2
+      rot: 1.5707963267948966 rad
       pos: -45.5,19.5
     - type: DeviceNetwork
       deviceLists:
@@ -80251,6 +80443,7 @@ entities:
     components:
     - type: Transform
       parent: 2
+      rot: 1.5707963267948966 rad
       pos: -49.5,15.5
   - uid: 4161
     components:
@@ -83654,26 +83847,31 @@ entities:
     components:
     - type: Transform
       parent: 2
+      rot: 1.5707963267948966 rad
       pos: 42.5,-14.5
   - uid: 2553
     components:
     - type: Transform
       parent: 2
+      rot: 1.5707963267948966 rad
       pos: 40.5,-18.5
   - uid: 2557
     components:
     - type: Transform
       parent: 2
+      rot: 1.5707963267948966 rad
       pos: 42.5,-18.5
   - uid: 2561
     components:
     - type: Transform
       parent: 2
+      rot: 1.5707963267948966 rad
       pos: 40.5,-14.5
   - uid: 3042
     components:
     - type: Transform
       parent: 2
+      rot: 1.5707963267948966 rad
       pos: 23.5,-20.5
   - uid: 3882
     components:
@@ -89353,17 +89551,18 @@ entities:
     components:
     - type: Transform
       parent: 2
-      rot: -1.5707963267948966 rad
       pos: 7.5,-13.5
   - uid: 3517
     components:
     - type: Transform
       parent: 2
+      rot: 1.5707963267948966 rad
       pos: -2.5,12.5
   - uid: 7462
     components:
     - type: Transform
       parent: 2
+      rot: 1.5707963267948966 rad
       pos: -2.5,13.5
   - uid: 9166
     components:
@@ -89416,6 +89615,7 @@ entities:
     components:
     - type: Transform
       parent: 2
+      rot: 1.5707963267948966 rad
       pos: -2.5,16.5
   - uid: 16148
     components:
@@ -107952,6 +108152,7 @@ entities:
     components:
     - type: Transform
       parent: 2
+      rot: 1.5707963267948966 rad
       pos: 17.5,-23.5
   - uid: 2184
     components:
