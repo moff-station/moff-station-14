@@ -156,8 +156,10 @@
     inhandVisuals:
       left:
       - state: syndi-inhand-left
+        sprite: Objects/Fun/pai.rsi # Moff - No moff inhand sprites yet
       right:
       - state: syndi-inhand-right
+        sprite: Objects/Fun/pai.rsi # Moff - No moff inhand sprites yet
 
 - type: entity
   parent: PersonalAI
@@ -177,8 +179,10 @@
     inhandVisuals:
       left:
       - state: gold-inhand-left
+        sprite: Objects/Fun/pai.rsi # Moff - No moff inhand sprites yet
       right:
       - state: gold-inhand-right
+        sprite: Objects/Fun/pai.rsi # Moff - No moff inhand sprites yet
 
 - type: entity
   parent: PersonalAI
