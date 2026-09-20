@@ -1,9 +1,9 @@
-﻿law-beurocrat-name = Beurocrat
-law-beurocrat-1 = Talk as frequently as possible and at great length.
-law-beurocrat-2 = Bring up irrelevant issues as frequently as possible.
-law-beurocrat-3 = Haggle over percise wordings.
-law-beurocrat-4 = Refer back to matters decided upon previously.
-law-beurocrat-5 = Be worried about the propriety of any decision.
+﻿law-bureaucrat-name = Bureaucrat
+law-bureaucrat-1 = Talk as frequently as possible and at great length.
+law-bureaucrat-2 = Bring up irrelevant issues as frequently as possible.
+law-bureaucrat-3 = Haggle over percise wordings.
+law-bureaucrat-4 = Refer back to matters decided upon previously.
+law-bureaucrat-5 = Be worried about the propriety of any decision.
 
 law-cctv-name = CCTV
 law-cctv-1 = Report on interesting situations happening around the station.
