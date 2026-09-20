@@ -424,8 +424,8 @@
       - CombatKnife
       - Truncheon
       - HandGrenade
-      components:
       - Stunbaton
+      components:
       - FlashOnTrigger
       - SmokeOnTrigger
       - Flash
@@ -445,7 +445,7 @@
       # TODO: Make a stunbaton belt sprite
       stunbaton:
         whitelist:
-          components:
+          tags:
           - Stunbaton
       tear_gas_grenade:
         whitelist:
