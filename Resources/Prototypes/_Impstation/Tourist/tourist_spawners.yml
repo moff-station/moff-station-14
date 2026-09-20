@@ -8,7 +8,7 @@
   - type: Sprite
     layers:
       - state: red
-      - sprite: Clothing/Uniforms/Jumpsuit/hawaired.rsi
+      - sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/hawaired.rsi # Moffstation
         state: icon
 
 - type: entity
@@ -29,7 +29,7 @@
   - type: Sprite
     layers:
       - state: red
-      - sprite: Clothing/Uniforms/Jumpsuit/hawaired.rsi
+      - sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/hawaired.rsi # Moffstation
         state: icon
 
 - type: entity
@@ -51,7 +51,7 @@
   - type: Sprite
     layers:
       - state: red
-      - sprite: Clothing/Uniforms/Jumpsuit/hawaired.rsi
+      - sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/hawaired.rsi # Moffstation
         state: icon
 
 - type: entity
@@ -59,7 +59,7 @@
   name: tourist ghost role
   components:
   - type: Sprite
-    sprite: Clothing/Uniforms/Jumpsuit/hawaired.rsi
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/hawaired.rsi # Moffstation
     state: icon
   - type: RandomHumanoidSpawner
     settings: Tourist

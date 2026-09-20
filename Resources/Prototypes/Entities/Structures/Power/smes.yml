@@ -90,8 +90,6 @@
       requirePower: true
       highVoltageNode: input
       mediumVoltageNode: output
-    - type: Damageable
-      damageModifierSet: StructuralMetallicStrong
     - type: Destructible
       thresholds:
       - trigger: !type:DamageTrigger

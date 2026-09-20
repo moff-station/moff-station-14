@@ -1,10 +1,10 @@
 meta:
   format: 7
   category: Grid
-  engineVersion: 288.0.1
+  engineVersion: 288.1.0
   forkId: ""
   forkVersion: ""
-  time: 09/14/2026 18:38:24
+  time: 09/16/2026 22:51:22
   entityCount: 668
 maps: []
 grids:
@@ -183,6 +183,7 @@ entities:
     components:
     - type: Transform
       parent: 1
+      rot: 1.5707963267948966 rad
       pos: 12.5,-9.5
 - proto: AirlockCommandGlassLocked
   entities:
@@ -243,7 +244,7 @@ entities:
     components:
     - type: Transform
       parent: 1
-      rot: 1.5707963267948966 rad
+      rot: 3.141592653589793 rad
       pos: 13.5,-13.5
 - proto: AirlockSecurityGlassLocked
   entities:
@@ -251,7 +252,7 @@ entities:
     components:
     - type: Transform
       parent: 1
-      rot: 1.5707963267948966 rad
+      rot: 3.141592653589793 rad
       pos: 5.5,-13.5
 - proto: AirSensor
   entities:
@@ -1955,37 +1956,37 @@ entities:
     components:
     - type: Transform
       parent: 1
-      rot: 1.5707963267948966 rad
+      rot: 3.141592653589793 rad
       pos: 10.5,-10.5
   - uid: 276
     components:
     - type: Transform
       parent: 1
-      rot: 1.5707963267948966 rad
+      rot: 3.141592653589793 rad
       pos: 10.5,-7.5
   - uid: 277
     components:
     - type: Transform
       parent: 1
-      rot: 1.5707963267948966 rad
+      rot: 3.141592653589793 rad
       pos: 9.5,-10.5
   - uid: 278
     components:
     - type: Transform
       parent: 1
-      rot: 1.5707963267948966 rad
+      rot: 3.141592653589793 rad
       pos: 8.5,-10.5
   - uid: 279
     components:
     - type: Transform
       parent: 1
-      rot: 1.5707963267948966 rad
+      rot: 3.141592653589793 rad
       pos: 8.5,-7.5
   - uid: 280
     components:
     - type: Transform
       parent: 1
-      rot: 1.5707963267948966 rad
+      rot: 3.141592653589793 rad
       pos: 9.5,-7.5
 - proto: FlippoLighter
   entities:

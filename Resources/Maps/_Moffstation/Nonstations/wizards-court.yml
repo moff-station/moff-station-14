@@ -1,10 +1,10 @@
 meta:
   format: 7
   category: Map
-  engineVersion: 288.0.1
+  engineVersion: 288.1.0
   forkId: ""
   forkVersion: ""
-  time: 09/14/2026 18:39:42
+  time: 09/16/2026 22:51:58
   entityCount: 1580
 maps:
 - 411
@@ -5073,16 +5073,19 @@ entities:
     components:
     - type: Transform
       parent: 1
+      rot: 1.5707963267948966 rad
       pos: 5.5,8.5
   - uid: 356
     components:
     - type: Transform
       parent: 1
+      rot: 1.5707963267948966 rad
       pos: -4.5,8.5
   - uid: 1050
     components:
     - type: Transform
       parent: 1
+      rot: 1.5707963267948966 rad
       pos: -0.5,-24.5
   - uid: 1217
     components:
@@ -5103,11 +5106,13 @@ entities:
     components:
     - type: Transform
       parent: 1
+      rot: 1.5707963267948966 rad
       pos: 1.5,-26.5
   - uid: 1278
     components:
     - type: Transform
       parent: 1
+      rot: 1.5707963267948966 rad
       pos: 1.5,-23.5
   - uid: 1480
     components:
