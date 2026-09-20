@@ -7,7 +7,7 @@
   - type: Edible
     utensil: Spoon
   - type: Sprite
-    sprite: Objects/Tools/bucket_wood.rsi
+    sprite: _Moffstation/Objects/Tools/bucket_wood.rsi
   - type: Item
     size: Large
     shape:
@@ -16,7 +16,7 @@
     solution:
       maxVol: 180 # 1.5 litres
   - type: Clothing
-    sprite: Objects/Tools/bucket_wood.rsi
+    sprite: _Moffstation/Objects/Tools/bucket_wood.rsi
     slots:
     - HEAD
     quickEquip: false
