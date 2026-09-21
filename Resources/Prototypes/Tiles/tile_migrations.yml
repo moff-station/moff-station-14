@@ -126,13 +126,15 @@
   id: FloorWhiteOffset
   target: FloorWhite
 
-- type: tileAlias
-  id: FloorUraniumMarble
-  target: FloorDarkMarble
+# Moff start
+# - type: tileAlias
+#   id: FloorUraniumMarble
+#   target: FloorDarkMarble
 
-- type: tileAlias
-  id: FloorPlasmaMarble
-  target: FloorWhiteMarble # Moff
+# - type: tileAlias
+#   id: FloorPlasmaMarble
+#   target: FloorWhiteMarble 
+# Moff end
 
 - type: tileAlias
   id: FloorEighties
