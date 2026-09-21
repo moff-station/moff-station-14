@@ -1,13 +1,14 @@
+# Player: moomoobeef - Character: Tom Carter
+
 - type: entity
-  name: battered pen
   parent: Pen
   id: PersonalItemTomPen
+  name: battered pen
   description: A fancy and expensive pen that has seen the wrong end of a scuffle and subsequent repair too many times.
   suffix: PersonalItem
   components:
   - type: Sprite
-    sprite: _Moffstation/PersonalItems/Items/Moomoobeef/Tom_Carter/battered_pen.rsi
-    state: battered_pen
+    sprite: &sprite _Moffstation/PersonalItems/Items/Moomoobeef/Tom_Carter/battered_pen.rsi
+    state: icon
   - type: Item
-    sprite: _Moffstation/PersonalItems/Items/Moomoobeef/Tom_Carter/battered_pen.rsi
-    heldPrefix: battered_pen
+    sprite: *sprite
