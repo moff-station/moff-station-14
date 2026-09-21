@@ -213,7 +213,7 @@ public sealed partial class SharedLawProgrammerSystem : EntitySystem
 
     private Entity<SiliconLawProviderComponent>? GetInsertedLawProvider(Entity<LawProgrammerComponent> entity)
     {
-        return _itemSlots.GetItemOrNull(entity, entity.Comp.LawBoardSlot) is { } board &&
+        return _itemSlots.GetItemOrNull(entity.Owner, entity.Comp.LawBoardSlot) is { } board &&
                CompOrNull<SiliconLawProviderComponent>(board) is { } laws
             ? (board, laws)
             : null;
