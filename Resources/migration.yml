@@ -1213,12 +1213,9 @@ UraniumWindoorSecureNukeopLocked: UraniumWindoorNukeopLocked
 WindoorAssemblySecure: WindoorAssembly
 WindoorAssemblySecurePlasma: WindoorAssemblyPlasma
 WindoorAssemblySecureUranium: WindoorAssemblyUranium
+LightReplacer: LightReplacerFilled
 
 WindoorSecureFreelanceLocked: WindoorFreelanceLocked # Moff
-
-# Moff - we are reversing this because we dont have it yet
-#LightReplacer: LightReplacerFilled
-LightReplacerFilled: LightReplacer
 
 #2026-08-14
 MeteorRock: AsteroidRock
@@ -1235,9 +1232,6 @@ StatueBananiumClown: StatueOrnateClown
 #2026-08-18
 DrinkNeurotoxinGlass: null
 
-#2026-08-19
-JanitorServiceLight: null
-
 # Moff - 2026-08-18 - Ironsands namespace change
 FloorTileItemIronsandConcrete: FloorTileItemMoffIronsandConcrete
 FloorTileItemIronsandConcreteMono: FloorTileItemMoffIronsandConcreteMono
@@ -1250,3 +1244,6 @@ WallIronsandCobblebrick: WallMoffIronsandCobblebrick
 IronsandStep: MoffIronsandStep
 IronsandStepConvexCorner: MoffIronsandStepConvexCorner
 IronsandStepConcaveCorner: MoffIronsandStepConcaveCorner
+
+#2026-08-19
+JanitorServiceLight: null
