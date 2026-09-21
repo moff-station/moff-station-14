@@ -174,17 +174,19 @@
   id: FloorShowroom
   target: FloorSteel
 
-- type: tileAlias
-  id: FloorSteelSlatsContinuous
-  target: FloorSteel
+# Moff Start - Continuous slats namespace change
+# - type: tileAlias
+#   id: FloorSteelSlatsContinuous
+#   target: FloorSteel
 
-- type: tileAlias
-  id: FloorDarkSlatsContinuous
-  target: FloorDark
+# - type: tileAlias
+#   id: FloorDarkSlatsContinuous
+#   target: FloorDark
 
-- type: tileAlias
-  id: FloorWhiteSlatsContinuous
-  target: FloorWhite
+# - type: tileAlias
+#   id: FloorWhiteSlatsContinuous
+#   target: FloorWhite
+# # Moff End
 
 - type: tileAlias
   id: FloorMono
