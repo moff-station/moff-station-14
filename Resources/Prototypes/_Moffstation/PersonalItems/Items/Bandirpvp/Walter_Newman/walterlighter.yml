@@ -1,0 +1,50 @@
+# Player: Bandirpvp - Character: Walter Newman
+
+- type: entity
+  parent: FlippoLighter
+  name: vintage interdyne flippo
+  id: PersonalItemWalterLighter
+  description: A rugged metal lighter, lasts quite a while.
+  suffix: PersonalItem
+  components:
+  - type: Sprite
+    sprite: _Moffstation/PersonalItems/Items/Bandirpvp/Walter_Newman/walterlighter.rsi
+    layers:
+    - state: closed
+      map: ["base"]
+    - state: top
+      map: ["top"]
+      visible: false
+    - state: open
+      map: ["open"]
+      visible: false
+    - state: flame
+      map: ["flame"]
+      visible: false
+      shader: unshaded
+  - type: Item
+    sprite: _Moffstation/PersonalItems/Items/Bandirpvp/Walter_Newman/walterlighter.rsi
+
+  - type: ToggleableVisuals
+    spriteLayer: flame
+    inhandVisuals:
+      left:
+      - state: inhand-left-lit
+        shader: unshaded
+      right:
+      - state: inhand-right-lit
+        shader: unshaded
+  - type: PointLight
+    color: plum
+  - type: DetailExaminable
+    content: An old well-worn Interdyne Flippo from the early 2200s featuring a golden logo on a black body. Initials "W N" are engraved at the bottom of it.
+
+- type: loadout
+  id: PersonalItemWalterLighter
+  storage:
+    back:
+    - PersonalItemWalterLighter
+  effects:
+  - !type:PersonalItemLoadoutEffect
+    character:
+    - Walter Newman

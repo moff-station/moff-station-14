@@ -20,10 +20,7 @@
   - type: MachineBoard
     prototype: AutolatheHyperConvection
     stackRequirements:
-      # Moffstation - Begin - Revert machine parts
-      Manipulator: 1 # 4 on upstream, 3 moved to matter bins
-      MatterBin: 3
-      # Moffstation - End
+      MatterBin: 3 #moffstation - Revert machine parts
       Glass: 1
     tagRequirements:
       Igniter:
@@ -144,7 +141,7 @@
   - type: MachineBoard
     prototype: CircuitImprinter
     stackRequirements:
-      MatterBin: 1 #moffstation - Revert machine parts
+      MatterBin: 2 #moffstation - Revert machine parts
       Manipulator: 1 #moffstation - Revert machine parts
     tagRequirements:
       GlassBeaker:
@@ -593,7 +590,7 @@
       stackRequirements:
         Capacitor: 1 #moffstation - Revert machine parts
         Glass: 1
-        Steel: 3
+        Plastic: 3
       tagRequirements:
         GlassBeaker:
           amount: 2
@@ -727,7 +724,7 @@
       prototype: PowerCageRecharger
       stackRequirements:
         Capacitor: 4 #moffstation - Revert machine parts
-        Steel: 5
+        Plasteel: 5
         Cable: 10
     - type: PhysicalComposition
       materialComposition:
@@ -891,7 +888,7 @@
     prototype: Thruster
     stackRequirements:
       Capacitor: 4 #moffstation - Revert machine parts
-      Steel: 5
+      Plasteel: 5
 
 - type: entity
   id: GyroscopeMachineCircuitboard
@@ -1160,6 +1157,7 @@
         Capacitor: 2 #moffstation - Revert machine parts
         CableHV: 5
         Glass: 2
+        Plasteel: 2
 
 - type: entity
   id: SurveillanceCameraRouterCircuitboard
@@ -1269,7 +1267,7 @@
     - type: MachineBoard
       prototype: BoozeDispenserEmpty
       stackRequirements:
-        Steel: 5
+        Plastic: 5
       tagRequirements:
           GlassBeaker:
             amount: 1
@@ -1301,7 +1299,7 @@
     prototype: CargoMailTeleporter
     stackRequirements:
       Capacitor: 2 #moffstation - Revert machine parts
-      Steel: 5
+      Plasteel: 5
 
 - type: entity
   id: SodaDispenserMachineCircuitboard
@@ -1314,7 +1312,7 @@
     - type: MachineBoard
       prototype: SodaDispenserEmpty
       stackRequirements:
-        Steel: 5
+        Plastic: 5
       tagRequirements:
           GlassBeaker:
             amount: 1
@@ -1382,7 +1380,7 @@
     stackRequirements:
       Capacitor: 4 #moffstation - Revert machine parts
       MatterBin: 3 #moffstation - Revert machine parts
-      Steel: 10
+      Plasteel: 10
       Glass: 5
       CableHV: 8
       Uranium: 2
