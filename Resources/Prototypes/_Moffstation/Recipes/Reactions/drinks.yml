@@ -261,16 +261,6 @@
     GrapeSoda: 2
 
 - type: reaction
-  id: Neurotoxin
-  reactants:
-    PoisonWine:
-      amount: 1
-    VodkaTonic:
-      amount: 1
-  products:
-    Neurotoxin: 2
-
-- type: reaction
   id: NTCahors
   requiredMixerCategories:
   - Shake

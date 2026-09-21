@@ -25,7 +25,6 @@
     drawdepth: Walls
     sprite: Structures/Walls/grille.rsi
     layers:
-    - state: full
     - state: electrified
       sprite: Effects/electricity.rsi
       map: ["enum.ElectrifiedLayers.Sparks"]
