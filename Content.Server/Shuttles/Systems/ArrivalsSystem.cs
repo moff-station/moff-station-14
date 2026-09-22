@@ -7,7 +7,7 @@ using Content.Server.DeviceNetwork.Systems;
 using Content.Server.GameTicking;
 using Content.Server.GameTicking.Events;
 using Content.Server.Parallax;
-using Content.Server._Moffstation.PDA.Ringer; // Moff - Block uplinks on the arrivals terminal
+using Content.Server._Moffstation.PDA.Ringer;
 using Content.Server.Power.EntitySystems; // Moffstation
 using Content.Server.Screens.Components;
 using Content.Server.Shuttles.Components;

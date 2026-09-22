@@ -17,7 +17,7 @@ public sealed partial class RingerUplinkComponent : Component
     public bool Unlocked;
 
     /// <summary>
-    ///
+    /// Sound played when the uplink fails to open or locks
     /// </summary>
     /// <returns></returns>
     [DataField]
