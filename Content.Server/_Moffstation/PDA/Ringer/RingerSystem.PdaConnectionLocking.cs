@@ -75,7 +75,7 @@ public sealed partial class RingerSystem
         if (!ent.Comp.Unlocked)
             return;
 
-        if (!UplinkAllowed(ent.Owner))
+        if (UplinkAllowed(ent.Owner))
             return;
 
         LockUplink(ent!);
