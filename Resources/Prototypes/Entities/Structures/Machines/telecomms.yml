@@ -174,6 +174,11 @@
       - !type:PlaySoundBehavior
         sound:
           collection: MetalBreak
+      - !type:EmptyContainersBehaviour
+        containers:
+        - key_slots
+  - type: Machine
+    board: TelecomServerCircuitboard
   # Moffstation - Start - Add abstract telecom server parent.
   #     Changes to this section must be carefully considered: if the change should apply to the machine variant, leave
   #     it on this proto. If it should apply to the machine variant AND the blade server variant, comment out the

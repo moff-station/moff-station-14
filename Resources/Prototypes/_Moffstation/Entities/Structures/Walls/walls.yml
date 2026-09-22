@@ -25,3 +25,37 @@
   - type: Icon
     sprite: _Moffstation/Structures/Walls/soviet_plastitanium_diagonal.rsi
     state: state0
+
+- type: entity
+  parent: BaseWall # Originally parented to WallCobblebrick, but that's gone now
+  id: WallMoffIronsandCobblebrick
+  name: ironsand brick wall
+  description: The pale, rounded shapes that make up this wall look strikingly different from the iron sands they were allegedly made from.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Structures/Walls/cobblebrick_ironsand.rsi
+  - type: Icon
+    sprite: _Moffstation/Structures/Walls/cobblebrick_ironsand.rsi
+  - type: IconSmooth
+    key: cobblebricks
+    base: cobblebrick
+  - type: RCDDeconstructable
+    deconstructable: false
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 100
+      behaviors:
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+      - !type:PlaySoundBehavior
+        sound:
+          path: /Audio/Effects/break_stone.ogg
+          params:
+            volume: -6
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          SteelOre1:
+            min: 0
+            max: 2

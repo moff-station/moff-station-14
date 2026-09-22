@@ -307,7 +307,9 @@
       lens:
         color: "#A2C940"
         priority: 70
-  - type: ShowHungerIcons
+  - type: ShowSatiationIcons
+    shownTypes:
+    - Hunger
 
 - type: entity
   parent: ModularHudModuleBase
@@ -328,5 +330,7 @@
       lens:
         color: "#996633"
         priority: 70
-  - type: ShowThirstIcons
+  - type: ShowSatiationIcons
+    shownTypes:
+    - Thirst
   - type: SolutionScanner

@@ -1,0 +1,54 @@
+﻿- type: entity
+  parent: BasePlant
+  id: CoffeePlants
+  name: coffee
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Objects/Specific/Hydroponics/coffee_plant.rsi
+  - type: PlantData
+    name: seeds-coffee-name
+    packetPrototype: CoffeeSeeds
+    productPrototypes: [ FoodCoffeeCherries ]
+    mutationPrototypes: [ MugTreePlants ]
+  - type: Plant
+    growthStages: 5
+    lifespan: 55
+    maturation: 6
+    production: 6
+    yield: 3
+    potency: 20
+  - type: PlantHarvest
+    harvestRepeat: Repeat
+  - type: PlantChemicals
+    chemicals:
+      Nutriment:
+        min: 1
+        max: 10
+        potencyDivisor: 10
+
+- type: entity
+  parent: BasePlant
+  id: MugTreePlants
+  name: mugtree
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Objects/Specific/Hydroponics/mug_plant.rsi
+  - type: PlantData
+    name: seeds-mugtree-name
+    packetPrototype: MugTreeSeeds
+    productPrototypes: [ FoodMugFruit ]
+  - type: Plant
+    growthStages: 5
+    lifespan: 55
+    maturation: 6
+    production: 6
+    yield: 4
+    potency: 20
+  - type: PlantHarvest
+    harvestRepeat: Repeat
+  - type: PlantChemicals
+    chemicals:
+      Coffee:
+        min: 10
+        max: 30
+        potencyDivisor: 4

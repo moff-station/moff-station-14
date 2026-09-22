@@ -2,8 +2,8 @@
   id: Jellyfish
   mapName: 'Jellyfish'
   mapPath: /Maps/_Harmony/jellyfish.yml
-  minPlayers: 11 # Ultra-Low Pop
-  maxPlayers: 35 # Ultra-Low Pop
+  minPlayers: 0 # Deadpop
+  maxPlayers: 15 # Deadpop
   stations:
     Jellyfish:
       stationProto: StandardNanotrasenStation

@@ -28,3 +28,7 @@ fibers-regal-blue = regal blue
 fibers-olive = olive
 fibers-silver = silver
 fibers-gold = gold
+# Moff Start - Towels (Don't ask me why these can't be namespaced, it just refuses)
+moff-fibers-maroon = maroon
+moff-fibers-pink = pink
+# Moff End

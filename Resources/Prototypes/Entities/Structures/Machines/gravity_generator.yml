@@ -1,50 +1,68 @@
-﻿# Moffstation - Because the big gravity generator is destructible on Moff, I had to extract `MoffBaseGravityGenerator`
-#   out of `GravityGenerator`. Any changes made to `GravityGenerator` should be considered to be applied to the base
-#   proto intead. If the change is to the _structural_ aspect of GravityGenerator, apply it here; if the change is to
-#   the gravity-generation aspect of GravityGenerator, apply it to the base proto!
+﻿- type: entity
+  abstract: true
+  parent: BaseMachinePowered
+  id: BaseGravityGenerator
+  components:
+  - type: StationAiWhitelist
+  - type: AmbientSound
+    enabled: false
+    volume: -6
+    range: 7
+    sound:
+      path: /Audio/Ambience/Objects/gravity_gen_hum.ogg
+  - type: Transform
+    anchored: true
+  - type: ApcPowerReceiver
+    powerLoad: 2500
+  - type: ExtensionCableReceiver
+  - type: Physics
+    bodyType: Static
+  - type: PowerCharge
+    windowTitle: gravity-generator-window-title
+    idlePower: 50
+    activePower: 2500
+  - type: GravityGenerator
+    lightRadiusMin: 0.75
+    lightRadiusMax: 2.5
+    spriteMap:
+      broken: "broken"
+      unpowered: "off"
+      off: "off"
+      on: "on"
+  - type: ActivatableUI
+    key: enum.PowerChargeUiKey.Key
+  - type: ActivatableUIRequiresPower
+  - type: UserInterface
+    interfaces:
+      enum.PowerChargeUiKey.Key:
+        type: PowerChargeBoundUserInterface
+  - type: Appearance
+  - type: PointLight
+    radius: 2.5
+    energy: 0.5
+    # Gravity generator is a large machine, not casting shadows is fine within the radius set above.
+    castShadows: false
+    color: "#a8ffd9"
+  - type: StaticPrice
+    price: 5000
 
 - type: entity
-  # Moff start - Extract base gravity generator
-  parent: # BaseMachinePowered
-  - MoffBaseGravityGenerator
-  - ConstructibleMachine
-#  - BaseConstructibleMachineDestructible # NOT using this because it would inherit much flimsier HP than needed
-# Moff end
+  parent: BaseGravityGenerator # StructureHealthMachineMassive
   id: GravityGenerator
   name: gravity generator
   description: It's what keeps you to the floor.
   placement:
     mode: AlignTileAny
   components:
-# Moff start - Extract abstract gravity generator
-#  - type: StationAiWhitelist
-#  - type: AmbientSound
-#    enabled: false
-#    volume: -6
-#    range: 7
-#    sound:
-#      path: /Audio/Ambience/Objects/gravity_gen_hum.ogg
-# Moff end
   - type: Sprite
     sprite: Structures/Machines/gravity_generator.rsi
     layers:
-      - state: on
-        map: ["enum.GravityGeneratorVisualLayers.Base"]
-      - sprite: Structures/Machines/gravity_generator_core.rsi
-        state: activated
-        shader: unshaded
-        map: ["enum.GravityGeneratorVisualLayers.Core"]
-# Moff start - Extract abstract gravity generator
-#  - type: Transform
-#    anchored: true
-# Moff end
-  - type: ApcPowerReceiver
-    powerLoad: 2500
-# Moff start - Extract abstract gravity generator
-#  - type: ExtensionCableReceiver
-#  - type: Physics
-#    bodyType: Static
-# Moff end
+    - state: on
+      map: ["enum.GravityGeneratorVisualLayers.Base"]
+    - sprite: Structures/Machines/gravity_generator_core.rsi
+      state: activated
+      shader: unshaded
+      map: ["enum.GravityGeneratorVisualLayers.Core"]
   - type: Fixtures
     fixtures:
       fix1:
@@ -56,85 +74,33 @@
         - LargeMobMask
         layer:
         - WallLayer
-# Moff start - Extract abstract gravity generator
-#  - type: Repairable
-#    fuelCost: 10
-#    doAfterDelay: 5
-# Moff end
-  - type: Destructible
-    thresholds:
-    - trigger:
-        !type:DamageTrigger
-        damage: 1000 # Moffstation - Making the Gravity Generator Destructible
-      behaviors:
-      - !type:DoActsBehavior
-        # Moffstation - Start - Making the Gravity Generator Destructible
-        acts: ["Destruction"]
-      - !type:PlaySoundBehavior
-        sound:
-          collection: MetalBreak
-      - !type:SpawnEntitiesBehavior
-        spawn:
-          SheetSteel1:
-            min: 4
-            max: 5
-          SheetPlasteel1:
-            min: 2
-            max: 3
-        # Moffstation - End
-  - type: PowerCharge
-#    windowTitle: gravity-generator-window-title # Moff - Extract abstract gravity generator
-    idlePower: 50
-    activePower: 2500
-  - type: GravityGenerator
-# Moff start - Extract abstract gravity generator
-#    lightRadiusMin: 0.75
-#    lightRadiusMax: 2.5
-# Moff end
-    spriteMap:
-      broken: "broken"
-      unpowered: "off"
-      off: "off"
-      on: "on"
-# Moff start - Extract abstract gravity generator
-#  - type: ActivatableUI
-#    key: enum.PowerChargeUiKey.Key
-#  - type: ActivatableUIRequiresPower
-#  - type: UserInterface
-#    interfaces:
-#      enum.PowerChargeUiKey.Key:
-#        type: PowerChargeBoundUserInterface
-#  - type: Appearance
-#  - type: PointLight
-#    radius: 2.5
-#    energy: 0.5
-#    # Gravity generator is a large machine, not casting shadows is fine within the radius set above.
-#    castShadows: false
-#    color: "#a8ffd9"
-# Moff end
-  - type: StaticPrice
-    price: 5000
+  - type: Repairable
+    fuelCost: 10
+    doAfterDelay: 5
+#  - type: Injurable                          Indestructible because
+#    damageContainer: StructuralInorganic
+#  - type: Damageable
+#    damageModifierSet: PlastitaniumMod
 
 - type: entity
-  parent: [ MoffBaseGravityGenerator, ConstructibleMachine, BaseConstructibleMachineDestructible ] # Moff - Extract abstract gravity generator
+  parent: [ BaseGravityGenerator, ConstructibleMachine, BaseConstructibleMachineDestructible ]
   id: GravityGeneratorMini
   name: mini gravity generator
   suffix: Charged
   description: It's what keeps you to the floor, now in fun size.
   components:
-#  - type: StationAiWhitelist # Moff - Extract abstract gravity generator
   - type: Sprite
     sprite: Structures/Machines/gravity_generator_mini.rsi
     snapCardinals: true
     layers:
-      - state: on
-        map: ["enum.GravityGeneratorVisualLayers.Base"]
-      - sprite: Structures/Machines/gravity_generator_core.rsi
-        state: activated
-        shader: unshaded
-        map: ["enum.GravityGeneratorVisualLayers.Core"]
-        scale: "0.4,0.4"
-        offset: "0,0.2"
+    - state: on
+      map: ["enum.GravityGeneratorVisualLayers.Base"]
+    - sprite: Structures/Machines/gravity_generator_core.rsi
+      state: activated
+      shader: unshaded
+      map: ["enum.GravityGeneratorVisualLayers.Core"]
+      scale: "0.4,0.4"
+      offset: "0,0.2"
   - type: Fixtures
     fixtures:
       fix1:
@@ -163,11 +129,6 @@
   - type: PowerCharge
     idlePower: 15
     activePower: 500
-# Moff start - Extract abstract gravity generator
-#  - type: GravityGenerator
-#    lightRadiusMin: 0.75
-#    lightRadiusMax: 2.5
-# Moff end
   - type: StaticPrice
     price: 2000
 
