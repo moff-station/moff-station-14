@@ -10,6 +10,7 @@ using Content.Server.DeviceNetwork.Systems;
 using Content.Server.GameTicking;
 using Content.Server.GameTicking.Events;
 using Content.Server.Pinpointer;
+using Content.Server._Moffstation.PDA.Ringer;
 using Content.Server.RoundEnd;
 using Content.Server.Screens.Components;
 using Content.Server.Shuttles.Components;
@@ -563,6 +564,8 @@ public sealed partial class EmergencyShuttleSystem : SharedEmergencyShuttleSyste
             QueueDel(grid);
             return;
         }
+
+        EnsureComp<LockableUplinkBlockedMapComponent>(map); // Moff - uplink blocking - We can't do this in the file because it's a grid and not a map.
 
         component.MapEntity = map;
         _metaData.SetEntityName(map, Loc.GetString("map-name-centcomm"));
