@@ -314,6 +314,11 @@ public sealed partial class EmergencyShuttleSystem : SharedEmergencyShuttleSyste
             resultType = ShuttleDockResultType.NoDock;
         }
 
+        // Moff Start - Emergency shuttle arrived event
+        var dockedEv = new EmergencyShuttleArrivedEvent();
+        RaiseLocalEvent(stationShuttle.EmergencyShuttle.Value, ref dockedEv);
+        // Moff end
+
         return new ShuttleDockResult
         {
             Station = (stationUid, stationShuttle),

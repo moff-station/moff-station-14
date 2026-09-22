@@ -11,7 +11,7 @@ public sealed partial class EmergencyShuttleSystem
     /// This is ran when the emergency shuttle docks with the station (and subsequently Central Command)
     /// </summary>
     [SubscribeLocalEvent]
-    private void OnDock(Entity<EmergencyShuttleComponent> ent, ref DockEvent args)
+    private void OnEmergencyShuttleArrived(Entity<EmergencyShuttleComponent> ent, ref EmergencyShuttleArrivedEvent args)
     {
         var map = _transformSystem.GetMap(ent.Owner);
 
