@@ -101,8 +101,7 @@ public abstract partial class SharedModularHudSystem : EntitySystem
         SubscribeRelaysForEffectEvents<RefreshEquipmentHudEvent<ShowJobIconsComponent>>();
         SubscribeRelaysForEffectEvents<RefreshEquipmentHudEvent<ShowHealthBarsComponent>>();
         SubscribeRelaysForEffectEvents<RefreshEquipmentHudEvent<ShowHealthIconsComponent>>();
-        SubscribeRelaysForEffectEvents<RefreshEquipmentHudEvent<ShowHungerIconsComponent>>();
-        SubscribeRelaysForEffectEvents<RefreshEquipmentHudEvent<ShowThirstIconsComponent>>();
+        SubscribeRelaysForEffectEvents<RefreshEquipmentHudEvent<ShowSatiationIconsComponent>>();
         SubscribeRelaysForEffectEvents<RefreshEquipmentHudEvent<ShowMindShieldIconsComponent>>();
         SubscribeRelaysForEffectEvents<RefreshEquipmentHudEvent<ShowSyndicateIconsComponent>>();
         SubscribeRelaysForEffectEvents<RefreshEquipmentHudEvent<ShowCriminalRecordIconsComponent>>();

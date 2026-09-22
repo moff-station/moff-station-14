@@ -25,19 +25,16 @@
 
 - type: entity
   abstract: true
+  parent: StructureHealthMachine
   id: BaseMachineDestructible
   components:
   - type: Damageable
-    damageModifierSet: Electronic # Moffstation - Easier to break into a machine frame
-  - type: Injurable
-    damageContainer: StructuralInorganic
+    damageModifierSet: SteelMod
   - type: Destructible
     thresholds:
     - trigger: !type:DamageTrigger
         damage: 175
       behaviors:
-      - !type:DoActsBehavior
-        acts: ["Destruction"]
       - !type:SpawnEntitiesBehavior
         offset: 0
         spawn:
@@ -83,18 +80,16 @@
 
 - type: entity
   abstract: true
+  parent: StructureHealthMachine
   id: BaseConstructibleMachineDestructible
   components:
   - type: Damageable
-  - type: Injurable
-    damageContainer: StructuralInorganic
+    damageModifierSet: SteelMod
   - type: Destructible
     thresholds:
     - trigger: !type:DamageTrigger
         damage: 175
       behaviors:
-      - !type:DoActsBehavior
-        acts: ["Destruction"]
       - !type:ChangeConstructionNodeBehavior
         node: machineFrame
 
@@ -107,11 +102,11 @@
 
 - type: entity
   abstract: true
+  parent: StructureHealthMachineWeak
   id: BaseSmallConstructibleMachineDestructible
   components:
   - type: Damageable
-  - type: Injurable
-    damageContainer: StructuralInorganic
+    damageModifierSet: SteelMod
   - type: Destructible
     thresholds:
     - trigger: !type:DamageTrigger
@@ -119,5 +114,3 @@
       behaviors:
       - !type:ChangeConstructionNodeBehavior
         node: machineFrame
-      - !type:DoActsBehavior
-        acts: ["Destruction"]

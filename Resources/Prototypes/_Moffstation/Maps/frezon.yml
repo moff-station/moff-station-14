@@ -2,8 +2,8 @@
   id: Frezon
   mapName: 'Frezon'
   mapPath: /Maps/_Moffstation/frezon.yml
-  minPlayers: 11 # Ultra-Low Pop
-  maxPlayers: 35 # Ultra-Low Pop
+  minPlayers: 0 # Deadpop
+  maxPlayers: 15 # Deadpop
   stations:
     Frezon:
       stationProto: StandardNanotrasenStation

@@ -10,6 +10,11 @@
     state: icon
   - type: Item
     sprite: _Moffstation/PersonalItems/Items/SillyAmy/Zoey_Bootafer
+    inhandVisuals:
+      left:
+      - state: inhand-left
+      right:
+      - state: inhand-right
 
 - type: loadout
   id: PersonalItemZoeyPicture
