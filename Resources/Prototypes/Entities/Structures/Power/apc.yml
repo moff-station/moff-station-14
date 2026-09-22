@@ -160,13 +160,7 @@
     proto: AdminInstantEffectLightning
     keysIn:
       - UtensilInteract
-  - type: DamageOnTrigger
-    damage:
-      types:
-        Shock: 10
-    keysIn:
-      - UtensilInteract
-  - type: DeleteOnTrigger
+  - type: DeleteOnTrigger # Deletes the fork so people can't spam it endlessly
     targetUser: true
     keysIn:
       - UtensilInteract
