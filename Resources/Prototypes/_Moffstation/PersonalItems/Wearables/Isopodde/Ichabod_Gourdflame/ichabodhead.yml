@@ -28,8 +28,10 @@
     clothingVisuals:
       mask:
       - state: equipped-helmet-light
+        shader: unshaded
       mask-vox:
       - state: equipped-helmet-light-vox
+        shader: unshaded
   - type: PointLight
     enabled: false
     radius: 3
