@@ -3,12 +3,10 @@ using Content.Shared._Moffstation.CCVar;
 using Content.Shared.PDA;
 using Content.Shared.PDA.Ringer;
 using Content.Shared.Popups;
-using Content.Shared.Roles.Components;
 using Robust.Server.GameObjects;
+using Robust.Shared.Audio.Systems;
 using Robust.Shared.Configuration;
 using Robust.Shared.Containers;
-using Robust.Shared.Player;
-using Robust.Shared.Prototypes;
 
 namespace Content.Server.PDA.Ringer;
 
@@ -19,6 +17,7 @@ public sealed partial class RingerSystem
     [Dependency] private SharedPopupSystem _popupSystem = default!;
     [Dependency] private TransformSystem _transform = default!;
     [Dependency] private SharedContainerSystem _container = default!;
+    [Dependency] private SharedAudioSystem _audio = default!;
 
     [Dependency] private EntityQuery<LockableUplinkBlockedMapComponent> _mapBlockedQuery;
 
@@ -49,6 +48,7 @@ public sealed partial class RingerSystem
 
         args.Canceled = true;
 
+        _audio.PlayEntity(ent.Comp.DenySound, args.AttemptingClient, ent.Owner);
         _popupSystem.PopupEntity(Loc.GetString("uplink-no-connection"),
             ent,
             args.AttemptingClient,
@@ -86,6 +86,7 @@ public sealed partial class RingerSystem
 
         var wearer = baseContainer.Owner;
 
+        _audio.PlayEntity(ent.Comp.DenySound, wearer, ent.Owner);
         _popupSystem.PopupEntity(
             Loc.GetString("uplink-lose-connection"),
             ent.Owner,
