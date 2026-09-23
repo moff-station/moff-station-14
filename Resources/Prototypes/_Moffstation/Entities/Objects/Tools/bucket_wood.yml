@@ -1,41 +1,20 @@
 - type: entity
-  parent: [ SolutionLarge, DrinkBaseMaterialStrongPlastic, DrinkBase, DrinkVisualsFill ]
-  id: bucket_wood
+  parent: Bucket
+  id: MoffBucketWood
   name: wooden bucket
   description: It's a boring old bucket. Now made out of wood.
   components:
-  - type: Edible
-    utensil: Spoon
   - type: Sprite
     sprite: _Moffstation/Objects/Tools/bucket_wood.rsi
-  - type: Item
-    size: Large
-    shape:
-    - 0,0,2,3
   - type: Solution
     solution:
-      maxVol: 180 # 1.5 litres
+      maxVol: 180
   - type: Clothing
     sprite: _Moffstation/Objects/Tools/bucket_wood.rsi
-    slots:
-    - HEAD
-    quickEquip: false
-    clothingVisuals:
-      head:
-      - state: equipped-HELMET
-        offset: "0, 0.03"
   - type: SolutionTransfer
     transferAmount: 60
     maxTransferAmount: 180
     minTransferAmount: 30
-  - type: SpillWhenWorn
-    solution: drink
-  - type: SolutionContainerVisuals
-    maxFillLevels: 3
-    inHandsFillBaseName: null
-  - type: Tag
-    tags:
-      - Bucket
   - type: PhysicalComposition
     materialComposition:
-      Plastic: 50
+      Wood: 50
