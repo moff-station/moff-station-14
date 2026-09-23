@@ -15,16 +15,8 @@ public sealed partial class CrewMedalSystem : SharedCrewMedalSystem
     [Dependency] private ISharedAdminLogManager _adminLogger = default!;
     [Dependency] private SharedPopupSystem _popup = default!;
 
-    public override void Initialize()
-    {
-        base.Initialize();
-
-        SubscribeLocalEvent<CrewMedalComponent, ClothingGotEquippedEvent>(OnEquipped);
-        SubscribeLocalEvent<CrewMedalComponent, CrewMedalReasonChangedMessage>(OnReasonChanged);
-        SubscribeLocalEvent<RoundEndTextAppendEvent>(OnRoundEndText);
-    }
-
-    private void OnEquipped(Entity<CrewMedalComponent> medal, ref ClothingGotEquippedEvent args)
+    [SubscribeLocalEvent]
+    private void OnEquipped(Entity<ent.Component> medal, ref ClothingGotEquippedEvent args)
     {
         if (medal.Comp.Awarded)
             return;
@@ -36,26 +28,28 @@ public sealed partial class CrewMedalSystem : SharedCrewMedalSystem
         _adminLogger.Add(LogType.Action, LogImpact.Low, $"{ToPrettyString(args.Wearer):player} was awarded the {ToPrettyString(medal.Owner):entity} with the award reason \"{medal.Comp.Reason}\"");
     }
 
-    private void OnReasonChanged(EntityUid uid, CrewMedalComponent medalComp, CrewMedalReasonChangedMessage args)
+    [SubscribeLocalEvent]
+    private void OnReasonChanged(Entityent.Owner ent.Owner, ent.Component medalComp, CrewMedalReasonChangedMessage args)
     {
         if (medalComp.Awarded)
             return;
         medalComp.Reason = args.Reason[..Math.Min(medalComp.MaxCharacters, args.Reason.Length)];
-        Dirty(uid, medalComp);
+        Dirty(ent.Owner, medalComp);
 
         // Log medal reason change
-        _adminLogger.Add(LogType.Action, LogImpact.Low, $"{ToPrettyString(args.Actor):user} set {ToPrettyString(uid):entity} to apply the award reason \"{medalComp.Reason}\"");
+        _adminLogger.Add(LogType.Action, LogImpact.Low, $"{ToPrettyString(args.Actor):user} set {ToPrettyString(ent.Owner):entity} to apply the award reason \"{medalComp.Reason}\"");
     }
 
+    [SubscribeLocalEvent]
     private void OnRoundEndText(RoundEndTextAppendEvent ev)
     {
         // medal name, recipient name, reason
         var medals = new List<(string, string, string)>();
-        var query = EntityQueryEnumerator<CrewMedalComponent>();
-        while (query.MoveNext(out var uid, out var crewMedalComp))
+        var query = EntityQueryEnumerator<ent.Component>();
+        foreach (var ent in EntityQueryEnumerator<ent.Component>())
         {
-            if (crewMedalComp.Awarded)
-                medals.Add((Name(uid), crewMedalComp.Recipient, crewMedalComp.Reason));
+            if (ent.Comp.Awarded)
+                medals.Add((Name(ent.Owner), ent.Comp.Recipient, ent.Comp.Reason));
         }
         var count = medals.Count;
         if (count == 0)
