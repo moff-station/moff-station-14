@@ -11,9 +11,9 @@
   - type: FloorTile
     outputs:
     - Plating
-    - FloorMoffPlasmaMarble
+    - MoffFloorPlasmaMarble
   - type: Stack
-    stackType: FloorTileMoffPlasmaMarble
+    stackType: MoffFloorTilePlasmaMarble
   - type: DamageOtherOnHit
     damage:
       types:
@@ -32,9 +32,9 @@
   - type: FloorTile
     outputs:
     - Plating
-    - FloorMoffUraniumMarble
+    - MoffFloorUraniumMarble
   - type: Stack
-    stackType: FloorTileMoffUraniumMarble
+    stackType: MoffFloorTileUraniumMarble
   - type: DamageOtherOnHit
     damage:
       types:

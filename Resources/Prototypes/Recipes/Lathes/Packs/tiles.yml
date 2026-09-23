@@ -79,8 +79,8 @@
   recipes:
   - FloorTileItemWhiteMarble
   - FloorTileItemDarkMarble
-  - FloorTileItemMoffUraniumMarble # Moff - Uranium marble and plasmarble to Moff namespace
-  - FloorTileItemMoffPlasmaMarble # Moff - Uranium marble and plasmarble to Moff namespace
+  - MoffFloorTileItemUraniumMarble # Moff - Uranium marble and plasmarble to Moff namespace
+  - MoffFloorTileItemPlasmaMarble # Moff - Uranium marble and plasmarble to Moff namespace
 
 - type: latheRecipePack
   id: FloorShuttleTilesStatic
