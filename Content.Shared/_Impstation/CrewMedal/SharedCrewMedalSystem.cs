@@ -5,7 +5,6 @@ namespace Content.Shared._Impstation.CrewMedal;
 public abstract class SharedCrewMedalSystem : EntitySystem
 {
     [SubscribeLocalEvent]
-    public override void Initialize()
     {
         base.Initialize();
         SubscribeLocalEvent<CrewMedalComponent, ExaminedEvent>(OnExamined);
