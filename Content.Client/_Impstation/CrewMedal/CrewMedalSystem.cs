@@ -6,8 +6,10 @@ namespace Content.Client._Impstation.CrewMedal;
 public sealed partial class CrewMedalSystem : SharedCrewMedalSystem
 {
     [Dependency] private SharedUserInterfaceSystem _uiSystem = default!;
+    [SubscribeLocalEvent]
     public override void Initialize()
     {
+        [SubscribeLocalEvent]
         base.Initialize();
         SubscribeLocalEvent<CrewMedalComponent, AfterAutoHandleStateEvent>(OnCrewMedalAfterState);
     }
