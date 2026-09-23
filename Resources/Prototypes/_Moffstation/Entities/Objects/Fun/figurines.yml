@@ -74,6 +74,19 @@
 
 - type: entity
   parent: BaseFigurineMoff
+  id: ToyFigurineAtlas
+  name: stern-looking research director figurine
+  description: A figurine of a moth Research Director, he seems to be silently judging you for your actions.
+  components:
+  - type: Sprite
+    state: atlas
+  - type: SpeakOnTrigger
+    pack: FigurinesAtlas
+  - type: FrenchAccent
+  - type: MothAccent
+
+- type: entity
+  parent: BaseFigurineMoff
   id: ToyFigurineAudrina
   name: unimpressed human psychologist figurine
   description: A figurine depicting a human with cat ears. There are bandages on its left arm, seemingly haphazardly painted on. The tie seems loose, although it's hard plastic. The expression is concerningly blank.
@@ -235,6 +248,17 @@
 
 - type: entity
   parent: BaseFigurineMoff
+  id: ToyFigurineCantrel
+  name: angry unscrupulous quartermaster figurine
+  description: A figurine depicting a Quartermaster. It seems to be of an exceptionally low quality. It smells like whiskey and tobacco.
+  components:
+  - type: Sprite
+    state: cantrel
+  - type: SpeakOnTrigger
+    pack: FigurinesCantrel
+
+- type: entity
+  parent: BaseFigurineMoff
   id: ToyFigurineCassiel
   name: anxious cargo technician figurine
   description: A figurine depicting a tall pink moth covered in scars, wearing a cargo tech jumpskirt. She looks incredibly nervous about something... or rather, a lot of things.
@@ -254,6 +278,17 @@
     state: catai
   - type: SpeakOnTrigger
     pack: FigurinesCatAi
+
+- type: entity
+  parent: BaseFigurineMoff
+  id: ToyFigurineChichi
+  name: command impersonating vox figurine
+  description: A larger figure of a blue vox. Oddly smells of bacon pancakes.
+  components:
+  - type: Sprite
+    state: chichi
+  - type: SpeakOnTrigger
+    pack: FigurinesChichi
 
 - type: entity
   parent: BaseFigurineMoff
@@ -377,6 +412,24 @@
     state: eclispe
   - type: SpeakOnTrigger
     pack: FigurinesEclispe
+
+- type: entity
+  parent: BaseFigurineMoff
+  id: ToyFigurineElspeth
+  name: anxious horned quartermaster figurine
+  description: A figurine depicting what looks like a human, but with horns and a tail. The artist put a lot of detail into giving her an expression like she's about to cry.
+  components:
+  - type: Sprite
+    state: elspeth
+  - type: SpeakOnTrigger
+    pack: FigurinesElspeth
+  - type: ReplacementAccent
+    accent: scottish
+  - type: StutteringAccent
+    matchRandomProb: 0.1
+    fourRandomProb: 0
+    threeRandomProb: 0
+    cutRandomProb: 0
 
 - type: entity
   parent: BaseFigurineMoff
@@ -563,6 +616,18 @@
 
 - type: entity
   parent: BaseFigurineMoff
+  id: ToyFigurineKarla
+  name: war-torn atmospherics technician figurine
+  description: A figure of a brown/tan vulp dawning Senior Atmos attire along with an eyepatch, black gaiter and a tiny set of tags.
+  components:
+  - type: Sprite
+    state: karla
+  - type: SpeakOnTrigger
+    pack: FigurinesKarla
+  - type: RussianAccent
+
+- type: entity
+  parent: BaseFigurineMoff
   id: ToyFigurineKatie
   name: young engineer woman figurine
   description: A figurine depicting a young woman dressed in an engineering attire, they seem hopeful.
@@ -604,6 +669,17 @@
     state: kim
   - type: SpeakOnTrigger
     pack: FigurinesKim
+
+- type: entity
+  parent: BaseFigurineMoff
+  id: ToyFigurineKiki
+  name: fluffy catgirl figurine
+  description: Pink, fluffy and working too hard.
+  components:
+  - type: Sprite
+    state: kiki
+  - type: SpeakOnTrigger
+    pack: FigurinesKiki
 
 - type: entity
   parent: BaseFigurineMoff
@@ -696,6 +772,42 @@
     state: molar
   - type: SpeakOnTrigger
     pack: FigurinesMolar
+  - type: RussianAccent
+
+- type: entity
+  parent: BaseFigurineMoff
+  id: ToyFigurineMouseT
+  name: mischievous small chemist figurine
+  description: A particularly small figurine of a resomi chemist. They have a smirk indicating that they're up to no good.
+  components:
+  - type: Sprite
+    state: mouse
+  - type: SpeakOnTrigger
+    pack: FigurinesMouseT
+  - type: RussianAccent
+  - type: FrenchAccent
+
+- type: entity
+  parent: BaseFigurineMoff
+  id: ToyFigurineNevaeh
+  name: lethargic chemist figurine
+  description: You don't know if you should let this figurine be unattended in the chemistry bay.
+  components:
+  - type: Sprite
+    state: nevaeh
+  - type: SpeakOnTrigger
+    pack: FigurinesNevaeh
+
+- type: entity
+  parent: BaseFigurineMoff
+  id: ToyFigurineNova
+  name: tired engine operator figurine
+  description: It seems to be a mini figure of a female vulpkanin engineer with a robotic right arm, and robotic left eye. Seems to smell of cigarette smoke despite being a mini figure.
+  components:
+  - type: Sprite
+    state: nova
+  - type: SpeakOnTrigger
+    pack: FigurinesNova
   - type: RussianAccent
 
 - type: entity
@@ -930,6 +1042,17 @@
     state: stella
   - type: SpeakOnTrigger
     pack: FigurinesStella
+
+- type: entity
+  parent: BaseFigurineMoff
+  id: ToyFigurineStray
+  name: strange nervous botanist figurine
+  description: "A weird looking, disheveled, nervous botanist..... what is that smell..?"
+  components:
+  - type: Sprite
+    state: stray
+  - type: SpeakOnTrigger
+    pack: FigurinesStray
 
 - type: entity
   parent: BaseFigurineMoff
