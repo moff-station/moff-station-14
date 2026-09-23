@@ -1,8 +1,8 @@
 - type: entity
+  parent: FloorTileItemWhiteMarble
+  id: MoffFloorTileItemPlasmaMarble
   name: plasmarble tile
   description: A chiseled, polished square of the finest Space Marble. Plasma-infused for extra... something.
-  parent: FloorTileItemWhiteMarble
-  id: FloorTileItemMoffPlasmaMarble
   components:
   - type: Sprite
     state: plasmarble
@@ -20,10 +20,10 @@
         Blunt: 6
 
 - type: entity
+  parent: FloorTileItemWhiteMarble
+  id: MoffFloorTileItemUraniumMarble
   name: uranium marble tile
   description: A chiseled, polished square of the finest Space Marble. Uranium-infused to make it extra rad! Pun intended!
-  parent: FloorTileItemWhiteMarble
-  id: FloorTileItemMoffUraniumMarble
   components:
   - type: Sprite
     state: uranium-marble
