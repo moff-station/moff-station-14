@@ -382,6 +382,17 @@
 
 - type: entity
   parent: BaseFigurineMoff
+  id: ToyFigurineDuey
+  name: rude assistant figurine
+  description: Really... REALLY reeks... Stupid hair too...
+  components:
+  - type: Sprite
+    state: duey
+  - type: SpeakOnTrigger
+    pack: FigurinesDuey
+
+- type: entity
+  parent: BaseFigurineMoff
   id: ToyFigurineEchiara
   name: forgetful researcher figurine
   description: A figurine depicting a figurine you don't actually remember being part of this collection.

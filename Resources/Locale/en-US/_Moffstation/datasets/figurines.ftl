@@ -210,6 +210,15 @@ figurines-dies-5 = *cries*
 figurines-dies-6 = *sobs*
 figurines-dies-7 = *seizes up and falls limp, it's eyes dead and lifeless...*
 
+figurines-duey-1 = Why hello officer.
+figurines-duey-2 = What do you mean that's animal abuse?
+figurines-duey-3 = I am... The Danger...
+figurines-duey-4 = Come view my machine.
+figurines-duey-5 = I'm a pure boy.
+figurines-duey-6 = NanoTrasen awarded me a medal for my fax usage!
+figurines-duey-7 = THERE'S A GHOST IN THIS FIGURINE!! I WILL DIE IF YOU PUT ME DOWN!!
+figurines-duey-8 = Where is Samuel.
+
 figurines-echiara-1 = Huh?
 figurines-echiara-2 = What?
 figurines-echiara-3 = Wait, I'm dying?
