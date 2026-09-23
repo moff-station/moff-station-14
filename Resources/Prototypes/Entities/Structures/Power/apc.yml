@@ -129,6 +129,22 @@
     guides:
     - VoltageNetworks
     - Power
+  # Moffstation Start - Sticking forks in APCs
+  - type: TriggerOnInteractUsing
+    targetUsed: true
+    whitelist:
+      tags:
+      - Utensil
+    keyOut: UtensilInteract
+  - type: SpawnOnTrigger
+    proto: AdminInstantEffectLightning
+    keysIn:
+      - UtensilInteract
+  - type: DeleteOnTrigger # Deletes the fork so people can't spam it endlessly
+    targetUser: true
+    keysIn:
+      - UtensilInteract
+  # Moffstation End
 
 # APC under construction
 - type: entity
