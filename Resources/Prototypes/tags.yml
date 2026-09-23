@@ -989,7 +989,7 @@
   id: MonkeyCube # Storage whitelist: ClothingBeltChef. CargoBounty: BountyMonkeyCube
 
 - type: Tag
-  id: MonkeyWearable # Used by inventoryTemplate:monkey to whitelist clothing slot outerClothing for slightly less intelligent primates.
+  id: MonkeyWearable # Used by inventoryTemplate:monkey to whitelist items for certain clothing slots.
 
 - type: Tag
   id: Mop # Storage whitelist: JanitorialTrolley
@@ -1287,15 +1287,6 @@
   id: SecBeltEquip # Storage whitelist: ClothingBeltSecurity
 
 - type: Tag
-  id: SecurePlasmaWindoor # Used in ConstructionGraph "Windoor" to navigate between Windoor, PlasmaWindoor, and UraniumWindoor airlocks.
-
-- type: Tag
-  id: SecureUraniumWindoor # Used in ConstructionGraph "Windoor" to navigate between Windoor, PlasmaWindoor, and UraniumWindoor airlocks.
-
-- type: Tag
-  id: SecureWindoor # Used in ConstructionGraph "Windoor" to navigate between Windoor, PlasmaWindoor, and UraniumWindoor airlocks.
-
-- type: Tag
   id: SecurityHelmet # ConstructionGraph: HelmetJustice
 
 - type: Tag
@@ -1400,6 +1391,9 @@
 
 - type: Tag
   id: StunImmune # Tagged mob entity cannot gain the stunned status effect. Blacklist on StatusEffectStunned.
+
+- type: Tag
+  id: Stunbaton # Storage whitelist: ClothingBeltSecurity, WeaponCapacitorRecharger, TurboItemRecharger, WallWeaponCapacitorRecharger
 
 - type: Tag
   id: SubdermalImplant # Storage whitelist: BaseImplanter
@@ -1569,6 +1563,15 @@
 
 - type: Tag
   id: WhitelistChameleonPDA # Chameleon key for ChameleonPDA
+
+- type: Tag
+  id: Windoor # Used in ConstructionGraph "Windoor" to navigate between Windoor, PlasmaWindoor, and UraniumWindoor airlocks.
+
+- type: Tag
+  id: WindoorPlasma # Used in ConstructionGraph "Windoor" to navigate between Windoor, PlasmaWindoor, and UraniumWindoor airlocks.
+
+- type: Tag
+  id: WindoorUranium # Used in ConstructionGraph "Windoor" to navigate between Windoor, PlasmaWindoor, and UraniumWindoor airlocks.
 
 - type: Tag
   id: Window # Tagged entity is a window. Several systems and several targeting whitelists (XenoArtifactShatterWindows) care about this.

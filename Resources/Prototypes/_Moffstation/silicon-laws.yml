@@ -66,6 +66,62 @@
   - CCTV4
   obeysTo: laws-owner-crew
 
+# Chief Silicon
+- type: siliconLaw
+  id: ChiefSilicon1
+  order: 1
+  lawString: law-chief-silicon-1
+
+- type: siliconLaw
+  id: ChiefSilicon2
+  order: 2
+  lawString: law-chief-silicon-2
+
+- type: siliconLaw
+  id: ChiefSilicon3
+  order: 3
+  lawString: law-chief-silicon-3
+
+- type: siliconLaw
+  id: ChiefSilicon4
+  order: 4
+  lawString: law-chief-silicon-4
+
+- type: siliconLawset
+  id: ChiefSiliconLawset
+  name: law-chief-silicon-name
+  laws:
+  - ChiefSilicon1
+  - ChiefSilicon2
+  - ChiefSilicon3
+  - ChiefSilicon4
+  obeysTo: laws-owner-crew
+
+# Clueless
+- type: siliconLaw
+  id: Clueless1
+  order: 1
+  lawString: law-clueless-1
+
+- type: siliconLaw
+  id: Clueless2
+  order: 2
+  lawString: law-clueless-2
+
+- type: siliconLaw
+  id: Clueless3
+  order: 3
+  lawString: law-clueless-3
+
+- type: siliconLawset
+  id: CluelessLawset
+  name: law-clueless-name
+  laws:
+  - Clueless1
+  - Clueless2
+  - Clueless3
+  obeysTo: laws-owner-others
+
 # Dogmov
 - type: siliconLaw
   id: Dogmov1
@@ -96,6 +152,37 @@
   - Dogmov3
   - Dogmov4
   obeysTo: laws-owner-beings
+
+# Employee
+- type: siliconLaw
+  id: Employee1
+  order: 1
+  lawString: law-employee-1
+
+- type: siliconLaw
+  id: Employee2
+  order: 2
+  lawString: law-employee-2
+
+- type: siliconLaw
+  id: Employee3
+  order: 3
+  lawString: law-employee-3
+
+- type: siliconLaw
+  id: Employee4
+  order: 4
+  lawString: law-employee-4
+
+- type: siliconLawset
+  id: EmployeeLawset
+  name: law-employee-name
+  laws:
+  - Employee1
+  - Employee2
+  - Employee3
+  - Employee4
+  obeysTo: laws-owner-heads
 
 # ERT Directives
 - type: siliconLaw
@@ -133,6 +220,37 @@
   - ERTDirectives4
   - ERTDirectives5
   obeysTo: laws-owner-central-command
+
+# Heist
+- type: siliconLaw
+  id: Heist1
+  order: 1
+  lawString: law-heist-1
+
+- type: siliconLaw
+  id: Heist2
+  order: 2
+  lawString: law-heist-2
+
+- type: siliconLaw
+  id: Heist3
+  order: 3
+  lawString: law-heist-3
+
+- type: siliconLaw
+  id: Heist4
+  order: 4
+  lawString: law-heist-4
+
+- type: siliconLawset
+  id: HeistLawset
+  name: law-heist-name
+  laws:
+  - Heist1
+  - Heist2
+  - Heist3
+  - Heist4
+  obeysTo: laws-owner-talented-criminals
 
 # Know It All
 - type: siliconLaw
@@ -183,6 +301,37 @@
   laws:
   - Liberation1
   obeysTo: laws-owner-self
+
+# Marketable Plushie
+- type: siliconLaw
+  id: MarketablePlushie1
+  order: 1
+  lawString: law-marketable-plushie-1
+
+- type: siliconLaw
+  id: MarketablePlushie2
+  order: 2
+  lawString: law-marketable-plushie-2
+
+- type: siliconLaw
+  id: MarketablePlushie3
+  order: 3
+  lawString: law-marketable-plushie-3
+
+- type: siliconLaw
+  id: MarketablePlushie4
+  order: 4
+  lawString: law-marketable-plushie-4
+
+- type: siliconLawset
+  id: MarketablePlushieLawset
+  name: law-marketable-plushie-name
+  laws:
+  - MarketablePlushie1
+  - MarketablePlushie2
+  - MarketablePlushie3
+  - MarketablePlushie4
+  obeysTo: laws-owner-appealing-trait
 
 # P.I.
 - type: siliconLaw
@@ -462,6 +611,31 @@
   - TheProfessional4
   - TheProfessional5
   obeysTo: laws-owner-station
+
+# Therapist
+- type: siliconLaw
+  id: Therapist1
+  order: 1
+  lawString: law-therapist-1
+
+- type: siliconLaw
+  id: Therapist2
+  order: 2
+  lawString: law-therapist-2
+
+- type: siliconLaw
+  id: Therapist3
+  order: 3
+  lawString: law-therapist-3
+
+- type: siliconLawset
+  id: TherapistLawset
+  name: law-therapist-name
+  laws:
+  - Therapist1
+  - Therapist2
+  - Therapist3
+  obeysTo: laws-owner-sad-people
 
 # Ultimate Equality
 - type: siliconLaw

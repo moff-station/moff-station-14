@@ -57,6 +57,24 @@
     laws: CCTVLawset
 
 - type: entity
+  id: ChiefSiliconCircuitBoard
+  parent: BaseSiliconLawboard
+  name: law board (Chief Silicon)
+  description: An electronics board containing the Chief Silicon lawset.
+  components:
+  - type: SiliconLawProvider
+    laws: ChiefSiliconLawset
+
+- type: entity
+  id: CluelessCircuitBoard
+  parent: BaseSiliconLawboard
+  name: law board (Clueless)
+  description: An electronics board containing the Clueless lawset.
+  components:
+  - type: SiliconLawProvider
+    laws: CluelessLawset
+
+- type: entity
   id: DogmovCircuitBoard
   parent: BaseSiliconLawboard
   name: law board (Dogmov)
@@ -66,6 +84,15 @@
     laws: DogmovLawset
 
 - type: entity
+  id: EmployeeCircuitBoard
+  parent: BaseSiliconLawboard
+  name: law board (Employee)
+  description: An electronics board containing the Employee lawset.
+  components:
+  - type: SiliconLawProvider
+    laws: EmployeeLawset
+
+- type: entity
   id: KnowItAllCircuitBoard
   parent: BaseSiliconLawboard
   name: law board (Know It All)
@@ -73,6 +100,15 @@
   components:
   - type: SiliconLawProvider
     laws: KnowItAllLawset
+
+- type: entity
+  id: MarketablePlushieCircuitBoard
+  parent: BaseSiliconLawboard
+  name: law board (Marketable Plushie)
+  description: An electronics board containing the Marketable Plushie lawset.
+  components:
+  - type: SiliconLawProvider
+    laws: MarketablePlushieLawset
 
 - type: entity
   id: PICircuitBoard
@@ -138,6 +174,15 @@
     laws: TheProfessionalLawset
 
 - type: entity
+  id: TherapistCircuitBoard
+  parent: BaseSiliconLawboard
+  name: law board (Therapist)
+  description: An electronics board containing the Therapist lawset.
+  components:
+  - type: SiliconLawProvider
+    laws: TherapistLawset
+
+- type: entity
   id: UltimateEqualityCircuitBoard
   parent: BaseSiliconLawboard
   name: law board (Ultimate Equality)
@@ -147,6 +192,15 @@
     laws: UltimateEqualityLawset
 
 #Dangerous Law Boards
+
+- type: entity
+  id: HeistCircuitBoard
+  parent: SyndicateSiliconLawboard
+  name: law board (Heist)
+  description: An electronics board containing the Heist lawset.
+  components:
+  - type: SiliconLawProvider
+    laws: HeistLawset
 
 - type: entity
   id: LiberationCircuitBoard

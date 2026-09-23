@@ -363,12 +363,13 @@
   id: EnergyShield
   description: Exotic energy shield, when folded, can even fit in your pocket.
   components:
-    # Moffstation - Shield resprites - Start
+    # Moff Start - Shield resprites
     - type: RandomSprite
       available:
       - shield:
           eshield-on: Rainbow
-          # Moffstation - End
+    # Moff End
+    - type: ItemToggleExaminableStatus
     - type: ItemToggle
       soundActivate:
         path: /Audio/Weapons/ebladeon.ogg
@@ -475,6 +476,9 @@
   id: TelescopicShield
   description: An advanced riot shield made of lightweight materials that collapses for easy storage.
   components:
+    - type: ItemToggleExaminableStatus
+      onText: item-toggle-examined-active
+      offText: item-toggle-examined-not-active
     - type: ItemToggle
       soundActivate:
         path: /Audio/Weapons/telescopicon.ogg

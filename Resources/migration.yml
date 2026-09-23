@@ -1,4 +1,4 @@
-# This is a basic dictionary that maps old entity prototype ids to new ids. This only works for entity prototypes, and
+﻿# This is a basic dictionary that maps old entity prototype ids to new ids. This only works for entity prototypes, and
 # is intended to allow maps to load without having to manually edit them. An empty or "null" string results in the
 # entity getting deleted.
 
@@ -1017,40 +1017,42 @@ CrateEngineeringThruster: CrateSpaceThruster
 BlastDoorXenoborg: BlastDoorXeno
 BlastDoorXenoborgOpen: BlastDoorXenoOpen
 
-# Dark
+### Dark Tiles
 FloorTileItemDarkDiagonalMini: FloorTileItemDark
 FloorTileItemDarkDiagonal: FloorTileItemDark
 FloorTileItemDarkOffset: FloorTileItemDark
-FloorTileItemDarkSlatsContinuous: FloorTileItemDark
+FloorTileItemDarkSlatsContinuous: FloorTileItemDarkVerticalSlatsBordered
 
-# Steel
+### Steel Tiles
 FloorTileItemSteelDiagonalMini: FloorTileItemSteel
 FloorTileItemSteelDiagonal: FloorTileItemSteel
 FloorTileItemSteelOffset: FloorTileItemSteel
-FloorTileItemSteelMono: FloorTileItemSteel
 FloorTileItemShowroom: FloorTileItemSteel
-FloorTileItemSteelSlatsContinuous: FloorTileItemSteel
+FloorTileItemSteelSlatsContinuous: FloorTileItemSteelVerticalSlatsBordered
 
-# White
+### White Tiles
 FloorTileItemWhiteDiagonalMini: FloorTileItemWhite
 FloorTileItemWhiteDiagonal: FloorTileItemWhite
 FloorTileItemWhiteOffset: FloorTileItemWhite
-FloorTileItemWhiteSlatsContinuous: FloorTileItemWhite
+FloorTileItemWhiteSlatsContinuous: FloorTileItemWhiteVerticalSlatsBordered
 
-# Misc
+### Misc Tiles
 FloorTileItemUraniumMarble: FloorTileItemDarkMarble
 FloorTileItemPlasmaMarble: FloorTileItemWhiteMarble
 FloorTileItemEighties: FloorTileItemArcadeBlue
 FloorTileItemArcadeBlue2: FloorTileItemArcadeBlue
-FloorTileItemElevatorShaft: null
-FloorTileItemMining: null
-FloorTileItemMiningLight: null
-FloorTileItemMiningDark: null
-FloorTileItemRockVault: null
+FloorTileItemElevatorShaft: FloorTileItemDark
+FloorTileItemMining: FloorTileItemDark
+FloorTileItemMiningLight: FloorTileItemDark
+FloorTileItemMiningDark: FloorTileItemDark
+#FloorTileItemMining: FloorTileItemDarkPlastic
+#FloorTileItemMiningLight: FloorTileItemDarkPlastic
+#FloorTileItemMiningDark: FloorTileItemDarkPlastic
+FloorTileItemRockVault: FloorTileItemSteel
 FloorTileItemBrassReebe: null
 FloorTileItemBrassFilled: null
 FloorBananiumEntity: null
-FloorTileItemMono: null
+FloorTileItemMono: FloorTileItemSteel
 
 # 2026-07-23
 AirAlarmAssemblyXeno: AirAlarmAssembly
@@ -1075,13 +1077,13 @@ Turnstile: EnergyGate
 MetalDoor: SilverDoor
 MiningWindow: ReinforcedWindow
 MiningWindowDiagonal: ReinforcedWindowDiagonal
-FloorTileItemLightAstroGrass: null
-FloorTileItemGrayConcrete: null
-FloorTileItemGrayConcreteMono: null
-FloorTileItemGrayConcreteSmooth: null
-FloorTileItemOldConcrete: null
-FloorTileItemOldConcreteMono: null
-FloorTileItemOldConcreteSmooth: null
+FloorTileItemLightAstroGrass: FloorTileItemAstroGrass
+FloorTileItemGrayConcrete: FloorTileItemConcrete
+FloorTileItemGrayConcreteMono: FloorTileItemConcreteMono
+FloorTileItemGrayConcreteSmooth: FloorTileItemConcreteSmooth
+FloorTileItemOldConcrete: FloorTileItemConcrete
+FloorTileItemOldConcreteMono: FloorTileItemConcreteMono
+FloorTileItemOldConcreteSmooth: FloorTileItemConcreteSmooth
 # Moff Start - Ironsands namespace change
 # FloorTileItemIronsandConcrete: null
 # FloorTileItemIronsandConcreteMono: null
@@ -1096,7 +1098,7 @@ WallRockBananium: WallRock
 WallRockChromiteBananium: WallRockChromite
 WallRockSandBananium: WallRockSand
 WallRockSnowBananium: WallRockSnow
-MeteorRockBananium: MeteorRock
+MeteorRockBananium: AsteroidRock
 WallRockBasalt: WallRock
 WallRockBasaltCoal: WallRockCoal
 WallRockBasaltGold: WallRockGold
@@ -1151,7 +1153,7 @@ SyndieSoldierSpawner: SpawnPointShuttleSyndieSoldier
 SyndieSoldierTeamLeaderSpawner: SpawnPointShuttleSyndieSoldierTeamLeader
 
 # 2026-08-06
-FloorTileItemHydro: null
+FloorTileItemHydro: FloorTileItemSteel
 WallRiveted: WallMarble
 WallSpawnAsteroidBananium: null
 WallSpawnAsteroidBananiumCrab: null
@@ -1163,6 +1165,78 @@ AnomalyRockBananium: AnomalyRockCoal
 ClockworkGirder: Girder
 BaseAsteroidRock: AsteroidRock
 ButtonFrameExit: ButtonFrameWhite
+
+# 2026-08-12
+#TODO: Moff - Moff - we are reversing these because we dont have them yet. Delete the active ones when we have them
+WindoorSecure: Windoor
+WindoorSecurePlasma: WindoorPlasma
+WindoorSecureUranium: WindoorUranium
+WindoorSecureArmoryLocked: WindoorArmoryLocked
+PlasmaWindoorSecureArmoryLocked: PlasmaWindoorArmoryLocked
+WindoorSecureEngineeringLocked: WindoorEngineeringLocked
+WindoorSecureAtmosphericsLocked: WindoorEngineeringLocked
+PlasmaWindoorSecureEngineeringLocked: PlasmaWindoorEngineeringLocked
+PlasmaWindoorSecureAtmosphericsLocked: PlasmaWindoorAtmosphericsLocked
+WindoorSecureServiceLocked: WindoorServiceLocked
+WindoorSecureKitchenLocked: WindoorKitchenLocked
+WindoorSecureBarLocked: WindoorBarLocked
+WindoorSecureJanitorLocked: WindoorJanitorLocked
+WindoorSecureSecurityLocked: WindoorSecurityLocked
+WindoorSecureBrigLocked: WindoorBrigLocked
+WindoorSecureDetectiveLocked: WindoorDetectiveLocked
+WindoorSecureSecurityLawyerLocked: WindoorSecurityLawyerLocked
+WindoorSecureCargoLocked: WindoorCargoLocked
+WindoorSecureSalvageLocked: WindoorSalvageLocked
+WindoorSecureChapelLocked: WindoorChapelLocked
+WindoorSecureMedicalLocked: WindoorMedicalLocked
+WindoorSecureChemistryLocked: WindoorChemistryLocked
+PlasmaWindoorSecureChemistryLocked: PlasmaWindoorChemistryLocked
+WindoorSecureCommandLocked: WindoorCommandLocked
+WindoorSecureCentralCommandLocked: WindoorCentralCommandLocked
+PlasmaWindoorSecureCentralCommandLocked: PlasmaWindoorCentralCommandLocked
+UraniumWindoorSecureCentralCommandLocked: UraniumWindoorCentralCommandLocked
+PlasmaWindoorSecureCommandLocked: PlasmaWindoorCommandLocked
+UraniumWindoorSecureEngineeringLocked: UraniumWindoorEngineeringLocked
+WindoorSecureExternalLocked: WindoorExternalLocked
+PlasmaWindoorSecureJanitorLocked: PlasmaWindoorJanitorLocked
+WindoorSecureResearchDirectorLocked: WindoorResearchDirectorLocked
+PlasmaWindoorSecureSecurityLocked: PlasmaWindoorSecurityLocked
+WindoorSecureScienceLocked: WindoorScienceLocked
+PlasmaWindoorSecureScienceLocked: PlasmaWindoorScienceLocked
+WindoorSecureHeadOfPersonnelLocked: WindoorHeadOfPersonnelLocked
+WindoorSecureSyndicateLocked: WindoorSyndicateLocked
+PlasmaWindoorSecureSyndicateLocked: PlasmaWindoorSyndicateLocked
+UraniumWindoorSecureSyndicateLocked: UraniumWindoorSyndicateLocked
+WindoorSecureNukeopLocked: WindoorNukeopLocked
+PlasmaWindoorSecureNukeopLocked: PlasmaWindoorNukeopLocked
+UraniumWindoorSecureNukeopLocked: UraniumWindoorNukeopLocked
+WindoorAssemblySecure: WindoorAssembly
+WindoorAssemblySecurePlasma: WindoorAssemblyPlasma
+WindoorAssemblySecureUranium: WindoorAssemblyUranium
+
+WindoorSecureFreelanceLocked: WindoorFreelanceLocked # Moff
+
+# Moff - we are reversing this because we dont have it yet
+#LightReplacer: LightReplacerFilled
+LightReplacerFilled: LightReplacer
+
+#2026-08-14
+MeteorRock: AsteroidRock
+MeteorRockCoal: AsteroidRockCoal
+MeteorRockQuartz: AsteroidRockQuartz
+MeteorRockTin: AsteroidRockTin
+MeteorRockSilver: AsteroidRockSilver
+MeteorRockGold: AsteroidRockGold
+MeteorRockPlasma: AsteroidRockPlasma
+MeteorRockDiamond: AsteroidRockDiamond
+MeteorRockUranium: AsteroidRockUranium
+StatueBananiumClown: StatueOrnateClown
+
+#2026-08-18
+DrinkNeurotoxinGlass: null
+
+#2026-08-19
+JanitorServiceLight: null
 
 # Moff - 2026-08-18 - Ironsands namespace change
 FloorTileItemIronsandConcrete: FloorTileItemMoffIronsandConcrete
