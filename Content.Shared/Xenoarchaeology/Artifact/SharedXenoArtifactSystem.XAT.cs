@@ -1,5 +1,4 @@
 using System.Linq;
-using System.Reflection.Metadata;
 using Content.Shared.Chemistry;
 using Content.Shared.Damage.Events;
 using Content.Shared.Damage.Systems;
