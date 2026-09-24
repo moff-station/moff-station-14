@@ -18,11 +18,8 @@
   categories: [ HideSpawnMenu ]
   components:
   - type: TimedDespawn
-    lifetime: 0.8
-  - type: ScreechShockWave
-    waveSpeed: 25
-    waveStrength: 0.8
-    fadeTime: 0.8
+    lifetime: 0.5
+  - type: ExplosionShockWave
 
 - type: entity
   id: ExplosionEffectGrenadeSmoke

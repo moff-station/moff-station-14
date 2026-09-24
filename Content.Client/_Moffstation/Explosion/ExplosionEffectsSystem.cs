@@ -2,11 +2,13 @@ using Content.Shared._Moffstation.Explosion.Components;
 using Content.Shared.Explosion;
 using Content.Shared.Explosion.Components;
 using Content.Shared.Throwing;
+using Robust.Client.Graphics;
 using Robust.Client.Physics;
 using Robust.Shared.Physics.Events;
 using Robust.Shared.Physics.Systems;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
+using Robust.Shared.Timing;
 
 namespace Content.Client._Moffstation.Explosion;
 
@@ -15,12 +17,26 @@ namespace Content.Client._Moffstation.Explosion;
 /// </summary>
 public sealed partial class ExplosionEffectsSystem : EntitySystem
 {
+    [Dependency] private IGameTiming _timing = default!;
+    [Dependency] private IOverlayManager _overlay = default!;
     [Dependency] private IRobustRandom _random = default!;
     [Dependency] private SharedMapSystem _map = default!;
     [Dependency] private SharedPhysicsSystem _physics = default!;
     [Dependency] private ThrowingSystem _throwing = default!;
 
     private const float ShrapnelThrowDistance = 10f;
+
+    public override void Initialize()
+    {
+        base.Initialize();
+        _overlay.AddOverlay(new ExplosionShockWaveOverlay());
+    }
+
+    public override void Shutdown()
+    {
+        base.Shutdown();
+        _overlay.RemoveOverlay<ExplosionShockWaveOverlay>();
+    }
 
     [SubscribeLocalEvent]
     private void OnExplosionStartup(Entity<ExplosionVisualsComponent> ent, ref ComponentStartup args)
@@ -46,6 +62,12 @@ public sealed partial class ExplosionEffectsSystem : EntitySystem
                 _throwing.TryThrow(shrapnel, _random.NextAngle().ToVec() * ShrapnelThrowDistance, effects.ShrapnelSpeed);
             }
         }
+    }
+
+    [SubscribeLocalEvent]
+    private void OnShockWaveStartup(Entity<ExplosionShockWaveComponent> ent, ref ComponentStartup args)
+    {
+        ent.Comp.StartTime = _timing.RealTime;
     }
 
     [SubscribeLocalEvent]
