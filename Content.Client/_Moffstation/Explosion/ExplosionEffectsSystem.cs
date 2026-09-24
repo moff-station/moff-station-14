@@ -1,12 +1,15 @@
 using Content.Shared._Moffstation.Explosion.Components;
 using Content.Shared.Explosion;
 using Content.Shared.Explosion.Components;
+using Content.Shared.Physics;
 using Robust.Client.Graphics;
 using Robust.Client.Physics;
+using Robust.Shared.Physics;
 using Robust.Shared.Physics.Events;
 using Robust.Shared.Physics.Systems;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
+using Robust.Shared.Spawners;
 using Robust.Shared.Timing;
 
 namespace Content.Client._Moffstation.Explosion;
@@ -75,6 +78,6 @@ public sealed partial class ExplosionEffectsSystem : EntitySystem
     [SubscribeLocalEvent]
     private void OnShrapnelStartCollide(Entity<ExplosionShrapnelComponent> ent, ref StartCollideEvent args)
     {
-        QueueDel(ent);
+        TryQueueDel(ent.Owner);
     }
 }

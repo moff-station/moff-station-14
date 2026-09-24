@@ -68,7 +68,6 @@
   id: ExplosionEffectShrapnel1
   categories: [ HideSpawnMenu ]
   components:
-  - type: CollisionWake
   - type: Physics
     bodyType: Dynamic
     fixedRotation: true
@@ -79,10 +78,7 @@
           !type:PhysShapeAabb
           bounds: "-0.25,-0.25,0.25,0.25"
         density: 20
-        mask:
-        - ItemMask
-        restitution: 0.3
-        friction: 0
+        hard: false
   - type: Sprite
     sprite: _Funkystation/Effects/shrapnel.rsi
     state: shrapnel_bright1
