@@ -17,6 +17,7 @@ public sealed partial class ExplosionEffects
         "ExplosionEffectGrenade",
         "ExplosionEffectGrenadeShockWave",
         "ExplosionEffectGrenadeSmoke",
+        "ExplosionEffectGrenadeFire",
         "ExplosionEffectGrenadeEmbers",
         "ExplosionEffectGrenadeGlowingEmbers"
     };

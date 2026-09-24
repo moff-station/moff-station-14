@@ -5,11 +5,9 @@ namespace Content.Server.Explosion.EntitySystems;
 
 public sealed partial class ExplosionSystem
 {
-    [Dependency] private IPrototypeManager _prototypeManager = default!;
-
     private void SpawnExplosionEffects(EntityUid uid, ProtoId<ExplosionPrototype> type)
     {
-        if (!_prototypeManager.TryIndex(type, out var proto) || proto.Effects is not { } effects)
+        if (!ProtoMan.Resolve(type, out var proto) || proto.Effects is not { } effects)
             return;
 
         foreach (var effect in effects.VisualEffects)
@@ -17,20 +15,20 @@ public sealed partial class ExplosionSystem
             SpawnNextToOrDrop(effect, uid);
         }
 
-        if (effects.MaxShrapnel > 0)
+        if (effects.MaxShrapnel <= 0)
+            return;
+
+        foreach (var effect in effects.ShrapnelEffects)
         {
-            foreach (var effect in effects.ShrapnelEffects)
+            var shrapnelCount = _robustRandom.Next(effects.MinShrapnel, effects.MaxShrapnel);
+            for (var i = 0; i < shrapnelCount; i++)
             {
-                var shrapnelCount = _robustRandom.Next(effects.MinShrapnel, effects.MaxShrapnel);
-                for (var i = 0; i < shrapnelCount; i++)
+                var angle = _robustRandom.NextAngle();
+                var direction = angle.ToVec().Normalized() * 10;
+                var shrapnel = SpawnNextToOrDrop(effect, uid);
+                if (Exists(shrapnel))
                 {
-                    var angle = _robustRandom.NextAngle();
-                    var direction = angle.ToVec().Normalized() * 10;
-                    var shrapnel = SpawnNextToOrDrop(effect, uid);
-                    if (Exists(shrapnel))
-                    {
-                        _throwingSystem.TryThrow(shrapnel, direction, effects.ShrapnelSpeed / 10);
-                    }
+                    _throwingSystem.TryThrow(shrapnel, direction, effects.ShrapnelSpeed / 10);
                 }
             }
         }
