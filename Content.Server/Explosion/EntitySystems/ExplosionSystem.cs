@@ -169,8 +169,6 @@ public sealed partial class ExplosionSystem : SharedExplosionSystem
             explosive.CanCreateVacuum,
             user);
 
-        SpawnExplosionEffects(uid, explosive.ExplosionType); // Funky RMC Explosions
-
         if (explosive.DeleteAfterExplosion ?? delete)
             QueueDel(uid);
     }

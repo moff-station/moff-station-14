@@ -1,16 +1,14 @@
+using Content.Shared.Destructible.Thresholds;
 using Robust.Shared.Prototypes;
 
-namespace Content.Shared._Funkystation.Explosion;
+namespace Content.Shared._Moffstation.Explosion;
 
 /// <summary>
-///     Visual entities spawned at the epicenter when an explosive triggers.
+///     Client-side cosmetic entities spawned at an explosion's epicenter.
 /// </summary>
 [DataDefinition]
 public sealed partial class ExplosionEffects
 {
-    /// <summary>
-    ///     A list of entities spawned at the epicenter, all at the same time
-    /// </summary>
     [DataField]
     public List<EntProtoId> VisualEffects = new()
     {
@@ -19,18 +17,21 @@ public sealed partial class ExplosionEffects
         "ExplosionEffectGrenadeSmoke",
         "ExplosionEffectGrenadeFire",
         "ExplosionEffectGrenadeEmbers",
-        "ExplosionEffectGrenadeGlowingEmbers"
+        "ExplosionEffectGrenadeGlowingEmbers",
     };
 
     [DataField]
     public List<EntProtoId> ShrapnelEffects = new() { "ExplosionEffectShrapnel1", "ExplosionEffectShrapnel2" };
 
+    /// <summary>
+    ///     How many of each shrapnel effect to spawn.
+    /// </summary>
     [DataField]
-    public int MinShrapnel = 5;
+    public MinMax ShrapnelCount = new(5, 9);
 
-    [DataField]
-    public int MaxShrapnel = 9;
-
+    /// <summary>
+    ///     Shrapnel speed in tiles per second.
+    /// </summary>
     [DataField]
     public float ShrapnelSpeed = 5f;
 }

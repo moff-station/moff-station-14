@@ -9,14 +9,20 @@
     lifetime: 0.6
   - type: ParticleEmitter
     effect: ExplosionFlash
+  - type: Tag
+    tags:
+    - HideContextMenu
 
 - type: entity
   id: ExplosionEffectGrenadeShockWave
   categories: [ HideSpawnMenu ]
   components:
   - type: TimedDespawn
-    lifetime: 0.5
-  - type: ExplosionShockWave
+    lifetime: 0.8
+  - type: ScreechShockWave
+    waveSpeed: 25
+    waveStrength: 0.8
+    fadeTime: 0.8
 
 - type: entity
   id: ExplosionEffectGrenadeSmoke
@@ -85,9 +91,12 @@
     state: shrapnel_bright1
   - type: TimedDespawn
     lifetime: 0.5
-  - type: DeleteOnCollide
+  - type: ExplosionShrapnel
   - type: ParticleOnThrown
     effect: ExplosionShrapnelTrail
+  - type: Tag
+    tags:
+    - HideContextMenu
 
 - type: entity
   parent: ExplosionEffectShrapnel1

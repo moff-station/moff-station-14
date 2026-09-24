@@ -1,11 +1,11 @@
-using Content.Shared._Funkystation.Explosion;
+using Content.Shared._Moffstation.Explosion;
 
 namespace Content.Shared.Explosion;
 
 public sealed partial class ExplosionPrototype
 {
     /// <summary>
-    ///     Spawned when an explosive of this type triggers. Set to null to spawn nothing.
+    ///     Spawned on clients when an explosion of this type happens. Set to null to spawn nothing.
     /// </summary>
     [DataField]
     public ExplosionEffects? Effects = new();
