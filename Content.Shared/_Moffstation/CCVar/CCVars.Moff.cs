@@ -64,10 +64,10 @@ public sealed class MoffCCVars
         CVarDef.Create("vote.round_end_extension_max", 3, CVar.SERVERONLY);
 
     /// <summary>
-    ///     How many minutes each successful vote extends post-round by.
+    ///     How many minutes each successful post-round extension vote extends the round by.
     /// </summary>
     public static readonly CVarDef<int> RoundEndExtensionVoteMinutes =
-        CVarDef.Create("vote.round_end_extension_minutes", 3, CVar.SERVERONLY);
+        CVarDef.Create("vote.round_end_extension_minutes", 5, CVar.SERVERONLY);
 
     /// <summary>
     ///     How long the extension vote stays open, in seconds.

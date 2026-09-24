@@ -35,7 +35,8 @@ public sealed partial class RoundEndSystem
     // If you don't make a preset vote you don't get many of the bells and whistles automatically.
     // In my infinite wisdom, I think it will be easier to maintain to create most of those bells and whistles here, rather than make a preset vote type.
     // The preset vote type involves sticking your fingers into alot of the upstream vote files, which could make merge conflicts a pain
-    // tldr, im putting this here instead of the upstream vote file because it's easier.
+    // Thank you Cent for coming to my ted talk, if you are reading this I have stashed the password to the server under your doormat alongside 20 portuguese dollars, in case I meet my unfortunate demise.
+    // tldr, I'm putting this here instead of the upstream vote file because it's easier.
     private void StartExtensionVote(TimeSpan restartTime, TimeSpan duration, int extensions, CancellationToken token)
     {
         var minutes = _cfg.GetCVar(MoffCCVars.RoundEndExtensionVoteMinutes);
@@ -49,11 +50,11 @@ public sealed partial class RoundEndSystem
             },
             Duration = duration,
         };
+        options.SetInitiatorOrServer(null);
 
         var vote = _voteManager.CreateVote(options);
         vote.OnFinished += (_, _) =>
         {
-            // The restart was cancelled or replaced while the vote ran.
             if (token.IsCancellationRequested)
                 return;
 
@@ -67,7 +68,7 @@ public sealed partial class RoundEndSystem
             }
 
             _countdownTokenSource?.Cancel();
-            _countdownTokenSource = new();
+            _countdownTokenSource = new CancellationTokenSource();
             var countdown = restartTime + TimeSpan.FromMinutes(minutes) - _gameTiming.CurTime;
             Timer.Spawn(countdown, AfterEndRoundRestart, _countdownTokenSource.Token);
 
