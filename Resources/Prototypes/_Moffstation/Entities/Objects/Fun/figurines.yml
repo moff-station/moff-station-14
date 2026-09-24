@@ -74,6 +74,19 @@
 
 - type: entity
   parent: BaseFigurineMoff
+  id: ToyFigurineAtlas
+  name: stern-looking research director figurine
+  description: A figurine of a moth Research Director, he seems to be silently judging you for your actions.
+  components:
+  - type: Sprite
+    state: atlas
+  - type: SpeakOnTrigger
+    pack: FigurinesAtlas
+  - type: FrenchAccent
+  - type: MothAccent
+
+- type: entity
+  parent: BaseFigurineMoff
   id: ToyFigurineAudrina
   name: unimpressed human psychologist figurine
   description: A figurine depicting a human with cat ears. There are bandages on its left arm, seemingly haphazardly painted on. The tie seems loose, although it's hard plastic. The expression is concerningly blank.
@@ -235,6 +248,17 @@
 
 - type: entity
   parent: BaseFigurineMoff
+  id: ToyFigurineCantrel
+  name: angry unscrupulous quartermaster figurine
+  description: A figurine depicting a Quartermaster. It seems to be of an exceptionally low quality. It smells like whiskey and tobacco.
+  components:
+  - type: Sprite
+    state: cantrel
+  - type: SpeakOnTrigger
+    pack: FigurinesCantrel
+
+- type: entity
+  parent: BaseFigurineMoff
   id: ToyFigurineCassiel
   name: anxious cargo technician figurine
   description: A figurine depicting a tall pink moth covered in scars, wearing a cargo tech jumpskirt. She looks incredibly nervous about something... or rather, a lot of things.
@@ -254,6 +278,17 @@
     state: catai
   - type: SpeakOnTrigger
     pack: FigurinesCatAi
+
+- type: entity
+  parent: BaseFigurineMoff
+  id: ToyFigurineChichi
+  name: command impersonating vox figurine
+  description: A larger figure of a blue vox. Oddly smells of bacon pancakes.
+  components:
+  - type: Sprite
+    state: chichi
+  - type: SpeakOnTrigger
+    pack: FigurinesChichi
 
 - type: entity
   parent: BaseFigurineMoff
@@ -347,6 +382,17 @@
 
 - type: entity
   parent: BaseFigurineMoff
+  id: ToyFigurineDuey
+  name: rude assistant figurine
+  description: Really... REALLY reeks... Stupid hair too...
+  components:
+  - type: Sprite
+    state: duey
+  - type: SpeakOnTrigger
+    pack: FigurinesDuey
+
+- type: entity
+  parent: BaseFigurineMoff
   id: ToyFigurineEchiara
   name: forgetful researcher figurine
   description: A figurine depicting a figurine you don't actually remember being part of this collection.
@@ -377,6 +423,24 @@
     state: eclispe
   - type: SpeakOnTrigger
     pack: FigurinesEclispe
+
+- type: entity
+  parent: BaseFigurineMoff
+  id: ToyFigurineElspeth
+  name: anxious horned quartermaster figurine
+  description: A figurine depicting what looks like a human, but with horns and a tail. The artist put a lot of detail into giving her an expression like she's about to cry.
+  components:
+  - type: Sprite
+    state: elspeth
+  - type: SpeakOnTrigger
+    pack: FigurinesElspeth
+  - type: ReplacementAccent
+    accent: scottish
+  - type: StutteringAccent
+    matchRandomProb: 0.1
+    fourRandomProb: 0
+    threeRandomProb: 0
+    cutRandomProb: 0
 
 - type: entity
   parent: BaseFigurineMoff
@@ -433,6 +497,17 @@
     state: hot
   - type: SpeakOnTrigger
     pack: FigurinesHot
+
+- type: entity
+  parent: BaseFigurineMoff
+  id: ToyFigurineGabriel
+  name: professional xenoarchaeologist figurine
+  description: Its part of a promotional program for increased artifact research funding. Looks like it was pushed out horrendously behind schedule.
+  components:
+  - type: Sprite
+    state: gabriel
+  - type: SpeakOnTrigger
+    pack: FigurinesGabriel
 
 - type: entity
   parent: BaseFigurineMoff
@@ -498,11 +573,22 @@
 - type: entity
   parent: BaseFigurineMoff
   id: ToyFigurineIchabod
-  name: pumpkin mime figurine
+  name: pumpkin-headed mime figurine
   description: A figurine depicting a grinning pumpkin-headed moth mime. It's a bobblehead, but the head has been glued on firmly.
   components:
   - type: Sprite
     state: ichabod
+  - type: SpeakOnTrigger
+    pack: FigurinesMime
+
+- type: entity
+  parent: BaseFigurineMoff
+  id: ToyFigurineIchabodGourd
+  name: gourd-headed mime figurine
+  description: A figurine depicting a grinning gourd-headed moth mime. It's a bobblehead, but the head has been glued on firmly. The DinkCo seal is plastered on the base.
+  components:
+  - type: Sprite
+    state: ichabod-gourd
   - type: SpeakOnTrigger
     pack: FigurinesMime
 
@@ -541,6 +627,17 @@
 
 - type: entity
   parent: BaseFigurineMoff
+  id: ToyFigurineJibber
+  name: criminal lawyer figurine
+  description: A small blue resomi figurine, the label makes it unclear if they specialize in criminal cases, or are the criminal themselves.
+  components:
+  - type: Sprite
+    state: jibber
+  - type: SpeakOnTrigger
+    pack: FigurinesJibber
+
+- type: entity
+  parent: BaseFigurineMoff
   id: ToyFigurineJobs
   name: scarred reptilian figurine
   description: A figurine depicting a seemingly tired forest green passenger reptile with a bomber jacket and burn scars covering his body from head to toe. Somehow the figure smells of whiskey.
@@ -560,6 +657,18 @@
     state: jupiter
   - type: SpeakOnTrigger
     pack: FigurinesJupiter
+
+- type: entity
+  parent: BaseFigurineMoff
+  id: ToyFigurineKarla
+  name: war-torn atmospherics technician figurine
+  description: A figure of a brown/tan vulp dawning Senior Atmos attire along with an eyepatch, black gaiter and a tiny set of tags.
+  components:
+  - type: Sprite
+    state: karla
+  - type: SpeakOnTrigger
+    pack: FigurinesKarla
+  - type: RussianAccent
 
 - type: entity
   parent: BaseFigurineMoff
@@ -607,6 +716,17 @@
 
 - type: entity
   parent: BaseFigurineMoff
+  id: ToyFigurineKiki
+  name: fluffy catgirl figurine
+  description: Pink, fluffy and working too hard.
+  components:
+  - type: Sprite
+    state: kiki
+  - type: SpeakOnTrigger
+    pack: FigurinesKiki
+
+- type: entity
+  parent: BaseFigurineMoff
   id: ToyFigurineKrakatoa
   name: silly service lizard figurine
   description: A figurine depicting a silly lil lizar.
@@ -640,6 +760,17 @@
     state: lesbot
   - type: SpeakOnTrigger
     pack: FigurinesLesbot
+
+- type: entity
+  parent: BaseFigurineMoff
+  id: ToyFigurineLexi
+  name: tired captain figurine
+  description: A figurine depicting a dull orange slime woman in formalwear.  The miniature clipboard is detachable, and has an unintelligible eval form printed onto it.
+  components:
+  - type: Sprite
+    state: lexi
+  - type: SpeakOnTrigger
+    pack: FigurinesLexi
 
 - type: entity
   parent: BaseFigurineMoff
@@ -696,6 +827,53 @@
     state: molar
   - type: SpeakOnTrigger
     pack: FigurinesMolar
+  - type: RussianAccent
+
+- type: entity
+  parent: BaseFigurineMoff
+  id: ToyFigurineMouseT
+  name: mischievous small chemist figurine
+  description: A particularly small figurine of a resomi chemist. They have a smirk indicating that they're up to no good.
+  components:
+  - type: Sprite
+    state: molar
+  - type: SpeakOnTrigger
+    pack: FigurinesMolar
+  - type: RussianAccent
+  - type: FrenchAccent
+
+- type: entity
+  parent: BaseFigurineMoff
+  id: ToyFigurineMop
+  name: joyous green janitor figurine
+  description: A figurine depicting a lizard with a Mop. The Mop is molded to their gloves & won't come apart without breaking.
+  components:
+  - type: Sprite
+    state: mop
+  - type: SpeakOnTrigger
+    pack: FigurinesMop
+
+- type: entity
+  parent: BaseFigurineMoff
+  id: ToyFigurineNevaeh
+  name: lethargic chemist figurine
+  description: You don't know if you should let this figurine be unattended in the chemistry bay.
+  components:
+  - type: Sprite
+    state: nevaeh
+  - type: SpeakOnTrigger
+    pack: FigurinesNevaeh
+
+- type: entity
+  parent: BaseFigurineMoff
+  id: ToyFigurineNova
+  name: tired engine operator figurine
+  description: It seems to be a mini figure of a female vulpkanin engineer with a robotic left arm, and robotic left eye. Seems to smell of cigarette smoke despite being a mini figure.
+  components:
+  - type: Sprite
+    state: nova
+  - type: SpeakOnTrigger
+    pack: FigurinesNova
   - type: RussianAccent
 
 - type: entity
@@ -933,6 +1111,17 @@
 
 - type: entity
   parent: BaseFigurineMoff
+  id: ToyFigurineStray
+  name: strange nervous botanist figurine
+  description: "A weird looking, disheveled, nervous botanist..... what is that smell..?"
+  components:
+  - type: Sprite
+    state: stray
+  - type: SpeakOnTrigger
+    pack: FigurinesStray
+
+- type: entity
+  parent: BaseFigurineMoff
   id: ToyFigurineStrawberry
   name: tactical engi slime maid figurine
   description: A figurine depicting a very tactical slime girl wearing maid clothing with four tentacles, wearing miniature insulated gloves and engi goggles, they seam to be the real deal, but are sadly too small to use
@@ -941,6 +1130,22 @@
     state: strawberry
   - type: SpeakOnTrigger
     pack: FigurinesStrawberry
+
+- type: entity
+  parent: BaseFigurineMoff
+  id: ToyFigurineStyx
+  name: anxious chef figurine
+  description: You feel its massive eyes stare through you.
+  components:
+  - type: Sprite
+    state: styx
+  - type: SpeakOnTrigger
+    pack: FigurinesStyx
+  - type: StutteringAccent
+    matchRandomProb: 0.1
+    fourRandomProb: 0
+    threeRandomProb: 0
+    cutRandomProb: 0
 
 - type: entity
   parent: BaseFigurineMoff
