@@ -57,6 +57,30 @@ public sealed class MoffCCVars
     public static readonly CVarDef<int> MapVoteCount =
         CVarDef.Create("votekick.map_vote_count", 3, CVar.SERVERONLY);
 
+    /// <summary>
+    ///     Whether a vote to extend post-round pops up as the return to lobby approaches.
+    /// </summary>
+    public static readonly CVarDef<bool> RoundEndExtensionVoteEnabled =
+        CVarDef.Create("vote.round_end_extension_enabled", true, CVar.SERVERONLY);
+
+    /// <summary>
+    ///     How many times post-round can be extended by vote.
+    /// </summary>
+    public static readonly CVarDef<int> RoundEndExtensionVoteMax =
+        CVarDef.Create("vote.round_end_extension_max", 3, CVar.SERVERONLY);
+
+    /// <summary>
+    ///     How many minutes each successful vote extends post-round by.
+    /// </summary>
+    public static readonly CVarDef<int> RoundEndExtensionVoteMinutes =
+        CVarDef.Create("vote.round_end_extension_minutes", 5, CVar.SERVERONLY);
+
+    /// <summary>
+    ///     How long the extension vote stays open, in seconds.
+    /// </summary>
+    public static readonly CVarDef<int> RoundEndExtensionVoteDuration =
+        CVarDef.Create("vote.round_end_extension_duration", 30, CVar.SERVERONLY);
+
     /*
      * Gameplay
      */
