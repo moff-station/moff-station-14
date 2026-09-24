@@ -1,7 +1,6 @@
 using Content.Shared._Moffstation.Explosion.Components;
 using Content.Shared.Explosion;
 using Content.Shared.Explosion.Components;
-using Content.Shared.Throwing;
 using Robust.Client.Graphics;
 using Robust.Client.Physics;
 using Robust.Shared.Physics.Events;
@@ -22,9 +21,6 @@ public sealed partial class ExplosionEffectsSystem : EntitySystem
     [Dependency] private IRobustRandom _random = default!;
     [Dependency] private SharedMapSystem _map = default!;
     [Dependency] private SharedPhysicsSystem _physics = default!;
-    [Dependency] private ThrowingSystem _throwing = default!;
-
-    private const float ShrapnelThrowDistance = 10f;
 
     public override void Initialize()
     {
@@ -59,7 +55,7 @@ public sealed partial class ExplosionEffectsSystem : EntitySystem
             {
                 var shrapnel = Spawn(effect, epicenter);
                 _physics.UpdateIsPredicted(shrapnel);
-                _throwing.TryThrow(shrapnel, _random.NextAngle().ToVec() * ShrapnelThrowDistance, effects.ShrapnelSpeed);
+                _physics.SetLinearVelocity(shrapnel, _random.NextAngle().ToVec() * effects.ShrapnelSpeed);
             }
         }
     }

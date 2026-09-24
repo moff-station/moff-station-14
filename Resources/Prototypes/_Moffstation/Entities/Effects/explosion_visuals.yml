@@ -89,7 +89,9 @@
   - type: TimedDespawn
     lifetime: 0.5
   - type: ExplosionShrapnel
-  - type: ParticleOnThrown
+  - type: TileFrictionModifier
+    modifier: 0
+  - type: ParticleEmitter
     effect: ExplosionShrapnelTrail
   - type: Tag
     tags:
