@@ -1,27 +1,29 @@
+using Content.Client._Starfall.Particles;
 using Content.Shared._Moffstation.Explosion.Components;
+using Content.Shared._Starfall.Particles;
 using Content.Shared.Explosion;
 using Content.Shared.Explosion.Components;
 using Content.Shared.Physics;
 using Robust.Client.Graphics;
-using Robust.Client.Physics;
+using Robust.Shared.Map;
 using Robust.Shared.Physics;
-using Robust.Shared.Physics.Events;
 using Robust.Shared.Physics.Systems;
-using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
-using Robust.Shared.Spawners;
 using Robust.Shared.Timing;
 
 namespace Content.Client._Moffstation.Explosion;
 
 /// <summary>
-///     Spawns an explosion type's <see cref="ExplosionPrototype.Effects"/> when its visuals reach the client.
+///     Plays an explosion type's <see cref="ExplosionPrototype.Effects"/>.
 /// </summary>
 public sealed partial class ExplosionEffectsSystem : EntitySystem
 {
+    [Dependency] private IEyeManager _eye = default!;
     [Dependency] private IGameTiming _timing = default!;
     [Dependency] private IOverlayManager _overlay = default!;
     [Dependency] private IRobustRandom _random = default!;
+    [Dependency] private EntityLookupSystem _lookup = default!;
+    [Dependency] private ParticleSystem _particles = default!;
     [Dependency] private SharedMapSystem _map = default!;
     [Dependency] private SharedPhysicsSystem _physics = default!;
 
@@ -46,19 +48,28 @@ public sealed partial class ExplosionEffectsSystem : EntitySystem
             type.Effects is not { } effects)
             return;
 
-        foreach (var effect in effects.VisualEffects)
+        foreach (var particle in effects.Particles)
         {
-            Spawn(effect, epicenter);
+            _particles.CreateParticle(particle, epicenter);
         }
 
-        foreach (var effect in effects.ShrapnelEffects)
+        foreach (var entity in effects.Entities)
         {
+            Spawn(entity, epicenter);
+        }
+
+        // Rays start inside whatever exploded, so don't let those stop the shrapnel.
+        var ignored = _lookup.GetEntitiesIntersecting(epicenter);
+
+        foreach (var shrapnel in effects.Shrapnel)
+        {
+            if (!ProtoMan.Resolve(shrapnel, out var shrapnelProto) || shrapnelProto.Speed <= 0f)
+                continue;
+
             var count = effects.ShrapnelCount.Next(_random);
             for (var i = 0; i < count; i++)
             {
-                var shrapnel = Spawn(effect, epicenter);
-                _physics.UpdateIsPredicted(shrapnel);
-                _physics.SetLinearVelocity(shrapnel, _random.NextAngle().ToVec() * effects.ShrapnelSpeed);
+                FireShrapnel(shrapnelProto, epicenter, ignored);
             }
         }
     }
@@ -69,15 +80,31 @@ public sealed partial class ExplosionEffectsSystem : EntitySystem
         ent.Comp.StartTime = _timing.RealTime;
     }
 
-    [SubscribeLocalEvent]
-    private void OnShrapnelUpdateIsPredicted(Entity<ExplosionShrapnelComponent> ent, ref UpdateIsPredictedEvent args)
+    private void FireShrapnel(ParticleEffectPrototype proto, MapCoordinates epicenter, HashSet<EntityUid> ignored)
     {
-        args.IsPredicted = true;
-    }
+        var direction = _random.NextAngle().ToVec();
+        var lifetime = (float) proto.Lifetime.TotalSeconds;
 
-    [SubscribeLocalEvent]
-    private void OnShrapnelStartCollide(Entity<ExplosionShrapnelComponent> ent, ref StartCollideEvent args)
-    {
-        TryQueueDel(ent.Owner);
+        var ray = new CollisionRay(epicenter.Position, direction, (int) CollisionGroup.ItemMask);
+        var hits = _physics.IntersectRayWithPredicate(epicenter.MapId,
+            ray,
+            ignored,
+            static (uid, set) => set.Contains(uid),
+            lifetime * proto.Speed,
+            returnOnFirstHit: false);
+
+        foreach (var hit in hits)
+        {
+            lifetime = MathF.Min(lifetime, hit.Distance / proto.Speed);
+        }
+
+        var screenDirection = _eye.CurrentEye.Rotation.RotateVec(direction);
+        var overrides = new ParticleRuntimeOverrides
+        {
+            EmitAngle = new Angle(MathF.Atan2(screenDirection.X, screenDirection.Y)),
+            Lifetime = TimeSpan.FromSeconds(lifetime),
+        };
+
+        _particles.CreateParticle(proto.ID, epicenter, overrides: overrides);
     }
 }

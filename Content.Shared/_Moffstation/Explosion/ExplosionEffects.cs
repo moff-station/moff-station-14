@@ -1,37 +1,40 @@
+using Content.Shared._Starfall.Particles;
 using Content.Shared.Destructible.Thresholds;
 using Robust.Shared.Prototypes;
 
 namespace Content.Shared._Moffstation.Explosion;
 
 /// <summary>
-///     Client-side cosmetic entities spawned at an explosion's epicenter.
+///     Client-side cosmetic effects played at an explosion's epicenter.
 /// </summary>
 [DataDefinition]
 public sealed partial class ExplosionEffects
 {
     [DataField]
-    public List<EntProtoId> VisualEffects = new()
+    public List<ProtoId<ParticleEffectPrototype>> Particles = new()
     {
-        "ExplosionEffectGrenade",
-        "ExplosionEffectGrenadeShockWave",
-        "ExplosionEffectGrenadeSmoke",
-        "ExplosionEffectGrenadeFire",
-        "ExplosionEffectGrenadeEmbers",
-        "ExplosionEffectGrenadeGlowingEmbers",
+        "ExplosionFlash",
+        "ExplosionSmoke",
+        "ExplosionFire",
+        "ExplosionEmbers",
+        "ExplosionGlowingEmbers",
     };
 
+    /// <summary>
+    ///     Entities for effects particles can't do, like lights and the shockwave.
+    /// </summary>
     [DataField]
-    public List<EntProtoId> ShrapnelEffects = new() { "ExplosionEffectShrapnel1", "ExplosionEffectShrapnel2" };
+    public List<EntProtoId> Entities = new() { "ExplosionEffectLight", "ExplosionEffectShockWave" };
 
     /// <summary>
-    ///     How many of each shrapnel effect to spawn.
+    ///     Single-particle effects fired in random directions, stopping at walls.
+    /// </summary>
+    [DataField]
+    public List<ProtoId<ParticleEffectPrototype>> Shrapnel = new() { "ExplosionShrapnel1", "ExplosionShrapnel2" };
+
+    /// <summary>
+    ///     How many of each shrapnel effect to fire.
     /// </summary>
     [DataField]
     public MinMax ShrapnelCount = new(5, 9);
-
-    /// <summary>
-    ///     Shrapnel speed in tiles per second.
-    /// </summary>
-    [DataField]
-    public float ShrapnelSpeed = 5f;
 }

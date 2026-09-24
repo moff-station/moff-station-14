@@ -1,43 +1,9 @@
 ﻿- type: entity
-  id: ExplosionEffectGrenade
-  categories: [ HideSpawnMenu ]
-  components:
-  - type: Sprite
-    sprite: _Funkystation/Effects/grenade_explosion.rsi
-    state: grenade
-  - type: TimedDespawn
-    lifetime: 0.6
-  - type: ParticleEmitter
-    effect: ExplosionFlash
-  - type: Tag
-    tags:
-    - HideContextMenu
-
-- type: entity
-  id: ExplosionEffectGrenadeShockWave
+  id: ExplosionEffectLight
   categories: [ HideSpawnMenu ]
   components:
   - type: TimedDespawn
-    lifetime: 0.5
-  - type: ExplosionShockWave
-
-- type: entity
-  id: ExplosionEffectGrenadeSmoke
-  categories: [ HideSpawnMenu ]
-  components:
-  - type: TimedDespawn
-    lifetime: 2.8
-  - type: ParticleEmitter
-    effect: ExplosionSmoke
-
-- type: entity
-  id: ExplosionEffectGrenadeFire
-  categories: [ HideSpawnMenu ]
-  components:
-  - type: TimedDespawn
-    lifetime: 1.6
-  - type: ParticleEmitter
-    effect: ExplosionFire
+    lifetime: 0.8
   - type: PointLight
     radius: 15
     energy: 10
@@ -47,59 +13,12 @@
     duration: 0.8
 
 - type: entity
-  id: ExplosionEffectGrenadeEmbers
+  id: ExplosionEffectShockWave
   categories: [ HideSpawnMenu ]
   components:
-  - type: TimedDespawn
-    lifetime: 1.2
-  - type: ParticleEmitter
-    effect: ExplosionEmbers
-
-- type: entity
-  id: ExplosionEffectGrenadeGlowingEmbers
-  categories: [ HideSpawnMenu ]
-  components:
-  - type: TimedDespawn
-    lifetime: 2.8
-  - type: ParticleEmitter
-    effect: ExplosionGlowingEmbers
-
-- type: entity
-  id: ExplosionEffectShrapnel1
-  categories: [ HideSpawnMenu ]
-  components:
-  - type: Physics
-    bodyType: Dynamic
-    fixedRotation: true
-  - type: Fixtures
-    fixtures:
-      fix1:
-        shape:
-          !type:PhysShapeAabb
-          bounds: "-0.25,-0.25,0.25,0.25"
-        density: 20
-        hard: false
-  - type: Sprite
-    sprite: _Funkystation/Effects/shrapnel.rsi
-    state: shrapnel_bright1
   - type: TimedDespawn
     lifetime: 0.5
-  - type: ExplosionShrapnel
-  - type: TileFrictionModifier
-    modifier: 0
-  - type: ParticleEmitter
-    effect: ExplosionShrapnelTrail
-  - type: Tag
-    tags:
-    - HideContextMenu
-
-- type: entity
-  parent: ExplosionEffectShrapnel1
-  id: ExplosionEffectShrapnel2
-  categories: [ HideSpawnMenu ]
-  components:
-  - type: Sprite
-    state: shrapnel_bright2
+  - type: ExplosionShockWave
 
 - type: particleEffect
   id: ExplosionFlash
@@ -293,32 +212,35 @@
     radius: 0.3
 
 - type: particleEffect
-  id: ExplosionShrapnelTrail
+  id: ExplosionShrapnel1
+  renderLayer: 9
   sprite:
-    sprite: _Starfall/Particles/generic.rsi
-    state: dot
+    sprite: _Funkystation/Effects/shrapnel.rsi
+    state: shrapnel_bright1
   shader: unshaded
   colorOverLifetime:
   - time: 0.0
     color: "#FFFFFFFF"
-  - time: 0.2
+  - time: 0.3
     color: "#FFCC44FF"
-  - time: 0.6
-    color: "#FF4400AA"
   - time: 1.0
-    color: "#00000000"
-  lifetime: 0.15
-  lifetimeVariance: 0.05
-  speed: 0.5
-  particleSize: 0.22
-  sizeVariance: 0.08
-  emissionRate: 50
-  maxCount: 15
-  burst: false
-  drag: 0.1
-  spreadAngle: 30
-  emitAngle: 180
-  worldSpace: true
-  inheritVelocity: 0.1
+    color: "#FF440088"
+  lifetime: 0.5
+  lifetimeVariance: 0
+  speed: 5
+  speedVariance: 0
+  particleSize: 1
+  emissionRate: 0
+  maxCount: 1
+  burst: true
+  spreadAngle: 0
+  stretchFactor: 0.3
   shape:
     type: Point
+
+- type: particleEffect
+  parent: ExplosionShrapnel1
+  id: ExplosionShrapnel2
+  sprite:
+    sprite: _Funkystation/Effects/shrapnel.rsi
+    state: shrapnel_bright2
