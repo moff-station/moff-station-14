@@ -56,7 +56,7 @@
           collection: MetalBreak
       - !type:ExplodeBehavior
   - type: Explosive
-    explosionType: Default
+    explosionType: Transparent # Funky RMC Explosions
     # Same as AME, but numbers still picked from a hat.
     maxIntensity: 100
     intensitySlope: 2
