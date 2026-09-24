@@ -145,13 +145,13 @@ public sealed partial class ParticleOverlay : Overlay
                         var stretchY = 1f + velLen * stretchFactor;
                         // Rotate velocity unit vector by -eyeAngle using precomputed cosR/sinR.
                         // ux = vel.X/velLen,  uy = vel.Y/velLen
-                        // cV = cos(-eye+velAngle) = cosR*uy - sinR*ux
-                        // sV = sin(-eye+velAngle) = sinR*uy + cosR*ux
+                        // cV = cos(-eye+velAngle) = cosR*uy + sinR*ux
+                        // sV = sin(-eye+velAngle) = sinR*uy - cosR*ux
                         var invLen = 1f / velLen;
                         var ux = particle.Velocity.X * invLen;
                         var uy = particle.Velocity.Y * invLen;
-                        var cV = cosR * uy - sinR * ux;
-                        var sV = sinR * uy + cosR * ux;
+                        var cV = cosR * uy + sinR * ux;
+                        var sV = sinR * uy - cosR * ux;
                         handle.SetTransform(new Matrix3x2(cV, sV, -sV, cV, worldPos.X, worldPos.Y));
                         handle.DrawTextureRect(tex,
                             new Box2(-halfSize, -halfSize * stretchY, halfSize, halfSize * stretchY),
@@ -169,8 +169,8 @@ public sealed partial class ParticleOverlay : Overlay
                         var invLen = 1f / MathF.Sqrt(velLenSq);
                         var ux = particle.Velocity.X * invLen;
                         var uy = particle.Velocity.Y * invLen;
-                        var cos = cosR * uy - sinR * ux;
-                        var sin = sinR * uy + cosR * ux;
+                        var cos = cosR * uy + sinR * ux;
+                        var sin = sinR * uy - cosR * ux;
                         handle.SetTransform(new Matrix3x2(cos, sin, -sin, cos, worldPos.X, worldPos.Y));
                         handle.DrawTextureRect(tex, new Box2(-halfSize, -halfSize, halfSize, halfSize), color);
                         continue;

@@ -1,5 +1,4 @@
 using Content.Shared._Starfall.Particles;
-using Content.Shared.Destructible.Thresholds;
 using Robust.Shared.Prototypes;
 
 namespace Content.Shared._Moffstation.Explosion;
@@ -25,16 +24,4 @@ public sealed partial class ExplosionEffects
     /// </summary>
     [DataField]
     public List<EntProtoId> Entities = new() { "ExplosionEffectLight", "ExplosionEffectShockWave" };
-
-    /// <summary>
-    ///     Single-particle effects fired in random directions, stopping at walls.
-    /// </summary>
-    [DataField]
-    public List<ProtoId<ParticleEffectPrototype>> Shrapnel = new() { "ExplosionShrapnel1", "ExplosionShrapnel2" };
-
-    /// <summary>
-    ///     How many of each shrapnel effect to fire.
-    /// </summary>
-    [DataField]
-    public MinMax ShrapnelCount = new(5, 9);
 }

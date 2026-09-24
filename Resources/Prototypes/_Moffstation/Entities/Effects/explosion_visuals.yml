@@ -217,24 +217,17 @@
   sprite:
     sprite: _Funkystation/Effects/shrapnel.rsi
     state: shrapnel_bright1
-  shader: unshaded
-  colorOverLifetime:
-  - time: 0.0
-    color: "#FFFFFFFF"
-  - time: 0.3
-    color: "#FFCC44FF"
-  - time: 1.0
-    color: "#FF440088"
-  lifetime: 0.5
-  lifetimeVariance: 0
-  speed: 5
-  speedVariance: 0
+  endColor: White
+  lifetime: 0.4
+  lifetimeVariance: 0.1
+  speed: 4
+  speedVariance: 1.5
   particleSize: 1
   emissionRate: 0
-  maxCount: 1
+  maxCount: 7
   burst: true
-  spreadAngle: 0
-  stretchFactor: 0.3
+  spreadAngle: 360
+  alignToVelocity: true
   shape:
     type: Point
 
