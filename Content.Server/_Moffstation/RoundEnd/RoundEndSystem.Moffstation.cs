@@ -14,7 +14,6 @@ public sealed partial class RoundEndSystem
 {
     [Dependency] private IVoteManager _voteManager = default!;
 
-    // Leaves the result a few seconds to be read before the return to lobby.
     private static readonly TimeSpan ExtensionVoteBuffer = TimeSpan.FromSeconds(10);
 
     private void ScheduleExtensionVote(TimeSpan countdown, int extensions)
