@@ -1,6 +1,8 @@
 using System.Numerics;
 using Content.Shared._Moffstation.Explosion.Components;
+using Content.Shared.CCVar;
 using Robust.Client.Graphics;
+using Robust.Shared.Configuration;
 using Robust.Shared.Enums;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Timing;
@@ -9,6 +11,7 @@ namespace Content.Client._Moffstation.Explosion;
 
 public sealed partial class ExplosionShockWaveOverlay : Robust.Client.Graphics.Overlay
 {
+    [Dependency] private IConfigurationManager _cfg = default!;
     [Dependency] private IEntityManager _entMan = default!;
     [Dependency] private IGameTiming _timing = default!;
     [Dependency] private IPrototypeManager _prototypeManager = default!;
@@ -44,7 +47,7 @@ public sealed partial class ExplosionShockWaveOverlay : Robust.Client.Graphics.O
 
     protected override bool BeforeDraw(in OverlayDrawArgs args)
     {
-        if (args.Viewport.Eye == null)
+        if (args.Viewport.Eye == null || _cfg.GetCVar(CCVars.ReducedMotion))
             return false;
 
         _count = 0;
