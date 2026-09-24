@@ -627,6 +627,17 @@
 
 - type: entity
   parent: BaseFigurineMoff
+  id: ToyFigurineJibber
+  name: criminal lawyer figurine
+  description: A small blue resomi figurine, the label makes it unclear if they specialize in criminal cases, or are the criminal themselves.
+  components:
+  - type: Sprite
+    state: jibber
+  - type: SpeakOnTrigger
+    pack: FigurinesJibber
+
+- type: entity
+  parent: BaseFigurineMoff
   id: ToyFigurineJobs
   name: scarred reptilian figurine
   description: A figurine depicting a seemingly tired forest green passenger reptile with a bomber jacket and burn scars covering his body from head to toe. Somehow the figure smells of whiskey.
@@ -817,6 +828,19 @@
   - type: SpeakOnTrigger
     pack: FigurinesMolar
   - type: RussianAccent
+
+- type: entity
+  parent: BaseFigurineMoff
+  id: ToyFigurineMolar
+  name: mischievous small chemist figurine
+  description: A particularly small figurine of a resomi chemist. They have a smirk indicating that they're up to no good.
+  components:
+  - type: Sprite
+    state: molar
+  - type: SpeakOnTrigger
+    pack: FigurinesMolar
+  - type: RussianAccent
+  - type: FrenchAccent
 
 - type: entity
   parent: BaseFigurineMoff
@@ -1106,6 +1130,22 @@
     state: strawberry
   - type: SpeakOnTrigger
     pack: FigurinesStrawberry
+
+- type: entity
+  parent: BaseFigurineMoff
+  id: ToyFigurineStyx
+  name: anxious chef figurine
+  description: You feel its massive eyes stare through you.
+  components:
+  - type: Sprite
+    state: styx
+  - type: SpeakOnTrigger
+    pack: FigurinesStyx
+  - type: StutteringAccent
+    matchRandomProb: 0.1
+    fourRandomProb: 0
+    threeRandomProb: 0
+    cutRandomProb: 0
 
 - type: entity
   parent: BaseFigurineMoff

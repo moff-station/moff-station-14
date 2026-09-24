@@ -376,6 +376,17 @@ figurines-jessgerr-9 = Touch the mask and I won't be so silly...
 figurines-jessgerr-10 = Jingle, jingle!
 figurines-jessgerr-11 = Don't forget to smile! Or else!
 
+figurines-jibber-1 = Ooooh Sweets!
+figurines-jibber-2 = Don't worry, I'm a GREAT lawyer!
+figurines-jibber-3 = As your lawyer, maybe don't conffess to crimes on the radio
+figurines-jibber-4 = I always win!
+figurines-jibber-5 = Are you really leaving me alone with the armory?
+figurines-jibber-6 = Give me the donuts and no one gets hurt
+figurines-jibber-7 = I AM NOT A SHIELD
+figurines-jibber-8 = My sister? She's not behind me is she?
+figurines-jibber-9 = It can't happen every time...
+figurines-jibber-10 = Syndicate? Step into my office a moment, we need to talk.
+
 figurines-jobs-1 = I'm alright.
 figurines-jobs-2 = I’m nnnott ...huuuuhhh... druunnnk!
 figurines-jobs-3 = Check this out.
@@ -702,6 +713,17 @@ figurines-strawberry-3 = Uhm, what about my tentacles?
 figurines-strawberry-4 = No, the maid uniform is non optional.
 figurines-strawberry-5 = Engi maid Service!
 figurines-strawberry-6 = Im proud of you, AI.
+
+figurines-styx-1 = Hello!
+figurines-styx-2 = You're gross
+figurines-styx-3 = The snails are for me, not the crew.
+figurines-styx-4 = No! I am NOT french!
+figurines-styx-5 = Bugs are good for you.
+figurines-styx-6 = Be glad I do not control the cook book.
+figurines-styx-7 = I am not putting on shoes.
+figurines-styx-8 = ETA on the cardboard?
+figurines-styx-9 = Tomatoooo annnddd....
+figurines-styx-10 = You're on my deaf side.
 
 figurines-swims-1 = Here ya go! Use it responsibly!
 figurines-swims-2 = Ahoy!
