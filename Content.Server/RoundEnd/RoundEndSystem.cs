@@ -96,7 +96,6 @@ namespace Content.Server.RoundEnd
             ExpectedCountdownEnd = null;
             SetAutoCallTime();
             _autoCalledBefore = false;
-            RestartTime = null; // Moff - Round end extension vote
             RaiseLocalEvent(RoundEndSystemChangedEvent.Default);
         }
 
@@ -298,7 +297,7 @@ namespace Content.Server.RoundEnd
             _countdownTokenSource = new();
 
             countdownTime ??= TimeSpan.FromSeconds(_cfg.GetCVar(CCVars.RoundRestartTime));
-            RestartTime = _gameTiming.CurTime + countdownTime.Value; // Moff - Round end extension vote
+            ScheduleExtensionVote(countdownTime.Value, 0); // Moff - Round end extension vote
             int time;
             string unitsLocString;
             if (countdownTime.Value.TotalSeconds < 60)

@@ -12,4 +12,3 @@ round-end-extension-vote-succeeded = The vote passed, and the round has been ext
     [one] 1 extension remaining.
     *[other] {$remaining} extensions remaining.
 }
-round-end-extension-vote-failed = The vote to extend the round failed.

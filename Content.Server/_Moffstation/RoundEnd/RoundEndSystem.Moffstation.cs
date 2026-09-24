@@ -1,27 +1,82 @@
-using Content.Server.GameTicking;
+using System.Threading;
+using Content.Server.Voting;
+using Content.Server.Voting.Managers;
+using Content.Shared._Moffstation.CCVar;
+using Content.Shared.Database;
 using Timer = Robust.Shared.Timing.Timer;
 
 namespace Content.Server.RoundEnd;
 
 public sealed partial class RoundEndSystem
 {
-    /// <summary>
-    /// When the post-round countdown will return to the lobby, or null outside of post-round.
-    /// </summary>
-    public TimeSpan? RestartTime { get; private set; }
+    [Dependency] private IVoteManager _voteManager = default!;
 
-    /// <summary>
-    /// Pushes the post-round return to lobby back by the given time.
-    /// </summary>
-    public void ExtendRestartCountdown(TimeSpan extension)
+    // Leaves the result a few seconds to be read before the return to lobby.
+    private static readonly TimeSpan ExtensionVoteBuffer = TimeSpan.FromSeconds(10);
+
+    private void ScheduleExtensionVote(TimeSpan countdown, int extensions)
     {
-        if (_gameTicker.RunLevel != GameRunLevel.PostRound || RestartTime == null)
+        var duration = TimeSpan.FromSeconds(_cfg.GetCVar(MoffCCVars.RoundEndExtensionVoteDuration));
+
+        if (_countdownTokenSource == null
+            || extensions >= _cfg.GetCVar(MoffCCVars.MaxRoundEndExtensionVotes)
+            || countdown <= duration)
             return;
 
-        _countdownTokenSource?.Cancel();
-        _countdownTokenSource = new();
+        var token = _countdownTokenSource.Token;
+        var restartTime = _gameTiming.CurTime + countdown;
+        var delay = countdown - duration - ExtensionVoteBuffer;
+        Timer.Spawn(delay > TimeSpan.Zero ? delay : TimeSpan.Zero,
+            () => StartExtensionVote(restartTime, duration, extensions, token),
+            token);
+    }
 
-        RestartTime += extension;
-        Timer.Spawn(RestartTime.Value - _gameTiming.CurTime, AfterEndRoundRestart, _countdownTokenSource.Token);
+    // Unfortunately votes are lowkirk slop.
+    // If you don't make a preset vote you don't get many of the bells and whistles automatically.
+    // In my infinite wisdom, I think it will be easier to maintain to create most of those bells and whistles here, rather than make a preset vote type.
+    // The preset vote type involves sticking your fingers into alot of the upstream vote files, which could make merge conflicts a pain
+    // tldr, im putting this here instead of the upstream vote file because it's easier.
+    private void StartExtensionVote(TimeSpan restartTime, TimeSpan duration, int extensions, CancellationToken token)
+    {
+        var minutes = _cfg.GetCVar(MoffCCVars.RoundEndExtensionVoteMinutes);
+        var options = new VoteOptions
+        {
+            Title = Loc.GetString("round-end-extension-vote-title", ("minutes", minutes)),
+            Options =
+            {
+                (Loc.GetString("round-end-extension-vote-yes"), true),
+                (Loc.GetString("round-end-extension-vote-no"), false),
+            },
+            Duration = duration,
+        };
+
+        var vote = _voteManager.CreateVote(options);
+        vote.OnFinished += (_, _) =>
+        {
+            // The restart was cancelled or replaced while the vote ran.
+            if (token.IsCancellationRequested)
+                return;
+
+            var yes = vote.VotesPerOption[true];
+            var no = vote.VotesPerOption[false];
+
+            if (yes <= no)
+            {
+                _adminLogger.Add(LogType.Vote, LogImpact.Low, $"Round end extension vote failed: {yes}/{no}");
+                return;
+            }
+
+            _countdownTokenSource?.Cancel();
+            _countdownTokenSource = new();
+            var countdown = restartTime + TimeSpan.FromMinutes(minutes) - _gameTiming.CurTime;
+            Timer.Spawn(countdown, AfterEndRoundRestart, _countdownTokenSource.Token);
+
+            _adminLogger.Add(LogType.Vote, LogImpact.Low, $"Round end extension vote succeeded: {yes}/{no}");
+            _chatManager.DispatchServerAnnouncement(Loc.GetString("round-end-extension-vote-succeeded",
+                ("minutes", minutes),
+                ("remaining", _cfg.GetCVar(MoffCCVars.MaxRoundEndExtensionVotes) - extensions - 1)));
+
+            ScheduleExtensionVote(countdown, extensions + 1);
+        };
     }
 }
