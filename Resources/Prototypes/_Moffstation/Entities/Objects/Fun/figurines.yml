@@ -573,11 +573,22 @@
 - type: entity
   parent: BaseFigurineMoff
   id: ToyFigurineIchabod
-  name: pumpkin mime figurine
+  name: pumpkin-headed mime figurine
   description: A figurine depicting a grinning pumpkin-headed moth mime. It's a bobblehead, but the head has been glued on firmly.
   components:
   - type: Sprite
     state: ichabod
+  - type: SpeakOnTrigger
+    pack: FigurinesMime
+
+- type: entity
+  parent: BaseFigurineMoff
+  id: ToyFigurineIchabodGourd
+  name: gourd-headed mime figurine
+  description: A figurine depicting a grinning gourd-headed moth mime. It's a bobblehead, but the head has been glued on firmly. The DinkCo seal is plastered on the base.
+  components:
+  - type: Sprite
+    state: ichabod-gourd
   - type: SpeakOnTrigger
     pack: FigurinesMime
 
