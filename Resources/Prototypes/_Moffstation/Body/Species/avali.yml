@@ -102,7 +102,7 @@
       types:
         Slash: 5
   - type: Temperature
-    specificHeat: 48
+    specificHeat: 2500 # now more sensitive than average, but still behaves correctly
   - type: TemperatureDamage
     heatDamageThreshold: 310
     coldDamageThreshold: 223
