@@ -1528,7 +1528,6 @@
     maxIntensity: 1.5
     canCreateVacuum: false
     repeatable: true
-  - type: ExplosionEffect # Funky RMC Explosions
   # Moff Start - Dynamic description
   - type: XAELocalizedDescription
     description: artifact-effect-hint-environment
@@ -1547,7 +1546,6 @@
     intensitySlope: 2.5
     maxIntensity: 50
     repeatable: true
-  - type: ExplosionEffect # Funky RMC Explosions
   # Moff Start - Dynamic description
   - type: XAELocalizedDescription
     description: artifact-effect-hint-environment

@@ -70,7 +70,6 @@
     intensitySlope: 30
     totalIntensity: 30
     canCreateVacuum: false
-  - type: ExplosionEffect # Funky RMC Explosions
   - type: Damageable
     damageModifierSet: GlassPlasmaMod
   - type: Destructible
@@ -112,7 +111,6 @@
     intensitySlope: 7.5
     totalIntensity: 500
     canCreateVacuum: true
-  - type: ExplosionEffect # Funky RMC Explosions
 
 - type: entity
   id: MachineAPE

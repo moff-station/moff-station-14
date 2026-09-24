@@ -7,7 +7,6 @@ using Content.Server.Destructible;
 using Content.Server.NodeContainer.EntitySystems;
 using Content.Server.NPC.Pathfinding;
 using Content.Shared._ES.Camera;
-using Content.Shared._Funkystation.Explosion; // Funky RMC Explosions
 using Content.Shared.Atmos.Components;
 using Content.Shared.Camera;
 using Content.Shared.CCVar;
@@ -170,9 +169,7 @@ public sealed partial class ExplosionSystem : SharedExplosionSystem
             explosive.CanCreateVacuum,
             user);
 
-        // Funky Explosions
-        var ev = new ExplosiveTriggeredEvent();
-        RaiseLocalEvent(uid, ref ev);
+        SpawnExplosionEffects(uid, explosive.ExplosionType); // Funky RMC Explosions
 
         if (explosive.DeleteAfterExplosion ?? delete)
             QueueDel(uid);

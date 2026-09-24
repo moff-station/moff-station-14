@@ -48,6 +48,7 @@
 
 - type: explosion
   id: MicroBomb
+  effects: null # Funky RMC Explosions
   damagePerIntensity:
     types:
       Heat: 6
@@ -144,6 +145,7 @@
 
 - type: explosion
   id: PowerSink
+  effects: null # Funky RMC Explosions
   damagePerIntensity:
     types:
       Heat: 12
@@ -191,6 +193,7 @@
 
 - type: explosion
   id: XenoborgAntiStructureExplosion
+  effects: null # Funky RMC Explosions
   damagePerIntensity:
     types:
       Heat: 4

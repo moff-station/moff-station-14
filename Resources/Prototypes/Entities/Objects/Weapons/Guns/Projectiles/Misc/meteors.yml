@@ -42,7 +42,6 @@
     maxIntensity: 100
     maxTileBreak: 1
     tileBreakScale: 2
-  - type: ExplosionEffect # Funky RMC Explosions
   - type: TileFrictionModifier
     modifier: 0
 
@@ -69,7 +68,6 @@
         - BulletImpassable
   - type: Explosive
     totalIntensity: 25
-  - type: ExplosionEffect # Funky RMC Explosions
   - type: Destructible
     thresholds:
     - trigger:
@@ -105,7 +103,6 @@
         - BulletImpassable
   - type: Explosive
     totalIntensity: 50
-  - type: ExplosionEffect # Funky RMC Explosions
   - type: Destructible
     thresholds:
     - trigger:
@@ -146,7 +143,6 @@
         - BulletImpassable
   - type: Explosive
     totalIntensity: 100
-  - type: ExplosionEffect # Funky RMC Explosions
   - type: Destructible
     thresholds:
     - trigger:
@@ -175,7 +171,6 @@
     state: big
   - type: Explosive
     totalIntensity: 150
-  - type: ExplosionEffect # Funky RMC Explosions
   - type: Destructible
     thresholds:
     - trigger:
@@ -216,7 +211,6 @@
         Quantity: 480
   - type: Explosive
     totalIntensity: 25
-  - type: ExplosionEffect # Funky RMC Explosions
   - type: Destructible
     thresholds:
     - trigger:
@@ -251,7 +245,6 @@
     state: cow_pixel
   - type: Explosive
     totalIntensity: 25
-  - type: ExplosionEffect # Funky RMC Explosions
   - type: Solution
     solution:
       reagents:
@@ -292,7 +285,6 @@
     state: clown_pixel
   - type: Explosive
     totalIntensity: 25
-  - type: ExplosionEffect # Funky RMC Explosions
   - type: Solution
     solution:
       reagents:
@@ -335,7 +327,6 @@
     state: potato
   - type: Explosive
     totalIntensity: 25
-  - type: ExplosionEffect # Funky RMC Explosions
   - type: Solution
     solution:
       reagents:

@@ -15,7 +15,6 @@
     intensitySlope: 6
     totalIntensity: 200
     maxTileBreak: 1
-  - type: ExplosionEffect # Funky RMC Explosions
   - type: PointLight
     radius: 3.5
     color: orange
@@ -38,7 +37,6 @@
     intensitySlope: 1
     totalIntensity: 4 # 60 total damage to distribute over tiles
     maxTileBreak: 1
-  - type: ExplosionEffect # Funky RMC Explosions
   - type: PointLight
     radius: 3.5
     color: orange
@@ -81,7 +79,6 @@
     intensitySlope: 5
     maxIntensity: 10
     canCreateVacuum: false
-  - type: ExplosionEffect # Funky RMC Explosions
 
 - type: entity
   parent: BaseBulletTrigger
@@ -116,7 +113,6 @@
     intensitySlope: 1
     maxIntensity: 5
     canCreateVacuum: false
-  - type: ExplosionEffect # Funky RMC Explosions
   - type: ContainerContainer
     containers:
       cluster-payload: !type:Container
@@ -153,7 +149,6 @@
     intensitySlope: 1
     maxIntensity: 0.01
     tileBreakScale: 0.01
-  - type: ExplosionEffect # Funky RMC Explosions
 
 - type: entity
   parent: BaseBulletTrigger
@@ -193,7 +188,6 @@
     intensitySlope: 6
     totalIntensity: 60
     maxTileBreak: 0
-  - type: ExplosionEffect # Funky RMC Explosions
   - type: PointLight
     radius: 1
     color: orange

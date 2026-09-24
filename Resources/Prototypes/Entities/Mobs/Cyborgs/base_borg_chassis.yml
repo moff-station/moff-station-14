@@ -281,7 +281,6 @@
     intensitySlope: 20
     maxIntensity: 20
     canCreateVacuum: false # its for killing the borg not the station
-  - type: ExplosionEffect # Funky RMC Explosions
 
 - type: entity
   abstract: true
@@ -303,7 +302,6 @@
     intensitySlope: 20
     maxIntensity: 100
     canCreateVacuum: false
-  - type: ExplosionEffect # Funky RMC Explosions
 
 - type: entity
   id: BaseBorgChassisNT

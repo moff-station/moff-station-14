@@ -1,17 +1,17 @@
-﻿using Content.Shared._Funkystation.Explosion.EntitySystems;
-using Robust.Shared.GameStates;
 using Robust.Shared.Prototypes;
 
-namespace Content.Shared._Funkystation.Explosion.Components;
+namespace Content.Shared._Funkystation.Explosion;
 
-[RegisterComponent, NetworkedComponent, AutoGenerateComponentState]
-[Access(typeof(SharedExplosionEffectSystem))]
-public sealed partial class ExplosionEffectComponent : Component
+/// <summary>
+///     Visual entities spawned at the epicenter when an explosive triggers.
+/// </summary>
+[DataDefinition]
+public sealed partial class ExplosionEffects
 {
     /// <summary>
     ///     A list of entities spawned at the epicenter, all at the same time
     /// </summary>
-    [DataField, AutoNetworkedField]
+    [DataField]
     public List<EntProtoId> VisualEffects = new()
     {
         "ExplosionEffectGrenade",
@@ -21,15 +21,15 @@ public sealed partial class ExplosionEffectComponent : Component
         "ExplosionEffectGrenadeGlowingEmbers"
     };
 
-    [DataField, AutoNetworkedField]
+    [DataField]
     public List<EntProtoId> ShrapnelEffects = new() { "ExplosionEffectShrapnel1", "ExplosionEffectShrapnel2" };
 
-    [DataField, AutoNetworkedField]
+    [DataField]
     public int MinShrapnel = 5;
 
-    [DataField, AutoNetworkedField]
+    [DataField]
     public int MaxShrapnel = 9;
 
-    [DataField, AutoNetworkedField]
+    [DataField]
     public float ShrapnelSpeed = 5f;
 }
