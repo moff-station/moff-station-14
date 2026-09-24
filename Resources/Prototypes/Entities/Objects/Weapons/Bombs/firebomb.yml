@@ -34,6 +34,7 @@
     intensitySlope: 5
     maxIntensity: 3
     canCreateVacuum: false
+  - type: ExplosionEffect # Funky RMC Explosions
   - type: ExplodeOnTrigger
     keysIn:
     - timer

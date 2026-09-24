@@ -1,3 +1,4 @@
+using Content.Client._Funkystation.Explosion; // Funky RMC explosions
 using Content.Client._Moffstation.Preferences; // Moffstation - Multi-character selection
 using Content.Client.Administration.Managers;
 using Content.Client.Changelog;
@@ -168,6 +169,7 @@ namespace Content.Client.Entry
             _overlayManager.AddOverlay(new SingularityOverlay());
             _overlayManager.AddOverlay(new RadiationPulseOverlay());
             _overlayManager.AddOverlay(new ScreechShockWaveOverlay());
+            _overlayManager.AddOverlay(new ExplosionShockWaveOverlay()); // Funky RMC Explosions
             _chatManager.Initialize();
             _clientPreferencesManager.Initialize();
             _moffCharacterSelection.Initialize(); // Moffstation - Multi-character selection

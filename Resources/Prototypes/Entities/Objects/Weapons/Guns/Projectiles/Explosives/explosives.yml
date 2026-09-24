@@ -10,11 +10,12 @@
     - state: frag
   - type: ExplodeOnTrigger
   - type: Explosive
-    explosionType: Default
+    explosionType: Transparent # Funky RMC Explosions
     maxIntensity: 40
     intensitySlope: 6
     totalIntensity: 200
     maxTileBreak: 1
+  - type: ExplosionEffect # Funky RMC Explosions
   - type: PointLight
     radius: 3.5
     color: orange
@@ -32,11 +33,12 @@
     - state: frag
   - type: ExplodeOnTrigger
   - type: Explosive
-    explosionType: Default
+    explosionType: Transparent # Funky RMC Explosions
     maxIntensity: 2 # max 30 per tile
     intensitySlope: 1
     totalIntensity: 4 # 60 total damage to distribute over tiles
     maxTileBreak: 1
+  - type: ExplosionEffect # Funky RMC Explosions
   - type: PointLight
     radius: 3.5
     color: orange
@@ -74,11 +76,12 @@
     - state: grenade
   - type: ExplodeOnTrigger
   - type: Explosive
-    explosionType: Default
+    explosionType: Transparent # Funky RMC Explosions
     totalIntensity: 150 # a ~2 tile radius
     intensitySlope: 5
     maxIntensity: 10
     canCreateVacuum: false
+  - type: ExplosionEffect # Funky RMC Explosions
 
 - type: entity
   parent: BaseBulletTrigger
@@ -108,11 +111,12 @@
     - state: grenade
   - type: ExplodeOnTrigger
   - type: Explosive
-    explosionType: Default
+    explosionType: Transparent # Funky RMC Explosions
     totalIntensity: 50
     intensitySlope: 1
     maxIntensity: 5
     canCreateVacuum: false
+  - type: ExplosionEffect # Funky RMC Explosions
   - type: ContainerContainer
     containers:
       cluster-payload: !type:Container
@@ -144,11 +148,12 @@
     positional: true
   - type: ExplodeOnTrigger
   - type: Explosive
-    explosionType: Default
+    explosionType: Transparent # Funky RMC Explosions
     totalIntensity: 0.01 # a little pop
     intensitySlope: 1
     maxIntensity: 0.01
     tileBreakScale: 0.01
+  - type: ExplosionEffect # Funky RMC Explosions
 
 - type: entity
   parent: BaseBulletTrigger
@@ -188,6 +193,7 @@
     intensitySlope: 6
     totalIntensity: 60
     maxTileBreak: 0
+  - type: ExplosionEffect # Funky RMC Explosions
   - type: PointLight
     radius: 1
     color: orange
