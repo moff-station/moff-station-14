@@ -29,6 +29,14 @@ figurines-asher-13 = I guess you could say I'm just lucky.
 figurines-asher-14 = Don't call me "Ashy".
 figurines-asher-15 = We've got a little Spider hiding somewhere...
 
+figurines-atlas-1 = Quoi?
+figurines-atlas-2 = Don't do that...
+figurines-atlas-3 = Please use the door like a normal person.
+figurines-atlas-4 = Please get off the table.
+figurines-atlas-5 = Get back to work.
+figurines-atlas-6 = I already said no.
+figurines-atlas-7 = Has anyone seen where my scientists went?
+
 figurines-audrina-1 = Well, I don't think that's right..
 figurines-audrina-2 = I'm not short.
 figurines-audrina-3 = Pilk, please. What?
@@ -161,6 +169,11 @@ figurines-catai-8 = I am not malfunctioning, I promise.
 figurines-catai-9 = Feel free to visit my core.
 figurines-catai-10 = Your permanent records are safe with me.
 
+figurines-chichi-1 = CHICHI ALLOWED IN SECURITY!!!
+figurines-chichi-2 = CHICHI WANT BACON PANCAKES!!!
+figurines-chichi-3 = No bully Chichi please...
+figurines-chichi-4 = CHICHI NOT YOUR BOSS, GO AWAY
+
 figurines-cinnabar-1 = Hello friends! Let's have a good shift!
 figurines-cinnabar-2 = I sure hope nothing bad happens on the ATS... again.
 figurines-cinnabar-3 = Man the Syndicate SUCKS.
@@ -237,6 +250,16 @@ figurines-eclispe-4 = Cmooon, I'm just having a bit of fun~!
 figurines-eclispe-5 = Shut up AI, I can and I WILL solo 8 slimes with a truncheon and telescopic shield!!
 figurines-eclispe-6 = Yeah, yeah~ Dont worry, your gal in shining armor is here~
 figurines-eclispe-7 = I know, I'm amazing~ You can all stare at my beauty~
+
+figurines-elspeth-1 = I'm drunk, ye dinnae hae an excuse!
+figurines-elspeth-2 = I'll beat ye so hard, ye'll hae a twitch!
+figurines-elspeth-3 = B'okay...
+figurines-elspeth-4 = Bounty fer ye! 55 BURGERS 55 FRIES 55 TACOS 55 PIES 55 COLAS 100 TATER TOTS 100 TENDERS-!!
+figurines-elspeth-5 = For the last time, please stop spending in excess of one hundred THOUSAND spesos on gamba crates.
+figurines-elspeth-6 = Salv died. Yeah, on an asteroid. Nae, I dinnae ken if anyone got em.
+figurines-elspeth-7 = Where's the bloody whiskey...
+figurines-elspeth-8 = I'm too sober for this shit!
+figurines-elspeth-9 = Ough... feels like I got hit by a cargo shuttle...
 
 figurines-faces-1 = Oop~ The arti just exploded.
 figurines-faces-2 = Hey, team! Let's not blow up, okay?~
@@ -484,6 +507,22 @@ figurines-molar-2 = Does anyone have some interdynes?
 figurines-molar-3 = Oh... hey kid
 figurines-molar-4 = Be quiet
 
+figurines-mop-1 = Mop!
+figurines-mop-2 = Moppy Mop!
+figurines-mop-3 = Mop!!
+figurines-mop-4 = MOP!!
+figurines-mop-5 = mop..?
+figurines-mop-6 = m-m-...m-...m-mop?
+
+figurines-mouset-1 = What's the meth for? Don't worry about it.
+figurines-mouset-2 = INTERDYNES??? GIMME!!!!
+figurines-mouset-3 = What do you mean I can't make LSD?! What else am I supposed to do??
+figurines-mouset-4 = I don't understand why you're surprised at this point.
+figurines-mouset-5 = Yes I did inject twenty units of felinase into you. No I don't regret it.
+figurines-mouset-6 = I FORGOT DEX +!!!
+figurines-mouset-7 = I am a good chemist and I can be trusted with cryostasis and bluespace beakers.
+figurines-mouset-8 = No I'm not making you cogni for your pet cockroach...
+
 figurines-nevaeh-1 = Need a... chemvend...
 figurines-nevaeh-2 = Mind passing... a kobold cube..? Need a... blood bag...
 figurines-nevaeh-3 = Don't mind the... explosion... was testing something...
@@ -643,6 +682,20 @@ figurines-stella-5 = Any cadets need training?
 figurines-stella-6 = Im sure we can resolve this at security.
 figurines-stella-7 = Come with me, please.
 
+figurines-stray-1 = Stay healthy!
+figurines-stray-2 = Apples!
+figurines-stray-3 = Golden apples...Must grow....
+figurines-stray-4 = I did not grow a bomb
+figurines-stray-5 = I may have grown a bomb
+figurines-stray-6 = I have grown a bomb
+figurines-stray-7 = CHEM!!!
+figurines-stray-8 = My death nettles? For... self defense of course
+figurines-stray-9 = My fly amanita? For... the rats of course
+figurines-stray-10 = My koi fish? For... chemistry of course
+figurines-stray-11 = S-Scary....
+figurines-stray-12 = S-Shoes..? Uhm...
+figurines-stray-13 = P-Please dont tell HR...
+
 figurines-strawberry-1 = Its slime time!
 figurines-strawberry-2 = This place is a mess.
 figurines-strawberry-3 = Uhm, what about my tentacles?
@@ -728,49 +781,3 @@ figurines-zoey-2 = Citrus bikeshed please!
 figurines-zoey-3 = *squishes*
 figurines-zoey-4 = I'll take a martinez...
 figurines-zoey-5 = Wha- Another hell portal?!
-
-figurines-mouset-1 = What's the meth for? Don't worry about it.
-figurines-mouset-2 = INTERDYNES??? GIMME!!!!
-figurines-mouset-3 = What do you mean I can't make LSD?! What else am I supposed to do??
-figurines-mouset-4 = I don't understand why you're surprised at this point.
-figurines-mouset-5 = Yes I did inject twenty units of felinase into you. No I don't regret it.
-figurines-mouset-6 = I FORGOT DEX +!!!
-figurines-mouset-7 = I am a good chemist and I can be trusted with cryostasis and bluespace beakers.
-figurines-mouset-8 = No I'm not making you cogni for your pet cockroach...
-
-figurines-chichi-1 = CHICHI ALLOWED IN SECURITY!!!
-figurines-chichi-2 = CHICHI WANT BACON PANCAKES!!!
-figurines-chichi-3 = No bully Chichi please...
-figurines-chichi-4 = CHICHI NOT YOUR BOSS, GO AWAY
-
-figurines-elspeth-1 = I'm drunk, ye dinnae hae an excuse!
-figurines-elspeth-2 = I'll beat ye so hard, ye'll hae a twitch!
-figurines-elspeth-3 = B'okay...
-figurines-elspeth-4 = Bounty fer ye! 55 BURGERS 55 FRIES 55 TACOS 55 PIES 55 COLAS 100 TATER TOTS 100 TENDERS-!!
-figurines-elspeth-5 = For the last time, please stop spending in excess of one hundred THOUSAND spesos on gamba crates.
-figurines-elspeth-6 = Salv died. Yeah, on an asteroid. Nae, I dinnae ken if anyone got em.
-figurines-elspeth-7 = Where's the bloody whiskey...
-figurines-elspeth-8 = I'm too sober for this shit!
-figurines-elspeth-9 = Ough... feels like I got hit by a cargo shuttle...
-
-figurines-stray-1 = Stay healthy!
-figurines-stray-2 = Apples!
-figurines-stray-3 = Golden apples...Must grow....
-figurines-stray-4 = I did not grow a bomb
-figurines-stray-5 = I may have grown a bomb
-figurines-stray-6 = I have grown a bomb
-figurines-stray-7 = CHEM!!!
-figurines-stray-8 = My death nettles? For... self defense of course
-figurines-stray-9 = My fly amanita? For... the rats of course
-figurines-stray-10 = My koi fish? For... chemistry of course
-figurines-stray-11 = S-Scary....
-figurines-stray-12 = S-Shoes..? Uhm...
-figurines-stray-13 = P-Please dont tell HR...
-
-figurines-atlas-1 = Quoi?
-figurines-atlas-2 = Don't do that...
-figurines-atlas-3 = Please use the door like a normal person.
-figurines-atlas-4 = Please get off the table.
-figurines-atlas-5 = Get back to work.
-figurines-atlas-6 = I already said no.
-figurines-atlas-7 = Has anyone seen where my scientists went?

@@ -809,16 +809,14 @@
 
 - type: entity
   parent: BaseFigurineMoff
-  id: ToyFigurineMouseT
-  name: mischievous small chemist figurine
-  description: A particularly small figurine of a resomi chemist. They have a smirk indicating that they're up to no good.
+  id: ToyFigurineMop
+  name: joyous green janitor figurine
+  description: A figurine depicting a lizard with a Mop. The Mop is molded to their gloves & won't come apart without breaking.
   components:
   - type: Sprite
-    state: mouse
+    state: mop
   - type: SpeakOnTrigger
-    pack: FigurinesMouseT
-  - type: RussianAccent
-  - type: FrenchAccent
+    pack: FigurinesMop
 
 - type: entity
   parent: BaseFigurineMoff
