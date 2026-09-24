@@ -500,6 +500,17 @@
 
 - type: entity
   parent: BaseFigurineMoff
+  id: ToyFigurineGabriel
+  name: professional xenoarchaeologist figurine
+  description: Its part of a promotional program for increased artifact research funding. Looks like it was pushed out horrendously behind schedule.
+  components:
+  - type: Sprite
+    state: gabriel
+  - type: SpeakOnTrigger
+    pack: FigurinesGabriel
+
+- type: entity
+  parent: BaseFigurineMoff
   id: ToyFigurineGigs
   name: friendly-looking lizard figurine
   description: A figurine depicting a smiling orange lizard in bartenders attire, bandages cover his left hand.
@@ -727,6 +738,17 @@
     state: lesbot
   - type: SpeakOnTrigger
     pack: FigurinesLesbot
+
+- type: entity
+  parent: BaseFigurineMoff
+  id: ToyFigurineLexi
+  name: tired captain figurine
+  description: A figurine depicting a dull orange slime woman in formalwear.  The miniature clipboard is detachable, and has an unintelligible eval form printed onto it.
+  components:
+  - type: Sprite
+    state: lexi
+  - type: SpeakOnTrigger
+    pack: FigurinesLexi
 
 - type: entity
   parent: BaseFigurineMoff

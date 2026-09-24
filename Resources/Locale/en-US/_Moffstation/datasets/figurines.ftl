@@ -74,8 +74,8 @@ figurines-boxcar-3 = You's got anyone you's wanna shout out?
 figurines-boxcar-4 = Still the best.
 
 figurines-buck-1 = Anyone want to hear a SAFETY RAP SONG?
-figurines-buck-2 = Oh Stars above, our beacon's bright, Nanotrasen guides our might! With plasma dreams, and duty's call, we'll serve the station one and all!
-figurines-buck-3 = Through endless void we boldly strive to keep our galaxy alive! Our hearts are true our task is clear, Nanotrasen, we persevere!
+figurines-buck-2 = Oh Stars above, our beacon's bright, Nanotrasen™ guides our might! With plasma dreams, and duty's call, we'll serve the station one and all!
+figurines-buck-3 = Through endless void we boldly strive to keep our galaxy alive! Our hearts are true our task is clear, Nanotrasen™, we persevere!
 figurines-buck-4 = No, you can't wear my hat.
 figurines-buck-5 = Mark them as wanted, they interrupted the song.
 figurines-buck-6 = Everyone's worthy of respect, even criminals!
@@ -165,7 +165,7 @@ figurines-cinnabar-1 = Hello friends! Let's have a good shift!
 figurines-cinnabar-2 = I sure hope nothing bad happens on the ATS... again.
 figurines-cinnabar-3 = Man the Syndicate SUCKS.
 figurines-cinnabar-4 = What can I do for you boss?
-figurines-cinnabar-5 = Man I'm so glad Nanotrasen hired me, they're the best!
+figurines-cinnabar-5 = Man I'm so glad Nanotrasen™ hired me, they're the best!
 
 figurines-cooks-1 = Tritium leak? Hold on... I gotta stress smoke.
 figurines-cooks-2 = Plasma leak? Hold on... I gotta stress smoke.
@@ -215,7 +215,7 @@ figurines-duey-2 = What do you mean that's animal abuse?
 figurines-duey-3 = I am... The Danger...
 figurines-duey-4 = Come view my machine.
 figurines-duey-5 = I'm a pure boy.
-figurines-duey-6 = NanoTrasen awarded me a medal for my fax usage!
+figurines-duey-6 = NanoTrasen™ awarded me a medal for my fax usage!
 figurines-duey-7 = THERE'S A GHOST IN THIS FIGURINE!! I WILL DIE IF YOU PUT ME DOWN!!
 figurines-duey-8 = Where is Samuel.
 
@@ -266,6 +266,22 @@ figurines-frostwing-5 = We understand it is an emergency. Please hold.
 figurines-frostwing-6 = The station's assets are failing! Mainly, you.
 figurines-frostwing-7 = May we remind you that nuclear operatives are a myth. Please do not listen to the propaganda.
 figurines-frostwing-8 = This is all your fault.
+
+figurines-gabriel-1 = Bloody Hell-
+figurines-gabriel-2 = Aye engi! Tools at your front!
+figurines-gabriel-3 = YESOD!!!!!
+figurines-gabriel-4 = Aye boss, check the points.
+figurines-gabriel-5 = Its a bloody demiurge mate!
+figurines-gabriel-6 = 1.4 bloody million....
+figurines-gabriel-7 = ACK
+figurines-gabriel-8 = Floral anomalies aren't that bad....
+figurines-gabriel-9 = Remember when they forgot to limit the GORRILA's power level?
+figurines-gabriel-10 = Those laws seem safe enough
+figurines-gabriel-11 = mhm... that's some good bloody tea mate
+figurines-gabriel-12 = Telepad, bluespace beakers, and tools delivered- goddamnit I forgot the bloody industrial processor again.
+figurines-gabriel-13 = You're a Bloody Muppet.
+figurines-gabriel-14 = Tea and Whiskey?
+figurines-gabriel-15 = Why.... are they all Unrevivable...?
 
 figurines-gigs-1 = How-wdy Howd-dy!
 figurines-gigs-2 = The-ere isss no sssecr-ret menu.
@@ -420,6 +436,15 @@ figurines-lesbot-7 = M o t h r o a c h . . .
 figurines-lesbot-8 = *Beep beep.*
 figurines-lesbot-9 = *Ping!*
 figurines-lesbot-10 = *Honk!*
+
+figurines-lexi-1 = Just one totally hypothetical non-invasive question if you don't mind.
+figurines-lexi-2 = Let’s say that tomorrow, Nanotrasen™ outlawed crewsimov...
+figurines-lexi-3 = Surely we can work something out.
+figurines-lexi-4 = Don't thank me.  What I'm doing shouldn't be the exception.
+figurines-lexi-5 = This won't end up in the logs, right?
+figurines-lexi-6 = You need to look at the bigger picture...
+figurines-lexi-7 = Solar’s machine is out again...
+figurines-lexi-8 = If you saw me yesterday, no you did not.
 
 figurines-light-1 = SHADOW!!
 figurines-light-2 = Wanna get lunch?
