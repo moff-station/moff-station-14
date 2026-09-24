@@ -77,8 +77,7 @@ public sealed partial class RoundEndSystem
 
             _adminLogger.Add(LogType.Vote, LogImpact.Low, $"Round end extension vote succeeded: {yes}/{no}");
             _chatManager.DispatchServerAnnouncement(Loc.GetString("round-end-extension-vote-succeeded",
-                ("minutes", minutes),
-                ("remaining", _cfg.GetCVar(MoffCCVars.MaxRoundEndExtensionVotes) - extensions - 1)));
+                ("minutes", minutes)));
 
             ScheduleExtensionVote(countdown, extensions + 1);
         };
