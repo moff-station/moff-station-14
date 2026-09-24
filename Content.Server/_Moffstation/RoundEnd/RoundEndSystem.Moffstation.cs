@@ -1,8 +1,11 @@
 using System.Threading;
+using Content.Server.Screens.Components;
 using Content.Server.Voting;
 using Content.Server.Voting.Managers;
 using Content.Shared._Moffstation.CCVar;
 using Content.Shared.Database;
+using Content.Shared.DeviceNetwork;
+using Content.Shared.DeviceNetwork.Components;
 using Timer = Robust.Shared.Timing.Timer;
 
 namespace Content.Server.RoundEnd;
@@ -71,6 +74,7 @@ public sealed partial class RoundEndSystem
             _countdownTokenSource = new CancellationTokenSource();
             var countdown = restartTime + TimeSpan.FromMinutes(minutes) - _gameTiming.CurTime;
             Timer.Spawn(countdown, AfterEndRoundRestart, _countdownTokenSource.Token);
+            UpdateRestartScreens(countdown);
 
             _adminLogger.Add(LogType.Vote, LogImpact.Low, $"Round end extension vote succeeded: {yes}/{no}");
             _chatManager.DispatchServerAnnouncement(Loc.GetString("round-end-extension-vote-succeeded",
@@ -79,5 +83,23 @@ public sealed partial class RoundEndSystem
 
             ScheduleExtensionVote(countdown, extensions + 1);
         };
+    }
+
+    private void UpdateRestartScreens(TimeSpan countdown)
+    {
+        if (_shuttle.GetShuttle() is not { } shuttle || !TryComp<DeviceNetworkComponent>(shuttle, out var net))
+            return;
+
+        var payload = new NetworkPayload
+        {
+            [ShuttleTimerMasks.ShuttleMap] = shuttle,
+            [ShuttleTimerMasks.SourceMap] = GetCentcomm(),
+            [ShuttleTimerMasks.DestMap] = GetStation(),
+            [ShuttleTimerMasks.ShuttleTime] = countdown,
+            [ShuttleTimerMasks.SourceTime] = countdown,
+            [ShuttleTimerMasks.DestTime] = countdown,
+            [ScreenMasks.Text] = ShuttleTimerMasks.Bye,
+        };
+        _deviceNetworkSystem.QueuePacket(shuttle, null, payload, net.TransmitFrequency);
     }
 }
