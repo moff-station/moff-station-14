@@ -217,8 +217,7 @@ namespace Content.Server.GameTicking
                 // had no available job priorities (ie Captain on Dev) set, then the player will spawn as a ghost
             }
 
-            // Moff Start - Multi-character selection: a late join names its character, so apply that
-            // before anything downstream reads the profile.
+            // Moff Start - Multi-character selection
             var moffExplicit = _moffCharacterPicker.TakeExplicitChoice(player.UserId);
 
             if (moffExplicit != null)
@@ -275,9 +274,7 @@ namespace Content.Server.GameTicking
                 return;
             }
 
-            // Moff Start - Multi-character selection: spawn whichever active character wants this
-            // job, not whoever is selected in the lobby. Randomized characters are left alone, and
-            // a readied player always spawns, so the lobby-selected character is the last resort.
+            // Moff Start - Multi-character selection
             if (!_randomizeCharacters && moffExplicit == null)
             {
                 if (_moffCharacterPicker.PickProfile(player, jobId) is { } picked)

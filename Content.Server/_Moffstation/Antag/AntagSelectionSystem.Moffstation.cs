@@ -1,4 +1,3 @@
-using System.Linq;
 using Content.Server._Moffstation.Preferences;
 using Content.Server._Moffstation.Station;
 using Content.Shared.GameTicking.Components;
@@ -15,9 +14,7 @@ namespace Content.Server.Antag;
 public sealed partial class AntagSelectionSystem
 {
     [Dependency] private MoffCharacterSelectionManager _moffCharacterSelection = default!;
-
-    // Resolved on demand; a mutual [Dependency] with MoffCharacterPickerSystem would be circular.
-    private MoffCharacterPickerSystem MoffCharacterPicker => EntityManager.System<MoffCharacterPickerSystem>();
+    [Dependency] private MoffCharacterPickerSystem _moffCharacterPicker = default!;
 
     /// <summary>
     /// Every antag preference held by any of the player's active characters, or just the spawned
@@ -28,7 +25,7 @@ public sealed partial class AntagSelectionSystem
         var result = new HashSet<ProtoId<AntagPrototype>>();
 
         // If they've already spawned, get the prefs from the spawned profile
-        if (MoffCharacterPicker.GetSpawnedProfile(session.UserId) is { } spawned)
+        if (_moffCharacterPicker.GetSpawnedProfile(session.UserId) is { } spawned)
         {
             result.UnionWith(spawned.AntagPreferences);
             return result;
@@ -56,28 +53,28 @@ public sealed partial class AntagSelectionSystem
     /// <summary>
     /// Per preselected antag, the prototypes a character must have enabled to fill that slot.
     /// </summary>
-    public List<HashSet<ProtoId<AntagPrototype>>> GetMoffPreSelectedAntagPrefRoles(ICommonSession session)
+    public List<IReadOnlyList<ProtoId<AntagPrototype>>> GetMoffPreSelectedAntagPrefRoles(ICommonSession session)
     {
-        var result = new List<HashSet<ProtoId<AntagPrototype>>>();
+        var result = new List<IReadOnlyList<ProtoId<AntagPrototype>>>();
 
         var query = QueryAllRules();
         while (query.MoveNext(out var uid, out var comp, out _))
         {
             if (HasComp<EndedGameRuleComponent>(uid))
                 continue;
-
-            foreach (var antag in comp.Antags)
+            
+            foreach (var (antag, sessions) in comp.PreSelectedSessions)
             {
-                if (!comp.PreSelectedSessions.TryGetValue(antag, out var set) || !set.Contains(session))
+                if (!sessions.Contains(session))
                     continue;
 
-                if (!ProtoMan.Resolve(antag.Proto, out var proto))
+                if (!ProtoMan.Resolve(antag, out var proto))
                     continue;
 
                 if (proto.PrefRoles.Count == 0)
                     continue;
-
-                result.Add(proto.PrefRoles.ToHashSet());
+                
+                result.Add(proto.PrefRoles);
             }
         }
 
