@@ -257,6 +257,67 @@
 
 - type: entity
   parent: BaseFigurineMoff
+  id: ToyFigurineCharlieF
+  name: hyperfixated pharmacist figurine
+  description: "A figurine depicting a small blue avali wearing a professional-looking lab coat and a scarf. Her large sparkling eyes seem to have bags under them. The stuttering voicelines seem somewhat inconsistent.\nThere seems to be a pryable switch on the base..."
+  components:
+  - type: Sprite
+    state: cherriescarf
+  - type: SpeakOnTrigger
+    pack: FigurinesCharlieF
+  - type: StutteringAccent
+    matchRandomProb: 0.2
+    fourRandomProb: 0
+    threeRandomProb: 0
+    cutRandomProb: 0
+  - type: Construction
+    deconstructionTarget: null
+    graph: ToyFigurineCherrieSwapGraph
+    node: swap_charlie
+
+
+- type: entity
+  parent: BaseFigurineMoff
+  id: ToyFigurineCherrie
+  name: hyperfixated pharmacist figurine
+  description: "A figurine depicting a small blue avali wearing a professional-looking lab coat. Her large sparkling eyes seem to have bags under them. The stuttering voicelines seem somewhat inconsistent.\nThere seems to be a pryable switch on the base..."
+  components:
+  - type: Sprite
+    state: cherriefelt
+  - type: SpeakOnTrigger
+    pack: FigurinesCherrie
+  - type: StutteringAccent
+    matchRandomProb: 0.2
+    fourRandomProb: 0
+    threeRandomProb: 0
+    cutRandomProb: 0
+  - type: Construction
+    deconstructionTarget: null
+    graph: ToyFigurineCherrieSwapGraph
+    node: swap_cherrie
+
+# Allows toggling between the Cherrie-Felt and Charlie Foxtrot figurines using a crowbar.
+- type: constructionGraph
+  id: ToyFigurineCherrieSwapGraph
+  start: swap_cherrie
+  graph:
+  - node: swap_cherrie
+    entity: ToyFigurineCherrie
+    edges:
+    - to: swap_charlie
+      steps:
+      - tool: Prying
+        doAfter: 0.1
+  - node: swap_charlie
+    entity: ToyFigurineCharlieF
+    edges:
+    - to: swap_cherrie
+      steps:
+      - tool: Prying
+        doAfter: 0.1
+
+- type: entity
+  parent: BaseFigurineMoff
   id: ToyFigurineCinnabar
   name: red and black moth figurine
   description: A figurine depicting a slightly shorter than average moth, he looks happy to be here!
@@ -304,7 +365,7 @@
   parent: BaseFigurineMoff
   id: ToyFigurineDarnell
   name: inexplicably competent janitor figurine
-  description: "A figurine depicting an unfriendly-looking human janitor. He looks like he’s seen everything from dragons to decompressions and kept cleaning through it all."
+  description: A figurine depicting an unfriendly-looking human janitor. He looks like he’s seen everything from dragons to decompressions and kept cleaning through it all.
   components:
   - type: Sprite
     state: darnell
@@ -380,6 +441,18 @@
 
 - type: entity
   parent: BaseFigurineMoff
+  id: ToyFigurineElton
+  name: jolly moth head of personnel
+  description: A figurine of a fancy moth who looks a bit too happy. It seems to have a scent of ice cream and cotton cake.
+  components:
+  - type: Sprite
+    state: elton
+  - type: SpeakOnTrigger
+    pack: FigurinesElton
+  - type: MothAccent
+
+- type: entity
+  parent: BaseFigurineMoff
   id: ToyFigurineFaces
   name: concerningly cheerful research director
   description: A figurine depicting a researcher director with somewhat unsettling amounts of positivity.
@@ -425,14 +498,30 @@
 
 - type: entity
   parent: BaseFigurineMoff
-  id: ToyFigurineHot
-  name: fire safety clown figurine
-  description: A figurine depicting a clown in a firefighting outfit. Etched in the base reads 'Only you can prevent station fires!'
+  id: ToyFigurineGanymede
+  name: elite suit moth figurine
+  description: "A figurine depicting a moth syndicate agent after whacking it with a crowbar.\nThere seems to be an internal mechanism in the head cavity responsible for the switch."
   components:
   - type: Sprite
-    state: hot
+    state: ganymede
   - type: SpeakOnTrigger
-    pack: FigurinesHot
+    pack: FigurinesGanymede
+  - type: Construction
+    deconstructionTarget: null
+    graph: ToyFigurineIoSwapGraph
+    node: swap_ganymede
+
+
+- type: entity
+  parent: BaseFigurineMoff
+  id: ToyFigurineGnocchi
+  name: blind botanist figurine
+  description: A figurine of a old resomi botanist.  She's smiling, her eyes are closed, and there's a faint smell of orchid flowers.
+  components:
+  - type: Sprite
+    state: gnocchi
+  - type: SpeakOnTrigger
+    pack: FigurinesGnocchi
 
 - type: entity
   parent: BaseFigurineMoff
@@ -444,6 +533,17 @@
     state: gigs
   - type: SpeakOnTrigger
     pack: FigurinesGigs
+
+- type: entity
+  parent: BaseFigurineMoff
+  id: ToyFigurineHot
+  name: fire safety clown figurine
+  description: A figurine depicting a clown in a firefighting outfit. Etched in the base reads 'Only you can prevent station fires!'
+  components:
+  - type: Sprite
+    state: hot
+  - type: SpeakOnTrigger
+    pack: FigurinesHot
 
 - type: entity
   parent: BaseFigurineMoff
@@ -471,13 +571,37 @@
   parent: BaseFigurineMoff
   id: ToyFigurineIo
   name: moth CMO figurine
-  description: A figurine depicting a chief medical mofficer. There seems to be a second pair of arms underneath the cloak.
+  description: "A figurine depicting a chief medical mofficer.\nHidden under the cloak is a second pair of arms, and a switch indication on the back of the head."
   components:
   - type: Sprite
     state: io
   - type: SpeakOnTrigger
     pack: FigurinesIo
   - type: FrenchAccent
+  - type: Construction
+    deconstructionTarget: null
+    graph: ToyFigurineIoSwapGraph
+    node: swap_io
+
+# Allows toggling between the Io and Ganymede figurines using a crowbar.
+- type: constructionGraph
+  id: ToyFigurineIoSwapGraph
+  start: swap_io
+  graph:
+  - node: swap_io
+    entity: ToyFigurineIo
+    edges:
+    - to: swap_ganymede
+      steps:
+      - tool: Prying
+        doAfter: 0.1
+  - node: swap_ganymede
+    entity: ToyFigurineGanymede
+    edges:
+    - to: swap_io
+      steps:
+      - tool: Prying
+        doAfter: 0.1
 
 - type: entity
   parent: BaseFigurineMoff
@@ -552,6 +676,17 @@
 
 - type: entity
   parent: BaseFigurineMoff
+  id: ToyFigurineJohnJackson
+  name: untrustworthy passenger
+  description: A rather generic looking human with a bandage around their head. You aren't sure why, but you don't feel like you can trust him.
+  components:
+  - type: Sprite
+    state: johnjackson
+  - type: SpeakOnTrigger
+    pack: FigurinesJohnJackson
+
+- type: entity
+  parent: BaseFigurineMoff
   id: ToyFigurineJupiter
   name: purple head of security moth
   description: A figurine depicting a tired and old looking moth man. He’s wearing the Head of Security outfit.
@@ -571,6 +706,17 @@
     state: katie
   - type: SpeakOnTrigger
     pack: FigurinesKatie
+
+- type: entity
+  parent: BaseFigurineMoff
+  id: ToyFigurineKasumi
+  name: blind and mute courier
+  description: A figurine of a tiny, well preened, and cheerful avali that loves delivering mail! You'd open your mail for her, wouldn't you?
+  components:
+  - type: Sprite
+    state: kasumi
+  - type: SpeakOnTrigger
+    pack: FigurinesMime
 
 - type: entity
   parent: BaseFigurineMoff
@@ -604,6 +750,17 @@
     state: kim
   - type: SpeakOnTrigger
     pack: FigurinesKim
+
+- type: entity
+  parent: BaseFigurineMoff
+  id: ToyFigurineKo
+  name: messy scientist figurine
+  description: An avali with purple and blue feathers, the figurine smells faintly of gunpowder.
+  components:
+  - type: Sprite
+    state: ko
+  - type: SpeakOnTrigger
+    pack: FigurinesKo
 
 - type: entity
   parent: BaseFigurineMoff
@@ -910,6 +1067,17 @@
 
 - type: entity
   parent: BaseFigurineMoff
+  id: ToyFigurineSkrikikaki
+  name: evil security officer figurine
+  description: A vox with green quills. It feels like they're looking into your soul.
+  components:
+  - type: Sprite
+    state: skrikikaki
+  - type: SpeakOnTrigger
+    pack: FigurinesSkrikikaki
+
+- type: entity
+  parent: BaseFigurineMoff
   id: ToyFigurineSouthbridge
   name: stagehand deer figurine
   description: A figurine depicting a deer, that can sometimes be seen behind the curtain, helping put on the show. Legend says you can ask her for help!
@@ -985,6 +1153,17 @@
     state: tar
   - type: SpeakOnTrigger
     pack: FigurinesTar
+
+- type: entity
+  parent: BaseFigurineMoff
+  id: ToyFigurineTomCarter
+  name: tired bureaucrat figurine
+  description: You're not sure his eyes are even open...
+  components:
+  - type: Sprite
+    state: tomcarter
+  - type: SpeakOnTrigger
+    pack: FigurinesTomCarter
 
 - type: entity
   parent: BaseFigurineMoff
