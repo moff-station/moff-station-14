@@ -297,6 +297,7 @@ namespace Content.Server.RoundEnd
             _countdownTokenSource = new();
 
             countdownTime ??= TimeSpan.FromSeconds(_cfg.GetCVar(CCVars.RoundRestartTime));
+            ScheduleExtensionVote(countdownTime.Value, 0); // Moff - Round end extension vote
             int time;
             string unitsLocString;
             if (countdownTime.Value.TotalSeconds < 60)
