@@ -1,5 +1,7 @@
 aac-window-footer-flavor = Nanosoft: Helping you find the right words!
 
+aac-window-search-hint = Search for phrases, then press enter to speak a matching phrase
+
 phrase-group-status = Status
 phrase-group-manners = Manners
 phrase-group-numbers = Numbers

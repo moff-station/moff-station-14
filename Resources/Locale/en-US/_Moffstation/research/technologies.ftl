@@ -1,4 +1,5 @@
 research-technology-silicon-law-matrix = Silicon Law Matrix
+research-technology-ballistic-postal-mechanisms = Ballistic Postal Mechanisms
 
 # Modular HUD techs
 research-technology-modular-hud-frames = Modular HUD Frames

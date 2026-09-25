@@ -1,4 +1,4 @@
-# This is a basic dictionary that maps old entity prototype ids to new ids. This only works for entity prototypes, and
+﻿# This is a basic dictionary that maps old entity prototype ids to new ids. This only works for entity prototypes, and
 # is intended to allow maps to load without having to manually edit them. An empty or "null" string results in the
 # entity getting deleted.
 
@@ -822,25 +822,27 @@ RightArmSkeleton: OrganSkeletonPersonArmRight
 PirateChestSecureFulton: CratePirateFulton
 
 # 2026-01-19
-TowelColorPurple: null
-TowelColorRed: null
-TowelColorBlue: null
-TowelColorDarkBlue: null
-TowelColorLightBlue: null
-TowelColorTeal: null
-TowelColorBrown: null
-TowelColorLightBrown: null
-TowelColorGray: null
-TowelColorGreen: null
-TowelColorDarkGreen: null
-TowelColorGold: null
-TowelColorOrange: null
-TowelColorBlack: null
-TowelColorPink: null
-TowelColorYellow: null
-TowelColorMaroon: null
-TowelColorSilver: null
-TowelColorMime: null
+# Moff Start - Readded towels
+# TowelColorPurple: null
+# TowelColorRed: null
+# TowelColorBlue: null
+# TowelColorDarkBlue: null
+# TowelColorLightBlue: null
+# TowelColorTeal: null
+# TowelColorBrown: null
+# TowelColorLightBrown: null
+# TowelColorGray: null
+# TowelColorGreen: null
+# TowelColorDarkGreen: null
+# TowelColorGold: null
+# TowelColorOrange: null
+# TowelColorBlack: null
+# TowelColorPink: null
+# TowelColorYellow: null
+# TowelColorMaroon: null
+# TowelColorSilver: null
+# TowelColorMime: null
+# Moff end
 
 # 2026-02-18
 # Replace cargo order crates which contain exactly one item with the item, parcel wrapped.
@@ -919,7 +921,42 @@ BookSOP: BookSpaceLaw
 DrinkAviationGlass: RussianMothroachGlass
 PosterHarmonySafetyLizz: RandomPosterLegit
 
-#2027-07-17
+# 2026-07-16
+WallNecropolis: WallSolid
+WallVaultAlien: WallSolid
+WallVaultRock: WallSolid
+WallVaultSandstone: WallSolid
+WallSandstone: WallSolid
+WallDiamond: WallReinforced
+WallCult: WallBrick
+WallClown: WallGold
+WallClock: WallBrass
+WallPlastic: WallSolid
+ClockworkGrille: Grille
+ClockworkGrilleBroken: GrilleBroken
+ClockworkGrilleDiagonal: GrilleDiagonal
+ClockworkWindow: Window
+ClockworkWindowDiagonal: WindowDiagonal
+WindowClockworkDirectional: WindowDirectional
+WindoorClockwork: Windoor
+WindoorAssemblyClockwork: WindoorAssembly
+PinionAirlock: Airlock
+PinionAirlockGlass: AirlockGlass
+PinionAirlockAssembly: AirlockAssembly
+BananiumDoor: GoldDoor
+# EncrustedIronstoneDoor: SilverDoor # Moff
+# IronstoneDoor: SilverDoor # Moff
+WallSnowCobblebrick: WallBrick
+WallSandCobblebrick: WallBrick
+WallChromiteCobblebrick: WallBrick
+WallAndesiteCobblebrick: WallBrick
+# WallIronsandCobblebrick: WallBrick # Moff
+WallCobblebrick: WallConcrete
+WallAsteroidCobblebrick: WallConcrete
+WallBasaltCobblebrick: WallConcrete
+WallIce: WallRockSnow
+
+#2026-07-17
 WeaponRifleM90GrenadeLauncher: null
 
 # 2026-07-18
@@ -975,8 +1012,234 @@ CrateEngineeringMiniJetpack: CrateSpaceMiniJetpack
 CrateEngineeringShuttle: CrateSpaceShuttlePower
 CrateEngineeringThruster: CrateSpaceThruster
 
+# 2026-07-22
+
+BlastDoorXenoborg: BlastDoorXeno
+BlastDoorXenoborgOpen: BlastDoorXenoOpen
+
+### Dark Tiles
+FloorTileItemDarkDiagonalMini: FloorTileItemDark
+FloorTileItemDarkDiagonal: FloorTileItemDark
+FloorTileItemDarkOffset: FloorTileItemDark
+FloorTileItemDarkSlatsContinuous: FloorTileItemDarkVerticalSlatsBordered
+
+### Steel Tiles
+FloorTileItemSteelDiagonalMini: FloorTileItemSteel
+FloorTileItemSteelDiagonal: FloorTileItemSteel
+FloorTileItemSteelOffset: FloorTileItemSteel
+FloorTileItemShowroom: FloorTileItemSteel
+FloorTileItemSteelSlatsContinuous: FloorTileItemSteelVerticalSlatsBordered
+
+### White Tiles
+FloorTileItemWhiteDiagonalMini: FloorTileItemWhite
+FloorTileItemWhiteDiagonal: FloorTileItemWhite
+FloorTileItemWhiteOffset: FloorTileItemWhite
+FloorTileItemWhiteSlatsContinuous: FloorTileItemWhiteVerticalSlatsBordered
+
+### Misc Tiles
+FloorTileItemUraniumMarble: FloorTileItemDarkMarble
+FloorTileItemPlasmaMarble: FloorTileItemWhiteMarble
+FloorTileItemEighties: FloorTileItemArcadeBlue
+FloorTileItemArcadeBlue2: FloorTileItemArcadeBlue
+FloorTileItemElevatorShaft: FloorTileItemDark
+FloorTileItemMining: FloorTileItemDarkPlastic
+FloorTileItemMiningLight: FloorTileItemDarkPlastic
+FloorTileItemMiningDark: FloorTileItemDarkPlastic
+FloorTileItemRockVault: FloorTileItemSteel
+FloorTileItemBrassReebe: null
+FloorTileItemBrassFilled: null
+FloorBananiumEntity: null
+FloorTileItemMono: FloorTileItemSteel
+
+# 2026-07-23
+AirAlarmAssemblyXeno: AirAlarmAssembly
+AirAlarmXeno: AirAlarm
+FireAlarmAssemblyXeno: FireAlarmAssembly
+FireAlarmXeno: FireAlarm
+
 # Moff - 2026-07-25 - Nukie Fireaxe
 FireAxeFlaming: SpawnPointNukieDemolitionWeapon
 
+# 2026-07-26
+# Moff Start - Ironsands namespace change
+# IronsandStepConvexCorner: null
+# IronsandStepConcaveCorner: null
+# IronsandStep: null
+# Moff End
+
+# 2026-07-27
+TurnstileGenpopEnter: EnergyGateGenpopEnter
+TurnstileGenpopLeave: EnergyGateGenpopLeave
+Turnstile: EnergyGate
+MetalDoor: SilverDoor
+MiningWindow: ReinforcedWindow
+MiningWindowDiagonal: ReinforcedWindowDiagonal
+FloorTileItemLightAstroGrass: FloorTileItemAstroGrass
+FloorTileItemGrayConcrete: FloorTileItemConcrete
+FloorTileItemGrayConcreteMono: FloorTileItemConcreteMono
+FloorTileItemGrayConcreteSmooth: FloorTileItemConcreteSmooth
+FloorTileItemOldConcrete: FloorTileItemConcrete
+FloorTileItemOldConcreteMono: FloorTileItemConcreteMono
+FloorTileItemOldConcreteSmooth: FloorTileItemConcreteSmooth
+# Moff Start - Ironsands namespace change
+# FloorTileItemIronsandConcrete: null
+# FloorTileItemIronsandConcreteMono: null
+# FloorTileItemIronsandConcreteSmooth: null
+# IronSandstone: IronRock
+# IronSandstoneMining: IronRock
+# Moff End
+AsteroidRockBananium: AsteroidRock
+AsteroidRockBananiumCrab: AsteroidRock
+IronRockBananium: IronRock
+WallRockBananium: WallRock
+WallRockChromiteBananium: WallRockChromite
+WallRockSandBananium: WallRockSand
+WallRockSnowBananium: WallRockSnow
+MeteorRockBananium: AsteroidRock
+WallRockBasalt: WallRock
+WallRockBasaltCoal: WallRockCoal
+WallRockBasaltGold: WallRockGold
+WallRockBasaltDiamond: WallRockDiamond
+WallRockBasaltPlasma: WallRockPlasma
+WallRockBasaltQuartz: WallRockQuartz
+WallRockBasaltSilver: WallRockSilver
+WallRockBasaltBananium: WallRock
+WallRockBasaltTin: WallRockTin
+WallRockBasaltUranium: WallRockUranium
+WallRockBasaltArtifactFragment: WallRockArtifactFragment
+WallRockBasaltSalt: WallRockSalt
+WallRockAndesite: WallRock
+WallRockAndesiteCoal: WallRockCoal
+WallRockAndesiteGold: WallRockGold
+WallRockAndesiteDiamond: WallRockDiamond
+WallRockAndesitePlasma: WallRockPlasma
+WallRockAndesiteQuartz: WallRockQuartz
+WallRockAndesiteSilver: WallRockSilver
+WallRockAndesiteBananium: WallRock
+WallRockAndesiteTin: WallRockTin
+WallRockAndesiteUranium: WallRockUranium
+WallRockAndesiteArtifactFragment: WallRockArtifactFragment
+WallRockAndesiteSalt: WallRockSalt
+FloorTileItemTechmaint: FloorTileItemSteelMaint
+FloorTileItemXeno: FloorTileItemExoViscera
+FloorTileItemXenoSteel: FloorTileItemExoHull
+FloorTileItemXenoSteelCorner: FloorTileItemExoCornerSW
+FloorTileItemXenoMaint: FloorTileItemExoTechmaint
+FloorTileItemXenoborg: FloorTileItemExoBorg
+FloorTileItemDarkSquiggly: FloorTileItemExoHorizontal
+
+# Moff - 2026-08-01 - Sec Redux
+Stunbaton: Nightstick
+WeaponDisabler: null
+WeaponTaser: null
+GunSafeDisabler: GunSafeLessLethal
+WeaponDisablerSMG: WeaponShotgunEnforcerRubber # Likely unnecessary, but might as well go all the way
+
 # Moff - 2026-08-02 - Temporarily disabling tram driver
 SpawnPointTramDriver: null
+
+# 2026-08-04
+FloorSnowChasm: FloorChasmEntity
+FloorDesertChasm: FloorChasmEntity
+FloorChromiteChasm: FloorChasmEntity
+
+# Moff - 2026-08-05 - Enrollment spawners
+CossackSpawner: SpawnPointShuttleCossack
+SyndieVisitorSpawner: SpawnPointShuttleSyndieVisitor
+SyndieSoldierSpawner: SpawnPointShuttleSyndieSoldier
+SyndieSoldierTeamLeaderSpawner: SpawnPointShuttleSyndieSoldierTeamLeader
+
+# 2026-08-06
+FloorTileItemHydro: FloorTileItemSteel
+WallRiveted: WallMarble
+WallSpawnAsteroidBananium: null
+WallSpawnAsteroidBananiumCrab: null
+
+# 2026-08-11
+FloorTileItemDirty: null
+PinionAirlockAssemblyGlass: AirlockAssemblyGlass
+AnomalyRockBananium: AnomalyRockCoal
+ClockworkGirder: Girder
+BaseAsteroidRock: AsteroidRock
+ButtonFrameExit: ButtonFrameWhite
+
+# 2026-08-12
+WindoorSecure: Windoor
+WindoorSecurePlasma: WindoorPlasma
+WindoorSecureUranium: WindoorUranium
+WindoorSecureArmoryLocked: WindoorArmoryLocked
+PlasmaWindoorSecureArmoryLocked: PlasmaWindoorArmoryLocked
+WindoorSecureEngineeringLocked: WindoorEngineeringLocked
+WindoorSecureAtmosphericsLocked: WindoorEngineeringLocked
+PlasmaWindoorSecureEngineeringLocked: PlasmaWindoorEngineeringLocked
+PlasmaWindoorSecureAtmosphericsLocked: PlasmaWindoorAtmosphericsLocked
+WindoorSecureServiceLocked: WindoorServiceLocked
+WindoorSecureKitchenLocked: WindoorKitchenLocked
+WindoorSecureBarLocked: WindoorBarLocked
+WindoorSecureJanitorLocked: WindoorJanitorLocked
+WindoorSecureSecurityLocked: WindoorSecurityLocked
+WindoorSecureBrigLocked: WindoorBrigLocked
+WindoorSecureDetectiveLocked: WindoorDetectiveLocked
+WindoorSecureSecurityLawyerLocked: WindoorSecurityLawyerLocked
+WindoorSecureCargoLocked: WindoorCargoLocked
+WindoorSecureSalvageLocked: WindoorSalvageLocked
+WindoorSecureChapelLocked: WindoorChapelLocked
+WindoorSecureMedicalLocked: WindoorMedicalLocked
+WindoorSecureChemistryLocked: WindoorChemistryLocked
+PlasmaWindoorSecureChemistryLocked: PlasmaWindoorChemistryLocked
+WindoorSecureCommandLocked: WindoorCommandLocked
+WindoorSecureCentralCommandLocked: WindoorCentralCommandLocked
+PlasmaWindoorSecureCentralCommandLocked: PlasmaWindoorCentralCommandLocked
+UraniumWindoorSecureCentralCommandLocked: UraniumWindoorCentralCommandLocked
+PlasmaWindoorSecureCommandLocked: PlasmaWindoorCommandLocked
+UraniumWindoorSecureEngineeringLocked: UraniumWindoorEngineeringLocked
+WindoorSecureExternalLocked: WindoorExternalLocked
+PlasmaWindoorSecureJanitorLocked: PlasmaWindoorJanitorLocked
+WindoorSecureResearchDirectorLocked: WindoorResearchDirectorLocked
+PlasmaWindoorSecureSecurityLocked: PlasmaWindoorSecurityLocked
+WindoorSecureScienceLocked: WindoorScienceLocked
+PlasmaWindoorSecureScienceLocked: PlasmaWindoorScienceLocked
+WindoorSecureHeadOfPersonnelLocked: WindoorHeadOfPersonnelLocked
+WindoorSecureSyndicateLocked: WindoorSyndicateLocked
+PlasmaWindoorSecureSyndicateLocked: PlasmaWindoorSyndicateLocked
+UraniumWindoorSecureSyndicateLocked: UraniumWindoorSyndicateLocked
+WindoorSecureNukeopLocked: WindoorNukeopLocked
+PlasmaWindoorSecureNukeopLocked: PlasmaWindoorNukeopLocked
+UraniumWindoorSecureNukeopLocked: UraniumWindoorNukeopLocked
+WindoorAssemblySecure: WindoorAssembly
+WindoorAssemblySecurePlasma: WindoorAssemblyPlasma
+WindoorAssemblySecureUranium: WindoorAssemblyUranium
+LightReplacer: LightReplacerFilled
+
+WindoorSecureFreelanceLocked: WindoorFreelanceLocked # Moff
+
+#2026-08-14
+MeteorRock: AsteroidRock
+MeteorRockCoal: AsteroidRockCoal
+MeteorRockQuartz: AsteroidRockQuartz
+MeteorRockTin: AsteroidRockTin
+MeteorRockSilver: AsteroidRockSilver
+MeteorRockGold: AsteroidRockGold
+MeteorRockPlasma: AsteroidRockPlasma
+MeteorRockDiamond: AsteroidRockDiamond
+MeteorRockUranium: AsteroidRockUranium
+StatueBananiumClown: StatueOrnateClown
+
+#2026-08-18
+DrinkNeurotoxinGlass: null
+
+# Moff - 2026-08-18 - Ironsands namespace change
+FloorTileItemIronsandConcrete: FloorTileItemMoffIronsandConcrete
+FloorTileItemIronsandConcreteMono: FloorTileItemMoffIronsandConcreteMono
+FloorTileItemIronsandConcreteSmooth: FloorTileItemMoffIronsandConcreteSmooth
+IronstoneDoor: MoffIronstoneDoor
+EncrustedIronstoneDoor: MoffEncrustedIronstoneDoor
+IronSandstone: MoffIronSandstone
+IronSandstoneMining: MoffIronSandstoneMining
+WallIronsandCobblebrick: WallMoffIronsandCobblebrick
+IronsandStep: MoffIronsandStep
+IronsandStepConvexCorner: MoffIronsandStepConvexCorner
+IronsandStepConcaveCorner: MoffIronsandStepConcaveCorner
+
+#2026-08-19
+JanitorServiceLight: null

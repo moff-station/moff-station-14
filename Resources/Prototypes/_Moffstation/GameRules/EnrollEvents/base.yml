@@ -1,0 +1,41 @@
+# Enroll events spawned by an ESSynchronizedVoteManager.
+# fallbackRules requires an entry. Either reference the stuff below, pick a table that works.
+
+- type: entity
+  id: MoffBaseEntry
+  abstract: true
+  components:
+  - type: MoffVoteEntry
+
+- type: entity
+  parent: MoffBaseEntry
+  id: MoffBaseEnroll
+  abstract: true
+  components:
+  - type: MoffEnrollEvent
+
+- type: entity
+  parent: MoffBaseEnroll
+  id: MoffBaseEnrollSpicy
+  abstract: true
+  components:
+  - type: MoffEnrollEvent
+    fallbackRules: !type:NestedSelector
+      tableId: MoffSpicyNonPlayerEventsTable
+
+- type: entity
+  parent: MoffBaseEnroll
+  id: MoffBaseEnrollCalm
+  abstract: true
+  components:
+  - type: MoffEnrollEvent
+    fallbackRules: !type:NestedSelector
+      tableId: MoffCalmNonPlayerEventsTable
+
+- type: entity
+  parent: MoffBaseEnroll
+  id: MoffBaseEnrollNoFallback
+  abstract: true
+  components:
+  - type: MoffEnrollEvent
+    fallbackRules: null

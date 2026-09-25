@@ -38,7 +38,7 @@ steal-target-groups-insuls = Insulated Gloves
 steal-target-groups-artifact = Artifact Fragment
 steal-target-groups-goggles = Engineering Goggles
 steal-target-groups-sec-glasses = Security Glasses
-steal-target-groups-stun-baton = Stun Baton
+steal-target-groups-stun-baton = Nightstick
 steal-target-groups-appraisal-tool = Appraisal Tool
 steal-target-groups-clown-mask = Clown Mask
 

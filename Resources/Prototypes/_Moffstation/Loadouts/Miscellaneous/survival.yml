@@ -62,70 +62,73 @@
 
 # Basic Survival Box
 - type: loadout
-  id: EmergencyAmmonia
+  id: EmergencyOxygenAvali
   effects:
   - !type:GroupLoadoutEffect
     proto: EffectSpeciesAvali
   storage:
     back:
-    - BoxSurvivalAmmonia
+    - BoxSurvival
 
 # Clown
 - type: loadout
-  id: EmergencyOxygenClownAmmonia
+  id: EmergencyOxygenClownAvali
   effects:
   - !type:GroupLoadoutEffect
     proto: EffectSpeciesAvali
   storage:
     back:
-    - BoxHugAmmonia
-
-# Mime
-- type: loadoutEffectGroup
-  id: EffectSpeciesAvaliMime
-  effects:
-  - !type:SpeciesLoadoutEffect
-    species:
-    - Avali
-
-- type: loadout
-  id: EmergencyOxygenMimeAmmonia
-  effects:
-  - !type:GroupLoadoutEffect
-    proto: EffectSpeciesAvaliMime
-  storage:
-    back:
-    - BoxMimeAmmonia
+    - BoxSurvivalHug
 
 # Engineering / Extended
 - type: loadout
-  id: EmergencyOxygenExtendedAmmonia
+  id: EmergencyOxygenExtendedAvali
   effects:
   - !type:GroupLoadoutEffect
     proto: EffectSpeciesAvali
   storage:
     back:
-    - BoxSurvivalEngineeringAmmonia
+    - BoxSurvivalEngineering
+
+# Deluxe
+- type: loadout
+  id: EmergencyOxygenExtendedAntagAvali
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: OxygenBreather
+  storage:
+    back:
+    - BoxSurvivalDeluxeExtended
 
 # Medical
 - type: loadout
-  id: EmergencyOxygenMedicalAmmonia
+  id: EmergencyOxygenMedicalAvali
   effects:
   - !type:GroupLoadoutEffect
     proto: EffectSpeciesAvali
   storage:
     back:
-    - BoxSurvivalMedicalAmmonia
+    - BoxSurvivalMedical
+
+# Military
+- type: loadout
+  id: EmergencyOxygenMilitaryDoubleAvali
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: EffectSpeciesAvali
+  storage:
+    back:
+    - BoxSurvivalMilitaryDouble
 
 # Security
 - type: loadout
-  id: EmergencyOxygenSecurityAmmonia
+  id: EmergencyOxygenSecurityAvali
   effects:
   - !type:GroupLoadoutEffect
     proto: EffectSpeciesAvali
   storage:
     back:
-    - BoxSurvivalSecurityAmmonia
+    - BoxSurvivalSecurity
 
 # Stowaway
 - type: loadout
@@ -172,7 +175,7 @@
 
 # Syndicate
 - type: loadout
-  id: EmergencyOxygenSyndicateAmmonia
+  id: EmergencyOxygenSyndicateAvali
   effects:
   - !type:GroupLoadoutEffect
     proto: EffectSpeciesAvali

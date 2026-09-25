@@ -1,7 +1,7 @@
 - type: entity
-  id: BaseWeaponBattery
-  parent: [ BaseItem, BasePointerCrosshair ] # MACRO add crosshair
   abstract: true
+  parent: [ BaseItem, BasePointerCrosshair ] # MACRO add crosshair
+  id: BaseWeaponBatteryNoAmmoCounter
   components:
   - type: Sprite
   - type: Item
@@ -12,7 +12,6 @@
     slots:
     - Back
     - suitStorage
-  - type: AmmoCounter
   - type: Gun
     fireRate: 2
     cameraRecoilScalar: 0.5 # DeltaV - most laser guns have lower screenshake
@@ -26,6 +25,13 @@
     startingCharge: 1000
   - type: StaticPrice
     price: 500
+
+- type: entity
+  abstract: true
+  parent: BaseWeaponBatteryNoAmmoCounter
+  id: BaseWeaponBattery
+  components:
+  - type: AmmoCounter
 
 - type: entity
   parent: [BaseWeaponBattery, BaseGunWieldable]
@@ -497,13 +503,13 @@
   - type: Appearance
 
 - type: entity
-  name: practice disabler
+  name: practice blaster # Funky - Name & description changed to no longer reference the disabler
   parent: BaseWeaponBatterySmall
   id: WeaponDisablerPractice
-  description: A self-defense weapon that exhausts organic targets, weakening them until they collapse. This one has been undertuned for cadets making it mostly harmless.
+  description: A prop blaster, designed specifically to emulate firing a real energy weapon.
   components:
   - type: Sprite
-    sprite: Objects/Weapons/Guns/Battery/practice_disabler.rsi
+    sprite: _Moffstation/Objects/Weapons/Guns/Battery/practice_disabler.rsi # Moffstation
     layers:
     - state: base
       map: ["enum.GunVisualLayers.Base"]
@@ -513,7 +519,7 @@
   - type: Item
     storedOffset: -1,-5
   - type: Clothing
-    sprite: Objects/Weapons/Guns/Battery/practice_disabler.rsi
+    sprite: _Moffstation/Objects/Weapons/Guns/Battery/practice_disabler.rsi # Moffstation
     quickEquip: false
     slots:
     - Belt
@@ -542,11 +548,11 @@
 - type: entity
   name: disabler
   parent: [WeaponDisablerPractice, BaseSecurityCommandContraband]
-  id: WeaponDisabler
+  id: WeaponDisabler # Moff - do NOT put this MF back in
   description: A self-defense weapon that exhausts organic targets, weakening them until they collapse.
   components:
   - type: Sprite
-    sprite: Objects/Weapons/Guns/Battery/disabler.rsi
+    sprite: _Moffstation/Objects/Weapons/Guns/Battery/disabler.rsi # Moffstation
     layers:
       - state: base
         map: ["enum.GunVisualLayers.Base"]
@@ -554,7 +560,7 @@
         map: ["enum.GunVisualLayers.MagUnshaded"]
         shader: unshaded
   - type: Clothing
-    sprite: Objects/Weapons/Guns/Battery/disabler.rsi
+    sprite: _Moffstation/Objects/Weapons/Guns/Battery/disabler.rsi # Moffstation
     quickEquip: false
     slots:
       - suitStorage
@@ -573,6 +579,7 @@
   parent: [BaseWeaponBattery, BaseSecurityContraband]
   id: WeaponDisablerSMG
   description: Advanced weapon that exhausts organic targets, weakening them until they collapse.
+  categories: [ DoNotMap ]
   components:
   - type: Item
     size: Large
@@ -847,7 +854,7 @@
   name: energy shotgun
   parent: [BaseWeaponBattery, BaseGunWieldable, BaseSecurityContraband]
   id: WeaponEnergyShotgun
-  description: A one-of-a-kind prototype energy weapon that uses various shotgun configurations. It offers the possibility of both lethal and non-lethal shots, making it a versatile weapon.
+  description: A one-of-a-kind prototype energy weapon that uses two different shotgun configurations. It offers the possibility of both focused and wide shots, making it a versatile weapon. # Funky
   components:
   - type: Sprite
     sprite: Objects/Weapons/Guns/Battery/energy_shotgun.rsi
@@ -871,13 +878,10 @@
   - type: BatteryAmmoProvider
     proto: BulletLaserSpreadNarrow
     fireCost: 80
-  - type: BatteryWeaponFireModes
+  - type: BatteryWeaponFireModes # Funky - Removed disabler mode
     fireModes:
     - proto: BulletLaserSpreadNarrow
       fireCost: 80
-    - proto: BulletDisablerSmgSpread
-      fireCost: 48
-      pacifismAllowedMode: true
   - type: Item
     size: Large
     sprite: Objects/Weapons/Guns/Battery/inhands_64x.rsi
@@ -891,7 +895,7 @@
   name: energy magnum
   parent: [BaseWeaponBatterySmall, BaseGrandTheftContraband]
   id: WeaponEnergyMagnum
-  description: A high powered self-charging energy pistol designed for elite security personnel. It has has three firing modes allowing for either high damage, window piercing, or non-lethal disabling.
+  description: A high powered self-charging energy pistol designed for elite security personnel. It has has two firing modes, allowing for either high damage or window piercing. # Funky
   components:
   - type: Sprite
     sprite: Objects/Weapons/Guns/Battery/energy_magnum.rsi
@@ -921,15 +925,12 @@
   - type: BatteryAmmoProvider
     proto: BulletLaserMagnum
     fireCost: 150
-  - type: BatteryWeaponFireModes
+  - type: BatteryWeaponFireModes # Funky - Removed disabler mode
     fireModes:
     - proto: BulletLaserMagnum
       fireCost: 150
     - proto: BulletLaserWindowPiercingMagnum
       fireCost: 150
-    - proto: BulletDisabler
-      fireCost: 62.5
-      pacifismAllowedMode: true
   - type: BatterySelfRecharger
     autoRechargeRate: 48
     autoRechargePauseTime: 10
@@ -983,6 +984,8 @@
   id: WeaponLaserGunXenoborg
   name: xenoborg laser gun
   components:
+  - type: BatteryAmmoProvider
+    proto: XenoborgLaser
   - type: Sprite
     sprite: Objects/Weapons/Guns/Battery/xenoborg_laser_gun.rsi
     layers:
@@ -996,8 +999,18 @@
   id: WeaponLaserCannonXenoborg
   name: xenoborg laser cannon
   components:
+  - type: BatteryAmmoProvider
+    proto: XenoborgHeavyLaser
+    fireCost: 100
+  - type: Sprite
+    sprite: Objects/Weapons/Guns/Battery/xenoborg_laser_cannon.rsi
+    layers:
+    - state: base
+      map: [ "enum.GunVisualLayers.Base" ]
+    - state: mag-unshaded-4
+      map: [ "enum.GunVisualLayers.MagUnshaded" ]
   - type: BatterySelfRecharger
-    autoRechargeRate: 30
+    autoRechargeRate: 50
   # "remove" wield bonus and penalty so borgs can use it
   - type: GunWieldBonus
     minAngle: 0
@@ -1037,3 +1050,31 @@
   - type: BatteryAmmoProvider
     proto: XenoborgFireLaser
     fireCost: 100
+
+- type: entity
+  parent: [BaseWeaponBatteryNoAmmoCounter, BaseXenoborgContraband]
+  id: WeaponRangeFinderXenoborg
+  name: xenoborg range finder
+  components:
+  - type: Sprite
+    sprite: Objects/Weapons/Guns/Battery/xenoborg_range_finder.rsi
+    layers:
+    - state: icon
+      map: [ "enum.GunVisualLayers.Base" ]
+  - type: Battery
+    maxCharge: 1
+    startingCharge: 1
+    showItemStatus: false
+  - type: BatteryAmmoProvider
+    proto: RangeLaser
+    fireCost: 0 # you are shooting a laser pointer, it's unlimited
+  - type: EyeCursorOffset
+    maxOffset: 3
+    pvsIncrease: 0.3
+  - type: CursorOffsetInHand
+  - type: TargetFinder
+  - type: DeviceLinkSource
+    ports:
+    - TargetSource
+  - type: AutoLinkTransmitter
+    channel: XenoborgGuidedMissileLauncher

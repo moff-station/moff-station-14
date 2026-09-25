@@ -1,3 +1,6 @@
+// Moff - We stuffed this file into a crate and shipped it to our namespace
+// Take any upstream changes
+/*
 using System.Linq;
 using Content.Client._Starlight.UserInterface.Controls; // Starlight - Collective Mind
 using Content.Client.CharacterInfo;
@@ -149,6 +152,7 @@ public sealed partial class CharacterUIController : UIController, IOnStateEntere
         var job = _prototypeManager.Index(jobId);
         _window.NameLabel.Text = entityName;
         _window.SubText.Text = job != null ? Loc.GetString(job.Name) : null;
+
         _window.Objectives.RemoveAllChildren();
         // Moffstation - Start - Character Menu Redesign (removed ObjectivesLabel, added Briefing clear)
         // _window.ObjectivesLabel.Visible = objectives.Any();
@@ -296,3 +300,4 @@ public sealed partial class CharacterUIController : UIController, IOnStateEntere
         }
     }
 }
+*/

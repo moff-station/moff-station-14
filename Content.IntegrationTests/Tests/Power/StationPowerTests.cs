@@ -27,9 +27,7 @@ public sealed class StationPowerTests : GameTest
         "Box",
         "Elkridge",
         "Exo",
-        "Fland",
         "Marathon",
-        "Oasis",
         "Packed",
         "Plasma",
         "Relic",
@@ -40,7 +38,6 @@ public sealed class StationPowerTests : GameTest
         "Frezon", // Moffstation
         "Lambda", // Moffstation
         "Ossuary", // Moffstation
-        "Reach", // Moffstation
         "Skeld", // Moffstation
         "Aspid", // Moffstation (From Harmony)
         "Barratry", // Moffstation (From Harmony)

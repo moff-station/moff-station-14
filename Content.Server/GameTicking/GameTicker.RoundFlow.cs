@@ -366,9 +366,15 @@ namespace Content.Server.GameTicking
         // Moffstation - Start - Player count calculated depending on cvar
         public int DynamicPlayerCount()
         {
-            return _cfg.GetCVar(MoffCCVars.GameRulesCountReadied)
-                ? ReadyPlayerCount()
-                : _playerManager.PlayerCount;
+            var unreadiedPlayerWeight = _cfg.GetCVar(MoffCCVars.GameRulesUnreadiedPlayerWeight);
+            if (unreadiedPlayerWeight == 0.0f)
+                return _playerManager.PlayerCount;
+
+            var readied = ReadyPlayerCount();
+            var unreadied = _playerManager.PlayerCount - readied;
+            var unreadiedWeighted = (int) Math.Ceiling(unreadied * unreadiedPlayerWeight);
+
+            return readied + unreadiedWeighted;
         }
         // Moffstation - End
 
@@ -744,6 +750,8 @@ namespace Content.Server.GameTicking
                     Timer.Spawn(delay,
                         () =>
                     {
+                        if (RunLevel != GameRunLevel.PreRoundLobby || Paused)
+                            return;
                         // There isn't really a better way to identify an already running map vote...
                         if (_voteManager.ActiveVotes.All(x => x.Title != Loc.GetString("ui-vote-map-title")))
                             _voteManager.CreateStandardVote(null, StandardVoteType.Map);

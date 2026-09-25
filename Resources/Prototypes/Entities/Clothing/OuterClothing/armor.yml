@@ -27,10 +27,10 @@
   - type: Stainable
     clothingVisuals:
       outerClothing:
-      - sprite: _Funkystation/Effects/blood.rsi
+      - sprite: /Textures/_Funkystation/Effects/blood.rsi
         state: armorblood
     iconVisuals:
-    - sprite: _Funkystation/Effects/blood.rsi
+    - sprite: /Textures/_Funkystation/Effects/blood.rsi
       state: armorbloodicon
   # Forky - End
 
@@ -252,9 +252,6 @@
     clothingVisuals:
       outerClothing:
       - state: equipped-OUTERCLOTHING-light
-        shader: unshaded
-      outerClothing-vox:
-      - state: equipped-OUTERCLOTHING-light-vox
         shader: unshaded
   - type: ItemTogglePointLight
   - type: Appearance

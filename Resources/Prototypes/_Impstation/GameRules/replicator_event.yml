@@ -3,7 +3,7 @@
 # the original Bingle PR can be found here: https://github.com/Goob-Station/Goob-Station/pull/1519
 - type: entity
   id: ReplicatorSpawn
-  parent: BaseGameRule
+  parent: BaseAntagGhostRoleRule # Moff - ghost roles are NOT weighted
   components:
   - type: StationEvent
     earliestStart: 20

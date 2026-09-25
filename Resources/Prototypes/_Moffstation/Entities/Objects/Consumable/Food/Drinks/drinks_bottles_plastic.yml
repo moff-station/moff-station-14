@@ -1,0 +1,14 @@
+- type: entity
+  parent: CustomDrinkJug
+  id: DrinkAmmoniaJug
+  name: ammonia jug
+  suffix: For Drinks, Full
+  description: For those not too fond of water.
+  components:
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: Ammonia
+        Quantity: 240
+  - type: Label
+    localizedLabel: reagent-name-ammonia

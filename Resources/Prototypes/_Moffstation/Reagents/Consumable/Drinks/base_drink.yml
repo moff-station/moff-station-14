@@ -1,4 +1,3 @@
-
 - type: reagent
   id: BaseEthyl
   group: Drinks
@@ -11,7 +10,8 @@
       metabolites:
         Ethylredoxrazine: 0.2
       effects:
-      - !type:SatiateThirst
+      - !type:Satiate
+        satiationType: Thirst
         factor: 2
   plantMetabolism:
   - !type:PlantAdjustNutrition

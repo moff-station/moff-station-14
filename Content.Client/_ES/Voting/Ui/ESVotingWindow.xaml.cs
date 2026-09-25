@@ -24,6 +24,7 @@ public sealed partial class ESVotingWindow : FancyWindow
     // Moff - enroll actions, bubbled up from the entry controls for the BUI to send.
     public Action<EntityUid, bool>? OnSetEnroll;
     public Action<EntityUid, bool>? OnSetRandom;
+    public Action<EntityUid>? OnEarlyStartEnroll;
 
     public ESVotingWindow()
     {
@@ -70,6 +71,7 @@ public sealed partial class ESVotingWindow : FancyWindow
             var control = new MoffEnrollControl((ent.Owner, enroll));
             control.OnSetEnroll += enrolled => OnSetEnroll?.Invoke(ent.Owner, enrolled);
             control.OnSetRandom += random => OnSetRandom?.Invoke(ent.Owner, random);
+            control.EarlyStartEnroll += () => OnEarlyStartEnroll?.Invoke(ent.Owner);
             return control;
         }
 

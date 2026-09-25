@@ -1,13 +1,18 @@
 using System.Linq;
+using Content.Server.Administration.Logs;
+using Content.Server.Administration.Managers;
 using Content.Server.Antag;
 using Content.Server.Antag.Components;
 using Content.Server.GameTicking;
+using Content.Server.GameTicking.Rules;
 using Content.Server.GameTicking.Rules.Components;
+using Content.Server.StationEvents;
 using Content.Shared._ES.Voting;
 using Content.Shared._ES.Voting.Components;
 using Content.Shared._Moffstation.Extensions;
 using Content.Shared._Moffstation.Voting.Components;
-using Content.Shared.EntityTable;
+using Content.Shared.Administration;
+using Content.Shared.Database;
 using Content.Shared.GameTicking.Components;
 using Content.Shared.Ghost.Components;
 using Content.Shared.Roles.Components;
@@ -23,14 +28,17 @@ namespace Content.Server._Moffstation.Voting;
 
 public sealed partial class MoffEnrollEventSystem : EntitySystem
 {
+    [Dependency] private IAdminLogManager _adminLogger = default!;
+    [Dependency] private IAdminManager _admin = default!;
     [Dependency] private IGameTiming _timing = default!;
     [Dependency] private IPlayerManager _player = default!;
     [Dependency] private IRobustRandom _random = default!;
     [Dependency] private GameTicker _gameTicker = default!;
     [Dependency] private AntagSelectionSystem _antag = default!;
-    [Dependency] private EntityTableSystem _entityTable = default!;
+    [Dependency] private EventManagerSystem _event = default!;
     [Dependency] private IPrototypeManager _proto = default!;
     [Dependency] private SharedTransformSystem _transform = default!;
+    [Dependency] private RuleGridsSystem _ruleGrids = default!;
 
     [Dependency] private EntityQuery<AntagSelectionComponent> _antagSelectionQuery;
     [Dependency] private EntityQuery<AntagLoadProfileRuleComponent> _antagProfileRuleQuery;
@@ -39,6 +47,18 @@ public sealed partial class MoffEnrollEventSystem : EntitySystem
     [Dependency] private EntityQuery<GhostComponent> _ghostQuery;
 
     private readonly List<Entity<MoffEnrollEventComponent>> _enrollments = new(); // Reuse list for iteration in `Update` without new allocations.
+
+    public override void Initialize()
+    {
+        base.Initialize();
+
+        Subs.BuiEvents<ESVoterComponent>(ESVoterUiKey.Key, subs =>
+        {
+            subs.Event<MoffSetEnrollMessage>(OnSetEnroll);
+            subs.Event<MoffSetEnrollRandomMessage>(OnSetEnrollRandom);
+            subs.Event<MoffEarlyStartEnrollRequest>(OnEarlyStartEnrollRequest);
+        });
+    }
 
     public override void Update(float frameTime)
     {
@@ -54,8 +74,8 @@ public sealed partial class MoffEnrollEventSystem : EntitySystem
             if (_timing.CurTime < enroll.Comp.EndTime)
                 continue;
 
-            ResolveEnrollment(enroll);
-            QueueDel(enroll.Owner);
+            var ev = new MoffEndEnrollEvent();
+            RaiseLocalEvent(enroll, ref ev);
         }
         _enrollments.Clear();
     }
@@ -90,7 +110,6 @@ public sealed partial class MoffEnrollEventSystem : EntitySystem
         Dirty(ent);
     }
 
-    [SubscribeLocalEvent]
     private void OnSetEnroll(Entity<ESVoterComponent> ent, ref MoffSetEnrollMessage args)
     {
         // Ghosts only - assignment bypasses the mutual-antag check, so this gate is what stops an embodied
@@ -116,7 +135,6 @@ public sealed partial class MoffEnrollEventSystem : EntitySystem
         Dirty(enrollerUid.Value, comp);
     }
 
-    [SubscribeLocalEvent]
     private void OnSetEnrollRandom(Entity<ESVoterComponent> ent, ref MoffSetEnrollRandomMessage args)
     {
         // Ghosts only, matching OnSetEnroll - a random-character pick is only meaningful for an enrollee.
@@ -137,7 +155,26 @@ public sealed partial class MoffEnrollEventSystem : EntitySystem
         Dirty(enrollerUid.Value, comp);
     }
 
-    private void ResolveEnrollment(Entity<MoffEnrollEventComponent> ent)
+    private void OnEarlyStartEnrollRequest(Entity<ESVoterComponent> ent, ref MoffEarlyStartEnrollRequest args)
+    {
+        if (!_player.TryGetSessionByEntity(args.Actor, out var session) ||
+            !_admin.HasAdminFlag(session, AdminFlags.Fun))
+            return;
+
+        if (!TryGetEntity(args.EnrollEvent, out var enrollUid) ||
+            !_enrollEventQuery.TryComp(enrollUid, out var comp))
+            return;
+
+        var ev = new MoffEndEnrollEvent();
+        RaiseLocalEvent(enrollUid.Value, ref ev);
+
+        _adminLogger.Add(LogType.Action,
+            LogImpact.Extreme,
+            $"{session:player} started enrollment event {ToPrettyString(enrollUid.Value):enrollEvent} early");
+    }
+
+    [SubscribeLocalEvent]
+    private void OnEnrollEventEnded(Entity<MoffEnrollEventComponent> ent, ref MoffEndEnrollEvent args)
     {
         var rule = ent.Comp.OwningRule;
 
@@ -161,8 +198,12 @@ public sealed partial class MoffEnrollEventSystem : EntitySystem
             rule is not { } ruleUid ||
             !_antagSelectionQuery.TryComp(ruleUid, out var antag))
         {
+            if (rule is { } unstartedRule)
+                _ruleGrids.DeleteRuleGrids(unstartedRule);
+
             FireFallbackRule(ent);
             TryQueueDel(rule);
+            TryQueueDel(ent.Owner);
             return;
         }
 
@@ -177,6 +218,7 @@ public sealed partial class MoffEnrollEventSystem : EntitySystem
             // ignoreExclusivity: true - an enrolling ghost may already be an antag. Bans/validity still apply.
             _antag.TryAssignNextAvailableAntag(gameRule, session, players, checkPref: false, ignoreExclusivity: true);
         }
+        TryQueueDel(ent.Owner);
     }
 
     /// <summary>
@@ -253,11 +295,8 @@ public sealed partial class MoffEnrollEventSystem : EntitySystem
 
     private void FireFallbackRule(Entity<MoffEnrollEventComponent> ent)
     {
-        // Not enough people enrolled, fire the fallback rule
-        foreach (var proto in _entityTable.GetSpawns(ent.Comp.FallbackRules, _random))
-        {
-            _gameTicker.StartGameRule(proto);
-        }
+        if (ent.Comp.FallbackRules is { } fallback)
+            _event.RunRandomEvent(fallback);
     }
 
     public bool EnrolleeWantsRandom(EntityUid rule, ICommonSession session)
@@ -271,3 +310,6 @@ public sealed partial class MoffEnrollEventSystem : EntitySystem
             ?.Comp.RandomPick.Contains(GetNetEntity(attached)) ?? false;
     }
 }
+
+[ByRefEvent]
+public record struct MoffEndEnrollEvent();

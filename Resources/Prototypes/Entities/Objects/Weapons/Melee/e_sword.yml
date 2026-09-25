@@ -44,7 +44,7 @@
       types:
         Slash: 15
         Heat: 15
-        Structural: 20
+        Structural: 12
   - type: MeleeWeapon
     wideAnimationRotation: -135
     attackRate: 1
@@ -81,6 +81,7 @@
   id: EnergySword
   description: A very loud & dangerous sword with a beam made of pure, concentrated plasma. Cuts through unarmored targets like butter.
   components:
+  - type: ItemToggleExaminableStatus
   - type: Sprite
     sprite: Objects/Weapons/Melee/e_sword.rsi
     layers:
@@ -101,6 +102,7 @@
   id: EnergyDaggerLoud
   description: A not as loud and dangerous dagger with a beam made of pure, concentrated plasma. This one is completely undisguised.
   components:
+  - type: ItemToggleExaminableStatus
   - type: ItemToggle
     soundActivate:
       path: /Audio/Weapons/ebladeon.ogg
@@ -267,13 +269,14 @@
   id: EnergyCutlass
   description: An exotic energy weapon.
   components:
+  - type: ItemToggleExaminableStatus
   - type: ItemToggleMeleeWeapon
     activatedDamage:
         types:
           # Moffstation - Start - e-cutlass buff
             Slash: 12
             Heat: 12
-            Structural: 20
+            Structural: 10 # 40% bonus damage to structures, based on esword
           # Moffstation - End
     deactivatedSecret: true
   - type: Sprite
@@ -294,8 +297,8 @@
   id: EnergySwordDouble
   description: Syndicate Command Interns thought that having one blade on the energy sword was not enough. This can be stored in pockets.
   components:
+  - type: ItemToggleExaminableStatus
   - type: ItemToggle
-    predictable: false # Moffstation Change - Fixes the hum not working, but introduces minor amt of clientside latency on activation (barely noticable, mainly affects 'feel). Upstream PR #38070 fixes this, so when it is merged w/o conflicts, this line can be removed.
     onUse: false # wielding events control it instead
     onActivate: true # Moffstation Change - Allows it to turned on while on the ground to see the cool sprite. Mainly for items this parents from.
     soundActivate:
@@ -316,7 +319,6 @@
         types:
             Slash: 12
             Heat: 12
-            Structural: 15
   - type: ItemToggleActiveSound
     activeSound:
       path: /Audio/Weapons/ebladehum.ogg
@@ -381,7 +383,7 @@
       types:
         Slash: 20
         Heat: 20
-        Structural: 40 # Moffstation adjustment - previously 20
+        Structural: 16 # Moff - 40% bonus damage to structures, based on esword
   - type: MeleeRequiresWield
   - type: HeldSpeedModifier #slowdown is what balances this compared to a dsword
     walkModifier: 0.70 # Moffstation adjustment - previously .6
