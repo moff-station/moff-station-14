@@ -1,0 +1,21 @@
+﻿- type: entity
+  abstract: true
+  parent: MarkerBase
+  id: AnomalyCreatureSpawnerBase
+  name: anomaly creature spawner
+
+- type: entity
+  parent: AnomalyCreatureSpawnerBase
+  id: AnomalyCreatureSpawnerShadow
+  suffix: Shadow
+  components:
+  - type: Sprite
+    layers:
+    - state: pink
+    - sprite: Structures/Specific/Anomalies/shadow_anom.rsi
+      state: pulse
+    - sprite: Mobs/Pets/cat.rsi
+      state: cat
+  - type: EntityTableSpawner
+    table:
+      id: MobCatShadow

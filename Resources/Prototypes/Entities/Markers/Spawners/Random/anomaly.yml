@@ -26,6 +26,7 @@
     rareChance: 0.3
     rarePrototypes:
     - RandomAnomalyInjectorSpawner
+    - RandomAnomalyCreatureSpawner # Moff
     offset: 0.15 # not to put it higher. The anomaly sychnronizer looks for anomalies within this radius, and if the radius is higher, the anomaly can be attracted from a neighboring tile.
 
 - type: entity

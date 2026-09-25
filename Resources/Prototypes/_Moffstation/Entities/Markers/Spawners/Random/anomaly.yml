@@ -1,0 +1,16 @@
+﻿- type: entity
+  parent: MarkerBase
+  id: RandomAnomalyCreatureSpawner
+  name: random anomaly creature spawner
+  components:
+  - type: Sprite
+    layers:
+    - state: red
+    - sprite: Structures/Specific/Anomalies/tech_anom.rsi
+      state: pulse
+    - sprite: Mobs/Animals/mothroach/mothroach.rsi
+      state: mothroach
+  - type: RandomSpawner
+    prototypes:
+    - AnomalyCreatureSpawnerShadow
+    chance: 1
