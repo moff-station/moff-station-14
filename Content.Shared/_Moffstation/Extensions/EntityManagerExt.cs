@@ -34,5 +34,9 @@ public static class EntityManagerExt
             DebugTools.Assert(entMan.HasComponent<T>(ret));
             return (ret, entMan.EnsureComponent<T>(ret));
         }
+
+        /// <see cref="EntityManager.EnsureComponent{T}(EntityUid)"/>, but returns an <see cref="Entity{T}"/>.
+        public Entity<T> EnsureComp<T>(EntityUid ent) where T : IComponent, new() =>
+            new(ent, entMan.EnsureComponent<T>(ent));
     }
 }
