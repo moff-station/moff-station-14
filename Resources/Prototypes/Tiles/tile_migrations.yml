@@ -126,13 +126,15 @@
   id: FloorWhiteOffset
   target: FloorWhite
 
-- type: tileAlias
-  id: FloorUraniumMarble
-  target: FloorDarkMarble
+# Moff start
+# - type: tileAlias
+#   id: FloorUraniumMarble
+#   target: FloorDarkMarble
 
-- type: tileAlias
-  id: FloorPlasmaMarble
-  target: FloorWhiteMarble # Moff
+# - type: tileAlias
+#   id: FloorPlasmaMarble
+#   target: FloorWhiteMarble 
+# Moff end
 
 - type: tileAlias
   id: FloorEighties
@@ -361,3 +363,19 @@
 - type: tileAlias
   id: IronsandPaved
   target: MoffIronsandPaved
+
+# Moff end
+
+# 2026-08-26
+# Moff start - Uranium/Plasmarble ported to moff namespace
+
+- type: tileAlias
+  id: FloorPlasmaMarble
+  target: MoffFloorPlasmaMarble
+
+- type: tileAlias
+  id: FloorUraniumMarble
+  target: MoffFloorUraniumMarble
+
+# Moff end
+
