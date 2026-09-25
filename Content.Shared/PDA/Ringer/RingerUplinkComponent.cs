@@ -1,3 +1,4 @@
+using Robust.Shared.Audio;
 using Robust.Shared.GameStates;
 
 namespace Content.Shared.PDA.Ringer;
@@ -14,4 +15,11 @@ public sealed partial class RingerUplinkComponent : Component
     /// </summary>
     [DataField]
     public bool Unlocked;
+
+    /// <summary>
+    /// Sound played when the uplink fails to open or locks
+    /// </summary>
+    /// <returns></returns>
+    [DataField]
+    public SoundSpecifier DenySound = new SoundPathSpecifier("/Audio/Machines/buzz-two.ogg");
 }

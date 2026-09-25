@@ -178,7 +178,7 @@ public abstract partial class SharedRingerSystem : EntitySystem
             return;
 
         // Try to toggle the uplink first
-        if (TryToggleUplink(ent.Owner, args.Ringtone))
+        if (TryToggleUplink(ent.Owner, args.Ringtone, args.Actor)) // Moff - Pass the actor so uplink lock popups have a recipient
             return; // Don't save the uplink code as the ringtone
 
         UpdateRingerRingtone(ent, args.Ringtone);
