@@ -1,0 +1,61 @@
+# Player: DrBadvice - Character: Hazel-Starmaker
+
+- type: entity
+  parent: FoodPacketChocolateTrash
+  id: &trashId PersonalItemHazelGreyMatterWrapperTrash
+  categories: [ HideSpawnMenu ]
+  name: Grey Matter wrapper
+  description: Now a collectible piece of trash.
+  suffix: &personal-item-suffix PersonalItem
+  components:
+  - type: Sprite
+    sprite: &sprite _Moffstation/PersonalItems/Items/DrBadvice/Hazel-Starmaker/greymatterbar.rsi
+    state: icon-trash
+
+- type: entity
+  parent: FoodSnackChocolateBar
+  id: &openId PersonalItemHazelGreyMatterBarOpen
+  categories: [ HideSpawnMenu ]
+  name: Grey Matter bar
+  description: It looks fibrous, mind-melting, and tasty, like very old chocolate.
+  suffix: *personal-item-suffix
+  components:
+  - type: Sprite
+    sprite: *sprite
+    state: icon-unwrapped
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: GreyMatter
+        Quantity: 7.5
+      - ReagentId: Nutriment
+        Quantity: 7.5
+
+- type: entity
+  parent: FoodSnackChocolate
+  id: &barId PersonalItemHazelGreyMatterBar
+  name: Grey Matter bar
+  description: A very old-looking chocolate bar with the label "Grey Matter" on it. It reads "for more brain power!" on the back.
+  suffix: *personal-item-suffix
+  components:
+  - type: Sprite
+    sprite: *sprite
+    state: icon
+  - type: SpawnItemsOnUse
+    items:
+    - id: *trashId
+    - id: *openId
+    sound:
+      path: /Audio/Effects/unwrap.ogg
+  - type: DetailExaminable
+    content: This is a discontinued product from the GetMore company, pulled from shelves years ago after it caused mass poisonings. It's a rare collectible now - someone might pay well for it.
+
+- type: loadout
+  id: *barId
+  storage:
+    back:
+    - *barId
+  effects:
+  - !type:PersonalItemLoadoutEffect
+    character:
+    - Hazel-Starmaker
