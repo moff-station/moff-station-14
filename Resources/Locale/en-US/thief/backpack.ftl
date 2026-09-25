@@ -22,12 +22,15 @@ thief-backpack-category-chameleon-description =
     a chameleon projector, and a fake mindshield implant.
     Disguise as anyone and anything.
 
+# Moff Start - Gas welding mask replaces meson goggles and drill added
 thief-backpack-category-tools-name = Breacher Kit
 thief-backpack-category-tools-description =
     What's that sound? A lil' C4 knockin' at their door.
     No obstacle can stop you!
-    Includes: Two C4, a multitool, remote signaller, jaws of life,
-    advanced welder, engineering goggles, and insulated gloves.
+    Includes: Two C4, a multitool, remote signaller,
+    jaws of life, advanced welder, welding gas mask,
+    mining drill, and insulated gloves.
+# Moff End
 
 thief-backpack-category-chemistry-name = Anatomy Kit
 thief-backpack-category-chemistry-description =
@@ -49,12 +52,14 @@ thief-backpack-category-sleeper-description =
     Includes: Sleepy nitrous oxide tank, two nocturine bottles,
     and a hypopen.
 
+# Moff Start - Binary key added
 thief-backpack-category-communicator-name = Communicator Kit
 thief-backpack-category-communicator-description =
     Money is power, and secrets are money. Use your silver tongue
     and wealth to subvert the station.
-    Includes: Master key for all station channels, a CyberSun pen,
-    voice mask implanter, and 20k spesos inside a briefcase.
+    Includes: Master key for all station channels, binary translator key,
+    a CyberSun pen, voice mask implanter, and 20k spesos inside a briefcase.
+# Moff End
 
 # Moff Start - Smoke implant replaces smoke grenades
 thief-backpack-category-smuggler-name = Smuggler Kit
