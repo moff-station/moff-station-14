@@ -1,0 +1,19 @@
+- type: entity
+  parent: BaseItem
+  id: JestographicSequencer
+  name: jestographic sequencer
+  description: A clowny knock-off of a cryptographic sequencer. Reverses the access requirements of doors, to everyone's delight and security's dismay.
+  components:
+  - type: JestographicSequencer
+  - type: Sprite #TODO Placeholder art, reuses the emag sprite.
+    sprite: Objects/Tools/emag.rsi
+    state: icon
+  - type: Item
+    sprite: Objects/Tools/emag.rsi
+    storedRotation: -90
+  - type: LimitedCharges
+    maxCharges: 3
+  - type: AutoRecharge
+    rechargeDuration: 60
+  - type: StaticPrice
+    price: 1500
