@@ -1,0 +1,23 @@
+- type: entity
+  parent: Bucket
+  id: MoffBucketWood
+  name: wooden bucket
+  description: It's a boring old bucket. Now made out of wood.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Objects/Tools/bucket_wood.rsi
+  - type: Solution
+    solution:
+      maxVol: 180
+  - type: Clothing
+    sprite: _Moffstation/Objects/Tools/bucket_wood.rsi
+  - type: SolutionTransfer
+    transferAmount: 60
+    maxTransferAmount: 180
+    minTransferAmount: 30
+  - type: PhysicalComposition
+    materialComposition:
+      Wood: 50
+  - type: Construction
+    graph: BucketWood
+    node: bucketwood
