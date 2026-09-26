@@ -2,7 +2,7 @@ using Content.Shared.Examine;
 
 namespace Content.Shared._Impstation.CrewMedal;
 
-public partial abstract class SharedCrewMedalSystem : EntitySystem
+public partial class SharedCrewMedalSystem : EntitySystem
 {
     public override void Initialize()
     {
