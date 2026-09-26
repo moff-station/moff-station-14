@@ -281,6 +281,19 @@ figurines-fred-2 = IM GONNA CRASH OUT!!
 figurines-fred-3 = Are they a first-time offender?
 figurines-fred-4 = Holy crap this reminds me of the time I got turned into a marketable figurine.
 
+figurines-fredcentral-1 = The big Moth.
+figurines-fredcentral-2 = IM GONNA CRASH OUT!!
+figurines-fredcentral-3 = That name sucks, Your new name is " The Big Moth", here's five hundred spesoses & I'll get your records updated.
+figurines-fredcentral-4 = Holy crap this reminds me of the time I got turned into a marketable figurine.
+figurines-fredcentral-5 = Do you got games on your PDA?
+figurines-fredcentral-6 = I PAY YOUR DAMN PAYCHECKS, WHAT DO YOU MEAN I CAN'T SAY THAT, I'M GONNA CRASH OUT DUDE!
+figurines-fredcentral-7 = Sorry I was watching Squawkbob Trillpants, you said you needed ERT for uhhh-... oh hold on- ad breaks is over now. Good luck!
+figurines-fredcentral-8 = Hey Officer, I NEED your gun- LIKE- NOW! I REALLY wanna shoot the clown!
+figurines-fredcentral-9 = Send the interns to the coal mines, I need some fuel for my fireplace.
+figurines-fredcentral-10 = The Big nukebob is being armed by who?
+figurines-fredcentral-11 = I be grubbing up stuff with straight fingers.
+figurines-fredcentral-12 = what do you mean I can't change it to spacelawbob? what do I pay you guys for?
+
 figurines-frostwing-1 = Our thoughts and prayers go out to those affected.
 figurines-frostwing-2 = I'm sorry, they spent the cargo budget on what?!
 figurines-frostwing-3 = We have dispatched ERT to your location. They will arrive within 3-5 business days.
@@ -398,14 +411,6 @@ figurines-jupiter-2 = IT’S NOT MY DAMN BIRTHDAY!!
 figurines-jupiter-3 = Please leave me alone...
 figurines-jupiter-4 = Does anybody here have ANY sense of personal space?!
 figurines-jupiter-5 = I-I’m nn’t drrrunk... Y-YYYOU are...!!
-
-figurines-kai-1 = Goobers!
-figurines-kai-2 = Is a Kai!
-figurines-kai-3 = I'm goings to gets of yous...
-figurines-kai-4 = Is not handlebars!!
-figurines-kai-5 = Who touched my TEGs?!
-figurines-kai-6 = Warms...
-figurines-kai-7 = Yous is a funnys!
 
 figurines-katie-1 = I love NanoTrasen!
 figurines-katie-2 = I need a latte...
@@ -566,6 +571,12 @@ figurines-nyxilath-2 = There is no shadow factory~!
 figurines-nyxilath-3 = I love you, my Autumn Sun~.
 figurines-nyxilath-4 = No space heaters!!
 figurines-nyxilath-5 = Cryptographic Sequencer Inserted~!
+
+figurines-papillon-1 = 'allo 'allo!
+figurines-papillon-2 = Sorry, ERT is very busy right now, try again later!
+figurines-papillon-3 = OH GOOD 'EAVENS!
+figurines-papillon-4 = Fill out 'zzzese forms, please!
+figurines-papillon-5 = I can stop eating paper anytime I want!
 
 figurines-peedee-1 = Oh! You're hurt!
 figurines-peedee-2 = Peedee fix!
@@ -803,3 +814,37 @@ figurines-zoey-2 = Citrus bikeshed please!
 figurines-zoey-3 = *squishes*
 figurines-zoey-4 = I'll take a martinez...
 figurines-zoey-5 = Wha- Another hell portal?!
+
+figurines-pirate-1 = Aye Aye Captain!
+figurines-pirate-2 = X marks the spot!
+figurines-pirate-3 = You left the ship in park right Captain..?
+figurines-pirate-4 = Booty be in the back!
+figurines-pirate-5 = I think I got scurvy Captain.
+figurines-pirate-6 = Finder's keepers, Losers be going to Davey Jones as weepers!
+figurines-pirate-7 = Yo-ho-ho and a bottle of rum!
+figurines-pirate-8 = TICKETS TO THE HOPPENHEIMER MOVIE!!
+figurines-pirate-9 = You won't believe me...but a space sponge & starminnow took me very own eye!
+figurines-pirate-10 = Scurvy hasn't got me yet!
+
+figurines-piratecaptain-1 = FOR ME CREW!
+figurines-piratecaptain-2 = I BE THE CAPTAIN NOW MATEY!
+figurines-piratecaptain-3 = Remember the Pirate Code Mateys!
+figurines-piratecaptain-4 = I don't want no cuts, no buts & ESPECIALLY no coconuts!
+figurines-piratecaptain-5 = Pirate Rule! Whoever Smelt it, be the one who dealt it!
+figurines-piratecaptain-6 = Pirate Rule! All mateys better be in beds by sunset or there be no scampi and chips!
+figurines-piratecaptain-7 = Pirate Rule-.. uh.. I forgot it matey...
+figurines-piratecaptain-8 = Pirate Rule! Stop fighting when the other person says "ow!"
+figurines-piratecaptain-9 = Pirate Rule! Never make another matey cry!
+figurines-piratecaptain-10 = Pirate Rule! Always say please & thank you!
+figurines-piratecaptain-11 = Pirate Rule! Always be buckled in EFF-TEA-EL unless you want to be visiting Davey Jones.
+figurines-piratecaptain-12 = TICKETS TO THE HOPPENHEIMER MOVIE!!
+figurines-piratecaptain-13 = where did I leave me ship...?
+figurines-piratecaptain-14 = Scru- scrub th-the the...POOP DECK! ARRR-HAHAHA!!
+figurines-piratecaptain-15 = MAN THE FLAGPOLE MATE- wait- what do you mean we don't be having that on our ship anymore...
+figurines-piratecaptain-16 = Watch your language unless you want to be walking the plank!
+figurines-piratecaptain-17 = AVAST!! I am the Pirate Captain and I am here for your gold!
+figurines-piratecaptain-18 = Pirate Captain- blah blah- blah blah¬ gold...
+figurines-piratecaptain-19 = You haven't seen a ticking croc about right?
+figurines-piratecaptain-20 = A scallywag will see your blunderbuss and will say "he shan't be wield a cutlass"
+figurines-piratecaptain-21 = what do you mean "Yes, the winds in my sails be as strong as a whale, I will be docking soon" isn't proper traffic communication usage.
+figurines-piratecaptain-22 = I can't wait to bury all the goods that I will be plundering!

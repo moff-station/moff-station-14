@@ -35,11 +35,13 @@
   - type: Sprite
     sprite: _Moffstation/Objects/Fun/upstreamfigurines.rsi
 
+# Moff Figurines
+
 - type: entity
   parent: BaseFigurineMoff
   id: ToyFigurineAineLucia
   name: extremely marketable moth figurine
-  description: A figurine depicting a short moth person in a special medical uniform and cat-eared beret. The figure looks as though it's been used heavily, and it has Nanotrasen branding etched into it in several places. Smells like watermelon and plasma.
+  description: A figurine depicting a short moth person in a special medical uniform and cat-eared beret. The figure looks as though it's been used heavily, and it has Nanotrasen™ branding etched into it in several places. Smells like watermelon and plasma.
   components:
   - type: Sprite
     state: ainelucia
@@ -145,7 +147,7 @@
 - type: entity
   parent: BaseFigurineMoff
   id: ToyFigurineBenny
-  name: disgruntled centcomm figurine
+  name: disgruntled central command executive figurine
   description: A figurine depicting a very well dressed centcomm executive. There are numerous medals painted on their chest, although it's still made of cheap plastic.
   components:
   - type: Sprite
@@ -169,7 +171,7 @@
   parent: BaseFigurineMoff
   id: ToyFigurineBuck
   name: robust law enforcer figurine
-  description: A figurine depicting NanoTrasen's ideal security officer.
+  description: A figurine depicting NanoTrasen™'s ideal security officer.
   components:
   - type: Sprite
     state: buck
@@ -190,7 +192,7 @@
 - type: entity
   parent: BaseFigurineMoff
   id: ToyFigurineBradBucket
-  name: ultra-rare Brad Thomas collectible figurine
+  name: ultra-rare brad thomas collectible figurine
   description: A gorgeous figurine depicting the most radical and awesome man you've ever had the pleasure to lay your eyes upon. He wears a bucket upon his head. Gemstones are inlaid upon its golden base. It has lost all resale value from being unboxed.
   components:
   - type: Sprite
@@ -228,11 +230,11 @@
   name: annoyed chief engineer figurine
   description: A figurine depicting a green lizard in a stained CE outfit and beret that looks annoyed with you not doing your job.
   components:
-      - type: Sprite
-        state: buckshot
-      - type: SpeakOnTrigger
-        pack: FigurinesBuckshot
-      - type: LizardAccent
+  - type: Sprite
+    state: buckshot
+  - type: SpeakOnTrigger
+    pack: FigurinesBuckshot
+  - type: LizardAccent
 
 - type: entity
   parent: BaseFigurineMoff
@@ -272,7 +274,7 @@
   parent: BaseFigurineMoff
   id: ToyFigurineCatAi
   name: marketable AI figurine
-  description: A figurine depicting a widely used Nanotrasen AI program, designed to encourage good relationships between the crew and their silicon assistants.
+  description: A figurine depicting a widely used Nanotrasen™ AI program, designed to encourage good relationships between the crew and their silicon assistants.
   components:
   - type: Sprite
     state: catai
@@ -339,7 +341,7 @@
   parent: BaseFigurineMoff
   id: ToyFigurineDarnell
   name: inexplicably competent janitor figurine
-  description: "A figurine depicting an unfriendly-looking human janitor. He looks like he’s seen everything from dragons to decompressions and kept cleaning through it all."
+  description: A figurine depicting an unfriendly-looking human janitor. He looks like he’s seen everything from dragons to decompressions and kept cleaning through it all.
   components:
   - type: Sprite
     state: darnell
@@ -406,7 +408,7 @@
   parent: BaseFigurineMoff
   id: ToyFigurineEclipse
   name: gun-loving medical moth figurine
-  description: A figurine depicting a silky white moth with bright blue eyes and dark orangey wings in a medical jacket wearing a red hairflower?
+  description: A figurine depicting a silky white moth with bright blue eyes and dark orangey wings in a medical jacket wearing a red hairflower.
   components:
   - type: Sprite
     state: eclipse
@@ -445,7 +447,7 @@
 - type: entity
   parent: BaseFigurineMoff
   id: ToyFigurineFaces
-  name: concerningly cheerful research director
+  name: concerningly cheerful research director figurine
   description: A figurine depicting a researcher director with somewhat unsettling amounts of positivity.
   components:
   - type: Sprite
@@ -478,8 +480,19 @@
 
 - type: entity
   parent: BaseFigurineMoff
+  id: ToyFigurineFredCentral
+  name: distracted central command official figurine
+  description: A figurine depicting a professional-looking official, he has a mischievous look on his face. There seems seems to be a chip in the paint above his left ear.
+  components:
+  - type: Sprite
+    state: fred-central
+  - type: SpeakOnTrigger
+    pack: FigurinesFredCentral
+
+- type: entity
+  parent: BaseFigurineMoff
   id: ToyFigurineFrostwing
-  name: blunt central command official
+  name: blunt central command official figurine
   description: A figurine depicting a very well dressed centcomm executive. This one is blue. You are unsure if it is a designer choice, or an excuse to add a few zeroes to the price tag.
   components:
   - type: Sprite
@@ -650,7 +663,7 @@
 - type: entity
   parent: BaseFigurineMoff
   id: ToyFigurineJupiter
-  name: purple head of security moth
+  name: purple head of security moth figurine
   description: A figurine depicting a tired and old looking moth man. He’s wearing the Head of Security outfit.
   components:
   - type: Sprite
@@ -900,6 +913,17 @@
 
 - type: entity
   parent: BaseFigurineMoff
+  id: ToyFigurinePapillon
+  name: jovial central command admiral figurine
+  description: A figurine depicting a moth person in NanoTrasen™ Central Command formalwear. It smells a bit like paper for some reason.
+  components:
+  - type: Sprite
+    state: papillon
+  - type: SpeakOnTrigger
+    pack: FigurinesPapillon
+
+- type: entity
+  parent: BaseFigurineMoff
   id: ToyFigurinePeedee
   name: haunted mediborg figurine
   description: A figurine of a mediborg, haunted by a sinuous orange ghost with a tapering, frilled face and disembodied hands. There's probably magnets involved.
@@ -990,7 +1014,7 @@
 - type: entity
   parent: BaseFigurineMoff
   id: ToyFigurineSamantha
-  name: messy-looking librarian
+  name: messy-looking librarian figurine
   description: An overwhelmed looking woman who looks like she has not had the time nor the patience to brush her hair in a long time. This figure also seems to have a chip in the plastic over one of the eyes.
   components:
   - type: Sprite
@@ -1101,7 +1125,7 @@
 - type: entity
   parent: BaseFigurineMoff
   id: ToyFigurineStella
-  name: blue-haired security officer
+  name: blue-haired security officer figurine
   description: A figurine depicting a young-looking security officer, with long blue hair. They look serious.
   components:
   - type: Sprite
@@ -1113,7 +1137,7 @@
   parent: BaseFigurineMoff
   id: ToyFigurineStray
   name: strange nervous botanist figurine
-  description: "A weird looking, disheveled, nervous botanist..... what is that smell..?"
+  description: A weird looking, disheveled, nervous botanist..... what is that smell..?
   components:
   - type: Sprite
     state: stray
@@ -1267,3 +1291,31 @@
     state: zoey
   - type: SpeakOnTrigger
     pack: FigurinesZoey
+
+# Moff General figurine
+
+- type: entity
+  parent: BaseFigurineUpstream
+  id: ToyFigurinePirateCaptain
+  name: pirate captain figurine
+  description: A figurine depicting someone in a captain outfit, similar to what someone aboard a pirate ship might wear
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Objects/Fun/figurines.rsi
+    state: pirate_captain
+  - type: SpeakOnTrigger
+    pack: FigurinesPirateCaptain
+  - type: PirateAccent
+
+- type: entity
+  parent: BaseFigurineUpstream
+  id: ToyFigurinePirate
+  name: pirate figurine
+  description: A figurine depicting someone in a sailor outfit, similar to what someone aboard a pirate ship might wear.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Objects/Fun/figurines.rsi
+    state: pirate
+  - type: SpeakOnTrigger
+    pack: FigurinesPirate
+  - type: PirateAccent
