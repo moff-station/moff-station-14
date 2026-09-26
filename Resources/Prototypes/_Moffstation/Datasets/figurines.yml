@@ -209,6 +209,12 @@
     count: 4
 
 - type: localizedDataset
+  id: FigurinesFredCentral
+  values:
+    prefix: figurines-fredcentral-
+    count: 12
+
+- type: localizedDataset
   id: FigurinesFrostwing
   values:
     prefix: figurines-frostwing-
@@ -291,12 +297,6 @@
   values:
     prefix: figurines-jupiter-
     count: 5
-
-- type: localizedDataset
-  id: FigurinesKai
-  values:
-    prefix: figurines-kai-
-    count: 7
 
 - type: localizedDataset
   id: FigurinesKatie
@@ -428,6 +428,12 @@
   id: FigurinesNyxilath
   values:
     prefix: figurines-nyxilath-
+    count: 5
+
+- type: localizedDataset
+  id: FigurinesPapillon
+  values:
+    prefix: figurines-papillon-
     count: 5
 
 - type: localizedDataset
@@ -615,3 +621,15 @@
   values:
     prefix: figurines-zoey-
     count: 5
+
+- type: localizedDataset
+  id: FigurinesPirate
+  values:
+    prefix: figurines-pirate-
+    count: 10
+
+- type: localizedDataset
+  id: FigurinesPirateCaptain
+  values:
+    prefix: figurines-piratecaptain-
+    count: 22
