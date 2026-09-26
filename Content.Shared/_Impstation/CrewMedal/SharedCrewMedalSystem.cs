@@ -2,7 +2,7 @@ using Content.Shared.Examine;
 
 namespace Content.Shared._Impstation.CrewMedal;
 
-public partial abstract class SharedCrewMedalSystem : EntitySystem
+public partial class SharedCrewMedalSystem : EntitySystem
 {
     public override void Initialize()
     {
@@ -10,6 +10,7 @@ public partial abstract class SharedCrewMedalSystem : EntitySystem
         SubscribeLocalEvent<CrewMedalComponent, ExaminedEvent>(OnExamined);
     }
 
+    [SubscribeLocalEvent]
     private void OnExamined(Entity<CrewMedalComponent> medal, ref ExaminedEvent args)
     {
         if (!medal.Comp.Awarded)
