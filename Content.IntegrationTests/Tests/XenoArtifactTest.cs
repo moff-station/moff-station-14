@@ -364,6 +364,9 @@ public sealed class XenoArtifactTest : GameTest
         Assert.That(grouped[2].Count(), Is.LessThanOrEqualTo(2)); // maintain same width or, if we used 3 nodes on previous layer - we only have 1 left!
     }
 
+    // Moff Start - Artifact trigger on completion
+    // Moff Note: Artifacts on our fork will force unlock once all nodes are complete, so this test will fail
+    /*
     [Test]
     [Description("Checks that triggering sibling nodes which converge on an unlockable node extends the unlocking time")]
     [RunOnSide(Side.Server)]
@@ -395,7 +398,7 @@ public sealed class XenoArtifactTest : GameTest
         var baseEndTime = unlocking.EndTime;
 
         // Triggering the sibling node B has to extend the unlocking time, even though it is
-        // not on the same path as A. 
+        // not on the same path as A.
         _sArtifactSystem.TriggerXenoArtifact(artifactEnt, nodeB.Value, force: true);
         Assert.That(unlocking.EndTime - baseEndTime, Is.EqualTo(artifactEnt.Comp.UnlockStateIncrementPerNode));
 
@@ -408,6 +411,8 @@ public sealed class XenoArtifactTest : GameTest
         Assert.That(_sArtifactSystem.TryGetNodeFromUnlockState((artifactUid, unlocking, artifactEnt.Comp), out var unlockable), Is.True);
         Assert.That(unlockable!.Value.Owner, Is.EqualTo(nodeC.Value.Owner));
     }
+    */
+    // Moff End
 
     [Test]
     [Description("Checks that a trigger which makes the unlocking attempt impossible doesn't extend the time")]
