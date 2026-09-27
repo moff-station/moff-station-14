@@ -879,6 +879,17 @@
 
 - type: entity
   parent: BaseFigurineMoff
+  id: ToyFigurineNomenclatura
+  name: NanoTrasen™ training video cyborg figurine
+  description: An engineer cyborg with a flimsy rainbow crown. You recognize it from the mandatory NanoTrasen™ training module "Cyborgs and you; Know when they have the right of way!" that was widely hated across the Company.
+  components:
+  - type: Sprite
+    state: nomenclatura
+  - type: SpeakOnTrigger
+    pack: FigurinesNomenclatura
+
+- type: entity
+  parent: BaseFigurineMoff
   id: ToyFigurineNova
   name: tired engine operator figurine
   description: It seems to be a mini figure of a female vulpkanin engineer with a robotic left arm, and robotic left eye. Seems to smell of cigarette smoke despite being a mini figure.
