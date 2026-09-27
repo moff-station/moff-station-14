@@ -21,7 +21,7 @@ public sealed partial class MoffCharacterPickerSystem : EntitySystem
     }
 
     [SubscribeLocalEvent]
-    private void OnPlayerSpawnComplete(ref PlayerSpawnCompleteEvent args)
+    private void OnPlayerSpawnComplete(PlayerSpawnCompleteEvent args)
     {
         _spawnedProfiles[args.Player.UserId] = args.Profile;
     }
