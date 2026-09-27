@@ -979,6 +979,17 @@
 
 - type: entity
   parent: BaseFigurineMoff
+  id: ToyFigurineRedjade
+  name: moody suspicious chef figurine
+  description: A figurine of a sleek-furred vulpkanin making a crass gesture. It appears to be wearing a rather expensive looking coat, covered in flour and blood.
+  components:
+  - type: Sprite
+    state: redjade
+  - type: SpeakOnTrigger
+    pack: FigurinesRedjade
+
+- type: entity
+  parent: BaseFigurineMoff
   id: ToyFigurineRevri
   name: cheerful vox paramedic figurine
   description: A figurine depicting a vox paramedic. It's expression is difficult to read considering the mask, but you get the sense that it's happy to be there.

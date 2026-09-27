@@ -609,6 +609,14 @@ figurines-rareel-3 = I'm gonna take a nap in the back
 figurines-rareel-4 = A maints pill? Sounds tasty!
 figurines-rareel-5 = Boxing in maints? What's the worst that could happen!
 
+
+figurines-redjade-1 = NO compliments, NO promotion, NO RESPONSIBILITIES!
+figurines-redjade-2 = It's just 30k. They won't miss it.
+figurines-redjade-3 = Chin up, pup.
+figurines-redjade-4 = Unsanitary? YOU'RE unsanitary! My kitchen is $&@!ing fine!
+figurines-redjade-5 = What's a man gotta do to get some princess treatment around here?
+figurines-redjade-6 = Oh, f#@k off.
+
 figurines-revri-1 = HI FRIEND!
 figurines-revri-2 = She fetching things for nest! Friends want?
 figurines-revri-3 = Out of nest please!
