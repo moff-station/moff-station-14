@@ -8274,6 +8274,15 @@ Entries:
   id: 1951
   time: '2026-09-22T23:50:13.000'
   url: https://github.com/moff-station/moff-station-14/pull/1951
+- author: Lillian Industries
+  changes:
+  - message: Moffstation species now behave normally in regards to temperature changes.
+    type: fix
+  - message: Avali benefit from a tiny reduction to cold slowdown.
+    type: tweak
+  id: 1958
+  time: '2026-09-27T23:14:19.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1958
 - author: Nyxilath
   changes:
   - message: Nar'sian hell portals now only spawn once per shift, at most.
