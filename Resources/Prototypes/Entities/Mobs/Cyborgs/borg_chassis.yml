@@ -377,10 +377,10 @@
   - type: ShowHealthIcons
     damageContainers:
     - Biological
-    # Moff start - Species IDs on borg inventories to avoid displacement map mangling
-    - type: Inventory
-      speciesId: moffBorgMedical
-    # Moff end
+  # Moff start - Species IDs on borg inventories to avoid displacement map mangling
+  - type: Inventory
+    speciesId: moffBorgMedical
+  # Moff end
 
 - type: entity
   parent: BaseBorgChassisDerelict
