@@ -283,7 +283,7 @@ figurines-fred-4 = Holy crap this reminds me of the time I got turned into a mar
 
 figurines-fredcentral-1 = The big Moth.
 figurines-fredcentral-2 = IM GONNA CRASH OUT!!
-figurines-fredcentral-3 = That name sucks, Your new name is " The Big Moth", here's five hundred spesoses & I'll get your records updated.
+figurines-fredcentral-3 = That name sucks, Your new name is "The Big Moth", here's five hundred spesos & I'll get your records updated.
 figurines-fredcentral-4 = Holy crap this reminds me of the time I got turned into a marketable figurine.
 figurines-fredcentral-5 = Do you got games on your PDA?
 figurines-fredcentral-6 = I PAY YOUR DAMN PAYCHECKS, WHAT DO YOU MEAN I CAN'T SAY THAT, I'M GONNA CRASH OUT DUDE!
