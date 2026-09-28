@@ -1,17 +1,19 @@
 meta:
   format: 7
   category: Grid
-  engineVersion: 283.1.0
+  engineVersion: 288.1.0
   forkId: ""
   forkVersion: ""
-  time: 07/25/2026 18:31:11
-  entityCount: 221
+  time: 09/28/2026 00:28:59
+  entityCount: 220
 maps: []
 grids:
 - 173
 orphans:
 - 173
-nullspace: []
+nullspace:
+- 145
+- 158
 tilemap:
   0: Space
   4: FloorDark
@@ -21,7 +23,7 @@ tilemap:
   89: FloorShuttleWhite
   93: FloorSteel
   5: FloorSteelCheckerDark
-  108: FloorTechMaint
+  108: FloorTechMaint2
   2: FloorTechMaintDark
   6: Lattice
   126: Plating
@@ -39,7 +41,7 @@ entities:
       chunks:
         -1,0:
           ind: -1,0
-          tiles: AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAF0AAAAAAAADAAAAAAAAAwAAAAAAAAMAAAAAAABdAAAAAAAAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAH4AAAAAAABdAAAAAAAAAwAAAAAAAAMAAAAAAAADAAAAAAAAXQAAAAAAAF0AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAXQAAAAAAAF0AAAAAAABdAAAAAAAAXQAAAAAAAF0AAAAAAABdAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAfgAAAAAAAH4AAAAAAAAEAAAAAAAABAAAAAAAAF0AAAAAAABdAAAAAAAAXQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAH4AAAAAAAB+AAAAAAAABAAAAAAAAAQAAAAAAABdAAAAAAAAXQAAAAAAAAMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAB+AAAAAAAAfgAAAAAAAH4AAAAAAAB+AAAAAAAAfgAAAAAAAAUAAAAAAAAFAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAfgAAAAAAAH4AAAAAAAAEAAAAAAAABAAAAAAAAH4AAAAAAAAFAAAAAAAABQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAB+AAAAAAAABAAAAAAAAAQAAAAAAAB+AAAAAAAAfgAAAAAAAH4AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAfgAAAAAAAAQAAAAAAAAEAAAAAAAAfgAAAAAAAH4AAAAAAAB+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAYAAAAAAAB+AAAAAAAAfgAAAAAAAAYAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==
+          tiles: AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAF0AAAAAAAADAAAAAAAAAwAAAAAAAAMAAAAAAABdAAAAAAAAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAH4AAAAAAABdAAAAAAAAAwAAAAAAAAMAAAAAAAADAAAAAAAAXQAAAAAAAF0AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAXQAAAAAAAF0AAAAAAABdAAAAAAAAXQAAAAAAAF0AAAAAAABdAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAfgAAAAAAAH4AAAAAAABdAAAAAAAAXQAAAAAAAF0AAAAAAABdAAAAAAAAXQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAH4AAAAAAAB+AAAAAAAABAAAAAAAAAQAAAAAAABdAAAAAAAAXQAAAAAAAAMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAB+AAAAAAAAfgAAAAAAAH4AAAAAAAB+AAAAAAAAfgAAAAAAAAUAAAAAAAAFAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAfgAAAAAAAH4AAAAAAAAEAAAAAAAABAAAAAAAAH4AAAAAAAAFAAAAAAAABQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAB+AAAAAAAABAAAAAAAAAQAAAAAAAB+AAAAAAAAfgAAAAAAAH4AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAfgAAAAAAAAQAAAAAAAAEAAAAAAAAfgAAAAAAAH4AAAAAAAB+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAYAAAAAAAB+AAAAAAAAfgAAAAAAAAYAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==
           version: 7
         0,0:
           ind: 0,0
@@ -66,79 +68,6 @@ entities:
       gravityShakeSound: !type:SoundPathSpecifier
         path: /Audio/Effects/alert.ogg
     - type: CargoShuttle
-    - type: DecalGrid
-      chunkCollection:
-        version: 2
-        nodes:
-        - node:
-            id: Bot
-            color: '#FFFFFFFF'
-          decals:
-            27: -4,1
-            28: -5,1
-            29: -5,0
-            30: -4,0
-            31: -3,0
-            32: -3,1
-        - node:
-            id: BrickTileDarkCornerNe
-            color: '#FFFFFFFF'
-          decals:
-            38: -1,3
-        - node:
-            id: BrickTileDarkCornerSe
-            color: '#FFFFFFFF'
-          decals:
-            39: -1,1
-        - node:
-            id: BrickTileDarkLineE
-            color: '#FFFFFFFF'
-          decals:
-            40: -1,2
-        - node:
-            id: BrickTileWhiteLineN
-            color: '#CC99667F'
-          decals:
-            35: -4,-1
-            36: -5,-1
-            37: -6,-1
-        - node:
-            id: BrickTileWhiteLineS
-            color: '#CC99667F'
-          decals:
-            33: -2,5
-            34: -1,5
-        - node:
-            id: burnt1
-            color: '#FFFFFFFF'
-            cleanable: True
-          decals:
-            46: -1,1
-            47: -1,5
-            48: -2,6
-            54: -6,0
-            55: -2,3
-        - node:
-            id: burnt2
-            color: '#FFFFFFFF'
-            cleanable: True
-          decals:
-            44: -6,2
-            45: -2,0
-            51: -5,-1
-            52: -4,2
-            56: -1,2
-        - node:
-            id: burnt4
-            color: '#FFFFFFFF'
-            cleanable: True
-          decals:
-            41: -1,3
-            42: -1,2
-            43: -6,0
-            49: -2,5
-            50: -6,1
-            53: -6,2
     - type: GridAtmosphere
       version: 2
       data:
@@ -189,6 +118,10 @@ entities:
       chunkHistory: {}
     - type: ImplicitRoof
     - type: ExplosionAirtightGrid
+    - type: ChunkContainer
+      chunkEntities:
+      - 145
+      - 158
 - proto: AirCanister
   entities:
   - uid: 9
@@ -198,34 +131,24 @@ entities:
       pos: -3.5,-3.5
 - proto: AirlockCargoLocked
   entities:
-  - uid: 140
+  - uid: 25
     components:
     - type: Transform
       parent: 173
-      rot: -1.5707963267948966 rad
       pos: -4.5,5.5
-- proto: AirlockEngineeringLocked
+- proto: AirlockEngineering
   entities:
-  - uid: 185
+  - uid: 50
     components:
     - type: Transform
       parent: 173
-      rot: -1.5707963267948966 rad
       pos: -3.5,-1.5
-    - type: AccessReader
-      accessListsOriginal: []
-      access:
-      - - Cargo
-      - - Engineering
-      - - Quartermaster
-      - - Salvage
 - proto: AirlockExternalCargoLocked
   entities:
   - uid: 59
     components:
     - type: Transform
       parent: 173
-      rot: -1.5707963267948966 rad
       pos: -1.5,7.5
 - proto: AirlockGlassShuttle
   entities:
@@ -740,7 +663,6 @@ entities:
     components:
     - type: Transform
       parent: 173
-      rot: 3.141592653589793 rad
       pos: -4.5,3.5
   - uid: 133
     components:
@@ -748,6 +670,102 @@ entities:
       parent: 173
       rot: 3.141592653589793 rad
       pos: -3.5,7.5
+- proto: ChunkEntity
+  entities:
+  - uid: 145
+    components:
+    - type: ChunkEntity
+      root: 173
+      chunk: -1,0
+    - type: DecalChunk
+      maxDecalId: 56
+      decals:
+        version: 1
+        nodes:
+        - node:
+            id: Bot
+            color: '#FFFFFFFF'
+          decals:
+            27: -4,1
+            28: -5,1
+            29: -5,0
+            30: -4,0
+            31: -3,0
+            32: -3,1
+        - node:
+            id: BrickTileDarkCornerNe
+            color: '#FFFFFFFF'
+          decals:
+            38: -1,3
+        - node:
+            id: BrickTileDarkCornerSe
+            color: '#FFFFFFFF'
+          decals:
+            39: -1,1
+        - node:
+            id: BrickTileDarkLineE
+            color: '#FFFFFFFF'
+          decals:
+            40: -1,2
+        - node:
+            id: BrickTileWhiteLineS
+            color: '#CC99667F'
+          decals:
+            33: -2,5
+            34: -1,5
+        - node:
+            id: burnt1
+            color: '#FFFFFFFF'
+            cleanable: True
+          decals:
+            46: -1,1
+            47: -1,5
+            48: -2,6
+            54: -6,0
+            55: -2,3
+        - node:
+            id: burnt2
+            color: '#FFFFFFFF'
+            cleanable: True
+          decals:
+            44: -6,2
+            45: -2,0
+            52: -4,2
+            56: -1,2
+        - node:
+            id: burnt4
+            color: '#FFFFFFFF'
+            cleanable: True
+          decals:
+            41: -1,3
+            42: -1,2
+            43: -6,0
+            49: -2,5
+            50: -6,1
+            53: -6,2
+  - uid: 158
+    components:
+    - type: ChunkEntity
+      root: 173
+      chunk: -1,-1
+    - type: DecalChunk
+      maxDecalId: 51
+      decals:
+        version: 1
+        nodes:
+        - node:
+            id: BrickTileWhiteLineN
+            color: '#CC99667F'
+          decals:
+            35: -4,-1
+            36: -5,-1
+            37: -6,-1
+        - node:
+            id: burnt2
+            color: '#FFFFFFFF'
+            cleanable: True
+          decals:
+            51: -5,-1
 - proto: ComputerShuttle
   entities:
   - uid: 6
@@ -1088,37 +1106,18 @@ entities:
       pos: -1.5,-1.5
 - proto: Railing
   entities:
-  - uid: 25
-    components:
-    - type: Transform
-      parent: 173
-      rot: 3.141592653589793 rad
-      pos: -4.5,2.5
   - uid: 84
     components:
     - type: Transform
       parent: 173
       rot: 3.141592653589793 rad
-      pos: -3.5,2.5
-  - uid: 145
+      pos: -3.5,3.5
+  - uid: 140
     components:
     - type: Transform
       parent: 173
-      rot: -1.5707963267948966 rad
-      pos: -2.5,3.5
-- proto: RailingCornerSmall
-  entities:
-  - uid: 50
-    components:
-    - type: Transform
-      parent: 173
-      pos: -2.5,2.5
-  - uid: 158
-    components:
-    - type: Transform
-      parent: 173
-      rot: -1.5707963267948966 rad
-      pos: -5.5,2.5
+      rot: 3.141592653589793 rad
+      pos: -4.5,3.5
 - proto: RandomPosterAny
   entities:
   - uid: 33
