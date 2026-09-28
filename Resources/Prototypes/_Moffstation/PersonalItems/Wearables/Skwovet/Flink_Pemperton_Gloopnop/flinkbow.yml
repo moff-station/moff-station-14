@@ -1,0 +1,24 @@
+﻿# Player: Skwovet - Character: Flink Pemperton Gloopnop
+
+- type: entity
+  parent: ClothingHeadBase
+  id: &id PersonalItemFlinkBow
+  name: oversized pretty bow
+  description: A pretty pink bow with a cute aura to it, it's hard to imagine anyone nefarious wearing this.
+  suffix: PersonalItem
+  components:
+  - type: Sprite
+    sprite: &sprite _Moffstation/PersonalItems/Wearables/Skwovet/Flink_Pemperton_Gloopnop/FlinkBow.rsi
+  - type: Clothing
+    sprite: *sprite
+  - type: DetailExaminable
+    content: Behind one of the lace ties, the lace is embroidered with the name "Flink"
+
+- type: loadout
+  id: *id
+  equipment:
+    head: *id
+  effects:
+  - !type:PersonalItemLoadoutEffect
+    character:
+    - Flink Pemperton Gloopnop
