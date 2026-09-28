@@ -20,9 +20,9 @@
   storage:
     back:
     - *id
-  effects: &loadout-effect
+  effects:
   - !type:PersonalItemLoadoutEffect
-    character:
+    character: &characters
     - Iris 'Monster' Foundling
     - Iris Foundling
 
@@ -56,7 +56,8 @@
     back:
     - *id-siren
   effects:
-    <<: *loadout-effect
+  - !type:PersonalItemLoadoutEffect
+    character: *characters
     jobs:
     - JobParamedic
 
