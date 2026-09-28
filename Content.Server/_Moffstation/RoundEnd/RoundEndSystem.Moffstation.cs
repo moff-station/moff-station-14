@@ -75,7 +75,7 @@ public sealed partial class RoundEndSystem
             Timer.Spawn(countdown, AfterEndRoundRestart, _countdownTokenSource.Token);
             UpdateRestartScreens(countdown);
 
-            _adminLogger.Add(LogType.Vote, LogImpact.Low, $"Round end extension vote succeeded: {yes}/{no}");
+            _adminLogger.Add(LogType.Vote, LogImpact.Low, $"Round end extension vote succeeded: y={yes}/n={no}");
             _chatManager.DispatchServerAnnouncement(Loc.GetString("round-end-extension-vote-succeeded",
                 ("minutes", minutes)));
 
