@@ -18,6 +18,7 @@ using Content.Shared.Power.EntitySystems;
 using Content.Shared.Shuttles.Components;
 using Content.Shared.Tag;
 using Robust.Shared.Configuration;
+using Robust.Shared.Map;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Timing;
 
@@ -176,15 +177,10 @@ public sealed partial class EvacArrivalsSystem : EntitySystem
                     _deviceNetwork.QueuePacket(ent.Owner, null, payload, net.TransmitFrequency);
                 break;
             case EvacArrivalsState.Returning:
-                if (TryComp<ShuttleComponent>(ent, out var shuttle))
-                    ClearArrivalStatus((ent, ent.Comp, shuttle));
+                if (_shuttleQuery.HasComp(ent))
+                    RemCompDeferred<EvacArrivalsComponent>(ent);
                 break;
         }
-    }
-
-    private void ClearArrivalStatus(Entity<EvacArrivalsComponent, ShuttleComponent> ent)
-    {
-        RemCompDeferred<EvacArrivalsComponent>(ent);
     }
 
     private void RefillStationBatteries(EntityUid station)
