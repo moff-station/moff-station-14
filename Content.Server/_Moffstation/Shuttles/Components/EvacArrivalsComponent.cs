@@ -5,8 +5,8 @@ using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom;
 namespace Content.Server._Moffstation.Shuttles.Components;
 
 /// Put on an evac shuttle while it is bringing the crew to the station at round start.
-[RegisterComponent, AutoGenerateComponentPause, Access(typeof(EvacArrivalSystem))]
-public sealed partial class EvacArrivalComponent : Component
+[RegisterComponent, AutoGenerateComponentPause, Access(typeof(EvacArrivalsSystem))]
+public sealed partial class EvacArrivalsComponent : Component
 {
     [DataField]
     public EntityUid Station;
@@ -19,7 +19,7 @@ public sealed partial class EvacArrivalComponent : Component
     public Angle OriginRotation;
 
     [DataField]
-    public EvacArrivalState State = EvacArrivalState.InTransit;
+    public EvacArrivalsState State = EvacArrivalsState.InTransit;
 
     [DataField(customTypeSerializer: typeof(TimeOffsetSerializer)), AutoPausedField]
     public TimeSpan? DepartTime;
@@ -29,7 +29,7 @@ public sealed partial class EvacArrivalComponent : Component
     public TimeSpan? CooldownOverride;
 }
 
-public enum EvacArrivalState : byte
+public enum EvacArrivalsState : byte
 {
     InTransit,
     Docked,

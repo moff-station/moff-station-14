@@ -23,7 +23,7 @@ using Robust.Shared.Timing;
 namespace Content.Server._Moffstation.Shuttles.Systems;
 
 /// Starts the round with the crew aboard the evac shuttle as it FTLs to the station
-public sealed partial class EvacArrivalSystem : EntitySystem
+public sealed partial class EvacArrivalsSystem : EntitySystem
 {
     [Dependency] private IConfigurationManager _cfg = default!;
     [Dependency] private IGameTiming _timing = default!;
@@ -34,7 +34,7 @@ public sealed partial class EvacArrivalSystem : EntitySystem
     [Dependency] private ShuttleSystem _shuttle = default!;
     [Dependency] private StationSystem _station = default!;
 
-    [Dependency] private EntityQuery<EvacArrivalComponent> _evacArrivalsQuery;
+    [Dependency] private EntityQuery<EvacArrivalsComponent> _evacArrivalsQuery;
     [Dependency] private EntityQuery<ShuttleComponent> _shuttleQuery;
 
     private static readonly ProtoId<TagPrototype> DockTag = "DockEmergency";
@@ -44,7 +44,7 @@ public sealed partial class EvacArrivalSystem : EntitySystem
     {
         base.Update(frameTime);
 
-        foreach (var ent in EntityQueryEnumerator<EvacArrivalComponent, ShuttleComponent>())
+        foreach (var ent in EntityQueryEnumerator<EvacArrivalsComponent, ShuttleComponent>())
         {
             if (ent.Comp1.DepartTime is { } depart && depart <= _timing.CurTime)
                 Depart((ent, ent.Comp1, ent.Comp2));
@@ -66,7 +66,7 @@ public sealed partial class EvacArrivalSystem : EntitySystem
                 continue;
 
             var xform = Transform(shuttle);
-            var arrival = EnsureComp<EvacArrivalComponent>(shuttle);
+            var arrival = EnsureComp<EvacArrivalsComponent>(shuttle);
             arrival.Station = station;
             arrival.Origin = xform.Coordinates;
             arrival.OriginRotation = xform.LocalRotation;
@@ -93,7 +93,7 @@ public sealed partial class EvacArrivalSystem : EntitySystem
         if (args.Cancelled)
             return;
 
-        foreach (var _ in EntityQueryEnumerator<EvacArrivalComponent>())
+        foreach (var _ in EntityQueryEnumerator<EvacArrivalsComponent>())
         {
             args.Cancelled = true;
             args.Reason = Loc.GetString(CallBlockedReason);
@@ -106,22 +106,22 @@ public sealed partial class EvacArrivalSystem : EntitySystem
     {
         if (ent.Comp.EmergencyShuttle is { } shuttle
             && _evacArrivalsQuery.TryComp(shuttle, out var arrival)
-            && arrival.State != EvacArrivalState.Returning)
+            && arrival.State != EvacArrivalsState.Returning)
             args.Grid = shuttle;
     }
 
     [SubscribeLocalEvent]
-    private void OnEvacDepartureCheck(Entity<EvacArrivalComponent> ent, ref EmergencyShuttleEvacDepartureCheckEvent args)
+    private void OnEvacDepartureCheck(Entity<EvacArrivalsComponent> ent, ref EmergencyShuttleEvacDepartureCheckEvent args)
     {
         args.Cancelled = true;
     }
 
     [SubscribeLocalEvent]
-    private void OnFTLStarted(Entity<EvacArrivalComponent> ent, ref FTLStartedEvent args)
+    private void OnFTLStarted(Entity<EvacArrivalsComponent> ent, ref FTLStartedEvent args)
     {
         switch (ent.Comp.State)
         {
-            case EvacArrivalState.InTransit when TryComp<FTLComponent>(ent, out var ftl):
+            case EvacArrivalsState.InTransit when TryComp<FTLComponent>(ent, out var ftl):
                 // Set knockdown back to normal
                 ftl.KnockdownOnStart = true;
 
@@ -137,20 +137,20 @@ public sealed partial class EvacArrivalSystem : EntitySystem
 
                 SendShuttleTimer(ent, payload);
                 break;
-            case EvacArrivalState.Returning when args.FromMapUid != null:
+            case EvacArrivalsState.Returning when args.FromMapUid != null:
                 _arrivals.DumpChildren(ent, ref args);
                 break;
         }
     }
 
     [SubscribeLocalEvent]
-    private void OnFTLCompleted(Entity<EvacArrivalComponent> ent, ref FTLCompletedEvent args)
+    private void OnFTLCompleted(Entity<EvacArrivalsComponent> ent, ref FTLCompletedEvent args)
     {
         switch (ent.Comp.State)
         {
-            case EvacArrivalState.InTransit:
+            case EvacArrivalsState.InTransit:
                 var dockTime = TimeSpan.FromSeconds(_cfg.GetCVar(MoffCCVars.EvacArrivalDockTime));
-                ent.Comp.State = EvacArrivalState.Docked;
+                ent.Comp.State = EvacArrivalsState.Docked;
                 ent.Comp.DepartTime = _timing.CurTime + dockTime;
                 RefillStationBatteries(ent.Comp.Station);
 
@@ -165,7 +165,7 @@ public sealed partial class EvacArrivalSystem : EntitySystem
                 };
                 SendShuttleTimer(ent, payload);
                 break;
-            case EvacArrivalState.Returning:
+            case EvacArrivalsState.Returning:
                 if (TryComp<ShuttleComponent>(ent, out var shuttle))
                     ClearArrivalStatus((ent, ent.Comp, shuttle));
                 break;
@@ -173,21 +173,21 @@ public sealed partial class EvacArrivalSystem : EntitySystem
     }
 
     // Sends the shuttle back to the abyss, or leaves it docked if evac has been called meanwhile.
-    private void Depart(Entity<EvacArrivalComponent, ShuttleComponent> ent)
+    private void Depart(Entity<EvacArrivalsComponent, ShuttleComponent> ent)
     {
         // If it still has a cooldown for some reason, block it for now
         if (HasComp<FTLComponent>(ent))
             return;
 
-        ent.Comp1.State = EvacArrivalState.Returning;
+        ent.Comp1.State = EvacArrivalsState.Returning;
         ent.Comp1.DepartTime = null;
         _shuttle.FTLToCoordinates(ent, ent.Comp2, ent.Comp1.Origin, ent.Comp1.OriginRotation);
     }
 
-    private void ClearArrivalStatus(Entity<EvacArrivalComponent, ShuttleComponent> ent)
+    private void ClearArrivalStatus(Entity<EvacArrivalsComponent, ShuttleComponent> ent)
     {
         ent.Comp2.FTLCooldownOverride = ent.Comp1.CooldownOverride;
-        RemCompDeferred<EvacArrivalComponent>(ent);
+        RemCompDeferred<EvacArrivalsComponent>(ent);
     }
 
     private void SendShuttleTimer(EntityUid shuttle, NetworkPayload payload)
