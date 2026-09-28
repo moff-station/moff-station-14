@@ -65,7 +65,7 @@ public sealed partial class RoundEndSystem
 
             if (yes <= no)
             {
-                _adminLogger.Add(LogType.Vote, LogImpact.Low, $"Round end extension vote failed: {yes}/{no}");
+                _adminLogger.Add(LogType.Vote, LogImpact.Low, $"Round end extension vote failed: y={yes}/n={no}");
                 return;
             }
 
