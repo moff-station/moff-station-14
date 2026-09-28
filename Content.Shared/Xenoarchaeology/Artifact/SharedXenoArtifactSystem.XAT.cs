@@ -146,7 +146,7 @@ public abstract partial class SharedXenoArtifactSystem
     public void MoffCheckArtifactComplete(Entity<XenoArtifactComponent> entity,
         XenoArtifactUnlockingComponent unlockingComp)
     {
-        if (TryGetNodeFromUnlockState((entity.Owner, unlockingComp, entity.Comp), out var unlockingNode))
+        if (TryGetNodeFromUnlockState((entity.Owner, unlockingComp, entity.Comp), out _))
             unlockingComp.EndTime = _timing.CurTime + TimeSpan.FromSeconds(0.5);
     }
     // Moff End
