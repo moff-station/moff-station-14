@@ -23,7 +23,7 @@ using Robust.Shared.Timing;
 
 namespace Content.Server._Moffstation.Shuttles.Systems;
 
-/// Starts the round with the crew aboard the evac shuttle as it FTLs to the station
+/// Makes the evac shuttle make a trip to the station roundstart, intended to be used like the arrivals shuttle.
 public sealed partial class EvacArrivalsSystem : EntitySystem
 {
     [Dependency] private IConfigurationManager _cfg = default!;
@@ -47,12 +47,18 @@ public sealed partial class EvacArrivalsSystem : EntitySystem
 
         foreach (var ent in EntityQueryEnumerator<EvacArrivalsComponent, ShuttleComponent>())
         {
-            if (ent.Comp1.DepartTime is { } depart && depart <= _timing.CurTime)
-                Depart((ent, ent.Comp1, ent.Comp2));
+            if (ent.Comp1.DepartTime is not { } depart || depart > _timing.CurTime)
+                continue;
+
+            if (HasComp<FTLComponent>(ent))
+                continue;
+
+            ent.Comp1.State = EvacArrivalsState.Returning;
+            ent.Comp1.DepartTime = null;
+            _shuttle.FTLToCoordinates(ent, ent.Comp2, ent.Comp1.Origin, ent.Comp1.OriginRotation);
         }
     }
 
-    // Maps are loaded before this and players are spawned right after, in the same tick.
     [SubscribeLocalEvent]
     private void OnRoundStarting(RoundStartingEvent ev)
     {
@@ -71,7 +77,6 @@ public sealed partial class EvacArrivalsSystem : EntitySystem
             arrival.Station = station;
             arrival.Origin = xform.Coordinates;
             arrival.OriginRotation = xform.LocalRotation;
-            // No cooldown, so an early evac call can still move the shuttle
             shuttleComp.FTLCooldownOverride = TimeSpan.Zero;
 
             _shuttle.FTLToDock(shuttle,
@@ -81,7 +86,7 @@ public sealed partial class EvacArrivalsSystem : EntitySystem
                 hyperspaceTime: _cfg.GetCVar(MoffCCVars.EvacArrivalFTLTime),
                 priorityTag: DockTag);
 
-            // So people don't start on the ground, but will end on the ground if they don't buckle up later.
+            // So people don't get knocked on their ass when they spawn
             if (TryComp<FTLComponent>(shuttle, out var ftl))
                 ftl.KnockdownOnStart = false;
         }
@@ -121,8 +126,11 @@ public sealed partial class EvacArrivalsSystem : EntitySystem
     {
         switch (ent.Comp.State)
         {
-            case EvacArrivalsState.InTransit when TryComp<FTLComponent>(ent, out var ftl):
-                // Set knockdown back to normal
+            case EvacArrivalsState.InTransit:
+
+                if (!TryComp<FTLComponent>(ent, out var ftl))
+                    break;
+
                 ftl.KnockdownOnStart = true;
 
                 var eta = TimeSpan.FromSeconds(ftl.TravelTime);
@@ -135,9 +143,10 @@ public sealed partial class EvacArrivalsSystem : EntitySystem
                     [ScreenMasks.Text] = ShuttleTimerMasks.ETA,
                 };
 
-                SendShuttleTimer(ent, payload);
+                if (TryComp<DeviceNetworkComponent>(ent.Owner, out var net))
+                    _deviceNetwork.QueuePacket(ent.Owner, null, payload, net.TransmitFrequency);
                 break;
-            case EvacArrivalsState.Returning when args.FromMapUid != null:
+            case EvacArrivalsState.Returning:
                 _arrivals.DumpChildren(ent, ref args);
                 break;
         }
@@ -163,7 +172,8 @@ public sealed partial class EvacArrivalsSystem : EntitySystem
                     [ShuttleTimerMasks.Docked] = true,
                     [ScreenMasks.Text] = ShuttleTimerMasks.ETD,
                 };
-                SendShuttleTimer(ent, payload);
+                if (TryComp<DeviceNetworkComponent>(ent.Owner, out var net))
+                    _deviceNetwork.QueuePacket(ent.Owner, null, payload, net.TransmitFrequency);
                 break;
             case EvacArrivalsState.Returning:
                 if (TryComp<ShuttleComponent>(ent, out var shuttle))
@@ -172,30 +182,11 @@ public sealed partial class EvacArrivalsSystem : EntitySystem
         }
     }
 
-    // Sends the shuttle back to the abyss, or leaves it docked if evac has been called meanwhile.
-    private void Depart(Entity<EvacArrivalsComponent, ShuttleComponent> ent)
-    {
-        // If it still has a cooldown for some reason, block it for now
-        if (HasComp<FTLComponent>(ent))
-            return;
-
-        ent.Comp1.State = EvacArrivalsState.Returning;
-        ent.Comp1.DepartTime = null;
-        _shuttle.FTLToCoordinates(ent, ent.Comp2, ent.Comp1.Origin, ent.Comp1.OriginRotation);
-    }
-
     private void ClearArrivalStatus(Entity<EvacArrivalsComponent, ShuttleComponent> ent)
     {
         RemCompDeferred<EvacArrivalsComponent>(ent);
     }
 
-    private void SendShuttleTimer(EntityUid shuttle, NetworkPayload payload)
-    {
-        if (TryComp<DeviceNetworkComponent>(shuttle, out var net))
-            _deviceNetwork.QueuePacket(shuttle, null, payload, net.TransmitFrequency);
-    }
-
-    // Engineering has to wait for the shuttle before they can get the power running.
     private void RefillStationBatteries(EntityUid station)
     {
         foreach (var battery in EntityQueryEnumerator<BatteryRefillOnArrivalComponent, BatteryComponent>())
