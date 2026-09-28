@@ -69,7 +69,7 @@ public sealed partial class AtmosphereSystem
     /// <remarks>Please be responsible with this method. Used only by tests and fixgridatmos.</remarks>
     public void RebuildGridAtmosphere(Entity<GridAtmosphereComponent, MapGridComponent> ent)
     {
-        var mixtures = new GasMixture[10];
+        var mixtures = new GasMixture[10]; /// Moffstation - Incremented by +1 for Hot Air Marker
         for (var i = 0; i < mixtures.Length; i++)
         {
             mixtures[i] = new GasMixture(Atmospherics.CellVolume) { Temperature = Atmospherics.T20C };
@@ -107,7 +107,7 @@ public sealed partial class AtmosphereSystem
         mixtures[8].AdjustMoles(Gas.Oxygen, Atmospherics.OxygenMolesGasMiner);
         mixtures[8].AdjustMoles(Gas.Nitrogen, Atmospherics.NitrogenMolesGasMiner);
 
-        // 9: Hot Air @ 60C (GM)
+        // Moffstation 9: Hot Air @ 60C (GM) - Added for Igneus Station
         mixtures[9].AdjustMoles(Gas.Oxygen, Atmospherics.OxygenMolesStandard);
         mixtures[9].AdjustMoles(Gas.Nitrogen, Atmospherics.NitrogenMolesStandard);
         mixtures[9].Temperature = 333.15f;
