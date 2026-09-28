@@ -374,8 +374,10 @@ public sealed partial class ShuttleSystem
         var uid = entity.Owner;
         var comp = entity.Comp1;
         var xform = Transform(entity);
-        if (comp.KnockdownOnStart) // Moff - Evac arrivals
+        // Moff start - Evac arrivals
+        if (comp.KnockdownOnStart)
             DoTheDinosaur(xform);
+        // Moff end
 
         comp.State = FTLState.Travelling;
         var fromMapUid = xform.MapUid;

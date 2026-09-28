@@ -11,8 +11,6 @@ public sealed partial class EmergencyShuttleSystem
         RaiseLocalEvent(shuttle, ref ev);
         return !ev.Cancelled;
     }
-
-
 }
 
 /// Raised on the emergency shuttle when it FTLs, cancels if the trip isn't the evac departure that ends the round.
