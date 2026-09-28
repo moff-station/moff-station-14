@@ -1,10 +1,10 @@
 meta:
   format: 7
   category: Grid
-  engineVersion: 288.0.1
+  engineVersion: 288.1.0
   forkId: ""
   forkVersion: ""
-  time: 09/14/2026 18:39:46
+  time: 09/16/2026 22:52:09
   entityCount: 405
 maps: []
 grids:
@@ -192,6 +192,7 @@ entities:
     components:
     - type: Transform
       parent: 1
+      rot: 1.5707963267948966 rad
       pos: -0.5,6.5
 - proto: AirlockGlassShuttleSyndicate
   entities:
@@ -315,81 +316,86 @@ entities:
     components:
     - type: Transform
       parent: 1
+      rot: 1.5707963267948966 rad
       pos: -3.5,-5.5
   - uid: 105
     components:
     - type: Transform
       parent: 1
-      rot: -1.5707963267948966 rad
       pos: 1.5,11.5
   - uid: 115
     components:
     - type: Transform
       parent: 1
-      rot: -1.5707963267948966 rad
       pos: -0.5,11.5
   - uid: 137
     components:
     - type: Transform
       parent: 1
+      rot: 1.5707963267948966 rad
       pos: 3.5,10.5
   - uid: 159
     components:
     - type: Transform
       parent: 1
-      rot: -1.5707963267948966 rad
       pos: -1.5,11.5
   - uid: 165
     components:
     - type: Transform
       parent: 1
-      rot: -1.5707963267948966 rad
       pos: 0.5,11.5
   - uid: 195
     components:
     - type: Transform
       parent: 1
+      rot: 1.5707963267948966 rad
       pos: 5.5,-0.5
   - uid: 209
     components:
     - type: Transform
       parent: 1
+      rot: 1.5707963267948966 rad
       pos: 5.5,-2.5
   - uid: 230
     components:
     - type: Transform
       parent: 1
-      rot: -1.5707963267948966 rad
       pos: 2.5,11.5
   - uid: 231
     components:
     - type: Transform
       parent: 1
+      rot: 1.5707963267948966 rad
       pos: -4.5,-2.5
   - uid: 234
     components:
     - type: Transform
       parent: 1
+      rot: 1.5707963267948966 rad
       pos: 3.5,2.5
   - uid: 237
     components:
     - type: Transform
       parent: 1
+      rot: 1.5707963267948966 rad
       pos: 4.5,-5.5
   - uid: 323
     components:
     - type: Transform
       parent: 1
+      rot: 1.5707963267948966 rad
       pos: -2.5,10.5
   - uid: 327
     components:
     - type: Transform
       parent: 1
+      rot: 1.5707963267948966 rad
       pos: -2.5,2.5
   - uid: 386
     components:
     - type: Transform
       parent: 1
+      rot: 1.5707963267948966 rad
       pos: -4.5,-0.5
 - proto: BoxHandcuff
   entities:
@@ -1839,6 +1845,7 @@ entities:
     components:
     - type: Transform
       parent: 1
+      rot: 1.5707963267948966 rad
       pos: 1.5,6.5
 - proto: HolopadLongRange
   entities:

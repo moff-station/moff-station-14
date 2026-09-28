@@ -174,6 +174,7 @@ public abstract partial class SharedMeleeWeaponSystem : EntitySystem
             return;
 
         component.NextAttack = minimum;
+        ResetUndamagedSwingsCount((uid, component));
         DirtyField(uid, component, nameof(MeleeWeaponComponent.NextAttack));
     }
 
@@ -589,17 +590,25 @@ public abstract partial class SharedMeleeWeaponSystem : EntitySystem
 
         _meleeSound.PlayHitSound(target.Value, user, GetHighestDamageSound(modifiedDamage, ProtoMan), hitEvent.HitSoundOverride, component);
 
-        if (damageResult.GetTotal() > FixedPoint2.Zero && !TerminatingOrDeleted(target.Value))
+        if (!TerminatingOrDeleted(target.Value))
         {
-            DoDamageEffect(targets, user, targetXform);
+            if (damageResult.GetTotal() > FixedPoint2.Zero)
+            {
+                DoDamageEffect(targets, user, targetXform);
+                ResetUndamagedSwingsCount((meleeUid, component));
 
-            // Moffstation - start - Tweaked screenshake changes
-            var targetMap = TransformSystem.ToMapCoordinates(GetCoordinates(ev.Coordinates));
-            var userPos = TransformSystem.GetWorldPosition(Transform(user));
-            var direction = targetMap.Position - userPos;
+                // Moffstation - start - Tweaked screenshake changes
+                var targetMap = TransformSystem.ToMapCoordinates(GetCoordinates(ev.Coordinates));
+                var userPos = TransformSystem.GetWorldPosition(Transform(user));
+                var direction = targetMap.Position - userPos;
 
-            DoScreenShake(direction, user, targets);
-            // Moffstation - End
+                DoScreenShake(direction, user, targets);
+                // Moffstation - End
+            }
+            else
+            {
+                UndamagedAttack((meleeUid, component), target.Value, user);
+            }
         }
     }
 
@@ -769,9 +778,17 @@ public abstract partial class SharedMeleeWeaponSystem : EntitySystem
         }
 
 
-        if (appliedDamage.GetTotal() > FixedPoint2.Zero && targets.Count > 0)
+        if (targets.Count > 0)
         {
-            DoDamageEffect(targets, user, Transform(targets[0]));
+            if (appliedDamage.GetTotal() > FixedPoint2.Zero)
+            {
+                DoDamageEffect(targets, user, Transform(targets[0]));
+                ResetUndamagedSwingsCount((meleeUid, component));
+            }
+            else
+            {
+                UndamagedAttack((meleeUid, component), targets[0], user);
+            }
         }
 
         return true;
@@ -1087,6 +1104,20 @@ public abstract partial class SharedMeleeWeaponSystem : EntitySystem
             }
         }
     }
+
+    /// <summary>
+    /// Updates <see cref="MeleeWeaponComponent.UndamagedSwings"/> and triggers a message if it meets <see cref="MeleeWeaponComponent.UndamagedAlertThreshold"/>.
+    /// </summary>
+    /// <param name="ent">The weapon entity tracking swings.</param>
+    /// <param name="target">The target entity that was hit without damage.</param>
+    /// <param name="user">The user swinging the weapon.</param>
+    protected virtual void UndamagedAttack(Entity<MeleeWeaponComponent> ent, EntityUid target, EntityUid user) { }
+
+    /// <summary>
+    /// Resets the <see cref="MeleeWeaponComponent.UndamagedSwings"/>; necessary to not trigger undamaged attacks messages too often.
+    /// </summary>
+    /// <param name="ent">The weapon entity tracking swings.</param>
+    protected virtual void ResetUndamagedSwingsCount(Entity<MeleeWeaponComponent> ent) { }
 
     // Moffstation - Start - Fancy Screenshake
     // This is still magic numbers bs but slightly better because its not straight up repeat code.

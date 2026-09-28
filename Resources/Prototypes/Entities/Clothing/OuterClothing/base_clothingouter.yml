@@ -12,10 +12,10 @@
   - type: Stainable
     clothingVisuals:
       outerClothing:
-      - sprite: _Funkystation/Effects/blood.rsi
+      - sprite: /Textures/_Funkystation/Effects/blood.rsi
         state: outerclothing
     iconVisuals:
-    - sprite: _Funkystation/Effects/blood.rsi
+    - sprite: /Textures/_Funkystation/Effects/blood.rsi
       state: outerclothing
   - type: Solution
     id: food
@@ -46,10 +46,10 @@
   - type: Stainable
     clothingVisuals:
       outerClothing:
-      - sprite: _Funkystation/Effects/blood.rsi
+      - sprite: /Textures/_Funkystation/Effects/blood.rsi
         state: suitblood
     iconVisuals:
-    - sprite: _Funkystation/Effects/blood.rsi
+    - sprite: /Textures/_Funkystation/Effects/blood.rsi
       state: suitbloodicon
   - type: StainBlocker
     slots: [INNERCLOTHING, FEET, GLOVES]
@@ -95,10 +95,10 @@
   - type: Stainable
     clothingVisuals:
       outerClothing:
-      - sprite: _Funkystation/Effects/blood.rsi
+      - sprite: /Textures/_Funkystation/Effects/blood.rsi
         state: coatblood
     iconVisuals:
-    - sprite: _Funkystation/Effects/blood.rsi
+    - sprite: /Textures/_Funkystation/Effects/blood.rsi
       state: coatbloodicon
     # Forky - end
 
@@ -150,10 +150,10 @@
   - type: Stainable
     clothingVisuals:
       outerClothing:
-      - sprite: _Funkystation/Effects/blood.rsi
+      - sprite: /Textures/_Funkystation/Effects/blood.rsi
         state: outerclothing
     iconVisuals:
-    - sprite: _Funkystation/Effects/blood.rsi
+    - sprite: /Textures/_Funkystation/Effects/blood.rsi
       state: outerclothing
   # Forky - end
 

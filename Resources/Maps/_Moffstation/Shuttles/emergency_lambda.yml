@@ -1,10 +1,10 @@
 meta:
   format: 7
   category: Grid
-  engineVersion: 288.0.1
+  engineVersion: 288.1.0
   forkId: ""
   forkVersion: ""
-  time: 09/14/2026 18:39:45
+  time: 09/16/2026 22:52:06
   entityCount: 578
 maps: []
 grids:
@@ -197,7 +197,7 @@ entities:
     components:
     - type: Transform
       parent: 1
-      rot: 3.141592653589793 rad
+      rot: 4.71238898038469 rad
       pos: 1.5,-1.5
   - uid: 396
     components:
@@ -407,11 +407,13 @@ entities:
     components:
     - type: Transform
       parent: 1
+      rot: 1.5707963267948966 rad
       pos: 9.5,3.5
   - uid: 50
     components:
     - type: Transform
       parent: 1
+      rot: 1.5707963267948966 rad
       pos: 9.5,4.5
 - proto: BoxInflatable
   entities:

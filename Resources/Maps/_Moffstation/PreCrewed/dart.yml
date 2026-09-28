@@ -1,10 +1,10 @@
 meta:
   format: 7
   category: Grid
-  engineVersion: 288.0.1
+  engineVersion: 288.1.0
   forkId: ""
   forkVersion: ""
-  time: 09/14/2026 18:39:43
+  time: 09/16/2026 22:52:02
   entityCount: 1018
 maps: []
 grids:
@@ -264,6 +264,7 @@ entities:
     components:
     - type: Transform
       parent: 1
+      rot: 1.5707963267948966 rad
       pos: -2.5,-17.5
 - proto: AirlockCommandLocked
   entities:
@@ -285,6 +286,7 @@ entities:
     components:
     - type: Transform
       parent: 1
+      rot: 1.5707963267948966 rad
       pos: 1.5,-17.5
   - uid: 801
     components:
@@ -297,31 +299,37 @@ entities:
     components:
     - type: Transform
       parent: 1
+      rot: 1.5707963267948966 rad
       pos: -6.5,-1.5
   - uid: 621
     components:
     - type: Transform
       parent: 1
+      rot: 1.5707963267948966 rad
       pos: -6.5,-0.5
   - uid: 750
     components:
     - type: Transform
       parent: 1
+      rot: 1.5707963267948966 rad
       pos: 5.5,-0.5
   - uid: 757
     components:
     - type: Transform
       parent: 1
+      rot: 1.5707963267948966 rad
       pos: 5.5,-1.5
   - uid: 758
     components:
     - type: Transform
       parent: 1
+      rot: 1.5707963267948966 rad
       pos: 5.5,-2.5
   - uid: 918
     components:
     - type: Transform
       parent: 1
+      rot: 1.5707963267948966 rad
       pos: -6.5,-2.5
 - proto: AirlockExternalGlassShuttleLocked
   entities:
@@ -379,6 +387,7 @@ entities:
     components:
     - type: Transform
       parent: 1
+      rot: 1.5707963267948966 rad
       pos: 0.5,-9.5
 - proto: AirlockSecurityLocked
   entities:
@@ -386,6 +395,7 @@ entities:
     components:
     - type: Transform
       parent: 1
+      rot: 1.5707963267948966 rad
       pos: 0.5,-13.5
 - proto: APCBasic
   entities:
@@ -508,16 +518,19 @@ entities:
     components:
     - type: Transform
       parent: 1
+      rot: 1.5707963267948966 rad
       pos: -5.5,-9.5
   - uid: 807
     components:
     - type: Transform
       parent: 1
+      rot: 1.5707963267948966 rad
       pos: -5.5,-14.5
   - uid: 816
     components:
     - type: Transform
       parent: 1
+      rot: 1.5707963267948966 rad
       pos: -5.5,-8.5
   - uid: 817
     components:
@@ -533,11 +546,13 @@ entities:
     components:
     - type: Transform
       parent: 1
+      rot: 1.5707963267948966 rad
       pos: 4.5,-14.5
   - uid: 820
     components:
     - type: Transform
       parent: 1
+      rot: 1.5707963267948966 rad
       pos: 4.5,-8.5
   - uid: 821
     components:
@@ -548,16 +563,19 @@ entities:
     components:
     - type: Transform
       parent: 1
+      rot: 1.5707963267948966 rad
       pos: 4.5,-9.5
   - uid: 825
     components:
     - type: Transform
       parent: 1
+      rot: 1.5707963267948966 rad
       pos: 4.5,-13.5
   - uid: 826
     components:
     - type: Transform
       parent: 1
+      rot: 1.5707963267948966 rad
       pos: -5.5,-13.5
 - proto: BoozeDispenser
   entities:
@@ -3256,31 +3274,37 @@ entities:
     components:
     - type: Transform
       parent: 1
+      rot: 1.5707963267948966 rad
       pos: -2.5,-0.5
   - uid: 898
     components:
     - type: Transform
       parent: 1
+      rot: 1.5707963267948966 rad
       pos: -2.5,-1.5
   - uid: 899
     components:
     - type: Transform
       parent: 1
+      rot: 1.5707963267948966 rad
       pos: -2.5,-2.5
   - uid: 900
     components:
     - type: Transform
       parent: 1
+      rot: 1.5707963267948966 rad
       pos: 1.5,-0.5
   - uid: 901
     components:
     - type: Transform
       parent: 1
+      rot: 1.5707963267948966 rad
       pos: 1.5,-1.5
   - uid: 902
     components:
     - type: Transform
       parent: 1
+      rot: 1.5707963267948966 rad
       pos: 1.5,-2.5
 - proto: FirelockEdge
   entities:
@@ -3351,11 +3375,13 @@ entities:
     components:
     - type: Transform
       parent: 1
+      rot: 1.5707963267948966 rad
       pos: -2.5,-17.5
   - uid: 800
     components:
     - type: Transform
       parent: 1
+      rot: 1.5707963267948966 rad
       pos: 1.5,-17.5
 - proto: Fireplace
   entities:
