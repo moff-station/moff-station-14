@@ -1,0 +1,31 @@
+﻿# Player: moomoobeef - Character: Tom Carter
+
+- type: entity
+  parent: BoxFolderClipboardEmpty
+  id: &id PersonalItemTomLedger
+  name: Battered Ledger
+  description: A once stately ledger, now damaged and stained. Smells like coffee and whiskey.
+  suffix: PersonalItem
+  components:
+  - type: Sprite
+    sprite: &sprite _Moffstation/PersonalItems/Items/Moomoobeef/Tom_Carter/battered_ledger.rsi
+  - type: EntityTableContainerFill
+    containers:
+      pen_slot:
+        id: PersonalItemTomPen
+  - type: Item
+    sprite: *sprite
+  - type: Clothing
+    sprite: *sprite
+  - type: DetailExaminable
+    content: On the back you can just make out an engraving, crossed out with pen. It reads "Issued to NT's Bureaucrat of the Month".
+
+- type: loadout
+  id: *id
+  storage:
+    back:
+    - *id
+  effects:
+  - !type:PersonalItemLoadoutEffect
+    character:
+    - Tom Carter

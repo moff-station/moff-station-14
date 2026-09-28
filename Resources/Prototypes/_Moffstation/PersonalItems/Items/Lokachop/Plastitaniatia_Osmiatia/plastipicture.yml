@@ -12,6 +12,11 @@
     state: icon
   - type: Item
     sprite: _Moffstation/PersonalItems/Items/Lokachop/Plastitaniatia_Osmiatia/plastipicture.rsi
+    inhandVisuals:
+      left:
+      - state: inhand-left
+      right:
+      - state: inhand-right
 
 - type: loadout
   id: PersonalItemPlastiPicture

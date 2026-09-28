@@ -1,6 +1,6 @@
 - type: entity
   abstract: true
-  id: ClothingHeadToggleableWeldingMask
+  id: MoffClothingHeadToggleableWeldingMask
   name: base helmet toggleable welding mask
   categories: [ HideSpawnMenu ]
   components:
@@ -20,3 +20,42 @@
         unshaded_base:
           False: { visible: true }
           True: { visible: false }
+
+- type: entity
+  abstract: true
+  parent: [ MoffClothingHeadToggleableWeldingMask, ClothingHeadSuitWithLightBase ]
+  id: MoffClothingHeadSuitToggleableWeldingMaskWithLight
+  name: base helmet toggleable welding mask
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    layers:
+    - state: icon
+    - state: icon-unshaded
+      shader: unshaded
+    - state: light-overlay
+      visible: false
+      shader: unshaded
+      map: [ "light" ]
+    - state: icon-up
+      visible: false
+      map: [ "visor_icon" ]
+
+# Welding mask action
+- type: entity
+  parent: BaseAction
+  id: ActionToggleHelmetVisor
+  name: Toggle Visor
+  description: Flips the helmet visor up or down.
+  components:
+  - type: Action
+  - type: InstantAction
+    event: !type:ToggleHelmetVisorEvent
+  - type: Sprite
+    sprite: Clothing/Head/Welding/welding.rsi
+    layers:
+    - state: icon
+      map: ["enum.ActionVisuals.Icon"]
+    - state: ""
+      map: ["enum.ActionVisuals.IconToggled"]
+      visible: false
