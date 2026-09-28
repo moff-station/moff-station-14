@@ -8184,6 +8184,16 @@ Entries:
   url: https://github.com/moff-station/moff-station-14/pull/1906
 - author: Centronias
   changes:
+  - message: The AAC tablet has been completely reorganized based on user feedback.
+    type: tweak
+  - message: The AAC tablet's search results will now indicate where in the tablet
+      a given search result is found.
+    type: add
+  id: 1914
+  time: '2026-09-28T02:43:18.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1914
+- author: Centronias
+  changes:
   - message: Fix various in-hand sprite errors with folders, papers, stamps, and more.
     type: fix
   id: 1915
