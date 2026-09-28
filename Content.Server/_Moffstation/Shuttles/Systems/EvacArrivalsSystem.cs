@@ -1,3 +1,4 @@
+
 using Content.Server._Moffstation.Shuttles.Components;
 using Content.Server._Moffstation.Spawners;
 using Content.Server.Communications;
@@ -71,7 +72,6 @@ public sealed partial class EvacArrivalsSystem : EntitySystem
             arrival.Origin = xform.Coordinates;
             arrival.OriginRotation = xform.LocalRotation;
             // No cooldown, so an early evac call can still move the shuttle
-            arrival.CooldownOverride = shuttleComp.FTLCooldownOverride;
             shuttleComp.FTLCooldownOverride = TimeSpan.Zero;
 
             _shuttle.FTLToDock(shuttle,
@@ -186,7 +186,6 @@ public sealed partial class EvacArrivalsSystem : EntitySystem
 
     private void ClearArrivalStatus(Entity<EvacArrivalsComponent, ShuttleComponent> ent)
     {
-        ent.Comp2.FTLCooldownOverride = ent.Comp1.CooldownOverride;
         RemCompDeferred<EvacArrivalsComponent>(ent);
     }
 

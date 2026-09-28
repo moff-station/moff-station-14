@@ -23,10 +23,6 @@ public sealed partial class EvacArrivalsComponent : Component
 
     [DataField(customTypeSerializer: typeof(TimeOffsetSerializer)), AutoPausedField]
     public TimeSpan? DepartTime;
-
-    /// The shuttle's own FTL cooldown override, restored once the arrival is over.
-    [DataField]
-    public TimeSpan? CooldownOverride;
 }
 
 public enum EvacArrivalsState : byte
@@ -35,7 +31,3 @@ public enum EvacArrivalsState : byte
     Docked,
     Returning,
 }
-
-/// Raised on the emergency shuttle when it FTLs; cancels if the trip isn't the evac departure that ends the round.
-[ByRefEvent]
-public record struct EmergencyShuttleEvacDepartureCheckEvent(bool Cancelled = false);

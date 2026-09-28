@@ -204,8 +204,10 @@ public sealed partial class EmergencyShuttleSystem : SharedEmergencyShuttleSyste
     /// </summary>
     private void OnEmergencyFTL(EntityUid uid, EmergencyShuttleComponent component, ref FTLStartedEvent args)
     {
-        if (!IsEvacDeparture(uid)) // Moff - Evac arrivals
+        // Moff start - Evac arrivals
+        if (!IsEvacDeparture(uid))
             return;
+        // Moff end
 
         var ftlTime = TimeSpan.FromSeconds
         (
@@ -234,7 +236,6 @@ public sealed partial class EmergencyShuttleSystem : SharedEmergencyShuttleSyste
     private void OnEmergencyFTLComplete(EntityUid uid, EmergencyShuttleComponent component, ref FTLCompletedEvent args)
     {
         // Moff start - Evac arrivals
-        // Probably not the best way, but you know what, upstream tieing it to this event isn't the best way either.
         if (!IsEvacDeparture(uid))
             return;
         // Moff end
