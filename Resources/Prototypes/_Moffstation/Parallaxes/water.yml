@@ -13,12 +13,12 @@
   layers:
   - texture:
       !type:ImageParallaxTextureSource
-      path: /Textures/Tiles/Planet/lava.rsi/lava.png
+      path: /Textures/_Moffstation/Tiles/Planet/lava.png
     slowness: 0.98
     scale: 1,1
   - texture:
       !type:ImageParallaxTextureSource
-      path: "/Textures/Parallaxes/noise.png"
+      path: /Textures/_Moffstation/Parallaxes/volcanic_ash.png
     slowness: 0.95
-    scale: "2, 2"
+    scale: 1.5,1.5
     scrolling: "0.1, -0.05"
