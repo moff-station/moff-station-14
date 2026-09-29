@@ -3,7 +3,7 @@ using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom;
 namespace Content.Server.RoundEnd.Components;
 
 /// <summary>
-/// Post-round extension vote state for the current round, driven by <see cref="RoundEndSystem"/>.
+/// Manages extension votes for post-round.
 /// </summary>
 [RegisterComponent, AutoGenerateComponentPause, Access(typeof(RoundEndSystem))]
 public sealed partial class RoundEndExtensionManagerComponent : Component
