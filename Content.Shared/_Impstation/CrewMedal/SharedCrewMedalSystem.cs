@@ -1,4 +1,5 @@
 using Content.Shared.Examine;
+using Robust.Shared.Utility;
 
 namespace Content.Shared._Impstation.CrewMedal;
 
