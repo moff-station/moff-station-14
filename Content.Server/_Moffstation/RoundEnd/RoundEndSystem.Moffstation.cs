@@ -26,7 +26,7 @@ public sealed partial class RoundEndSystem
 
     // recursion but gay
     /// <summary>
-    /// Does the setup for the next extension event, if the previous one passed.
+    /// Does the setup for the next extension vote, if the previous one passed.
     /// Short circuits if the limit of extensions has been reached, or if a vote would take too long before the restart.
     /// </summary>
     private void ScheduleExtensionVote(Entity<RoundEndExtensionManagerComponent> ent)
