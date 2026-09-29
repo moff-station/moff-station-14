@@ -16,39 +16,45 @@ public sealed partial class RoundEndSystem
 
     private TimeSpan ExtensionVoteDuration => TimeSpan.FromSeconds(_cfg.GetCVar(MoffCCVars.RoundEndExtensionVoteDuration));
 
-    private void StartRoundEndExtension(TimeSpan countdown)
+    private void InitializeRoundEndExtension(TimeSpan countdown)
     {
-        var extension = AddComp<RoundEndExtensionComponent>(Spawn(null, MapCoordinates.Nullspace));
-        extension.RestartAt = _gameTiming.CurTime + countdown;
-        ScheduleExtensionVote(extension);
+        var manager = Spawn();
+        var comp = AddComp<RoundEndExtensionManagerComponent>(manager);
+        comp.RestartAt = _gameTiming.CurTime + countdown;
+        ScheduleExtensionVote((manager, comp));
     }
 
-    //recursion but gay
-    private void ScheduleExtensionVote(RoundEndExtensionComponent extension)
+    // recursion but gay
+    /// <summary>
+    /// Does the setup for the next extension event, if the previous one passed.
+    /// Short circuits if the limit of extensions has been reached, or if a vote would take too long before the restart.
+    /// </summary>
+    private void ScheduleExtensionVote(Entity<RoundEndExtensionManagerComponent> ent)
     {
         var duration = ExtensionVoteDuration;
-        var countdown = extension.RestartAt - _gameTiming.CurTime;
+        var countdown = ent.Comp.RestartAt - _gameTiming.CurTime;
 
-        if (extension.Extensions >= _cfg.GetCVar(MoffCCVars.MaxRoundEndExtensionVotes)
+        if (ent.Comp.Extensions >= _cfg.GetCVar(MoffCCVars.MaxRoundEndExtensionVotes)
             || countdown <= duration)
             return;
 
-        var delay = countdown - duration - ExtensionVoteBuffer;
-        extension.NextVote = _gameTiming.CurTime + (delay > TimeSpan.Zero ? delay : TimeSpan.Zero);
+        var delay = MathHelper.Max(countdown - duration - ExtensionVoteBuffer, TimeSpan.Zero);
+        ent.Comp.NextVote = _gameTiming.CurTime + (delay > TimeSpan.Zero ? delay : TimeSpan.Zero);
     }
 
-    private void UpdateRoundEndExtensions()
+    // Called every update tick
+    private void RoundEndExtensionsUpdate()
     {
         var restart = false;
-        foreach (var ent in EntityQueryEnumerator<RoundEndExtensionComponent>())
+        foreach (var ent in EntityQueryEnumerator<RoundEndExtensionManagerComponent>())
         {
             if (ent.Comp.NextVote is { } nextVote && _gameTiming.CurTime >= nextVote)
             {
                 ent.Comp.NextVote = null;
-                StartExtensionVote(ent.Owner);
+                StartExtensionVote(ent);
             }
 
-            if (ent.Comp.Extensions > 0 && _gameTiming.CurTime >= ent.Comp.RestartAt)
+            if (_gameTiming.CurTime >= ent.Comp.RestartAt)
             {
                 QueueDel(ent.Owner);
                 restart = true;
@@ -66,7 +72,7 @@ public sealed partial class RoundEndSystem
     // The preset vote type involves sticking your fingers into alot of the upstream vote files, which could make merge conflicts a pain
     // Thank you Cent for coming to my ted talk, if you are reading this I have stashed the password to the server under your doormat alongside 20 portuguese dollars, in case I meet my unfortunate demise.
     // tldr, I'm putting this here instead of the upstream vote file because it's easier.
-    private void StartExtensionVote(EntityUid uid)
+    private void StartExtensionVote(Entity<RoundEndExtensionManagerComponent> ent)
     {
         var minutes = _cfg.GetCVar(MoffCCVars.RoundEndExtensionVoteMinutes);
         var options = new VoteOptions
@@ -84,10 +90,6 @@ public sealed partial class RoundEndSystem
         var vote = _voteManager.CreateVote(options);
         vote.OnFinished += (_, _) =>
         {
-            // The round restarted while the vote was open.
-            if (!TryComp<RoundEndExtensionComponent>(uid, out var extension))
-                return;
-
             var yes = vote.VotesPerOption[true];
             var no = vote.VotesPerOption[false];
 
@@ -99,16 +101,16 @@ public sealed partial class RoundEndSystem
 
             _countdownTokenSource?.Cancel();
             _countdownTokenSource = new CancellationTokenSource();
-            extension.Extensions++;
-            extension.RestartAt += TimeSpan.FromMinutes(minutes);
+            ent.Comp.Extensions++;
+            ent.Comp.RestartAt += TimeSpan.FromMinutes(minutes);
             if (_shuttle.GetShuttle() is { } shuttle)
-                _shuttle.UpdateRoundEndScreens(shuttle, extension.RestartAt - _gameTiming.CurTime);
+                _shuttle.UpdateRoundEndScreens(shuttle, ent.Comp.RestartAt - _gameTiming.CurTime);
 
             _adminLogger.Add(LogType.Vote, LogImpact.Low, $"Round end extension vote succeeded: y={yes}/n={no}");
             _chatManager.DispatchServerAnnouncement(Loc.GetString("round-end-extension-vote-succeeded",
                 ("minutes", minutes)));
 
-            ScheduleExtensionVote(extension);
+            ScheduleExtensionVote(ent);
         };
     }
 }

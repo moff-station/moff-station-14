@@ -297,7 +297,7 @@ namespace Content.Server.RoundEnd
             _countdownTokenSource = new();
 
             countdownTime ??= TimeSpan.FromSeconds(_cfg.GetCVar(CCVars.RoundRestartTime));
-            StartRoundEndExtension(countdownTime.Value); // Moff - Round end extension vote
+            InitializeRoundEndExtension(countdownTime.Value); // Moff - Round end extension vote
             int time;
             string unitsLocString;
             if (countdownTime.Value.TotalSeconds < 60)
@@ -377,7 +377,7 @@ namespace Content.Server.RoundEnd
 
         public override void Update(float frameTime)
         {
-            UpdateRoundEndExtensions(); // Moff - Round end extension vote
+            RoundEndExtensionsUpdate(); // Moff - Round end extension vote
 
             // Check if we should auto-call.
             int mins = _autoCalledBefore ? _cfg.GetCVar(CCVars.EmergencyShuttleAutoCallExtensionTime)

@@ -6,7 +6,7 @@ namespace Content.Server.RoundEnd.Components;
 /// Post-round extension vote state for the current round, driven by <see cref="RoundEndSystem"/>.
 /// </summary>
 [RegisterComponent, AutoGenerateComponentPause, Access(typeof(RoundEndSystem))]
-public sealed partial class RoundEndExtensionComponent : Component
+public sealed partial class RoundEndExtensionManagerComponent : Component
 {
     [DataField(customTypeSerializer: typeof(TimeOffsetSerializer)), AutoPausedField]
     public TimeSpan? NextVote;
@@ -15,7 +15,7 @@ public sealed partial class RoundEndExtensionComponent : Component
     public TimeSpan RestartAt;
 
     /// <summary>
-    /// Votes passed so far. Once above zero, upstream's restart timer is cancelled and this entity carries out the restart.
+    /// Extension votes passed so far.
     /// </summary>
     [DataField]
     public int Extensions;
