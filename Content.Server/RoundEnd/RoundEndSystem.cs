@@ -377,6 +377,8 @@ namespace Content.Server.RoundEnd
 
         public override void Update(float frameTime)
         {
+            UpdateRoundEndExtensions(); // Moff - Round end extension vote
+
             // Check if we should auto-call.
             int mins = _autoCalledBefore ? _cfg.GetCVar(CCVars.EmergencyShuttleAutoCallExtensionTime)
                                         : _cfg.GetCVar(CCVars.EmergencyShuttleAutoCallTime);

@@ -1,12 +1,10 @@
 using System.Threading;
-using Content.Server.Screens.Components;
+using Content.Server.RoundEnd.Components;
 using Content.Server.Voting;
 using Content.Server.Voting.Managers;
 using Content.Shared._Moffstation.CCVar;
 using Content.Shared.Database;
-using Content.Shared.DeviceNetwork;
-using Content.Shared.DeviceNetwork.Components;
-using Timer = Robust.Shared.Timing.Timer;
+using Robust.Shared.Map;
 
 namespace Content.Server.RoundEnd;
 
@@ -16,6 +14,7 @@ public sealed partial class RoundEndSystem
 
     private static readonly TimeSpan ExtensionVoteBuffer = TimeSpan.FromSeconds(10);
 
+    //recursion but gay
     private void ScheduleExtensionVote(TimeSpan countdown, int extensions)
     {
         var duration = TimeSpan.FromSeconds(_cfg.GetCVar(MoffCCVars.RoundEndExtensionVoteDuration));
@@ -25,12 +24,51 @@ public sealed partial class RoundEndSystem
             || countdown <= duration)
             return;
 
-        var token = _countdownTokenSource.Token;
-        var restartTime = _gameTiming.CurTime + countdown;
         var delay = countdown - duration - ExtensionVoteBuffer;
-        Timer.Spawn(delay > TimeSpan.Zero ? delay : TimeSpan.Zero,
-            () => StartExtensionVote(restartTime, duration, extensions, token),
-            token);
+        var vote = AddComp<RoundEndExtensionVoteComponent>(Spawn(null, MapCoordinates.Nullspace));
+        vote.StartAt = _gameTiming.CurTime + (delay > TimeSpan.Zero ? delay : TimeSpan.Zero);
+        vote.RestartTime = _gameTiming.CurTime + countdown;
+        vote.Duration = duration;
+        vote.Extensions = extensions;
+        vote.Token = _countdownTokenSource.Token;
+    }
+
+    private void UpdateRoundEndExtensions()
+    {
+        foreach (var ent in EntityQueryEnumerator<RoundEndExtensionVoteComponent>())
+        {
+            if (ent.Comp.Token.IsCancellationRequested)
+            {
+                QueueDel(ent.Owner);
+                continue;
+            }
+
+            if (_gameTiming.CurTime < ent.Comp.StartAt)
+                continue;
+
+            StartExtensionVote(ent.Comp.RestartTime, ent.Comp.Duration, ent.Comp.Extensions, ent.Comp.Token);
+            QueueDel(ent.Owner);
+        }
+
+        var restart = false;
+        foreach (var ent in EntityQueryEnumerator<RoundEndExtensionRestartComponent>())
+        {
+            if (ent.Comp.Token.IsCancellationRequested)
+            {
+                QueueDel(ent.Owner);
+                continue;
+            }
+
+            if (_gameTiming.CurTime < ent.Comp.RestartAt)
+                continue;
+
+            QueueDel(ent.Owner);
+            restart = true;
+        }
+
+        // Restarting deletes every entity, so it can't happen mid-query.
+        if (restart)
+            AfterEndRoundRestart();
     }
 
     // Unfortunately votes are lowkirk slop.
@@ -72,8 +110,11 @@ public sealed partial class RoundEndSystem
             _countdownTokenSource?.Cancel();
             _countdownTokenSource = new CancellationTokenSource();
             var countdown = restartTime + TimeSpan.FromMinutes(minutes) - _gameTiming.CurTime;
-            Timer.Spawn(countdown, AfterEndRoundRestart, _countdownTokenSource.Token);
-            UpdateRestartScreens(countdown);
+            var restart = AddComp<RoundEndExtensionRestartComponent>(Spawn(null, MapCoordinates.Nullspace));
+            restart.RestartAt = _gameTiming.CurTime + countdown;
+            restart.Token = _countdownTokenSource.Token;
+            if (_shuttle.GetShuttle() is { } shuttle)
+                _shuttle.UpdateRoundEndScreens(shuttle, countdown);
 
             _adminLogger.Add(LogType.Vote, LogImpact.Low, $"Round end extension vote succeeded: y={yes}/n={no}");
             _chatManager.DispatchServerAnnouncement(Loc.GetString("round-end-extension-vote-succeeded",
@@ -81,23 +122,5 @@ public sealed partial class RoundEndSystem
 
             ScheduleExtensionVote(countdown, extensions + 1);
         };
-    }
-
-    private void UpdateRestartScreens(TimeSpan countdown)
-    {
-        if (_shuttle.GetShuttle() is not { } shuttle || !TryComp<DeviceNetworkComponent>(shuttle, out var net))
-            return;
-
-        var payload = new NetworkPayload
-        {
-            [ShuttleTimerMasks.ShuttleMap] = shuttle,
-            [ShuttleTimerMasks.SourceMap] = GetCentcomm(),
-            [ShuttleTimerMasks.DestMap] = GetStation(),
-            [ShuttleTimerMasks.ShuttleTime] = countdown,
-            [ShuttleTimerMasks.SourceTime] = countdown,
-            [ShuttleTimerMasks.DestTime] = countdown,
-            [ScreenMasks.Text] = ShuttleTimerMasks.Bye,
-        };
-        _deviceNetworkSystem.QueuePacket(shuttle, null, payload, net.TransmitFrequency);
     }
 }
