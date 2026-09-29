@@ -247,10 +247,10 @@ figurines-frostwing-7 = May we remind you that nuclear operatives are a myth. Pl
 figurines-frostwing-8 = This is all your fault.
 
 figurines-gigs-1 = How-wdy Howd-dy!
-figurines-gigs-2 = The-ere isss no sssecr-ret menu.
-figurines-gigs-3 = The usssual?
+figurines-gigs-2 = You're real to me.
+figurines-gigs-3 = Moussse? Wh-here?
 figurines-gigs-4 = We w-will b-b-be ok.
-figurines-gigs-5 = I..I..on'y had-d...onee....d-ddrink...
+figurines-gigs-5 = I'm gonna need a d-drink...
 
 figurines-heather-1 = S-sorry!
 figurines-heather-2 = Do as I say, and you'll live.
