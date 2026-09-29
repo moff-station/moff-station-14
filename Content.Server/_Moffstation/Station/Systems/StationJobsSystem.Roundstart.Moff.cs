@@ -16,6 +16,7 @@ namespace Content.Server.Station.Systems;
 public sealed partial class StationJobsSystem
 {
     [Dependency] private MoffCharacterSelectionManager _moffCharacterSelection = default!;
+    [Dependency] private SharedRoleSystem _role = default!;
 
     /// <summary>
     /// Assigns jobs based on the given preferences and list of stations to assign for.
@@ -173,7 +174,11 @@ public sealed partial class StationJobsSystem
             if (!_player.TryGetSessionById(user, out var session) ||
                 !antags.TryGetValue(session, out var a) ||
                 a.Roles is not { } selectedForOneOf)
+            {
+                // Not preselected to be antag, add all their profiles.
+                filteredProfiles.Add((user, userProfiles));
                 continue;
+            }
 
             var filteredUserProfiles = userProfiles
                 .Where(profile => profile.AntagPreferences.Intersect(selectedForOneOf).Any())
@@ -184,7 +189,8 @@ public sealed partial class StationJobsSystem
 
         return new RoundstartJobCandidates(
             _random,
-            isUserAllowedJob: playerCharacterAndJob => IsCandidateForJob(playerCharacterAndJob) &&
+            isUserAllowedJob: playerCharacterAndJob => IsCharacterAllowedJob(playerCharacterAndJob) &&
+                                                       IsCandidateForJob(playerCharacterAndJob) &&
                                                        IsJobAllowedAsAntag(playerCharacterAndJob) &&
                                                        !IsJobBanned(playerCharacterAndJob),
             sameDepartmentJobs: job =>
@@ -204,6 +210,29 @@ public sealed partial class StationJobsSystem
         );
 
         // Below are predicates used to build `isUserAllowedJob` in the candidate pool.
+
+        bool IsCharacterAllowedJob(
+            (NetUserId User, HumanoidCharacterProfile Character, ProtoId<JobPrototype> Job) playerCharacterAndJob)
+        {
+            if (!ProtoMan.Resolve(playerCharacterAndJob.Job, out var job))
+                return false;
+
+            if (_role.GetRoleRequirements(job) is not { } reqs)
+                return true;
+
+            // Make a copy of the set (it gives us the one that the proto owns) and remove time requirements as those
+            // are checked elsewhere.
+            reqs = [.. reqs];
+            reqs.RemoveWhere(it => it is DepartmentTimeRequirement or RoleTimeRequirement);
+
+            return reqs.All(req => req.Check(
+                EntityManager,
+                ProtoMan,
+                playerCharacterAndJob.Character,
+                new Dictionary<string, TimeSpan>(),
+                out _
+            ));
+        }
 
         bool IsCandidateForJob(
             (NetUserId User, HumanoidCharacterProfile Character, ProtoId<JobPrototype> Job) playerCharacterAndJob)
