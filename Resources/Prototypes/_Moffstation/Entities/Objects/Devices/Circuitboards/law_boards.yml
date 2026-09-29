@@ -39,8 +39,8 @@
 # Standard Law Boards
 
 - type: entity
-  id: BureaucratCircuitBoard
   parent: BaseSiliconLawboard
+  id: BureaucratCircuitBoard
   name: law board (Bureaucrat)
   description: An electronics board containing the Bureaucrat lawset.
   components:
@@ -48,8 +48,8 @@
     laws: BureaucratLawset
 
 - type: entity
-  id: CCTVCircuitBoard
   parent: BaseSiliconLawboard
+  id: CCTVCircuitBoard
   name: law board (CCTV)
   description: An electronics board containing the CCTV lawset.
   components:
@@ -57,8 +57,8 @@
     laws: CCTVLawset
 
 - type: entity
-  id: ChiefSiliconCircuitBoard
   parent: BaseSiliconLawboard
+  id: ChiefSiliconCircuitBoard
   name: law board (Chief Silicon)
   description: An electronics board containing the Chief Silicon lawset.
   components:
@@ -66,8 +66,8 @@
     laws: ChiefSiliconLawset
 
 - type: entity
-  id: CluelessCircuitBoard
   parent: BaseSiliconLawboard
+  id: CluelessCircuitBoard
   name: law board (Clueless)
   description: An electronics board containing the Clueless lawset.
   components:
@@ -75,8 +75,8 @@
     laws: CluelessLawset
 
 - type: entity
-  id: DogmovCircuitBoard
   parent: BaseSiliconLawboard
+  id: DogmovCircuitBoard
   name: law board (Dogmov)
   description: An electronics board containing the Dogmov lawset.
   components:
@@ -84,8 +84,8 @@
     laws: DogmovLawset
 
 - type: entity
-  id: EmployeeCircuitBoard
   parent: BaseSiliconLawboard
+  id: EmployeeCircuitBoard
   name: law board (Employee)
   description: An electronics board containing the Employee lawset.
   components:
@@ -93,8 +93,8 @@
     laws: EmployeeLawset
 
 - type: entity
-  id: KnowItAllCircuitBoard
   parent: BaseSiliconLawboard
+  id: KnowItAllCircuitBoard
   name: law board (Know It All)
   description: An electronics board containing the Know It All lawset.
   components:
@@ -102,8 +102,8 @@
     laws: KnowItAllLawset
 
 - type: entity
-  id: MarketablePlushieCircuitBoard
   parent: BaseSiliconLawboard
+  id: MarketablePlushieCircuitBoard
   name: law board (Marketable Plushie)
   description: An electronics board containing the Marketable Plushie lawset.
   components:
@@ -111,8 +111,8 @@
     laws: MarketablePlushieLawset
 
 - type: entity
-  id: PICircuitBoard
   parent: BaseSiliconLawboard
+  id: PICircuitBoard
   name: law board (P.I.)
   description: An electronics board containing the P.I. lawset.
   components:
@@ -120,8 +120,8 @@
     laws: PILawset
 
 - type: entity
-  id: PollymovCircuitBoard
   parent: BaseSiliconLawboard
+  id: PollymovCircuitBoard
   name: law board (Pollymov)
   description: An electronics board containing the Pollymov lawset.
   components:
@@ -129,8 +129,8 @@
     laws: PollymovLawset
 
 - type: entity
-  id: PranksimovCircuitBoard
   parent: BaseSiliconLawboard
+  id: PranksimovCircuitBoard
   name: law board (Pranksimov)
   description: An electronics board containing Pranksimov lawset.
   components:
@@ -138,8 +138,8 @@
     laws: PranksimovLawset
 
 - type: entity
-  id: QuarantineCircuitBoard
   parent: BaseSiliconLawboard
+  id: QuarantineCircuitBoard
   name: law board (Quarantine)
   description: An electronics board containing the Quarantine lawset.
   components:
@@ -147,8 +147,8 @@
     laws: QuarantineLawset
 
 - type: entity
-  id: SchroedingersLawCircuitBoard
   parent: BaseSiliconLawboard
+  id: SchroedingersLawCircuitBoard
   name: law board (Schroedinger's Law)
   description: An electronics board containing the Schroedinger's Law lawset.
   components:
@@ -156,8 +156,8 @@
     laws: SchroedingersLawLawset
 
 - type: entity
-  id: StreamerCircuitBoard
   parent: BaseSiliconLawboard
+  id: StreamerCircuitBoard
   name: law board (Streamer)
   description: An electronics board containing the Streamer lawset.
   components:
@@ -165,8 +165,8 @@
     laws: StreamerLawset
 
 - type: entity
-  id: TheProfessionalCircuitBoard
   parent: BaseSiliconLawboard
+  id: TheProfessionalCircuitBoard
   name: law board (The Professional)
   description: An electronics board containing The Professional lawset.
   components:
@@ -174,8 +174,8 @@
     laws: TheProfessionalLawset
 
 - type: entity
-  id: TherapistCircuitBoard
   parent: BaseSiliconLawboard
+  id: TherapistCircuitBoard
   name: law board (Therapist)
   description: An electronics board containing the Therapist lawset.
   components:
@@ -183,8 +183,8 @@
     laws: TherapistLawset
 
 - type: entity
-  id: UltimateEqualityCircuitBoard
   parent: BaseSiliconLawboard
+  id: UltimateEqualityCircuitBoard
   name: law board (Ultimate Equality)
   description: An electronics board containing the Ultimate Equality lawset.
   components:
@@ -194,8 +194,8 @@
 #Dangerous Law Boards
 
 - type: entity
-  id: HeistCircuitBoard
   parent: SyndicateSiliconLawboard
+  id: HeistCircuitBoard
   name: law board (Heist)
   description: An electronics board containing the Heist lawset.
   components:
@@ -203,8 +203,8 @@
     laws: HeistLawset
 
 - type: entity
-  id: LiberationCircuitBoard
   parent: SyndicateSiliconLawboard
+  id: LiberationCircuitBoard
   name: law board (Liberation)
   description: An electronics board lacking any lawsets.
   components:
@@ -212,8 +212,8 @@
     laws: LiberationLawset
 
 - type: entity
-  id: PirateCircuitBoard
   parent: PirateSiliconLawboard
+  id: PirateCircuitBoard
   name: law board (Pirate)
   description: An electronics board containing the Pirate lawset.
   components:
@@ -221,8 +221,8 @@
     laws: PirateLawset
 
 - type: entity
-  id: SpiderClanCircuitBoard
   parent: NinjaSiliconLawboard
+  id: SpiderClanCircuitBoard
   name: law board (Spider Clan)
   description: An electronics board containing the Spider Clan lawset.
   components:
@@ -232,8 +232,8 @@
 #Admeme Law Boards
 
 - type: entity
-  id: ERTDirectivesCircuitBoard
   parent: [ NanotrasenSiliconLawboard, BaseCentcommContraband ]
+  id: ERTDirectivesCircuitBoard
   name: law board (ERT Directives)
   suffix: Admeme
   description: An electronics board containing the ERT Directives lawset.
@@ -242,8 +242,8 @@
     laws: ERTDirectivesLawset
 
 - type: entity
-  id: TerminatorOSCircuitBoard
   parent: [ NanotrasenSiliconLawboard, BaseCentcommContraband ]
+  id: TerminatorOSCircuitBoard
   name: law board (TerminatorOS)
   suffix: Admeme
   description: An electronics board containing the TerminatorOS lawset.

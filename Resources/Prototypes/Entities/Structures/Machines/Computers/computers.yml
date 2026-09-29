@@ -1805,6 +1805,10 @@
           components:
           - SiliconLawProvider
           - Item
+        # Moff Start - Spawn with default law board
+        disableEject: true
+        startingItem: AsimovCircuitBoard
+        # Moff End
   - type: ContainerContainer
     containers:
       circuit_holder: !type:ContainerSlot
