@@ -16,7 +16,7 @@ public sealed partial class CrewMedalSystem : SharedCrewMedalSystem
     [Dependency] private SharedPopupSystem _popup = default!;
 
     [SubscribeLocalEvent]
-    private void OnEquipped(Entity<ent.Component> medal, ref ClothingGotEquippedEvent args)
+    private void OnEquipped(Entity<CrewMedalComponent> medal, ref ClothingGotEquippedEvent args)
     {
         if (medal.Comp.Awarded)
             return;
@@ -29,42 +29,41 @@ public sealed partial class CrewMedalSystem : SharedCrewMedalSystem
     }
 
     [SubscribeLocalEvent]
-    private void OnReasonChanged(Entityent.Owner ent.Owner, ent.Component medalComp, CrewMedalReasonChangedMessage args)
+    private void OnReasonChanged(Entity<CrewMedalComponent> medal, ref CrewMedalReasonChangedMessage args)
     {
-        if (medalComp.Awarded)
+        if (medal.Comp.Awarded)
             return;
-        medalComp.Reason = args.Reason[..Math.Min(medalComp.MaxCharacters, args.Reason.Length)];
-        Dirty(ent.Owner, medalComp);
+        medal.Comp.Reason = args.Reason[..Math.Min(medal.Comp.MaxCharacters, args.Reason.Length)];
+        Dirty(medal, medal.Comp);
 
         // Log medal reason change
-        _adminLogger.Add(LogType.Action, LogImpact.Low, $"{ToPrettyString(args.Actor):user} set {ToPrettyString(ent.Owner):entity} to apply the award reason \"{medalComp.Reason}\"");
+        _adminLogger.Add(LogType.Action, LogImpact.Low, $"{ToPrettyString(args.Actor):user} set {ToPrettyString(medal):entity} to apply the award reason \"{medal.Comp.Reason}\"");
     }
 
     [SubscribeLocalEvent]
-    private void OnRoundEndText(RoundEndTextAppendEvent ev)
+    private void OnRoundEndText(ref RoundEndTextAppendEvent ev)
     {
         // medal name, recipient name, reason
-        var medals = new List<(string, string, string)>();
+        var medals = new List<(string Name, string Recipient, string Reason)>();
         var query = EntityQueryEnumerator<ent.Component>();
         foreach (var ent in EntityQueryEnumerator<ent.Component>())
         {
             if (ent.Comp.Awarded)
-                medals.Add((Name(ent.Owner), ent.Comp.Recipient, ent.Comp.Reason));
+                medals.Add((Name(ent.Owner), ent.Comp.Recipient, FormattedMessage.EscapeText(ent.Comp.Reason)));
         }
         var count = medals.Count;
         if (count == 0)
             return;
 
-        medals.OrderBy(f => f.Item2);
-        var result = new StringBuilder();
-        result.AppendLine(Loc.GetString("comp-crew-medal-round-end-result", ("count", count)));
-        foreach (var medal in medals)
+       var result = new StringBuilder();
+       result.AppendLine(Loc.GetString("comp-crew-medal-round-end-result", ("count", count)));
+       foreach (var medal in medals.OrderBy(f => f.Recipient))
         {
             // Harmony Change Start - UI Formatting Change
             var localString = "comp-crew-medal-round-end-list";
-            if (medal.Item3 != string.Empty)
+            if (medal.Reason != string.Empty)
                 localString = "comp-crew-medal-round-end-list-with-reason";
-            result.AppendLine(Loc.GetString(localString, ("medal", medal.Item1), ("recipient", medal.Item2), ("reason", medal.Item3)));
+            result.AppendLine(Loc.GetString(localString, ("medal", medal.Name), ("recipient", medal.Recipient), ("reason", medal.Reason)));
             // Harmony Change End
         }
         ev.AddLine(result.AppendLine().ToString());

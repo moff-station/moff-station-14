@@ -7,12 +7,6 @@ public sealed partial class CrewMedalSystem : SharedCrewMedalSystem
 {
     [Dependency] private SharedUserInterfaceSystem _uiSystem = default!;
     [SubscribeLocalEvent]
-    public override void Initialize()
-    {
-        [SubscribeLocalEvent]
-        base.Initialize();
-        SubscribeLocalEvent<CrewMedalComponent, AfterAutoHandleStateEvent>(OnCrewMedalAfterState);
-    }
     private void OnCrewMedalAfterState(Entity<CrewMedalComponent> ent, ref AfterAutoHandleStateEvent args)
     {
         if (!_uiSystem.TryGetOpenUi<CrewMedalBoundUserInterface>(ent.Owner, CrewMedalUiKey.Key, out var bui))

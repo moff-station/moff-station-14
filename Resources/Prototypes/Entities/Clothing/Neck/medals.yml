@@ -10,6 +10,17 @@
       - Medal
       - MonkeyWearable
       - WhitelistChameleon
+# Moffstation - Start - Medal Rewards reasons
+  - type: CrewMedal
+  - type: ActivatableUI
+    key: enum.CrewMedalUiKey.Key
+    inHandsOnly: true
+  - type: UserInterface
+    interfaces:
+      enum.CrewMedalUiKey.Key:
+        type: CrewMedalBoundUserInterface
+  # Moffstation - End - Medal Rewards reasons
+
 - type: entity
   parent: ClothingNeckMedalBase
   id: ClothingNeckBronzeheart
@@ -20,17 +31,9 @@
     sprite: Clothing/Neck/Medals/bronzeheart.rsi
   - type: Clothing
     sprite: Clothing/Neck/Medals/bronzeheart.rsi
-  # Moffstation - Start - Examinable Clothing & Medal rewards
+  # Moffstation - Start - Examinable Clothing
   - type: ExtraExaminable
     wornText: clothing-medal-bronzeheart
-  - type: CrewMedal
-  - type: ActivatableUI
-    key: enum.CrewMedalUiKey.Key
-    inHandsOnly: true
-  - type: UserInterface
-    interfaces:
-      enum.CrewMedalUiKey.Key:
-        type: CrewMedalBoundUserInterface
   # Moffstation - End
 
 - type: entity
@@ -45,21 +48,13 @@
     sprite: Clothing/Neck/Medals/gold.rsi
   - type: StealTarget
     stealGroup: ClothingNeckGoldmedal
-  # Moffstation - Start - Examinable Clothing & Medal rewards
+  # Moffstation - Start - Examinable Clothing
   - type: PhysicalComposition
     materialComposition:
       Gold: 10
   - type: ExtraExaminable
     wornText: clothing-medal-crewmanship
-  - type: CrewMedal
-  - type: ActivatableUI
-    key: enum.CrewMedalUiKey.Key
-    inHandsOnly: true
-  - type: UserInterface
-    interfaces:
-      enum.CrewMedalUiKey.Key:
-        type: CrewMedalBoundUserInterface
-# Moffstation - End
+  # Moffstation - End
 
 - type: entity
   parent: ClothingNeckMedalBase
@@ -71,17 +66,9 @@
     sprite: _Moffstation/Clothing/Neck/Medals/cargomedal.rsi # Moffstation - Swapped out medal sprites
   - type: Clothing
     sprite: _Moffstation/Clothing/Neck/Medals/cargomedal.rsi # Moffstation - Swapped out medal sprites
-  # Moffstation - Start - Examinable Clothing & Medal rewards
+  # Moffstation - Start - Examinable Clothing
   - type: ExtraExaminable
     wornText: clothing-medal-cargo
-  - type: CrewMedal
-  - type: ActivatableUI
-    key: enum.CrewMedalUiKey.Key
-    inHandsOnly: true
-  - type: UserInterface
-    interfaces:
-      enum.CrewMedalUiKey.Key:
-        type: CrewMedalBoundUserInterface
   # Moffstation - End
 
 - type: entity
@@ -94,17 +81,9 @@
     sprite: _Moffstation/Clothing/Neck/Medals/engineermedal.rsi # Moffstation - Swapped out medal sprites
   - type: Clothing
     sprite: _Moffstation/Clothing/Neck/Medals/engineermedal.rsi # Moffstation - Swapped out medal sprites
-  # Moffstation - Start - Examinable Clothing & Medal rewards
+  # Moffstation - Start - Examinable Clothing
   - type: ExtraExaminable
     wornText: clothing-medal-engineer
-  - type: CrewMedal
-  - type: ActivatableUI
-    key: enum.CrewMedalUiKey.Key
-    inHandsOnly: true
-  - type: UserInterface
-    interfaces:
-      enum.CrewMedalUiKey.Key:
-        type: CrewMedalBoundUserInterface
   # Moffstation - End
 
 - type: entity
@@ -117,17 +96,9 @@
     sprite: _Moffstation/Clothing/Neck/Medals/medicalmedal.rsi # Moffstation - Swapped out medal sprites
   - type: Clothing
     sprite: _Moffstation/Clothing/Neck/Medals/medicalmedal.rsi # Moffstation - Swapped out medal sprites
-  # Moffstation - Start - Examinable Clothing & Medal rewards
+  # Moffstation - Start - Examinable Clothing
   - type: ExtraExaminable
     wornText: clothing-medal-medical
-  - type: CrewMedal
-  - type: ActivatableUI
-    key: enum.CrewMedalUiKey.Key
-    inHandsOnly: true
-  - type: UserInterface
-    interfaces:
-      enum.CrewMedalUiKey.Key:
-        type: CrewMedalBoundUserInterface
   # Moffstation - End
 
 - type: entity
@@ -140,17 +111,9 @@
     sprite: _Moffstation/Clothing/Neck/Medals/sciencemedal.rsi # Moffstation - Swapped out medal sprites
   - type: Clothing
     sprite: _Moffstation/Clothing/Neck/Medals/sciencemedal.rsi # Moffstation - Swapped out medal sprites
-  # Moffstation - Start - Examinable Clothing & Medal rewards
+  # Moffstation - Start - Examinable Clothing
   - type: ExtraExaminable
     wornText: clothing-medal-science
-  - type: CrewMedal
-  - type: ActivatableUI
-    key: enum.CrewMedalUiKey.Key
-    inHandsOnly: true
-  - type: UserInterface
-    interfaces:
-      enum.CrewMedalUiKey.Key:
-        type: CrewMedalBoundUserInterface
   # Moffstation - End
 
 - type: entity
@@ -163,17 +126,9 @@
     sprite: _Moffstation/Clothing/Neck/Medals/securitymedal.rsi # Moffstation - Swapped out medal sprites
   - type: Clothing
     sprite: _Moffstation/Clothing/Neck/Medals/securitymedal.rsi # Moffstation - Swapped out medal sprites
-  # Moffstation - Start - Examinable Clothing & Medal rewards
+  # Moffstation - Start - Examinable Clothing
   - type: ExtraExaminable
     wornText: clothing-medal-security
-  - type: CrewMedal
-  - type: ActivatableUI
-    key: enum.CrewMedalUiKey.Key
-    inHandsOnly: true
-  - type: UserInterface
-    interfaces:
-      enum.CrewMedalUiKey.Key:
-        type: CrewMedalBoundUserInterface
   # Moffstation - End
 
 - type: entity
@@ -188,18 +143,10 @@
     sprite: _Moffstation/Clothing/Neck/Medals/clownmedal.rsi # Moffstation - Swapped out medal sprites
   - type: StealTarget
     stealGroup: ClothingNeckClownmedal
-  # Moffstation - Start - Examinable Clothing & Medal rewards
+  # Moffstation - Start - Examinable Clothing
   - type: PhysicalComposition
     materialComposition:
       Bananium: 10
   - type: ExtraExaminable
     wornText: clothing-medal-clown
-  - type: CrewMedal
-  - type: ActivatableUI
-    key: enum.CrewMedalUiKey.Key
-    inHandsOnly: true
-  - type: UserInterface
-    interfaces:
-      enum.CrewMedalUiKey.Key:
-        type: CrewMedalBoundUserInterface
   # Moffstation - End
