@@ -61,7 +61,6 @@ public sealed partial class RoundEndSystem
             }
         }
 
-        // Restarting deletes every entity, so it can't happen mid-query.
         if (restart)
             AfterEndRoundRestart();
     }
