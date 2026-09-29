@@ -39,6 +39,10 @@
 # Standard Law Boards
 
 - type: entity
+  parent: ArtistCircuitBoard
+  id: UpstreamArtistCircuitBoard
+
+- type: entity
   parent: BaseSiliconLawboard
   id: BureaucratCircuitBoard
   name: law board (Bureaucrat)
@@ -75,6 +79,18 @@
     laws: CluelessLawset
 
 - type: entity
+  parent: CommandmentCircuitBoard
+  id: UpstreamCommandmentCircuitBoard
+
+- type: entity
+  parent: CorporateCircuitBoard
+  id: UpstreamCorporateCircuitBoard
+
+- type: entity
+  parent: AsimovCircuitBoard
+  id: UpstreamCrewsimovCircuitBoard
+
+- type: entity
   parent: BaseSiliconLawboard
   id: DogmovCircuitBoard
   name: law board (Dogmov)
@@ -93,6 +109,10 @@
     laws: EmployeeLawset
 
 - type: entity
+  parent: GameMasterCircuitBoard
+  id: UpstreamGameMasterCircuitBoard
+
+- type: entity
   parent: BaseSiliconLawboard
   id: KnowItAllCircuitBoard
   name: law board (Know It All)
@@ -102,6 +122,10 @@
     laws: KnowItAllLawset
 
 - type: entity
+  parent: LiveLetLiveCircuitBoard
+  id: UpstreamLiveLetLiveCircuitBoard
+
+- type: entity
   parent: BaseSiliconLawboard
   id: MarketablePlushieCircuitBoard
   name: law board (Marketable Plushie)
@@ -109,6 +133,18 @@
   components:
   - type: SiliconLawProvider
     laws: MarketablePlushieLawset
+
+- type: entity
+  parent: NTDefaultCircuitBoard
+  id: UpstreamNTDefaultCircuitBoard
+
+- type: entity
+  parent: NutimovCircuitBoard
+  id: UpstreamNutimovCircuitBoard
+
+- type: entity
+  parent: PaladinCircuitBoard
+  id: UpstreamPaladinCircuitBoard
 
 - type: entity
   parent: BaseSiliconLawboard
@@ -147,6 +183,10 @@
     laws: QuarantineLawset
 
 - type: entity
+  parent: RobocopCircuitBoard
+  id: UpstreamRobocopCircuitBoard
+
+- type: entity
   parent: BaseSiliconLawboard
   id: SchroedingersLawCircuitBoard
   name: law board (Schroedinger's Law)
@@ -154,6 +194,10 @@
   components:
   - type: SiliconLawProvider
     laws: SchroedingersLawLawset
+
+- type: entity
+  parent: StationEfficiencyCircuitBoard
+  id: UpstreamStationEfficiencyCircuitBoard
 
 - type: entity
   parent: BaseSiliconLawboard

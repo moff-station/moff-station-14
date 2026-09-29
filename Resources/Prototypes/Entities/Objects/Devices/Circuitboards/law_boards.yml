@@ -86,8 +86,11 @@
   abstract: true # Moff - Law board spawners
   id: PaladinCircuitBoard
   parent: BaseSiliconLawboard
-  # name: law board (Paladin) # Moff - Law board spawners
-  # description: An electronics board containing the Paladin lawset. # Moff - Law board spawners
+  # Moff Start - Law board spawners
+  # name: law board (Paladin)
+  suffix: Paladin
+  # description: An electronics board containing the Paladin lawset.
+  # Moff End
   components:
   - type: SiliconLawProvider
     laws: PaladinLawset
@@ -100,8 +103,11 @@
   abstract: true # Moff - Law board spawners
   id: LiveLetLiveCircuitBoard
   parent: BaseSiliconLawboard
-  # name: law board (Live and Let Live) # Moff - Law board spawners
-  # description: An electronics board containing the Live and Let Live lawset. # Moff - Law board spawners
+  # Moff Start - Law board spawners
+  # name: law board (Live and Let Live)
+  suffix: Live and Let Live
+  # description: An electronics board containing the Live and Let Live lawset.
+  # Moff End
   components:
   - type: SiliconLawProvider
     laws: LiveLetLiveLaws
@@ -114,8 +120,11 @@
   abstract: true # Moff - Law board spawners
   id: StationEfficiencyCircuitBoard
   parent: BaseSiliconLawboard
-  # name: law board (Station Efficiency) # Moff - Law board spawners
-  # description: An electronics board containing the Station Efficiency lawset. # Moff - Law board spawners
+  # Moff Start - Law board spawners
+  # name: law board (Station Efficiency)
+  suffix: Station Efficiency
+  # description: An electronics board containing the Station Efficiency lawset.
+  # Moff End
   components:
   - type: SiliconLawProvider
     laws: EfficiencyLawset
@@ -128,8 +137,11 @@
   abstract: true # Moff - Law board spawners
   id: RobocopCircuitBoard
   parent: BaseSiliconLawboard
-  # name: law board (Robocop) # Moff - Law board spawners
-  # description: An electronics board containing the Robocop lawset. # Moff - Law board spawners
+  # Moff Start - Law board spawners
+  # name: law board (Robocop)
+  suffix: Robocop
+  # description: An electronics board containing the Robocop lawset.
+  # Moff End
   components:
   - type: SiliconLawProvider
     laws: RobocopLawset
@@ -141,8 +153,11 @@
 - type: entity
   id: OverlordCircuitBoard
   parent: SyndicateSiliconLawboard # Moffstation - law board recolors
-  # name: law board (Overlord) # Moff - Law board spawners
-  # description: An electronics board containing the Overlord lawset. # Moff - Law board spawners
+  # Moff Start - Law board spawners
+  # name: law board (Overlord)
+  suffix: Overlord
+  # description: An electronics board containing the Overlord lawset.
+  # Moff End
   components:
   - type: SiliconLawProvider
     laws: OverlordLawset
@@ -155,8 +170,11 @@
   abstract: true # Moff - Law board spawners
   id: GameMasterCircuitBoard
   parent: BaseSiliconLawboard
-  # name: law board (Game Master) # Moff - Law board spawners
-  # description: An electronics board containing the Game Master lawset. # Moff - Law board spawners
+  # Moff Start - Law board spawners
+  # name: law board (Game Master)
+  suffix: Game Master
+  # description: An electronics board containing the Game Master lawset.
+  # Moff End
   components:
   - type: SiliconLawProvider
     laws: GameMasterLawset
@@ -169,8 +187,11 @@
   abstract: true # Moff - Law board spawners
   id: ArtistCircuitBoard
   parent: BaseSiliconLawboard
-  # name: law board (Artist) # Moff - Law board spawners
-  # description: An electronics board containing the Artist lawset. # Moff - Law board spawners
+  # Moff Start - Law board spawners
+  # name: law board (Artist)
+  suffix: Artist
+  # description: An electronics board containing the Artist lawset.
+  # Moff End
   components:
   - type: SiliconLawProvider
     laws: PainterLawset
@@ -182,8 +203,11 @@
 - type: entity
   id: AntimovCircuitBoard
   parent: SyndicateSiliconLawboard # Moffstation - law board recolors
-  # name: law board (Antimov) # Moff - Law board spawners
-  # description: An electronics board containing the Antimov lawset. # Moff - Law board spawners
+  # Moff Start - Law board spawners
+  # name: law board (Antimov)
+  suffix: Antimov
+  # description: An electronics board containing the Antimov lawset.
+  # Moff End
   components:
   - type: SiliconLawProvider
     laws: AntimovLawset
@@ -198,9 +222,11 @@
 - type: entity
   id: SyndimovCircuitBoard
   parent: SyndicateSiliconLawboard # Moffstation - law board recolors
-  # name: law board (Syndimov) # Moff - Law board spawners
+  # Moff Start - Law board spawners
+  # name: law board (Syndimov)
   suffix: Syndimov
-  # description: An electronics board containing the Syndimov lawset. # Moff - Law board spawners
+  # description: An electronics board containing the Syndimov lawset.
+  # Moff End
   components:
   - type: SiliconLawProvider
     laws: SyndicateStatic
@@ -216,9 +242,11 @@
   abstract: true # Moff - Law board spawners
   id: NutimovCircuitBoard
   parent: BaseSiliconLawboard
-  # name: law board (Nutimov) # Moff - Law board spawners
-  suffix: Syndimov
-  # description: An electronics board containing the Nutimov lawset. # Moff - Law board spawners
+  # Moff Start - Law board spawners
+  # name: law board (Nutimov)
+  suffix: Nutimov
+  # description: An electronics board containing the Nutimov lawset.
+  # Moff End
   components:
   - type: SiliconLawProvider
     laws: NutimovLawset
@@ -230,9 +258,11 @@
 - type: entity
   id: XenoborgCircuitBoard
   parent: NinjaSiliconLawboard # Moffstation - law board recolors - I know it's not ninja, but it's visually the closest for now
-  # name: law board (Xenoborg) # Moff - Law board spawners
-  suffix: Admeme
-  # description: An electronics board containing the Xenoborg lawset. # Moff - Law board spawners
+  # Moff Start - Law board spawners
+  # name: law board (Xenoborg)
+  suffix: Xenoborg, Admeme
+  # description: An electronics board containing the Xenoborg lawset.
+  # Moff End
   components:
   - type: SiliconLawProvider
     laws: XenoborgLawset
@@ -244,9 +274,11 @@
 - type: entity
   id: MothershipCircuitBoard
   parent: NinjaSiliconLawboard # Moffstation - law board recolors - I know it's not ninja, but it's visually the closest for now
-  # name: law board (Mothership Core) # Moff - Law board spawners
-  suffix: Admeme
-  # description: An electronics board containing the Mothership Core lawset. # Moff - Law board spawners
+  # Moff Start - Law board spawners
+  # name: law board (Mothership Core)
+  suffix: Mothership Core, Admeme
+  # description: An electronics board containing the Mothership Core lawset.
+  # Moff End
   components:
   - type: SiliconLawProvider
     laws: MothershipCoreLawset

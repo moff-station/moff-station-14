@@ -17,58 +17,58 @@
 
 - type: latheRecipe
   parent: [ BaseAILawBoardRecipe, BaseAILawBoardRecipeCategory ]
-  id: GameMasterCircuitBoard
-  result: GameMasterCircuitBoard
+  id: UpstreamGameMasterCircuitBoard
+  result: UpstreamGameMasterCircuitBoard
 
 - type: latheRecipe
   parent: [ BaseAILawBoardRecipe, BaseAILawBoardRecipeCategory ]
-  id: AsimovCircuitBoard
-  result: AsimovCircuitBoard
+  id: UpstreamCrewsimovCircuitBoard
+  result: UpstreamCrewsimovCircuitBoard
 
 - type: latheRecipe
   parent: [ BaseAILawBoardRecipe, BaseAILawBoardRecipeCategory ]
-  id: CorporateCircuitBoard
-  result: CorporateCircuitBoard
+  id: UpstreamCorporateCircuitBoard
+  result: UpstreamCorporateCircuitBoard
 
 - type: latheRecipe
   parent: [ BaseAILawBoardRecipe, BaseAILawBoardRecipeCategory ]
-  id: ArtistCircuitBoard
-  result: ArtistCircuitBoard
+  id: UpstreamArtistCircuitBoard
+  result: UpstreamArtistCircuitBoard
 
 - type: latheRecipe
   parent: [ BaseAILawBoardRecipe, BaseAILawBoardRecipeCategory ]
-  id: NutimovCircuitBoard
-  result: NutimovCircuitBoard
+  id: UpstreamNutimovCircuitBoard
+  result: UpstreamNutimovCircuitBoard
 
 - type: latheRecipe
   parent: [ BaseAILawBoardRecipe, BaseAILawBoardRecipeCategory ]
-  id: NTDefaultCircuitBoard
-  result: NTDefaultCircuitBoard
+  id: UpstreamNTDefaultCircuitBoard
+  result: UpstreamNTDefaultCircuitBoard
 
 - type: latheRecipe
   parent: [ BaseAILawBoardRecipe, BaseAILawBoardRecipeCategory ]
-  id: LiveLetLiveCircuitBoard
-  result: LiveLetLiveCircuitBoard
+  id: UpstreamLiveLetLiveCircuitBoard
+  result: UpstreamLiveLetLiveCircuitBoard
 
 - type: latheRecipe
   parent: [ BaseAILawBoardRecipe, BaseAILawBoardRecipeCategory ]
-  id: CommandmentCircuitBoard
-  result: CommandmentCircuitBoard
+  id: UpstreamCommandmentCircuitBoard
+  result: UpstreamCommandmentCircuitBoard
 
 - type: latheRecipe
   parent: [ BaseAILawBoardRecipe, BaseAILawBoardRecipeCategory ]
-  id: StationEfficiencyCircuitBoard
-  result: StationEfficiencyCircuitBoard
+  id: UpstreamStationEfficiencyCircuitBoard
+  result: UpstreamStationEfficiencyCircuitBoard
 
 - type: latheRecipe
   parent: [ BaseAILawBoardRecipe, BaseAILawBoardRecipeCategory ]
-  id: RobocopCircuitBoard
-  result: RobocopCircuitBoard
+  id: UpstreamRobocopCircuitBoard
+  result: UpstreamRobocopCircuitBoard
 
 - type: latheRecipe
   parent: [ BaseAILawBoardRecipe, BaseAILawBoardRecipeCategory ]
-  id: PaladinCircuitBoard
-  result: PaladinCircuitBoard
+  id: UpstreamPaladinCircuitBoard
+  result: UpstreamPaladinCircuitBoard
 
 # Upstream Dangerous AI Law Boards
 
