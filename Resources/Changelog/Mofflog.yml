@@ -8155,6 +8155,13 @@ Entries:
   url: https://github.com/moff-station/moff-station-14/pull/1884
 - author: Centronias
   changes:
+  - message: Added Iris "Monster" Foundling's personal item.
+    type: add
+  id: 1885
+  time: '2026-09-28T18:56:34.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1885
+- author: Centronias
+  changes:
   - message: Scurrets of all varieties can now emote, e.g. using "@".
     type: fix
   id: 1886
@@ -8182,6 +8189,16 @@ Entries:
   id: 1906
   time: '2026-09-14T19:18:50.000'
   url: https://github.com/moff-station/moff-station-14/pull/1906
+- author: Centronias
+  changes:
+  - message: The AAC tablet has been completely reorganized based on user feedback.
+    type: tweak
+  - message: The AAC tablet's search results will now indicate where in the tablet
+      a given search result is found.
+    type: add
+  id: 1914
+  time: '2026-09-28T02:43:18.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1914
 - author: Centronias
   changes:
   - message: Fix various in-hand sprite errors with folders, papers, stamps, and more.
@@ -8274,5 +8291,55 @@ Entries:
   id: 1951
   time: '2026-09-22T23:50:13.000'
   url: https://github.com/moff-station/moff-station-14/pull/1951
+- author: Rachel
+  changes:
+  - message: Thief communicator kit now provides a binary key.
+    type: tweak
+  - message: Thief breacher kit now provides a mining drill, and its meson goggles
+      have been replaced with actual welding protection.
+    type: tweak
+  id: 1954
+  time: '2026-09-28T18:02:50.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1954
+- author: Lillian Industries
+  changes:
+  - message: Moffstation species now behave normally in regards to temperature changes.
+    type: fix
+  - message: Avali benefit from a tiny reduction to cold slowdown.
+    type: tweak
+  id: 1958
+  time: '2026-09-27T23:14:19.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1958
+- author: Nyxilath
+  changes:
+  - message: Nar'sian hell portals now only spawn once per shift, at most.
+    type: tweak
+  id: 1960
+  time: '2026-09-25T01:57:06.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1960
+- author: Nyxilath
+  changes:
+  - message: Moproaches now spawn in the normal mothroach vent event.
+    type: tweak
+  - message: The Moproach migration vent event has been removed.
+    type: remove
+  id: 1961
+  time: '2026-09-25T01:36:38.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1961
+- author: Failed5
+  changes:
+  - message: Changed Gigs figurine to have a big tail / general resprite.
+    type: tweak
+  id: 1963
+  time: '2026-09-29T00:28:58.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1963
+- author: Nyxilath
+  changes:
+  - message: greater depth artifact nodes now instantly activate on successful trigger
+      again.
+    type: fix
+  id: 1965
+  time: '2026-09-29T11:26:56.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1965
 Name: Mofflog
 Order: -2
