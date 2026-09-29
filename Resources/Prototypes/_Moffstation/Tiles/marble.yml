@@ -7,7 +7,7 @@
   footstepSounds:
     collection: FootstepTile
   friction: 0.8
-  itemDrop: FloorTileItemMoffPlasmaMarble
+  itemDrop: MoffFloorTileItemPlasmaMarble
 
 - type: tile
   parent: BaseStationTile
@@ -18,5 +18,4 @@
   footstepSounds:
     collection: FootstepTile
   friction: 0.8
-  itemDrop: FloorTileItemMoffUraniumMarble
-
+  itemDrop: MoffFloorTileItemUraniumMarble
