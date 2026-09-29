@@ -1,12 +1,14 @@
 ﻿using System.Linq;
 using Content.Server._Moffstation.Preferences;
 using Content.Server._Moffstation.Station.Systems;
+using Content.Server.Players.PlayTimeTracking;
 using Content.Server.Station.Events;
 using Content.Shared._Moffstation.Extensions;
 using Content.Shared.CCVar;
 using Content.Shared.Preferences;
 using Content.Shared.Roles;
 using Robust.Shared.Network;
+using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Utility;
 
@@ -16,6 +18,8 @@ namespace Content.Server.Station.Systems;
 public sealed partial class StationJobsSystem
 {
     [Dependency] private MoffCharacterSelectionManager _moffCharacterSelection = default!;
+    [Dependency] private ISharedPlayerManager _playerMan = default!;
+    [Dependency] private PlayTimeTrackingSystem _playTimeTracking = default!;
     [Dependency] private SharedRoleSystem _role = default!;
 
     /// <summary>
@@ -214,24 +218,15 @@ public sealed partial class StationJobsSystem
         bool IsCharacterAllowedJob(
             (NetUserId User, HumanoidCharacterProfile Character, ProtoId<JobPrototype> Job) playerCharacterAndJob)
         {
-            if (!ProtoMan.Resolve(playerCharacterAndJob.Job, out var job))
+            if (!_playerMan.HasPlayerData(playerCharacterAndJob.User))
+            {
+                this.AssertOrLogError($"Failed to find session for player with id={playerCharacterAndJob.User}");
                 return false;
+            }
 
-            if (_role.GetRoleRequirements(job) is not { } reqs)
-                return true;
-
-            // Make a copy of the set (it gives us the one that the proto owns) and remove time requirements as those
-            // are checked elsewhere.
-            reqs = [.. reqs];
-            reqs.RemoveWhere(it => it is DepartmentTimeRequirement or RoleTimeRequirement);
-
-            return reqs.All(req => req.Check(
-                EntityManager,
-                ProtoMan,
-                playerCharacterAndJob.Character,
-                new Dictionary<string, TimeSpan>(),
-                out _
-            ));
+            return _playTimeTracking.IsAllowed(_playerMan.GetSessionById(playerCharacterAndJob.User),
+                playerCharacterAndJob.Job,
+                playerCharacterAndJob.Character);
         }
 
         bool IsCandidateForJob(

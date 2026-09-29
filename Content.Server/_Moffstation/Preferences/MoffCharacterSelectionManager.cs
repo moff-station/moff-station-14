@@ -49,11 +49,10 @@ public sealed partial class MoffCharacterSelectionManager : IPostInjectInit
                 continue;
 
             HashSet<HumanoidCharacterProfile> userProfiles = [];
-            var enabledSlots = GetState(user).EnabledSlots;
-            foreach (var (idx, character) in preferences.Characters)
+            var state = GetState(user);
+            foreach (var (slot, character) in preferences.Characters)
             {
-                // Slots absent from `enabledSlots` are treated as enabled.
-                if (enabledSlots.GetValueOrDefault(idx, true))
+                if (state.IsSlotEnabled(slot))
                     userProfiles.Add(character);
             }
 
