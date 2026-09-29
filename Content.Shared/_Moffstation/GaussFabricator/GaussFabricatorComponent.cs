@@ -1,9 +1,10 @@
 using Content.Shared.Destructible.Thresholds;
 using Robust.Shared.GameStates;
+using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom;
 
 namespace Content.Shared._Moffstation.GaussFabricator;
 
-[RegisterComponent, NetworkedComponent, AutoGenerateComponentState(true)]
+[RegisterComponent, NetworkedComponent, AutoGenerateComponentState(true), AutoGenerateComponentPause]
 [Access(typeof(SharedGaussFabricatorSystem))]
 public sealed partial class GaussFabricatorComponent : Component
 {
@@ -35,7 +36,7 @@ public sealed partial class GaussFabricatorComponent : Component
     public float MaxDrawRate = 250000f;
 
     /// <summary>
-    /// Atmos temperature where the reading is considered bad, in kelvin.
+    /// Atmos temperature where the reading is acceptable, in kelvin. Outside it is bad.
     /// </summary>
     [DataField]
     public MinMax TemperatureAcceptable = new(20, 200);
@@ -47,7 +48,7 @@ public sealed partial class GaussFabricatorComponent : Component
     public MinMax TemperatureOptimal = new(60, 130);
 
     /// <summary>
-    /// Atmos pressure where the reading counts as bad, in kPa.
+    /// Atmos pressure where the reading is acceptable, in kPa. Outside it is bad.
     /// </summary>
     [DataField]
     public MinMax PressureAcceptable = new(20, 300);
@@ -75,4 +76,10 @@ public sealed partial class GaussFabricatorComponent : Component
     /// </summary>
     [DataField]
     public float OptimalMultiplier = 1.5f;
+
+    [DataField]
+    public TimeSpan UiUpdateInterval = TimeSpan.FromSeconds(0.5);
+
+    [DataField(customTypeSerializer: typeof(TimeOffsetSerializer)), AutoPausedField]
+    public TimeSpan NextUiUpdate;
 }

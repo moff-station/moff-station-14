@@ -1,8 +1,8 @@
 using System.Numerics;
 using Content.Shared.Destructible.Thresholds;
 using Robust.Client.Graphics;
-using Robust.Client.ResourceManagement;
 using Robust.Client.UserInterface;
+using Robust.Client.UserInterface.Controls;
 using Robust.Shared.Timing;
 
 namespace Content.Client._Moffstation.Controls;
@@ -12,8 +12,6 @@ namespace Content.Client._Moffstation.Controls;
 /// </summary>
 public sealed partial class OptimalRangeBar : Control
 {
-    [Dependency] private IResourceCache _resourceCache = default!;
-
     private const float DisplayPadding = 0.2f;
 
     private const float LabelMargin = 2f;
@@ -25,29 +23,30 @@ public sealed partial class OptimalRangeBar : Control
     private readonly Color _badColor = Color.FromHex("#e03050");
     private readonly Color _currentColor = Color.FromHex("#4499ff");
 
-    private readonly Font _font;
-
     private MinMax _acceptable;
     private MinMax _optimal;
     private float? _targetCurrent;
     private float? _displayedCurrent;
 
+    private string _optimalMaxText = string.Empty;
+    private string _optimalMinText = string.Empty;
+    private string _currentText = string.Empty;
+    private float? _currentTextValue;
+
     public string ValueFormat { get; set; } = "F0";
 
     public string NoDataText { get; set; } = string.Empty;
 
-    public OptimalRangeBar()
-    {
-        IoCManager.InjectDependencies(this);
-
-        var fontResource = _resourceCache.GetResource<FontResource>("/EngineFonts/NotoSans/NotoSansMono-Regular.ttf");
-        _font = new VectorFont(fontResource, 10);
-    }
+    private Font ActiveFont => TryGetStyleProperty<Font>(Label.StylePropertyFont, out var font)
+        ? font
+        : UserInterfaceManager.ThemeDefaults.LabelFont;
 
     public void SetRanges(MinMax acceptable, MinMax optimal)
     {
         _acceptable = acceptable;
         _optimal = optimal;
+        _optimalMaxText = optimal.Max.ToString(ValueFormat);
+        _optimalMinText = optimal.Min.ToString(ValueFormat);
     }
 
     public void SetCurrent(float? current)
@@ -96,8 +95,8 @@ public sealed partial class OptimalRangeBar : Control
         DrawThreshold(handle, maxOptimalY, _optimalColor);
         DrawThreshold(handle, minOptimalY, _optimalColor);
 
-        DrawLabel(handle, _optimal.Max.ToString(ValueFormat), maxOptimalY, _optimalColor, above: true, right: false);
-        DrawLabel(handle, _optimal.Min.ToString(ValueFormat), minOptimalY, _optimalColor, above: false, right: false);
+        DrawLabel(handle, _optimalMaxText, maxOptimalY, _optimalColor, above: true, right: false);
+        DrawLabel(handle, _optimalMinText, minOptimalY, _optimalColor, above: false, right: false);
 
         if (_displayedCurrent is not { } current)
         {
@@ -108,7 +107,13 @@ public sealed partial class OptimalRangeBar : Control
         var currentY = ValueToY(current, displayMin, displayMax);
         DrawThreshold(handle, currentY, _currentColor);
 
-        DrawLabel(handle, current.ToString(ValueFormat), currentY, _currentColor, above: currentY > PixelHeight / 2f, right: true);
+        if (_currentTextValue != current)
+        {
+            _currentTextValue = current;
+            _currentText = current.ToString(ValueFormat);
+        }
+
+        DrawLabel(handle, _currentText, currentY, _currentColor, above: currentY > PixelHeight / 2f, right: true);
     }
 
     private void DrawThreshold(DrawingHandleScreen handle, float y, Color color)
@@ -120,13 +125,14 @@ public sealed partial class OptimalRangeBar : Control
 
     private void DrawLabel(DrawingHandleScreen handle, string text, float y, Color color, bool above, bool right)
     {
-        var dimensions = handle.GetDimensions(_font, text, UIScale);
+        var font = ActiveFont;
+        var dimensions = handle.GetDimensions(font, text, UIScale);
         var inset = LabelMargin * UIScale;
         var x = right ? PixelWidth - dimensions.X - inset : inset;
         var top = above ? y - dimensions.Y - LabelMargin * UIScale : y + LabelMargin * UIScale;
 
         handle.DrawString(
-            _font,
+            font,
             new Vector2(x, Math.Clamp(top, 0f, MathF.Max(0f, PixelHeight - dimensions.Y))),
             text,
             UIScale,

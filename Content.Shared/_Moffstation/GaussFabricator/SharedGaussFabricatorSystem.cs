@@ -1,5 +1,4 @@
 using Content.Shared.Administration.Logs;
-using Content.Shared.Audio;
 using Content.Shared.Database;
 using Content.Shared.Examine;
 
@@ -8,9 +7,19 @@ namespace Content.Shared._Moffstation.GaussFabricator;
 public abstract partial class SharedGaussFabricatorSystem : EntitySystem
 {
     [Dependency] private ISharedAdminLogManager _adminLog = default!;
-    [Dependency] private SharedAmbientSoundSystem _ambient = default!;
 
-    [SubscribeLocalEvent]
+    public override void Initialize()
+    {
+        base.Initialize();
+
+        Subs.BuiEvents<GaussFabricatorComponent>(GaussFabricatorUiKey.Key,
+            subs =>
+            {
+                subs.Event<GaussFabricatorAdjustDrawRateMessage>(OnAdjustDrawRate);
+                subs.Event<GaussFabricatorToggleMessage>(OnToggle);
+            });
+    }
+
     private void OnAdjustDrawRate(Entity<GaussFabricatorComponent> ent, ref GaussFabricatorAdjustDrawRateMessage args)
     {
         if (!float.IsFinite(args.Delta))
@@ -24,7 +33,6 @@ public abstract partial class SharedGaussFabricatorSystem : EntitySystem
         UpdateUi(ent);
     }
 
-    [SubscribeLocalEvent]
     private void OnToggle(Entity<GaussFabricatorComponent> ent, ref GaussFabricatorToggleMessage args)
     {
         if (ent.Comp.Enabled == args.On)
@@ -33,7 +41,6 @@ public abstract partial class SharedGaussFabricatorSystem : EntitySystem
         ent.Comp.Enabled = args.On;
         Dirty(ent);
 
-        _ambient.SetAmbience(ent.Owner, args.On);
         _adminLog.Add(LogType.Action, $"{ToPrettyString(args.Actor):actor} toggled {ToPrettyString(ent):target} {(args.On ? "on" : "off")}");
 
         UpdateUi(ent);

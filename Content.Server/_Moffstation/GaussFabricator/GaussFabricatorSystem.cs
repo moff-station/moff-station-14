@@ -2,18 +2,23 @@ using Content.Server.Atmos.EntitySystems;
 using Content.Server.Power.Components;
 using Content.Server.Power.EntitySystems;
 using Content.Shared._Moffstation.GaussFabricator;
+using Content.Shared.Atmos;
+using Content.Shared.Audio;
 using Content.Shared.Destructible.Thresholds;
 using Content.Shared.Examine;
 using Content.Shared.Power.Components;
 using Content.Shared.Power.EntitySystems;
 using Content.Shared.UserInterface;
 using Robust.Server.GameObjects;
+using Robust.Shared.Timing;
 
 namespace Content.Server._Moffstation.GaussFabricator;
 
 public sealed partial class GaussFabricatorSystem : SharedGaussFabricatorSystem
 {
+    [Dependency] private IGameTiming _timing = default!;
     [Dependency] private AtmosphereSystem _atmosphere = default!;
+    [Dependency] private SharedAmbientSoundSystem _ambient = default!;
     [Dependency] private SharedBatterySystem _battery = default!;
     [Dependency] private UserInterfaceSystem _uiSystem = default!;
 
@@ -33,7 +38,6 @@ public sealed partial class GaussFabricatorSystem : SharedGaussFabricatorSystem
         UpdateUi(ent);
     }
 
-    // I imagine people will have big arrays of these things in cooling boxes. Maybe this is QoL slop but idk
     protected override void ExamineAtmosphere(Entity<GaussFabricatorComponent> ent, ExaminedEvent args)
     {
         var mixture = _atmosphere.GetContainingMixture(ent.Owner);
@@ -59,12 +63,17 @@ public sealed partial class GaussFabricatorSystem : SharedGaussFabricatorSystem
                 GetBandMultiplier(ent.Comp1, ent.Comp1.TemperatureAcceptable, ent.Comp1.TemperatureOptimal, mixture?.Temperature)
                 * GetBandMultiplier(ent.Comp1, ent.Comp1.PressureAcceptable, ent.Comp1.PressureOptimal, mixture?.Pressure);
 
-            UpdateUi((ent.Owner, ent.Comp1));
+            var received = ent.Comp2.CurrentReceiving;
+            _ambient.SetAmbience(ent.Owner, ent.Comp2.Enabled && received > 0f);
+
+            if (_timing.CurTime >= ent.Comp1.NextUiUpdate)
+            {
+                ent.Comp1.NextUiUpdate = _timing.CurTime + ent.Comp1.UiUpdateInterval;
+                UpdateUi((ent.Owner, ent.Comp1, ent.Comp2), mixture);
+            }
 
             if (!ent.Comp2.Enabled)
                 continue;
-
-            var received = ent.Comp2.CurrentReceiving;
 
             if (received > 0f && mixture != null)
                 _atmosphere.AddHeat(mixture, received * ent.Comp1.HeatMultiplier * frameTime);
@@ -100,23 +109,26 @@ public sealed partial class GaussFabricatorSystem : SharedGaussFabricatorSystem
 
     protected override void UpdateUi(Entity<GaussFabricatorComponent> ent)
     {
+        if (_powerBatteryQuery.TryComp(ent, out var pnb))
+            UpdateUi((ent.Owner, ent.Comp, pnb), _atmosphere.GetContainingMixture(ent.Owner));
+    }
+
+    private void UpdateUi(Entity<GaussFabricatorComponent, PowerNetworkBatteryComponent> ent, GasMixture? mixture)
+    {
         if (!_uiSystem.IsUiOpen(ent.Owner, GaussFabricatorUiKey.Key)
-            || !_powerBatteryQuery.TryComp(ent, out var pnb)
             || !_batteryQuery.TryComp(ent, out var battery))
             return;
 
-        var mixture = _atmosphere.GetContainingMixture(ent.Owner);
-
         // One thingy is spawned per full battery.
         var outputRate = battery.MaxCharge > 0f
-            ? pnb.CurrentReceiving * pnb.Efficiency * 60f / battery.MaxCharge
+            ? ent.Comp2.CurrentReceiving * ent.Comp2.Efficiency * 60f / battery.MaxCharge
             : 0f;
 
         _uiSystem.SetUiState(
             ent.Owner,
             GaussFabricatorUiKey.Key,
             new GaussFabricatorBuiState(
-                pnb.CurrentReceiving,
+                ent.Comp2.CurrentReceiving,
                 _battery.GetChargeLevel((ent.Owner, battery)),
                 outputRate,
                 mixture?.Temperature,
