@@ -22,6 +22,7 @@ public sealed partial class GaussFabricatorSystem : SharedGaussFabricatorSystem
     [Dependency] private SharedAmbientSoundSystem _ambient = default!;
     [Dependency] private SharedAppearanceSystem _appearance = default!;
     [Dependency] private SharedBatterySystem _battery = default!;
+    [Dependency] private SharedPointLightSystem _lights = default!;
     [Dependency] private UserInterfaceSystem _uiSystem = default!;
 
     [Dependency] private EntityQuery<BatteryComponent> _batteryQuery = default!;
@@ -69,6 +70,7 @@ public sealed partial class GaussFabricatorSystem : SharedGaussFabricatorSystem
             var powered = ent.Comp2.Enabled && received > 0f;
             _ambient.SetAmbience(ent.Owner, powered);
             _appearance.SetData(ent.Owner, PowerDeviceVisuals.Powered, powered);
+            UpdateLight((ent.Owner, ent.Comp1), powered, received);
 
             if (_timing.CurTime >= ent.Comp1.NextUiUpdate)
             {
@@ -82,6 +84,20 @@ public sealed partial class GaussFabricatorSystem : SharedGaussFabricatorSystem
             if (received > 0f && mixture != null)
                 _atmosphere.AddHeat(mixture, received * ent.Comp1.HeatMultiplier * frameTime);
         }
+    }
+
+    private void UpdateLight(Entity<GaussFabricatorComponent> ent, bool powered, float received)
+    {
+        if (!_lights.TryGetLight(ent, out var light))
+            return;
+
+        _lights.SetEnabled(ent, powered, light);
+        if (!powered)
+            return;
+
+        var fraction = ent.Comp.MaxDrawRate > 0f ? Math.Clamp(received / ent.Comp.MaxDrawRate, 0f, 1f) : 1f;
+        _lights.SetEnergy(ent, MathHelper.Lerp(ent.Comp.LightEnergy.Min, ent.Comp.LightEnergy.Max, fraction), light);
+        _lights.SetRadius(ent, MathHelper.Lerp(ent.Comp.LightRadius.Min, ent.Comp.LightRadius.Max, fraction), light);
     }
 
     /// <summary>
