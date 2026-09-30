@@ -22,9 +22,6 @@
       shader: unshaded
       map: [ "lightning" ]
       visible: false
-  - type: PointLight
-    enabled: false
-    color: "#33ccff"
   - type: Appearance
   - type: GenericVisualizer
     visuals:
@@ -86,7 +83,6 @@
       shader: unshaded
   - type: Item
     size: Small
-    heldPrefix: silver
     sprite: Objects/Materials/ingots.rsi
   - type: StaticPrice
     price: 200

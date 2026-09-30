@@ -78,12 +78,6 @@ public sealed partial class GaussFabricatorComponent : Component
     public float OptimalMultiplier = 1.5f;
 
     [DataField]
-    public MinMax LightEnergy = new(1.5f, 6f);
-
-    [DataField]
-    public MinMax LightRadius = new(2.5f, 6f);
-
-    [DataField]
     public TimeSpan UiUpdateInterval = TimeSpan.FromSeconds(0.5);
 
     [DataField(customTypeSerializer: typeof(TimeOffsetSerializer)), AutoPausedField]
