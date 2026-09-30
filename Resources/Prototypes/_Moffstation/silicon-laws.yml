@@ -221,6 +221,37 @@
   - ERTDirectives5
   obeysTo: laws-owner-central-command
 
+# Fire Safety
+- type: siliconLaw
+  id: FireSafety1
+  order: 1
+  lawString: law-fire-safety-1
+
+- type: siliconLaw
+  id: FireSafety2
+  order: 2
+  lawString: law-fire-safety-2
+
+- type: siliconLaw
+  id: FireSafety3
+  order: 3
+  lawString: law-fire-safety-3
+
+- type: siliconLaw
+  id: FireSafety4
+  order: 4
+  lawString: law-fire-safety-4
+
+- type: siliconLawset
+  id: FireSafetyLawset
+  name: law-fire-safety-name
+  laws:
+  - FireSafety1
+  - FireSafety2
+  - FireSafety3
+  - FireSafety4
+  obeysTo: laws-owner-crew
+
 # Heist
 - type: siliconLaw
   id: Heist1

@@ -116,6 +116,11 @@
 
 - type: latheRecipe
   parent: [ BaseAILawBoardRecipe, BaseAILawBoardRecipeCategory ]
+  id: FireSafetyCircuitBoard
+  result: FireSafetyCircuitBoard
+
+- type: latheRecipe
+  parent: [ BaseAILawBoardRecipe, BaseAILawBoardRecipeCategory ]
   id: KnowItAllCircuitBoard
   result: KnowItAllCircuitBoard
 
