@@ -264,7 +264,6 @@ namespace Content.IntegrationTests.Tests
             {
                 "MaterialHideSharkminnowTrimmed",
                 "MoffC4InstantExplosion",
-                "StationAiUploadComputer", //causing issues with tests due to preinserted board
             };
             // Moff end
 

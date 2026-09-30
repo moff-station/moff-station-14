@@ -1805,14 +1805,17 @@
           components:
           - SiliconLawProvider
           - Item
-        # Moff Start - Spawn with default law board
-        disableEject: true
-        startingItem: UpstreamCrewsimovCircuitBoard
-        # Moff End
+        disableEject: true # Moff Start - Spawn with default law board
   - type: ContainerContainer
     containers:
       circuit_holder: !type:ContainerSlot
       board: !type:Container
+  # Moff Start - Spawn with default law board
+  - type: EntityTableContainerFill
+    containers:
+      circuit_holder:
+        id: UpstreamCrewsimovCircuitBoard
+  # Moff End
 
 - type: entity
   id: StationAiFixerComputer
