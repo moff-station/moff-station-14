@@ -11,13 +11,10 @@
       state: std_mod_blue
   - type: EntityTableSpawner
     table: !type:GroupSelector
-      rolls: !type:RangeNumberSelector
-        range: 0, 1
       children:
       - id: UpstreamCorporateCircuitBoard
       - id: UpstreamCrewsimovCircuitBoard
       - id: UpstreamNTDefaultCircuitBoard
-    offset: 0.2
 
 - type: entity
   parent: MarkerBase
@@ -32,8 +29,6 @@
       state: std_mod
   - type: EntityTableSpawner
     table: !type:GroupSelector
-      rolls: !type:RangeNumberSelector
-        range: 0, 1
       children:
       - id: MoffBureaucratCircuitBoard
       - id: MoffCCTVCircuitBoard
@@ -61,4 +56,3 @@
       - id: UpstreamPaladinCircuitBoard
       - id: UpstreamRobocopCircuitBoard
       - id: UpstreamStationEfficiencyCircuitBoard
-    offset: 0.2
