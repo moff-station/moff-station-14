@@ -17,7 +17,7 @@
 - type: entity
   abstract: true # Moff - Law board spawners
   id: NTDefaultCircuitBoard
-  parent: NanotrasenSiliconLawboard # Moffstation - law board recolors
+  parent: MoffNanotrasenSiliconLawboardBase # Moffstation - law board recolors
   # Moff Start - Law board spawners
   # name: law board (NT Default)
   suffix: NT Default
@@ -34,7 +34,7 @@
 - type: entity
   abstract: true # Moff - Law board spawners
   id: AsimovCircuitBoard
-  parent: NanotrasenSiliconLawboard # Moffstation - law board recolors
+  parent: MoffNanotrasenSiliconLawboardBase # Moffstation - law board recolors
   # Moff Start - Law board spawners
   # name: law board (Crewsimov)
   suffix: Crewsimov
@@ -51,7 +51,7 @@
 - type: entity
   abstract: true # Moff - Law board spawners
   id: CorporateCircuitBoard
-  parent: NanotrasenSiliconLawboard # Moffstation - law board recolors
+  parent: MoffNanotrasenSiliconLawboardBase # Moffstation - law board recolors
   # Moff Start - Law board spawners
   # name: law board (Corporate)
   suffix: Corporate
@@ -71,7 +71,7 @@
   parent: BaseSiliconLawboard
   # Moff Start - Law board spawners
   # name: law board (Ten Commandments)
-  suffix: Corporate
+  suffix: Ten Commandments
   # description: An electronics board containing the Ten Commandments lawset.
   # Moff End
   components:
@@ -152,7 +152,7 @@
 
 - type: entity
   id: OverlordCircuitBoard
-  parent: SyndicateSiliconLawboard # Moffstation - law board recolors
+  parent: MoffSyndicateSiliconLawboardBase # Moffstation - law board recolors
   # Moff Start - Law board spawners
   # name: law board (Overlord)
   suffix: Overlord
@@ -202,7 +202,7 @@
 
 - type: entity
   id: AntimovCircuitBoard
-  parent: SyndicateSiliconLawboard # Moffstation - law board recolors
+  parent: MoffSyndicateSiliconLawboardBase # Moffstation - law board recolors
   # Moff Start - Law board spawners
   # name: law board (Antimov)
   suffix: Antimov
@@ -221,7 +221,7 @@
 
 - type: entity
   id: SyndimovCircuitBoard
-  parent: SyndicateSiliconLawboard # Moffstation - law board recolors
+  parent: MoffSyndicateSiliconLawboardBase # Moffstation - law board recolors
   # Moff Start - Law board spawners
   # name: law board (Syndimov)
   suffix: Syndimov
@@ -257,10 +257,10 @@
 
 - type: entity
   id: XenoborgCircuitBoard
-  parent: NinjaSiliconLawboard # Moffstation - law board recolors - I know it's not ninja, but it's visually the closest for now
+  parent: MoffNinjaSiliconLawboardBase # Moffstation - law board recolors - I know it's not ninja, but it's visually the closest for now
   # Moff Start - Law board spawners
   # name: law board (Xenoborg)
-  suffix: Xenoborg, Admeme
+  suffix: Xenoborg
   # description: An electronics board containing the Xenoborg lawset.
   # Moff End
   components:
@@ -273,10 +273,10 @@
 
 - type: entity
   id: MothershipCircuitBoard
-  parent: NinjaSiliconLawboard # Moffstation - law board recolors - I know it's not ninja, but it's visually the closest for now
+  parent: MoffNinjaSiliconLawboardBase # Moffstation - law board recolors - I know it's not ninja, but it's visually the closest for now
   # Moff Start - Law board spawners
   # name: law board (Mothership Core)
-  suffix: Mothership Core, Admeme
+  suffix: Mothership Core
   # description: An electronics board containing the Mothership Core lawset.
   # Moff End
   components:

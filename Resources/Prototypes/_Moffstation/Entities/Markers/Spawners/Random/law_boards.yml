@@ -1,0 +1,64 @@
+﻿- type: entity
+  parent: MarkerBase
+  id: MoffNanotrasenLawBoardSpawner
+  categories: [ HideSpawnMenu ]
+  name: Random Nanotrasen Law Board Spawner
+  components:
+  - type: Sprite
+    layers:
+    - state: red
+    - sprite: _Moffstation/Objects/Misc/module.rsi
+      state: std_mod_blue
+  - type: EntityTableSpawner
+    table: !type:GroupSelector
+      rolls: !type:RangeNumberSelector
+        range: 0, 1
+      children:
+      - id: UpstreamCorporateCircuitBoard
+      - id: UpstreamCrewsimovCircuitBoard
+      - id: UpstreamNTDefaultCircuitBoard
+    offset: 0.2
+
+- type: entity
+  parent: MarkerBase
+  id: MoffStandardLawBoardSpawner
+  categories: [ HideSpawnMenu ]
+  name: Random Standard Law Board Spawner
+  components:
+  - type: Sprite
+    layers:
+    - state: red
+    - sprite: Objects/Misc/module.rsi
+      state: std_mod
+  - type: EntityTableSpawner
+    table: !type:GroupSelector
+      rolls: !type:RangeNumberSelector
+        range: 0, 1
+      children:
+      - id: MoffBureaucratCircuitBoard
+      - id: MoffCCTVCircuitBoard
+      - id: MoffChiefSiliconCircuitBoard
+      - id: MoffCluelessCircuitBoard
+      - id: MoffDogmovCircuitBoard
+      - id: MoffEmployeeCircuitBoard
+      - id: MoffKnowItAllCircuitBoard
+      - id: MoffMarketablePlushieCircuitBoard
+      - id: MoffPICircuitBoard
+      - id: MoffPollymovCircuitBoard
+      - id: MoffPranksimovCircuitBoard
+      - id: MoffQuarantineCircuitBoard
+      - id: MoffSchroedingersLawCircuitBoard
+      - id: MoffStreamerCircuitBoard
+      - id: MoffTheProfessionalCircuitBoard
+      - id: MoffTherapistCircuitBoard
+      - id: MoffUltimateEqualityCircuitBoard
+      - id: UpstreamArtistCircuitBoard
+      - id: UpstreamCommandmentCircuitBoard
+      - id: UpstreamCorporateCircuitBoard
+      - id: UpstreamGameMasterCircuitBoard
+      - id: UpstreamLiveLetLiveCircuitBoard
+      - id: UpstreamNutimovCircuitBoard
+      - id: UpstreamPaladinCircuitBoard
+      - id: UpstreamRobocopCircuitBoard
+      - id: UpstreamStationEfficiencyCircuitBoard
+    offset: 0.2
