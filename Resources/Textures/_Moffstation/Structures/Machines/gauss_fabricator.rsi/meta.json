@@ -8,12 +8,38 @@
     },
     "states": [
         {
-            "name": "icon",
+            "name": "icon"
+        },
+        {
+            "name": "sparks",
             "delays": [
                 [
                     0.1,
                     0.1,
                     0.1,
+                    0.1,
+                    0.1,
+                    0.1
+                ]
+            ]
+        },
+        {
+            "name": "screen",
+            "delays": [
+                [
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1
+                ]
+            ]
+        },
+        {
+            "name": "lightning",
+            "delays": [
+                [
                     0.1,
                     0.1,
                     0.1,

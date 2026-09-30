@@ -6,6 +6,7 @@ using Content.Shared.Atmos;
 using Content.Shared.Audio;
 using Content.Shared.Destructible.Thresholds;
 using Content.Shared.Examine;
+using Content.Shared.Power;
 using Content.Shared.Power.Components;
 using Content.Shared.Power.EntitySystems;
 using Content.Shared.UserInterface;
@@ -19,6 +20,7 @@ public sealed partial class GaussFabricatorSystem : SharedGaussFabricatorSystem
     [Dependency] private IGameTiming _timing = default!;
     [Dependency] private AtmosphereSystem _atmosphere = default!;
     [Dependency] private SharedAmbientSoundSystem _ambient = default!;
+    [Dependency] private SharedAppearanceSystem _appearance = default!;
     [Dependency] private SharedBatterySystem _battery = default!;
     [Dependency] private UserInterfaceSystem _uiSystem = default!;
 
@@ -64,7 +66,9 @@ public sealed partial class GaussFabricatorSystem : SharedGaussFabricatorSystem
                 * GetBandMultiplier(ent.Comp1, ent.Comp1.PressureAcceptable, ent.Comp1.PressureOptimal, mixture?.Pressure);
 
             var received = ent.Comp2.CurrentReceiving;
-            _ambient.SetAmbience(ent.Owner, ent.Comp2.Enabled && received > 0f);
+            var powered = ent.Comp2.Enabled && received > 0f;
+            _ambient.SetAmbience(ent.Owner, powered);
+            _appearance.SetData(ent.Owner, PowerDeviceVisuals.Powered, powered);
 
             if (_timing.CurTime >= ent.Comp1.NextUiUpdate)
             {
