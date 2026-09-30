@@ -68,6 +68,14 @@ figurines-benny-7 = You drive a hard bargain.
 figurines-benny-8 = You're not getting special treatment.
 figurines-benny-9 = This may impact share prices.
 
+figurines-betty-1 = Psst, how about those high heels?
+figurines-betty-2 = I sparkle~!
+figurines-betty-3 = Hey, look at my sparkles! They're pretty!
+figurines-betty-4 = Hello hiiii~!
+figurines-betty-5 = My love life is a wreck.
+figurines-betty-6 = My life itself is a wreck.
+figurines-betty-7 = What can I get you!
+
 figurines-boxcar-1 = Ey.
 figurines-boxcar-2 = We's love dat!
 figurines-boxcar-3 = You's got anyone you's wanna shout out?
