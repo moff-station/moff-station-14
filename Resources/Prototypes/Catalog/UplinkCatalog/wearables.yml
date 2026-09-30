@@ -169,11 +169,8 @@
   icon: { sprite: /Textures/Structures/Storage/Crates/syndicate.rsi, state: icon }
   productEntity: CrateCybersunJuggernautBundle
   # Moffstation - Start - Readd hardsuits to uplink
-  discountCategory: rareDiscounts
-  discountDownTo:
-    Telecrystal: 8
   cost:
-    Telecrystal: 12
+    Telecrystal: 20 # Moff - Rebalance Jugsuit
   categories:
   - UplinkWearables
   #  conditions:
