@@ -28,7 +28,9 @@
                 <RichTextLabel Name="NameLabel"
                                Access="Public"
                                HorizontalAlignment="Center"/>
-                <BoxContainer Orientation="Horizontal"
+                <BoxContainer Name="JobContainer"
+                              Access="Public"
+                              Orientation="Horizontal"
                               HorizontalAlignment="Center">
                     <TextureRect Name="JobIcon"
                                  Access="Public"
@@ -39,7 +41,7 @@
                                    Access="Public"
                                    VerticalAlignment="Center"/>
                 </BoxContainer>
-                <Control Margin="10"/>
+                <Control Margin="5"/>
                 <RichTextLabel Name="CharacterInfo"
                                Access="Public"
                                HorizontalAlignment="Center"/>
