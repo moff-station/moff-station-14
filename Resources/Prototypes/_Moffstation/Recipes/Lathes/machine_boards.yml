@@ -153,6 +153,11 @@
 
 - type: latheRecipe
   parent: [ MoffBaseAILawBoardRecipe, MoffBaseAILawBoardRecipeCategory ]
+  id: MoffFireSafetyCircuitBoard
+  result: MoffFireSafetyCircuitBoard
+
+- type: latheRecipe
+  parent: [ MoffBaseAILawBoardRecipe, MoffBaseAILawBoardRecipeCategory ]
   id: MoffKnowItAllCircuitBoard
   name: law-know-it-all-name
   result: MoffKnowItAllCircuitBoard

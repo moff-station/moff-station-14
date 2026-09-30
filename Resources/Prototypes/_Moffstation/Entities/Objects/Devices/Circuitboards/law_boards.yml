@@ -119,6 +119,16 @@
     localizedLabel: law-employee-name
 
 - type: entity
+  parent: BaseSiliconLawboard
+  id: MoffFireSafetyCircuitBoard
+  Suffix: Fire Safety
+  components:
+  - type: SiliconLawProvider
+    laws: FireSafetyLawset
+  - type: Label
+    localizedLabel: law-fire-safety-name
+
+- type: entity
   parent: GameMasterCircuitBoard
   id: UpstreamGameMasterCircuitBoard
 
