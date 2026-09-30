@@ -2,7 +2,6 @@ using System.Linq;
 using System.Text;
 using Content.Client.Materials;
 using Content.Client.UserInterface.Controls;
-using Content.Shared.Labels.Components;
 using Content.Shared.Lathe;
 using Content.Shared.Lathe.Prototypes;
 using Content.Shared.Research.Prototypes;
