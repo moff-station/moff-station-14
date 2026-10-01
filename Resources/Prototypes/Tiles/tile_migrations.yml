@@ -145,28 +145,24 @@
   target: FloorArcadeBlue
 
 - type: tileAlias
-  id: FloorSteelMono
-  target: FloorSteel
-
-- type: tileAlias
   id: FloorHydro
   target: FloorSteel
 
 - type: tileAlias
   id: FloorElevatorShaft
-  target: FloorSteel
+  target: FloorDark
 
 - type: tileAlias
   id: FloorMining
-  target: FloorSteel
+  target: FloorDarkPlastic
 
 - type: tileAlias
   id: FloorMiningLight
-  target: FloorSteel
+  target: FloorDarkPlastic
 
 - type: tileAlias
   id: FloorMiningDark
-  target: FloorSteel
+  target: FloorDarkPlastic
 
 - type: tileAlias
   id: FloorRockVault
@@ -176,17 +172,19 @@
   id: FloorShowroom
   target: FloorSteel
 
-- type: tileAlias
-  id: FloorSteelSlatsContinuous
-  target: FloorSteel
-
-- type: tileAlias
-  id: FloorDarkSlatsContinuous
-  target: FloorDark
-
-- type: tileAlias
-  id: FloorWhiteSlatsContinuous
-  target: FloorWhite
+# Moff Start - Continuous slats namespace change
+# - type: tileAlias
+#   id: FloorSteelSlatsContinuous
+#   target: FloorSteel
+#
+# - type: tileAlias
+#   id: FloorDarkSlatsContinuous
+#   target: FloorDark
+#
+# - type: tileAlias
+#   id: FloorWhiteSlatsContinuous
+#   target: FloorWhite
+# # Moff End
 
 - type: tileAlias
   id: FloorMono
@@ -284,7 +282,7 @@
 
 - type: tileAlias
   id: FloorLowDesert
-  target: FloorDesertAstroSand
+  target: FloorDesert
 
 - type: tileAlias
   id: FloorAsteroidSandUnvariantizedBorderless
@@ -383,3 +381,19 @@
 
 # Moff end
 
+# 2026-08-27
+# Moff start - Porting continuous slats to moff namespace
+
+- type: tileAlias
+  id: FloorSteelSlatsContinuous
+  target: FloorMoffSteelSlatsContinuous
+
+- type: tileAlias
+  id: FloorWhiteSlatsContinuous
+  target: FloorMoffWhiteSlatsContinuous
+
+- type: tileAlias
+  id: FloorDarkSlatsContinuous
+  target: FloorMoffDarkSlatsContinuous
+
+# Moff end
