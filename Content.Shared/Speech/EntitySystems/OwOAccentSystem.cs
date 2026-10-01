@@ -34,7 +34,7 @@ public sealed partial class OwOAccentSystem : RelayAccentSystem<OwOAccentCompone
             message = message.Replace(word, repl);
         }
 
-        return message.Replace("!", random.Pick(Faces))
+        return message.Replace("!"/*, random.Pick(Faces)*/) //Moff - disable faces randomizer
             .Replace("r", "w")
             .Replace("R", "W")
             .Replace("l", "w")
