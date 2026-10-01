@@ -11,11 +11,10 @@ public sealed partial class OwOAccentSystem : RelayAccentSystem<OwOAccentCompone
     [Dependency] private IGameTiming _timing = default!;
     [Dependency] private IRobustRandom _random = default!;
 
-    /* Moff -  disable oWo accent faces? I guess?
     private static readonly IReadOnlyList<string> Faces =
     [
         " (•`ω´•)", " ;;w;;", " owo", " UwU", " >w<", " ^w^",
-    ];*/
+    ]
 
     private static readonly FrozenDictionary<string, string> SpecialWords =
         new Dictionary<string, string>
