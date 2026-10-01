@@ -10,7 +10,7 @@ using System.Text;
 
 namespace Content.Server._Impstation.CrewMedal;
 
-public sealed partial class CrewMedalSystem : SharedCrewMedalSystem
+public partial class CrewMedalSystem : SharedCrewMedalSystem
 {
     [Dependency] private ISharedAdminLogManager _adminLogger = default!;
     [Dependency] private SharedPopupSystem _popup = default!;
