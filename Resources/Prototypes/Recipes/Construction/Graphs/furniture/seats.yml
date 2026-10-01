@@ -222,6 +222,28 @@
         steps:
         - tool: Screwing
           doAfter: 1
+    - node: chairComfyBlue
+      entity: chairComfyBlue
+      edges:
+      - to: start
+        completed:
+        - !type:SpawnPrototype
+          prototype: SheetSteel1
+          amount: 2
+        steps:
+        - tool: Screwing
+          doAfter: 1
+    - node: chairComfyBrown
+      entity: chairComfyBrown
+      edges:
+      - to: start
+        completed:
+        - !type:SpawnPrototype
+          prototype: SheetSteel1
+          amount: 2
+        steps:
+        - tool: Screwing
+          doAfter: 1
 # Moff - End
     - node: chairPilotSeat
       entity: ChairPilotSeat

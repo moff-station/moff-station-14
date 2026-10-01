@@ -166,6 +166,86 @@
       - material: Cloth
         amount: 2
         doAfter: 1
+    - to: BlueSofaMiddleNode
+      completed:
+      - !type:SnapToGrid { }
+      steps:
+      - material: Steel
+        amount: 2
+        doAfter: 1
+      - material: Cloth
+        amount: 2
+        doAfter: 1
+    - to: BlueSofaLeftNode
+      completed:
+      - !type:SnapToGrid { }
+      steps:
+      - material: Steel
+        amount: 2
+        doAfter: 1
+      - material: Cloth
+        amount: 2
+        doAfter: 1
+    - to: BlueSofaRightNode
+      completed:
+      - !type:SnapToGrid { }
+      steps:
+      - material: Steel
+        amount: 2
+        doAfter: 1
+      - material: Cloth
+        amount: 2
+        doAfter: 1
+    - to: BlueSofaCornerNode
+      completed:
+      - !type:SnapToGrid { }
+      steps:
+      - material: Steel
+        amount: 2
+        doAfter: 1
+      - material: Cloth
+        amount: 2
+        doAfter: 1
+    - to: BrownSofaMiddleNode
+      completed:
+      - !type:SnapToGrid { }
+      steps:
+      - material: Steel
+        amount: 2
+        doAfter: 1
+      - material: Cloth
+        amount: 2
+        doAfter: 1
+    - to: BrownSofaLeftNode
+      completed:
+      - !type:SnapToGrid { }
+      steps:
+      - material: Steel
+        amount: 2
+        doAfter: 1
+      - material: Cloth
+        amount: 2
+        doAfter: 1
+    - to: BrownSofaRightNode
+      completed:
+      - !type:SnapToGrid { }
+      steps:
+      - material: Steel
+        amount: 2
+        doAfter: 1
+      - material: Cloth
+        amount: 2
+        doAfter: 1
+    - to: BrownSofaCornerNode
+      completed:
+      - !type:SnapToGrid { }
+      steps:
+      - material: Steel
+        amount: 2
+        doAfter: 1
+      - material: Cloth
+        amount: 2
+        doAfter: 1
   - node: SofaMiddleNode
     entity: SofaMiddle
     edges:
@@ -379,6 +459,118 @@
         doAfter: 1
   - node: BlackSofaCornerNode
     entity: BlackSofaCorner
+    edges:
+    - to: start
+      completed:
+      - !type:SpawnPrototype
+        prototype: SheetSteel1
+        amount: 2
+      - !type:SpawnPrototype
+        prototype: MaterialCloth1
+        amount: 2
+      steps:
+      - tool: Screwing
+        doAfter: 1
+  - node: BlueSofaMiddleNode
+    entity: BlueSofaMiddle
+    edges:
+    - to: start
+      completed:
+      - !type:SpawnPrototype
+        prototype: SheetSteel1
+        amount: 2
+      - !type:SpawnPrototype
+        prototype: MaterialCloth1
+        amount: 2
+      steps:
+      - tool: Screwing
+        doAfter: 1
+  - node: BlueSofaLeftNode
+    entity: BlueSofaLeft
+    edges:
+    - to: start
+      completed:
+      - !type:SpawnPrototype
+        prototype: SheetSteel1
+        amount: 2
+      - !type:SpawnPrototype
+        prototype: MaterialCloth1
+        amount: 2
+      steps:
+      - tool: Screwing
+        doAfter: 1
+  - node: BlueSofaRightNode
+    entity: BlueSofaRight
+    edges:
+    - to: start
+      completed:
+      - !type:SpawnPrototype
+        prototype: SheetSteel1
+        amount: 2
+      - !type:SpawnPrototype
+        prototype: MaterialCloth1
+        amount: 2
+      steps:
+      - tool: Screwing
+        doAfter: 1
+  - node: BlueSofaCornerNode
+    entity: BlueSofaCorner
+    edges:
+    - to: start
+      completed:
+      - !type:SpawnPrototype
+        prototype: SheetSteel1
+        amount: 2
+      - !type:SpawnPrototype
+        prototype: MaterialCloth1
+        amount: 2
+      steps:
+      - tool: Screwing
+        doAfter: 1
+  - node: BrownSofaMiddleNode
+    entity: BrownSofaMiddle
+    edges:
+    - to: start
+      completed:
+      - !type:SpawnPrototype
+        prototype: SheetSteel1
+        amount: 2
+      - !type:SpawnPrototype
+        prototype: MaterialCloth1
+        amount: 2
+      steps:
+      - tool: Screwing
+        doAfter: 1
+  - node: BrownSofaLeftNode
+    entity: BrownSofaLeft
+    edges:
+    - to: start
+      completed:
+      - !type:SpawnPrototype
+        prototype: SheetSteel1
+        amount: 2
+      - !type:SpawnPrototype
+        prototype: MaterialCloth1
+        amount: 2
+      steps:
+      - tool: Screwing
+        doAfter: 1
+  - node: BrownSofaRightNode
+    entity: BrownSofaRight
+    edges:
+    - to: start
+      completed:
+      - !type:SpawnPrototype
+        prototype: SheetSteel1
+        amount: 2
+      - !type:SpawnPrototype
+        prototype: MaterialCloth1
+        amount: 2
+      steps:
+      - tool: Screwing
+        doAfter: 1
+  - node: BrownSofaCornerNode
+    entity: BrownSofaCorner
     edges:
     - to: start
       completed:

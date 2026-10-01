@@ -278,6 +278,40 @@
     damageModifierSet: SteelMod
   - type: Destructible
     thresholds: *ThresholdsFurnitureNormalSteel
+
+- type: entity
+  parent: [ ChairBase, StructureHealthFurniture ]
+  id: chairComfyBlue
+  name: blue comfy chair
+  description: It looks comfy.
+  components:
+  - type: Sprite
+    state: comfy
+    color: "#366694"
+  - type: Construction
+    graph: Seat
+    node: chairComfy
+  - type: Damageable
+    damageModifierSet: SteelMod
+  - type: Destructible
+    thresholds: *ThresholdsFurnitureNormalSteel
+
+- type: entity
+  parent: [ ChairBase, StructureHealthFurniture ]
+  id: chairComfyBrown
+  name: brown comfy chair
+  description: It looks comfy.
+  components:
+  - type: Sprite
+    state: comfy
+    color: "#91553b"
+  - type: Construction
+    graph: Seat
+    node: chairComfy
+  - type: Damageable
+    damageModifierSet: SteelMod
+  - type: Destructible
+    thresholds: *ThresholdsFurnitureNormalSteel
 # Moff - End
 - type: entity
   parent: [ ChairBase, StructureHealthFurniture ]

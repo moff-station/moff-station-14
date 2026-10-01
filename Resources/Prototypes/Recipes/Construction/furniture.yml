@@ -441,4 +441,42 @@
   canBuildInImpassable: false
   conditions:
   - !type:TileNotBlocked
+
+- type: construction
+  name: comfy blue chair
+  id: chairComfyBlue
+  graph: Seat
+  startNode: start
+  targetNode: chairComfyBlue
+  category: construction-category-furniture
+  description: It looks comfy.
+  components:
+  - type: Sprite
+    sprite: Structures/Furniture/chairs.rsi
+    state: comfy
+    color: "#366694"
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canBuildInImpassable: false
+  conditions:
+  - !type:TileNotBlocked
+
+- type: construction
+  name: comfy brown chair
+  id: chairComfyBrown
+  graph: Seat
+  startNode: start
+  targetNode: chairComfyBrown
+  category: construction-category-furniture
+  description: It looks comfy.
+  components:
+  - type: Sprite
+    sprite: Structures/Furniture/chairs.rsi
+    state: comfy
+    color: "#91553b"
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canBuildInImpassable: false
+  conditions:
+  - !type:TileNotBlocked
 # Moff- End
