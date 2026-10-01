@@ -34,10 +34,17 @@ public sealed partial class OwOAccentSystem : RelayAccentSystem<OwOAccentCompone
             message = message.Replace(word, repl);
         }
 
-        return message.Replace("!"/*, random.Pick(Faces)*/) //Moff - disable faces randomizer
+        /* Moffstation - Start - Change message.replace to exclude faces entirely
+        return message.Replace("!", random.Pick(Faces))
+            .Replace("r", "w")
+            .Replace("R", "W")
+            .Replace("l", "w")
+            .Replace("L", "W");*/
+        return message.Replace("!")
             .Replace("r", "w")
             .Replace("R", "W")
             .Replace("l", "w")
             .Replace("L", "W");
+        // Moffstation - End - Change message.replace to exclude faces entirely
     }
 }
