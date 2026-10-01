@@ -113,3 +113,17 @@
     Milk: 5
     Egg: 6
     SodaWater: 5
+
+- type: microwaveMealRecipe
+  id: RecipeMealOmelette
+  name: cheese omelette recipe
+  result: FoodMealOmelette
+  time: 10
+  group: Savory
+  reagents:
+    TableSalt: 2
+    Blackpepper: 2
+    Egg: 12
+    Milk: 5
+  solids:
+    FoodCheeseSlice: 1
