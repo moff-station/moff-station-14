@@ -104,7 +104,8 @@ def get_past_runs(sess: requests.Session, current_run: Any) -> Iterable[Any]:
         resp = sess.get(url, params=params)
         resp.raise_for_status()
 
-        for run in resp.json()["workflow_runs"]:
+        # Moff - sort the changebob
+        for run in sorted(resp.json()["workflow_runs"], key=lambda run: run["created_at"], reverse=True):
             # First past successful run that isn't our current run.
             if run["id"] == current_run["id"]:
                 continue
