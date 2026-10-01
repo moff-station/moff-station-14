@@ -623,7 +623,6 @@ figurines-nomenclatura-4 = *beeps twice*
 figurines-nomenclatura-5 = *beeps twice*
 figurines-nomenclatura-6 = *beeps twice*
 
-
 figurines-nova-1 = What do you mean I can't build a ship?
 figurines-nova-2 = What do you mean Teslaloose?
 figurines-nova-3 = Z-Zoey.... forgive me...
