@@ -41,6 +41,23 @@
             - material: Steel
               amount: 2
               doAfter: 1
+        # Moff - Start
+        - to: chairComfyGreen
+          steps:
+            - material: Steel
+              amount: 2
+              doAfter: 1
+        - to: chairComfyRed
+          steps:
+            - material: Steel
+              amount: 2
+              doAfter: 1
+        - to: chairComfyBlack
+          steps:
+          - material: Steel
+            amount: 2
+            doAfter: 1
+        # Moff - End
         - to: chairPilotSeat
           steps:
             - material: Steel
@@ -92,7 +109,6 @@
               doAfter: 1
             - material: Cloth
               amount: 1
-
     - node: chair
       entity: Chair
       edges:
@@ -172,7 +188,41 @@
           steps:
             - tool: Screwing
               doAfter: 1
-
+# Moff - Start
+    - node: chairComfyGreen
+      entity: chairComfyGreen
+      edges:
+        - to: start
+          completed:
+          - !type:SpawnPrototype
+            prototype: SheetSteel1
+            amount: 2
+          steps:
+          - tool: Screwing
+            doAfter: 1
+    - node: chairComfyRed
+      entity: chairComfyRed
+      edges:
+      - to: start
+        completed:
+        - !type:SpawnPrototype
+          prototype: SheetSteel1
+          amount: 2
+        steps:
+        - tool: Screwing
+          doAfter: 1
+    - node: chairComfyBlack
+      entity: chairComfyBlack
+      edges:
+      - to: start
+        completed:
+        - !type:SpawnPrototype
+          prototype: SheetSteel1
+          amount: 2
+        steps:
+        - tool: Screwing
+          doAfter: 1
+# Moff - End
     - node: chairPilotSeat
       entity: ChairPilotSeat
       edges:

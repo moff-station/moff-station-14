@@ -128,6 +128,7 @@
   id: BlueComfBench
   name: construction-recipe-blue-comf-bench
   targetNode: blueComfBench
+
 # endregion Chairs
 
 # region Tables
@@ -383,3 +384,61 @@
   canRotate: true
   conditions:
   - !type:TileNotBlocked
+# Moff - Start
+- type: construction
+  name: comfy green chair
+  id: chairComfyGreen
+  graph: Seat
+  startNode: start
+  targetNode: chairComfyGreen
+  category: construction-category-furniture
+  description: It looks comfy.
+  components:
+  - type: Sprite
+    sprite: Structures/Furniture/chairs.rsi
+    state: comfy
+    color: "#4b7e6e"
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canBuildInImpassable: false
+  conditions:
+  - !type:TileNotBlocked
+
+- type: construction
+  name: comfy red chair
+  id: chairComfyRed
+  graph: Seat
+  startNode: start
+  targetNode: chairComfyRed
+  category: construction-category-furniture
+  description: It looks comfy.
+  components:
+  - type: Sprite
+    sprite: Structures/Furniture/chairs.rsi
+    state: comfy
+    color: "#aa1c34"
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canBuildInImpassable: false
+  conditions:
+  - !type:TileNotBlocked
+
+- type: construction
+  name: comfy black chair
+  id: chairComfyBlack
+  graph: Seat
+  startNode: start
+  targetNode: chairComfyBlack
+  category: construction-category-furniture
+  description: It looks comfy.
+  components:
+  - type: Sprite
+    sprite: Structures/Furniture/chairs.rsi
+    state: comfy
+    color: "#3b334e"
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canBuildInImpassable: false
+  conditions:
+  - !type:TileNotBlocked
+# Moff- End
