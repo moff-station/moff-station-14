@@ -24,11 +24,8 @@
     cost: 4
     delay: 6
     fx: EffectRCDDeconstruct6
-  - type: Tag
-    tags:
-    - ForceFixRotations # Allow fixrotations to target these
   - type: Damageable
-    damageModifierSet: PlasteelMod
+    damageModifierSet: PlasteelStaticMod
   - type: Destructible
     thresholds:
     - trigger:
