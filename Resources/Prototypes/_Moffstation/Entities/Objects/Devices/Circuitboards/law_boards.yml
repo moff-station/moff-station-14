@@ -39,13 +39,13 @@
 # Standard Law Boards
 
 - type: entity
-  id: BeurocratCircuitBoard
+  id: BureaucratCircuitBoard
   parent: BaseSiliconLawboard
-  name: law board (Beurocrat)
-  description: An electronics board containing the Beurocrat lawset.
+  name: law board (Bureaucrat)
+  description: An electronics board containing the Bureaucrat lawset.
   components:
   - type: SiliconLawProvider
-    laws: BeurocratLawset
+    laws: BureaucratLawset
 
 - type: entity
   id: CCTVCircuitBoard

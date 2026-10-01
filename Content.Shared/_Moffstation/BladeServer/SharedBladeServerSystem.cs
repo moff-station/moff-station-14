@@ -383,7 +383,7 @@ public abstract partial class SharedBladeServerSystem : EntitySystem
                 WhitelistFailPopup = "moff-blade-server-rack-slot-whitelist-fail",
             };
 
-            _itemSlots.AddItemSlot(entity, entity.Comp.BladeSlotName(idx), slot);
+            _itemSlots.AddItemSlot(entity.Owner, entity.Comp.BladeSlotName(idx), slot);
 
             var inserted = getEntityToInsertForIndex(idx) is { } entityToInsert &&
                            _itemSlots.TryInsert(entity, slot, entityToInsert, user: null);
@@ -404,7 +404,7 @@ public abstract partial class SharedBladeServerSystem : EntitySystem
         {
             slot.Ejecting = true;
             _itemSlots.TryEject(entity, slot.Slot, user: null, out _);
-            _itemSlots.RemoveItemSlot(entity, slot.Slot, entity);
+            _itemSlots.RemoveItemSlot(entity.Owner, slot.Slot);
         }
 
         entity.Comp1.BladeSlots.Clear();

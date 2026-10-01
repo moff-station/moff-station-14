@@ -4,7 +4,6 @@
   id: BaseStatue
   components:
   - type: Sprite
-    noRot: true
     drawdepth: Mobs
   - type: Damageable
     damageModifierSet: RockMod
