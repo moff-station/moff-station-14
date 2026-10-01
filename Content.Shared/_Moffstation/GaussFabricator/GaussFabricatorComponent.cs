@@ -9,7 +9,7 @@ namespace Content.Shared._Moffstation.GaussFabricator;
 public sealed partial class GaussFabricatorComponent : Component
 {
     [DataField, AutoNetworkedField]
-    public bool Enabled = true;
+    public bool Enabled;
 
     /// <summary>
     /// Configured draw rate in watts, applied to the power network battery by the server.

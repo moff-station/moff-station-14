@@ -3,7 +3,7 @@
   parent: BaseMachine
   id: GaussFabricator
   name: gaussian fabrication unit
-  description: A high-voltage fabrication unit that channels raw HV current through precision electromagnetic coils, slowly crystallizing dense magnetic alloy as a byproduct. The hum is normal.
+  description: A specialized machine built to crystallize ions in the atmosphere into powerful, expensive magnets. Requires a vast amount of electricity to use properly.
   components:
   - type: Sprite
     sprite: _Moffstation/Structures/Machines/gauss_fabricator.rsi
@@ -71,10 +71,28 @@
     price: 2000
 
 - type: entity
+  parent: BaseFlatpack
+  id: GaussFabricatorFlatpack
+  name: gaussian fabrication unit flatpack
+  description: A flatpack used for constructing a gaussian fabrication unit.
+  components:
+  - type: Flatpack
+    entity: GaussFabricator
+  - type: Sprite
+    layers:
+    - state: base
+    - state: overlay
+      color: "#EFB341"
+    - state: icon-default
+  - type: GuideHelp
+    guides:
+    - Power
+
+- type: entity
   parent: BaseItem
   id: MoffRefinedConductorIngot
   name: gaussian hypermagnet
-  description: A dense magnet crystallized by intense electromagnetic fields. Highly sought after for its unusual magnetic properties.
+  description: A strong and highly sought after magnet, made from an intense process of crystallizing ions in the atmosphere.
   components:
   - type: Sprite
     sprite: _Moffstation/Objects/Materials/gaussian_hypermagnet.rsi
