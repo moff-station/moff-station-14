@@ -48,6 +48,7 @@
       phrases:
       - "yes"
       - "no"
+      - maybe
       - okay
       - please
       - thank you
@@ -58,6 +59,7 @@
       - nevermind
       - that's correct
       - that's incorrect
+      - I know
       - I don't know
       - I understand
       - I don't understand
@@ -95,6 +97,7 @@
       phrases:
       - am
       - are
+      - ask
       - attack
       - be
       - been
@@ -104,21 +107,28 @@
       - can't
       - come here
       - dislike
-      - do not
+      - decay
+      - do
+      - don't
+      - find
       - fix
+      - get
       - give
       - go
       - go away
       - go to
+      - grow
       - hate
       - heal
       - help
+      - hope
       - is
       - leave
       - like
       - love
       - need
       - run
+      - say
       - show
       - speak
       - stay
@@ -126,6 +136,7 @@
       - switch
       - take this
       - talk
+      - think
       - wait
       - want
       - was
@@ -147,6 +158,10 @@
       - cold
       - quiet
       - loud
+      - right
+      - wrong
+      - funny
+      - serious
       - less
       - few
       - single
@@ -173,12 +188,15 @@
       - her
       - they
       - them
+      - it
+      - its
       - someone
       - anyone
       - everyone
       - no one
       - something
       - anything
+      - everything
       - nothing
     - heading: Connecting Words
       phrases:
@@ -191,6 +209,7 @@
       - but
       - or
       - yet
+      - will
       - so
       - not
       - because
@@ -200,6 +219,7 @@
       - now
       - here
       - there
+      - with
       - by
       - to
       - in
@@ -210,11 +230,13 @@
       - south
       - east
       - west
+      - any
       - neither
       - either
       - before
       - after
       - soon
+      - again
 
 - type: aacPhrasePack
   id: Feelings
@@ -372,6 +394,7 @@
       - crew
       - boss
       - assistant
+      - job
 
 - type: aacPhrasePack
   id: Items
@@ -495,8 +518,10 @@
       - cloning pod
       - crew monitoring console
       - defibrillator
+      - glasses
       - statis bed
       - syringe
+      - tablet
       - jet injector
     - heading: Science
       phrases:
