@@ -542,6 +542,18 @@
 
 - type: entity
   parent: BaseFigurineMoff
+  id: ToyFigurineFlink
+  name: cute little scientist  figurine
+  description: A figurine of a tiny blue Gray with a cute pink bow and big eyelashs, something about it doesn't seem right.
+  components:
+  - type: Sprite
+    state: flink
+  - type: SpeakOnTrigger
+    pack: FigurinesFlink
+  - type: LispAccent
+
+- type: entity
+  parent: BaseFigurineMoff
   id: ToyFigurineFred
   name: professional-looking lawyer figurine
   description: A figurine depicting a professional-looking lawyer, he has a mischievous look on his face. There seems seems to be a chip in the paint above his left ear.

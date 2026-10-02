@@ -306,6 +306,16 @@ figurines-fails-4 = SWEET MONKEY SPACE JESUS!
 figurines-fails-5 = Oh, that's super illegal.
 figurines-fails-6 = Hey doc, I won the fight, can you patch me up now?
 
+figurines-flink-1 = YOU HATE MEEE!!
+figurines-flink-2 = No one touch MY artifact!!
+figurines-flink-3 = Research points? EASY, WATCH THIS! Wait, explosion-?
+figurines-flink-4 = "Matter creation" more like, nap time!
+figurines-flink-5 = Give me your blood.
+figurines-flink-6 = ARTIFACT IS NOT "CREW HARM"- ITS POINTS!
+figurines-flink-7 = HAHAHAHAHA!!
+figurines-flink-8 = the meth is for important science reasons.
+figurines-flink-9 = YOUR NOT EVEN MY REAL DAD, NOW GIVE ME METH!
+
 figurines-fred-1 = Hey fellas!
 figurines-fred-2 = IM GONNA CRASH OUT!!
 figurines-fred-3 = Are they a first-time offender?
