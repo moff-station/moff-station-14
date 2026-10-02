@@ -292,7 +292,8 @@
   - type: SpeakOnTrigger
     pack: FigurinesChichi
 
-- type: entity 
+- type: entity
+  parent: BaseFigurineMoff
   id: ToyFigurineCharlieF
   name: hyperfixated pharmacist figurine
   description: "A figurine depicting a small blue avali wearing a professional-looking lab coat and a scarf. Her large sparkling eyes seem to have bags under them. The stuttering voicelines seem somewhat inconsistent.\nThere seems to be a pryable switch on the base..."
@@ -503,7 +504,9 @@
     fourRandomProb: 0
     threeRandomProb: 0
     cutRandomProb: 0
+
 - type: entity
+  parent: BaseFigurineMoff
   id: ToyFigurineElton
   name: jolly moth head of personnel
   description: A figurine of a fancy moth who looks a bit too happy. It seems to have a scent of ice cream and cotton cake.
@@ -881,7 +884,9 @@
     state: kiki
   - type: SpeakOnTrigger
     pack: FigurinesKiki
+
 - type: entity
+  parent: BaseFigurineMoff
   id: ToyFigurineKo
   name: messy scientist figurine
   description: An avali with purple and blue feathers, the figurine smells faintly of gunpowder.
