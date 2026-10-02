@@ -22,7 +22,7 @@ public sealed partial class OwOAccentSystem : RelayAccentSystem<OwOAccentCompone
             { "you", "wu" },
         }.ToFrozenDictionary();
 
-    public override string Accentuate(string message, Entity<OwOAccentComponent>? ent = null)
+    public override string? Accentuate(string message, Entity<OwOAccentComponent>? ent = null) // Moffstation - add ? to string
     {
         _ = ent.HasValue // Moffstation - remove var random per Rider suggestions
             ? SharedRandomExtensions.PredictedRandom(_timing, GetNetEntity(ent.Value))
