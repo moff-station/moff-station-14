@@ -51,6 +51,8 @@ public sealed partial class RoundstartJobCandidates(
     /// The basic user-to-profiles collection of candidates. Used to pick candidates without caring about priorities, etc.
     private readonly Dictionary<NetUserId, HashSet<HumanoidCharacterProfile>> _candidates = new();
 
+    public IReadOnlyDictionary<NetUserId, HashSet<HumanoidCharacterProfile>> Candidates => _candidates;
+
     /// A collection of users+characters keyed by job and priority. Used to select player jobs by their requested
     /// priorities.
     private readonly Dictionary<ProtoId<JobPrototype>, Dictionary<JobPriority, HashSet<PlayerCharacter>>>

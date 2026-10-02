@@ -421,8 +421,7 @@ public sealed class StationJobsTest : GameTest
             }.ToDictionary(it => it.Key, it => (HashSet<HumanoidCharacterProfile>)[it.Value]);
 
             var stations = new[] { firstStation, secondStation };
-            var assigned = stationJobs.AssignJobs(fakePlayers, stations);
-            stationJobs.AssignOverflowJobs(ref assigned, fakePlayers.Keys, fakePlayers, stations);
+            var assigned = stationJobs.AssignJobsAndOverflowJobs(fakePlayers, stations);
             var withoutProfile = assigned.ToDictionary(it => it.Key, it => (it.Value.Item1, it.Value.Station));
 
             Assert.Multiple(() =>
@@ -494,13 +493,13 @@ public sealed class StationJobsTest : GameTest
             await server.WaitAssertion(() =>
             {
                 configuration.SetCVar(CCVars.GameMinimumJobFallback, MinimumJobFallback.SameDepartment);
-                var sameDepartmentAssignments = stationJobs.AssignJobs(Wrap(sameDepartmentProfiles), [station]);
+                var sameDepartmentAssignments = stationJobs.AssignJobsAndOverflowJobs(Wrap(sameDepartmentProfiles), [station]);
                 // Top priority is chaplain, but with `MinimumJobFallback.SameDepartment`, that gets transmuted to captain, which is higher priority.
                 Assert.That(sameDepartmentAssignments[sameDepartmentDummy.UserId].Item1,
                     Is.EqualTo((ProtoId<JobPrototype>?)"TCaptain"));
 
                 configuration.SetCVar(CCVars.GameMinimumJobFallback, MinimumJobFallback.AnyEligiblePlayer);
-                var anyEligibleAssignments = stationJobs.AssignJobs(Wrap(anyEligibleProfiles), [station]);
+                var anyEligibleAssignments = stationJobs.AssignJobsAndOverflowJobs(Wrap(anyEligibleProfiles), [station]);
                 // Chaplain preference gets transmuted to same-dept captain, like above.
                 Assert.That(anyEligibleAssignments[sameDepartmentDummy.UserId].Item1,
                     Is.EqualTo((ProtoId<JobPrototype>?)"TCaptain"));
@@ -509,7 +508,7 @@ public sealed class StationJobsTest : GameTest
                     Is.EqualTo((ProtoId<JobPrototype>?)"TChaplain"));
 
                 configuration.SetCVar(CCVars.GameMinimumJobFallback, MinimumJobFallback.None);
-                var noFallbackAssignments = stationJobs.AssignJobs(Wrap(noPreferenceProfiles), [station]);
+                var noFallbackAssignments = stationJobs.AssignJobsAndOverflowJobs(Wrap(noPreferenceProfiles), [station]);
                 Assert.That(noFallbackAssignments, Is.Empty);
             });
         }
@@ -568,7 +567,7 @@ public sealed class StationJobsTest : GameTest
             };
 
             var stations = new[] { firstStation, secondStation };
-            var assigned = stationJobs.AssignJobs(Wrap(fakePlayers), stations);
+            var assigned = stationJobs.AssignJobsAndOverflowJobs(Wrap(fakePlayers), stations);
             stationJobs.AssignOverflowJobs(ref assigned, fakePlayers.Keys, Wrap(fakePlayers), stations);
             var assignedWithoutProfiles = assigned.ToDictionary(it => it.Key, it => (it.Value.Item1, it.Value.Station));
 
@@ -647,13 +646,13 @@ public sealed class StationJobsTest : GameTest
             await server.WaitAssertion(() =>
             {
                 configuration.SetCVar(CCVars.GameMinimumJobFallback, MinimumJobFallback.SameDepartment);
-                var sameDepartmentAssignments = stationJobs.AssignJobs(Wrap(sameDepartmentProfiles), [station]);
+                var sameDepartmentAssignments = stationJobs.AssignJobsAndOverflowJobs(Wrap(sameDepartmentProfiles), [station],false);
                 // Top priority is chaplain, but with `MinimumJobFallback.SameDepartment`, that gets transmuted to captain, which is higher priority.
                 Assert.That(sameDepartmentAssignments[sameDepartmentDummy.UserId].Item1,
                     Is.EqualTo((ProtoId<JobPrototype>?)"TCaptain"));
 
                 configuration.SetCVar(CCVars.GameMinimumJobFallback, MinimumJobFallback.AnyEligiblePlayer);
-                var anyEligibleAssignments = stationJobs.AssignJobs(Wrap(anyEligibleProfiles), [station]);
+                var anyEligibleAssignments = stationJobs.AssignJobsAndOverflowJobs(Wrap(anyEligibleProfiles), [station],false);
                 // Chaplain preference gets transmuted to same-dept captain, like above.
                 Assert.That(anyEligibleAssignments[sameDepartmentDummy.UserId].Item1,
                     Is.EqualTo((ProtoId<JobPrototype>?)"TCaptain"));
@@ -662,7 +661,7 @@ public sealed class StationJobsTest : GameTest
                     Is.EqualTo((ProtoId<JobPrototype>?)"TChaplain"));
 
                 configuration.SetCVar(CCVars.GameMinimumJobFallback, MinimumJobFallback.None);
-                var noFallbackAssignments = stationJobs.AssignJobs(Wrap(noPreferenceProfiles), [station]);
+                var noFallbackAssignments = stationJobs.AssignJobsAndOverflowJobs(Wrap(noPreferenceProfiles), [station],false);
                 Assert.That(noFallbackAssignments, Is.Empty);
             });
         }

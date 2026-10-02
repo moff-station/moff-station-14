@@ -40,7 +40,7 @@ public sealed partial class MoffCharacterSelectionManager : IPostInjectInit
     }
 
     /// Returns all of the active profiles for the given users, keyed by their owners.
-    public Dictionary<NetUserId, HashSet<HumanoidCharacterProfile>> GetAllProfiles(IEnumerable<NetUserId> users)
+    public Dictionary<NetUserId, HashSet<HumanoidCharacterProfile>> GetActiveProfiles(IEnumerable<NetUserId> users)
     {
         Dictionary<NetUserId, HashSet<HumanoidCharacterProfile>> profiles = new();
         foreach (var user in users)
@@ -75,17 +75,7 @@ public sealed partial class MoffCharacterSelectionManager : IPostInjectInit
     /// </summary>
     public MoffCharacterSelectionState GetState(NetUserId userId)
     {
-        return _cached.TryGetValue(userId, out var state) ? state : new MoffCharacterSelectionState();
-    }
-
-    public JobPriority GetPriority(NetUserId userId, ProtoId<JobPrototype> job)
-    {
-        return GetState(userId).GetPriority(job);
-    }
-
-    public bool IsSlotEnabled(NetUserId userId, int slot)
-    {
-        return GetState(userId).IsSlotEnabled(slot);
+        return TryGetState(userId, out var state) ? state : new MoffCharacterSelectionState();
     }
 
     /// <summary>

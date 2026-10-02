@@ -63,7 +63,7 @@ namespace Content.Server.GameTicking
         }
 
         private void SpawnPlayers(List<ICommonSession> readyPlayers,
-            Collection<NetUserId> profiles, // Moff - Multi profile selection - Used to pass selected profiles
+            Dictionary<NetUserId, HumanoidCharacterProfile> profiles,
             bool force)
         {
             // Allow game rules to spawn players by themselves if needed. (For example, nuke ops or wizard)
@@ -77,7 +77,7 @@ namespace Content.Server.GameTicking
             {
                 var toRemove = new RemQueue<NetUserId>();
 
-                foreach (var player in profiles) // Moff - Multi profile selection
+                foreach (var (player, _) in profiles)
                 {
                     if (playerNetIds.Contains(player))
                         continue;
@@ -91,11 +91,8 @@ namespace Content.Server.GameTicking
                 }
             }
 
-            var usersAndProfiles = _moffCharacterSelection.GetAllProfiles(profiles); // Moff - Multi profile selection - Here's where we actually get the profiles
             var spawnableStations = GetSpawnableStations();
-            var assignedJobs = _stationJobs.AssignJobs(usersAndProfiles, spawnableStations); // Moff - Multi profile selection
-
-            _stationJobs.AssignOverflowJobs(ref assignedJobs, playerNetIds, usersAndProfiles, spawnableStations); // Moff - Multi profile selection
+            var assignedJobs = _stationJobs.AssignJobsAndOverflowJobs(playerNetIds, spawnableStations); // Moff - Multi profile selection - Consolidate normal and overflow job assignment
 
             // Calculate extended access for stations.
             var stationJobCounts = spawnableStations.ToDictionary(e => e, _ => 0);
