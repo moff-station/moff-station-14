@@ -15,7 +15,7 @@ public sealed partial class StationAiFixerConsoleComponent : Component
     /// Determines how long a repair takes to complete (in seconds).
     /// </summary>
     [DataField]
-    public TimeSpan RepairDuration = TimeSpan.FromSeconds(30);
+    public TimeSpan RepairDuration = TimeSpan.FromSeconds(150);
 
     /// <summary>
     /// Determines how long a purge takes to complete (in seconds).
