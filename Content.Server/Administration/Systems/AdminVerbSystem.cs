@@ -189,10 +189,11 @@ namespace Content.Server.Administration.Systems
 
                             var stationUid = _stations.GetOwningStation(args.Target);
 
-                            // Moff - Multi-character selection: clone the character they actually
+                            // Moff start - Multi-character selection: clone the character they actually
                             // spawned as, not whichever one is selected in the lobby.
                             var profile = _moffCharacterPicker.GetSpawnedProfile(targetActor.PlayerSession.UserId)
-                                          ?? _gameTicker.GetPlayerProfile(targetActor.PlayerSession);
+                                          ?? _gameTicker.GetPlayerProfile(targetActor.PlayerSession, profileIndex: null);
+                            // Moff end
                             _spawning.SpawnPlayerMob(coords.Value, null, profile, stationUid);
                         },
                         ConfirmationPopup = true,
