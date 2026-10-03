@@ -312,8 +312,8 @@ public sealed partial class PaperSystem : EntitySystem
         };
 
         // Try stamp with the info, return false if failed.
-        if (!TryStamp(ent, info, "paper_stamp-generic"))
-            return false;
+        if (!TryStamp(ent, info, "paper_stamp-nf-signature")) // Moffstation - set signature sprite. (technically the sprite is from Frontier,
+            return false;                                     // but the yaml change is what I'm labelling here. :P)
 
         // Signing successful, popup time.
 
