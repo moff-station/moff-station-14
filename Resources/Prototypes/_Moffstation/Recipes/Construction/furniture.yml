@@ -48,3 +48,433 @@
   canBuildInImpassable: false
   conditions:
   - !type:TileNotBlocked
+
+#Sofa
+
+- type: construction
+  id: SofaMiddle
+  name: sofa (middle)
+  description: Multiple seats spanning a single object. Truly a marvel of science.
+  graph: SofasGraph
+  startNode: start
+  targetNode: SofaMiddleNode
+  category: construction-category-furniture
+  icon:
+    sprite: _Moffstation/Structures/Furniture/Chairs/sofa.rsi
+    state: middle
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canBuildInImpassable: false
+  conditions:
+  - !type:TileNotBlocked
+
+- type: construction
+  id: SofaLeft
+  name: sofa (left)
+  description: Multiple seats spanning a single object. Truly a marvel of science.
+  graph: SofasGraph
+  startNode: start
+  targetNode: SofaLeftNode
+  category: construction-category-furniture
+  icon:
+    sprite: _Moffstation/Structures/Furniture/Chairs/sofa.rsi
+    state: left
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canBuildInImpassable: false
+  conditions:
+  - !type:TileNotBlocked
+
+- type: construction
+  id: SofaRight
+  name: sofa (right)
+  description: Multiple seats spanning a single object. Truly a marvel of science.
+  graph: SofasGraph
+  startNode: start
+  targetNode: SofaRightNode
+  category: construction-category-furniture
+  icon:
+    sprite: _Moffstation/Structures/Furniture/Chairs/sofa.rsi
+    state: right
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canBuildInImpassable: false
+  conditions:
+  - !type:TileNotBlocked
+
+- type: construction
+  id: SofaCorner
+  name: sofa (corner)
+  description: Multiple seats spanning a single object. Truly a marvel of science.
+  graph: SofasGraph
+  startNode: start
+  targetNode: SofaCornerNode
+  category: construction-category-furniture
+  icon:
+    sprite: _Moffstation/Structures/Furniture/Chairs/sofa.rsi
+    state: corner
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canBuildInImpassable: false
+  conditions:
+  - !type:TileNotBlocked
+
+- type: construction
+  id: GreenSofaMiddle
+  name: green sofa (middle)
+  description: Multiple seats spanning a single object. Truly a marvel of science.
+  graph: SofasGraph
+  startNode: start
+  targetNode: GreenSofaMiddleNode
+  category: construction-category-furniture
+  icon:
+    sprite: _Moffstation/Structures/Furniture/Chairs/sofa.rsi
+    state: middle
+    color: "#4b7e6e"
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canBuildInImpassable: false
+  conditions:
+  - !type:TileNotBlocked
+
+- type: construction
+  id: GreenSofaLeft
+  name:  green sofa (left)
+  description: Multiple seats spanning a single object. Truly a marvel of science.
+  graph: SofasGraph
+  startNode: start
+  targetNode: GreenSofaLeftNode
+  category: construction-category-furniture
+  icon:
+    sprite: _Moffstation/Structures/Furniture/Chairs/sofa.rsi
+    state: left
+    color: "#4b7e6e"
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canBuildInImpassable: false
+  conditions:
+  - !type:TileNotBlocked
+
+- type: construction
+  id: GreenSofaRight
+  name: green sofa (right)
+  description: Multiple seats spanning a single object. Truly a marvel of science.
+  graph: SofasGraph
+  startNode: start
+  targetNode: GreenSofaRightNode
+  category: construction-category-furniture
+  icon:
+    sprite: _Moffstation/Structures/Furniture/Chairs/sofa.rsi
+    state: right
+    color: "#4b7e6e"
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canBuildInImpassable: false
+  conditions:
+  - !type:TileNotBlocked
+
+- type: construction
+  id: GreenSofaCorner
+  name: green sofa (corner)
+  description: Multiple seats spanning a single object. Truly a marvel of science.
+  graph: SofasGraph
+  startNode: start
+  targetNode: GreenSofaCornerNode
+  category: construction-category-furniture
+  icon:
+    sprite: _Moffstation/Structures/Furniture/Chairs/sofa.rsi
+    state: corner
+    color: "#4b7e6e"
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canBuildInImpassable: false
+  conditions:
+  - !type:TileNotBlocked
+
+- type: construction
+  id: RedSofaMiddle
+  name: red sofa (middle)
+  description: Multiple seats spanning a single object. Truly a marvel of science.
+  graph: SofasGraph
+  startNode: start
+  targetNode: RedSofaMiddleNode
+  category: construction-category-furniture
+  icon:
+    sprite: _Moffstation/Structures/Furniture/Chairs/sofa.rsi
+    state: middle
+    color: "#aa1c34"
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canBuildInImpassable: false
+  conditions:
+  - !type:TileNotBlocked
+
+- type: construction
+  id: RedSofaLeft
+  name: red sofa (left)
+  description: Multiple seats spanning a single object. Truly a marvel of science.
+  graph: SofasGraph
+  startNode: start
+  targetNode: RedSofaLeftNode
+  category: construction-category-furniture
+  icon:
+    sprite: _Moffstation/Structures/Furniture/Chairs/sofa.rsi
+    state: left
+    color: "#aa1c34"
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canBuildInImpassable: false
+  conditions:
+  - !type:TileNotBlocked
+
+- type: construction
+  id: RedSofaRight
+  name: red sofa (right)
+  description: Multiple seats spanning a single object. Truly a marvel of science.
+  graph: SofasGraph
+  startNode: start
+  targetNode: RedSofaRightNode
+  category: construction-category-furniture
+  icon:
+    sprite: _Moffstation/Structures/Furniture/Chairs/sofa.rsi
+    state: right
+    color: "#aa1c34"
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canBuildInImpassable: false
+  conditions:
+  - !type:TileNotBlocked
+
+- type: construction
+  id: RedSofaCorner
+  name: red sofa (corner)
+  description: Multiple seats spanning a single object. Truly a marvel of science.
+  graph: SofasGraph
+  startNode: start
+  targetNode: RedSofaCornerNode
+  category: construction-category-furniture
+  icon:
+    sprite: _Moffstation/Structures/Furniture/Chairs/sofa.rsi
+    state: corner
+    color: "#aa1c34"
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canBuildInImpassable: false
+  conditions:
+  - !type:TileNotBlocked
+
+- type: construction
+  id: BlackSofaMiddle
+  name: black sofa (middle)
+  description: Multiple seats spanning a single object. Truly a marvel of science.
+  graph: SofasGraph
+  startNode: start
+  targetNode: BlackSofaMiddleNode
+  category: construction-category-furniture
+  icon:
+    sprite: _Moffstation/Structures/Furniture/Chairs/sofa.rsi
+    state: middle
+    color: "#3b334e"
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canBuildInImpassable: false
+  conditions:
+  - !type:TileNotBlocked
+
+- type: construction
+  id: BlackSofaLeft
+  name: black sofa (left)
+  description: Multiple seats spanning a single object. Truly a marvel of science.
+  graph: SofasGraph
+  startNode: start
+  targetNode: BlackSofaLeftNode
+  category: construction-category-furniture
+  icon:
+    sprite: _Moffstation/Structures/Furniture/Chairs/sofa.rsi
+    state: left
+    color: "#3b334e"
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canBuildInImpassable: false
+  conditions:
+  - !type:TileNotBlocked
+
+- type: construction
+  id: BlackSofaRight
+  name: black sofa (right)
+  description: Multiple seats spanning a single object. Truly a marvel of science.
+  graph: SofasGraph
+  startNode: start
+  targetNode: BlackSofaRightNode
+  category: construction-category-furniture
+  icon:
+    sprite: _Moffstation/Structures/Furniture/Chairs/sofa.rsi
+    state: right
+    color: "#3b334e"
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canBuildInImpassable: false
+  conditions:
+  - !type:TileNotBlocked
+
+- type: construction
+  id: BlackSofaCorner
+  name: black sofa (corner)
+  description: Multiple seats spanning a single object. Truly a marvel of science.
+  graph: SofasGraph
+  startNode: start
+  targetNode: BlackSofaCornerNode
+  category: construction-category-furniture
+  icon:
+    sprite: _Moffstation/Structures/Furniture/Chairs/sofa.rsi
+    state: corner
+    color: "#3b334e"
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canBuildInImpassable: false
+  conditions:
+  - !type:TileNotBlocked
+
+- type: construction
+  id: BlueSofaMiddle
+  name: blue sofa (middle)
+  description: Multiple seats spanning a single object. Truly a marvel of science.
+  graph: SofasGraph
+  startNode: start
+  targetNode: BlueSofaMiddleNode
+  category: construction-category-furniture
+  icon:
+    sprite: _Moffstation/Structures/Furniture/Chairs/sofa.rsi
+    state: middle
+    color: "#366694"
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canBuildInImpassable: false
+  conditions:
+  - !type:TileNotBlocked
+
+- type: construction
+  id: BlueSofaLeft
+  name: blue sofa (left)
+  description: Multiple seats spanning a single object. Truly a marvel of science.
+  graph: SofasGraph
+  startNode: start
+  targetNode: BlueSofaLeftNode
+  category: construction-category-furniture
+  icon:
+    sprite: _Moffstation/Structures/Furniture/Chairs/sofa.rsi
+    state: left
+    color: "#366694"
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canBuildInImpassable: false
+  conditions:
+  - !type:TileNotBlocked
+
+- type: construction
+  id: BlueSofaRight
+  name: blue sofa (right)
+  description: Multiple seats spanning a single object. Truly a marvel of science.
+  graph: SofasGraph
+  startNode: start
+  targetNode: BlueSofaRightNode
+  category: construction-category-furniture
+  icon:
+    sprite: _Moffstation/Structures/Furniture/Chairs/sofa.rsi
+    state: right
+    color: "#366694"
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canBuildInImpassable: false
+  conditions:
+  - !type:TileNotBlocked
+
+- type: construction
+  id: BlueSofaCorner
+  name: blue sofa (corner)
+  description: Multiple seats spanning a single object. Truly a marvel of science.
+  graph: SofasGraph
+  startNode: start
+  targetNode: BlueSofaCornerNode
+  category: construction-category-furniture
+  icon:
+    sprite: _Moffstation/Structures/Furniture/Chairs/sofa.rsi
+    state: corner
+    color: "#366694"
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canBuildInImpassable: false
+  conditions:
+  - !type:TileNotBlocked
+
+- type: construction
+  id: BrownSofaMiddle
+  name: brown sofa (middle)
+  description: Multiple seats spanning a single object. Truly a marvel of science.
+  graph: SofasGraph
+  startNode: start
+  targetNode: BrownSofaMiddleNode
+  category: construction-category-furniture
+  icon:
+    sprite: _Moffstation/Structures/Furniture/Chairs/sofa.rsi
+    state: middle
+    color: "#91553b"
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canBuildInImpassable: false
+  conditions:
+  - !type:TileNotBlocked
+
+- type: construction
+  id: BrownSofaLeft
+  name: brown sofa (left)
+  description: Multiple seats spanning a single object. Truly a marvel of science.
+  graph: SofasGraph
+  startNode: start
+  targetNode: BrownSofaLeftNode
+  category: construction-category-furniture
+  icon:
+    sprite: _Moffstation/Structures/Furniture/Chairs/sofa.rsi
+    state: left
+    color: "#91553b"
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canBuildInImpassable: false
+  conditions:
+  - !type:TileNotBlocked
+
+- type: construction
+  id: BrownSofaRight
+  name: brown sofa (right)
+  description: Multiple seats spanning a single object. Truly a marvel of science.
+  graph: SofasGraph
+  startNode: start
+  targetNode: BrownSofaRightNode
+  category: construction-category-furniture
+  icon:
+    sprite: _Moffstation/Structures/Furniture/Chairs/sofa.rsi
+    state: right
+    color: "#91553b"
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canBuildInImpassable: false
+  conditions:
+  - !type:TileNotBlocked
+
+- type: construction
+  id: BrownSofaCorner
+  name: brown sofa (corner)
+  description: Multiple seats spanning a single object. Truly a marvel of science.
+  graph: SofasGraph
+  startNode: start
+  targetNode: BrownSofaCornerNode
+  category: construction-category-furniture
+  icon:
+    sprite: _Moffstation/Structures/Furniture/Chairs/sofa.rsi
+    state: corner
+    color: "#91553b"
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canBuildInImpassable: false
+  conditions:
+  - !type:TileNotBlocked
