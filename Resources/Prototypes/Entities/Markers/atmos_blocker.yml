@@ -125,3 +125,21 @@
       state: air
   - type: AtmosFixMarker
     mode: 8
+#Moff Start - Added for Ingeus Station
+- type: entity
+  name: Atmos Fix Hot Air Marker
+  id: AtmosFixInstantHotAirMarker
+  description: "Oxygen (21%) and nitrogen (79%) @ 333.15k (60C)"
+  parent: MarkerBase
+  components:
+    - type: Sprite
+      layers:
+        - sprite: Markers/atmos.rsi # {
+          state: base-hot
+          shader: unshaded
+        - sprite: Markers/atmos.rsi
+          shader: unshaded # }
+          state: air
+    - type: AtmosFixMarker
+      mode: 9
+#Moff End
