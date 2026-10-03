@@ -1,0 +1,68 @@
+﻿- type: entity
+  abstract: true
+  id: BaseAnomalyMob
+  name: anomalous creature
+  suffix: Anomaly
+  description: An unstable manifestation of the natural order, broken.
+  components:
+  - type: PointLight
+    radius: 1.3
+    energy: 2.5
+    castShadows: false
+  - type: ActionGrant
+    actions:
+    - ActionAnomalyPulse
+
+- type: entity
+  parent: [MobCatShadow, MobNightVision, BaseAnomalyMob]
+  id: AnomalyMobShadowCat
+  description: A lovely piece of darkness. Hope it doesn't bring you a curse.
+  components:
+  - type: PointLight
+    color: "#793a80"
+  - type: Anomaly
+    maxPointsPerSecond: 100
+    corePrototype: AnomalyCoreShadow
+    coreInertPrototype: AnomalyCoreShadowInert
+    supercriticalSoundAtAnimationStart:
+      collection: AnomalyShadowSupercritical
+  - type: LightExtinguisher
+  #- type: EntitySpawnAnomaly
+  #  entries:
+  #  - settings:
+  #      spawnOnPulse: true
+  #      spawnOnSuperCritical: true
+  #      minAmount: 5
+  #      maxAmount: 10
+  #      maxRange: 2
+  #    spawns:
+  #    - ShadowKudzuWeak
+  #  - settings:
+  #      spawnOnSuperCritical: true
+  #      minAmount: 15
+  #      maxAmount: 20
+  #      maxRange: 25
+  #    spawns:
+  #    - ShadowKudzu
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeCircle
+          radius: 0.35
+        density: 15
+        mask:
+        - MobMask
+        layer:
+        - MobLayer
+  - type: Speech
+    speechSounds: ShadowCat #TODO - Noodle is editing the sfx, DO NOT MERGE until finished!
+    speechVerb: SmallMob
+  - type: MovementSpeedModifier
+    baseWalkSpeed: 2
+    baseSprintSpeed: 4
+  - type: Tag
+    tags:
+    - CannotSuicide
+    - DoorBumpOpener
+    - VimPilot
