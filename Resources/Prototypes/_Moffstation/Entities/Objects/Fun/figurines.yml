@@ -158,6 +158,17 @@
 
 - type: entity
   parent: BaseFigurineMoff
+  id: ToyFigurineBetty
+  name: sparkly bartender figurine
+  description: A figurine depicting a smiling orange slime, some LEDs sparkling inside of it. Her heels seem to be made out of a higher quality plastic than the rest, for some reason.
+  components:
+  - type: Sprite
+    state: betty
+  - type: SpeakOnTrigger
+    pack: FigurinesBetty
+
+- type: entity
+  parent: BaseFigurineMoff
   id: ToyFigurineBoxcar
   name: scrappy reporter figurine
   description: A figurine depicting a man with a fashionable pompadour and reporter outfit holding a microphone. (Camera accessory not included.)
