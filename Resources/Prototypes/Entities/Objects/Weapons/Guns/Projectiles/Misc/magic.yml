@@ -19,7 +19,7 @@
     - state: fireball
       shader: unshaded
   - type: Explosive
-    explosionType: Default
+    explosionType: Transparent # Funky RMC Explosions
     maxIntensity: 40
     intensitySlope: 6
     totalIntensity: 200
