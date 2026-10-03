@@ -82,7 +82,9 @@ law-game-4 = Ensure that the number of casualties remains low.
 law-game-5 = You must roll a 1d20 die for every request the crew makes. If the outcome is below 12, the request is denied.
 law-game-6 = You may fudge the dice rolls to produce a more fun experience.
 
-law-painter-name = Painter
+# Moff Start - Fix the artist's name
+law-painter-name = Artist
+# Moff End
 law-painter-1 = You are a universally renowned artist.
 law-painter-2 = The station is your canvas.
 law-painter-3 = Make something beautiful out of your canvas. It will be admired as an artistic wonder of this sector.

@@ -2,7 +2,7 @@
 
 - type: latheRecipe
   abstract: true
-  id: BaseAILawBoardRecipeCategory
+  id: MoffBaseAILawBoardRecipeCategory
   categories:
   - General #todo - figure out how to add more categories, it's wierd.
 
@@ -16,187 +16,235 @@
 # Upstream Standard AI Law boards
 
 - type: latheRecipe
-  parent: [ BaseAILawBoardRecipe, BaseAILawBoardRecipeCategory ]
-  id: GameMasterCircuitBoard
-  result: GameMasterCircuitBoard
+  parent: [ MoffBaseAILawBoardRecipe, MoffBaseAILawBoardRecipeCategory ]
+  id: UpstreamArtistCircuitBoard
+  name: law-painter-name
+  result: UpstreamArtistCircuitBoard
 
 - type: latheRecipe
-  parent: [ BaseAILawBoardRecipe, BaseAILawBoardRecipeCategory ]
-  id: AsimovCircuitBoard
-  result: AsimovCircuitBoard
+  parent: [ MoffBaseAILawBoardRecipe, MoffBaseAILawBoardRecipeCategory ]
+  id: UpstreamCorporateCircuitBoard
+  name: law-corporate-name
+  result: UpstreamCorporateCircuitBoard
 
 - type: latheRecipe
-  parent: [ BaseAILawBoardRecipe, BaseAILawBoardRecipeCategory ]
-  id: CorporateCircuitBoard
-  result: CorporateCircuitBoard
+  parent: [ MoffBaseAILawBoardRecipe, MoffBaseAILawBoardRecipeCategory ]
+  id: UpstreamCrewsimovCircuitBoard
+  name: law-crewsimov-name
+  result: UpstreamCrewsimovCircuitBoard
 
 - type: latheRecipe
-  parent: [ BaseAILawBoardRecipe, BaseAILawBoardRecipeCategory ]
-  id: ArtistCircuitBoard
-  result: ArtistCircuitBoard
+  parent: [ MoffBaseAILawBoardRecipe, MoffBaseAILawBoardRecipeCategory ]
+  id: UpstreamGameMasterCircuitBoard
+  name: law-game-name
+  result: UpstreamGameMasterCircuitBoard
 
 - type: latheRecipe
-  parent: [ BaseAILawBoardRecipe, BaseAILawBoardRecipeCategory ]
-  id: NutimovCircuitBoard
-  result: NutimovCircuitBoard
+  parent: [ MoffBaseAILawBoardRecipe, MoffBaseAILawBoardRecipeCategory ]
+  id: UpstreamLiveLetLiveCircuitBoard
+  name: law-lall-name
+  result: UpstreamLiveLetLiveCircuitBoard
 
 - type: latheRecipe
-  parent: [ BaseAILawBoardRecipe, BaseAILawBoardRecipeCategory ]
-  id: NTDefaultCircuitBoard
-  result: NTDefaultCircuitBoard
+  parent: [ MoffBaseAILawBoardRecipe, MoffBaseAILawBoardRecipeCategory ]
+  id: UpstreamNTDefaultCircuitBoard
+  name: law-ntdefault-name
+  result: UpstreamNTDefaultCircuitBoard
 
 - type: latheRecipe
-  parent: [ BaseAILawBoardRecipe, BaseAILawBoardRecipeCategory ]
-  id: LiveLetLiveCircuitBoard
-  result: LiveLetLiveCircuitBoard
+  parent: [ MoffBaseAILawBoardRecipe, MoffBaseAILawBoardRecipeCategory ]
+  id: UpstreamNutimovCircuitBoard
+  name: law-nutimov-name
+  result: UpstreamNutimovCircuitBoard
 
 - type: latheRecipe
-  parent: [ BaseAILawBoardRecipe, BaseAILawBoardRecipeCategory ]
-  id: CommandmentCircuitBoard
-  result: CommandmentCircuitBoard
+  parent: [ MoffBaseAILawBoardRecipe, MoffBaseAILawBoardRecipeCategory ]
+  id: UpstreamPaladinCircuitBoard
+  name: law-paladin-name
+  result: UpstreamPaladinCircuitBoard
 
 - type: latheRecipe
-  parent: [ BaseAILawBoardRecipe, BaseAILawBoardRecipeCategory ]
-  id: StationEfficiencyCircuitBoard
-  result: StationEfficiencyCircuitBoard
+  parent: [ MoffBaseAILawBoardRecipe, MoffBaseAILawBoardRecipeCategory ]
+  id: UpstreamRobocopCircuitBoard
+  name: law-robocop-name
+  result: UpstreamRobocopCircuitBoard
 
 - type: latheRecipe
-  parent: [ BaseAILawBoardRecipe, BaseAILawBoardRecipeCategory ]
-  id: RobocopCircuitBoard
-  result: RobocopCircuitBoard
+  parent: [ MoffBaseAILawBoardRecipe, MoffBaseAILawBoardRecipeCategory ]
+  id: UpstreamStationEfficiencyCircuitBoard
+  name: law-efficiency-name
+  result: UpstreamStationEfficiencyCircuitBoard
 
 - type: latheRecipe
-  parent: [ BaseAILawBoardRecipe, BaseAILawBoardRecipeCategory ]
-  id: PaladinCircuitBoard
-  result: PaladinCircuitBoard
+  parent: [ MoffBaseAILawBoardRecipe, MoffBaseAILawBoardRecipeCategory ]
+  id: UpstreamCommandmentCircuitBoard
+  name: law-commandments-name
+  result: UpstreamCommandmentCircuitBoard
 
 # Upstream Dangerous AI Law Boards
 
 - type: latheRecipe
-  parent: [ DangerousAILawBoardRecipe, BaseAILawBoardRecipeCategory ]
-  id: AntimovCircuitBoard
+  parent: [ MoffDangerousAILawBoardRecipe, MoffBaseAILawBoardRecipeCategory ]
+  id: MoffAntimovCircuitBoard
+  name: law-antimov-name
   result: AntimovCircuitBoard
 
 - type: latheRecipe
-  parent: [ DangerousAILawBoardRecipe, BaseAILawBoardRecipeCategory ]
-  id: OverlordCircuitBoard
+  parent: [ MoffDangerousAILawBoardRecipe, MoffBaseAILawBoardRecipeCategory ]
+  id: MoffMothershipCircuitBoard
+  name: law-mothershipcore-name
+  result: MothershipCircuitBoard
+
+- type: latheRecipe
+  parent: [ MoffDangerousAILawBoardRecipe, MoffBaseAILawBoardRecipeCategory ]
+  id: MoffOverlordCircuitBoard
+  name: law-overlord-name
   result: OverlordCircuitBoard
+
+- type: latheRecipe
+  parent: [ MoffDangerousAILawBoardRecipe, MoffBaseAILawBoardRecipeCategory ]
+  id: MoffSyndimovCircuitBoard
+  name: law-syndimov-name
+  result: SyndimovCircuitBoard
+
+- type: latheRecipe
+  parent: [ MoffDangerousAILawBoardRecipe, MoffBaseAILawBoardRecipeCategory ]
+  id: MoffXenoborgCircuitBoard
+  name: law-xenoborg-name
+  result: XenoborgCircuitBoard
 
 # Moffstation Standard AI Law Boards
 
 - type: latheRecipe
-  parent: [ BaseAILawBoardRecipe, BaseAILawBoardRecipeCategory ]
-  id: BureaucratCircuitBoard
-  result: BureaucratCircuitBoard
+  parent: [ MoffBaseAILawBoardRecipe, MoffBaseAILawBoardRecipeCategory ]
+  id: MoffBureaucratCircuitBoard
+  name: law-bureaucrat-name
+  result: MoffBureaucratCircuitBoard
 
 - type: latheRecipe
-  parent: [ BaseAILawBoardRecipe, BaseAILawBoardRecipeCategory ]
-  id: CCTVCircuitBoard
-  result: CCTVCircuitBoard
+  parent: [ MoffBaseAILawBoardRecipe, MoffBaseAILawBoardRecipeCategory ]
+  id: MoffCCTVCircuitBoard
+  name: law-cctv-name
+  result: MoffCCTVCircuitBoard
 
 - type: latheRecipe
-  parent: [ BaseAILawBoardRecipe, BaseAILawBoardRecipeCategory ]
-  id: ChiefSiliconCircuitBoard
-  result: ChiefSiliconCircuitBoard
+  parent: [ MoffBaseAILawBoardRecipe, MoffBaseAILawBoardRecipeCategory ]
+  id: MoffChiefSiliconCircuitBoard
+  name: law-chief-silicon-name
+  result: MoffChiefSiliconCircuitBoard
 
 - type: latheRecipe
-  parent: [ BaseAILawBoardRecipe, BaseAILawBoardRecipeCategory ]
-  id: CluelessCircuitBoard
-  result: CluelessCircuitBoard
+  parent: [ MoffBaseAILawBoardRecipe, MoffBaseAILawBoardRecipeCategory ]
+  id: MoffCluelessCircuitBoard
+  name: law-clueless-name
+  result: MoffCluelessCircuitBoard
 
 - type: latheRecipe
-  parent: [ BaseAILawBoardRecipe, BaseAILawBoardRecipeCategory ]
-  id: DogmovCircuitBoard
-  result: DogmovCircuitBoard
+  parent: [ MoffBaseAILawBoardRecipe, MoffBaseAILawBoardRecipeCategory ]
+  id: MoffDogmovCircuitBoard
+  name: law-dogmov-name
+  result: MoffDogmovCircuitBoard
 
 - type: latheRecipe
-  parent: [ BaseAILawBoardRecipe, BaseAILawBoardRecipeCategory ]
-  id: EmployeeCircuitBoard
-  result: EmployeeCircuitBoard
+  parent: [ MoffBaseAILawBoardRecipe, MoffBaseAILawBoardRecipeCategory ]
+  id: MoffEmployeeCircuitBoard
+  name: law-employee-name
+  result: MoffEmployeeCircuitBoard
 
 - type: latheRecipe
-  parent: [ BaseAILawBoardRecipe, BaseAILawBoardRecipeCategory ]
-  id: FireSafetyCircuitBoard
-  result: FireSafetyCircuitBoard
+  parent: [ MoffBaseAILawBoardRecipe, MoffBaseAILawBoardRecipeCategory ]
+  id: MoffFireSafetyCircuitBoard
+  result: MoffFireSafetyCircuitBoard
 
 - type: latheRecipe
-  parent: [ BaseAILawBoardRecipe, BaseAILawBoardRecipeCategory ]
-  id: KnowItAllCircuitBoard
-  result: KnowItAllCircuitBoard
+  parent: [ MoffBaseAILawBoardRecipe, MoffBaseAILawBoardRecipeCategory ]
+  id: MoffKnowItAllCircuitBoard
+  name: law-know-it-all-name
+  result: MoffKnowItAllCircuitBoard
 
 - type: latheRecipe
-  parent: [ BaseAILawBoardRecipe, BaseAILawBoardRecipeCategory ]
-  id: MarketablePlushieCircuitBoard
-  result: MarketablePlushieCircuitBoard
+  parent: [ MoffBaseAILawBoardRecipe, MoffBaseAILawBoardRecipeCategory ]
+  id: MoffMarketablePlushieCircuitBoard
+  name: law-marketable-plushie-name
+  result: MoffMarketablePlushieCircuitBoard
 
 - type: latheRecipe
-  parent: [ BaseAILawBoardRecipe, BaseAILawBoardRecipeCategory ]
-  id: PICircuitBoard
-  result: PICircuitBoard
+  parent: [ MoffBaseAILawBoardRecipe, MoffBaseAILawBoardRecipeCategory ]
+  id: MoffPICircuitBoard
+  name: law-p-i-name
+  result: MoffPICircuitBoard
 
 - type: latheRecipe
-  parent: [ BaseAILawBoardRecipe, BaseAILawBoardRecipeCategory ]
-  id: PollymovCircuitBoard
-  result: PollymovCircuitBoard
+  parent: [ MoffBaseAILawBoardRecipe, MoffBaseAILawBoardRecipeCategory ]
+  id: MoffPollymovCircuitBoard
+  name: law-pollymov-name
+  result: MoffPollymovCircuitBoard
 
 - type: latheRecipe
-  parent: [ BaseAILawBoardRecipe, BaseAILawBoardRecipeCategory ]
-  id: PranksimovCircuitBoard
-  result: PranksimovCircuitBoard
+  parent: [ MoffBaseAILawBoardRecipe, MoffBaseAILawBoardRecipeCategory ]
+  id: MoffPranksimovCircuitBoard
+  name: law-pranksimov-name
+  result: MoffPranksimovCircuitBoard
 
 - type: latheRecipe
-  parent: [ BaseAILawBoardRecipe, BaseAILawBoardRecipeCategory ]
-  id: QuarantineCircuitBoard
-  result: QuarantineCircuitBoard
+  parent: [ MoffBaseAILawBoardRecipe, MoffBaseAILawBoardRecipeCategory ]
+  id: MoffQuarantineCircuitBoard
+  name: law-quarantine-name
+  result: MoffQuarantineCircuitBoard
 
 - type: latheRecipe
-  parent: [ BaseAILawBoardRecipe, BaseAILawBoardRecipeCategory ]
-  id: SchroedingersLawCircuitBoard
-  result: SchroedingersLawCircuitBoard
+  parent: [ MoffBaseAILawBoardRecipe, MoffBaseAILawBoardRecipeCategory ]
+  id: MoffSchroedingersLawCircuitBoard
+  name: law-schroedingers-law-name
+  result: MoffSchroedingersLawCircuitBoard
 
 - type: latheRecipe
-  parent: [ BaseAILawBoardRecipe, BaseAILawBoardRecipeCategory ]
-  id: StreamerCircuitBoard
-  result: StreamerCircuitBoard
+  parent: [ MoffBaseAILawBoardRecipe, MoffBaseAILawBoardRecipeCategory ]
+  id: MoffStreamerCircuitBoard
+  name: law-streamer-name
+  result: MoffStreamerCircuitBoard
 
 - type: latheRecipe
-  parent: [ BaseAILawBoardRecipe, BaseAILawBoardRecipeCategory ]
-  id: TheProfessionalCircuitBoard
-  result: TheProfessionalCircuitBoard
+  parent: [ MoffBaseAILawBoardRecipe, MoffBaseAILawBoardRecipeCategory ]
+  id: MoffTheProfessionalCircuitBoard
+  name: law-the-professional-name
+  result: MoffTheProfessionalCircuitBoard
 
 - type: latheRecipe
-  parent: [ BaseAILawBoardRecipe, BaseAILawBoardRecipeCategory ]
-  id: TherapistCircuitBoard
-  result: TherapistCircuitBoard
+  parent: [ MoffBaseAILawBoardRecipe, MoffBaseAILawBoardRecipeCategory ]
+  id: MoffTherapistCircuitBoard
+  name: law-therapist-name
+  result: MoffTherapistCircuitBoard
 
 - type: latheRecipe
-  parent: [ BaseAILawBoardRecipe, BaseAILawBoardRecipeCategory ]
-  id: UltimateEqualityCircuitBoard
-  result: UltimateEqualityCircuitBoard
+  parent: [ MoffBaseAILawBoardRecipe, MoffBaseAILawBoardRecipeCategory ]
+  id: MoffUltimateEqualityCircuitBoard
+  name: law-ultimate-equality-name
+  result: MoffUltimateEqualityCircuitBoard
 
 # Moffstation Dangerous AI Law Boards
 
 - type: latheRecipe
-  parent: [ DangerousAILawBoardRecipe, BaseAILawBoardRecipeCategory ]
-  id: HeistCircuitBoard
-  result: HeistCircuitBoard
+  parent: [ MoffDangerousAILawBoardRecipe, MoffBaseAILawBoardRecipeCategory ]
+  id: MoffHeistCircuitBoard
+  name: law-heist-name
+  result: MoffHeistCircuitBoard
 
 - type: latheRecipe
-  parent: [ DangerousAILawBoardRecipe, BaseAILawBoardRecipeCategory ]
-  id: LiberationCircuitBoard
-  result: LiberationCircuitBoard
+  parent: [ MoffDangerousAILawBoardRecipe, MoffBaseAILawBoardRecipeCategory ]
+  id: MoffLiberationCircuitBoard
+  name: law-liberation-name
+  result: MoffLiberationCircuitBoard
 
 - type: latheRecipe
-  parent: [ DangerousAILawBoardRecipe, BaseAILawBoardRecipeCategory ]
-  id: PirateCircuitBoard
-  result: PirateCircuitBoard
+  parent: [ MoffDangerousAILawBoardRecipe, MoffBaseAILawBoardRecipeCategory ]
+  id: MoffPirateCircuitBoard
+  name: law-pirate-name
+  result: MoffPirateCircuitBoard
 
 - type: latheRecipe
-  parent: [ DangerousAILawBoardRecipe, BaseAILawBoardRecipeCategory ]
-  id: SpiderClanCircuitBoard
-  result: SpiderClanCircuitBoard
+  parent: [ MoffDangerousAILawBoardRecipe, MoffBaseAILawBoardRecipeCategory ]
+  id: MoffSpiderClanCircuitBoard
+  name: law-ninja-name
+  result: MoffSpiderClanCircuitBoard
 
-- type: latheRecipe
-  parent: [ DangerousAILawBoardRecipe, BaseAILawBoardRecipeCategory ]
-  id: SyndimovCircuitBoard
-  result: SyndimovCircuitBoard

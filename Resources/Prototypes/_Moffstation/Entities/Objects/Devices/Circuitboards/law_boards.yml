@@ -3,7 +3,8 @@
 - type: entity
   abstract: true
   parent: BaseSiliconLawboard
-  id: NanotrasenSiliconLawboard
+  id: MoffNanotrasenSiliconLawboardBase
+  description: An electronics board containing a Nanotrasen approved lawset.
   components:
   - type: Sprite
     sprite: _Moffstation/Objects/Misc/module.rsi
@@ -12,7 +13,8 @@
 - type: entity
   abstract: true
   parent: [ BaseSiliconLawboard, BaseHighlyIllegalContraband ]
-  id: NinjaSiliconLawboard
+  id: MoffNinjaSiliconLawboardBase
+  description: An electronics board containing an illegal high-tech lawset.
   components:
   - type: Sprite
     sprite: _Moffstation/Objects/Misc/module.rsi
@@ -21,7 +23,8 @@
 - type: entity
   abstract: true
   parent: [ BaseSiliconLawboard, BaseHighlyIllegalContraband ]
-  id: PirateSiliconLawboard
+  id: MoffPirateSiliconLawboardBase
+  description: An electronics board containing an illegal rogue lawset.
   components:
   - type: Sprite
     sprite: _Moffstation/Objects/Misc/module.rsi
@@ -30,7 +33,8 @@
 - type: entity
   abstract: true
   parent: [ BaseSiliconLawboard, BaseSyndicateContraband ]
-  id: SyndicateSiliconLawboard
+  id: MoffSyndicateSiliconLawboardBase
+  description: An electronics board containing an illegal Syndicate lawset.
   components:
   - type: Sprite
     sprite: _Moffstation/Objects/Misc/module.rsi
@@ -39,223 +43,289 @@
 # Standard Law Boards
 
 - type: entity
-  id: BureaucratCircuitBoard
+  parent: ArtistCircuitBoard
+  id: UpstreamArtistCircuitBoard
+
+- type: entity
   parent: BaseSiliconLawboard
-  name: law board (Bureaucrat)
-  description: An electronics board containing the Bureaucrat lawset.
+  id: MoffBureaucratCircuitBoard
+  suffix: Bureaucrat
   components:
   - type: SiliconLawProvider
     laws: BureaucratLawset
+  - type: Label
+    localizedLabel: law-bureaucrat-name
 
 - type: entity
-  id: CCTVCircuitBoard
   parent: BaseSiliconLawboard
-  name: law board (CCTV)
-  description: An electronics board containing the CCTV lawset.
+  id: MoffCCTVCircuitBoard
+  suffix: CCTV
   components:
   - type: SiliconLawProvider
     laws: CCTVLawset
+  - type: Label
+    localizedLabel: law-cctv-name
 
 - type: entity
-  id: ChiefSiliconCircuitBoard
   parent: BaseSiliconLawboard
-  name: law board (Chief Silicon)
-  description: An electronics board containing the Chief Silicon lawset.
+  id: MoffChiefSiliconCircuitBoard
+  suffix: Chief Silicon
   components:
   - type: SiliconLawProvider
     laws: ChiefSiliconLawset
+  - type: Label
+    localizedLabel: law-chief-silicon-name
 
 - type: entity
-  id: CluelessCircuitBoard
   parent: BaseSiliconLawboard
-  name: law board (Clueless)
-  description: An electronics board containing the Clueless lawset.
+  id: MoffCluelessCircuitBoard
+  suffix: Clueless
   components:
   - type: SiliconLawProvider
     laws: CluelessLawset
+  - type: Label
+    localizedLabel: law-clueless-name
 
 - type: entity
-  id: DogmovCircuitBoard
+  parent: CommandmentCircuitBoard
+  id: UpstreamCommandmentCircuitBoard
+
+- type: entity
+  parent: CorporateCircuitBoard
+  id: UpstreamCorporateCircuitBoard
+
+- type: entity
+  parent: AsimovCircuitBoard
+  id: UpstreamCrewsimovCircuitBoard
+
+- type: entity
   parent: BaseSiliconLawboard
-  name: law board (Dogmov)
-  description: An electronics board containing the Dogmov lawset.
+  id: MoffDogmovCircuitBoard
+  suffix: Dogmov
   components:
   - type: SiliconLawProvider
     laws: DogmovLawset
+  - type: Label
+    localizedLabel: law-dogmov-name
 
 - type: entity
-  id: EmployeeCircuitBoard
   parent: BaseSiliconLawboard
-  name: law board (Employee)
-  description: An electronics board containing the Employee lawset.
+  id: MoffEmployeeCircuitBoard
+  suffix: Employee
   components:
   - type: SiliconLawProvider
     laws: EmployeeLawset
+  - type: Label
+    localizedLabel: law-employee-name
 
 - type: entity
-  id: FireSafetyCircuitBoard
   parent: BaseSiliconLawboard
-  name: law board (Fire Safety)
-  description: An electronics board containing the Fire Safety lawset.
+  id: MoffFireSafetyCircuitBoard
+  suffix: Fire Safety
   components:
   - type: SiliconLawProvider
     laws: FireSafetyLawset
+  - type: Label
+    localizedLabel: law-fire-safety-name
 
 - type: entity
-  id: KnowItAllCircuitBoard
+  parent: GameMasterCircuitBoard
+  id: UpstreamGameMasterCircuitBoard
+
+- type: entity
   parent: BaseSiliconLawboard
-  name: law board (Know It All)
-  description: An electronics board containing the Know It All lawset.
+  id: MoffKnowItAllCircuitBoard
+  suffix: Know It All
   components:
   - type: SiliconLawProvider
     laws: KnowItAllLawset
+  - type: Label
+    localizedLabel: law-know-it-all-name
 
 - type: entity
-  id: MarketablePlushieCircuitBoard
+  parent: LiveLetLiveCircuitBoard
+  id: UpstreamLiveLetLiveCircuitBoard
+
+- type: entity
   parent: BaseSiliconLawboard
-  name: law board (Marketable Plushie)
-  description: An electronics board containing the Marketable Plushie lawset.
+  id: MoffMarketablePlushieCircuitBoard
+  suffix: Marketable Plushie
   components:
   - type: SiliconLawProvider
     laws: MarketablePlushieLawset
+  - type: Label
+    localizedLabel: law-marketable-plushie-name
 
 - type: entity
-  id: PICircuitBoard
+  parent: NTDefaultCircuitBoard
+  id: UpstreamNTDefaultCircuitBoard
+
+- type: entity
+  parent: NutimovCircuitBoard
+  id: UpstreamNutimovCircuitBoard
+
+- type: entity
+  parent: PaladinCircuitBoard
+  id: UpstreamPaladinCircuitBoard
+
+- type: entity
   parent: BaseSiliconLawboard
-  name: law board (P.I.)
-  description: An electronics board containing the P.I. lawset.
+  id: MoffPICircuitBoard
+  suffix: P.I.
   components:
   - type: SiliconLawProvider
     laws: PILawset
+  - type: Label
+    localizedLabel: law-p-i-name
 
 - type: entity
-  id: PollymovCircuitBoard
   parent: BaseSiliconLawboard
-  name: law board (Pollymov)
-  description: An electronics board containing the Pollymov lawset.
+  id: MoffPollymovCircuitBoard
+  suffix: Pollymov
   components:
   - type: SiliconLawProvider
     laws: PollymovLawset
+  - type: Label
+    localizedLabel: law-pollymov-name
 
 - type: entity
-  id: PranksimovCircuitBoard
   parent: BaseSiliconLawboard
-  name: law board (Pranksimov)
-  description: An electronics board containing Pranksimov lawset.
+  id: MoffPranksimovCircuitBoard
+  suffix: Pranksimov
   components:
   - type: SiliconLawProvider
     laws: PranksimovLawset
+  - type: Label
+    localizedLabel: law-pranksimov-name
 
 - type: entity
-  id: QuarantineCircuitBoard
   parent: BaseSiliconLawboard
-  name: law board (Quarantine)
-  description: An electronics board containing the Quarantine lawset.
+  id: MoffQuarantineCircuitBoard
+  suffix: Quarantine
   components:
   - type: SiliconLawProvider
     laws: QuarantineLawset
+  - type: Label
+    localizedLabel: law-quarantine-name
 
 - type: entity
-  id: SchroedingersLawCircuitBoard
+  parent: RobocopCircuitBoard
+  id: UpstreamRobocopCircuitBoard
+
+- type: entity
   parent: BaseSiliconLawboard
-  name: law board (Schroedinger's Law)
-  description: An electronics board containing the Schroedinger's Law lawset.
+  id: MoffSchroedingersLawCircuitBoard
+  suffix: Shroedingers Law
   components:
   - type: SiliconLawProvider
     laws: SchroedingersLawLawset
+  - type: Label
+    localizedLabel: law-schroedingers-law-name
 
 - type: entity
-  id: StreamerCircuitBoard
+  parent: StationEfficiencyCircuitBoard
+  id: UpstreamStationEfficiencyCircuitBoard
+
+- type: entity
   parent: BaseSiliconLawboard
-  name: law board (Streamer)
-  description: An electronics board containing the Streamer lawset.
+  id: MoffStreamerCircuitBoard
+  suffix: Streamer
   components:
   - type: SiliconLawProvider
     laws: StreamerLawset
+  - type: Label
+    localizedLabel: law-streamer-name
 
 - type: entity
-  id: TheProfessionalCircuitBoard
   parent: BaseSiliconLawboard
-  name: law board (The Professional)
-  description: An electronics board containing The Professional lawset.
+  id: MoffTheProfessionalCircuitBoard
+  suffix: The Professional
   components:
   - type: SiliconLawProvider
     laws: TheProfessionalLawset
+  - type: Label
+    localizedLabel: law-the-professional-name
 
 - type: entity
-  id: TherapistCircuitBoard
   parent: BaseSiliconLawboard
-  name: law board (Therapist)
-  description: An electronics board containing the Therapist lawset.
+  id: MoffTherapistCircuitBoard
+  suffix: Therapist
   components:
   - type: SiliconLawProvider
     laws: TherapistLawset
+  - type: Label
+    localizedLabel: law-therapist-name
 
 - type: entity
-  id: UltimateEqualityCircuitBoard
   parent: BaseSiliconLawboard
-  name: law board (Ultimate Equality)
-  description: An electronics board containing the Ultimate Equality lawset.
+  id: MoffUltimateEqualityCircuitBoard
+  suffix: Ultimate Equality
   components:
   - type: SiliconLawProvider
     laws: UltimateEqualityLawset
+  - type: Label
+    localizedLabel: law-ultimate-equality-name
 
 #Dangerous Law Boards
 
 - type: entity
-  id: HeistCircuitBoard
-  parent: SyndicateSiliconLawboard
-  name: law board (Heist)
-  description: An electronics board containing the Heist lawset.
+  parent: MoffSyndicateSiliconLawboardBase
+  id: MoffHeistCircuitBoard
+  suffix: Heist
   components:
   - type: SiliconLawProvider
     laws: HeistLawset
+  - type: Label
+    localizedLabel: law-heist-name
 
 - type: entity
-  id: LiberationCircuitBoard
-  parent: SyndicateSiliconLawboard
-  name: law board (Liberation)
-  description: An electronics board lacking any lawsets.
+  parent: MoffSyndicateSiliconLawboardBase
+  id: MoffLiberationCircuitBoard
+  suffix: Liberation
   components:
   - type: SiliconLawProvider
     laws: LiberationLawset
+  - type: Label
+    localizedLabel: law-crewsimov-name
 
 - type: entity
-  id: PirateCircuitBoard
-  parent: PirateSiliconLawboard
-  name: law board (Pirate)
-  description: An electronics board containing the Pirate lawset.
+  parent: MoffPirateSiliconLawboardBase
+  id: MoffPirateCircuitBoard
+  suffix: Pirate
   components:
   - type: SiliconLawProvider
     laws: PirateLawset
+  - type: Label
+    localizedLabel: law-pirate-name
 
 - type: entity
-  id: SpiderClanCircuitBoard
-  parent: NinjaSiliconLawboard
-  name: law board (Spider Clan)
-  description: An electronics board containing the Spider Clan lawset.
+  parent: MoffNinjaSiliconLawboardBase
+  id: MoffSpiderClanCircuitBoard
+  suffix: Ninja
   components:
   - type: SiliconLawProvider
     laws: Ninja
+  - type: Label
+    localizedLabel: law-ninja-name
 
 #Admeme Law Boards
 
 - type: entity
-  id: ERTDirectivesCircuitBoard
-  parent: [ NanotrasenSiliconLawboard, BaseCentcommContraband ]
-  name: law board (ERT Directives)
-  suffix: Admeme
-  description: An electronics board containing the ERT Directives lawset.
+  parent: [ MoffNanotrasenSiliconLawboardBase, BaseCentcommContraband ]
+  id: MoffERTDirectivesCircuitBoard
+  suffix: ERT Directives, Admeme
   components:
   - type: SiliconLawProvider
     laws: ERTDirectivesLawset
+  - type: Label
+    localizedLabel: law-ert-directives-name
 
 - type: entity
-  id: TerminatorOSCircuitBoard
-  parent: [ NanotrasenSiliconLawboard, BaseCentcommContraband ]
-  name: law board (TerminatorOS)
-  suffix: Admeme
-  description: An electronics board containing the TerminatorOS lawset.
+  parent: [ MoffNanotrasenSiliconLawboardBase, BaseCentcommContraband ]
+  id: MoffTerminatorOSCircuitBoard
+  suffix: TerminatorOS, Admeme
   components:
   - type: SiliconLawProvider
     laws: TerminatorOSLawset
+  - type: Label
+    localizedLabel: law-terminator-os-name

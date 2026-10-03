@@ -22,11 +22,10 @@
     idleState: icon
     runningState: building
     staticPacks:
-    - DefaultAILawBoardsStatic
-    - MoffStationAILawBoardsStatic
+    - MoffDefaultAILawBoardsStatic
   - type: EmagLatheRecipes
     emagStaticPacks:
-    - DangerousAILawBoardsStatic
+    - MoffDangerousAILawBoardsStatic
   - type: MaterialStorage
     whitelist:
       tags:
