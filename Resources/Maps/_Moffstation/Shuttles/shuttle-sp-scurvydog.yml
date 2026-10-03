@@ -1,11 +1,11 @@
 meta:
   format: 7
   category: Grid
-  engineVersion: 288.1.0
+  engineVersion: 289.0.3
   forkId: ""
   forkVersion: ""
-  time: 09/16/2026 22:52:09
-  entityCount: 874
+  time: 10/03/2026 01:10:08
+  entityCount: 873
 maps: []
 grids:
 - 1
@@ -282,6 +282,7 @@ entities:
     components:
     - type: Transform
       parent: 1
+      rot: 3.141592653589793 rad
       pos: 1.5,0.5
 - proto: AirlockExternalPirateLocked
   entities:
@@ -418,6 +419,7 @@ entities:
     components:
     - type: Transform
       parent: 1
+      rot: 3.141592653589793 rad
       pos: 1.5,0.5
   - uid: 35
     components:
@@ -1892,11 +1894,6 @@ entities:
             19: -2,-12
             20: -1,-12
         - node:
-            id: WarnLineW
-            color: '#FFFFFFFF'
-          decals:
-            222: -5,-15
-        - node:
             id: WoodTrimThinCornerNe
             color: '#FFFFFFFF'
           decals:
@@ -2011,6 +2008,7 @@ entities:
             id: WarnFull
             color: '#FFFFFFFF'
           decals:
+            0: 5,-2
             170: 6,-2
             171: 7,-2
         - node:
@@ -4116,13 +4114,6 @@ entities:
     - type: Transform
       parent: 1
       pos: 5.355625,-15.416834
-- proto: PlasmaWindoorSecureSyndicateLocked
-  entities:
-  - uid: 577
-    components:
-    - type: Transform
-      parent: 1
-      pos: -4.5,-13.5
 - proto: PlasticFlapsAirtightOpaque
   entities:
   - uid: 578
