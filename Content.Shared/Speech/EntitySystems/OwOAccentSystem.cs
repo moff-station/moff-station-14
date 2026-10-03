@@ -8,10 +8,10 @@ namespace Content.Shared.Speech.EntitySystems;
 
 public sealed partial class OwOAccentSystem : RelayAccentSystem<OwOAccentComponent>
 {
-    [Dependency] private IGameTiming _timing = default!;
-    [Dependency] private IRobustRandom _random = default!;
+    [Dependency] private IGameTiming _timing = null!;
+    [Dependency] private IRobustRandom _random = null!;
 
-    private static readonly IReadOnlyList<string> Faces =
+    public static IReadOnlyList<string> Faces { get; } = // Moffstation - remove "readonly" per Rider suggestions
     [
         " (•`ω´•)", " ;;w;;", " owo", " UwU", " >w<", " ^w^",
     ];
@@ -22,9 +22,9 @@ public sealed partial class OwOAccentSystem : RelayAccentSystem<OwOAccentCompone
             { "you", "wu" },
         }.ToFrozenDictionary();
 
-    public override string Accentuate(string message, Entity<OwOAccentComponent>? ent = null)
+    public override string? Accentuate(string message, Entity<OwOAccentComponent>? ent = null) // Moffstation - add ? to string
     {
-        var random = ent.HasValue
+        _ = ent.HasValue // Moffstation - remove var random per Rider suggestions
             ? SharedRandomExtensions.PredictedRandom(_timing, GetNetEntity(ent.Value))
             : _random;
 
@@ -33,10 +33,13 @@ public sealed partial class OwOAccentSystem : RelayAccentSystem<OwOAccentCompone
             message = message.Replace(word, repl);
         }
 
+        /* Moffstation - Start - Change message.replace to exclude faces entirely
         return message.Replace("!", random.Pick(Faces))
             .Replace("r", "w")
             .Replace("R", "W")
             .Replace("l", "w")
             .Replace("L", "W");
+         Moffstation - End - Change message.replace to exclude faces entirely*/
+        return null;
     }
 }
