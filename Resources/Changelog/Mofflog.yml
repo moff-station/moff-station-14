@@ -8350,6 +8350,14 @@ Entries:
   id: 1965
   time: '2026-09-29T11:26:56.000'
   url: https://github.com/moff-station/moff-station-14/pull/1965
+- author: Centronias
+  changes:
+  - message: On roundstart, you should no longer be assigned antag roles on characters
+      which do not have those roles enabled.
+    type: fix
+  id: 1966
+  time: '2026-10-03T02:45:30.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1966
 - author: WigglySuperNoodle
   changes:
   - message: Flink Pemperton Gloopnop's personal item
@@ -8366,6 +8374,13 @@ Entries:
   id: 1972
   time: '2026-09-30T15:36:43.000'
   url: https://github.com/moff-station/moff-station-14/pull/1972
+- author: DuckManZach
+  changes:
+  - message: The Jugsuit and raidsuit have had their tc prices increased.
+    type: tweak
+  id: 1974
+  time: '2026-10-03T02:45:30.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1974
 - author: DuckManZach
   changes:
   - message: Tweaked the odds of various gamemodes!
