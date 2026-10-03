@@ -23,3 +23,13 @@
   container:
     entity: WrappedParcel
     containerId: contents
+
+- type: cargoProduct
+  id: EngineGaussFabricator
+  icon:
+    sprite: _Moffstation/Structures/Machines/gauss_fabricator.rsi
+    state: icon
+  product: CrateEngineeringGaussFabricator
+  cost: 5000
+  category: cargoproduct-category-name-engineering
+  group: market

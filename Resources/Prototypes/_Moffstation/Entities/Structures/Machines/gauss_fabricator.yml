@@ -1,0 +1,107 @@
+# TODO: Balance draw rate, capacity and price
+- type: entity
+  parent: BaseMachine
+  id: GaussFabricator
+  name: gaussian fabrication unit
+  description: A specialized machine built to crystallize ions in the atmosphere into powerful, expensive magnets. Requires a vast amount of electricity to use properly.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Structures/Machines/gauss_fabricator.rsi
+    snapCardinals: true
+    layers:
+    - state: icon
+    - state: screen
+      shader: unshaded
+      map: [ "screen" ]
+      visible: false
+    - state: sparks
+      shader: unshaded
+      map: [ "sparks" ]
+      visible: false
+    - state: lightning
+      shader: unshaded
+      map: [ "lightning" ]
+      visible: false
+  - type: Appearance
+  - type: GenericVisualizer
+    visuals:
+      enum.PowerDeviceVisuals.Powered:
+        screen:
+          True: { visible: true }
+          False: { visible: false }
+        sparks:
+          True: { visible: true }
+          False: { visible: false }
+        lightning:
+          True: { visible: true }
+          False: { visible: false }
+  - type: NodeContainer
+    examinable: true
+    nodes:
+      input:
+        !type:CableDeviceNode
+        nodeGroupID: HVPower
+  - type: BatteryCharger
+    voltage: High
+  - type: PowerNetworkBattery
+    canDischarge: false
+  - type: Battery
+    maxCharge: 10000000
+    startingCharge: 0
+    netsync: false
+  - type: AmbientSound
+    range: 10
+    sound:
+      path: /Audio/Ambience/Objects/buzzing.ogg
+  - type: LightningTarget
+    priority: 2
+  - type: GaussFabricator
+  - type: SpawnOnBatteryFull
+    proto: MoffRefinedConductorIngot
+  - type: AccessReader
+    access: [["Engineering"]]
+  - type: ActivatableUIRequiresAccess
+  - type: ActivatableUI
+    key: enum.GaussFabricatorUiKey.Key
+  - type: UserInterface
+    interfaces:
+      enum.GaussFabricatorUiKey.Key:
+        type: GaussFabricatorBoundUserInterface
+  - type: StaticPrice
+    price: 2000
+
+- type: entity
+  parent: BaseFlatpack
+  id: GaussFabricatorFlatpack
+  name: gaussian fabrication unit flatpack
+  description: A flatpack used for constructing a gaussian fabrication unit.
+  components:
+  - type: Flatpack
+    entity: GaussFabricator
+  - type: Sprite
+    layers:
+    - state: base
+    - state: overlay
+      color: "#EFB341"
+    - state: icon-default
+  - type: GuideHelp
+    guides:
+    - Power
+
+- type: entity
+  parent: BaseItem
+  id: MoffRefinedConductorIngot
+  name: gaussian hypermagnet
+  description: A strong and highly sought after magnet, made from an intense process of crystallizing ions in the atmosphere.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Objects/Materials/gaussian_hypermagnet.rsi
+    layers:
+    - state: icon
+    - state: glow
+      shader: unshaded
+  - type: Item
+    size: Small
+    sprite: Objects/Materials/ingots.rsi
+  - type: StaticPrice
+    price: 200

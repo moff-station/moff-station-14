@@ -1,0 +1,11 @@
+- type: entity
+  parent: CrateEngineeringSecure
+  id: CrateEngineeringGaussFabricator
+  name: gaussian fabrication unit crate
+  description: Two gaussian fabrication units. Turns raw HV power into hypermagnets.
+  components:
+  - type: EntityTableContainerFill
+    containers:
+      entity_storage:
+        id: GaussFabricatorFlatpack
+        amount: 2
