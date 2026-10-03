@@ -10,6 +10,16 @@
       - Medal
       - MonkeyWearable
       - WhitelistChameleon
+# Moffstation - Start - Medal Rewards reasons
+  - type: CrewMedal
+  - type: ActivatableUI
+    key: enum.CrewMedalUiKey.Key
+    inHandsOnly: true
+  - type: UserInterface
+    interfaces:
+      enum.CrewMedalUiKey.Key:
+        type: CrewMedalBoundUserInterface
+  # Moffstation - End - Medal Rewards reasons
 
 - type: entity
   parent: ClothingNeckMedalBase
