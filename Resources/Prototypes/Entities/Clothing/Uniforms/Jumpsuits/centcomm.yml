@@ -16,9 +16,9 @@
   description: A suit worn by CentComm's legal team. Smells of burnt coffee.
   components:
   - type: Sprite
-    sprite: Clothing/Uniforms/Jumpsuits/Centcomm/centcom_agent.rsi
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/centcom_agent.rsi # Moff
   - type: Clothing
-    sprite: Clothing/Uniforms/Jumpsuits/Centcomm/centcom_agent.rsi
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/centcom_agent.rsi # Moff
 
 - type: entity
   parent: [ ClothingUniformBase, BaseCentcommContraband ]
@@ -27,9 +27,9 @@
   description: It's a jumpsuit worn by CentComm's officials.
   components:
   - type: Sprite
-    sprite: Clothing/Uniforms/Jumpsuits/Centcomm/centcom_official.rsi
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/centcom_official.rsi # Moff
   - type: Clothing
-    sprite: Clothing/Uniforms/Jumpsuits/Centcomm/centcom_official.rsi
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/centcom_official.rsi # Moff
 
 - type: entity
   parent: [ ClothingUniformBase, BaseCentcommContraband ]
@@ -38,9 +38,9 @@
   description: It's a jumpsuit worn by CentComm Officers.
   components:
   - type: Sprite
-    sprite: Clothing/Uniforms/Jumpsuits/Centcomm/centcom_officer.rsi
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/centcom_officer.rsi # Moff
   - type: Clothing
-    sprite: Clothing/Uniforms/Jumpsuits/Centcomm/centcom_officer.rsi
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/centcom_officer.rsi # Moff
 
 - type: entity
   parent: ClothingUniformBase
@@ -49,9 +49,9 @@
   description: A suit for special occasions.
   components:
   - type: Sprite
-    sprite: Clothing/Uniforms/Jumpsuits/Centcomm/centcomformal.rsi
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/centcomformal.rsi # Moff
   - type: Clothing
-    sprite: Clothing/Uniforms/Jumpsuits/Centcomm/centcomformal.rsi
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/centcomformal.rsi # Moff
 
 - type: entity
   parent: [ BaseCentcommContraband, ClothingUniformBase ]

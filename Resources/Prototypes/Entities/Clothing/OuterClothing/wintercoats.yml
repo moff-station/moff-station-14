@@ -184,26 +184,26 @@
   id: ClothingOuterWinterCentcom
   name: CentComm winter coat
   components:
+# Moff - Start
   - type: Sprite
-    sprite: Clothing/OuterClothing/WinterCoats/coat.rsi
+    sprite: _Moffstation/Clothing/OuterClothing/WinterCoats/wintercoatcentcom.rsi # Moff
     layers:
-    - state: CENTCOM-icon
+    - state: icon
   - type: Item
     inhandVisuals:
       left:
-      - state: CENTCOM-inhand-left
+      - state: inhand-left
       right:
-      - state: CENTCOM-inhand-right
+      - state: inhand-right
   - type: Clothing
-    sprite: Clothing/OuterClothing/WinterCoats/coat.rsi
+    sprite: _Moffstation/Clothing/OuterClothing/WinterCoats/wintercoatcentcom.rsi # Moff
     clothingVisuals:
       outerClothing:
-      - state: CENTCOM-equipped-OUTERCLOTHING
-  #Moffstation - Begin - Vox Wintecoats
+      - state: equipped-OUTERCLOTHING
       outerClothing-vox:
-      - state: CENTCOM-equipped-OUTERCLOTHING-vox
-        sprite: _Moffstation/Clothing/OuterClothing/WinterCoats/coat.rsi
-  #Moffstation - End - Vox Wintecoats
+      - state: equipped-OUTERCLOTHING-vox
+        sprite: _Moffstation/Clothing/OuterClothing/WinterCoats/wintercoatcentcom.rsi # Moff
+# Moff - End
   - type: ToggleableClothing
     clothingPrototype: ClothingHeadHatHoodWinterCentcom
 
