@@ -1,4 +1,3 @@
-// NOT a moffstation namespace because this partial class appends behavior to an existing class.
 namespace Content.Shared.DoAfter;
 
 public abstract partial class SharedDoAfterSystem
