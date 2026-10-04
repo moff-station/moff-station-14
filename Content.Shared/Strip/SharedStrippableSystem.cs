@@ -1,5 +1,6 @@
 using System.Linq;
 using Content.Shared.Administration.Logs;
+using Content.Shared._Starfall.Offering;
 using Content.Shared.Chat;
 using Content.Shared.CombatMode;
 using Content.Shared.Cuffs;
@@ -416,6 +417,11 @@ public abstract partial class SharedStrippableSystem : EntitySystem
         if (!CanStripInsertHand(user, target, held, handName))
             return;
 
+        // Moff Start - Item offering
+        var attempt = new StripHandInsertAttemptEvent(user.Owner, target.Owner, held, handName);
+        RaiseLocalEvent(ref attempt);
+        // Moff end
+
         var (time, stealth) = GetStripTimeModifiers(user, target, null, targetStrippable.HandStripDelay);
 
         if (!stealth)
@@ -525,6 +531,13 @@ public abstract partial class SharedStrippableSystem : EntitySystem
 
         if (!CanStripRemoveHand(user, target, item, handName))
             return;
+
+        // Moff Start - Item offering
+        var attempt = new StripHandRemoveAttemptEvent(user.Owner, target.Owner, item, handName);
+        RaiseLocalEvent(item, ref attempt);
+        if (attempt.Handled)
+            return;
+        // Moff end
 
         var (time, stealth) = GetStripTimeModifiers(user, target, null, targetStrippable.HandStripDelay);
 
