@@ -23,7 +23,7 @@
       map: [ "enum.MaxPressureVisualLayers.BaseUnshaded" ]
       shader: unshaded
       visible: false
-      sprite: Structures/Storage/canister.rsi
+      sprite: _Moffstation/Structures/Storage/gas_canister.rsi
     - state: mask-grey
       map: [ "enum.MaxPressureVisualLayers.Base" ]
       visible: false
@@ -31,17 +31,17 @@
     - state: can-open
       map: [ "tankInserted" ]
       visible: false
-      sprite: Structures/Storage/canister.rsi
+      sprite: _Moffstation/Structures/Storage/gas_canister.rsi
     - state: unlocked
       map: [ "locked" ]
-      sprite: Structures/Storage/canister.rsi
+      sprite: _Moffstation/Structures/Storage/gas_canister.rsi
     - state: can-o0
       map: [ "pressureLight" ]
-      sprite: Structures/Storage/canister.rsi
+      sprite: _Moffstation/Structures/Storage/gas_canister.rsi
     - state: can-connector
       map: [ "connectedToPort" ]
       visible: false
-      sprite: Structures/Storage/canister.rsi
+      sprite: _Moffstation/Structures/Storage/gas_canister.rsi
   - type: MaxPressureVisuals
     integrityMask: mask-grey
   - type: GenericVisualizer
@@ -189,7 +189,7 @@
   name: gastank-unspecified
   colorValues:
     tankColor: '#FFFF32FF'
-    lowerStripeColor: '#4C4C4CFF'
+    middleStripeColor: '#4C4C4CFF'
 
 - type: gasHolderVisualStyle
   id: Oxygen
@@ -254,21 +254,21 @@
   id: Plasma
   name: gas-plasma
   colorValues:
-    tankColor: VividGamboge
+    tankColor: coral
     middleStripeColor: '#FC32A0FF'
 
 - type: gasHolderVisualStyle
   id: Tritium
   name: gas-tritium
   colorValues:
-    tankColor: VividGamboge
+    tankColor: coral
     middleStripeColor: '#17FF0BFF'
 
 - type: gasHolderVisualStyle
   id: Frezon
   name: gas-frezon
   colorValues:
-    tankColor: VividGamboge
+    tankColor: coral
     middleStripeColor: '#47CDFFFF'
 
 - type: gasHolderVisualStyle
