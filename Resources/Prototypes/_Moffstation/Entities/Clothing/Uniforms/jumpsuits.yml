@@ -492,6 +492,17 @@
   - type: Clothing
     sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/prosecutorred.rsi
 
+- type: entity
+  parent: [ClothingUniformBase,BaseSyndicateContraband]
+  id: ClothingUniformJumpsuitLawyerSyndie
+  name: cybersun law suit
+  description: A sleek black suit worn by cutting-edge cybersun lawyers designed for televised courtroom cases.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/lawyersyndie.rsi
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/lawyersyndie.rsi
+
 #Medical
 - type: entity
   parent: ClothingUniformBase
