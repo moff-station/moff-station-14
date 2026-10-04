@@ -417,11 +417,6 @@ public abstract partial class SharedStrippableSystem : EntitySystem
         if (!CanStripInsertHand(user, target, held, handName))
             return;
 
-        // Moff Start - Item offering
-        var attempt = new StripHandInsertAttemptEvent(user.Owner, target.Owner, held, handName);
-        RaiseLocalEvent(ref attempt);
-        // Moff end
-
         var (time, stealth) = GetStripTimeModifiers(user, target, null, targetStrippable.HandStripDelay);
 
         if (!stealth)
@@ -448,7 +443,13 @@ public abstract partial class SharedStrippableSystem : EntitySystem
             DuplicateCondition = DuplicateConditions.SameTool
         };
 
-        _doAfterSystem.TryStartDoAfter(doAfterArgs);
+        // Moff Start - Item offering
+        if (!_doAfterSystem.TryStartDoAfter(doAfterArgs))
+            return;
+
+        var offerEv = new StripHandInsertStartedEvent(target.Owner, held);
+        RaiseLocalEvent(user.Owner, ref offerEv);
+        // Moff end
     }
 
     /// <summary>
@@ -533,9 +534,9 @@ public abstract partial class SharedStrippableSystem : EntitySystem
             return;
 
         // Moff Start - Item offering
-        var attempt = new StripHandRemoveAttemptEvent(user.Owner, target.Owner, item, handName);
-        RaiseLocalEvent(item, ref attempt);
-        if (attempt.Handled)
+        var beforeEv = new BeforeStripHandRemoveEvent(user.Owner, target.Owner, handName);
+        RaiseLocalEvent(item, ref beforeEv);
+        if (beforeEv.Handled)
             return;
         // Moff end
 
