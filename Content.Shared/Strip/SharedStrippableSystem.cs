@@ -444,10 +444,10 @@ public abstract partial class SharedStrippableSystem : EntitySystem
         };
 
         // Moff Start - Item offering
-        if (!_doAfterSystem.TryStartDoAfter(doAfterArgs))
+        if (!_doAfterSystem.TryStartDoAfter(doAfterArgs, out var doAfterId))
             return;
 
-        var offerEv = new StripHandInsertStartedEvent(target.Owner, held);
+        var offerEv = new StripHandInsertStartedEvent(target.Owner, held, doAfterId.Value.Index);
         RaiseLocalEvent(user.Owner, ref offerEv);
         // Moff end
     }
@@ -534,7 +534,7 @@ public abstract partial class SharedStrippableSystem : EntitySystem
             return;
 
         // Moff Start - Item offering
-        var beforeEv = new BeforeStripHandRemoveEvent(user.Owner, target.Owner, handName);
+        var beforeEv = new BeforeStripHandRemoveEvent(user.Owner, target.Owner);
         RaiseLocalEvent(item, ref beforeEv);
         if (beforeEv.Handled)
             return;

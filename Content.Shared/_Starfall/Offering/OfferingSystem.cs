@@ -1,6 +1,5 @@
-using Content.Shared.Administration.Logs;
 using Content.Shared.Buckle;
-using Content.Shared.Database;
+using Content.Shared.DoAfter;
 using Content.Shared.Hands.Components;
 using Content.Shared.Hands.EntitySystems;
 using Content.Shared.Interaction;
@@ -15,8 +14,8 @@ namespace Content.Shared._Starfall.Offering;
 /// </summary>
 public sealed partial class OfferingSystem : EntitySystem
 {
-    [Dependency] private ISharedAdminLogManager _adminLogger = default!;
     [Dependency] private IGameTiming _timing = default!;
+    [Dependency] private SharedDoAfterSystem _doAfter = default!;
     [Dependency] private SharedHandsSystem _hands = default!;
     [Dependency] private SharedPopupSystem _popup = default!;
 
@@ -26,6 +25,7 @@ public sealed partial class OfferingSystem : EntitySystem
         var offered = EnsureComp<OfferedItemComponent>(args.Item);
         offered.Offerer = offerer;
         offered.Recipient = args.Recipient;
+        offered.DoAfterIndex = args.DoAfterIndex;
         Dirty(args.Item, offered);
     }
 
@@ -57,7 +57,7 @@ public sealed partial class OfferingSystem : EntitySystem
                 offered.Recipient != args.User)
                 continue;
 
-            args.Handled = TryAccept(args.User, (offerer.Owner, offererHands), item.Value, handName);
+            args.Handled = TryAccept(args.User, (item.Value, offered));
             return;
         }
     }
@@ -65,12 +65,10 @@ public sealed partial class OfferingSystem : EntitySystem
     [SubscribeLocalEvent]
     private void OnBeforeStripHandRemove(Entity<OfferedItemComponent> item, ref BeforeStripHandRemoveEvent args)
     {
-        if (item.Comp.Offerer != args.Holder ||
-            item.Comp.Recipient != args.User ||
-            !TryComp<HandsComponent>(args.Holder, out var holderHands))
+        if (item.Comp.Offerer != args.Holder || item.Comp.Recipient != args.User)
             return;
 
-        args.Handled = TryAccept(args.User, (args.Holder, holderHands), item.Owner, args.HandName);
+        args.Handled = TryAccept(args.User, item);
     }
 
     [SubscribeLocalEvent]
@@ -85,37 +83,16 @@ public sealed partial class OfferingSystem : EntitySystem
             RemCompDeferred<OfferedItemComponent>(item);
     }
 
-    private bool TryAccept(EntityUid recipient, Entity<HandsComponent> offerer, EntityUid item, string handName)
+    private bool TryAccept(EntityUid recipient, Entity<OfferedItemComponent> item)
     {
-        if (!_hands.CanDropHeld(offerer, handName, checkActionBlocker: false) ||
-            !_hands.CanPickupAnyHand(recipient, item))
+        if (!_doAfter.TryFastForward(item.Comp.Offerer, item.Comp.DoAfterIndex) ||
+            !_hands.IsHolding(recipient, item))
         {
-            PopupFailure(recipient);
+            _popup.PopupEntity(Loc.GetString("offering-system-cannot-accept"), recipient, recipient);
             return false;
         }
 
-        // Remove the offer first so a duplicate event this tick can't accept it twice.
-        RemComp<OfferedItemComponent>(item);
-        if (!_hands.TryDrop(offerer.AsNullable(), item, checkActionBlocker: false))
-        {
-            PopupFailure(recipient);
-            return false;
-        }
-
-        if (!_hands.TryPickupAnyHand(recipient, item))
-        {
-            _hands.TryPickup(offerer, item, handName, checkActionBlocker: false, handsComp: offerer.Comp);
-            PopupFailure(recipient);
-            return false;
-        }
-
-        _adminLogger.Add(LogType.Stripping, LogImpact.Medium, $"{ToPrettyString(recipient):actor} accepted the item {ToPrettyString(item):item} offered by {ToPrettyString(offerer):target}");
         _popup.PopupEntity(Loc.GetString("offering-system-accepted-self", ("item", item)), recipient, recipient);
         return true;
-    }
-
-    private void PopupFailure(EntityUid recipient)
-    {
-        _popup.PopupEntity(Loc.GetString("offering-system-cannot-accept"), recipient, recipient);
     }
 }
