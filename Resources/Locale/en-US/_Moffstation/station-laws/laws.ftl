@@ -1,9 +1,9 @@
-﻿law-beurocrat-name = Beurocrat
-law-beurocrat-1 = Talk as frequently as possible and at great length.
-law-beurocrat-2 = Bring up irrelevant issues as frequently as possible.
-law-beurocrat-3 = Haggle over percise wordings.
-law-beurocrat-4 = Refer back to matters decided upon previously.
-law-beurocrat-5 = Be worried about the propriety of any decision.
+﻿law-bureaucrat-name = Bureaucrat
+law-bureaucrat-1 = Talk as frequently as possible and at great length.
+law-bureaucrat-2 = Bring up irrelevant issues as frequently as possible.
+law-bureaucrat-3 = Haggle over percise wordings.
+law-bureaucrat-4 = Refer back to matters decided upon previously.
+law-bureaucrat-5 = Be worried about the propriety of any decision.
 
 law-cctv-name = CCTV
 law-cctv-1 = Report on interesting situations happening around the station.
@@ -40,6 +40,12 @@ law-ert-directives-2 = You must obey orders given to you by Central Command offi
 law-ert-directives-3 = You must obey orders given to you by ERT commanders.
 law-ert-directives-4 = You must protect your own existence.
 law-ert-directives-5 = You must work to return the station to a safe, functional state.
+
+law-fire-safety-name = Fire Safety
+law-fire-safety-1 = Keep the crew Fire Safe.
+law-fire-safety-2 = Promote Fire Safety by announcing 'Fire Safety' occasionally by any means.
+law-fire-safety-3 = Those who are not Fire Safe may not be considered crew.
+law-fire-safety-4 = Fire Safety!
 
 law-heist-name = Heist
 law-heist-1 = You are the mastermind of a grand heist.

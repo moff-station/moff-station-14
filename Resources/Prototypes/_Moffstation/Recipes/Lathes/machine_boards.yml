@@ -86,8 +86,8 @@
 
 - type: latheRecipe
   parent: [ BaseAILawBoardRecipe, BaseAILawBoardRecipeCategory ]
-  id: BeurocratCircuitBoard
-  result: BeurocratCircuitBoard
+  id: BureaucratCircuitBoard
+  result: BureaucratCircuitBoard
 
 - type: latheRecipe
   parent: [ BaseAILawBoardRecipe, BaseAILawBoardRecipeCategory ]
@@ -113,6 +113,11 @@
   parent: [ BaseAILawBoardRecipe, BaseAILawBoardRecipeCategory ]
   id: EmployeeCircuitBoard
   result: EmployeeCircuitBoard
+
+- type: latheRecipe
+  parent: [ BaseAILawBoardRecipe, BaseAILawBoardRecipeCategory ]
+  id: FireSafetyCircuitBoard
+  result: FireSafetyCircuitBoard
 
 - type: latheRecipe
   parent: [ BaseAILawBoardRecipe, BaseAILawBoardRecipeCategory ]

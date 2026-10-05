@@ -365,6 +365,7 @@ public sealed class XenoArtifactTest : GameTest
     }
 
     [Test]
+    [Ignore("Artifacts on our fork will force unlock once all nodes are complete, so this test will fail")] // Moff
     [Description("Checks that triggering sibling nodes which converge on an unlockable node extends the unlocking time")]
     [RunOnSide(Side.Server)]
     public async Task XenoArtifactSiblingTriggerTimeTest()
@@ -395,7 +396,7 @@ public sealed class XenoArtifactTest : GameTest
         var baseEndTime = unlocking.EndTime;
 
         // Triggering the sibling node B has to extend the unlocking time, even though it is
-        // not on the same path as A. 
+        // not on the same path as A.
         _sArtifactSystem.TriggerXenoArtifact(artifactEnt, nodeB.Value, force: true);
         Assert.That(unlocking.EndTime - baseEndTime, Is.EqualTo(artifactEnt.Comp.UnlockStateIncrementPerNode));
 

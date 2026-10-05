@@ -1,12 +1,14 @@
 ﻿using System.Linq;
 using Content.Server._Moffstation.Preferences;
 using Content.Server._Moffstation.Station.Systems;
+using Content.Server.Players.PlayTimeTracking;
 using Content.Server.Station.Events;
 using Content.Shared._Moffstation.Extensions;
 using Content.Shared.CCVar;
 using Content.Shared.Preferences;
 using Content.Shared.Roles;
 using Robust.Shared.Network;
+using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Utility;
 
@@ -16,37 +18,75 @@ namespace Content.Server.Station.Systems;
 public sealed partial class StationJobsSystem
 {
     [Dependency] private MoffCharacterSelectionManager _moffCharacterSelection = default!;
+    [Dependency] private ISharedPlayerManager _playerMan = default!;
+    [Dependency] private PlayTimeTrackingSystem _playTimeTracking = default!;
+    [Dependency] private SharedRoleSystem _role = default!;
+
+    /// <summary>
+    /// <see cref="AssignJobs"/> + <see cref="AssignOverflowJobs"/>, as the name implies :gosomnia:.
+    /// </summary>
+    /// <param name="readyPlayers">The players who are ready and should be considered for job-assignment.</param>
+    /// <param name="stations">The stations whose jobs are to be assigned.</param>
+    /// <returns>Players and their assigned job, station, and profile.</returns>
+    /// <remarks> Moffstation combines them so that user-to-profile logic can be run once and reused for both, since
+    /// it involves some expensive lookups.</remarks>
+    public Dictionary<NetUserId, (ProtoId<JobPrototype>?, EntityUid Station, HumanoidCharacterProfile)>
+        AssignJobsAndOverflowJobs(IEnumerable<NetUserId> readyPlayers, IReadOnlyList<EntityUid> stations) =>
+        AssignJobsAndOverflowJobs(_moffCharacterSelection.GetActiveProfiles(readyPlayers), stations);
+
+    /// <summary>
+    /// <see cref="AssignJobsAndOverflowJobs(IEnumerable{NetUserId},IReadOnlyList{Robust.Shared.GameObjects.EntityUid})"/>,
+    /// but with profiles already resolved and a flag to allow for skipping overflow assignments.
+    /// </summary>
+    /// <remarks>
+    /// This realistically should only be used for tests, we normally don't want to circumvent standard profile lookup
+    /// or overflow assignments.
+    /// </remarks>
+    public Dictionary<NetUserId, (ProtoId<JobPrototype>?, EntityUid Station, HumanoidCharacterProfile)>
+        AssignJobsAndOverflowJobs(
+            Dictionary<NetUserId, HashSet<HumanoidCharacterProfile>> readyPlayersAndActiveProfiles,
+            IReadOnlyList<EntityUid> stations,
+            bool doOverflowAssignments = true
+        )
+    {
+        var candidates = CreateCandidatePool(readyPlayersAndActiveProfiles);
+        var assignedJobs = AssignJobs(candidates, stations);
+        if (doOverflowAssignments)
+        {
+            AssignOverflowJobs(ref assignedJobs, candidates.Candidates.Keys, candidates.Candidates, stations);
+        }
+
+        return assignedJobs;
+    }
 
     /// <summary>
     /// Assigns jobs based on the given preferences and list of stations to assign for.
     /// This does NOT change the slots on the station, only figures out where each player should go.
     /// </summary>
-    /// <param name="profiles">The profiles to use for selection.</param>
+    /// <param name="candidates">The players and their profiles to consider assigning.</param>
     /// <param name="stations">List of stations to assign for.</param>
     /// <returns>List of players and their assigned jobs.</returns>
     /// <remarks>
     /// This is a total rewrite of upstream's implementation. Compared to that, we respect player's job priorities much
     /// more.
     /// </remarks>
-    public Dictionary<NetUserId, (ProtoId<JobPrototype>?, EntityUid Station)> AssignJobs(
-        Dictionary<NetUserId, HumanoidCharacterProfile> profiles,
+    public Dictionary<NetUserId, (ProtoId<JobPrototype>?, EntityUid Station, HumanoidCharacterProfile)> AssignJobs(
+        RoundstartJobCandidates candidates,
         IReadOnlyList<EntityUid> stations
     )
     {
         DebugTools.Assert(stations.Count > 0);
 
-        if (profiles.Count == 0)
+        if (candidates.IsEmpty())
             return new();
 
-        // The candidate pool owns the exact picking logic and managing candidates who've already been picked.
-        var candidates = CreateCandidatePool(profiles);
         // The priority queue replaces upstream's two-phase selection. We just sort the jobs by what is most important
         // and loop over greedily assigning the top priority job.
         // The power of the priority queue is in that we don't need separate phases with different logic nor do we need
         // to do any annoying tracking of what's important; we just describe the job and the queue's sorting figures
         // out what is the priority to be filled.
         var requiredJobsPq = CreateRoundstartStationJobPriorityQueue(stations);
-        var jobAssignments = new Dictionary<NetUserId, (ProtoId<JobPrototype>?, EntityUid)>(profiles.Count);
+        var jobAssignments = new Dictionary<NetUserId, (ProtoId<JobPrototype>?, EntityUid, HumanoidCharacterProfile)>();
         var jobFallback = _configurationManager.GetCVar(CCVars.GameMinimumJobFallback);
 
         // Take the most important job from the front of the queue and try to assign it from `candidates`.
@@ -64,11 +104,11 @@ public sealed partial class StationJobsSystem
                 MinimumJobFallback.None => candidates.PickCandidate(job, priority),
                 MinimumJobFallback.SameDepartment => candidates.PickSameDepartmentCandidate(job, priority),
                 MinimumJobFallback.AnyEligiblePlayer => candidates.PickCandidateIgnoringPreferences(job),
-                _ => this.UnknownEnumVariant<MinimumJobFallback, NetUserId?>(fallbackLevel),
+                _ => this.UnknownEnumVariant<MinimumJobFallback, PlayerCharacter?>(fallbackLevel),
             };
             if (candidateNullable is not { } candidate)
             {
-                // If there are absolutely no candidates, relax how strict we are about candidate's preferences.
+                // If there are absolutely no candidates for this job, relax how strict we are about candidates' preferences.
                 if (DowngradeStrictness(sort, jobFallback) is { } lessStrict)
                 {
                     // Throw the relaxed-criteria job back into the queue. The queue will yield it to be filled
@@ -76,13 +116,13 @@ public sealed partial class StationJobsSystem
                     requiredJobsPq.Add(lessStrict);
                 }
 
-                // If we couldn't relax the criteria, don't requeue the job -- nobody wants it.
+                // If we couldn't relax the criteria, don't requeue the job -- nobody wants it, even with the most relaxed restrictions.
                 continue;
             }
 
             // Assign the candidate and remove them from the pool.
-            jobAssignments.Add(candidate, (job, station));
-            var removed = candidates.Remove(candidate);
+            jobAssignments.Add(candidate.Player, (job, station, candidate.Character));
+            var removed = candidates.Remove(candidate.Player);
             DebugTools.Assert(removed);
 
             // If there're still slots remaining, put it back in the queue.
@@ -155,23 +195,48 @@ public sealed partial class StationJobsSystem
     }
 
     /// Creates and returns a <see cref="RoundstartJobCandidates"/> from <paramref name="profiles"/>.
-    private RoundstartJobCandidates CreateCandidatePool(Dictionary<NetUserId, HumanoidCharacterProfile> profiles)
+    private RoundstartJobCandidates CreateCandidatePool(
+        Dictionary<NetUserId, HashSet<HumanoidCharacterProfile>> profiles
+    )
     {
-        // Pre-selected antags. Antags status limits which jobs can be assigned, so we'll need this info.
+        // Antags status limits which jobs can be assigned, so we'll need this info in a couple of different places.
         // It's expensive to calculate, so we calculate it once and reuse it.
-        var antags = _antag.GetAntagJobs();
+        var preselectedAntags = _antag.GetAntagJobs();
+
+        // For users who have been preselected to be antags, filter out any profiles of theirs which do not match the
+        // antag they've been selected to be. This prevents being assigned to use a profile which does not have the
+        // preselected antag enabled.
+        List<(NetUserId, HashSet<HumanoidCharacterProfile>)> filteredProfiles = new();
+        foreach (var (user, userProfiles) in profiles)
+        {
+            if (!_player.TryGetSessionById(user, out var session) ||
+                !preselectedAntags.TryGetValue(session, out var a) ||
+                a.Roles is not { } selectedForOneOf)
+            {
+                // Not preselected to be antag, add all their profiles.
+                filteredProfiles.Add((user, userProfiles));
+                continue;
+            }
+
+            var filteredUserProfiles = userProfiles
+                .Where(profile => profile.AntagPreferences.Intersect(selectedForOneOf).Any())
+                .ToHashSet();
+            if (filteredUserProfiles.Count > 0)
+                filteredProfiles.Add((user, filteredUserProfiles));
+        }
 
         return new RoundstartJobCandidates(
             _random,
-            isUserAllowedJob: playerAndJob => IsCandidateForJob(playerAndJob) &&
-                                              IsJobAllowedAsAntag(playerAndJob) &&
-                                              !IsJobBanned(playerAndJob),
+            isUserAllowedJob: playerCharacterAndJob => IsCharacterAllowedJob(playerCharacterAndJob) &&
+                                                       IsCandidateForJob(playerCharacterAndJob) &&
+                                                       IsJobAllowedAsAntag(playerCharacterAndJob) &&
+                                                       !IsJobBanned(playerCharacterAndJob),
             sameDepartmentJobs: job =>
             {
                 _jobs.TryGetPrimaryDepartment(job.Id, out var department);
                 return department?.Roles ?? [];
             },
-            profiles.Select(it => (it.Key, it.Value)),
+            filteredProfiles,
             filterAllowedJobs: (user, jobs) =>
             {
                 var ev = new StationJobsGetCandidatesEvent(user, [.. jobs]);
@@ -184,29 +249,50 @@ public sealed partial class StationJobsSystem
 
         // Below are predicates used to build `isUserAllowedJob` in the candidate pool.
 
-        bool IsCandidateForJob((NetUserId User, ProtoId<JobPrototype> Job) userAndJob)
+        bool IsCharacterAllowedJob(
+            (NetUserId User, HumanoidCharacterProfile Character, ProtoId<JobPrototype> Job) playerCharacterAndJob)
         {
-            var ev = new StationJobsGetCandidatesEvent(userAndJob.User, [userAndJob.Job]);
+            if (!_playerMan.HasPlayerData(playerCharacterAndJob.User))
+            {
+                this.AssertOrLogError($"Failed to find session for player with id={playerCharacterAndJob.User}");
+                return false;
+            }
+
+            return _playTimeTracking.IsAllowed(_playerMan.GetSessionById(playerCharacterAndJob.User),
+                playerCharacterAndJob.Job,
+                playerCharacterAndJob.Character);
+        }
+
+        bool IsCandidateForJob(
+            (NetUserId User, HumanoidCharacterProfile Character, ProtoId<JobPrototype> Job) playerCharacterAndJob)
+        {
+            var ev = new StationJobsGetCandidatesEvent(playerCharacterAndJob.User, [playerCharacterAndJob.Job]);
             RaiseLocalEvent(ref ev);
             return ev.Jobs.Count != 0;
         }
 
-        bool IsJobBanned((NetUserId User, ProtoId<JobPrototype> Job) userAndJob)
+        bool IsJobBanned(
+            (NetUserId User, HumanoidCharacterProfile Character, ProtoId<JobPrototype> Job) playerCharacterAndJob)
         {
-            var roleBans = _banManager.GetJobBans(userAndJob.User);
-            return roleBans != null && roleBans.Contains(userAndJob.Job);
+            var roleBans = _banManager.GetJobBans(playerCharacterAndJob.User);
+            return roleBans != null && roleBans.Contains(playerCharacterAndJob.Job);
         }
 
-        bool IsJobAllowedAsAntag((NetUserId User, ProtoId<JobPrototype> Job) userAndJob)
+        bool IsJobAllowedAsAntag((
+            NetUserId User,
+            HumanoidCharacterProfile Character,
+            ProtoId<JobPrototype> Job
+            ) playerCharacterAndJob
+        )
         {
-            if (!_player.TryGetSessionById(userAndJob.User, out var session))
+            if (!_player.TryGetSessionById(playerCharacterAndJob.User, out var session))
             {
                 return false;
             }
 
-            var (whitelist, blacklist) = antags.GetValueOrDefault(session);
-            return (whitelist == null || whitelist.Contains(userAndJob.Job)) &&
-                   (blacklist == null || !blacklist.Contains(userAndJob.Job));
+            var (_, whitelist, blacklist) = preselectedAntags.GetValueOrDefault(session);
+            return (whitelist == null || whitelist.Contains(playerCharacterAndJob.Job)) &&
+                   (blacklist == null || !blacklist.Contains(playerCharacterAndJob.Job));
         }
     }
 
