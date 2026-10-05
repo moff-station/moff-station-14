@@ -1,1 +1,1 @@
-examine-encryption-readonly-channel = [color={$color}]{$id} (Receive only) ({NATURALFIXED($freq, 1)})[/color]
+moff-examine-encryption-readonly-channel = [color={$color}] {$id} (Receive only) ({$freq})[/color]

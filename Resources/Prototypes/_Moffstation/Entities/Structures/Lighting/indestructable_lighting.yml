@@ -15,7 +15,7 @@
   - type: Clickable
   - type: InteractionOutline
   - type: Sprite
-    sprite: Structures/Wallmounts/Lighting/light_tube.rsi
+    sprite: Structures/Wallmounts/Lighting/light-tube.rsi
     drawdepth: WallMountedItems
     layers:
     - map: ["enum.PoweredLightLayers.Base"]
@@ -66,7 +66,7 @@
   suffix: AP, Indestructible
   components:
   - type: Sprite
-    sprite: Structures/Wallmounts/Lighting/light_small.rsi
+    sprite: Structures/Wallmounts/Lighting/light-small.rsi
     state: base
   - type: PointLight
     radius: 6

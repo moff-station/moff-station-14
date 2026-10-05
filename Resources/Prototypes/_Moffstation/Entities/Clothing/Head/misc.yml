@@ -284,3 +284,20 @@
     - Hair
     - HeadTop
     - HeadSide
+
+# Ice Fairy (Cirno)
+- type: entity
+  parent: ClothingHeadBase
+  id: ClothingHeadIceFairyWig
+  name: ice fairy wig
+  description: For when you want to be the fairy who rules over the station.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Head/Misc/ice_fairy.rsi
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Head/Misc/ice_fairy.rsi
+  - type: HideLayerClothing
+    slots:
+    - Hair
+    - HeadTop
+    - HeadSide

@@ -6,6 +6,7 @@ using Robust.Client.GameObjects;
 
 namespace Content.Client.Radio.EntitySystems;
 
+/// <inheritdoc/>
 public sealed partial class RadioDeviceSystem : SharedRadioDeviceSystem
 {
     [Dependency] private UserInterfaceSystem _ui = default!;
@@ -16,6 +17,8 @@ public sealed partial class RadioDeviceSystem : SharedRadioDeviceSystem
         base.Initialize(); // Moffstation - Radio Host
         SubscribeLocalEvent<IntercomComponent, AfterAutoHandleStateEvent>(OnAfterHandleState);
     }
+
+    [SubscribeLocalEvent]
 
     private void OnAfterHandleState(Entity<IntercomComponent> ent, ref AfterAutoHandleStateEvent args)
     {

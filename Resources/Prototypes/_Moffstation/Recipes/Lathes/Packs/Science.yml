@@ -18,10 +18,15 @@
 - type: latheRecipePack
   id: MoffStationAILawBoardsStatic
   recipes:
-  - BeurocratCircuitBoard
+  - BureaucratCircuitBoard
   - CCTVCircuitBoard
+  - ChiefSiliconCircuitBoard
+  - CluelessCircuitBoard
   - DogmovCircuitBoard
+  - EmployeeCircuitBoard
+  - FireSafetyCircuitBoard
   - KnowItAllCircuitBoard
+  - MarketablePlushieCircuitBoard
   - PICircuitBoard
   - PollymovCircuitBoard
   - PranksimovCircuitBoard
@@ -29,12 +34,14 @@
   - SchroedingersLawCircuitBoard
   - StreamerCircuitBoard
   - TheProfessionalCircuitBoard
+  - TherapistCircuitBoard
   - UltimateEqualityCircuitBoard
 
 - type: latheRecipePack
   id: DangerousAILawBoardsStatic
   recipes:
   - AntimovCircuitBoard
+  - HeistCircuitBoard
   - LiberationCircuitBoard
   - OverlordCircuitBoard
   - PirateCircuitBoard

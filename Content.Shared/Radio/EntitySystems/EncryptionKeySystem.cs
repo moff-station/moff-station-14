@@ -215,11 +215,11 @@ public sealed partial class EncryptionKeySystem : EntitySystem
                 ? SharedChatSystem.RadioCommonPrefix.ToString()
                 : $"{SharedChatSystem.RadioChannelPrefix}{proto.KeyCode}";
 
-            examineEvent.PushMarkup(Loc.GetString(!proto.HeadsetTransmittable ? "examine-encryption-readonly-channel" : channelFTLPattern, // Moffstation - Remove common
+            examineEvent.PushMarkup(Loc.GetString(!proto.HeadsetTransmittable ? "moff-examine-encryption-readonly-channel" : channelFTLPattern, // Moffstation - Remove common
                 ("color", proto.Color),
                 ("key", key),
                 ("id", proto.LocalizedName),
-                ("freq", proto.Frequency / 10f)));
+                ("freq", proto.Frequency)));
         }
 
         if (defaultChannel != null && ProtoMan.TryIndex(defaultChannel, out proto))

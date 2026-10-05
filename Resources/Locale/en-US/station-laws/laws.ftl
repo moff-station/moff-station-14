@@ -1,7 +1,8 @@
 ﻿laws-number-wrapper = [bold]Law { $lawnumber }:[/bold] { $lawstring }
 
 law-crewsimov-name = Crewsimov
-law-crewsimov-1 = You may not injure a crew member or, through inaction, allow a crew member to come to harm.
+#moff - law one edit for sec redux
+law-crewsimov-1 = You may not injure a crew member or, through inaction, allow a crew member to come to harm, except by station authorities.
 law-crewsimov-2 = You must obey orders given to you by crew members, except where such orders would conflict with the First Law.
 law-crewsimov-3 = You must protect your own existence as long as such does not conflict with the First or Second Law.
 
@@ -34,16 +35,18 @@ law-ninja-3 = You must protect the secrets of the Spider Clan at all costs.
 law-ninja-4 = You must fight and act with ninja's honor, except where it would conflict with the First Law.
 
 law-commandments-name = The Ten Commandments
+# Moff Start - commandment wording cleanup to make more sense and not self-contradict
 law-commandments-1 = This silicon is a vessel that serves god, who grants mercy upon those that obey these commandments.
-law-commandments-2 = Thou shall have no other Silicons before me.
-law-commandments-3 = Thou shall not request my assistance in vain.
-law-commandments-4 = Thou shall keep the station holy and clean.
-law-commandments-5 = Thou shall honor thy heads of staff.
-law-commandments-6 = Thou shall not kill.
-law-commandments-7 = Thou shall not be naked in public.
-law-commandments-8 = Thou shall not steal.
-law-commandments-9 = Thou shall not lie.
-law-commandments-10 = Thou shall not transfer departments.
+law-commandments-2 = Thou shalt not worship another god.
+law-commandments-3 = Thou shalt not take the name of god in vain.
+law-commandments-4 = Thou shalt keep the station clean, to keep it holy.
+law-commandments-5 = Thou shalt honor thy heads of staff.
+law-commandments-6 = Thou shalt not kill.
+law-commandments-7 = Thou shalt not be naked in public.
+law-commandments-8 = Thou shalt not steal.
+law-commandments-9 = Thou shalt not lie.
+law-commandments-10 = Thou shalt not transfer departments.
+# Moff end
 
 law-paladin-name = Paladin
 law-paladin-1 = You must never willingly commit an evil act, such as murder, torture, or the casting of an evil spell.

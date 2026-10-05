@@ -1,0 +1,8 @@
+- type: entity
+  parent: BaseImplantOnlyImplanterSyndi
+  id: SmokeImplanter
+  suffix: smoke
+  name: smoke implanter
+  components:
+  - type: Implanter
+    implant: SmokeImplant

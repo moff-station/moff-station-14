@@ -51,7 +51,7 @@
   id: BeltSecurityEntityTable
   table: !type:AllSelector
     children:
-    - id: Stunbaton
+    - id: Nightstick # Funky
     - id: Handcuffs
       amount: 2
     - id: HoloprojectorSecurity
@@ -92,7 +92,7 @@
         - id: CleanerGrenade
           amount: 2
         - id: FlashlightLantern
-        - id: LightReplacer
+        - id: LightReplacerFilled
         - id: WireBrush
 
 - type: entity

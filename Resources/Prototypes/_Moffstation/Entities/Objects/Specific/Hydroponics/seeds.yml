@@ -4,7 +4,7 @@
   id: CoffeeSeeds
   components:
   - type: Seed
-    seedId: coffee
+    plantId: CoffeePlants
   - type: Sprite
     sprite: _Moffstation/Objects/Specific/Hydroponics/coffee_plant.rsi
 
@@ -14,6 +14,6 @@
   id: MugTreeSeeds
   components:
   - type: Seed
-    seedId: mugtree
+    plantId: MugTreePlants
   - type: Sprite
     sprite: _Moffstation/Objects/Specific/Hydroponics/mug_plant.rsi

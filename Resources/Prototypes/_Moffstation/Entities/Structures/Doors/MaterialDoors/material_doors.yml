@@ -1,0 +1,52 @@
+# Ironstone
+
+- type: entity
+  parent: BaseMaterialDoorNavMap
+  id: MoffIronstoneDoor
+  name: ironstone door
+  description: A mysterious door made of rune-etched stone.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Structures/Doors/MineralDoors/ironstone_door.rsi
+  - type: Door
+    openSound:
+      path: /Audio/Effects/stonedoor_openclose.ogg
+    closeSound:
+      path: /Audio/Effects/stonedoor_openclose.ogg
+  - type: RCDDeconstructable
+    deconstructable: false
+  - type: Damageable
+    damageModifierSet: Rock
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 250 # A pickaxe can destroy this in two hits, since the door is rock.
+      behaviors: &IronstoneDestructionBehavior
+      - !type:DoActsBehavior
+        acts: ["Destruction"]
+      - !type:PlaySoundBehavior
+        sound:
+          path: /Audio/Effects/break_stone.ogg
+          params:
+            volume: -6
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          SteelOre1:
+            min: 0
+            max: 1
+
+- type: entity
+  parent: MoffIronstoneDoor
+  id: MoffEncrustedIronstoneDoor
+  name: encrusted ironstone door
+  description: A stone door covered in nacreous blobs of an unknown substance.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Structures/Doors/MineralDoors/encrusted_ironstone_door.rsi
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 375
+      behaviors: *IronstoneDestructionBehavior

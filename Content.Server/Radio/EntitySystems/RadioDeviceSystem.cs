@@ -1,15 +1,3 @@
-using System.Linq;
-using Content.Server.Chat.Systems;
-using Content.Server.Interaction;
-using Content.Server.Popups;
-using Content.Server.Power.EntitySystems;
-using Content.Shared.Chat;
-using Content.Shared.DeviceLinking.Events; // Moffstation
-using Content.Shared.Examine;
-using Content.Shared.Interaction;
-using Content.Shared.Power;
-using Content.Shared.Radio;
-using Content.Shared.Radio.Components;
 using Content.Shared.Radio.EntitySystems;
 using Content.Shared.Speech;
 using Content.Shared.Speech.Components;
@@ -17,6 +5,7 @@ using Robust.Shared.Prototypes;
 using Robust.Shared.Utility; // Moffstation
 using Content.Shared.Power.EntitySystems; // Goobstation - Radio Host
 using Content.Shared._Goobstation.StationRadio.Components; // Moffstation
+
 
 namespace Content.Server.Radio.EntitySystems;
 
@@ -314,3 +303,4 @@ public sealed partial class RadioDeviceSystem : SharedRadioDeviceSystem
     }
     // Moffstation - End
 }
+

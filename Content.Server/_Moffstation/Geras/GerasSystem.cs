@@ -5,9 +5,6 @@ using Content.Server.Atmos.EntitySystems;
 using Content.Server.Body;
 using Content.Server.Inventory;
 using Content.Server.Popups;
-using Content.Server.Temperature.Systems;
-using Content.Server.Traits;
-using Content.Shared._DV.Traits;
 using Content.Shared._Moffstation.Body.Events;
 using Content.Shared._Moffstation.Damage.Events;
 using Content.Shared._Moffstation.Geras;
@@ -65,12 +62,11 @@ public sealed partial class GerasSystem : EntitySystem
     [Dependency] private SharedSubdermalImplantSystem _implantSystem = default!;
     [Dependency] private HumanoidProfileSystem _profileSystem = default!;
     [Dependency] private SharedContainerSystem _container = default!;
-    [Dependency] private SharedBloodstreamSystem _bloodstream = default!;
+    [Dependency] private BloodstreamSystem _bloodstream = default!;
     [Dependency] private SharedSolutionContainerSystem _solutionContainer = default!;
     [Dependency] private SharedEnsnareableSystem _ensnareable = default!;
     [Dependency] private SharedProjectileSystem _projectile = default!;
-    [Dependency] private HungerSystem _hunger = default!;
-    [Dependency] private ThirstSystem _thirst = default!;
+    [Dependency] private SatiationSystem _satiation = default!;
     [Dependency] private SharedStaminaSystem  _stamina = default!;
     [Dependency] private TraitSystem _trait = default!;
     [Dependency] private FlammableSystem _flammable = default!;
@@ -96,8 +92,7 @@ public sealed partial class GerasSystem : EntitySystem
         SubscribeLocalEvent<StorageComponent, PreMorphGerasEvent>(OnTransferStorage);
         SubscribeLocalEvent<StatusEffectsComponent, PreMorphGerasEvent>(OnTransferOldStatus);
         SubscribeLocalEvent<StatusEffectContainerComponent, PreMorphGerasEvent>(OnTransferNewStatus);
-        SubscribeLocalEvent<HungerComponent, PreMorphGerasEvent>(OnTransferHunger);
-        SubscribeLocalEvent<ThirstComponent, PreMorphGerasEvent>(OnTransferThirst);
+        SubscribeLocalEvent<SatiationComponent, PreMorphGerasEvent>(OnTransferSatiation);
         SubscribeLocalEvent<GerasComponent, TraitsAppliedEvent>(OnTraitsApplied);
     }
 
@@ -347,19 +342,18 @@ public sealed partial class GerasSystem : EntitySystem
         RaiseLocalEvent(args.Geras, ref newStatusTransferEv);
     }
 
-    private void OnTransferHunger(Entity<HungerComponent> ent, ref PreMorphGerasEvent args)
+    private void OnTransferSatiation(Entity<SatiationComponent> ent, ref PreMorphGerasEvent args)
     {
-        if (TryComp<HungerComponent>(args.Geras, out var gerasHunger))
+        if (TryComp<SatiationComponent>(args.Geras, out var gerasSatiation))
         {
-            _hunger.SetHunger(args.Geras, _hunger.GetHunger(ent.Comp), gerasHunger);
-        }
-    }
+            var hungerValue = _satiation.GetValueOrNull(ent, SatiationSystem.Hunger);
+            var thirstValue = _satiation.GetValueOrNull(ent, SatiationSystem.Thirst);
 
-    private void OnTransferThirst(Entity<ThirstComponent> ent, ref PreMorphGerasEvent args)
-    {
-        if (TryComp<ThirstComponent>(args.Geras, out var gerasThirst))
-        {
-            _thirst.SetThirst(args.Geras, gerasThirst, ent.Comp.CurrentThirst);
+            if (!hungerValue.HasValue || !thirstValue.HasValue)
+                return;
+
+            _satiation.SetValue(ent, SatiationSystem.Hunger, hungerValue.Value);
+            _satiation.SetValue(ent, SatiationSystem.Thirst, thirstValue.Value);
         }
     }
 
