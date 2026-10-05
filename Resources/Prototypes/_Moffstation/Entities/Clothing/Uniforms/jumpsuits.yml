@@ -404,7 +404,7 @@
 - type: entity
   parent: [ClothingUniformBase, BaseCentcommContraband]
   id: ClothingUniformJumpsuitCentcommResearch
-  name: Centcomm Researcher Suit
+  name: centcomm researcher suit
   description: An Outfit to accept awards for scientific & technological advancement.
   components:
   - type: Sprite
@@ -414,19 +414,19 @@
 
 - type: entity
   parent: [ClothingUniformBase, BaseCentcommContraband]
-  id: ClothingUniformJumpsuitCentcommMedical
-  name: Centcomm Physician Sweater
-  description: An Outfit to accept awards for medical advancement.
+  id: MoffClothingUniformJumpsuitCentcommRep
+  name: centcomm representative sweater
+  description: An Outfit to accept awards for bureaucratic mastery.
   components:
   - type: Sprite
-    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/centcomm-medical.rsi
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/centcomm-rep.rsi
   - type: Clothing
-    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/centcomm-medical.rsi
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/centcomm-rep.rsi
 
 - type: entity
   parent: [ClothingUniformBase, BaseCentcommContraband]
   id: ClothingUniformJumpsuitCentcommTurtle
-  name: Centcomm Turtleneck
+  name: centcomm turtleneck
   description: An Comfortable outfit for the executive who enjoys a warm fireplace.
   components:
   - type: Sprite

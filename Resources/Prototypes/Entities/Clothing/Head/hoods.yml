@@ -325,9 +325,9 @@
   description: A hood for keeping the central comander's head warm.
   components:
   - type: Sprite
-    sprite: Clothing/Head/Hoods/Coat/hoodcentcom.rsi
+    sprite: _Moffstation/Clothing/Head/Hoods/Coat/hoodcentcom.rsi # Moff
   - type: Clothing
-    sprite: Clothing/Head/Hoods/Coat/hoodcentcom.rsi
+    sprite: _Moffstation/Clothing/Head/Hoods/Coat/hoodcentcom.rsi # Moff
 
 - type: entity
   parent: ClothingHeadHatHoodWinterBase
