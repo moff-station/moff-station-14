@@ -16,24 +16,19 @@ public sealed partial class OfferedItemComponent : Component
     public EntityUid Recipient;
 
     /// <summary>
-    /// Index of the offerer's hand-insert doafter; accepting completes it.
+    /// Id of the offerer's hand-insert doafter; accepting completes it.
     /// </summary>
     [DataField, AutoNetworkedField]
     public ushort DoAfterIndex;
 }
 
 [ByRefEvent]
-public readonly struct StripHandInsertStartedEvent(EntityUid recipient, EntityUid item, ushort doAfterIndex)
-{
-    public readonly EntityUid Recipient = recipient;
-    public readonly EntityUid Item = item;
-    public readonly ushort DoAfterIndex = doAfterIndex;
-}
+public record struct StripHandInsertStartedEvent(EntityUid Recipient, EntityUid Item, ushort DoAfterId);
 
 [ByRefEvent]
-public struct BeforeStripHandRemoveEvent(EntityUid user, EntityUid holder)
+public record struct BeforeStripHandRemoveEvent(EntityUid User, EntityUid Holder)
 {
-    public readonly EntityUid User = user;
-    public readonly EntityUid Holder = holder;
+    public readonly EntityUid User = User;
+    public readonly EntityUid Holder = Holder;
     public bool Handled;
 }

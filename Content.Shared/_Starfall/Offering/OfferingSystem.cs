@@ -20,13 +20,16 @@ public sealed partial class OfferingSystem : EntitySystem
     [Dependency] private SharedHandsSystem _hands = default!;
     [Dependency] private SharedPopupSystem _popup = default!;
 
+    [Dependency] private EntityQuery<HandsComponent> _handsQuery;
+    [Dependency] private EntityQuery<OfferedItemComponent> _offeredQuery;
+
     [SubscribeLocalEvent]
     private void OnStripHandInsertStarted(Entity<HandsComponent> offerer, ref StripHandInsertStartedEvent args)
     {
         var offered = EnsureComp<OfferedItemComponent>(args.Item);
         offered.Offerer = offerer;
         offered.Recipient = args.Recipient;
-        offered.DoAfterIndex = args.DoAfterIndex;
+        offered.DoAfterIndex = args.DoAfterId;
         Dirty(args.Item, offered);
     }
 
@@ -36,7 +39,7 @@ public sealed partial class OfferingSystem : EntitySystem
         if (!args.InsertOrRemove || args.InventoryOrHand || args.Used is not { } item)
             return;
 
-        if (TryComp<OfferedItemComponent>(item, out var offered) && offered.Offerer == offerer.Owner)
+        if (_offeredQuery.TryComp(item, out var offered) && offered.Offerer == offerer.Owner)
             RemComp(item, offered);
     }
 
@@ -46,13 +49,13 @@ public sealed partial class OfferingSystem : EntitySystem
         if (args.Handled ||
             args.User == offerer.Owner ||
             _hands.GetActiveItem(args.User) != null ||
-            !TryComp<HandsComponent>(offerer, out var offererHands))
+            !_handsQuery.TryComp(offerer, out var offererHands))
             return;
 
         foreach (var handName in offererHands.Hands.Keys)
         {
             if (!_hands.TryGetHeldItem((offerer.Owner, offererHands), handName, out var item) ||
-                !TryComp<OfferedItemComponent>(item, out var offered) ||
+                !_offeredQuery.TryComp(item, out var offered) ||
                 offered.Offerer != offerer.Owner ||
                 offered.Recipient != args.User)
                 continue;
@@ -77,7 +80,7 @@ public sealed partial class OfferingSystem : EntitySystem
         if (_timing.ApplyingState)
             return;
 
-        if (!TryComp<HandsComponent>(item.Comp.Offerer, out var hands) ||
+        if (!_handsQuery.TryComp(item.Comp.Offerer, out var hands) ||
             !_hands.IsHolding((item.Comp.Offerer, hands), item.Owner))
             RemCompDeferred<OfferedItemComponent>(item);
     }
