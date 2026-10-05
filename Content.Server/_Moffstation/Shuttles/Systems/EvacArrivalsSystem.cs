@@ -13,12 +13,13 @@ using Content.Shared._Moffstation.CCVar;
 using Content.Shared.CCVar;
 using Content.Shared.DeviceNetwork;
 using Content.Shared.DeviceNetwork.Components;
+using Content.Shared.Mind;
+using Content.Shared.Mobs.Components;
 using Content.Shared.Power.Components;
 using Content.Shared.Power.EntitySystems;
 using Content.Shared.Shuttles.Components;
 using Content.Shared.Tag;
 using Robust.Shared.Configuration;
-using Robust.Shared.Map;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Timing;
 
@@ -37,6 +38,7 @@ public sealed partial class EvacArrivalsSystem : EntitySystem
     [Dependency] private StationSystem _station = default!;
 
     [Dependency] private EntityQuery<EvacArrivalsComponent> _evacArrivalsQuery;
+    [Dependency] private EntityQuery<MobStateComponent> _mobStateQuery;
     [Dependency] private EntityQuery<ShuttleComponent> _shuttleQuery;
 
     private static readonly ProtoId<TagPrototype> DockTag = "DockEmergency";
@@ -148,6 +150,7 @@ public sealed partial class EvacArrivalsSystem : EntitySystem
                     _deviceNetwork.QueuePacket(ent.Owner, null, payload, net.TransmitFrequency);
                 break;
             case EvacArrivalsState.Returning:
+                SendCrewToStation(ent);
                 _arrivals.DumpChildren(ent, ref args);
                 break;
         }
@@ -180,6 +183,18 @@ public sealed partial class EvacArrivalsSystem : EntitySystem
                 if (_shuttleQuery.HasComp(ent))
                     RemCompDeferred<EvacArrivalsComponent>(ent);
                 break;
+        }
+    }
+
+    // Anyone who stays on evac when it leaves gets shipped to the station
+    private void SendCrewToStation(Entity<EvacArrivalsComponent> ent)
+    {
+        foreach (var mind in EntityQueryEnumerator<MindComponent>())
+        {
+            if (mind.Comp.OwnedEntity is { } body
+                && _mobStateQuery.HasComp(body)
+                && Transform(body).GridUid == ent.Owner)
+                _arrivals.TryTeleportToMapSpawn(body, ent.Comp.Station);
         }
     }
 

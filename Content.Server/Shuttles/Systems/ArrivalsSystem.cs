@@ -411,7 +411,7 @@ public sealed partial class ArrivalsSystem : EntitySystem
         _chat.DispatchServerMessage(ev.Player, message);
     }
 
-    private bool TryTeleportToMapSpawn(EntityUid player, EntityUid stationId, TransformComponent? transform = null)
+    public bool TryTeleportToMapSpawn(EntityUid player, EntityUid stationId, TransformComponent? transform = null) // Moff - Made public
     {
         if (!Resolve(player, ref transform))
             return false;
