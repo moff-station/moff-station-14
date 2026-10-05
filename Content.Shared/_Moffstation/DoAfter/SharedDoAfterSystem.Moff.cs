@@ -3,7 +3,7 @@ namespace Content.Shared.DoAfter;
 public abstract partial class SharedDoAfterSystem
 {
     /// <summary>
-    /// Completes a running DoAfter now, as if its full delay had elapsed.
+    /// Completes a DoAfter immediately.
     /// </summary>
     public bool TryComplete(Entity<DoAfterComponent?> ent, ushort id)
     {
