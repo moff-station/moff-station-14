@@ -5,12 +5,10 @@ public abstract partial class SharedDoAfterSystem
     /// <summary>
     /// Completes a running DoAfter now, as if its full delay had elapsed.
     /// </summary>
-    public bool TryFastForward(Entity<DoAfterComponent?> ent, ushort id)
+    public bool TryComplete(Entity<DoAfterComponent?> ent, ushort id)
     {
         if (!Resolve(ent, ref ent.Comp, false) ||
-            !ent.Comp.DoAfters.TryGetValue(id, out var doAfter) ||
-            doAfter.Cancelled ||
-            doAfter.Completed)
+            !ent.Comp.DoAfters.TryGetValue(id, out var doAfter))
             return false;
 
         doAfter.StartTime = GameTiming.CurTime - doAfter.Args.Delay;

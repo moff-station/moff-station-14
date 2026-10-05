@@ -2,6 +2,7 @@ using Content.Shared.Buckle;
 using Content.Shared.DoAfter;
 using Content.Shared.Hands.Components;
 using Content.Shared.Hands.EntitySystems;
+using Content.Shared.IdentityManagement;
 using Content.Shared.Interaction;
 using Content.Shared.Popups;
 using Content.Shared.Strip.Components;
@@ -32,7 +33,6 @@ public sealed partial class OfferingSystem : EntitySystem
     [SubscribeLocalEvent]
     private void OnStrippableDoAfter(Entity<StrippableComponent> offerer, ref StrippableDoAfterEvent args)
     {
-        // The offer only lasts as long as the hand-insert doafter that made it.
         if (!args.InsertOrRemove || args.InventoryOrHand || args.Used is not { } item)
             return;
 
@@ -77,7 +77,6 @@ public sealed partial class OfferingSystem : EntitySystem
         if (_timing.ApplyingState)
             return;
 
-        // An offer is only valid while the original offerer continuously holds the item.
         if (!TryComp<HandsComponent>(item.Comp.Offerer, out var hands) ||
             !_hands.IsHolding((item.Comp.Offerer, hands), item.Owner))
             RemCompDeferred<OfferedItemComponent>(item);
@@ -85,7 +84,7 @@ public sealed partial class OfferingSystem : EntitySystem
 
     private bool TryAccept(EntityUid recipient, Entity<OfferedItemComponent> item)
     {
-        if (!_doAfter.TryFastForward(item.Comp.Offerer, item.Comp.DoAfterIndex) ||
+        if (!_doAfter.TryComplete(item.Comp.Offerer, item.Comp.DoAfterIndex) ||
             !_hands.IsHolding(recipient, item))
         {
             _popup.PopupEntity(Loc.GetString("offering-system-cannot-accept"), recipient, recipient);
@@ -93,6 +92,7 @@ public sealed partial class OfferingSystem : EntitySystem
         }
 
         _popup.PopupEntity(Loc.GetString("offering-system-accepted-self", ("item", item)), recipient, recipient);
+        _popup.PopupEntity(Loc.GetString("offering-system-accepted-other", ("user", Identity.Entity(recipient, EntityManager)), ("item", item)), recipient, item.Comp.Offerer);
         return true;
     }
 }
