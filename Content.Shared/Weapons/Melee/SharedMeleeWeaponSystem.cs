@@ -602,7 +602,7 @@ public abstract partial class SharedMeleeWeaponSystem : EntitySystem
                 var userPos = TransformSystem.GetWorldPosition(Transform(user));
                 var direction = targetMap.Position - userPos;
 
-                DoScreenShake(direction, user, targets);
+                DoScreenShake(direction, user, targets.ToList());
                 // Moffstation - End
             }
             else
@@ -762,7 +762,7 @@ public abstract partial class SharedMeleeWeaponSystem : EntitySystem
         {
             var target = entities.First();
             _meleeSound.PlayHitSound(target, user, GetHighestDamageSound(appliedDamage, ProtoMan), hitEvent.HitSoundOverride, component);
-            DoScreenShake(direction, user, targets); // Moffstation - Tweaked screenshake changes
+            DoScreenShake(direction, user, targets.ToList()); // Moffstation - Tweaked screenshake changes
         }
 
 
