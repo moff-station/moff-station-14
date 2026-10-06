@@ -4,8 +4,8 @@ meta:
   engineVersion: 289.0.3
   forkId: ""
   forkVersion: ""
-  time: 09/25/2026 06:53:13
-  entityCount: 799
+  time: 10/06/2026 02:17:13
+  entityCount: 797
 maps: []
 grids:
 - 1
@@ -4015,19 +4015,6 @@ entities:
     - type: Transform
       parent: 1
       pos: 9.5,-10.5
-  - uid: 521
-    components:
-    - type: Transform
-      parent: 1
-      pos: 1.5,3.5
-    - type: AccessReader
-      accessListsOriginal:
-      - - Engineering
-  - uid: 522
-    components:
-    - type: Transform
-      parent: 1
-      pos: 12.5,3.5
 - proto: MedicalBed
   entities:
   - uid: 523
@@ -4686,18 +4673,18 @@ entities:
       pos: 1.5,-9.5
 - proto: VendingMachineSwimsuits
   entities:
-  - uid: 800
+  - uid: 521
     components:
     - type: Transform
       parent: 1
-      pos: 11.5,-7.5
+      pos: 12.5,3.5
 - proto: VendingMachineTheater
   entities:
-  - uid: 799
+  - uid: 522
     components:
     - type: Transform
       parent: 1
-      pos: 2.5,-7.5
+      pos: 1.5,3.5
 - proto: VendingMachineWallMedicalCivilian
   entities:
   - uid: 638
