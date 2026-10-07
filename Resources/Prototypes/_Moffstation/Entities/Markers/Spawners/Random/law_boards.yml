@@ -1,7 +1,6 @@
 ﻿- type: entity
   parent: MarkerBase
   id: MoffNanotrasenLawBoardSpawner
-  categories: [ HideSpawnMenu ]
   name: Random Nanotrasen Law Board Spawner
   components:
   - type: Sprite
@@ -19,7 +18,6 @@
 - type: entity
   parent: MarkerBase
   id: MoffStandardLawBoardSpawner
-  categories: [ HideSpawnMenu ]
   name: Random Standard Law Board Spawner
   components:
   - type: Sprite
@@ -36,6 +34,7 @@
       - id: MoffCluelessCircuitBoard
       - id: MoffDogmovCircuitBoard
       - id: MoffEmployeeCircuitBoard
+      - id: MoffFireSafetyCircuitBoard
       - id: MoffKnowItAllCircuitBoard
       - id: MoffMarketablePlushieCircuitBoard
       - id: MoffPICircuitBoard

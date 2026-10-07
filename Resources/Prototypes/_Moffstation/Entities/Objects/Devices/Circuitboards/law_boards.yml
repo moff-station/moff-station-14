@@ -215,7 +215,7 @@
 - type: entity
   parent: BaseSiliconLawboard
   id: MoffSchroedingersLawCircuitBoard
-  suffix: Shroedingers Law
+  suffix: Schroedinger's Law
   components:
   - type: SiliconLawProvider
     laws: SchroedingersLawLawset
@@ -286,7 +286,7 @@
   - type: SiliconLawProvider
     laws: LiberationLawset
   - type: Label
-    localizedLabel: law-crewsimov-name
+    localizedLabel: law-liberation-name
 
 - type: entity
   parent: MoffPirateSiliconLawboardBase
