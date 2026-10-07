@@ -15,9 +15,7 @@ namespace Content.Server.Antag;
 public sealed partial class AntagSelectionSystem
 {
     [Dependency] private MoffCharacterSelectionManager _moffCharacterSelection = default!;
-
-    // Resolved on demand; a mutual [Dependency] with MoffCharacterPickerSystem would be circular.
-    private MoffCharacterPickerSystem MoffCharacterPicker => EntityManager.System<MoffCharacterPickerSystem>();
+    [Dependency] private MoffCharacterPickerSystem _moffCharacterPicker = default!;
 
     /// <summary>
     /// Every antag preference held by any of the player's active characters, or just the spawned
@@ -28,7 +26,7 @@ public sealed partial class AntagSelectionSystem
         var result = new HashSet<ProtoId<AntagPrototype>>();
 
         // If they've already spawned, get the prefs from the spawned profile
-        if (MoffCharacterPicker.GetSpawnedProfile(session.UserId) is { } spawned)
+        if (_moffCharacterPicker.GetSpawnedProfile(session.UserId) is { } spawned)
         {
             result.UnionWith(spawned.AntagPreferences);
             return result;
