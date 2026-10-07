@@ -1,4 +1,5 @@
 
+using System.Numerics;
 using Content.Server._Moffstation.Shuttles.Components;
 using Content.Server._Moffstation.Spawners;
 using Content.Server.Communications;
@@ -20,6 +21,7 @@ using Content.Shared.Power.EntitySystems;
 using Content.Shared.Shuttles.Components;
 using Content.Shared.Tag;
 using Robust.Shared.Configuration;
+using Robust.Shared.Map;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Timing;
 
@@ -33,6 +35,7 @@ public sealed partial class EvacArrivalsSystem : EntitySystem
     [Dependency] private ArrivalsSystem _arrivals = default!;
     [Dependency] private DeviceNetworkSystem _deviceNetwork = default!;
     [Dependency] private SharedBatterySystem _battery = default!;
+    [Dependency] private SharedMapSystem _map = default!;
     [Dependency] private SharedTransformSystem _transform = default!;
     [Dependency] private ShuttleSystem _shuttle = default!;
     [Dependency] private StationSystem _station = default!;
@@ -40,6 +43,7 @@ public sealed partial class EvacArrivalsSystem : EntitySystem
     [Dependency] private EntityQuery<EvacArrivalsComponent> _evacArrivalsQuery;
     [Dependency] private EntityQuery<MobStateComponent> _mobStateQuery;
     [Dependency] private EntityQuery<ShuttleComponent> _shuttleQuery;
+    [Dependency] private EntityQuery<StationCentcommComponent> _centcommQuery;
 
     private static readonly ProtoId<TagPrototype> DockTag = "DockEmergency";
     private static readonly LocId CallBlockedReason = "evac-arrival-call-blocked";
@@ -58,7 +62,15 @@ public sealed partial class EvacArrivalsSystem : EntitySystem
 
             ent.Comp1.State = EvacArrivalsState.Returning;
             ent.Comp1.DepartTime = null;
-            _shuttle.FTLToCoordinates(ent, ent.Comp2, ent.Comp1.Origin, ent.Comp1.OriginRotation);
+
+            if (_centcommQuery.TryComp(ent.Comp1.Station, out var centcomm) && Exists(centcomm.Entity))
+            {
+                _shuttle.FTLToDock(ent, ent.Comp2, centcomm.Entity.Value);
+                continue;
+            }
+
+            var map = _map.CreateMap();
+            _shuttle.FTLToCoordinates(ent, ent.Comp2, new EntityCoordinates(map, Vector2.Zero), Angle.Zero);
         }
     }
 
@@ -75,11 +87,8 @@ public sealed partial class EvacArrivalsSystem : EntitySystem
                 _station.GetLargestGrid(station.Owner) is not { } target)
                 continue;
 
-            var xform = Transform(shuttle);
             var arrival = EnsureComp<EvacArrivalsComponent>(shuttle);
             arrival.Station = station;
-            arrival.Origin = xform.Coordinates;
-            arrival.OriginRotation = xform.LocalRotation;
             shuttleComp.FTLCooldownOverride = TimeSpan.Zero;
 
             _shuttle.FTLToDock(shuttle,
