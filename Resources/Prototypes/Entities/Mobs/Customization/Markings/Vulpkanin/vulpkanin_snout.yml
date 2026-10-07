@@ -1,11 +1,11 @@
 # Snout Markings
-
+# start moffstation changes
 - type: marking
   id: VulpSnout
   bodyPart: Snout
   groupWhitelist: [ Vulpkanin ]
   sprites:
-    - sprite: Mobs/Customization/Vulpkanin/snout_markings.rsi
+    - sprite: _Moffstation/Mobs/Customization/Vulpkanin/snout_markings.rsi
       state: snout
 
 - type: marking
@@ -13,7 +13,7 @@
   bodyPart: SnoutCover
   groupWhitelist: [ Vulpkanin ]
   sprites:
-    - sprite: Mobs/Customization/Vulpkanin/snout_markings.rsi
+    - sprite: _Moffstation/Mobs/Customization/Vulpkanin/snout_markings.rsi
       state: snout-nose
 
 - type: marking
@@ -21,7 +21,7 @@
   bodyPart: SnoutCover
   groupWhitelist: [ Vulpkanin ]
   sprites:
-    - sprite: Mobs/Customization/Vulpkanin/snout_markings.rsi
+    - sprite: _Moffstation/Mobs/Customization/Vulpkanin/snout_markings.rsi
       state: vulpine
 
 - type: marking
@@ -37,7 +37,7 @@
   bodyPart: SnoutCover
   groupWhitelist: [ Vulpkanin ]
   sprites:
-    - sprite: Mobs/Customization/Vulpkanin/snout_markings.rsi
+    - sprite: _Moffstation/Mobs/Customization/Vulpkanin/snout_markings.rsi
       state: blaze
 
 - type: marking
@@ -45,7 +45,7 @@
   bodyPart: SnoutCover
   groupWhitelist: [ Vulpkanin ]
   sprites:
-    - sprite: Mobs/Customization/Vulpkanin/snout_markings.rsi
+    - sprite: _Moffstation/Mobs/Customization/Vulpkanin/snout_markings.rsi
       state: mask
 
 - type: marking
@@ -53,13 +53,14 @@
   bodyPart: SnoutCover
   groupWhitelist: [ Vulpkanin ]
   sprites:
-    - sprite: Mobs/Customization/Vulpkanin/snout_markings.rsi
+    - sprite: _Moffstation/Mobs/Customization/Vulpkanin/snout_markings.rsi
       state: snout-top
 
-- type: marking
-  id: VulpSnoutPatch
-  bodyPart: SnoutCover
-  groupWhitelist: [ Vulpkanin ]
-  sprites:
-    - sprite: Mobs/Customization/Vulpkanin/snout_markings.rsi
-      state: patch
+#- type: marking
+#  id: VulpSnoutPatch
+#  bodyPart: SnoutCover
+#  groupWhitelist: [ Vulpkanin ]
+#  sprites:
+#    - sprite: Mobs/Customization/Vulpkanin/snout_markings.rsi
+#      state: patch
+# end moffstation changes

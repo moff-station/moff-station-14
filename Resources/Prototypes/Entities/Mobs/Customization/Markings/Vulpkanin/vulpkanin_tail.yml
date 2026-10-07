@@ -1,12 +1,13 @@
 # Tail Markings
+# start moffstation changes
 - type: marking
   id: VulpTailFennec
   bodyPart: Tail
   groupWhitelist: [ Vulpkanin ]
   sprites:
-    - sprite: Mobs/Customization/Vulpkanin/tail_markings.rsi
+    - sprite: _Moffstation/Mobs/Customization/Vulpkanin/tail_markings.rsi
       state: fennec
-    - sprite: Mobs/Customization/Vulpkanin/tail_markings.rsi
+    - sprite: _Moffstation/Mobs/Customization/Vulpkanin/tail_markings.rsi
       state: fennec-tip
 
 - type: marking
@@ -14,9 +15,9 @@
   bodyPart: Tail
   groupWhitelist: [ Vulpkanin ]
   sprites:
-    - sprite: Mobs/Customization/Vulpkanin/tail_markings.rsi
+    - sprite: _Moffstation/Mobs/Customization/Vulpkanin/tail_markings.rsi
       state: fluffy
-    - sprite: Mobs/Customization/Vulpkanin/tail_markings.rsi
+    - sprite: _Moffstation/Mobs/Customization/Vulpkanin/tail_markings.rsi
       state: fluffy-tip
 
 - type: marking
@@ -24,11 +25,11 @@
   bodyPart: Tail
   groupWhitelist: [ Vulpkanin ]
   sprites:
-    - sprite: Mobs/Customization/Vulpkanin/tail_markings.rsi
+    - sprite: _Moffstation/Mobs/Customization/Vulpkanin/tail_markings.rsi
       state: husky
-    - sprite: Mobs/Customization/Vulpkanin/tail_markings.rsi
+    - sprite: _Moffstation/Mobs/Customization/Vulpkanin/tail_markings.rsi
       state: husky-inner
-    - sprite: Mobs/Customization/Vulpkanin/tail_markings.rsi
+    - sprite: _Moffstation/Mobs/Customization/Vulpkanin/tail_markings.rsi
       state: husky-outer
 
 - type: marking
@@ -36,9 +37,9 @@
   bodyPart: Tail
   groupWhitelist: [ Vulpkanin ]
   sprites:
-    - sprite: Mobs/Customization/Vulpkanin/tail_markings.rsi
+    - sprite: _Moffstation/Mobs/Customization/Vulpkanin/tail_markings.rsi
       state: long
-    - sprite: Mobs/Customization/Vulpkanin/tail_markings.rsi
+    - sprite: _Moffstation/Mobs/Customization/Vulpkanin/tail_markings.rsi
       state: long-tip
 
 - type: marking
@@ -46,9 +47,9 @@
   bodyPart: Tail
   groupWhitelist: [ Vulpkanin ]
   sprites:
-    - sprite: Mobs/Customization/Vulpkanin/tail_markings.rsi
+    - sprite: _Moffstation/Mobs/Customization/Vulpkanin/tail_markings.rsi
       state: vulp
-    - sprite: Mobs/Customization/Vulpkanin/tail_markings.rsi
+    - sprite: _Moffstation/Mobs/Customization/Vulpkanin/tail_markings.rsi
       state: vulp-tip
 
 - type: marking
@@ -56,9 +57,9 @@
   bodyPart: Tail
   groupWhitelist: [ Vulpkanin ]
   sprites:
-    - sprite: Mobs/Customization/Vulpkanin/tail_markings.rsi
+    - sprite: _Moffstation/Mobs/Customization/Vulpkanin/tail_markings.rsi
       state: vulp
-    - sprite: Mobs/Customization/Vulpkanin/tail_markings.rsi
+    - sprite: _Moffstation/Mobs/Customization/Vulpkanin/tail_markings.rsi
       state: vulp-fade
 
 - type: marking
@@ -66,7 +67,7 @@
   bodyPart: Tail
   groupWhitelist: [ Vulpkanin ]
   sprites:
-  - sprite: Mobs/Customization/Vulpkanin/tail_markings.rsi
+  - sprite: _Moffstation/Mobs/Customization/Vulpkanin/tail_markings.rsi
     state: coyote
 
 # Animated
@@ -75,9 +76,9 @@
   bodyPart: Tail
   groupWhitelist: []
   sprites:
-  - sprite: Mobs/Customization/Vulpkanin/tail_markings.rsi
+  - sprite: _Moffstation/Mobs/Customization/Vulpkanin/tail_markings.rsi
     state: fennec-wagging
-  - sprite: Mobs/Customization/Vulpkanin/tail_markings.rsi
+  - sprite: _Moffstation/Mobs/Customization/Vulpkanin/tail_markings.rsi
     state: fennec-wagging-tip
 
 - type: marking
@@ -85,9 +86,9 @@
   bodyPart: Tail
   groupWhitelist: []
   sprites:
-  - sprite: Mobs/Customization/Vulpkanin/tail_markings.rsi
+  - sprite: _Moffstation/Mobs/Customization/Vulpkanin/tail_markings.rsi
     state: fluffy-wagging
-  - sprite: Mobs/Customization/Vulpkanin/tail_markings.rsi
+  - sprite: _Moffstation/Mobs/Customization/Vulpkanin/tail_markings.rsi
     state: fluffy-wagging-tip
 
 - type: marking
@@ -95,11 +96,11 @@
   bodyPart: Tail
   groupWhitelist: []
   sprites:
-  - sprite: Mobs/Customization/Vulpkanin/tail_markings.rsi
+  - sprite: _Moffstation/Mobs/Customization/Vulpkanin/tail_markings.rsi
     state: husky-wagging
-  - sprite: Mobs/Customization/Vulpkanin/tail_markings.rsi
+  - sprite: _Moffstation/Mobs/Customization/Vulpkanin/tail_markings.rsi
     state: husky-wagging-inner
-  - sprite: Mobs/Customization/Vulpkanin/tail_markings.rsi
+  - sprite: _Moffstation/Mobs/Customization/Vulpkanin/tail_markings.rsi
     state: husky-wagging-outer
 
 - type: marking
@@ -107,9 +108,9 @@
   bodyPart: Tail
   groupWhitelist: []
   sprites:
-  - sprite: Mobs/Customization/Vulpkanin/tail_markings.rsi
+  - sprite: _Moffstation/Mobs/Customization/Vulpkanin/tail_markings.rsi
     state: long-wagging
-  - sprite: Mobs/Customization/Vulpkanin/tail_markings.rsi
+  - sprite: _Moffstation/Mobs/Customization/Vulpkanin/tail_markings.rsi
     state: long-wagging-tip
 
 - type: marking
@@ -117,9 +118,9 @@
   bodyPart: Tail
   groupWhitelist: []
   sprites:
-  - sprite: Mobs/Customization/Vulpkanin/tail_markings.rsi
+  - sprite: _Moffstation/Mobs/Customization/Vulpkanin/tail_markings.rsi
     state: vulp-wagging
-  - sprite: Mobs/Customization/Vulpkanin/tail_markings.rsi
+  - sprite: _Moffstation/Mobs/Customization/Vulpkanin/tail_markings.rsi
     state: vulp-wagging-tip
 
 - type: marking
@@ -127,9 +128,9 @@
   bodyPart: Tail
   groupWhitelist: []
   sprites:
-  - sprite: Mobs/Customization/Vulpkanin/tail_markings.rsi
+  - sprite: _Moffstation/Mobs/Customization/Vulpkanin/tail_markings.rsi
     state: vulp-wagging
-  - sprite: Mobs/Customization/Vulpkanin/tail_markings.rsi
+  - sprite: _Moffstation/Mobs/Customization/Vulpkanin/tail_markings.rsi
     state: vulp-wagging-fade
 
 - type: marking
@@ -137,5 +138,6 @@
   bodyPart: Tail
   groupWhitelist: []
   sprites:
-  - sprite: Mobs/Customization/Vulpkanin/tail_markings.rsi
+  - sprite: _Moffstation/Mobs/Customization/Vulpkanin/tail_markings.rsi
     state: coyote-wagging
+# end moffstation changes
