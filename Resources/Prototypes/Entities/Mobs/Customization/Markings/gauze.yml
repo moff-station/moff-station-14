@@ -54,7 +54,7 @@
 - type: marking
   id: GauzeBlindfold
   bodyPart: Eyes
-  groupWhitelist: [Human, Arachnid]
+  groupWhitelist: [Human, Arachnid, Vulpkanin]
   coloring:
     default:
       type:
@@ -67,7 +67,7 @@
 - type: marking
   id: GauzeShoulder
   bodyPart: Chest
-  groupWhitelist: [Human, Reptilian, Arachnid, Thaven] #macro thaven
+  groupWhitelist: [Human, Reptilian, Arachnid, Thaven, Vulpkanin] #macro thaven
   coloring:
     default:
       type:
@@ -80,7 +80,7 @@
 - type: marking
   id: GauzeStomach
   bodyPart: Chest
-  groupWhitelist: [Human, Reptilian, Arachnid, Thaven] #macro thaven
+  groupWhitelist: [Human, Reptilian, Arachnid, Thaven, Vulpkanin] #macro thaven
   coloring:
     default:
       type:
@@ -93,7 +93,7 @@
 - type: marking
   id: GauzeUpperArmRight
   bodyPart: RArm
-  groupWhitelist: [Human, Reptilian, Arachnid, Thaven] #macro thaven
+  groupWhitelist: [Human, Reptilian, Arachnid, Thaven, Vulpkanin] #macro thaven
   coloring:
     default:
       type:
@@ -106,7 +106,7 @@
 - type: marking
   id: GauzeLowerArmRight
   bodyPart: RHand
-  groupWhitelist: [Human, Reptilian, Arachnid, Thaven] #macro thaven
+  groupWhitelist: [Human, Reptilian, Arachnid, Thaven, Vulpkanin] #macro thaven
   coloring:
     default:
       type:
@@ -119,7 +119,7 @@
 - type: marking
   id: GauzeLeftArm
   bodyPart: LArm
-  groupWhitelist: [Human, Reptilian, Arachnid, Thaven] #macro thaven
+  groupWhitelist: [Human, Reptilian, Arachnid, Thaven, Vulpkanin] #macro thaven
   coloring:
     default:
       type:
@@ -210,7 +210,7 @@
 - type: marking
   id: GauzeHead
   bodyPart: Head
-  groupWhitelist: [Human, Reptilian, Arachnid, Moth]
+  groupWhitelist: [Human, Reptilian, Arachnid, Moth, Vulpkanin]
   coloring:
     default:
       type:
@@ -457,109 +457,111 @@
     state: gauze_moth_lowerleg_l
 
 # Vulpkanin Specific Markings
-- type: marking
-  id: GauzeVulpStomach
-  bodyPart: Chest
-  groupWhitelist: [Vulpkanin]
-  coloring:
-    default:
-      type:
-        !type:SimpleColoring
-        color: "#FFFFFF"
-  sprites:
-  - sprite: Mobs/Customization/gauze.rsi
-    state: gauze_vulp_abdomen
+# start moffstation changes 
 
-- type: marking
-  id: GauzeVulpBlindfold
-  bodyPart: Eyes
-  groupWhitelist: [Vulpkanin]
-  coloring:
-    default:
-      type:
-        !type:SimpleColoring
-        color: "#FFFFFF"
-  sprites:
-  - sprite: Mobs/Customization/gauze.rsi
-    state: gauze_vulp_blindfold
+#- type: marking
+#  id: GauzeVulpStomach
+#  bodyPart: Chest
+#  groupWhitelist: [Vulpkanin]
+#  coloring:
+#    default:
+#      type:
+#        !type:SimpleColoring
+#        color: "#FFFFFF"
+#  sprites:
+#  - sprite: Mobs/Customization/gauze.rsi
+#    state: gauze_vulp_abdomen
 
-- type: marking
-  id: GauzeVulpBoxerwrapLeft
-  bodyPart: LHand
-  groupWhitelist: [Vulpkanin]
-  coloring:
-    default:
-      type:
-        !type:SimpleColoring
-        color: "#FFFFFF"
-  sprites:
-  - sprite: Mobs/Customization/gauze.rsi
-    state: gauze_vulp_boxerwrap_l
+#- type: marking
+#  id: GauzeVulpBlindfold
+#  bodyPart: Eyes
+#  groupWhitelist: [Vulpkanin]
+#  coloring:
+#    default:
+#      type:
+#        !type:SimpleColoring
+#        color: "#FFFFFF"
+#  sprites:
+#  - sprite: Mobs/Customization/gauze.rsi
+#    state: gauze_vulp_blindfold
 
-- type: marking
-  id: GauzeVulpBoxerwrapRight
-  bodyPart: RHand
-  groupWhitelist: [Vulpkanin]
-  coloring:
-    default:
-      type:
-        !type:SimpleColoring
-        color: "#FFFFFF"
-  sprites:
-  - sprite: Mobs/Customization/gauze.rsi
-    state: gauze_vulp_boxerwrap_r
+#- type: marking
+#  id: GauzeVulpBoxerwrapLeft
+#  bodyPart: LHand
+#  groupWhitelist: [Vulpkanin]
+#  coloring:
+#    default:
+#      type:
+#        !type:SimpleColoring
+#        color: "#FFFFFF"
+#  sprites:
+#  - sprite: Mobs/Customization/gauze.rsi
+#    state: gauze_vulp_boxerwrap_l
 
-- type: marking
-  id: GauzeVulpHead
-  bodyPart: Head
-  groupWhitelist: [Vulpkanin]
-  coloring:
-    default:
-      type:
-        !type:SimpleColoring
-        color: "#FFFFFF"
-  sprites:
-  - sprite: Mobs/Customization/gauze.rsi
-    state: gauze_vulp_head
+#- type: marking
+#  id: GauzeVulpBoxerwrapRight
+#  bodyPart: RHand
+#  groupWhitelist: [Vulpkanin]
+#  coloring:
+#    default:
+#      type:
+#        !type:SimpleColoring
+#        color: "#FFFFFF"
+#  sprites:
+#  - sprite: Mobs/Customization/gauze.rsi
+#    state: gauze_vulp_boxerwrap_r
 
-- type: marking
-  id: GauzeVulpLeftArm
-  bodyPart: LArm
-  groupWhitelist: [Vulpkanin]
-  coloring:
-    default:
-      type:
-        !type:SimpleColoring
-        color: "#FFFFFF"
-  sprites:
-  - sprite: Mobs/Customization/gauze.rsi
-    state: gauze_vulp_leftarm
+#- type: marking
+#  id: GauzeVulpHead
+#  bodyPart: Head
+#  groupWhitelist: [Vulpkanin]
+#  coloring:
+#    default:
+#      type:
+#        !type:SimpleColoring
+#        color: "#FFFFFF"
+#  sprites:
+#  - sprite: Mobs/Customization/gauze.rsi
+#    state: gauze_vulp_head
 
-- type: marking
-  id: GauzeVulpLefteyePatch
-  bodyPart: Eyes
-  groupWhitelist: [Vulpkanin]
-  coloring:
-    default:
-      type:
-        !type:SimpleColoring
-        color: "#FFFFFF"
-  sprites:
-  - sprite: Mobs/Customization/gauze.rsi
-    state: gauze_vulp_lefteye_2
+#- type: marking
+#  id: GauzeVulpLeftArm
+#  bodyPart: LArm
+#  groupWhitelist: [Vulpkanin]
+#  coloring:
+#    default:
+#      type:
+#        !type:SimpleColoring
+#        color: "#FFFFFF"
+#  sprites:
+#  - sprite: Mobs/Customization/gauze.rsi
+#    state: gauze_vulp_leftarm
 
-- type: marking
-  id: GauzeVulpLowerArmRight
-  bodyPart: RHand
-  groupWhitelist: [Vulpkanin]
-  coloring:
-    default:
-      type:
-        !type:SimpleColoring
-        color: "#FFFFFF"
-  sprites:
-  - sprite: Mobs/Customization/gauze.rsi
-    state: gauze_vulp_lowerarm_r
+#- type: marking
+#  id: GauzeVulpLefteyePatch
+#  bodyPart: Eyes
+#  groupWhitelist: [Vulpkanin]
+#  coloring:
+#    default:
+#      type:
+#        !type:SimpleColoring
+#        color: "#FFFFFF"
+#  sprites:
+#  - sprite: Mobs/Customization/gauze.rsi
+#    state: gauze_vulp_lefteye_2
+
+#- type: marking
+#  id: GauzeVulpLowerArmRight
+#  bodyPart: RHand
+#  groupWhitelist: [Vulpkanin]
+#  coloring:
+#    default:
+#      type:
+#        !type:SimpleColoring
+#        color: "#FFFFFF"
+#  sprites:
+#  - sprite: Mobs/Customization/gauze.rsi
+#    state: gauze_vulp_lowerarm_r
 
 - type: marking
   id: GauzeVulpLowerLegLeft
@@ -569,9 +571,9 @@
     default:
       type:
         !type:SimpleColoring
-        color: "#FFFFFF"
+       color: "#FFFFFF"
   sprites:
-  - sprite: Mobs/Customization/gauze.rsi
+  - sprite: _Moffstation/Mobs/Customization/Vulpkanin/gauze.rsi
     state: gauze_vulp_lowerleg_l
 
 - type: marking
@@ -584,34 +586,34 @@
         !type:SimpleColoring
         color: "#FFFFFF"
   sprites:
-  - sprite: Mobs/Customization/gauze.rsi
+  - sprite: _Moffstation/Mobs/Customization/Vulpkanin/gauze.rsi
     state: gauze_vulp_lowerleg_r
 
-- type: marking
-  id: GauzeVulpRighteyePatch
-  bodyPart: Eyes
-  groupWhitelist: [Vulpkanin]
-  coloring:
-    default:
-      type:
-        !type:SimpleColoring
-        color: "#FFFFFF"
-  sprites:
-  - sprite: Mobs/Customization/gauze.rsi
-    state: gauze_vulp_righteye_2
+#- type: marking
+#  id: GauzeVulpRighteyePatch
+#  bodyPart: Eyes
+#  groupWhitelist: [Vulpkanin]
+#  coloring:
+#    default:
+#      type:
+#        !type:SimpleColoring
+#        color: "#FFFFFF"
+#  sprites:
+#  - sprite: Mobs/Customization/gauze.rsi
+#    state: gauze_vulp_righteye_2
 
-- type: marking
-  id: GauzeVulpShoulder
-  bodyPart: Chest
-  groupWhitelist: [Vulpkanin]
-  coloring:
-    default:
-      type:
-        !type:SimpleColoring
-        color: "#FFFFFF"
-  sprites:
-  - sprite: Mobs/Customization/gauze.rsi
-    state: gauze_vulp_shoulder
+#- type: marking
+#  id: GauzeVulpShoulder
+#  bodyPart: Chest
+#  groupWhitelist: [Vulpkanin]
+#  coloring:
+#    default:
+#      type:
+#        !type:SimpleColoring
+#        color: "#FFFFFF"
+#  sprites:
+#  - sprite: Mobs/Customization/gauze.rsi
+#    state: gauze_vulp_shoulder
 
 - type: marking
   id: GauzeVulpUpperLegLeft
@@ -623,7 +625,7 @@
         !type:SimpleColoring
         color: "#FFFFFF"
   sprites:
-  - sprite: Mobs/Customization/gauze.rsi
+  - sprite: _Moffstation/Mobs/Customization/Vulpkanin/gauze.rsi
     state: gauze_vulp_upperleg_l
 
 - type: marking
@@ -636,5 +638,6 @@
         !type:SimpleColoring
         color: "#FFFFFF"
   sprites:
-  - sprite: Mobs/Customization/gauze.rsi
+  - sprite: _Moffstation/Mobs/Customization/Vulpkanin/gauze.rsi
     state: gauze_vulp_upperleg_r
+# end moffstation changes

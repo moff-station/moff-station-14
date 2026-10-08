@@ -1,9 +1,10 @@
+# start moffstation changes
 - type: marking
   id: VulpClawsHandLeft
   bodyPart: LHand
   groupWhitelist: [ Vulpkanin ]
   sprites:
-    - sprite: Mobs/Customization/Vulpkanin/body_markings.rsi
+    - sprite: _Moffstation/Mobs/Customization/Vulpkanin/body_markings.rsi
       state: claws_l_hand
   coloring:
     default:
@@ -16,7 +17,7 @@
   bodyPart: RHand
   groupWhitelist: [ Vulpkanin ]
   sprites:
-    - sprite: Mobs/Customization/Vulpkanin/body_markings.rsi
+    - sprite: _Moffstation/Mobs/Customization/Vulpkanin/body_markings.rsi
       state: claws_r_hand
   coloring:
     default:
@@ -29,7 +30,7 @@
   bodyPart: LFoot
   groupWhitelist: [ Vulpkanin ]
   sprites:
-    - sprite: Mobs/Customization/Vulpkanin/body_markings.rsi
+    - sprite: _Moffstation/Mobs/Customization/Vulpkanin/body_markings.rsi
       state: claws_l_foot
   coloring:
     default:
@@ -42,7 +43,7 @@
   bodyPart: RFoot
   groupWhitelist: [ Vulpkanin ]
   sprites:
-    - sprite: Mobs/Customization/Vulpkanin/body_markings.rsi
+    - sprite: _Moffstation/Mobs/Customization/Vulpkanin/body_markings.rsi
       state: claws_r_foot
   coloring:
     default:
@@ -58,7 +59,7 @@
   bodyPart: LLeg
   groupWhitelist: [ Vulpkanin ]
   sprites:
-    - sprite: Mobs/Customization/Vulpkanin/body_markings.rsi
+    - sprite: _Moffstation/Mobs/Customization/Vulpkanin/body_markings.rsi
       state: crest-leg-l
   coloring:
     default:
@@ -71,7 +72,7 @@
   bodyPart: LArm
   groupWhitelist: [ Vulpkanin ]
   sprites:
-    - sprite: Mobs/Customization/Vulpkanin/body_markings.rsi
+    - sprite: _Moffstation/Mobs/Customization/Vulpkanin/body_markings.rsi
       state: crest-arm-l
   coloring:
     default:
@@ -84,7 +85,7 @@
   bodyPart: LFoot
   groupWhitelist: [ Vulpkanin ]
   sprites:
-    - sprite: Mobs/Customization/Vulpkanin/body_markings.rsi
+    - sprite: _Moffstation/Mobs/Customization/Vulpkanin/body_markings.rsi
       state: crest-foot-l
   coloring:
     default:
@@ -97,7 +98,7 @@
   bodyPart: LHand
   groupWhitelist: [ Vulpkanin ]
   sprites:
-    - sprite: Mobs/Customization/Vulpkanin/body_markings.rsi
+    - sprite: _Moffstation/Mobs/Customization/Vulpkanin/body_markings.rsi
       state: crest-hand-l
   coloring:
     default:
@@ -112,7 +113,7 @@
   bodyPart: RLeg
   groupWhitelist: [ Vulpkanin ]
   sprites:
-    - sprite: Mobs/Customization/Vulpkanin/body_markings.rsi
+    - sprite: _Moffstation/Mobs/Customization/Vulpkanin/body_markings.rsi
       state: crest-leg-r
   coloring:
     default:
@@ -125,7 +126,7 @@
   bodyPart: RArm
   groupWhitelist: [ Vulpkanin ]
   sprites:
-    - sprite: Mobs/Customization/Vulpkanin/body_markings.rsi
+    - sprite: _Moffstation/Mobs/Customization/Vulpkanin/body_markings.rsi
       state: crest-arm-r
   coloring:
     default:
@@ -138,7 +139,7 @@
   bodyPart: RFoot
   groupWhitelist: [ Vulpkanin ]
   sprites:
-    - sprite: Mobs/Customization/Vulpkanin/body_markings.rsi
+    - sprite: _Moffstation/Mobs/Customization/Vulpkanin/body_markings.rsi
       state: crest-foot-r
   coloring:
     default:
@@ -151,7 +152,7 @@
   bodyPart: RHand
   groupWhitelist: [ Vulpkanin ]
   sprites:
-    - sprite: Mobs/Customization/Vulpkanin/body_markings.rsi
+    - sprite: _Moffstation/Mobs/Customization/Vulpkanin/body_markings.rsi
       state: crest-hand-r
   coloring:
     default:
@@ -168,7 +169,7 @@
   bodyPart: LLeg
   groupWhitelist: [ Vulpkanin ]
   sprites:
-    - sprite: Mobs/Customization/Vulpkanin/body_markings.rsi
+    - sprite: _Moffstation/Mobs/Customization/Vulpkanin/body_markings.rsi
       state: points_fade-leg-l
   coloring:
     default:
@@ -181,7 +182,7 @@
   bodyPart: LArm
   groupWhitelist: [ Vulpkanin ]
   sprites:
-    - sprite: Mobs/Customization/Vulpkanin/body_markings.rsi
+    - sprite: _Moffstation/Mobs/Customization/Vulpkanin/body_markings.rsi
       state: points_fade-arm-l
   coloring:
     default:
@@ -194,7 +195,7 @@
   bodyPart: LFoot
   groupWhitelist: [ Vulpkanin ]
   sprites:
-    - sprite: Mobs/Customization/Vulpkanin/body_markings.rsi
+    - sprite: _Moffstation/Mobs/Customization/Vulpkanin/body_markings.rsi
       state: points_fade-foot-l
   coloring:
     default:
@@ -207,7 +208,7 @@
   bodyPart: LHand
   groupWhitelist: [ Vulpkanin ]
   sprites:
-    - sprite: Mobs/Customization/Vulpkanin/body_markings.rsi
+    - sprite: _Moffstation/Mobs/Customization/Vulpkanin/body_markings.rsi
       state: points_fade-hand-l
   coloring:
     default:
@@ -222,7 +223,7 @@
   bodyPart: RLeg
   groupWhitelist: [ Vulpkanin ]
   sprites:
-    - sprite: Mobs/Customization/Vulpkanin/body_markings.rsi
+    - sprite: _Moffstation/Mobs/Customization/Vulpkanin/body_markings.rsi
       state: points_fade-leg-r
   coloring:
     default:
@@ -235,7 +236,7 @@
   bodyPart: RArm
   groupWhitelist: [ Vulpkanin ]
   sprites:
-    - sprite: Mobs/Customization/Vulpkanin/body_markings.rsi
+    - sprite: _Moffstation/Mobs/Customization/Vulpkanin/body_markings.rsi
       state: points_fade-arm-r
   coloring:
     default:
@@ -248,7 +249,7 @@
   bodyPart: RFoot
   groupWhitelist: [ Vulpkanin ]
   sprites:
-    - sprite: Mobs/Customization/Vulpkanin/body_markings.rsi
+    - sprite: _Moffstation/Mobs/Customization/Vulpkanin/body_markings.rsi
       state: points_fade-foot-r
   coloring:
     default:
@@ -261,7 +262,7 @@
   bodyPart: RHand
   groupWhitelist: [ Vulpkanin ]
   sprites:
-    - sprite: Mobs/Customization/Vulpkanin/body_markings.rsi
+    - sprite: _Moffstation/Mobs/Customization/Vulpkanin/body_markings.rsi
       state: points_fade-hand-r
   coloring:
     default:
@@ -278,7 +279,7 @@
   bodyPart: LLeg
   groupWhitelist: [ Vulpkanin ]
   sprites:
-    - sprite: Mobs/Customization/Vulpkanin/body_markings.rsi
+    - sprite: _Moffstation/Mobs/Customization/Vulpkanin/body_markings.rsi
       state: points_sharp-leg-l
   coloring:
     default:
@@ -291,7 +292,7 @@
   bodyPart: LArm
   groupWhitelist: [ Vulpkanin ]
   sprites:
-    - sprite: Mobs/Customization/Vulpkanin/body_markings.rsi
+    - sprite: _Moffstation/Mobs/Customization/Vulpkanin/body_markings.rsi
       state: points_sharp-arm-l
   coloring:
     default:
@@ -304,7 +305,7 @@
   bodyPart: LArm
   groupWhitelist: [ Vulpkanin ]
   sprites:
-    - sprite: Mobs/Customization/Vulpkanin/body_markings.rsi
+    - sprite: _Moffstation/Mobs/Customization/Vulpkanin/body_markings.rsi
       state: points_sharp-arm-long-l
   coloring:
     default:
@@ -317,7 +318,7 @@
   bodyPart: LFoot
   groupWhitelist: [ Vulpkanin ]
   sprites:
-    - sprite: Mobs/Customization/Vulpkanin/body_markings.rsi
+    - sprite: _Moffstation/Mobs/Customization/Vulpkanin/body_markings.rsi
       state: points_sharp-foot-l
   coloring:
     default:
@@ -330,7 +331,7 @@
   bodyPart: LHand
   groupWhitelist: [ Vulpkanin ]
   sprites:
-    - sprite: Mobs/Customization/Vulpkanin/body_markings.rsi
+    - sprite: _Moffstation/Mobs/Customization/Vulpkanin/body_markings.rsi
       state: points_sharp-hand-l
   coloring:
     default:
@@ -345,7 +346,7 @@
   bodyPart: RLeg
   groupWhitelist: [ Vulpkanin ]
   sprites:
-    - sprite: Mobs/Customization/Vulpkanin/body_markings.rsi
+    - sprite: _Moffstation/Mobs/Customization/Vulpkanin/body_markings.rsi
       state: points_sharp-leg-r
   coloring:
     default:
@@ -358,7 +359,7 @@
   bodyPart: RArm
   groupWhitelist: [ Vulpkanin ]
   sprites:
-    - sprite: Mobs/Customization/Vulpkanin/body_markings.rsi
+    - sprite: _Moffstation/Mobs/Customization/Vulpkanin/body_markings.rsi
       state: points_sharp-arm-r
   coloring:
     default:
@@ -371,7 +372,7 @@
   bodyPart: RArm
   groupWhitelist: [ Vulpkanin ]
   sprites:
-    - sprite: Mobs/Customization/Vulpkanin/body_markings.rsi
+    - sprite: _Moffstation/Mobs/Customization/Vulpkanin/body_markings.rsi
       state: points_sharp-arm-long-r
   coloring:
     default:
@@ -384,7 +385,7 @@
   bodyPart: RFoot
   groupWhitelist: [ Vulpkanin ]
   sprites:
-    - sprite: Mobs/Customization/Vulpkanin/body_markings.rsi
+    - sprite: _Moffstation/Mobs/Customization/Vulpkanin/body_markings.rsi
       state: points_sharp-foot-r
   coloring:
     default:
@@ -397,10 +398,11 @@
   bodyPart: RHand
   groupWhitelist: [ Vulpkanin ]
   sprites:
-    - sprite: Mobs/Customization/Vulpkanin/body_markings.rsi
+    - sprite: _Moffstation/Mobs/Customization/Vulpkanin/body_markings.rsi
       state: points_sharp-hand-r
   coloring:
     default:
       type:
         !type:SimpleColoring
           color: "#e5e3d1"
+# end moffstation changes
