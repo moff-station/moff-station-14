@@ -8509,6 +8509,15 @@ Entries:
   id: 1986
   time: '2026-10-03T04:04:06.000'
   url: https://github.com/moff-station/moff-station-14/pull/1986
+- author: Sinaro2
+  changes:
+  - message: Changed the descriptions of movie posters.
+    type: tweak
+  - message: Removed the Casting Signups poster.
+    type: remove
+  id: 1987
+  time: '2026-10-08T01:40:48.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1987
 - author: Nyxilath
   changes:
   - message: Pirates can how make bank withdrawals.
@@ -8525,10 +8534,44 @@ Entries:
   url: https://github.com/moff-station/moff-station-14/pull/1990
 - author: Dave
   changes:
+  - message: CC Moff Gear Resprites
+    type: add
+  - message: CC Gear now uses Moffstation textures in the yaml
+    type: tweak
+  id: 1991
+  time: '2026-10-05T20:54:40.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1991
+- author: Dave
+  changes:
+  - message: new Lawyer outfit sprites
+    type: add
+  - message: new detective outfit sprites
+    type: add
+  - message: new reporter outfit sprites
+    type: add
+  id: 1992
+  time: '2026-10-05T23:42:21.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1992
+- author: Dave
+  changes:
   - message: New Canister Sprites
     type: add
   id: 1993
   time: '2026-10-05T05:28:30.000'
   url: https://github.com/moff-station/moff-station-14/pull/1993
+- author: Moomoobeef
+  changes:
+  - message: Changed tile decal sprites to match the new floor tiles.
+    type: tweak
+  id: 1995
+  time: '2026-10-06T01:29:57.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1995
+- author: Centronias
+  changes:
+  - message: Added Nova Stareater's personal item.
+    type: add
+  id: 1999
+  time: '2026-10-07T19:46:47.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1999
 Name: Mofflog
 Order: -2
