@@ -46,67 +46,67 @@
   parent: PosterBaseMoff
   id: PosterXenoborgs
   name: "Dawn of the Xenoborgs"
-  description: "A poster for a sci-fi horror movie. The tagline reads: \"They came in the dead of night, they've taken security. All you can think is. . . Somehow, Nyx had something to do with this.\""
+  description: "An advertisement for the horror-thriller movie 'Dawn of the Xenoborgs'. The tagline reads: \"They came in the dead of night. They’ve taken security. All you can think is... Somehow, the research assistant had something to do with this.\""
   components:
   - type: Sprite
     state: poster_xenoborg
   - type: DetailExaminable
-    content: "It answers the question of what truely goes bump when the station's power is shut off for an indeterminable duration."
+    content: "The movie is a rather cheaply-made action-thriller panned by critics for sensationalizing and profiting off of rumors of rogue silicon attacks in fringe regions such as the Miros and Longlegs sectors. While the visual effects are laughably cheap in some shots, the humor towards the beginning of the film is unexpectedly good."
 
 - type: entity
   parent: PosterBaseMoff
   id: PosterTMinus
   name: "T-Minus"
-  description: "This poster appears to be an advertisement for the movie 'T-Minus'. The tagline reads: \"Minutes to evac, Seconds to live.\""
+  description: "This poster appears to be an advertisement for the action film 'T-Minus'. The tagline reads: \"Minutes to evac. Seconds to live.\""
   components:
   - type: Sprite
     state: poster_tminus
   - type: DetailExaminable
-    content: "An action-adventure movie of a crew attempting to save not only their station but their lives."
+    content: "The movie is a somewhat experimental piece that rapidly shifts perspectives between dozens of a station’s crewmembers, revealing several complex, interwoven stories. The film has assembled a cult following known for obsessing and feuding over the slightest details on online forums."
 
 - type: entity
   parent: PosterBaseMoff
   id: PosterLastCall
   name: "Last Call"
-  description: "This poster appears to be an advertisement for the movie 'Last Call'.The tagline reads: \"The Usual is going to have to wait.\""
+  description: "This poster appears to be an advertisement for the drama film 'Last Call'.The tagline reads: \"The usual is going to have to wait.\""
   components:
   - type: Sprite
     state: poster_lastcall
   - type: DetailExaminable
-    content: "A movie following a bartender in the Salamander Sector as they are the last line of defense against Nuclear Armageddon."
+    content: "The movie is an action-drama that follows a station's downtrodden and dysfunctional service department gradually learning to confide in each other and overcome their individual flaws. Their bond is put to the test when the likely-fictional Nuclear Operatives threaten the station."
 
 - type: entity
   parent: PosterBaseMoff
   id: PosterWildfire
   name: "Wildfire"
-  description: "This poster appears to be an advertisement for the movie 'Wildfire'.The tagline reads: \"This story's spreading like WILDFIRE.\""
+  description: "This poster appears to be a teaser for the recently-released horror film 'Immolation'.The tagline reads: \"The story's spreading like wilfdire.\""
   components:
   - type: Sprite
     state: poster_wildfire
   - type: DetailExaminable
-    content: "A movie filled with flames teased to be releasing in the near future!"
+    content: "The movie, while outwardly an over-the-top action flick, reveals itself as an unsettling psychological horror story about a corporate subversion attempt gone hot as one unwitting decision leads to an atrocity. While initially hailed as a subversive masterpiece, public opinion seems to be turning against the film as critics began to find many of its directorial decisions particularly forced for the sake of shock value."
 
 - type: entity
   parent: PosterBaseMoff
   id: PosterMoffgelion
   name: "Sodium Inception Moffgelion"
-  description: "This poster appears to be an advertisement for the series 'Sodium Inception Moffgelion'.The tagline reads: \"In the war between corporations, salvation is silicon.\""
+  description: "This poster appears to be an advertisement for the parody movie 'End of Moffgelion'.The tagline reads: \"The fate of the tide is also the joy of robustness.\""
   components:
   - type: Sprite
     state: poster_moffgelion
   - type: DetailExaminable
-    content: "A series following a janitor joining a team of ripley pilots to save a sector."
+    content: "The movie is a bizarre parody of a popular film series that initially seems to be focusing on obvious imitations of the background characters from the original, but can also be interpreted as an abstract commentary on how the pursuit of ‘Robustness’ can lead to the abandonment of consequence, accountability, and perhaps even happiness or fulfillment."
 
 - type: entity
   parent: PosterBaseMoff
   id: PosterMarrowfate
-  name: "Marrowfate Files"
-  description: "This poster appears to be an advertisement for the series 'The Marrowfate Files'.The tagline reads: \"Between love & work, who truely controls the chitters.\""
+  name: "The Moffia Files"
+  description: "This poster appears to be an advertisement for the series 'The Moffia Files'.The tagline reads: \"Secrets. Subterfuge. Silicons. An all-new serial series coming this fall.\""
   components:
   - type: Sprite
     state: poster_marrowfate
   - type: DetailExaminable
-    content: "A series of an agent struggling to come to terms with their final assigned mission; the assassination of their significant other!"
+    content: "While not yet released, the series is speculated to follow the records left behind by an interstellar private detective and their cohort of crewmates as they continually find themselves at odds with an agent of the setting’s Spinward Syndicate stand-in. The series is theorized to be a tribute to the dark and suspenseful mystery films in vogue in the 2550s."
 
 - type: entity
   parent: PosterBaseMoff
@@ -118,17 +118,6 @@
     state: poster_moffsector
   - type: DetailExaminable
     content: "  The message reads: \"Welcome to the Moff sector, we hope you enjoy your time with all of us here!\""
-
-- type: entity
-  parent: PosterBaseMoff
-  id: PosterSignups
-  name: "Movie Casting Sign ups"
-  description: "This poster appears to be a request for people to NanoMail the Moffia Media Corp."
-  components:
-  - type: Sprite
-    state: poster_moffsignup
-  - type: DetailExaminable
-    content: "The Director looks like they are dressed like God's Strongest Sanitation Worker"
 
 - type: entity
   parent: PosterBaseMoff
