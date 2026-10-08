@@ -37,10 +37,12 @@
   - sprite: Mobs/Customization/undergarments.rsi
     state: satin
 
+# start moffstation changes - changed whitelists to include vulpkanins
+
 - type: marking
   id: UndergarmentTopBra
   bodyPart: UndergarmentTop
-  groupWhitelist: [Arachnid, Diona, Human, Moth, Reptilian, Slime]
+  groupWhitelist: [Arachnid, Diona, Human, Moth, Reptilian, Slime, Vulpkanin]
   coloring:
     default:
       type: null
@@ -52,7 +54,7 @@
 - type: marking
   id: UndergarmentTopSportsbra
   bodyPart: UndergarmentTop
-  groupWhitelist: [Arachnid, Diona, Human, Moth, Reptilian, Slime]
+  groupWhitelist: [Arachnid, Diona, Human, Moth, Reptilian, Slime, Vulpkanin]
   coloring:
     default:
       type: null
@@ -64,7 +66,7 @@
 - type: marking
   id: UndergarmentTopBinder
   bodyPart: UndergarmentTop
-  groupWhitelist: [Arachnid, Diona, Human, Moth, Reptilian, Slime]
+  groupWhitelist: [Arachnid, Diona, Human, Moth, Reptilian, Slime, Vulpkanin]
   coloring:
     default:
       type: null
@@ -76,7 +78,7 @@
 - type: marking
   id: UndergarmentTopTanktop
   bodyPart: UndergarmentTop
-  groupWhitelist: [Arachnid, Diona, Human, Moth, Reptilian, Slime]
+  groupWhitelist: [Arachnid, Diona, Human, Moth, Reptilian, Slime, Vulpkanin]
   coloring:
     default:
       type: null
@@ -84,6 +86,8 @@
   sprites:
   - sprite: Mobs/Customization/undergarments.rsi
     state: tanktop
+
+# end moffstation changes
 
 - type: marking
   id: UndergarmentBottomBoxersVox # Voxers.
@@ -205,6 +209,8 @@
   - sprite: Mobs/Customization/undergarments.rsi
     state: satin_reptilian
 
+# start moffstation changes
+
 - type: marking
   id: UndergarmentBottomBoxersVulpkanin
   bodyPart: UndergarmentBottom
@@ -214,7 +220,7 @@
       type: null
       fallbackColor: '#FFFFFF'
   sprites:
-  - sprite: Mobs/Customization/undergarments.rsi
+  - sprite: _Moffstation/Mobs/Customization/Vulpkanin/undergarments.rsi
     state: boxers_vulpkanin
 
 - type: marking
@@ -226,7 +232,7 @@
       type: null
       fallbackColor: '#FFFFFF'
   sprites:
-  - sprite: Mobs/Customization/undergarments.rsi
+  - sprite: _Moffstation/Mobs/Customization/Vulpkanin/undergarments.rsi
     state: briefs_vulpkanin
 
 - type: marking
@@ -238,54 +244,55 @@
       type: null
       fallbackColor: '#FFFFFF'
   sprites:
-  - sprite: Mobs/Customization/undergarments.rsi
+  - sprite: _Moffstation/Mobs/Customization/Vulpkanin/undergarments.rsi
     state: satin_vulpkanin
 
-- type: marking
-  id: UndergarmentTopBraVulpkanin
-  bodyPart: UndergarmentTop
-  groupWhitelist: [Vulpkanin]
-  coloring:
-    default:
-      type: null
-      fallbackColor: '#FFFFFF'
-  sprites:
-  - sprite: Mobs/Customization/undergarments.rsi
-    state: classic_vulpkanin
+#- type: marking
+#  id: UndergarmentTopBraVulpkanin
+#  bodyPart: UndergarmentTop
+#  groupWhitelist: [Vulpkanin]
+#  coloring:
+#    default:
+#      type: null
+#      fallbackColor: '#FFFFFF'
+#  sprites:
+#  - sprite: Mobs/Customization/undergarments.rsi
+#    state: classic_vulpkanin
 
-- type: marking
-  id: UndergarmentTopSportsbraVulpkanin
-  bodyPart: UndergarmentTop
-  groupWhitelist: [Vulpkanin]
-  coloring:
-    default:
-      type: null
-      fallbackColor: '#FFFFFF'
-  sprites:
-  - sprite: Mobs/Customization/undergarments.rsi
-    state: sports_vulpkanin
+#- type: marking
+#  id: UndergarmentTopSportsbraVulpkanin
+#  bodyPart: UndergarmentTop
+#  groupWhitelist: [Vulpkanin]
+#  coloring:
+#    default:
+#      type: null
+#      fallbackColor: '#FFFFFF'
+#  sprites:
+#  - sprite: Mobs/Customization/undergarments.rsi
+#    state: sports_vulpkanin
 
-- type: marking
-  id: UndergarmentTopBinderVulpkanin
-  bodyPart: UndergarmentTop
-  groupWhitelist: [Vulpkanin]
-  coloring:
-    default:
-      type: null
-      fallbackColor: '#FFFFFF'
-  sprites:
-  - sprite: Mobs/Customization/undergarments.rsi
-    state: binder_vulpkanin
+#- type: marking
+#  id: UndergarmentTopBinderVulpkanin
+#  bodyPart: UndergarmentTop
+#  groupWhitelist: [Vulpkanin]
+#  coloring:
+#    default:
+#      type: null
+#      fallbackColor: '#FFFFFF'
+#  sprites:
+#  - sprite: Mobs/Customization/undergarments.rsi
+#    state: binder_vulpkanin
 
-- type: marking
-  id: UndergarmentTopTanktopVulpkanin
-  bodyPart: UndergarmentTop
-  groupWhitelist: [Vulpkanin]
-  coloring:
-    default:
-      type: null
-      fallbackColor: '#FFFFFF'
-  sprites:
-  - sprite: Mobs/Customization/undergarments.rsi
-    state: tanktop_vulpkanin
-    
+#- type: marking
+#  id: UndergarmentTopTanktopVulpkanin
+#  bodyPart: UndergarmentTop
+#  groupWhitelist: [Vulpkanin]
+#  coloring:
+#    default:
+#      type: null
+#      fallbackColor: '#FFFFFF'
+#  sprites:
+#  - sprite: Mobs/Customization/undergarments.rsi
+#    state: tanktop_vulpkanin
+
+# end moffstation changes
