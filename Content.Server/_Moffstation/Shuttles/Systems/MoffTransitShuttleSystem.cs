@@ -28,7 +28,8 @@ using Robust.Shared.Timing;
 namespace Content.Server._Moffstation.Shuttles.Systems;
 
 /// Makes the evac shuttle make a trip to the station roundstart, intended to be used like the arrivals shuttle.
-public sealed partial class EvacArrivalsSystem : EntitySystem
+/// I named it "transit" because I think being naming it something like "EvacArrivals" is far more confusing
+public sealed partial class MoffTransitShuttleSystem : EntitySystem
 {
     [Dependency] private IConfigurationManager _cfg = default!;
     [Dependency] private IGameTiming _timing = default!;
@@ -40,7 +41,7 @@ public sealed partial class EvacArrivalsSystem : EntitySystem
     [Dependency] private ShuttleSystem _shuttle = default!;
     [Dependency] private StationSystem _station = default!;
 
-    [Dependency] private EntityQuery<EvacArrivalsComponent> _evacArrivalsQuery;
+    [Dependency] private EntityQuery<MoffTransitShuttleComponent> _evacArrivalsQuery;
     [Dependency] private EntityQuery<MobStateComponent> _mobStateQuery;
     [Dependency] private EntityQuery<ShuttleComponent> _shuttleQuery;
     [Dependency] private EntityQuery<StationCentcommComponent> _centcommQuery;
@@ -52,7 +53,7 @@ public sealed partial class EvacArrivalsSystem : EntitySystem
     {
         base.Update(frameTime);
 
-        foreach (var ent in EntityQueryEnumerator<EvacArrivalsComponent, ShuttleComponent>())
+        foreach (var ent in EntityQueryEnumerator<MoffTransitShuttleComponent, ShuttleComponent>())
         {
             if (ent.Comp1.DepartTime is not { } depart || depart > _timing.CurTime)
                 continue;
@@ -60,7 +61,7 @@ public sealed partial class EvacArrivalsSystem : EntitySystem
             if (HasComp<FTLComponent>(ent))
                 continue;
 
-            ent.Comp1.State = EvacArrivalsState.Returning;
+            ent.Comp1.State = TransitShuttleState.Returning;
             ent.Comp1.DepartTime = null;
 
             if (_centcommQuery.TryComp(ent.Comp1.Station, out var centcomm) && Exists(centcomm.Entity))
@@ -87,7 +88,7 @@ public sealed partial class EvacArrivalsSystem : EntitySystem
                 _station.GetLargestGrid(station.Owner) is not { } target)
                 continue;
 
-            var arrival = EnsureComp<EvacArrivalsComponent>(shuttle);
+            var arrival = EnsureComp<MoffTransitShuttleComponent>(shuttle);
             arrival.Station = station;
             shuttleComp.FTLCooldownOverride = TimeSpan.Zero;
 
@@ -95,7 +96,7 @@ public sealed partial class EvacArrivalsSystem : EntitySystem
                 shuttleComp,
                 target,
                 startupTime: 0f,
-                hyperspaceTime: _cfg.GetCVar(MoffCCVars.EvacArrivalFTLTime),
+                hyperspaceTime: _cfg.GetCVar(MoffCCVars.TransitArrivalFTLTime),
                 priorityTag: DockTag);
 
             // So people don't get knocked on their ass when they spawn
@@ -110,7 +111,7 @@ public sealed partial class EvacArrivalsSystem : EntitySystem
         if (args.Cancelled)
             return;
 
-        foreach (var _ in EntityQueryEnumerator<EvacArrivalsComponent>())
+        foreach (var _ in EntityQueryEnumerator<MoffTransitShuttleComponent>())
         {
             args.Cancelled = true;
             args.Reason = Loc.GetString(CallBlockedReason);
@@ -123,22 +124,22 @@ public sealed partial class EvacArrivalsSystem : EntitySystem
     {
         if (ent.Comp.EmergencyShuttle is { } shuttle
             && _evacArrivalsQuery.TryComp(shuttle, out var arrival)
-            && arrival.State != EvacArrivalsState.Returning)
+            && arrival.State != TransitShuttleState.Returning)
             args.Grid = shuttle;
     }
 
     [SubscribeLocalEvent]
-    private void OnEvacDepartureCheck(Entity<EvacArrivalsComponent> ent, ref EvacShuttleDepartureCheckEvent args)
+    private void OnEvacDepartureCheck(Entity<MoffTransitShuttleComponent> ent, ref EvacShuttleDepartureCheckEvent args)
     {
         args.Cancelled = true;
     }
 
     [SubscribeLocalEvent]
-    private void OnFTLStarted(Entity<EvacArrivalsComponent> ent, ref FTLStartedEvent args)
+    private void OnFTLStarted(Entity<MoffTransitShuttleComponent> ent, ref FTLStartedEvent args)
     {
         switch (ent.Comp.State)
         {
-            case EvacArrivalsState.InTransit:
+            case TransitShuttleState.InTransit:
 
                 if (!TryComp<FTLComponent>(ent, out var ftl))
                     break;
@@ -158,7 +159,7 @@ public sealed partial class EvacArrivalsSystem : EntitySystem
                 if (TryComp<DeviceNetworkComponent>(ent.Owner, out var net))
                     _deviceNetwork.QueuePacket(ent.Owner, null, payload, net.TransmitFrequency);
                 break;
-            case EvacArrivalsState.Returning:
+            case TransitShuttleState.Returning:
                 SendCrewToStation(ent);
                 _arrivals.DumpChildren(ent, ref args);
                 break;
@@ -166,13 +167,13 @@ public sealed partial class EvacArrivalsSystem : EntitySystem
     }
 
     [SubscribeLocalEvent]
-    private void OnFTLCompleted(Entity<EvacArrivalsComponent> ent, ref FTLCompletedEvent args)
+    private void OnFTLCompleted(Entity<MoffTransitShuttleComponent> ent, ref FTLCompletedEvent args)
     {
         switch (ent.Comp.State)
         {
-            case EvacArrivalsState.InTransit:
-                var dockTime = TimeSpan.FromSeconds(_cfg.GetCVar(MoffCCVars.EvacArrivalDockTime));
-                ent.Comp.State = EvacArrivalsState.Docked;
+            case TransitShuttleState.InTransit:
+                var dockTime = TimeSpan.FromSeconds(_cfg.GetCVar(MoffCCVars.TransitArrivalDockTime));
+                ent.Comp.State = TransitShuttleState.Docked;
                 ent.Comp.DepartTime = _timing.CurTime + dockTime;
                 RefillStationBatteries(ent.Comp.Station);
 
@@ -188,15 +189,15 @@ public sealed partial class EvacArrivalsSystem : EntitySystem
                 if (TryComp<DeviceNetworkComponent>(ent.Owner, out var net))
                     _deviceNetwork.QueuePacket(ent.Owner, null, payload, net.TransmitFrequency);
                 break;
-            case EvacArrivalsState.Returning:
+            case TransitShuttleState.Returning:
                 if (_shuttleQuery.HasComp(ent))
-                    RemCompDeferred<EvacArrivalsComponent>(ent);
+                    RemCompDeferred<MoffTransitShuttleComponent>(ent);
                 break;
         }
     }
 
     // Anyone who stays on evac when it leaves gets shipped to the station
-    private void SendCrewToStation(Entity<EvacArrivalsComponent> ent)
+    private void SendCrewToStation(Entity<MoffTransitShuttleComponent> ent)
     {
         foreach (var mind in EntityQueryEnumerator<MindComponent>())
         {
