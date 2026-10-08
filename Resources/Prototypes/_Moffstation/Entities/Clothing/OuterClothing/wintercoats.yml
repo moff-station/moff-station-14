@@ -14,8 +14,6 @@
   - type: ContainerContainer
     containers:
       toggleable-clothing: !type:ContainerSlot { }
-      storagebase: !type:Container
-        ents: [ ]
 
 - type: entity
   parent: [ ClothingOuterStorageBase, AllowSuitStorageClothing, ClothingOuterArmorBase, BaseCentcommContraband, TemperatureProtection ]
@@ -27,19 +25,12 @@
     sprite: _Moffstation/Clothing/OuterClothing/WinterCoats/centcom-longcoat.rsi
   - type: Clothing
     sprite: _Moffstation/Clothing/OuterClothing/WinterCoats/centcom-longcoat.rsi
-  - type: StorageFill
-    contents:
-    - id: CigarGold
-    - id: CigarGold
-    - id: CentCommFlippo
   - type: ToggleableClothing
     clothingPrototype: ClothingHeadHatHoodWinterCentcom
     slot: head
   - type: ContainerContainer
     containers:
       toggleable-clothing: !type:ContainerSlot { }
-      storagebase: !type:Container
-        ents: [ ]
 
 - type: entity
   parent: [ ClothingOuterWinterCoatToggleable, BaseCentcommContraband ]

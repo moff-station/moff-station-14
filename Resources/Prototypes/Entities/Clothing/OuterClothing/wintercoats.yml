@@ -39,8 +39,9 @@
   - type: ContainerContainer
     containers:
       toggleable-clothing: !type:ContainerSlot {}
-      storagebase: !type:Container
-        ents: []
+      # Moff - Outer clothing storage removal
+      # storagebase: !type:Container
+      #   ents: []
       suit-storage-attachment: !type:ContainerSlot { } # Moffstation - Attachable suit storage
 
 - type: entity
@@ -432,8 +433,9 @@
   - type: ContainerContainer
     containers:
       toggleable-clothing: !type:ContainerSlot { }
-      storagebase: !type:Container
-        ents: [ ]
+      # Moff - Outer clothing storage removal
+      # storagebase: !type:Container
+      #   ents: [ ]
 ##########################################################
 
 - type: entity
@@ -832,8 +834,9 @@
   - type: ContainerContainer
     containers:
       toggleable-clothing: !type:ContainerSlot { }
-      storagebase: !type:Container
-        ents: [ ]
+      # Moff - Outer clothing storage removal
+      # storagebase: !type:Container
+      #   ents: [ ]
 ################################################################
 
 - type: entity
