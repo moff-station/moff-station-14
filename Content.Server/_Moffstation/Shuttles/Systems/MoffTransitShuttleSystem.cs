@@ -1,4 +1,3 @@
-
 using System.Numerics;
 using Content.Server._Moffstation.Shuttles.Components;
 using Content.Server._Moffstation.Spawners;
