@@ -7,7 +7,7 @@ public sealed partial class EmergencyShuttleSystem
     /// When the Evac shuttle is FTLing, this returns true when it's the evac departure that ends the round, false if it's something else.
     private bool IsEvacDeparture(EntityUid shuttle)
     {
-        var ev = new EmergencyShuttleEvacDepartureCheckEvent();
+        var ev = new EvacShuttleDepartureCheckEvent();
         RaiseLocalEvent(shuttle, ref ev);
         return !ev.Cancelled;
     }
@@ -15,4 +15,4 @@ public sealed partial class EmergencyShuttleSystem
 
 /// Raised on the emergency shuttle when it FTLs, cancels if the trip isn't the evac departure that ends the round.
 [ByRefEvent]
-public record struct EmergencyShuttleEvacDepartureCheckEvent(bool Cancelled = false);
+public record struct EvacShuttleDepartureCheckEvent(bool Cancelled = false);

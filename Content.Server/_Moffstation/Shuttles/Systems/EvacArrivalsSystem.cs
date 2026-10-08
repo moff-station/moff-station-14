@@ -128,7 +128,7 @@ public sealed partial class EvacArrivalsSystem : EntitySystem
     }
 
     [SubscribeLocalEvent]
-    private void OnEvacDepartureCheck(Entity<EvacArrivalsComponent> ent, ref EmergencyShuttleEvacDepartureCheckEvent args)
+    private void OnEvacDepartureCheck(Entity<EvacArrivalsComponent> ent, ref EvacShuttleDepartureCheckEvent args)
     {
         args.Cancelled = true;
     }
