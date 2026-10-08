@@ -29,7 +29,7 @@ public sealed partial class SprayPainterWindow : DefaultWindow
     public event Action<int, bool>? OnTabChanged;
     public event Action<ProtoId<DecalPrototype>>? OnDecalChanged;
     public event Action<ItemList.ItemListSelectedEventArgs>? OnSetPipeColor;
-    public event Action<GasTankVisuals>? OnSetGasTankVisuals; // Moffstation
+    public event Action<GasHolderVisuals>? OnSetGasHolderVisuals; // Moffstation
     public event Action<Color?>? OnDecalColorChanged;
     public event Action<int>? OnDecalAngleChanged;
     public event Action<bool>? OnDecalSnapChanged;
@@ -49,7 +49,7 @@ public sealed partial class SprayPainterWindow : DefaultWindow
     // Tab controls
     private Dictionary<string, SprayPainterGroup> _paintableControls = new();
     private BoxContainer? _pipeControl;
-    private GasTankPainterWindow? _gasTankControl; // Moffstation
+    private GasTankPainterWindow? _gasHolderControl; // Moffstation
 
     // Decals
     private List<SprayPainterDecalEntry> _currentDecals = [];
@@ -115,7 +115,7 @@ public sealed partial class SprayPainterWindow : DefaultWindow
             tabsCleared = true;
             _paintableControls.Clear();
             _pipeControl = null;
-            _gasTankControl = null; // Moffstation
+            _gasHolderControl = null; // Moffstation
             _sprayPainterDecals = null;
             Tabs.RemoveAllChildren();
         }
@@ -188,7 +188,7 @@ public sealed partial class SprayPainterWindow : DefaultWindow
         }
 
         PopulateColors(_currentPalette);
-        PopulateGasTankStyles(); // Moffstation
+        PopulateGasHolderStyles(); // Moffstation
 
         if (!_currentDecals.Equals(decals))
         {
@@ -256,16 +256,16 @@ public sealed partial class SprayPainterWindow : DefaultWindow
         }
     }
 
-    // Moffstation - Sttart
-    public void PopulateGasTankStyles()
+    // Moffstation - Start
+    public void PopulateGasHolderStyles()
     {
-        if (_gasTankControl != null)
+        if (_gasHolderControl != null)
             return;
 
-        _gasTankControl = new GasTankPainterWindow(OnSetGasTankVisuals);
+        _gasHolderControl = new GasTankPainterWindow(OnSetGasHolderVisuals);
 
-        Tabs.AddChild(_gasTankControl);
-        TabContainer.SetTabTitle(_gasTankControl, Loc.GetString("spray-painter-category-gasTanks"));
+        Tabs.AddChild(_gasHolderControl);
+        TabContainer.SetTabTitle(_gasHolderControl, Loc.GetString("spray-painter-category-gasTanks"));
     }
     // Moffstation- End
 
@@ -292,9 +292,9 @@ public sealed partial class SprayPainterWindow : DefaultWindow
     }
 
     // Moffstation - Start
-    public void SelectGasTankVisuals(GasTankVisuals style)
+    public void SelectGasHolderVisuals(GasHolderVisuals style)
     {
-        _gasTankControl?.SetVisuals(style);
+        _gasHolderControl?.SetVisuals(style);
     }
     // Moffstation - End
 

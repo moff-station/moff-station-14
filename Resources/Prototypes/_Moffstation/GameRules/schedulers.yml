@@ -30,7 +30,7 @@
       lull: # Downtime between spicy events.
         duration:
           min: 900 # 15 min
-          max: 1800 # 25 min
+          max: 1800 # 30 min
         nextStates:
           wave: 1
       wave:
@@ -42,4 +42,3 @@
           max: 180 # 3 min
         nextStates:
           lull: 1
-        eventOnEnd: true

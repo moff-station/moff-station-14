@@ -14,11 +14,21 @@
                               SizeFlagsStretchRatio="8"
                               VerticalExpand="True" />
                 </BoxContainer>
-                <SpriteView Name="Preview"
-                            MinWidth="100"
-                            MinHeight="100"
-                            HorizontalExpand="True"
-                            Stretch="Fill" />
+                <BoxContainer Orientation="Vertical"
+                              VerticalExpand="True"
+                              HorizontalExpand="True"
+                              VerticalAlignment="Center">
+                    <SpriteView Name="TankPreview"
+                                MinWidth="100"
+                                MinHeight="100"
+                                HorizontalExpand="True"
+                                Stretch="Fill" />
+                    <SpriteView Name="CanPreview"
+                                MinWidth="100"
+                                MinHeight="100"
+                                HorizontalExpand="True"
+                                Stretch="Fill" />
+                </BoxContainer>
             </BoxContainer>
             <Collapsible Margin="5 5 5 5">
                 <CollapsibleHeading Title="{Loc spray-painter-gas-custom-color}" />

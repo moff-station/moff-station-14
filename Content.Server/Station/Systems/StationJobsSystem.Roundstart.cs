@@ -11,7 +11,6 @@ using Content.Shared.Station.Components;
 using Robust.Shared.Network;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
-using Robust.Shared.Utility;
 
 namespace Content.Server.Station.Systems;
 
@@ -263,9 +262,9 @@ public sealed partial class StationJobsSystem
     /// <param name="profiles">Player character profiles.</param>
     /// <param name="stations">The stations to consider for spawn location.</param>
     public void AssignOverflowJobs(
-        ref Dictionary<NetUserId, (ProtoId<JobPrototype>?, EntityUid)> assignedJobs,
+        ref Dictionary<NetUserId, (ProtoId<JobPrototype>?, EntityUid, HumanoidCharacterProfile)> assignedJobs, // Moff - Multi profile selection
         IEnumerable<NetUserId> allPlayersToAssign,
-        IReadOnlyDictionary<NetUserId, HumanoidCharacterProfile> profiles,
+        IReadOnlyDictionary<NetUserId, HashSet<HumanoidCharacterProfile>> profiles, // Moff - Multi profile selection
         IReadOnlyList<EntityUid> stations)
     {
         var givenStations = stations.ToList();
@@ -278,10 +277,10 @@ public sealed partial class StationJobsSystem
             if (assignedJobs.ContainsKey(player))
                 continue;
 
-            var profile = profiles[player];
+            var profile = _random.Pick(profiles[player]); // Moff - Multi profile selection - Pick a random profile since we're already kinda giving up on sophisticated selection
             if (profile.PreferenceUnavailable != PreferenceUnavailableMode.SpawnAsOverflow)
             {
-                assignedJobs.Add(player, (null, EntityUid.Invalid));
+                assignedJobs.Add(player, (null, EntityUid.Invalid, new())); // Moff - Multi profile selection
                 continue;
             }
 
@@ -298,7 +297,7 @@ public sealed partial class StationJobsSystem
                 if (overflows.Count == 0)
                     continue;
 
-                assignedJobs.Add(player, (overflows[0], station));
+                assignedJobs.Add(player, (overflows[0], station, profile)); // Moff - Multi profile selection
                 break;
             }
         }
@@ -343,7 +342,7 @@ public sealed partial class StationJobsSystem
             if (!_player.TryGetSessionById(player, out var session))
                 continue;
 
-            var (whitelist, blacklist) = antags.GetValueOrDefault(session);
+            var (_, whitelist, blacklist) = antags.GetValueOrDefault(session); // Moff - Multi profile selection - Discard new output
 
             foreach (var jobId in profileJobs)
             {
@@ -472,7 +471,7 @@ public sealed partial class StationJobsSystem
                 continue;
 
             var roleBans = _banManager.GetJobBans(userId);
-            var (whitelist, blacklist) = antags.GetValueOrDefault(session);
+            var (_, whitelist, blacklist) = antags.GetValueOrDefault(session); // Moff - Multi profile selection - Discard new output
             if ((whitelist != null && !whitelist.Contains(job)) ||
                 (blacklist != null && blacklist.Contains(job)) ||
                 (roleBans != null && roleBans.Contains(job)))

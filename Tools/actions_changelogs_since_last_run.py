@@ -92,8 +92,10 @@ def get_past_runs(sess: requests.Session, current_run: Any) -> Iterable[Any]:
     Get all successful workflow runs before our current one.
     """
     params = {
-        "status": "success",
-        "created": f"<={current_run['created_at']}",
+        # Moff Start - Changelog bob fixed
+        # "status": "success",
+        # "created": f"<={current_run['created_at']}",
+        # Moff end
         "per_page": 100,
     }
     url = f"{current_run['workflow_url']}/runs"
@@ -102,10 +104,16 @@ def get_past_runs(sess: requests.Session, current_run: Any) -> Iterable[Any]:
         resp = sess.get(url, params=params)
         resp.raise_for_status()
 
-        for run in resp.json()["workflow_runs"]:
+        # Moff - sort the changebob
+        for run in sorted(resp.json()["workflow_runs"], key=lambda run: run["created_at"], reverse=True):
             # First past successful run that isn't our current run.
             if run["id"] == current_run["id"]:
                 continue
+
+            # Moff Start - Changelog machine fixed
+            if run["conclusion"] != "success" or run["created_at"] > current_run["created_at"]:
+                continue
+            # Moff end
 
             yield run
 
