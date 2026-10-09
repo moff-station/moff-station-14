@@ -90,7 +90,7 @@
       Kidneys: OrganVulpkaninKidneys
   - type: HumanoidProfile
     species: Vulpkanin
-# start moffstation changes
+# start moffstation changes - vulpkanin resprite
   - type: Inventory
     speciesId: vulpkanin
     displacements:
@@ -238,7 +238,7 @@
   components:
   - type: VisualOrgan
     data:
-      sprite: _Moffstation/Mobs/Species/Vulpkanin/parts.rsi # moffstation
+      sprite: _Moffstation/Mobs/Species/Vulpkanin/parts.rsi # moffstation - vulpkanin resprite
   - type: VisualOrganMarkings
     markingData:
       group: Vulpkanin
@@ -249,7 +249,7 @@
   abstract: true
   components:
   - type: Sprite
-    sprite: _Moffstation/Mobs/Species/Vulpkanin/parts.rsi # moffstation
+    sprite: _Moffstation/Mobs/Species/Vulpkanin/parts.rsi # moffstation - vulpkanin resprite
 
 - type: entity
   parent: [ OrganBaseTorsoSexed, OrganBaseTorso, OrganVulpkaninExternal ]
@@ -273,7 +273,7 @@
       Hair:
         sizeMaps:
           32:
-            sprite: _Moffstation/Mobs/Species/Vulpkanin/displacement.rsi # moffstation
+            sprite: _Moffstation/Mobs/Species/Vulpkanin/displacement.rsi # moffstation - vulpkanin resprite
             state: hair
 
 - type: entity
