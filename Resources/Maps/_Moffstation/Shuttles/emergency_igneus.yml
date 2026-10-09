@@ -1,11 +1,11 @@
 meta:
   format: 7
   category: Grid
-  engineVersion: 288.1.0
+  engineVersion: 289.0.3
   forkId: ""
   forkVersion: ""
-  time: 09/28/2026 01:59:38
-  entityCount: 885
+  time: 10/09/2026 01:46:52
+  entityCount: 912
 maps: []
 grids:
 - 1
@@ -20,6 +20,7 @@ nullspace:
 tilemap:
   0: Space
   6: FloorDark
+  10: FloorDarkPlastic
   7: FloorGlass
   5: FloorRGlass
   2: FloorSteel
@@ -53,11 +54,11 @@ entities:
           version: 7
         1,0:
           ind: 1,0
-          tiles: AQAAAAAAAAMAAAAAAAADAAAAAAAAAwAAAAAAAAEAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAACAAAAAAAAAgAAAAAAAAIAAAAAAAABAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAgAAAAAAAAIAAAAAAAACAAAAAAAAAQAAAAAAAAEAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAIAAAAAAAACAAAAAAAAAgAAAAAAAAMAAAAAAAABAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAABAAAAAAAABAAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAgAAAAAAAAIAAAAAAAACAAAAAAAAAgAAAAAAAAIAAAAAAAACAAAAAAAAAgAAAAAAAAIAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABQAAAAAAAAUAAAAAAAAFAAAAAAAABQAAAAAAAAUAAAAAAAAFAAAAAAAABQAAAAAAAAIAAAAAAAACAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAACAAAAAAAAAgAAAAAAAAIAAAAAAAACAAAAAAAAAgAAAAAAAAIAAAAAAAACAAAAAAAAAgAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABgAAAAAAAAMAAAAAAAADAAAAAAAAAwAAAAAAAAYAAAAAAAADAAAAAAAAAwAAAAAAAAMAAAAAAAABAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAYAAAAAAAADAAAAAAAAAwAAAAAAAAMAAAAAAAAGAAAAAAAAAwAAAAAAAAMAAAAAAAADAAAAAAAAAQAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAGAAAAAAAABgAAAAAAAAYAAAAAAAAGAAAAAAAABgAAAAAAAAYAAAAAAAAGAAAAAAAABgAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABgAAAAAAAAYAAAAAAAAGAAAAAAAABgAAAAAAAAYAAAAAAAAGAAAAAAAABgAAAAAAAAYAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAYAAAAAAAADAAAAAAAAAwAAAAAAAAMAAAAAAAAGAAAAAAAAAwAAAAAAAAMAAAAAAAADAAAAAAAAAQAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAGAAAAAAAAAwAAAAAAAAMAAAAAAAADAAAAAAAABgAAAAAAAAMAAAAAAAADAAAAAAAAAwAAAAAAAAEAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==
+          tiles: AQAAAAAAAAoAAAAAAAADAAAAAAAACAAAAAAAAAEAAAAAAAADAAAAAAAAAwAAAAAAAAMAAAAAAAABAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAACAAAAAAAAAgAAAAAAAAIAAAAAAAABAAAAAAAAAgAAAAAAAAIAAAAAAAACAAAAAAAAAQAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAgAAAAAAAAIAAAAAAAACAAAAAAAAAQAAAAAAAAIAAAAAAAACAAAAAAAAAgAAAAAAAAEAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAIAAAAAAAAFAAAAAAAAAgAAAAAAAAEAAAAAAAACAAAAAAAAAgAAAAAAAAIAAAAAAAACAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAACAAAAAAAABQAAAAAAAAIAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAgAAAAAAAAIAAAAAAAACAAAAAAAAAgAAAAAAAAIAAAAAAAACAAAAAAAAAgAAAAAAAAIAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABQAAAAAAAAUAAAAAAAAFAAAAAAAABQAAAAAAAAUAAAAAAAAFAAAAAAAABQAAAAAAAAIAAAAAAAACAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAACAAAAAAAAAgAAAAAAAAIAAAAAAAACAAAAAAAAAgAAAAAAAAIAAAAAAAACAAAAAAAAAgAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABgAAAAAAAAMAAAAAAAADAAAAAAAAAwAAAAAAAAYAAAAAAAADAAAAAAAAAwAAAAAAAAMAAAAAAAABAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAYAAAAAAAADAAAAAAAAAwAAAAAAAAMAAAAAAAAGAAAAAAAAAwAAAAAAAAMAAAAAAAADAAAAAAAAAQAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAGAAAAAAAABgAAAAAAAAYAAAAAAAAGAAAAAAAABgAAAAAAAAYAAAAAAAAGAAAAAAAABgAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABgAAAAAAAAYAAAAAAAAGAAAAAAAABgAAAAAAAAYAAAAAAAAGAAAAAAAABgAAAAAAAAYAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAYAAAAAAAADAAAAAAAAAwAAAAAAAAMAAAAAAAAGAAAAAAAAAwAAAAAAAAMAAAAAAAADAAAAAAAAAQAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAGAAAAAAAAAwAAAAAAAAMAAAAAAAADAAAAAAAABgAAAAAAAAMAAAAAAAADAAAAAAAAAwAAAAAAAAEAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==
           version: 7
         1,1:
           ind: 1,1
-          tiles: AgAAAAAAAAIAAAAAAAACAAAAAAAAAgAAAAAAAAIAAAAAAAACAAAAAAAAAgAAAAAAAAIAAAAAAAACAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAUAAAAAAAAFAAAAAAAABQAAAAAAAAUAAAAAAAAFAAAAAAAABQAAAAAAAAUAAAAAAAACAAAAAAAAAgAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAgAAAAAAAAIAAAAAAAACAAAAAAAAAgAAAAAAAAIAAAAAAAACAAAAAAAAAgAAAAAAAAIAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAIAAAAAAAACAAAAAAAAAgAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAACAAAAAAAAAgAAAAAAAAQAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAgAAAAAAAAIAAAAAAAAJAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAABAAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAMAAAAAAAABAAAAAAAACAAAAAAAAAgAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAEAAAAAAAABAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==
+          tiles: AgAAAAAAAAIAAAAAAAACAAAAAAAAAgAAAAAAAAIAAAAAAAACAAAAAAAAAgAAAAAAAAIAAAAAAAACAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAUAAAAAAAAFAAAAAAAABQAAAAAAAAUAAAAAAAAFAAAAAAAABQAAAAAAAAUAAAAAAAACAAAAAAAAAgAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAgAAAAAAAAIAAAAAAAACAAAAAAAAAgAAAAAAAAIAAAAAAAACAAAAAAAAAgAAAAAAAAIAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAIAAAAAAAACAAAAAAAAAgAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAACAAAAAAAAAgAAAAAAAAQAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAgAAAAAAAAIAAAAAAAAKAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAABAAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAMAAAAAAAABAAAAAAAACAAAAAAAAAgAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAEAAAAAAAABAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==
           version: 7
         0,-1:
           ind: 0,-1
@@ -65,7 +66,7 @@ entities:
           version: 7
         1,-1:
           ind: 1,-1
-          tiles: AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAMAAAAAAAADAAAAAAAAAwAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==
+          tiles: AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAIAAAAAAAACAAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAMAAAAAAAABAAAAAAAACAAAAAAAAAEAAAAAAAADAAAAAAAAAwAAAAAAAAMAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==
           version: 7
     - type: Broadphase
     - type: Physics
@@ -321,15 +322,6 @@ entities:
       container: 158
 - proto: ActionVendingThrow
   entities:
-  - uid: 205
-    mapInit: true
-    paused: true
-    components:
-    - type: Transform
-      parent: 204
-    - type: Action
-      container: 204
-      attachedEntity: 204
   - uid: 207
     mapInit: true
     paused: true
@@ -440,6 +432,12 @@ entities:
         246:
         - - DoorStatus
           - DoorBolt
+  - uid: 134
+    components:
+    - type: Transform
+      parent: 1
+      rot: 1.5707963267948966 rad
+      pos: 18.5,0.5
   - uid: 246
     components:
     - type: Transform
@@ -452,6 +450,12 @@ entities:
         14:
         - - DoorStatus
           - DoorBolt
+  - uid: 640
+    components:
+    - type: Transform
+      parent: 1
+      rot: 3.141592653589793 rad
+      pos: 17.5,1.5
 - proto: AirlockMedicalGlassLocked
   entities:
   - uid: 248
@@ -506,60 +510,13 @@ entities:
         behaviors:
         - !type:DoActsBehavior
           acts: Destruction
-- proto: AirlockSecurityGlassLocked
+- proto: AirlockSecurityLawyerGlassLocked
   entities:
-  - uid: 250
-    mapInit: true
-    paused: true
+  - uid: 646
     components:
     - type: Transform
       parent: 1
-      rot: 3.141592653589793 rad
-      pos: 18.5,4.5
-    - type: AccessReader
-      accessListsOriginal: []
-    - type: ContainerContainer
-      containers:
-        board: !type:Container
-          ents:
-          - 251
-          showEnts: False
-          occludes: True
-    - type: Airlock
-      powered: True
-    - type: DoorBolt
-      powered: True
-    - type: DeviceNetwork
-      receiveFrequency: 1280
-      address: 4616-E6FC
-    - type: Destructible
-      thresholds:
-      - triggersOnce: False
-        triggered: False
-        trigger: !type:DamageTrigger
-          damage: 500
-        behaviors:
-        - !type:DoActsBehavior
-          acts: Destruction
-        - !type:PlaySoundBehavior
-          sound: !type:SoundCollectionSpecifier
-            collection: MetalSlam
-            params:
-              volume: 0
-              variation: null
-              rolloffFactor: 1
-              referenceDistance: 1
-              playOffsetSeconds: 0
-              pitch: 1
-              maxDistance: 15
-              loop: False
-      - triggersOnce: False
-        triggered: False
-        trigger: !type:DamageTrigger
-          damage: 1000
-        behaviors:
-        - !type:DoActsBehavior
-          acts: Destruction
+      pos: 22.5,4.5
 - proto: APCBasic
   entities:
   - uid: 252
@@ -793,6 +750,12 @@ entities:
       parent: 1
       rot: 1.5707963267948966 rad
       pos: 20.5,22.5
+  - uid: 500
+    components:
+    - type: Transform
+      parent: 1
+      rot: -1.5707963267948966 rad
+      pos: 24.5,2.5
 - proto: AtmosDeviceFanDirectional
   entities:
   - uid: 257
@@ -977,78 +940,24 @@ entities:
       canCollide: False
 - proto: BenchRedComfy
   entities:
-  - uid: 312
-    mapInit: true
-    paused: true
+  - uid: 59
     components:
     - type: Transform
       parent: 1
-      rot: -1.5707963267948966 rad
-      pos: 19.5,-0.5
-    - type: Destructible
-      thresholds:
-      - triggersOnce: False
-        triggered: False
-        trigger: !type:DamageTrigger
-          damage: 50
-        behaviors:
-        - !type:DoActsBehavior
-          acts: Destruction
-        - !type:PlaySoundBehavior
-          sound: !type:SoundCollectionSpecifier
-            collection: MetalBreak
-            params:
-              volume: 0
-              variation: null
-              rolloffFactor: 1
-              referenceDistance: 1
-              playOffsetSeconds: 0
-              pitch: 1
-              maxDistance: 15
-              loop: False
-      - triggersOnce: False
-        triggered: False
-        trigger: !type:DamageTrigger
-          damage: 100
-        behaviors:
-        - !type:DoActsBehavior
-          acts: Destruction
-  - uid: 313
-    mapInit: true
-    paused: true
+      rot: 3.141592653589793 rad
+      pos: 21.5,-0.5
+  - uid: 251
     components:
     - type: Transform
       parent: 1
-      rot: 1.5707963267948966 rad
-      pos: 17.5,-0.5
-    - type: Destructible
-      thresholds:
-      - triggersOnce: False
-        triggered: False
-        trigger: !type:DamageTrigger
-          damage: 50
-        behaviors:
-        - !type:DoActsBehavior
-          acts: Destruction
-        - !type:PlaySoundBehavior
-          sound: !type:SoundCollectionSpecifier
-            collection: MetalBreak
-            params:
-              volume: 0
-              variation: null
-              rolloffFactor: 1
-              referenceDistance: 1
-              playOffsetSeconds: 0
-              pitch: 1
-              maxDistance: 15
-              loop: False
-      - triggersOnce: False
-        triggered: False
-        trigger: !type:DamageTrigger
-          damage: 100
-        behaviors:
-        - !type:DoActsBehavior
-          acts: Destruction
+      rot: 3.141592653589793 rad
+      pos: 22.5,-0.5
+  - uid: 563
+    components:
+    - type: Transform
+      parent: 1
+      rot: 3.141592653589793 rad
+      pos: 23.5,-0.5
 - proto: Bloodpack
   entities:
   - uid: 315
@@ -1345,11 +1254,26 @@ entities:
     - type: Transform
       parent: 1
       pos: 20.5,11.5
+  - uid: 139
+    components:
+    - type: Transform
+      parent: 1
+      pos: 17.5,1.5
+  - uid: 152
+    components:
+    - type: Transform
+      parent: 1
+      pos: 17.5,0.5
   - uid: 156
     components:
     - type: Transform
       parent: 1
       pos: 17.5,18.5
+  - uid: 169
+    components:
+    - type: Transform
+      parent: 1
+      pos: 18.5,0.5
   - uid: 192
     components:
     - type: Transform
@@ -1365,6 +1289,11 @@ entities:
     - type: Transform
       parent: 1
       pos: 19.5,17.5
+  - uid: 204
+    components:
+    - type: Transform
+      parent: 1
+      pos: 19.5,0.5
   - uid: 211
     components:
     - type: Transform
@@ -1510,98 +1439,10 @@ entities:
         - !type:DoActsBehavior
           acts: Destruction
   - uid: 330
-    mapInit: true
-    paused: true
     components:
     - type: Transform
       parent: 1
-      pos: 18.5,1.5
-    - type: Destructible
-      thresholds:
-      - triggersOnce: False
-        triggered: False
-        trigger: !type:DamageTrigger
-          damage: 50
-        behaviors:
-        - !type:SpawnEntitiesBehavior
-          spawnInContainer: False
-          spawn:
-            CableApcStack1:
-              min: 1
-              max: 1
-          offset: 0.5
-          transferForensics: False
-        - !type:DoActsBehavior
-          acts: Destruction
-      - triggersOnce: False
-        triggered: False
-        trigger: !type:DamageTrigger
-          damage: 100
-        behaviors:
-        - !type:DoActsBehavior
-          acts: Destruction
-  - uid: 331
-    mapInit: true
-    paused: true
-    components:
-    - type: Transform
-      parent: 1
-      pos: 18.5,0.5
-    - type: Destructible
-      thresholds:
-      - triggersOnce: False
-        triggered: False
-        trigger: !type:DamageTrigger
-          damage: 50
-        behaviors:
-        - !type:SpawnEntitiesBehavior
-          spawnInContainer: False
-          spawn:
-            CableApcStack1:
-              min: 1
-              max: 1
-          offset: 0.5
-          transferForensics: False
-        - !type:DoActsBehavior
-          acts: Destruction
-      - triggersOnce: False
-        triggered: False
-        trigger: !type:DamageTrigger
-          damage: 100
-        behaviors:
-        - !type:DoActsBehavior
-          acts: Destruction
-  - uid: 332
-    mapInit: true
-    paused: true
-    components:
-    - type: Transform
-      parent: 1
-      pos: 18.5,-0.5
-    - type: Destructible
-      thresholds:
-      - triggersOnce: False
-        triggered: False
-        trigger: !type:DamageTrigger
-          damage: 50
-        behaviors:
-        - !type:SpawnEntitiesBehavior
-          spawnInContainer: False
-          spawn:
-            CableApcStack1:
-              min: 1
-              max: 1
-          offset: 0.5
-          transferForensics: False
-        - !type:DoActsBehavior
-          acts: Destruction
-      - triggersOnce: False
-        triggered: False
-        trigger: !type:DamageTrigger
-          damage: 100
-        behaviors:
-        - !type:DoActsBehavior
-          acts: Destruction
+      pos: 18.5,4.5
   - uid: 333
     mapInit: true
     paused: true
@@ -1609,192 +1450,6 @@ entities:
     - type: Transform
       parent: 1
       pos: 19.5,3.5
-    - type: Destructible
-      thresholds:
-      - triggersOnce: False
-        triggered: False
-        trigger: !type:DamageTrigger
-          damage: 50
-        behaviors:
-        - !type:SpawnEntitiesBehavior
-          spawnInContainer: False
-          spawn:
-            CableApcStack1:
-              min: 1
-              max: 1
-          offset: 0.5
-          transferForensics: False
-        - !type:DoActsBehavior
-          acts: Destruction
-      - triggersOnce: False
-        triggered: False
-        trigger: !type:DamageTrigger
-          damage: 100
-        behaviors:
-        - !type:DoActsBehavior
-          acts: Destruction
-  - uid: 334
-    mapInit: true
-    paused: true
-    components:
-    - type: Transform
-      parent: 1
-      pos: 19.5,-0.5
-    - type: Destructible
-      thresholds:
-      - triggersOnce: False
-        triggered: False
-        trigger: !type:DamageTrigger
-          damage: 50
-        behaviors:
-        - !type:SpawnEntitiesBehavior
-          spawnInContainer: False
-          spawn:
-            CableApcStack1:
-              min: 1
-              max: 1
-          offset: 0.5
-          transferForensics: False
-        - !type:DoActsBehavior
-          acts: Destruction
-      - triggersOnce: False
-        triggered: False
-        trigger: !type:DamageTrigger
-          damage: 100
-        behaviors:
-        - !type:DoActsBehavior
-          acts: Destruction
-  - uid: 335
-    mapInit: true
-    paused: true
-    components:
-    - type: Transform
-      parent: 1
-      pos: 20.5,-0.5
-    - type: Destructible
-      thresholds:
-      - triggersOnce: False
-        triggered: False
-        trigger: !type:DamageTrigger
-          damage: 50
-        behaviors:
-        - !type:SpawnEntitiesBehavior
-          spawnInContainer: False
-          spawn:
-            CableApcStack1:
-              min: 1
-              max: 1
-          offset: 0.5
-          transferForensics: False
-        - !type:DoActsBehavior
-          acts: Destruction
-      - triggersOnce: False
-        triggered: False
-        trigger: !type:DamageTrigger
-          damage: 100
-        behaviors:
-        - !type:DoActsBehavior
-          acts: Destruction
-  - uid: 336
-    mapInit: true
-    paused: true
-    components:
-    - type: Transform
-      parent: 1
-      pos: 20.5,0.5
-    - type: Destructible
-      thresholds:
-      - triggersOnce: False
-        triggered: False
-        trigger: !type:DamageTrigger
-          damage: 50
-        behaviors:
-        - !type:SpawnEntitiesBehavior
-          spawnInContainer: False
-          spawn:
-            CableApcStack1:
-              min: 1
-              max: 1
-          offset: 0.5
-          transferForensics: False
-        - !type:DoActsBehavior
-          acts: Destruction
-      - triggersOnce: False
-        triggered: False
-        trigger: !type:DamageTrigger
-          damage: 100
-        behaviors:
-        - !type:DoActsBehavior
-          acts: Destruction
-  - uid: 337
-    mapInit: true
-    paused: true
-    components:
-    - type: Transform
-      parent: 1
-      pos: 20.5,1.5
-    - type: Destructible
-      thresholds:
-      - triggersOnce: False
-        triggered: False
-        trigger: !type:DamageTrigger
-          damage: 50
-        behaviors:
-        - !type:SpawnEntitiesBehavior
-          spawnInContainer: False
-          spawn:
-            CableApcStack1:
-              min: 1
-              max: 1
-          offset: 0.5
-          transferForensics: False
-        - !type:DoActsBehavior
-          acts: Destruction
-      - triggersOnce: False
-        triggered: False
-        trigger: !type:DamageTrigger
-          damage: 100
-        behaviors:
-        - !type:DoActsBehavior
-          acts: Destruction
-  - uid: 338
-    mapInit: true
-    paused: true
-    components:
-    - type: Transform
-      parent: 1
-      pos: 20.5,2.5
-    - type: Destructible
-      thresholds:
-      - triggersOnce: False
-        triggered: False
-        trigger: !type:DamageTrigger
-          damage: 50
-        behaviors:
-        - !type:SpawnEntitiesBehavior
-          spawnInContainer: False
-          spawn:
-            CableApcStack1:
-              min: 1
-              max: 1
-          offset: 0.5
-          transferForensics: False
-        - !type:DoActsBehavior
-          acts: Destruction
-      - triggersOnce: False
-        triggered: False
-        trigger: !type:DamageTrigger
-          damage: 100
-        behaviors:
-        - !type:DoActsBehavior
-          acts: Destruction
-  - uid: 339
-    mapInit: true
-    paused: true
-    components:
-    - type: Transform
-      parent: 1
-      pos: 18.5,-1.5
     - type: Destructible
       thresholds:
       - triggersOnce: False
@@ -2477,68 +2132,6 @@ entities:
     - type: Transform
       parent: 1
       pos: 15.5,6.5
-    - type: Destructible
-      thresholds:
-      - triggersOnce: False
-        triggered: False
-        trigger: !type:DamageTrigger
-          damage: 50
-        behaviors:
-        - !type:SpawnEntitiesBehavior
-          spawnInContainer: False
-          spawn:
-            CableApcStack1:
-              min: 1
-              max: 1
-          offset: 0.5
-          transferForensics: False
-        - !type:DoActsBehavior
-          acts: Destruction
-      - triggersOnce: False
-        triggered: False
-        trigger: !type:DamageTrigger
-          damage: 100
-        behaviors:
-        - !type:DoActsBehavior
-          acts: Destruction
-  - uid: 362
-    mapInit: true
-    paused: true
-    components:
-    - type: Transform
-      parent: 1
-      pos: 16.5,7.5
-    - type: Destructible
-      thresholds:
-      - triggersOnce: False
-        triggered: False
-        trigger: !type:DamageTrigger
-          damage: 50
-        behaviors:
-        - !type:SpawnEntitiesBehavior
-          spawnInContainer: False
-          spawn:
-            CableApcStack1:
-              min: 1
-              max: 1
-          offset: 0.5
-          transferForensics: False
-        - !type:DoActsBehavior
-          acts: Destruction
-      - triggersOnce: False
-        triggered: False
-        trigger: !type:DamageTrigger
-          damage: 100
-        behaviors:
-        - !type:DoActsBehavior
-          acts: Destruction
-  - uid: 363
-    mapInit: true
-    paused: true
-    components:
-    - type: Transform
-      parent: 1
-      pos: 16.5,8.5
     - type: Destructible
       thresholds:
       - triggersOnce: False
@@ -3741,6 +3334,11 @@ entities:
         behaviors:
         - !type:DoActsBehavior
           acts: Destruction
+  - uid: 522
+    components:
+    - type: Transform
+      parent: 1
+      pos: 22.5,2.5
   - uid: 529
     components:
     - type: Transform
@@ -3816,6 +3414,21 @@ entities:
     - type: Transform
       parent: 1
       pos: 23.5,6.5
+  - uid: 561
+    components:
+    - type: Transform
+      parent: 1
+      pos: 23.5,2.5
+  - uid: 562
+    components:
+    - type: Transform
+      parent: 1
+      pos: 24.5,2.5
+  - uid: 565
+    components:
+    - type: Transform
+      parent: 1
+      pos: 24.5,0.5
   - uid: 568
     components:
     - type: Transform
@@ -3856,16 +3469,6 @@ entities:
     - type: Transform
       parent: 1
       pos: 20.5,22.5
-  - uid: 582
-    components:
-    - type: Transform
-      parent: 1
-      pos: 21.5,2.5
-  - uid: 583
-    components:
-    - type: Transform
-      parent: 1
-      pos: 21.5,3.5
   - uid: 584
     components:
     - type: Transform
@@ -3901,6 +3504,16 @@ entities:
     - type: Transform
       parent: 1
       pos: 23.5,20.5
+  - uid: 612
+    components:
+    - type: Transform
+      parent: 1
+      pos: 22.5,3.5
+  - uid: 613
+    components:
+    - type: Transform
+      parent: 1
+      pos: 22.5,0.5
   - uid: 637
     components:
     - type: Transform
@@ -3916,6 +3529,26 @@ entities:
     - type: Transform
       parent: 1
       pos: 21.5,20.5
+  - uid: 643
+    components:
+    - type: Transform
+      parent: 1
+      pos: 22.5,1.5
+  - uid: 647
+    components:
+    - type: Transform
+      parent: 1
+      pos: 23.5,0.5
+  - uid: 661
+    components:
+    - type: Transform
+      parent: 1
+      pos: 22.5,-0.5
+  - uid: 732
+    components:
+    - type: Transform
+      parent: 1
+      pos: 18.5,5.5
 - proto: CableApcStack1
   entities:
   - uid: 4
@@ -3976,6 +3609,16 @@ entities:
     - type: Transform
       parent: 1
       pos: 18.5,17.5
+  - uid: 137
+    components:
+    - type: Transform
+      parent: 1
+      pos: 22.5,2.5
+  - uid: 138
+    components:
+    - type: Transform
+      parent: 1
+      pos: 22.5,5.5
   - uid: 190
     components:
     - type: Transform
@@ -4011,6 +3654,11 @@ entities:
     - type: Transform
       parent: 1
       pos: 21.5,17.5
+  - uid: 334
+    components:
+    - type: Transform
+      parent: 1
+      pos: 17.5,2.5
   - uid: 440
     components:
     - type: Transform
@@ -5245,37 +4893,6 @@ entities:
         behaviors:
         - !type:DoActsBehavior
           acts: Destruction
-  - uid: 500
-    mapInit: true
-    paused: true
-    components:
-    - type: Transform
-      parent: 1
-      pos: 17.5,2.5
-    - type: Destructible
-      thresholds:
-      - triggersOnce: False
-        triggered: False
-        trigger: !type:DamageTrigger
-          damage: 50
-        behaviors:
-        - !type:SpawnEntitiesBehavior
-          spawnInContainer: False
-          spawn:
-            CableMVStack1:
-              min: 1
-              max: 1
-          offset: 0.5
-          transferForensics: False
-        - !type:DoActsBehavior
-          acts: Destruction
-      - triggersOnce: False
-        triggered: False
-        trigger: !type:DamageTrigger
-          damage: 100
-        behaviors:
-        - !type:DoActsBehavior
-          acts: Destruction
   - uid: 501
     mapInit: true
     paused: true
@@ -5307,6 +4924,46 @@ entities:
         behaviors:
         - !type:DoActsBehavior
           acts: Destruction
+  - uid: 560
+    components:
+    - type: Transform
+      parent: 1
+      pos: 21.5,6.5
+  - uid: 564
+    components:
+    - type: Transform
+      parent: 1
+      pos: 23.5,2.5
+  - uid: 582
+    components:
+    - type: Transform
+      parent: 1
+      pos: 20.5,6.5
+  - uid: 615
+    components:
+    - type: Transform
+      parent: 1
+      pos: 22.5,4.5
+  - uid: 648
+    components:
+    - type: Transform
+      parent: 1
+      pos: 22.5,3.5
+  - uid: 658
+    components:
+    - type: Transform
+      parent: 1
+      pos: 22.5,6.5
+  - uid: 676
+    components:
+    - type: Transform
+      parent: 1
+      pos: 19.5,6.5
+  - uid: 689
+    components:
+    - type: Transform
+      parent: 1
+      pos: 24.5,2.5
 - proto: CableTerminal
   entities:
   - uid: 439
@@ -5423,30 +5080,6 @@ entities:
       nextSound: -8469.9849611
     - type: Physics
       canCollide: False
-  - uid: 561
-    mapInit: true
-    paused: true
-    components:
-    - type: Transform
-      parent: 560
-    - type: Stack
-      count: 4
-    - type: EmitSoundOnCollide
-      nextSound: -8469.9849611
-    - type: Physics
-      canCollide: False
-  - uid: 565
-    mapInit: true
-    paused: true
-    components:
-    - type: Transform
-      parent: 564
-    - type: Stack
-      count: 4
-    - type: EmitSoundOnCollide
-      nextSound: -8469.9849611
-    - type: Physics
-      canCollide: False
   - uid: 939
     mapInit: true
     paused: true
@@ -5473,34 +5106,12 @@ entities:
       parent: 1
       rot: -1.5707963267948966 rad
       pos: 10.5,0.5
-  - uid: 137
-    components:
-    - type: Transform
-      parent: 1
-      rot: -1.5707963267948966 rad
-      pos: 21.5,0.5
-  - uid: 139
-    components:
-    - type: Transform
-      parent: 1
-      rot: -1.5707963267948966 rad
-      pos: 21.5,1.5
-  - uid: 152
-    components:
-    - type: Transform
-      parent: 1
-      pos: 22.5,2.5
   - uid: 153
     components:
     - type: Transform
       parent: 1
       rot: -1.5707963267948966 rad
       pos: 10.5,1.5
-  - uid: 218
-    components:
-    - type: Transform
-      parent: 1
-      pos: 22.5,3.5
   - uid: 224
     components:
     - type: Transform
@@ -5519,12 +5130,28 @@ entities:
       parent: 1
       rot: 1.5707963267948966 rad
       pos: 25.5,20.5
+  - uid: 312
+    components:
+    - type: Transform
+      parent: 1
+      rot: -1.5707963267948966 rad
+      pos: 19.5,-1.5
   - uid: 325
     components:
     - type: Transform
       parent: 1
       rot: 1.5707963267948966 rad
       pos: 25.5,9.5
+  - uid: 423
+    components:
+    - type: Transform
+      parent: 1
+      pos: 25.5,0.5
+  - uid: 424
+    components:
+    - type: Transform
+      parent: 1
+      pos: 25.5,1.5
   - uid: 428
     components:
     - type: Transform
@@ -5587,6 +5214,24 @@ entities:
     - type: Transform
       parent: 1
       pos: 10.5,10.5
+  - uid: 674
+    components:
+    - type: Transform
+      parent: 1
+      rot: -1.5707963267948966 rad
+      pos: 18.5,-1.5
+  - uid: 728
+    components:
+    - type: Transform
+      parent: 1
+      rot: 1.5707963267948966 rad
+      pos: 19.5,-0.5
+  - uid: 731
+    components:
+    - type: Transform
+      parent: 1
+      rot: 1.5707963267948966 rad
+      pos: 19.5,0.5
 - proto: ChairOfficeLight
   entities:
   - uid: 262
@@ -5623,12 +5268,6 @@ entities:
     - type: Transform
       parent: 1
       pos: 18.5,19.5
-  - uid: 138
-    components:
-    - type: Transform
-      parent: 1
-      rot: 3.141592653589793 rad
-      pos: 23.5,5.5
   - uid: 140
     components:
     - type: Transform
@@ -5683,6 +5322,12 @@ entities:
       parent: 1
       rot: 3.141592653589793 rad
       pos: 22.5,16.5
+  - uid: 332
+    components:
+    - type: Transform
+      parent: 1
+      rot: 1.5707963267948966 rad
+      pos: 21.5,1.5
   - uid: 406
     components:
     - type: Transform
@@ -5737,18 +5382,6 @@ entities:
       parent: 1
       rot: 3.141592653589793 rad
       pos: 20.5,5.5
-  - uid: 423
-    components:
-    - type: Transform
-      parent: 1
-      rot: 3.141592653589793 rad
-      pos: 21.5,5.5
-  - uid: 424
-    components:
-    - type: Transform
-      parent: 1
-      rot: 3.141592653589793 rad
-      pos: 22.5,5.5
   - uid: 425
     components:
     - type: Transform
@@ -6153,41 +5786,11 @@ entities:
         - !type:DoActsBehavior
           acts: Destruction
   - uid: 604
-    mapInit: true
-    paused: true
     components:
     - type: Transform
       parent: 1
-      rot: 3.141592653589793 rad
-      pos: 19.5,5.5
-    - type: Destructible
-      thresholds:
-      - triggersOnce: False
-        triggered: False
-        trigger: !type:DamageTrigger
-          damage: 50
-        behaviors:
-        - !type:DoActsBehavior
-          acts: Destruction
-        - !type:PlaySoundBehavior
-          sound: !type:SoundCollectionSpecifier
-            collection: MetalBreak
-            params:
-              volume: 0
-              variation: null
-              rolloffFactor: 1
-              referenceDistance: 1
-              playOffsetSeconds: 0
-              pitch: 1
-              maxDistance: 15
-              loop: False
-      - triggersOnce: False
-        triggered: False
-        trigger: !type:DamageTrigger
-          damage: 100
-        behaviors:
-        - !type:DoActsBehavior
-          acts: Destruction
+      rot: -1.5707963267948966 rad
+      pos: 19.5,4.5
   - uid: 605
     mapInit: true
     paused: true
@@ -6439,150 +6042,6 @@ entities:
         behaviors:
         - !type:DoActsBehavior
           acts: Destruction
-  - uid: 612
-    mapInit: true
-    paused: true
-    components:
-    - type: Transform
-      parent: 1
-      rot: 1.5707963267948966 rad
-      pos: 17.5,2.5
-    - type: Destructible
-      thresholds:
-      - triggersOnce: False
-        triggered: False
-        trigger: !type:DamageTrigger
-          damage: 50
-        behaviors:
-        - !type:DoActsBehavior
-          acts: Destruction
-        - !type:PlaySoundBehavior
-          sound: !type:SoundCollectionSpecifier
-            collection: MetalBreak
-            params:
-              volume: 0
-              variation: null
-              rolloffFactor: 1
-              referenceDistance: 1
-              playOffsetSeconds: 0
-              pitch: 1
-              maxDistance: 15
-              loop: False
-      - triggersOnce: False
-        triggered: False
-        trigger: !type:DamageTrigger
-          damage: 100
-        behaviors:
-        - !type:DoActsBehavior
-          acts: Destruction
-  - uid: 613
-    mapInit: true
-    paused: true
-    components:
-    - type: Transform
-      parent: 1
-      rot: 1.5707963267948966 rad
-      pos: 17.5,1.5
-    - type: Destructible
-      thresholds:
-      - triggersOnce: False
-        triggered: False
-        trigger: !type:DamageTrigger
-          damage: 50
-        behaviors:
-        - !type:DoActsBehavior
-          acts: Destruction
-        - !type:PlaySoundBehavior
-          sound: !type:SoundCollectionSpecifier
-            collection: MetalBreak
-            params:
-              volume: 0
-              variation: null
-              rolloffFactor: 1
-              referenceDistance: 1
-              playOffsetSeconds: 0
-              pitch: 1
-              maxDistance: 15
-              loop: False
-      - triggersOnce: False
-        triggered: False
-        trigger: !type:DamageTrigger
-          damage: 100
-        behaviors:
-        - !type:DoActsBehavior
-          acts: Destruction
-  - uid: 614
-    mapInit: true
-    paused: true
-    components:
-    - type: Transform
-      parent: 1
-      rot: -1.5707963267948966 rad
-      pos: 19.5,2.5
-    - type: Destructible
-      thresholds:
-      - triggersOnce: False
-        triggered: False
-        trigger: !type:DamageTrigger
-          damage: 50
-        behaviors:
-        - !type:DoActsBehavior
-          acts: Destruction
-        - !type:PlaySoundBehavior
-          sound: !type:SoundCollectionSpecifier
-            collection: MetalBreak
-            params:
-              volume: 0
-              variation: null
-              rolloffFactor: 1
-              referenceDistance: 1
-              playOffsetSeconds: 0
-              pitch: 1
-              maxDistance: 15
-              loop: False
-      - triggersOnce: False
-        triggered: False
-        trigger: !type:DamageTrigger
-          damage: 100
-        behaviors:
-        - !type:DoActsBehavior
-          acts: Destruction
-  - uid: 615
-    mapInit: true
-    paused: true
-    components:
-    - type: Transform
-      parent: 1
-      rot: -1.5707963267948966 rad
-      pos: 19.5,1.5
-    - type: Destructible
-      thresholds:
-      - triggersOnce: False
-        triggered: False
-        trigger: !type:DamageTrigger
-          damage: 50
-        behaviors:
-        - !type:DoActsBehavior
-          acts: Destruction
-        - !type:PlaySoundBehavior
-          sound: !type:SoundCollectionSpecifier
-            collection: MetalBreak
-            params:
-              volume: 0
-              variation: null
-              rolloffFactor: 1
-              referenceDistance: 1
-              playOffsetSeconds: 0
-              pitch: 1
-              maxDistance: 15
-              loop: False
-      - triggersOnce: False
-        triggered: False
-        trigger: !type:DamageTrigger
-          damage: 100
-        behaviors:
-        - !type:DoActsBehavior
-          acts: Destruction
   - uid: 616
     mapInit: true
     paused: true
@@ -6799,6 +6258,54 @@ entities:
         behaviors:
         - !type:DoActsBehavior
           acts: Destruction
+  - uid: 712
+    components:
+    - type: Transform
+      parent: 1
+      rot: -1.5707963267948966 rad
+      pos: 23.5,2.5
+  - uid: 713
+    components:
+    - type: Transform
+      parent: 1
+      rot: -1.5707963267948966 rad
+      pos: 23.5,1.5
+  - uid: 716
+    components:
+    - type: Transform
+      parent: 1
+      rot: 1.5707963267948966 rad
+      pos: 21.5,2.5
+  - uid: 749
+    components:
+    - type: Transform
+      parent: 1
+      rot: -1.5707963267948966 rad
+      pos: 19.5,3.5
+  - uid: 752
+    components:
+    - type: Transform
+      parent: 1
+      rot: 1.5707963267948966 rad
+      pos: 17.5,4.5
+  - uid: 753
+    components:
+    - type: Transform
+      parent: 1
+      rot: 1.5707963267948966 rad
+      pos: 17.5,3.5
+  - uid: 756
+    components:
+    - type: Transform
+      parent: 1
+      rot: -1.5707963267948966 rad
+      pos: 19.5,2.5
+  - uid: 803
+    components:
+    - type: Transform
+      parent: 1
+      rot: 3.141592653589793 rad
+      pos: 21.5,5.5
 - proto: ChemistryBottleDylovene
   entities:
   - uid: 318
@@ -6935,21 +6442,11 @@ entities:
           decals:
             42: 23,10
         - node:
-            id: BrickTileWhiteCornerNe
-            color: '#CC11447F'
-          decals:
-            8: 19,0
-        - node:
             id: BrickTileWhiteCornerNw
             color: '#78A8607F'
           decals:
             14: 17,10
             41: 21,10
-        - node:
-            id: BrickTileWhiteCornerNw
-            color: '#CC11447F'
-          decals:
-            5: 17,0
         - node:
             id: BrickTileWhiteCornerSe
             color: '#78A8607F'
@@ -6976,11 +6473,6 @@ entities:
             15: 18,10
             16: 19,10
             49: 22,10
-        - node:
-            id: BrickTileWhiteLineN
-            color: '#CC11447F'
-          decals:
-            10: 18,0
         - node:
             id: BrickTileWhiteLineS
             color: '#78A8607F'
@@ -7161,21 +6653,6 @@ entities:
     - type: ChunkEntity
       root: 1
       chunk: 1,-1
-    - type: DecalChunk
-      maxDecalId: 9
-      decals:
-        version: 1
-        nodes:
-        - node:
-            id: BrickTileWhiteCornerSe
-            color: '#CC11447F'
-          decals:
-            7: 19,-1
-        - node:
-            id: BrickTileWhiteLineS
-            color: '#CC11447F'
-          decals:
-            9: 18,-1
   - uid: 527
     mapInit: true
     paused: true
@@ -8432,86 +7909,6 @@ entities:
       nextSound: -8469.9849611
     - type: Physics
       canCollide: False
-  - uid: 644
-    mapInit: true
-    paused: true
-    components:
-    - type: Transform
-      parent: 643
-    - type: Destructible
-      thresholds:
-      - triggersOnce: False
-        triggered: False
-        trigger: !type:DamageTrigger
-          damage: 5
-        behaviors:
-        - !type:PlaySoundBehavior
-          sound: !type:SoundCollectionSpecifier
-            collection: GlassBreak
-            params:
-              volume: -8
-              variation: null
-              rolloffFactor: 1
-              referenceDistance: 1
-              playOffsetSeconds: 0
-              pitch: 1
-              maxDistance: 15
-              loop: False
-        - !type:DoActsBehavior
-          acts: Breakage
-      - triggersOnce: False
-        triggered: False
-        trigger: !type:DamageTrigger
-          damage: 10
-        behaviors:
-        - !type:PlaySoundBehavior
-          sound: !type:SoundCollectionSpecifier
-            collection: GlassBreak
-            params:
-              volume: -8
-              variation: null
-              rolloffFactor: 1
-              referenceDistance: 1
-              playOffsetSeconds: 0
-              pitch: 1
-              maxDistance: 15
-              loop: False
-        - !type:SpawnEntitiesBehavior
-          spawnInContainer: False
-          spawn:
-            ShardGlass:
-              min: 1
-              max: 1
-          offset: 0.5
-          transferForensics: False
-        - !type:DoActsBehavior
-          acts: Destruction
-      - triggersOnce: False
-        triggered: False
-        trigger: !type:DamageTrigger
-          damage: 100
-        behaviors:
-        - !type:DoActsBehavior
-          acts: Destruction
-    - type: EmitSoundOnCollide
-      nextSound: -8469.9849611
-    - type: Physics
-      canCollide: False
-- proto: DoorElectronicsBrig
-  entities:
-  - uid: 646
-    mapInit: true
-    paused: true
-    components:
-    - type: Transform
-      parent: 645
-    - type: AccessReader
-      accessListsOriginal:
-      - - Brig
-    - type: EmitSoundOnCollide
-      nextSound: -8469.9849611
-    - type: Physics
-      canCollide: False
 - proto: DoorElectronicsMedical
   entities:
   - uid: 249
@@ -8523,21 +7920,6 @@ entities:
     - type: AccessReader
       accessListsOriginal:
       - - Medical
-    - type: EmitSoundOnCollide
-      nextSound: -8469.9849611
-    - type: Physics
-      canCollide: False
-- proto: DoorElectronicsSecurity
-  entities:
-  - uid: 251
-    mapInit: true
-    paused: true
-    components:
-    - type: Transform
-      parent: 250
-    - type: AccessReader
-      accessListsOriginal:
-      - - Security
     - type: EmitSoundOnCollide
       nextSound: -8469.9849611
     - type: Physics
@@ -10725,75 +10107,14 @@ entities:
       nextSound: -8469.9849611
     - type: Physics
       canCollide: False
-- proto: FireAxe
-  entities:
-  - uid: 648
-    mapInit: true
-    paused: true
-    components:
-    - type: Transform
-      parent: 647
-    - type: MeleeWeapon
-      nextAttack: -8469.9849611
-    - type: UseDelay
-      delays:
-        default:
-          startTime: 0
-          length: 1
-          endTime: 0
-    - type: EmitSoundOnCollide
-      nextSound: -8469.9849611
-    - type: Physics
-      canCollide: False
 - proto: FireAxeCabinetFilled
   entities:
-  - uid: 647
-    mapInit: true
-    paused: true
+  - uid: 816
     components:
     - type: Transform
       parent: 1
-      rot: 3.141592653589793 rad
-      pos: 16.5,22.5
-    - type: Destructible
-      thresholds:
-      - triggersOnce: False
-        triggered: False
-        trigger: !type:DamageTrigger
-          damage: 200
-        behaviors:
-        - !type:EmptyAllContainersBehaviour {}
-        - !type:DoActsBehavior
-          acts: Destruction
-        - !type:PlaySoundBehavior
-          sound: !type:SoundCollectionSpecifier
-            collection: MetalGlassBreak
-            params:
-              volume: 0
-              variation: null
-              rolloffFactor: 1
-              referenceDistance: 1
-              playOffsetSeconds: 0
-              pitch: 1
-              maxDistance: 15
-              loop: False
-      - triggersOnce: False
-        triggered: False
-        trigger: !type:DamageTrigger
-          damage: 400
-        behaviors:
-        - !type:DoActsBehavior
-          acts: Destruction
-    - type: AccessReader
-      accessListsOriginal:
-      - - Atmospherics
-      - - Command
-    - type: ContainerContainer
-      containers:
-        ItemCabinet: !type:ContainerSlot
-          ent: 648
-          showEnts: False
-          occludes: True
+      rot: 1.5707963267948966 rad
+      pos: 11.5,21.5
 - proto: FireExtinguisher
   entities:
   - uid: 40
@@ -10894,16 +10215,6 @@ entities:
       nextSound: -8469.9849611
     - type: Physics
       canCollide: False
-  - uid: 658
-    mapInit: true
-    paused: true
-    components:
-    - type: Transform
-      parent: 657
-    - type: EmitSoundOnCollide
-      nextSound: -8469.9849611
-    - type: Physics
-      canCollide: False
   - uid: 660
     mapInit: true
     paused: true
@@ -10926,6 +10237,11 @@ entities:
       canCollide: False
 - proto: FirelockGlass
   entities:
+  - uid: 313
+    components:
+    - type: Transform
+      parent: 1
+      pos: 22.5,4.5
   - uid: 649
     mapInit: true
     paused: true
@@ -11011,28 +10327,6 @@ entities:
     - type: DeviceNetwork
       receiveFrequency: 1621
       address: 038E-A8AF
-    - type: Firelock
-      powered: True
-    - type: AccessReader
-      accessListsOriginal:
-      - - Engineering
-  - uid: 657
-    mapInit: true
-    paused: true
-    components:
-    - type: Transform
-      parent: 1
-      pos: 18.5,4.5
-    - type: ContainerContainer
-      containers:
-        board: !type:Container
-          ents:
-          - 658
-          showEnts: False
-          occludes: True
-    - type: DeviceNetwork
-      receiveFrequency: 1621
-      address: 18A2-077D
     - type: Firelock
       powered: True
     - type: AccessReader
@@ -11358,6 +10652,21 @@ entities:
       nextAttack: -8469.9849611
     - type: EmitSoundOnCollide
       nextSound: -8469.9849611
+  - uid: 759
+    components:
+    - type: Transform
+      parent: 1
+      rot: 1.5707963267948966 rad
+      pos: 17.5,2.5
+    - type: AtmosPipeColor
+      color: '#0055CCFF'
+  - uid: 773
+    components:
+    - type: Transform
+      parent: 1
+      pos: 22.5,6.5
+    - type: AtmosPipeColor
+      color: '#0055CCFF'
 - proto: GasPipeFourway
   entities:
   - uid: 675
@@ -11627,20 +10936,6 @@ entities:
       nextAttack: -8469.9849611
     - type: EmitSoundOnCollide
       nextSound: -8469.9849611
-  - uid: 689
-    mapInit: true
-    paused: true
-    components:
-    - type: Transform
-      parent: 1
-      rot: 3.141592653589793 rad
-      pos: 18.5,6.5
-    - type: AtmosPipeColor
-      color: '#0055CCFF'
-    - type: MeleeWeapon
-      nextAttack: -8469.9849611
-    - type: EmitSoundOnCollide
-      nextSound: -8469.9849611
   - uid: 690
     mapInit: true
     paused: true
@@ -11874,6 +11169,65 @@ entities:
       nextAttack: -8469.9849611
     - type: EmitSoundOnCollide
       nextSound: -8469.9849611
+  - uid: 766
+    components:
+    - type: Transform
+      parent: 1
+      pos: 17.5,1.5
+    - type: AtmosPipeColor
+      color: '#0055CCFF'
+  - uid: 770
+    components:
+    - type: Transform
+      parent: 1
+      rot: 1.5707963267948966 rad
+      pos: 19.5,6.5
+    - type: AtmosPipeColor
+      color: '#0055CCFF'
+  - uid: 771
+    components:
+    - type: Transform
+      parent: 1
+      rot: 1.5707963267948966 rad
+      pos: 20.5,6.5
+    - type: AtmosPipeColor
+      color: '#0055CCFF'
+  - uid: 772
+    components:
+    - type: Transform
+      parent: 1
+      rot: 1.5707963267948966 rad
+      pos: 21.5,6.5
+    - type: AtmosPipeColor
+      color: '#0055CCFF'
+  - uid: 794
+    components:
+    - type: Transform
+      parent: 1
+      pos: 22.5,5.5
+    - type: AtmosPipeColor
+      color: '#0055CCFF'
+  - uid: 796
+    components:
+    - type: Transform
+      parent: 1
+      pos: 22.5,4.5
+    - type: AtmosPipeColor
+      color: '#0055CCFF'
+  - uid: 799
+    components:
+    - type: Transform
+      parent: 1
+      pos: 22.5,1.5
+    - type: AtmosPipeColor
+      color: '#0055CCFF'
+  - uid: 802
+    components:
+    - type: Transform
+      parent: 1
+      pos: 22.5,2.5
+    - type: AtmosPipeColor
+      color: '#0055CCFF'
 - proto: GasPipeTJunction
   entities:
   - uid: 79
@@ -11907,6 +11261,14 @@ entities:
       pos: 19.5,18.5
     - type: AtmosPipeColor
       color: '#0055CCFF'
+  - uid: 566
+    components:
+    - type: Transform
+      parent: 1
+      rot: 1.5707963267948966 rad
+      pos: 18.5,6.5
+    - type: AtmosPipeColor
+      color: '#0055CCFF'
   - uid: 714
     mapInit: true
     paused: true
@@ -11935,6 +11297,22 @@ entities:
       nextAttack: -8469.9849611
     - type: EmitSoundOnCollide
       nextSound: -8469.9849611
+  - uid: 758
+    components:
+    - type: Transform
+      parent: 1
+      rot: 3.141592653589793 rad
+      pos: 18.5,2.5
+    - type: AtmosPipeColor
+      color: '#0055CCFF'
+  - uid: 798
+    components:
+    - type: Transform
+      parent: 1
+      rot: 1.5707963267948966 rad
+      pos: 22.5,3.5
+    - type: AtmosPipeColor
+      color: '#0055CCFF'
 - proto: GasPort
   entities:
   - uid: 452
@@ -11985,6 +11363,14 @@ entities:
       parent: 1
       rot: -1.5707963267948966 rad
       pos: 22.5,20.5
+    - type: AtmosPipeColor
+      color: '#0055CCFF'
+  - uid: 567
+    components:
+    - type: Transform
+      parent: 1
+      rot: -1.5707963267948966 rad
+      pos: 19.5,2.5
     - type: AtmosPipeColor
       color: '#0055CCFF'
   - uid: 719
@@ -12850,179 +12236,32 @@ entities:
             threshold: 0
             enabled: False
           ignore: False
-  - uid: 725
-    mapInit: true
-    paused: true
+  - uid: 757
     components:
     - type: Transform
       parent: 1
       rot: 3.141592653589793 rad
-      pos: 18.5,2.5
+      pos: 17.5,0.5
     - type: AtmosPipeColor
       color: '#0055CCFF'
-    - type: DeviceNetwork
-      transmitFrequency: 1621
-      receiveFrequency: 1621
-      address: VNT-6A4C-6FF0
-    - type: EmitSoundOnCollide
-      nextSound: -8469.9849611
-    - type: AtmosMonitor
-      trippedThresholds: Pressure
-      temperatureThreshold:
-        upperBound:
-          threshold: 393.15
-          enabled: True
-        lowerBound:
-          threshold: 193.15
-          enabled: True
-        upperWarnAround:
-          threshold: 0.8
-          enabled: True
-        lowerWarnAround:
-          threshold: 1.1
-          enabled: True
-        ignore: False
-      pressureThreshold:
-        upperBound:
-          threshold: 550
-          enabled: True
-        lowerBound:
-          threshold: 85
-          enabled: True
-        upperWarnAround:
-          threshold: 0.7
-          enabled: True
-        lowerWarnAround:
-          threshold: 1.05
-          enabled: True
-        ignore: False
-      gasThresholds:
-        Oxygen:
-          upperBound:
-            threshold: 0.3
-            enabled: True
-          lowerBound:
-            threshold: 0.1
-            enabled: True
-          upperWarnAround:
-            threshold: 0.8
-            enabled: True
-          lowerWarnAround:
-            threshold: 1.5
-            enabled: True
-          ignore: False
-        Nitrogen:
-          upperBound:
-            threshold: 0
-            enabled: False
-          lowerBound:
-            threshold: 0.1
-            enabled: True
-          upperWarnAround:
-            threshold: 0
-            enabled: False
-          lowerWarnAround:
-            threshold: 1.5
-            enabled: True
-          ignore: False
-        CarbonDioxide:
-          upperBound:
-            threshold: 0.006
-            enabled: True
-          lowerBound:
-            threshold: 0
-            enabled: False
-          upperWarnAround:
-            threshold: 0.5
-            enabled: True
-          lowerWarnAround:
-            threshold: 0
-            enabled: False
-          ignore: False
-        Plasma:
-          upperBound:
-            threshold: 0.005
-            enabled: True
-          lowerBound:
-            threshold: 0
-            enabled: False
-          upperWarnAround:
-            threshold: 0.5
-            enabled: True
-          lowerWarnAround:
-            threshold: 0
-            enabled: False
-          ignore: False
-        Tritium:
-          upperBound:
-            threshold: 0.004
-            enabled: True
-          lowerBound:
-            threshold: 0
-            enabled: False
-          upperWarnAround:
-            threshold: 0.5
-            enabled: True
-          lowerWarnAround:
-            threshold: 0
-            enabled: False
-          ignore: False
-        WaterVapor:
-          upperBound:
-            threshold: 1.5
-            enabled: True
-          lowerBound:
-            threshold: 0
-            enabled: False
-          upperWarnAround:
-            threshold: 0.5
-            enabled: True
-          lowerWarnAround:
-            threshold: 0
-            enabled: False
-          ignore: False
-        Ammonia:
-          upperBound:
-            threshold: 0.05
-            enabled: True
-          lowerBound:
-            threshold: 0
-            enabled: False
-          upperWarnAround:
-            threshold: 0.5
-            enabled: True
-          lowerWarnAround:
-            threshold: 0
-            enabled: False
-          ignore: False
-        NitrousOxide:
-          upperBound:
-            threshold: 0.01
-            enabled: True
-          lowerBound:
-            threshold: 0
-            enabled: False
-          upperWarnAround:
-            threshold: 0.5
-            enabled: True
-          lowerWarnAround:
-            threshold: 0
-            enabled: False
-          ignore: False
-        Frezon:
-          upperBound:
-            threshold: 0.0001
-            enabled: True
-          lowerBound:
-            threshold: 0
-            enabled: False
-          upperWarnAround:
-            threshold: 0
-            enabled: False
-          lowerWarnAround:
-            threshold: 0
-            enabled: False
-          ignore: False
+- proto: GasVentPumpFreezer
+  entities:
+  - uid: 767
+    components:
+    - type: Transform
+      parent: 1
+      rot: 3.141592653589793 rad
+      pos: 22.5,0.5
+    - type: AtmosPipeColor
+      color: '#0055CCFF'
+  - uid: 768
+    components:
+    - type: Transform
+      parent: 1
+      rot: -1.5707963267948966 rad
+      pos: 23.5,3.5
+    - type: AtmosPipeColor
+      color: '#0055CCFF'
 - proto: GeneratorBasic15kW
   entities:
   - uid: 441
@@ -13068,6 +12307,18 @@ entities:
       parent: 1
       rot: 3.141592653589793 rad
       pos: 24.5,13.5
+  - uid: 644
+    components:
+    - type: Transform
+      parent: 1
+      rot: 1.5707963267948966 rad
+      pos: 24.5,1.5
+  - uid: 645
+    components:
+    - type: Transform
+      parent: 1
+      rot: 1.5707963267948966 rad
+      pos: 22.5,-1.5
   - uid: 729
     mapInit: true
     paused: true
@@ -13082,13 +12333,6 @@ entities:
     - type: Transform
       parent: 1
       pos: 19.5,8.5
-  - uid: 732
-    mapInit: true
-    paused: true
-    components:
-    - type: Transform
-      parent: 1
-      pos: 18.5,-1.5
   - uid: 733
     mapInit: true
     paused: true
@@ -13173,13 +12417,6 @@ entities:
     - type: Transform
       parent: 1
       pos: 11.5,1.5
-  - uid: 747
-    mapInit: true
-    paused: true
-    components:
-    - type: Transform
-      parent: 1
-      pos: 20.5,1.5
   - uid: 748
     mapInit: true
     paused: true
@@ -13346,71 +12583,6 @@ entities:
       canCollide: False
 - proto: LightTube
   entities:
-  - uid: 753
-    mapInit: true
-    paused: true
-    components:
-    - type: Transform
-      parent: 752
-    - type: Destructible
-      thresholds:
-      - triggersOnce: False
-        triggered: False
-        trigger: !type:DamageTrigger
-          damage: 5
-        behaviors:
-        - !type:PlaySoundBehavior
-          sound: !type:SoundCollectionSpecifier
-            collection: GlassBreak
-            params:
-              volume: 0
-              variation: null
-              rolloffFactor: 1
-              referenceDistance: 1
-              playOffsetSeconds: 0
-              pitch: 1
-              maxDistance: 15
-              loop: False
-        - !type:DoActsBehavior
-          acts: Breakage
-      - triggersOnce: False
-        triggered: False
-        trigger: !type:DamageTrigger
-          damage: 10
-        behaviors:
-        - !type:PlaySoundBehavior
-          sound: !type:SoundCollectionSpecifier
-            collection: GlassBreak
-            params:
-              volume: 0
-              variation: null
-              rolloffFactor: 1
-              referenceDistance: 1
-              playOffsetSeconds: 0
-              pitch: 1
-              maxDistance: 15
-              loop: False
-        - !type:SpawnEntitiesBehavior
-          spawnInContainer: False
-          spawn:
-            ShardGlass:
-              min: 1
-              max: 1
-          offset: 0.5
-          transferForensics: False
-        - !type:DoActsBehavior
-          acts: Destruction
-      - triggersOnce: False
-        triggered: False
-        trigger: !type:DamageTrigger
-          damage: 100
-        behaviors:
-        - !type:DoActsBehavior
-          acts: Destruction
-    - type: EmitSoundOnCollide
-      nextSound: -8469.9849611
-    - type: Physics
-      canCollide: False
   - uid: 755
     mapInit: true
     paused: true
@@ -13696,58 +12868,11 @@ entities:
           - Toggle
 - proto: LockerEvidence
   entities:
-  - uid: 766
-    mapInit: true
-    paused: true
+  - uid: 331
     components:
     - type: Transform
       parent: 1
-      pos: 17.5,3.5
-    - type: AccessReader
-      accessListsOriginal:
-      - - Security
-    - type: Destructible
-      thresholds:
-      - triggersOnce: False
-        triggered: False
-        trigger: !type:DamageTrigger
-          damage: 150
-        behaviors:
-        - !type:DoActsBehavior
-          acts: Destruction
-        - !type:PlaySoundBehavior
-          sound: !type:SoundCollectionSpecifier
-            collection: MetalBreak
-            params:
-              volume: -6
-              variation: null
-              rolloffFactor: 1
-              referenceDistance: 1
-              playOffsetSeconds: 0
-              pitch: 1
-              maxDistance: 15
-              loop: False
-        - !type:SpawnEntitiesBehavior
-          spawnInContainer: False
-          spawn:
-            SheetSteel1:
-              min: 1
-              max: 2
-          offset: 0.5
-          transferForensics: False
-      - triggersOnce: False
-        triggered: False
-        trigger: !type:DamageTrigger
-          damage: 300
-        behaviors:
-        - !type:DoActsBehavior
-          acts: Destruction
-    - type: EntityStorage
-      air:
-        temperature: 147.92499
-        volume: 200
-        moles: {}
-        immutable: False
+      pos: 21.5,3.5
 - proto: LockerWallEvacRepairFilled
   entities:
   - uid: 188
@@ -14552,118 +13677,14 @@ entities:
         behaviors:
         - !type:DoActsBehavior
           acts: Destruction
-  - uid: 643
-    mapInit: true
-    paused: true
-    components:
-    - type: Transform
-      parent: 1
-      rot: -1.5707963267948966 rad
-      pos: 20.5,3.5
-    - type: PointLight
-      color: '#D24434FF'
-    - type: PoweredLight
-      lastThunk: 4111.995888
-    - type: ContainerContainer
-      containers:
-        light_bulb: !type:ContainerSlot
-          ent: 644
-          showEnts: False
-          occludes: True
-    - type: ApcPowerReceiver
-      powerLoad: 60
-    - type: DeviceNetwork
-      receiveFrequency: 1173
-      address: 7609-E3F1
-    - type: Destructible
-      thresholds:
-      - triggersOnce: False
-        triggered: False
-        trigger: !type:DamageTrigger
-          damage: 25
-        behaviors:
-        - !type:EmptyAllContainersBehaviour {}
-        - !type:SpawnEntitiesBehavior
-          spawnInContainer: False
-          spawn:
-            SheetSteel1:
-              min: 1
-              max: 1
-          offset: 0.5
-          transferForensics: False
-        - !type:DoActsBehavior
-          acts: Destruction
-      - triggersOnce: False
-        triggered: False
-        trigger: !type:DamageTrigger
-          damage: 100
-        behaviors:
-        - !type:DoActsBehavior
-          acts: Destruction
 - proto: Poweredlight
   entities:
-  - uid: 752
-    mapInit: true
-    paused: true
+  - uid: 717
     components:
     - type: Transform
       parent: 1
       rot: 1.5707963267948966 rad
-      pos: 17.5,1.5
-    - type: SpookyPoweredLight
-      nextGhostBlink: -20.4409038
-    - type: PointLight
-      color: '#DCCDBEFF'
-    - type: PoweredLight
-      lastThunk: 4111.995888
-    - type: ContainerContainer
-      containers:
-        light_bulb: !type:ContainerSlot
-          ent: 753
-          showEnts: False
-          occludes: True
-    - type: ApcPowerReceiver
-      powerLoad: 25
-    - type: DeviceNetwork
-      receiveFrequency: 1173
-      address: 0457-FACC
-    - type: Destructible
-      thresholds:
-      - triggersOnce: False
-        triggered: False
-        trigger: !type:DamageTrigger
-          damage: 50
-        behaviors:
-        - !type:EmptyAllContainersBehaviour {}
-        - !type:SpawnEntitiesBehavior
-          spawnInContainer: False
-          spawn:
-            SheetSteel1:
-              min: 2
-              max: 2
-          offset: 0.5
-          transferForensics: False
-        - !type:DoActsBehavior
-          acts: Destruction
-        - !type:PlaySoundBehavior
-          sound: !type:SoundCollectionSpecifier
-            collection: GlassBreak
-            params:
-              volume: 0
-              variation: null
-              rolloffFactor: 1
-              referenceDistance: 1
-              playOffsetSeconds: 0
-              pitch: 1
-              maxDistance: 15
-              loop: False
-      - triggersOnce: False
-        triggered: False
-        trigger: !type:DamageTrigger
-          damage: 100
-        behaviors:
-        - !type:DoActsBehavior
-          acts: Destruction
+      pos: 21.5,1.5
   - uid: 754
     mapInit: true
     paused: true
@@ -14746,6 +13767,17 @@ entities:
       parent: 1
       rot: -1.5707963267948966 rad
       pos: 23.5,12.5
+  - uid: 737
+    components:
+    - type: Transform
+      parent: 1
+      pos: 18.5,-1.5
+  - uid: 747
+    components:
+    - type: Transform
+      parent: 1
+      rot: 3.141592653589793 rad
+      pos: 18.5,2.5
   - uid: 760
     mapInit: true
     paused: true
@@ -14981,12 +14013,18 @@ entities:
       parent: 1
       rot: 1.5707963267948966 rad
       pos: 12.5,22.5
-  - uid: 522
+  - uid: 718
     components:
     - type: Transform
       parent: 1
-      rot: 3.141592653589793 rad
-      pos: 19.5,5.5
+      rot: -1.5707963267948966 rad
+      pos: 24.5,3.5
+  - uid: 738
+    components:
+    - type: Transform
+      parent: 1
+      rot: 1.5707963267948966 rad
+      pos: 17.5,0.5
   - uid: 774
     mapInit: true
     paused: true
@@ -15684,30 +14722,6 @@ entities:
       nextSound: -8469.9849611
     - type: Physics
       canCollide: False
-  - uid: 562
-    mapInit: true
-    paused: true
-    components:
-    - type: Transform
-      parent: 560
-    - type: Stack
-      count: 5
-    - type: EmitSoundOnCollide
-      nextSound: -8469.9849611
-    - type: Physics
-      canCollide: False
-  - uid: 566
-    mapInit: true
-    paused: true
-    components:
-    - type: Transform
-      parent: 564
-    - type: Stack
-      count: 5
-    - type: EmitSoundOnCollide
-      nextSound: -8469.9849611
-    - type: Physics
-      canCollide: False
 - proto: ShuttersNormalOpen
   entities:
   - uid: 170
@@ -15736,6 +14750,18 @@ entities:
       pos: 14.5,11.5
 - proto: ShuttleWindow
   entities:
+  - uid: 702
+    components:
+    - type: Transform
+      parent: 1
+      rot: 1.5707963267948966 rad
+      pos: 24.5,1.5
+  - uid: 703
+    components:
+    - type: Transform
+      parent: 1
+      rot: 1.5707963267948966 rad
+      pos: 22.5,-1.5
   - uid: 785
     mapInit: true
     paused: true
@@ -16249,100 +15275,6 @@ entities:
         behaviors:
         - !type:DoActsBehavior
           acts: Destruction
-  - uid: 798
-    mapInit: true
-    paused: true
-    components:
-    - type: Transform
-      parent: 1
-      rot: 3.141592653589793 rad
-      pos: 20.5,1.5
-    - type: Destructible
-      thresholds:
-      - triggersOnce: False
-        triggered: False
-        trigger: !type:DamageTrigger
-          damage: 500
-        behaviors:
-        - !type:PlaySoundBehavior
-          sound: !type:SoundCollectionSpecifier
-            collection: WindowShatter
-            params:
-              volume: 0
-              variation: null
-              rolloffFactor: 1
-              referenceDistance: 1
-              playOffsetSeconds: 0
-              pitch: 1
-              maxDistance: 15
-              loop: False
-        - !type:SpawnEntitiesBehavior
-          spawnInContainer: False
-          spawn:
-            ShardGlassReinforced:
-              min: 1
-              max: 2
-            PartRodMetal:
-              min: 1
-              max: 2
-          offset: 0.5
-          transferForensics: False
-        - !type:DoActsBehavior
-          acts: Destruction
-      - triggersOnce: False
-        triggered: False
-        trigger: !type:DamageTrigger
-          damage: 1000
-        behaviors:
-        - !type:DoActsBehavior
-          acts: Destruction
-  - uid: 799
-    mapInit: true
-    paused: true
-    components:
-    - type: Transform
-      parent: 1
-      rot: 3.141592653589793 rad
-      pos: 18.5,-1.5
-    - type: Destructible
-      thresholds:
-      - triggersOnce: False
-        triggered: False
-        trigger: !type:DamageTrigger
-          damage: 500
-        behaviors:
-        - !type:PlaySoundBehavior
-          sound: !type:SoundCollectionSpecifier
-            collection: WindowShatter
-            params:
-              volume: 0
-              variation: null
-              rolloffFactor: 1
-              referenceDistance: 1
-              playOffsetSeconds: 0
-              pitch: 1
-              maxDistance: 15
-              loop: False
-        - !type:SpawnEntitiesBehavior
-          spawnInContainer: False
-          spawn:
-            ShardGlassReinforced:
-              min: 1
-              max: 2
-            PartRodMetal:
-              min: 1
-              max: 2
-          offset: 0.5
-          transferForensics: False
-        - !type:DoActsBehavior
-          acts: Destruction
-      - triggersOnce: False
-        triggered: False
-        trigger: !type:DamageTrigger
-          damage: 1000
-        behaviors:
-        - !type:DoActsBehavior
-          acts: Destruction
   - uid: 800
     mapInit: true
     paused: true
@@ -16718,13 +15650,11 @@ entities:
       pos: 14.5,4.5
 - proto: SignSecurity
   entities:
-  - uid: 818
-    mapInit: true
-    paused: true
+  - uid: 363
     components:
     - type: Transform
       parent: 1
-      pos: 17.5,4.5
+      pos: 23.5,4.5
 - proto: SMESBasic
   entities:
   - uid: 445
@@ -17461,50 +16391,6 @@ entities:
       baseName: syringe
 - proto: Table
   entities:
-  - uid: 828
-    mapInit: true
-    paused: true
-    components:
-    - type: Transform
-      parent: 1
-      rot: -1.5707963267948966 rad
-      pos: 17.5,5.5
-    - type: Destructible
-      thresholds:
-      - triggersOnce: False
-        triggered: False
-        trigger: !type:DamageTrigger
-          damage: 25
-        behaviors:
-        - !type:PlaySoundBehavior
-          sound: !type:SoundCollectionSpecifier
-            collection: MetalBreak
-            params:
-              volume: -6
-              variation: null
-              rolloffFactor: 1
-              referenceDistance: 1
-              playOffsetSeconds: 0
-              pitch: 1
-              maxDistance: 15
-              loop: False
-        - !type:SpawnEntitiesBehavior
-          spawnInContainer: False
-          spawn:
-            SheetSteel1:
-              min: 1
-              max: 1
-          offset: 0.5
-          transferForensics: False
-        - !type:DoActsBehavior
-          acts: Destruction
-      - triggersOnce: False
-        triggered: False
-        trigger: !type:DamageTrigger
-          damage: 100
-        behaviors:
-        - !type:DoActsBehavior
-          acts: Destruction
   - uid: 829
     mapInit: true
     paused: true
@@ -18360,23 +17246,23 @@ entities:
           acts: Destruction
 - proto: Thruster
   entities:
-  - uid: 134
-    components:
-    - type: Transform
-      parent: 1
-      rot: -1.5707963267948966 rad
-      pos: 22.5,3.5
   - uid: 168
     components:
     - type: Transform
       parent: 1
       pos: 25.5,21.5
-  - uid: 169
+  - uid: 218
     components:
     - type: Transform
       parent: 1
       rot: 3.141592653589793 rad
-      pos: 22.5,2.5
+      pos: 25.5,0.5
+  - uid: 250
+    components:
+    - type: Transform
+      parent: 1
+      rot: -1.5707963267948966 rad
+      pos: 25.5,1.5
   - uid: 460
     components:
     - type: Transform
@@ -19164,196 +18050,6 @@ entities:
           - 558
           showEnts: False
           occludes: True
-  - uid: 560
-    mapInit: true
-    paused: true
-    components:
-    - type: Transform
-      parent: 1
-      rot: -1.5707963267948966 rad
-      pos: 21.5,1.5
-    - type: Destructible
-      thresholds:
-      - triggersOnce: False
-        triggered: False
-        trigger: !type:DamageTrigger
-          damage: 300
-        behaviors:
-        - !type:DoActsBehavior
-          acts: Destruction
-        - !type:PlaySoundBehavior
-          sound: !type:SoundCollectionSpecifier
-            collection: MetalBreak
-            params:
-              volume: 0
-              variation: null
-              rolloffFactor: 1
-              referenceDistance: 1
-              playOffsetSeconds: 0
-              pitch: 1
-              maxDistance: 15
-              loop: False
-        - !type:ChangeConstructionNodeBehavior
-          node: machineFrame
-      - triggersOnce: False
-        triggered: False
-        trigger: !type:DamageTrigger
-          damage: 600
-        behaviors:
-        - !type:DoActsBehavior
-          acts: Destruction
-    - type: Fixtures
-      fixtures:
-        fix1:
-          shape: !type:PolygonShape
-            vertices:
-            - -0.45,-0.45
-            - 0.45,-0.45
-            - 0.45,0.45
-            - -0.45,0.45
-            radius: 0.01
-          restitution: 0
-          hard: True
-          friction: 0.4
-          density: 60
-          mask:
-          - Impassable
-          - TableLayer
-          - LowImpassable
-          layer:
-          - TableLayer
-          - LowImpassable
-          - BulletImpassable
-          - Opaque
-        thruster-burn:
-          shape: !type:PolygonShape
-            vertices:
-            - -0.4,0.5
-            - 0.4,0.5
-            - 0.1,1.2
-            - -0.1,1.2
-            radius: 0.01
-          restitution: 0
-          hard: False
-          friction: 0.4
-          density: 1
-          mask: []
-          layer:
-          - Impassable
-          - TableLayer
-          - HighImpassable
-          - LowImpassable
-          - InteractImpassable
-    - type: Thruster
-      nextFire: 0.6374873
-    - type: ContainerContainer
-      containers:
-        machine_board: !type:Container
-          ents:
-          - 563
-          showEnts: False
-          occludes: True
-        machine_parts: !type:Container
-          ents:
-          - 561
-          - 562
-          showEnts: False
-          occludes: True
-  - uid: 564
-    mapInit: true
-    paused: true
-    components:
-    - type: Transform
-      parent: 1
-      rot: 3.141592653589793 rad
-      pos: 21.5,0.5
-    - type: Destructible
-      thresholds:
-      - triggersOnce: False
-        triggered: False
-        trigger: !type:DamageTrigger
-          damage: 300
-        behaviors:
-        - !type:DoActsBehavior
-          acts: Destruction
-        - !type:PlaySoundBehavior
-          sound: !type:SoundCollectionSpecifier
-            collection: MetalBreak
-            params:
-              volume: 0
-              variation: null
-              rolloffFactor: 1
-              referenceDistance: 1
-              playOffsetSeconds: 0
-              pitch: 1
-              maxDistance: 15
-              loop: False
-        - !type:ChangeConstructionNodeBehavior
-          node: machineFrame
-      - triggersOnce: False
-        triggered: False
-        trigger: !type:DamageTrigger
-          damage: 600
-        behaviors:
-        - !type:DoActsBehavior
-          acts: Destruction
-    - type: Fixtures
-      fixtures:
-        fix1:
-          shape: !type:PolygonShape
-            vertices:
-            - -0.45,-0.45
-            - 0.45,-0.45
-            - 0.45,0.45
-            - -0.45,0.45
-            radius: 0.01
-          restitution: 0
-          hard: True
-          friction: 0.4
-          density: 60
-          mask:
-          - Impassable
-          - TableLayer
-          - LowImpassable
-          layer:
-          - TableLayer
-          - LowImpassable
-          - BulletImpassable
-          - Opaque
-        thruster-burn:
-          shape: !type:PolygonShape
-            vertices:
-            - -0.4,0.5
-            - 0.4,0.5
-            - 0.1,1.2
-            - -0.1,1.2
-            radius: 0.01
-          restitution: 0
-          hard: False
-          friction: 0.4
-          density: 1
-          mask: []
-          layer:
-          - Impassable
-          - TableLayer
-          - HighImpassable
-          - LowImpassable
-          - InteractImpassable
-    - type: Thruster
-      nextFire: 1.3466203
-    - type: ContainerContainer
-      containers:
-        machine_board: !type:Container
-          ents:
-          - 567
-          showEnts: False
-          occludes: True
-        machine_parts: !type:Container
-          ents:
-          - 565
-          - 566
-          showEnts: False
-          occludes: True
 - proto: ThrusterMachineCircuitboard
   entities:
   - uid: 507
@@ -19432,26 +18128,6 @@ entities:
     components:
     - type: Transform
       parent: 556
-    - type: EmitSoundOnCollide
-      nextSound: -8469.9849611
-    - type: Physics
-      canCollide: False
-  - uid: 563
-    mapInit: true
-    paused: true
-    components:
-    - type: Transform
-      parent: 560
-    - type: EmitSoundOnCollide
-      nextSound: -8469.9849611
-    - type: Physics
-      canCollide: False
-  - uid: 567
-    mapInit: true
-    paused: true
-    components:
-    - type: Transform
-      parent: 564
     - type: EmitSoundOnCollide
       nextSound: -8469.9849611
     - type: Physics
@@ -19931,171 +18607,11 @@ entities:
           - 207
 - proto: VendingMachineSec
   entities:
-  - uid: 204
-    mapInit: true
-    paused: true
+  - uid: 711
     components:
     - type: Transform
       parent: 1
-      pos: 20.5,3.5
-    - type: SpookySpeaker
-      nextSpeakTime: -20.4409038
-    - type: VendingMachineEject
-      nextEmpEject: -20.4409038
-    - type: ESSparkCooldown
-      lastSparkTime: -20.4409038
-    - type: VendingMachine
-      inventory:
-        SecurityWhistle:
-          type: Regular
-          id: SecurityWhistle
-          amount: 5
-        Handcuffs:
-          type: Regular
-          id: Handcuffs
-          amount: 8
-        GrenadeFlashBang:
-          type: Regular
-          id: GrenadeFlashBang
-          amount: 4
-        TearGasGrenade:
-          type: Regular
-          id: TearGasGrenade
-          amount: 4
-        ClusterBangFull:
-          type: Regular
-          id: ClusterBangFull
-          amount: 2
-        GrenadeStinger:
-          type: Regular
-          id: GrenadeStinger
-          amount: 4
-        Flash:
-          type: Regular
-          id: Flash
-          amount: 5
-        Tourniquet:
-          type: Regular
-          id: Tourniquet
-          amount: 5
-        FlashlightSeclite:
-          type: Regular
-          id: FlashlightSeclite
-          amount: 5
-        ClothingEyesGlassesSunglasses:
-          type: Regular
-          id: ClothingEyesGlassesSunglasses
-          amount: 2
-        ClothingEyesHudSecurity:
-          type: Regular
-          id: ClothingEyesHudSecurity
-          amount: 2
-        ClothingEyesEyepatchHudSecurity:
-          type: Regular
-          id: ClothingEyesEyepatchHudSecurity
-          amount: 2
-        ClothingBeltSecurityWebbing:
-          type: Regular
-          id: ClothingBeltSecurityWebbing
-          amount: 5
-        CombatKnife:
-          type: Regular
-          id: CombatKnife
-          amount: 3
-        Zipties:
-          type: Regular
-          id: Zipties
-          amount: 12
-        RiotShield:
-          type: Regular
-          id: RiotShield
-          amount: 2
-        RiotLaserShield:
-          type: Regular
-          id: RiotLaserShield
-          amount: 2
-        RiotBulletShield:
-          type: Regular
-          id: RiotBulletShield
-          amount: 2
-        RadioHandheldSecurity:
-          type: Regular
-          id: RadioHandheldSecurity
-          amount: 5
-        Bola:
-          type: Regular
-          id: Bola
-          amount: 6
-      contrabandInventory:
-        WeaponMeleeNeedle:
-          type: Contraband
-          id: WeaponMeleeNeedle
-          amount: 2
-        FoodDonutHomer:
-          type: Contraband
-          id: FoodDonutHomer
-          amount: 12
-        FoodBoxDonut:
-          type: Contraband
-          id: FoodBoxDonut
-          amount: 2
-    - type: AccessReader
-      accessListsOriginal:
-      - - Security
-    - type: PointLight
-      enabled: True
-    - type: ActionGrant
-      actionEntities:
-      - 205
-    - type: Destructible
-      thresholds:
-      - triggersOnce: False
-        triggered: False
-        trigger: !type:DamageTrigger
-          damage: 100
-        behaviors:
-        - !type:DoActsBehavior
-          acts: Breakage
-        - !type:EjectVendorItems
-          percent: 0.25
-          max: 3
-      - triggersOnce: False
-        triggered: False
-        trigger: !type:DamageTrigger
-          damage: 200
-        behaviors:
-        - !type:PlaySoundBehavior
-          sound: !type:SoundCollectionSpecifier
-            collection: MetalGlassBreak
-            params:
-              volume: 0
-              variation: null
-              rolloffFactor: 1
-              referenceDistance: 1
-              playOffsetSeconds: 0
-              pitch: 1
-              maxDistance: 15
-              loop: False
-        - !type:DoActsBehavior
-          acts: Destruction
-      - triggersOnce: False
-        triggered: False
-        trigger: !type:DamageTrigger
-          damage: 400
-        behaviors:
-        - !type:DoActsBehavior
-          acts: Destruction
-    - type: Vocalizer
-      nextVocalizeInterval: 214.6561788
-    - type: Actions
-      actions:
-      - 205
-    - type: ActionsContainer
-    - type: ContainerContainer
-      containers:
-        actions: !type:Container
-          ents:
-          - 205
+      pos: 24.5,3.5
 - proto: VendingMachineWallMedicalCivilian
   entities:
   - uid: 263
@@ -20112,12 +18628,6 @@ entities:
       parent: 1
       rot: -1.5707963267948966 rad
       pos: 22.5,24.5
-  - uid: 59
-    components:
-    - type: Transform
-      parent: 1
-      rot: 1.5707963267948966 rad
-      pos: 22.5,4.5
   - uid: 61
     components:
     - type: Transform
@@ -20203,6 +18713,11 @@ entities:
     - type: Transform
       parent: 1
       pos: 18.5,21.5
+  - uid: 205
+    components:
+    - type: Transform
+      parent: 1
+      pos: 20.5,3.5
   - uid: 221
     components:
     - type: Transform
@@ -20254,6 +18769,31 @@ entities:
       parent: 1
       rot: 1.5707963267948966 rad
       pos: 24.5,4.5
+  - uid: 335
+    components:
+    - type: Transform
+      parent: 1
+      pos: 24.5,0.5
+  - uid: 336
+    components:
+    - type: Transform
+      parent: 1
+      pos: 24.5,2.5
+  - uid: 337
+    components:
+    - type: Transform
+      parent: 1
+      pos: 25.5,2.5
+  - uid: 338
+    components:
+    - type: Transform
+      parent: 1
+      pos: 25.5,3.5
+  - uid: 362
+    components:
+    - type: Transform
+      parent: 1
+      pos: 24.5,-0.5
   - uid: 377
     components:
     - type: Transform
@@ -20272,6 +18812,62 @@ entities:
       parent: 1
       rot: -1.5707963267948966 rad
       pos: 20.5,23.5
+  - uid: 583
+    components:
+    - type: Transform
+      parent: 1
+      pos: 20.5,-0.5
+  - uid: 614
+    components:
+    - type: Transform
+      parent: 1
+      pos: 20.5,0.5
+  - uid: 662
+    components:
+    - type: Transform
+      parent: 1
+      pos: 20.5,1.5
+  - uid: 668
+    components:
+    - type: Transform
+      parent: 1
+      pos: 20.5,2.5
+  - uid: 704
+    components:
+    - type: Transform
+      parent: 1
+      rot: 1.5707963267948966 rad
+      pos: 23.5,-1.5
+  - uid: 705
+    components:
+    - type: Transform
+      parent: 1
+      rot: 1.5707963267948966 rad
+      pos: 21.5,-1.5
+  - uid: 720
+    components:
+    - type: Transform
+      parent: 1
+      rot: -1.5707963267948966 rad
+      pos: 18.5,1.5
+  - uid: 725
+    components:
+    - type: Transform
+      parent: 1
+      rot: -1.5707963267948966 rad
+      pos: 19.5,1.5
+  - uid: 726
+    components:
+    - type: Transform
+      parent: 1
+      rot: 1.5707963267948966 rad
+      pos: 18.5,-0.5
+  - uid: 727
+    components:
+    - type: Transform
+      parent: 1
+      rot: -1.5707963267948966 rad
+      pos: 17.5,-0.5
   - uid: 849
     mapInit: true
     paused: true
@@ -21450,44 +20046,6 @@ entities:
         behaviors:
         - !type:DoActsBehavior
           acts: Destruction
-  - uid: 885
-    mapInit: true
-    paused: true
-    components:
-    - type: Transform
-      parent: 1
-      rot: 3.141592653589793 rad
-      pos: 19.5,4.5
-    - type: Destructible
-      thresholds:
-      - triggersOnce: False
-        triggered: False
-        trigger: !type:DamageTrigger
-          damage: 400
-        behaviors:
-        - !type:PlaySoundBehavior
-          sound: !type:SoundCollectionSpecifier
-            collection: MetalSlam
-            params:
-              volume: 0
-              variation: null
-              rolloffFactor: 1
-              referenceDistance: 1
-              playOffsetSeconds: 0
-              pitch: 1
-              maxDistance: 15
-              loop: False
-        - !type:ChangeConstructionNodeBehavior
-          node: girder
-        - !type:DoActsBehavior
-          acts: Destruction
-      - triggersOnce: False
-        triggered: False
-        trigger: !type:DamageTrigger
-          damage: 800
-        behaviors:
-        - !type:DoActsBehavior
-          acts: Destruction
   - uid: 886
     mapInit: true
     paused: true
@@ -21678,158 +20236,6 @@ entities:
         behaviors:
         - !type:DoActsBehavior
           acts: Destruction
-  - uid: 893
-    mapInit: true
-    paused: true
-    components:
-    - type: Transform
-      parent: 1
-      rot: 3.141592653589793 rad
-      pos: 19.5,-1.5
-    - type: Destructible
-      thresholds:
-      - triggersOnce: False
-        triggered: False
-        trigger: !type:DamageTrigger
-          damage: 400
-        behaviors:
-        - !type:PlaySoundBehavior
-          sound: !type:SoundCollectionSpecifier
-            collection: MetalSlam
-            params:
-              volume: 0
-              variation: null
-              rolloffFactor: 1
-              referenceDistance: 1
-              playOffsetSeconds: 0
-              pitch: 1
-              maxDistance: 15
-              loop: False
-        - !type:ChangeConstructionNodeBehavior
-          node: girder
-        - !type:DoActsBehavior
-          acts: Destruction
-      - triggersOnce: False
-        triggered: False
-        trigger: !type:DamageTrigger
-          damage: 800
-        behaviors:
-        - !type:DoActsBehavior
-          acts: Destruction
-  - uid: 894
-    mapInit: true
-    paused: true
-    components:
-    - type: Transform
-      parent: 1
-      rot: 3.141592653589793 rad
-      pos: 20.5,2.5
-    - type: Destructible
-      thresholds:
-      - triggersOnce: False
-        triggered: False
-        trigger: !type:DamageTrigger
-          damage: 400
-        behaviors:
-        - !type:PlaySoundBehavior
-          sound: !type:SoundCollectionSpecifier
-            collection: MetalSlam
-            params:
-              volume: 0
-              variation: null
-              rolloffFactor: 1
-              referenceDistance: 1
-              playOffsetSeconds: 0
-              pitch: 1
-              maxDistance: 15
-              loop: False
-        - !type:ChangeConstructionNodeBehavior
-          node: girder
-        - !type:DoActsBehavior
-          acts: Destruction
-      - triggersOnce: False
-        triggered: False
-        trigger: !type:DamageTrigger
-          damage: 800
-        behaviors:
-        - !type:DoActsBehavior
-          acts: Destruction
-  - uid: 895
-    mapInit: true
-    paused: true
-    components:
-    - type: Transform
-      parent: 1
-      rot: 3.141592653589793 rad
-      pos: 17.5,-1.5
-    - type: Destructible
-      thresholds:
-      - triggersOnce: False
-        triggered: False
-        trigger: !type:DamageTrigger
-          damage: 400
-        behaviors:
-        - !type:PlaySoundBehavior
-          sound: !type:SoundCollectionSpecifier
-            collection: MetalSlam
-            params:
-              volume: 0
-              variation: null
-              rolloffFactor: 1
-              referenceDistance: 1
-              playOffsetSeconds: 0
-              pitch: 1
-              maxDistance: 15
-              loop: False
-        - !type:ChangeConstructionNodeBehavior
-          node: girder
-        - !type:DoActsBehavior
-          acts: Destruction
-      - triggersOnce: False
-        triggered: False
-        trigger: !type:DamageTrigger
-          damage: 800
-        behaviors:
-        - !type:DoActsBehavior
-          acts: Destruction
-  - uid: 896
-    mapInit: true
-    paused: true
-    components:
-    - type: Transform
-      parent: 1
-      rot: 3.141592653589793 rad
-      pos: 17.5,4.5
-    - type: Destructible
-      thresholds:
-      - triggersOnce: False
-        triggered: False
-        trigger: !type:DamageTrigger
-          damage: 400
-        behaviors:
-        - !type:PlaySoundBehavior
-          sound: !type:SoundCollectionSpecifier
-            collection: MetalSlam
-            params:
-              volume: 0
-              variation: null
-              rolloffFactor: 1
-              referenceDistance: 1
-              playOffsetSeconds: 0
-              pitch: 1
-              maxDistance: 15
-              loop: False
-        - !type:ChangeConstructionNodeBehavior
-          node: girder
-        - !type:DoActsBehavior
-          acts: Destruction
-      - triggersOnce: False
-        triggered: False
-        trigger: !type:DamageTrigger
-          damage: 800
-        behaviors:
-        - !type:DoActsBehavior
-          acts: Destruction
   - uid: 897
     mapInit: true
     paused: true
@@ -21914,44 +20320,6 @@ entities:
       parent: 1
       rot: 3.141592653589793 rad
       pos: 17.5,15.5
-    - type: Destructible
-      thresholds:
-      - triggersOnce: False
-        triggered: False
-        trigger: !type:DamageTrigger
-          damage: 400
-        behaviors:
-        - !type:PlaySoundBehavior
-          sound: !type:SoundCollectionSpecifier
-            collection: MetalSlam
-            params:
-              volume: 0
-              variation: null
-              rolloffFactor: 1
-              referenceDistance: 1
-              playOffsetSeconds: 0
-              pitch: 1
-              maxDistance: 15
-              loop: False
-        - !type:ChangeConstructionNodeBehavior
-          node: girder
-        - !type:DoActsBehavior
-          acts: Destruction
-      - triggersOnce: False
-        triggered: False
-        trigger: !type:DamageTrigger
-          damage: 800
-        behaviors:
-        - !type:DoActsBehavior
-          acts: Destruction
-  - uid: 900
-    mapInit: true
-    paused: true
-    components:
-    - type: Transform
-      parent: 1
-      rot: 3.141592653589793 rad
-      pos: 20.5,0.5
     - type: Destructible
       thresholds:
       - triggersOnce: False
@@ -22180,44 +20548,6 @@ entities:
       parent: 1
       rot: -1.5707963267948966 rad
       pos: 15.5,21.5
-    - type: Destructible
-      thresholds:
-      - triggersOnce: False
-        triggered: False
-        trigger: !type:DamageTrigger
-          damage: 400
-        behaviors:
-        - !type:PlaySoundBehavior
-          sound: !type:SoundCollectionSpecifier
-            collection: MetalSlam
-            params:
-              volume: 0
-              variation: null
-              rolloffFactor: 1
-              referenceDistance: 1
-              playOffsetSeconds: 0
-              pitch: 1
-              maxDistance: 15
-              loop: False
-        - !type:ChangeConstructionNodeBehavior
-          node: girder
-        - !type:DoActsBehavior
-          acts: Destruction
-      - triggersOnce: False
-        triggered: False
-        trigger: !type:DamageTrigger
-          damage: 800
-        behaviors:
-        - !type:DoActsBehavior
-          acts: Destruction
-  - uid: 908
-    mapInit: true
-    paused: true
-    components:
-    - type: Transform
-      parent: 1
-      rot: 3.141592653589793 rad
-      pos: 20.5,-0.5
     - type: Destructible
       thresholds:
       - triggersOnce: False
@@ -22514,82 +20844,6 @@ entities:
         behaviors:
         - !type:DoActsBehavior
           acts: Destruction
-  - uid: 916
-    mapInit: true
-    paused: true
-    components:
-    - type: Transform
-      parent: 1
-      rot: 3.141592653589793 rad
-      pos: 21.5,2.5
-    - type: Destructible
-      thresholds:
-      - triggersOnce: False
-        triggered: False
-        trigger: !type:DamageTrigger
-          damage: 400
-        behaviors:
-        - !type:PlaySoundBehavior
-          sound: !type:SoundCollectionSpecifier
-            collection: MetalSlam
-            params:
-              volume: 0
-              variation: null
-              rolloffFactor: 1
-              referenceDistance: 1
-              playOffsetSeconds: 0
-              pitch: 1
-              maxDistance: 15
-              loop: False
-        - !type:ChangeConstructionNodeBehavior
-          node: girder
-        - !type:DoActsBehavior
-          acts: Destruction
-      - triggersOnce: False
-        triggered: False
-        trigger: !type:DamageTrigger
-          damage: 800
-        behaviors:
-        - !type:DoActsBehavior
-          acts: Destruction
-  - uid: 917
-    mapInit: true
-    paused: true
-    components:
-    - type: Transform
-      parent: 1
-      rot: 3.141592653589793 rad
-      pos: 21.5,3.5
-    - type: Destructible
-      thresholds:
-      - triggersOnce: False
-        triggered: False
-        trigger: !type:DamageTrigger
-          damage: 400
-        behaviors:
-        - !type:PlaySoundBehavior
-          sound: !type:SoundCollectionSpecifier
-            collection: MetalSlam
-            params:
-              volume: 0
-              variation: null
-              rolloffFactor: 1
-              referenceDistance: 1
-              playOffsetSeconds: 0
-              pitch: 1
-              maxDistance: 15
-              loop: False
-        - !type:ChangeConstructionNodeBehavior
-          node: girder
-        - !type:DoActsBehavior
-          acts: Destruction
-      - triggersOnce: False
-        triggered: False
-        trigger: !type:DamageTrigger
-          damage: 800
-        behaviors:
-        - !type:DoActsBehavior
-          acts: Destruction
   - uid: 918
     mapInit: true
     paused: true
@@ -22826,6 +21080,12 @@ entities:
       parent: 1
       rot: -1.5707963267948966 rad
       pos: 23.5,24.5
+  - uid: 339
+    components:
+    - type: Transform
+      parent: 1
+      rot: 3.141592653589793 rad
+      pos: 24.5,-1.5
   - uid: 376
     components:
     - type: Transform
@@ -22837,6 +21097,12 @@ entities:
     - type: Transform
       parent: 1
       pos: 20.5,24.5
+  - uid: 672
+    components:
+    - type: Transform
+      parent: 1
+      rot: 1.5707963267948966 rad
+      pos: 20.5,-1.5
   - uid: 928
     mapInit: true
     paused: true
@@ -23026,82 +21292,6 @@ entities:
         behaviors:
         - !type:DoActsBehavior
           acts: Destruction
-  - uid: 933
-    mapInit: true
-    paused: true
-    components:
-    - type: Transform
-      parent: 1
-      rot: 3.141592653589793 rad
-      pos: 20.5,-1.5
-    - type: Destructible
-      thresholds:
-      - triggersOnce: False
-        triggered: False
-        trigger: !type:DamageTrigger
-          damage: 300
-        behaviors:
-        - !type:ChangeConstructionNodeBehavior
-          node: girder
-        - !type:PlaySoundBehavior
-          sound: !type:SoundCollectionSpecifier
-            collection: MetalSlam
-            params:
-              volume: 0
-              variation: null
-              rolloffFactor: 1
-              referenceDistance: 1
-              playOffsetSeconds: 0
-              pitch: 1
-              maxDistance: 15
-              loop: False
-        - !type:DoActsBehavior
-          acts: Destruction
-      - triggersOnce: False
-        triggered: False
-        trigger: !type:DamageTrigger
-          damage: 600
-        behaviors:
-        - !type:DoActsBehavior
-          acts: Destruction
-  - uid: 934
-    mapInit: true
-    paused: true
-    components:
-    - type: Transform
-      parent: 1
-      rot: 1.5707963267948966 rad
-      pos: 16.5,-1.5
-    - type: Destructible
-      thresholds:
-      - triggersOnce: False
-        triggered: False
-        trigger: !type:DamageTrigger
-          damage: 300
-        behaviors:
-        - !type:ChangeConstructionNodeBehavior
-          node: girder
-        - !type:PlaySoundBehavior
-          sound: !type:SoundCollectionSpecifier
-            collection: MetalSlam
-            params:
-              volume: 0
-              variation: null
-              rolloffFactor: 1
-              referenceDistance: 1
-              playOffsetSeconds: 0
-              pitch: 1
-              maxDistance: 15
-              loop: False
-        - !type:DoActsBehavior
-          acts: Destruction
-      - triggersOnce: False
-        triggered: False
-        trigger: !type:DamageTrigger
-          damage: 600
-        behaviors:
-        - !type:DoActsBehavior
-          acts: Destruction
 - proto: WarmLightBulb
   entities:
   - uid: 775
@@ -23191,147 +21381,26 @@ entities:
       nextSound: -8469.9849611
     - type: Physics
       canCollide: False
-- proto: WindoorSecureBrigLocked
+- proto: WindoorBrigLocked
   entities:
-  - uid: 645
-    mapInit: true
-    paused: true
+  - uid: 670
     components:
     - type: Transform
       parent: 1
       rot: 3.141592653589793 rad
-      pos: 18.5,0.5
-    - type: Destructible
-      thresholds:
-      - triggersOnce: False
-        triggered: False
-        trigger: !type:DamageTrigger
-          damage: 400
-        behaviors:
-        - !type:SpawnEntitiesBehavior
-          spawnInContainer: False
-          spawn:
-            ShardGlass:
-              min: 1
-              max: 2
-            SheetPlasteel1:
-              min: 1
-              max: 2
-          offset: 0.5
-          transferForensics: False
-        - !type:DoActsBehavior
-          acts: Destruction
-      - triggersOnce: False
-        triggered: False
-        trigger: !type:DamageTrigger
-          damage: 800
-        behaviors:
-        - !type:DoActsBehavior
-          acts: Destruction
-    - type: DeviceNetwork
-      receiveFrequency: 1280
-      address: 4BB3-18FE
-    - type: AccessReader
-      accessListsOriginal: []
-    - type: ContainerContainer
-      containers:
-        board: !type:Container
-          ents:
-          - 646
-          showEnts: False
-          occludes: True
-    - type: Airlock
-      powered: True
-    - type: DoorBolt
-      powered: True
+      pos: 22.5,0.5
 - proto: WindowReinforcedDirectional
   entities:
-  - uid: 935
-    mapInit: true
-    paused: true
+  - uid: 657
     components:
     - type: Transform
       parent: 1
       rot: 3.141592653589793 rad
-      pos: 17.5,0.5
-    - type: Destructible
-      thresholds:
-      - triggersOnce: False
-        triggered: False
-        trigger: !type:DamageTrigger
-          damage: 37
-        behaviors:
-        - !type:PlaySoundBehavior
-          sound: !type:SoundCollectionSpecifier
-            collection: WindowShatter
-            params:
-              volume: 0
-              variation: null
-              rolloffFactor: 1
-              referenceDistance: 1
-              playOffsetSeconds: 0
-              pitch: 1
-              maxDistance: 15
-              loop: False
-        - !type:SpawnEntitiesBehavior
-          spawnInContainer: False
-          spawn:
-            ShardGlassReinforced:
-              min: 1
-              max: 1
-          offset: 0.5
-          transferForensics: False
-        - !type:DoActsBehavior
-          acts: Destruction
-      - triggersOnce: False
-        triggered: False
-        trigger: !type:DamageTrigger
-          damage: 100
-        behaviors:
-        - !type:DoActsBehavior
-          acts: Destruction
-  - uid: 936
-    mapInit: true
-    paused: true
+      pos: 21.5,0.5
+  - uid: 669
     components:
     - type: Transform
       parent: 1
       rot: 3.141592653589793 rad
-      pos: 19.5,0.5
-    - type: Destructible
-      thresholds:
-      - triggersOnce: False
-        triggered: False
-        trigger: !type:DamageTrigger
-          damage: 37
-        behaviors:
-        - !type:PlaySoundBehavior
-          sound: !type:SoundCollectionSpecifier
-            collection: WindowShatter
-            params:
-              volume: 0
-              variation: null
-              rolloffFactor: 1
-              referenceDistance: 1
-              playOffsetSeconds: 0
-              pitch: 1
-              maxDistance: 15
-              loop: False
-        - !type:SpawnEntitiesBehavior
-          spawnInContainer: False
-          spawn:
-            ShardGlassReinforced:
-              min: 1
-              max: 1
-          offset: 0.5
-          transferForensics: False
-        - !type:DoActsBehavior
-          acts: Destruction
-      - triggersOnce: False
-        triggered: False
-        trigger: !type:DamageTrigger
-          damage: 100
-        behaviors:
-        - !type:DoActsBehavior
-          acts: Destruction
+      pos: 23.5,0.5
 ...
