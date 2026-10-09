@@ -31,9 +31,9 @@
   description: 'What can brown do for you?'
   components:
   - type: Sprite
-    sprite: Clothing/Uniforms/Jumpsuits/Cargo/qm.rsi
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/qm.rsi # Moffstation
   - type: Clothing
-    sprite: Clothing/Uniforms/Jumpsuits/Cargo/qm.rsi
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/qm.rsi # Moffstation
 
 - type: entity
   parent: [ClothingUniformBase, BaseCommandContraband] #Moffstation - Remove folding
@@ -42,9 +42,9 @@
   description: A sharp turtleneck made for the hardy work environment of supply.
   components:
   - type: Sprite
-    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/qm.rsi # Moffstation
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/qm_turtleneck.rsi # Moffstation
   - type: Clothing
-    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/qm.rsi # Moffstation
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/qm_turtleneck.rsi # Moffstation
 
 - type: entity
   parent: [ClothingUniformBase, BaseCommandContraband]
