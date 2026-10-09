@@ -27,9 +27,9 @@
   description: A generic Command-colored jumpsuit not associated with any particular department.
   components:
   - type: Sprite
-    sprite: _Moffstation/Clothing/Uniforms/Jumpskirt/capformaldress.rsi # Moffstation - Command Outfit Resprite
+    sprite: Clothing/Uniforms/Jumpskirt/Command/commandgeneric.yml
   - type: Clothing
-    sprite: _Moffstation/Clothing/Uniforms/Jumpskirt/capformaldress.rsi # Moffstation - Command Outfit Resprite
+    sprite: Clothing/Uniforms/Jumpskirt/Command/commandgeneric.yml
 
 - type: entity
   parent: ClothingUniformSkirtBase
@@ -38,6 +38,6 @@
   description: A dress for special occasions.
   components:
   - type: Sprite
-    sprite: Clothing/Uniforms/Jumpskirts/Command/capformaldress.rsi
+    sprite: _Moffstation/Clothing/Uniforms/Jumpskirt/capformaldress.rsi # Moff
   - type: Clothing
-    sprite: Clothing/Uniforms/Jumpskirts/Command/capformaldress.rsi
+    sprite: _Moffstation/Clothing/Uniforms/Jumpskirt/capformaldress.rsi # Moff
