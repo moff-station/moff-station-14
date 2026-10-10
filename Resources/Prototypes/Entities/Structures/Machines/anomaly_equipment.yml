@@ -183,10 +183,12 @@
     fireBurstSize: 1
     fireBurstDelayMin: 2
     fireBurstDelayMax: 6
-  - type: NotifyOnNonFunctioning
-    locUnlocked: ape-unlocked-broadcast
-    radioChannel: Science
-    requirePowered: true
+  # Moff Start - remove babygating
+  # - type: NotifyOnNonFunctioning
+  #   locUnlocked: ape-unlocked-broadcast
+  #   radioChannel: Science
+  #   requirePowered: true
+  # Moff End
   - type: PowerState
     idlePowerDraw: 5
     workingPowerDraw: 100
