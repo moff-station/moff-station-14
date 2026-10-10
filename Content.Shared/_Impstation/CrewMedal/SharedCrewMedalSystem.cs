@@ -2,7 +2,7 @@ using Content.Shared.Examine;
 using Robust.Shared.Utility;
 namespace Content.Shared._Impstation.CrewMedal;
 
-public partial class SharedCrewMedalSystem : EntitySystem
+public class SharedCrewMedalSystemImpl : SharedCrewMedalSystem // Moff - change to not require partial, abstract, sealed, etc
 {
     [SubscribeLocalEvent]
     private void OnExamined(Entity<CrewMedalComponent> medal, ref ExaminedEvent args)
