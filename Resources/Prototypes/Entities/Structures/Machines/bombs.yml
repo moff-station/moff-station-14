@@ -85,7 +85,7 @@
       radius: 1.1
       softness: 1
     - type: Explosive
-      explosionType: Default
+      explosionType: Transparent # Funky RMC Explosions
       totalIntensity: 5.0
       intensitySlope: 5
       maxIntensity: 4
@@ -137,7 +137,7 @@
   suffix: fake
   components:
     - type: Explosive
-      explosionType: Default
+      explosionType: Transparent # Funky RMC Explosions
       totalIntensity: 5.0
       intensitySlope: 5
       maxIntensity: 4

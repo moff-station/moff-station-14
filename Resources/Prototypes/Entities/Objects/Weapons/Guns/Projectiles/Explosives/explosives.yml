@@ -10,7 +10,7 @@
     - state: frag
   - type: ExplodeOnTrigger
   - type: Explosive
-    explosionType: Default
+    explosionType: Transparent # Funky RMC Explosions
     maxIntensity: 40
     intensitySlope: 6
     totalIntensity: 200
@@ -32,7 +32,7 @@
     - state: frag
   - type: ExplodeOnTrigger
   - type: Explosive
-    explosionType: Default
+    explosionType: Transparent # Funky RMC Explosions
     maxIntensity: 2 # max 30 per tile
     intensitySlope: 1
     totalIntensity: 4 # 60 total damage to distribute over tiles
@@ -74,7 +74,7 @@
     - state: grenade
   - type: ExplodeOnTrigger
   - type: Explosive
-    explosionType: Default
+    explosionType: Transparent # Funky RMC Explosions
     totalIntensity: 150 # a ~2 tile radius
     intensitySlope: 5
     maxIntensity: 10
@@ -108,7 +108,7 @@
     - state: grenade
   - type: ExplodeOnTrigger
   - type: Explosive
-    explosionType: Default
+    explosionType: Transparent # Funky RMC Explosions
     totalIntensity: 50
     intensitySlope: 1
     maxIntensity: 5
@@ -144,7 +144,7 @@
     positional: true
   - type: ExplodeOnTrigger
   - type: Explosive
-    explosionType: Default
+    explosionType: Transparent # Funky RMC Explosions
     totalIntensity: 0.01 # a little pop
     intensitySlope: 1
     maxIntensity: 0.01
