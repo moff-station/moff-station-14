@@ -1,0 +1,89 @@
+## Steel tile
+
+- type: tile
+  id: FloorMoffSteelDiagonal
+  parent: BaseStationTile
+  name: tiles-steel-floor-diagonal #they didn't remove the locales for the removed tiles, so thats nice.
+  sprite: /Textures/_Moffstation/Tiles/Respritening/steel_diagonal.png
+  itemDrop: MoffFloorTileItemSteelDiagonal
+
+- type: tile
+  id: FloorMoffSteelDiagonalMini
+  parent: BaseStationTile
+  name: tiles-steel-floor-diagonal-mini
+  sprite: /Textures/_Moffstation/Tiles/Respritening/steel_diagonal_mini.png
+  itemDrop: MoffFloorTileItemSteelDiagonalMini
+
+- type: tile
+  id: FloorMoffSteelOffset
+  parent: BaseStationTile
+  name: tiles-steel-floor-offset
+  sprite: /Textures/_Moffstation/Tiles/Respritening/steel_offset.png
+  itemDrop: MoffFloorTileItemSteelOffset
+
+## White tile
+
+- type: tile
+  id: FloorMoffWhiteDiagonal
+  parent: BaseStationTile
+  name: tiles-white-floor-diagonal
+  sprite: /Textures/_Moffstation/Tiles/Respritening/white_diagonal.png
+  footstepSounds:
+    collection: FootstepTile
+  itemDrop: MoffFloorTileItemWhiteDiagonal
+
+- type: tile
+  id: FloorMoffWhiteDiagonalMini
+  parent: BaseStationTile
+  name: tiles-white-floor-diagonal-mini
+  sprite: /Textures/_Moffstation/Tiles/Respritening/white_diagonal_mini.png
+  footstepSounds:
+    collection: FootstepTile
+  itemDrop: MoffFloorTileItemWhiteDiagonalMini
+
+- type: tile
+  id: FloorMoffWhiteOffset
+  parent: BaseStationTile
+  name: tiles-white-floor-offset
+  sprite: /Textures/_Moffstation/Tiles/Respritening/white_offset.png
+  footstepSounds:
+    collection: FootstepTile
+  itemDrop: MoffFloorTileItemWhiteOffset
+
+## Dark Tile
+
+- type: tile
+  id: FloorMoffDarkDiagonal
+  parent: BaseStationTile
+  name: tiles-dark-floor-diagonal
+  sprite: /Textures/_Moffstation/Tiles/Respritening/dark_diagonal.png
+  footstepSounds:
+    collection: FootstepTile
+  itemDrop: MoffFloorTileItemDarkDiagonal
+
+- type: tile
+  id: FloorMoffDarkDiagonalMini
+  parent: BaseStationTile
+  name: tiles-dark-floor-diagonal-mini
+  sprite: /Textures/_Moffstation/Tiles/Respritening/dark_diagonal_mini.png
+  footstepSounds:
+    collection: FootstepTile
+  itemDrop: MoffFloorTileItemDarkDiagonalMini
+
+- type: tile
+  id: FloorMoffDarkOffset
+  parent: BaseStationTile
+  name: tiles-dark-floor-offset
+  sprite: /Textures/_Moffstation/Tiles/Respritening/dark_offset.png
+  footstepSounds:
+    collection: FootstepTile
+  itemDrop: MoffFloorTileItemDarkOffset
+
+## Other
+
+- type: tile
+  id: FloorMoffShowroom
+  parent: BaseStationTile
+  name: tiles-showroom-floor
+  sprite: /Textures/_Moffstation/Tiles/Respritening/showroom.png
+  itemDrop: MoffFloorTileItemShowroom

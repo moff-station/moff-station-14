@@ -1017,23 +1017,29 @@ CrateEngineeringThruster: CrateSpaceThruster
 BlastDoorXenoborg: BlastDoorXeno
 BlastDoorXenoborgOpen: BlastDoorXenoOpen
 
-### Dark Tiles
-FloorTileItemDarkDiagonalMini: FloorTileItemDark
-FloorTileItemDarkDiagonal: FloorTileItemDark
-FloorTileItemDarkOffset: FloorTileItemDark
+# Moff Start - Bring back these tiles
+# ### Dark Tiles
+# FloorTileItemDarkDiagonalMini: FloorTileItemDark
+# FloorTileItemDarkDiagonal: FloorTileItemDark
+# FloorTileItemDarkOffset: FloorTileItemDark
+# Moff End
 FloorTileItemDarkSlatsContinuous: FloorTileItemDarkVerticalSlatsBordered
 
-### Steel Tiles
-FloorTileItemSteelDiagonalMini: FloorTileItemSteel
-FloorTileItemSteelDiagonal: FloorTileItemSteel
-FloorTileItemSteelOffset: FloorTileItemSteel
-FloorTileItemShowroom: FloorTileItemSteel
+# Moff Start - Bring back these tiles
+# ### Steel Tiles
+# FloorTileItemSteelDiagonalMini: FloorTileItemSteel
+# FloorTileItemSteelDiagonal: FloorTileItemSteel
+# FloorTileItemSteelOffset: FloorTileItemSteel
+# FloorTileItemShowroom: FloorTileItemSteel
+# Moff End
 FloorTileItemSteelSlatsContinuous: FloorTileItemSteelVerticalSlatsBordered
 
-### White Tiles
-FloorTileItemWhiteDiagonalMini: FloorTileItemWhite
-FloorTileItemWhiteDiagonal: FloorTileItemWhite
-FloorTileItemWhiteOffset: FloorTileItemWhite
+# Moff Start - Bring back these tiles
+# ### White Tiles
+# FloorTileItemWhiteDiagonalMini: FloorTileItemWhite
+# FloorTileItemWhiteDiagonal: FloorTileItemWhite
+# FloorTileItemWhiteOffset: FloorTileItemWhite
+# Moff End
 FloorTileItemWhiteSlatsContinuous: FloorTileItemWhiteVerticalSlatsBordered
 
 ### Misc Tiles
@@ -1246,3 +1252,15 @@ JanitorServiceLight: null
 
 # Moff - 2026-10-02 - Moffstation poster change
 PosterSignups: PosterMoffsector
+
+# Moff - 2026-10-10 - Diagonal, Diagonal Mini, Offset, and Showroom tiles namespace change
+FloorTileItemSteelDiagonal: MoffFloorTileItemSteelDiagonal
+FloorTileItemSteelDiagonalMini: MoffFloorTileItemSteelDiagonalMini
+FloorTileItemSteelOffset: MoffFloorTileItemSteelOffset
+FloorTileItemDarkDiagonal: MoffFloorTileItemDarkDiagonal
+FloorTileItemDarkDiagonalMini: MoffFloorTileItemDarkDiagonalMini
+FloorTileItemDarkOffset: MoffFloorTileItemDarkOffset
+FloorTileItemWhiteDiagonal: MoffFloorTileItemWhiteDiagonal
+FloorTileItemWhiteDiagonalMini: MoffFloorTileItemWhiteDiagonalMini
+FloorTileItemWhiteOffset: MoffFloorTileItemWhiteOffset
+FloorTileItemShowroom: MoffFloorTileItemShowroom

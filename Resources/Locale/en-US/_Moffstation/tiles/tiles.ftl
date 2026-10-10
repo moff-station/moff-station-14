@@ -11,3 +11,15 @@ tiles-ironsand-packed = packed ironsand
 tiles-ironsand-paved = paved ironsand
 tiles-plasma-marble = plasmarble tile
 tiles-uranium-marble = uranium marble tile
+
+tiles-steel-floor-diagonal = steel diagonal tile
+tiles-steel-floor-diagonal-mini = steel diagonal mini-tile
+tiles-steel-floor-offset = steel offset tile
+tiles-white-floor-diagonal = white steel diagonal tile
+tiles-white-floor-diagonal-mini = white steel diagonal mini-tile
+tiles-white-floor-offset = white steel offset tile
+tiles-dark-floor-diagonal = dark steel diagonal tile
+tiles-dark-floor-diagonal-mini = dark steel diagonal mini-tile
+tiles-dark-floor-offset = dark steel offset tile
+
+tiles-showroom-floor = showroom

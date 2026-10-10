@@ -1,0 +1,66 @@
+# steel
+- type: stack
+  parent: BaseTileStack
+  id: MoffFloorTileSteelDiagonal
+  name: stack-steel-diagonal-tile
+  spawn: MoffFloorTileItemSteelDiagonal
+
+- type: stack
+  parent: BaseTileStack
+  id: MoffFloorTileSteelDiagonalMini
+  name: stack-steel-diagonal-mini-tile
+  spawn: MoffFloorTileItemSteelDiagonalMini
+
+- type: stack
+  parent: BaseTileStack
+  id: MoffFloorTileSteelOffset
+  name: stack-offset-steel-tile
+  spawn: MoffFloorTileItemSteelOffset
+
+
+# dark
+- type: stack
+  parent: BaseTileStack
+  id: MoffFloorTileDarkDiagonal
+  name: stack-dark-steel-diagonal-tile
+  spawn: MoffFloorTileItemDarkDiagonal
+
+- type: stack
+  parent: BaseTileStack
+  id: MoffFloorTileDarkDiagonalMini
+  name: stack-dark-steel-diagonal-mini-tile
+  spawn: MoffFloorTileItemDarkDiagonalMini
+
+- type: stack
+  parent: BaseTileStack
+  id: MoffFloorTileDarkOffset
+  name: stack-offset-dark-steel-tile
+  spawn: MoffFloorTileItemDarkOffset
+
+
+# white
+- type: stack
+  parent: BaseTileStack
+  id: MoffFloorTileWhiteDiagonal
+  name: stack-white-steel-diagonal-tile
+  spawn: MoffFloorTileItemWhiteDiagonal
+
+- type: stack
+  parent: BaseTileStack
+  id: MoffFloorTileWhiteDiagonalMini
+  name: stack-white-steel-diagonal-mini-tile
+  spawn: MoffFloorTileItemWhiteDiagonalMini
+
+- type: stack
+  parent: BaseTileStack
+  id: MoffFloorTileWhiteOffset
+  name: stack-offset-white-steel-tile
+  spawn: MoffFloorTileItemWhiteOffset
+
+
+# other
+- type: stack
+  parent: BaseTileStack
+  id: MoffFloorTileItemShowroom
+  name: stack-showroom-tile
+  spawn: MoffFloorTileItemShowroom
