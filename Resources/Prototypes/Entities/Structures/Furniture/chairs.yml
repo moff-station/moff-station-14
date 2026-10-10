@@ -227,7 +227,92 @@
     damageModifierSet: SteelMod
   - type: Destructible
     thresholds: *ThresholdsFurnitureNormalSteel
+# Moff - Start
+- type: entity
+  parent: [ ChairBase, StructureHealthFurniture ]
+  id: chairComfyGreen
+  name: green comfy chair
+  description: It looks comfy.
+  components:
+  - type: Sprite
+    state: comfy
+    color: "#4b7e6e"
+  - type: Construction
+    graph: Seat
+    node: chairComfy
+  - type: Damageable
+    damageModifierSet: SteelMod
+  - type: Destructible
+    thresholds: *ThresholdsFurnitureNormalSteel
 
+- type: entity
+  parent: [ ChairBase, StructureHealthFurniture ]
+  id: chairComfyRed
+  name: red comfy chair
+  description: It looks comfy.
+  components:
+  - type: Sprite
+    state: comfy
+    color: "#aa1c34"
+  - type: Construction
+    graph: Seat
+    node: chairComfy
+  - type: Damageable
+    damageModifierSet: SteelMod
+  - type: Destructible
+    thresholds: *ThresholdsFurnitureNormalSteel
+
+- type: entity
+  parent: [ ChairBase, StructureHealthFurniture ]
+  id: chairComfyBlack
+  name: black comfy chair
+  description: It looks comfy.
+  components:
+  - type: Sprite
+    state: comfy
+    color: "#3b334e"
+  - type: Construction
+    graph: Seat
+    node: chairComfy
+  - type: Damageable
+    damageModifierSet: SteelMod
+  - type: Destructible
+    thresholds: *ThresholdsFurnitureNormalSteel
+
+- type: entity
+  parent: [ ChairBase, StructureHealthFurniture ]
+  id: chairComfyBlue
+  name: blue comfy chair
+  description: It looks comfy.
+  components:
+  - type: Sprite
+    state: comfy
+    color: "#366694"
+  - type: Construction
+    graph: Seat
+    node: chairComfy
+  - type: Damageable
+    damageModifierSet: SteelMod
+  - type: Destructible
+    thresholds: *ThresholdsFurnitureNormalSteel
+
+- type: entity
+  parent: [ ChairBase, StructureHealthFurniture ]
+  id: chairComfyBrown
+  name: brown comfy chair
+  description: It looks comfy.
+  components:
+  - type: Sprite
+    state: comfy
+    color: "#91553b"
+  - type: Construction
+    graph: Seat
+    node: chairComfy
+  - type: Damageable
+    damageModifierSet: SteelMod
+  - type: Destructible
+    thresholds: *ThresholdsFurnitureNormalSteel
+# Moff - End
 - type: entity
   parent: [ ChairBase, StructureHealthFurniture ]
   id: ChairPilotSeat
