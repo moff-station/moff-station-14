@@ -1302,7 +1302,7 @@ entities:
       rot: 3.141592653589793 rad
       pos: -3.3889585,0.57125473
       parent: 1
-- proto: LiveLetLiveCircuitBoard
+- proto: UpstreamLiveLetLiveCircuitBoard # Moff
   entities:
   - uid: 183
     components:
@@ -1323,7 +1323,7 @@ entities:
     - type: Transform
       pos: -3.878443,5.4812536
       parent: 1
-- proto: NutimovCircuitBoard
+- proto: UpstreamNutimovCircuitBoard # Moff
   entities:
   - uid: 182
     components:

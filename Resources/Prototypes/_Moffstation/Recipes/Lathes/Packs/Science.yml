@@ -1,52 +1,50 @@
 ## Static
 
 - type: latheRecipePack
-  id: DefaultAILawBoardsStatic
+  id: MoffDefaultAILawBoardsStatic
   recipes:
-  - GameMasterCircuitBoard
-  - AsimovCircuitBoard
-  - CorporateCircuitBoard
-  - ArtistCircuitBoard
-  - NutimovCircuitBoard
-  - NTDefaultCircuitBoard
-  - LiveLetLiveCircuitBoard
-  - CommandmentCircuitBoard
-  - StationEfficiencyCircuitBoard
-  - RobocopCircuitBoard
-  - PaladinCircuitBoard
+  - MoffBureaucratCircuitBoard
+  - MoffCCTVCircuitBoard
+  - MoffChiefSiliconCircuitBoard
+  - MoffCluelessCircuitBoard
+  - MoffDogmovCircuitBoard
+  - MoffEmployeeCircuitBoard
+  - MoffFireSafetyCircuitBoard
+  - MoffKnowItAllCircuitBoard
+  - MoffMarketablePlushieCircuitBoard
+  - MoffPICircuitBoard
+  - MoffPollymovCircuitBoard
+  - MoffPranksimovCircuitBoard
+  - MoffQuarantineCircuitBoard
+  - MoffSchroedingersLawCircuitBoard
+  - MoffStreamerCircuitBoard
+  - MoffTheProfessionalCircuitBoard
+  - MoffTherapistCircuitBoard
+  - MoffUltimateEqualityCircuitBoard
+  - UpstreamArtistCircuitBoard
+  - UpstreamCommandmentCircuitBoard
+  - UpstreamCorporateCircuitBoard
+  - UpstreamCrewsimovCircuitBoard
+  - UpstreamGameMasterCircuitBoard
+  - UpstreamLiveLetLiveCircuitBoard
+  - UpstreamNTDefaultCircuitBoard
+  - UpstreamNutimovCircuitBoard
+  - UpstreamPaladinCircuitBoard
+  - UpstreamRobocopCircuitBoard
+  - UpstreamStationEfficiencyCircuitBoard
 
 - type: latheRecipePack
-  id: MoffStationAILawBoardsStatic
+  id: MoffDangerousAILawBoardsStatic
   recipes:
-  - BureaucratCircuitBoard
-  - CCTVCircuitBoard
-  - ChiefSiliconCircuitBoard
-  - CluelessCircuitBoard
-  - DogmovCircuitBoard
-  - EmployeeCircuitBoard
-  - FireSafetyCircuitBoard
-  - KnowItAllCircuitBoard
-  - MarketablePlushieCircuitBoard
-  - PICircuitBoard
-  - PollymovCircuitBoard
-  - PranksimovCircuitBoard
-  - QuarantineCircuitBoard
-  - SchroedingersLawCircuitBoard
-  - StreamerCircuitBoard
-  - TheProfessionalCircuitBoard
-  - TherapistCircuitBoard
-  - UltimateEqualityCircuitBoard
-
-- type: latheRecipePack
-  id: DangerousAILawBoardsStatic
-  recipes:
-  - AntimovCircuitBoard
-  - HeistCircuitBoard
-  - LiberationCircuitBoard
-  - OverlordCircuitBoard
-  - PirateCircuitBoard
-  - SpiderClanCircuitBoard
-  - SyndimovCircuitBoard
+  - MoffAntimovCircuitBoard
+  - MoffHeistCircuitBoard
+  - MoffLiberationCircuitBoard
+  - MoffMothershipCircuitBoard
+  - MoffOverlordCircuitBoard
+  - MoffPirateCircuitBoard
+  - MoffSpiderClanCircuitBoard
+  - MoffSyndimovCircuitBoard
+  - MoffXenoborgCircuitBoard
 
 - type: latheRecipePack
   id: LawProgrammer
