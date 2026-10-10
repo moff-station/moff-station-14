@@ -1,0 +1,102 @@
+<controls:FancyWindow
+    xmlns="https://spacestation14.io"
+    xmlns:controls="clr-namespace:Content.Client.UserInterface.Controls"
+    xmlns:customControls="clr-namespace:Content.Client.Administration.UI.CustomControls"
+    xmlns:moff="clr-namespace:Content.Client._Moffstation.Controls"
+    MinSize="480 260"
+    Resizable="False"
+    Title="{Loc 'gauss-fabricator-window-title'}">
+    <BoxContainer
+        Margin="12 8"
+        Orientation="Vertical"
+        SeparationOverride="8">
+
+        <BoxContainer Orientation="Vertical" SeparationOverride="4">
+            <BoxContainer Orientation="Horizontal">
+                <Label
+                    Text="{Loc 'gauss-fabricator-window-progress'}"
+                    StyleClasses="highlight"
+                    HorizontalExpand="True"/>
+                <Label Name="OutputRateLabel"/>
+            </BoxContainer>
+            <ProgressBar Name="OutputProgressBar"
+                HorizontalExpand="True"
+                MaxValue="1"
+                MinValue="0"
+                SetHeight="22"
+                VerticalAlignment="Center"/>
+        </BoxContainer>
+
+        <BoxContainer Orientation="Horizontal" SeparationOverride="10">
+
+            <BoxContainer Orientation="Vertical" SeparationOverride="8" HorizontalExpand="True">
+                <BoxContainer Orientation="Vertical" SeparationOverride="4">
+                    <GridContainer Columns="2">
+                        <Label
+                            Text="{Loc 'gauss-fabricator-window-draw-rate'}"
+                            StyleClasses="highlight"
+                            HorizontalExpand="True"/>
+                        <Label Name="DrawRateLabel" Text="0 W" MinWidth="72" Align="Right"/>
+                        <Label
+                            Text="{Loc 'gauss-fabricator-window-received'}"
+                            StyleClasses="highlight"
+                            HorizontalExpand="True"/>
+                        <Label Name="ReceivedLabel" Text="0 W" MinWidth="72" Align="Right"/>
+                    </GridContainer>
+                    <controls:SegmentedBarChart Name="DrawLevelBar"
+                        MinSize="0 22"
+                        HorizontalExpand="True"
+                        MinSmallNotchScreenDistance="3"
+                        SmallNotchHeight="0.15"
+                        MediumNotchHeight="0.35"
+                        BigNotchHeight="0.35"/>
+                </BoxContainer>
+
+                <BoxContainer Name="AdjustmentButtons"
+                    Orientation="Vertical"
+                    HorizontalExpand="True"
+                    SeparationOverride="2"/>
+            </BoxContainer>
+
+            <customControls:VSeparator/>
+
+            <BoxContainer Orientation="Horizontal" SeparationOverride="10">
+                <BoxContainer Orientation="Vertical" SeparationOverride="4">
+                    <Label
+                        Text="{Loc 'gauss-fabricator-window-temperature'}"
+                        StyleClasses="highlight"
+                        HorizontalAlignment="Center"/>
+                    <moff:OptimalRangeBar Name="TemperatureBar"
+                        SetWidth="104"
+                        MinSize="104 140"
+                        HorizontalAlignment="Center"
+                        VerticalExpand="True"/>
+                </BoxContainer>
+                <BoxContainer Orientation="Vertical" SeparationOverride="4">
+                    <Label
+                        Text="{Loc 'gauss-fabricator-window-pressure'}"
+                        StyleClasses="highlight"
+                        HorizontalAlignment="Center"/>
+                    <moff:OptimalRangeBar Name="PressureBar"
+                        SetWidth="104"
+                        MinSize="104 140"
+                        HorizontalAlignment="Center"
+                        VerticalExpand="True"/>
+                </BoxContainer>
+            </BoxContainer>
+
+        </BoxContainer>
+
+        <BoxContainer Orientation="Horizontal" SeparationOverride="4">
+            <Button Name="OnButton"
+                Text="{Loc 'gauss-fabricator-window-on'}"
+                StyleClasses="OpenRight"
+                HorizontalExpand="True"/>
+            <Button Name="OffButton"
+                Text="{Loc 'gauss-fabricator-window-off'}"
+                StyleClasses="OpenLeft"
+                HorizontalExpand="True"/>
+        </BoxContainer>
+
+    </BoxContainer>
+</controls:FancyWindow>
