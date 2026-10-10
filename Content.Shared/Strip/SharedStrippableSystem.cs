@@ -1,5 +1,6 @@
 using System.Linq;
 using Content.Shared.Administration.Logs;
+using Content.Shared._Starfall.Offering;
 using Content.Shared.Chat;
 using Content.Shared.CombatMode;
 using Content.Shared.Cuffs;
@@ -442,7 +443,13 @@ public abstract partial class SharedStrippableSystem : EntitySystem
             DuplicateCondition = DuplicateConditions.SameTool
         };
 
-        _doAfterSystem.TryStartDoAfter(doAfterArgs);
+        // Moff Start - Item offering
+        if (!_doAfterSystem.TryStartDoAfter(doAfterArgs, out var doAfterId))
+            return;
+
+        var offerEv = new StripHandInsertStartedEvent(target.Owner, held, doAfterId.Value.Index);
+        RaiseLocalEvent(user.Owner, ref offerEv);
+        // Moff end
     }
 
     /// <summary>
@@ -525,6 +532,13 @@ public abstract partial class SharedStrippableSystem : EntitySystem
 
         if (!CanStripRemoveHand(user, target, item, handName))
             return;
+
+        // Moff Start - Item offering
+        var beforeEv = new BeforeStripHandRemoveEvent(user.Owner, target.Owner);
+        RaiseLocalEvent(item, ref beforeEv);
+        if (beforeEv.Handled)
+            return;
+        // Moff end
 
         var (time, stealth) = GetStripTimeModifiers(user, target, null, targetStrippable.HandStripDelay);
 

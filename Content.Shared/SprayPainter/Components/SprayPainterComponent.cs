@@ -60,10 +60,10 @@ public sealed partial class SprayPainterComponent : Component
     public TimeSpan GasTankSprayTime = TimeSpan.FromSeconds(1);
 
     /// <summary>
-    /// The currently configured <see cref="GasTankVisuals"/> to which painted tanks will be changed.
+    /// The currently configured <see cref="GasHolderVisuals"/> to which painted tanks will be changed.
     /// </summary>
     [DataField, AutoNetworkedField]
-    public GasTankVisuals GasTankVisuals;
+    public GasHolderVisuals GasHolderVisuals;
 
     /// <summary>
     /// The cost of spray painting a gas tank, in charges.

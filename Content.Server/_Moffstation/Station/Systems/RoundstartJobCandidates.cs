@@ -18,8 +18,8 @@ namespace Content.Server._Moffstation.Station.Systems;
 /// <param name="random">The RNG to use when picking candidates. The RNG is used to choose between two candidates which
 /// are otherwise indistinguishable to the pool.</param>
 /// <param name="isUserAllowedJob">
-/// A predicate which is used to determine if the given user is allowed to be assigned the given job. This check is
-/// always honored, regardless of picking method. It should check things like job bans or playtime restrictions.
+/// A predicate which is used to determine if the given user and character is allowed to be assigned the given job. This
+/// check is always honored, regardless of picking method. It should check things like job bans or playtime restrictions.
 /// </param>
 /// <param name="sameDepartmentJobs">
 /// This function is used to retrieve alternate jobs allowed when using <see cref="PickSameDepartmentCandidate"/>.
@@ -27,7 +27,7 @@ namespace Content.Server._Moffstation.Station.Systems;
 /// </param>
 public sealed partial class RoundstartJobCandidates(
     IRobustRandom random,
-    Predicate<(NetUserId, ProtoId<JobPrototype>)> isUserAllowedJob,
+    Predicate<(NetUserId, HumanoidCharacterProfile, ProtoId<JobPrototype>)> isUserAllowedJob,
     Func<ProtoId<JobPrototype>, IEnumerable<ProtoId<JobPrototype>>> sameDepartmentJobs
 )
 {
@@ -37,9 +37,9 @@ public sealed partial class RoundstartJobCandidates(
     /// <seealso cref="SetCandidates"/>
     public RoundstartJobCandidates(
         IRobustRandom random,
-        Predicate<(NetUserId, ProtoId<JobPrototype>)> isUserAllowedJob,
+        Predicate<(NetUserId, HumanoidCharacterProfile, ProtoId<JobPrototype>)> isUserAllowedJob,
         Func<ProtoId<JobPrototype>, IEnumerable<ProtoId<JobPrototype>>> sameDepartmentJobs,
-        IEnumerable<(NetUserId, HumanoidCharacterProfile)> profiles,
+        IEnumerable<(NetUserId, HashSet<HumanoidCharacterProfile>)> profiles,
         Func<NetUserId, IEnumerable<ProtoId<JobPrototype>>, IEnumerable<ProtoId<JobPrototype>>> filterAllowedJobs,
         Func<NetUserId, ProtoId<JobPrototype>, HumanoidCharacterProfile, JobPriority>
             getEffectivePriorityForMoffMultiCharacterSelection
@@ -48,18 +48,21 @@ public sealed partial class RoundstartJobCandidates(
         SetCandidates(profiles, filterAllowedJobs, getEffectivePriorityForMoffMultiCharacterSelection);
     }
 
-    /// The basic user-to-profile collection of candidates. Used to pick candidates without caring about priorities, etc.
-    private readonly Dictionary<NetUserId, HumanoidCharacterProfile> _candidates = new();
+    /// The basic user-to-profiles collection of candidates. Used to pick candidates without caring about priorities, etc.
+    private readonly Dictionary<NetUserId, HashSet<HumanoidCharacterProfile>> _candidates = new();
 
-    /// A collection of users keyed by job and priority. Used to select player jobs by their requested priorities.
-    private readonly Dictionary<ProtoId<JobPrototype>, Dictionary<JobPriority, HashSet<NetUserId>>>
+    public IReadOnlyDictionary<NetUserId, HashSet<HumanoidCharacterProfile>> Candidates => _candidates;
+
+    /// A collection of users+characters keyed by job and priority. Used to select player jobs by their requested
+    /// priorities.
+    private readonly Dictionary<ProtoId<JobPrototype>, Dictionary<JobPriority, HashSet<PlayerCharacter>>>
         _candidatesByJobAndPriority = new();
 
     public bool IsEmpty() => _candidates.Count == 0 &&
                              _candidatesByJobAndPriority.Values.Sum(usersByPriority =>
                                  usersByPriority.Values.Sum(users => users.Count)) == 0;
 
-    /// Removes a candidate from this pool, meaning it cannot be selected by <see cref="GetCandidate"/> or similar
+    /// Removes a candidate from this pool, meaning it cannot be selected by <see cref="PickCandidate"/> or similar
     /// functions.
     public bool Remove(NetUserId candidate)
     {
@@ -70,7 +73,7 @@ public sealed partial class RoundstartJobCandidates(
         {
             foreach (var users in usersByPriority.Values)
             {
-                r2 |= users.Remove(candidate);
+                r2 |= users.RemoveWhere(it => it.Player == candidate) > 0;
             }
         }
 
@@ -78,7 +81,7 @@ public sealed partial class RoundstartJobCandidates(
     }
 
     /// Picks a candidate from this pool for <paramref name="job"/> at <paramref name="priority"/>.
-    public NetUserId? PickCandidate(ProtoId<JobPrototype> job, JobPriority priority)
+    public PlayerCharacter? PickCandidate(ProtoId<JobPrototype> job, JobPriority priority)
     {
         // TODO Maybe "count down" from priorities so that people with higher priorities are considered.
         //  Right now, the assumption is that those people would've been picked already, were they to exist.
@@ -95,27 +98,28 @@ public sealed partial class RoundstartJobCandidates(
     /// Picks a candidate from this pool for <paramref name="job"/> at <paramref name="priority"/>. The candidates
     /// considered include users who have enabled any job that is returned by <see cref="sameDepartmentJobs"/> when
     /// given <paramref name="job"/>.
-    public NetUserId? PickSameDepartmentCandidate(ProtoId<JobPrototype> job, JobPriority priority)
+    public PlayerCharacter? PickSameDepartmentCandidate(ProtoId<JobPrototype> job, JobPriority priority)
     {
         var jobsInSameDept = sameDepartmentJobs(job);
-        var matchingProfiles = _candidates
-            .Where(pair =>
-                pair.Value.JobPriorities.Any(preference =>
-                    preference.Value == priority && jobsInSameDept.Contains(preference.Key)
-                )
-            )
-            .Select(it => it.Key);
-        return Pick(job, matchingProfiles);
+        var matchingPlayerCharacters = _candidates
+            .SelectMany(it => it.Value.Select(it2 => new PlayerCharacter(it.Key, it2)))
+            .Where(pair => pair.Character.JobPriorities.Any(preference =>
+                preference.Value == priority && jobsInSameDept.Contains(preference.Key)));
+        return Pick(job, matchingPlayerCharacters);
     }
 
     /// Picks a candidate from this pool for <paramref name="job"/> from absolutely all candidates in this pool. The
     /// only criteria applied is whether or not <see cref="isUserAllowedJob"/> passes for the job and user.
-    public NetUserId? PickCandidateIgnoringPreferences(ProtoId<JobPrototype> job) => Pick(job, _candidates.Keys);
+    public PlayerCharacter? PickCandidateIgnoringPreferences(ProtoId<JobPrototype> job) => Pick(
+        job,
+        _candidates.SelectMany(it => it.Value.Select(character => new PlayerCharacter(it.Key, character)))
+    );
 
-    private NetUserId? Pick(ProtoId<JobPrototype> job, IEnumerable<NetUserId> candidates)
+    private PlayerCharacter? Pick(ProtoId<JobPrototype> job, IEnumerable<PlayerCharacter> candidates)
     {
-        var eligibleCandidates = candidates.Where(userId => isUserAllowedJob((userId, job))).ToHashSet();
-        return eligibleCandidates.Count > 0 ? random.Pick(eligibleCandidates) : null;
+        var eligibleCandidates = candidates.Where(userId => isUserAllowedJob((userId.Player, userId.Character, job)))
+            .ToArray();
+        return eligibleCandidates.Length > 0 ? random.Pick(eligibleCandidates) : null;
     }
 
     /// <summary>
@@ -136,9 +140,8 @@ public sealed partial class RoundstartJobCandidates(
     /// Higher order functions and functional programming, yo.
     /// </remarks>
     public void SetCandidates(
-        IEnumerable<(NetUserId, HumanoidCharacterProfile)> profiles,
-        Func<NetUserId, IEnumerable<ProtoId<JobPrototype>>, IEnumerable<ProtoId<JobPrototype>>>
-            filterAllowedJobs,
+        IEnumerable<(NetUserId, HashSet<HumanoidCharacterProfile>)> profiles,
+        Func<NetUserId, IEnumerable<ProtoId<JobPrototype>>, IEnumerable<ProtoId<JobPrototype>>> filterAllowedJobs,
         Func<NetUserId, ProtoId<JobPrototype>, HumanoidCharacterProfile, JobPriority>
             getEffectivePriorityForMoffMultiCharacterSelection
     )
@@ -146,42 +149,43 @@ public sealed partial class RoundstartJobCandidates(
         _candidates.Clear();
         _candidatesByJobAndPriority.Clear();
 
-        // Add each profile...
-        foreach (var (player, profile) in profiles)
+        // Add each player...
+        foreach (var (player, userProfiles) in profiles)
         {
-            // ... by adding it to the basic user-to-profile dict...
-            _candidates[player] = profile;
+            // ... by adding all their profiles to the basic user-to-profiles dict...
+            _candidates[player] = userProfiles;
 
-            // ... and by calculating the viability of actual job selections they've made.
-            foreach (var jobId in filterAllowedJobs(player, profile.JobPriorities.Keys))
+            // ... and by adding each job from each profile to the by-job dict.
+            foreach (var profile in userProfiles)
             {
-                // Moff Start - Job priority is a property of the player, not of the character.
-                // Also note that profileJobs may now contain jobs which came from the player's
-                // *other* active characters (see MoffJobCandidateSystem), so indexing this
-                // profile's own priorities would throw.
-                var priority = getEffectivePriorityForMoffMultiCharacterSelection(player, jobId, profile);
+                // Only add the jobs that're allowed.
+                var allowedJobs = filterAllowedJobs(player, profile.JobPriorities.Keys);
+                foreach (var jobId in allowedJobs)
+                {
+                    var priority = getEffectivePriorityForMoffMultiCharacterSelection(player, jobId, profile);
+                    if (priority == JobPriority.Never)
+                        continue;
 
-                if (priority == JobPriority.Never)
-                    continue;
+                    if (!isUserAllowedJob((player, profile, jobId)))
+                        continue;
 
-                // if (!profile.JobPriorities.TryGetValue(jobId, out var priority) || priority == JobPriority.Never)
-                //     continue;
-                // Moff end
-
-                if (!isUserAllowedJob((player, jobId)))
-                    continue;
-
-                AddToCandidates(jobId, player, priority);
+                    AddToCandidates(jobId, player, profile, priority);
+                }
             }
         }
 
-        // This function just adds the job/player/priority combination to `_candidatesByJobAndPriority` while dealing
+        // This function just adds the job/player/character/priority combination to `_candidatesByJobAndPriority` while dealing
         // with missing intermediate dictionaries.
-        void AddToCandidates(ProtoId<JobPrototype> job, NetUserId player, JobPriority priority)
+        void AddToCandidates(
+            ProtoId<JobPrototype> job,
+            NetUserId player,
+            HumanoidCharacterProfile profile,
+            JobPriority priority
+        )
         {
             if (!_candidatesByJobAndPriority.TryGetValue(job, out var priorities))
             {
-                priorities = new Dictionary<JobPriority, HashSet<NetUserId>>();
+                priorities = new Dictionary<JobPriority, HashSet<PlayerCharacter>>();
                 _candidatesByJobAndPriority.Add(job, priorities);
             }
 
@@ -191,7 +195,7 @@ public sealed partial class RoundstartJobCandidates(
                 priorities.Add(priority, players);
             }
 
-            players.Add(player);
+            players.Add(new PlayerCharacter(player, profile));
         }
     }
 }
@@ -278,3 +282,7 @@ public readonly record struct RoundstartStationJob(
         }
     }
 }
+
+/// Ye olde newtype of <c>(<see cref="NetUserId"/>, <see cref="HumanoidCharacterProfile"/>)</c>.
+/// Just slightly smaller to type and easier to understand compared to the tuple.
+public readonly record struct PlayerCharacter(NetUserId Player, HumanoidCharacterProfile Character);

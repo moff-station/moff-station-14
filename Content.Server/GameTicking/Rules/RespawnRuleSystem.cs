@@ -1,3 +1,4 @@
+using Content.Server._Moffstation.Station;
 using Content.Server.Chat.Managers;
 using Content.Server.Database.Migrations.Postgres;
 using Content.Server.GameTicking.Rules.Components;
@@ -54,7 +55,7 @@ public sealed partial class RespawnRuleSystem : GameRuleSystem<RespawnDeadRuleCo
 
                 if (session.GetMind() is { } mind && TryComp<MindComponent>(mind, out var mindComp) && mindComp.OwnedEntity.HasValue)
                     QueueDel(mindComp.OwnedEntity.Value);
-                GameTicker.MakeJoinGame(session, station, silent: true);
+                GameTicker.MakeJoinGame(session, profileIndex: null, station, silent: true); // Moff - Multi character selection
                 tracker.RespawnQueue.Remove(player);
             }
         }
@@ -109,7 +110,7 @@ public sealed partial class RespawnRuleSystem : GameRuleSystem<RespawnDeadRuleCo
 
             if (respawnTracker.Comp.DeleteBody)
                 QueueDel(player);
-            GameTicker.MakeJoinGame(player.Comp.PlayerSession, station, silent: true);
+            GameTicker.MakeJoinGame(player.Comp.PlayerSession, profileIndex: null, station, silent: true); // Moff - Multi character selection
             return false;
         }
 
