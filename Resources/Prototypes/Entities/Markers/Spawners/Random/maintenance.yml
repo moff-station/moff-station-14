@@ -91,6 +91,14 @@
       - id: ClothingShoesTourist
       - id: ClothingUniformJumpsuitLoungewear
       - id: ClothingHeadHatCowboyRed
+        # Moffstation - Start - Vinyls and CDs to Maints loot
+      - !type:NestedSelector
+        weight: 4
+        tableId: RandomVinylSleeve
+      - !type:NestedSelector
+        weight: 4
+        tableId: RandomCDDisc
+        # Moffstation - End
     # Uncommon Group
     - !type:GroupSelector
       weight: 23

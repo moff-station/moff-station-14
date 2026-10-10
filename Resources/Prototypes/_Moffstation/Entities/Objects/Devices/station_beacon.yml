@@ -8,6 +8,7 @@
   - type: NavMapBeacon
     text: Pirate Cove
 
+# Laundromats
 - type: entity
   parent: DefaultStationBeaconService
   id: DefaultStationBeaconLaundromat
@@ -15,3 +16,12 @@
   components:
   - type: NavMapBeacon
     text: Laundromat
+
+# Station Radio
+- type: entity
+  parent: DefaultStationBeaconService
+  id: DefaultStationBeaconRadioHost
+  suffix: Radio Host
+  components:
+  - type: NavMapBeacon
+    text: Radio Host
