@@ -123,26 +123,22 @@
         - id: DrinkShakeWhite
         - id: DrinkTheMartinez
         - id: DrinkMoonshineGlass
-        # Moffstation - Start - Add Lemon, Lime and Bitters.
-        - id: LemonLimeBittersGlass
-        - id: PinkGinGlass
-        - id: PlatersPunchGlass
-        - id: BreathalyzerGlass
-        - id: CorpseReviverGlass
-        - id: PrairieCocktailGlass
-        - id: MossySpecialGlass
-        - id: DrinkScrantonSpecialGlass
-        - id: ApexColaGlass
-        - id: CocoonGlass
-        - id: CoughDropGlass
-        - id: FertilizerGlass
-        - id: GelatinGlass
-        - id: MeatAnomalyGlass
-        - id: MeatPulpGlass
-        - id: RussianMothroachGlass
-        - id: SolarHurricaneGlass
-        - id: UprootingGlass
-        # Moffstation - End
+        # Moff Start - Moff Exclusive Common Drinks
+        - id: MoffLemonLimeBittersGlass
+        - id: MoffPinkGinGlass
+        - id: MoffPlatersPunchGlass
+        - id: MoffPrairieCocktailGlass
+        - id: MoffMossySpecialGlass
+        - id: MoffScrantonSpecialGlass
+        - id: MoffApexColaGlass
+        - id: MoffCocoonGlass
+        - id: MoffCoughDropGlass
+        - id: MoffFertilizerGlass
+        - id: MoffGelatinGlass
+        - id: MoffRussianMothroachGlass
+        - id: MoffSolarHurricaneGlass
+        - id: MoffUprootingGlass
+        # Moff End
       - !type:GroupSelector #rare
         weight: 0.05
         children:
@@ -159,5 +155,10 @@
         - id: DrinkHoochGlass
         - id: DrinkBeepskySmashGlass
         - id: DrinkBacchusBlessing
-        - id: DrinkWizardAleFull # Moffstation - Species Drinks
+        # Moff Start - Moff Exclusive Rare Drinks
+        - id: MoffBreathalyzerGlass
+        - id: MoffCorpseReviverGlass
+        - id: MoffMeatAnomalyGlass
+        - id: MoffMeatPulpGlass
+        # Moff End
     offset: 0.0

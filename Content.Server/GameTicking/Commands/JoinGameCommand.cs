@@ -43,7 +43,7 @@ namespace Content.Server.GameTicking.Commands
                 return;
             }
             */
-            if (!TryTakeMoffSlotArg(shell, ref args, out var charSlot))
+            if (!TryTakeMoffSlotArg(shell, ref args, out var cs) || cs is not {} charSlot) // Moff - Multi character selection
                 return;
             // Moff end
 
@@ -84,18 +84,12 @@ namespace Content.Server.GameTicking.Commands
                 return;
             }
 
-            // Moff Start - Multi-character selection: pin the chosen character before spawning, or
-            // the picker would roll a random active one instead.
-            if (charSlot != null && !TrySetMoffCharacter(shell, player, charSlot.Value))
-                return;
-            // Moff end
-
             if (_adminManager.IsAdmin(player) && _cfg.GetCVar(CCVars.AdminDeadminOnJoin))
             {
                 _adminManager.DeAdmin(player);
             }
 
-            ticker.MakeJoinGame(player, station, id);
+            ticker.MakeJoinGame(player, charSlot, station, id); // Moff - Multi character selection
         }
     }
 }
