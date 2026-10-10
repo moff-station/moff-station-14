@@ -1,0 +1,142 @@
+- type: entity
+  parent: FloorTileItemSteel
+  id: MoffFloorTileItemSteelDiagonal
+  name: steel diagonal tile
+  components:
+  - type: Sprite
+    state: steel-diagonal
+  - type: FloorTile
+    outputs:
+    - Plating
+    - FloorMoffSteelDiagonal
+  - type: Stack
+    stackType: MoffFloorTileItemSteelDiagonal
+
+- type: entity
+  parent: FloorTileItemSteel
+  id: MoffFloorTileItemSteelDiagonalMini
+  name: steel mini diagonal tile
+  components:
+  - type: Sprite
+    state: steel-diagonal-mini
+  - type: FloorTile
+    outputs:
+    - Plating
+    - FloorMoffSteelDiagonalMini
+  - type: Stack
+    stackType: MoffFloorTileItemSteelDiagonalMini
+
+- type: entity
+  parent: FloorTileItemSteel
+  id: MoffFloorTileItemSteelOffset
+  name: steel offset tile
+  components:
+  - type: Sprite
+    state: steel-offset
+  - type: FloorTile
+    outputs:
+    - Plating
+    - FloorMoffSteelOffset
+  - type: Stack
+    stackType: MoffFloorTileItemSteelOffset
+
+
+- type: entity
+  parent: FloorTileItemDark
+  id: MoffFloorTileItemDarkDiagonal
+  name: dark steel diagonal tile
+  components:
+  - type: Sprite
+    state: dark-diagonal
+  - type: FloorTile
+    outputs:
+    - Plating
+    - FloorMoffDarkDiagonal
+  - type: Stack
+    stackType: MoffFloorTileItemDarkDiagonal
+
+- type: entity
+  parent: FloorTileItemDark
+  id: MoffFloorTileItemDarkDiagonalMini
+  name: dark steel mini diagonal tile
+  components:
+  - type: Sprite
+    state: dark-diagonal-mini
+  - type: FloorTile
+    outputs:
+    - Plating
+    - FloorMoffDarkDiagonalMini
+  - type: Stack
+    stackType: MoffFloorTileItemDarkDiagonalMini
+
+- type: entity
+  parent: FloorTileItemDark
+  id: MoffFloorTileItemDarkOffset
+  name: dark steel offset tile
+  components:
+  - type: Sprite
+    state: dark-offset
+  - type: FloorTile
+    outputs:
+    - Plating
+    - FloorMoffDarkOffset
+  - type: Stack
+    stackType: MoffFloorTileItemDarkOffset
+
+
+- type: entity
+  parent: FloorTileItemWhite
+  id: MoffFloorTileItemWhiteDiagonal
+  name: white steel diagonal tile
+  components:
+  - type: Sprite
+    state: white-diagonal
+  - type: FloorTile
+    outputs:
+    - Plating
+    - FloorMoffWhiteDiagonal
+  - type: Stack
+    stackType: MoffFloorTileItemWhiteDiagonal
+
+- type: entity
+  parent: FloorTileItemWhite
+  id: MoffFloorTileItemWhiteDiagonalMini
+  name: white steel mini diagonal tile
+  components:
+  - type: Sprite
+    state: white-diagonal-mini
+  - type: FloorTile
+    outputs:
+    - Plating
+    - FloorMoffWhiteDiagonalMini
+  - type: Stack
+    stackType: MoffFloorTileItemWhiteDiagonalMini
+
+- type: entity
+  parent: FloorTileItemWhite
+  id: MoffFloorTileItemWhiteOffset
+  name: white steel offset tile
+  components:
+  - type: Sprite
+    state: white-offset
+  - type: FloorTile
+    outputs:
+    - Plating
+    - FloorMoffWhiteOffset
+  - type: Stack
+    stackType: MoffFloorTileItemWhiteOffset
+
+
+- type: entity
+  parent: FloorTileItemSteel
+  id: MoffFloorTileItemShowroom
+  name: showroom tile
+  components:
+  - type: Sprite
+    state: showroom
+  - type: FloorTile
+    outputs:
+    - Plating
+    - FloorMoffShowroom
+  - type: Stack
+    stackType: MoffFloorTileItemShowroom

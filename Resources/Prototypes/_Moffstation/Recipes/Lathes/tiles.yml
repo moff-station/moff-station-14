@@ -51,3 +51,59 @@
   parent: BaseConcreteTileRecipe
   id: FloorTileItemMoffIronsandConcreteSmooth
   result: FloorTileItemMoffIronsandConcreteSmooth
+
+# Diagonal & Offset
+
+- type: latheRecipe
+  parent: BaseSteelTileRecipe
+  id: MoffFloorTileItemSteelDiagonal
+  result: MoffFloorTileItemSteelDiagonal
+
+- type: latheRecipe
+  parent: BaseSteelTileRecipe
+  id: MoffFloorTileItemSteelDiagonalMini
+  result: MoffFloorTileItemSteelDiagonalMini
+
+- type: latheRecipe
+  parent: BaseSteelTileRecipe
+  id: MoffFloorTileItemSteelOffset
+  result: MoffFloorTileItemSteelOffset
+
+
+- type: latheRecipe
+  parent: BaseDarkTileRecipe
+  id: MoffFloorTileItemDarkDiagonal
+  result: MoffFloorTileItemDarkDiagonal
+
+- type: latheRecipe
+  parent: BaseDarkTileRecipe
+  id: MoffFloorTileItemDarkDiagonalMini
+  result: MoffFloorTileItemDarkDiagonalMini
+
+- type: latheRecipe
+  parent: BaseDarkTileRecipe
+  id: MoffFloorTileItemDarkOffset
+  result: MoffFloorTileItemDarkOffset
+
+
+- type: latheRecipe
+  parent: BaseWhiteTileRecipe
+  id: MoffFloorTileItemWhiteDiagonal
+  result: MoffFloorTileItemWhiteDiagonal
+
+- type: latheRecipe
+  parent: BaseWhiteTileRecipe
+  id: MoffFloorTileItemWhiteDiagonalMini
+  result: MoffFloorTileItemWhiteDiagonalMini
+
+- type: latheRecipe
+  parent: BaseWhiteTileRecipe
+  id: MoffFloorTileItemWhiteOffset
+  result: MoffFloorTileItemWhiteOffset
+
+# Showroom
+
+- type: latheRecipe
+  parent: BaseSteelTileRecipe
+  id: MoffFloorTileItemShowroom
+  result: MoffFloorTileItemShowroom
