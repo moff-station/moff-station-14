@@ -1,0 +1,15 @@
+- type: constructionGraph
+  id: BucketWood
+  start: start
+  graph:
+  - node: start
+    edges:
+    - to: bucketwood
+      steps:
+      - material: WoodPlank
+        amount: 6
+      - material: Cloth
+        amount: 3
+        doAfter: 5
+  - node: bucketwood
+    entity: MoffBucketWood

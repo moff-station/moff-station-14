@@ -1,6 +1,6 @@
 - type: reagent
   parent: BaseDrink
-  id: LemonLimeBitters
+  id: MoffLemonLimeBitters
   name: reagent-name-lemon-lime-bitters
   desc: reagent-desc-lemon-lime-bitters
   physicalDesc: reagent-physical-desc-fizzy
@@ -21,8 +21,8 @@
         factor: 2
 
 - type: reagent
-  parent: BaseEthyl
-  id: Breathalyzer
+  parent: MoffBaseEthyl
+  id: MoffBreathalyzer
   name: reagent-name-breathalyzer
   desc: reagent-desc-breathalyzer
   physicalDesc: reagent-physical-desc-airy
@@ -42,8 +42,8 @@
         factor: 2
 
 - type: reagent
-  parent: BaseEthyl
-  id: PrairieCocktail
+  parent: MoffBaseEthyl
+  id: MoffPrairieCocktail
   name: reagent-name-prairie-cocktail
   desc: reagent-desc-prairie-cocktail
   physicalDesc: reagent-physical-desc-unappetizing
@@ -63,7 +63,7 @@
 
 - type: reagent
   parent: BaseDrink
-  id: ApexCola
+  id: MoffApexCola
   name: reagent-name-apex-cola
   desc: reagent-desc-apex-cola
   physicalDesc: reagent-physical-desc-murky
@@ -82,7 +82,7 @@
 
 - type: reagent
   parent: BaseDrink
-  id: Cocoon
+  id: MoffCocoon
   name: reagent-name-cocoon
   desc: reagent-desc-cocoon
   physicalDesc: reagent-physical-desc-sticky
@@ -101,7 +101,7 @@
 
 - type: reagent
   parent: BaseDrink
-  id: CoughDrop
+  id: MoffCoughDrop
   name: reagent-name-cough-drop
   desc: reagent-desc-cough-drop
   physicalDesc: reagent-physical-desc-crisp
@@ -125,7 +125,7 @@
 
 - type: reagent
   parent: BaseDrink
-  id: Gelatin
+  id: MoffGelatin
   name: reagent-name-gelatin
   desc: reagent-desc-gelatin
   physicalDesc: reagent-physical-desc-wobbly
@@ -146,7 +146,7 @@
 
 - type: reagent
   parent: BaseDrink
-  id: MeatPulp
+  id: MoffMeatPulp
   name: reagent-name-meat-pulp
   desc: reagent-desc-meat-pulp
   physicalDesc: reagent-physical-desc-fleshy
@@ -166,7 +166,7 @@
 
 - type: reagent
   parent: BaseDrink
-  id: Uprooting
+  id: MoffUprooting
   name: reagent-name-uprooting
   desc: reagent-desc-uprooting
   physicalDesc: reagent-physical-desc-creamy

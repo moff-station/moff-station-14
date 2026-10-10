@@ -22,11 +22,12 @@ public sealed partial class OwOAccentSystem : RelayAccentSystem<OwOAccentCompone
             { "you", "wu" },
         }.ToFrozenDictionary();
 
-    public override string? Accentuate(string message, Entity<OwOAccentComponent>? ent = null) // Moffstation - add ? to string
+    public override string Accentuate(string message, Entity<OwOAccentComponent>? ent = null)
     {
-        _ = ent.HasValue // Moffstation - remove var random per Rider suggestions
+        /* Moffstation - remove unused code in accent
+         _ = ent.HasValue
             ? SharedRandomExtensions.PredictedRandom(_timing, GetNetEntity(ent.Value))
-            : _random;
+            : _random; */
 
         foreach (var (word, repl) in SpecialWords)
         {
@@ -38,8 +39,11 @@ public sealed partial class OwOAccentSystem : RelayAccentSystem<OwOAccentCompone
             .Replace("r", "w")
             .Replace("R", "W")
             .Replace("l", "w")
+            .Replace("L", "W");*/
+        return message.Replace("r", "w")
+            .Replace("R", "W")
+            .Replace("l", "w")
             .Replace("L", "W");
-         Moffstation - End - Change message.replace to exclude faces entirely*/
-        return null;
+        // Moffstation - End
     }
 }
