@@ -7,10 +7,11 @@ using Content.Shared.IdentityManagement;
 using Content.Shared.Popups;
 using System.Linq;
 using System.Text;
+using Robust.Shared.Utility; // Moff - add missing references
 
 namespace Content.Server._Impstation.CrewMedal;
 
-public partial class CrewMedalSystem : SharedCrewMedalSystem
+public sealed partial class CrewMedalSystem : SharedCrewMedalSystem
 {
     [Dependency] private ISharedAdminLogManager _adminLogger = default!;
     [Dependency] private SharedPopupSystem _popup = default!;
@@ -45,8 +46,8 @@ public partial class CrewMedalSystem : SharedCrewMedalSystem
     {
         // medal name, recipient name, reason
         var medals = new List<(string Name, string Recipient, string Reason)>();
-        var query = EntityQueryEnumerator<ent.Component>();
-        foreach (var ent in EntityQueryEnumerator<ent.Component>())
+        //var query = EntityQueryEnumerator<ent.Component>(); Moff - remove line
+        foreach (var ent in EntityQueryEnumerator<CrewMedalComponent>())
         {
             if (ent.Comp.Awarded)
                 medals.Add((Name(ent.Owner), ent.Comp.Recipient, FormattedMessage.EscapeText(ent.Comp.Reason)));
@@ -55,9 +56,9 @@ public partial class CrewMedalSystem : SharedCrewMedalSystem
         if (count == 0)
             return;
 
-       var result = new StringBuilder();
-       result.AppendLine(Loc.GetString("comp-crew-medal-round-end-result", ("count", count)));
-       foreach (var medal in medals.OrderBy(f => f.Recipient))
+        var result = new StringBuilder();
+        result.AppendLine(Loc.GetString("comp-crew-medal-round-end-result", ("count", count)));
+        foreach (var medal in medals.OrderBy(f => f.Recipient))
         {
             // Harmony Change Start - UI Formatting Change
             var localString = "comp-crew-medal-round-end-list";
