@@ -50,8 +50,10 @@
           - ItemMask
         density: 1000
         hard: false
-  - type: Tag
-    tags:
-      - HideContextMenu
+# Moff Start - Why is this context menu hidden? Removed for Igneus Station.
+  # - type: Tag
+  #   tags:
+  #     - HideContextMenu
+# Moff End
   - type: PlacementReplacement
     key: tileOverlay
