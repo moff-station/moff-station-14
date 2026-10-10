@@ -7,6 +7,7 @@ using Content.Server.DeviceNetwork.Systems;
 using Content.Server.GameTicking;
 using Content.Server.GameTicking.Events;
 using Content.Server.Parallax;
+using Content.Server._Moffstation.PDA.Ringer;
 using Content.Server.Power.EntitySystems; // Moffstation
 using Content.Server.Screens.Components;
 using Content.Server.Shuttles.Components;
@@ -581,6 +582,7 @@ public sealed partial class ArrivalsSystem : EntitySystem
         EnsureComp<ArrivalsSourceComponent>(grid.Value);
         EnsureComp<ProtectedGridComponent>(grid.Value);
         EnsureComp<PreventPilotComponent>(grid.Value);
+        EnsureComp<LockableUplinkBlockedMapComponent>(mapUid); // Moff - uplink blocking - We can't do this in the file because it's a grid and not a map.
 
         // Setup planet arrivals if relevant
         if (_cfgManager.GetCVar(CCVars.ArrivalsPlanet))
