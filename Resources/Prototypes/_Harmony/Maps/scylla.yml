@@ -14,7 +14,8 @@
           !type:NanotrasenNameGenerator
           prefixCreator: 'TL'
       - type: StationEmergencyShuttle
-        emergencyShuttlePath: /Maps/_Harmony/Shuttles/emergency_charybdis.yml
+        # Moff - Evac arrivals
+        emergencyShuttlePath: /Maps/_Moffstation/Shuttles/emergency_charybdis.yml
       - type: StationCargoShuttle
         path: /Maps/_Harmony/Shuttles/cargo_scylla.yml
       - type: StationJobs

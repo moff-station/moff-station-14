@@ -14,7 +14,8 @@
             !type:NanotrasenNameGenerator
             prefixCreator: 'DS'
         - type: StationEmergencyShuttle
-          emergencyShuttlePath: /Maps/_Harmony/Shuttles/emergency_elkridge.yml
+          # Moff - Evac arrivals
+          emergencyShuttlePath: /Maps/_Moffstation/Shuttles/emergency_elkridge.yml
         - type: StationCargoShuttle
           path: /Maps/_Harmony/Shuttles/cargo_elkridge.yml
         - type: StationJobs

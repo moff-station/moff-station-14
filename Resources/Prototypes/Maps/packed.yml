@@ -15,7 +15,8 @@
           !type:NanotrasenNameGenerator
           prefixCreator: 'VG'
       - type: StationEmergencyShuttle
-        emergencyShuttlePath: /Maps/Shuttles/emergency_crimson.yml
+        # Moff - Evac arrivals
+        emergencyShuttlePath: /Maps/_Moffstation/Shuttles/emergency_crimson.yml
       - type: StationJobs
         availableJobs:
             #command (7)

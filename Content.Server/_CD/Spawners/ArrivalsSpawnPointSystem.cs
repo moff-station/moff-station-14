@@ -62,6 +62,12 @@ public sealed partial class ArrivalsSpawnPointSystem : EntitySystem
         if (job.IgnoreArrivals)
             return;
 
+        // See if we have a grid functioning as an arrivals point
+        var gridEv = new GetArrivalsSpawnGridEvent();
+        RaiseLocalEvent(args.Station, ref gridEv);
+        if (gridEv.Grid is not { } spawnGrid)
+            return;
+
         var manager = GetManager();
         // Check if they're gonna be in the opening shift
         if (manager != null
@@ -82,6 +88,9 @@ public sealed partial class ArrivalsSpawnPointSystem : EntitySystem
         // Get them in a list so we can do list things
         while (query.MoveNext(out var spawnUid, out var spawnPoint))
         {
+            if (Transform(spawnUid).GridUid != spawnGrid)
+                continue;
+
             spawnsList.Add((spawnUid, spawnPoint));
         }
 

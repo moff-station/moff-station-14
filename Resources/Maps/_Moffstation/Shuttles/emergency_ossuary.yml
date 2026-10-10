@@ -1,11 +1,11 @@
 meta:
   format: 7
   category: Grid
-  engineVersion: 288.0.1
+  engineVersion: 289.0.3
   forkId: ""
   forkVersion: ""
-  time: 09/14/2026 18:39:45
-  entityCount: 759
+  time: 10/06/2026 02:17:13
+  entityCount: 797
 maps: []
 grids:
 - 1
@@ -193,6 +193,7 @@ entities:
       chunkEntities:
       - 758
       - 759
+    - type: GridSplitNode
 - proto: AirAlarm
   entities:
   - uid: 2
@@ -643,6 +644,220 @@ entities:
       parent: 1
       rot: 3.141592653589793 rad
       pos: 12.5,-0.5
+- proto: ArrivalsSpawnPointCaptain
+  entities:
+  - uid: 777
+    components:
+    - type: Transform
+      parent: 1
+      pos: 5.5,6.5
+- proto: ArrivalsSpawnPointChiefEngineer
+  entities:
+  - uid: 779
+    components:
+    - type: Transform
+      parent: 1
+      pos: 6.5,6.5
+- proto: ArrivalsSpawnPointChiefMedicalOfficer
+  entities:
+  - uid: 781
+    components:
+    - type: Transform
+      parent: 1
+      pos: 7.5,6.5
+- proto: ArrivalsSpawnPointEngineer
+  entities:
+  - uid: 785
+    components:
+    - type: Transform
+      parent: 1
+      pos: 11.5,-11.5
+  - uid: 786
+    components:
+    - type: Transform
+      parent: 1
+      pos: 11.5,-10.5
+- proto: ArrivalsSpawnPointGeneral
+  entities:
+  - uid: 760
+    components:
+    - type: Transform
+      parent: 1
+      pos: 8.5,-0.5
+  - uid: 761
+    components:
+    - type: Transform
+      parent: 1
+      pos: 5.5,-4.5
+  - uid: 762
+    components:
+    - type: Transform
+      parent: 1
+      pos: 5.5,-3.5
+  - uid: 763
+    components:
+    - type: Transform
+      parent: 1
+      pos: 5.5,-2.5
+  - uid: 764
+    components:
+    - type: Transform
+      parent: 1
+      pos: 5.5,-1.5
+  - uid: 765
+    components:
+    - type: Transform
+      parent: 1
+      pos: 5.5,-0.5
+  - uid: 766
+    components:
+    - type: Transform
+      parent: 1
+      pos: 9.5,1.5
+  - uid: 767
+    components:
+    - type: Transform
+      parent: 1
+      pos: 8.5,1.5
+  - uid: 768
+    components:
+    - type: Transform
+      parent: 1
+      pos: 7.5,1.5
+  - uid: 769
+    components:
+    - type: Transform
+      parent: 1
+      pos: 6.5,1.5
+  - uid: 770
+    components:
+    - type: Transform
+      parent: 1
+      pos: 5.5,1.5
+  - uid: 771
+    components:
+    - type: Transform
+      parent: 1
+      pos: 4.5,1.5
+  - uid: 772
+    components:
+    - type: Transform
+      parent: 1
+      pos: 9.5,3.5
+  - uid: 773
+    components:
+    - type: Transform
+      parent: 1
+      pos: 8.5,3.5
+  - uid: 774
+    components:
+    - type: Transform
+      parent: 1
+      pos: 7.5,3.5
+  - uid: 775
+    components:
+    - type: Transform
+      parent: 1
+      pos: 6.5,3.5
+  - uid: 776
+    components:
+    - type: Transform
+      parent: 1
+      pos: 5.5,3.5
+  - uid: 789
+    components:
+    - type: Transform
+      parent: 1
+      pos: 8.5,-1.5
+  - uid: 790
+    components:
+    - type: Transform
+      parent: 1
+      pos: 8.5,-2.5
+  - uid: 791
+    components:
+    - type: Transform
+      parent: 1
+      pos: 8.5,-3.5
+  - uid: 792
+    components:
+    - type: Transform
+      parent: 1
+      pos: 8.5,-4.5
+  - uid: 793
+    components:
+    - type: Transform
+      parent: 1
+      pos: 4.5,-6.5
+  - uid: 794
+    components:
+    - type: Transform
+      parent: 1
+      pos: 5.5,-6.5
+  - uid: 795
+    components:
+    - type: Transform
+      parent: 1
+      pos: 8.5,-6.5
+  - uid: 796
+    components:
+    - type: Transform
+      parent: 1
+      pos: 9.5,-6.5
+- proto: ArrivalsSpawnPointHeadOfPersonnel
+  entities:
+  - uid: 778
+    components:
+    - type: Transform
+      parent: 1
+      pos: 8.5,6.5
+- proto: ArrivalsSpawnPointHeadOfSecurity
+  entities:
+  - uid: 783
+    components:
+    - type: Transform
+      parent: 1
+      pos: 11.5,6.5
+- proto: ArrivalsSpawnPointMedical
+  entities:
+  - uid: 334
+    components:
+    - type: Transform
+      parent: 1
+      pos: 1.5,-11.5
+  - uid: 336
+    components:
+    - type: Transform
+      parent: 1
+      pos: 1.5,-10.5
+- proto: ArrivalsSpawnPointPrisoner
+  entities:
+  - uid: 788
+    components:
+    - type: Transform
+      parent: 1
+      pos: 10.5,7.5
+- proto: ArrivalsSpawnPointQuartermaster
+  entities:
+  - uid: 782
+    components:
+    - type: Transform
+      parent: 1
+      pos: 3.5,5.5
+- proto: ArrivalsSpawnPointResearchDirector
+  entities:
+  - uid: 780
+    components:
+    - type: Transform
+      parent: 1
+      pos: 3.5,6.5
+- proto: ArrivalsSpawnPointWarden
+  entities:
+  - uid: 784
+    components:
+    - type: Transform
+      parent: 1
+      pos: 11.5,5.5
 - proto: AtmosDeviceFanDirectional
   entities:
   - uid: 50
@@ -2421,11 +2636,6 @@ entities:
             181: 10,3
 - proto: ClosetEmergencyFilledRandom
   entities:
-  - uid: 334
-    components:
-    - type: Transform
-      parent: 1
-      pos: 2.5,3.5
   - uid: 335
     components:
     - type: Transform
@@ -2433,11 +2643,6 @@ entities:
       pos: 5.5,-12.5
 - proto: ClosetEmergencyN2FilledRandom
   entities:
-  - uid: 336
-    components:
-    - type: Transform
-      parent: 1
-      pos: 11.5,3.5
   - uid: 337
     components:
     - type: Transform
@@ -3810,19 +4015,6 @@ entities:
     - type: Transform
       parent: 1
       pos: 9.5,-10.5
-  - uid: 521
-    components:
-    - type: Transform
-      parent: 1
-      pos: 1.5,3.5
-    - type: AccessReader
-      accessListsOriginal:
-      - - Engineering
-  - uid: 522
-    components:
-    - type: Transform
-      parent: 1
-      pos: 12.5,3.5
 - proto: MedicalBed
   entities:
   - uid: 523
@@ -4458,6 +4650,13 @@ entities:
     - type: Transform
       parent: 1
       pos: 7.3413315,-6.3595657
+- proto: VendingMachineClothing
+  entities:
+  - uid: 797
+    components:
+    - type: Transform
+      parent: 1
+      pos: 2.5,3.5
 - proto: VendingMachineDiscount
   entities:
   - uid: 636
@@ -4472,6 +4671,20 @@ entities:
     - type: Transform
       parent: 1
       pos: 1.5,-9.5
+- proto: VendingMachineSwimsuits
+  entities:
+  - uid: 521
+    components:
+    - type: Transform
+      parent: 1
+      pos: 12.5,3.5
+- proto: VendingMachineTheater
+  entities:
+  - uid: 522
+    components:
+    - type: Transform
+      parent: 1
+      pos: 1.5,3.5
 - proto: VendingMachineWallMedicalCivilian
   entities:
   - uid: 638
@@ -4480,6 +4693,13 @@ entities:
       parent: 1
       rot: 3.141592653589793 rad
       pos: 4.5,-8.5
+- proto: VendingMachineWinter
+  entities:
+  - uid: 798
+    components:
+    - type: Transform
+      parent: 1
+      pos: 11.5,3.5
 - proto: WallShuttle
   entities:
   - uid: 639
@@ -4936,7 +5156,7 @@ entities:
       parent: 1
       rot: -1.5707963267948966 rad
       pos: 12.5,8.5
-- proto: WindoorSecureSecurityLocked
+- proto: WindoorSecurityLocked
   entities:
   - uid: 717
     components:

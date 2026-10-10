@@ -22,3 +22,7 @@ public sealed partial class ArrivalsSpawnManagerComponent : Component
     [ViewVariables]
     public ProtoId<AntagPrototype> OpeningShiftProto= "OpeningShift";
 }
+
+/// Used to find the grid used to function as an arrivals point right now
+[ByRefEvent]
+public record struct GetArrivalsSpawnGridEvent(EntityUid? Grid = null);
