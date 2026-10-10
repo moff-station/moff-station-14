@@ -157,12 +157,6 @@
     sprite: _Moffstation/Clothing/OuterClothing/Misc/judge.rsi # Moffstation
   - type: Clothing
     sprite: _Moffstation/Clothing/OuterClothing/Misc/judge.rsi # Moffstation
-# Moffstation - Start - Judge gavel
-  - type: EntityTableContainerFill
-    containers:
-      storagebase:
-        id: Gavel
-# Moffstation - End
 
 - type: entity
   parent: ClothingOuterBase
