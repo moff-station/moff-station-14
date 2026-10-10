@@ -1017,10 +1017,12 @@ CrateEngineeringThruster: CrateSpaceThruster
 BlastDoorXenoborg: BlastDoorXeno
 BlastDoorXenoborgOpen: BlastDoorXenoOpen
 
-### Dark Tiles
-FloorTileItemDarkDiagonalMini: FloorTileItemDark
-FloorTileItemDarkDiagonal: FloorTileItemDark
-FloorTileItemDarkOffset: FloorTileItemDark
+# Moff Start - Bring back these tiles
+# ### Dark Tiles
+# FloorTileItemDarkDiagonalMini: FloorTileItemDark
+# FloorTileItemDarkDiagonal: FloorTileItemDark
+# FloorTileItemDarkOffset: FloorTileItemDark
+# Moff End
 FloorTileItemDarkSlatsContinuous: FloorTileItemDarkVerticalSlatsBordered
 
 # Moff Start - Bring back these tiles
@@ -1029,13 +1031,15 @@ FloorTileItemDarkSlatsContinuous: FloorTileItemDarkVerticalSlatsBordered
 # FloorTileItemSteelDiagonal: FloorTileItemSteel
 # FloorTileItemSteelOffset: FloorTileItemSteel
 # FloorTileItemShowroom: FloorTileItemSteel
-# FloorTileItemSteelSlatsContinuous: FloorTileItemSteelVerticalSlatsBordered
 # Moff End
+FloorTileItemSteelSlatsContinuous: FloorTileItemSteelVerticalSlatsBordered
 
-### White Tiles
-FloorTileItemWhiteDiagonalMini: FloorTileItemWhite
-FloorTileItemWhiteDiagonal: FloorTileItemWhite
-FloorTileItemWhiteOffset: FloorTileItemWhite
+# Moff Start - Bring back these tiles
+# ### White Tiles
+# FloorTileItemWhiteDiagonalMini: FloorTileItemWhite
+# FloorTileItemWhiteDiagonal: FloorTileItemWhite
+# FloorTileItemWhiteOffset: FloorTileItemWhite
+# Moff End
 FloorTileItemWhiteSlatsContinuous: FloorTileItemWhiteVerticalSlatsBordered
 
 ### Misc Tiles
