@@ -215,9 +215,10 @@
     allowSelfRepair: false
   - type: Destructible
     thresholds:
+# Moff Start - AI core is easier to disable and harder to gib
     - trigger:
         !type:DamageTrigger
-        damage: 500
+        damage: 300
       behaviors:
       - !type:PlaySoundBehavior
         sound:
@@ -226,7 +227,7 @@
         acts: [ "Breakage" ]
     - trigger:
         !type:DamageTrigger
-        damage: 1000
+        damage: 3000
       behaviors:
       - !type:PlaySoundBehavior
         sound:
@@ -242,7 +243,8 @@
       - !type:DoActsBehavior
         acts: ["Destruction"]
   - type: DamageVisuals
-    thresholds: [25, 50, 75, 100, 200, 300, 400]
+    thresholds: [50, 100, 200, 600, 1200, 1800, 2400]
+# Moff End
     damageDivisor: 4
     trackAllDamage: true
     damageOverlay:
