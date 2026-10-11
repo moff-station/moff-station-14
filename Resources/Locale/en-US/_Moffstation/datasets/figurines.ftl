@@ -871,14 +871,6 @@ figurines-tania-9 = Fuck it, we ball.
 figurines-tania-10 = CE stands for 'Combat Engineer'.
 figurines-tania-11 = Gang shit.
 
-figurines-tar-1 = Wah?
-figurines-tar-2 = Haii!
-figurines-tar-3 = *thump*
-figurines-tar-4 = You are just a hater!!
-figurines-tar-5 = Tar is making an anomaly.
-figurines-tar-6 = Tar is making a weird ball!
-figurines-tar-7 = I would never do crime!
-
 figurines-tomcarter-1 = Please...bring me some coffee.
 figurines-tomcarter-2 = If I collect 40 cigarette butts I can get 5% off on my pack.
 figurines-tomcarter-3 = No, I cannot give you AA.

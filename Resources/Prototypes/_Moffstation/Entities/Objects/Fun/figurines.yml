@@ -1420,17 +1420,6 @@
 
 - type: entity
   parent: BaseFigurineMoff
-  id: ToyFigurineTar
-  name: bug-eyed lizard figurine
-  description: A figurine depicting a small blue lizard with large buggish glasses. Neeeerd nerd nerd nerd.....
-  components:
-  - type: Sprite
-    state: tar
-  - type: SpeakOnTrigger
-    pack: FigurinesTar
-
-- type: entity
-  parent: BaseFigurineMoff
   id: ToyFigurineTomCarter
   name: tired bureaucrat figurine
   description: You're not sure his eyes are even open...
