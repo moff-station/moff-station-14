@@ -1541,7 +1541,7 @@
   - type: XAETriggerExplosives
   - type: Explosive
     deleteAfterExplosion: false
-    explosionType: Default
+    explosionType: Transparent # Funky RMC Explosions
     totalIntensity: 500
     intensitySlope: 2.5
     maxIntensity: 50

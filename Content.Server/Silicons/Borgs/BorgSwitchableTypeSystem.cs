@@ -17,7 +17,7 @@ public sealed partial class BorgSwitchableTypeSystem : SharedBorgSwitchableTypeS
     [Dependency] private BorgSystem _borgSystem = default!;
     [Dependency] private ServerInventorySystem _inventorySystem = default!;
 
-    [Dependency] private SharedRadioSystem _radio = default!; // MOffstation
+    [Dependency] private SharedRadioSystem _radio = default!; // Moffstation
 
     protected override void SelectBorgModule(Entity<BorgSwitchableTypeComponent> ent, ProtoId<BorgTypePrototype> borgType)
     {
@@ -80,6 +80,10 @@ public sealed partial class BorgSwitchableTypeSystem : SharedBorgSwitchableTypeS
         {
             _inventorySystem.SetTemplateId((ent.Owner, inventory), prototype.InventoryTemplateId);
             _inventorySystem.SetDisplacements((ent.Owner, inventory), prototype.InventoryDisplacements); // Moffstation - Allow borgs to have displacement maps.
+            // Moff start - Give borgs species IDs so clothes can react to them having displacement maps
+            if (prototype.InventorySpeciesId is {} inventorySpeciesId)
+                _inventorySystem.SetSpeciesId((ent.Owner, inventory), inventorySpeciesId);
+            // Moff end
         }
 
         base.SelectBorgModule(ent, borgType);
