@@ -91,6 +91,13 @@ public sealed class MoffCCVars
     public static readonly CVarDef<float> MoffScreenShakeIntensity =
         CVarDef.Create("moff.screenshake_intensity", 1.0f, CVar.CLIENTONLY | CVar.ARCHIVE);
 
+    /// <summary>
+    ///     Should lockable uplinks be forcefully locked while on the same map as the evac shuttle, while in FTL,
+    ///     on CentComm and on the arrivals terminal?
+    /// </summary>
+    public static readonly CVarDef<bool> GameBlockUplinks =
+        CVarDef.Create("moff.lock_uplinks", true, CVar.SERVERONLY);
+
     /*
      * Arrivals
      */
@@ -137,6 +144,10 @@ public sealed class MoffCCVars
     [CVarControl(AdminFlags.Server)]
     public static readonly CVarDef<bool> OocUpstreamPatronColorEnabled =
         CVarDef.Create("moff.ooc_upstream_patron_color_enabled", true, CVar.SERVERONLY | CVar.ARCHIVE);
+
+    /*
+     * Misc
+     */
 
     /// <summary>
     /// Whether a discord event should be created and managed as long as the round timer is unpaused
