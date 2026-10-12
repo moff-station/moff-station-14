@@ -107,19 +107,6 @@ public abstract partial class BladeServerSystem : EntitySystem
         );
     }
 
-    /// This prevents blade servers from being picked up while inside a rack.
-    [SubscribeLocalEvent]
-    private void OnGettingPickedUpAttempt(
-        Entity<BladeServerComponent> entity,
-        ref GettingPickedUpAttemptEvent args
-    )
-    {
-        if (GetContainingRackAndSlot(entity.AsNullable())?.slot is { Ejecting: false })
-        {
-            args.Cancel();
-        }
-    }
-
     [SubscribeLocalEvent]
     private void AfterAutoHandleState(Entity<BladeServerRackComponent> entity, ref AfterAutoHandleStateEvent args)
     {
@@ -327,6 +314,19 @@ public abstract partial class BladeServerSystem : EntitySystem
             return;
 
         _appearance.SetData(entity, BladeServerVisuals.StripeColor, stripeColor);
+    }
+
+    /// This prevents blade servers from being picked up while inside a rack.
+    [SubscribeLocalEvent]
+    private void OnGettingPickedUpAttempt(
+        Entity<BladeServerComponent> entity,
+        ref GettingPickedUpAttemptEvent args
+    )
+    {
+        if (GetContainingRackAndSlot(entity.AsNullable())?.slot is { Ejecting: false })
+        {
+            args.Cancel();
+        }
     }
 
     /// Tries to get the slot at <paramref name="slotIndex"/>. Returns null if the index is out of bounds.
