@@ -1,5 +1,6 @@
 using Content.Shared._Moffstation.Sensors; // Moffstation - Borg sensors
 using Content.Shared.DoAfter;
+using Content.Shared.StatusIcon;
 using Robust.Shared.Map;
 using Robust.Shared.Prototypes; // Moffstation - Borg sensors
 using Robust.Shared.Serialization;
@@ -25,7 +26,7 @@ public sealed class SuitSensorStatus
     public NetEntity OwnerUid;
     public string Name;
     public string Job;
-    public string JobIcon;
+    public ProtoId<JobIconPrototype> JobIcon; // Moffstation - Borg sensors
     public List<string> JobDepartments;
     public bool IsAlive;
     public int? TotalDamage;
