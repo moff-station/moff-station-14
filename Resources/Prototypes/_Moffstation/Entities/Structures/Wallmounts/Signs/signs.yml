@@ -34,3 +34,14 @@
   components:
   - type: Sprite
     state: atmos_frezon
+
+# Radio Host
+- type: entity
+  parent: BaseSign
+  id: SignRadioHost
+  name: radio host sign
+  description: A sign indicating the studio for the radio host.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Structures/Wallmounts/signs.rsi
+    state: radiohost

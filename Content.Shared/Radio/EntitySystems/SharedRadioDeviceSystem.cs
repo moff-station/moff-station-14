@@ -7,9 +7,10 @@ using Content.Shared.Popups;
 using Content.Shared.Power;
 using Content.Shared.Power.EntitySystems;
 using Content.Shared.Radio.Components;
+using Content.Shared._Goobstation.StationRadio.Components; // Moffstation  - Examine the station radio server to see if microphone is active.
+using Content.Shared.Examine; // Moffstation - Examine the station radio server to see if microphone is active.
 using Content.Shared.Speech;
 using Content.Shared.Speech.Components;
-
 using Robust.Shared.Prototypes;
 using Robust.Shared.Utility;
 
@@ -228,6 +229,14 @@ public abstract partial class SharedRadioDeviceSystem : EntitySystem
                 ("channel", proto.LocalizedName),
                 ("frequency", proto.Frequency)));
         }
+        // Moffstation - Start - Add examine text to radio station server.
+        if (!TryComp<RadioMicrophoneComponent>(uid, out var mic))
+            return;
+
+        args.PushMarkup(Loc.GetString(mic.Enabled
+            ? "station-radio-server-examine-not-recording"
+            : "station-radio-server-examine-recording"));
+        // Moffstation - End
     }
 
     [SubscribeLocalEvent]
@@ -424,6 +433,4 @@ public abstract partial class SharedRadioDeviceSystem : EntitySystem
 
         SetIntercomChannel(entity, nextChannel);
     }
-    // Moffstation - End
 }
-
