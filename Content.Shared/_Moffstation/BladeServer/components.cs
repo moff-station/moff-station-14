@@ -9,7 +9,7 @@ namespace Content.Shared._Moffstation.BladeServer;
 /// This component makes an entity into a Blade Server Rack, which is a container for
 /// <see cref="BladeServerComponent">blade servers</see>.
 [RegisterComponent, NetworkedComponent, AutoGenerateComponentState(raiseAfterAutoHandleState: true),
- Access(typeof(SharedBladeServerSystem))]
+ Access(typeof(BladeServerSystem))]
 public sealed partial class BladeServerRackComponent : Component
 {
     /// The number of slots for blade servers in this rack. Note that this is NOT the number of servers in the rack, but
@@ -63,7 +63,7 @@ public sealed partial class BladeSlot(ItemSlot slot)
     /// Whether or not this blade slot's power toggle is on. Note that this DOES NOT make a blade powered or not, as the
     /// overall rack has a separate power state which also contributes to blades being powered.
     [ViewVariables(VVAccess.ReadOnly)]
-    [Access(typeof(SharedBladeServerSystem), Other = AccessPermissions.Read)]
+    [Access(typeof(BladeServerSystem), Other = AccessPermissions.Read)]
     public bool IsPowerEnabled = true;
 
     /// The entity in this slot.
@@ -73,7 +73,7 @@ public sealed partial class BladeSlot(ItemSlot slot)
     /// the contents of this slot while disallowing other mechanisms which would remove the contents of this slot
     /// (eg. picking up by hand).
     /// <remarks>This is only used on the server. DO NOT try to use its value on the client as it will be wrong.</remarks>
-    [Access(typeof(SharedBladeServerSystem))]
+    [Access(typeof(BladeServerSystem))]
     public bool Ejecting = false;
 }
 

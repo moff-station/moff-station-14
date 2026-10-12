@@ -6,9 +6,9 @@ using Robust.Client.UserInterface;
 namespace Content.Client._Moffstation.BladeServer;
 
 /// <summary>
-/// This system extends <see cref="SharedBladeServerSystem"/> with accessors for BUI interactions.
+/// This system extends <see cref="BladeServerSystem"/> with accessors for BUI interactions.
 /// </summary>
-public sealed partial class BladeServerSystem : SharedBladeServerSystem
+public sealed partial class ClientBladeServerSystem : BladeServerSystem
 {
     [Dependency] private IUserInterfaceManager _userInterfaceMan = default!;
     [Dependency] private ExamineSystem _examine = default!;

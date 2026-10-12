@@ -17,7 +17,7 @@ using Robust.Shared.Utility;
 namespace Content.Shared._Moffstation.BladeServer;
 
 /// This system handles behavior for <see cref="BladeServerRackComponent"/>s and <see cref="BladeServerComponent"/>s.
-public abstract partial class SharedBladeServerSystem : EntitySystem
+public abstract partial class BladeServerSystem : EntitySystem
 {
     [Dependency] private IComponentFactory _componentFactory = default!;
     [Dependency] private SharedAppearanceSystem _appearance = default!;

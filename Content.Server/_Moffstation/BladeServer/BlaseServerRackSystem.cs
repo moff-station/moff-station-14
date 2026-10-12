@@ -5,9 +5,9 @@ using Content.Shared.Item;
 namespace Content.Server._Moffstation.BladeServer;
 
 /// <summary>
-/// This system extends <see cref="SharedBladeServerSystem"/> with sever-only power interactions.
+/// This system extends <see cref="BladeServerSystem"/> with sever-only power interactions.
 /// </summary>
-public sealed partial class BladeServerSystem : SharedBladeServerSystem
+public sealed partial class ServerBladeServerSystem : BladeServerSystem
 {
     [Dependency] private InnerCableSystem _innerCable = default!;
 
