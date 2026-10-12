@@ -46,9 +46,14 @@ public sealed partial class BladeServerRackComponent : Component
     /// Calculates the sprite layer offset for the <paramref name="index"/>'th slot in this rack.
     // TODO 32f here is a gross magic number corresponding to pixels per tile. I regret it, but I couldn't find a constant to replace it.
     public Vector2 BladeSlotSpritePixelOffsetToLayerOffset(int index) => BladeServerVisualsOffset * index / 32f;
+
+    /// Client-only tracking for visuals.
+    [ViewVariables]
+    public HashSet<string> AddedLayerKeys = new();
 }
 
 /// This data class holds onto information about a single slot in a <see cref="BladeServerRackComponent"/>.
+// TODO Possibly track the ordinal index of this slot in its rack.
 public sealed partial class BladeSlot(ItemSlot slot)
 {
     /// The <see cref="ItemSlot"/> corresponding to this blade slot.
@@ -58,6 +63,7 @@ public sealed partial class BladeSlot(ItemSlot slot)
     /// Whether or not this blade slot's power toggle is on. Note that this DOES NOT make a blade powered or not, as the
     /// overall rack has a separate power state which also contributes to blades being powered.
     [ViewVariables(VVAccess.ReadOnly)]
+    [Access(typeof(SharedBladeServerSystem), Other = AccessPermissions.Read)]
     public bool IsPowerEnabled = true;
 
     /// The entity in this slot.
@@ -66,12 +72,13 @@ public sealed partial class BladeSlot(ItemSlot slot)
     /// Whether or not this slot is currently ejecting. This is something of a hack to enable a UI button to eject
     /// the contents of this slot while disallowing other mechanisms which would remove the contents of this slot
     /// (eg. picking up by hand).
+    /// <remarks>This is only used on the server. DO NOT try to use its value on the client as it will be wrong.</remarks>
     [Access(typeof(SharedBladeServerSystem))]
     public bool Ejecting = false;
 }
 
 /// This component makes an entity a Blade Server capable of being inserted into a <see cref="BladeServerRackComponent"/>.
-[RegisterComponent, AutoGenerateComponentState]
+[RegisterComponent, NetworkedComponent, AutoGenerateComponentState]
 public sealed partial class BladeServerComponent : Component
 {
     /// The color of the stripe on this blade server, if any. This just makes different blade servers visually distinct.
@@ -79,8 +86,8 @@ public sealed partial class BladeServerComponent : Component
     public Color? StripeColor;
 }
 
-/// This marker component is just used to distinguish when a <see cref="Content.Server.Construction.Components.MachineFrameComponent"/> is
-/// Blade Server Frame and thus should be able to accept <see cref="BladeServerBoardComponent">blade server boards</see>.
+/// This marker component is just used to distinguish when a <see cref="Content.Server.Construction.Components.MachineFrameComponent"/>
+/// is a Blade Server Frame and thus should be able to accept <see cref="BladeServerBoardComponent">blade server boards</see>.
 [RegisterComponent, NetworkedComponent]
 public sealed partial class BladeServerFrameComponent : Component;
 

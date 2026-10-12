@@ -1,5 +1,6 @@
 ﻿using Content.Server._Moffstation.Power.EntitySystems;
 using Content.Shared._Moffstation.BladeServer;
+using Content.Shared.Item;
 
 namespace Content.Server._Moffstation.BladeServer;
 
@@ -18,5 +19,18 @@ public sealed partial class BladeServerSystem : SharedBladeServerSystem
             return;
 
         _innerCable.SetInnerProviderContainerConnectable(entity.Owner, containerId, powered);
+    }
+
+    /// This prevents blade servers from being picked up while inside a rack.
+    [SubscribeLocalEvent]
+    private void OnGettingPickedUpAttempt(
+        Entity<BladeServerComponent> entity,
+        ref GettingPickedUpAttemptEvent args
+    )
+    {
+        if (GetContainingRackAndSlot(entity.AsNullable())?.slot is { Ejecting: false })
+        {
+            args.Cancel();
+        }
     }
 }
