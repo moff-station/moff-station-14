@@ -1,20 +1,19 @@
 using System.Collections.Frozen;
-using Content.Shared.Random.Helpers;
 using Content.Shared.Speech.Components;
-using Robust.Shared.Random;
-using Robust.Shared.Timing;
 
 namespace Content.Shared.Speech.EntitySystems;
 
 public sealed partial class OwOAccentSystem : RelayAccentSystem<OwOAccentComponent>
 {
-    [Dependency] private IGameTiming _timing = null!;
-    [Dependency] private IRobustRandom _random = null!;
-
-    public static IReadOnlyList<string> Faces { get; } = // Moffstation - remove "readonly" per Rider suggestions
-    [
-        " (•`ω´•)", " ;;w;;", " owo", " UwU", " >w<", " ^w^",
-    ];
+    // Moff start - Remove owo faces
+    // [Dependency] private IGameTiming _timing = default!;
+    // [Dependency] private IRobustRandom _random = default!;
+    //
+    // private static readonly IReadOnlyList<string> Faces =
+    // [
+    //     " (•`ω´•)", " ;;w;;", " owo", " UwU", " >w<", " ^w^",
+    // ];
+    // Moff end
 
     private static readonly FrozenDictionary<string, string> SpecialWords =
         new Dictionary<string, string>
@@ -24,26 +23,21 @@ public sealed partial class OwOAccentSystem : RelayAccentSystem<OwOAccentCompone
 
     public override string Accentuate(string message, Entity<OwOAccentComponent>? ent = null)
     {
-        /* Moffstation - remove unused code in accent
-         _ = ent.HasValue
-            ? SharedRandomExtensions.PredictedRandom(_timing, GetNetEntity(ent.Value))
-            : _random; */
+        // Moff start - Remove owo faces
+        // var random = ent.HasValue
+        //     ? SharedRandomExtensions.PredictedRandom(_timing, GetNetEntity(ent.Value))
+        //     : _random;
+        // Moff end
 
         foreach (var (word, repl) in SpecialWords)
         {
             message = message.Replace(word, repl);
         }
 
-        /* Moffstation - Start - Change message.replace to exclude faces entirely
-        return message.Replace("!", random.Pick(Faces))
+        return message //.Replace("!", random.Pick(Faces)) // Moff - Remove owo faces
             .Replace("r", "w")
             .Replace("R", "W")
             .Replace("l", "w")
-            .Replace("L", "W");*/
-        return message.Replace("r", "w")
-            .Replace("R", "W")
-            .Replace("l", "w")
             .Replace("L", "W");
-        // Moffstation - End
     }
 }
