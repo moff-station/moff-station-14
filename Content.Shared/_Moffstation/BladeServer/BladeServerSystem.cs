@@ -5,6 +5,7 @@ using Content.Shared.Construction.Components;
 using Content.Shared.Containers.ItemSlots;
 using Content.Shared.Examine;
 using Content.Shared.Interaction;
+using Content.Shared.Item;
 using Content.Shared.Lock;
 using Content.Shared.Popups;
 using Content.Shared.Power;
@@ -104,6 +105,19 @@ public abstract partial class BladeServerSystem : EntitySystem
                 ? SpawnNextToOrDrop(proto, entity)
                 : null
         );
+    }
+
+    /// This prevents blade servers from being picked up while inside a rack.
+    [SubscribeLocalEvent]
+    private void OnGettingPickedUpAttempt(
+        Entity<BladeServerComponent> entity,
+        ref GettingPickedUpAttemptEvent args
+    )
+    {
+        if (GetContainingRackAndSlot(entity.AsNullable())?.slot is { Ejecting: false })
+        {
+            args.Cancel();
+        }
     }
 
     [SubscribeLocalEvent]

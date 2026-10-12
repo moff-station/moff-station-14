@@ -36,7 +36,12 @@ public sealed partial class BladeServerRackVisualizerSystem : ManagedLayerVisual
                 continue;
 
             // Add a base layer for the blade frame.
-            layerFactory($"blade-base-{idx}", new PrototypeLayerData { State = "blade-base" });
+            layerFactory($"blade-base-{idx}",
+                new PrototypeLayerData
+                {
+                    State = "blade-base",
+                    Offset = slot.Offset,
+                });
 
             // Add another layer for the stripe.
             if (slot.StripeColor is { } color)

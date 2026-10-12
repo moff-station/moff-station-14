@@ -20,17 +20,4 @@ public sealed partial class ServerBladeServerSystem : BladeServerSystem
 
         _innerCable.SetInnerProviderContainerConnectable(entity.Owner, containerId, powered);
     }
-
-    /// This prevents blade servers from being picked up while inside a rack.
-    [SubscribeLocalEvent]
-    private void OnGettingPickedUpAttempt(
-        Entity<BladeServerComponent> entity,
-        ref GettingPickedUpAttemptEvent args
-    )
-    {
-        if (GetContainingRackAndSlot(entity.AsNullable())?.slot is { Ejecting: false })
-        {
-            args.Cancel();
-        }
-    }
 }
