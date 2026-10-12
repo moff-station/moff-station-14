@@ -1,12 +1,16 @@
 {
     "version": 1,
     "license": "CC-BY-SA-4.0",
-    "copyright": "Sprited by youtubepoopfuneral (Github) for Moffstation.",
+    "copyright": "Sprited by youtubepoopfuneral (Github) for Moffstation, Floppy, Spaniel by Davyei (Github) for Moffstation",
     "size": {
         "x": 32,
         "y": 32
     },
     "states": [
+        {
+            "name": "bloodhound",
+            "directions": 4
+        },
         {
             "name": "expie",
             "directions": 4
@@ -17,6 +21,10 @@
         },
         {
             "name": "fennec-inner",
+            "directions": 4
+        },
+        {
+            "name": "floppy",
             "directions": 4
         },
         {
@@ -49,6 +57,10 @@
         },
         {
             "name": "shock-inner",
+            "directions": 4
+        },
+        {
+            "name": "spaniel",
             "directions": 4
         },
         {
