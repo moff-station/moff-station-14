@@ -27,7 +27,6 @@ public sealed partial class PlayTimeTrackingSystem
 
         if (!_tracking.TryGetTrackerTimes(player, out var playTimes))
         {
-            Log.Error($"Unable to check playtimes {Environment.StackTrace}");
             playTimes = new Dictionary<string, TimeSpan>();
         }
 

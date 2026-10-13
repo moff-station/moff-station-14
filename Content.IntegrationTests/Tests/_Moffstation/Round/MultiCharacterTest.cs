@@ -184,7 +184,7 @@ public sealed class MultiCharacterTest : GameTest
 
     private async Task StartRound(TestPair pair)
     {
-        var ticker = pair.Server.System<GameTicker>();
+        var ticker = pair.Server.System<ServerGameTicker>();
         ticker.ToggleReadyAll(true);
         await pair.Server.WaitPost(() => ticker.StartRound());
         await pair.RunTicksSync(10);
@@ -195,7 +195,7 @@ public sealed class MultiCharacterTest : GameTest
     {
         var jobSys = pair.Server.System<SharedJobSystem>();
         var mindSys = pair.Server.System<MindSystem>();
-        var ticker = pair.Server.System<GameTicker>();
+        var ticker = pair.Server.System<ServerGameTicker>();
         var user = pair.Client.User!.Value;
 
         Assert.That(ticker.RunLevel, Is.EqualTo(GameRunLevel.InRound));
@@ -221,7 +221,7 @@ public sealed class MultiCharacterTest : GameTest
     {
         var pair = Pair;
         pair.Server.CfgMan.SetCVar(CCVars.GameMap, Map);
-        var ticker = pair.Server.System<GameTicker>();
+        var ticker = pair.Server.System<ServerGameTicker>();
 
         await SetupTwoCharacters(pair, Passenger, Engineer);
 
@@ -241,7 +241,7 @@ public sealed class MultiCharacterTest : GameTest
     {
         var pair = Pair;
         pair.Server.CfgMan.SetCVar(CCVars.GameMap, Map);
-        var ticker = pair.Server.System<GameTicker>();
+        var ticker = pair.Server.System<ServerGameTicker>();
 
         await SetupTwoCharacters(pair, Engineer, Engineer);
 
@@ -265,7 +265,7 @@ public sealed class MultiCharacterTest : GameTest
     {
         var pair = Pair;
         pair.Server.CfgMan.SetCVar(CCVars.GameMap, Map);
-        var ticker = pair.Server.System<GameTicker>();
+        var ticker = pair.Server.System<ServerGameTicker>();
 
         await SetupTwoCharacters(pair, Captain, Passenger);
         await SetGlobalPriorities(pair, (Captain, JobPriority.High), (Passenger, JobPriority.Medium));
@@ -287,7 +287,7 @@ public sealed class MultiCharacterTest : GameTest
     {
         var pair = Pair;
         pair.Server.CfgMan.SetCVar(CCVars.GameMap, Map);
-        var ticker = pair.Server.System<GameTicker>();
+        var ticker = pair.Server.System<ServerGameTicker>();
 
         await OverrideCVar(Side.Server, CCVars.GameRoleTimers, true);
 
@@ -308,7 +308,7 @@ public sealed class MultiCharacterTest : GameTest
     {
         var pair = Pair;
         pair.Server.CfgMan.SetCVar(CCVars.GameMap, Map);
-        var ticker = pair.Server.System<GameTicker>();
+        var ticker = pair.Server.System<ServerGameTicker>();
 
         await OverrideCVar(Side.Server, CCVars.GameRoleTimers, false);
 
@@ -342,7 +342,7 @@ public sealed class MultiCharacterTest : GameTest
     {
         var pair = Pair;
         pair.Server.CfgMan.SetCVar(CCVars.GameMap, Map);
-        var ticker = pair.Server.System<GameTicker>();
+        var ticker = pair.Server.System<ServerGameTicker>();
 
         await OverrideCVar(Side.Server, CCVars.GameRoleTimers, false);
 

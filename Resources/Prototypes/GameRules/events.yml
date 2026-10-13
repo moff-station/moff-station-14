@@ -61,14 +61,9 @@
 #    - id: LoneOpsSpawn
 #    # - id: WizardSpawn # Moffstation
 #    - id: EeepSpawn # imp
+#    - id: SpaceChangelingSpawn
 #    - !type:NestedSelector
 #      tableId: DerelictBorgEventTable
-#    # Moffstation - Start - Moffstation ghostrole antags
-#    - id: SyndicateListeningOutpostSpawn
-#    - id: PirateCorsairSpawn
-#    - id: HellPortalSpawn
-#    - id: ReplicatorSpawn
-#    # Moffstation - End
 # Moff end
 
 # Moff start - namespaced, commented out so we get conflicts and can update our own table in the future
@@ -256,6 +251,45 @@
   - type: ESSynchronizedVoteManager
     votes:
     - DragonEnroller
+  # Moffstation end
+  - type: DynamicRuleCost
+    cost: 75
+
+- type: entity
+  parent: BaseAntagGhostRoleRule
+  id: SpaceChangelingSpawn
+  components:
+  - type: StationEvent
+    weight: 6
+    earliestStart: 20 # can start early since lings need time to start doing stuff
+    reoccurrenceDelay: 40
+    minimumPlayers: 20
+    duration: null
+    occursDuringRoundEnd: false
+  - type: SpaceSpawnRule
+    spawnDistance: 80
+  - type: AntagSpawner
+    prototype: MobHeadSlugElder
+  - type: ChangelingRule
+  - type: AntagRandomObjectives
+    sets:
+    - groups: ChangelingObjectiveGroupDevourDummy
+      maxPicks: 1
+    - groups: ChangelingObjectiveGroupEscapeDummy
+      maxPicks: 1
+    - groups: ChangelingObjectiveGroupKillDummy
+      maxPicks: 1
+    maxDifficulty: 8
+  - type: AntagSelection
+    selectionTime: Enroll # Moffstation - antag enrollment
+    agentName: changeling-round-end-agent-name
+    antags:
+    - !type:FixedAntagCount
+      proto: SpaceChangeling
+  # Moffstation - antag enrollment
+  - type: ESSynchronizedVoteManager
+    votes:
+    - ChangelingEnroller
   # Moffstation end
   - type: DynamicRuleCost
     cost: 75
@@ -520,7 +554,11 @@
     table: !type:GroupSelector
       rolls: 4, 8
       children:
-      - id: MobGiantSpiderAngrySmasher # Moffstation - Make mobs smash stuff
+      - id: MobGiantSpiderTarantulaAngry
+      - id: MobGiantSpiderHunterAngry
+      - id: MobGiantSpiderGuardAngry
+      - id: MobGiantSpiderMidwifeAngry
+      - id: MobGiantSpiderNurseAngry
 
 - type: entity
   id: SpiderClownSpawnHorde
@@ -539,16 +577,16 @@
     table: !type:GroupSelector
       rolls: 4, 8
       children:
-      - id: MobClownSpiderSmasher # Moffstation - Make mobs smash stuff
+      - id: MobGiantSpiderClownAngry
 
 - type: entity
   id: ZombieOutbreak
   parent: BaseGameRule
   components:
   - type: StationEvent
-    earliestStart: 90
+    earliestStart: 45
     minimumPlayers: 40
-    weight: 1 # Zombies was happening basically every single survival round, so now it's super rare
+    weight: 1
     duration: 1
     occursDuringRoundEnd: false
   - type: ZombieRule
@@ -667,7 +705,6 @@
   - type: StationEvent
     earliestStart: 0
     duration: 1
-    minimumPlayers: 1
     maxOccurrences: 2
     weight: 10
   - type: RandomSpawnRule

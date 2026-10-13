@@ -7,6 +7,7 @@ using Content.Shared.Roles;
 using Content.Shared.Silicons.Borgs.Components;
 using Content.Shared.Silicons.Laws.Components;
 using Content.Shared.Station;
+using Content.Shared.Station.Systems;
 using Content.Shared.Stunnable;
 using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
@@ -26,7 +27,7 @@ public abstract partial class SharedSiliconLawSystem : EntitySystem
 
     // Moffstation - Begin
     [Dependency] private SharedRoleSystem _roles = default!;
-    [Dependency] private SharedStationSystem _station = default!;
+    [Dependency] private StationSystem _station = default!;
     [Dependency] private SharedUserInterfaceSystem _userInterface = default!;
     [Dependency] private IPrototypeManager _prototype = default!;
     [Dependency] private ISharedAdminLogManager _adminLogger = default!;

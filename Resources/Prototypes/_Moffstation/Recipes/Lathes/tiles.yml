@@ -1,16 +1,53 @@
+# Marble
+
+- type: latheRecipe
+  parent: BaseMarbleTileRecipe
+  id: MoffFloorTileItemUraniumMarble
+  result: MoffFloorTileItemUraniumMarble
+  materials:
+    Steel: 25
+    Glass: 25
+    Uranium: 25
+
+- type: latheRecipe
+  parent: BaseMarbleTileRecipe
+  id: MoffFloorTileItemPlasmaMarble
+  result: MoffFloorTileItemPlasmaMarble
+  materials:
+    Steel: 25
+    Glass: 25
+    Plasma: 25
+
+# Continuous Slats
+
+- type: latheRecipe
+  parent: BaseSteelTileRecipe
+  id: MoffFloorTileItemSteelSlatsContinuous
+  result: MoffFloorTileItemSteelSlatsContinuous
+
+- type: latheRecipe
+  parent: BaseDarkTileRecipe
+  id: MoffFloorTileItemDarkSlatsContinuous
+  result: MoffFloorTileItemDarkSlatsContinuous
+
+- type: latheRecipe
+  parent: BaseWhiteTileRecipe
+  id: MoffFloorTileItemWhiteSlatsContinuous
+  result: MoffFloorTileItemWhiteSlatsContinuous
+
 # Concrete
 
 - type: latheRecipe
   parent: BaseConcreteTileRecipe
-  id: FloorTileItemMoffIronsandConcrete
-  result: FloorTileItemMoffIronsandConcrete
+  id: MoffFloorTileItemIronsandConcrete
+  result: MoffFloorTileItemIronsandConcrete
 
 - type: latheRecipe
   parent: BaseConcreteTileRecipe
-  id: FloorTileItemMoffIronsandConcreteMono
-  result: FloorTileItemMoffIronsandConcreteMono
+  id: MoffFloorTileItemIronsandConcreteMono
+  result: MoffFloorTileItemIronsandConcreteMono
 
 - type: latheRecipe
   parent: BaseConcreteTileRecipe
-  id: FloorTileItemMoffIronsandConcreteSmooth
-  result: FloorTileItemMoffIronsandConcreteSmooth
+  id: MoffFloorTileItemIronsandConcreteSmooth
+  result: MoffFloorTileItemIronsandConcreteSmooth

@@ -4,6 +4,8 @@ using Content.Server.Antag;
 using Content.Server.Antag.Components;
 using Content.Shared._Moffstation.Extensions;
 using Content.Shared._Moffstation.Objectives;
+using Content.Shared.Antag;
+using Content.Shared.Antag.Components;
 using Content.Shared.Mind;
 using Content.Shared.Objectives.Systems;
 using Robust.Shared.Player;

@@ -108,9 +108,9 @@
       cell_slot: !type:ContainerSlot
 
 - type: entity
-  id: BaseWeaponBatterySmall
-  parent: BaseWeaponBattery
   abstract: true
+  parent: BaseWeaponBatteryNoAmmoCounter
+  id: BaseWeaponBatterySmallNoAmmoCounter
   components:
   - type: Item
     size: Small
@@ -126,6 +126,13 @@
     slots:
     - Belt
     - suitStorage
+
+- type: entity
+  abstract: true
+  parent: BaseWeaponBatterySmallNoAmmoCounter
+  id: BaseWeaponBatterySmall
+  components:
+  - type: AmmoCounter
 
 - type: entity
   id: BaseWeaponPowerCellSmall
@@ -289,9 +296,9 @@
 
 - type: entity
   name: pulse pistol
-  parent: [BaseWeaponBatterySmall, BaseCentcommContraband]
+  parent: [BaseWeaponBatterySmall, BaseDeathSquadContraband]
   id: WeaponPulsePistol
-  description: A state of the art energy pistol favoured as a sidearm by the NT operatives.
+  description: A state-of-the-art energy pistol favoured as a sidearm by elite Nanotrasen operatives.
   components:
   - type: Sprite
     sprite: Objects/Weapons/Guns/Battery/pulse_pistol.rsi
@@ -329,9 +336,9 @@
 
 - type: entity
   name: pulse carbine
-  parent: [BaseWeaponBattery, BaseGunWieldable, BaseCentcommContraband]
+  parent: [BaseWeaponBattery, BaseGunWieldable, BaseDeathSquadContraband]
   id: WeaponPulseCarbine
-  description: A high tech energy carbine favoured by the NT-ERT operatives.
+  description: A high-tech energy carbine favoured by elite Nanotrasen operatives.
   components:
   - type: Item
     size: Large
@@ -367,9 +374,9 @@
 
 - type: entity
   name: pulse rifle
-  parent: [BaseWeaponBattery, BaseGunWieldable, BaseCentcommContraband]
+  parent: [BaseWeaponBattery, BaseGunWieldable, BaseDeathSquadContraband]
   id: WeaponPulseRifle
-  description: A weapon that is almost as infamous as its users.
+  description: A weapon almost as infamous as its users.
   components:
   - type: Item
     size: Huge
@@ -536,9 +543,12 @@
     projectileSpeed: 35 # any higher and this causes issues in lag
     soundGunshot:
       path: /Audio/Weapons/Guns/Gunshots/taser2.ogg
+  - type: Battery
+    maxCharge: 800
+    startingCharge: 800 # Charges in a 20W recharger at 40 seconds
   - type: BatteryAmmoProvider
     proto: BulletDisablerPractice
-    fireCost: 62.5
+    fireCost: 25 # 32 shots, 2 stamcrits, +3 miss buffer per stamcrit (256 stam damage total)
   - type: Tag
     tags:
     - Taser
@@ -567,7 +577,6 @@
       - Belt
   - type: BatteryAmmoProvider
     proto: BulletDisabler
-    fireCost: 62.5
   - type: GuideHelp
     guides:
     - Security
@@ -605,7 +614,7 @@
     soundGunshot:
       path: /Audio/Weapons/Guns/Gunshots/taser2.ogg
   - type: BatteryAmmoProvider
-    proto: BulletDisablerSmg
+    proto: BulletDisablerSmgSlowing
     fireCost: 33.3 # Moffstation - Disabler nerf
   - type: MagazineVisuals
     magState: mag
@@ -658,7 +667,7 @@
 
 - type: entity
   name: elite taser
-  parent: [ BaseCentcommContraband, WeaponTaser ]
+  parent: [ BaseTaskForceContraband, WeaponTaser ]
   id: WeaponTaserSuper
   suffix: ADMEME
   description: A low-capacity, energy-based stun gun used by elite security teams to disable even the toughest of targets.
@@ -980,7 +989,7 @@
     price: 100
 
 - type: entity
-  parent: [WeaponAdvancedLaser, BaseXenoborgContraband]
+  parent: [BaseXenoborgContraband, WeaponAdvancedLaser]
   id: WeaponLaserGunXenoborg
   name: xenoborg laser gun
   components:
@@ -995,7 +1004,7 @@
       map: [ "enum.GunVisualLayers.MagUnshaded" ]
 
 - type: entity
-  parent: [WeaponLaserCannon, BaseXenoborgContraband]
+  parent: [BaseXenoborgContraband, WeaponLaserCannon]
   id: WeaponLaserCannonXenoborg
   name: xenoborg laser cannon
   components:
@@ -1021,7 +1030,7 @@
     maxAngle: 2
 
 - type: entity
-  parent: [WeaponAdvancedLaser, BaseXenoborgContraband]
+  parent: [BaseXenoborgContraband, WeaponAdvancedLaser]
   id: WeaponBurstFireLaserXenoborg
   name: xenoborg burst fire laser
   description: An alien weapon, channelling a burst-fire laser through a prism, causing targets to burst into fire.

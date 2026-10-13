@@ -10,7 +10,7 @@
     - state: frag
   - type: ExplodeOnTrigger
   - type: Explosive
-    explosionType: Default
+    explosionType: Transparent # Funky RMC Explosions
     maxIntensity: 40
     intensitySlope: 6
     totalIntensity: 200
@@ -32,7 +32,7 @@
     - state: frag
   - type: ExplodeOnTrigger
   - type: Explosive
-    explosionType: Default
+    explosionType: Transparent # Funky RMC Explosions
     maxIntensity: 2 # max 30 per tile
     intensitySlope: 1
     totalIntensity: 4 # 60 total damage to distribute over tiles
@@ -46,14 +46,13 @@
   parent: BaseBullet
   id: BulletGrenadeBaton
   categories: [ HideSpawnMenu ]
-  name: baton grenade
+  name: baton grenade round
   components:
   - type: Sprite
     sprite: Objects/Weapons/Guns/Projectiles/projectiles2.rsi
     layers:
     - state: grenade
   - type: Projectile
-    deleteOnCollide: false
     damage:
       types:
         Blunt: 1
@@ -74,10 +73,10 @@
     - state: grenade
   - type: ExplodeOnTrigger
   - type: Explosive
-    explosionType: Default
-    totalIntensity: 150 # a ~2 tile radius
+    explosionType: Transparent # Funky RMC Explosions
+    totalIntensity: 150 # a ~3 tile radius
     intensitySlope: 5
-    maxIntensity: 10
+    maxIntensity: 20
     canCreateVacuum: false
 
 - type: entity
@@ -108,10 +107,10 @@
     - state: grenade
   - type: ExplodeOnTrigger
   - type: Explosive
-    explosionType: Default
-    totalIntensity: 50
-    intensitySlope: 1
-    maxIntensity: 5
+    explosionType: Transparent # Funky RMC Explosions
+    totalIntensity: 120
+    intensitySlope: 5
+    maxIntensity: 9
     canCreateVacuum: false
   - type: ContainerContainer
     containers:
@@ -144,7 +143,7 @@
     positional: true
   - type: ExplodeOnTrigger
   - type: Explosive
-    explosionType: Default
+    explosionType: Transparent # Funky RMC Explosions
     totalIntensity: 0.01 # a little pop
     intensitySlope: 1
     maxIntensity: 0.01

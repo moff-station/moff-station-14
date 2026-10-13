@@ -457,9 +457,9 @@
         Heat: 0.95
 
 - type: entity
-  parent: [ ClothingMaskGas, BaseCentcommContraband ]
+  parent: [ ClothingMaskGas, BaseTaskForceContraband ]
   id: ClothingMaskGasERT
-  name: ert gas mask
+  name: ERT gas mask
   description: The gas mask of the elite squad of the ERT.
   components:
   - type: Sprite
@@ -748,7 +748,7 @@
   - type: IdentityBlocker
 
 - type: entity
-  parent: ClothingMaskGas
+  parent: [ClothingMaskGas, WeldingMaskBase]
   id: ClothingMaskWeldingGas
   name: welding gas mask
   description: A gas mask with built in welding goggles and face shield. Looks like a skull, clearly designed by a nerd.
@@ -758,20 +758,19 @@
     state: icon
   - type: Clothing
     sprite: Clothing/Mask/welding-gas.rsi
-  - type: FlashImmunity
-  - type: EyeProtection
   - type: WeldingMaskOverlay # Moff - Funky welding masks
     texture: /Textures/_Funkystation/Clothing/Head/Welding/weldingOverlayWeak.png # Moff - Funky welding masks
-  - type: PhysicalComposition
-    materialComposition:
-      Steel: 200
-      Glass: 100
   - type: StaticPrice
     price: 100
   - type: Tag
     tags:
     - WhitelistChameleon
     - SurvivalBoxInsertable # Moffstation - (Survival Box Improvements)
+  # Moff Start - Funky welding masks
+  # - type: ImageOverlay
+  #   pathToOverlayImage: "/Textures/Clothing/Head/Welding/weldingTexture.png"
+  #   additionalColorOverlay: "#00000050"
+  # Moff end
 
 # Entity tables
 - type: entityTable

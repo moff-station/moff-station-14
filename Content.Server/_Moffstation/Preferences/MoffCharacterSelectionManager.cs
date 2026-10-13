@@ -39,6 +39,32 @@ public sealed partial class MoffCharacterSelectionManager : IPostInjectInit
         _netManager.RegisterNetMessage<MsgSetMoffCharacterEnabled>(HandleSetCharacterEnabled);
     }
 
+    /// Returns all of the active profiles for the given users, keyed by their owners.
+    public Dictionary<NetUserId, HashSet<HumanoidCharacterProfile>> GetActiveProfiles(IEnumerable<NetUserId> users)
+    {
+        Dictionary<NetUserId, HashSet<HumanoidCharacterProfile>> profiles = new();
+        foreach (var user in users)
+        {
+            if (!_prefs.TryGetCachedPreferences(user, out var preferences))
+                continue;
+
+            HashSet<HumanoidCharacterProfile> userProfiles = [];
+            var state = GetState(user);
+            foreach (var (slot, character) in preferences.Characters)
+            {
+                if (state.IsSlotEnabled(slot))
+                    userProfiles.Add(character);
+            }
+
+            if (userProfiles.Count != 0)
+            {
+                profiles.Add(user, userProfiles);
+            }
+        }
+
+        return profiles;
+    }
+
     public bool TryGetState(NetUserId userId, out MoffCharacterSelectionState state)
     {
         return _cached.TryGetValue(userId, out state);
@@ -49,17 +75,7 @@ public sealed partial class MoffCharacterSelectionManager : IPostInjectInit
     /// </summary>
     public MoffCharacterSelectionState GetState(NetUserId userId)
     {
-        return _cached.TryGetValue(userId, out var state) ? state : new MoffCharacterSelectionState();
-    }
-
-    public JobPriority GetPriority(NetUserId userId, ProtoId<JobPrototype> job)
-    {
-        return GetState(userId).GetPriority(job);
-    }
-
-    public bool IsSlotEnabled(NetUserId userId, int slot)
-    {
-        return GetState(userId).IsSlotEnabled(slot);
+        return TryGetState(userId, out var state) ? state : new MoffCharacterSelectionState();
     }
 
     /// <summary>
@@ -72,7 +88,7 @@ public sealed partial class MoffCharacterSelectionManager : IPostInjectInit
         HumanoidCharacterProfile fallback)
     {
         var state = GetState(userId);
-        
+
         if (state.IsAuthoritative || state.JobPriorities.Count > 0)
             return state.GetPriority(job);
 
