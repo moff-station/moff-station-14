@@ -1,28 +1,21 @@
-﻿using Content.Server.Atmos.Components;
-using Content.Server.Atmos.EntitySystems;
-using Content.Server.Temperature.Components;
-using Content.Shared._Funkystation.CCVar;
-using Content.Shared._Funkystation.SuitBreach;
+﻿using Content.Shared._Funkystation.CCVar;
 using Content.Shared._Funkystation.SuitBreach.Components;
-using Content.Shared._Funkystation.SuitBreach.EntitySystems;
 using Content.Shared._Moffstation.Extensions;
-using Content.Shared.Atmos.Components;
 using Content.Shared.Body.Components;
 using Content.Shared.Damage.Components;
 using Content.Shared.Damage.Prototypes;
 using Content.Shared.Damage.Systems;
 using Content.Shared.DoAfter;
+using Content.Shared.Examine;
 using Content.Shared.Gravity;
 using Content.Shared.IdentityManagement;
 using Content.Shared.Interaction;
 using Content.Shared.Inventory;
 using Content.Shared.Popups;
+using Content.Shared.Random.Helpers;
 using Content.Shared.Stacks;
-using Content.Shared.Temperature;
-using Content.Server.Stack;
-using Content.Server.Tools;
 using Content.Shared.Tools;
-using Robust.Shared.Audio;
+using Content.Shared.Tools.Systems;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Configuration;
 using Robust.Shared.Physics.Components;
@@ -31,26 +24,26 @@ using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 using Robust.Shared.Timing;
 
-namespace Content.Server._Funkystation.SuitBreach;
+namespace Content.Shared._Funkystation.SuitBreach.EntitySystems;
 
-public sealed partial class SuitBreachSystem : SharedSuitBreachSystem
+/// <summary>
+/// handles the shared severity for suit breaches
+/// </summary>
+public abstract partial class SuitBreachSystem : EntitySystem
 {
     [Dependency] private IConfigurationManager _cfg = default!;
-    [Dependency] private IRobustRandom _random = default!;
+    [Dependency] private IGameTiming _timing = default!;
     [Dependency] private InventorySystem _inventory = default!;
-    [Dependency] private GasTankSystem _gasTank = default!;
     [Dependency] private SharedAudioSystem _audio = default!;
     [Dependency] private SharedPopupSystem _popup = default!;
     [Dependency] private SharedDoAfterSystem _doAfter = default!;
-    [Dependency] private ToolSystem _tools = default!; // Moff - Use tool quality over tag
+    [Dependency] private SharedToolSystem _tools = default!; // Moff - Use tool quality over tag
     [Dependency] private SharedGravitySystem _gravity = default!;
     [Dependency] private SharedPhysicsSystem _physics = default!;
-    [Dependency] private StackSystem _stack = default!;
-    [Dependency] private BarotraumaSystem _barotrauma = default!; // Moff
-    [Dependency] private IGameTiming _timing = default!;
+    [Dependency] private SharedStackSystem _stack = default!;
 
     [Dependency] private EntityQuery<SuitBreachableComponent> _breachableQuery; // Moff
-    [Dependency] private EntityQuery<TemperatureProtectionComponent> _temperatureProtectionQuery; // Moff
+    [Dependency] private EntityQuery<PhysicsComponent> _physicsQuery;
 
     // qualifying damage types that can puncture a suit
     private static readonly ProtoId<DamageTypePrototype>[] PuncturingDamageTypes =
@@ -58,47 +51,76 @@ public sealed partial class SuitBreachSystem : SharedSuitBreachSystem
 
     private static readonly ProtoId<ToolQualityPrototype> SabotageQuality = "Slicing"; // Moff - Use tool quality over tag
 
-    private static readonly TimeSpan DrainInterval = TimeSpan.FromSeconds(1);
-    private bool _enabled;
+    private const int LeakAngleSeed = 7919;
+
+    protected bool Enabled { get; private set; }
 
     public override void Initialize()
     {
         base.Initialize();
 
-        Subs.CVar(_cfg, SuitBreachCVars.Enabled, v => _enabled = v, true);
+        Subs.CVar(_cfg, SuitBreachCVars.Enabled, v => Enabled = v, true);
     }
 
+    // weightless wearers get pushed by the venting gas
     public override void Update(float frameTime)
     {
         base.Update(frameTime);
 
-        var curTime = _timing.CurTime;
+        if (!Enabled)
+            return;
+
         foreach (var ent in EntityQueryEnumerator<SuitBreachedComponent>())
         {
-            if (!_enabled)
-            {
-                StopHiss(ent);
-                if (ent.Comp.IsLeaking)
-                {
-                    ent.Comp.IsLeaking = false;
-                    Dirty(ent);
-                }
+            if (!ent.Comp.IsLeaking
+                || !TryGetWearer(ent.Owner, out var wearer)
+                || !_gravity.IsWeightless(wearer)
+                || !_physicsQuery.TryComp(wearer, out var physics))
                 continue;
-            }
 
-            var doAtmos = curTime >= ent.Comp.NextDrain;
-            if (doAtmos)
-                ent.Comp.NextDrain = curTime + DrainInterval;
+            var impulse = ent.Comp.LeakImpulsePerSecond.GetValueOrDefault(ent.Comp.Severity, 0f);
+            if (impulse <= 0f)
+                continue;
 
-            TickBreach(ent, frameTime, doAtmos);
+            _physics.WakeBody(wearer, body: physics);
+            _physics.ApplyLinearImpulse(wearer, ent.Comp.LeakAngle.ToVec() * impulse * frameTime, body: physics);
         }
+    }
+
+    /// <summary>
+    /// examining a breached suit tells you how bad it is
+    /// </summary>
+    [SubscribeLocalEvent]
+    private void OnSuitExamined(Entity<SuitBreachedComponent> ent, ref ExaminedEvent args)
+    {
+        var locKey = ent.Comp.Severity switch
+        {
+            SuitBreachSeverity.Minor => "suit-breach-examine-minor",
+            SuitBreachSeverity.Major => "suit-breach-examine-major",
+            SuitBreachSeverity.Catastrophic => "suit-breach-examine-catastrophic",
+            _ => null,
+        };
+
+        if (locKey != null)
+            args.PushMarkup(Loc.GetString(locKey));
+    }
+
+    /// <summary>
+    /// examining a sealant canister shows how many charges it has left
+    /// </summary>
+    [SubscribeLocalEvent]
+    private void OnCanisterExamined(Entity<SuitSealantCanisterComponent> ent, ref ExaminedEvent args)
+    {
+        args.PushMarkup(ent.Comp.Charges > 0
+            ? Loc.GetString("suit-breach-sealant-examine-charges", ("charges", ent.Comp.Charges))
+            : Loc.GetString("suit-breach-sealant-examine-empty"));
     }
 
     // rolls a breach off a hit, escalates severity if it happens
     [SubscribeLocalEvent]
     private void OnDamageDealt(Entity<DamageableComponent> ent, ref DamageDealtEvent args)
     {
-        if (!_enabled)
+        if (!Enabled)
             return;
 
         // Moff start - don't assume outerclothing
@@ -122,7 +144,7 @@ public sealed partial class SuitBreachSystem : SharedSuitBreachSystem
             if (qualifyingDamage < suit.Comp.MinDamageToRoll)
                 continue;
 
-            if (!_random.Prob(suit.Comp.BreachChance))
+            if (!SharedRandomExtensions.PredictedProb(_timing, suit.Comp.BreachChance, GetNetEntity(suit), GetNetEntity(args.Origin)))
                 continue;
 
             var severity = SeverityFromDamage(suit.Comp, qualifyingDamage); // Moff - Breach thresholds on the component
@@ -163,7 +185,7 @@ public sealed partial class SuitBreachSystem : SharedSuitBreachSystem
         if (args.Handled)
             return;
 
-        if (_enabled && _tools.HasQuality(args.Used, SabotageQuality)) // Moff - Use tool quality over tag
+        if (Enabled && _tools.HasQuality(args.Used, SabotageQuality)) // Moff - Use tool quality over tag
         {
             if (IsWorn(suit.Owner))
             {
@@ -219,12 +241,50 @@ public sealed partial class SuitBreachSystem : SharedSuitBreachSystem
         }
 
         var tempSuit = new Entity<SuitBreachedComponent?>(suit.Owner, null);
-        if (TryEscalate(ref tempSuit, SuitBreachSeverity.Catastrophic) && tempSuit.Comp != null)
+        if (!TryEscalate(ref tempSuit, SuitBreachSeverity.Catastrophic))
+            return;
+
+        OnSeverityChanged(suit.Owner);
+        _popup.PopupEntity(Loc.GetString("suit-breach-sabotage-success"), suit.Owner, args.User);
+    }
+
+    [SubscribeLocalEvent]
+    private void OnSealDoAfter(Entity<SuitBreachedComponent> suit, ref SuitSealDoAfterEvent args)
+    {
+        if (args.Cancelled || args.Handled || args.Used is not { } usedUid)
+            return;
+
+        if (!TryComp(usedUid, out SuitSealantCanisterComponent? canister) && !HasComp<SuitPatchComponent>(usedUid))
+            return;
+
+        if (canister != null)
         {
-            StopHiss((suit.Owner, tempSuit.Comp));
-            StartHiss((suit.Owner, tempSuit.Comp));
-            _popup.PopupEntity(Loc.GetString("suit-breach-sabotage-success"), suit.Owner, args.User);
+            if (canister.Charges <= 0)
+                return;
+
+            canister.Charges--;
+            Dirty(usedUid, canister);
+            _audio.PlayPredicted(canister.ApplySound, suit.Owner, args.User);
         }
+        else if (TryComp(usedUid, out StackComponent? stackComp))
+        {
+            if (!_stack.TryUse((usedUid, stackComp), 1))
+                return;
+        }
+        else
+        {
+            PredictedQueueDel(usedUid);
+        }
+
+        args.Handled = true;
+
+        var newSeverity = Regress(suit);
+        OnSeverityChanged(suit.Owner);
+
+        var message = newSeverity == SuitBreachSeverity.None
+            ? Loc.GetString("suit-breach-seal-fully-sealed")
+            : Loc.GetString("suit-breach-seal-partially-sealed");
+        _popup.PopupEntity(message, suit.Owner, args.User, PopupType.Medium);
     }
 
     private void TryApplySealant(EntityUid suitUid, EntityUid? wearer, ref InteractUsingEvent args)
@@ -290,81 +350,12 @@ public sealed partial class SuitBreachSystem : SharedSuitBreachSystem
         args.Handled = _doAfter.TryStartDoAfter(doAfterArgs);
     }
 
-    private bool TryGetWearer(EntityUid suitUid, out EntityUid wearer)
-    {
-        wearer = Transform(suitUid).ParentUid;
-        return _inventory.TryGetContainingSlot(suitUid, out _); // Moff - dont assume outerclothing
-    }
-
-    private bool IsWorn(EntityUid suitUid)
-    {
-        return TryGetWearer(suitUid, out _);
-    }
-
-    // Moff start - Refresh pressure protection on breach
-    private void RefreshWearerPressureProtection(EntityUid suitUid)
-    {
-        if (TryGetWearer(suitUid, out var wearer))
-            _barotrauma.RefreshPressureProtection(wearer);
-    }
-    // Moff end
-
-    [SubscribeLocalEvent]
-    private void OnSealDoAfter(Entity<SuitBreachedComponent> suit, ref SuitSealDoAfterEvent args)
-    {
-        if (args.Cancelled || args.Handled || args.Used is not { } usedUid)
-            return;
-
-        if (!TryComp(usedUid, out SuitSealantCanisterComponent? canister) && !HasComp<SuitPatchComponent>(usedUid))
-            return;
-
-        if (canister != null)
-        {
-            if (canister.Charges <= 0)
-                return;
-
-            canister.Charges--;
-            Dirty(usedUid, canister);
-            _audio.PlayPvs(canister.ApplySound, suit.Owner);
-        }
-        else if (TryComp(usedUid, out StackComponent? stackComp))
-        {
-            if (!_stack.TryUse((usedUid, stackComp), 1))
-                return;
-        }
-        else
-        {
-            QueueDel(usedUid);
-        }
-
-        args.Handled = true;
-
-        var newSeverity = Regress(suit);
-        RefreshWearerPressureProtection(suit.Owner); // Moff - Refresh pressure protection on breach
-
-        StopHiss(suit);
-        if (newSeverity != SuitBreachSeverity.None)
-            StartHiss(suit);
-
-        var message = newSeverity == SuitBreachSeverity.None
-            ? Loc.GetString("suit-breach-seal-fully-sealed")
-            : Loc.GetString("suit-breach-seal-partially-sealed");
-        _popup.PopupEntity(message, suit.Owner, args.User, PopupType.Medium);
-    }
-
     private void TryPuncture(Entity<SuitBreachedComponent?> suit, SuitBreachSeverity severity, EntityUid victim)
     {
         if (!TryEscalate(ref suit, severity))
             return;
 
-        RefreshWearerPressureProtection(suit.Owner); // Moff - Refresh pressure protection on breach
-
-        if (suit.Comp != null)
-        {
-            StopHiss((suit.Owner, suit.Comp));
-            StartHiss((suit.Owner, suit.Comp));
-        }
-
+        OnSeverityChanged(suit.Owner);
         _popup.PopupEntity(Loc.GetString("suit-breach-warning"), victim, victim, PopupType.LargeCaution);
     }
 
@@ -381,123 +372,86 @@ public sealed partial class SuitBreachSystem : SharedSuitBreachSystem
     }
     // Moff end
 
-    // drains the connected tank at the current severity's rate
-    private void TickBreach(Entity<SuitBreachedComponent> suit, float frameTime, bool doAtmos)
+    protected bool TryGetWearer(EntityUid suitUid, out EntityUid wearer)
     {
-        if (!TryGetWearer(suit.Owner, out var wearerUid) || // Moff - don't assume outerclothing
-            !TryComp<InternalsComponent>(wearerUid, out var internals) ||
-            !TryComp<GasTankComponent>(internals.GasTankEntity, out var tank))
-        {
-            StopHiss(suit);
-            if (!suit.Comp.IsLeaking)
-                return;
-            suit.Comp.IsLeaking = false;
-            Dirty(suit, suit.Comp);
+        wearer = Transform(suitUid).ParentUid;
+        return _inventory.TryGetContainingSlot(suitUid, out _); // Moff - dont assume outerclothing
+    }
+
+    private bool IsWorn(EntityUid suitUid)
+    {
+        return TryGetWearer(suitUid, out _);
+    }
+
+    /// <summary>
+    /// called after a suit's breach severity goes up or down
+    /// </summary>
+    protected virtual void OnSeverityChanged(EntityUid suit)
+    {
+    }
+
+    protected void SetLeaking(Entity<SuitBreachedComponent> suit, bool leaking)
+    {
+        if (suit.Comp.IsLeaking == leaking)
             return;
+
+        suit.Comp.IsLeaking = leaking;
+        Dirty(suit);
+    }
+
+    /// <summary>
+    /// escalates breach severity
+    /// </summary>
+    protected bool TryEscalate(ref Entity<SuitBreachedComponent?> suit, SuitBreachSeverity incoming)
+    {
+        if (incoming == SuitBreachSeverity.None)
+            return false;
+
+        if (!Resolve(suit, ref suit.Comp, logMissing: false))
+        {
+            var comp = EnsureComp<SuitBreachedComponent>(suit);
+            comp.Severity = incoming;
+            var random = new RobustRandom();
+            random.SetSeed(SharedRandomExtensions.HashCodeCombine((int) _timing.CurTick.Value, GetNetEntity(suit).Id, LeakAngleSeed));
+            comp.LeakAngle = random.NextFloat() * MathF.Tau;
+            Dirty(suit, comp);
+            suit.Comp = comp;
+            return true;
         }
 
-        if (doAtmos)
+        if (suit.Comp.Severity == SuitBreachSeverity.Catastrophic)
+            return false;
+
+        // if the new breach isn't strictly worse than current, make it worse anyway so that many small hits still accumulate
+        var nextSeverity = incoming > suit.Comp.Severity
+            ? incoming
+            : suit.Comp.Severity + 1;
+
+        suit.Comp.Severity = nextSeverity;
+        Dirty(suit, suit.Comp);
+        return true;
+    }
+
+    /// <summary>
+    /// regresses breach severity by one tier
+    /// </summary>
+    protected SuitBreachSeverity Regress(Entity<SuitBreachedComponent> suit)
+    {
+        var next = suit.Comp.Severity switch
         {
-            var rate = suit.Comp.DrainRatesPerSecond.GetValueOrDefault(suit.Comp.Severity, 0f);
-            if (rate > 0 && tank.Air.TotalMoles > 0)
-            {
-                _gasTank.RemoveAir((internals.GasTankEntity.Value, tank), rate * (float) DrainInterval.TotalSeconds);
-            }
+            SuitBreachSeverity.Catastrophic => SuitBreachSeverity.Major,
+            SuitBreachSeverity.Major => SuitBreachSeverity.Minor,
+            _ => SuitBreachSeverity.None,
+        };
+
+        if (next == SuitBreachSeverity.None)
+        {
+            RemComp<SuitBreachedComponent>(suit);
+            return SuitBreachSeverity.None;
         }
 
-        var hasGasLeft = tank.Air.TotalMoles > 0;
-        if (hasGasLeft)
-        {
-            StartHiss(suit);
-            if (!suit.Comp.IsLeaking)
-            {
-                suit.Comp.IsLeaking = true;
-                Dirty(suit, suit.Comp);
-            }
-
-            // weightless wearer gets pushed by the venting gas
-            if (!_gravity.IsWeightless(wearerUid) || !TryComp<PhysicsComponent>(wearerUid, out var physics))
-                return;
-
-            var impulse = suit.Comp.LeakImpulsePerSecond.GetValueOrDefault(suit.Comp.Severity, 0f);
-
-            if (!(impulse > 0f))
-                return;
-
-            _physics.WakeBody(wearerUid, body: physics);
-            var direction = suit.Comp.LeakAngle.ToVec();
-            _physics.ApplyLinearImpulse(wearerUid, direction * impulse * frameTime, body: physics);
-        }
-        else
-        {
-            StopHiss(suit);
-            if (!suit.Comp.IsLeaking)
-                return;
-
-            suit.Comp.IsLeaking = false;
-            Dirty(suit, suit.Comp);
-        }
+        suit.Comp.Severity = next;
+        Dirty(suit, suit.Comp);
+        return next;
     }
-
-    private void StartHiss(Entity<SuitBreachedComponent> suit)
-    {
-        if (suit.Comp.HissStream != null)
-            return;
-
-        var volume = suit.Comp.HissVolumePerSeverity.GetValueOrDefault(suit.Comp.Severity, 0f);
-        var audioParams = AudioParams.Default.WithLoop(true).WithVolume(volume);
-
-        if (_audio.PlayPvs(suit.Comp.HissSound, suit.Owner, audioParams) is { } hissPlayed)
-            suit.Comp.HissStream = hissPlayed.Entity;
-    }
-
-    private void StopHiss(Entity<SuitBreachedComponent> suit)
-    {
-        if (suit.Comp.HissStream == null)
-            return;
-
-        _audio.Stop(suit.Comp.HissStream);
-        suit.Comp.HissStream = null;
-    }
-
-    [SubscribeLocalEvent]
-    private void OnBreachShutdown(Entity<SuitBreachedComponent> ent, ref ComponentShutdown args)
-    {
-        StopHiss(ent);
-    }
-
-    [SubscribeLocalEvent]
-    private void OnGetPressureProtection(Entity<SuitBreachedComponent> ent, ref GetPressureProtectionValuesEvent args)
-    {
-        if (ent.Comp.Severity != SuitBreachSeverity.Catastrophic)
-            return;
-
-        args.HighPressureMultiplier = 1f;
-        args.HighPressureModifier = 0f;
-        args.LowPressureMultiplier = 1f;
-        args.LowPressureModifier = 0f;
-    }
-
-    // Moff start - Temperature protection goes through BeforeHeatExchangeEvent upstream
-    // [SubscribeLocalEvent]
-    // private void OnGetTemperatureProtection(Entity<SuitBreachedComponent> ent, ref GetTemperatureProtectionEvent args)
-    // {
-    //     if (ent.Comp.Severity != SuitBreachSeverity.Catastrophic)
-    //         return;
-    //
-    //     args.Coefficient = 1f;
-    // }
-
-    // undoes the suit's TemperatureProtection multiplier
-    [SubscribeLocalEvent]
-    private void OnBeforeHeatExchange(Entity<SuitBreachedComponent> ent, ref InventoryRelayedEvent<BeforeHeatExchangeEvent> args)
-    {
-        if (ent.Comp.Severity != SuitBreachSeverity.Catastrophic
-            || !_temperatureProtectionQuery.TryComp(ent, out var protection)
-            || protection.Coefficient <= 0f)
-            return;
-
-        args.Args.HeatTransferModifier /= protection.Coefficient;
-    }
-    // Moff end
 }

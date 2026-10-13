@@ -9,7 +9,7 @@ public sealed class SuitBreachCVars
     /// whether the suit breach system is enabled
     /// </summary>
     public static readonly CVarDef<bool> Enabled =
-        CVarDef.Create("funkystation.suit_breach.enabled", true, CVar.SERVERONLY);
+        CVarDef.Create("funkystation.suit_breach.enabled", true, CVar.SERVER | CVar.REPLICATED);
 
     // Moff start - Breach thresholds on the component
     // /// <summary>

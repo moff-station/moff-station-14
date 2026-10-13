@@ -9,7 +9,7 @@ namespace Content.Shared._Funkystation.SuitBreach.Components;
 /// added to a suit while it's breached
 /// </summary>
 [RegisterComponent, NetworkedComponent, AutoGenerateComponentState(true), AutoGenerateComponentPause]
-[Access(typeof(SharedSuitBreachSystem))]
+[Access(typeof(SuitBreachSystem))]
 public sealed partial class SuitBreachedComponent : Component
 {
     [DataField, AutoNetworkedField]
@@ -66,12 +66,6 @@ public sealed partial class SuitBreachedComponent : Component
     /// </summary>
     [DataField]
     public SoundSpecifier HissSound = new SoundPathSpecifier("/Audio/_Funkystation/Effects/suit_breach_hiss.ogg");
-
-    /// <summary>
-    /// currently-playing hiss stream
-    /// </summary>
-    [ViewVariables]
-    public EntityUid? HissStream;
 
     /// <summary>
     /// when the connected tank next gets drained

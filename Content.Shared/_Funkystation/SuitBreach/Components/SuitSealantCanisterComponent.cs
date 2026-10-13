@@ -8,7 +8,7 @@ namespace Content.Shared._Funkystation.SuitBreach.Components;
 /// suit sealant foam canister
 /// </summary>
 [RegisterComponent, NetworkedComponent, AutoGenerateComponentState]
-[Access(typeof(SharedSuitBreachSystem))]
+[Access(typeof(SuitBreachSystem))]
 public sealed partial class SuitSealantCanisterComponent : Component
 {
     [DataField, AutoNetworkedField]

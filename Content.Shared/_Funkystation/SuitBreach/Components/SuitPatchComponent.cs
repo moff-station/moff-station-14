@@ -7,7 +7,7 @@ namespace Content.Shared._Funkystation.SuitBreach.Components;
 /// an item that can be used to patch a breached suit
 /// </summary>
 [RegisterComponent, NetworkedComponent, AutoGenerateComponentState]
-[Access(typeof(SharedSuitBreachSystem))]
+[Access(typeof(SuitBreachSystem))]
 public sealed partial class SuitPatchComponent : Component
 {
     /// <summary>

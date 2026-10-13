@@ -7,7 +7,7 @@ namespace Content.Shared._Funkystation.SuitBreach.Components;
 /// goes on a suit to make it able to breach
 /// </summary>
 [RegisterComponent, NetworkedComponent, AutoGenerateComponentState]
-[Access(typeof(SharedSuitBreachSystem))]
+[Access(typeof(SuitBreachSystem))]
 public sealed partial class SuitBreachableComponent : Component
 {
     /// <summary>
