@@ -18,6 +18,7 @@ using Content.Shared.Interaction;
 using Content.Shared.Inventory;
 using Content.Shared.Popups;
 using Content.Shared.Stacks;
+using Content.Shared.Temperature;
 using Content.Server.Stack;
 using Content.Server.Tools;
 using Content.Shared.Tools;
@@ -44,7 +45,10 @@ public sealed partial class SuitBreachSystem : SharedSuitBreachSystem
     [Dependency] private SharedGravitySystem _gravity = default!;
     [Dependency] private SharedPhysicsSystem _physics = default!;
     [Dependency] private StackSystem _stack = default!;
-    [Dependency] private EntityQuery<SuitBreachableComponent> _breachableQuery; // Moff - Don't assume outerClothing
+    [Dependency] private BarotraumaSystem _barotrauma = default!; // Moff
+
+    [Dependency] private EntityQuery<SuitBreachableComponent> _breachableQuery; // Moff
+    [Dependency] private EntityQuery<TemperatureProtectionComponent> _temperatureProtectionQuery; // Moff
 
     // qualifying damage types that can puncture a suit
     private static readonly ProtoId<DamageTypePrototype>[] PuncturingDamageTypes =
@@ -176,6 +180,15 @@ public sealed partial class SuitBreachSystem : SharedSuitBreachSystem
 
             if (suit.Comp.SabotageAlwaysBreaches)
             {
+                // Moff start - Already-ruined sabotage popup
+                if (TryComp<SuitBreachedComponent>(suit, out var breached) && breached.Severity == SuitBreachSeverity.Catastrophic)
+                {
+                    _popup.PopupEntity(Loc.GetString("suit-breach-sabotage-already-breached"), suit.Owner, args.User);
+                    args.Handled = true;
+                    return;
+                }
+                // Moff end
+
                 var doAfterArgs = new DoAfterArgs(EntityManager,
                     args.User,
                     suit.Comp.SabotageDelay,
@@ -222,10 +235,7 @@ public sealed partial class SuitBreachSystem : SharedSuitBreachSystem
 
     private void TryApplySealant(EntityUid suitUid, EntityUid? wearer, ref InteractUsingEvent args)
     {
-        var isCanister = TryComp(args.Used, out SuitSealantCanisterComponent? canister);
-        var isPatch = TryComp(args.Used, out SuitPatchComponent? patch);
-
-        if (!isCanister && !isPatch)
+        if (!TryComp<SuitSealantCanisterComponent>(args.Used, out var canister) & !TryComp<SuitPatchComponent>(args.Used, out var patch))
             return;
 
         if (wearer == null && TryGetWearer(suitUid, out var actualWearer))
@@ -244,7 +254,7 @@ public sealed partial class SuitBreachSystem : SharedSuitBreachSystem
             return;
         }
 
-        if (isCanister && canister is { Charges: <= 0 })
+        if (canister is { Charges: <= 0 })
         {
             _popup.PopupEntity(Loc.GetString("suit-breach-seal-canister-empty"), suitUid, args.User);
             args.Handled = true;
@@ -255,7 +265,7 @@ public sealed partial class SuitBreachSystem : SharedSuitBreachSystem
         TimeSpan delay;
         bool breakOnMove;
 
-        if (isCanister && canister != null)
+        if (canister != null)
         {
             delay = isSelf ? canister.SelfApplyDelay : canister.OtherApplyDelay;
             breakOnMove = false;
@@ -297,6 +307,14 @@ public sealed partial class SuitBreachSystem : SharedSuitBreachSystem
         return TryGetWearer(suitUid, out _);
     }
 
+    // Moff start - Refresh pressure protection on breach
+    private void RefreshWearerPressureProtection(EntityUid suitUid)
+    {
+        if (TryGetWearer(suitUid, out var wearer))
+            _barotrauma.RefreshPressureProtection(wearer);
+    }
+    // Moff end
+
     [SubscribeLocalEvent]
     private void OnSealDoAfter(Entity<SuitBreachedComponent> suit, ref SuitSealDoAfterEvent args)
     {
@@ -331,6 +349,7 @@ public sealed partial class SuitBreachSystem : SharedSuitBreachSystem
         args.Handled = true;
 
         var newSeverity = Regress(suit);
+        RefreshWearerPressureProtection(suit.Owner); // Moff - Refresh pressure protection on breach
 
         StopHiss(suit);
         if (newSeverity != SuitBreachSeverity.None)
@@ -346,6 +365,8 @@ public sealed partial class SuitBreachSystem : SharedSuitBreachSystem
     {
         if (!TryEscalate(ref suit, severity))
             return;
+
+        RefreshWearerPressureProtection(suit.Owner); // Moff - Refresh pressure protection on breach
 
         if (suit.Comp != null)
         {
@@ -466,12 +487,26 @@ public sealed partial class SuitBreachSystem : SharedSuitBreachSystem
         args.LowPressureModifier = 0f;
     }
 
+    // Moff start - Temperature protection goes through BeforeHeatExchangeEvent upstream
+    // [SubscribeLocalEvent]
+    // private void OnGetTemperatureProtection(Entity<SuitBreachedComponent> ent, ref GetTemperatureProtectionEvent args)
+    // {
+    //     if (ent.Comp.Severity != SuitBreachSeverity.Catastrophic)
+    //         return;
+    //
+    //     args.Coefficient = 1f;
+    // }
+
+    // undoes the suit's TemperatureProtection multiplier
     [SubscribeLocalEvent]
-    private void OnGetTemperatureProtection(Entity<SuitBreachedComponent> ent, ref GetTemperatureProtectionEvent args)
+    private void OnBeforeHeatExchange(Entity<SuitBreachedComponent> ent, ref InventoryRelayedEvent<BeforeHeatExchangeEvent> args)
     {
-        if (ent.Comp.Severity != SuitBreachSeverity.Catastrophic)
+        if (ent.Comp.Severity != SuitBreachSeverity.Catastrophic
+            || !_temperatureProtectionQuery.TryComp(ent, out var protection)
+            || protection.Coefficient <= 0f)
             return;
 
-        args.Coefficient = 1f;
+        args.Args.HeatTransferModifier /= protection.Coefficient;
     }
+    // Moff end
 }

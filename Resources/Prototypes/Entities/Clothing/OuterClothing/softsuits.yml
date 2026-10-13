@@ -14,9 +14,6 @@
     - SuitEVA
     - MonkeyWearable
     - WhitelistChameleon
-  - type: SuitBreachable # Funky
-    breachChance: 0.5
-    minDamageToRoll: 8.0
 
 #Syndicate EVA
 - type: entity
@@ -36,13 +33,10 @@
     - WhitelistChameleon
   - type: StaticPrice
     price: 1000 # Helmet is 500
-  - type: SuitBreachable # Funky
-    breachChance: 0.4
-    minDamageToRoll: 9.0
 
 #Emergency EVA
 - type: entity
-  parent: [ TemperatureProtectionMinimal, ClothingOuterEVASuitBaseToggleable ]
+  parent: [ BaseSuitBreachableFragile, TemperatureProtectionMinimal, ClothingOuterEVASuitBaseToggleable ] # Moff - Suit breach tiers
   id: ClothingOuterSuitEmergency
   name: emergency pressure suit
   description: This bulky, uninsulated pressure suit was clearly not meant for extended use in outer space, despite NanoTrasen's claims that it passes corporate regulations.
@@ -62,13 +56,10 @@
     - ScurretWearable
     - MonkeyWearable
     - WhitelistChameleon
-  - type: SuitBreachable # Funky
-    breachChance: 0.9
-    minDamageToRoll: 5.0
 
 #Prisoner EVA
 - type: entity
-  parent: [ TemperatureProtectionMinimal, ClothingOuterEVASuitBase]
+  parent: [ BaseSuitBreachableFragile, TemperatureProtectionMinimal, ClothingOuterEVASuitBase ] # Moff - Suit breach tiers
   id:  ClothingOuterHardsuitEVAPrisoner
   name: prisoner pressure suit
   description: An emergency pressure suit meant for prisoners. It's not fully rated for extended use in outer space, but some wardens consider the lack of thermal insulation a feature.
@@ -85,9 +76,6 @@
     - SuitEVA
     - MonkeyWearable
     - WhitelistChameleon
-  - type: SuitBreachable # Funky
-    breachChance: 0.75
-    minDamageToRoll: 7.0
 
 #NTSRA Voidsuit / Ancient Voidsuit
 - type: entity
@@ -104,9 +92,6 @@
     walkModifier: 0.85
     sprintModifier: 0.85
   - type: HeldSpeedModifier
-  - type: SuitBreachable # Funky
-    breachChance: 0.40
-    minDamageToRoll: 12.0
 
 #Paramedic Voidsuit
 - type: entity
@@ -165,6 +150,3 @@
   - type: Tag
     tags:
     - WhitelistChameleon
-  - type: SuitBreachable # Funky
-    breachChance: 0.40
-    minDamageToRoll: 12.0

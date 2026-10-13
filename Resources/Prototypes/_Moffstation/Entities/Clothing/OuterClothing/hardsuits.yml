@@ -1,6 +1,6 @@
 ﻿# Blackbeard Hardsuit
 - type: entity
-  parent: [ ClothingOuterHardsuitBase, MoffBasePirateContraband ]
+  parent: [ BaseSuitBreachableArmored, ClothingOuterHardsuitBase, MoffBasePirateContraband ]
   id: ClothingOuterHardsuitPirateBlackbeard
   name: blackbeard hardsuit
   suffix: Pirate
@@ -41,13 +41,10 @@
     - WhitelistChameleon
   - type: StaticPrice
     price: 5000
-  - type: SuitBreachable
-    breachChance: 0.1
-    minDamageToRoll: 13.0
 
 # Davy Jones hardsuit
 - type: entity
-  parent: [ ClothingOuterHardsuitBase, MoffBasePirateContraband ]
+  parent: [ BaseSuitBreachableHeavyArmored, ClothingOuterHardsuitBase, MoffBasePirateContraband ]
   id: ClothingOuterHardsuitPirateDavyJones
   name: Davy Jones' Hardsuit
   suffix: Pirate
@@ -86,7 +83,7 @@
 
 # Buccaneer hardsuit
 - type: entity
-  parent: [ ClothingOuterHardsuitBase, MoffBasePirateContraband ]
+  parent: [ BaseSuitBreachableArmored, ClothingOuterHardsuitBase, MoffBasePirateContraband ]
   id: ClothingOuterHardsuitPirateBuccaneer
   name: buccaneer hardsuit
   suffix: Pirate
@@ -127,13 +124,10 @@
     - WhitelistChameleon
   - type: StaticPrice
     price: 5000
-  - type: SuitBreachable
-    breachChance: 0.1
-    minDamageToRoll: 13.0
 
 # Swashbuckler Hardsuit
 - type: entity
-  parent: [ ClothingOuterHardsuitBase, MoffBasePirateContraband ]
+  parent: [ BaseSuitBreachableArmored, ClothingOuterHardsuitBase, MoffBasePirateContraband ]
   id: ClothingOuterHardsuitPirateSwashbuckler
   name: swashbuckler hardsuit
   suffix: Pirate
@@ -172,13 +166,10 @@
     - WhitelistChameleon
   - type: StaticPrice
     price: 5000
-  - type: SuitBreachable
-    breachChance: 0.1
-    minDamageToRoll: 13.0
 
 #Pirate EVA Suit (Deep Space EVA Suit)
 - type: entity
-  parent: [ ClothingOuterHardsuitBase, MoffBasePirateContraband ]
+  parent: [ BaseSuitBreachableSoftsuit, ClothingOuterHardsuitBase, MoffBasePirateContraband ]
   id:  ClothingOuterHardsuitPirateEVA
   name: deep space EVA suit
   suffix: Pirate
@@ -208,13 +199,10 @@
     clothingPrototype: ClothingHeadHelmetHardsuitPirateEVA
   - type: StaticPrice
     price: 0
-  - type: SuitBreachable
-    breachChance: 0.5
-    minDamageToRoll: 8.0
 
 #Pirate Captain Hardsuit
 - type: entity
-  parent: [ ClothingOuterHardsuitBase, MoffBasePirateContraband ]
+  parent: [ BaseSuitBreachableArmored, ClothingOuterHardsuitBase, MoffBasePirateContraband ]
   id: ClothingOuterHardsuitPirateCap
   name: pirate captain's hardsuit
   description: An ancient armored hardsuit, perfect for defending against space scurvy and toolbox-wielding scallywags.
@@ -248,6 +236,3 @@
     clothingPrototype: ClothingHeadHelmetHardsuitPirateCap
   - type: StaticPrice
     price: 0
-  - type: SuitBreachable
-    breachChance: 0.1
-    minDamageToRoll: 14.0
