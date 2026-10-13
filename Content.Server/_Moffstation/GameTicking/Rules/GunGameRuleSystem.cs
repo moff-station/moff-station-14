@@ -1,24 +1,24 @@
 ﻿using System.Linq;
 using Content.Server._Moffstation.GameTicking.Rules.Components;
 using Content.Server.Clothing.Systems;
-using Content.Server.GameTicking;
 using Content.Server.GameTicking.Rules;
 using Content.Server.GameTicking.Rules.Components;
 using Content.Server.KillTracking;
 using Content.Server.Mind;
 using Content.Server.Power.Components;
 using Content.Server.RoundEnd;
-using Content.Server.Station.Systems;
 using Content.Shared.Administration.Systems;
 using Content.Shared.Containers.ItemSlots;
 using Content.Shared.GameTicking;
 using Content.Shared.GameTicking.Components;
+using Content.Shared.GameTicking.Rules;
 using Content.Shared.Hands.Components;
 using Content.Shared.Hands.EntitySystems;
 using Content.Shared.Inventory;
 using Content.Shared.Power.Components;
 using Content.Shared.PowerCell.Components;
 using Content.Shared.Roles;
+using Content.Shared.Station.Systems;
 using Content.Shared.Weapons.Ranged.Components;
 using Robust.Server.Player;
 using Robust.Shared.Map;
@@ -63,7 +63,7 @@ public sealed partial class GunGameRuleSystem : GameRuleSystem<GunGameRuleCompon
         var query = EntityQueryEnumerator<GunGameRuleComponent, RespawnTrackerComponent, GameRuleComponent>();
         while (query.MoveNext(out var uid, out var gunGame, out var tracker, out var rule))
         {
-            if (!GameTicker.IsGameRuleActive(uid, rule))
+            if (!GameTicker.IsGameRuleActive((uid, rule)))
                 continue;
 
             if (_mind.TryGetMind(ev.Player.UserId, out var mindId, out var mind))
@@ -105,7 +105,7 @@ public sealed partial class GunGameRuleSystem : GameRuleSystem<GunGameRuleCompon
         var query = EntityQueryEnumerator<GunGameRuleComponent, RespawnTrackerComponent, GameRuleComponent>();
         while (query.MoveNext(out var uid, out var gunGame, out var respawnTracker, out var rule))
         {
-            if (!GameTicker.IsGameRuleActive(uid, rule))
+            if (!GameTicker.IsGameRuleActive((uid, rule)))
                 continue;
 
             // Don't want other players picking up somebody's gun
@@ -142,19 +142,16 @@ public sealed partial class GunGameRuleSystem : GameRuleSystem<GunGameRuleCompon
     /// <summary>
     /// Appends round end text at the end of the round.
     /// </summary>
-    protected override void AppendRoundEndText(EntityUid uid,
-        GunGameRuleComponent component,
-        GameRuleComponent gameRule,
-        ref RoundEndTextAppendEvent args)
+    protected override void AppendRoundEndText(Entity<GunGameRuleComponent> rule, ref RoundEndTextAppendEvent args)
     {
-        if (component.Victor is { } victor && _player.TryGetPlayerData(victor, out var data))
+        if (rule.Comp.Victor is { } victor && _player.TryGetPlayerData(victor, out var data))
         {
             args.AddLine(Loc.GetString("gun-game-scoreboard-winner", ("player", data.UserName)));
             args.AddLine("");
         }
 
         args.AddLine(Loc.GetString("gun-game-scoreboard-header"));
-        args.AddLine(GetScoreboard((uid, component)).ToMarkup());
+        args.AddLine(GetScoreboard((rule.Owner, rule.Comp)).ToMarkup());
     }
 
     /// <summary>
