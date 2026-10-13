@@ -10,6 +10,7 @@ using Content.Shared._Moffstation.Warp; // Moffstation - Ai Warp
 
 namespace Content.Shared.Silicons.StationAi;
 
+// Interaction handlers between the AI's held entity (its player-controlled entity within the frame) and the world.
 public abstract partial class SharedStationAiSystem
 {
     /*
@@ -116,7 +117,7 @@ public abstract partial class SharedStationAiSystem
             return;
 
         ev.Event.User = ev.Actor;
-        RaiseLocalEvent(target.Value, (object) ev.Event);
+        RaiseLocalEvent(target.Value, (object)ev.Event);
     }
 
     private void OnMessageAttempt(Entity<StationAiWhitelistComponent> ent, ref BoundUserInterfaceMessageAttempt ev)
@@ -221,11 +222,25 @@ public sealed class StationAiRadialMessage : BoundUserInterfaceMessage
 /// </summary>
 public sealed class StationAiRadial : BaseStationAiAction
 {
+    /// <summary>
+    /// The sprite to use as the icon for this menu item.
+    /// </summary>
     public SpriteSpecifier? Sprite;
 
+    /// <summary>
+    /// The string to display when the item is selected.
+    /// </summary>
     public string? Tooltip;
 
+    /// <summary>
+    /// The event type to raise when this action is selected.
+    /// </summary>
     public BaseStationAiAction Event = default!;
+
+    /// <summary>
+    /// The relative order to show this item in the menu.
+    /// </summary>
+    public int? Order;
 }
 
 /// <summary>
@@ -235,20 +250,26 @@ public sealed class StationAiRadial : BaseStationAiAction
 [Serializable, NetSerializable]
 public abstract class BaseStationAiAction
 {
-    [field:NonSerialized]
+    [field: NonSerialized]
     public EntityUid User { get; set; }
 }
 
-// No idea if there's a better way to do this.
 /// <summary>
 /// Grab actions possible for an AI on the target entity.
 /// </summary>
 [ByRefEvent]
 public record struct GetStationAiRadialEvent()
 {
+    /// <summary>
+    /// The actions this interaction supports.
+    /// Handlers should add their own actions here.
+    /// </summary>
     public List<StationAiRadial> Actions = new();
 }
 
+/// <summary>
+/// Interface keys for the radial AI menu.
+/// </summary>
 [Serializable, NetSerializable]
 public enum AiUi : byte
 {

@@ -9,5 +9,5 @@ namespace Content.Shared._Moffstation.Pirate.Components;
 public sealed partial class PirateComponent : Component
 {
     [DataField]
-    public ProtoId<FactionIconPrototype> StatusIcon = "PirateFaction";
+    public ProtoId<StatusIconPrototype> StatusIcon = "PirateFaction";
 }

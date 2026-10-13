@@ -7,7 +7,7 @@
   - FloorTileItemDarkHerringbone
   - FloorTileItemDarkMini
   - FloorTileItemDarkMono
-  - FloorTileItemMoffDarkSlatsContinuous # Moff - keeping continuous tiles when they're removed upstream
+  - MoffFloorTileItemDarkSlatsContinuous # Moff - keeping continuous tiles when they're removed upstream
   - FloorTileItemDarkVerticalSlatsBordered
   - FloorTileItemDarkHorizontalSlatsBordered
   - FloorTileItemDarkPavement
@@ -19,7 +19,7 @@
   - FloorTileItemSteel
   - FloorTileItemSteelHerringbone
   - FloorTileItemSteelMini
-  - FloorTileItemMoffSteelSlatsContinuous # Moff - keeping continuous tiles when they're removed upstream
+  - MoffFloorTileItemSteelSlatsContinuous # Moff - keeping continuous tiles when they're removed upstream
   - FloorTileItemSteelVerticalSlatsBordered
   - FloorTileItemSteelHorizontalSlatsBordered
   - FloorTileItemSteelPavement
@@ -34,7 +34,7 @@
   - FloorTileItemWhiteHerringbone
   - FloorTileItemWhiteMini
   - FloorTileItemWhiteMono
-  - FloorTileItemMoffWhiteSlatsContinuous # Moff - keeping continuous tiles when they're removed upstream
+  - MoffFloorTileItemWhiteSlatsContinuous # Moff - keeping continuous tiles when they're removed upstream
   - FloorTileItemWhiteVerticalSlatsBordered
   - FloorTileItemWhiteHorizontalSlatsBordered
   - FloorTileItemWhitePavement
@@ -66,9 +66,9 @@
   - FloorTileItemConcrete
   - FloorTileItemConcreteMono
   - FloorTileItemConcreteSmooth
-  - FloorTileItemMoffIronsandConcrete # Moff - keeping ironsand when it's removed upstream
-  - FloorTileItemMoffIronsandConcreteMono # Moff - keeping ironsand when it's removed upstream
-  - FloorTileItemMoffIronsandConcreteSmooth # Moff - keeping ironsand when it's removed upstream
+  - MoffFloorTileItemIronsandConcrete # Moff - keeping ironsand when it's removed upstream
+  - MoffFloorTileItemIronsandConcreteMono # Moff - keeping ironsand when it's removed upstream
+  - MoffFloorTileItemIronsandConcreteSmooth # Moff - keeping ironsand when it's removed upstream
 
 - type: latheRecipePack
   id: CircuitFloorsStatic

@@ -1229,9 +1229,9 @@ StatueBananiumClown: StatueOrnateClown
 DrinkNeurotoxinGlass: null
 
 # Moff - 2026-08-18 - Ironsands namespace change
-FloorTileItemIronsandConcrete: FloorTileItemMoffIronsandConcrete
-FloorTileItemIronsandConcreteMono: FloorTileItemMoffIronsandConcreteMono
-FloorTileItemIronsandConcreteSmooth: FloorTileItemMoffIronsandConcreteSmooth
+FloorTileItemIronsandConcrete: MoffFloorTileItemIronsandConcrete
+FloorTileItemIronsandConcreteMono: MoffFloorTileItemIronsandConcreteMono
+FloorTileItemIronsandConcreteSmooth: MoffFloorTileItemIronsandConcreteSmooth
 IronstoneDoor: MoffIronstoneDoor
 EncrustedIronstoneDoor: MoffEncrustedIronstoneDoor
 IronSandstone: MoffIronSandstone
@@ -1244,9 +1244,21 @@ IronsandStepConcaveCorner: MoffIronsandStepConcaveCorner
 #2026-08-19
 JanitorServiceLight: null
 
+# Moff - 2026-10-02 - Moffstation poster change
+PosterSignups: PosterMoffsector
+
+#2026-08-31
+DrinkWaterJug: JugWater
+
+#2026-09-05
+AsimovCircuitBoard: MoffNanotrasenLawBoardSpawner # Moff - Law board spawners
+
+# 2026-09-24
+ClothingShoesTourist: ClothingShoesSandalsBlack
+ClothingShoesWizard: ClothingShoesSandalsBrown
+
 # Moff - 2026-09-28 - Law board spawners
 NTDefaultCircuitBoard: MoffNanotrasenLawBoardSpawner
-AsimovCircuitBoard: MoffNanotrasenLawBoardSpawner # Prepare to change this to 'Crewsimov' here and in law_boards.yml when upstream merges
 CorporateCircuitBoard: MoffNanotrasenLawBoardSpawner
 CommandmentCircuitBoard: MoffStandardLawBoardSpawner
 PaladinCircuitBoard: MoffStandardLawBoardSpawner
@@ -1256,3 +1268,6 @@ RobocopCircuitBoard: MoffStandardLawBoardSpawner
 GameMasterCircuitBoard: MoffStandardLawBoardSpawner
 ArtistCircuitBoard: MoffStandardLawBoardSpawner
 NutimovCircuitBoard: MoffStandardLawBoardSpawner
+
+# Moff - 2026-10-11 - Unmap telepads
+CargoTelepad: null

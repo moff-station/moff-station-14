@@ -78,7 +78,7 @@ public sealed partial class GhostRespawnCommand : LocalizedEntityCommands
             $"{shell.Player.AttachedEntity} used ghost respawn button"
         );
 
-        var gameTicker = _entityManager.EntitySysManager.GetEntitySystem<GameTicker>();
+        var gameTicker = _entityManager.EntitySysManager.GetEntitySystem<ServerGameTicker>();
         gameTicker.Respawn(shell.Player);
     }
 }

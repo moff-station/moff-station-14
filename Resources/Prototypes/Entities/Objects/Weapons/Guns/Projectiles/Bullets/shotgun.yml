@@ -29,7 +29,7 @@
         Blunt: 10
   # Moff start - beanbag stun now scales with the blunt damage it deals
   #- type: StaminaDamageOnCollide
-  #  damage: 40 # 3 hits to stun
+  #  damage: 27 # 4 hits to stun
   - type: ProjectileScaledStaminaDamage
     factor: 3.3
   # Moff end
@@ -44,7 +44,7 @@
     damage:
       types:
         Piercing: 10
-        Structural: 8
+        Structural: 6
 
 - type: entity
   parent: PelletShotgun

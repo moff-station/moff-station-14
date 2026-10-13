@@ -10,7 +10,7 @@ public sealed partial class DiscordGuildEventSystem : EntitySystem
 {
     [Dependency] private IConfigurationManager _cfg = default!;
     [Dependency] private DiscordGuildEventManager _eventManager = default!;
-    [Dependency] private GameTicker _gameTicker = default!;
+    [Dependency] private ServerGameTicker _gameTicker = default!;
 
     private bool _discordEventEnabled;
     private string _currentEventName = "";
