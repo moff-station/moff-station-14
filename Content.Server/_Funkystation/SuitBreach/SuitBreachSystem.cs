@@ -5,6 +5,7 @@ using Content.Shared._Funkystation.CCVar;
 using Content.Shared._Funkystation.SuitBreach;
 using Content.Shared._Funkystation.SuitBreach.Components;
 using Content.Shared._Funkystation.SuitBreach.EntitySystems;
+using Content.Shared._Moffstation.Extensions;
 using Content.Shared.Atmos.Components;
 using Content.Shared.Body.Components;
 using Content.Shared.Damage.Components;
@@ -43,6 +44,7 @@ public sealed partial class SuitBreachSystem : SharedSuitBreachSystem
     [Dependency] private SharedGravitySystem _gravity = null!;
     [Dependency] private SharedPhysicsSystem _physics = null!;
     [Dependency] private StackSystem _stack = null!;
+    [Dependency] private EntityQuery<SuitBreachableComponent> _breachableQuery; // Moff - Don't assume outerClothing
 
     // qualifying damage types that can puncture a suit
     private static readonly ProtoId<DamageTypePrototype>[] PuncturingDamageTypes =
@@ -100,11 +102,13 @@ public sealed partial class SuitBreachSystem : SharedSuitBreachSystem
         if (!_enabled)
             return;
 
-        if (!_inventory.TryGetSlotEntity(uid, "outerClothing", out var suitUid))
-            return;
-
-        if (!TryComp<SuitBreachableComponent>(suitUid, out var breachable))
-            return;
+        // Moff start - don't assume outerclothing
+        // if (!_inventory.TryGetSlotEntity(uid, "outerClothing", out var suitUid))
+        //     return;
+        //
+        // if (!TryComp<SuitBreachableComponent>(suitUid, out var breachable))
+        //     return;
+        // Moff end
 
         var qualifyingDamage = 0f;
         foreach (var damageType in PuncturingDamageTypes)
@@ -113,14 +117,19 @@ public sealed partial class SuitBreachSystem : SharedSuitBreachSystem
                 qualifyingDamage += (float)amount;
         }
 
-        if (qualifyingDamage < breachable.MinDamageToRoll)
-            return;
+        // Moff start - Don't assume outerclothing
+        foreach (var suit in _breachableQuery.ResolveAll(_inventory.GetHandOrInventoryEntities(uid), logMissing: false))
+        {
+            if (qualifyingDamage < suit.Comp.MinDamageToRoll)
+                continue;
 
-        if (!_random.Prob(breachable.BreachChance))
-            return;
+            if (!_random.Prob(suit.Comp.BreachChance))
+                continue;
 
-        var severity = SeverityFromDamage(qualifyingDamage);
-        TryPuncture((suitUid.Value, null), severity, uid);
+            var severity = SeverityFromDamage(qualifyingDamage);
+            TryPuncture((suit.Owner, null), severity, uid);
+        }
+        // Moff end
     }
 
     [SubscribeLocalEvent]
@@ -129,8 +138,23 @@ public sealed partial class SuitBreachSystem : SharedSuitBreachSystem
         if (args.Handled)
             return;
 
-        if (!_inventory.TryGetSlotEntity(target.Owner, "outerClothing", out var suitUid))
+        // Moff start - don't assume outerclothing
+        EntityUid? suitUid = null;
+        var slots = _inventory.GetSlotEnumerator(target.Owner);
+        while (slots.NextItem(out var item))
+        {
+            if (!_breachableQuery.HasComp(item))
+                continue;
+
+            suitUid = item;
+            if (HasComp<SuitBreachedComponent>(item))
+                break;
+        }
+
+        if (suitUid == null)
+
             return;
+        // Moff end
 
         TryApplySealant(suitUid.Value, target.Owner, ref args);
     }
@@ -265,9 +289,7 @@ public sealed partial class SuitBreachSystem : SharedSuitBreachSystem
     private bool TryGetWearer(EntityUid suitUid, out EntityUid wearer)
     {
         wearer = Transform(suitUid).ParentUid;
-        return wearer != EntityUid.Invalid &&
-               _inventory.TryGetSlotEntity(wearer, "outerClothing", out var equipped) &&
-               equipped == suitUid;
+        return _inventory.TryGetContainingSlot(suitUid, out _); // Moff - dont assume outerclothing
     }
 
     private bool IsWorn(EntityUid suitUid)
@@ -350,8 +372,8 @@ public sealed partial class SuitBreachSystem : SharedSuitBreachSystem
     // drains the connected tank at the current severity's rate
     private void TickBreach(Entity<SuitBreachedComponent> suit, float frameTime, bool doAtmos, float atmosDt)
     {
-        var wearerUid = Transform(suit.Owner).ParentUid;
-        if (!TryComp<InternalsComponent>(wearerUid, out var internals) ||
+        if (!TryGetWearer(suit.Owner, out var wearerUid) || // Moff - don't assume outerclothing
+            !TryComp<InternalsComponent>(wearerUid, out var internals) ||
             !TryComp<GasTankComponent>(internals.GasTankEntity, out var tank))
         {
             StopHiss(suit);
