@@ -249,18 +249,6 @@
 
 - type: entity
   parent: BaseFigurineMoff
-  id: ToyFigurineCamilla
-  name: scarred HOS figurine
-  description: A figurine of a human head of security woman covered in scars, wearing the red and black uniform. She's trying her hardest to be friendly but she's very clearly overwhelmed. Collectors tend to pair it with a certain captain figurine.
-  components:
-  - type: Sprite
-    state: camilla
-  - type: SpeakOnTrigger
-    pack: FigurinesCamilla
-  - type: FrenchAccent
-
-- type: entity
-  parent: BaseFigurineMoff
   id: ToyFigurineCantrel
   name: angry unscrupulous quartermaster figurine
   description: A figurine depicting a Quartermaster. It seems to be of an exceptionally low quality. It smells like whiskey and tobacco.
