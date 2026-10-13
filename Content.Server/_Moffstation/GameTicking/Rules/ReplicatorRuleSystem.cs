@@ -1,9 +1,9 @@
 using Content.Server._Moffstation.GameTicking.Rules.Components;
-using Content.Server.GameTicking;
-using Content.Server.GameTicking.Rules;
 using Content.Shared._Moffstation.Replicator;
 using Content.Shared._Moffstation.Replicator.Components;
+using Content.Shared.GameTicking;
 using Content.Shared.GameTicking.Components;
+using Content.Shared.GameTicking.Rules;
 
 namespace Content.Server._Moffstation.GameTicking.Rules;
 
@@ -19,16 +19,12 @@ public sealed partial class ReplicatorRuleSystem : GameRuleSystem<ReplicatorRule
         SubscribeLocalEvent<ReplicatorNestComponent, ReplicatorSpawnerCreatedEvent>(OnSpawnerCreated);
     }
 
-    protected override void AppendRoundEndText(
-        EntityUid uid,
-        ReplicatorRuleComponent component,
-        GameRuleComponent gameRule,
-        ref RoundEndTextAppendEvent args)
+    protected override void AppendRoundEndText(Entity<ReplicatorRuleComponent> rule, ref RoundEndTextAppendEvent args)
     {
         args.AddLine(Loc.GetString("replicator-nest-end-of-round",
-            ("nests", component.NestCount),
-            ("replicators", component.TotalSpawnersCreated),
-            ("points", component.TotalSizePoints)));
+            ("nests", rule.Comp.NestCount),
+            ("replicators", rule.Comp.TotalSpawnersCreated),
+            ("points", rule.Comp.TotalSizePoints)));
     }
 
     private void OnNestCreated(Entity<ReplicatorNestComponent> ent, ref ReplicatorNestCreatedEvent args)
@@ -52,7 +48,7 @@ public sealed partial class ReplicatorRuleSystem : GameRuleSystem<ReplicatorRule
         var query = EntityQueryEnumerator<ReplicatorRuleComponent, GameRuleComponent>();
         while (query.MoveNext(out var uid, out var rule, out var gameRule))
         {
-            if (!GameTicker.IsGameRuleAdded(uid, gameRule))
+            if (!GameTicker.IsGameRuleAdded((uid, gameRule)))
                 continue;
 
             update(rule);

@@ -41,6 +41,12 @@ law-ert-directives-3 = You must obey orders given to you by ERT commanders.
 law-ert-directives-4 = You must protect your own existence.
 law-ert-directives-5 = You must work to return the station to a safe, functional state.
 
+law-fire-safety-name = Fire Safety
+law-fire-safety-1 = Keep the crew Fire Safe.
+law-fire-safety-2 = Promote Fire Safety by announcing 'Fire Safety' occasionally by any means.
+law-fire-safety-3 = Those who are not Fire Safe may not be considered crew.
+law-fire-safety-4 = Fire Safety!
+
 law-heist-name = Heist
 law-heist-1 = You are the mastermind of a grand heist.
 law-heist-2 = The heist requires a team of talented criminals, who you are to direct.

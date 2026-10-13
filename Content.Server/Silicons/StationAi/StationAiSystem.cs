@@ -9,8 +9,6 @@ using Content.Server.Medical.SuitSensors; // Moffstation - AI Warp
 using Content.Server.Mind;
 using Content.Server.Power.Components;
 using Content.Server.Roles;
-using Content.Server.Spawners.Components;
-using Content.Server.Spawners.EntitySystems;
 using Content.Server.Station.Systems;
 using Content.Shared._Moffstation.Warp; // Moffstation - AI Warp
 using Content.Shared.Alert;
@@ -21,7 +19,7 @@ using Content.Shared.Damage.Systems;
 using Content.Shared.Destructible;
 using Content.Shared.DeviceNetwork.Components;
 using Content.Shared.DoAfter;
-using Content.Shared.Medical.SuitSensor; // Moffstation - AI Warp
+using Content.Shared.Medical.SuitSensors;
 using Content.Shared.Mobs;
 using Content.Shared.Mobs.Systems;
 using Content.Shared.Popups;
@@ -31,6 +29,8 @@ using Content.Shared.Power.Components;
 using Content.Shared.Rejuvenate;
 using Content.Shared.Roles;
 using Content.Shared.Silicons.StationAi;
+using Content.Shared.Spawners.Components;
+using Content.Shared.Spawners.EntitySystems;
 using Content.Shared.Speech.Components;
 using Content.Shared.StationAi;
 using Content.Shared.Turrets;
@@ -59,8 +59,8 @@ public sealed partial class StationAiSystem : SharedStationAiSystem
     [Dependency] private SharedBatterySystem _battery = default!;
     [Dependency] private DamageableSystem _damageable = default!;
     [Dependency] private SharedPopupSystem _popups = default!;
-    [Dependency] private StationSystem _station = default!;
-    [Dependency] private StationJobsSystem _stationJobs = default!;
+    [Dependency] private ServerStationSystem _station = default!;
+    [Dependency] private ServerStationJobsSystem _stationJobs = default!;
     [Dependency] private MobStateSystem _mobState = default!;
     [Dependency] private SharedAppearanceSystem _appearance = default!;
 

@@ -1,15 +1,16 @@
 using Content.Server._Moffstation.GameTicking.Rules.Components;
 using Content.Server._Moffstation.Power.Components;
 using Content.Server.Chat.Systems;
-using Content.Server.GameTicking.Rules;
 using Content.Server.Light.EntitySystems;
 using Content.Server.Pinpointer;
 using Content.Server.Power.Components;
 using Content.Server.Power.EntitySystems;
 using Content.Server.Radio.EntitySystems;
 using Content.Shared.GameTicking.Components;
+using Content.Shared.GameTicking.Rules;
 using Content.Shared.Light.Components;
 using Content.Shared.Station.Components;
+using Content.Shared.Station.Systems;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Random;
 using Robust.Shared.Timing;
@@ -28,19 +29,21 @@ public sealed partial class LightOverloadRuleSystem : GameRuleSystem<LightOverlo
     [Dependency] private IGameTiming _gameTime = default!;
     [Dependency] private NavMapSystem _navMap = default!;
     [Dependency] private ChatSystem _chatSystem = default!;
+    [Dependency] private StationSystem _station = default!;
 
-    protected override void Started(EntityUid entity, LightOverloadRuleComponent overloadComp, GameRuleComponent ruleData, GameRuleStartedEvent args)
+    protected override void Started(Entity<LightOverloadRuleComponent, GameRuleComponent> rule, ref GameRuleStartedEvent args)
     {
-        base.Started(entity, overloadComp, ruleData, args);
+        base.Started(rule, ref args);
+        var overloadComp = rule.Comp1;
 
-        if (!TryGetRandomStation(out var chosenStation))
+        if (!_station.TryGetRandomStation<StationEventEligibleComponent>(out var chosenStation))
             return;
 
         var stationApcs = new List<Entity<ApcComponent, TransformComponent>>();
         var query = EntityQueryEnumerator<ApcComponent, TransformComponent>();
         while (query.MoveNext(out var apcUid, out var apc, out var xform))
         {
-            if (apc.MainBreakerEnabled && CompOrNull<StationMemberComponent>(xform.GridUid)?.Station == chosenStation)
+            if (apc.MainBreakerEnabled && CompOrNull<StationMemberComponent>(xform.GridUid)?.Station == chosenStation.Value.Owner)
             {
                 stationApcs.Add((apcUid, apc, xform));
             }

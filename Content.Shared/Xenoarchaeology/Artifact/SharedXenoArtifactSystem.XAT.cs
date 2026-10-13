@@ -90,11 +90,10 @@ public abstract partial class SharedXenoArtifactSystem
 
             Dirty(ent);
             if (node != null && unlockingComp.TriggeredNodeIndexes.Add(GetIndex(ent, node.Value)))
-                // Moffstation - Start - Artifact trigger on completion
-                if (TryGetNodeFromUnlockState((ent.Owner, unlockingComp, ent.Comp), out var unlockingNode))
-                    unlockingComp.EndTime = _timing.CurTime + TimeSpan.FromSeconds(0.5);
-                // Moffstation - End
+            {
+                MoffCheckArtifactComplete((ent, unlockingComp, ent)); // Moff - Artifact trigger on completion
                 Dirty(ent, unlockingComp);
+            }
         }
         else if (node != null)
         {
@@ -131,6 +130,8 @@ public abstract partial class SharedXenoArtifactSystem
                     }
                 }
             }
+
+            MoffCheckArtifactComplete((ent, unlockingComp, ent)); // Moff - Artifact trigger on completion
             Dirty(ent, unlockingComp);
         }
     }
@@ -140,6 +141,14 @@ public abstract partial class SharedXenoArtifactSystem
         ent.Comp.ArtifexiumApplied = val;
         Dirty(ent);
     }
+
+    // Moff Start - Artifact trigger on completion
+    public void MoffCheckArtifactComplete(Entity<XenoArtifactUnlockingComponent, XenoArtifactComponent> entity)
+    {
+        if (TryGetNodeFromUnlockState(entity, out _))
+            entity.Comp1.EndTime = _timing.CurTime + TimeSpan.FromSeconds(0.5);
+    }
+    // Moff End
 }
 
 /// <summary>
