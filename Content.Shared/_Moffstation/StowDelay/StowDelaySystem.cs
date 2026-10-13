@@ -111,7 +111,7 @@ public sealed partial class StowDelaySystem : EntitySystem
     }
 
     /// <summary>
-    /// Starts a doafter to put the held item into storage. True means the caller must not insert it now.
+    /// Starts a doafter to put an item into storage.
     /// </summary>
     public bool TryStartStorageDelay(EntityUid storage, EntityUid user, EntityUid item, ItemStorageLocation? location = null)
     {
@@ -179,7 +179,9 @@ public sealed partial class StowDelaySystem : EntitySystem
             return false;
 
         var delay = GetSlotDelay((item.Value, itemComp), slotDefinition, unequip: true);
-        return TryStartDoAfter(user, delay, new UnstowEquipDoAfterEvent(slot), item.Value, target, item.Value, BreakOnMove(item.Value, slotDefinition));
+        // Only on the suitstorage should it pop up, since you can put weapons and stuff on it
+        var displayParticles = (slotDefinition.SlotFlags & SlotFlags.SUITSTORAGE) != 0;
+        return TryStartDoAfter(user, delay, new UnstowEquipDoAfterEvent(slot), item.Value, target, item.Value, BreakOnMove(item.Value, slotDefinition), interactionParticles: displayParticles);
     }
 
     /// <summary>

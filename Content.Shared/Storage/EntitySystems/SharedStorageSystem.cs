@@ -876,7 +876,7 @@ public abstract partial class SharedStorageSystem : EntitySystem
 
         // Moff Start - Stow delay
         if (ValidateInput(args, msg.StorageEnt, out var transferPlayer, out var transferStorage)
-            && _stowDelay.TryStartStorageTransferDelay(container.Owner, transferPlayer, itemUid.Value, (transferStorage, msg.Location)))
+            && _stowDelay.TryStartStorageTransferDelay(transferStorage.AsNullable(), transferPlayer, itemUid.Value, (transferStorage, msg.Location)))
         {
             _adminLog.Add(
                 LogType.Storage,
