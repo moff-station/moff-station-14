@@ -3,21 +3,21 @@ using Content.Server._Moffstation.Shuttles.Components;
 using Content.Server._Moffstation.Spawners;
 using Content.Server.Communications;
 using Content.Server.DeviceNetwork.Systems;
-using Content.Server.GameTicking.Events;
 using Content.Server.Screens.Components;
 using Content.Server.Shuttles.Components;
 using Content.Server.Shuttles.Events;
 using Content.Server.Shuttles.Systems;
-using Content.Server.Station.Systems;
 using Content.Shared._Moffstation.CCVar;
 using Content.Shared.CCVar;
-using Content.Shared.DeviceNetwork;
 using Content.Shared.DeviceNetwork.Components;
+using Content.Shared.GameTicking.Events;
 using Content.Shared.Mind;
 using Content.Shared.Mobs.Components;
 using Content.Shared.Power.Components;
 using Content.Shared.Power.EntitySystems;
+using Content.Shared.RoundEnd;
 using Content.Shared.Shuttles.Components;
+using Content.Shared.Station.Systems;
 using Content.Shared.Tag;
 using Robust.Shared.Configuration;
 using Robust.Shared.Map;
@@ -32,7 +32,7 @@ public sealed partial class MoffTransitShuttleSystem : EntitySystem
 {
     [Dependency] private IConfigurationManager _cfg = default!;
     [Dependency] private IGameTiming _timing = default!;
-    [Dependency] private ArrivalsSystem _arrivals = default!;
+    [Dependency] private ServerArrivalsSystem _arrivals = default!;
     [Dependency] private DeviceNetworkSystem _deviceNetwork = default!;
     [Dependency] private SharedBatterySystem _battery = default!;
     [Dependency] private SharedMapSystem _map = default!;
@@ -146,17 +146,17 @@ public sealed partial class MoffTransitShuttleSystem : EntitySystem
                 ftl.KnockdownOnStart = true;
 
                 var eta = TimeSpan.FromSeconds(ftl.TravelTime);
-                var payload = new NetworkPayload
+                var payload = new ScreenShuttlePayload
                 {
-                    [ShuttleTimerMasks.ShuttleMap] = ent.Owner,
-                    [ShuttleTimerMasks.ShuttleTime] = eta,
-                    [ShuttleTimerMasks.DestMap] = _transform.GetMap(args.TargetCoordinates),
-                    [ShuttleTimerMasks.DestTime] = eta,
-                    [ScreenMasks.Text] = ShuttleTimerMasks.ETA,
+                    Shuttle = ent.Owner,
+                    ShuttleTime = eta,
+                    DestinationMap = _transform.GetMap(args.TargetCoordinates),
+                    DestinationTime = eta,
+                    OverrideText = ShuttleTimerMasks.ETA,
                 };
 
                 if (TryComp<DeviceNetworkComponent>(ent.Owner, out var net))
-                    _deviceNetwork.QueuePacket(ent.Owner, null, payload, net.TransmitFrequency);
+                    _deviceNetwork.SendPacket(ent.Owner, null, ref payload, net.TransmitFrequency);
                 break;
             case TransitShuttleState.Returning:
                 SendCrewToStation(ent);
@@ -176,17 +176,17 @@ public sealed partial class MoffTransitShuttleSystem : EntitySystem
                 ent.Comp.DepartTime = _timing.CurTime + dockTime;
                 RefillStationBatteries(ent.Comp.Station);
 
-                var payload = new NetworkPayload
+                var payload = new ScreenShuttlePayload
                 {
-                    [ShuttleTimerMasks.ShuttleMap] = ent.Owner,
-                    [ShuttleTimerMasks.ShuttleTime] = dockTime,
-                    [ShuttleTimerMasks.SourceMap] = args.MapUid,
-                    [ShuttleTimerMasks.SourceTime] = dockTime,
-                    [ShuttleTimerMasks.Docked] = true,
-                    [ScreenMasks.Text] = ShuttleTimerMasks.ETD,
+                    Shuttle = ent.Owner,
+                    ShuttleTime = dockTime,
+                    SourceMap = args.MapUid,
+                    SourceTime = dockTime,
+                    Docked = true,
+                    OverrideText = ShuttleTimerMasks.ETD,
                 };
                 if (TryComp<DeviceNetworkComponent>(ent.Owner, out var net))
-                    _deviceNetwork.QueuePacket(ent.Owner, null, payload, net.TransmitFrequency);
+                    _deviceNetwork.SendPacket(ent.Owner, null, ref payload, net.TransmitFrequency);
                 break;
             case TransitShuttleState.Returning:
                 if (_shuttleQuery.HasComp(ent))
