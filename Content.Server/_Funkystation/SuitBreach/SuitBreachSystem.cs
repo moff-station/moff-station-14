@@ -33,17 +33,17 @@ namespace Content.Server._Funkystation.SuitBreach;
 
 public sealed partial class SuitBreachSystem : SharedSuitBreachSystem
 {
-    [Dependency] private IConfigurationManager _cfg = null!;
-    [Dependency] private IRobustRandom _random = null!;
-    [Dependency] private InventorySystem _inventory = null!;
-    [Dependency] private GasTankSystem _gasTank = null!;
-    [Dependency] private SharedAudioSystem _audio = null!;
-    [Dependency] private SharedPopupSystem _popup = null!;
-    [Dependency] private SharedDoAfterSystem _doAfter = null!;
-    [Dependency] private ToolSystem _tools = null!; // Moff - Use tool quality over tag
-    [Dependency] private SharedGravitySystem _gravity = null!;
-    [Dependency] private SharedPhysicsSystem _physics = null!;
-    [Dependency] private StackSystem _stack = null!;
+    [Dependency] private IConfigurationManager _cfg = default!;
+    [Dependency] private IRobustRandom _random = default!;
+    [Dependency] private InventorySystem _inventory = default!;
+    [Dependency] private GasTankSystem _gasTank = default!;
+    [Dependency] private SharedAudioSystem _audio = default!;
+    [Dependency] private SharedPopupSystem _popup = default!;
+    [Dependency] private SharedDoAfterSystem _doAfter = default!;
+    [Dependency] private ToolSystem _tools = default!; // Moff - Use tool quality over tag
+    [Dependency] private SharedGravitySystem _gravity = default!;
+    [Dependency] private SharedPhysicsSystem _physics = default!;
+    [Dependency] private StackSystem _stack = default!;
     [Dependency] private EntityQuery<SuitBreachableComponent> _breachableQuery; // Moff - Don't assume outerClothing
 
     // qualifying damage types that can puncture a suit
