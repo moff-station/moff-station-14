@@ -279,7 +279,11 @@ public abstract partial class AntagSelectionSystem : GameRuleSystem<AntagSelecti
     }
 
     // Moff Start - Multi-character selection
-    protected virtual HumanoidCharacterProfile? GetMoffAntagProfile(ICommonSession player) => null;
+    /// Gets the profile to use for antag creation. If <paramref name="preselected"/> exists, prefers to return that.
+    protected virtual HumanoidCharacterProfile? GetMoffAntagProfile(
+        ICommonSession player,
+        HumanoidCharacterProfile? preselected
+    ) => preselected;
     // Moff end
 
     private void AssignAntags(Entity<AntagSelectionComponent> gameRule)
@@ -359,9 +363,9 @@ public abstract partial class AntagSelectionSystem : GameRuleSystem<AntagSelecti
 
             // Try to assign them an entity if the game rule allows it.
             // We don't deselect fails since we may have to wait until the player has spawned first!
-            if (TryGetAntagEntity(antag.GameRule, antag.Definition, player, out var antagEnt))
+            if (TryGetAntagEntity(antag.GameRule, antag.Definition, player, out var antagEnt, out var profile, respectPlayerProfileSelection: false)) // Moff - multi character selection: respect character selection for ghostroles while picking random profiles for roundstart
             {
-                InitializeAntag(antag.GameRule, antag.Definition, antagEnt.Value, player);
+                InitializeAntag(antag.GameRule, antag.Definition, antagEnt.Value, player, profile); // Moff - multi character selection: respect character selection for ghostroles while picking random profiles for roundstart
                 return true;
             }
 
@@ -404,12 +408,12 @@ public abstract partial class AntagSelectionSystem : GameRuleSystem<AntagSelecti
                 continue;
 
             // Try to get a valid antag entity.
-            if (!TryGetAntagEntity(antag.GameRule, antag.Definition, player, out var antagEnt))
+            if (!TryGetAntagEntity(antag.GameRule, antag.Definition, player, out var antagEnt, out var profile, respectPlayerProfileSelection: true)) // Moff - multi character selection: respect character selection for ghostroles while picking random profiles for roundstart
                 continue; // Something has gone horribly wrong if this happens, check your error log!
 
             // Pre-select the sesssion, then initialize the antag!
             PreSelectSession(antag.GameRule, antag.Definition, player);
-            InitializeAntag(antag.GameRule, antag.Definition, antagEnt.Value, player);
+            InitializeAntag(antag.GameRule, antag.Definition, antagEnt.Value, player, profile); // Moff - multi character selection: respect character selection for ghostroles while picking random profiles for roundstart
 
             // Reduce the slots left by one
             // If we finish assigning all slots
@@ -456,12 +460,12 @@ public abstract partial class AntagSelectionSystem : GameRuleSystem<AntagSelecti
                 continue;
 
             // Try to get a valid antag entity.
-            if (!TryGetAntagEntity(gameRule, antag.Definition, player, out var antagEnt))
+            if (!TryGetAntagEntity(gameRule, antag.Definition, player, out var antagEnt, out var profile, respectPlayerProfileSelection: true)) // Moff - multi character selection: respect character selection for ghostroles while picking random profiles for roundstart
                 continue; // Something has likely gone horribly wrong if this happens, check your error log!
 
             // Pre-select the session, then initialize the antag!
             PreSelectSession(gameRule, antag.Definition, player);
-            InitializeAntag(gameRule, antag.Definition, antagEnt.Value, player);
+            InitializeAntag(gameRule, antag.Definition, antagEnt.Value, player, profile); // Moff - multi character selection: respect character selection for ghostroles while picking random profiles for roundstart
 
             // Reduce the slots left by one
             // If we finish assigning all slots
@@ -565,7 +569,7 @@ public abstract partial class AntagSelectionSystem : GameRuleSystem<AntagSelecti
         ICommonSession player)
     {
         // Get a valid entity to initialize
-        if (!TryGetAntagEntity(gameRule, prototype, player, out var antagEnt))
+        if (!TryGetAntagEntity(gameRule, prototype, player, out var antagEnt, out var profile, respectPlayerProfileSelection: true)) // Moff - multi character selection: respect character selection for ghostroles while picking random profiles for roundstart
         {
             DeSelectSession(gameRule, prototype, player);
             return false;
@@ -582,16 +586,22 @@ public abstract partial class AntagSelectionSystem : GameRuleSystem<AntagSelecti
             return false;
         }
 
-        InitializeAntag(gameRule, prototype, antagEnt.Value, player);
+        InitializeAntag(gameRule, prototype, antagEnt.Value, player, profile); // Moff - multi character selection: respect character selection for ghostroles while picking random profiles for roundstart
         return true;
     }
 
     private bool TryGetAntagEntity(Entity<AntagSelectionComponent> gameRule,
         AntagSpecifierPrototype prototype,
         ICommonSession player,
-        [NotNullWhen(true)]out EntityUid? antagEnt)
+        // Moff start - multi character selection: respect character selection for ghostroles while picking random profiles for roundstart
+        [NotNullWhen(true)]out EntityUid? antagEnt,
+        out HumanoidCharacterProfile? profile,
+        bool respectPlayerProfileSelection)
     {
-        antagEnt = GetAntagEntity(gameRule, prototype, player);
+        var antagEntityAndProfile = GetAntagEntity(gameRule, prototype, player, respectPlayerProfileSelection);
+        antagEnt = antagEntityAndProfile?.Item1;
+        profile = antagEntityAndProfile?.Item2;
+        // Moff end
         return antagEnt != null;
     }
 
@@ -605,17 +615,21 @@ public abstract partial class AntagSelectionSystem : GameRuleSystem<AntagSelecti
     /// <param name="prototype">Antag prototype we are trying to create</param>
     /// <param name="player">Player session we are making into an antag</param>
     /// <returns>Entity of the antagonist</returns>
-    private EntityUid? GetAntagEntity(Entity<AntagSelectionComponent> gameRule,
+    private (EntityUid, HumanoidCharacterProfile?)? GetAntagEntity(Entity<AntagSelectionComponent> gameRule, // Moff - multi character selection: respect character selection for ghostroles while picking random profiles for roundstart
         AntagSpecifierPrototype prototype,
-        ICommonSession player)
+        // Moff start - multi character selection: respect character selection for ghostroles while picking random profiles for roundstart
+        ICommonSession player,
+        bool respectPlayerProfileSelection
+        // Moff end
+    )
     {
         // If there's no valid position for us to be moved to, then just return the entity currently attached to the session.
         // We need a position to spawn a new entity so we can't spawn a new entity without a proper position.
         // Doesn't throw an error since for some antags this is intended behavior.
         if (!TryGetValidSpawnPosition(gameRule, prototype, out var coordinates, player))
-            return player.AttachedEntity;
+            return player.AttachedEntity is { } e ? (e, null) : null; // Moff - multi character selection: respect character selection for ghostroles while picking random profiles for roundstart
 
-        if (TrySpawnAntagonist(gameRule, prototype, player, coordinates.Value, out var entity))
+        if (TrySpawnAntagonist(gameRule, prototype, player, respectPlayerProfileSelection, coordinates.Value, out var entity)) // Moff - multi character selection: respect character selection for ghostroles while picking random profiles for roundstart
             return entity;
 
         if (player.AttachedEntity is not { } uid)
@@ -627,7 +641,7 @@ public abstract partial class AntagSelectionSystem : GameRuleSystem<AntagSelecti
         // Move our entity to the new coordinates we found!
         var xform = Transform(uid);
         XForm.SetMapCoordinates((uid, xform), coordinates.Value);
-        return uid;
+        return (uid, null); // Moff - multi character selection: respect character selection for ghostroles while picking random profiles for roundstart
     }
 
     /// <summary>
@@ -637,13 +651,14 @@ public abstract partial class AntagSelectionSystem : GameRuleSystem<AntagSelecti
     protected bool TrySpawnAntagonist(Entity<AntagSelectionComponent> gameRule,
         AntagSpecifierPrototype prototype,
         ICommonSession player,
+        bool respectPlayerSelection, // Moff - multi character selection: respect character selection for ghostroles while picking random profiles for roundstart
         MapCoordinates coordinates,
-        [NotNullWhen(true)]out EntityUid? uid)
+        [NotNullWhen(true)] out (EntityUid, HumanoidCharacterProfile?)? uidAndProfile) // Moff - multi character selection: respect character selection for ghostroles while picking random profiles for roundstart
     {
-        var ev = new AntagSelectEntityEvent(gameRule, prototype, coordinates, player);
+        var ev = new AntagSelectEntityEvent(gameRule, prototype, coordinates, player, respectPlayerSelection); // Moff - multi character selection: respect character selection for ghostroles while picking random profiles for roundstart
         RaiseLocalEvent(gameRule, ref ev, true);
 
-        uid = ev.Entity;
+        uidAndProfile = ev.Entity is {} e ? (e, ev.AssociatedProfile) : null; // Moff - multi character selection: respect character selection for ghostroles while picking random profiles for roundstart
         return ev.Handled;
     }
 
@@ -705,7 +720,7 @@ public abstract partial class AntagSelectionSystem : GameRuleSystem<AntagSelecti
     /// Initializes the antagonist status on the specified entity.
     /// Adds the needed components, loadouts, items, attaches the player and fires off an event.
     /// </summary>
-    protected void InitializeAntag(Entity<AntagSelectionComponent> gameRule, AntagSpecifierPrototype prototype, EntityUid antag, ICommonSession player)
+    protected void InitializeAntag(Entity<AntagSelectionComponent> gameRule, AntagSpecifierPrototype prototype, EntityUid antag, ICommonSession player, HumanoidCharacterProfile? preselectedProfile) // Moff - multi character selection: respect character selection for ghostroles while picking random profiles for roundstart
     {
         // Make sure player was properly pre-selected.
         DebugTools.Assert(gameRule.Comp.PreSelectedSessions.TryGetValue(prototype.ID, out var value) && value.Contains(player),
@@ -722,7 +737,7 @@ public abstract partial class AntagSelectionSystem : GameRuleSystem<AntagSelecti
         // Moffstation - Begin - Use LoadoutAwareEquip function to equip Roleloadout and Starting gear, this allows custom loadouts for antags.
         // _loadout.Equip(antag, gear, prototype.RoleLoadout);
         // Moff - Multi-character selection
-        if (GetMoffAntagProfile(player) is { } profile)
+        if (GetMoffAntagProfile(player, preselectedProfile) is { } profile) // Moff - multi character selection: respect character selection for ghostroles while picking random profiles for roundstart
             Loadout.LoadoutAwareEquip(antag, player, gear, prototype.RoleLoadout, profile);
         else
             Loadout.Equip(antag, gear, prototype.RoleLoadout);
@@ -765,7 +780,7 @@ public abstract partial class AntagSelectionSystem : GameRuleSystem<AntagSelecti
 /// Only raised if the selected player's current entity is invalid.
 /// </summary>
 [ByRefEvent]
-public record struct AntagSelectEntityEvent(Entity<AntagSelectionComponent> GameRule, AntagSpecifierPrototype Antag, MapCoordinates Coords, ICommonSession? Session)
+public record struct AntagSelectEntityEvent(Entity<AntagSelectionComponent> GameRule, AntagSpecifierPrototype Antag, MapCoordinates Coords, ICommonSession? Session, bool RespectPlayerSelection) // Moff - multi character selection: respect character selection for ghostroles while picking random profiles for roundstart
 {
     public readonly ICommonSession? Session = Session;
 
@@ -777,6 +792,8 @@ public record struct AntagSelectEntityEvent(Entity<AntagSelectionComponent> Game
     public bool Handled => Entity != null;
 
     public EntityUid? Entity;
+
+    public HumanoidCharacterProfile? AssociatedProfile; // Moff - multi character selection: respect character selection for ghostroles while picking random profiles for roundstart
 }
 
 /// <summary>
