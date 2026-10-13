@@ -5,24 +5,18 @@ namespace Content.Client._Funkystation.SuitBreach.Systems;
 
 public sealed partial class SuitBreachVisualsSystem : EntitySystem
 {
-    [Dependency] private ParticleSystem _particles = null!;
-    [Dependency] private SharedTransformSystem _transform = null!;
+    [Dependency] private ParticleSystem _particles = default!;
+    [Dependency] private SharedTransformSystem _transform = default!;
 
     private readonly Dictionary<EntityUid, ActiveEmitter?> _emitters = new();
 
-    public override void Initialize()
-    {
-        base.Initialize();
-
-        SubscribeLocalEvent<SuitBreachedComponent, AfterAutoHandleStateEvent>(OnHandleState);
-        SubscribeLocalEvent<SuitBreachedComponent, ComponentShutdown>(OnShutdown);
-    }
-
+    [SubscribeLocalEvent]
     private void OnHandleState(Entity<SuitBreachedComponent> ent, ref AfterAutoHandleStateEvent args)
     {
         UpdateVisuals(ent);
     }
 
+    [SubscribeLocalEvent]
     private void OnShutdown(Entity<SuitBreachedComponent> ent, ref ComponentShutdown args)
     {
         if (_emitters.Remove(ent.Owner, out var emitter))

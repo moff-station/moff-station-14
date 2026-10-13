@@ -1,4 +1,5 @@
-﻿using Robust.Shared.Audio;
+﻿using Content.Shared._Funkystation.SuitBreach.EntitySystems;
+using Robust.Shared.Audio;
 using Robust.Shared.GameStates;
 
 namespace Content.Shared._Funkystation.SuitBreach.Components;
@@ -7,6 +8,7 @@ namespace Content.Shared._Funkystation.SuitBreach.Components;
 /// suit sealant foam canister
 /// </summary>
 [RegisterComponent, NetworkedComponent, AutoGenerateComponentState]
+[Access(typeof(SharedSuitBreachSystem))]
 public sealed partial class SuitSealantCanisterComponent : Component
 {
     [DataField, AutoNetworkedField]

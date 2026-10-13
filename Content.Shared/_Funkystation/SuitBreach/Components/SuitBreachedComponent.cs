@@ -1,12 +1,15 @@
-﻿using Robust.Shared.Audio;
+﻿using Content.Shared._Funkystation.SuitBreach.EntitySystems;
+using Robust.Shared.Audio;
 using Robust.Shared.GameStates;
+using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom;
 
 namespace Content.Shared._Funkystation.SuitBreach.Components;
 
 /// <summary>
 /// added to a suit while it's breached
 /// </summary>
-[RegisterComponent, NetworkedComponent, AutoGenerateComponentState(true)]
+[RegisterComponent, NetworkedComponent, AutoGenerateComponentState(true), AutoGenerateComponentPause]
+[Access(typeof(SharedSuitBreachSystem))]
 public sealed partial class SuitBreachedComponent : Component
 {
     [DataField, AutoNetworkedField]
@@ -69,4 +72,10 @@ public sealed partial class SuitBreachedComponent : Component
     /// </summary>
     [ViewVariables]
     public EntityUid? HissStream;
+
+    /// <summary>
+    /// when the connected tank next gets drained
+    /// </summary>
+    [DataField(customTypeSerializer: typeof(TimeOffsetSerializer)), AutoPausedField]
+    public TimeSpan NextDrain;
 }

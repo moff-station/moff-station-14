@@ -1,4 +1,5 @@
-﻿using Robust.Shared.GameStates;
+﻿using Content.Shared._Funkystation.SuitBreach.EntitySystems;
+using Robust.Shared.GameStates;
 
 namespace Content.Shared._Funkystation.SuitBreach.Components;
 
@@ -6,6 +7,7 @@ namespace Content.Shared._Funkystation.SuitBreach.Components;
 /// goes on a suit to make it able to breach
 /// </summary>
 [RegisterComponent, NetworkedComponent, AutoGenerateComponentState]
+[Access(typeof(SharedSuitBreachSystem))]
 public sealed partial class SuitBreachableComponent : Component
 {
     /// <summary>
@@ -19,6 +21,18 @@ public sealed partial class SuitBreachableComponent : Component
     /// </summary>
     [DataField, AutoNetworkedField]
     public float MinDamageToRoll = 5f;
+
+    /// <summary>
+    /// damage at or above which a breach is major instead of minor
+    /// </summary>
+    [DataField]
+    public float MajorDamageThreshold = 25f;
+
+    /// <summary>
+    /// damage at or above which a breach is catastrophic
+    /// </summary>
+    [DataField]
+    public float CatastrophicDamageThreshold = 60f;
 
     /// <summary>
     /// you can set this to false in order to make a suit sabotage proof

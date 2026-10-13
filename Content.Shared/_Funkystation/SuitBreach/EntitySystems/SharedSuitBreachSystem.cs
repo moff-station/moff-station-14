@@ -9,18 +9,12 @@ namespace Content.Shared._Funkystation.SuitBreach.EntitySystems;
 /// </summary>
 public abstract partial class SharedSuitBreachSystem : EntitySystem
 {
-    [Dependency] private IRobustRandom _random = null!;
-
-    public override void Initialize()
-    {
-        base.Initialize();
-        SubscribeLocalEvent<SuitBreachedComponent, ExaminedEvent>(OnSuitExamined);
-        SubscribeLocalEvent<SuitSealantCanisterComponent, ExaminedEvent>(OnCanisterExamined);
-    }
+    [Dependency] private IRobustRandom _random = default!;
 
     /// <summary>
     /// examining a breached suit tells you how bad it is
     /// </summary>
+    [SubscribeLocalEvent]
     private void OnSuitExamined(Entity<SuitBreachedComponent> ent, ref ExaminedEvent args)
     {
         var locKey = ent.Comp.Severity switch
@@ -38,6 +32,7 @@ public abstract partial class SharedSuitBreachSystem : EntitySystem
     /// <summary>
     /// examining a sealant canister shows how many charges it has left
     /// </summary>
+    [SubscribeLocalEvent]
     private void OnCanisterExamined(Entity<SuitSealantCanisterComponent> ent, ref ExaminedEvent args)
     {
         args.PushMarkup(ent.Comp.Charges > 0

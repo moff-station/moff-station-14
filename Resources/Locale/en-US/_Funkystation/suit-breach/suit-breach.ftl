@@ -15,5 +15,8 @@ suit-breach-sabotage-worn = You can't get at the seals while it's being worn.
 suit-breach-sabotage-already-breached = The suit's seals are already breached.
 suit-breach-sabotage-success = You compromise the suit's seal.
 
-suit-breach-sealant-examine-charges = It has [color=green]{$charges}[/color] applications remaining.
+suit-breach-sealant-examine-charges = It has [color=green]{$charges}[/color] { $charges ->
+    [one] application
+   *[other] applications
+} remaining.
 suit-breach-sealant-examine-empty = It is completely [color=gray]empty[/color].

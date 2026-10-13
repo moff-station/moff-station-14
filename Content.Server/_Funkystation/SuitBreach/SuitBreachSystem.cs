@@ -29,6 +29,7 @@ using Robust.Shared.Physics.Components;
 using Robust.Shared.Physics.Systems;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
+using Robust.Shared.Timing;
 
 namespace Content.Server._Funkystation.SuitBreach;
 
@@ -46,6 +47,7 @@ public sealed partial class SuitBreachSystem : SharedSuitBreachSystem
     [Dependency] private SharedPhysicsSystem _physics = default!;
     [Dependency] private StackSystem _stack = default!;
     [Dependency] private BarotraumaSystem _barotrauma = default!; // Moff
+    [Dependency] private IGameTiming _timing = default!;
 
     [Dependency] private EntityQuery<SuitBreachableComponent> _breachableQuery; // Moff
     [Dependency] private EntityQuery<TemperatureProtectionComponent> _temperatureProtectionQuery; // Moff
@@ -56,8 +58,7 @@ public sealed partial class SuitBreachSystem : SharedSuitBreachSystem
 
     private static readonly ProtoId<ToolQualityPrototype> SabotageQuality = "Slicing"; // Moff - Use tool quality over tag
 
-    private float _atmosAccumulator;
-    private const float AtmosUpdateInterval = 1f;
+    private static readonly TimeSpan DrainInterval = TimeSpan.FromSeconds(1);
     private bool _enabled;
 
     public override void Initialize()
@@ -71,37 +72,31 @@ public sealed partial class SuitBreachSystem : SharedSuitBreachSystem
     {
         base.Update(frameTime);
 
-        _atmosAccumulator += frameTime;
-        var doAtmos = false;
-        var atmosDt = 0f;
-        if (_atmosAccumulator >= AtmosUpdateInterval)
-        {
-            doAtmos = true;
-            atmosDt = _atmosAccumulator;
-            _atmosAccumulator -= AtmosUpdateInterval;
-        }
-
-        var query = EntityQueryEnumerator<SuitBreachedComponent>();
-        while (query.MoveNext(out var suitUid, out var breach))
+        var curTime = _timing.CurTime;
+        foreach (var ent in EntityQueryEnumerator<SuitBreachedComponent>())
         {
             if (!_enabled)
             {
-                StopHiss((suitUid, breach));
-                if (breach.IsLeaking)
+                StopHiss(ent);
+                if (ent.Comp.IsLeaking)
                 {
-                    breach.IsLeaking = false;
-                    Dirty(suitUid, breach);
+                    ent.Comp.IsLeaking = false;
+                    Dirty(ent);
                 }
                 continue;
             }
 
-            TickBreach((suitUid, breach), frameTime, doAtmos, atmosDt);
+            var doAtmos = curTime >= ent.Comp.NextDrain;
+            if (doAtmos)
+                ent.Comp.NextDrain = curTime + DrainInterval;
+
+            TickBreach(ent, frameTime, doAtmos);
         }
     }
 
     // rolls a breach off a hit, escalates severity if it happens
     [SubscribeLocalEvent]
-    private void OnDamageDealt(EntityUid uid, DamageableComponent component, DamageDealtEvent args)
+    private void OnDamageDealt(Entity<DamageableComponent> ent, ref DamageDealtEvent args)
     {
         if (!_enabled)
             return;
@@ -122,7 +117,7 @@ public sealed partial class SuitBreachSystem : SharedSuitBreachSystem
         }
 
         // Moff start - Don't assume outerclothing
-        foreach (var suit in _breachableQuery.ResolveAll(_inventory.GetHandOrInventoryEntities(uid), logMissing: false))
+        foreach (var suit in _breachableQuery.ResolveAll(_inventory.GetHandOrInventoryEntities(ent.Owner), logMissing: false))
         {
             if (qualifyingDamage < suit.Comp.MinDamageToRoll)
                 continue;
@@ -130,8 +125,8 @@ public sealed partial class SuitBreachSystem : SharedSuitBreachSystem
             if (!_random.Prob(suit.Comp.BreachChance))
                 continue;
 
-            var severity = SeverityFromDamage(qualifyingDamage);
-            TryPuncture((suit.Owner, null), severity, uid);
+            var severity = SeverityFromDamage(suit.Comp, qualifyingDamage); // Moff - Breach thresholds on the component
+            TryPuncture((suit.Owner, null), severity, ent.Owner);
         }
         // Moff end
     }
@@ -156,7 +151,6 @@ public sealed partial class SuitBreachSystem : SharedSuitBreachSystem
         }
 
         if (suitUid == null)
-
             return;
         // Moff end
 
@@ -321,10 +315,7 @@ public sealed partial class SuitBreachSystem : SharedSuitBreachSystem
         if (args.Cancelled || args.Handled || args.Used is not { } usedUid)
             return;
 
-        var isCanister = TryComp(usedUid, out SuitSealantCanisterComponent? canister);
-        var isPatch = HasComp<SuitPatchComponent>(usedUid);
-
-        if (!isCanister && !isPatch)
+        if (!TryComp(usedUid, out SuitSealantCanisterComponent? canister) && !HasComp<SuitPatchComponent>(usedUid))
             return;
 
         if (canister != null)
@@ -361,7 +352,7 @@ public sealed partial class SuitBreachSystem : SharedSuitBreachSystem
         _popup.PopupEntity(message, suit.Owner, args.User, PopupType.Medium);
     }
 
-    private void TryPuncture(Entity<SuitBreachedComponent?> suit, SuitBreachSeverity severity, EntityUid? wearer)
+    private void TryPuncture(Entity<SuitBreachedComponent?> suit, SuitBreachSeverity severity, EntityUid victim)
     {
         if (!TryEscalate(ref suit, severity))
             return;
@@ -374,24 +365,24 @@ public sealed partial class SuitBreachSystem : SharedSuitBreachSystem
             StartHiss((suit.Owner, suit.Comp));
         }
 
-        var target = wearer ?? Transform(suit.Owner).ParentUid;
-        if (target != EntityUid.Invalid)
-            _popup.PopupEntity(Loc.GetString("suit-breach-warning"), target, target, PopupType.LargeCaution);
+        _popup.PopupEntity(Loc.GetString("suit-breach-warning"), victim, victim, PopupType.LargeCaution);
     }
 
-    private SuitBreachSeverity SeverityFromDamage(float damage)
+    // Moff start - Breach thresholds on the component
+    private static SuitBreachSeverity SeverityFromDamage(SuitBreachableComponent breachable, float damage)
     {
-        if (damage >= _cfg.GetCVar(SuitBreachCVars.CatastrophicDamageThreshold))
+        if (damage >= breachable.CatastrophicDamageThreshold)
             return SuitBreachSeverity.Catastrophic;
 
-        if (damage >= _cfg.GetCVar(SuitBreachCVars.MajorDamageThreshold))
+        if (damage >= breachable.MajorDamageThreshold)
             return SuitBreachSeverity.Major;
 
         return SuitBreachSeverity.Minor;
     }
+    // Moff end
 
     // drains the connected tank at the current severity's rate
-    private void TickBreach(Entity<SuitBreachedComponent> suit, float frameTime, bool doAtmos, float atmosDt)
+    private void TickBreach(Entity<SuitBreachedComponent> suit, float frameTime, bool doAtmos)
     {
         if (!TryGetWearer(suit.Owner, out var wearerUid) || // Moff - don't assume outerclothing
             !TryComp<InternalsComponent>(wearerUid, out var internals) ||
@@ -410,7 +401,7 @@ public sealed partial class SuitBreachSystem : SharedSuitBreachSystem
             var rate = suit.Comp.DrainRatesPerSecond.GetValueOrDefault(suit.Comp.Severity, 0f);
             if (rate > 0 && tank.Air.TotalMoles > 0)
             {
-                _gasTank.RemoveAir((internals.GasTankEntity.Value, tank), rate * atmosDt);
+                _gasTank.RemoveAir((internals.GasTankEntity.Value, tank), rate * (float) DrainInterval.TotalSeconds);
             }
         }
 
