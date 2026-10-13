@@ -37,8 +37,8 @@
   - type: Objective
     difficulty: 1
     icon:
-      sprite: Mobs/Animals/spider.rsi
-      state: tarantula
+      sprite: Mobs/Animals/Spiders/tarantulaspider.rsi
+      state: idle
   - type: NumberObjective
     min: 2
     max: 6
@@ -46,9 +46,19 @@
     description: tourist-objective-condition-ventmob-description
   - type: TouristPhotosCondition
     targetPrototypes:
-      - MobClownSpider
-      - MobGiantSpider
-      - MobGiantSpiderAngry
+      # Moff Start - Upstream giant spider variants
+      # - MobClownSpider
+      # - MobGiantSpider
+      # - MobGiantSpiderAngry
+      - MobGiantSpiderClown
+      - MobGiantSpiderClownAngry
+      - MobGiantSpiderTarantula
+      - MobGiantSpiderTarantulaAngry
+      - MobGiantSpiderHunterAngry
+      - MobGiantSpiderGuardAngry
+      - MobGiantSpiderMidwifeAngry
+      - MobGiantSpiderNurseAngry
+      # Moff end
       - MobPurpleSnake
       - MobSmallPurpleSnake
       - MobCobraSpace

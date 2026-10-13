@@ -1,6 +1,7 @@
 using Content.Server.Antag;
 using Content.Shared._Moffstation.CharacterMenu;
 using Content.Shared._Moffstation.Objectives;
+using Content.Shared.Antag;
 using Content.Shared.Mind;
 using Robust.Shared.Player;
 

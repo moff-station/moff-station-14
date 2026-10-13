@@ -2,6 +2,7 @@
 using Content.Server.Station.Systems;
 using Content.Shared._Harmony.EntitySelector;
 using Content.Shared.Station.Components;
+using Content.Shared.Station.Systems;
 using Robust.Shared.Map;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Utility;
@@ -17,7 +18,7 @@ public sealed partial class MapModificationSystem : EntitySystem
 
     public override void Initialize()
     {
-        SubscribeLocalEvent<PostGameMapLoad>(OnPostGameMapLoad, after: [ typeof(StationSystem) ]);
+        SubscribeLocalEvent<PostGameMapLoad>(OnPostGameMapLoad, after: [ typeof(ServerStationSystem) ]);
     }
 
     private void OnPostGameMapLoad(PostGameMapLoad args)

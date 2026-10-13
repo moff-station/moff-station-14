@@ -77,17 +77,18 @@
       sprite: Clothing/Hands/Gloves/KnuckleDusters/brassknuckleduster.rsi
       state: brassknuckleduster
 
-- type: entity
-  parent: BaseConspiratorObjective
-  id: ConspiratorArrestObjective
-  name: Trick Security into arresting innocent people
-  description:  Demonstrate their incompetence by showing just how easy they are to fool.
-  components:
-  - type: Objective
-    icon:
-      sprite: Objects/Weapons/Melee/stunbaton.rsi
-      state: stunbaton_off
-
+# Moff start - Objective Cleanup
+#- type: entity
+#  parent: BaseConspiratorObjective
+#  id: ConspiratorArrestObjective
+#  name: Trick Security into arresting innocent people
+#  description:  Demonstrate their incompetence by showing just how easy they are to fool.
+#  components:
+#  - type: Objective
+#    icon:
+#      sprite: Objects/Weapons/Melee/stunbaton.rsi
+#      state: stunbaton_off
+# Moff end
 - type: entity
   parent: BaseConspiratorObjective
   id: ConspiratorCameraObjective
