@@ -185,15 +185,11 @@ public sealed partial class GerasSystem : EntitySystem
             {
                 _container.AttachParentToContainerOrGrid((uid, Transform(uid)));
             }
-            else if (HasComp<WrappedParcelComponent>(container.Owner))// If the entity is in a wrapped parcel there needs to be special logic to swap them
+            else // If the entity is in any other container, put the geras in that container
             {
                 _container.Remove(uid, container, false, true);
                 _container.Insert(geras, container);
             }
-        }
-        if (_container.IsEntityOrParentInContainer(uid))// If the entity is in any other container, put the geras in that container
-        {
-            _transform.DropNextTo(geras, uid);
         }
 
         _implantSystem.TransferImplants(uid, geras);
