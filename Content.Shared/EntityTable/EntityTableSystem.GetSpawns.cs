@@ -73,20 +73,42 @@ sealed file partial class GetSpawnsVisitor : IEntityTableVisitor<
             .SelectMany(_ => args.Rand.Prob(selector.Prob) ? rollImpl() : []);
     }
 
+    /// Applies <paramref name="selector"/>'s <see cref="EntityTableSelectorWithNestedBase.ConditionsForChildren"/>
+    /// while <paramref name="impl"/> is enumerated. Must stay an iterator so the scope outlives the lazy enumeration.
+    private static IEnumerable<EntProtoId> Scoped(
+        EntityTableSelectorWithNestedBase selector,
+        EntityTableContext ctx,
+        Func<IEnumerable<EntProtoId>> impl
+    )
+    {
+        using var scoped = selector.ScopedConditions(ctx);
+
+        foreach (var spawn in impl())
+        {
+            yield return spawn;
+        }
+    }
+
     public IEnumerable<EntProtoId> VisitAllSelector(AllSelector selector, Args args) =>
-        Impl(selector, args, () => selector.Children.SelectMany(child => child.Accept(this, args)));
+        Impl(selector,
+            args,
+            () => Scoped(selector, args.Ctx, () => selector.Children.SelectMany(child => child.Accept(this, args))));
 
     public IEnumerable<EntProtoId> VisitEntSelector(EntSelector selector, Args args) =>
         Impl(selector, args, () => Enumerable.Repeat(selector.Id, selector.Amount.Get(args.Rand)));
 
     public IEnumerable<EntProtoId> VisitGroupSelector(GroupSelector selector, Args args)
     {
-        var validWeightedChildren = selector.Children
-            .Where(child =>
-                child.Weight >= float.Epsilon &&
-                child.CheckConditions(args.EntMan, args.ProtoMan, args.Ctx)
-            )
-            .ToDictionary(child => child, child => child.Weight);
+        Dictionary<EntityTableSelector, float> validWeightedChildren;
+        using (selector.ScopedConditions(args.Ctx))
+        {
+            validWeightedChildren = selector.Children
+                .Where(child =>
+                    child.Weight >= float.Epsilon &&
+                    child.CheckConditions(args.EntMan, args.ProtoMan, args.Ctx)
+                )
+                .ToDictionary(child => child, child => child.Weight);
+        }
 
         if (validWeightedChildren.Count == 0)
             return [];
@@ -94,24 +116,28 @@ sealed file partial class GetSpawnsVisitor : IEntityTableVisitor<
         return Impl(
             selector,
             args,
-            () =>
-            {
-                if (selector.CanRollDuplicates)
+            () => Scoped(selector,
+                args.Ctx,
+                () =>
                 {
-                    var child = SharedRandomExtensions.Pick(validWeightedChildren, args.Rand);
-                    return child.Accept(this, args);
-                }
-                else
-                {
-                    args.Rand.TryPickAndTake(validWeightedChildren, out var child);
-                    return child?.Accept(this, args) ?? [];
-                }
-            }
+                    if (selector.CanRollDuplicates)
+                    {
+                        var child = SharedRandomExtensions.Pick(validWeightedChildren, args.Rand);
+                        return child.Accept(this, args);
+                    }
+                    else
+                    {
+                        args.Rand.TryPickAndTake(validWeightedChildren, out var child);
+                        return child?.Accept(this, args) ?? [];
+                    }
+                })
         );
     }
 
     public IEnumerable<EntProtoId> VisitNestedSelector(NestedSelector selector, Args args) =>
-        Impl(selector, args, () => args.ProtoMan.Index(selector.TableId).Table.Accept(this, args));
+        Impl(selector,
+            args,
+            () => Scoped(selector, args.Ctx, () => args.ProtoMan.Index(selector.TableId).Table.Accept(this, args)));
 
     public IEnumerable<EntProtoId> VisitNoneSelector(NoneSelector selector, Args args) => [];
 }

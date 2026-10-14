@@ -31,21 +31,18 @@ public sealed partial class CargoPackingErrorRule : StationEventSystem<CargoPack
         SubscribeLocalEvent<EntityStorageComponent, CargoOrderFulfilledEvent>(OnCargoOrderFulfilledEvent);
     }
 
-    protected override void Started(EntityUid uid,
-        CargoPackingErrorRuleComponent component,
-        GameRuleComponent gameRule,
-        GameRuleStartedEvent args)
+    protected override void Started(Entity<CargoPackingErrorRuleComponent, GameRuleComponent> rule, ref GameRuleStartedEvent args)
     {
-        base.Started(uid, component, gameRule, args);
+        base.Started(rule, ref args);
 
-        if (!_prototype.HasIndex(component.SpawnTable))
+        if (!_prototype.HasIndex(rule.Comp1.SpawnTable))
         {
-            DebugTools.Assert($"Failed to find spawn table with id \"{component.SpawnTable}\"");
-            ForceEndSelf(uid);
+            DebugTools.Assert($"Failed to find spawn table with id \"{rule.Comp1.SpawnTable}\"");
+            ForceEndSelf((rule.Owner, rule.Comp2));
         }
         else
         {
-            _activeRules.Enqueue((uid, component, gameRule));
+            _activeRules.Enqueue(rule);
         }
     }
 
@@ -62,6 +59,6 @@ public sealed partial class CargoPackingErrorRule : StationEventSystem<CargoPack
         var entitiesToSpawn = _entityTable.GetSpawns(spawnTable.Table, RobustRandom);
         _spawnOnNextOpen.AddEntitiesToSpawnOnFirstOpen(entity, entitiesToSpawn);
 
-        ForceEndSelf(rule);
+        ForceEndSelf((rule.Owner, rule.Comp2));
     }
 }

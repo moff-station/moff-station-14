@@ -4,6 +4,7 @@ using Content.Shared._Funkystation.Stains.Components;
 using Content.Shared._Funkystation.Stains.Systems;
 using Content.Shared.Chemistry.EntitySystems;
 using Content.Shared.Clothing;
+using Content.Shared.Clothing.Components;
 using Content.Shared.FixedPoint;
 using Content.Shared.Hands;
 using Robust.Client.GameObjects;
@@ -37,7 +38,10 @@ public sealed partial class StainSystem : SharedStainSystem
 
         foreach (var layer in layers)
         {
-            _sprite.RemoveLayer(spriteEnt, layer);
+            // Moff start - Add disgusting special snowflake "don't log errors" case. As far as I can tell, chameleon clothing
+            // visuals have to do some unusual appearance data updates to work, so we just swallow missing layers here. :shrug:
+            _sprite.RemoveLayer(spriteEnt, layer, !HasComp<ChameleonClothingComponent>(ent));
+            // Moff end
         }
 
         ent.Comp.RevealedLayers.Clear();
