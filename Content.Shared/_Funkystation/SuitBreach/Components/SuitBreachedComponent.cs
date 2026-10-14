@@ -1,6 +1,8 @@
 ﻿using Content.Shared._Funkystation.SuitBreach.EntitySystems;
+using Content.Shared._Starfall.Particles;
 using Robust.Shared.Audio;
 using Robust.Shared.GameStates;
+using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom;
 
 namespace Content.Shared._Funkystation.SuitBreach.Components;
@@ -51,25 +53,17 @@ public sealed partial class SuitBreachedComponent : Component
     };
 
     /// <summary>
-    /// volume adjustment per severity for the hiss sound
-    /// </summary>
-    [DataField]
-    public Dictionary<SuitBreachSeverity, float> HissVolumePerSeverity = new()
-    {
-        { SuitBreachSeverity.Minor, -8f },
-        { SuitBreachSeverity.Major, -3f },
-        { SuitBreachSeverity.Catastrophic, 2f },
-    };
-
-    /// <summary>
     /// ambient hiss heard by nearby players
     /// </summary>
     [DataField]
-    public SoundSpecifier HissSound = new SoundPathSpecifier("/Audio/_Funkystation/Effects/suit_breach_hiss.ogg");
+    public SoundSpecifier HissSound = new SoundPathSpecifier("/Audio/_Funkystation/Effects/suit_breach_hiss.ogg", AudioParams.Default.WithVolume(-3f).WithLoop(true));
 
     /// <summary>
-    /// when the connected tank next gets drained
+    /// particles spraying from the suit while leaking
     /// </summary>
+    [DataField]
+    public ProtoId<ParticleEffectPrototype> LeakEffect = "SuitBreachAirLeak";
+
     [DataField(customTypeSerializer: typeof(TimeOffsetSerializer)), AutoPausedField]
     public TimeSpan NextDrain;
 }

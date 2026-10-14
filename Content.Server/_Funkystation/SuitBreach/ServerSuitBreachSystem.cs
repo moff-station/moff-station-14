@@ -16,7 +16,6 @@ public sealed partial class ServerSuitBreachSystem : SuitBreachSystem
 {
     [Dependency] private GasTankSystem _gasTank = default!;
     [Dependency] private BarotraumaSystem _barotrauma = default!; // Moff
-    [Dependency] private IGameTiming _timing = default!;
 
     [Dependency] private EntityQuery<TemperatureProtectionComponent> _temperatureProtectionQuery; // Moff
 
@@ -26,7 +25,7 @@ public sealed partial class ServerSuitBreachSystem : SuitBreachSystem
     {
         base.Update(frameTime);
 
-        var curTime = _timing.CurTime;
+        var curTime = Timing.CurTime;
         foreach (var ent in EntityQueryEnumerator<SuitBreachedComponent>())
         {
             if (!Enabled)

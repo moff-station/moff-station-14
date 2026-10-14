@@ -32,15 +32,16 @@ namespace Content.Shared._Funkystation.SuitBreach.EntitySystems;
 public abstract partial class SuitBreachSystem : EntitySystem
 {
     [Dependency] private IConfigurationManager _cfg = default!;
-    [Dependency] private IGameTiming _timing = default!;
     [Dependency] private InventorySystem _inventory = default!;
-    [Dependency] private SharedAudioSystem _audio = default!;
     [Dependency] private SharedPopupSystem _popup = default!;
     [Dependency] private SharedDoAfterSystem _doAfter = default!;
     [Dependency] private SharedToolSystem _tools = default!; // Moff - Use tool quality over tag
     [Dependency] private SharedGravitySystem _gravity = default!;
     [Dependency] private SharedPhysicsSystem _physics = default!;
     [Dependency] private SharedStackSystem _stack = default!;
+    [Dependency] protected IGameTiming Timing = default!;
+    [Dependency] protected SharedAudioSystem Audio = default!;
+    [Dependency] protected SharedTransformSystem TransformSystem = default!;
 
     [Dependency] private EntityQuery<SuitBreachableComponent> _breachableQuery; // Moff
     [Dependency] private EntityQuery<PhysicsComponent> _physicsQuery;
@@ -50,8 +51,6 @@ public abstract partial class SuitBreachSystem : EntitySystem
         ["Piercing", "Slash", "Heat"];
 
     private static readonly ProtoId<ToolQualityPrototype> SabotageQuality = "Slicing"; // Moff - Use tool quality over tag
-
-    private const int LeakAngleSeed = 7919;
 
     protected bool Enabled { get; private set; }
 
@@ -144,11 +143,11 @@ public abstract partial class SuitBreachSystem : EntitySystem
             if (qualifyingDamage < suit.Comp.MinDamageToRoll)
                 continue;
 
-            if (!SharedRandomExtensions.PredictedProb(_timing, suit.Comp.BreachChance, GetNetEntity(suit), GetNetEntity(args.Origin)))
+            if (!SharedRandomExtensions.PredictedProb(Timing, suit.Comp.BreachChance, GetNetEntity(suit), GetNetEntity(args.Origin)))
                 continue;
 
             var severity = SeverityFromDamage(suit.Comp, qualifyingDamage); // Moff - Breach thresholds on the component
-            TryPuncture((suit.Owner, null), severity, ent.Owner);
+            TryPuncture((suit.Owner, null), severity, ent.Owner, args.Origin);
         }
         // Moff end
     }
@@ -264,7 +263,7 @@ public abstract partial class SuitBreachSystem : EntitySystem
 
             canister.Charges--;
             Dirty(usedUid, canister);
-            _audio.PlayPredicted(canister.ApplySound, suit.Owner, args.User);
+            Audio.PlayPredicted(canister.ApplySound, suit.Owner, args.User);
         }
         else if (TryComp(usedUid, out StackComponent? stackComp))
         {
@@ -350,9 +349,9 @@ public abstract partial class SuitBreachSystem : EntitySystem
         args.Handled = _doAfter.TryStartDoAfter(doAfterArgs);
     }
 
-    private void TryPuncture(Entity<SuitBreachedComponent?> suit, SuitBreachSeverity severity, EntityUid victim)
+    private void TryPuncture(Entity<SuitBreachedComponent?> suit, SuitBreachSeverity severity, EntityUid victim, EntityUid? attacker = null)
     {
-        if (!TryEscalate(ref suit, severity))
+        if (!TryEscalate(ref suit, severity, attacker))
             return;
 
         OnSeverityChanged(suit.Owner);
@@ -399,10 +398,26 @@ public abstract partial class SuitBreachSystem : EntitySystem
         Dirty(suit);
     }
 
+    private Angle LeakAngleFrom(EntityUid suit, EntityUid? attacker)
+    {
+        if (attacker is { } attackerUid && Exists(attackerUid))
+        {
+            var suitPos = TransformSystem.GetMapCoordinates(suit);
+            var attackerPos = TransformSystem.GetMapCoordinates(attackerUid);
+            var away = suitPos.Position - attackerPos.Position;
+            if (suitPos.MapId == attackerPos.MapId && away.LengthSquared() > 0.01f)
+                return new Angle(away);
+        }
+
+        var random = SharedRandomExtensions.PredictedRandom(Timing, GetNetEntity(suit));
+        random.NextFloat();
+        return random.NextAngle();
+    }
+
     /// <summary>
     /// escalates breach severity
     /// </summary>
-    protected bool TryEscalate(ref Entity<SuitBreachedComponent?> suit, SuitBreachSeverity incoming)
+    protected bool TryEscalate(ref Entity<SuitBreachedComponent?> suit, SuitBreachSeverity incoming, EntityUid? attacker = null)
     {
         if (incoming == SuitBreachSeverity.None)
             return false;
@@ -411,9 +426,7 @@ public abstract partial class SuitBreachSystem : EntitySystem
         {
             var comp = EnsureComp<SuitBreachedComponent>(suit);
             comp.Severity = incoming;
-            var random = new RobustRandom();
-            random.SetSeed(SharedRandomExtensions.HashCodeCombine((int) _timing.CurTick.Value, GetNetEntity(suit).Id, LeakAngleSeed));
-            comp.LeakAngle = random.NextFloat() * MathF.Tau;
+            comp.LeakAngle = LeakAngleFrom(suit.Owner, attacker);
             Dirty(suit, comp);
             suit.Comp = comp;
             return true;
