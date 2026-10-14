@@ -362,7 +362,7 @@ public sealed partial class GerasSystem : EntitySystem
         if (ent.Comp.Geras is not { } geras)
             return;
 
-        foreach (var traitId in args.Profile.TraitPreferences)
+        foreach (var traitId in args.Traits)
         {
             if (_prototypeManager.TryIndex(traitId, out var trait) || trait == null)
                 continue;
