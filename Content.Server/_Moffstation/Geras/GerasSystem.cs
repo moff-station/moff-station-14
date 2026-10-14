@@ -364,7 +364,7 @@ public sealed partial class GerasSystem : EntitySystem
 
         foreach (var traitId in args.Traits)
         {
-            if (_prototypeManager.TryIndex(traitId, out var trait) || trait == null)
+            if (!_prototypeManager.TryIndex(traitId, out var trait) || trait == null)
                 continue;
             _trait.ApplyTrait(geras, trait);
         }
