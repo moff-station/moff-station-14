@@ -187,7 +187,7 @@ public sealed partial class GerasSystem : EntitySystem
             }
             else // If the entity is in any other container, put the geras in that container
             {
-                _container.Remove(uid, container, false, true);
+                _container.Remove(uid, container, force: false, reparent: true);
                 _container.Insert(geras, container);
             }
         }
