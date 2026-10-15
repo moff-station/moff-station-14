@@ -154,7 +154,7 @@ public abstract partial class SharedSnapshotCameraSystem : EntitySystem
 }
 
 /// <summary>
-/// Sent by the client to take a shot centered on <see cref="Center"/>, which it has kept on screen.
+/// Sent by the client to take a shot centered on <see cref="Center"/>.
 /// </summary>
 [Serializable, NetSerializable]
 public sealed class SnapshotCameraShootEvent(NetEntity camera, NetCoordinates center) : EntityEventArgs
