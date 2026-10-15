@@ -20,6 +20,9 @@ public sealed partial class JestographicCameraWireSystem : EntitySystem
 
     private void OnCameraJested(Entity<SurveillanceCameraComponent> ent, ref JestographicCameraWireCutEvent args)
     {
+        if (!HasComp<WiresComponent>(ent))
+            return;
+
         var cutAny = false;
         foreach (var wire in _wires.TryGetWires<CameraMapVisibilityWireAction>(ent))
         {

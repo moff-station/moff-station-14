@@ -23,6 +23,9 @@ public sealed partial class SurveillanceCameraEmagSystem : EntitySystem
         if (!_emag.CompareFlag(args.Type, EmagType.Interaction))
             return;
 
+        if (!HasComp<WiresComponent>(ent))
+            return;
+
         var cutAny = CutWires<CameraMapVisibilityWireAction>(ent, args.UserUid);
         cutAny |= CutWires<AiVisionWireAction>(ent, args.UserUid);
 
