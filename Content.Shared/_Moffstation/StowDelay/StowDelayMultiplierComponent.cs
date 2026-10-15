@@ -49,6 +49,12 @@ public sealed partial class UnstowStorageDoAfterEvent : DoAfterEvent
     public override DoAfterEvent Clone() => this;
 }
 
+/// <summary>
+/// Moves everything in one storage into the doafter's target storage.
+/// </summary>
+[Serializable, NetSerializable]
+public sealed partial class TransferAllStorageDoAfterEvent : SimpleDoAfterEvent;
+
 [Serializable, NetSerializable]
 public sealed partial class StowEquipDoAfterEvent : DoAfterEvent
 {

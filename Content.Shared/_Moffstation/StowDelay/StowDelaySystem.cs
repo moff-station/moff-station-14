@@ -81,6 +81,16 @@ public sealed partial class StowDelaySystem : EntitySystem
     }
 
     [SubscribeLocalEvent]
+    private void OnTransferAllDoAfter(Entity<StorageComponent> ent, ref TransferAllStorageDoAfterEvent args)
+    {
+        if (args.Handled || args.Cancelled || args.Target is not { } target)
+            return;
+
+        _storage.TransferEntities(ent, target, args.User, ent.Comp);
+        args.Handled = true;
+    }
+
+    [SubscribeLocalEvent]
     private void OnEquipDoAfter(Entity<ItemComponent> ent, ref StowEquipDoAfterEvent args)
     {
         if (args.Handled || args.Cancelled || !_hands.IsHolding(args.User, ent))
@@ -110,9 +120,6 @@ public sealed partial class StowDelaySystem : EntitySystem
         args.Handled = true;
     }
 
-    /// <summary>
-    /// Starts a doafter to put an item into storage.
-    /// </summary>
     public bool TryStartStorageDelay(EntityUid storage, EntityUid user, EntityUid item, ItemStorageLocation? location = null)
     {
         if (!_hands.IsHolding(user, item) || !_itemQuery.TryComp(item, out var itemComp))
@@ -142,10 +149,26 @@ public sealed partial class StowDelaySystem : EntitySystem
         return TryStartDoAfter(user, delay, ev, storage, storage, item, breakOnMove: false, interactionParticles: true);
     }
 
-    /// <summary>
-    /// Starts a doafter to equip the held item on the user. Whatever is in the slot is taken off first
-    /// and its unequip time is added. True means the caller must not equip it now.
-    /// </summary>
+    public bool TryStartStorageTransferAllDelay(Entity<StorageComponent?> source, EntityUid target, EntityUid user)
+    {
+        if (!Resolve(source, ref source.Comp, false))
+            return false;
+
+        ItemComponent? largest = null;
+        foreach (var contained in source.Comp.Container.ContainedEntities)
+        {
+            if (_itemQuery.TryComp(contained, out var itemComp)
+                && (largest == null || _item.GetSizePrototype(itemComp.Size) > _item.GetSizePrototype(largest.Size)))
+                largest = itemComp;
+        }
+
+        if (largest == null)
+            return false;
+
+        var delay = GetStorageDelay(source, largest) + GetStorageDelay(target, largest);
+        return TryStartDoAfter(user, delay, new TransferAllStorageDoAfterEvent(), source, target, source, breakOnMove: false);
+    }
+
     public bool TryStartEquipDelay(EntityUid user, EntityUid target, EntityUid item, string slot)
     {
         if (user != target
@@ -167,9 +190,6 @@ public sealed partial class StowDelaySystem : EntitySystem
         return TryStartDoAfter(user, delay, new StowEquipDoAfterEvent(slot), item, target, item, BreakOnMove(item, slotDefinition), interactionParticles: true);
     }
 
-    /// <summary>
-    /// Starts a doafter to take an item out of one of the user's slots into their hand. True means the caller must not unequip it now.
-    /// </summary>
     public bool TryStartUnequipDelay(EntityUid user, EntityUid target, string slot)
     {
         if (user != target
@@ -184,10 +204,6 @@ public sealed partial class StowDelaySystem : EntitySystem
         return TryStartDoAfter(user, delay, new UnstowEquipDoAfterEvent(slot), item.Value, target, item.Value, BreakOnMove(item.Value, slotDefinition), interactionParticles: displayParticles);
     }
 
-    /// <summary>
-    /// Starts the removal or unequip doafter for picking up an item that sits in storage or one of the user's slots.
-    /// True means the caller must not pick it up now.
-    /// </summary>
     public bool TryStartPickupDelay(EntityUid user, EntityUid item)
     {
         if (!_container.TryGetContainingContainer(item, out var container))

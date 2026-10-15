@@ -470,7 +470,16 @@ public abstract partial class SharedStorageSystem : EntitySystem
             {
                 Text = Loc.GetString("storage-component-transfer-verb"),
                 IconEntity = GetNetEntity(args.Using),
+                // Moff Start - Stow delay
+                Act = () =>
+                {
+                    if (!_stowDelay.TryStartStorageTransferAllDelay((uid, component), args.Target, args.User))
+                        TransferEntities(uid, args.Target, args.User, component, null, targetStorage, targetLock);
+                },
+                /*
                 Act = () => TransferEntities(uid, args.Target, args.User, component, null, targetStorage, targetLock)
+                */
+                // Moff end
             };
 
             args.Verbs.Add(verb);
