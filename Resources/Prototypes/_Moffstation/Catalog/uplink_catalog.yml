@@ -52,6 +52,27 @@
     - Clown
 
 - type: listing
+  id: UplinkJestographicSequencer
+  name: uplink-jestographic-sequencer-name
+  description: uplink-jestographic-sequencer-desc
+  productEntity: JestographicSequencer
+  icon:
+    sprite: _Moffstation/Objects/Tools/jestographic_sequencer.rsi
+    state: icon
+  discountCategory: rareDiscounts
+  discountDownTo:
+    Telecrystal: 2
+  cost:
+    Telecrystal: 4
+  categories:
+  - UplinkJob
+  conditions:
+  - !type:BuyerJobCondition
+    whitelist:
+    - Clown
+    - Mime
+
+- type: listing
   id: UplinkMobCatReject
   name: uplink-mobcat-reject-name
   description: uplink-mobcat-reject-desc

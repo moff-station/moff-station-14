@@ -18,5 +18,5 @@ public sealed partial class JestographicSequencerComponent : Component
     [DataField, AutoNetworkedField]
     public SoundSpecifier ReverseSound = new SoundPathSpecifier(
         "/Audio/Items/bikehorn.ogg",
-        AudioParams.Default.AddVolume(-6f));
+        AudioParams.Default.AddVolume(-6f)); //Plays when cmag used. Bikehorn was a biiiiit too loud
 }

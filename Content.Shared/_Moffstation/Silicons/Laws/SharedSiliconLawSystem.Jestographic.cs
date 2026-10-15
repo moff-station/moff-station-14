@@ -65,7 +65,8 @@ public abstract partial class SharedSiliconLawSystem
         }
 
         provider.Subverted = true;
-        SetProviderLaws((providerUid, provider), GetLawset(args.Lawset).Laws, cue: emagLawcomp.EmaggedSound);
+        //SetProviderLaws((providerUid, provider), GetLawset(args.Lawset).Laws, cue: emagLawcomp.EmaggedSound); //Add this back and remove lower line when alternate emag line recorded
+        SetProviderLaws((providerUid, provider), GetLawset(args.Lawset).Laws, silent: true);
         Dirty(providerUid, provider);
 
         emagLawcomp.OwnerName = Name(args.UserUid);
