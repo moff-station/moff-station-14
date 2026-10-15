@@ -7,7 +7,7 @@ using Content.Shared.SurveillanceCamera.Components;
 
 namespace Content.Server._Moffstation.JestographicSequencer;
 
-public sealed class JestographicCameraWireSystem : EntitySystem
+public sealed partial class JestographicCameraWireSystem : EntitySystem
 {
     [Dependency] private WiresSystem _wires = default!;
 

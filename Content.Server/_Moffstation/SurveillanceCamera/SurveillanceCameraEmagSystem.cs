@@ -6,7 +6,7 @@ using Content.Shared.SurveillanceCamera.Components;
 
 namespace Content.Server._Moffstation.SurveillanceCamera;
 
-public sealed class SurveillanceCameraEmagSystem : EntitySystem
+public sealed partial class SurveillanceCameraEmagSystem : EntitySystem
 {
     [Dependency] private EmagSystem _emag = default!;
     [Dependency] private WiresSystem _wires = default!;

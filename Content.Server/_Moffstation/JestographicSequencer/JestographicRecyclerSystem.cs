@@ -14,14 +14,14 @@ namespace Content.Server._Moffstation.JestographicSequencer;
 /// <summary>
 /// Dresses mobs that fall into a recycler jested by a jestographic sequencer.
 /// </summary>
-public sealed class JestographicRecyclerSystem : EntitySystem
+public sealed partial class JestographicRecyclerSystem : EntitySystem
 {
-    [Dependency] private readonly InventorySystem _inventory = default!;
-    [Dependency] private readonly SharedAudioSystem _audio = default!;
-    [Dependency] private readonly SharedContainerSystem _container = default!;
-    [Dependency] private readonly SharedMaterialReclaimerSystem _reclaimer = default!;
-    [Dependency] private readonly SharedStunSystem _stun = default!;
-    [Dependency] private readonly SharedTransformSystem _transform = default!;
+    [Dependency] private InventorySystem _inventory = default!;
+    [Dependency] private SharedAudioSystem _audio = default!;
+    [Dependency] private SharedContainerSystem _container = default!;
+    [Dependency] private SharedMaterialReclaimerSystem _reclaimer = default!;
+    [Dependency] private SharedStunSystem _stun = default!;
+    [Dependency] private SharedTransformSystem _transform = default!;
 
     public override void Initialize()
     {
