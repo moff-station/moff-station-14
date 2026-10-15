@@ -3,6 +3,7 @@ using Content.Shared.Body;
 using Content.Shared.Humanoid;
 using Content.Shared.Humanoid.Markings;
 using Content.Shared.Humanoid.Prototypes;
+using Content.Shared.MapText;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization;
 
@@ -77,6 +78,11 @@ public sealed class PhotoSnapshotEntity
     public Dictionary<Enum, object>? Appearance;
 
     public PhotoSnapshotLight? Light;
+
+    /// <summary>
+    /// Map text set on the entity itself (e.g. dev map signs), which respawning the prototype would lose.
+    /// </summary>
+    public MapTextComponentState? MapText;
 
     /// <summary>
     /// Index in <see cref="PhotoSnapshot.Entities"/> to ensure draw order is respected

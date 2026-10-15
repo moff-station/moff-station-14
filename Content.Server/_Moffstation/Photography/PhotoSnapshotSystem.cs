@@ -1,4 +1,5 @@
 using System.Numerics;
+using Content.Server.MapText;
 using Content.Shared._Moffstation.Photography;
 using Content.Shared.Body;
 using Content.Shared.Buckle.Components;
@@ -11,6 +12,7 @@ using Content.Shared.Inventory;
 using Content.Shared.Inventory.VirtualItem;
 using Content.Shared.Light.Components;
 using Content.Shared.Light.EntitySystems;
+using Content.Shared.MapText;
 using Content.Shared.Parallax;
 using Content.Shared.Stealth;
 using Content.Shared.Stealth.Components;
@@ -234,6 +236,7 @@ public sealed partial class PhotoSnapshotSystem : EntitySystem
                 Rotation = _transform.GetWorldRotation(xform) - frameRotation,
                 Appearance = GetAppearance(uid),
                 Light = GetLight(uid),
+                MapText = GetMapText(uid),
                 Humanoid = GetHumanoid(uid, visMask),
             });
         }
@@ -430,6 +433,14 @@ public sealed partial class PhotoSnapshotSystem : EntitySystem
         }
 
         return new Dictionary<Enum, object>(state.Data);
+    }
+
+    private MapTextComponentState? GetMapText(EntityUid uid)
+    {
+        if (!TryComp<MapTextComponent>(uid, out var mapText))
+            return null;
+
+        return EntityManager.GetComponentState(EntityManager.EventBus, mapText, null, GameTick.Zero) as MapTextComponentState;
     }
 
     private PhotoSnapshotLight? GetLight(EntityUid uid)

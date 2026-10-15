@@ -1,6 +1,7 @@
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Numerics;
+using Content.Client.MapText;
 using Content.Shared._Moffstation.Photography;
 using Content.Shared.Body;
 using Content.Shared.Buckle.Components;
@@ -12,6 +13,7 @@ using Content.Shared.Parallax;
 using Content.Shared.Sprite;
 using Robust.Client.GameObjects;
 using Robust.Client.Graphics;
+using Robust.Shared.GameStates;
 using Robust.Shared.Graphics;
 using Robust.Shared.Map;
 using Robust.Shared.Prototypes;
@@ -312,6 +314,12 @@ public sealed partial class PhotoViewerSystem : EntitySystem
 
         if (entity.Light is { } snapshotLight)
             ApplyLight(uid.Value, snapshotLight);
+
+        if (entity.MapText is { } mapTextState && TryComp<MapTextComponent>(uid, out var mapText))
+        {
+            var handleState = new ComponentHandleState(mapTextState, null);
+            EntityManager.EventBus.RaiseComponentEvent(uid.Value, mapText, ref handleState);
+        }
 
         return uid;
     }
