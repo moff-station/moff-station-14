@@ -32,18 +32,18 @@ namespace Content.Shared._Moffstation.JestographicSequencer;
 ///</summary>
 public sealed class JestographicSequencerSystem : EntitySystem
 {
-    [Dependency] private readonly ISharedAdminLogManager _adminLogger = default!;
+    [Dependency] private ISharedAdminLogManager _adminLogger = default!;
 
-    [Dependency] private readonly AccessReaderSystem _accessReader = default!;
-    [Dependency] private readonly SharedAudioSystem _audio = default!;
-    [Dependency] private readonly SharedChargesSystem _charges = default!;
-    [Dependency] private readonly SharedDoorSystem _door = default!;
-    [Dependency] private readonly SharedPopupSystem _popup = default!;
-    [Dependency] private readonly IPrototypeManager _prototype = default!;
-    [Dependency] private readonly SharedStationAiSystem _stationAi = default!;
-    [Dependency] private readonly EntityWhitelistSystem _whitelist = default!;
-    [Dependency] private readonly MovementSpeedModifierSystem _speed = default!;
-    [Dependency] private readonly UseDelaySystem _useDelay = default!;
+    [Dependency] private AccessReaderSystem _accessReader = default!;
+    [Dependency] private SharedAudioSystem _audio = default!;
+    [Dependency] private SharedChargesSystem _charges = default!;
+    [Dependency] private SharedDoorSystem _door = default!;
+    [Dependency] private SharedPopupSystem _popup = default!;
+    [Dependency] private IPrototypeManager _prototype = default!;
+    [Dependency] private SharedStationAiSystem _stationAi = default!;
+    [Dependency] private EntityWhitelistSystem _whitelist = default!;
+    [Dependency] private MovementSpeedModifierSystem _speed = default!;
+    [Dependency] private UseDelaySystem _useDelay = default!;
 
     public override void Initialize()
     {
