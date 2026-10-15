@@ -292,7 +292,7 @@
 
 - type: entity
   abstract: true
-  parent: [ TemperatureProtectionMinimal, MoffStainableClothingBase ] # Moffstation - mixed in MoffStainableClothingBase
+  parent: TemperatureProtectionMinimal
   id: ClothingHeadHatHoodWinterBase
   name: base winter coat hood
   description: A hood, made to keep your head warm.
