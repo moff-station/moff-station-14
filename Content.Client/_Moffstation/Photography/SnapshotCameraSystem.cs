@@ -48,8 +48,8 @@ public sealed partial class SnapshotCameraSystem : SharedSnapshotCameraSystem
         if (!_timing.IsFirstTimePredicted)
             return;
 
-        var center = ClampToScreen(Transform.ToMapCoordinates(click), ent.Comp.HalfExtents);
-        RaisePredictiveEvent(new SnapshotCameraShootEvent(GetNetEntity(ent), GetNetCoordinates(Transform.ToCoordinates(center))));
+        var center = ClampToScreen(TransformSystem.ToMapCoordinates(click), ent.Comp.HalfExtents);
+        RaisePredictiveEvent(new SnapshotCameraShootEvent(GetNetEntity(ent), GetNetCoordinates(TransformSystem.ToCoordinates(center))));
     }
 
     /// <summary>

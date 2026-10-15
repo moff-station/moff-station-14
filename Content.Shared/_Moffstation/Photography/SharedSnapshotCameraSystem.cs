@@ -26,7 +26,7 @@ public abstract partial class SharedSnapshotCameraSystem : EntitySystem
     [Dependency] private SharedMapSystem _map = default!;
     [Dependency] private SharedPopupSystem _popup = default!;
     [Dependency] private SharedContentEyeSystem _contentEye = default!;
-    [Dependency] protected SharedTransformSystem Transform = default!;
+    [Dependency] protected SharedTransformSystem TransformSystem = default!;
 
     public override void Initialize()
     {
@@ -46,7 +46,7 @@ public abstract partial class SharedSnapshotCameraSystem : EntitySystem
 
         args.Handled = true;
         SetAiming(ent, !ent.Comp.Aiming, args.User);
-        _popup.PopupClient(Loc.GetString(ent.Comp.Aiming ? "photo-camera-raise" : "photo-camera-lower"), args.User, args.User);
+        _popup.PopupEntity(Loc.GetString(ent.Comp.Aiming ? "photo-camera-raise" : "photo-camera-lower"), args.User, args.User);
     }
 
     private void OnUnequipped(Entity<SnapshotCameraComponent> ent, ref GotUnequippedHandEvent args)
@@ -63,7 +63,7 @@ public abstract partial class SharedSnapshotCameraSystem : EntitySystem
             return;
 
         SetAiming(ent, false, args.User);
-        _popup.PopupClient(Loc.GetString("photo-camera-lower"), args.User, args.User);
+        _popup.PopupEntity(Loc.GetString("photo-camera-lower"), args.User, args.User);
     }
 
     /// <remarks>
@@ -98,11 +98,11 @@ public abstract partial class SharedSnapshotCameraSystem : EntitySystem
         }
 
         // The center comes from the client, so the range is enforced here.
-        var center = Transform.ToMapCoordinates(GetCoordinates(ev.Center));
-        var from = Transform.GetMapCoordinates(user);
+        var center = TransformSystem.ToMapCoordinates(GetCoordinates(ev.Center));
+        var from = TransformSystem.GetMapCoordinates(user);
         if (center.MapId != from.MapId || (center.Position - from.Position).Length() > camera.MaxRange)
         {
-            _popup.PopupClient(Loc.GetString("photo-camera-too-far"), user, user);
+            _popup.PopupEntity(Loc.GetString("photo-camera-too-far"), user, user);
             return;
         }
 
@@ -144,7 +144,7 @@ public abstract partial class SharedSnapshotCameraSystem : EntitySystem
         if (_map.TryFindGridAt(center, out var gridUid, out _))
         {
             grid = gridUid;
-            (_, rotation, frameToWorld, worldToFrame) = Transform.GetWorldPositionRotationMatrixWithInv(gridUid);
+            (_, rotation, frameToWorld, worldToFrame) = TransformSystem.GetWorldPositionRotationMatrixWithInv(gridUid);
         }
 
         var local = Vector2.Transform(center.Position, worldToFrame);
