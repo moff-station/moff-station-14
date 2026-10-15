@@ -23,13 +23,10 @@
     - !type:DepartmentTimeRequirement
       department: Command
       time: 2.5h
-  # Moff start - no job weights
-#  weight: 20
-  displayWeight: 20
-  # Moff end
   startingGear: HoPGear
   icon: "JobIconHeadOfPersonnel"
   supervisors: job-supervisors-captain
+  guides: [ Command ] # TODO: should have a more specific guidebook page instead of using the department itself
   access:
   - Command
   - HeadOfPersonnel

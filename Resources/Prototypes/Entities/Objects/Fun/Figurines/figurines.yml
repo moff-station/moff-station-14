@@ -37,7 +37,7 @@
 #HUMANOID FIGURINES
 
 - type: entity
-  parent: BaseFigurine
+  parent: BaseFigurineUpstream # Moff
   id: ToyFigurineHeadOfPersonnel
   name: head of personnel figure
   description: A figurine depicting the glorious head of all personnel, away from their office as usual.
@@ -48,7 +48,7 @@
     pack: FigurinesHoP
 
 - type: entity
-  parent: BaseFigurine
+  parent: BaseFigurineUpstream # Moff
   id: ToyFigurinePassenger
   name: passenger figure
   description: A figurine depicting an every day, run-of-the-mill passenger. No funny business here.
@@ -59,7 +59,7 @@
     pack: FigurinesPassenger
 
 - type: entity
-  parent: BaseFigurine
+  parent: BaseFigurineUpstream # Moff
   id: ToyFigurineGreytider
   name: greytider figure
   description: A figurine depicting a dubious-looking passenger. Greytide worldwide!
@@ -70,7 +70,7 @@
     pack: FigurinesGreytider
 
 - type: entity
-  parent: BaseFigurine
+  parent: BaseFigurineUpstream # Moff
   id: ToyFigurineClown
   name: clown figure
   description: A figurine depicting a clown. You shudder to think of what people have probably done to this figurine before.
@@ -81,7 +81,7 @@
     pack: FigurinesClown
 
 - type: entity
-  parent: BaseFigurine
+  parent: BaseFigurineUpstream # Moff
   id: ToyFigurineHoloClown
   name: holoclown figure
   description: A figurine depicting a holoclown. Even more annoying than a clown and no less real.
@@ -92,7 +92,7 @@
     pack: FigurinesHoloClown
 
 - type: entity
-  parent: BaseFigurine
+  parent: BaseFigurineUpstream # Moff
   id: ToyFigurineMime
   name: mime figure
   description: A figurine depicting that silent bastard you are all too familiar with.
@@ -103,7 +103,7 @@
     pack: FigurinesMime
 
 - type: entity
-  parent: BaseFigurine
+  parent: BaseFigurineUpstream # Moff
   id: ToyFigurineMusician
   name: musician figure
   description: A figurine depicting a Musician, his music was electrifying.
@@ -114,7 +114,7 @@
     pack: FigurinesMusician
 
 - type: entity
-  parent: BaseFigurine
+  parent: BaseFigurineUpstream # Moff
   id: ToyFigurineBoxer
   name: boxer figure
   description: A figurine depicting a Boxer holding their red gloves.
@@ -125,7 +125,7 @@
     pack: FigurinesBoxer
 
 - type: entity
-  parent: BaseFigurine
+  parent: BaseFigurineUpstream # Moff
   id: ToyFigurineCaptain
   name: captain figure
   description: A figurine depicting the standard outfit of a captain belonging to a civilian-sector Nanotrasen vessel.
@@ -136,7 +136,7 @@
     pack: FigurinesCaptain
 
 - type: entity
-  parent: BaseFigurine
+  parent: BaseFigurineUpstream # Moff
   id: ToyFigurineHeadOfSecurity
   name: head of security figure
   description: A figurine depicting the glorious head of the Security department.
@@ -147,7 +147,7 @@
     pack: FigurinesHoS
 
 - type: entity
-  parent: BaseFigurine
+  parent: BaseFigurineUpstream # Moff
   id: ToyFigurineWarden
   name: warden figure
   description: A figurine depicting a Warden, ready to jail someone at any moment.
@@ -158,7 +158,7 @@
     pack: FigurinesWarden
 
 - type: entity
-  parent: BaseFigurine
+  parent: BaseFigurineUpstream # Moff
   id: ToyFigurineDetective
   name: detective figure
   description: A figurine depicting a Detective wearing their iconic trench coat.
@@ -169,7 +169,7 @@
     pack: FigurinesDetective
 
 - type: entity
-  parent: BaseFigurine
+  parent: BaseFigurineUpstream # Moff
   id: ToyFigurineSecurity
   name: security officer figure
   description: A figurine depicting a Security Officer holding a stunbaton, ready to defend the station.
@@ -180,7 +180,7 @@
     pack: FigurinesSecurity
 
 - type: entity
-  parent: BaseFigurine
+  parent: BaseFigurineUpstream # Moff
   id: ToyFigurineLawyer
   name: lawyer figure
   description: A figurine depicting a Lawyer sporting a freshly tailored suit.
@@ -191,7 +191,7 @@
     pack: FigurinesLawyer
 
 - type: entity
-  parent: BaseFigurine
+  parent: BaseFigurineUpstream # Moff
   id: ToyFigurineCargoTech
   name: cargo technican figure
   description: A figurine depicting a reptillian Cargo Technican.
@@ -202,7 +202,7 @@
     pack: FigurinesCargoTech
 
 - type: entity
-  parent: BaseFigurine
+  parent: BaseFigurineUpstream # Moff
   id: ToyFigurineSalvage
   name: salvage specialist figure
   description: A figurine depicting a Salvage Specialist holding a survival knife.
@@ -213,7 +213,7 @@
     pack: FigurinesSalvage
 
 - type: entity
-  parent: BaseFigurine
+  parent: BaseFigurineUpstream # Moff
   id: ToyFigurineQuartermaster
   name: quartermaster figure
   description: A figurine depicting the glorious head of the Cargo department.
@@ -224,7 +224,7 @@
     pack: FigurinesQM
 
 - type: entity
-  parent: BaseFigurine
+  parent: BaseFigurineUpstream # Moff
   id: ToyFigurineChiefEngineer
   name: chief engineer figure
   description: A figurine depicting the glorious head of the Engineering department.
@@ -235,7 +235,7 @@
     pack: FigurinesCE
 
 - type: entity
-  parent: BaseFigurine
+  parent: BaseFigurineUpstream # Moff
   id: ToyFigurineEngineer
   name: station engineer figure
   description: A figurine depicting a Station Engineer holding a crowbar at-ready.
@@ -246,7 +246,7 @@
     pack: FigurinesEngineer
 
 - type: entity
-  parent: BaseFigurine
+  parent: BaseFigurineUpstream # Moff
   id: ToyFigurineAtmosTech
   name: atmospheric technician figure
   description: A figurine depicting an Atmos Tech holding an unlit welder.
@@ -257,7 +257,7 @@
     pack: FigurinesAtmosTech
 
 - type: entity
-  parent: BaseFigurine
+  parent: BaseFigurineUpstream # Moff
   id: ToyFigurineResearchDirector
   name: research director figure
   description: A figurine depicting the glorious head of the Science department.
@@ -268,7 +268,7 @@
     pack: FigurinesRD
 
 - type: entity
-  parent: BaseFigurine
+  parent: BaseFigurineUpstream # Moff
   id: ToyFigurineScientist
   name: scientist figurine
   description: A figurine depicting a Scientist donning a labcoat.
@@ -279,7 +279,7 @@
     pack: FigurinesScientist
 
 - type: entity
-  parent: BaseFigurine
+  parent: BaseFigurineUpstream # Moff
   id: ToyFigurineChiefMedicalOfficer
   name: chief medical officer figure
   description: A figurine depicting the glorious head of the Medical department.
@@ -290,7 +290,7 @@
     pack: FigurinesCMO
 
 - type: entity
-  parent: BaseFigurine
+  parent: BaseFigurineUpstream # Moff
   id: ToyFigurineChemist
   name: chemist figure
   description: A figurine depicting a Chemist probably planning to make meth.
@@ -301,7 +301,7 @@
     pack: FigurinesChemist
 
 - type: entity
-  parent: BaseFigurine
+  parent: BaseFigurineUpstream # Moff
   id: ToyFigurineParamedic
   name: paramedic figure
   description: A figurine depicting a Paramedic wearing their void suit.
@@ -312,7 +312,7 @@
     pack: FigurinesParamedic
 
 - type: entity
-  parent: BaseFigurine
+  parent: BaseFigurineUpstream # Moff
   id: ToyFigurineMedicalDoctor
   name: medical doctor figure
   description: A figurine depicting a Medical Doctor, donning a labcoat & syringe.
@@ -323,7 +323,7 @@
     pack: FigurinesDoctor
 
 - type: entity
-  parent: BaseFigurine
+  parent: BaseFigurineUpstream # Moff
   id: ToyFigurineLibrarian
   name: librarian figure
   description: A figurine depicting the one-and-only librarian.
@@ -334,7 +334,7 @@
     pack: FigurinesLibrarian
 
 - type: entity
-  parent: BaseFigurine
+  parent: BaseFigurineUpstream # Moff
   id: ToyFigurineChaplain
   name: chaplain figure
   description: A figurine depicting a Chaplain hopefully praying for good things.
@@ -345,7 +345,7 @@
     pack: FigurinesChaplain
 
 - type: entity
-  parent: BaseFigurine
+  parent: BaseFigurineUpstream # Moff
   id: ToyFigurineChef
   name: chef figure
   description: A figurine depicting a chef, master of the culinary arts!.. most of the time.
@@ -356,7 +356,7 @@
     pack: FigurinesChef
 
 - type: entity
-  parent: BaseFigurine
+  parent: BaseFigurineUpstream # Moff
   id: ToyFigurineBartender
   name: bartender figure
   description: A figurine depicting a Bartender looking stylish with their rockin shades and tophat.
@@ -367,7 +367,7 @@
     pack: FigurinesBartender
 
 - type: entity
-  parent: BaseFigurine
+  parent: BaseFigurineUpstream # Moff
   id: ToyFigurineBotanist
   name: botanist figure
   description: A figurine depicting a Botanist that surely won't let kudzu get out of control.
@@ -378,7 +378,7 @@
     pack: FigurinesBotanist
 
 - type: entity
-  parent: BaseFigurine
+  parent: BaseFigurineUpstream # Moff
   id: ToyFigurineJanitor
   name: janitor figure
   description: A figurine depicting a Janitor with their galoshes.
@@ -389,7 +389,7 @@
     pack: FigurinesJanitor
 
 - type: entity
-  parent: BaseFigurine
+  parent: BaseFigurineUpstream # Moff
   id: ToyFigurineNukie
   name: syndicate operative figure
   description: A figurine depicting someone in a blood-red hardsuit, similar to what someone on a nuclear operative team might wear.
@@ -400,7 +400,7 @@
     pack: FigurinesNukie
 
 - type: entity
-  parent: BaseFigurine
+  parent: BaseFigurineUpstream # Moff
   id: ToyFigurineNukieElite
   name: elite syndicate operative figure
   description: A figurine depicting someone in an elite blood-red hardsuit, similar to what someone on a nuclear operative team might wear.
@@ -411,7 +411,7 @@
     pack: FigurinesNukieElite
 
 - type: entity
-  parent: BaseFigurine
+  parent: BaseFigurineUpstream # Moff
   id: ToyFigurineNukieCommander
   name: syndicate operative commander figure
   description: A figurine depicting someone in a beefed-up blood-red hardsuit, similar to what the commander of a nuclear operative team might wear.
@@ -422,7 +422,7 @@
     pack: FigurinesNukieCommander
 
 - type: entity
-  parent: BaseFigurine
+  parent: BaseFigurineUpstream # Moff
   id: ToyFigurineFootsoldier
   name: syndicate footsoldier figure
   description: A figurine depicting the outfit of a syndicate footsoldier.
@@ -433,7 +433,7 @@
     pack: FigurinesFootsoldier
 
 - type: entity
-  parent: BaseFigurine
+  parent: BaseFigurineUpstream # Moff
   id: ToyFigurineWizard
   name: wizard figure
   description: A figurine depicting someone with a long, silky beard wearing a wizard outfit. Warlocks wish they had anything on this.
@@ -444,7 +444,7 @@
     pack: FigurinesWizard
 
 - type: entity
-  parent: BaseFigurine
+  parent: BaseFigurineUpstream # Moff
   id: ToyFigurineWizardFake
   name: fake wizard figure
   description: A figurine depicting someone in a fake-ass wizard costume. What a ripoff!
@@ -477,7 +477,7 @@
     pack: FigurinesOwlman
 
 - type: entity
-  parent: BaseFigurine
+  parent: BaseFigurineUpstream # Moff
   id: ToyFigurineSkeleton
   name: skeleton figure
   description: A figurine depicting a spooky scary skeleton.
@@ -488,7 +488,7 @@
     pack: FigurinesSkeleton
 
 - type: entity
-  parent: BaseFigurine
+  parent: BaseFigurineUpstream # Moff
   id: ToyFigurineThief
   name: thief figure
   description: A figurine depicting a kleptomaniac that hides in the shadows.
@@ -554,7 +554,7 @@
     pack: FigurinesQueen
 
 - type: entity
-  parent: BaseFigurineUpstream
+  parent: BaseFigurineUpstream # Moff
   id: ToyFigurineRatKing
   name: rat king figure
   description: A large figurine depicting a rat king, prepared to make its nest.
@@ -565,7 +565,7 @@
     pack: FigurinesRatKing
 
 - type: entity
-  parent: BaseFigurineUpstream
+  parent: BaseFigurineUpstream # Moff
   id: ToyFigurineRatServant
   name: rat servant figure
   description: A figurine depicting a rat serving the king of rats!
@@ -576,7 +576,7 @@
     pack: FigurinesRatServant
 
 - type: entity
-  parent: BaseFigurineUpstream
+  parent: BaseFigurineUpstream # Moff
   id: ToyFigurineMouse
   name: mouse figure
   description: A figurine depicting a mouse scuttling away to the nearest piece of food.

@@ -6,6 +6,8 @@
   components:
   - type: BorgSwitchableType
     selectedBorgType: science
+  - type: Inventory
+    speciesId: moffBorgScience
 
 # Pirate Cyborg
 - type: entity

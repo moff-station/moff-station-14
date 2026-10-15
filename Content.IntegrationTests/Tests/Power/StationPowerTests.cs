@@ -27,9 +27,7 @@ public sealed class StationPowerTests : GameTest
         "Box",
         "Elkridge",
         "Exo",
-        "Fland",
         "Marathon",
-        "Oasis",
         "Packed",
         "Plasma",
         "Relic",
@@ -40,7 +38,6 @@ public sealed class StationPowerTests : GameTest
         "Frezon", // Moffstation
         "Lambda", // Moffstation
         "Ossuary", // Moffstation
-        "Reach", // Moffstation
         "Skeld", // Moffstation
         "Aspid", // Moffstation (From Harmony)
         "Barratry", // Moffstation (From Harmony)
@@ -65,7 +62,7 @@ public sealed class StationPowerTests : GameTest
 
         var entMan = server.EntMan;
         var protoMan = server.ProtoMan;
-        var ticker = entMan.System<GameTicker>();
+        var ticker = entMan.System<ServerGameTicker>();
         var batterySys = entMan.System<BatterySystem>();
 
         // Load the map
@@ -123,7 +120,7 @@ public sealed class StationPowerTests : GameTest
 
         var entMan = server.EntMan;
         var protoMan = server.ProtoMan;
-        var ticker = entMan.System<GameTicker>();
+        var ticker = entMan.System<ServerGameTicker>();
         var xform = entMan.System<TransformSystem>();
 
         // Load the map

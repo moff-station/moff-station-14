@@ -156,6 +156,7 @@
     attributes:
       proper: true
       gender: female
+  - type: SpeakOnException
 
 - type: entity
   parent: [ MobCorgiPuppy, BaseSlicingRefinable ]
@@ -197,6 +198,9 @@
     - VimPilot
   - type: StealTarget
     stealGroup: AnimalNamedCat
+  - type: SpeakOnException
+    speechCooldown: 3m
+    chanceSpeakNoAccent: 0.01
 
 - type: entity
   parent: [ BaseUniquePet, MobCatCalico ]
@@ -207,6 +211,9 @@
   - type: NpcFactionMember
     factions:
       - PetsNT
+  - type: SpeakOnException
+    speechCooldown: 2m
+    chanceSpeakNoAccent: 0.007
   - type: Grammar
     attributes:
       proper: true
@@ -702,7 +709,7 @@
     predicted: true
 
 - type: entity
-  parent: [ BaseUniquePet, MobGiantSpider ]
+  parent: [ BaseUniquePet, MobSpiderAnimated ]
   id: MobSpiderShiva
   name: Shiva
   description: The first defender of the station.
@@ -745,6 +752,7 @@
       0: Alive
       150: Dead
   - type: MeleeWeapon
+    altDisarm: false
     angle: 0
     animation: WeaponArcBite
     soundHit:

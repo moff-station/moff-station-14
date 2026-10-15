@@ -52,10 +52,16 @@
     - id: DrinkAleBottleFull
     - id: DrinkAleBottleFullGrowler
     - id: DrinkChampagneBottleFull
-    - id: DrinkAstrosturaBittersBottleFull # Moffstation - Lemon, Lime and Bitters.
+    # Moff Start - All the Moff Exclusive Common Drinks
+    - id: MoffDrinkAstrosturaBittersBottleFull
+    # Moff End
 
 - type: entityTable
   id: RandomRareAlcoholTable
   table: !type:GroupSelector
     children:
     - id: DrinkPoisonWinebottleFull
+    # Moff Start - All the Moff Exclusive Rare Drinks
+    - id: MoffDrinkWizardAleFull
+    - id: MoffDrinkEthylredoxrazineBottleFull
+    # Moff End

@@ -1,0 +1,17 @@
+- type: stack
+  parent: BaseTileStack
+  id: MoffFloorTileIronsandConcrete
+  name: stack-ironsand-concrete-tile
+  spawn: MoffFloorTileItemIronsandConcrete
+
+- type: stack
+  parent: BaseTileStack
+  id: MoffFloorTileIronsandConcreteMono
+  name: stack-ironsand-concrete-mono-tile
+  spawn: MoffFloorTileItemIronsandConcreteMono
+
+- type: stack
+  parent: BaseTileStack
+  id: MoffFloorTileIronsandConcreteSmooth
+  name: stack-ironsand-concrete-smooth
+  spawn: MoffFloorTileItemIronsandConcreteSmooth

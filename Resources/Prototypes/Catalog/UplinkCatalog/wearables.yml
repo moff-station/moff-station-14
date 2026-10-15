@@ -25,7 +25,7 @@
   name: uplink-chameleon-name
   description: uplink-chameleon-desc
   productEntity: ClothingBackpackChameleonFillAgent
-  icon: { sprite: /Textures/Clothing/Uniforms/Jumpsuit/rainbow.rsi, state: icon }
+  icon: { sprite: /Textures/Clothing/Uniforms/Jumpsuits/Color/rainbow.rsi, state: icon }
   discountCategory: usualDiscounts
   discountDownTo:
     Telecrystal: 2
@@ -132,7 +132,7 @@
   icon: { sprite: /Textures/Clothing/OuterClothing/Armor/syndie-raid.rsi, state: icon }
   productEntity: ClothingBackpackSyndicateRaidBundle
   cost:
-    Telecrystal: 8
+    Telecrystal: 14 # Moff - Balance - Stun repricing
   categories:
   - UplinkWearables
   conditions:
@@ -169,11 +169,8 @@
   icon: { sprite: /Textures/Structures/Storage/Crates/syndicate.rsi, state: icon }
   productEntity: CrateCybersunJuggernautBundle
   # Moffstation - Start - Readd hardsuits to uplink
-  discountCategory: rareDiscounts
-  discountDownTo:
-    Telecrystal: 8
   cost:
-    Telecrystal: 12
+    Telecrystal: 20 # Moff - Balance - stun repricing
   categories:
   - UplinkWearables
   #  conditions:

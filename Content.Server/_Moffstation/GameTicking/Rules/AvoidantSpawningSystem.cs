@@ -1,11 +1,10 @@
 ﻿using System.Linq;
 using Content.Server._Moffstation.GameTicking.Rules.Components;
-using Content.Server.GameTicking;
-using Content.Server.GameTicking.Rules;
-using Content.Server.Spawners.Components;
-using Content.Server.Spawners.EntitySystems;
-using Content.Server.Station.Systems;
 using Content.Shared.GameTicking.Components;
+using Content.Shared.GameTicking.Rules;
+using Content.Shared.Spawners.Components;
+using Content.Shared.Spawners.EntitySystems;
+using Content.Shared.Station.Systems;
 using Content.Shared.Whitelist;
 using Robust.Shared.Map;
 using Robust.Shared.Random;
@@ -39,7 +38,7 @@ public sealed partial class AvoidantSpawningSystem : GameRuleSystem<AvoidantSpaw
         var gameRules = EntityQueryEnumerator<AvoidantSpawningComponent, GameRuleComponent>();
         while (gameRules.MoveNext(out var gameRuleUid, out var avoidantComp, out var gameruleComp))
         {
-            if (!GameTicker.IsGameRuleActive(gameRuleUid, gameruleComp))
+            if (!GameTicker.IsGameRuleActive((gameRuleUid, gameruleComp)))
                 continue;
 
             args.SpawnResult = SpawnPlayerMob((gameRuleUid, avoidantComp), args);
@@ -47,7 +46,7 @@ public sealed partial class AvoidantSpawningSystem : GameRuleSystem<AvoidantSpaw
         }
     }
 
-    private EntityUid? SpawnPlayerMob(Entity<Components.AvoidantSpawningComponent> gameRule, PlayerSpawningEvent args)
+    private EntityUid? SpawnPlayerMob(Entity<AvoidantSpawningComponent> gameRule, PlayerSpawningEvent args)
     {
         var points = EntityQueryEnumerator<SpawnPointComponent, TransformComponent>();
         var possiblePositions = new List<EntityCoordinates>();
@@ -78,7 +77,7 @@ public sealed partial class AvoidantSpawningSystem : GameRuleSystem<AvoidantSpaw
             args.Station);
     }
 
-    private bool BlacklistInRange(Entity<Components.AvoidantSpawningComponent> gameRule, Entity<TransformComponent> spawnPoint)
+    private bool BlacklistInRange(Entity<AvoidantSpawningComponent> gameRule, Entity<TransformComponent> spawnPoint)
     {
         var entities = new HashSet<EntityUid>();
         _entityLookup.GetEntitiesInRange(spawnPoint.Comp.Coordinates, gameRule.Comp.Range, entities);

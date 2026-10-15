@@ -21,7 +21,13 @@ namespace Content.IntegrationTests.Tests
     [TestOf(typeof(EntityUid))]
     public sealed class EntityTest : GameTest
     {
-        private static readonly HashSet<ProtoId<EntityCategoryPrototype>> IgnoredCategories = ["Spawner", "Debug"];
+        private static readonly HashSet<ProtoId<EntityCategoryPrototype>> IgnoredCategories = ["Spawner", "Debug", "GameRules"];
+
+        // Moff Start - Batched spawning
+        // This is because gitbob only has 16gb to run tests and if it does it all at the same time it OOMs
+        private const int SpawnBatchSize = 1000;
+        private const int BatchTicks = 150;
+        // Moff end
 
         public override PoolSettings PoolSettings => new()
         {
@@ -47,29 +53,44 @@ namespace Content.IntegrationTests.Tests
             var prototypeMan = server.ResolveDependency<IPrototypeManager>();
             var mapSystem = entityMan.System<SharedMapSystem>();
 
-            await server.WaitPost(() =>
+            // Moff Start - Batched spawning
+            var protoIds = prototypeMan
+                .EnumeratePrototypes<EntityPrototype>()
+                .Where(p => !p.Abstract)
+                .Where(p => !pair.IsTestPrototype(p))
+                .Where(p => !p.Components.ContainsKey("MapGrid")) // This will smash stuff otherwise.
+                .Where(p => !p.Components.ContainsKey("RoomFill")) // This comp can delete all entities, and spawn others
+                .Select(p => p.ID)
+                .ToList();
+
+            foreach (var batch in protoIds.Chunk(SpawnBatchSize))
             {
-                var protoIds = prototypeMan
-                    .EnumeratePrototypes<EntityPrototype>()
-                    .Where(p => !p.Abstract)
-                    .Where(p => !pair.IsTestPrototype(p))
-                    .Where(p => !p.Components.ContainsKey("MapGrid")) // This will smash stuff otherwise.
-                    .Where(p => !p.Components.ContainsKey("RoomFill")) // This comp can delete all entities, and spawn others
-                    .Select(p => p.ID)
-                    .ToList();
-
-                foreach (var protoId in protoIds)
+                var maps = new List<MapId>(batch.Length);
+                await server.WaitPost(() =>
                 {
-                    mapSystem.CreateMap(out var mapId);
-                    var grid = mapSystem.CreateGridEntity(mapId);
-                    // TODO: Fix this better in engine.
-                    mapSystem.SetTile(grid.Owner, grid.Comp, Vector2i.Zero, new Tile(1));
-                    var coord = new EntityCoordinates(grid.Owner, 0, 0);
-                    entityMan.SpawnEntity(protoId, coord);
-                }
-            });
+                    foreach (var protoId in batch)
+                    {
+                        mapSystem.CreateMap(out var mapId);
+                        var grid = mapSystem.CreateGridEntity(mapId);
+                        // TODO: Fix this better in engine.
+                        mapSystem.SetTile(grid.Owner, grid.Comp, Vector2i.Zero, new Tile(1));
+                        var coord = new EntityCoordinates(grid.Owner, 0, 0);
+                        entityMan.SpawnEntity(protoId, coord);
+                        maps.Add(mapId);
+                    }
+                });
 
-            await server.WaitRunTicks(450); // 15 seconds, enough to trigger most update loops
+                await server.WaitRunTicks(BatchTicks);
+
+                await server.WaitPost(() =>
+                {
+                    foreach (var mapId in maps)
+                    {
+                        mapSystem.DeleteMap(mapId);
+                    }
+                });
+            }
+            // Moff end
 
             await server.WaitPost(() =>
             {
@@ -172,25 +193,42 @@ namespace Content.IntegrationTests.Tests
                 .Select(p => p.ID)
                 .ToList();
 
-            await server.WaitPost(() =>
+            // Moff Start - Batched spawning
+            var maxClientEntities = 0;
+            foreach (var batch in protoIds.Chunk(SpawnBatchSize))
             {
-                foreach (var protoId in protoIds)
+                var maps = new List<MapId>(batch.Length);
+                await server.WaitPost(() =>
                 {
-                    mapSys.CreateMap(out var mapId);
-                    var grid = mapSys.CreateGridEntity(mapId);
-                    var ent = sEntMan.SpawnEntity(protoId, new EntityCoordinates(grid.Owner, 0.5f, 0.5f));
-                    foreach (var (_, component) in sEntMan.GetNetComponents(ent))
+                    foreach (var protoId in batch)
                     {
-                        sEntMan.Dirty(ent, component);
+                        mapSys.CreateMap(out var mapId);
+                        var grid = mapSys.CreateGridEntity(mapId);
+                        var ent = sEntMan.SpawnEntity(protoId, new EntityCoordinates(grid.Owner, 0.5f, 0.5f));
+                        foreach (var (_, component) in sEntMan.GetNetComponents(ent))
+                        {
+                            sEntMan.Dirty(ent, component);
+                        }
+                        maps.Add(mapId);
                     }
-                }
-            });
+                });
 
-            await pair.RunUntilSynced();
+                await pair.RunUntilSynced();
+                maxClientEntities = Math.Max(maxClientEntities, CEntMan.EntityCount);
+
+                await server.WaitPost(() =>
+                {
+                    foreach (var mapId in maps)
+                    {
+                        mapSys.DeleteMap(mapId);
+                    }
+                });
+            }
 
             // Make sure the client actually received the entities
             // 500 is completely arbitrary. Note that the client & sever entity counts aren't expected to match.
-            Assert.That(client.ResolveDependency<IEntityManager>().EntityCount, Is.GreaterThan(500));
+            Assert.That(maxClientEntities, Is.GreaterThan(500));
+            // Moff end
 
             await server.WaitPost(() =>
             {
@@ -434,6 +472,7 @@ namespace Content.IntegrationTests.Tests
                 "Broadphase",
                 "StationData", // errors when removed mid-round
                 "StationJobs",
+                "ActiveGameRule", // Requires GameRule :P
                 "Actor", // We aren't testing actor components, those need their player session set.
                 "BiomeSelection", // Whaddya know, requires config.
                 "ActivatableUI", // Requires enum key

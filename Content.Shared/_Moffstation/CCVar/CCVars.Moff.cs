@@ -64,8 +64,8 @@ public sealed class MoffCCVars
     /// <summary>
     /// if true, the player count check for rules will be based on the number of players readied, versus the total number in the lobby.
     /// </summary>
-    public static readonly CVarDef<bool>
-        GameRulesCountReadied = CVarDef.Create("game.rules_count_readied", true, CVar.SERVERONLY);
+    public static readonly CVarDef<float>
+        GameRulesUnreadiedPlayerWeight = CVarDef.Create("game.unreadied_player_weight", 0.5f, CVar.SERVERONLY);
 
     /// <summary>
     /// Whether longspeech should be enabled

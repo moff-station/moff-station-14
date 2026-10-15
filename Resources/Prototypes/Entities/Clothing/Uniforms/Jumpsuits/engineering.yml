@@ -1,0 +1,141 @@
+- type: entity
+  parent: [ClothingUniformBase, BaseCommandContraband, ClothingUniformFoldableBase]
+  id: ClothingUniformJumpsuitChiefEngineer
+  name: chief engineer's jumpsuit
+  description: It's a high visibility jumpsuit given to those engineers insane enough to achieve the rank of Chief Engineer.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/ce.rsi # Moffstation - Begin - Engineering Outfit Resprites
+
+- type: entity
+  parent: [ClothingUniformBase, BaseCommandContraband]
+  id: ClothingUniformJumpsuitChiefEngineerTurtle
+  name: chief engineer's turtleneck
+  description: A yellow turtleneck designed specifically for work in conditions of the engineering department.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/ce_turtle.rsi # Moffstation - Begin - Engineering Outfit Resprites
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/ce_turtle.rsi # Moffstation - Begin - Engineering Outfit Resprites
+
+- type: entity
+  parent: [ClothingUniformBase, ClothingUniformFoldableBase]
+  id: ClothingUniformJumpsuitEngineering
+  name: engineering jumpsuit
+  description: If this suit was non-conductive, maybe engineers would actually do their damn job.
+  components:
+  - type: Sprite
+    # Moffstation - Start - Engineering outfit resprites
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/jumpsuit.rsi
+    layers:
+    - state: icon
+      color: "#db542e"
+    - state: basics-trinkets-icon
+    - state: color-trinkets-icon
+      color: "#547abb"
+  - type: Item
+    inhandVisuals:
+      left:
+      - state: inhand-left
+        color: "#db542e"
+      right:
+      - state: inhand-right
+        color: "#db542e"
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/jumpsuit.rsi
+    clothingVisuals:
+      jumpsuit:
+      - state: equipped-INNERCLOTHING
+        color: "#db542e"
+      - state: basics-trinkets-equipped-INNERCLOTHING
+      - state: color-trinkets-equipped-INNERCLOTHING
+        color: "#547abb"
+    # Moffstation - End
+
+- type: entity
+  parent: [ClothingUniformBase, ClothingUniformFoldableBase]
+  id: ClothingUniformJumpsuitEngineeringHazard
+  name: hazard jumpsuit
+  description: Woven in a grungy, warm orange. Lets others around you know that you really mean business when it comes to work.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/engineering_hazard.rsi # Moffstation
+
+- type: entity
+  parent: [ClothingUniformBase, ClothingUniformFoldableBase]
+  id: ClothingUniformJumpsuitAtmos
+  name: atmospheric technician jumpsuit
+  description: I am at work. I can't leave work. Work is breathing. I am testing air quality.
+  components:
+  # Moffstation - Start
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/jumpsuit.rsi
+    layers:
+    - state: icon
+      color: "#ffe335"
+    - state: basics-trinkets-icon
+    - state: color-trinkets-icon
+      color: "#6ec9c1"
+  - type: Item
+    inhandVisuals:
+      left:
+      - state: inhand-left
+      right:
+      - state: inhand-right
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/jumpsuit.rsi
+    clothingVisuals:
+      jumpsuit:
+      - state: equipped-INNERCLOTHING
+        color: "#ffe335"
+      - state: basics-trinkets-equipped-INNERCLOTHING
+      - state: color-trinkets-equipped-INNERCLOTHING
+        color: "#6ec9c1"
+# Moffstation - End
+
+- type: entity
+  parent: [ClothingUniformBase, ClothingUniformFoldableBase]
+  id: ClothingUniformJumpsuitAtmosCasual
+  name: atmospheric technician's overalls # Moffstation
+  description: Might as well relax with a job as easy as yours.
+  components:
+  # Moffstation - Start
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/jumpsuit.rsi
+    layers:
+    - state: icon
+      color: "#ffe335"
+    - state: basics-trinkets-icon
+    - state: color-trinkets-icon
+      color: "#6ec9c1"
+    - state: overalls-trinkets-icon
+      color: "#547abb"
+  - type: Item
+    inhandVisuals:
+      left:
+      - state: inhand-left
+      right:
+      - state: inhand-right
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/jumpsuit.rsi
+    clothingVisuals:
+      jumpsuit:
+      - state: equipped-INNERCLOTHING
+        color: "#ffe335"
+      - state: basics-trinkets-equipped-INNERCLOTHING
+      - state: color-trinkets-equipped-INNERCLOTHING
+        color: "#6ec9c1"
+      - state: overalls-trinkets-equipped-INNERCLOTHING
+        color: "#547abb"
+  # Moffstation - End
+
+- type: entity
+  parent: [ClothingUniformBase, ClothingUniformFoldableBase] # Moffstation
+  id: ClothingUniformJumpsuitSeniorEngineer
+  name: senior engineer jumpsuit
+  description: A sign of skill and prestige within the engineering department.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/senior_engineer.rsi # Moffstation - Engineering Outfit Resprites
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/senior_engineer.rsi # Moffstation - Engineering Outfit Resprites
