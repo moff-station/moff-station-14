@@ -7,7 +7,7 @@
   suffix: PersonalItem
   components:
   - type: Sprite
-    sprite: &sprite Resources/Textures/Clothing/Head/Hardhats/red.rsi
+    sprite: &sprite Clothing/Head/Hardhats/red.rsi
   - type: Clothing
     sprite: *sprite
   - type: Item
