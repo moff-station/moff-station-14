@@ -26,6 +26,7 @@ using Content.Shared.Mind;
 using Content.Shared.Mobs.Systems;
 using Content.Shared.Nutrition.Components;
 using Content.Shared.Nutrition.EntitySystems;
+using Content.Shared.ParcelWrap.Components;
 using Content.Shared.Preferences;
 using Content.Shared.Projectiles;
 using Content.Shared.StatusEffect;
@@ -184,10 +185,11 @@ public sealed partial class GerasSystem : EntitySystem
             {
                 _container.AttachParentToContainerOrGrid((uid, Transform(uid)));
             }
-        }
-        if (_container.IsEntityOrParentInContainer(uid))// If the entity is in any other container, put the geras in that container
-        {
-            _transform.DropNextTo(geras, uid);
+            else // If the entity is in any other container, put the geras in that container
+            {
+                _container.Remove(uid, container, force: false, reparent: true);
+                _container.Insert(geras, container);
+            }
         }
 
         _implantSystem.TransferImplants(uid, geras);
