@@ -31,6 +31,7 @@ public abstract partial class SharedAbsorbentSystem : EntitySystem
     [Dependency] private SharedMapSystem _mapSystem = default!;
     [Dependency] private SharedItemSystem _item = default!;
     [Dependency] private IGameTiming _timing = default!;
+    [Dependency] private SharedInteractionSystem _interaction = default!; // Moff - Mop puddles by clicking their tile
 
     public override void Initialize()
     {
@@ -52,6 +53,17 @@ public abstract partial class SharedAbsorbentSystem : EntitySystem
 
     private void OnAfterInteract(Entity<AbsorbentComponent> ent, ref AfterInteractEvent args)
     {
+        // Moff start - Mop puddles/footprints by clicking their tile
+        if (args.Target == null && args is { CanReach: true, Handled: false }
+                                && Puddle.TryGetTilePuddle(args.ClickLocation, out var puddle))
+        {
+            Mop(ent, args.User, puddle.Value);
+            args.Handled = true;
+            _interaction.DoContactInteraction(args.User, puddle.Value, ent.Owner, true, args);
+            return;
+        }
+        // Moff end
+
         if (!args.CanReach || args.Handled || args.Target is not { } target)
             return;
 
