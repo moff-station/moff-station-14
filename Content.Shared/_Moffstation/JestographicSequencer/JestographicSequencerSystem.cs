@@ -30,7 +30,7 @@ namespace Content.Shared._Moffstation.JestographicSequencer;
 ///swapping their granted accesses for denied ones and vice versa.
 ///It can also be used on cyborgs, replacing their laws with the sequencer's lawset (see SharedSiliconLawSystem.Jestographic).
 ///</summary>
-public sealed class JestographicSequencerSystem : EntitySystem
+public sealed partial class JestographicSequencerSystem : EntitySystem
 {
     [Dependency] private ISharedAdminLogManager _adminLogger = default!;
 
