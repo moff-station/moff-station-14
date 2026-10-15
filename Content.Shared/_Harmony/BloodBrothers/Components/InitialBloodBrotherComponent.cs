@@ -4,7 +4,6 @@ using Content.Shared.Actions.Components;
 using Content.Shared.NPC.Prototypes;
 using Content.Shared.Objectives.Components;
 using Content.Shared.Roles.Components;
-using Content.Shared.StatusIcon;
 using Robust.Shared.Audio;
 using Robust.Shared.GameStates;
 using Robust.Shared.Prototypes;
@@ -15,7 +14,7 @@ namespace Content.Shared._Harmony.BloodBrothers.Components;
 /// Signifies that an entity is the blood brother chosen by a game-rule.
 /// </summary>
 [RegisterComponent, NetworkedComponent, Access(typeof(SharedBloodBrotherSystem))]
-[AutoGenerateComponentState(fieldDeltas: true)]
+[AutoGenerateComponentState]
 public sealed partial class InitialBloodBrotherComponent : Component
 {
     #region Actions
@@ -25,19 +24,6 @@ public sealed partial class InitialBloodBrotherComponent : Component
 
     [DataField, AutoNetworkedField]
     public EntityUid? ConvertActionEntity;
-
-    #endregion
-
-    #region Convertible icons
-
-    /// <summary>
-    /// Entities this blood brother can currently convert, recomputed by the server.
-    /// </summary>
-    [DataField, AutoNetworkedField]
-    public HashSet<EntityUid> Convertible = new();
-
-    [DataField]
-    public ProtoId<FactionIconPrototype> ConvertibleIcon = "BloodBrotherConvertible";
 
     #endregion
 

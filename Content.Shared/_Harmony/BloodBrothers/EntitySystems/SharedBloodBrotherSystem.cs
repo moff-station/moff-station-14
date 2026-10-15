@@ -1,4 +1,5 @@
 ﻿using Content.Shared._Harmony.BloodBrothers.Components;
+using Content.Shared._Moffstation.BloodBrothers.Components;
 using Content.Shared.Actions;
 using Content.Shared.Antag;
 using Robust.Shared.GameStates;
@@ -23,6 +24,22 @@ public abstract partial class SharedBloodBrotherSystem : EntitySystem
     {
         _actionsSystem.AddAction(entity, ref entity.Comp.ConvertActionEntity, entity.Comp.ConvertAction);
         Dirty(entity);
+        DirtyConvertibleMarkers();
+    }
+
+    [SubscribeLocalEvent]
+    private void OnInitialBloodBrotherPlayerAttached(Entity<InitialBloodBrotherComponent> entity, ref PlayerAttachedEvent args)
+    {
+        DirtyConvertibleMarkers();
+    }
+
+    [SubscribeLocalEvent]
+    private void OnConvertibleGetStateAttempt(
+        Entity<BloodBrotherConvertibleComponent> entity,
+        ref ComponentGetStateAttemptEvent args)
+    {
+        if (args.Player?.AttachedEntity is { } viewer)
+            args.Cancelled = !HasComp<InitialBloodBrotherComponent>(viewer);
     }
 
     private void OnInitialBloodBrotherShutdown(Entity<InitialBloodBrotherComponent> entity, ref ComponentShutdown args)
@@ -46,12 +63,28 @@ public abstract partial class SharedBloodBrotherSystem : EntitySystem
         return HasComp<BloodBrotherComponent>(uid) || HasComp<ShowAntagIconsComponent>(uid);
     }
 
-    public void SetConvertible(Entity<InitialBloodBrotherComponent?> entity, HashSet<EntityUid> convertible)
+    public void SetConvertible(EntityUid target, bool convertible)
     {
-        if (!Resolve(entity, ref entity.Comp) || convertible.SetEquals(entity.Comp.Convertible))
-            return;
+        if (convertible)
+            EnsureComp<BloodBrotherConvertibleComponent>(target);
+        else
+            RemComp<BloodBrotherConvertibleComponent>(target);
+    }
 
-        entity.Comp.Convertible = convertible;
-        DirtyField(entity.Owner, entity.Comp, nameof(InitialBloodBrotherComponent.Convertible));
+    public void ClearConvertible()
+    {
+        foreach (var ent in EntityQueryEnumerator<BloodBrotherConvertibleComponent>())
+        {
+            RemCompDeferred(ent.Owner, ent.Comp);
+        }
+    }
+
+    // Markers added while a viewer couldn't see them are never sent unless dirtied again
+    private void DirtyConvertibleMarkers()
+    {
+        foreach (var ent in EntityQueryEnumerator<BloodBrotherConvertibleComponent>())
+        {
+            Dirty(ent.Owner, ent.Comp);
+        }
     }
 }

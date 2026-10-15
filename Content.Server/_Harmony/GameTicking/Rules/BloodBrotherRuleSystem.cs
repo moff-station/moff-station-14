@@ -17,6 +17,7 @@ using Content.Server.Roles;
 using Content.Server.Stunnable;
 using Content.Shared._Harmony.BloodBrothers.Components;
 using Content.Shared.Database;
+using Content.Shared.GameTicking.Components;
 using Content.Shared.Humanoid;
 using Content.Shared.IdentityManagement;
 using Content.Shared.Mind;
@@ -55,7 +56,6 @@ public sealed partial class BloodBrotherRuleSystem : GameRuleSystem<BloodBrother
     [Dependency] private MoffCharacterPickerSystem _characterPicker = default!;
 
     [Dependency] private EntityQuery<BloodBrotherComponent> _bloodBrotherQuery = default!;
-    [Dependency] private EntityQuery<MindComponent> _mindQuery = default!;
     [Dependency] private EntityQuery<TargetObjectiveComponent> _targetObjectiveQuery = default!;
     [Dependency] private EntityQuery<ZombieComponent> _zombieQuery = default!;
 
@@ -81,31 +81,20 @@ public sealed partial class BloodBrotherRuleSystem : GameRuleSystem<BloodBrother
 
         rule.Comp.NextConvertibleUpdate = Timing.CurTime + rule.Comp.ConvertibleUpdateInterval;
 
-        var convertible = new HashSet<EntityUid>();
         foreach (var target in EntityQueryEnumerator<HumanoidProfileComponent>())
         {
-            if (CanBeConverted(target, rule.Comp.RequiredAntagPreference, out _))
-                convertible.Add(target);
+            _bloodBrother.SetConvertible(target, CanBeConverted(target, rule.Comp.RequiredAntagPreference, out _));
         }
+    }
 
-        foreach (var brother in EntityQueryEnumerator<InitialBloodBrotherComponent>())
-        {
-            var brotherConvertible = new HashSet<EntityUid>();
+    protected override void Ended(EntityUid uid,
+        BloodBrotherRuleComponent component,
+        GameRuleComponent gameRule,
+        GameRuleEndedEvent args)
+    {
+        base.Ended(uid, component, gameRule, args);
 
-            // A converter whose mind has left their body, e.g. by ghosting, gets no icons
-            if (_mindSystem.TryGetMind(brother, out _, out var brotherMind))
-            {
-                brotherConvertible.UnionWith(convertible);
-
-                foreach (var targetMind in GetObjectiveTargets(brotherMind))
-                {
-                    if (_mindQuery.CompOrNull(targetMind)?.OwnedEntity is { } targetBody)
-                        brotherConvertible.Remove(targetBody);
-                }
-            }
-
-            _bloodBrother.SetConvertible(brother.AsNullable(), brotherConvertible);
-        }
+        _bloodBrother.ClearConvertible();
     }
 
     [SubscribeLocalEvent]
@@ -336,9 +325,9 @@ public sealed partial class BloodBrotherRuleSystem : GameRuleSystem<BloodBrother
 
     private bool TryGetRule(out Entity<BloodBrotherRuleComponent> rule)
     {
-        foreach (var ent in QueryAllRules())
+        foreach (var ent in QueryActiveRules())
         {
-            rule = (ent.Owner, ent.Comp1);
+            rule = (ent.Owner, ent.Comp2);
             return true;
         }
 

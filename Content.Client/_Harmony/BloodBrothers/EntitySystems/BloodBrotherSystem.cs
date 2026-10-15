@@ -1,7 +1,7 @@
 ﻿using Content.Shared._Harmony.BloodBrothers.Components;
 using Content.Shared._Harmony.BloodBrothers.EntitySystems;
+using Content.Shared._Moffstation.BloodBrothers.Components;
 using Content.Shared.Antag;
-using Content.Shared.Humanoid;
 using Content.Shared.StatusIcon.Components;
 using Robust.Client.Player;
 using Robust.Shared.Prototypes;
@@ -12,7 +12,6 @@ public sealed partial class BloodBrotherSystem : SharedBloodBrotherSystem
 {
     [Dependency] private IPlayerManager _playerManager = default!;
     [Dependency] private IPrototypeManager _prototypeManager = default!;
-    [Dependency] private EntityQuery<InitialBloodBrotherComponent> _initialBloodBrotherQuery = default!;
 
     [SubscribeLocalEvent]
     private void OnBloodBrotherGetIcons(Entity<BloodBrotherComponent> entity, ref GetStatusIconsEvent args)
@@ -30,13 +29,9 @@ public sealed partial class BloodBrotherSystem : SharedBloodBrotherSystem
     }
 
     [SubscribeLocalEvent]
-    private void OnConvertibleGetIcons(Entity<HumanoidProfileComponent> entity, ref GetStatusIconsEvent args)
+    private void OnConvertibleGetIcons(Entity<BloodBrotherConvertibleComponent> entity, ref GetStatusIconsEvent args)
     {
-        if (!_initialBloodBrotherQuery.TryComp(_playerManager.LocalEntity, out var initial)
-            || !initial.Convertible.Contains(entity))
-            return;
-
-        if (_prototypeManager.TryIndex(initial.ConvertibleIcon, out var iconPrototype))
+        if (_prototypeManager.TryIndex(entity.Comp.Icon, out var iconPrototype))
             args.StatusIcons.Add(iconPrototype);
     }
 }
