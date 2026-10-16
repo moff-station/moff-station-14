@@ -70,6 +70,20 @@
   - !type:ListingLimitedStockCondition
     stock: 1
 
+# Deception
+- type: listing
+  id: MoffUplinkChitterMpnServer
+  name: moff-uplink-chitter-mpn-server-name
+  description: moff-uplink-chitter-mpn-server-desc
+  productEntity: MoffChitterMpnServer
+  discountCategory: usualDiscounts
+  discountDownTo:
+    Telecrystal: 1
+  cost:
+    Telecrystal: 3
+  categories:
+  - UplinkDeception
+
 # Explosives
 - type: listing
   id: UplinkSyndicateEmpBomb

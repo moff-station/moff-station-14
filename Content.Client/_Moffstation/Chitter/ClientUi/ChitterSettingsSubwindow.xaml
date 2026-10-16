@@ -1,0 +1,17 @@
+﻿<controls:ChitterSettingsSubwindow
+    xmlns="https://spacestation14.io"
+    xmlns:controls="clr-namespace:Content.Client._Moffstation.Chitter.ClientUi"
+    Title="{Loc 'chitter-client-settings-title'}">
+    <GridContainer Columns="2">
+        <Label Text="{Loc 'chitter-client-identity-name'}" />
+        <Label Name="NameValue" />
+        <Label Text="{Loc 'chitter-client-identity-title'}" />
+        <Label Name="TitleValue" />
+        <Label Text="{Loc 'chitter-client-identity-avatar'}" />
+        <TextureRect Name="AvatarValue" />
+    </GridContainer>
+    <Label Text="{Loc 'chitter-client-identity-avatar-pick'}" />
+    <ItemList Name="AvatarOptions" SelectMode="Single" HorizontalExpand="True" VerticalExpand="True">
+        <!-- Populated programmatically -->
+    </ItemList>
+</controls:ChitterSettingsSubwindow>

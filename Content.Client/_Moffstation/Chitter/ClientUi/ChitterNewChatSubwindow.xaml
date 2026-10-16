@@ -1,0 +1,19 @@
+﻿<controls:ChitterNewChatSubwindow
+    xmlns="https://spacestation14.io"
+    xmlns:controls="clr-namespace:Content.Client._Moffstation.Chitter.ClientUi"
+    xmlns:moffControls="clr-namespace:Content.Client._Moffstation.Controls"
+    Title="{Loc 'chitter-client-new-chat-title'}">
+    <LineEdit Name="ChatName" PlaceHolder="{Loc 'chitter-client-new-chat-name'}" />
+    <Label Text="{Loc 'chitter-client-new-chat-participants'}" />
+    <moffControls:ItemListOrEmptyLabel Name="Participants"
+                                SelectMode="Multiple"
+                                VerticalExpand="True"
+                                EmptyText="{Loc 'chitter-client-no-contacts'}">
+        <!-- Populated programmatically -->
+    </moffControls:ItemListOrEmptyLabel>
+    <Button Name="SubmitButton"
+            Text="{Loc 'chitter-client-new-chat-submit'}"
+            Disabled="True"
+            VerticalAlignment="Bottom"
+            Margin="0 5"/>
+</controls:ChitterNewChatSubwindow>

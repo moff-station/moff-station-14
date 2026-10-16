@@ -1,0 +1,41 @@
+﻿<logUi:ChitterLogContainer
+    xmlns="https://spacestation14.io"
+    xmlns:logUi="clr-namespace:Content.Client._Moffstation.Chitter.LogUi">
+    <BoxContainer Orientation="Horizontal" SeparationOverride="4" Margin="4">
+        <!-- Chat list -->
+        <BoxContainer Orientation="Vertical" MinSize="240 0" SeparationOverride="2">
+            <Label Text="{Loc 'chitter-log-chats-label'}" StyleClasses="LabelHeading" />
+            <LineEdit Name="SearchInput"
+                      PlaceHolder="{Loc 'chitter-log-search-placeholder'}"
+                      HorizontalExpand="True"
+                      Margin="0 0 0 2" />
+            <ScrollContainer HorizontalExpand="True" VerticalExpand="True">
+                <Label Name="NoChatsLabel" Text="{Loc 'chitter-log-no-chats'}" FontColorOverride="Gray" Visible="False" />
+                <BoxContainer Name="ChatList" Orientation="Vertical" SeparationOverride="2" Visible="False">
+                    <!-- Populated programmatically -->
+                </BoxContainer>
+            </ScrollContainer>
+        </BoxContainer>
+
+        <Control MinSize="4 0" />
+
+        <!-- Selected chat detail -->
+        <BoxContainer Orientation="Vertical" HorizontalExpand="True" SeparationOverride="2">
+            <Label Name="NoMessagesLabel"
+                   Text="{Loc 'chitter-log-select-chat'}"
+                   StyleClasses="LabelHeading"
+                   ClipText="True" />
+            <BoxContainer Name="MessagesContainer" Orientation="Vertical" HorizontalExpand="True" VerticalExpand="True">
+                <Label Name="DetailHeader"
+                       Text="{Loc 'chitter-log-select-chat'}"
+                       StyleClasses="LabelHeading"
+                       ClipText="True" />
+                <ScrollContainer HorizontalExpand="True" VerticalExpand="True">
+                    <BoxContainer Name="MessageList" Orientation="Vertical" SeparationOverride="4" Margin="0 4 0 0">
+                        <!-- Populated programmatically -->
+                    </BoxContainer>
+                </ScrollContainer>
+            </BoxContainer>
+        </BoxContainer>
+    </BoxContainer>
+</logUi:ChitterLogContainer>

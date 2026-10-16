@@ -1,4 +1,5 @@
 using Content.Client.CartridgeLoader;
+using Content.Shared._Moffstation.Chitter; // Moffstation - Chitter M.P.N.
 using Content.Shared.CartridgeLoader;
 using Content.Shared.Containers.ItemSlots;
 using Content.Shared.PDA;

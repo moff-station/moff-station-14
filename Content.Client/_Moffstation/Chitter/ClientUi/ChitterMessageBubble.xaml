@@ -1,0 +1,24 @@
+<clientUi:ChitterMessageBubble xmlns="https://spacestation14.io"
+                               xmlns:graphics="clr-namespace:Robust.Client.Graphics;assembly=Robust.Client"
+                               xmlns:clientUi="clr-namespace:Content.Client._Moffstation.Chitter.ClientUi"
+                               Orientation="Vertical"
+                               SeparationOverride="4"
+                               Margin="0 0"
+                               HorizontalAlignment="Left">
+    <BoxContainer Name="SenderRow" Orientation="Horizontal" Margin="4 4 0 0" SeparationOverride="4">
+        <TextureRect Name="AvatarTexture" SetSize="24 24" Margin="0 0 4 0" Visible="False" />
+        <Label Name="SenderLabel" Text="" FontColorOverride="#aaaaaa" VerticalAlignment="Center" />
+    </BoxContainer>
+    <PanelContainer Name="BubbleBackground" MinWidth="80" Margin="0 2">
+        <PanelContainer.PanelOverride>
+            <graphics:StyleBoxFlat
+                BackgroundColor="#212429"
+                BorderColor="#333338"
+                BorderThickness="1" />
+        </PanelContainer.PanelOverride>
+        <BoxContainer Orientation="Vertical" Margin="8 4">
+            <Label Name="MessageLabel" Text="" FontColorOverride="#dddddd" />
+            <Label Name="TimestampLabel" Text="" FontColorOverride="#666666" />
+        </BoxContainer>
+    </PanelContainer>
+</clientUi:ChitterMessageBubble>

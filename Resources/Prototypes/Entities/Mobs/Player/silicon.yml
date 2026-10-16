@@ -53,6 +53,10 @@
       enum.ShellUiKey.Key:
         type: AiShellControllerBoundUserInterface
       # Moffstation - Ai Shells- End
+      # Moff start - Chitter
+      enum.IntrinsicChitterUiKey.Key:
+        type: IntrinsicChitterClientBoundUserInterface
+      # Moff end
   - type: IntrinsicUI
     uis:
       enum.RadarConsoleUiKey.Key:
@@ -63,6 +67,10 @@
         toggleAction: ActionAGhostShowStationRecords
       enum.CommunicationsConsoleUiKey.Key:
         toggleAction: ActionAGhostShowCommunications
+      # Moff start - Chitter
+      enum.IntrinsicChitterUiKey.Key:
+        toggleAction: ActionAGhostShowChitter
+      # Moff end
   # Moffstation - Begin - Ai warp
   - type: Warp
   - type: NavMapWarp
@@ -83,6 +91,12 @@
     canShuttle: false
     title: comms-console-announcement-title-station-ai
     color: "#5ed7aa"
+  # Moff start - Chitter
+  - type: ChitterIdentity
+  - type: IntrinsicChitterClient
+  - type: UseDelay
+
+  # Moff end
   - type: ShowJobIcons
   - type: ShowCrewIcons
   - type: DamagedSiliconAccent

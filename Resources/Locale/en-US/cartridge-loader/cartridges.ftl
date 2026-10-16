@@ -17,6 +17,7 @@ net-probe-label-frequency = Frequency
 net-probe-label-network = Network
 
 # Moffstation - Begin
+log-probe-header-access = Access Logs
 log-probe-window-title = Log Probe
 # Moffstation - End
 log-probe-program-name = LogProbe

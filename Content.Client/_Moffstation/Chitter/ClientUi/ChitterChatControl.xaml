@@ -1,0 +1,12 @@
+<clientUi:ChitterChatControl xmlns="https://spacestation14.io"
+                             xmlns:clientUi="clr-namespace:Content.Client._Moffstation.Chitter.ClientUi">
+    <BoxContainer Orientation="Vertical">
+        <clientUi:ChitterMessagesContainer Name="Messages"
+                                           HorizontalExpand="True"
+                                           VerticalExpand="True" />
+        <HistoryLineEdit Name="Entry"
+                         PlaceHolder="{Loc 'chitter-client-entry-placeholder'}"
+                         Editable="False"
+                         VerticalAlignment="Bottom" />
+    </BoxContainer>
+</clientUi:ChitterChatControl>

@@ -1,4 +1,4 @@
-using Content.Shared._CD.NanoChat;
+using Content.Shared._Moffstation.Chitter;
 using Content.Shared.Access.Components;
 using Content.Shared.Access.Systems;
 using Content.Shared.StatusIcon;
@@ -26,7 +26,7 @@ public sealed class AgentIDCardBoundUserInterface(EntityUid owner, Enum uiKey) :
         _window.OnNameChanged += OnNameChanged;
         _window.OnJobChanged += OnJobChanged;
         _window.OnJobIconChanged += OnJobIconChanged;
-        _window.OnNumberChanged += OnNumberChanged; // CD
+        _window.OnChitterIdChanged += id => SendPredictedMessage(new AgentIDCardNumberChangedMessage(id)); // Moff - Add Chitter ID
 
         ProtoId<JobIconPrototype> currentIcon = default;
         if (EntMan.TryGetComponent<IdCardComponent>(Owner, out var card))
@@ -46,15 +46,7 @@ public sealed class AgentIDCardBoundUserInterface(EntityUid owner, Enum uiKey) :
         if (!EntMan.TryGetComponent<IdCardComponent>(Owner, out var card))
             return;
 
-        EntMan.TryGetComponent<NanoChatCardComponent>(Owner, out var nanochat); // Moff - Nanochat
-
-        _window.Update(card, nanochat); // Moff - Nanochat
-    }
-
-    // CD - Add number change handlerz
-    private void OnNumberChanged(uint newNumber)
-    {
-        SendPredictedMessage(new AgentIDCardNumberChangedMessage(newNumber));
+        _window.Update(card, EntMan.GetComponentOrNull<ChitterIdentityComponent>(Owner)?.AccountId); // Moffstation - Add Chitter ID
     }
 
     private void OnNameChanged(string newName)

@@ -1,0 +1,9 @@
+﻿<clientUi:ChitterMessagesContainer xmlns="https://spacestation14.io"
+                                   xmlns:clientUi="clr-namespace:Content.Client._Moffstation.Chitter.ClientUi">
+    <ScrollContainer Name="Scroll" HorizontalExpand="True" VerticalExpand="True">
+        <BoxContainer Name="Messages"
+                      Orientation="Vertical">
+            <!-- Populated programmatically -->
+        </BoxContainer>
+    </ScrollContainer>
+</clientUi:ChitterMessagesContainer>

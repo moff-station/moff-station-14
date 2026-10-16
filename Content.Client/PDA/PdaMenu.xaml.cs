@@ -2,6 +2,7 @@ using Content.Shared.PDA;
 using Robust.Shared.Utility;
 using Content.Shared.CartridgeLoader;
 using Content.Client.Message;
+using Content.Shared._Moffstation.Chitter; // Moffstation - Chitter M.P.N.
 using Content.Shared._Moffstation.PDA;
 using Content.Shared.AlertLevel;
 using Content.Shared.GameTicking;
@@ -24,6 +25,7 @@ namespace Content.Client.PDA
         [Dependency] private IClipboardManager _clipboard = null!;
         [Dependency] private IGameTiming _gameTiming = default!;
         [Dependency] private IEntitySystemManager _entitySystem = default!;
+        [Dependency] private IEntityManager _entMan = default!; // Moffstation - Chitter M.P.N.
 
         [Dependency] private IPrototypeManager _prototypeManager = default!; // Moffstation - PDA Advertisements
         [Dependency] private IRobustRandom _random = default!; // Moffstation - PDA Advertisements
@@ -65,7 +67,6 @@ namespace Content.Client.PDA
             EjectIdButton.IconTexture = new SpriteSpecifier.Texture(new("/Textures/Interface/eject.png"));
             EjectPaiButton.IconTexture = new SpriteSpecifier.Texture(new("/Textures/Interface/pai.png"));
             ProgramCloseButton.IconTexture = new SpriteSpecifier.Texture(new("/Textures/Interface/Nano/cross.svg.png"));
-
             // Moffstation - begin - PDA Advertisements
             //var adPrototype = _prototypeManager.EnumeratePrototypes<PdaAdPrototype>().ElementAt(1);
             //var weightedRandom = _prototypeManager.Index(adPrototype.AdWeightPrototype);
@@ -216,7 +217,6 @@ namespace Content.Client.PDA
             ShowUplinkButton.Visible = state.HasUplink;
             LockUplinkButton.Visible = state.HasUplink;
         }
-
         public void UpdateAvailablePrograms(List<(EntityUid, CartridgeComponent)> programs)
         {
             if (programs.Count == 0)
