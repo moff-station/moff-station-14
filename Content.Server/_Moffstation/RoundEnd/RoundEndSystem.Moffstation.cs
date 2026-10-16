@@ -1,9 +1,12 @@
 using System.Threading;
 using Content.Server.RoundEnd.Components;
+using Content.Server.Screens.Components;
 using Content.Server.Voting;
 using Content.Server.Voting.Managers;
 using Content.Shared._Moffstation.CCVar;
 using Content.Shared.Database;
+using Content.Shared.DeviceNetwork.Components;
+using Content.Shared.RoundEnd;
 using Robust.Shared.Map;
 
 namespace Content.Server.RoundEnd;
@@ -102,8 +105,23 @@ public sealed partial class RoundEndSystem
             _countdownTokenSource = new CancellationTokenSource();
             ent.Comp.Extensions++;
             ent.Comp.RestartAt += TimeSpan.FromMinutes(minutes);
-            if (_shuttle.GetShuttle() is { } shuttle)
-                _shuttle.UpdateRoundEndScreens(shuttle, ent.Comp.RestartAt - _gameTiming.CurTime);
+
+            var shuttle = _shuttle.GetShuttle();
+            if (shuttle != null && TryComp<DeviceNetworkComponent>(shuttle, out var net))
+            {
+                var countdown = ent.Comp.RestartAt - _gameTiming.CurTime;
+                var payload = new ScreenShuttlePayload
+                {
+                    Shuttle = shuttle,
+                    SourceMap = GetCentcomm(),
+                    DestinationMap = GetStation(),
+                    ShuttleTime = countdown,
+                    SourceTime = countdown,
+                    DestinationTime = countdown,
+                    OverrideText = ShuttleTimerMasks.Bye,
+                };
+                _deviceNetworkSystem.SendPacket(shuttle.Value, null, ref payload, net.TransmitFrequency);
+            }
 
             _adminLogger.Add(LogType.Vote, LogImpact.Low, $"Round end extension vote succeeded: y={yes}/n={no}");
             _chatManager.DispatchServerAnnouncement(Loc.GetString("round-end-extension-vote-succeeded",
