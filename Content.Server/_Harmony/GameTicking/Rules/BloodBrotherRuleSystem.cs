@@ -90,12 +90,9 @@ public sealed partial class BloodBrotherRuleSystem : GameRuleSystem<BloodBrother
         }
     }
 
-    protected override void Ended(EntityUid uid,
-        BloodBrotherRuleComponent component,
-        GameRuleComponent gameRule,
-        GameRuleEndedEvent args)
+    protected override void Ended(Entity<BloodBrotherRuleComponent> rule, ref GameRuleEndedEvent args)
     {
-        base.Ended(uid, component, gameRule, args);
+        base.Ended(rule, ref args);
 
         _bloodBrother.ClearConvertible();
     }
@@ -330,7 +327,7 @@ public sealed partial class BloodBrotherRuleSystem : GameRuleSystem<BloodBrother
     {
         foreach (var ent in QueryActiveRules())
         {
-            rule = (ent.Owner, ent.Comp2);
+            rule = (ent.Owner, ent.Comp1);
             return true;
         }
 

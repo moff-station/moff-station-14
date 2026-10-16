@@ -12,7 +12,7 @@ namespace Content.Shared._Moffstation.BloodBrothers.Components;
 public sealed partial class BloodBrotherConvertibleComponent : Component
 {
     [DataField]
-    public ProtoId<FactionIconPrototype> Icon = "BloodBrotherConvertible";
+    public ProtoId<StatusIconPrototype> Icon = "BloodBrotherConvertible";
 
     public override bool SessionSpecific => true;
 }
