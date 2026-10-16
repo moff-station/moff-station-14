@@ -879,7 +879,7 @@ ClothingHeadPyjamaNanotrasenBlue: null
 ClothingHeadWhiteBow: ClothingHeadHatHairFlowerWhite
 ClothingUniformJumpsuitPyjamaNanotrasenBlue: null
 DermalineChemistryBottleHarmony: ChemistryBottleDermaline
-DrinkThirstTrapGlass: DrinkWizardAleFull
+DrinkThirstTrapGlass: MoffDrinkWizardAleFull
 LockerQuarterMasterFilledNoSuit: LockerQuarterMasterFilled
 PlushieAvali: PlushieMoth
 PosterHarmonyAlwaysWatching: RandomPosterAny
@@ -918,7 +918,7 @@ SecurityBola: Bola
 BookSOP: BookSpaceLaw
 
 # Moffstation - 2026-06-09
-DrinkAviationGlass: RussianMothroachGlass
+DrinkAviationGlass: MoffRussianMothroachGlass
 PosterHarmonySafetyLizz: RandomPosterLegit
 
 # 2026-07-16
@@ -1229,9 +1229,9 @@ StatueBananiumClown: StatueOrnateClown
 DrinkNeurotoxinGlass: null
 
 # Moff - 2026-08-18 - Ironsands namespace change
-FloorTileItemIronsandConcrete: FloorTileItemMoffIronsandConcrete
-FloorTileItemIronsandConcreteMono: FloorTileItemMoffIronsandConcreteMono
-FloorTileItemIronsandConcreteSmooth: FloorTileItemMoffIronsandConcreteSmooth
+FloorTileItemIronsandConcrete: MoffFloorTileItemIronsandConcrete
+FloorTileItemIronsandConcreteMono: MoffFloorTileItemIronsandConcreteMono
+FloorTileItemIronsandConcreteSmooth: MoffFloorTileItemIronsandConcreteSmooth
 IronstoneDoor: MoffIronstoneDoor
 EncrustedIronstoneDoor: MoffEncrustedIronstoneDoor
 IronSandstone: MoffIronSandstone
@@ -1243,3 +1243,20 @@ IronsandStepConcaveCorner: MoffIronsandStepConcaveCorner
 
 #2026-08-19
 JanitorServiceLight: null
+
+# Moff - 2026-10-02 - Moffstation poster change
+PosterSignups: PosterMoffsector
+
+#2026-08-31
+DrinkWaterJug: JugWater
+
+#2026-09-05
+# TODO: Nyx you gotta switch this one too on your lawboard PR
+AsimovCircuitBoard: CrewsimovCircuitBoard
+
+# 2026-09-24
+ClothingShoesTourist: ClothingShoesSandalsBlack
+ClothingShoesWizard: ClothingShoesSandalsBrown
+
+# Moff - 2026-10-11 - Unmap telepads
+CargoTelepad: null

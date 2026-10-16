@@ -1,22 +1,17 @@
+using System.Linq;
 using Robust.Shared.Random;
 
 namespace Content.Shared.EntityTable.EntitySelectors;
 
 /// <summary>
-/// Gets the spawns from one of <see cref="Children"/>, based on their <see cref="EntityTableSelector.Weight"/>s.
+/// Gets the spawns from one of <see cref="EntityTableSelectorWithChildrenBase.Children"/>, based on their <see cref="EntityTableSelector.Weight"/>s.
 /// </summary>
-public sealed partial class GroupSelector : EntityTableSelector
+public sealed partial class GroupSelector : EntityTableSelectorWithChildrenBase
 {
-    /// <summary>
-    /// The child entries of this selector.
-    /// </summary>
-    [DataField(required: true)]
-    public List<EntityTableSelector> Children = new();
-
     // Moffstation - Begin - Rewrite table selectors with visitors. Early merge of https://github.com/Space-Wizards-Federation/space-station-14/pull/177
     /// <summary>
     /// If <see cref="EntityTableSelector.Rolls"/> is greater than 1, this determines if the multiple rolls can "hit"
-    /// the same element in <see cref="Children"/> or not.
+    /// the same element in <see cref="EntityTableSelectorWithChildrenBase.Children"/> or not.
     /// </summary>
     /// <example>
     /// Consider a <c>GroupSelector</c> like this:
@@ -42,6 +37,8 @@ public sealed partial class GroupSelector : EntityTableSelector
     //     IPrototypeManager proto,
     //     EntityTableContext ctx)
     // {
+    //     using var scoped = ScopedConditions(ctx);
+    //
     //     var children = new Dictionary<EntityTableSelector, float>(Children.Count);
     //     foreach (var child in Children)
     //     {
@@ -53,11 +50,14 @@ public sealed partial class GroupSelector : EntityTableSelector
     //     }
     //
     //     if (children.Count == 0)
-    //         return Array.Empty<EntProtoId>();
+    //         yield break;
     //
     //     var pick = SharedRandomExtensions.Pick(children, rand);
     //
-    //     return pick.GetSpawns(rand, entMan, proto, ctx);
+    //     foreach (var spawn in pick.GetSpawns(rand, entMan, proto, ctx))
+    //     {
+    //         yield return spawn;
+    //     }
     // }
     //
     // protected override IEnumerable<(EntProtoId spawn, double)> ListSpawnsImplementation(IEntityManager entMan, IPrototypeManager proto, EntityTableContext ctx)
@@ -88,4 +88,10 @@ public sealed partial class GroupSelector : EntityTableSelector
     //     }
     // }
     // Moffstation - End
+
+    /// <inheritdoc/>
+    public override string ToString()
+    {
+        return $"Group({string.Join(", ", Children.Select(x => $"{x}: {x.Weight}"))})";
+    }
 }

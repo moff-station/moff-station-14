@@ -385,23 +385,23 @@
     jobs: [ ResearchDirector, Scientist ] # Moffstation - Too easy for scientists
 
 # other
-- type: entity
-  parent: BaseTraitorObjective
-  id: HijackTradeStationObjective
-  name: Hijack the Automated Trade Station.
-  description: Your uplink has been authorized one hijack beacon. Deploy it on the Automated Trade Station and defend it whilst it hijacks the trade station.
-  components:
-  - type: Objective
-    difficulty: 3
-    icon:
-      sprite: Objects/Tools/hijack_beacon.rsi
-      state: extraction_point
-  - type: HijackTradeStationCondition
-  - type: ObjectiveLimit
-    # There is only one trade station so there should never be more than one of these objectives.
-    limit: 1
-  - type: NotJobRequirement
-    jobs: [ Quartermaster, CargoTechnician, SalvageSpecialist ] # Moffstation - It's too easy for cargo people
+# Moff Start - objective cleanup
+#- type: entity
+#  parent: BaseTraitorObjective
+#  id: HijackTradeStationObjective
+#  name: Hijack the Automated Trade Station.
+#  description: Your uplink has been authorized one hijack beacon. Deploy it on the Automated Trade Station and defend it whilst it hijacks the trade station.
+#  components:
+#  - type: Objective
+#    difficulty: 3
+#    icon:
+#      sprite: Objects/Tools/hijack_beacon.rsi
+#      state: extraction_point
+#  - type: HijackTradeStationCondition
+#  - type: ObjectiveLimit
+#    # There is only one trade station so there should never be more than one of these objectives.
+#    limit: 1
+# Moff end
 
 - type: entity
   parent: [BaseTraitorObjective, BaseCounterObjective]

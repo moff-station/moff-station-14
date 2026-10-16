@@ -22,8 +22,8 @@
 
 - type: latheRecipe
   parent: [ BaseAILawBoardRecipe, BaseAILawBoardRecipeCategory ]
-  id: AsimovCircuitBoard
-  result: AsimovCircuitBoard
+  id: CrewsimovCircuitBoard
+  result: CrewsimovCircuitBoard
 
 - type: latheRecipe
   parent: [ BaseAILawBoardRecipe, BaseAILawBoardRecipeCategory ]
@@ -113,6 +113,11 @@
   parent: [ BaseAILawBoardRecipe, BaseAILawBoardRecipeCategory ]
   id: EmployeeCircuitBoard
   result: EmployeeCircuitBoard
+
+- type: latheRecipe
+  parent: [ BaseAILawBoardRecipe, BaseAILawBoardRecipeCategory ]
+  id: FireSafetyCircuitBoard
+  result: FireSafetyCircuitBoard
 
 - type: latheRecipe
   parent: [ BaseAILawBoardRecipe, BaseAILawBoardRecipeCategory ]

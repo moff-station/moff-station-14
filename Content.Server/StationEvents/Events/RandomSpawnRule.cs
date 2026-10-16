@@ -1,4 +1,3 @@
-using Content.Server.GameTicking.Rules.Components;
 using Content.Server.StationEvents.Components;
 using Content.Shared.GameTicking.Components;
 // Moffstation - Start - Syndicate dead drop
@@ -9,6 +8,10 @@ using Robust.Shared.Utility;
 
 namespace Content.Server.StationEvents.Events;
 
+/// <summary>
+/// Handler for events that spawn a given entity at a random tile on the affected station.
+/// </summary>
+/// <seealso cref="RandomSpawnRuleComponent"/>
 public sealed partial class RandomSpawnRule : StationEventSystem<RandomSpawnRuleComponent>
 {
     // Moffstation - Start - Syndicate dead drop
@@ -16,20 +19,20 @@ public sealed partial class RandomSpawnRule : StationEventSystem<RandomSpawnRule
     [Dependency] private RadioSystem _radio = default!;
     // Moffstation - End
 
-    protected override void Started(EntityUid uid, RandomSpawnRuleComponent comp, GameRuleComponent gameRule, GameRuleStartedEvent args)
+    protected override void Started(Entity<RandomSpawnRuleComponent, GameRuleComponent> ent, ref GameRuleStartedEvent args)
     {
-        base.Started(uid, comp, gameRule, args);
+        base.Started(ent, ref args);
 
-        if (TryFindRandomTile(out _, out _, out _, out var coords))
+        if (Station.TryFindRandomTile(out _, out _, out _, out var coords))
         {
-            Sawmill.Info($"Spawning {comp.Prototype} at {coords}");
+            Sawmill.Info($"Spawning {ent.Comp1.Prototype} at {coords}");
             // Moffstation - Syndicate dead drop
-            var ent = Spawn(comp.Prototype, coords);
+            var spawn = Spawn(ent.Comp1.Prototype, coords);
 
-            if (comp.RadioMessage is {} radioMessage)
+            if (ent.Comp1.RadioMessage is {} radioMessage)
             {
-                var message = Loc.GetString(radioMessage.Message, ("location", FormattedMessage.RemoveMarkupOrThrow(_navMap.GetNearestBeaconString(ent))));
-                _radio.SendRadioMessage(ent, message, radioMessage.Channel, ent);
+                var message = Loc.GetString(radioMessage.Message, ("location", FormattedMessage.RemoveMarkupOrThrow(_navMap.GetNearestBeaconString(spawn))));
+                _radio.SendRadioMessage(spawn, message, radioMessage.Channel, spawn);
             }
             // Moffstation - End
         }

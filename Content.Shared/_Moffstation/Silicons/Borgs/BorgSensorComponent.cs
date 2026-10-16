@@ -1,5 +1,5 @@
 using Content.Shared._Moffstation.Sensors;
-using Content.Shared.Medical.SuitSensor;
+using Content.Shared.Medical.SuitSensors;
 using Robust.Shared.GameStates;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom;
