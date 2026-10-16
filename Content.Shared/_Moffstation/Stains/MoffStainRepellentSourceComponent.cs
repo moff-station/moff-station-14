@@ -19,7 +19,7 @@ public sealed partial class MoffStainRepellentCoatedComponent : Component
 // TODO This is copied from SpaceGlue/Lube, and it seems like the shared behavior between these three things could be unified
 [RegisterComponent, NetworkedComponent, AutoGenerateComponentState]
 [Access(typeof(MoffStainRepellentSystem))]
-public sealed partial class MoffStainRepellentComponent : Component
+public sealed partial class MoffStainRepellentSourceComponent : Component
 {
     /// <summary>
     /// Noise made when the coating is applied.
