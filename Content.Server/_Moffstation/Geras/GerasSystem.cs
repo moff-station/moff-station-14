@@ -8,6 +8,7 @@ using Content.Server.Popups;
 using Content.Shared._Moffstation.Body.Events;
 using Content.Shared._Moffstation.Damage.Events;
 using Content.Shared._Moffstation.Geras;
+using Content.Shared._Moffstation.Extensions;
 using Content.Shared.Atmos.Components;
 using Content.Shared.Body.Components;
 using Content.Shared.Body.Events;
@@ -360,10 +361,8 @@ public sealed partial class GerasSystem : EntitySystem
         if (ent.Comp.Geras is not { } geras)
             return;
 
-        foreach (var traitId in args.Traits)
+        foreach (var trait in ProtoMan.ResolveAll(args.Traits))
         {
-            if (!ProtoMan.Resolve(traitId, out var trait))
-                continue;
             _trait.ApplyTrait(geras, trait);
         }
     }
