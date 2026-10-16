@@ -4,11 +4,21 @@
   name: photo camera
   description: Capture a Precious moment, Ruining it right after with the Integrated Flash
   components:
-  - type: SnapshotCamera
-    photograph: SnapshotPhotograph
+  - type: SnapshotCapture
+    snapshot: SnapshotPhotograph
   - type: Sprite
-    sprite: Objects/Devices/travel_camera.rsi
-    state: icon
+    sprite: _Moffstation/Objects/Devices/snapshot_camera.rsi
+    layers:
+    - state: icon
+      map: [ "base" ]
+  # Red light once the flash is out of charges.
+  - type: Appearance
+  - type: GenericVisualizer
+    visuals:
+      enum.LimitedChargesState.HasCharges:
+        base:
+          True: { state: icon }
+          False: { state: icon-empty }
   - type: Flash
     flashOnUse: false
     flashOnRangedInteract: false
@@ -28,7 +38,7 @@
   - type: Clothing
     slots:
     - NECK
-    sprite: Objects/Devices/travel_camera.rsi
+    sprite: _Moffstation/Objects/Devices/snapshot_camera.rsi
 
 - type: entity
   parent: BasePaper
@@ -44,9 +54,9 @@
     # no inhand sprite yet so i steal the paper one.
     sprite: Objects/Misc/bureaucracy.rsi
   - type: ActivatableUI
-    key: enum.PhotoUiKey.Key
+    key: enum.SnapshotViewUiKey.Key
     requiresComplex: false
   - type: UserInterface
     interfaces:
-      enum.PhotoUiKey.Key:
-        type: PhotoBoundUserInterface
+      enum.SnapshotViewUiKey.Key:
+        type: SnapshotViewBoundUserInterface

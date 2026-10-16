@@ -1,12 +1,12 @@
 using System.Numerics;
 
-namespace Content.Client._Moffstation.Photography;
+namespace Content.Client._Moffstation.Snapshots;
 
 /// <summary>
-/// tiles the photographer couldn't see, drawn black by <see cref="PhotoHiddenTilesOverlay"/>.
+/// tiles the photographer couldn't see, drawn black by <see cref="SnapshotViewShadowsOverlay"/>.
 /// </summary>
 [RegisterComponent]
-public sealed partial class PhotoHiddenTilesComponent : Component
+public sealed partial class SnapshotViewShadowsComponent : Component
 {
     [ViewVariables]
     public List<Vector2i> Tiles = new();

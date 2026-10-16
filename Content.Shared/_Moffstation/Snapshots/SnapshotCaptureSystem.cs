@@ -10,16 +10,16 @@ using Content.Shared.Popups;
 using Robust.Shared.Map;
 using Robust.Shared.Serialization;
 
-namespace Content.Shared._Moffstation.Photography;
+namespace Content.Shared._Moffstation.Snapshots;
 
 /// <summary>
-/// Using the camera in hand raises it to the eye when raised you can photograph a spot you click on.
+/// Using the item in hand raises it to the eye when raised you can take a snapshot of a spot you click on.
 /// </summary>
 /// <remarks>
 /// Only the client knows where its screen ends, so it decides where the frame sits (clamped to the screen) and sends
-/// that as a <see cref="SnapshotCameraShootEvent"/>. Everything else about the shot is checked here.
+/// that as a <see cref="SnapshotCaptureRequestEvent"/>. Everything else about the shot is checked here.
 /// </remarks>
-public abstract partial class SharedSnapshotCameraSystem : EntitySystem
+public abstract partial class SnapshotCaptureSystem : EntitySystem
 {
     [Dependency] private SharedFlashSystem _flash = default!;
     [Dependency] private SharedHandsSystem _hands = default!;
@@ -28,49 +28,45 @@ public abstract partial class SharedSnapshotCameraSystem : EntitySystem
     [Dependency] private SharedContentEyeSystem _contentEye = default!;
     [Dependency] protected SharedTransformSystem TransformSystem = default!;
 
-    public override void Initialize()
-    {
-        base.Initialize();
+    [Dependency] private EntityQuery<SnapshotCaptureComponent> _captureQuery = default!;
+    [Dependency] private EntityQuery<FlashComponent> _flashQuery = default!;
 
-        SubscribeLocalEvent<SnapshotCameraComponent, UseInHandEvent>(OnUseInHand);
-        SubscribeLocalEvent<SnapshotCameraComponent, GotUnequippedHandEvent>(OnUnequipped);
-        SubscribeLocalEvent<SnapshotCameraComponent, HandDeselectedEvent>(OnDeselected);
-        SubscribeLocalEvent<SnapshotCameraComponent, BeforeRangedInteractEvent>(OnBeforeInteract);
-        SubscribeAllEvent<SnapshotCameraShootEvent>(OnShootRequest);
-    }
-
-    private void OnUseInHand(Entity<SnapshotCameraComponent> ent, ref UseInHandEvent args)
+    [SubscribeLocalEvent]
+    private void OnUseInHand(Entity<SnapshotCaptureComponent> ent, ref UseInHandEvent args)
     {
         if (args.Handled)
             return;
 
         args.Handled = true;
         SetAiming(ent, !ent.Comp.Aiming, args.User);
-        _popup.PopupEntity(Loc.GetString(ent.Comp.Aiming ? "photo-camera-raise" : "photo-camera-lower"), args.User, args.User);
+        _popup.PopupEntity(Loc.GetString(ent.Comp.Aiming ? "snapshot-capture-raise" : "snapshot-capture-lower"), args.User, args.User);
     }
 
-    private void OnUnequipped(Entity<SnapshotCameraComponent> ent, ref GotUnequippedHandEvent args)
+    [SubscribeLocalEvent]
+    private void OnUnequipped(Entity<SnapshotCaptureComponent> ent, ref GotUnequippedHandEvent args)
     {
         SetAiming(ent, false, args.User);
     }
 
     /// <summary>
-    /// Switching to the other hand lowers the camera, so it isn't still raised when switching back.
+    /// Switching to the other hand lowers the viewfinder, so it isn't still raised when switching back.
     /// </summary>
-    private void OnDeselected(Entity<SnapshotCameraComponent> ent, ref HandDeselectedEvent args)
+    [SubscribeLocalEvent]
+    private void OnDeselected(Entity<SnapshotCaptureComponent> ent, ref HandDeselectedEvent args)
     {
         if (!ent.Comp.Aiming)
             return;
 
         SetAiming(ent, false, args.User);
-        _popup.PopupEntity(Loc.GetString("photo-camera-lower"), args.User, args.User);
+        _popup.PopupEntity(Loc.GetString("snapshot-capture-lower"), args.User, args.User);
     }
 
     /// <remarks>
-    /// Raised for every click with the camera in hand, near or far, so handling it here keeps clicks from also
-    /// interacting with whatever was clicked. The shot itself comes from the client's <see cref="SnapshotCameraShootEvent"/>.
+    /// Raised for every click with the item in hand, near or far, so handling it here keeps clicks from also
+    /// interacting with whatever was clicked. The shot itself comes from the client's <see cref="SnapshotCaptureRequestEvent"/>.
     /// </remarks>
-    private void OnBeforeInteract(Entity<SnapshotCameraComponent> ent, ref BeforeRangedInteractEvent args)
+    [SubscribeLocalEvent]
+    private void OnBeforeInteract(Entity<SnapshotCaptureComponent> ent, ref BeforeRangedInteractEvent args)
     {
         if (args.Handled || !ent.Comp.Aiming)
             return;
@@ -82,17 +78,18 @@ public abstract partial class SharedSnapshotCameraSystem : EntitySystem
     /// <summary>
     /// A click while looking through the viewfinder. The client turns this into a shot request.
     /// </summary>
-    protected virtual void OnAimedClick(Entity<SnapshotCameraComponent> ent, EntityUid user, EntityCoordinates click)
+    protected virtual void OnAimedClick(Entity<SnapshotCaptureComponent> ent, EntityUid user, EntityCoordinates click)
     {
     }
 
-    private void OnShootRequest(SnapshotCameraShootEvent ev, EntitySessionEventArgs args)
+    [EventSubscription]
+    private void OnCaptureRequest(SnapshotCaptureRequestEvent ev, EntitySessionEventArgs args)
     {
         if (args.SenderSession.AttachedEntity is not { } user
-            || !TryGetEntity(ev.Camera, out var cameraUid)
-            || !TryComp<SnapshotCameraComponent>(cameraUid, out var camera)
-            || !camera.Aiming
-            || _hands.GetActiveItem(user) != cameraUid)
+            || !TryGetEntity(ev.Capturer, out var capturerUid)
+            || !_captureQuery.TryComp(capturerUid, out var capture)
+            || !capture.Aiming
+            || _hands.GetActiveItem(user) != capturerUid)
         {
             return;
         }
@@ -100,26 +97,26 @@ public abstract partial class SharedSnapshotCameraSystem : EntitySystem
         // The center comes from the client, so the range is enforced here.
         var center = TransformSystem.ToMapCoordinates(GetCoordinates(ev.Center));
         var from = TransformSystem.GetMapCoordinates(user);
-        if (center.MapId != from.MapId || (center.Position - from.Position).Length() > camera.MaxRange)
+        if (center.MapId != from.MapId || (center.Position - from.Position).Length() > capture.MaxRange)
         {
-            _popup.PopupEntity(Loc.GetString("photo-camera-too-far"), user, user);
+            _popup.PopupEntity(Loc.GetString("snapshot-capture-out-of-range"), user, user);
             return;
         }
 
-        if (TryComp<FlashComponent>(cameraUid, out var flash))
+        if (_flashQuery.TryComp(capturerUid, out var flash))
         {
             // Uses a charge, respects the use delay and plays the shutter sound.
-            if (!_flash.TryUseFlashItem((cameraUid.Value, flash), user))
+            if (!_flash.TryUseFlashItem((capturerUid.Value, flash), user))
                 return;
 
-            _flash.FlashArea(cameraUid.Value, user, flash.Range, flash.AoeFlashDuration, flash.SlowTo, true, flash.Probability);
+            _flash.FlashArea(capturerUid.Value, user, flash.Range, flash.AoeFlashDuration, flash.SlowTo, true, flash.Probability);
         }
 
-        var shot = new SnapshotCameraShotEvent(user, center);
-        RaiseLocalEvent(cameraUid.Value, ref shot);
+        var captured = new SnapshotCapturedEvent(user, center);
+        RaiseLocalEvent(capturerUid.Value, ref captured);
     }
 
-    public void SetAiming(Entity<SnapshotCameraComponent> ent, bool aiming, EntityUid? user)
+    public void SetAiming(Entity<SnapshotCaptureComponent> ent, bool aiming, EntityUid? user)
     {
         if (ent.Comp.Aiming == aiming)
             return;
@@ -135,7 +132,7 @@ public abstract partial class SharedSnapshotCameraSystem : EntitySystem
     /// <summary>
     /// Ensures the Snapshot is what the server shows
     /// </summary>
-    public PhotoFrame GetFrame(MapCoordinates center, Vector2i halfExtents)
+    public SnapshotFrame GetFrame(MapCoordinates center, Vector2i halfExtents)
     {
         EntityUid? grid = null;
         var rotation = Angle.Zero;
@@ -149,7 +146,7 @@ public abstract partial class SharedSnapshotCameraSystem : EntitySystem
 
         var local = Vector2.Transform(center.Position, worldToFrame);
         var centerTile = new Vector2i((int) MathF.Floor(local.X), (int) MathF.Floor(local.Y));
-        return new PhotoFrame(grid, centerTile, halfExtents, rotation, frameToWorld, worldToFrame);
+        return new SnapshotFrame(grid, centerTile, halfExtents, rotation, frameToWorld, worldToFrame);
     }
 }
 
@@ -157,13 +154,13 @@ public abstract partial class SharedSnapshotCameraSystem : EntitySystem
 /// Sent by the client to take a shot centered on <see cref="Center"/>.
 /// </summary>
 [Serializable, NetSerializable]
-public sealed class SnapshotCameraShootEvent(NetEntity camera, NetCoordinates center) : EntityEventArgs
+public sealed class SnapshotCaptureRequestEvent(NetEntity capturer, NetCoordinates center) : EntityEventArgs
 {
-    public readonly NetEntity Camera = camera;
+    public readonly NetEntity Capturer = capturer;
     public readonly NetCoordinates Center = center;
 }
 
-public readonly record struct PhotoFrame(
+public readonly record struct SnapshotFrame(
     EntityUid? Grid,
     Vector2i CenterTile,
     Vector2i HalfExtents,

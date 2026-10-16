@@ -1,39 +1,50 @@
 using System.Numerics;
 using Content.Client.Movement.Components;
 using Content.Client.Movement.Systems;
-using Content.Shared._Moffstation.Photography;
+using Content.Shared._Moffstation.Snapshots;
 using Content.Shared.Camera;
 using Content.Shared.Hands;
 using Robust.Client.Graphics;
 using Robust.Shared.Map;
 using Robust.Shared.Timing;
 
-namespace Content.Client._Moffstation.Photography;
+namespace Content.Client._Moffstation.Snapshots;
 
-public sealed partial class SnapshotCameraSystem : SharedSnapshotCameraSystem
+public sealed partial class ClientSnapshotCaptureSystem : SnapshotCaptureSystem
 {
     [Dependency] private IEyeManager _eye = default!;
     [Dependency] private IGameTiming _timing = default!;
+    [Dependency] private IOverlayManager _overlay = default!;
     [Dependency] private EyeCursorOffsetSystem _eyeOffset = default!;
+
+    [Dependency] private EntityQuery<EyeCursorOffsetComponent> _cursorOffsetQuery = default!;
 
     public override void Initialize()
     {
         base.Initialize();
 
-        SubscribeLocalEvent<SnapshotCameraComponent, HeldRelayedEvent<GetEyeOffsetRelayedEvent>>(OnGetEyeOffset);
+        _overlay.AddOverlay(new SnapshotCaptureViewfinderOverlay());
+    }
+
+    public override void Shutdown()
+    {
+        base.Shutdown();
+
+        _overlay.RemoveOverlay<SnapshotCaptureViewfinderOverlay>();
     }
 
     /// <summary>
     /// Like binoculars: while looking through the viewfinder, the view extends towards the cursor.
     /// </summary>
-    private void OnGetEyeOffset(Entity<SnapshotCameraComponent> ent, ref HeldRelayedEvent<GetEyeOffsetRelayedEvent> args)
+    [SubscribeLocalEvent]
+    private void OnGetEyeOffset(Entity<SnapshotCaptureComponent> ent, ref HeldRelayedEvent<GetEyeOffsetRelayedEvent> args)
     {
-        if (!TryComp<EyeCursorOffsetComponent>(ent, out var cursorOffset))
+        if (!_cursorOffsetQuery.TryComp(ent, out var cursorOffset))
             return;
 
         if (!ent.Comp.Aiming)
         {
-            // Start from the middle next time the camera is raised.
+            // Start from the middle next time the viewfinder is raised.
             cursorOffset.CurrentPosition = Vector2.Zero;
             cursorOffset.TargetPosition = Vector2.Zero;
             return;
@@ -43,13 +54,13 @@ public sealed partial class SnapshotCameraSystem : SharedSnapshotCameraSystem
             args.Args.Offset += offset;
     }
 
-    protected override void OnAimedClick(Entity<SnapshotCameraComponent> ent, EntityUid user, EntityCoordinates click)
+    protected override void OnAimedClick(Entity<SnapshotCaptureComponent> ent, EntityUid user, EntityCoordinates click)
     {
         if (!_timing.IsFirstTimePredicted)
             return;
 
         var center = ClampToScreen(TransformSystem.ToMapCoordinates(click), ent.Comp.HalfExtents);
-        RaisePredictiveEvent(new SnapshotCameraShootEvent(GetNetEntity(ent), GetNetCoordinates(TransformSystem.ToCoordinates(center))));
+        RaisePredictiveEvent(new SnapshotCaptureRequestEvent(GetNetEntity(ent), GetNetCoordinates(TransformSystem.ToCoordinates(center))));
     }
 
     /// <summary>

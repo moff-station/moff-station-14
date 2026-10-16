@@ -2,7 +2,7 @@ using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Numerics;
 using Content.Client.MapText;
-using Content.Shared._Moffstation.Photography;
+using Content.Shared._Moffstation.Snapshots;
 using Content.Shared.Body;
 using Content.Shared.Buckle.Components;
 using Content.Shared.Hands.EntitySystems;
@@ -19,15 +19,16 @@ using Robust.Shared.Map;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Timing;
 
-namespace Content.Client._Moffstation.Photography;
+namespace Content.Client._Moffstation.Snapshots;
 
 /// <summary>
-/// Rebuilds a photograph's snapshot on a client-only map so it can be looked at through a fixed eye.
-/// The map exists only on this client <see cref="PhotoBoundUserInterface"/> and deletes it when the photo is closed.
+/// Rebuilds a snapshot on a client-only map so it can be looked at through a fixed eye.
+/// The map exists only on this client <see cref="SnapshotViewBoundUserInterface"/> and deletes it when the view is closed.
 /// </summary>
-public sealed partial class PhotoViewerSystem : EntitySystem
+public sealed partial class ClientSnapshotViewSystem : EntitySystem
 {
     [Dependency] private IComponentFactory _componentFactory = default!;
+    [Dependency] private IOverlayManager _overlay = default!;
     [Dependency] private SpriteSystem _sprite = default!;
     [Dependency] private SharedMapSystem _map = default!;
     [Dependency] private SharedTransformSystem _transform = default!;
@@ -43,22 +44,26 @@ public sealed partial class PhotoViewerSystem : EntitySystem
     [Dependency] private IGameTiming _timing = default!;
     [Dependency] private SharedUserInterfaceSystem _ui = default!;
 
+    [Dependency] private EntityQuery<StrapComponent> _strapQuery = default!;
+    [Dependency] private EntityQuery<SpriteComponent> _spriteQuery = default!;
+    [Dependency] private EntityQuery<MapTextComponent> _mapTextQuery = default!;
+
     private static readonly Vector2 Center = new(0.5f, 0.5f);
 
     private static readonly TimeSpan RequestRetryDelay = TimeSpan.FromSeconds(0.2);
     private const int MaxRequests = 25;
 
-    private readonly List<(PhotoBoundUserInterface Ui, PhotoSnapshot Snapshot)> _pendingBuilds = new();
+    private readonly List<(SnapshotViewBoundUserInterface Ui, SnapshotData Data)> _pendingBuilds = new();
 
-    private readonly Dictionary<PhotoBoundUserInterface, (TimeSpan NextRequest, int Requests)> _awaiting = new();
+    private readonly Dictionary<SnapshotViewBoundUserInterface, (TimeSpan NextRequest, int Requests)> _awaiting = new();
 
     /// <summary>
-    /// Snapshots of photos this player has held or opened, so opening them again doesn't wait on the server.
+    /// Snapshots this player has held or opened, so opening them again doesn't wait on the server.
     /// </summary>
     /// <remarks>
-    /// Keyed by net id: a freshly printed photo's snapshot can arrive before the photo entity itself does.
+    /// Keyed by net id: a freshly printed snapshot's data can arrive before the entity itself does.
     /// </remarks>
-    private readonly Dictionary<NetEntity, (PhotoSnapshot Snapshot, TimeSpan Received)> _known = new();
+    private readonly Dictionary<NetEntity, (SnapshotData Data, TimeSpan Received)> _known = new();
 
     private static readonly TimeSpan KnownSnapshotLifetime = TimeSpan.FromMinutes(30);
 
@@ -66,39 +71,47 @@ public sealed partial class PhotoViewerSystem : EntitySystem
     {
         base.Initialize();
 
-        SubscribeNetworkEvent<PhotoSnapshotEvent>(OnSnapshotEvent);
+        _overlay.AddOverlay(new SnapshotViewShadowsOverlay());
     }
 
-    private void OnSnapshotEvent(PhotoSnapshotEvent ev)
+    public override void Shutdown()
     {
-        _known[ev.Photo] = (ev.Snapshot, _timing.RealTime);
+        base.Shutdown();
 
-        if (TryGetEntity(ev.Photo, out var photo)
-            && _ui.TryGetOpenUi<PhotoBoundUserInterface>(photo.Value, PhotoUiKey.Key, out var ui))
+        _overlay.RemoveOverlay<SnapshotViewShadowsOverlay>();
+    }
+
+    [SubscribeNetworkEvent]
+    private void OnSnapshotData(SnapshotViewDataEvent ev)
+    {
+        _known[ev.Snapshot] = (ev.Data, _timing.RealTime);
+
+        if (TryGetEntity(ev.Snapshot, out var snapshot)
+            && _ui.TryGetOpenUi<SnapshotViewBoundUserInterface>(snapshot.Value, SnapshotViewUiKey.Key, out var ui))
         {
-            ui.SetSnapshot(ev.Snapshot);
+            ui.SetSnapshot(ev.Data);
         }
     }
 
-    public bool TryGetKnownSnapshot(EntityUid photo, [NotNullWhen(true)] out PhotoSnapshot? snapshot)
+    public bool TryGetKnownSnapshot(EntityUid snapshot, [NotNullWhen(true)] out SnapshotData? data)
     {
-        snapshot = null;
-        if (!_known.TryGetValue(GetNetEntity(photo), out var known))
+        data = null;
+        if (!_known.TryGetValue(GetNetEntity(snapshot), out var known))
             return false;
 
-        snapshot = known.Snapshot;
+        data = known.Data;
         return true;
     }
 
-    public void QueueBuild(PhotoBoundUserInterface ui, PhotoSnapshot snapshot)
+    public void QueueBuild(SnapshotViewBoundUserInterface ui, SnapshotData data)
     {
-        _pendingBuilds.Add((ui, snapshot));
+        _pendingBuilds.Add((ui, data));
     }
 
     /// <summary>
     /// Asks the server again until <paramref name="ui"/> has its snapshot, closes, or runs out of attempts.
     /// </summary>
-    public void AwaitSnapshot(PhotoBoundUserInterface ui)
+    public void AwaitSnapshot(SnapshotViewBoundUserInterface ui)
     {
         _awaiting[ui] = (_timing.RealTime + RequestRetryDelay, 1);
     }
@@ -112,9 +125,9 @@ public sealed partial class PhotoViewerSystem : EntitySystem
         if (_pendingBuilds.Count == 0)
             return;
 
-        foreach (var (ui, snapshot) in _pendingBuilds)
+        foreach (var (ui, data) in _pendingBuilds)
         {
-            var (map, eye, size) = Build(snapshot);
+            var (map, eye, size) = Build(data);
             ui.ShowScene(map, eye, size);
         }
 
@@ -124,10 +137,10 @@ public sealed partial class PhotoViewerSystem : EntitySystem
     private void RetrySnapshotRequests()
     {
         var now = _timing.RealTime;
-        foreach (var (photo, known) in _known.ToArray())
+        foreach (var (snapshot, known) in _known.ToArray())
         {
             if (now - known.Received > KnownSnapshotLifetime)
-                _known.Remove(photo);
+                _known.Remove(snapshot);
         }
 
         if (_awaiting.Count == 0)
@@ -149,19 +162,19 @@ public sealed partial class PhotoViewerSystem : EntitySystem
         }
     }
 
-    private (EntityUid Map, IEye Eye, Vector2i ViewportSize) Build(PhotoSnapshot snapshot)
+    private (EntityUid Map, IEye Eye, Vector2i ViewportSize) Build(SnapshotData snapshot)
     {
         var mapUid = _map.CreateMap(out var mapId);
         _map.SetAmbientLight(mapId, snapshot.AmbientLight);
         if (snapshot.Parallax != null)
             EnsureComp<ParallaxComponent>(mapUid).Parallax = snapshot.Parallax;
 
-        // Built where the shot was taken, so the space background lines up with what was photographed.
+        // Built where the shot was taken, so the space background lines up with what was captured.
         var grid = _map.CreateGridEntity(mapId);
         _transform.SetWorldPosition(grid.Owner, snapshot.WorldCenter - Center);
-        var hidden = EnsureComp<PhotoHiddenTilesComponent>(grid);
-        hidden.Tiles = snapshot.Hidden;
-        hidden.Shadows = BuildShadows(Center + snapshot.Viewer, snapshot.Occluders);
+        var shadows = EnsureComp<SnapshotViewShadowsComponent>(grid);
+        shadows.Tiles = snapshot.Hidden;
+        shadows.Shadows = BuildShadows(Center + snapshot.Viewer, snapshot.Occluders);
         var tiles = new List<(Vector2i, Tile)>(snapshot.Tiles.Count);
         RoofComponent? roof = null;
         foreach (var tile in snapshot.Tiles)
@@ -206,7 +219,7 @@ public sealed partial class PhotoViewerSystem : EntitySystem
             }
             catch (Exception e)
             {
-                Log.Error($"Failed to rebuild {entity.Prototype} in photo: {e}");
+                Log.Error($"Failed to rebuild {entity.Prototype} in snapshot: {e}");
             }
         }
 
@@ -233,7 +246,7 @@ public sealed partial class PhotoViewerSystem : EntitySystem
     }
 
     /// <summary>
-    /// How far shadows reach past the wall casting them, in tiles. Anything past the frame's edge is off the photo.
+    /// How far shadows reach past the wall casting them, in tiles. Anything past the frame's edge is off the snapshot.
     /// </summary>
     private const float ShadowLength = 64f;
 
@@ -287,10 +300,10 @@ public sealed partial class PhotoViewerSystem : EntitySystem
 
     private void ApplyBuckleDrawDepth(EntityUid buckled, EntityUid strap)
     {
-        if (!TryComp<StrapComponent>(strap, out var strapComp)
+        if (!_strapQuery.TryComp(strap, out var strapComp)
             || !strapComp.ModifyBuckleDrawDepth
-            || !TryComp<SpriteComponent>(strap, out var strapSprite)
-            || !TryComp<SpriteComponent>(buckled, out var buckledSprite))
+            || !_spriteQuery.TryComp(strap, out var strapSprite)
+            || !_spriteQuery.TryComp(buckled, out var buckledSprite))
         {
             return;
         }
@@ -299,7 +312,7 @@ public sealed partial class PhotoViewerSystem : EntitySystem
             _sprite.SetDrawDepth((buckled, buckledSprite), strapSprite.DrawDepth - 1);
     }
 
-    private EntityUid? SpawnClone(EntityUid grid, PhotoSnapshotEntity entity)
+    private EntityUid? SpawnClone(EntityUid grid, SnapshotEntity entity)
     {
         var coords = new EntityCoordinates(grid, Center + entity.Offset);
         var uid = entity.Humanoid is { } humanoid
@@ -315,7 +328,8 @@ public sealed partial class PhotoViewerSystem : EntitySystem
         if (entity.Light is { } snapshotLight)
             ApplyLight(uid.Value, snapshotLight);
 
-        if (entity.MapText is { } mapTextState && TryComp<MapTextComponent>(uid, out var mapText))
+        // Fed through the normal state handler, the same way the server's copy reaches clients.
+        if (entity.MapText is { } mapTextState && _mapTextQuery.TryComp(uid, out var mapText))
         {
             var handleState = new ComponentHandleState(mapTextState, null);
             EntityManager.EventBus.RaiseComponentEvent(uid.Value, mapText, ref handleState);
@@ -327,7 +341,7 @@ public sealed partial class PhotoViewerSystem : EntitySystem
     /// <summary>
     /// Builds a character the way the lobby preview does.
     /// </summary>
-    private EntityUid? SpawnHumanoid(EntProtoId prototype, PhotoSnapshotHumanoid humanoid, EntityCoordinates coords)
+    private EntityUid? SpawnHumanoid(EntProtoId prototype, SnapshotHumanoid humanoid, EntityCoordinates coords)
     {
         if (!_proto.Resolve(humanoid.Species, out var species))
             return null;
@@ -336,7 +350,7 @@ public sealed partial class PhotoViewerSystem : EntitySystem
 
         // Dolls don't inherit BaseMob's sprite settings so we need to add draw depth and rotation
         if (_proto.Index(prototype).TryComp<SpriteComponent>(out var mobSprite, _componentFactory)
-            && TryComp<SpriteComponent>(doll, out var dollSprite))
+            && _spriteQuery.TryComp(doll, out var dollSprite))
         {
             _sprite.SetDrawDepth((doll, dollSprite), mobSprite.DrawDepth);
             _sprite.SetSnapCardinals((doll, dollSprite), mobSprite.SnapCardinals);
@@ -366,7 +380,7 @@ public sealed partial class PhotoViewerSystem : EntitySystem
         return doll;
     }
 
-    private EntityUid? SpawnItem(PhotoSnapshotItem item)
+    private EntityUid? SpawnItem(SnapshotItem item)
     {
         if (!_proto.HasIndex(item.Prototype))
             return null;
@@ -391,7 +405,7 @@ public sealed partial class PhotoViewerSystem : EntitySystem
             _scaleVisuals.SetSpriteScale(uid, scaleVector);
     }
 
-    private void ApplyLight(EntityUid uid, PhotoSnapshotLight snapshotLight)
+    private void ApplyLight(EntityUid uid, SnapshotLight snapshotLight)
     {
         var light = _light.EnsureLight(uid);
         _light.SetEnabled(uid, snapshotLight.Enabled, light);

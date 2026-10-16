@@ -3,19 +3,19 @@ using Robust.Client.UserInterface.CustomControls;
 using Robust.Client.UserInterface.XAML;
 using Robust.Shared.Graphics;
 
-namespace Content.Client._Moffstation.Photography;
+namespace Content.Client._Moffstation.Snapshots;
 
 [GenerateTypedNameReferences]
-public sealed partial class PhotoViewerWindow : DefaultWindow
+public sealed partial class SnapshotViewWindow : DefaultWindow
 {
-    public PhotoViewerWindow()
+    public SnapshotViewWindow()
     {
         RobustXamlLoader.Load(this);
     }
 
     public void SetScene(IEye eye, Vector2i viewportSize)
     {
-        PhotoViewport.Eye = eye;
-        PhotoViewport.ViewportSize = viewportSize;
+        SnapshotViewport.Eye = eye;
+        SnapshotViewport.ViewportSize = viewportSize;
     }
 }

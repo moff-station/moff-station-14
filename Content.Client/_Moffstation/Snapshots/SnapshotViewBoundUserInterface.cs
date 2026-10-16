@@ -1,22 +1,22 @@
-using Content.Shared._Moffstation.Photography;
+using Content.Shared._Moffstation.Snapshots;
 using Robust.Client.UserInterface;
 using Robust.Shared.Graphics;
 
-namespace Content.Client._Moffstation.Photography;
+namespace Content.Client._Moffstation.Snapshots;
 
 /// <summary>
-/// Shows a Map using the Snapshot recorded on a photograph
+/// Shows a Map using the Snapshot recorded on an entity
 /// </summary>
-public sealed partial class PhotoBoundUserInterface(EntityUid owner, Enum uiKey) : BoundUserInterface(owner, uiKey)
+public sealed partial class SnapshotViewBoundUserInterface(EntityUid owner, Enum uiKey) : BoundUserInterface(owner, uiKey)
 {
     [ViewVariables]
-    private PhotoViewerWindow? _window;
+    private SnapshotViewWindow? _window;
 
     [ViewVariables]
     private EntityUid? _sceneMap;
 
     [ViewVariables]
-    public PhotoSnapshot? Snapshot { get; private set; }
+    public SnapshotData? Snapshot { get; private set; }
 
     private bool _disposed;
 
@@ -26,43 +26,43 @@ public sealed partial class PhotoBoundUserInterface(EntityUid owner, Enum uiKey)
     {
         base.Open();
 
-        var viewer = EntMan.System<PhotoViewerSystem>();
-        if (viewer.TryGetKnownSnapshot(Owner, out var known))
+        var view = EntMan.System<ClientSnapshotViewSystem>();
+        if (view.TryGetKnownSnapshot(Owner, out var known))
         {
             SetSnapshot(known);
             return;
         }
 
         RequestSnapshot();
-        viewer.AwaitSnapshot(this);
+        view.AwaitSnapshot(this);
     }
 
     public void RequestSnapshot()
     {
-        SendMessage(new PhotoSnapshotRequestMessage());
+        SendMessage(new SnapshotViewRequestMessage());
     }
 
-    public void SetSnapshot(PhotoSnapshot snapshot)
+    public void SetSnapshot(SnapshotData snapshot)
     {
         if (Snapshot != null || _disposed)
             return;
 
         Snapshot = snapshot;
 
-        EntMan.System<PhotoViewerSystem>().QueueBuild(this, snapshot);
+        EntMan.System<ClientSnapshotViewSystem>().QueueBuild(this, snapshot);
     }
 
     public void ShowScene(EntityUid map, IEye eye, Vector2i viewportSize)
     {
         if (_disposed)
         {
-            EntMan.System<PhotoViewerSystem>().Destroy(map);
+            EntMan.System<ClientSnapshotViewSystem>().Destroy(map);
             return;
         }
 
         _sceneMap = map;
 
-        _window = this.CreateWindow<PhotoViewerWindow>();
+        _window = this.CreateWindow<SnapshotViewWindow>();
         _window.SetScene(eye, viewportSize);
     }
 
@@ -77,7 +77,7 @@ public sealed partial class PhotoBoundUserInterface(EntityUid owner, Enum uiKey)
         if (_sceneMap is { } map)
         {
             _sceneMap = null;
-            EntMan.System<PhotoViewerSystem>().Destroy(map);
+            EntMan.System<ClientSnapshotViewSystem>().Destroy(map);
         }
     }
 }

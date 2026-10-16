@@ -1,13 +1,14 @@
 using System.Numerics;
 using Content.Server.MapText;
-using Content.Shared._Moffstation.Photography;
+using Content.Server.Movement.Components;
+using Content.Shared._Moffstation.Snapshots;
 using Content.Shared.Body;
 using Content.Shared.Buckle.Components;
+using Content.Shared.Camera;
 using Content.Shared.Examine;
 using Content.Shared.Hands;
 using Content.Shared.Hands.EntitySystems;
 using Content.Shared.Humanoid;
-using Content.Shared.Interaction;
 using Content.Shared.Inventory;
 using Content.Shared.Inventory.VirtualItem;
 using Content.Shared.Light.Components;
@@ -19,18 +20,16 @@ using Content.Shared.Stealth.Components;
 using Robust.Shared.Containers;
 using Robust.Shared.Map;
 using Robust.Shared.Map.Components;
-using Robust.Shared.Player;
 using Robust.Shared.Timing;
 
-namespace Content.Server._Moffstation.Photography;
+namespace Content.Server._Moffstation.Snapshots;
 
 /// <summary>
-/// Prints photographs from <see cref="SnapshotCameraComponent"/> cameras, records what the photographer could see
+/// Prints snapshots from <see cref="SnapshotCaptureComponent"/> items, records what the photographer could see
 /// and ensures no arbitary data is send
 /// </summary>
-public sealed partial class PhotoSnapshotSystem : EntitySystem
+public sealed partial class ServerSnapshotCaptureSystem : SnapshotCaptureSystem
 {
-    [Dependency] private SharedTransformSystem _transform = default!;
     [Dependency] private SharedMapSystem _map = default!;
     [Dependency] private EntityLookupSystem _lookup = default!;
     [Dependency] private ExamineSystemShared _examine = default!;
@@ -41,10 +40,23 @@ public sealed partial class PhotoSnapshotSystem : EntitySystem
     [Dependency] private SharedVisualBodySystem _visualBody = default!;
     [Dependency] private InventorySystem _inventory = default!;
     [Dependency] private SharedHandsSystem _hands = default!;
-    [Dependency] private SharedUserInterfaceSystem _ui = default!;
-    [Dependency] private SharedInteractionSystem _interaction = default!;
-    [Dependency] private SnapshotCameraSystem _camera = default!;
     [Dependency] private ITileDefinitionManager _tileDef = default!;
+
+    [Dependency] private EntityQuery<EyeCursorOffsetComponent> _cursorOffsetQuery = default!;
+    [Dependency] private EntityQuery<EyeComponent> _eyeQuery = default!;
+    [Dependency] private EntityQuery<MapComponent> _mapQuery = default!;
+    [Dependency] private EntityQuery<MapGridComponent> _gridQuery = default!;
+    [Dependency] private EntityQuery<MapLightComponent> _mapLightQuery = default!;
+    [Dependency] private EntityQuery<ParallaxComponent> _parallaxQuery = default!;
+    [Dependency] private EntityQuery<RoofComponent> _roofQuery = default!;
+    [Dependency] private EntityQuery<ImplicitRoofComponent> _implicitRoofQuery = default!;
+    [Dependency] private EntityQuery<OccluderComponent> _occluderQuery = default!;
+    [Dependency] private EntityQuery<BuckleComponent> _buckleQuery = default!;
+    [Dependency] private EntityQuery<StealthComponent> _stealthQuery = default!;
+    [Dependency] private EntityQuery<HumanoidProfileComponent> _humanoidQuery = default!;
+    [Dependency] private EntityQuery<VirtualItemComponent> _virtualItemQuery = default!;
+    [Dependency] private EntityQuery<AppearanceComponent> _appearanceQuery = default!;
+    [Dependency] private EntityQuery<MapTextComponent> _mapTextQuery = default!;
 
     private const int MaxEntities = 256;
 
@@ -56,7 +68,7 @@ public sealed partial class PhotoSnapshotSystem : EntitySystem
     private const float SightRange = 20f;
 
     /// <summary>
-    /// Stealthed entities fainter than this are left out of the photo.
+    /// Stealthed entities fainter than this are left out of the snapshot.
     /// </summary>
     private const float MinStealthVisibility = 0.5f;
 
@@ -77,95 +89,44 @@ public sealed partial class PhotoSnapshotSystem : EntitySystem
 
     private readonly Dictionary<EntityUid, int> _captured = new();
 
-    public override void Initialize()
-    {
-        base.Initialize();
-
-        SubscribeLocalEvent<SnapshotCameraComponent, SnapshotCameraShotEvent>(OnShot);
-        SubscribeLocalEvent<PhotoSnapshotComponent, GotEquippedHandEvent>(OnPickedUp);
-        Subs.BuiEvents<PhotoSnapshotComponent>(PhotoUiKey.Key,
-            subs =>
-            {
-                subs.Event<BoundUIOpenedEvent>(OnUiOpened);
-                subs.Event<PhotoSnapshotRequestMessage>(OnSnapshotRequested);
-            });
-    }
-
-    private void OnShot(Entity<SnapshotCameraComponent> ent, ref SnapshotCameraShotEvent args)
-    {
-        if (Capture(args.User, args.Center, ent.Comp.HalfExtents) is not { } snapshot)
-            return;
-
-        var photo = Spawn(ent.Comp.Photograph, Transform(ent).Coordinates);
-        EnsureComp<PhotoSnapshotComponent>(photo).Snapshot = snapshot;
-        _hands.PickupOrDrop(args.User, photo, dropNear: true);
-    }
-
     /// <summary>
-    /// Sends the snapshot to the one viewer who asked for it.
+    /// The viewfinder's extended view needs a larger PVS range, like binoculars.
     /// </summary>
-    /// <remarks>
-    /// This Doesnt Recheck the UI state once it is opened to block Forged open requests
-    /// </remarks>
-    /// <summary>
-    /// Almost Instantly gives the Entity holding it a snapshot so tehy dont have to wait for server
-    /// </summary>
-    private void OnPickedUp(Entity<PhotoSnapshotComponent> ent, ref GotEquippedHandEvent args)
+    [SubscribeLocalEvent]
+    private void OnGetPvsScale(Entity<SnapshotCaptureComponent> ent, ref HeldRelayedEvent<GetEyePvsScaleRelayedEvent> args)
     {
-        if (ent.Comp.Snapshot is not { } snapshot || !TryComp<ActorComponent>(args.User, out var actor))
-            return;
-
-        RaiseNetworkEvent(new PhotoSnapshotEvent(GetNetEntity(ent), snapshot), actor.PlayerSession);
+        if (ent.Comp.Aiming && _cursorOffsetQuery.TryComp(ent, out var cursorOffset))
+            args.Args.Scale += cursorOffset.PvsIncrease;
     }
 
-    private void OnSnapshotRequested(Entity<PhotoSnapshotComponent> ent, ref PhotoSnapshotRequestMessage args)
+    [SubscribeLocalEvent]
+    private void OnCaptured(Entity<SnapshotCaptureComponent> ent, ref SnapshotCapturedEvent args)
     {
-        SendSnapshot(ent, args.Actor);
-    }
-
-    /// <summary>
-    /// Sends the snapshot right away so the photo doesn't wait on the client's request
-    /// the request stays as a fallback for when this arrives before the client has the UI open.
-    /// </summary>
-    private void OnUiOpened(Entity<PhotoSnapshotComponent> ent, ref BoundUIOpenedEvent args)
-    {
-        SendSnapshot(ent, args.Actor);
-    }
-
-    private void SendSnapshot(Entity<PhotoSnapshotComponent> ent, EntityUid viewer)
-    {
-        if (ent.Comp.Snapshot is not { } snapshot)
+        if (Capture(args.User, args.Center, ent.Comp.HalfExtents) is not { } data)
             return;
 
-        if (!_ui.IsUiOpen(ent.Owner, PhotoUiKey.Key, viewer) || !_interaction.InRangeUnobstructed(viewer, ent.Owner))
-        {
-            _ui.CloseUi(ent.Owner, PhotoUiKey.Key, viewer);
-            return;
-        }
-
-        if (!TryComp<ActorComponent>(viewer, out var actor))
-            return;
-
-        RaiseNetworkEvent(new PhotoSnapshotEvent(GetNetEntity(ent), snapshot), actor.PlayerSession);
+        var snapshot = Spawn(ent.Comp.Snapshot, Transform(ent).Coordinates);
+        EnsureComp<SnapshotComponent>(snapshot).Data = data;
+        _hands.PickupOrDrop(args.User, snapshot, dropNear: true);
     }
 
     /// <summary>
     /// Records Lighting and such around the Photographer
     /// </summary>
-    public PhotoSnapshot? Capture(EntityUid viewer, MapCoordinates shotCenter, Vector2i halfExtents)
+    public SnapshotData? Capture(EntityUid viewer, MapCoordinates shotCenter, Vector2i halfExtents)
     {
-        var viewerCoords = _transform.GetMapCoordinates(viewer);
+        var viewerCoords = TransformSystem.GetMapCoordinates(viewer);
         var mapId = shotCenter.MapId;
         if (mapId == MapId.Nullspace || viewerCoords.MapId != mapId)
             return null;
 
-        var visMask = TryComp<EyeComponent>(viewer, out var eye) ? eye.VisibilityMask : EyeComponent.DefaultVisibilityMask;
+        var visMask = _eyeQuery.TryComp(viewer, out var eye) ? eye.VisibilityMask : EyeComponent.DefaultVisibilityMask;
 
-        var snapshot = new PhotoSnapshot { HalfExtents = halfExtents };
+        var snapshot = new SnapshotData { HalfExtents = halfExtents };
 
-        // Same frame the viewfinder showed, so the photo matches what was aimed at.
-        var frame = _camera.GetFrame(shotCenter, halfExtents);
-        Entity<MapGridComponent>? grid = frame.Grid is { } gridUid && TryComp<MapGridComponent>(gridUid, out var gridComp)
+        // Same frame the viewfinder showed, so the snapshot matches what was aimed at.
+        var frame = GetFrame(shotCenter, halfExtents);
+        Entity<MapGridComponent>? grid = frame.Grid is { } gridUid && _gridQuery.TryComp(gridUid, out var gridComp)
             ? (gridUid, gridComp)
             : null;
         var frameRotation = frame.Rotation;
@@ -174,14 +135,14 @@ public sealed partial class PhotoSnapshotSystem : EntitySystem
         var centerTile = frame.CenterTile;
         var center = centerTile + new Vector2(0.5f);
 
-        // The photo only has the tiles that made it into the shot, and anything without a tile gets the map's ambient light.
+        // The snapshot only has the tiles that made it into the shot, and anything without a tile gets the map's ambient light.
         snapshot.AmbientLight = grid is { } roofGrid && GetRoof(roofGrid, centerTile) is { } indoorRoof
             ? indoorRoof
-            : TryComp<MapLightComponent>(_map.GetMapOrInvalid(mapId), out var mapLight)
+            : _mapLightQuery.TryComp(_map.GetMapOrInvalid(mapId), out var mapLight)
                 ? mapLight.AmbientLightColor
                 : Color.Black;
 
-        // A tile is in the photo if the photographer can see any part of it, not just its middle, so partly visible
+        // A tile is in the snapshot if the photographer can see any part of it, not just its middle, so partly visible
         // tiles next to walls aren't blacked out.
         var visible = new HashSet<Vector2i>();
         for (var x = -halfExtents.X; x <= halfExtents.X; x++)
@@ -215,25 +176,25 @@ public sealed partial class PhotoSnapshotSystem : EntitySystem
                 continue;
 
             var xform = Transform(uid);
-            var local = Vector2.Transform(_transform.GetWorldPosition(xform), worldToFrame);
+            var local = Vector2.Transform(TransformSystem.GetWorldPosition(xform), worldToFrame);
             var tileOffset = TileOf(local) - centerTile;
             if (Math.Abs(tileOffset.X) > halfExtents.X || Math.Abs(tileOffset.Y) > halfExtents.Y)
                 continue;
 
             if (!visible.Contains(tileOffset))
             {
-                if (!HasComp<OccluderComponent>(uid) || !HasVisibleNeighbour(tileOffset, visible))
+                if (!_occluderQuery.HasComp(uid) || !HasVisibleNeighbour(tileOffset, visible))
                     continue;
 
                 tilesInShot.Add(tileOffset);
             }
 
             _captured[uid] = snapshot.Entities.Count;
-            snapshot.Entities.Add(new PhotoSnapshotEntity
+            snapshot.Entities.Add(new SnapshotEntity
             {
                 Prototype = proto.ID,
                 Offset = local - center,
-                Rotation = _transform.GetWorldRotation(xform) - frameRotation,
+                Rotation = TransformSystem.GetWorldRotation(xform) - frameRotation,
                 Appearance = GetAppearance(uid),
                 Light = GetLight(uid),
                 MapText = GetMapText(uid),
@@ -243,7 +204,7 @@ public sealed partial class PhotoSnapshotSystem : EntitySystem
 
         foreach (var (uid, index) in _captured)
         {
-            if (TryComp<BuckleComponent>(uid, out var buckle)
+            if (_buckleQuery.TryComp(uid, out var buckle)
                 && buckle.BuckledTo is { } strap
                 && _captured.TryGetValue(strap, out var strapIndex))
             {
@@ -263,7 +224,7 @@ public sealed partial class PhotoSnapshotSystem : EntitySystem
                     continue;
                 }
 
-                snapshot.Tiles.Add(new PhotoSnapshotTile(offset,
+                snapshot.Tiles.Add(new SnapshotTile(offset,
                     tileDef.ID,
                     tileRef.Tile.Variant,
                     tileRef.Tile.RotationMirroring,
@@ -282,7 +243,7 @@ public sealed partial class PhotoSnapshotSystem : EntitySystem
         }
 
         snapshot.WorldCenter = Vector2.Transform(center, frameToWorld);
-        snapshot.Parallax = TryComp<ParallaxComponent>(_map.GetMapOrInvalid(mapId), out var parallax)
+        snapshot.Parallax = _parallaxQuery.TryComp(_map.GetMapOrInvalid(mapId), out var parallax)
             ? parallax.Parallax
             : null;
 
@@ -298,7 +259,7 @@ public sealed partial class PhotoSnapshotSystem : EntitySystem
     /// Records the sight-blocking tiles between the photographer and the frame, including ones just outside it that
     /// cast shadows into it, so the viewer can draw shadows like the game's field of view.
     /// </summary>
-    private void AddSeenOccluders(PhotoSnapshot snapshot,
+    private void AddSeenOccluders(SnapshotData snapshot,
         Entity<MapGridComponent> grid,
         MapCoordinates viewer,
         Vector2 viewerLocal,
@@ -318,7 +279,7 @@ public sealed partial class PhotoSnapshotSystem : EntitySystem
             if (snapshot.Occluders.Count >= MaxOccluders)
                 break;
 
-            if (!TryComp<OccluderComponent>(uid, out var occluder) || !occluder.Enabled)
+            if (!_occluderQuery.TryComp(uid, out var occluder) || !occluder.Enabled)
                 continue;
 
             var tile = TileOf(uid, worldToFrame);
@@ -332,7 +293,7 @@ public sealed partial class PhotoSnapshotSystem : EntitySystem
 
     private bool ShouldInclude(EntityUid uid, int visMask, EntityUid? grid)
     {
-        if (uid == grid || HasComp<MapComponent>(uid) || HasComp<MapGridComponent>(uid))
+        if (uid == grid || _mapQuery.HasComp(uid) || _gridQuery.HasComp(uid))
             return false;
 
         if (!IsVisibleTo(uid, visMask))
@@ -350,31 +311,31 @@ public sealed partial class PhotoSnapshotSystem : EntitySystem
         if ((visMask & meta.VisibilityMask) != meta.VisibilityMask)
             return false;
 
-        return !TryComp<StealthComponent>(uid, out var stealth)
+        return !_stealthQuery.TryComp(uid, out var stealth)
             || !stealth.Enabled
             || _stealth.GetVisibility(uid, stealth) >= MinStealthVisibility;
     }
 
     private Color? GetRoof(Entity<MapGridComponent> grid, Vector2i index)
     {
-        if (TryComp<RoofComponent>(grid, out var roof))
+        if (_roofQuery.TryComp(grid, out var roof))
             return _roof.GetColor((grid, grid.Comp, roof), index);
 
-        return TryComp<ImplicitRoofComponent>(grid, out var implicitRoof) ? implicitRoof.Color : null;
+        return _implicitRoofQuery.TryComp(grid, out var implicitRoof) ? implicitRoof.Color : null;
     }
 
     /// <summary>
     /// Records a character´s apperance
     /// </summary>
-    private PhotoSnapshotHumanoid? GetHumanoid(EntityUid uid, int visMask)
+    private SnapshotHumanoid? GetHumanoid(EntityUid uid, int visMask)
     {
-        if (!TryComp<HumanoidProfileComponent>(uid, out var profile)
+        if (!_humanoidQuery.TryComp(uid, out var profile)
             || !_visualBody.TryGatherMarkingsData(uid, null, out var profiles, out _, out var markings))
         {
             return null;
         }
 
-        var humanoid = new PhotoSnapshotHumanoid
+        var humanoid = new SnapshotHumanoid
         {
             Species = profile.Species,
             Profiles = profiles,
@@ -398,7 +359,7 @@ public sealed partial class PhotoSnapshotSystem : EntitySystem
         foreach (var hand in _hands.EnumerateHands(uid))
         {
             if (!_hands.TryGetHeldItem(uid, hand, out var held)
-                || HasComp<VirtualItemComponent>(held)
+                || _virtualItemQuery.HasComp(held)
                 || GetItem(held.Value, visMask) is not { } item)
             {
                 continue;
@@ -410,12 +371,12 @@ public sealed partial class PhotoSnapshotSystem : EntitySystem
         return humanoid;
     }
 
-    private PhotoSnapshotItem? GetItem(EntityUid uid, int visMask)
+    private SnapshotItem? GetItem(EntityUid uid, int visMask)
     {
         if (!IsVisibleTo(uid, visMask) || MetaData(uid).EntityPrototype is not { } proto)
             return null;
 
-        return new PhotoSnapshotItem(proto.ID, GetAppearance(uid));
+        return new SnapshotItem(proto.ID, GetAppearance(uid));
     }
 
     /// <summary>
@@ -423,7 +384,7 @@ public sealed partial class PhotoSnapshotSystem : EntitySystem
     /// </summary>
     private Dictionary<Enum, object>? GetAppearance(EntityUid uid)
     {
-        if (!TryComp<AppearanceComponent>(uid, out var appearance) || !appearance.NetSyncEnabled)
+        if (!_appearanceQuery.TryComp(uid, out var appearance) || !appearance.NetSyncEnabled)
             return null;
 
         if (EntityManager.GetComponentState(EntityManager.EventBus, appearance, null, GameTick.Zero)
@@ -437,18 +398,18 @@ public sealed partial class PhotoSnapshotSystem : EntitySystem
 
     private MapTextComponentState? GetMapText(EntityUid uid)
     {
-        if (!TryComp<MapTextComponent>(uid, out var mapText))
+        if (!_mapTextQuery.TryComp(uid, out var mapText))
             return null;
 
         return EntityManager.GetComponentState(EntityManager.EventBus, mapText, null, GameTick.Zero) as MapTextComponentState;
     }
 
-    private PhotoSnapshotLight? GetLight(EntityUid uid)
+    private SnapshotLight? GetLight(EntityUid uid)
     {
         if (!_light.TryGetLight(uid, out var light))
             return null;
 
-        return new PhotoSnapshotLight(light.Enabled,
+        return new SnapshotLight(light.Enabled,
             light.Color,
             light.Radius,
             light.Energy,
@@ -479,7 +440,7 @@ public sealed partial class PhotoSnapshotSystem : EntitySystem
 
     private Vector2i TileOf(EntityUid uid, Matrix3x2 worldToFrame)
     {
-        return TileOf(Vector2.Transform(_transform.GetWorldPosition(uid), worldToFrame));
+        return TileOf(Vector2.Transform(TransformSystem.GetWorldPosition(uid), worldToFrame));
     }
 
     private static Vector2i TileOf(Vector2 local)
