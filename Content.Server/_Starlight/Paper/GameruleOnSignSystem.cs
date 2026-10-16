@@ -1,12 +1,9 @@
-using Content.Server.Antag;
-using Content.Server.Antag.Components;
-using Content.Server.GameTicking;
 using Content.Server.Mind;
 using Content.Shared._Starlight.Paper;
-using Content.Shared.Paper;
+using Content.Shared.Antag;
+using Content.Shared.Antag.Components;
 using Content.Shared.Whitelist;
-using Content.Shared.Fax.Components;
-using Content.Shared.Mind;
+using Content.Shared.GameTicking;
 using Robust.Shared.Player;
 using Robust.Shared.Random;
 
@@ -20,14 +17,7 @@ public sealed partial class GameruleOnSignSystem : EntitySystem
     [Dependency] private AntagSelectionSystem _antag = default!;
     [Dependency] private MindSystem _mind = default!;
 
-
-
-    public override void Initialize()
-    {
-        base.Initialize();
-        SubscribeLocalEvent<GameruleOnSignComponent, PaperSignedEvent>(OnPaperSigned);
-    }
-
+    [SubscribeLocalEvent]
     private void OnPaperSigned(Entity<GameruleOnSignComponent> ent, ref PaperSignedEvent args)
     {
         // Check if they've already signed the paper, if not add them to the list
@@ -45,8 +35,7 @@ public sealed partial class GameruleOnSignSystem : EntitySystem
             {
                 foreach (var rule in ent.Comp.Rules)
                 {
-                    var ruleEnt = _gameTicker.AddGameRule(rule.Id);
-                    _gameTicker.StartGameRule(ruleEnt);
+                    _gameTicker.StartGameRule(rule.Id);
                 }
             }
         }

@@ -16,9 +16,9 @@
   description: A suit worn by CentComm's legal team. Smells of burnt coffee.
   components:
   - type: Sprite
-    sprite: Clothing/Uniforms/Jumpsuits/Centcomm/centcom_agent.rsi
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/centcom_agent.rsi # Moff
   - type: Clothing
-    sprite: Clothing/Uniforms/Jumpsuits/Centcomm/centcom_agent.rsi
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/centcom_agent.rsi # Moff
 
 - type: entity
   parent: [ ClothingUniformBase, BaseCentcommContraband ]
@@ -27,9 +27,9 @@
   description: It's a jumpsuit worn by CentComm's officials.
   components:
   - type: Sprite
-    sprite: Clothing/Uniforms/Jumpsuits/Centcomm/centcom_official.rsi
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/centcom_official.rsi # Moff
   - type: Clothing
-    sprite: Clothing/Uniforms/Jumpsuits/Centcomm/centcom_official.rsi
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/centcom_official.rsi # Moff
 
 - type: entity
   parent: [ ClothingUniformBase, BaseCentcommContraband ]
@@ -38,9 +38,9 @@
   description: It's a jumpsuit worn by CentComm Officers.
   components:
   - type: Sprite
-    sprite: Clothing/Uniforms/Jumpsuits/Centcomm/centcom_officer.rsi
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/centcom_officer.rsi # Moff
   - type: Clothing
-    sprite: Clothing/Uniforms/Jumpsuits/Centcomm/centcom_officer.rsi
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/centcom_officer.rsi # Moff
 
 - type: entity
   parent: ClothingUniformBase
@@ -49,12 +49,12 @@
   description: A suit for special occasions.
   components:
   - type: Sprite
-    sprite: Clothing/Uniforms/Jumpsuits/Centcomm/centcomformal.rsi
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/centcomformal.rsi # Moff
   - type: Clothing
-    sprite: Clothing/Uniforms/Jumpsuits/Centcomm/centcomformal.rsi
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/centcomformal.rsi # Moff
 
 - type: entity
-  parent: [ BaseCentcommContraband, ClothingUniformBase ]
+  parent: [ BaseTaskForceContraband, ClothingUniformBase ]
   id: ClothingUniformJumpsuitERTChaplain
   name: ERT chaplain uniform
   description: A special suit made for Central Command's elite chaplain corps.
@@ -65,7 +65,7 @@
     sprite: Clothing/Uniforms/Jumpsuits/Centcomm/ert_chaplain.rsi
 
 - type: entity
-  parent: [ BaseCentcommContraband, ClothingUniformBase ]
+  parent: [ BaseTaskForceContraband, ClothingUniformBase ]
   id: ClothingUniformJumpsuitERTEngineer
   name: ERT engineering uniform
   description: A special suit made for the elite engineers under CentComm.
@@ -76,7 +76,7 @@
     sprite: Clothing/Uniforms/Jumpsuits/Centcomm/ert_engineer.rsi
 
 - type: entity
-  parent: [ BaseCentcommContraband, ClothingUniformBase ]
+  parent: [ BaseTaskForceContraband, ClothingUniformBase ]
   id: ClothingUniformJumpsuitERTJanitor
   name: ERT janitorial uniform
   description: A special suit made for the elite janitors under CentComm.
@@ -88,7 +88,7 @@
   - type: MoffStainRepellent # Moff - He, the beacon which stands against the filth; he the paragon of cleanliness; arise and banish the corrupting filth; banish the squalor.
 
 - type: entity
-  parent: [ BaseCentcommContraband, ClothingUniformBase ]
+  parent: [ BaseTaskForceContraband, ClothingUniformBase ]
   id: ClothingUniformJumpsuitERTLeader
   name: ERT leader uniform
   description: A special suit made for the best of the elites under CentComm.
@@ -99,7 +99,7 @@
     sprite: Clothing/Uniforms/Jumpsuits/Centcomm/ert_leader.rsi
 
 - type: entity
-  parent: [ BaseCentcommContraband, ClothingUniformBase ]
+  parent: [ BaseTaskForceContraband, ClothingUniformBase ]
   id: ClothingUniformJumpsuitERTMedic
   name: ERT medical uniform
   description: A special suit made for the elite medics under CentComm.
@@ -110,7 +110,7 @@
     sprite: Clothing/Uniforms/Jumpsuits/Centcomm/ert_medic.rsi
 
 - type: entity
-  parent: [ BaseCentcommContraband, ClothingUniformBase ]
+  parent: [ BaseTaskForceContraband, ClothingUniformBase ]
   id: ClothingUniformJumpsuitERTSecurity
   name: ERT security uniform
   description: A special suit made for the elite security under CentComm.

@@ -93,6 +93,15 @@
     laws: EmployeeLawset
 
 - type: entity
+  id: FireSafetyCircuitBoard
+  parent: BaseSiliconLawboard
+  name: law board (Fire Safety)
+  description: An electronics board containing the Fire Safety lawset.
+  components:
+  - type: SiliconLawProvider
+    laws: FireSafetyLawset
+
+- type: entity
   id: KnowItAllCircuitBoard
   parent: BaseSiliconLawboard
   name: law board (Know It All)

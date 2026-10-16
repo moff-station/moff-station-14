@@ -1,5 +1,4 @@
 using Content.Shared._Moffstation.Sensors; // Moffstation - Borg sensors
-using Content.Shared.Medical.SuitSensor;
 using Robust.Shared.GameStates;
 using Robust.Shared.Prototypes; // Moffstation - Borg sensors
 using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom;
