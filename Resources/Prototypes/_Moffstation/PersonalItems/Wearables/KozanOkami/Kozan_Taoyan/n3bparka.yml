@@ -1,0 +1,25 @@
+# Player: KozanOkami - Character: Kozan Taoyan
+
+- type: entity
+  parent: ClothingOuterStorageFoldableBase
+  id: &id PersonalItemKozanParka
+  name: N-3B parka
+  description: A quality parka, designed for extreme cold weather climates.
+  suffix: PersonalItem
+  components:
+  - type: Sprite
+    sprite: &sprite _Moffstation/PersonalItems/Wearables/KozanOkami/Kozan_Taoyan/n3bparka.rsi
+  - type: Clothing
+    sprite: *sprite
+  - type: DetailExaminable
+    content: This jacket is very heavy and a bit overkill for the owner, but it remains stylish despite it being quite worn.
+
+- type: loadout
+  id: *id
+  storage:
+    back:
+    - *id
+  effects:
+  - !type:PersonalItemLoadoutEffect
+    character:
+    - Kozan Taoyan

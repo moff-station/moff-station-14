@@ -882,7 +882,6 @@
   - type: XAEApplyComponents
     components:
     - type: Stealth
-      hadOutline: true
     - type: StealthOnMove
       passiveVisibilityRate: -0.10
       movementVisibilityRate: 0.10
@@ -1541,7 +1540,7 @@
   - type: XAETriggerExplosives
   - type: Explosive
     deleteAfterExplosion: false
-    explosionType: Default
+    explosionType: Transparent # Funky RMC Explosions
     totalIntensity: 500
     intensitySlope: 2.5
     maxIntensity: 50

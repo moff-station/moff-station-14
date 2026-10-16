@@ -44,10 +44,7 @@ public readonly record struct MoffCharacterSelectionState
         };
     }
 
-    public bool IsSlotEnabled(int slot)
-    {
-        return !EnabledSlots.TryGetValue(slot, out var enabled) || enabled;
-    }
+    public bool IsSlotEnabled(int slot) => EnabledSlots.GetValueOrDefault(slot, true);
 
     public JobPriority GetPriority(ProtoId<JobPrototype> job)
     {

@@ -4,10 +4,12 @@
   - AirlockStandard
   - AirlockGlass
 
-- type: paintableGroupCategory
-  id: Canisters
-  groups:
-  - Canisters
+# Moff start - Replace upstream's paintable gas cans
+#- type: paintableGroupCategory
+#  id: Canisters
+#  groups:
+#  - Canisters
+# Moff end
 
 - type: paintableGroupCategory
   id: Crates
