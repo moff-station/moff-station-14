@@ -1,7 +1,7 @@
 - type: tile
   parent: BasePlating
   id: MoffPlatingIronsand
-  name: tiles-ironsand-plating
+  name: moff-tiles-ironsand-plating
   sprite: /Textures/_Moffstation/Tiles/Ironsand/ironsand_plating.png
   baseTurf: Lattice
   isSubfloor: true
@@ -11,8 +11,8 @@
   heatCapacity: 10000
 
 - type: tile
-  id: FloorMoffIronsandTile
-  name: tiles-ironsand-tile
+  id: MoffFloorIronsandTile
+  name: moff-tiles-ironsand-tile
   sprite: /Textures/_Moffstation/Tiles/Ironsand/ironsand_tile.png
   baseTurf: MoffPlatingIronsand
   isSubfloor: false
@@ -22,8 +22,8 @@
   heatCapacity: 10000
 
 - type: tile
-  id: FloorMoffIronsandConcrete
-  name: tiles-ironsand-concrete-tile
+  id: MoffFloorIronsandConcrete
+  name: moff-tiles-ironsand-concrete-tile
   sprite: /Textures/_Moffstation/Tiles/Ironsand/ironsandconcrete.png
   variants: 4
   placementVariants:
@@ -36,12 +36,12 @@
   deconstructTools: [ Prying ]
   footstepSounds:
     collection: FootstepTile
-  itemDrop: FloorTileItemMoffIronsandConcrete
+  itemDrop: MoffFloorTileItemIronsandConcrete
   heatCapacity: 10000
 
 - type: tile
-  id: FloorMoffIronsandConcreteMono
-  name: tiles-ironsand-concrete-slab
+  id: MoffFloorIronsandConcreteMono
+  name: moff-tiles-ironsand-concrete-slab
   sprite: /Textures/_Moffstation/Tiles/Ironsand/ironsandconcrete_mono.png
   variants: 4
   placementVariants:
@@ -54,12 +54,12 @@
   deconstructTools: [ Prying ]
   footstepSounds:
     collection: FootstepTile
-  itemDrop: FloorTileItemMoffIronsandConcreteMono
+  itemDrop: MoffFloorTileItemIronsandConcreteMono
   heatCapacity: 10000
 
 - type: tile
-  id: FloorMoffIronsandConcreteSmooth
-  name: tiles-ironsand-concrete-smooth
+  id: MoffFloorIronsandConcreteSmooth
+  name: moff-tiles-ironsand-concrete-smooth
   sprite: /Textures/_Moffstation/Tiles/Ironsand/ironsandconcrete_smooth.png
   variants: 4
   placementVariants:
@@ -72,12 +72,12 @@
   deconstructTools: [ Prying ]
   footstepSounds:
     collection: FootstepTile
-  itemDrop: FloorTileItemMoffIronsandConcreteSmooth
+  itemDrop: MoffFloorTileItemIronsandConcreteSmooth
   heatCapacity: 10000
 
 - type: tile
   id: MoffIronsandPacked
-  name: tiles-ironsand-packed
+  name: moff-tiles-ironsand-packed
   sprite: /Textures/_Moffstation/Tiles/Ironsand/ironsand_packed.png
   variants: 4
   placementVariants:
@@ -94,7 +94,7 @@
 
 - type: tile
   id: MoffIronsandPaved
-  name: tiles-ironsand-paved
+  name: moff-tiles-ironsand-paved
   sprite: /Textures/_Moffstation/Tiles/Ironsand/ironsand_uneven_paved.png
   variants: 4
   placementVariants:

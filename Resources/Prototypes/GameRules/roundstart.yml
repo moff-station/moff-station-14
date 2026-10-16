@@ -5,6 +5,13 @@
   - type: GameRule
 
 - type: entity
+  id: BaseSilentGameRule
+  abstract: true
+  components:
+  - type: GameRule
+    silent: true
+
+- type: entity
   parent: BaseGameRule
   id: BaseRoundstartAntagRule
   abstract: true
@@ -185,7 +192,7 @@
   # TODO: uplink in yml
   - type: AntagRandomObjectives
     sets:
-    - groups: TraitorObjectiveGroups
+    - groups: MoffTraitorObjectiveGroups # Moff - objective cleanup
     maxDifficulty: 5
   - type: AntagSelection
     agentName: traitor-round-end-agent-name
@@ -496,7 +503,7 @@
 # variation passes
 - type: entity
   id: BasicRoundstartVariation
-  parent: BaseGameRule
+  parent: BaseSilentGameRule
   components:
   - type: RoundstartStationVariationRule
     rules:
