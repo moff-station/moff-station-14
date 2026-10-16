@@ -34,15 +34,15 @@ public sealed partial class RoundEndSystem
     /// </summary>
     private void ScheduleExtensionVote(Entity<RoundEndExtensionManagerComponent> ent)
     {
-        var duration = ExtensionVoteDuration;
-        var countdown = ent.Comp.RestartAt - _gameTiming.CurTime;
+        var timeUntilRestart = ent.Comp.RestartAt - _gameTiming.CurTime;
+        var timeUntilLastPossibleVote = timeUntilRestart - ExtensionVoteDuration;
 
         if (ent.Comp.Extensions >= _cfg.GetCVar(MoffCCVars.MaxRoundEndExtensionVotes)
-            || countdown <= duration)
+            || timeUntilLastPossibleVote <= TimeSpan.Zero)
             return;
 
-        var delay = MathHelper.Max(countdown - duration - ExtensionVoteBuffer, TimeSpan.Zero);
-        ent.Comp.NextVote = _gameTiming.CurTime + (delay > TimeSpan.Zero ? delay : TimeSpan.Zero);
+        var delay = MathHelper.Max(timeUntilLastPossibleVote - ExtensionVoteBuffer, TimeSpan.Zero);
+        ent.Comp.NextVoteAt = _gameTiming.CurTime + delay;
     }
 
     // Called every update tick
@@ -51,16 +51,17 @@ public sealed partial class RoundEndSystem
         var restart = false;
         foreach (var ent in EntityQueryEnumerator<RoundEndExtensionManagerComponent>())
         {
-            if (ent.Comp.NextVote is { } nextVote && _gameTiming.CurTime >= nextVote)
-            {
-                ent.Comp.NextVote = null;
-                StartExtensionVote(ent);
-            }
-
             if (_gameTiming.CurTime >= ent.Comp.RestartAt)
             {
                 QueueDel(ent.Owner);
                 restart = true;
+                continue;
+            }
+
+            if (ent.Comp.NextVoteAt is { } nextVote && _gameTiming.CurTime >= nextVote)
+            {
+                ent.Comp.NextVoteAt = null;
+                StartExtensionVote(ent);
             }
         }
 

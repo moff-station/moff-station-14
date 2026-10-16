@@ -9,7 +9,7 @@ namespace Content.Server.RoundEnd.Components;
 public sealed partial class RoundEndExtensionManagerComponent : Component
 {
     [DataField(customTypeSerializer: typeof(TimeOffsetSerializer)), AutoPausedField]
-    public TimeSpan? NextVote;
+    public TimeSpan? NextVoteAt;
 
     [DataField(customTypeSerializer: typeof(TimeOffsetSerializer)), AutoPausedField]
     public TimeSpan RestartAt;
