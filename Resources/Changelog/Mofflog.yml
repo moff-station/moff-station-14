@@ -8712,5 +8712,12 @@ Entries:
   id: 2032
   time: '2026-10-15T15:17:46.000'
   url: https://github.com/moff-station/moff-station-14/pull/2032
+- author: DuckManZach
+  changes:
+  - message: The discord event no longer gets fired briefly on server startup.
+    type: fix
+  id: 2038
+  time: '2026-10-16T20:46:49.000'
+  url: https://github.com/moff-station/moff-station-14/pull/2038
 Name: Mofflog
 Order: -2
