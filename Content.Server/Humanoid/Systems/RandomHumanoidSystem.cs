@@ -30,7 +30,7 @@ public sealed partial class RandomHumanoidSystem : EntitySystem
     {
         QueueDel(uid);
         if (component.SettingsPrototypeId != null)
-            component.Spawned = SpawnRandomHumanoid(component.SettingsPrototypeId, Transform(uid).Coordinates, MetaData(uid).EntityName); // Moff - Container-filled random humanoids
+            component.Spawned = SpawnRandomHumanoid(component.SettingsPrototypeId, Transform(uid).Coordinates, MetaData(uid).EntityName); // Moff - track spawned humanoid
     }
 
     public EntityUid SpawnRandomHumanoid(string prototypeId, EntityCoordinates coordinates, string name)
