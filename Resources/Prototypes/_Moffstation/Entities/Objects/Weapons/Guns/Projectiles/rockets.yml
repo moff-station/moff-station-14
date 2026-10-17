@@ -1,0 +1,15 @@
+- type: entity
+  parent: BulletRocket
+  id: MoffBulletMissile
+  name: missile
+  components:
+  - type: Sprite
+  - type: PointLight
+    radius: 5
+    color: orange
+    energy: 0.8
+  - type: Explosive
+    totalIntensity: 800
+    maxIntensity: 60
+    intensitySlope: 4
+    maxTileBreak: 3

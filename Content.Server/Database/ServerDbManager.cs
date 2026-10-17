@@ -9,6 +9,7 @@ using Content.Shared.Administration.Logs;
 using Content.Shared.CCVar;
 using Content.Shared.Construction.Prototypes;
 using Content.Shared.Database;
+using Content.Shared._Moffstation.Preferences; // Moff - Multi-character selection
 using Content.Shared.Preferences;
 using Content.Shared.Roles;
 using Microsoft.Data.Sqlite;
@@ -323,6 +324,15 @@ namespace Content.Server.Database
 
         #endregion
 
+        #region Multi-Character Selection
+        // Moffstation - Everything in this region is moff
+
+        Task<MoffCharacterSelectionState> GetMoffCharacterSelection(NetUserId userId, CancellationToken cancel = default);
+        Task SaveMoffJobPriorities(NetUserId userId, Dictionary<ProtoId<JobPrototype>, JobPriority> priorities);
+        Task SaveMoffCharacterEnabled(NetUserId userId, int slot, bool enabled);
+
+        #endregion
+
         #region DB Notifications
 
         void SubscribeToNotifications(Action<DatabaseNotification> handler);
@@ -435,6 +445,7 @@ namespace Content.Server.Database
         private ISawmill _sawmill = default!;
 
         private bool _synchronous;
+        private bool _snapshot;
         // When running in integration tests, we'll use a single in-memory SQLite database connection.
         // This is that connection, close it when we shut down.
         private SqliteConnection? _sqliteInMemoryConnection;
@@ -451,6 +462,7 @@ namespace Content.Server.Database
             _sawmill = _logMgr.GetSawmill("db.manager");
 
             _synchronous = _cfg.GetCVar(CCVars.DatabaseSynchronous);
+            _snapshot = _cfg.GetCVar(CCVars.DatabaseSnapshot);
 
             var engine = _cfg.GetCVar(CCVars.DatabaseEngine).ToLower();
             var opsLog = _logMgr.GetSawmill("db.op");
@@ -459,7 +471,7 @@ namespace Content.Server.Database
             {
                 case "sqlite":
                     SetupSqlite(out var contextFunc, out var inMemory);
-                    _db = new ServerDbSqlite(contextFunc, inMemory, _cfg, _synchronous, opsLog, _serialization);
+                    _db = new ServerDbSqlite(contextFunc, inMemory, _cfg, _synchronous, opsLog, _serialization, _snapshot);
                     break;
                 case "postgres":
                     var (pgOptions, conString) = CreatePostgresOptions();

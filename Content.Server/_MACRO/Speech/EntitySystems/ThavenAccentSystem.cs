@@ -1,10 +1,11 @@
 using Content.Server._MACRO.Speech.Components;
-using Content.Server.Speech.EntitySystems;
-using Content.Server.Speech.Prototypes;
 using Content.Shared.Speech;
+using Content.Shared.Speech.EntitySystems;
+using Content.Shared.Speech.Prototypes;
 using Robust.Shared.Prototypes;
 
 namespace Content.Server._MACRO.Speech.EntitySystems;
+
 // hi, this is a copy of NoContractionsAccentSystem, split to retain function of accentless for non thaven using the trait
 public sealed partial class ThavenAccentComponentAccentSystem : EntitySystem
 {

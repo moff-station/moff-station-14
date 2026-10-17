@@ -4,7 +4,7 @@ using Content.Server.Antag.Selectors;
 using Content.Shared.Antag;
 using Content.Shared.Chat;
 using Content.Shared.GameTicking.Components;
-using Content.Shared.Ghost;
+using Content.Shared.Ghost.Components;
 using Content.Shared.Mind;
 using Content.Shared.Roles;
 using JetBrains.Annotations;
@@ -397,10 +397,10 @@ public sealed partial class AntagSelectionSystem
     /// <param name="except">Antag prototypes we're excluding for our returned job whitelist/blacklist.</param>
     /// <returns>A dictionary of antag sessions, and their job blacklists.</returns>
     [PublicAPI]
-    public Dictionary<ICommonSession, (HashSet<ProtoId<JobPrototype>>? Whitelist, HashSet<ProtoId<JobPrototype>>? Blacklist)>
+    public Dictionary<ICommonSession, (HashSet<ProtoId<AntagPrototype>>? Roles, HashSet<ProtoId<JobPrototype>>? Whitelist, HashSet<ProtoId<JobPrototype>>? Blacklist)> // Moff - Report WHICH antags so that multi-profile selection can pick a profile that matches that selection
         GetAntagJobs(params HashSet<ProtoId<AntagSpecifierPrototype>> except)
     {
-        var result = new Dictionary<ICommonSession, (HashSet<ProtoId<JobPrototype>>? Whitelist, HashSet<ProtoId<JobPrototype>>? Blacklist)>();
+        var result = new Dictionary<ICommonSession, (HashSet<ProtoId<AntagPrototype>>? Roles, HashSet<ProtoId<JobPrototype>>? Whitelist, HashSet<ProtoId<JobPrototype>>? Blacklist)>(); // Moff - Multi profile selection
         var query = QueryAllRules();
         while (query.MoveNext(out var uid, out var comp, out _))
         {
@@ -416,13 +416,24 @@ public sealed partial class AntagSelectionSystem
                     continue;
 
                 // Check this here so we don't make a dictionary entry for a bunch of players, with empty blacklists and whitelists.
-                if (proto.JobBlacklist == null && proto.JobWhitelist == null)
+                if (proto.JobBlacklist == null && proto.JobWhitelist == null && proto.PrefRoles.Count == 0) // Moff - Multi profile selection
                     continue;
 
+                var rolesSet = proto.PrefRoles.ToHashSet(); // Moff - Multi profile selection - Make it into a hashset once so that multiple antags in the same selection can share
                 foreach (var player in set)
                 {
                     if (result.TryGetValue(player, out var jobs))
                     {
+                        // Moff start - Multi profile selection
+                        if (proto.PrefRoles.Count > 0)
+                        {
+                            if (jobs.Roles == null)
+                                jobs.Roles = rolesSet;
+                            else
+                                jobs.Roles.UnionWith(proto.PrefRoles);
+                        }
+                        // Moff end
+
                         if (proto.JobWhitelist != null)
                         {
                             if (jobs.Whitelist == null)
@@ -441,7 +452,7 @@ public sealed partial class AntagSelectionSystem
                     }
                     else
                     {
-                        result.Add(player, (proto.JobWhitelist, proto.JobBlacklist));
+                        result.Add(player, (rolesSet, proto.JobWhitelist, proto.JobBlacklist)); // Moff - Multi profile selection
                     }
                 }
             }
@@ -556,10 +567,13 @@ public sealed partial class AntagSelectionSystem
     [PublicAPI]
     public IEnumerable<ProtoId<AntagPrototype>> GetValidAntagPreferences(ICommonSession session, List<ProtoId<AntagPrototype>>? filter = null)
     {
-        if (!_pref.TryGetCachedPreferences(session.UserId, out var prefs))
+        if (!_pref.TryGetCachedPreferences(session.UserId, out _))
             yield break;
 
-        foreach (var antag in prefs.SelectedCharacter.AntagPreferences)
+        // Moff Start - Multi-character selection: a player opts in to an antag if any of their
+        // active characters wants it, not just whichever one happens to be selected.
+        foreach (var antag in GetMoffEnabledAntagPreferences(session))
+        // Moff end
         {
             // We also check this in IsSessionValid, but we also check it here since this is public API.
             if (_ban.IsRoleBanned(session, antag) || !_playTime.IsAllowed(session, antag))

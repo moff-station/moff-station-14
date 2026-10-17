@@ -81,7 +81,6 @@ public sealed partial class GunGameRuleSystem : GameRuleSystem<GunGameRuleCompon
             var mob = mobMaybe!.Value;
 
             _mind.TransferTo(mindId.Value, mob);
-            _outfitSystem.SetOutfit(mob, gunGame.Gear);
             EnsureComp<KillTrackerComponent>(mob);
             EnsureComp<GunGameTrackerComponent>(mob);
 

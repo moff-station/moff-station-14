@@ -83,10 +83,9 @@
   description: trait-clumsy-disability-desc
   category: Medical
   effects:
-  - !type:AddCompsEffect
-    components:
-    - type: Clumsy
-      clumsySound: null
+  - !type:ApplyStatusEffectSpecial
+    statusEffects:
+    - MoffStatusEffectClumsyTrait
 
 - type: trait
   id: Snoring

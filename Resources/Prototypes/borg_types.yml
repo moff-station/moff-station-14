@@ -26,6 +26,7 @@
 
   # Visual
   inventoryTemplateId: borg # Moffstation
+  inventorySpeciesId: moffBorgGeneric # Moff - Give borgs distinct species IDs so that clothes can have specific visuals for specific chassis.
   # Moffstation - Start - Add neck slots and displacements
   inventoryDisplacements:
     neck:
@@ -75,6 +76,7 @@
 
   # Visual
   inventoryTemplateId: borgShort
+  inventorySpeciesId: moffBorgEngineer # Moff - Give borgs distinct species IDs so that clothes can have specific visuals for specific chassis.
   # Moffstation - Start - Add neck slots and displacements
   inventoryDisplacements:
     neck:
@@ -84,6 +86,7 @@
           state: neck
   # Moffstation - End
   spritePath: _Moffstation/Mobs/Silicon/Chassis/engineer.rsi # Moffstation - Early merge of Borg RSI fix
+  spriteBodyMovementState: borg_moving # Moff
 
   # Pet
   petSuccessString: petting-success-engineer-cyborg
@@ -178,6 +181,7 @@
 
   # Visual
   inventoryTemplateId: borgTall
+  inventorySpeciesId: moffBorgMining # Moff - Give borgs distinct species IDs so that clothes can have specific visuals for specific chassis.
   # Moffstation - Start - Add neck slots and displacements
   inventoryDisplacements:
     neck:
@@ -223,7 +227,8 @@
   - Service
 
   # Visual
-  inventoryTemplateId: borgShort
+  inventoryTemplateId: BorgJanitor  # Moff
+  inventorySpeciesId: moffBorgJanitor # Moff - Give borgs distinct species IDs so that clothes can have specific visuals for specific chassis.
   # Moffstation - Start - Add neck slots and displacements
   inventoryDisplacements:
     neck:
@@ -281,8 +286,14 @@
 
   # Visual
   inventoryTemplateId: borgDutch
+  inventorySpeciesId: moffBorgMedical # Moff - Give borgs distinct species IDs so that clothes can have specific visuals for specific chassis.
   # Moffstation - Start - Add neck slots and displacements
   inventoryDisplacements:
+    head:
+      sizeMaps:
+        32:
+          sprite: _Moffstation/Mobs/Silicon/Displacements/medical.rsi
+          state: head
     neck:
       sizeMaps:
         32:
@@ -295,11 +306,11 @@
   # Pet
   petSuccessString: petting-success-medical-cyborg
   petFailureString: petting-failure-medical-cyborg
-
+# Moff Start - Medical Borgs don't float now
   # Sounds
-  footstepCollection:
-    collection: FootstepHoverBorg
-
+  #footstepCollection:
+  #  collection: FootstepHoverBorg
+# Moff End - Medical Borgs don't float now
 
 # Service borg
 - type: borgType
@@ -334,6 +345,7 @@
   # Visual
   inventoryTemplateId: borg  # Moffstation
   spritePath: _Moffstation/Mobs/Silicon/Chassis/service.rsi # Moffstation - Early merge of Borg RSI fix
+  inventorySpeciesId: moffBorgService # Moff - Give borgs distinct species IDs so that clothes can have specific visuals for specific chassis.
   # Moffstation - Start - Add neck slots and displacements
   inventoryDisplacements:
     neck:

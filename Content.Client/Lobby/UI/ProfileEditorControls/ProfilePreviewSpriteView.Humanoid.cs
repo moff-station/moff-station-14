@@ -78,9 +78,16 @@ public sealed partial class ProfilePreviewSpriteView
     /// </summary>
     private JobPrototype GetPreferredJob(HumanoidCharacterProfile profile)
     {
+        // Moff Start - Multi-character selection: a character's own jobs are a yes/no set with no
+        // priority of their own, so this would never match and every preview fell back to Passenger.
+        /*
         var highPriorityJob = profile.JobPriorities.FirstOrDefault(p => p.Value == JobPriority.High).Key;
         // ReSharper disable once NullCoalescingConditionIsAlwaysNotNullAccordingToAPIContract (what is resharper smoking?)
         return _prototypeManager.Index<JobPrototype>(highPriorityJob.Id ?? SharedGameTicker.FallbackOverflowJob);
+        */
+        var highPriorityJob = GetMoffPreferredJob(profile);
+        return _prototypeManager.Index<JobPrototype>(highPriorityJob?.Id ?? SharedGameTicker.FallbackOverflowJob);
+        // Moff end
     }
 
     private void GiveDummyLoadout(RoleLoadout? roleLoadout)

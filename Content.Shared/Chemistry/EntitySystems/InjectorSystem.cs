@@ -33,7 +33,7 @@ public sealed partial class InjectorSystem : EntitySystem
 {
     [Dependency] private ISharedAdminLogManager _adminLogger = default!;
     [Dependency] private SharedAudioSystem _audio = default!;
-    [Dependency] private SharedForensicsSystem _forensics = default!;
+    [Dependency] private ForensicsSystem _forensics = default!;
     [Dependency] private SharedDoAfterSystem _doAfter = default!;
     [Dependency] private OpenableSystem _openable = default!;
     [Dependency] private SharedPopupSystem _popup = default!;
@@ -100,10 +100,10 @@ public sealed partial class InjectorSystem : EntitySystem
 
     private void OnAttack(Entity<InjectorComponent> injector, ref MeleeHitEvent args)
     {
-        if (args.HitEntities is [])
+        if (args.HitEntities.Count == 0)
             return;
 
-        TryMobsDoAfter(injector, args.User, args.HitEntities[0]);
+        TryMobsDoAfter(injector, args.User, args.HitEntities.First());
     }
 
     /// <summary>

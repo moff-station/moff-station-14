@@ -36,6 +36,7 @@ using Robust.Shared.Utility;
 
 using Content.Server._Moffstation.Antag; // Moffstation
 using Content.Server._Moffstation.Discord.GuildEvent; // Moffstation
+using Content.Server._Moffstation.Preferences; // Moffstation - Multi-character selection
 
 namespace Content.Server.Entry
 {
@@ -83,6 +84,7 @@ namespace Content.Server.Entry
         [Dependency] private ServerFeedbackManager _feedbackManager = null!;
 
         [Dependency] private IWeightedAntagManager _weightedAntags = default!; // Moffstation
+        [Dependency] private MoffCharacterSelectionManager _moffCharacterSelection = default!; // Moffstation - Multi-character selection
 
         public override void PreInit()
         {
@@ -128,6 +130,7 @@ namespace Content.Server.Entry
             _connection.Initialize();
             _dbManager.Init();
             _preferences.Init();
+            _moffCharacterSelection.Init(); // Moffstation - Multi-character selection
             _nodeFactory.Initialize();
             _netResMan.Initialize();
             _ghostKick.Initialize();

@@ -24,7 +24,7 @@ using Content.Shared._CD.Records;
 
 namespace Content.Server.Database
 {
-    public abstract class ServerDbBase
+    public abstract partial class ServerDbBase // Moff - partial so multi-character selection lives in its own file
     {
         private readonly ISawmill _opsLog;
         public event Action<DatabaseNotification>? OnNotificationReceived;

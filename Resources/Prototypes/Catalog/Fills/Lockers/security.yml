@@ -27,7 +27,7 @@
   table: !type:AllSelector
     children:
     - id: FlashlightSeclite
-    - id: WeaponDisabler
+    #- id: WeaponDisabler # Moff - no stuns
     - id: ClothingBeltSecurityFilled
     - id: Flash
     - id: ClothingEyesGlassesSecurity
@@ -35,6 +35,7 @@
     - id: ClothingShoesBootsJack
     - id: ClothingOuterCoatWarden
     - id: ClothingOuterWinterWarden
+    - id: MoffClothingBackpackDuffelPrisoner # Moffstation - gift for good prisoners :godo:
     - id: RubberStampWarden
     - id: DoorRemoteArmory
     - id: HoloprojectorSecurity
@@ -72,7 +73,9 @@
     children:
     - id: FlashlightSeclite
       prob: 0.8
-    - id: WeaponDisabler
+    #- id: WeaponDisabler # Moff - No stuns
+    - id: SecurityBola
+      amount: 2
     - id: ClothingUniformJumpsuitSecGrey
       prob: 0.3
     - id: ClothingHeadHelmetBasic
@@ -115,7 +118,7 @@
     children:
     # - id: ClothingEyesGlassesSecurity # Moffstation - Modular Eyewear
     - id: ClothingEyesHudMedSec # Moffstation - Modular Eyewear
-    - id: WeaponDisabler
+    #- id: WeaponDisabler # Moff - no stuns
     - id: TrackingImplanter
       amount: 2
     - id: ClothingOuterHardsuitBrigmedic
@@ -247,6 +250,7 @@
   parent: [GunSafeBaseSecure, BaseSecurityContraband]
   id: GunSafeDisabler
   name: disabler safe
+  abstract: true # Moff - no stuns
   components:
   - type: EntityTableContainerFill
     containers:

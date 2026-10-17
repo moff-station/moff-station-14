@@ -6357,6 +6357,13 @@ Entries:
   id: 1527
   time: '2026-06-21T00:47:47.000'
   url: https://github.com/moff-station/moff-station-14/pull/1527
+- author: compilatron
+  changes:
+  - message: Added the gungler. Now you will know why you fear the wrath of gods.
+    type: add
+  id: 1528
+  time: '2026-08-09T23:39:12.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1528
 - author: OrbitSystem07
   changes:
   - message: Shells now have two module slots, and start with a tool module
@@ -6659,6 +6666,13 @@ Entries:
   id: 1579
   time: '2026-06-29T16:55:08.000'
   url: https://github.com/moff-station/moff-station-14/pull/1579
+- author: DuckManZach
+  changes:
+  - message: Reworked midround ghost roles!
+    type: add
+  id: 1580
+  time: '2026-08-04T20:40:10.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1580
 - author: Nyxilath
   changes:
   - message: Nanotrasen will no longer order pizza to the ATS.
@@ -6992,6 +7006,15 @@ Entries:
   id: 1634
   time: '2026-07-08T22:40:41.000'
   url: https://github.com/moff-station/moff-station-14/pull/1634
+- author: Dave
+  changes:
+  - message: New Pistol & Revolver Sprites
+    type: add
+  - message: Makarov detached from IRL naming
+    type: tweak
+  id: 1639
+  time: '2026-08-18T00:58:22.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1639
 - author: StudMuffin
   changes:
   - message: Borgs chassis now have integrated sensors that can be interacted with
@@ -7017,6 +7040,13 @@ Entries:
   id: 1647
   time: '2026-07-19T17:16:00.000'
   url: https://github.com/moff-station/moff-station-14/pull/1647
+- author: DrWhoFan13, BlueMoon59, TGRCDev
+  changes:
+  - message: Pronouns now show up on crew manifest
+    type: add
+  id: 1648
+  time: '2026-07-28T18:06:03.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1648
 - author: gummyema
   changes:
   - message: Added engineering and medical maid outfits
@@ -7130,6 +7160,13 @@ Entries:
   id: 1664
   time: '2026-07-18T21:49:36.000'
   url: https://github.com/moff-station/moff-station-14/pull/1664
+- author: StudMuffin
+  changes:
+  - message: the atmos fireaxe can be used to remove hull plating again
+    type: add
+  id: 1667
+  time: '2026-07-26T09:51:58.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1667
 - author: Centronias
   changes:
   - message: Resomis' night vision is once again disabled while they are immune to
@@ -7167,11 +7204,31 @@ Entries:
   url: https://github.com/moff-station/moff-station-14/pull/1672
 - author: DuckManZach
   changes:
+  - message: Fixed DAGD being far more common than it should be
+    type: fix
+  - message: Removed escape to CC, people dont really pick it in the objective picker.
+      If you wanna live then live!
+    type: remove
+  id: 1674
+  time: '2026-07-27T21:20:10.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1674
+- author: DuckManZach
+  changes:
   - message: You now rejuvenate after getting a kill in gungame!
     type: add
   id: 1676
   time: '2026-07-19T17:08:52.000'
   url: https://github.com/moff-station/moff-station-14/pull/1676
+- author: Mixelz
+  changes:
+  - message: Refreshed all Gun Game loadouts! Ask your local admin nicely to try it
+      out!
+    type: tweak
+  - message: Reduced Gun Game respawn wait from 5 seconds to 4 seconds.
+    type: tweak
+  id: 1677
+  time: '2026-07-31T18:58:26.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1677
 - author: Dave
   changes:
   - message: New Holopad sprites & hue adjustments.
@@ -7200,6 +7257,17 @@ Entries:
   id: 1680
   time: '2026-07-20T23:00:56.000'
   url: https://github.com/moff-station/moff-station-14/pull/1680
+- author: Centronias, FreianOfVoid
+  changes:
+  - message: Floor tiles converted by a replicator nest can now be harvested for a
+      bit of steel and plasteel by using a welder on them.
+    type: add
+  - message: Replicator nests now properly drain liquids near themselves. No more
+      puddles of blood hovering over the hole.
+    type: fix
+  id: 1681
+  time: '2026-07-27T04:18:09.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1681
 - author: Nyxilath
   changes:
   - message: Vox Syndicate Footsoldiers now spawn with nitrogen tanks.
@@ -7227,6 +7295,38 @@ Entries:
   id: 1685
   time: '2026-07-20T19:07:56.000'
   url: https://github.com/moff-station/moff-station-14/pull/1685
+- author: Centronias
+  changes:
+  - message: Stained clothes can now be examined to see what's staining them, similar
+      to examining drinks / reagents.
+    type: add
+  - message: Galoshes, breath masks, and sterile breath masks are now innately stain
+      repellent.
+    type: add
+  - message: ERT Janitors' uniforms are now innately stain repellent by virtue of
+      their inimitable cleanliness.
+    type: add
+  - message: Added "DrinkStainRepellent", a bottle of appliable stain-repellent coating
+      (and a box of four of them, "BoxStainRepellent"). It's unobtainable except via
+      spawning.
+    type: add
+  id: 1686
+  time: '2026-07-31T18:37:42.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1686
+- author: meganerobot
+  changes:
+  - message: Engineering hardsuits and the spationaut suit now have a toggleable welding
+      mask.
+    type: add
+  - message: Mesons no longer provide welding protection and now act as t-ray scanners.
+    type: tweak
+  - message: Welding masks greatly occlude your vision whilst you're using them.
+    type: tweak
+  - message: You can now flip up welding masks.
+    type: tweak
+  id: 1688
+  time: '2026-08-01T05:12:21.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1688
 - author: FreianOfVoid
   changes:
   - message: A "Hephaestus" Iconography option has been added to the AI's customization
@@ -7235,6 +7335,43 @@ Entries:
   id: 1691
   time: '2026-07-20T23:21:50.000'
   url: https://github.com/moff-station/moff-station-14/pull/1691
+- author: SeaWyrm
+  changes:
+  - message: 'Ossuary: Increased number of guns in armory'
+    type: add
+  - message: 'Ossuary: Gave Security a crew monitor'
+    type: add
+  - message: 'Ossuary: Added freezer to Atmos'
+    type: add
+  - message: 'Ossuary: Added extra arti equipment boards to Science'
+    type: add
+  - message: 'Ossuary: Put more sensors and air alarms in maints'
+    type: add
+  - message: 'Ossuary: Wired up part of west maints that had no APC or LV wiring'
+    type: add
+  - message: 'Ossuary: Added more lights to maints'
+    type: add
+  - message: 'Ossuary: Increased the amount of meteor shielding'
+    type: add
+  - message: 'Ossuary: Added a laundry room'
+    type: add
+  - message: 'Ossuary: Adjusted maints flooring'
+    type: tweak
+  - message: 'Ossuary: Opened up new routes in maints and added stuff to long, boring
+      hallways to make them less long and boring and hallway'
+    type: tweak
+  - message: 'Ossuary: Linked up that one air alarm that wasn''t linked properly'
+    type: fix
+  id: 1692
+  time: '2026-08-15T14:19:25.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1692
+- author: DuckManZach
+  changes:
+  - message: You are no longer guaranteed to a command role if youre queued for it!
+    type: fix
+  id: 1693
+  time: '2026-07-26T19:44:56.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1693
 - author: DuckManZach
   changes:
   - message: Washing machines are now fully predicted
@@ -7249,6 +7386,15 @@ Entries:
   id: 1697
   time: '2026-07-23T02:45:39.000'
   url: https://github.com/moff-station/moff-station-14/pull/1697
+- author: DuckManZach
+  changes:
+  - message: Added Diegetic UI for vending machines
+    type: add
+  - message: Added Diegetic UI for the nuke keypad
+    type: add
+  id: 1698
+  time: '2026-08-13T19:02:38.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1698
 - author: meganerobot
   changes: []
   id: 1699
@@ -7261,6 +7407,17 @@ Entries:
   id: 1700
   time: '2026-07-25T17:20:19.000'
   url: https://github.com/moff-station/moff-station-14/pull/1700
+- author: Dave
+  changes:
+  - message: new captain sprites!
+    type: add
+  - message: new hop sprites!
+    type: add
+  - message: new hos jumpsuit sprites!
+    type: add
+  id: 1702
+  time: '2026-08-07T20:36:51.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1702
 - author: Centronias
   changes:
   - message: Added Elspeth Clerie's personal item
@@ -7275,6 +7432,35 @@ Entries:
   id: 1707
   time: '2026-07-23T03:28:15.000'
   url: https://github.com/moff-station/moff-station-14/pull/1707
+- author: TillHero
+  changes:
+  - message: Blade servers now hurt you when someone shoves them in your face.
+    type: tweak
+  id: 1708
+  time: '2026-07-30T03:14:19.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1708
+- author: PanzerVo
+  changes:
+  - message: Floodlights in the Engi-Vend
+    type: add
+  id: 1713
+  time: '2026-07-26T03:18:26.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1713
+- author: DuckManZach
+  changes:
+  - message: Map votes now fire mid-lobby, so that the playercount is more accurate
+      to the map.
+    type: tweak
+  id: 1714
+  time: '2026-07-28T19:00:36.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1714
+- author: DuckManZach
+  changes:
+  - message: Objectives in picker get auto-selected after timer runs out!
+    type: fix
+  id: 1717
+  time: '2026-08-05T21:49:30.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1717
 - author: FreianOfVoid
   changes:
   - message: Fixed the positioning and size of the Hephaestus AI iconography to match
@@ -7283,5 +7469,1164 @@ Entries:
   id: 1718
   time: '2026-07-25T17:20:19.000'
   url: https://github.com/moff-station/moff-station-14/pull/1718
+- author: Nyxilath
+  changes:
+  - message: The Infiltrator shuttle now spawns with a sledgehammer instead of a fireaxe.
+    type: tweak
+  id: 1720
+  time: '2026-07-26T09:31:56.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1720
+- author: FreianOfVoid
+  changes:
+  - message: Added one more thruster to the Pirate Corsair's shuttle so it will be
+      able to slow down properly!
+    type: fix
+  id: 1724
+  time: '2026-07-27T19:54:15.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1724
+- author: DuckManZach
+  changes:
+  - message: Nuclear Operatives have been renamed to Gorlex Marauders.
+    type: add
+  - message: 'Gorlex Marauders now have an alternative objective they can choose:
+      "Show of Force"'
+    type: add
+  id: 1725
+  time: '2026-08-12T17:15:16.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1725
+- author: MissKay1994
+  changes:
+  - message: Lambda now has much more decor
+    type: tweak
+  - message: Lambda security has been updated
+    type: tweak
+  - message: Lambda botany now includes animals and the missing vendor
+    type: tweak
+  - message: Lambda now has a janidrobe
+    type: tweak
+  id: 1727
+  time: '2026-08-15T12:55:55.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1727
+- author: Centronias
+  changes:
+  - message: People being thrown into the Replicator Nest are no longer removed from
+      the round, and their bodies can be recovered by destroying the hole.
+    type: fix
+  - message: Items now visually "fall" into replicator nests.
+    type: fix
+  id: 1728
+  time: '2026-07-27T20:59:56.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1728
+- author: The Dai Li
+  changes:
+  - message: There is no atmos bug in Moffstation.
+    type: tweak
+  id: 1729
+  time: '2026-07-27T16:05:58.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1729
+- author: Dave
+  changes:
+  - message: Qm hardsuit sprites for Moff
+    type: add
+  - message: vox hardsuits now have tails added
+    type: fix
+  id: 1730
+  time: '2026-07-28T18:06:03.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1730
+- author: Nyxilath
+  changes:
+  - message: Artifacts have gotten their life together and will no longer ask for
+      Antidepressants, Meth, Lube, and Cleaner.
+    type: remove
+  id: 1731
+  time: '2026-07-31T20:27:40.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1731
+- author: DuckManZach, QuantumCross
+  changes: []
+  id: 1737
+  time: '2026-08-13T23:01:16.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1737
+- author: Centronias
+  changes:
+  - message: The crew manifest has received a visual update.
+    type: tweak
+  id: 1740
+  time: '2026-08-01T23:25:31.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1740
+- author: Tezzaide
+  changes:
+  - message: Atmos Traitors now have access to the Syndicate Fire Axe
+    type: add
+  id: 1741
+  time: '2026-08-03T04:57:08.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1741
+- author: Centronias
+  changes:
+  - message: Jobs on the manifest once again sort with department heads above their
+      reports.
+    type: fix
+  id: 1742
+  time: '2026-07-29T20:13:23.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1742
+- author: DuckManZach
+  changes:
+  - message: Players now get playtime for playing again!
+    type: fix
+  id: 1743
+  time: '2026-07-29T23:19:51.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1743
+- author: DuckManZach
+  changes:
+  - message: The station is now a target of missile barrages!
+    type: add
+  id: 1744
+  time: '2026-08-03T03:24:34.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1744
+- author: meganerobot
+  changes:
+  - message: Tier 2 replicators (deconstructors and defenders) now have a visually
+      damaged state when they're disabled.
+    type: fix
+  id: 1746
+  time: '2026-07-30T19:50:22.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1746
+- author: Centronias
+  changes:
+  - message: Replicators now have toggleable night vision.
+    type: add
+  id: 1747
+  time: '2026-07-30T19:50:22.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1747
+- author: Centronias
+  changes:
+  - message: Certain markings with multiple sprite layers no longer fail to apply
+      species' displacement maps to layers beyond the first. For example, Dwarves
+      no longer have floating cat-ear insides above their heads.
+    type: fix
+  id: 1748
+  time: '2026-08-07T18:28:55.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1748
+- author: DuckManZach
+  changes:
+  - message: Romerol can appear randomly on station!
+    type: add
+  id: 1751
+  time: '2026-08-09T23:16:45.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1751
+- author: DuckManZach
+  changes:
+  - message: Security no longer has stuns, escalate carefully!
+    type: add
+  - message: 'Security now has a new tool at their disposal: the nightstick!'
+    type: add
+  id: 1752
+  time: '2026-09-05T08:53:50.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1752
+- author: Nyxilath
+  changes:
+  - message: BasicEntityAmmoProviders now use a table for prototype definitions.
+    type: tweak
+  - message: Wand of Carp Polymorph now has a rare chance to wildly turn victims into
+      more powerful forms of carp.
+    type: tweak
+  id: 1753
+  time: '2026-08-07T18:55:16.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1753
+- author: Nyxilath
+  changes:
+  - message: Polymorph wand projectiles are now more colorful!
+    type: tweak
+  id: 1755
+  time: '2026-08-13T00:42:19.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1755
+- author: Nyxilath
+  changes:
+  - message: Reach has returned.
+    type: add
+  id: 1760
+  time: '2026-08-04T21:45:28.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1760
+- author: OrbitSystem07
+  changes:
+  - message: Added a personal item for The Wind Of Perserverance
+    type: add
+  id: 1761
+  time: '2026-08-04T04:58:36.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1761
+- author: Nyxilath
+  changes:
+  - message: Set Examine action icon has been fixed.
+    type: fix
+  id: 1762
+  time: '2026-08-03T18:37:19.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1762
+- author: Centronias
+  changes:
+  - message: "Added N\u014Dmencl\u0101t\u016Bra's personal item."
+    type: add
+  id: 1764
+  time: '2026-08-07T19:55:05.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1764
+- author: DuckManZach
+  changes:
+  - message: Added new airlock sounds!
+    type: add
+  id: 1765
+  time: '2026-08-04T18:51:54.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1765
+- author: Nyxilath
+  changes:
+  - message: Telesci consoles now uses our moffstation-style console.
+    type: tweak
+  - message: pirates now have their own unique IFF console
+    type: add
+  id: 1776
+  time: '2026-08-07T18:55:16.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1776
+- author: gummyema
+  changes:
+  - message: Added schoolgirl outfit to DramaDrobe
+    type: add
+  id: 1778
+  time: '2026-08-05T19:38:54.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1778
+- author: OrbitSystem07
+  changes:
+  - message: Fixed the ai shell action sprites
+    type: fix
+  id: 1779
+  time: '2026-08-07T19:13:33.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1779
+- author: meganerobot
+  changes:
+  - message: The DAW no longer has annoying instrument requirements and can be flatpacked
+      again.
+    type: tweak
+  id: 1782
+  time: '2026-08-10T00:21:00.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1782
+- author: DuckManZach
+  changes:
+  - message: Enroll events now spawn backup events if they dont reach minimum players!
+    type: tweak
+  - message: added togglable audio, chat, and window notifications to enroll events!
+    type: add
+  id: 1786
+  time: '2026-08-23T22:13:48.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1786
+- author: MissKay1994
+  changes:
+  - message: Removed necronomicon from nonchaplain jobs uplinks
+    type: remove
+  id: 1787
+  time: '2026-08-07T19:33:35.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1787
+- author: Centronias
+  changes:
+  - message: Secret doors can no longer be meta-gamed by trying to touch every wall
+      and then finding a wall that your hand flies at.
+    type: tweak
+  id: 1789
+  time: '2026-08-08T04:00:40.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1789
+- author: Centronias
+  changes:
+  - message: Mime and Mime alternative PDAs no longer incorrectly have Nanochat installed.
+    type: fix
+  id: 1791
+  time: '2026-08-07T21:11:11.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1791
+- author: Centronias
+  changes:
+  - message: Mindshields once again properly protect against being enslaved by the
+      pact of blood.
+    type: fix
+  id: 1793
+  time: '2026-08-07T21:50:01.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1793
+- author: Centronias
+  changes:
+  - message: A new Moff figurine for a certain cat-ear-bereted moff.
+    type: add
+  id: 1794
+  time: '2026-08-09T22:19:47.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1794
+- author: Nyxilath
+  changes:
+  - message: Trashbags of Holding are now visually similar to standard trashbags.
+    type: tweak
+  - message: Trashbags of Holding sprites no longer will display error when filled.
+    type: fix
+  id: 1795
+  time: '2026-08-08T18:50:48.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1795
+- author: Dave
+  changes:
+  - message: Resprites Janitor, Salvage. Medical, Science & Engineering Cyborg.
+    type: add
+  - message: Resprites Derelict Janitor, Salvage Medical & Engineering Cyborg.
+    type: add
+  id: 1798
+  time: '2026-08-15T19:44:25.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1798
+- author: Centronias
+  changes:
+  - message: Thavens once again get all of their moods.
+    type: fix
+  id: 1800
+  time: '2026-08-08T19:54:45.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1800
+- author: Centronias
+  changes:
+  - message: Lawbound silicons once again get an audio and chat cue when their laws
+      are changed.
+    type: fix
+  id: 1802
+  time: '2026-08-12T21:19:59.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1802
+- author: Centronias, Nyxilath
+  changes:
+  - message: Hellportals will no longer spawn Hellhounds, Goliaths, or Hellspawn.
+    type: remove
+  - message: Hellportals will now spawn a unique variant of flesh golems thematic
+      to Nar'Sie.
+    type: tweak
+  - message: Hellportals will now spawn Narsian constructs - be careful!
+    type: add
+  - message: Hellportals have been made at least 5% more ominous.
+    type: tweak
+  id: 1803
+  time: '2026-08-22T21:26:52.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1803
+- author: DuckManZach
+  changes:
+  - message: Made melee screenshake a bit softer!
+    type: tweak
+  id: 1805
+  time: '2026-08-12T16:22:15.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1805
+- author: Centronias
+  changes:
+  - message: Added EX1-BARD / EX1-DY's personal item.
+    type: add
+  id: 1807
+  time: '2026-08-13T20:41:05.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1807
+- author: KentoDaNeko
+  changes:
+  - message: Added Wooden Crates.
+    type: add
+  id: 1809
+  time: '2026-08-24T18:17:01.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1809
+- author: Centronias
+  changes:
+  - message: Fixed a state replication issue on gas filters.
+    type: fix
+  id: 1814
+  time: '2026-08-12T21:16:23.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1814
+- author: Elliot Lawrence
+  changes:
+  - message: There is now a prisoner themed duffelbag.
+    type: add
+  - message: One prisoner duffelbag can be found within the warden's locker.
+    type: tweak
+  - message: Secfabs can now print prisoner duffelbags with some cloth and a small
+      amount of steel.
+    type: tweak
+  id: 1815
+  time: '2026-08-13T21:16:32.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1815
+- author: Centronias
+  changes:
+  - message: Hardsuits with toggleable integrated welding masks now have a welding
+      mask indicator on the icons to toggle their welding masks to better distinguish
+      the action from the action for toggling the entire helmet.
+    type: tweak
+  id: 1816
+  time: '2026-08-15T19:44:25.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1816
+- author: Centronias
+  changes:
+  - message: Replicators now have a guidebook entry.
+    type: add
+  id: 1817
+  time: '2026-08-18T00:58:22.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1817
+- author: DuckManZach
+  changes:
+  - message: Map vote will no longer pop up randomly on localhost
+    type: fix
+  id: 1819
+  time: '2026-08-14T18:15:14.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1819
+- author: DuckManZach
+  changes:
+  - message: Added button for admins to start enroll events early
+    type: add
+  id: 1820
+  time: '2026-08-19T23:06:35.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1820
+- author: DuckManZach
+  changes:
+  - message: Several improvements to Character window UI
+    type: add
+  id: 1821
+  time: '2026-08-20T18:50:11.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1821
+- author: Wintoli
+  changes:
+  - message: A smoke implanter has been added to the Syndicate store and Thief loadout!
+    type: add
+  id: 1825
+  time: '2026-09-10T17:29:04.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1825
+- author: Centronias, Nyxilath
+  changes:
+  - message: Artifact console effect reports now give more detail post-activation
+    type: tweak
+  - message: Artifact console durability reports now state 'Unknown' prior to activation
+    type: tweak
+  - message: Speed-Artifacts are now moved to handheld-only
+    type: fix
+  - message: Several artifact effect hints have been adjusted according to their thematics
+    type: tweak
+  id: 1828
+  time: '2026-08-24T19:27:04.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1828
+- author: Nyxilath
+  changes:
+  - message: Smile can no longer grow into a colorless Urist McWobble (stay tuned
+      for a unique replacement!)
+    type: fix
+  id: 1830
+  time: '2026-08-31T19:05:21.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1830
+- author: Wintoli
+  changes:
+  - message: EMP Hardbomb has been added for Syndicates and Nukies alike!
+    type: add
+  id: 1831
+  time: '2026-08-23T21:51:04.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1831
+- author: DuckManZach
+  changes:
+  - message: The event scheduler has been reworked!
+    type: add
+  id: 1832
+  time: '2026-08-31T22:21:50.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1832
+- author: DuckManZach
+  changes:
+  - message: Reach is no longer guaranteed for the first round of the session!
+    type: fix
+  id: 1834
+  time: '2026-08-19T00:56:35.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1834
+- author: Wintoli
+  changes:
+  - message: Hypereutactic Blade bugfix!
+    type: fix
+  id: 1835
+  time: '2026-08-19T00:37:49.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1835
+- author: DuckManZach
+  changes:
+  - message: The job priority list will now properly "red-out" jobs which you don't
+      have selected by active characters.
+    type: fix
+  id: 1837
+  time: '2026-08-19T22:10:48.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1837
+- author: gummyema
+  changes:
+  - message: Fixed small texture issues with the miku, teto and neru outfits
+    type: tweak
+  id: 1839
+  time: '2026-08-20T18:15:50.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1839
+- author: DuckManZach
+  changes:
+  - message: You will no longer role sleeper agent from having it selected on another
+      character
+    type: fix
+  id: 1840
+  time: '2026-08-20T21:07:52.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1840
+- author: Centronias
+  changes:
+  - message: AAC tablets will now speak the shortest phrase matching the entered text
+      on the search tab.
+    type: tweak
+  - message: AAC tablets now have memory on the search tab, meaning you can navigate
+      through previously spoken phrases with the same controls as the chat box (defaults
+      to arrow keys).
+    type: add
+  - message: AAC tablets now have a little bit of help text to describe how to use
+      the search tab's quick speaking capability.
+    type: tweak
+  id: 1841
+  time: '2026-08-22T21:47:02.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1841
+- author: Nyxilath
+  changes:
+  - message: Avali now spawn with the correct number of survival boxes. Again.
+    type: fix
+  id: 1842
+  time: '2026-08-31T19:05:21.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1842
+- author: Centronias
+  changes:
+  - message: The Salvage Borg's Advanced Mining Module's Ore Bag Of Holding can now
+      have its magnetism turned off, like the basic ore bag's.
+    type: tweak
+  id: 1844
+  time: '2026-08-26T02:07:20.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1844
+- author: Centronias
+  changes:
+  - message: Engineering / Meson goggles no longer continue providing their T-Ray
+      effect while enabled and in your pocket. They must be worn on the face to function.
+    type: fix
+  id: 1845
+  time: '2026-08-26T01:51:16.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1845
+- author: OrbitSystem07
+  changes:
+  - message: Ais now no longer show an error sprite while dead
+    type: fix
+  id: 1846
+  time: '2026-08-24T19:47:59.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1846
+- author: Centronias
+  changes:
+  - message: Wallmounted Nanomed vending machines now use the same UI as all other
+      vending machines with the chunky buttons and the beeps and the boops.
+    type: fix
+  id: 1847
+  time: '2026-08-26T00:25:42.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1847
+- author: Pixel8-dev
+  changes:
+  - message: Changed the Bowl reagent capacity to 60
+    type: tweak
+  id: 1848
+  time: '2026-08-26T01:28:07.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1848
+- author: Centronias
+  changes:
+  - message: Added Karla's personal item.
+    type: add
+  id: 1851
+  time: '2026-08-31T14:07:27.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1851
+- author: DuckManZach
+  changes:
+  - message: Fixed certain ghostroles providing antag weight
+    type: fix
+  id: 1853
+  time: '2026-08-31T17:58:53.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1853
+- author: gummyema
+  changes:
+  - message: Added Ice Fairy (Cirno) outfit to DramaDrobe
+    type: add
+  - message: Changed the name of the performer costume bags
+    type: tweak
+  id: 1855
+  time: '2026-08-31T18:41:50.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1855
+- author: Tezzaide
+  changes:
+  - message: Bartenders now start a ammonia jug in the Soda Dispenser.
+    type: add
+  id: 1859
+  time: '2026-09-08T11:50:56.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1859
+- author: OrbitSystem07
+  changes:
+  - message: Boxes of hugs are now the correct size when crafted
+    type: fix
+  id: 1860
+  time: '2026-09-08T19:19:55.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1860
+- author: gummyema
+  changes:
+  - message: Spray painter capacity increased from 15 to 50
+    type: tweak
+  - message: YouTool now only has 2 cans of compressed paint
+    type: tweak
+  id: 1861
+  time: '2026-08-31T22:44:39.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1861
+- author: gummyema
+  changes:
+  - message: Removed human female jumpsuit displacements
+    type: remove
+  id: 1862
+  time: '2026-08-31T18:22:18.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1862
+- author: Centronias
+  changes:
+  - message: The "advanced mail cyborg module" and mail delivery cannon can be researched
+      as a T2 civilian tech.
+    type: add
+  id: 1864
+  time: '2026-09-10T17:51:20.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1864
+- author: Centronias
+  changes:
+  - message: Nomenclatura's personal item is no longer capable of bricking clients
+      by being equipped onto certain entities.
+    type: fix
+  id: 1868
+  time: '2026-09-07T05:11:33.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1868
+- author: DuckManZach
+  changes:
+  - message: Added a new particle system!
+    type: add
+  id: 1870
+  time: '2026-09-17T19:34:05.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1870
+- author: Wintoli
+  changes:
+  - message: The EMP hardbomb had its size and price slightly reduced.
+    type: tweak
+  id: 1872
+  time: '2026-09-09T19:52:23.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1872
+- author: Centronias
+  changes:
+  - message: Boxes of flares are now available for purchase in cargo.
+    type: add
+  id: 1874
+  time: '2026-09-10T17:51:20.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1874
+- author: Dave
+  changes:
+  - message: new CC Clothes
+    type: add
+  id: 1877
+  time: '2026-09-17T19:34:05.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1877
+- author: DuckManZach
+  changes:
+  - message: 'New lobby track: Ablation at Perijove'
+    type: add
+  id: 1878
+  time: '2026-09-11T16:47:04.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1878
+- author: DuckManZach
+  changes:
+  - message: 'New lobby art: Chad, Where''s the TEG?'
+    type: add
+  id: 1879
+  time: '2026-09-10T19:23:50.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1879
+- author: Centronias
+  changes:
+  - message: MIDI instruments' rendering of MIDIs should be the same as on upstream
+      now.
+    type: fix
+  id: 1880
+  time: '2026-09-10T19:51:08.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1880
+- author: no major change no CL
+  changes: []
+  id: 1882
+  time: '2026-09-11T16:47:04.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1882
+- author: DuckManZach
+  changes:
+  - message: All of the readied players, and half the unreadied players are counted
+      in gamemode selection.
+    type: tweak
+  id: 1883
+  time: '2026-09-14T16:58:34.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1883
+- author: Moomoobeef
+  changes:
+  - message: Added Tom Carter's personal item.
+    type: add
+  id: 1884
+  time: '2026-09-23T04:26:01.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1884
+- author: Centronias
+  changes:
+  - message: Added Iris "Monster" Foundling's personal item.
+    type: add
+  id: 1885
+  time: '2026-09-28T18:56:34.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1885
+- author: Centronias
+  changes:
+  - message: Scurrets of all varieties can now emote, e.g. using "@".
+    type: fix
+  id: 1886
+  time: '2026-09-11T22:19:08.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1886
+- author: Rachel
+  changes:
+  - message: Added six new lawsets!  Three silly, two serious, and one up to no good.
+    type: add
+  id: 1891
+  time: '2026-09-15T17:13:42.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1891
+- author: Centronias
+  changes:
+  - message: Gas cannisters can now be repainted using a spray painter in the same
+      way that gas tanks can be.
+    type: add
+  id: 1896
+  time: '2026-10-03T17:40:38.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1896
+- author: Centronias Cruncy
+  changes:
+  - message: Added Malphas's personal item.
+    type: add
+  id: 1905
+  time: '2026-09-15T17:13:42.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1905
+- author: Centronias
+  changes:
+  - message: Replace nonexistant variant tiles on non-Spacewizards maps with existing
+      tiles. AKA no magenta/black texture errors.
+    type: fix
+  id: 1906
+  time: '2026-09-14T19:18:50.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1906
+- author: Centronias
+  changes:
+  - message: Added Hazel-Starmaker's personal item.
+    type: add
+  id: 1913
+  time: '2026-10-03T14:10:55.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1913
+- author: Centronias
+  changes:
+  - message: The AAC tablet has been completely reorganized based on user feedback.
+    type: tweak
+  - message: The AAC tablet's search results will now indicate where in the tablet
+      a given search result is found.
+    type: add
+  id: 1914
+  time: '2026-09-28T02:43:18.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1914
+- author: Centronias
+  changes:
+  - message: Fix various in-hand sprite errors with folders, papers, stamps, and more.
+    type: fix
+  id: 1915
+  time: '2026-09-19T14:28:58.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1915
+- author: DuckManZach
+  changes:
+  - message: Fixed door alignment on all our unique maps and grids.
+    type: fix
+  id: 1919
+  time: '2026-09-17T00:05:29.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1919
+- author: DuckManZach
+  changes:
+  - message: Fixes the stains from spamming the console with errors
+    type: fix
+  - message: Added CB (Crettbob)
+    type: add
+  id: 1920
+  time: '2026-09-17T00:54:46.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1920
+- author: DuckManZach
+  changes:
+  - message: Evac gets called at the right time again!
+    type: fix
+  id: 1922
+  time: '2026-09-18T11:31:20.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1922
+- author: DuckManZach
+  changes:
+  - message: Adjusted max hellportal mobs from 100 to 50
+    type: tweak
+  - message: Adjusted hellportal spawn time from 30 to 45
+    type: tweak
+  id: 1923
+  time: '2026-09-17T20:09:16.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1923
+- author: DuckManZach
+  changes:
+  - message: Removed the Hijack ATS objective.
+    type: remove
+  - message: Removed the Frame innocent people objective.
+    type: remove
+  - message: Removed the Supercrit anomalies objective.
+    type: remove
+  - message: Removed the jailbreak prisoners objective.
+    type: remove
+  - message: DAGD is now less likely.
+    type: tweak
+  id: 1924
+  time: '2026-10-03T12:51:28.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1924
+- author: Bandirpvp
+  changes:
+  - message: Added Walter Newman's personal item
+    type: add
+  id: 1929
+  time: '2026-09-19T19:40:56.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1929
+- author: DuckManZach
+  changes:
+  - message: Tweaked the demotion rule
+    type: tweak
+  id: 1930
+  time: '2026-09-20T16:18:19.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1930
+- author: SeaWyrm
+  changes:
+  - message: Corrected spelling of "bureaucrat" for the AI law board of that name
+    type: fix
+  id: 1932
+  time: '2026-09-21T01:53:06.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1932
+- author: DrWhoFan13
+  changes:
+  - message: You can now research and fabricate mail capsules!
+    type: fix
+  - message: You can no longer buy mail capsules!
+    type: remove
+  id: 1933
+  time: '2026-09-22T19:02:46.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1933
+- author: KentoDaNeko
+  changes:
+  - message: Added Wooden Buckets.
+    type: add
+  id: 1935
+  time: '2026-10-03T04:04:06.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1935
+- author: Centronias
+  changes:
+  - message: Fixed Ichabod's Head.
+    type: fix
+  - message: You can now see Ichabod's head in-hand while holding it. You monster.
+    type: add
+  id: 1947
+  time: '2026-09-22T21:17:23.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1947
+- author: Dave
+  changes:
+  - message: new firesuit sprites!
+    type: add
+  id: 1949
+  time: '2026-09-23T00:25:41.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1949
+- author: compilatron
+  changes:
+  - message: You can now stick forks into wall sockets.
+    type: add
+  id: 1951
+  time: '2026-09-22T23:50:13.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1951
+- author: Rachel
+  changes:
+  - message: Thief communicator kit now provides a binary key.
+    type: tweak
+  - message: Thief breacher kit now provides a mining drill, and its meson goggles
+      have been replaced with actual welding protection.
+    type: tweak
+  id: 1954
+  time: '2026-09-28T18:02:50.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1954
+- author: Dave
+  changes:
+  - message: Add More Moff Figurines
+    type: add
+  - message: New Upstream Job Figurines
+    type: tweak
+  - message: Some Moffstation Figurines
+    type: tweak
+  id: 1955
+  time: '2026-10-03T03:46:21.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1955
+- author: Lillian Industries
+  changes:
+  - message: Moffstation species now behave normally in regards to temperature changes.
+    type: fix
+  - message: Avali benefit from a tiny reduction to cold slowdown.
+    type: tweak
+  id: 1958
+  time: '2026-09-27T23:14:19.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1958
+- author: DuckManZach
+  changes:
+  - message: Made explosions look cooler!
+    type: add
+  - message: Added Hero Brian.
+    type: add
+  id: 1959
+  time: '2026-10-10T18:14:12.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1959
+- author: Nyxilath
+  changes:
+  - message: Nar'sian hell portals now only spawn once per shift, at most.
+    type: tweak
+  id: 1960
+  time: '2026-09-25T01:57:06.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1960
+- author: Nyxilath
+  changes:
+  - message: Moproaches now spawn in the normal mothroach vent event.
+    type: tweak
+  - message: The Moproach migration vent event has been removed.
+    type: remove
+  id: 1961
+  time: '2026-09-25T01:36:38.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1961
+- author: Failed5
+  changes:
+  - message: Changed Gigs figurine to have a big tail / general resprite.
+    type: tweak
+  id: 1963
+  time: '2026-09-29T00:28:58.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1963
+- author: WigglySuperNoodle
+  changes:
+  - message: Added various moff figurines.
+    type: add
+  - message: Updated some existing moff figurines, and tidied things up.
+    type: tweak
+  id: 1964
+  time: '2026-09-29T21:59:30.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1964
+- author: Nyxilath
+  changes:
+  - message: greater depth artifact nodes now instantly activate on successful trigger
+      again.
+    type: fix
+  id: 1965
+  time: '2026-09-29T11:26:56.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1965
+- author: Centronias
+  changes:
+  - message: On roundstart, you should no longer be assigned antag roles on characters
+      which do not have those roles enabled.
+    type: fix
+  id: 1966
+  time: '2026-10-03T02:45:30.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1966
+- author: WigglySuperNoodle
+  changes:
+  - message: Flink Pemperton Gloopnop's personal item
+    type: add
+  id: 1969
+  time: '2026-09-29T19:21:18.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1969
+- author: WigglySuperNoodle
+  changes:
+  - message: Fire Safety Lawset and board. (FIRE SAFETY!)
+    type: add
+  - message: Ten Commandments makes more sense and doesn't contradict itself.
+    type: tweak
+  id: 1972
+  time: '2026-09-30T15:36:43.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1972
+- author: SillyAmy
+  changes:
+  - message: Added a Betty figurine!
+    type: add
+  id: 1973
+  time: '2026-10-03T19:15:59.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1973
+- author: DuckManZach
+  changes:
+  - message: The Jugsuit and raidsuit have had their tc prices increased.
+    type: tweak
+  id: 1974
+  time: '2026-10-03T02:45:30.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1974
+- author: DuckManZach
+  changes:
+  - message: Tweaked the odds of various gamemodes!
+    type: tweak
+  id: 1975
+  time: '2026-10-01T19:53:30.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1975
+- author: DuckManZach
+  changes:
+  - message: Tweaked character UI slightly.
+    type: tweak
+  id: 1976
+  time: '2026-10-03T03:46:21.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1976
+- author: WigglySuperNoodle
+  changes:
+  - message: Made some edits to the AAC Tablet's library of words for QoL
+    type: tweak
+  id: 1977
+  time: '2026-10-01T19:11:10.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1977
+- author: Centronias
+  changes:
+  - message: Iris "Monster" Foundling's personal items now have different names for
+      their different variants.
+    type: tweak
+  id: 1979
+  time: '2026-10-01T19:32:25.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1979
+- author: DuckManZach
+  changes:
+  - message: Changelog machine fixed (hopefully)
+    type: add
+  id: 1980
+  time: '2026-10-03T17:18:11.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1980
+- author: DuckManZach
+  changes:
+  - message: Turned down the event scheduler a bit.
+    type: tweak
+  id: 1982
+  time: '2026-10-03T05:28:56.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1982
+- author: SillyAmy
+  changes:
+  - message: Added recipes to a few foods that don't have one.
+    type: add
+  id: 1983
+  time: '2026-10-03T15:57:01.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1983
+- author: Dave
+  changes:
+  - message: new hardhat sprites
+    type: add
+  id: 1984
+  time: '2026-10-03T15:57:01.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1984
+- author: Nyxilath
+  changes:
+  - message: Scurvydog's front facing airlock is now facing outward as intended.
+    type: fix
+  - message: Scurvydog's prison airlock now requires pirate access to open.
+    type: fix
+  id: 1985
+  time: '2026-10-03T02:02:26.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1985
+- author: Nyxilath
+  changes:
+  - message: Pirate Captains have been kicked out of the Syndicate.
+    type: fix
+  id: 1986
+  time: '2026-10-03T04:04:06.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1986
+- author: Sinaro2
+  changes:
+  - message: Changed the descriptions of movie posters.
+    type: tweak
+  - message: Removed the Casting Signups poster.
+    type: remove
+  id: 1987
+  time: '2026-10-08T01:40:48.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1987
+- author: Nyxilath
+  changes:
+  - message: Pirates can how make bank withdrawals.
+    type: fix
+  id: 1989
+  time: '2026-10-03T18:07:59.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1989
+- author: DuckManZach
+  changes:
+  - message: Removed black hole lobby art
+    type: remove
+  id: 1990
+  time: '2026-10-04T04:25:29.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1990
+- author: Dave
+  changes:
+  - message: CC Moff Gear Resprites
+    type: add
+  - message: CC Gear now uses Moffstation textures in the yaml
+    type: tweak
+  id: 1991
+  time: '2026-10-05T20:54:40.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1991
+- author: Dave
+  changes:
+  - message: new Lawyer outfit sprites
+    type: add
+  - message: new detective outfit sprites
+    type: add
+  - message: new reporter outfit sprites
+    type: add
+  id: 1992
+  time: '2026-10-05T23:42:21.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1992
+- author: Dave
+  changes:
+  - message: New Canister Sprites
+    type: add
+  id: 1993
+  time: '2026-10-05T05:28:30.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1993
+- author: DuckManZach
+  changes:
+  - message: Added item offering. if someone tries putting something in your hand,
+      click them to finish the doafter early.
+    type: add
+  id: 1994
+  time: '2026-10-09T04:28:41.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1994
+- author: Moomoobeef
+  changes:
+  - message: Changed tile decal sprites to match the new floor tiles.
+    type: tweak
+  id: 1995
+  time: '2026-10-06T01:29:57.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1995
+- author: Centronias
+  changes:
+  - message: Added Kozan Taoyan's personal item.
+    type: add
+  id: 1998
+  time: '2026-10-08T20:55:34.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1998
+- author: Centronias
+  changes:
+  - message: Added Nova Stareater's personal item.
+    type: add
+  id: 1999
+  time: '2026-10-07T19:46:47.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1999
+- author: Dave
+  changes:
+  - message: reptilian Palette Update, now less blue.
+    type: tweak
+  id: 2005
+  time: '2026-10-10T17:35:23.000'
+  url: https://github.com/moff-station/moff-station-14/pull/2005
+- author: Dave
+  changes:
+  - message: Command jumpskirt yml fix
+    type: fix
+  - message: Qm's jumpsuit yml fix
+    type: fix
+  id: 2006
+  time: '2026-10-10T15:31:48.000'
+  url: https://github.com/moff-station/moff-station-14/pull/2006
+- author: Nyxilath
+  changes:
+  - message: A.P.Es don't announce when they're locked or unlocked on science channel
+      anymore.
+    type: remove
+  id: 2007
+  time: '2026-10-10T14:30:27.000'
+  url: https://github.com/moff-station/moff-station-14/pull/2007
+- author: Nyxilath
+  changes:
+  - message: RandomSpawners will now drop rarespawns again!
+    type: fix
+  id: 2010
+  time: '2026-10-10T17:52:51.000'
+  url: https://github.com/moff-station/moff-station-14/pull/2010
 Name: Mofflog
 Order: -2

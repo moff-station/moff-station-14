@@ -70,6 +70,11 @@ public sealed partial class BorgTypePrototype : IPrototype
     /// </summary>
     [DataField]
     public Dictionary<string, DisplacementData> InventoryDisplacements { get; set; } = new();
+
+    /// The <see cref="InventoryComponent.SpeciesId"/> given to a cyborg which chooses this chassis. This allows
+    /// spriters to make clothes which are particular to a borg chassis.
+    [DataField]
+    public string? InventorySpeciesId;
     // Moffstation - End
 
     /// <summary>

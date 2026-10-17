@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
+using Content.Shared._Moffstation.Objectives; // Moff - objective added/removed events
 using Content.Shared.Administration.Logs;
 using Content.Shared.Database;
 using Content.Shared.Emoting;
@@ -368,6 +369,11 @@ public abstract partial class SharedMindSystem : EntitySystem
         var title = Name(objective);
         _adminLogger.Add(LogType.Mind, LogImpact.Low, $"Objective {objective} ({title}) added to mind of {MindOwnerLoggingString(mind)}");
         mind.Objectives.Add(objective);
+
+        // Moff Start - objective added event
+        var ev = new ObjectiveAddedEvent(mindId);
+        RaiseLocalEvent(objective, ref ev, broadcast: true);
+        // Moff end
     }
 
     /// <summary>
@@ -384,6 +390,11 @@ public abstract partial class SharedMindSystem : EntitySystem
         var title = Name(objective);
         _adminLogger.Add(LogType.Mind, LogImpact.Low, $"Objective {objective} ({title}) removed from the mind of {MindOwnerLoggingString(mind)}");
         mind.Objectives.Remove(objective);
+
+        // Moff Start - objective removed event
+        var ev = new ObjectiveRemovedEvent(mindId);
+        RaiseLocalEvent(objective, ref ev, broadcast: true);
+        // Moff end
 
         // garbage collection - only delete the objective entity if no mind uses it anymore
         // This comes up for stuff like paradox clones where the objectives share the same entity

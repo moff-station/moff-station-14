@@ -10,3 +10,16 @@
   description: alerts-french-toggle-desc
   minSeverity: 0
   maxSeverity: 1
+
+- type: alert
+  id: MoffVoteNotification
+  clickEvent: !type:ToggleVoteNotificationEvent
+  icons:
+  - sprite: _Moffstation/Interface/Alerts/votenotification.rsi
+    state: vote-off
+  - sprite: _Moffstation/Interface/Alerts/votenotification.rsi
+    state: vote-on
+  name: alerts-vote-notification-name
+  description: alerts-vote-notification-desc
+  minSeverity: 0
+  maxSeverity: 1

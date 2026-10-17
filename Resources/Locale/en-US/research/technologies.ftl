@@ -28,7 +28,8 @@ research-technology-uranium-munitions = Uranium Munitions
 research-technology-explosive-technology = Explosive Technology
 research-technology-special-means = Special Means
 research-technology-weaponized-laser-manipulation = Weaponized Laser Manipulation
-research-technology-nonlethal-ammunition = Nonlethal Ammunition
+# Funky - Made name more accurate
+research-technology-nonlethal-ammunition = Less-Lethal Ammunition
 research-technology-practice-ammunition = Practice Ammunition
 research-technology-concentrated-laser-weaponry = Concentrated Laser Weaponry
 research-technology-wave-particle-harnessing = Wave Particle Harnessing
@@ -44,6 +45,7 @@ research-technology-dual-wielding-technology = Dual Wielding Technology
 research-technology-basic-robotics = Basic Robotics
 research-technology-basic-anomalous-research = Basic Anomalous Research
 research-technology-basic-xenoarcheology = Basic XenoArcheology
+research-technology-telesci = TeleSci
 research-technology-alternative-research = Alternative Research
 research-technology-magnets-tech = Localized Magnetism
 research-technology-advanced-parts = Advanced Parts

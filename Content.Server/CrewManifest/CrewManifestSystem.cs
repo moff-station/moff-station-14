@@ -228,20 +228,24 @@ public sealed partial class CrewManifestSystem : EntitySystem
         foreach (var recordObject in iter)
         {
             var record = recordObject.Item2;
-            var entry = new CrewManifestEntry(record.Name, record.JobTitle, record.JobIcon, record.JobPrototype);
+            var entry = new CrewManifestEntry(record.Name, record.Gender.ToString().ToLowerInvariant(), record.JobTitle, record.JobIcon, record.JobPrototype); // Box - adds record.Gender for pronouns
 
             ProtoMan.TryIndex(record.JobPrototype, out JobPrototype? job);
             entriesSort.Add((job, entry));
         }
 
-        entriesSort.Sort((a, b) =>
+        var jobWeights = Comp<StationDataComponent>(station).JobWeights;
+        if (JobUIComparer.TryCreate(ProtoMan, jobWeights, out var comparer))
         {
-            var cmp = JobUIComparer.Instance.Compare(a.job, b.job);
-            if (cmp != 0)
-                return cmp;
+            entriesSort.Sort((a, b) =>
+            {
+                var cmp = comparer.Compare(a.job, b.job);
+                if (cmp != 0)
+                    return cmp;
 
-            return string.Compare(a.entry.Name, b.entry.Name, StringComparison.CurrentCultureIgnoreCase);
-        });
+                return string.Compare(a.entry.Name, b.entry.Name, StringComparison.CurrentCultureIgnoreCase);
+            });
+        }
 
         entries.Entries = entriesSort.Select(x => x.entry).ToArray();
         _cachedEntries[station] = entries;

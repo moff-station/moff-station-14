@@ -46,11 +46,9 @@ public sealed partial class StrangeMoodsSystem : SharedStrangeMoodsSystem
 
     private void OnStrangeMoodsInit(Entity<StrangeMoodsComponent> ent, ref MapInitEvent args)
     {
-        var mood = ent.Comp.StrangeMood;
-
         if (_proto.TryIndex(ent.Comp.StrangeMoodPrototype, out var moodProto))
         {
-            mood = DeepCopy(moodProto);
+            ent.Comp.StrangeMood = DeepCopy(moodProto);
 
             // Add any required components
             if (moodProto.Components is { } components)
@@ -60,14 +58,16 @@ public sealed partial class StrangeMoodsSystem : SharedStrangeMoodsSystem
         }
 
         RefreshMoods(ent);
-        SetSharedMood(ent, mood.SharedMoodPrototype);
+        SetSharedMood(ent, ent.Comp.StrangeMood.SharedMoodPrototype);
 
         // Add action to bar
-        ent.Comp.Action ??= _actions.AddAction(ent.Owner, mood.ActionViewMoods);
+        ent.Comp.Action ??= _actions.AddAction(ent.Owner, ent.Comp.StrangeMood.ActionViewMoods);
         if (TryComp<UserInterfaceComponent>(ent, out var ui))
+        {
             _bui.SetUi((ent, ui),
                 StrangeMoodsUiKey.Key,
                 new InterfaceData("StrangeMoodsBoundUserInterface", requireInputValidation: false));
+        }
     }
 
     private void OnStrangeMoodsShutdown(Entity<StrangeMoodsComponent> ent, ref ComponentShutdown args)

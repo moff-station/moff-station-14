@@ -41,7 +41,8 @@ id-card-access-level-maintenance = Maintenance
 
 id-card-access-level-external = External
 
-id-card-access-level-nuclear-operative = Nuclear Operative
+#Moff - Nukies -> Gorlex
+id-card-access-level-nuclear-operative = Gorlex Marauder
 id-card-access-level-syndicate-agent = Syndicate Agent
 
 id-card-access-level-central-command = Central Command

@@ -60,10 +60,6 @@
     collectionName: substation
 
   # Damage
-  - type: Damageable
-    damageModifierSet: StructuralMetallicStrong
-  - type: Injurable
-    damageContainer: StructuralInorganic
   - type: PacifismDangerousAttack
 
   # Guidebook
@@ -83,7 +79,7 @@
 - type: entity
   abstract: true
   id: BaseSubstation
-  parent: [ CoreSubstation, BaseMachine, ConstructibleMachine ]
+  parent: [ CoreSubstation, BaseMachine, ConstructibleMachine, BaseConstructibleMachineDestructible ]
   name: substation
   description: Reduces the voltage of electricity put into it.
   placement:
@@ -113,19 +109,12 @@
     thresholds:
     - trigger:
         !type:DamageTrigger
-        damage: 100
+        damage: 175
       behaviors:
-      - !type:DoActsBehavior
-        acts: ["Destruction"]
       - !type:PlaySoundBehavior
         sound:
           collection: MetalGlassBreak
       - !type:ExplodeBehavior
-      - !type:SpawnEntitiesBehavior
-        spawn:
-          MachineFrameDestroyed:
-            min: 1
-            max: 1
       - !type:SpawnGasBehavior
         gasMixture:
           volume: 1000
@@ -133,7 +122,7 @@
             CarbonDioxide: 340.5701689 # carbon dioxide
           temperature: 373.15
   - type: Explosive
-    explosionType: Default
+    explosionType: Transparent # Funky RMC Explosions
     maxIntensity: 100
     intensitySlope: 2
     totalIntensity: 200
@@ -158,8 +147,8 @@
 
 # Compact Wall Substation Base
 - type: entity
+  parent: [ CoreSubstation, StructureHealthMachine ]
   id: BaseSubstationWall
-  parent: CoreSubstation
   categories: [ HideSpawnMenu ]
   name: wallmount substation
   description: A substation designed for compact shuttles and spaces.
@@ -202,14 +191,14 @@
   - type: PowerMonitoringDevice
     sprite: Structures/Power/substation.rsi
     state: substation_wall_static
+  - type: Damageable
+    damageModifierSet: SteelMod
   - type: Destructible
     thresholds:
     - trigger:
         !type:DamageTrigger
-        damage: 100
+        damage: 175
       behaviors:
-      - !type:DoActsBehavior
-        acts: ["Destruction"]
       - !type:ExplodeBehavior
       - !type:PlaySoundBehavior
         sound:

@@ -1,17 +1,17 @@
+using System.Collections.ObjectModel;
 using System.Globalization;
 using System.Linq;
 using System.Numerics;
-using Content.Server._CD.Records; // Moffstation - Fix a bug with CD character records that gets messed up with randomized characters
+using Content.Server._CD.Records;
+using Content.Server._Moffstation.Preferences;
 using Content.Server.Administration.Managers;
 using Content.Server.Administration.Systems;
 using Content.Server.GameTicking.Events;
 using Content.Server.Spawners.Components;
-using Content.Server.Speech.Components;
 using Content.Server.Station.Components;
 using Content.Shared.CCVar;
 using Content.Shared.Database;
 using Content.Shared.GameTicking;
-using Content.Shared.Humanoid;
 using Content.Shared.Humanoid.Prototypes;
 using Content.Shared.Mind;
 using Content.Shared.Players;
@@ -35,6 +35,8 @@ namespace Content.Server.GameTicking
         [Dependency] private IAdminManager _adminManager = default!;
         [Dependency] private SharedJobSystem _jobs = default!;
         [Dependency] private AdminSystem _admin = default!;
+
+        [Dependency] private MoffCharacterSelectionManager _moffCharacterSelection = default!; // Moff
 
         public static readonly EntProtoId ObserverPrototypeName = "MobObserver";
         public static readonly EntProtoId AdminObserverPrototypeName = "AdminObserver";
@@ -90,13 +92,11 @@ namespace Content.Server.GameTicking
             }
 
             var spawnableStations = GetSpawnableStations();
-            var assignedJobs = _stationJobs.AssignJobs(profiles, spawnableStations);
-
-            _stationJobs.AssignOverflowJobs(ref assignedJobs, playerNetIds, profiles, spawnableStations);
+            var assignedJobs = _stationJobs.AssignJobsAndOverflowJobs(playerNetIds, spawnableStations); // Moff - Multi profile selection - Consolidate normal and overflow job assignment
 
             // Calculate extended access for stations.
             var stationJobCounts = spawnableStations.ToDictionary(e => e, _ => 0);
-            foreach (var (netUser, (job, station)) in assignedJobs)
+            foreach (var (netUser, (job, station, _)) in assignedJobs) // Moff - Multi profile selection
             {
                 if (job == null)
                 {
@@ -115,12 +115,12 @@ namespace Content.Server.GameTicking
             _stationJobs.CalcExtendedAccess(stationJobCounts);
 
             // Spawn everybody in!
-            foreach (var (player, (job, station)) in assignedJobs)
+            foreach (var (player, (job, station, profile)) in assignedJobs) // Moff - Multi profile selection - Track which profile is picked
             {
                 if (job == null)
                     continue;
 
-                SpawnPlayer(_playerManager.GetSessionById(player), profiles[player], station, job, false);
+                SpawnPlayer(_playerManager.GetSessionById(player), profile, station, job, false); // Moff - Multi profile selection
             }
 
             RefreshLateJoinAllowed();
@@ -128,17 +128,18 @@ namespace Content.Server.GameTicking
             // Allow rules to add roles to players who have been spawned in. (For example, on-station traitors)
             RaiseLocalEvent(new RulePlayerJobsAssignedEvent(
                 assignedJobs.Keys.Select(x => _playerManager.GetSessionById(x)).ToArray(),
-                profiles,
+                assignedJobs.ToDictionary(it => it.Key, it => it.Value.Item3), // Moff - Multi profile selection - Drop picked profile here
                 force));
         }
 
         private void SpawnPlayer(ICommonSession player,
+            int? profileIndex, // Moff - Multi character selection
             EntityUid station,
             string? jobId = null,
             bool lateJoin = true,
             bool silent = false)
         {
-            var character = GetPlayerProfile(player);
+            var character = GetPlayerProfile(player, profileIndex); // Moff - Multi character selection
 
             var jobBans = _banManager.GetJobBans(player.UserId);
             if (jobBans == null || jobId != null && jobBans.Contains(jobId)) //TODO: use IsRoleBanned directly?
@@ -377,7 +378,7 @@ namespace Content.Server.GameTicking
             if (LobbyEnabled)
                 PlayerJoinLobby(player);
             else
-                SpawnPlayer(player, EntityUid.Invalid);
+                SpawnPlayer(player, profileIndex: null, EntityUid.Invalid); // Moff - Multi character selection
         }
 
         /// <summary>
@@ -387,7 +388,7 @@ namespace Content.Server.GameTicking
         /// <param name="station">The station they're spawning on</param>
         /// <param name="jobId">An optional job for them to spawn as</param>
         /// <param name="silent">Whether or not the player should be greeted upon joining</param>
-        public void MakeJoinGame(ICommonSession player, EntityUid station, string? jobId = null, bool silent = false)
+        public void MakeJoinGame(ICommonSession player, int? profileIndex, EntityUid station, string? jobId = null, bool silent = false) // Moff - Multi character selection
         {
             if (!_playerGameStatuses.ContainsKey(player.UserId))
                 return;
@@ -395,7 +396,7 @@ namespace Content.Server.GameTicking
             if (!_userDb.IsLoadComplete(player))
                 return;
 
-            SpawnPlayer(player, station, jobId, silent: silent);
+            SpawnPlayer(player, profileIndex, station, jobId, silent: silent); // Moff - Multi character selection
         }
 
         /// <summary>
@@ -424,7 +425,7 @@ namespace Content.Server.GameTicking
             Entity<MindComponent?>? mind = player.GetMind();
             if (mind == null)
             {
-                var name = GetPlayerProfile(player).Name;
+                var name = GetPlayerProfile(player, profileIndex: null).Name; // Moff - Multi character selection
                 var (mindId, mindComp) = _mind.CreateMind(player.UserId, name);
                 mind = (mindId, mindComp);
                 _mind.SetUserId(mind.Value, player.UserId);

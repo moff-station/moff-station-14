@@ -1,12 +1,12 @@
 - type: entity
   parent: DrinkGlass
-  id: LemonLimeBittersGlass
+  id: MoffLemonLimeBittersGlass
   suffix: lemon lime and bitters
   components:
   - type: Solution
     solution:
       reagents:
-      - ReagentId: LemonLimeBitters
+      - ReagentId: MoffLemonLimeBitters
         Quantity: 30
   - type: Icon
     sprite: _Moffstation/Objects/Consumable/Drinks/lemonlimebitters.rsi
@@ -14,13 +14,13 @@
 
 - type: entity
   parent: DrinkGlass
-  id: PinkGinGlass
+  id: MoffPinkGinGlass
   suffix: pink gin
   components:
   - type: Solution
     solution:
       reagents:
-      - ReagentId: PinkGin
+      - ReagentId: MoffPinkGin
         Quantity: 30
   - type: Icon
     sprite: _Moffstation/Objects/Consumable/Drinks/ginpink.rsi
@@ -28,13 +28,13 @@
 
 - type: entity
   parent: DrinkGlass
-  id: PlatersPunchGlass
+  id: MoffPlatersPunchGlass
   suffix: planters punch
   components:
   - type: Solution
     solution:
       reagents:
-      - ReagentId: PlantersPunch
+      - ReagentId: MoffPlantersPunch
         Quantity: 30
   - type: Icon
     sprite: _Moffstation/Objects/Consumable/Drinks/planterspunch.rsi
@@ -42,13 +42,13 @@
 
 - type: entity
   parent: DrinkGlass
-  id: BreathalyzerGlass
+  id: MoffBreathalyzerGlass
   suffix: breathalyzer
   components:
   - type: Solution
     solution:
       reagents:
-      - ReagentId: Breathalyzer
+      - ReagentId: MoffBreathalyzer
         Quantity: 30
   - type: Icon
     sprite: _Moffstation/Objects/Consumable/Drinks/breathalyzer.rsi
@@ -56,13 +56,13 @@
 
 - type: entity
   parent: DrinkGlass
-  id: CorpseReviverGlass
+  id: MoffCorpseReviverGlass
   suffix: Corpse Reviver no. 2
   components:
   - type: Solution
     solution:
       reagents:
-      - ReagentId: CorpseReviver
+      - ReagentId: MoffCorpseReviver
         Quantity: 30
   - type: Icon
     sprite: _Moffstation/Objects/Consumable/Drinks/corpsereviver.rsi
@@ -70,13 +70,13 @@
 
 - type: entity
   parent: DrinkGlass
-  id: PrairieCocktailGlass
+  id: MoffPrairieCocktailGlass
   suffix: Prairie Cocktail
   components:
   - type: Solution
     solution:
       reagents:
-      - ReagentId: PrairieCocktail
+      - ReagentId: MoffPrairieCocktail
         Quantity: 30
   - type: Icon
     sprite: _Moffstation/Objects/Consumable/Drinks/prairiecocktail.rsi
@@ -84,13 +84,13 @@
 
 - type: entity
   parent: DrinkGlass
-  id: MossySpecialGlass
+  id: MoffMossySpecialGlass
   suffix: Mossy Special
   components:
   - type: Solution
     solution:
       reagents:
-      - ReagentId: MossySpecial
+      - ReagentId: MoffMossySpecial
         Quantity: 30
   - type: Icon
     sprite: _Moffstation/Objects/Consumable/Drinks/mossyspecial.rsi
@@ -98,13 +98,13 @@
 
 - type: entity
   parent: DrinkGlass
-  id: DrinkScrantonSpecialGlass
+  id: MoffScrantonSpecialGlass
   suffix: scranton special
   components:
   - type: Solution
     solution:
       reagents:
-      - ReagentId: ScrantonSpecial
+      - ReagentId: MoffScrantonSpecial
         Quantity: 30
   - type: Icon
     sprite: _Moffstation/Objects/Consumable/Drinks/scrantonspecial.rsi
@@ -112,13 +112,13 @@
 
 - type: entity
   parent: DrinkGlass
-  id: ApexColaGlass
+  id: MoffApexColaGlass
   suffix: Apex Cola
   components:
   - type: Solution
     solution:
       reagents:
-      - ReagentId: ApexCola
+      - ReagentId: MoffApexCola
         Quantity: 30
   - type: Icon
     sprite: _Moffstation/Objects/Consumable/Drinks/apexcola.rsi
@@ -126,13 +126,13 @@
 
 - type: entity
   parent: DrinkGlass
-  id: CocoonGlass
+  id: MoffCocoonGlass
   suffix: Cocoon
   components:
   - type: Solution
     solution:
       reagents:
-      - ReagentId: Cocoon
+      - ReagentId: MoffCocoon
         Quantity: 30
   - type: Icon
     sprite: _Moffstation/Objects/Consumable/Drinks/cocoon.rsi
@@ -140,13 +140,13 @@
 
 - type: entity
   parent: DrinkGlass
-  id: CoughDropGlass
+  id: MoffCoughDropGlass
   suffix: Cough Drop
   components:
   - type: Solution
     solution:
       reagents:
-      - ReagentId: CoughDrop
+      - ReagentId: MoffCoughDrop
         Quantity: 30
   - type: Icon
     sprite: _Moffstation/Objects/Consumable/Drinks/coughdrop.rsi
@@ -154,13 +154,13 @@
 
 - type: entity
   parent: DrinkGlass
-  id: FertilizerGlass
+  id: MoffFertilizerGlass
   suffix: Fertilizer
   components:
   - type: Solution
     solution:
       reagents:
-      - ReagentId: Fertilizer
+      - ReagentId: MoffFertilizer
         Quantity: 30
   - type: Icon
     sprite: _Moffstation/Objects/Consumable/Drinks/fertilizer.rsi
@@ -168,13 +168,13 @@
 
 - type: entity
   parent: DrinkGlass
-  id: GelatinGlass
+  id: MoffGelatinGlass
   suffix: Gelatin
   components:
   - type: Solution
     solution:
       reagents:
-      - ReagentId: Gelatin
+      - ReagentId: MoffGelatin
         Quantity: 30
   - type: Icon
     sprite: _Moffstation/Objects/Consumable/Drinks/gelatin.rsi
@@ -182,13 +182,13 @@
 
 - type: entity
   parent: DrinkGlass
-  id: MeatAnomalyGlass
+  id: MoffMeatAnomalyGlass
   suffix: Meat Anomaly
   components:
   - type: Solution
     solution:
       reagents:
-      - ReagentId: MeatAnomaly
+      - ReagentId: MoffMeatAnomaly
         Quantity: 30
   - type: Icon
     sprite: _Moffstation/Objects/Consumable/Drinks/meatanomaly.rsi
@@ -196,13 +196,13 @@
 
 - type: entity
   parent: DrinkGlass
-  id: MeatPulpGlass
+  id: MoffMeatPulpGlass
   suffix: Meat Pulp
   components:
   - type: Solution
     solution:
       reagents:
-      - ReagentId: MeatPulp
+      - ReagentId: MoffMeatPulp
         Quantity: 30
   - type: Icon
     sprite: _Moffstation/Objects/Consumable/Drinks/meatpulp.rsi
@@ -210,13 +210,13 @@
 
 - type: entity
   parent: DrinkGlass
-  id: SolarHurricaneGlass
+  id: MoffSolarHurricaneGlass
   suffix: Solar Hurricane
   components:
   - type: Solution
     solution:
       reagents:
-      - ReagentId: SolarHurricane
+      - ReagentId: MoffSolarHurricane
         Quantity: 30
   - type: Icon
     sprite: _Moffstation/Objects/Consumable/Drinks/solarhurricane.rsi
@@ -224,13 +224,13 @@
 
 - type: entity
   parent: DrinkGlass
-  id: RussianMothroachGlass
+  id: MoffRussianMothroachGlass
   suffix: Russian Mothroach
   components:
   - type: Solution
     solution:
       reagents:
-      - ReagentId: RussianMothroach
+      - ReagentId: MoffRussianMothroach
         Quantity: 30
   - type: Icon
     sprite: _Moffstation/Objects/Consumable/Drinks/russianmothroach.rsi
@@ -238,13 +238,13 @@
 
 - type: entity
   parent: DrinkGlass
-  id: UprootingGlass
+  id: MoffUprootingGlass
   suffix: Uprooting
   components:
   - type: Solution
     solution:
       reagents:
-      - ReagentId: Uprooting
+      - ReagentId: MoffUprooting
         Quantity: 30
   - type: Icon
     sprite: _Moffstation/Objects/Consumable/Drinks/uprooting.rsi

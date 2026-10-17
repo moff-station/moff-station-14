@@ -1,7 +1,7 @@
 - type: entity
-  name: kobold
-  id: MobBaseTarbold
   parent: MobBaseKobold
+  id: MobBaseTarbold
+  name: kobold
   description: Genetically stunted clones of a beloved lizard. Wearing jamjars from birth until death.
   abstract: true
   components:
@@ -55,16 +55,11 @@
     rules: ghost-role-information-freeagent-rules
 
 - type: entity
-  name: Tarbold
-  id: MobTarbold
   parent: MobBaseTarbold
+  id: MobTarbold
+  name: Tarbold
   description: Genetically stunted clones of a beloved lizard. Wearing jamjars from birth until death.
   components:
-  - type: Clumsy
-    gunShootFailDamage:
-      types:
-        Blunt: 2
-        Piercing: 7
-        Heat: 3
-    clumsySound:
-      path: /Audio/Voice/Reptilian/reptilian_scream.ogg
+  - type: PermanentStatusEffects
+    statusEffects:
+    - StatusEffectClumsyKobold

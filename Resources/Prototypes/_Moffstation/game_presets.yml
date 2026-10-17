@@ -23,9 +23,11 @@
   - DummyNonAntagChance
   - Pirates
   - SubGamemodesRuleNoWizard
-  - BasicStationEventScheduler
+#  - BasicStationEventScheduler # Split into the calm and spicy schedulers below
+  - MoffCalmStationEventScheduler
+  - MoffSpicyStationEventScheduler
   - MeteorSwarmScheduler
-  - SpaceTrafficControlEventScheduler
+#  - SpaceTrafficControlEventScheduler # Merged into BasicStationEventScheduler
   - BasicRoundstartVariation
 
 - type: gamePreset
@@ -34,9 +36,11 @@
   showInVote: false #2boring2vote
   description: extended-description
   rules:
-  - BasicStationEventScheduler
+#  - BasicStationEventScheduler # Split into the calm and spicy schedulers below
+  - MoffCalmStationEventScheduler
+  - MoffSpicyStationEventScheduler
   - MeteorSwarmScheduler
-  - SpaceTrafficControlEventScheduler
+#  - SpaceTrafficControlEventScheduler # Merged into BasicStationEventScheduler
   - BasicRoundstartVariation
 
 - type: gamePreset
@@ -51,7 +55,9 @@
   - DummyNonAntagChance
   - WizardDuel
   - SubGamemodesRuleNoWizard
-  - BasicStationEventScheduler
+#  - BasicStationEventScheduler # Split into the calm and spicy schedulers below
+  - MoffCalmStationEventScheduler
+  - MoffSpicyStationEventScheduler
   - MeteorSwarmScheduler
-  - SpaceTrafficControlEventScheduler
+#  - SpaceTrafficControlEventScheduler # Merged into BasicStationEventScheduler
   - BasicRoundstartVariation

@@ -6,13 +6,16 @@
     rules:
     - id: Thief
       orGroup: SubGamemodes
-      prob: 0.45
+      prob: 0.30
     - id: BloodBrothers
       orGroup: SubGamemodes
-      prob: 0.45
+      prob: 0.30
     - id: SubWizard
       orGroup: SubGamemodes
       prob: 0.10
+    - id: Changeling
+      orGroup: SubGamemodes
+      prob: 0.30
 
 - type: entity
   parent: BaseGameRule
@@ -22,10 +25,13 @@
     rules:
     - id: Thief
       orGroup: SubGamemodes
-      prob: 0.5
+      prob: 0.35
     - id: BloodBrothers
       orGroup: SubGamemodes
-      prob: 0.5
+      prob: 0.30
+    - id: Changeling
+      orGroup: SubGamemodes
+      prob: 0.35
 
 - type: entity
   parent: BaseGameRule
@@ -35,10 +41,13 @@
     rules:
     - id: SyndicateListeningOutpost
       orGroup: SubGamemodes
-      prob: 0.30
+      prob: 0.25
     - id: Thief
       orGroup: SubGamemodes
-      prob: 0.35
+      prob: 0.25
     - id: BloodBrothers
       orGroup: SubGamemodes
-      prob: 0.35
+      prob: 0.25
+    - id: Changeling
+      orGroup: SubGamemodes
+      prob: 0.25

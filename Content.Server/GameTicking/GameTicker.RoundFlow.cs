@@ -33,6 +33,9 @@ using Content.Shared.FixedPoint;
 using Content.Shared.Mobs;
 using Content.Shared.Mobs.Components;
 using Robust.Shared.Prototypes;
+using Content.Server.Voting.Managers; // Moff
+using Content.Shared.Voting; // Moff
+using Timer = Robust.Shared.Timing.Timer; // Moff
 
 namespace Content.Server.GameTicking
 {
@@ -43,6 +46,7 @@ namespace Content.Server.GameTicking
         [Dependency] private ITaskManager _taskManager = default!;
 
         [Dependency] private DamageableSystem _damageable = default!; // Moffstation - Goob roundend info
+        [Dependency] private IVoteManager _voteManager = default!; // Moff - auto map vote
 
         private static readonly Counter RoundNumberMetric = Metrics.CreateCounter(
             "ss14_round_number",
@@ -362,9 +366,15 @@ namespace Content.Server.GameTicking
         // Moffstation - Start - Player count calculated depending on cvar
         public int DynamicPlayerCount()
         {
-            return _cfg.GetCVar(MoffCCVars.GameRulesCountReadied)
-                ? ReadyPlayerCount()
-                : _playerManager.PlayerCount;
+            var unreadiedPlayerWeight = _cfg.GetCVar(MoffCCVars.GameRulesUnreadiedPlayerWeight);
+            if (unreadiedPlayerWeight == 0.0f)
+                return _playerManager.PlayerCount;
+
+            var readied = ReadyPlayerCount();
+            var unreadied = _playerManager.PlayerCount - readied;
+            var unreadiedWeighted = (int) Math.Ceiling(unreadied * unreadiedPlayerWeight);
+
+            return readied + unreadiedWeighted;
         }
         // Moffstation - End
 
@@ -728,6 +738,26 @@ namespace Content.Server.GameTicking
                 UpdateInfoText();
 
                 ReqWindowAttentionAll();
+
+                // Moff Start - Auto-start a map vote timed to finish just before map preload
+                if (_cfg.GetCVar(MoffCCVars.AutoStartMapVote))
+                {
+                    // 5s buffer so the vote resolves before map preloading starts
+                    var preloadTime = RoundPreloadTime + TimeSpan.FromSeconds(5);
+
+                    // Delay so the vote lands late in the lobby (accurate pop) and ends before preload
+                    var delay = LobbyDuration - (preloadTime + TimeSpan.FromSeconds(_cfg.GetCVar(CCVars.VoteTimerMap)));
+                    Timer.Spawn(delay,
+                        () =>
+                    {
+                        if (RunLevel != GameRunLevel.PreRoundLobby || Paused)
+                            return;
+                        // There isn't really a better way to identify an already running map vote...
+                        if (_voteManager.ActiveVotes.All(x => x.Title != Loc.GetString("ui-vote-map-title")))
+                            _voteManager.CreateStandardVote(null, StandardVoteType.Map);
+                    });
+                }
+                // Moff end
             }
         }
 
@@ -1004,6 +1034,7 @@ namespace Content.Server.GameTicking
         /// </summary>
         /// <remarks>If you spawn a player by yourself from this event, don't forget to call <see cref="GameTicker.PlayerJoinGame"/> on them.</remarks>
         public List<ICommonSession> PlayerPool { get; }
+        [Obsolete("Moffstation has multi-profile selection, so this dictionary is WRONG. It's left in place to minimize changes to upstream code, but when looking for what profiles to spawn a player as, one should use the `MoffCharacterSelectionManager` to get all active profiles for a user")] // Moff - Multi profile selection
         public IReadOnlyDictionary<NetUserId, HumanoidCharacterProfile> Profiles { get; }
         public bool Forced { get; }
 

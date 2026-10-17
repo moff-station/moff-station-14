@@ -1,0 +1,17 @@
+- type: stack
+  parent: BaseTileStack
+  id: MoffFloorTileSteelSlatsContinuous
+  name: stack-steel-slats-tile-continuous
+  spawn: MoffFloorTileItemSteelSlatsContinuous
+
+- type: stack
+  parent: BaseTileStack
+  id: MoffFloorTileDarkSlatsContinuous
+  name: stack-dark-steel-slats-tile-continuous
+  spawn: MoffFloorTileItemDarkSlatsContinuous
+
+- type: stack
+  parent: BaseTileStack
+  id: MoffFloorTileWhiteSlatsContinuous
+  name: stack-white-steel-slats-tile-continuous
+  spawn: MoffFloorTileItemWhiteSlatsContinuous

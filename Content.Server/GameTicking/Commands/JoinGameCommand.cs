@@ -34,11 +34,18 @@ namespace Content.Server.GameTicking.Commands
 
         public void Execute(IConsoleShell shell, string argStr, string[] args)
         {
+            // Moff Start - Multi-character selection: an optional leading slot argument says which
+            // character to join as. The two argument form still works and uses the selected one.
+            /*
             if (args.Length != 2)
             {
                 shell.WriteError(Loc.GetString("shell-wrong-arguments-number"));
                 return;
             }
+            */
+            if (!TryTakeMoffSlotArg(shell, ref args, out var cs) || cs is not {} charSlot) // Moff - Multi character selection
+                return;
+            // Moff end
 
             var player = shell.Player;
 
@@ -82,7 +89,7 @@ namespace Content.Server.GameTicking.Commands
                 _adminManager.DeAdmin(player);
             }
 
-            ticker.MakeJoinGame(player, station, id);
+            ticker.MakeJoinGame(player, charSlot, station, id); // Moff - Multi character selection
         }
     }
 }

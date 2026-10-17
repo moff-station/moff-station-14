@@ -37,13 +37,10 @@
   # let air cook and freeze meat for cooking and preservation
   - type: AtmosExposed
   - type: Temperature
-    currentTemperature: 290
+    heatCapacity: 750
   - type: TemperatureDamage
   # required for cooking to work
   - type: InternalTemperature
-    conductivity: 0.44
-    thickness: 0.005
-    area: 0.0075 # ~5x15cm
   - type: Material
   - type: PhysicalComposition
     materialComposition:

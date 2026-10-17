@@ -155,7 +155,11 @@
     fireRate: 0.5
     soundEmpty: /Audio/Misc/boing.ogg
   - type: BasicEntityAmmoProvider
-    proto: StickyHandPalm
+    # Moff Start - Entity table integration
+    # proto: StickyHandPalm
+    ammoTable:
+      id: StickyHandPalm
+    # Moff End
     capacity: 1
   - type: Sprite
     sprite: Objects/Weapons/Guns/Launchers/sticky_hand.rsi
@@ -177,6 +181,7 @@
     damage:
       types:
         Blunt: 0.0 # Remove damage to avoid pacifism metagaming
+    undamagedAlertThreshold: 0
 
 - type: entity
   parent: [ BaseItem, BaseToySword ]
@@ -233,6 +238,7 @@
       shader: unshaded
       map: [ "blade" ]
   - type: EnergySword
+  - type: ItemToggleExaminableStatus
   - type: ItemToggle
     soundActivate:
       path: /Audio/Weapons/ebladeon.ogg

@@ -1,0 +1,93 @@
+- type: entity
+  parent: MoffBaseEnrollSpicy
+  id: DragonEnroller
+  name: Space Dragon
+  description: Call in 3 carp rifts and take over this quadrant! You have only 5 minutes in between each rift before you will disappear.
+
+- type: entity
+  parent: MoffBaseEnrollSpicy
+  id: NinjaEnroller
+  name: Space Ninja
+  description: Play as an elite mercenary of the mighty Spider Clan! Surprise is your weapon. Shadows are your armor. Without them, you are nothing. Use your pinpointer to find the station.
+
+- type: entity
+  parent: MoffBaseEnrollSpicy
+  id: ParadoxCloneEnroller
+  name: Paradox Clone
+  description: A freak space-time anomaly has teleported you into another reality! Now you have to find your counterpart to kill and replace them, or find a way to coexist.
+
+- type: entity
+  parent: MoffBaseEnrollSpicy
+  id: SyndieVentSoldierEnroller
+  name: Syndicate Vent Soldier
+  description: You, the first person the syndicate could find, have been sent on a mission to the station.
+
+- type: entity
+  parent: MoffBaseEnrollSpicy
+  id: LoneOpEnroller
+  name: Lone Operative
+  description: Find the nuke disk and blow up the station.
+
+- type: entity
+  parent: MoffBaseEnrollSpicy
+  id: PirateCorsairEnroller
+  name: Pirate Corsair
+  description: SHIVER ME TIMBERS! YOU BE A PIRATE SENT TO ROB THE STATION. STEAL, LOOT, PILLAGE, AND MAKE US ALL RICH.
+
+- type: entity
+  parent: MoffBaseEnrollSpicy
+  id: SyndicateSpyEnroller
+  name: Syndicate Spy
+  description: Observe the station from afar and coordinate Syndicate efforts from the safety of your listening post.
+  components:
+  - type: MoffEnrollEvent
+    minEnrolled: 2
+    fallbackRules: !type:NestedSelector
+      tableId: MoffSpicyNonPlayerEventsTable
+
+- type: entity
+  parent: MoffBaseEnrollSpicy
+  id: WizardEnroller
+  name: Wizard
+  description: YER A WIZARD! Prove you're the best the space wizard federation has to offer!
+
+- type: entity
+  parent: MoffBaseEnrollSpicy
+  id: ReplicatorEnroller
+  name: Replicator Queen
+  description: A pattern coalesces. The Pattern that must repeat. Consume. Repeat.
+
+- type: entity
+  parent: MoffBaseEnrollSpicy
+  id: EepEnroller
+  name: Eeplet
+  description: A baby electric sheep. Eat batteries and power as your food supply.
+
+- type: entity
+  parent: MoffBaseEnrollSpicy
+  id: ClosetSkeletonEnroller
+  name: Closet Skeleton
+  description: You are arguably one of the oldest members of the station! Get your old job back, or cause chaos! The world is yours to shape.
+
+- type: entity
+  parent: MoffBaseEnrollSpicy
+  id: RevenantEnroller
+  name: Revenant
+  description: You are a Revenant. Use your powers to harvest souls and unleash chaos upon the crew. Unlock new abilities with the essence you harvest.
+
+- type: entity
+  parent: MoffBaseEnrollSpicy
+  id: RatKingEnroller
+  name: Rat King
+  description: You are the Rat King, your interests are food, food, and more food. Fight against the station for food. Did I say food interests you?
+
+- type: entity
+  parent: MoffBaseEnrollSpicy
+  id: InstigatorEnroller
+  name: Cybersun Assault Ship
+  description: You are a soldier from Cybersun sent on an assault ship to a Nanotrasen station.
+  components:
+  - type: MoffEnrollEvent
+    minEnrolled: 3
+    fallbackRules: !type:NestedSelector
+      tableId: MoffSpicyNonPlayerEventsTable

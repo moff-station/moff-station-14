@@ -187,6 +187,7 @@
     tags:
     - PetWearable
     - CorgiWearable
+    - WhitelistChameleon
 
 - type: entity
   parent: ClothingHeadBase
@@ -202,6 +203,7 @@
     tags:
     - PetWearable
     - CorgiWearable
+    - WhitelistChameleon
     - HamsterWearable # Moffstatiob
 
 - type: entity
@@ -266,6 +268,7 @@
     tags:
     - PetWearable
     - CorgiWearable
+    - WhitelistChameleon
 
 - type: entity
   parent: [ClothingHeadBase, BaseCommandContraband]
@@ -308,13 +311,14 @@
   description: Feels good being the king's boss.
   components:
   - type: Sprite
-    sprite: Clothing/Head/Hats/centcom.rsi
+    sprite: _Moffstation/Clothing/Head/Hats/centcom.rsi # Moff
   - type: Clothing
-    sprite: Clothing/Head/Hats/centcom.rsi
+    sprite: _Moffstation/Clothing/Head/Hats/centcom.rsi # Moff
   - type: Tag
     tags:
     - PetWearable
     - CorgiWearable
+    - WhitelistChameleon
 
 - type: entity
   parent: ClothingHeadBase
@@ -564,7 +568,6 @@
   components:
   - type: Clothing
     sprite: Clothing/Head/Hats/santahat.rsi
-  - type: Appearance
   - type: HideLayerClothing
     layers:
       Hair: HEAD
@@ -755,7 +758,6 @@
   components:
   - type: Clothing
     sprite: _Moffstation/Clothing/Head/Hats/ushanka.rsi # Moffstation - For Arstotzka
-  - type: Appearance
   - type: RussianAccent
     relayAccent: true
   - type: Foldable
@@ -842,6 +844,7 @@
     tags:
     - PetWearable
     - CorgiWearable
+    - WhitelistChameleon
     - HamsterWearable # Moffstation - New Security Outfits
 
 - type: entity
@@ -1291,11 +1294,11 @@
   description: An extravagant, stylish cap worn by CentComm officials. Shows the Captain who's in charge.
   components:
   - type: Sprite
-    sprite: Clothing/Head/Hats/comcap.rsi
+    sprite: _Moffstation/Clothing/Head/Hats/comcap.rsi # Moff
   - type: Clothing
-    sprite: Clothing/Head/Hats/comcap.rsi
+    sprite: _Moffstation/Clothing/Head/Hats/comcap.rsi # Moff
   - type: Item
-    sprite: Clothing/Head/Hats/comcap.rsi
+    sprite: _Moffstation/Clothing/Head/Hats/comcap.rsi # Moff
   - type: Tag
     tags:
     - PetWearable
@@ -1576,6 +1579,7 @@
     tags:
     - PetWearable
     - CorgiWearable
+    - WhitelistChameleon
     - HamsterWearable # Moffstation
 
 - type: entity
@@ -1646,3 +1650,19 @@
       - state: equipped-HELMET
         offset: "0, 0.24"
     # Moffstation - End
+
+- type: entity
+  parent: ClothingHeadBase
+  id: ClothingHeadHatTramDriver
+  name: tram driver hat
+  description: It smells like confidence.
+  components:
+  - type: Sprite
+    sprite: Clothing/Head/Hats/tramdriver.rsi
+  - type: Clothing
+    sprite: Clothing/Head/Hats/tramdriver.rsi
+  - type: Tag
+    tags:
+    - ClothMade
+    - Recyclable
+    - WhitelistChameleon

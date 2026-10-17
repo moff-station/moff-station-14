@@ -20,10 +20,7 @@
   - type: MachineBoard
     prototype: AutolatheHyperConvection
     stackRequirements:
-      # Moffstation - Begin - Revert machine parts
-      Manipulator: 1 # 4 on upstream, 3 moved to matter bins
-      MatterBin: 3
-      # Moffstation - End
+      MatterBin: 3 #moffstation - Revert machine parts
       Glass: 1
     tagRequirements:
       Igniter:
@@ -144,7 +141,7 @@
   - type: MachineBoard
     prototype: CircuitImprinter
     stackRequirements:
-      MatterBin: 1 #moffstation - Revert machine parts
+      MatterBin: 2 #moffstation - Revert machine parts
       Manipulator: 1 #moffstation - Revert machine parts
     tagRequirements:
       GlassBeaker:
@@ -301,6 +298,21 @@
       Manipulator: 2
       Glass: 1
       Steel: 5
+
+- type: entity
+  id: StationTeleporterMachineCircuitboard
+  parent: BaseMachineCircuitboard
+  name: teleporter machine board
+  description: A machine printed circuit board for a bluespace teleporter.
+  components:
+  - type: Sprite
+    state: science
+  - type: MachineBoard
+    prototype: StationTeleporter
+    stackRequirements:
+      Manipulator: 3
+      Cable: 5
+      PlasmaGlass: 10
 
 - type: entity
   parent: BaseMachineCircuitboard
@@ -578,7 +590,7 @@
       stackRequirements:
         Capacitor: 1 #moffstation - Revert machine parts
         Glass: 1
-        Steel: 3
+        Plastic: 3
       tagRequirements:
         GlassBeaker:
           amount: 2
@@ -712,7 +724,7 @@
       prototype: PowerCageRecharger
       stackRequirements:
         Capacitor: 4 #moffstation - Revert machine parts
-        Steel: 5
+        Plasteel: 5
         Cable: 10
     - type: PhysicalComposition
       materialComposition:
@@ -817,29 +829,33 @@
     prototype: DawInstrument
     stackRequirements:
       Glass: 1
-      Cable: 1
-    tagRequirements:
-#      One instrument to bring them all and in the darkness bind them...
-       KeyedInstrument:
-          amount: 1
-          defaultPrototype: SynthesizerInstrument
-          examineName: construction-insert-info-examine-name-instrument-keyed
-       StringInstrument:
-          amount: 1
-          defaultPrototype: AcousticGuitarInstrument
-          examineName: construction-insert-info-examine-name-instrument-string
-       PercussionInstrument:
-          amount: 1
-          defaultPrototype: GlockenspielInstrument
-          examineName: construction-insert-info-examine-name-instrument-percussion
-       BrassInstrument:
-          amount: 1
-          defaultPrototype: TrumpetInstrument
-          examineName: construction-insert-info-examine-name-instrument-brass
-       WoodwindInstrument:
-          amount: 1
-          defaultPrototype: SaxophoneInstrument
-          examineName: construction-insert-info-examine-name-instrument-woodwind
+      #Moff - start - make the DAW board easier to make so its not an expensive, annoying quest to get
+      Cable: 5
+      Capacitor: 2
+      Manipulator: 2
+  # tagRequirements:
+      #      One instrument to bring them all and in the darkness bind them...
+  #   KeyedInstrument:
+  #     amount: 1
+  #     defaultPrototype: SynthesizerInstrument
+  #     examineName: construction-insert-info-examine-name-instrument-keyed
+  #   StringInstrument:
+  #     amount: 1
+  #     defaultPrototype: AcousticGuitarInstrument
+  #     examineName: construction-insert-info-examine-name-instrument-string
+  #   PercussionInstrument:
+  #     amount: 1
+  #     defaultPrototype: GlockenspielInstrument
+  #     examineName: construction-insert-info-examine-name-instrument-percussion
+  #   BrassInstrument:
+  #     amount: 1
+  #     defaultPrototype: TrumpetInstrument
+  #     examineName: construction-insert-info-examine-name-instrument-brass
+  #   WoodwindInstrument:
+  #     amount: 1
+  #     defaultPrototype: SaxophoneInstrument
+  #     examineName: construction-insert-info-examine-name-instrument-woodwind
+      #Moff - end
 
 - type: entity
   id: PortableGeneratorPacmanMachineCircuitboard
@@ -872,7 +888,7 @@
     prototype: Thruster
     stackRequirements:
       Capacitor: 4 #moffstation - Revert machine parts
-      Steel: 5
+      Plasteel: 5
 
 - type: entity
   id: GyroscopeMachineCircuitboard
@@ -1141,6 +1157,7 @@
         Capacitor: 2 #moffstation - Revert machine parts
         CableHV: 5
         Glass: 2
+        Plasteel: 2
 
 - type: entity
   id: SurveillanceCameraRouterCircuitboard
@@ -1250,7 +1267,7 @@
     - type: MachineBoard
       prototype: BoozeDispenserEmpty
       stackRequirements:
-        Steel: 5
+        Plastic: 5
       tagRequirements:
           GlassBeaker:
             amount: 1
@@ -1282,7 +1299,7 @@
     prototype: CargoMailTeleporter
     stackRequirements:
       Capacitor: 2 #moffstation - Revert machine parts
-      Steel: 5
+      Plasteel: 5
 
 - type: entity
   id: SodaDispenserMachineCircuitboard
@@ -1295,7 +1312,7 @@
     - type: MachineBoard
       prototype: SodaDispenserEmpty
       stackRequirements:
-        Steel: 5
+        Plastic: 5
       tagRequirements:
           GlassBeaker:
             amount: 1
@@ -1363,7 +1380,7 @@
     stackRequirements:
       Capacitor: 4 #moffstation - Revert machine parts
       MatterBin: 3 #moffstation - Revert machine parts
-      Steel: 10
+      Plasteel: 10
       Glass: 5
       CableHV: 8
       Uranium: 2

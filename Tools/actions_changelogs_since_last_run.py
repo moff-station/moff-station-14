@@ -32,6 +32,9 @@ CHANGELOG_FILE = "Resources/Changelog/Mofflog.yml"
 # moffstation - lowercase for changelog
 TYPES_TO_EMOJI = {"fix": "<:barry:1333171778872279153>", "add": ":new:", "remove": "<:killsmite:1322919674413056081>", "tweak": "<:godo:1378009287321976912>️"}
 
+EXPERIMENTAL_LABEL = "Intent: Experimental"
+EXPERIMENTAL_EMOJI = "🧪"
+
 ChangelogEntry = dict[str, Any]
 
 
@@ -89,8 +92,10 @@ def get_past_runs(sess: requests.Session, current_run: Any) -> Iterable[Any]:
     Get all successful workflow runs before our current one.
     """
     params = {
-        "status": "success",
-        "created": f"<={current_run['created_at']}",
+        # Moff Start - Changelog bob fixed
+        # "status": "success",
+        # "created": f"<={current_run['created_at']}",
+        # Moff end
         "per_page": 100,
     }
     url = f"{current_run['workflow_url']}/runs"
@@ -99,10 +104,16 @@ def get_past_runs(sess: requests.Session, current_run: Any) -> Iterable[Any]:
         resp = sess.get(url, params=params)
         resp.raise_for_status()
 
-        for run in resp.json()["workflow_runs"]:
+        # Moff - sort the changebob
+        for run in sorted(resp.json()["workflow_runs"], key=lambda run: run["created_at"], reverse=True):
             # First past successful run that isn't our current run.
             if run["id"] == current_run["id"]:
                 continue
+
+            # Moff Start - Changelog machine fixed
+            if run["conclusion"] != "success" or run["created_at"] > current_run["created_at"]:
+                continue
+            # Moff end
 
             yield run
 
@@ -239,6 +250,9 @@ def changelog_entries_to_message_lines(entries: Iterable[ChangelogEntry]) -> lis
             for change in entry["changes"]:
                 emoji = TYPES_TO_EMOJI.get(change["type"].lower(), "❓") # moffstation - lower case
                 message = change["message"]
+
+                if EXPERIMENTAL_LABEL in entry.get("labels", []): # Moffstation - Mofflog.yml entries have no "labels" field
+                    emoji = f"{emoji}{EXPERIMENTAL_EMOJI}"
 
                 message_lines.append(create_change_line(emoji, message, url))
 

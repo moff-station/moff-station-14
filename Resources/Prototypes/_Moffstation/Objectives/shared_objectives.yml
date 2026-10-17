@@ -1,0 +1,14 @@
+- type: entity
+  parent: BaseObjective
+  id: MoffSharedObjectivesPlaceholder
+  name: Await your orders.
+  description: Your leader has not yet received their objectives.
+  components:
+  - type: Objective
+    difficulty: 0
+    issuer: Unknown
+    icon:
+      sprite: Objects/Misc/folders.rsi
+      state: folder-colormap
+  - type: SimpleObjective
+    title: objective-moff-shared-placeholder-title

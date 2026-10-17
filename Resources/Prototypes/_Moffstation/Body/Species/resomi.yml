@@ -373,8 +373,6 @@
         Slash: 5
   - type: RecoilKickSusceptible
     massFactor: 0.7
-  - type: Temperature
-    specificHeat: 44
   - type: TemperatureDamage # Similar to Avali
     heatDamageThreshold: 325
     coldDamageThreshold: 230
@@ -384,9 +382,6 @@
     heatDamage:
       types:
         Heat: 1.5 # Per second, scales with temperature & other constants
-  - type: TemperatureProtection
-    heatingCoefficient: 1.2
-    coolingCoefficient: 0.50
   - type: Fixtures
     fixtures:
       fix1:

@@ -42,7 +42,11 @@
     rechargeSound:
       path: /Audio/Weapons/Guns/MagIn/kinetic_reload.ogg
   - type: BasicEntityAmmoProvider
-    proto: BulletKinetic
+    # Moff Start - Entity table integration
+    # proto: BulletKinetic
+    ammoTable:
+      id: BulletKinetic
+    # Moff End
     capacity: 1
     count: 1
   - type: Clothing

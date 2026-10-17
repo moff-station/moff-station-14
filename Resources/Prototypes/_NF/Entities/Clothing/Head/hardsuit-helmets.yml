@@ -1,5 +1,5 @@
 - type: entity
-  parent: ClothingHeadHelmetHardsuitSyndie
+  parent: [ BaseCentcommContraband, ClothingHeadHelmetHardsuitSyndie ] # Moff - fix contraband status
   id: ClothingHeadHelmetHardsuitERTMailCarrier
   name: ERT mail carrier hardsuit helmet
   description: A special hardsuit helmet worn by mail carriers of an emergency response team.
@@ -7,7 +7,9 @@
   - type: BreathMask
   - type: Sprite
     sprite: _NF/Clothing/Head/Hardsuits/ertmailcarrier.rsi
-  - type: Clothing
-    sprite: _NF/Clothing/Head/Hardsuits/ertmailcarrier.rsi
+  # Moff Start - derelict yml
+  # - type: Clothing
+  #   sprite: _NF/Clothing/Head/Hardsuits/ertmailcarrier.rsi
+  # Moff End
   - type: PointLight
     color: "#cbadff"

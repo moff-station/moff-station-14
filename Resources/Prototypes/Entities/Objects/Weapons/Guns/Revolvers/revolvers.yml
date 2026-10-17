@@ -17,7 +17,7 @@
     tags:
     - Sidearm
   - type: Clothing
-    sprite: Objects/Weapons/Guns/Revolvers/deckard.rsi
+    sprite: _Moffstation/Objects/Weapons/Guns/Revolvers/deckard.rsi # Moffstation
     quickEquip: false
     slots:
     - suitStorage
@@ -63,7 +63,7 @@
   description: A beautifully machined, custom-built revolver. Used when there is no time for the Voight-Kampff test. Loads 5 rounds of .45 magnum.
   components:
   - type: Sprite
-    sprite: Objects/Weapons/Guns/Revolvers/deckard.rsi
+    sprite: _Moffstation/Objects/Weapons/Guns/Revolvers/deckard.rsi # Moffstation
     layers:
     - state: base
       map: ["enum.GunVisualLayers.Base"]
@@ -91,9 +91,9 @@
   description: A double-action revolver manufactured by various companies. It is readily available on the civilian market, making it a popular choice among private investigators. You feel lucky just holding it. Loads 6 rounds of .45 magnum.
   components:
   - type: Sprite
-    sprite: Objects/Weapons/Guns/Revolvers/inspector.rsi
+    sprite: _Moffstation/Objects/Weapons/Guns/Revolvers/inspector.rsi # Moffstation
   - type: Clothing
-    sprite: Objects/Weapons/Guns/Revolvers/inspector.rsi
+    sprite: _Moffstation/Objects/Weapons/Guns/Revolvers/inspector.rsi # Moffstation
   - type: Item
     storedOffset: 0,-2
   - type: RevolverAmmoProvider
@@ -110,9 +110,9 @@
   description: A modern revolver used by Nanotrasen’s elite, near mythical ‘Death Squad’ task force. Its unique trigger action and barrel placement enable a high fire rate with minimal muzzle flip. Many have looked down this barrel, but few have lived to tell of it. Loads 6 rounds of .45 magnum.
   components:
   - type: Sprite
-    sprite: Objects/Weapons/Guns/Revolvers/mateba.rsi
+    sprite: _Moffstation/Objects/Weapons/Guns/Revolvers/mateba.rsi # Moffstation
   - type: Clothing
-    sprite: Objects/Weapons/Guns/Revolvers/mateba.rsi
+    sprite: _Moffstation/Objects/Weapons/Guns/Revolvers/mateba.rsi # Moffstation
   - type: Item
     storedOffset: 0,-3
   - type: Gun
@@ -135,9 +135,9 @@
   description: A powerful double-action revolver manufactured by the Syndicate. Loud and flashy, perfect for any agent looking to make a statement. Loads 6 rounds of .45 magnum.
   components:
   - type: Sprite
-    sprite: Objects/Weapons/Guns/Revolvers/python.rsi
+    sprite: _Moffstation/Objects/Weapons/Guns/Revolvers/python.rsi # Moffstation
   - type: Clothing
-    sprite: Objects/Weapons/Guns/Revolvers/python.rsi
+    sprite: _Moffstation/Objects/Weapons/Guns/Revolvers/python.rsi # Moffstation
   - type: Item
     storedOffset: 0,-2
   - type: Gun

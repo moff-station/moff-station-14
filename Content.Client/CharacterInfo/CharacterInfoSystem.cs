@@ -1,6 +1,7 @@
-﻿using Content.Shared._Starlight.CollectiveMind; // Starlight - Collective Mind
+using Content.Shared._Starlight.CollectiveMind; // Starlight - Collective Mind
 using Content.Shared.CharacterInfo;
 using Content.Shared.Objectives;
+using Content.Shared.Roles;
 using Robust.Client.Player;
 using Robust.Client.UserInterface;
 using Robust.Shared.Prototypes;
@@ -34,7 +35,7 @@ public sealed partial class CharacterInfoSystem : EntitySystem
     private void OnCharacterInfoEvent(CharacterInfoEvent msg, EntitySessionEventArgs args)
     {
         var entity = GetEntity(msg.NetEntity);
-        var data = new CharacterData(entity, msg.JobTitle, msg.Objectives, msg.CollectiveMinds, msg.Briefing, Name(entity)); // Starlight - Collective Mind - Add data entry for collective minds.
+        var data = new CharacterData(entity, msg.Objectives, msg.CollectiveMinds, msg.Briefing, msg.Job, Name(entity)); // Starlight - Collective Mind - Add data entry for collective minds.
 
         OnCharacterUpdate?.Invoke(data);
     }
@@ -48,10 +49,10 @@ public sealed partial class CharacterInfoSystem : EntitySystem
 
     public readonly record struct CharacterData(
         EntityUid Entity,
-        string Job,
         Dictionary<string, List<ObjectiveInfo>> Objectives,
         Dictionary<ProtoId<CollectiveMindPrototype>, CollectiveMindMemberData>? CollectiveMinds, // Starlight - Collective Mind - Collective mind data entry.
         string? Briefing,
+        ProtoId<JobPrototype>? JobId,
         string EntityName
     );
 

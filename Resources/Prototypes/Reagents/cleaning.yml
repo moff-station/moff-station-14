@@ -51,7 +51,8 @@
   metabolisms:
     Digestion:
       effects:
-      - !type:SatiateThirst
+      - !type:Satiate
+        satiationType: Thirst
         factor: 2
         conditions:
         - !type:MetabolizerTypeCondition
@@ -133,9 +134,8 @@
         type: Add
     Digestion:
       effects:
-      - !type:GenericStatusEffect
-        key: Muted
-        component: Muted
+      - !type:ModifyStatusEffect
+        effectProto: StatusEffectMuted
         time: 5
   footstepSound:
     collection: FootstepSlime

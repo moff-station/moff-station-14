@@ -184,15 +184,13 @@
       - !type:PlaySoundBehavior
         sound:
           collection: MetalBreak
-      - !type:GibBehavior
-      - !type:SpawnEntitiesBehavior
-        spawn:
-          ScrapGlass:
-            min: 1
-            max: 1
-          SheetSteel:
-            min: 10
-            max: 20
+      - !type:EmptyContainersBehaviour
+        containers:
+        - borg_brain
+        - borg_module
+        - cell_slot
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
   - type: HandheldLight
     toggleOnInteract: false
     wattage: 0.2
@@ -221,7 +219,7 @@
       isLooped: true
   - type: PointLight
     enabled: false
-    mask: /Textures/Effects/LightMasks/cone.png
+    lightMask: ConeSingle
     autoRot: true
     radius: 4
     netsync: false
@@ -277,7 +275,7 @@
     - timer
   # explosion does most of its damage in the center and less at the edges
   - type: Explosive
-    explosionType: Minibomb
+    explosionType: TransparentMinibomb # Funky RMC Explosions
     deleteAfterExplosion: false # let damage threshold gib the borg
     totalIntensity: 30
     intensitySlope: 20
@@ -298,7 +296,7 @@
     id: Xenoborg
     useEntityNameAsCameraId: true
   - type: Explosive
-    explosionType: Minibomb
+    explosionType: TransparentMinibomb # Funky RMC Explosions
     deleteAfterExplosion: false # let damage threshold gib the borg
     totalIntensity: 200 # bigger kaboom
     intensitySlope: 20
@@ -513,6 +511,34 @@
   - type: NpcFactionMember
     factions:
     - Xenoborg
+  - type: PointLight
+    color: "#3010ff"
+    energy: 7
+  - type: GuideHelp
+    guides:
+    - Cyborgs
+    - Robotics
+    - Xenoborgs
+  - type: Access
+    tags:
+    - Xenoborg
+  - type: AccessReader
+    access: [["Xenoborg"]]
+  - type: ShowJobIcons # not sure if it is needed
+  - type: ShowCrewIcons
+  - type: InteractionPopup
+    interactSuccessSound:
+      path: /Audio/Ambience/Objects/periodic_beep.ogg
+  - type: Xenoborg
+  - type: BypassLock
+    bypassDelay: 15 # We don't want people to easily be able to remove xenoborg brains.
+  - type: EmpResistance
+    strengthMultiplier: 0
+
+- type: entity
+  abstract: true
+  id: BaseXenoborgDestructible
+  components:
   - type: Destructible
     thresholds:
     - trigger:
@@ -543,27 +569,6 @@
         - cell_slot
       - !type:DoActsBehavior
         acts: [ "Destruction" ]
-  - type: PointLight
-    color: "#3010ff"
-    energy: 7
-  - type: GuideHelp
-    guides:
-    - Cyborgs
-    - Robotics
-    - Xenoborgs
-  - type: Access
-    tags:
-    - Xenoborg
-  - type: AccessReader
-    access: [["Xenoborg"]]
-  - type: ShowJobIcons # not sure if it is needed
-  - type: ShowCrewIcons
-  - type: InteractionPopup
-    interactSuccessSound:
-      path: /Audio/Ambience/Objects/periodic_beep.ogg
-  - type: Xenoborg
-  - type: BypassLock
-    bypassDelay: 15 # We don't want people to easily be able to remove xenoborg brains.
   # Moffstation - Start - Cyborg programming ( to not circumvent the bypassDelay of removing brain)
   - type: LawProgrammerTarget
     durationMultiplier: 10

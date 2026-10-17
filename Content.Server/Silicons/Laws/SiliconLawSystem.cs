@@ -73,7 +73,7 @@ public sealed partial class SiliconLawSystem : SharedSiliconLawSystem
         UpdateSiliconRoles(owner, args.Mind);
     }
 
-    public override void NotifyLawsChanged(Entity<SiliconLawProviderComponent> ent, SoundSpecifier? cue = null)
+    public override void NotifyLawsChanged(Entity<SiliconLawBoundComponent> ent, SoundSpecifier? cue = null) // Moff - Borg laws on brain, not chassis
     {
         base.NotifyLawsChanged(ent, cue);
 
@@ -84,7 +84,7 @@ public sealed partial class SiliconLawSystem : SharedSiliconLawSystem
 
         var msg = Loc.GetString("laws-update-notify");
         var wrappedMessage = Loc.GetString("chat-manager-server-wrap-message", ("message", msg));
-        UpdateLawVersion(ent.Owner);
+        // UpdateLawVersion(ent.Owner); // Moff - Updated when laws are pushed from the provider to the lawbound
         _chatManager.ChatMessageToOne(ChatChannel.Server, msg, wrappedMessage, default, false, actor.PlayerSession.Channel, colorOverride: Color.Red);
 
         if (cue != null && _mind.TryGetMind(ent, out var mindId, out _))
@@ -115,15 +115,19 @@ public sealed partial class SiliconLawSystem : SharedSiliconLawSystem
     /// </summary>
     public void SetLaws(List<SiliconLaw> newLaws, EntityUid target, SoundSpecifier? cue = null)
     {
-        if (!TryComp<SiliconLawProviderComponent>(target, out var component))
-            return;
+        // Moff start - Borg laws on brain, not chassis
+        SetProviderLaws(target, newLaws, false, cue);
 
-        if (component.Lawset == null)
-            component.Lawset = new SiliconLawset();
-
-        component.Lawset.Laws = newLaws;
-        RankLaws(component.Lawset.Laws);
-        NotifyLawsChanged((target,component), cue);
+        // if (!TryComp<SiliconLawProviderComponent>(target, out var component))
+        //     return;
+        //
+        // if (component.Lawset == null)
+        //     component.Lawset = new SiliconLawset();
+        //
+        // component.Lawset.Laws = newLaws;
+        // RankLaws(component.Lawset.Laws);
+        // NotifyLawsChanged((target,component), cue);
+        // Moff end
     }
 
     protected override void OnUpdaterInsert(Entity<SiliconLawUpdaterComponent> ent, ref EntInsertedIntoContainerMessage args)
@@ -148,17 +152,19 @@ public sealed partial class SiliconLawSystem : SharedSiliconLawSystem
         }
     }
 
-    /// <summary>
-    /// Updates the version on a target SiliconLawBoundComponent. This is used in the law UI as flair to show the
-    /// number of updates a silicon player's laws has had
-    /// </summary>
-    private void UpdateLawVersion(Entity<SiliconLawBoundComponent?> target)
-    {
-        if (!Resolve(target, ref target.Comp))
-            return;
-
-        target.Comp.Version++;
-    }
+    // Moff start - Laws are tracked on bound SiliconLawProvider
+    // /// <summary>
+    // /// Updates the version on a target SiliconLawBoundComponent. This is used in the law UI as flair to show the
+    // /// number of updates a silicon player's laws has had
+    // /// </summary>
+    // private void UpdateLawVersion(Entity<SiliconLawBoundComponent?> target)
+    // {
+    //     if (!Resolve(target, ref target.Comp))
+    //         return;
+    //
+    //     target.Comp.Version++;
+    // }
+    // Moff end
 
     /// <summary>
     /// Given a list of laws, sets all unobfuscated laws' identifier in order from highest to lowest priority.

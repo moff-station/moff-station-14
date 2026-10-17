@@ -18,12 +18,17 @@ public sealed partial class LobbyCharacterPreviewPanel : Control
     {
         RobustXamlLoader.Load(this);
         IoCManager.InjectDependencies(this);
+        InitializeMoffJobGrid(); // Moffstation - Multi-character selection
     }
 
     public void SetLoaded(bool value)
     {
         Loaded.Visible = value;
         Unloaded.Visible = !value;
+
+        // Moff - Multi-character selection: preferences are what the grid is built from
+        if (value)
+            RefreshMoffJobGrid();
     }
 
     public void SetSummaryText(string value)

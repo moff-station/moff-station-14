@@ -164,7 +164,7 @@ namespace Content.Server.GameTicking
                     return;
                 }
 
-                SpawnPlayer(session, EntityUid.Invalid);
+                SpawnPlayer(session, profileIndex: null, EntityUid.Invalid); // Moff - Multi character selection
             }
 
             async void SpawnObserverWaitDb()
@@ -192,9 +192,17 @@ namespace Content.Server.GameTicking
             }
         }
 
-        public HumanoidCharacterProfile GetPlayerProfile(ICommonSession p)
+        public HumanoidCharacterProfile GetPlayerProfile(ICommonSession p, int? profileIndex) // Moff - Multi character selection
         {
-            return (HumanoidCharacterProfile) _prefsManager.GetPreferences(p.UserId).SelectedCharacter;
+            // Moff start - Multi character selection - Use given index to look up a profile (eg. when using a command to join)
+            if (profileIndex is {} idx &&
+                _prefsManager.GetPreferences(p.UserId).Characters.TryGetValue(idx, out var ret))
+                return ret;
+
+            // Or if no index or failed to look up a profile, fall back to a previously spawned profile.
+            // Or if that fails, just use whatever the "selected" profile is
+            return _moffCharacterPicker.GetSpawnedProfile(p.UserId) ?? _prefsManager.GetPreferences(p.UserId).SelectedCharacter;
+            // Moff end
         }
 
         public void PlayerJoinGame(ICommonSession session, bool silent = false)

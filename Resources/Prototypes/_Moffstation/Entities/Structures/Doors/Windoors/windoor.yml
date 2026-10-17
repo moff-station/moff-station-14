@@ -1,8 +1,7 @@
 # Freelance Windoors
-
 - type: entity
-  parent: WindoorSecure
-  id: WindoorSecureFreelanceLocked
+  parent: Windoor
+  id: WindoorFreelanceLocked
   suffix: Freelance, Locked
   components:
   - type: ContainerFill

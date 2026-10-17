@@ -1,0 +1,48 @@
+# Player: Sibuxiang - Character: MALPHAS
+
+- type: entity
+  parent: BasePlushie
+  id: &id PersonalItemMalphasProjection
+  name: Malphas projection
+  description: A hardlight hologram projecting the likeness of MALPHAS. It renders unresponsive when disconnected from their personal network.
+  suffix: PersonalItem
+  components:
+  - type: Sprite
+    sprite: &sprite _Moffstation/PersonalItems/Items/Sibuxiang/MALPHAS/malphasprojection.rsi
+    state: icon
+  - type: Item
+    sprite: *sprite
+  - type: EmitSoundOnUse
+    sound: &laugh
+      collection: XenoborgLaugh
+  - type: EmitSoundOnActivate
+    sound: *laugh
+  - type: EmitSoundOnLand
+    sound: &chime
+      collection: XenoborgChime
+  - type: EmitSoundOnCollide
+    sound: *chime
+  - type: EmitSoundOnTrigger
+    sound: *chime
+  - type: MeleeWeapon
+    soundHit: *chime
+  - type: Clothing
+    sprite: *sprite
+    quickEquip: false
+    slots:
+    - NECK
+    clothingVisuals:
+      neck:
+      - state: equipped-NECK
+  - type: Tag
+    tags: [] #Specifically remove tags to make the plush not useable in crafting or edible for moths
+
+- type: loadout
+  id: *id
+  storage:
+    back:
+    - *id
+  effects:
+  - !type:PersonalItemLoadoutEffect
+    character:
+    - MALPHAS

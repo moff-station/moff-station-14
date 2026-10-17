@@ -250,11 +250,22 @@ namespace Content.IntegrationTests.Tests
                 "SpawnEntityTableOnTrigger",
                 "AddGameRuleOnTrigger",
                 "Hellportal",
+                "MoffEnrollEvent",
+                "ESSynchronizedVoteManager",
                 // ES fancy timed despawn
                 "ESTimedDespawn",
                 "ESSparkOnTrigger",
                 "BluespaceLocker", // Spawns bluespace farticles in its code
+                "ElectricityAnomaly", // Creates sparks periodically
             };
+
+            // Moff start
+            var excludedIds = new[]
+            {
+                "MaterialHideSharkminnowTrimmed",
+                "MoffC4InstantExplosion",
+            };
+            // Moff end
 
             Assert.That(server.CfgMan.GetCVar(CVars.NetPVS), Is.False);
 
@@ -263,6 +274,7 @@ namespace Content.IntegrationTests.Tests
                 .Where(p => !p.Abstract)
                 .Where(p => !pair.IsTestPrototype(p))
                 .Where(p => !excluded.Any(p.Components.ContainsKey))
+                .Where(p => !excludedIds.Contains(p.ID)) // Moff
                 .Where(p => p.Categories.All(x => !IgnoredCategories.Contains(x.ID)))
                 .Select(p => p.ID)
                 .ToList();

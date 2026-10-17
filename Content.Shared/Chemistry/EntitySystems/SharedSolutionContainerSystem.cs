@@ -445,20 +445,6 @@ public abstract partial class SharedSolutionContainerSystem : EntitySystem
     /// <summary>
     /// Splits a solution without the specified reagent(s).
     /// </summary>
-    [Obsolete("Use SplitSolutionWithout with params ProtoId<ReagentPrototype>")]
-    public Solution SplitSolutionWithout(Entity<SolutionComponent> soln, FixedPoint2 quantity, params string[] reagents)
-    {
-        var (uid, comp) = soln;
-        var solution = comp.Solution;
-
-        var splitSol = solution.SplitSolutionWithout(quantity, reagents);
-        UpdateChemicals(soln);
-        return splitSol;
-    }
-
-    /// <summary>
-    /// Splits a solution without the specified reagent(s).
-    /// </summary>
     public Solution SplitSolutionWithout(Entity<SolutionComponent> soln, FixedPoint2 quantity, params ProtoId<ReagentPrototype>[] reagents)
     {
         var (uid, comp) = soln;
@@ -887,7 +873,8 @@ public abstract partial class SharedSolutionContainerSystem : EntitySystem
     {
         if (!args.IsInDetailsRange ||
             !CanSeeHiddenSolution(entity, args.Examiner) ||
-            !TryGetSolution(entity.Owner, entity.Comp.Solution, out _, out var solution))
+            !TryGetSolution(entity.Owner, entity.Comp.Solution, out _, out var solution) || // Moff - Examinable stains
+            solution.Volume < entity.Comp.MinimumVolumeToBeVisible) // Moff - Examinable stains
             return;
 
         using (args.PushGroup(nameof(ExaminableSolutionComponent)))

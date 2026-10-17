@@ -4,9 +4,6 @@
   description: Convert a crewmember to your blood oath.
   components:
   - type: Action
-    icon:
-      sprite: /Textures/Interface/Alerts/bleed.rsi
-      state: bleed10
     itemIconStyle: BigAction
   - type: TargetAction
     repeat: false
@@ -17,6 +14,9 @@
       components:
       - HumanoidProfile
     canTargetSelf: false
+  - type: Sprite
+    sprite: /Textures/Interface/Alerts/bleed.rsi
+    state: bleed10
 
 - type: entity
   id: ActionBloodBrotherCheckConvert
@@ -24,7 +24,6 @@
   description: Check if a crewmember is susceptible to conversion.
   components:
   - type: Action
-    icon: Interface/VerbIcons/vv.svg.192dpi.png # eye icon
     itemIconStyle: BigAction
   - type: TargetAction
     repeat: true
@@ -35,3 +34,6 @@
       components:
       - HumanoidProfile
     canTargetSelf: false
+  - type: Sprite
+    sprite: _Umbra/Interface/Actions/set-pose.rsi # I'm stealing this since upstream changed how action icons work
+    state: eyeopen

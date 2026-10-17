@@ -1,6 +1,6 @@
 - type: entity
   abstract: true
-  parent: [SolutionFood, SolutionToolNormal, Clothing, BaseSlicingRefinable]
+  parent: [SolutionFood, SolutionToolNormal, Clothing, BaseSlicingRefinable, MoffStainableClothingBase] # Moffstation - mixed in MoffStainableClothingBase
   id: UnsensoredClothingUniformBase
   components:
   - type: Sprite
@@ -29,11 +29,10 @@
     - Recyclable
     - WhitelistChameleon
   # Forky - start - clothing stains
-  - type: Appearance
   - type: Stainable
     clothingVisuals:
       jumpsuit:
-      - sprite: _Funkystation/Effects/blood.rsi
+      - sprite: /Textures/_Funkystation/Effects/blood.rsi
         state: uniformblood
     itemVisuals:
       left:
@@ -43,11 +42,8 @@
       - sprite: Effects/Stains/jumpsuit.rsi
         state: inhand-left
     iconVisuals:
-    - sprite: _Funkystation/Effects/blood.rsi
+    - sprite: /Textures/_Funkystation/Effects/blood.rsi
       state: uniformbloodicon
-  - type: SolutionManager
-    solutions:
-    - SolutionStain
   # Forky - end
 
 - type: entity
@@ -62,7 +58,7 @@
   - type: Stainable
     clothingVisuals:
       jumpsuit:
-      - sprite: _Funkystation/Effects/blood.rsi
+      - sprite: /Textures/_Funkystation/Effects/blood.rsi
         state: uniformblood
     itemVisuals:
       left:
@@ -72,10 +68,9 @@
       - sprite: Effects/Stains/jumppskirt.rsi
         state: inhand-left
     iconVisuals:
-    - sprite: _Funkystation/Effects/blood.rsi
+    - sprite: /Textures/_Funkystation/Effects/blood.rsi
       state: uniformbloodicon
     # Forky - end
-
 
 - type: entity
   abstract: true
@@ -103,7 +98,7 @@
   - type: Stainable
     clothingVisuals:
       jumpsuit:
-      - sprite: _Funkystation/Effects/blood.rsi
+      - sprite: /Textures/_Funkystation/Effects/blood.rsi
         state: uniformblood
     itemVisuals:
       left:
@@ -113,7 +108,7 @@
       - sprite: Effects/Stains/jumpskirt.rsi
         state: inhand-left
     iconVisuals:
-    - sprite: _Funkystation/Effects/blood.rsi
+    - sprite: /Textures/_Funkystation/Effects/blood.rsi
       state: uniformbloodicon
     # Forky - end
 
@@ -123,7 +118,7 @@
   components:
   - type: Foldable
     canFoldInsideContainer: true
-    unfoldVerbText: unfold-verb-clothing-jacket
-    foldVerbText: fold-verb-clothing-jacket
+    unfoldVerbText: fold-zip-verb
+    foldVerbText: fold-unzip-verb
   - type: FoldableClothing
     foldedEquippedPrefix: folded

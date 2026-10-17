@@ -1,6 +1,6 @@
 - type: entity
   # Moffstation - Begin - Split the existing base winter coat into an abstract base with all of the coat stats; the basic winter coat gets attachable suit storage now, which we don't want to inherit in some cases
-  parent: ClothingOuterStorageEdible
+  parent: [ TemperatureProtection, ClothingOuterJacketBase ]
   id: ClothingOuterWinterCoatBase
 #  id: ClothingOuterWinterCoat # Moffstation - The upstream basic winter coat `ClothingOuterWinterCoat` was moved to our namespace
   abstract: true
@@ -10,11 +10,6 @@
     sprite: Clothing/OuterClothing/WinterCoats/coat.rsi
   - type: Clothing
     sprite: Clothing/OuterClothing/WinterCoats/coat.rsi
-  - type: TemperatureProtection
-    heatingCoefficient: 1.1
-    coolingCoefficient: 0.1
-  - type: Item
-    size: Normal
   - type: Armor
     modifiers:
       coefficients:
@@ -189,26 +184,12 @@
   id: ClothingOuterWinterCentcom
   name: CentComm winter coat
   components:
+# Moff Start - Centcom resprite
   - type: Sprite
-    sprite: Clothing/OuterClothing/WinterCoats/coat.rsi
-    layers:
-    - state: CENTCOM-icon
-  - type: Item
-    inhandVisuals:
-      left:
-      - state: CENTCOM-inhand-left
-      right:
-      - state: CENTCOM-inhand-right
+    sprite: _Moffstation/Clothing/OuterClothing/WinterCoats/wintercoatcentcom.rsi # Moff
   - type: Clothing
-    sprite: Clothing/OuterClothing/WinterCoats/coat.rsi
-    clothingVisuals:
-      outerClothing:
-      - state: CENTCOM-equipped-OUTERCLOTHING
-  #Moffstation - Begin - Vox Wintecoats
-      outerClothing-vox:
-      - state: CENTCOM-equipped-OUTERCLOTHING-vox
-        sprite: _Moffstation/Clothing/OuterClothing/WinterCoats/coat.rsi
-  #Moffstation - End - Vox Wintecoats
+    sprite: _Moffstation/Clothing/OuterClothing/WinterCoats/wintercoatcentcom.rsi # Moff
+# Moff End
   - type: ToggleableClothing
     clothingPrototype: ClothingHeadHatHoodWinterCentcom
 
@@ -393,7 +374,8 @@
 
 - type: entity
   parent: [ClothingOuterWinterCoatToggleable, BaseCommandContraband]
-  id: ClothingOuterWinterHoP
+  id: ClothingOuterWinterHoPUpstream # Moffstation
+  abstract: true # Moffstation
   name: head of personnel's winter coat
   components:
   - type: Sprite

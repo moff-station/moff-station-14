@@ -1,0 +1,41 @@
+- type: entity
+  parent: FloorTileItemDark
+  id: MoffFloorTileItemDarkSlatsContinuous
+  name: dark steel continuous slat tile
+  components:
+  - type: Sprite
+    state: dark-vertical-slats
+  - type: FloorTile
+    outputs:
+    - Plating
+    - MoffFloorDarkSlatsContinuous
+  - type: Stack
+    stackType: MoffFloorTileDarkSlatsContinuous
+
+- type: entity
+  parent: FloorTileItemSteel
+  id: MoffFloorTileItemSteelSlatsContinuous
+  name: steel continuous slat tile
+  components:
+  - type: Sprite
+    state: steel-vertical-slats
+  - type: FloorTile
+    outputs:
+    - Plating
+    - MoffFloorSteelSlatsContinuous
+  - type: Stack
+    stackType: MoffFloorTileSteelSlatsContinuous
+
+- type: entity
+  parent: FloorTileItemWhite
+  id: MoffFloorTileItemWhiteSlatsContinuous
+  name: white steel continuous slat tile
+  components:
+  - type: Sprite
+    state: white-vertical-slats
+  - type: FloorTile
+    outputs:
+    - Plating
+    - MoffFloorWhiteSlatsContinuous
+  - type: Stack
+    stackType: MoffFloorTileWhiteSlatsContinuous
