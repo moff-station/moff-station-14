@@ -96,7 +96,7 @@
       jumpsuit:
         sizeMaps:
           32:
-            sprite: Mobs/Species/Vulpkanin/displacement.rsi
+            sprite: _Moffstation/Mobs/Species/Vulpkanin/displacement.rsi # Moff
             state: jumpsuit
       back:
         sizeMaps:
@@ -106,7 +106,7 @@
       outerClothing:
         sizeMaps:
           32:
-            sprite: Mobs/Species/Vulpkanin/displacement.rsi
+            sprite: _Moffstation/Mobs/Species/Vulpkanin/displacement.rsi # Moff
             state: outerwear
       gloves:
         sizeMaps:
@@ -116,7 +116,7 @@
       shoes:
         sizeMaps:
           32:
-            sprite: Mobs/Species/Vulpkanin/displacement.rsi
+            sprite: _Moffstation/Mobs/Species/Vulpkanin/displacement.rsi # Moff
             state: shoes
       head:
         sizeMaps:
@@ -231,7 +231,7 @@
   components:
   - type: VisualOrgan
     data:
-      sprite: Mobs/Species/Vulpkanin/parts.rsi
+      sprite: _Moffstation/Mobs/Species/Vulpkanin/parts.rsi # Moff
   - type: VisualOrganMarkings
     markingData:
       group: Vulpkanin
@@ -242,7 +242,7 @@
   abstract: true
   components:
   - type: Sprite
-    sprite: Mobs/Species/Vulpkanin/parts.rsi
+    sprite: _Moffstation/Mobs/Species/Vulpkanin/parts.rsi # Moff
 
 - type: entity
   parent: [ OrganBaseTorsoSexed, OrganBaseTorso, OrganVulpkaninExternal ]
@@ -266,7 +266,7 @@
       Hair:
         sizeMaps:
           32:
-            sprite: Mobs/Species/Vulpkanin/displacement.rsi
+            sprite: _Moffstation/Mobs/Species/Vulpkanin/displacement.rsi # Moff
             state: hair
 
 - type: entity
