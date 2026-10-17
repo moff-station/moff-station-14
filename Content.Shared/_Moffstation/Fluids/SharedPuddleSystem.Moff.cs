@@ -1,4 +1,5 @@
 using System.Diagnostics.CodeAnalysis;
+using Content.Shared.Fluids.Components;
 using Robust.Shared.Map;
 using Robust.Shared.Map.Components;
 
@@ -8,21 +9,18 @@ public abstract partial class SharedPuddleSystem
 {
     [Dependency] private EntityQuery<MapGridComponent> _mapGridQuery;
 
-    public Entity<PuddleComponent>? GetTilePuddle(EntityCoordinates coords)
+    public IEnumerable<Entity<PuddleComponent>> GetTilePuddle(EntityCoordinates coords)
     {
-        puddle = null;
         if (!_turf.TryGetTileRef(coords, out var tile) || !_mapGridQuery.TryComp(tile.Value.GridUid, out var grid))
-            return false;
+            yield break;
 
         var anchored = _map.GetAnchoredEntities((tile.Value.GridUid, grid), tile.Value.GridIndices);
-        while (anchored.MoveNext(out var ent))
+        while (anchored.MoveNext(out var uid))
         {
-            if (!_puddleQuery.HasComp(ent))
+            if (!_puddleQuery.TryComp(uid, out var comp))
                 continue;
 
-            puddle = ent;
-            return true;
+            yield return (uid.Value, comp);
         }
-        return false;
     }
 }
