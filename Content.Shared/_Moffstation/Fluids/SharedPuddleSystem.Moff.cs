@@ -8,7 +8,7 @@ public abstract partial class SharedPuddleSystem
 {
     [Dependency] private EntityQuery<MapGridComponent> _mapGridQuery;
 
-    public bool TryGetTilePuddle(EntityCoordinates coords, [NotNullWhen(true)] out EntityUid? puddle)
+    public Entity<PuddleComponent>? GetTilePuddle(EntityCoordinates coords)
     {
         puddle = null;
         if (!_turf.TryGetTileRef(coords, out var tile) || !_mapGridQuery.TryComp(tile.Value.GridUid, out var grid))
