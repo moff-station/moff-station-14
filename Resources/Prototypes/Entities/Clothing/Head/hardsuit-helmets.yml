@@ -609,16 +609,7 @@
   description: A special hardsuit helmet worn by members of an emergency response team.
   components:
   - type: Sprite
-    sprite: _Moffstation/Clothing/Head/Hardsuits/ERThelmets/ertengineer.rsi
-    # Moffstation - Start - WOW the ERT suits are old and jank. layers and icon state added so it actually works.
-    layers:
-    - state: icon
-    - state: icon-up
-      visible: false
-      map: [ "visor_icon" ]
-    # Moffstation - End
-  - type: Clothing
-    sprite: Clothing/Head/Hardsuits/ERThelmets/ertengineer.rsi
+    sprite: _Moffstation/Clothing/Head/Hardsuits/ERThelmets/ertengineer.rsi # Moff - New hardsuit sprites
   - type: PointLight
     color: "#f4ffad"
   - type: FireProtection
