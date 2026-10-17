@@ -14,16 +14,7 @@ public sealed partial class BladeServerVisualizerSystem : VisualizerSystem<Blade
 {
     [Dependency] private IReflectionManager _reflect = default!;
 
-    private string? _stripeKey;
-    private string StripeKey => _stripeKey ??= _reflect.GetEnumReference(BladeServerVisuals.StripeLayer);
-
-    public override void Initialize()
-    {
-        base.Initialize();
-
-        SubscribeLocalEvent<BladeServerComponent, GetInhandVisualsEvent>(OnGetInhandVisuals,
-            after: [typeof(ItemSystem)]);
-    }
+    private string StripeKey => field ??= _reflect.GetEnumReference(BladeServerVisuals.StripeLayer);
 
     protected override void OnAppearanceChange(
         EntityUid uid,
@@ -31,21 +22,27 @@ public sealed partial class BladeServerVisualizerSystem : VisualizerSystem<Blade
         ref AppearanceChangeEvent args
     )
     {
-        if (args.Sprite is not { } sprite)
+        if (args.Sprite is not { } spriteComp)
             return;
+        var sprite = new Entity<SpriteComponent?>(uid, spriteComp);
 
-        var entity = new Entity<SpriteComponent?, AppearanceComponent>(uid, sprite, args.Component);
-        if (AppearanceSystem.TryGetData<Color>(entity, BladeServerVisuals.StripeColor, out var stripeColor, entity))
+        if (AppearanceSystem.TryGetData<Color>(
+                uid,
+                BladeServerVisuals.StripeColor,
+                out var stripeColor,
+                args.Component
+            ))
         {
-            SpriteSystem.LayerSetColor(entity, BladeServerVisuals.StripeLayer, stripeColor);
-            SpriteSystem.LayerSetVisible(entity, BladeServerVisuals.StripeLayer, true);
+            SpriteSystem.LayerSetColor(sprite, BladeServerVisuals.StripeLayer, stripeColor);
+            SpriteSystem.LayerSetVisible(sprite, BladeServerVisuals.StripeLayer, true);
         }
         else
         {
-            SpriteSystem.LayerSetVisible(entity, BladeServerVisuals.StripeLayer, false);
+            SpriteSystem.LayerSetVisible(sprite, BladeServerVisuals.StripeLayer, false);
         }
     }
 
+    [SubscribeLocalEvent(after: [typeof(ItemSystem)])]
     private void OnGetInhandVisuals(Entity<BladeServerComponent> entity, ref GetInhandVisualsEvent args)
     {
         foreach (var (key, layer) in args.Layers)

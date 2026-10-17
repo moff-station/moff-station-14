@@ -6,10 +6,7 @@ namespace Content.Shared._Moffstation.BladeServer;
 /// This enum is used to identify the <see cref="BladeServerRackComponent"/>'s associated UI.
 /// </summary>
 [Serializable, NetSerializable]
-public enum BladeServerRackUiKey : byte
-{
-    Key,
-}
+public enum BladeServerRackUiKey : byte { Key }
 
 /// <summary>
 /// This class contains the state of a <see cref="BladeServerRackComponent"/>'s associated BUI.

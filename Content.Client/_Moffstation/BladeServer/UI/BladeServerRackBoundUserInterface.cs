@@ -43,7 +43,7 @@ public sealed partial class BladeServerRackBoundUserInterface(EntityUid owner, E
 
     private void OnServerBladePressed(int slotIndex, GUIBoundKeyEventArgs args)
     {
-        var bladeServer = EntMan.System<BladeServerSystem>();
+        var bladeServer = EntMan.System<ClientBladeServerSystem>();
 
         if (args.Function == EngineKeyFunctions.Use)
         {
@@ -71,7 +71,7 @@ public sealed partial class BladeServerRackBoundUserInterface(EntityUid owner, E
 
     private void OnPowerPressed(int slotIndex)
     {
-        var bladeServer = EntMan.System<BladeServerSystem>();
+        var bladeServer = EntMan.System<ClientBladeServerSystem>();
         if (bladeServer.IsSlotPowerEnabled(Owner, slotIndex) is not { } powered)
             return;
 
