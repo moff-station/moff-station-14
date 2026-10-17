@@ -21,12 +21,13 @@
     sprite: _Moffstation/Clothing/OuterClothing/Coats/detective.rsi # Moffstation - Detective-Outfit-Sprites
   - type: Clothing
     sprite: _Moffstation/Clothing/OuterClothing/Coats/detective.rsi # Moffstation - Detective-Outfit-Sprites
-  - type: EntityTableContainerFill
-    containers:
-      storagebase: !type:AllSelector
-        children:
-        - id: SmokingPipeFilledTobacco
-        - id: FlippoEngravedLighter
+  # Moff - Outer clothing storage removal
+  # - type: EntityTableContainerFill
+  #   containers:
+  #     storagebase: !type:AllSelector
+  #       children:
+  #       - id: SmokingPipeFilledTobacco
+  #       - id: FlippoEngravedLighter
   # Moffstation - Start
   - type: Armor
     modifiers:
@@ -51,13 +52,14 @@
 - type: entity
   parent: ClothingOuterCoatDetective
   id: ClothingOuterCoatDetectiveLoadout
-  components:
-  - type: EntityTableContainerFill
-    containers:
-      storagebase: !type:AllSelector
-        children:
-        - id: SmokingPipeFilledTobacco
-        - id: FlippoLighter #Not the steal objective, only difference from normal detective trenchcoat
+  # Moff - Outer clothing storage removal
+  # components:
+  # - type: EntityTableContainerFill
+  #   containers:
+  #     storagebase: !type:AllSelector
+  #       children:
+  #       - id: SmokingPipeFilledTobacco
+  #       - id: FlippoLighter #Not the steal objective, only difference from normal detective trenchcoat
 
 - type: entity
   parent: ClothingOuterStorageBase
@@ -136,11 +138,12 @@
   parent: ClothingOuterCoatJensen
   id: ClothingOuterCoatJensenSyndie
   suffix: Syndie
-  components:
-  - type: EntityTableContainerFill
-    containers:
-      storagebase:
-        id: SyndieHandyFlag
+  # Moff - Outer clothing storage removal
+  # components:
+  # - type: EntityTableContainerFill
+  #   containers:
+  #     storagebase:
+  #       id: SyndieHandyFlag
 
 - type: entity
   parent: [ ClothingOuterStorageSuitStorageAttachableBase, ClothingOuterJacketBase ] # Moffstation - Allow suit storage attachment

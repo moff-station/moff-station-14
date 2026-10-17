@@ -68,39 +68,42 @@
   - type: FireProtection
     reduction: 0.65
 
+# Moff - Obsolete, use ClothingOuterBase instead
+# Comment out any component changes
 - type: entity
   abstract: true
   parent: ClothingOuterBase
   id: ClothingOuterStorageBase
-  components:
-  - type: Item
-    size: Normal
-    shape:
-    - 0,0,1,2
-  - type: Storage
-    grid:
-    - 0,0,2,1
-    maxItemSize: Small
-  - type: ContainerContainer
-    containers:
-      storagebase: !type:Container
-        ents: []
-  - type: UserInterface
-    interfaces:
-      enum.StorageUiKey.Key:
-        type: StorageBoundUserInterface
-  - type: StaticPrice
-    price: 70
+  # Moff - Outer clothing storage removal
+  #components:
+  #- type: Item
+  #  size: Normal
+  #  shape:
+  #  - 0,0,1,2
+  # - type: Storage
+  #   grid:
+  #   - 0,0,2,1
+  #   maxItemSize: Small
+  # - type: ContainerContainer
+  #   containers:
+  #     storagebase: !type:Container
+  #       ents: []
+  # - type: UserInterface
+  #   interfaces:
+  #     enum.StorageUiKey.Key:
+  #       type: StorageBoundUserInterface
+  #- type: StaticPrice
+  #  price: 70
   # Forky - start - clothing stains
-  - type: Stainable
-    clothingVisuals:
-      outerClothing:
-      - sprite: /Textures/_Funkystation/Effects/blood.rsi
-        state: coatblood
-    iconVisuals:
-    - sprite: /Textures/_Funkystation/Effects/blood.rsi
-      state: coatbloodicon
-    # Forky - end
+  #- type: Stainable
+  #  clothingVisuals:
+  #    outerClothing:
+  #    - sprite: /Textures/_Funkystation/Effects/blood.rsi
+  #      state: coatblood
+  #  iconVisuals:
+  # - sprite: /Textures/_Funkystation/Effects/blood.rsi
+  #    state: coatbloodicon
+  # Forky - end
 
 - type: entity
   abstract: true
@@ -142,8 +145,6 @@
   # Moffstation - Begin - Merge container definitions for attachable suit storage
   - type: ContainerContainer
     containers:
-      storagebase: !type:Container
-        ents: [ ]
       suit-storage-attachment: !type:ContainerSlot { }
   # Moffstation - End
   # Forky - start - clothing stains
@@ -189,8 +190,9 @@
   - type: ContainerContainer
     containers:
       toggleable-clothing: !type:ContainerSlot {}
-      storagebase: !type:Container
-        ents: []
+      # Moff - Outer clothing storage removal
+      # storagebase: !type:Container
+      #   ents: []
 
 - type: entity
   abstract: true
@@ -284,8 +286,9 @@
   - type: ContainerContainer
     containers:
       toggleable-clothing: !type:ContainerSlot {}
-      storagebase: !type:Container
-        ents: []
+      # Moff - Outer clothing storage removal
+      # storagebase: !type:Container
+      #   ents: []
 
 - type: entity
   abstract: true
