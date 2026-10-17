@@ -6,6 +6,7 @@ using Content.Shared.Roles;
 using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
 
+// ReSharper disable once CheckNamespace // Moff addition to upstream partial class
 namespace Content.Server.Antag;
 
 /// <summary>
@@ -17,11 +18,12 @@ public sealed partial class ServerAntagSelectionSystem
     [Dependency] private MoffCharacterSelectionManager _moffCharacterSelection = default!;
     [Dependency] private MoffCharacterPickerSystem _moffCharacterPicker = default!;
 
-    protected override HumanoidCharacterProfile? GetMoffAntagProfile(ICommonSession player)
-    {
-        return _moffCharacterPicker.GetSpawnedProfile(player.UserId)
-               ?? _pref.GetPreferences(player.UserId).SelectedCharacter;
-    }
+    protected override HumanoidCharacterProfile GetMoffAntagProfile(
+        ICommonSession player,
+        HumanoidCharacterProfile? preselected
+    ) => preselected ??
+         _moffCharacterPicker.GetSpawnedProfile(player.UserId) ??
+         _pref.GetPreferences(player.UserId).SelectedCharacter;
 
     /// <summary>
     /// Every antag preference held by any of the player's active characters, or just the spawned

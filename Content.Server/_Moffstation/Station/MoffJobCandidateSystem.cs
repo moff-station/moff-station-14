@@ -1,13 +1,8 @@
-using System.Linq;
 using Content.Server._Moffstation.Preferences;
-using Content.Server.Players.JobWhitelist;
-using Content.Server.Players.PlayTimeTracking;
 using Content.Server.Preferences.Managers;
 using Content.Server.Station.Events;
 using Content.Shared.Preferences;
-using Content.Shared.Roles;
 using Robust.Shared.Network;
-using Robust.Shared.Prototypes;
 
 namespace Content.Server._Moffstation.Station;
 
@@ -22,21 +17,16 @@ public sealed partial class MoffJobCandidateSystem : EntitySystem
     [Dependency] private MoffCharacterSelectionManager _selection = default!;
 
     /// <summary>Every character of <paramref name="player"/> whose slot is active.</summary>
-    public List<HumanoidCharacterProfile> GetActiveProfiles(NetUserId player)
+    public IEnumerable<HumanoidCharacterProfile> GetActiveProfiles(NetUserId player)
     {
-        var result = new List<HumanoidCharacterProfile>();
-
         if (!_prefs.TryGetCachedPreferences(player, out var prefs))
-            return result;
+            yield break;
 
         var state = _selection.GetState(player);
-
         foreach (var (slot, profile) in prefs.Characters)
         {
             if (profile != null && state.IsSlotEnabled(slot))
-                result.Add(profile);
+                yield return profile;
         }
-
-        return result;
     }
 }

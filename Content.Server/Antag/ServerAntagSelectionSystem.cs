@@ -47,7 +47,10 @@ public sealed partial class ServerAntagSelectionSystem : AntagSelectionSystem
         if (IsAntagBanned(args.Player, def) || !_playTime.IsAllowed(args.Player, def.PrefRoles))
             return;
 
-        if (!TrySpawnAntagonist((rule, select), def, args.Player, XForm.GetMapCoordinates(ent), out var uid))
+        // Moff start - multi character selection: respect character selection for ghostroles while picking random profiles for roundstart
+        if (!TrySpawnAntagonist((rule, select), def, args.Player, respectPlayerSelection: false, XForm.GetMapCoordinates(ent), out var uidAndProfile) ||
+            uidAndProfile is not var (uid, profile))
+        // Moff end
         {
             Log.Error($"Tried to make {args.Player.UserId} into an antagonist but was unable to spawn an entity for them. Game rule {ToPrettyString(ent)}");
             return;
@@ -55,11 +58,11 @@ public sealed partial class ServerAntagSelectionSystem : AntagSelectionSystem
 
         // We do this after TrySpawnAntagonist so we don't have to worry about a failed spawn adding permanent pre selections to a game rule.
         PreSelectSession((rule, select), def, args.Player);
-        InitializeAntag((rule, select), def, uid.Value, args.Player);
+        InitializeAntag((rule, select), def, uid, args.Player, profile); // Moff - multi character selection: respect character selection for ghostroles while picking random profiles for roundstart
         args.TookRole = true;
 
         // Move ghosts that were watching the raffle on the spawner over to the freshly spawned antag.
-        Follower.TransferFollowers(ent.Owner, uid.Value);
+        Follower.TransferFollowers(ent.Owner, uid); // Moff - multi character selection: respect character selection for ghostroles while picking random profiles for roundstart
 
         _ghostRole.UnregisterGhostRole((ent, Comp<GhostRoleComponent>(ent)));
     }
