@@ -1,0 +1,12 @@
+advertisement-nano-1 = Glory to Nanotrasen!
+advertisement-nano-2 = GLORY TO NANOTRASEN!!!
+advertisement-nano-3 = Show your patriotism to Nanotrasen!
+advertisement-nano-4 = The best color to wear is Nanotrasen Blue!
+advertisement-nano-5 = Don't be a Syndicate Slum, buy Nanotrasen today!
+advertisement-nano-6 = Nanotrasen guides our might!
+thankyou-nanovend-1 = Glory to Nanotrasen!
+thankyou-nanovend-2 = Glory to Nanotrasen!
+thankyou-nanovend-3 = That's what John Nanotrasen would have selected!
+thankyou-nanovend-4 = Remember to come back later for your daily dose of Nanotrasen!
+thankyou-nanovend-5 = For a brighter future!
+thankyou-nanovend-6 = Nanotrasen, we perservere!
