@@ -538,6 +538,11 @@ public sealed partial class WiresSystem : SharedWiresSystem
         UpdateUserInterface(uid);
     }
 
+    public void RefreshUserInterface(EntityUid uid, WiresComponent? wires = null, UserInterfaceComponent? ui = null) //Moffstation - start
+    {
+        UpdateUserInterface(uid, wires, ui);
+    } // Moffstation - end
+
     private void UpdateUserInterface(EntityUid uid, WiresComponent? wires = null, UserInterfaceComponent? ui = null)
     {
         if (!Resolve(uid, ref wires, ref ui, false)) // logging this means that we get a bunch of errors

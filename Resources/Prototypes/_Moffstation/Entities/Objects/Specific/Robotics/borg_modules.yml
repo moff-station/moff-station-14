@@ -476,3 +476,16 @@
     - item: NFWeaponLauncherMailBorg
   - type: BorgModuleIcon
     icon: { sprite: _Moffstation/Interface/Actions/actions_borg.rsi, state: mail-module }
+
+#Result of using a jestographic sequencer on a borg module. Identical to the advanced clowning module, but fits any chassis.
+- type: entity
+  id: BorgModuleJestedAdvancedClowning
+  parent: BorgModuleAdvancedClowning
+  components:
+  - type: BorgModule
+    borgFitTypes:
+    - borg-type-all
+  - type: Tag
+    tags:
+    - BorgModuleGeneric
+    - CyborgClowningModule
