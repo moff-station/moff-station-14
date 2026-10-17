@@ -26,6 +26,8 @@ using Content.Shared.Stacks;
 using Content.Shared.Storage;
 using Content.Shared.Store;
 using Content.Shared.Store.Components;
+using Content.Shared._Moffstation.Chitter;
+using Content.Shared.Access.Systems;
 using Robust.Shared.Prototypes;
 
 namespace Content.Server.Cloning;
@@ -51,6 +53,8 @@ public sealed partial class CloningSystem
     [Dependency] private ForensicsSystem _forensics = default!;
     [Dependency] private FlammableSystem _flammable = default!;
     [Dependency] private DamageableSystem _damageable = default!;
+
+    [Dependency] private SharedIdCardSystem _card = default!; // Moff
 
     public override void Initialize()
     {

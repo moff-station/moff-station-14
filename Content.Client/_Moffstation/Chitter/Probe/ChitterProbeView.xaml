@@ -1,0 +1,33 @@
+<probe:ChitterProbeView xmlns="https://spacestation14.io"
+                           xmlns:probe="clr-namespace:Content.Client._Moffstation.Chitter.Probe"
+                           xmlns:chitter="clr-namespace:Content.Client._Moffstation.Chitter"
+                           xmlns:logUi="clr-namespace:Content.Client._Moffstation.Chitter.LogUi"
+                           Orientation="Vertical"
+                           HorizontalExpand="True"
+                           VerticalExpand="True">
+
+    <PanelContainer StyleClasses="BackgroundDark" />
+
+    <BoxContainer Orientation="Vertical" Margin="4" HorizontalExpand="True" VerticalExpand="True">
+        <Label Name="NoScanLabel"
+               Text="{Loc 'chitter-pi-no-scan'}"
+               StyleClasses="LabelHeading"
+               ClipText="True"
+               Visible="False" />
+
+        <BoxContainer Name="ChatsContainer" Orientation="Vertical" HorizontalExpand="True" VerticalExpand="True" Visible="False">
+            <Label Name="HeaderLabel"
+                   Text="{Loc 'chitter-pi-last-scanned'}"
+                   StyleClasses="LabelHeading"
+                   ClipText="True" />
+            <logUi:ChitterLogContainer Name="LogContainer" Searchable="False" />
+        </BoxContainer>
+
+        <Label Name="WarrantyLabel"
+               Text="{Loc 'chitter-pi-warranty-notice'}"
+               StyleClasses="LabelSubText"
+               HorizontalAlignment="Right"
+               FontColorOverride="#808080"
+               Margin="0 4 0 0" />
+    </BoxContainer>
+</probe:ChitterProbeView>
