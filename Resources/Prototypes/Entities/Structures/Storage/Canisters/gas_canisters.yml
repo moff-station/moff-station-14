@@ -1,6 +1,6 @@
 - type: entity
   abstract: true
-  parent: [ BaseStructureDynamic, BasePaperLabelableVisualized ]
+  parent: [ BaseStructureDynamic, GasCanVisualsBase, BasePaperLabelableVisualized, StructureHealthContainerStrong ]
   id: GasCanister
   name: gas canister
   description: A canister that can contain any type of gas. It can be attached to connector ports using a wrench.
@@ -9,55 +9,57 @@
   - type: InteractionOutline
   - type: Transform
     noRot: true
-  - type: Sprite
-    sprite: Structures/Storage/canister.rsi
-    noRot: true
-    layers:
-    - state: grey
-    - state: paper
-      visible: false
-      map: [ "enum.PaperLabelVisuals.Layer" ]
-    - state: integrity-unshaded-0
-      map: [ "enum.MaxPressureVisualLayers.BaseUnshaded" ]
-      shader: unshaded
-      visible: false
-    - state: mask-grey
-      map: [ "enum.MaxPressureVisualLayers.Base" ]
-      visible: false
-  - type: Appearance
-  - type: GenericVisualizer
-    visuals:
-      enum.AnchorVisuals.Anchored:
-        connectedToPort:
-          False: { state: can-connector, visible: false }
-          True: { state: can-connector, visible: true }
-      enum.GasCanisterVisuals.TankInserted:
-        tankInserted:
-          False: { state: can-open, visible: false }
-          True: { state: can-open, visible: true }
-      enum.LockVisuals.Locked:
-        locked:
-          False: { state: unlocked, shader: "unshaded" }
-          True: { state: locked, shader: "unshaded" }
-      enum.GasCanisterVisuals.PressureState:
-        pressureLight:
-          0: { state: can-o0, shader: "unshaded" }
-          1: { state: can-o1, shader: "unshaded" }
-          2: { state: can-o2, shader: "unshaded" }
-          3: { state: can-o3, shader: "unshaded" }
-      enum.PaperLabelVisuals.HasLabel:
-        enum.PaperLabelVisuals.Layer:
-          True: { visible: true }
-          False: { visible: false }
-      enum.StorageVisuals.Open:
-        enum.PaperLabelVisuals.Layer:
-          True: { visible: false }
-      enum.PaperLabelVisuals.LabelType:
-        enum.PaperLabelVisuals.Layer:
-          Paper: { state: paper }
-          Bounty: { state: bounty }
-          CaptainsPaper: { state: captains_paper }
-          Invoice: { state: invoice }
+  # Moff start - Make gas cans paintable. Replace immediate visuals with `GasCanVisualsBase` parent.
+#  - type: Sprite
+#    sprite: Structures/Storage/canister.rsi
+#    noRot: true
+#    layers:
+#    - state: grey
+#    - state: paper
+#      visible: false
+#      map: [ "enum.PaperLabelVisuals.Layer" ]
+#    - state: integrity-unshaded-0
+#      map: [ "enum.MaxPressureVisualLayers.BaseUnshaded" ]
+#      shader: unshaded
+#      visible: false
+#    - state: mask-grey
+#      map: [ "enum.MaxPressureVisualLayers.Base" ]
+#      visible: false
+#  - type: Appearance
+#  - type: GenericVisualizer
+#    visuals:
+#      enum.AnchorVisuals.Anchored:
+#        connectedToPort:
+#          False: { state: can-connector, visible: false }
+#          True: { state: can-connector, visible: true }
+#      enum.GasCanisterVisuals.TankInserted:
+#        tankInserted:
+#          False: { state: can-open, visible: false }
+#          True: { state: can-open, visible: true }
+#      enum.LockVisuals.Locked:
+#        locked:
+#          False: { state: unlocked, shader: "unshaded" }
+#          True: { state: locked, shader: "unshaded" }
+#      enum.GasCanisterVisuals.PressureState:
+#        pressureLight:
+#          0: { state: can-o0, shader: "unshaded" }
+#          1: { state: can-o1, shader: "unshaded" }
+#          2: { state: can-o2, shader: "unshaded" }
+#          3: { state: can-o3, shader: "unshaded" }
+#      enum.PaperLabelVisuals.HasLabel:
+#        enum.PaperLabelVisuals.Layer:
+#          True: { visible: true }
+#          False: { visible: false }
+#      enum.StorageVisuals.Open:
+#        enum.PaperLabelVisuals.Layer:
+#          True: { visible: false }
+#      enum.PaperLabelVisuals.LabelType:
+#        enum.PaperLabelVisuals.Layer:
+#          Paper: { state: paper }
+#          Bounty: { state: bounty }
+#          CaptainsPaper: { state: captains_paper }
+#          Invoice: { state: invoice }
+  # Moff end
   - type: ActivatableUI
     key: enum.GasCanisterUiKey.Key
   - type: UIRequiresLock
@@ -67,22 +69,18 @@
     interfaces:
       enum.GasCanisterUiKey.Key:
         type: GasCanisterBoundUserInterface
+  - type: Damageable
+    damageModifierSet: PlasteelMod
   - type: Destructible
     thresholds:
-    - trigger: &DamageTrigger300
+    - trigger: &DamageContainerStrong
         !type:DamageTrigger
-        damage: 300
+        damage: 140
       behaviors:
       - !type:PlaySoundBehavior
         sound:
           collection: MetalBreak
-      - !type:DoActsBehavior
-        acts: [ "Destruction" ]
       - !type:DumpCanisterBehavior
-  - type: Damageable
-    damageModifierSet: Metallic
-  - type: Injurable
-    damageContainer: Inorganic
   - type: Physics
     bodyType: Dynamic
   - type: Fixtures
@@ -138,50 +136,50 @@
   - type: GuideHelp
     guides:
     - GasCanisters
-  - type: Paintable
-    group: Canisters
+  # Moff start - Make gas cans paintable. Replaces upstream's painting ability
+#  - type: Paintable
+#    group: Canisters
+  # Moff end
 
 - type: entity
   parent: GasCanister
   id: StorageCanister
   name: storage canister
   components:
-    - type: Sprite
-      layers:
-      - state: yellow
-      - state: paper
-        visible: false
-        map: [ "enum.PaperLabelVisuals.Layer" ]
-      - state: integrity-unshaded-0
-        map: [ "enum.MaxPressureVisualLayers.BaseUnshaded" ]
-        shader: unshaded
-        visible: false
-      - state: mask-yellow
-        map: [ "enum.MaxPressureVisualLayers.Base" ]
-        visible: false
-    - type: MaxPressureVisuals
-      integrityMask: mask-yellow
+    # Moff start - Make gas cans paintable.
+#    - type: Sprite
+#      layers:
+#      - state: yellow
+#      - state: paper
+#        visible: false
+#        map: [ "enum.PaperLabelVisuals.Layer" ]
+#      - state: integrity-unshaded-0
+#        map: [ "enum.MaxPressureVisualLayers.BaseUnshaded" ]
+#        shader: unshaded
+#        visible: false
+#      - state: mask-yellow
+#        map: [ "enum.MaxPressureVisualLayers.Base" ]
+#        visible: false
+#    - type: MaxPressureVisuals
+#      integrityMask: mask-yellow
+    # Moff end
     - type: GasCanister
       air:
         volume: 1500
         temperature: 293.15
     - type: Destructible
       thresholds:
-      - trigger:
-          !type:DamageTrigger
-          damage: 300
+      - trigger: *DamageContainerStrong
         behaviors:
-        - !type:PlaySoundBehavior
-          sound:
-            collection: MetalBreak
         - !type:SpawnEntitiesBehavior
           spawn:
             StorageCanisterBroken:
               min: 1
               max: 1
-        - !type:DoActsBehavior
-          acts: [ "Destruction" ]
-        - !type:DumpCanisterBehavior
+    # Moff start - Make gas cans paintable.
+    - type: GasCanVisuals
+      visuals: Default
+    # Moff end
 
 # Filled canisters, contain 1871.71051 moles each
 
@@ -191,22 +189,24 @@
   name: air canister
   description: A canister that can contain any type of gas. This one is supposed to contain air mixture. It can be attached to connector ports using a wrench.
   components:
-  - type: Sprite
-    sprite: Structures/Storage/canister.rsi
-    layers:
-    - state: grey
-    - state: paper
-      visible: false
-      map: [ "enum.PaperLabelVisuals.Layer" ]
-    - state: integrity-unshaded-0
-      map: [ "enum.MaxPressureVisualLayers.BaseUnshaded" ]
-      shader: unshaded
-      visible: false
-    - state: mask-grey
-      map: [ "enum.MaxPressureVisualLayers.Base" ]
-      visible: false
-  - type: MaxPressureVisuals
-    integrityMask: mask-grey
+    # Moff start - Make gas cans paintable.
+#  - type: Sprite
+#    sprite: Structures/Storage/canister.rsi
+#    layers:
+#    - state: grey
+#    - state: paper
+#      visible: false
+#      map: [ "enum.PaperLabelVisuals.Layer" ]
+#    - state: integrity-unshaded-0
+#      map: [ "enum.MaxPressureVisualLayers.BaseUnshaded" ]
+#      shader: unshaded
+#      visible: false
+#    - state: mask-grey
+#      map: [ "enum.MaxPressureVisualLayers.Base" ]
+#      visible: false
+#  - type: MaxPressureVisuals
+#    integrityMask: mask-grey
+  # Moff end
   - type: GasCanister
     air:
       volume: 1500
@@ -216,13 +216,17 @@
       temperature: 293.15
   - type: Destructible
     thresholds:
-    - trigger: *DamageTrigger300
+    - trigger: *DamageContainerStrong
       behaviors:
       - !type:SpawnEntitiesBehavior
         spawn:
           AirCanisterBroken:
             min: 1
             max: 1
+  # Moff start - Make gas cans paintable.
+  - type: GasCanVisuals
+    visuals: AirMix
+  # Moff end
 
 - type: entity
   parent: GasCanister
@@ -230,21 +234,23 @@
   name: oxygen canister
   description: A canister that can contain any type of gas. This one is supposed to contain oxygen. It can be attached to connector ports using a wrench.
   components:
-  - type: Sprite
-    layers:
-    - state: blue
-    - state: paper
-      visible: false
-      map: [ "enum.PaperLabelVisuals.Layer" ]
-    - state: integrity-unshaded-0
-      map: [ "enum.MaxPressureVisualLayers.BaseUnshaded" ]
-      shader: unshaded
-      visible: false
-    - state: mask-blue
-      map: [ "enum.MaxPressureVisualLayers.Base" ]
-      visible: false
-  - type: MaxPressureVisuals
-    integrityMask: mask-blue
+    # Moff start - Make gas cans paintable.
+#  - type: Sprite
+#    layers:
+#    - state: blue
+#    - state: paper
+#      visible: false
+#      map: [ "enum.PaperLabelVisuals.Layer" ]
+#    - state: integrity-unshaded-0
+#      map: [ "enum.MaxPressureVisualLayers.BaseUnshaded" ]
+#      shader: unshaded
+#      visible: false
+#    - state: mask-blue
+#      map: [ "enum.MaxPressureVisualLayers.Base" ]
+#      visible: false
+#  - type: MaxPressureVisuals
+#    integrityMask: mask-blue
+  # Moff end
   - type: GasCanister
     air:
       volume: 1500
@@ -253,13 +259,17 @@
       temperature: 293.15
   - type: Destructible
     thresholds:
-    - trigger: *DamageTrigger300
+    - trigger: *DamageContainerStrong
       behaviors:
       - !type:SpawnEntitiesBehavior
         spawn:
           OxygenCanisterBroken:
             min: 1
             max: 1
+  # Moff start - Make gas cans paintable.
+  - type: GasCanVisuals
+    visuals: Oxygen
+  # Moff end
 
 - type: entity
   id: LiquidOxygenCanister
@@ -275,6 +285,10 @@
       temperature: 72
   - type: AccessReader
     access: [["Atmospherics"]]
+  # Moff start - Make gas cans paintable.
+  - type: GasCanVisuals
+    visuals: LiquidOxygen
+  # Moff end
 
 - type: entity
   parent: GasCanister
@@ -282,21 +296,23 @@
   name: nitrogen canister
   description: A canister that can contain any type of gas. This one is supposed to contain nitrogen. It can be attached to connector ports using a wrench.
   components:
-    - type: Sprite
-      layers:
-      - state: red
-      - state: paper
-        visible: false
-        map: [ "enum.PaperLabelVisuals.Layer" ]
-      - state: integrity-unshaded-0
-        map: [ "enum.MaxPressureVisualLayers.BaseUnshaded" ]
-        shader: unshaded
-        visible: false
-      - state: mask-red
-        map: [ "enum.MaxPressureVisualLayers.Base" ]
-        visible: false
-    - type: MaxPressureVisuals
-      integrityMask: mask-red
+    # Moff start - Make gas cans paintable.
+#    - type: Sprite
+#      layers:
+#      - state: red
+#      - state: paper
+#        visible: false
+#        map: [ "enum.PaperLabelVisuals.Layer" ]
+#      - state: integrity-unshaded-0
+#        map: [ "enum.MaxPressureVisualLayers.BaseUnshaded" ]
+#        shader: unshaded
+#        visible: false
+#      - state: mask-red
+#        map: [ "enum.MaxPressureVisualLayers.Base" ]
+#        visible: false
+#    - type: MaxPressureVisuals
+#      integrityMask: mask-red
+    # Moff end
     - type: GasCanister
       air:
         volume: 1500
@@ -305,13 +321,17 @@
         temperature: 293.15
     - type: Destructible
       thresholds:
-      - trigger: *DamageTrigger300
+      - trigger: *DamageContainerStrong
         behaviors:
         - !type:SpawnEntitiesBehavior
           spawn:
             NitrogenCanisterBroken:
               min: 1
               max: 1
+    # Moff start - Make gas cans paintable.
+    - type: GasCanVisuals
+      visuals: Nitrogen
+    # Moff end
 
 - type: entity
   id: LiquidNitrogenCanister
@@ -327,6 +347,10 @@
       temperature: 72
   - type: AccessReader
     access: [["Atmospherics"]]
+  # Moff start - Make gas cans paintable.
+  - type: GasCanVisuals
+    visuals: LiquidNitrogen
+  # Moff end
 
 - type: entity
   parent: GasCanister
@@ -334,21 +358,23 @@
   name: carbon dioxide canister
   description: A canister that can contain any type of gas. This one is supposed to contain carbon dioxide. It can be attached to connector ports using a wrench.
   components:
-    - type: Sprite
-      layers:
-      - state: black
-      - state: paper
-        visible: false
-        map: [ "enum.PaperLabelVisuals.Layer" ]
-      - state: integrity-unshaded-0
-        map: [ "enum.MaxPressureVisualLayers.BaseUnshaded" ]
-        shader: unshaded
-        visible: false
-      - state: mask-black
-        map: [ "enum.MaxPressureVisualLayers.Base" ]
-        visible: false
-    - type: MaxPressureVisuals
-      integrityMask: mask-black
+    # Moff start - Make gas cans paintable.
+#    - type: Sprite
+#      layers:
+#      - state: black
+#      - state: paper
+#        visible: false
+#        map: [ "enum.PaperLabelVisuals.Layer" ]
+#      - state: integrity-unshaded-0
+#        map: [ "enum.MaxPressureVisualLayers.BaseUnshaded" ]
+#        shader: unshaded
+#        visible: false
+#      - state: mask-black
+#        map: [ "enum.MaxPressureVisualLayers.Base" ]
+#        visible: false
+#    - type: MaxPressureVisuals
+#      integrityMask: mask-black
+    # Moff end
     - type: GasCanister
       air:
         volume: 1500
@@ -357,7 +383,7 @@
         temperature: 293.15
     - type: Destructible
       thresholds:
-      - trigger: *DamageTrigger300
+      - trigger: *DamageContainerStrong
         behaviors:
         - !type:SpawnEntitiesBehavior
           spawn:
@@ -366,6 +392,10 @@
               max: 1
     - type: Lock
       locked: true
+    # Moff start - Make gas cans paintable.
+    - type: GasCanVisuals
+      visuals: CarbonDioxide
+    # Moff end
 
 - type: entity
   id: LiquidCarbonDioxideCanister
@@ -381,6 +411,10 @@
       temperature: 72
   - type: AccessReader
     access: [["Atmospherics"]]
+  # Moff start - Make gas cans paintable.
+  - type: GasCanVisuals
+    visuals: LiquidCarbonDioxide
+  # Moff end
 
 - type: entity
   parent: GasCanister
@@ -388,21 +422,23 @@
   name: plasma canister
   description: A canister that can contain any type of gas. This one is supposed to contain plasma. It can be attached to connector ports using a wrench.
   components:
-    - type: Sprite
-      layers:
-      - state: orange
-      - state: paper
-        visible: false
-        map: [ "enum.PaperLabelVisuals.Layer" ]
-      - state: integrity-unshaded-0
-        map: [ "enum.MaxPressureVisualLayers.BaseUnshaded" ]
-        shader: unshaded
-        visible: false
-      - state: mask-orange
-        map: [ "enum.MaxPressureVisualLayers.Base" ]
-        visible: false
-    - type: MaxPressureVisuals
-      integrityMask: mask-orange
+    # Moff start - Make gas cans paintable.
+#    - type: Sprite
+#      layers:
+#      - state: orange
+#      - state: paper
+#        visible: false
+#        map: [ "enum.PaperLabelVisuals.Layer" ]
+#      - state: integrity-unshaded-0
+#        map: [ "enum.MaxPressureVisualLayers.BaseUnshaded" ]
+#        shader: unshaded
+#        visible: false
+#      - state: mask-orange
+#        map: [ "enum.MaxPressureVisualLayers.Base" ]
+#        visible: false
+#    - type: MaxPressureVisuals
+#      integrityMask: mask-orange
+    # Moff end
     - type: GasCanister
       air:
         volume: 1500
@@ -411,7 +447,7 @@
         temperature: 293.15
     - type: Destructible
       thresholds:
-      - trigger: *DamageTrigger300
+      - trigger: *DamageContainerStrong
         behaviors:
         - !type:SpawnEntitiesBehavior
           spawn:
@@ -420,6 +456,10 @@
               max: 1
     - type: Lock
       locked: true
+    # Moff start - Make gas cans paintable.
+    - type: GasCanVisuals
+      visuals: Plasma
+    # Moff end
 
 - type: entity
   parent: GasCanister
@@ -427,21 +467,23 @@
   name: tritium canister
   description: A canister that can contain any type of gas. This one is supposed to contain tritium. It can be attached to connector ports using a wrench.
   components:
-    - type: Sprite
-      layers:
-      - state: green
-      - state: paper
-        visible: false
-        map: [ "enum.PaperLabelVisuals.Layer" ]
-      - state: integrity-unshaded-0
-        map: [ "enum.MaxPressureVisualLayers.BaseUnshaded" ]
-        shader: unshaded
-        visible: false
-      - state: mask-green
-        map: [ "enum.MaxPressureVisualLayers.Base" ]
-        visible: false
-    - type: MaxPressureVisuals
-      integrityMask: mask-green
+    # Moff start - Make gas cans paintable.
+#    - type: Sprite
+#      layers:
+#      - state: green
+#      - state: paper
+#        visible: false
+#        map: [ "enum.PaperLabelVisuals.Layer" ]
+#      - state: integrity-unshaded-0
+#        map: [ "enum.MaxPressureVisualLayers.BaseUnshaded" ]
+#        shader: unshaded
+#        visible: false
+#      - state: mask-green
+#        map: [ "enum.MaxPressureVisualLayers.Base" ]
+#        visible: false
+#    - type: MaxPressureVisuals
+#      integrityMask: mask-green
+    # Moff end
     - type: GasCanister
       air:
         volume: 1500
@@ -450,7 +492,7 @@
         temperature: 293.15
     - type: Destructible
       thresholds:
-      - trigger: *DamageTrigger300
+      - trigger: *DamageContainerStrong
         behaviors:
         - !type:SpawnEntitiesBehavior
           spawn:
@@ -459,6 +501,10 @@
               max: 1
     - type: Lock
       locked: true
+    # Moff start - Make gas cans paintable.
+    - type: GasCanVisuals
+      visuals: Tritium
+    # Moff end
 
 - type: entity
   parent: GasCanister
@@ -466,21 +512,23 @@
   name: water vapor canister
   description: A canister that can contain any type of gas. This one is supposed to contain water vapor. It can be attached to connector ports using a wrench.
   components:
-    - type: Sprite
-      layers:
-      - state: water_vapor
-      - state: paper
-        visible: false
-        map: [ "enum.PaperLabelVisuals.Layer" ]
-      - state: integrity-unshaded-0
-        map: [ "enum.MaxPressureVisualLayers.BaseUnshaded" ]
-        shader: unshaded
-        visible: false
-      - state: mask-water_vapor
-        map: [ "enum.MaxPressureVisualLayers.Base" ]
-        visible: false
-    - type: MaxPressureVisuals
-      integrityMask: mask-water_vapor
+    # Moff start - Make gas cans paintable.
+#    - type: Sprite
+#      layers:
+#      - state: water_vapor
+#      - state: paper
+#        visible: false
+#        map: [ "enum.PaperLabelVisuals.Layer" ]
+#      - state: integrity-unshaded-0
+#        map: [ "enum.MaxPressureVisualLayers.BaseUnshaded" ]
+#        shader: unshaded
+#        visible: false
+#      - state: mask-water_vapor
+#        map: [ "enum.MaxPressureVisualLayers.Base" ]
+#        visible: false
+#    - type: MaxPressureVisuals
+#      integrityMask: mask-water_vapor
+    # Moff end
     - type: GasCanister
       air:
         volume: 1500
@@ -489,13 +537,17 @@
         temperature: 293.15
     - type: Destructible
       thresholds:
-      - trigger: *DamageTrigger300
+      - trigger: *DamageContainerStrong
         behaviors:
         - !type:SpawnEntitiesBehavior
           spawn:
             WaterVaporCanisterBroken:
               min: 1
               max: 1
+    # Moff start - Make gas cans paintable.
+    - type: GasCanVisuals
+      visuals: WaterVapor
+    # Moff end
 
 - type: entity
   parent: GasCanister
@@ -503,21 +555,23 @@
   name: ammonia canister
   description: A canister that can contain any type of gas. This one is supposed to contain ammonia. It can be attached to connector ports using a wrench.
   components:
-    - type: Sprite
-      layers:
-      - state: greenys
-      - state: paper
-        visible: false
-        map: [ "enum.PaperLabelVisuals.Layer" ]
-      - state: integrity-unshaded-0
-        map: [ "enum.MaxPressureVisualLayers.BaseUnshaded" ]
-        shader: unshaded
-        visible: false
-      - state: mask-greenys
-        map: [ "enum.MaxPressureVisualLayers.Base" ]
-        visible: false
-    - type: MaxPressureVisuals
-      integrityMask: mask-greenys
+    # Moff start - Make gas cans paintable.
+#    - type: Sprite
+#      layers:
+#      - state: greenys
+#      - state: paper
+#        visible: false
+#        map: [ "enum.PaperLabelVisuals.Layer" ]
+#      - state: integrity-unshaded-0
+#        map: [ "enum.MaxPressureVisualLayers.BaseUnshaded" ]
+#        shader: unshaded
+#        visible: false
+#      - state: mask-greenys
+#        map: [ "enum.MaxPressureVisualLayers.Base" ]
+#        visible: false
+#    - type: MaxPressureVisuals
+#      integrityMask: mask-greenys
+    # Moff end
     - type: GasCanister
       air:
         volume: 1500
@@ -526,7 +580,7 @@
         temperature: 293.15
     - type: Destructible
       thresholds:
-      - trigger: *DamageTrigger300
+      - trigger: *DamageContainerStrong
         behaviors:
         - !type:SpawnEntitiesBehavior
           spawn:
@@ -535,6 +589,10 @@
               max: 1
     - type: Lock
       locked: true
+    # Moff start - Make gas cans paintable.
+    - type: GasCanVisuals
+      visuals: Ammonia
+    # Moff end
 
 - type: entity
   parent: GasCanister
@@ -542,21 +600,23 @@
   name: nitrous oxide canister
   description: A canister that can contain any type of gas. This one is supposed to contain nitrous oxide. It can be attached to connector ports using a wrench.
   components:
-    - type: Sprite
-      layers:
-      - state: redws
-      - state: paper
-        visible: false
-        map: [ "enum.PaperLabelVisuals.Layer" ]
-      - state: integrity-unshaded-0
-        map: [ "enum.MaxPressureVisualLayers.BaseUnshaded" ]
-        shader: unshaded
-        visible: false
-      - state: mask-redws
-        map: [ "enum.MaxPressureVisualLayers.Base" ]
-        visible: false
-    - type: MaxPressureVisuals
-      integrityMask: mask-redws
+    # Moff start - Make gas cans paintable.
+#    - type: Sprite
+#      layers:
+#      - state: redws
+#      - state: paper
+#        visible: false
+#        map: [ "enum.PaperLabelVisuals.Layer" ]
+#      - state: integrity-unshaded-0
+#        map: [ "enum.MaxPressureVisualLayers.BaseUnshaded" ]
+#        shader: unshaded
+#        visible: false
+#      - state: mask-redws
+#        map: [ "enum.MaxPressureVisualLayers.Base" ]
+#        visible: false
+#    - type: MaxPressureVisuals
+#      integrityMask: mask-redws
+    # Moff end
     - type: GasCanister
       air:
         volume: 1500
@@ -565,7 +625,7 @@
         temperature: 293.15
     - type: Destructible
       thresholds:
-      - trigger: *DamageTrigger300
+      - trigger: *DamageContainerStrong
         behaviors:
         - !type:SpawnEntitiesBehavior
           spawn:
@@ -574,6 +634,10 @@
               max: 1
     - type: Lock
       locked: true
+    # Moff start - Make gas cans paintable.
+    - type: GasCanVisuals
+      visuals: NitrousOxide
+    # Moff end
 
 - type: entity
   parent: GasCanister
@@ -581,21 +645,23 @@
   name: frezon canister
   description: A canister that can contain any type of gas. This one is supposed to contain frezon. It can be attached to connector ports using a wrench.
   components:
-  - type: Sprite
-    layers:
-    - state: frezon
-    - state: paper
-      visible: false
-      map: [ "enum.PaperLabelVisuals.Layer" ]
-    - state: integrity-unshaded-0
-      map: [ "enum.MaxPressureVisualLayers.BaseUnshaded" ]
-      shader: unshaded
-      visible: false
-    - state: mask-frezon
-      map: [ "enum.MaxPressureVisualLayers.Base" ]
-      visible: false
-  - type: MaxPressureVisuals
-    integrityMask: mask-frezon
+    # Moff start - Make gas cans paintable.
+#  - type: Sprite
+#    layers:
+#    - state: frezon
+#    - state: paper
+#      visible: false
+#      map: [ "enum.PaperLabelVisuals.Layer" ]
+#    - state: integrity-unshaded-0
+#      map: [ "enum.MaxPressureVisualLayers.BaseUnshaded" ]
+#      shader: unshaded
+#      visible: false
+#    - state: mask-frezon
+#      map: [ "enum.MaxPressureVisualLayers.Base" ]
+#      visible: false
+#  - type: MaxPressureVisuals
+#    integrityMask: mask-frezon
+  # Moff end
   - type: GasCanister
     air:
       volume: 1500
@@ -604,7 +670,7 @@
       temperature: 293.15
   - type: Destructible
     thresholds:
-    - trigger: *DamageTrigger300
+    - trigger: *DamageContainerStrong
       behaviors:
       - !type:SpawnEntitiesBehavior
         spawn:
@@ -613,6 +679,10 @@
             max: 1
   - type: Lock
     locked: true
+  # Moff start - Make gas cans paintable.
+  - type: GasCanVisuals
+    visuals: Frezon
+  # Moff end
 
 
 - type: entity
@@ -633,16 +703,18 @@
 # Broke Entities
 
 - type: entity
-  parent: BaseStructureDynamic
+  parent: [ BaseStructureDynamic, StructureHealthContainerWeak ]
   id: GasCanisterBrokenBase
   name: broken gas canister
   description: A broken gas canister. Not useless yet, as it can be salvaged for high quality materials.
   components:
+    - type: Damageable
+      damageModifierSet: PlasteelMod
     - type: Destructible
       thresholds:
       - trigger:
           !type:DamageTrigger
-          damage: 100
+          damage: 60
         behaviors:
         - !type:PlaySoundBehavior
           sound:
@@ -652,12 +724,6 @@
             SheetPlasteel1:
               min: 1
               max: 2
-        - !type:DoActsBehavior
-          acts: [ "Destruction" ]
-    - type: Damageable
-      damageModifierSet: Metallic
-    - type: Injurable
-      damageContainer: Inorganic
     - type: InteractionOutline
     - type: Sprite
       sprite: Structures/Storage/canister.rsi
@@ -677,7 +743,7 @@
           - MachineLayer
     - type: PhysicalComposition
       materialComposition:
-        Steel: 500
+        Plasteel: 200
     - type: StaticPrice
       price: 125
 

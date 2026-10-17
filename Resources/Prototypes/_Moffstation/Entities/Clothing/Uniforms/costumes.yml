@@ -85,14 +85,3 @@
   - type: HideLayerClothing
     layers:
       Hair: HEAD
-
-- type: entity
-  parent: [ ClothingHeadHelmetArmoredBase, BaseMinorContraband ]
-  id: ClothingHeadHelmetTarmask
-  name: Tar Mask
-  description: Silliest of Goobers.
-  components:
-  - type: Sprite
-    sprite: _Moffstation/Clothing/Uniforms/Costumes/tarmask.rsi
-  - type: Clothing
-    sprite: _Moffstation/Clothing/Uniforms/Costumes/tarmask.rsi

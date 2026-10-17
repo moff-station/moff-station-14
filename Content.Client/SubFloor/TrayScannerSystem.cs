@@ -1,3 +1,4 @@
+using Content.Client.Hands.Systems;
 using Content.Client.Items;
 using Content.Client.Items.UI;
 using Content.Client.Message;
@@ -33,6 +34,8 @@ public sealed partial class TrayScannerSystem : SharedTrayScannerSystem
     [Dependency] private EntityQuery<TrayScannerComponent> _trayScannerQuery = default!;
     [Dependency] private EntityQuery<SubFloorHideComponent> _subFloorHideQuery = default!;
 
+    [Dependency] private HandsSystem _hands = default!; // Moff
+
     private const string TRayAnimationKey = "trays";
     private const double AnimationLength = 0.3;
 
@@ -67,10 +70,15 @@ public sealed partial class TrayScannerSystem : SharedTrayScannerSystem
         // API is extremely skrungly. If this ever shows up on dottrace ping me and laugh.
         var canSee = false;
 
-        foreach (var item in _inventory.GetHandOrInventoryEntities(player.Value, SlotFlags.POCKET | SlotFlags.EYES)) // Funky change - check eyes
+        foreach (var item in _inventory.GetHandOrInventoryEntities(player.Value)) // Moff - Meson goggles get T-ray functionality
         {
-            if (!_trayScannerQuery.TryGetComponent(item, out var scanner) || !scanner.Enabled)
+            // Moff start - T-ray scanning works in slots defineable in yaml, rather than hardcoded for the t-ray scanner tool
+            if (!_trayScannerQuery.TryGetComponent(item, out var scanner) ||
+                !scanner.Enabled ||
+                !(_inventory.InSlotWithAnyFlags(item, scanner.RequiredSlots)
+                  || _hands.IsHeld(item, out _) && scanner.FunctionsInHand))
                 continue;
+            // Moff end
 
             range = MathF.Max(scanner.Range, range);
             mode = scanner.Mode;

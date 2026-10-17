@@ -1,6 +1,6 @@
 - type: reagent
   parent: BaseAlcohol
-  id: AstrosturaBitters
+  id: MoffAstrosturaBitters
   name: reagent-name-astrosturabitters
   desc: reagent-desc-astrosturabitters
   physicalDesc: reagent-physical-desc-strong-smelling
@@ -12,12 +12,13 @@
       metabolites:
         Ethanol: 0.6
       effects:
-      - !type:SatiateThirst
+      - !type:Satiate
+        satiationType: Thirst
         factor: 1
 
 - type: reagent
   parent: BaseAlcohol
-  id: PinkGin
+  id: MoffPinkGin
   name: reagent-name-pink-gin
   desc: reagent-desc-pink-gin
   physicalDesc: reagent-physical-desc-strong-smelling
@@ -34,12 +35,13 @@
       metabolites:
         Ethanol: 0.4
       effects:
-      - !type:SatiateThirst
+      - !type:Satiate
+        satiationType: Thirst
         factor: 2
 
 - type: reagent
   parent: BaseAlcohol
-  id: PlantersPunch
+  id: MoffPlantersPunch
   name: reagent-name-planters-punch
   desc: reagent-desc-planters-punch
   physicalDesc: reagent-physical-desc-strong-smelling
@@ -56,12 +58,13 @@
       metabolites:
         Ethanol: 0.266
       effects:
-      - !type:SatiateThirst
+      - !type:Satiate
+        satiationType: Thirst
         factor: 2
 
 - type: reagent
-  parent: BaseEthyl
-  id: CorpseReviver
+  parent: MoffBaseEthyl
+  id: MoffCorpseReviver
   name: reagent-name-corpse-reviver
   desc: reagent-desc-corpse-reviver
   physicalDesc: reagent-physical-desc-ghostly
@@ -79,12 +82,13 @@
         Ethanol: 0.6
         Ethylredoxrazine: 0.6
       effects:
-      - !type:SatiateThirst
+      - !type:Satiate
+        satiationType: Thirst
         factor: 2
 
 - type: reagent
-  parent: BaseEthyl
-  id: MossySpecial
+  parent: MoffBaseEthyl
+  id: MoffMossySpecial
   name: reagent-name-mossy-special
   desc: reagent-desc-mossy-special
   physicalDesc: reagent-physical-desc-leafy
@@ -102,12 +106,13 @@
         Ethanol: 0.2
         Ethylredoxrazine: 0.6
       effects:
-      - !type:SatiateThirst
+      - !type:Satiate
+        satiationType: Thirst
         factor: 3
 
 - type: reagent
   parent: BaseAlcohol
-  id: ScrantonSpecial
+  id: MoffScrantonSpecial
   name: reagent-name-scranton-special
   desc: reagent-desc-scranton-special
   physicalDesc: reagent-physical-desc-pungent
@@ -128,12 +133,13 @@
         damage:
           types:
             Poison: .15
-      - !type:SatiateThirst
+      - !type:Satiate
+        satiationType: Thirst
         factor: 1
 
 - type: reagent
   parent: BaseAlcohol
-  id: RussianMothroach
+  id: MoffRussianMothroach
   name: reagent-name-russian-mothroach
   desc: reagent-desc-russian-mothroach
   physicalDesc: reagent-physical-desc-fibrous
@@ -151,12 +157,13 @@
         Ethanol: 0.2
         Fiber: 0.4
       effects:
-      - !type:SatiateThirst
+      - !type:Satiate
+        satiationType: Thirst
         factor: 1
 
 - type: reagent
   parent: BaseAlcohol
-  id: Fertilizer
+  id: MoffFertilizer
   name: reagent-name-fertilizer
   desc: reagent-desc-fertilizer
   physicalDesc: reagent-physical-desc-verdant
@@ -182,7 +189,7 @@
 
 - type: reagent
   parent: BaseAlcohol
-  id: SolarHurricane
+  id: MoffSolarHurricane
   name: reagent-name-solar-hurricane
   desc: reagent-desc-solar-hurricane
   physicalDesc: reagent-physical-desc-glistening
@@ -199,7 +206,8 @@
       metabolites:
         Ethanol: 0.2
       effects:
-      - !type:SatiateThirst
+      - !type:Satiate
+        satiationType: Thirst
         factor: 5
         conditions:
         - !type:MetabolizerTypeCondition
@@ -207,7 +215,7 @@
 
 - type: reagent
   parent: BaseAlcohol
-  id: WizardAle
+  id: MoffWizardAle
   name: reagent-name-wizard-ale
   desc: reagent-desc-wizard-ale
   physicalDesc: reagent-physical-desc-secret
@@ -218,12 +226,13 @@
       metabolites:
         Ethanol: 0.8
       effects:
-      - !type:SatiateThirst
+      - !type:Satiate
+        satiationType: Thirst
         factor: 4
 
 - type: reagent
   parent: BaseAlcohol
-  id: MeatAnomaly
+  id: MoffMeatAnomaly
   name: reagent-name-meat-anomaly
   desc: reagent-desc-meat-anomaly
   physicalDesc: reagent-physical-desc-alive
@@ -242,5 +251,6 @@
         Fat: 0.2
         UncookedAnimalProteins: 0.5
       effects:
-      - !type:SatiateThirst
+      - !type:Satiate
+        satiationType: Thirst
         factor: 1

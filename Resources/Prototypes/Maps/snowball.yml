@@ -2,8 +2,8 @@
   id: Snowball
   mapName: 'Snowball Station'
   mapPath: /Maps/snowball.yml
-  minPlayers: 5
-  maxPlayers: 24
+  minPlayers: 0 # Deadpop
+  maxPlayers: 15 # Deadpop
   stations:
     Snowball:
       stationProto: StandardNanotrasenStation

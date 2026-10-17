@@ -1,5 +1,5 @@
 using Content.Shared._Moffstation.Sensors; // Moffstation - Borg sensors
-using Content.Shared.Medical.SuitSensor;
+using Content.Shared.Medical.SuitSensors;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Utility; // Moffstation - Borg sensors
 
@@ -25,6 +25,6 @@ public sealed partial class CrewMonitoringConsoleComponent : Component
     ///     Types of sensor datas accepted by this crew monitor
     /// </summary>
     [DataField]
-    public PrototypeFlags<SensorTypePrototype> SensorTypes = new();
+    public HashSet<ProtoId<SensorTypePrototype>> SensorTypes = new();
     // Moffstation - End
 }

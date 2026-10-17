@@ -57,6 +57,24 @@ public sealed class MoffCCVars
     public static readonly CVarDef<int> MapVoteCount =
         CVarDef.Create("votekick.map_vote_count", 3, CVar.SERVERONLY);
 
+    /// <summary>
+    ///     How many times post-round can be extended by vote. 0 disables the vote.
+    /// </summary>
+    public static readonly CVarDef<int> MaxRoundEndExtensionVotes =
+        CVarDef.Create("moff.round_end_extension_max", 2, CVar.SERVERONLY);
+
+    /// <summary>
+    ///     How many minutes each successful post-round extension vote extends the round by.
+    /// </summary>
+    public static readonly CVarDef<int> RoundEndExtensionVoteMinutes =
+        CVarDef.Create("moff.round_end_extension_minutes", 5, CVar.SERVERONLY);
+
+    /// <summary>
+    ///     How long the extension vote stays open, in seconds.
+    /// </summary>
+    public static readonly CVarDef<int> RoundEndExtensionVoteDuration =
+        CVarDef.Create("moff.round_end_extension_duration", 30, CVar.SERVERONLY);
+
     /*
      * Gameplay
      */
@@ -64,8 +82,8 @@ public sealed class MoffCCVars
     /// <summary>
     /// if true, the player count check for rules will be based on the number of players readied, versus the total number in the lobby.
     /// </summary>
-    public static readonly CVarDef<bool>
-        GameRulesCountReadied = CVarDef.Create("game.rules_count_readied", true, CVar.SERVERONLY);
+    public static readonly CVarDef<float>
+        GameRulesUnreadiedPlayerWeight = CVarDef.Create("game.unreadied_player_weight", 0.5f, CVar.SERVERONLY);
 
     /// <summary>
     /// Whether longspeech should be enabled

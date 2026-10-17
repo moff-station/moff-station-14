@@ -51,7 +51,8 @@
   metabolisms:
     Digestion:
       effects:
-      - !type:SatiateThirst
+      - !type:Satiate
+        satiationType: Thirst
         factor: 2
         conditions:
         - !type:MetabolizerTypeCondition

@@ -2,6 +2,7 @@ using Content.Server.DeviceNetwork.Systems;
 using Content.Server.Medical.CrewMonitoring;
 using Content.Shared._Moffstation.Silicons.Borgs;
 using Content.Shared.DeviceNetwork.Components;
+using Content.Shared.Medical.SuitSensors;
 using Robust.Shared.Timing;
 
 namespace Content.Server._Moffstation.Silicons;
@@ -46,9 +47,6 @@ public sealed partial class BorgSensorSystem : SharedBorgSensorSystem
                 sensor.ConnectedServer = address;
             }
 
-            // Send it to the connected server
-            var payload = Sensor.SuitSensorToPacket(status);
-
             // Clear the connected server if its address isn't on the network
             if (!_deviceNetworkSystem.IsAddressPresent(device.DeviceNetId, sensor.ConnectedServer))
             {
@@ -56,7 +54,11 @@ public sealed partial class BorgSensorSystem : SharedBorgSensorSystem
                 continue;
             }
 
-            _deviceNetworkSystem.QueuePacket(uid, sensor.ConnectedServer, payload, device: device);
+            var payload = new SuitSensorStatusPayload
+            {
+                Data = status.Value,
+            };
+            _deviceNetworkSystem.SendPacket((uid, device), sensor.ConnectedServer, ref payload);
         }
     }
 }

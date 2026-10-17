@@ -1,11 +1,14 @@
 using Content.Server.Antag.Components;
+using Content.Server.Station.Systems;
+using Content.Shared.Antag;
 using Content.Shared.GameTicking.Components;
-using Content.Server.GameTicking.Rules;
+using Content.Shared.GameTicking.Rules;
 
 namespace Content.Server.Antag;
 
 public sealed partial class AntagRandomSpawnSystem : GameRuleSystem<AntagRandomSpawnComponent>
 {
+    [Dependency] private ServerStationSystem _station = default!;
     [Dependency] private SharedTransformSystem _transform = default!;
 
     public override void Initialize()
@@ -15,16 +18,16 @@ public sealed partial class AntagRandomSpawnSystem : GameRuleSystem<AntagRandomS
         SubscribeLocalEvent<AntagRandomSpawnComponent, AntagSelectLocationEvent>(OnSelectLocation);
     }
 
-    protected override void Added(EntityUid uid, AntagRandomSpawnComponent comp, GameRuleComponent gameRule, GameRuleAddedEvent args)
+    protected override void Added(Entity<AntagRandomSpawnComponent, GameRuleComponent> rule, ref GameRuleAddedEvent args)
     {
-        base.Added(uid, comp, gameRule, args);
+        base.Added(rule, ref args);
 
         // we have to select this here because AntagSelectLocationEvent is raised twice because MakeAntag is called twice
         // once when a ghost role spawner is created and once when someone takes the ghost role
 
         // Moffstation - Find safest and largest grid
-        if (TryFindRandomTile(out _ , out _, out _, out var coords, largestGrid: true, safeAtmos: true))
-            comp.Coords = coords;
+        if (_station.TryFindRandomTile(out _ , out _, out _, out var coords, largestGrid: true, safeAtmos: true))
+            rule.Comp1.Coords = coords;
     }
 
     // Moffstation - Start - Rewrote this function to ensure coords are filled
@@ -32,7 +35,7 @@ public sealed partial class AntagRandomSpawnSystem : GameRuleSystem<AntagRandomS
     {
         if (ent.Comp.Coords == null)
         {
-            if (TryFindRandomTile(out _ , out _, out _, out var coords, largestGrid: true, safeAtmos: true))
+            if (_station.TryFindRandomTile(out _ , out _, out _, out var coords, largestGrid: true, safeAtmos: true))
                 ent.Comp.Coords = coords;
         }
 

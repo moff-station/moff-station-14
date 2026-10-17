@@ -10,11 +10,11 @@ using Content.Server.Administration.Systems;
 using Content.Server.GameTicking;
 using Content.Server.Shuttles.Components;
 using Content.Server.Shuttles.Systems;
-using Content.Server.Spawners.Components;
-using Content.Server.Station.Components;
 using Content.Shared.CCVar;
 using Content.Shared.Maps;
 using Content.Shared.Roles;
+using Content.Shared.Shuttles.Components;
+using Content.Shared.Spawners.Components;
 using Content.Shared.Station.Components;
 using Robust.Shared.Configuration;
 using Robust.Shared.ContentPack;
@@ -79,11 +79,27 @@ namespace Content.IntegrationTests.Tests
             {"/Maps/_Moffstation/Shuttles/shuttle-nt-grimebreaker.yml", ["ClosetJanitorBombFilled", "ShuttleGunFriendship"]},
             {"/Maps/_Moffstation/PreCrewed/shuttle-nt-grimebreaker.yml", ["ClosetJanitorBombFilled", "ShuttleGunFriendship"]},
             {"/Maps/_Moffstation/Shuttles/shuttle-nt-businessclass.yml", ["BoxFolderCentCom"]},
-            {"/Maps/_Moffstation/Shuttles/shuttle-nt-gunboat.yml", ["ShuttleGunDuster", "ShuttleGunPerforator"]},
-            {"/Maps/_Moffstation/PreCrewed/shuttle-nt-gunboat.yml", ["ShuttleGunDuster", "ShuttleGunPerforator"]},
             {"/Maps/_Moffstation/Nonstations/d1_logic.yml", ["ShuttleGunSvalinnMachineGun"]},
             {"/Maps/_Moffstation/frezon.yml", ["HandheldCrewMonitor"]},
             {"/Maps/_Moffstation/skeld.yml", ["ShuttleGunDuster"]},
+            {"/Maps/_Moffstation/fairgrounds.yml", [
+                "PlushieGhostRevenant",
+                "RubberStampCaptain",
+                "RubberStampCE",
+                "RubberStampCentcom",
+                "RubberStampChaplain",
+                "RubberStampClown",
+                "RubberStampCMO",
+                "RubberStampDetective",
+                "RubberStampHop",
+                "RubberStampHos",
+                "RubberStampLawyer",
+                "RubberStampMime",
+                "RubberStampPsychologist",
+                "RubberStampQm",
+                "RubberStampRd",
+                "RubberStampWarden",
+            ]},
             // Moffstation - End
         };
 
@@ -363,7 +379,7 @@ namespace Content.IntegrationTests.Tests
             var mapLoader = entManager.System<MapLoaderSystem>();
             var mapSystem = entManager.System<SharedMapSystem>();
             var protoManager = server.ResolveDependency<IPrototypeManager>();
-            var ticker = entManager.EntitySysManager.GetEntitySystem<GameTicker>();
+            var ticker = entManager.EntitySysManager.GetEntitySystem<ServerGameTicker>();
             var shuttleSystem = entManager.EntitySysManager.GetEntitySystem<ShuttleSystem>();
             var cfg = server.ResolveDependency<IConfigurationManager>();
 

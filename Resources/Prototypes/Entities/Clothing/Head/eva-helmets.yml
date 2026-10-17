@@ -13,7 +13,7 @@
     tags:
     - HelmetEVA
     - WhitelistChameleon
-    #- CorgiWearable - Moffstation - I hate Corgi sprites
+    #- CorgiWearable - Moffstation - Remove corgi sprites
 
 #Emergency pressure suit helmet
 - type: entity
@@ -79,7 +79,8 @@
   categories: [ HideSpawnMenu ]
   components:
   - type: Sprite
-    sprite: _Moffstation/Clothing/Head/Hardsuits/paramedhelm.rsi # Moffstation - Start
+    # Moff Start - Voidsuit Resprite
+    sprite: _Moffstation/Clothing/Head/Hardsuits/paramedhelm.rsi
     layers:
     - state: icon
     - state: icon-unshaded
@@ -95,34 +96,13 @@
       head:
       - state: equipped-head-light
         shader: unshaded
-      head-vox:
-      - state: equipped-head-light-vox
-        shader: unshaded
-      head-vulpkanin:
-      - state: equipped-head-light-vulpkanin
-        shader: unshaded
-      head-reptilian:
-      - state: equipped-head-light-reptilian
-        shader: unshaded
   - type: Clothing
     clothingVisuals:
       head:
       - state: equipped-head
       - state: equipped-head-unshaded
         shader: unshaded
-      head-vox:
-      - state: equipped-head-vox
-      - state: equipped-head-unshaded-vox
-        shader: unshaded
-      head-vulpkanin:
-      - state: equipped-head-vulpkanin
-      - state: equipped-head-unshaded-vulpkanin
-        shader: unshaded
-      head-reptilian:
-      - state: equipped-head-reptilian
-      - state: equipped-head-unshaded-reptilian
-        shader: unshaded
-# Moffstation - End
+  # Moff End
   - type: Armor
     modifiers:
       coefficients:

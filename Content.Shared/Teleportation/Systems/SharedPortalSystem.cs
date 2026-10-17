@@ -1,4 +1,4 @@
-﻿using System.Linq;
+using System.Linq;
 using Content.Shared._Moffstation.Teleportation.Components;
 using Content.Shared.Movement.Pulling.Components;
 using Content.Shared.Movement.Pulling.Systems;
@@ -246,14 +246,6 @@ public abstract partial class SharedPortalSystem : EntitySystem
 
         var arrivalSound = CompOrNull<PortalComponent>(targetEntity)?.ArrivalSound ?? ent.Comp.ArrivalSound;
         var departureSound = ent.Comp.DepartureSound;
-
-        // Some special cased stuff: projectiles should stop ignoring shooter when they enter a portal, to avoid
-        // stacking 500 bullets in between 2 portals and instakilling people--you'll just hit yourself instead
-        // (as expected)
-        if (TryComp<ProjectileComponent>(subject, out var projectile))
-        {
-            projectile.IgnoreShooter = false;
-        }
 
         LogTeleport(ent, subject, Transform(subject).Coordinates, target);
 

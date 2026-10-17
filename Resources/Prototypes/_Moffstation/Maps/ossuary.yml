@@ -4,8 +4,8 @@
   mapPath: /Maps/_Moffstation/ossuary.yml
   maxRandomOffset: 0
   randomRotation: false
-  minPlayers: 11 # Ultra-Low Pop
-  maxPlayers: 35 # Ultra-Low Pop
+  minPlayers: 0 # Deadpop
+  maxPlayers: 15 # Deadpop
   stations:
     Ossuary:
       stationProto: StandardNanotrasenStation

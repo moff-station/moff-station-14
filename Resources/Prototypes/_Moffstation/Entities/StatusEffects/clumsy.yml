@@ -1,0 +1,14 @@
+﻿- type: entity
+  parent: [ StatusEffectClumsyAll, MobStatusEffectBase ]
+  id: MoffStatusEffectClumsyTrait
+  components:
+  - type: ClumsyCatchStatusEffect
+    clumsySound: null
+  - type: ClumsyDefibStatusEffect
+    clumsySound: null
+  - type: ClumsyGunStatusEffect
+    clumsySound: null
+  - type: ClumsyInjectorStatusEffect
+    clumsySound: null
+  - type: ClumsyVaultStatusEffect
+    clumsySound: null

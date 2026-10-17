@@ -4,10 +4,6 @@
   id: BloodBrotherDisruptDepartmentObjective
 
 - type: entity
-  parent: [BaseBloodBrotherObjective, JailbreakObjective]
-  id: BloodBrotherJailbreakObjective
-
-- type: entity
   parent: [BaseBloodBrotherObjective, TrashRoomObjective]
   id: BloodBrotherTrashRoomObjective
 
@@ -53,7 +49,3 @@
 - type: entity
   parent: [BaseBloodBrotherObjective, KillStationAiObjective]
   id: BloodBrotherKillStationAiObjective
-
-- type: entity
-  parent: [BaseBloodBrotherObjective, SupercritAnomaliesObjective]
-  id: BloodBrotherSupercritAnomaliesObjective

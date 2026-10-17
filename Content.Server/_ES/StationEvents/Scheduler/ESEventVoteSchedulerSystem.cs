@@ -1,11 +1,10 @@
-using System.Linq;
 using Content.Server._ES.StationEvents.Scheduler.Components;
 using Content.Server._ES.Voting;
-using Content.Server.GameTicking.Rules;
 using Content.Server.StationEvents;
 using Content.Shared._ES.Voting.Components;
 using Content.Shared._ES.Voting.Results;
 using Content.Shared.GameTicking.Components;
+using Content.Shared.GameTicking.Rules;
 using Content.Shared.Random.Helpers;
 using Robust.Shared.Prototypes;
 
@@ -25,16 +24,13 @@ public sealed partial class ESEventVoteSchedulerSystem : GameRuleSystem<ESEventV
         SubscribeLocalEvent<ESEventVoteComponent, ESVoteCompletedEvent>(OnVoteCompleted);
     }
 
-    protected override void Started(EntityUid uid,
-        ESEventVoteSchedulerComponent component,
-        GameRuleComponent gameRule,
-        GameRuleStartedEvent args)
+    protected override void Started(Entity<ESEventVoteSchedulerComponent, GameRuleComponent> rule, ref GameRuleStartedEvent args)
     {
-        base.Started(uid, component, gameRule, args);
+        base.Started(rule, ref args);
 
-        component.NextEventTime = Timing.CurTime
-                                  + component.BaseFirstEventDelay
-                                  + RobustRandom.Next(component.MinEventDelay, component.MaxEventDelay);
+        rule.Comp1.NextEventTime = Timing.CurTime
+                                   + rule.Comp1.BaseFirstEventDelay
+                                   + RobustRandom.Next(rule.Comp1.MinEventDelay, rule.Comp1.MaxEventDelay);
     }
 
     protected override void ActiveTick(EntityUid uid, ESEventVoteSchedulerComponent component, GameRuleComponent gameRule, float frameTime)
@@ -53,8 +49,13 @@ public sealed partial class ESEventVoteSchedulerSystem : GameRuleSystem<ESEventV
         var vote = Spawn(component.VotePrototype);
         var comp = EnsureComp<ESEventVoteComponent>(vote);
 
-        var optionCount = Math.Min(component.VoteOptions, limitedEvents.Count); // Drop the amount of options if we don't have enough
-        var weightedEvents = limitedEvents.Select(pair => (pair.Key, pair.Value.Weight)).ToDictionary();
+        var weightedEvents = new Dictionary<EntityPrototype, float>();
+        foreach (var (proto, weight) in limitedEvents.Value.Events)
+        {
+            weightedEvents.TryAdd(proto, weight);
+        }
+
+        var optionCount = Math.Min(component.VoteOptions, weightedEvents.Count); // Drop the amount of options if we don't have enough
         for (var i = 0; i < optionCount; ++i)
         {
             // No duplicates!

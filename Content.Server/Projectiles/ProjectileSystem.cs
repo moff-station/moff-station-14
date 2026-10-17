@@ -3,6 +3,7 @@ using Content.Server.Destructible;
 using Content.Server.Effects;
 using Content.Server.Weapons.Ranged.Systems;
 using Content.Shared._ES.Camera; // ES - Screenshake
+using Content.Shared._Moffstation.Projectiles; // Moff - blunt-scaled stamina damage
 using Content.Shared.Camera;
 using Content.Shared.Damage;
 using Content.Shared.Damage.Components;
@@ -63,17 +64,21 @@ public sealed partial class ProjectileSystem : SharedProjectileSystem
             damageRequired = FixedPoint2.Max(damageRequired, FixedPoint2.Zero);
         }
 
-        if (_damageableSystem.TryChangeDamage((target, damageableComponent), ev.Damage, out var damage, component.IgnoreResistances, origin: component.Shooter)
-            && Exists(component.Shooter))
+        if (_damageableSystem.TryChangeDamage((target, damageableComponent), ev.Damage, out var damage, component.IgnoreResistances, origin: component.Shooter))
         {
             if (!Deleted(target))
             {
                 _color.RaiseEffect(Color.Red, new List<EntityUid> { target }, Filter.Pvs(target, entityManager: EntityManager));
             }
 
+            var shotByString = Exists(component.Shooter)
+                ? $"{ToPrettyString(component.Shooter!.Value):user}"
+                : "a now deleted entity (grenade?)";
+
             _adminLogger.Add(LogType.BulletHit,
                 LogImpact.Medium,
-                $"Projectile {ToPrettyString(uid):projectile} shot by {ToPrettyString(component.Shooter!.Value):user} hit {otherName:target} and dealt {damage:damage} damage");
+                $"Projectile {ToPrettyString(uid):projectile} shot by {shotByString} hit {otherName:target} and dealt {damage:damage} damage");
+
 
             component.ProjectileSpent = !TryPenetrate((uid, component), damage, damageRequired);
         }
@@ -81,6 +86,11 @@ public sealed partial class ProjectileSystem : SharedProjectileSystem
         {
             component.ProjectileSpent = true;
         }
+
+        // Moff start - lets projectiles scale effects off the damage they actually dealt
+        var dealtEv = new ProjectileDamageDealtEvent(damage, target, component.Shooter);
+        RaiseLocalEvent(uid, ref dealtEv);
+        // Moff end
 
         if (!Deleted(target))
         {

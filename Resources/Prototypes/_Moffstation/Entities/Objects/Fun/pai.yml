@@ -11,6 +11,8 @@
     sprite: _Moffstation/Objects/Fun/robotparrot.rsi
     slots:
     - neck
+  - type: Item
+    inhandVisuals: {}
 
 - type: entity
   parent: [ BaseItem, PersonalAIGhostRoleBase ]
@@ -32,3 +34,11 @@
           Off: { state: pai-off-overlay }
           Searching: { state: pai-searching-overlay }
           On: { state: pai-on-overlay }
+  - type: Item
+    inhandVisuals:
+      left:
+      - state: base-inhand-left
+        sprite: Objects/Fun/pai.rsi
+      right:
+      - state: base-inhand-right
+        sprite: Objects/Fun/pai.rsi

@@ -87,8 +87,7 @@ namespace Content.Client.Construction
 
             foreach (var constructionProto in ProtoMan.EnumeratePrototypes<ConstructionPrototype>())
             {
-                // TODO CENT Undo this
-                if (!ProtoMan.TryIndex(constructionProto.Graph, out var graphProto))
+                if (!ProtoMan.Resolve(constructionProto.Graph, out var graphProto))
                     continue;
 
                 if (constructionProto.TargetNode is not { } targetNodeId)
@@ -129,8 +128,7 @@ namespace Content.Client.Construction
                     // If we got the id of the prototype, we exit the “recursion” by clearing the stack.
                     stack.Clear();
 
-                    // TODO CENT Undo this
-                    if (!ProtoMan.TryIndex(entityId, out var proto))
+                    if (!ProtoMan.Resolve(entityId, out var proto))
                         continue;
 
                     var name = constructionProto.SetName.HasValue ? Loc.GetString(constructionProto.SetName) : proto.Name;

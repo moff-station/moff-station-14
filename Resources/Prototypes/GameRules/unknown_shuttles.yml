@@ -47,7 +47,10 @@
 
 - type: entity
   parent: BaseUnknownShuttleRule
-  id: UnknownShuttleSyndieEvacPod
+  # Moff start - Namespaced
+  id: UnknownShuttleSyndieEvacPodUpstream
+  abstract: true
+  # Moff end
   components:
   - type: StationEvent
     weight: 5 # lower because weird freelance roles
@@ -67,7 +70,10 @@
     gridPath: /Maps/Shuttles/ShuttleEvent/quark.yml
 
 - type: entity
-  id: UnknownShuttleInstigator
+  # Moff start - Namespaced
+  id: UnknownShuttleInstigatorUpstream
+  abstract: true
+  # Moff end
   parent: BaseUnknownShuttleRule
   components:
   - type: StationEvent
@@ -76,7 +82,10 @@
     gridPath: /Maps/Shuttles/ShuttleEvent/instigator.yml
 
 - type: entity
-  id: UnknownShuttleManOWar
+  # Moff start - Namespaced
+  id: UnknownShuttleManOWarUpstream
+  abstract: true
+  # Moff end
   parent: BaseUnknownShuttleRule
   components:
   - type: StationEvent

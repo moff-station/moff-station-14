@@ -17,16 +17,13 @@
         true
 
 - type: entity
-  parent: [BaseSmasherHostile, MobAdultSlimesBlueAngry]
-  id: MobAdultSlimesBlueAngrySmasher
+  parent: [BaseSmasherHostile, MobAdultSlimesReformableAngry]
+  id: MobAdultSlimesReformableAngrySmasher
 
 - type: entity
-  parent: [BaseSmasherHostile, MobAdultSlimesGreenAngry]
-  id: MobAdultSlimesGreenAngrySmasher
-
-- type: entity
-  parent: [BaseSmasherHostile, MobAdultSlimesYellowAngry]
-  id: MobAdultSlimesYellowAngrySmasher
+  parent: [BaseSmasherHostile, MobAdultSlimesReformablePoisonousAngry]
+  id: MobAdultSlimesReformablePoisonousAngrySmasher
+  suffix: AI, Angry, Smasher, Poisonous
 
 - type: entity
   parent: [BaseSmasherHostile, MobPurpleSnake]
@@ -41,11 +38,7 @@
   id: MobCobraSpaceSmasher
 
 - type: entity
-  parent: [BaseSmasherHostile, MobGiantSpiderAngry]
-  id: MobGiantSpiderAngrySmasher
-
-- type: entity
-  parent: [BaseSmasherHostile, MobClownSpider]
+  parent: [BaseSmasherHostile, MobGiantSpiderClownAngry]
   id: MobClownSpiderSmasher
 
 - type: entity
@@ -135,3 +128,28 @@
 - type: entity
   parent: [BaseSmasherHostile, MobKangarooSpace]
   id: MobKangarooSpaceSmasher
+
+- type: entity
+  parent: [ BaseSmasherHostile, MobFleshLover ]
+  id: MobFleshLoverSmasher
+  categories: [ HideSpawnMenu ]
+
+- type: entity
+  parent: [ BaseSmasherHostile, MobFleshGolem ]
+  id: MobFleshGolemSmasher
+  categories: [ HideSpawnMenu ]
+
+- type: entity
+  parent: [ BaseSmasherHostile, MobFleshClamp ]
+  id: MobFleshClampSmasher
+  categories: [ HideSpawnMenu ]
+
+- type: entity
+  parent: [ BaseSmasherHostile, MobFleshJared ]
+  id: MobFleshJaredSmasher
+  categories: [ HideSpawnMenu ]
+
+- type: entity
+  parent: [ BaseSmasherHostile, MobAbomination ]
+  id: MobAbominationSmasher
+  categories: [ HideSpawnMenu ]

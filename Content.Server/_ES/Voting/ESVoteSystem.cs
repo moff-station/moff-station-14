@@ -19,8 +19,6 @@ public sealed partial class ESVoteSystem : ESSharedVoteSystem
     [Dependency] private IAdminLogManager _adminLog = default!;
     [Dependency] private IChatManager _chat = default!;
 
-    private const string VoteSound = "/Audio/Effects/voteding.ogg";
-
     public override void Initialize()
     {
         base.Initialize();
@@ -33,25 +31,8 @@ public sealed partial class ESVoteSystem : ESSharedVoteSystem
         // We manually start this rule now that the votes have concluded.
         // Is this kinda hacky? yes. I don't think it's that bad though
         Comp<GameRuleComponent>(ent).Added = true;
-        var ev = new GameRuleAddedEvent(ent, Prototype(ent)!.ID);
+        var ev = new GameRuleAddedEvent(ent);
         RaiseLocalEvent(ent, ref ev, true);
-    }
-
-    protected override void SendVoteStartAnnouncement(Entity<ESVoteComponent> ent)
-    {
-        var voters = new List<INetChannel>();
-        var query = EntityQueryEnumerator<ESVoterComponent, ActorComponent>();
-        while (query.MoveNext(out _, out _, out var actor))
-        {
-            voters.Add(actor.PlayerSession.Channel);
-        }
-
-        var msg = Loc.GetString("es-voter-chat-announce-result",
-            ("query", Loc.GetString("es-voter-chat-announce-vote-start")),
-            ("result", Name(ent)));
-        var wrappedMsg = Loc.GetString("es-voter-chat-announce-wrap-message", ("message", msg));
-        _chat.ChatMessageToMany(ChatChannel.Server, msg, wrappedMsg, ent, false, true, voters, Color.Plum, audioPath: VoteSound);
-        _adminLog.Add(LogType.Vote, LogImpact.Medium, $"Started vote for {ToPrettyString(ent)}.");
     }
 
     protected override void SendVoteResultAnnouncement(Entity<ESVoteComponent> ent, ESVoteOption result)

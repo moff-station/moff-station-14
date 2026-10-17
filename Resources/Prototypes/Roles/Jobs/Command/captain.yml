@@ -23,14 +23,11 @@
     - !type:DepartmentTimeRequirement
       department: Command
       time: 4h
-  # Moff start - no job weights
-#  weight: 20
-  displayWeight: 20
-  # Moff end
   startingGear: CaptainGear
   icon: "JobIconCaptain"
   joinNotifyCrew: true
   supervisors: job-supervisors-centcom
+  guides: [ Command ] # TODO: should have a more specific guidebook page instead of using the department itself
   accessGroups:
   - AllAccess
   special:

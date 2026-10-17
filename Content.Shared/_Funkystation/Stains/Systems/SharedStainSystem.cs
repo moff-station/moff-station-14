@@ -46,11 +46,9 @@ public abstract partial class SharedStainSystem : EntitySystem
         base.Initialize();
 
         Subs.SubscribeWithRelay<StainableComponent, SpilledOnEvent>(OnSpilledOn);
-        SubscribeLocalEvent<StainableComponent, GetVerbsEvent<Verb>>(OnGetVerbs);
-        SubscribeLocalEvent<StainableComponent, WringStainDoAfterEvent>(OnWring);
-        SubscribeLocalEvent<StainableComponent, SolutionChangedEvent>(OnSolutionChanged);
     }
 
+    [SubscribeLocalEvent]
     private void OnSolutionChanged(Entity<StainableComponent> ent, ref SolutionChangedEvent args)
     {
         if (args.Solution.Comp.Id == ent.Comp.SolutionName)
@@ -155,6 +153,7 @@ public abstract partial class SharedStainSystem : EntitySystem
         }
     }
 
+    [SubscribeLocalEvent]
     private void OnGetVerbs(Entity<StainableComponent> ent, ref GetVerbsEvent<Verb> args)
     {
         if (!args.CanInteract || !args.CanAccess || args.Using != ent.Owner)
@@ -180,6 +179,7 @@ public abstract partial class SharedStainSystem : EntitySystem
         });
     }
 
+    [SubscribeLocalEvent]
     private void OnWring(Entity<StainableComponent> ent, ref WringStainDoAfterEvent args)
     {
         if (args.Handled || args.Cancelled)

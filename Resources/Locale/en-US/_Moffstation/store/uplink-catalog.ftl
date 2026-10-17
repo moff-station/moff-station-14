@@ -8,6 +8,15 @@ uplink-spider-grenade-desc = An experimental concoction made by the Syndicate. W
 uplink-syndicate-mothroach-name = Syndicate Mothroach
 uplink-syndicate-mothroach-description = The latest and greatest in Syndicate mothroach experimentation. With the use of under-wing sonic enhancers, this creature can send out shockwaves to disrupt the battlefield.
 
+# Explosives
+uplink-exploding-syndicate-emp-bomb-name = Syndicate EMP Bomb
+uplink-exploding-syndicate-emp-bomb-desc = An anchored bomb that emits a very large disabling EMP pulse if not defused in time. Disables electronics for exactly 3 minutes. Has an adjustable fuse.
+
+# Implants
+uplink-smoke-implant-name = Smoke Implanter
+uplink-smoke-implant-desc = Implant that releases a large cloud of smoke when activated. Comes with 4 charges.
+
+
 # Job
 uplink-clown-spider-grenade-name = Jar of Clown Spiders
 uplink-clown-spider-grenade-desc = Smuggled out of a Honkmother meeting, the spiders floating inside liquid happiness laugh away. Would be funny to throw at someone.
