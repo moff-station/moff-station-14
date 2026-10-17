@@ -15,21 +15,22 @@ public abstract partial class SharedGaussFabricatorSystem : EntitySystem
         Subs.BuiEvents<GaussFabricatorComponent>(GaussFabricatorUiKey.Key,
             subs =>
             {
-                subs.Event<GaussFabricatorAdjustDrawRateMessage>(OnAdjustDrawRate);
+                subs.Event<GaussFabricatorSetDrawMessage>(OnSetDraw);
                 subs.Event<GaussFabricatorToggleMessage>(OnToggle);
             });
     }
 
-    private void OnAdjustDrawRate(Entity<GaussFabricatorComponent> ent, ref GaussFabricatorAdjustDrawRateMessage args)
+    private void OnSetDraw(Entity<GaussFabricatorComponent> ent, ref GaussFabricatorSetDrawMessage args)
     {
-        if (!float.IsFinite(args.Delta))
+        if (!args.Draw.IsValid())
             return;
 
-        ent.Comp.DrawRate = Math.Clamp(ent.Comp.DrawRate + args.Delta, ent.Comp.MinDrawRate, ent.Comp.MaxDrawRate);
-        Dirty(ent);
+        ent.Comp.CurrentDraw = Math.Clamp(args.Draw, ent.Comp.MinDraw, ent.Comp.MaxDraw);
+        DirtyField(ent.AsNullable(), nameof(GaussFabricatorComponent.CurrentDraw));
 
-        _adminLog.Add(LogType.Action, $"{ToPrettyString(args.Actor):actor} set draw rate to {ent.Comp.DrawRate} W on {ToPrettyString(ent):target}");
+        _adminLog.Add(LogType.Action, $"{args.Actor:actor} set draw rate to {ent.Comp.CurrentDraw} W on {ent.Owner:target}");
 
+        SyncPower(ent);
         UpdateUi(ent);
     }
 
@@ -39,10 +40,11 @@ public abstract partial class SharedGaussFabricatorSystem : EntitySystem
             return;
 
         ent.Comp.Enabled = args.On;
-        Dirty(ent);
+        DirtyField(ent.AsNullable(), nameof(GaussFabricatorComponent.Enabled));
 
-        _adminLog.Add(LogType.Action, $"{ToPrettyString(args.Actor):actor} toggled {ToPrettyString(ent):target} {(args.On ? "on" : "off")}");
+        _adminLog.Add(LogType.Action, $"{args.Actor:actor} toggled {ent.Owner:target} {(args.On ? "on" : "off")}");
 
+        SyncPower(ent);
         UpdateUi(ent);
     }
 
@@ -54,17 +56,16 @@ public abstract partial class SharedGaussFabricatorSystem : EntitySystem
 
         using (args.PushGroup(nameof(GaussFabricatorComponent)))
         {
-            args.PushMarkup(Loc.GetString("gauss-fabricator-examine-draw-rate", ("rate", ent.Comp.DrawRate)));
+            args.PushMarkup(Loc.GetString("gauss-fabricator-examine-draw-rate", ("rate", ent.Comp.CurrentDraw)));
             ExamineAtmosphere(ent, args);
         }
     }
 
     // Atmos is server only
-    protected virtual void ExamineAtmosphere(Entity<GaussFabricatorComponent> ent, ExaminedEvent args)
-    {
-    }
+    protected abstract void ExamineAtmosphere(Entity<GaussFabricatorComponent> ent, ExaminedEvent args);
 
-    protected virtual void UpdateUi(Entity<GaussFabricatorComponent> ent)
-    {
-    }
+    // The power network battery is server only
+    protected abstract void SyncPower(Entity<GaussFabricatorComponent> ent);
+
+    protected abstract void UpdateUi(Entity<GaussFabricatorComponent> ent);
 }

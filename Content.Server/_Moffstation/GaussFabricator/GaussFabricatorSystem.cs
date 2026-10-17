@@ -22,17 +22,24 @@ public sealed partial class GaussFabricatorSystem : SharedGaussFabricatorSystem
     [Dependency] private SharedAmbientSoundSystem _ambient = default!;
     [Dependency] private SharedAppearanceSystem _appearance = default!;
     [Dependency] private SharedBatterySystem _battery = default!;
-    [Dependency] private SharedPointLightSystem _lights = default!;
     [Dependency] private UserInterfaceSystem _uiSystem = default!;
 
-    [Dependency] private EntityQuery<BatteryComponent> _batteryQuery = default!;
-    [Dependency] private EntityQuery<PowerNetworkBatteryComponent> _powerBatteryQuery = default!;
+    [Dependency] private EntityQuery<BatteryComponent> _batteryQuery;
+    [Dependency] private EntityQuery<PowerNetworkBatteryComponent> _powerBatteryQuery;
+
+    private static readonly TimeSpan UiUpdateInterval = TimeSpan.FromSeconds(0.5);
 
     public override void Initialize()
     {
         base.Initialize();
 
         UpdatesAfter.Add(typeof(PowerNetSystem));
+    }
+
+    [SubscribeLocalEvent]
+    private void OnMapInit(Entity<GaussFabricatorComponent> ent, ref MapInitEvent args)
+    {
+        SyncPower(ent);
     }
 
     [SubscribeLocalEvent]
@@ -47,8 +54,17 @@ public sealed partial class GaussFabricatorSystem : SharedGaussFabricatorSystem
         var temperature = GetBand(ent.Comp.TemperatureAcceptable, ent.Comp.TemperatureOptimal, mixture?.Temperature);
         var pressure = GetBand(ent.Comp.PressureAcceptable, ent.Comp.PressureOptimal, mixture?.Pressure);
 
-        args.PushMarkup(Loc.GetString("gauss-fabricator-examine-temperature", ("band", temperature.ToString())));
-        args.PushMarkup(Loc.GetString("gauss-fabricator-examine-pressure", ("band", pressure.ToString())));
+        args.PushMarkup(Loc.GetString("gauss-fabricator-examine-temperature", ("band", GetBandName(temperature))));
+        args.PushMarkup(Loc.GetString("gauss-fabricator-examine-pressure", ("band", GetBandName(pressure))));
+    }
+
+    protected override void SyncPower(Entity<GaussFabricatorComponent> ent)
+    {
+        if (!_powerBatteryQuery.TryComp(ent, out var pnb))
+            return;
+
+        pnb.MaxChargeRate = ent.Comp.CurrentDraw;
+        pnb.Enabled = ent.Comp.Enabled;
     }
 
     public override void Update(float frameTime)
@@ -57,9 +73,6 @@ public sealed partial class GaussFabricatorSystem : SharedGaussFabricatorSystem
 
         foreach (var ent in EntityQueryEnumerator<GaussFabricatorComponent, PowerNetworkBatteryComponent, TransformComponent>())
         {
-            ent.Comp2.MaxChargeRate = ent.Comp1.DrawRate;
-            ent.Comp2.Enabled = ent.Comp1.Enabled;
-
             var mixture = _atmosphere.GetContainingMixture((ent.Owner, ent.Comp3), excite: ent.Comp2.Enabled);
 
             ent.Comp2.Efficiency =
@@ -73,7 +86,7 @@ public sealed partial class GaussFabricatorSystem : SharedGaussFabricatorSystem
 
             if (_timing.CurTime >= ent.Comp1.NextUiUpdate)
             {
-                ent.Comp1.NextUiUpdate = _timing.CurTime + ent.Comp1.UiUpdateInterval;
+                ent.Comp1.NextUiUpdate = _timing.CurTime + UiUpdateInterval;
                 UpdateUi((ent.Owner, ent.Comp1, ent.Comp2), mixture);
             }
 
@@ -85,9 +98,7 @@ public sealed partial class GaussFabricatorSystem : SharedGaussFabricatorSystem
         }
     }
 
-    /// <summary>
     /// Multiplier for the progress for a specific band. No atmos counts as bad.
-    /// </summary>
     private static float GetBandMultiplier(
         GaussFabricatorComponent comp,
         MinMax acceptable,
@@ -97,7 +108,7 @@ public sealed partial class GaussFabricatorSystem : SharedGaussFabricatorSystem
         return GetBand(acceptable, optimal, value) switch
         {
             Band.Optimal => comp.OptimalMultiplier,
-            Band.Acceptable => comp.NormalMultiplier,
+            Band.Acceptable => 1f,
             _ => comp.BadMultiplier,
         };
     }
@@ -110,6 +121,11 @@ public sealed partial class GaussFabricatorSystem : SharedGaussFabricatorSystem
         return reading >= optimal.Min && reading <= optimal.Max
             ? Band.Optimal
             : Band.Acceptable;
+    }
+
+    private string GetBandName(Band band)
+    {
+        return Loc.GetString($"gauss-fabricator-band-{band.ToString().ToLowerInvariant()}");
     }
 
     protected override void UpdateUi(Entity<GaussFabricatorComponent> ent)

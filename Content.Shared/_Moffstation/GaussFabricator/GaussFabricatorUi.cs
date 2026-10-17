@@ -2,11 +2,7 @@ using Robust.Shared.Serialization;
 
 namespace Content.Shared._Moffstation.GaussFabricator;
 
-[Serializable, NetSerializable]
-public enum GaussFabricatorUiKey : byte
-{
-    Key,
-}
+[Serializable, NetSerializable] public enum GaussFabricatorUiKey : byte { Key }
 
 [Serializable, NetSerializable]
 public sealed class GaussFabricatorBuiState(
@@ -14,15 +10,13 @@ public sealed class GaussFabricatorBuiState(
     float progress,
     float outputRate,
     float? temperature,
-    float? pressure)
-    : BoundUserInterfaceState
+    float? pressure
+) : BoundUserInterfaceState
 {
     public readonly float ReceivedPower = receivedPower;
     public readonly float Progress = progress;
 
-    /// <summary>
-    /// The rate of how many things are produced per minute.
-    /// </summary>
+    /// How many items are produced per minute.
     public readonly float OutputRate = outputRate;
 
     // Null when the fabricator isn't in a gas mixture.
@@ -51,9 +45,9 @@ public sealed class GaussFabricatorBuiState(
 }
 
 [Serializable, NetSerializable]
-public sealed class GaussFabricatorAdjustDrawRateMessage(float delta) : BoundUserInterfaceMessage
+public sealed class GaussFabricatorSetDrawMessage(float draw) : BoundUserInterfaceMessage
 {
-    public readonly float Delta = delta;
+    public readonly float Draw = draw;
 }
 
 [Serializable, NetSerializable]

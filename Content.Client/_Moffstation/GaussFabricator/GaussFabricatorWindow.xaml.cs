@@ -11,9 +11,7 @@ namespace Content.Client._Moffstation.GaussFabricator;
 [GenerateTypedNameReferences]
 public sealed partial class GaussFabricatorWindow : FancyWindow
 {
-    [Dependency] private ILocalizationManager _loc = default!;
-
-    public event Action<float>? OnAdjustDrawRate;
+    public event Action<float>? OnSetDraw;
     public event Action<bool>? OnToggle;
 
     private static readonly Color ReceivedColor = Color.FromHex("#4499ff");
@@ -27,7 +25,7 @@ public sealed partial class GaussFabricatorWindow : FancyWindow
     // Draw adjustment button increments in watts, from largest to smallest
     private readonly float[] _increments = [50000f, 10000f, 1000f];
 
-    private float _drawRate;
+    private float _draw;
     private float _received;
     private float _targetProgress;
     private float _displayedProgress;
@@ -35,12 +33,11 @@ public sealed partial class GaussFabricatorWindow : FancyWindow
     public GaussFabricatorWindow()
     {
         RobustXamlLoader.Load(this);
-        IoCManager.InjectDependencies(this);
 
         PopulateButtons();
 
-        TemperatureBar.NoDataText = _loc.GetString("gauss-fabricator-window-no-data");
-        PressureBar.NoDataText = _loc.GetString("gauss-fabricator-window-no-data");
+        TemperatureBar.NoDataText = Loc.GetString("gauss-fabricator-window-no-data");
+        PressureBar.NoDataText = Loc.GetString("gauss-fabricator-window-no-data");
 
         OutputProgressBar.ForegroundStyleBoxOverride = _progressStyle;
 
@@ -52,9 +49,9 @@ public sealed partial class GaussFabricatorWindow : FancyWindow
 
     public void UpdateSettings(GaussFabricatorComponent comp)
     {
-        _drawRate = comp.DrawRate;
-        DrawRateLabel.Text = FormatPower(comp.DrawRate);
-        DrawLevelBar.Capacity = comp.MaxDrawRate;
+        _draw = comp.CurrentDraw;
+        DrawRateLabel.Text = FormatPower(comp.CurrentDraw);
+        DrawLevelBar.Capacity = comp.MaxDraw;
         TemperatureBar.SetRanges(comp.TemperatureAcceptable, comp.TemperatureOptimal);
         PressureBar.SetRanges(comp.PressureAcceptable, comp.PressureOptimal);
 
@@ -70,7 +67,7 @@ public sealed partial class GaussFabricatorWindow : FancyWindow
     {
         _received = state.ReceivedPower;
         ReceivedLabel.Text = FormatPower(state.ReceivedPower);
-        OutputRateLabel.Text = _loc.GetString(
+        OutputRateLabel.Text = Loc.GetString(
             "gauss-fabricator-window-output-rate",
             ("rate", state.OutputRate.ToString("F2")));
 
@@ -86,7 +83,7 @@ public sealed partial class GaussFabricatorWindow : FancyWindow
     {
         DrawLevelBar.Clear();
         DrawLevelBar.SetEntry("received", _received, ReceivedColor);
-        DrawLevelBar.SetEntry("gap", Math.Max(0f, _drawRate - _received), DrawGapColor);
+        DrawLevelBar.SetEntry("gap", Math.Max(0f, _draw - _received), DrawGapColor);
     }
 
     protected override void FrameUpdate(FrameEventArgs args)
@@ -125,14 +122,14 @@ public sealed partial class GaussFabricatorWindow : FancyWindow
         // Formatted as kW in the locale string because POWERWATTS shows 1 kW as 1000 W
         var button = new Button
         {
-            Text = _loc.GetString(
+            Text = Loc.GetString(
                 delta < 0 ? "gauss-fabricator-window-adjust-decrease" : "gauss-fabricator-window-adjust-increase",
                 ("value", Math.Abs(delta) / 1000f)),
             HorizontalExpand = true,
         };
 
         button.StyleClasses.Add(styleClass);
-        button.OnPressed += _ => OnAdjustDrawRate?.Invoke(delta);
+        button.OnPressed += _ => OnSetDraw?.Invoke(_draw + delta);
         return button;
     }
 
@@ -145,6 +142,6 @@ public sealed partial class GaussFabricatorWindow : FancyWindow
 
     private string FormatPower(float value)
     {
-        return _loc.GetString("battery-menu-power-value", ("value", value));
+        return Loc.GetString("battery-menu-power-value", ("value", value));
     }
 }

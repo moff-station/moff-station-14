@@ -1,5 +1,6 @@
 using System.Numerics;
 using Content.Shared.Destructible.Thresholds;
+using JetBrains.Annotations;
 using Robust.Client.Graphics;
 using Robust.Client.UserInterface;
 using Robust.Client.UserInterface.Controls;
@@ -7,9 +8,7 @@ using Robust.Shared.Timing;
 
 namespace Content.Client._Moffstation.Controls;
 
-/// <summary>
-/// Vertical gauge plotting a good, acceptable, and bad (inferred) range, as well as a current value
-/// </summary>
+/// Vertical gauge plotting optimal, acceptable and bad ranges, as well as a current value.
 public sealed partial class OptimalRangeBar : Control
 {
     private const float DisplayPadding = 0.2f;
@@ -33,15 +32,18 @@ public sealed partial class OptimalRangeBar : Control
     private string _currentText = string.Empty;
     private float? _currentTextValue;
 
-    public string ValueFormat { get; set; } = "F0";
+    /// Numeric format string used for the value labels.
+    [PublicAPI] public string ValueFormat { get; set; } = "F0";
 
-    public string NoDataText { get; set; } = string.Empty;
+    /// Shown in place of the current value when there is none.
+    [PublicAPI] public string NoDataText { get; set; } = string.Empty;
 
     private Font ActiveFont => TryGetStyleProperty<Font>(Label.StylePropertyFont, out var font)
         ? font
         : UserInterfaceManager.ThemeDefaults.LabelFont;
 
-    public void SetRanges(MinMax acceptable, MinMax optimal)
+    /// Sets the acceptable and optimal ranges drawn on the gauge.
+    [PublicAPI] public void SetRanges(MinMax acceptable, MinMax optimal)
     {
         _acceptable = acceptable;
         _optimal = optimal;
@@ -49,7 +51,8 @@ public sealed partial class OptimalRangeBar : Control
         _optimalMinText = optimal.Min.ToString(ValueFormat);
     }
 
-    public void SetCurrent(float? current)
+    /// Sets the current value, or null when there is no reading.
+    [PublicAPI] public void SetCurrent(float? current)
     {
         _targetCurrent = current;
     }

@@ -1,6 +1,6 @@
 # TODO: Balance draw rate, capacity and price
 - type: entity
-  parent: BaseMachine
+  parent: [ BaseMachine, BaseMachineDestructible ]
   id: GaussFabricator
   name: gaussian fabrication unit
   description: A specialized machine built to crystallize ions in the atmosphere into powerful, expensive magnets. Requires a vast amount of electricity to use properly.
@@ -49,6 +49,12 @@
     maxCharge: 10000000
     startingCharge: 0
     netsync: false
+  - type: ExaminableBattery
+  - type: PowerMonitoringDevice
+    group: Consumer
+    sourceNode: input
+    sprite: _Moffstation/Structures/Machines/gauss_fabricator.rsi
+    state: icon
   - type: AmbientSound
     range: 10
     sound:

@@ -1,85 +1,56 @@
 using Content.Shared.Destructible.Thresholds;
 using Robust.Shared.GameStates;
-using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom;
 
 namespace Content.Shared._Moffstation.GaussFabricator;
 
-[RegisterComponent, NetworkedComponent, AutoGenerateComponentState(true), AutoGenerateComponentPause]
+[RegisterComponent, NetworkedComponent, AutoGenerateComponentState(true, fieldDeltas: true)]
 [Access(typeof(SharedGaussFabricatorSystem))]
 public sealed partial class GaussFabricatorComponent : Component
 {
     [DataField, AutoNetworkedField]
     public bool Enabled;
 
-    /// <summary>
-    /// Configured draw rate in watts, applied to the power network battery by the server.
-    /// </summary>
+    /// Currently configured power consumption in Watts.
     [DataField, AutoNetworkedField]
-    public float DrawRate = 10000f;
+    public float CurrentDraw = 10000f;
 
-    /// <summary>
-    /// Fraction of received power (W) added as heat (J/s) to the surrounding atmosphere.
-    /// </summary>
+    /// Fraction of received power added as heat to the surrounding atmosphere while running.
     [DataField]
     public float HeatMultiplier = 0.05f;
 
-    /// <summary>
-    /// Minimum draw rate players can configure in watts
-    /// </summary>
+    /// Minimum value <see cref="CurrentDraw" /> can be set to.
     [DataField]
-    public float MinDrawRate;
+    public float MinDraw;
 
-    /// <summary>
-    /// Maximum draw rate players can configure in watts
-    /// </summary>
+    /// Maximum value <see cref="CurrentDraw" /> can be set to.
     [DataField]
-    public float MaxDrawRate = 250000f;
+    public float MaxDraw = 250000f;
 
-    /// <summary>
-    /// Atmos temperature where the reading is acceptable, in kelvin. Outside it is bad.
-    /// </summary>
+    /// Atmos temperature the machine can operate in, in kelvin. It runs badly outside it.
     [DataField]
     public MinMax TemperatureAcceptable = new(20, 200);
 
-    /// <summary>
-    /// Atmos temperature where the reading counts as optimal, in kelvin.
-    /// </summary>
+    /// Atmos temperature the machine runs optimally in, in kelvin.
     [DataField]
     public MinMax TemperatureOptimal = new(60, 130);
 
-    /// <summary>
-    /// Atmos pressure where the reading is acceptable, in kPa. Outside it is bad.
-    /// </summary>
+    /// Atmos pressure the machine can operate in, in kPa. It runs badly outside it.
     [DataField]
     public MinMax PressureAcceptable = new(20, 300);
 
-    /// <summary>
-    /// Atmos pressure where the reading counts as optimal, in kPa.
-    /// </summary>
+    /// Atmos pressure the machine runs optimally in, in kPa.
     [DataField]
     public MinMax PressureOptimal = new(80, 120);
 
-    /// <summary>
-    /// Output speed multiplier for a reading outside its acceptable range.
-    /// </summary>
+    /// Output speed multiplier while the machine runs outside an acceptable range.
     [DataField]
     public float BadMultiplier = 0.2f;
 
-    /// <summary>
-    /// Output speed multiplier for a reading that is acceptable but not optimal.
-    /// </summary>
-    [DataField]
-    public float NormalMultiplier = 1f;
-
-    /// <summary>
-    /// Output speed multiplier for a reading inside its optimal range.
-    /// </summary>
+    /// Output speed multiplier while the machine runs inside an optimal range.
     [DataField]
     public float OptimalMultiplier = 1.5f;
 
-    [DataField]
-    public TimeSpan UiUpdateInterval = TimeSpan.FromSeconds(0.5);
-
-    [DataField(customTypeSerializer: typeof(TimeOffsetSerializer)), AutoPausedField]
+    // Not a DataField: UI-only, so the UI should refresh straight away after a load.
+    [ViewVariables]
     public TimeSpan NextUiUpdate;
 }
