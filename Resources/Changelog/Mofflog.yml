@@ -8463,6 +8463,19 @@ Entries:
   id: 1969
   time: '2026-09-29T19:21:18.000'
   url: https://github.com/moff-station/moff-station-14/pull/1969
+- author: Rachel
+  changes:
+  - message: AI cores now bluescreen earlier, but take much more damage to gib
+    type: tweak
+  - message: AI restoration console now takes two and a half minutes to revive a bluescreened
+      AI
+    type: tweak
+  - message: Addendum to NLR that extends the window for an AI's forgetfulness to
+      the entire shift
+    type: add
+  id: 1970
+  time: '2026-10-17T15:12:26.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1970
 - author: WigglySuperNoodle
   changes:
   - message: Fire Safety Lawset and board. (FIRE SAFETY!)
