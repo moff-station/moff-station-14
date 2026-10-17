@@ -530,13 +530,13 @@
   description: A heavily armored hardsuit designed for work in special operations. Property of Gorlex Marauders.
   components:
   - type: Sprite
-    sprite: Clothing/OuterClothing/Hardsuits/syndicate.rsi
+    sprite: _Moffstation/Clothing/OuterClothing/Hardsuits/syndicate.rsi # Moff
   - type: Item
     size: Huge
     shape:
     - 0,0,3,3
   - type: Clothing
-    sprite: Clothing/OuterClothing/Hardsuits/syndicate.rsi
+    sprite: _Moffstation/Clothing/OuterClothing/Hardsuits/syndicate.rsi # Moff
   - type: PressureProtection
     highPressureMultiplier: 0.05
     lowPressureMultiplier: 1000
@@ -576,9 +576,9 @@
   description: A heavily armored and agile advanced hardsuit specifically designed for field medic operations.
   components:
   - type: Sprite
-    sprite: Clothing/OuterClothing/Hardsuits/syndiemedic.rsi
+    sprite: _Moffstation/Clothing/OuterClothing/Hardsuits/syndiemedic.rsi # Moff
   - type: Clothing
-    sprite: Clothing/OuterClothing/Hardsuits/syndiemedic.rsi
+    sprite: _Moffstation/Clothing/OuterClothing/Hardsuits/syndiemedic.rsi # Moff
   - type: ToggleableClothing
     clothingPrototype: ClothingHeadHelmetHardsuitSyndieMedic
   - type: Tag
@@ -594,9 +594,9 @@
   description: An elite version of the blood-red hardsuit, with improved radiation resistance and fireproofing. Property of Gorlex Marauders.
   components:
   - type: Sprite
-    sprite: Clothing/OuterClothing/Hardsuits/syndieelite.rsi
+    sprite: _Moffstation/Clothing/OuterClothing/Hardsuits/syndieelite.rsi # Moff
   - type: Clothing
-    sprite: Clothing/OuterClothing/Hardsuits/syndieelite.rsi
+    sprite: _Moffstation/Clothing/OuterClothing/Hardsuits/syndieelite.rsi # Moff
   - type: PressureProtection
     highPressureMultiplier: 0.02
     lowPressureMultiplier: 1000
@@ -638,9 +638,9 @@
   description: A bulked up version of the blood-red hardsuit, purpose-built for the commander of a syndicate operative squad. Has significantly improved armor for those deadly front-lines firefights.
   components:
   - type: Sprite
-    sprite: Clothing/OuterClothing/Hardsuits/syndiecommander.rsi
+    sprite: _Moffstation/Clothing/OuterClothing/Hardsuits/syndiecommander.rsi # Moff
   - type: Clothing
-    sprite: Clothing/OuterClothing/Hardsuits/syndiecommander.rsi
+    sprite: _Moffstation/Clothing/OuterClothing/Hardsuits/syndiecommander.rsi # Moff
   - type: PressureProtection
     highPressureMultiplier: 0.05
     lowPressureMultiplier: 1000
@@ -677,9 +677,9 @@
   description: A suit made by the cutting edge R&D department at cybersun to be hyper resilient.
   components:
   - type: Sprite
-    sprite: Clothing/OuterClothing/Hardsuits/cybersun.rsi
+    sprite: _Moffstation/Clothing/OuterClothing/Hardsuits/cybersun.rsi # Moff
   - type: Clothing
-    sprite: Clothing/OuterClothing/Hardsuits/cybersun.rsi
+    sprite: _Moffstation/Clothing/OuterClothing/Hardsuits/cybersun.rsi # Moff
   - type: PressureProtection
     highPressureMultiplier: 0.2
     lowPressureMultiplier: 1000
