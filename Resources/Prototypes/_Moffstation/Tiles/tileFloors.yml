@@ -1,21 +1,21 @@
 ## Steel tile
 
 - type: tile
-  id: FloorMoffSteelDiagonal
+  id: MoffFloorSteelDiagonal
   parent: BaseStationTile
   name: tiles-steel-floor-diagonal #they didn't remove the locales for the removed tiles, so thats nice.
   sprite: /Textures/_Moffstation/Tiles/Respritening/steel_diagonal.png
   itemDrop: MoffFloorTileItemSteelDiagonal
 
 - type: tile
-  id: FloorMoffSteelDiagonalMini
+  id: MoffFloorSteelDiagonalMini
   parent: BaseStationTile
   name: tiles-steel-floor-diagonal-mini
   sprite: /Textures/_Moffstation/Tiles/Respritening/steel_diagonal_mini.png
   itemDrop: MoffFloorTileItemSteelDiagonalMini
 
 - type: tile
-  id: FloorMoffSteelOffset
+  id: MoffFloorSteelOffset
   parent: BaseStationTile
   name: tiles-steel-floor-offset
   sprite: /Textures/_Moffstation/Tiles/Respritening/steel_offset.png
@@ -24,7 +24,7 @@
 ## White tile
 
 - type: tile
-  id: FloorMoffWhiteDiagonal
+  id: MoffFloorWhiteDiagonal
   parent: BaseStationTile
   name: tiles-white-floor-diagonal
   sprite: /Textures/_Moffstation/Tiles/Respritening/white_diagonal.png
@@ -33,7 +33,7 @@
   itemDrop: MoffFloorTileItemWhiteDiagonal
 
 - type: tile
-  id: FloorMoffWhiteDiagonalMini
+  id: MoffFloorWhiteDiagonalMini
   parent: BaseStationTile
   name: tiles-white-floor-diagonal-mini
   sprite: /Textures/_Moffstation/Tiles/Respritening/white_diagonal_mini.png
@@ -42,7 +42,7 @@
   itemDrop: MoffFloorTileItemWhiteDiagonalMini
 
 - type: tile
-  id: FloorMoffWhiteOffset
+  id: MoffFloorWhiteOffset
   parent: BaseStationTile
   name: tiles-white-floor-offset
   sprite: /Textures/_Moffstation/Tiles/Respritening/white_offset.png
@@ -53,7 +53,7 @@
 ## Dark Tile
 
 - type: tile
-  id: FloorMoffDarkDiagonal
+  id: MoffFloorDarkDiagonal
   parent: BaseStationTile
   name: tiles-dark-floor-diagonal
   sprite: /Textures/_Moffstation/Tiles/Respritening/dark_diagonal.png
@@ -62,7 +62,7 @@
   itemDrop: MoffFloorTileItemDarkDiagonal
 
 - type: tile
-  id: FloorMoffDarkDiagonalMini
+  id: MoffFloorDarkDiagonalMini
   parent: BaseStationTile
   name: tiles-dark-floor-diagonal-mini
   sprite: /Textures/_Moffstation/Tiles/Respritening/dark_diagonal_mini.png
@@ -71,7 +71,7 @@
   itemDrop: MoffFloorTileItemDarkDiagonalMini
 
 - type: tile
-  id: FloorMoffDarkOffset
+  id: MoffFloorDarkOffset
   parent: BaseStationTile
   name: tiles-dark-floor-offset
   sprite: /Textures/_Moffstation/Tiles/Respritening/dark_offset.png
@@ -82,7 +82,7 @@
 ## Other
 
 - type: tile
-  id: FloorMoffShowroom
+  id: MoffFloorShowroom
   parent: BaseStationTile
   name: tiles-showroom-floor
   sprite: /Textures/_Moffstation/Tiles/Respritening/showroom.png
