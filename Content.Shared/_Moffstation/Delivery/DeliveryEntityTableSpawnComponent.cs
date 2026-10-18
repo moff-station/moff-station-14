@@ -5,8 +5,7 @@ namespace Content.Shared._Moffstation.Delivery;
 
 /// <summary>
 /// Component given to deliveries.
-/// Applies a duration before which the delivery must be delivered.
-/// If successful, adds a small multiplier, otherwise removes a small multiplier.
+/// Spawn an entity from the table when the required conditions are met.
 /// </summary>
 [RegisterComponent]
 [Access(typeof(DeliveryModifierSystem))]
