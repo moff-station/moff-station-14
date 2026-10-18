@@ -8,7 +8,7 @@
   - type: FloorTile
     outputs:
     - Plating
-    - FloorMoffSteelDiagonal
+    - MoffFloorSteelDiagonal
   - type: Stack
     stackType: MoffFloorTileSteelDiagonal
 
@@ -22,7 +22,7 @@
   - type: FloorTile
     outputs:
     - Plating
-    - FloorMoffSteelDiagonalMini
+    - MoffFloorSteelDiagonalMini
   - type: Stack
     stackType: MoffFloorTileSteelDiagonalMini
 
@@ -36,7 +36,7 @@
   - type: FloorTile
     outputs:
     - Plating
-    - FloorMoffSteelOffset
+    - MoffFloorSteelOffset
   - type: Stack
     stackType: MoffFloorTileSteelOffset
 
@@ -51,7 +51,7 @@
   - type: FloorTile
     outputs:
     - Plating
-    - FloorMoffDarkDiagonal
+    - MoffFloorDarkDiagonal
   - type: Stack
     stackType: MoffFloorTileDarkDiagonal
 
@@ -65,7 +65,7 @@
   - type: FloorTile
     outputs:
     - Plating
-    - FloorMoffDarkDiagonalMini
+    - MoffFloorDarkDiagonalMini
   - type: Stack
     stackType: MoffFloorTileDarkDiagonalMini
 
@@ -79,7 +79,7 @@
   - type: FloorTile
     outputs:
     - Plating
-    - FloorMoffDarkOffset
+    - MoffFloorDarkOffset
   - type: Stack
     stackType: MoffFloorTileDarkOffset
 
@@ -94,7 +94,7 @@
   - type: FloorTile
     outputs:
     - Plating
-    - FloorMoffWhiteDiagonal
+    - MoffFloorWhiteDiagonal
   - type: Stack
     stackType: MoffFloorTileWhiteDiagonal
 
@@ -108,7 +108,7 @@
   - type: FloorTile
     outputs:
     - Plating
-    - FloorMoffWhiteDiagonalMini
+    - MoffFloorWhiteDiagonalMini
   - type: Stack
     stackType: MoffFloorTileWhiteDiagonalMini
 
@@ -122,7 +122,7 @@
   - type: FloorTile
     outputs:
     - Plating
-    - FloorMoffWhiteOffset
+    - MoffFloorWhiteOffset
   - type: Stack
     stackType: MoffFloorTileWhiteOffset
 
@@ -137,6 +137,6 @@
   - type: FloorTile
     outputs:
     - Plating
-    - FloorMoffShowroom
+    - MoffFloorShowroom
   - type: Stack
     stackType: MoffFloorTileShowroom
