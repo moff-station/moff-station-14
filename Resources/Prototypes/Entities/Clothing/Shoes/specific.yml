@@ -130,7 +130,7 @@
     maxContactSprintSlowdown: 0.7
     maxContactWalkSlowdown: 0.7
   - type: NoFootprints # Funky change
-  - type: MoffStainRepellent # Moff - Can't be stained
+  - type: MoffStainRepellentCoated # Moff - Can't be stained
 
 - type: entity
   parent: [ClothingShoesBaseButcherable, BaseHighlyIllegalContraband]
@@ -161,17 +161,6 @@
     sprite: Clothing/Shoes/Specific/swat.rsi
   - type: Clothing
     sprite: Clothing/Shoes/Specific/swat.rsi
-
-- type: entity
-  parent: ClothingShoesBaseButcherable
-  id: ClothingShoesWizard
-  name: wizard shoes
-  description: A pair of magic shoes.
-  components:
-  - type: Sprite
-    sprite: Clothing/Shoes/Specific/wizard.rsi
-  - type: Clothing
-    sprite: Clothing/Shoes/Specific/wizard.rsi
 
 - type: entity
   parent: [ClothingShoesBase, BaseChameleon]

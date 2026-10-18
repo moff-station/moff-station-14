@@ -4,7 +4,6 @@ using Content.Server.Administration.Managers;
 using Content.Server.Antag;
 using Content.Server.Antag.Components;
 using Content.Server.GameTicking;
-using Content.Server.GameTicking.Rules;
 using Content.Server.GameTicking.Rules.Components;
 using Content.Server.StationEvents;
 using Content.Shared._ES.Voting;
@@ -12,7 +11,10 @@ using Content.Shared._ES.Voting.Components;
 using Content.Shared._Moffstation.Extensions;
 using Content.Shared._Moffstation.Voting.Components;
 using Content.Shared.Administration;
+using Content.Shared.Antag;
+using Content.Shared.Antag.Components;
 using Content.Shared.Database;
+using Content.Shared.GameTicking;
 using Content.Shared.GameTicking.Components;
 using Content.Shared.Ghost.Components;
 using Content.Shared.Roles.Components;
@@ -254,7 +256,7 @@ public sealed partial class MoffEnrollEventSystem : EntitySystem
             return;
 
         gameRule.Added = true;
-        var addedEv = new GameRuleAddedEvent(ruleUid, MetaData(ruleUid).EntityPrototype?.ID ?? string.Empty);
+        var addedEv = new GameRuleAddedEvent((ruleUid, gameRule));
         RaiseLocalEvent(ruleUid, ref addedEv, true);
     }
 

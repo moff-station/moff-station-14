@@ -8,7 +8,7 @@
     keysIn:
     - timer
   - type: Explosive
-    explosionType: Default
+    explosionType: Transparent # Funky RMC Explosions
     maxIntensity: 10
     intensitySlope: 3
     totalIntensity: 120 # about a ~4 tile radius
@@ -92,7 +92,7 @@
     keysIn:
     - timer
   - type: Explosive
-    explosionType: Minibomb
+    explosionType: TransparentMinibomb # Funky RMC Explosions
     totalIntensity: 150
     intensitySlope: 75 #Will destroy the tile under it reliably, space 1-2 more to rods. Only does any significant damage in a 5-tile cross.
     maxIntensity: 100
@@ -116,7 +116,7 @@
     keysIn:
     - timer
   - type: Explosive
-    explosionType: Minibomb
+    explosionType: TransparentMinibomb # Funky RMC Explosions
     totalIntensity: 400
     intensitySlope: 30
     maxIntensity: 125
