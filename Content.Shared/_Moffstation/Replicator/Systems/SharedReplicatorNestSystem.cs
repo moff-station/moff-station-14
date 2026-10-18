@@ -15,6 +15,7 @@ using Content.Shared.Movement.Pulling.Systems;
 using Content.Shared.Popups;
 using Content.Shared.Stacks;
 using Content.Shared.Station;
+using Content.Shared.Station.Systems;
 using Content.Shared.Storage.Components;
 using Content.Shared.Stunnable;
 using Content.Shared.Throwing;
@@ -46,7 +47,7 @@ public abstract partial class SharedReplicatorNestSystem : EntitySystem
     [Dependency] private SharedTransformSystem _xform = default!;
     [Dependency] private ThrowingSystem _throwing = default!;
     [Dependency] private SharedBuckleSystem _buckle = default!;
-    [Dependency] private SharedStationSystem _station = default!;
+    [Dependency] private StationSystem _station = default!;
     [Dependency] private InventorySystem _inventory = default!;
 
     [Dependency] private EntityQuery<BuckleComponent> _buckleQuery;

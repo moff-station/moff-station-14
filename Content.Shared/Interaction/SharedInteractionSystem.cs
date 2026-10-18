@@ -26,7 +26,8 @@ using Content.Shared.Popups;
 using Content.Shared.Storage;
 using Content.Shared.Strip;
 using Content.Shared.Tag;
-using Content.Shared.Timing;
+using Content.Shared.Timing.Components;
+using Content.Shared.Timing.Systems;
 using Content.Shared.UserInterface;
 using Content.Shared.Verbs;
 using Content.Shared.Wall;
@@ -170,8 +171,11 @@ namespace Content.Shared.Interaction
 
             var range = _ui.GetUiRange(ev.Target, ev.UiKey);
 
-            // As long as range>0, the UI frame updates should have auto-closed the UI if it is out of range.
-            DebugTools.Assert(range <= 0 || UiRangeCheck(ev.Actor, ev.Target, range));
+            if (range > 0 && !UiRangeCheck(ev.Actor, ev.Target, range))
+            {
+                ev.Cancel();
+                return;
+            }
 
             if (range <= 0 && !IsAccessible(ev.Actor, ev.Target))
             {
@@ -1185,7 +1189,7 @@ namespace Content.Shared.Interaction
                     _adminLogger.Add(LogType.InteractActivate, LogImpact.Low, $"{ToPrettyString(user):user} activated {ToPrettyString(used):used}");
 
                 if (delayComponent != null)
-                    _useDelay.TryResetDelay(used, component: delayComponent);
+                    _useDelay.TryResetDelay((used, delayComponent));
                 return true;
             }
 
@@ -1198,7 +1202,7 @@ namespace Content.Shared.Interaction
             DoContactInteraction(user, used, null, true); // Interaction particles
             // Still need to call this even without checkUseDelay in case this gets relayed from Activate.
             if (delayComponent != null)
-                _useDelay.TryResetDelay(used, component: delayComponent);
+                _useDelay.TryResetDelay((used, delayComponent));
 
             _adminLogger.Add(LogType.InteractActivate, LogImpact.Low, $"{ToPrettyString(user):user} activated {ToPrettyString(used):used}");
             return true;

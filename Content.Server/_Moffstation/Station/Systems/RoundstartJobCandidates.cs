@@ -12,7 +12,7 @@ namespace Content.Server._Moffstation.Station.Systems;
 
 /// <summary>
 /// A collection ("pool") of <see cref="NetUserId"/>s (called "Candidates") and their job preferences organized to make
-/// <see cref="StationJobsSystem.AssignJobs">picking candidates for roundstart jobs</see> easier.
+/// <see cref="ServerStationJobsSystem.AssignJobs">picking candidates for roundstart jobs</see> easier.
 /// Add candidates with <see cref="SetCandidates"/>, pick candidates with <see cref="Pick"/> and its variants.
 /// </summary>
 /// <param name="random">The RNG to use when picking candidates. The RNG is used to choose between two candidates which
@@ -202,7 +202,7 @@ public sealed partial class RoundstartJobCandidates(
 
 /// <summary>
 /// A <see cref="RoundstartStationJob.Comparer">sortable</see> <see cref="JobPrototype"/> and related info for use in
-/// <see cref="StationJobsSystem.AssignJobs"/>. Objects are sorted first by <see cref="FillPriority"/>, then by
+/// <see cref="ServerStationJobsSystem.AssignJobs"/>. Objects are sorted first by <see cref="FillPriority"/>, then by
 /// <see cref="RoundstartStationJob.Comparer.WeightGetter">weight</see>, then by <see cref="FallbackLevel"/>, then by
 /// <see cref="Priority"/>, then by <see cref="Repetition"/>, then by <see cref="Salt"/>.
 /// </summary>
@@ -216,7 +216,7 @@ public sealed partial class RoundstartJobCandidates(
 /// </param>
 /// <param name="FallbackLevel">
 /// How loosely we're currently willing to match a candidate to <see cref="Job"/>.
-/// See <see cref="StationJobsSystem.DowngradeStrictness"/>.
+/// See <see cref="ServerStationJobsSystem.DowngradeStrictness"/>.
 /// </param>
 /// <param name="Salt">
 /// A number that exists simply to make some objects sort before others. This is used to make otherwise equal-sorting
@@ -230,7 +230,7 @@ public sealed partial class RoundstartJobCandidates(
 /// </param>
 /// <param name="Slots">
 /// The number of slots. Null means an unlimited number, but it also stops <see cref="FallbackLevel"/> from ever
-/// broadening past <see cref="MinimumJobFallback.None"/>; see <see cref="StationJobsSystem.DowngradeStrictness"/>.
+/// broadening past <see cref="MinimumJobFallback.None"/>; see <see cref="ServerStationJobsSystem.DowngradeStrictness"/>.
 /// </param>
 public readonly record struct RoundstartStationJob(
     ProtoId<JobPrototype> Job,

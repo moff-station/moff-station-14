@@ -6,9 +6,9 @@ stack-poultice-pack = {$amount ->
     *[others] poultice packs
 }
 
-stack-dark-steel-slats-tile-continuous = dark steel continuous slat tile
-stack-steel-slats-tile-continuous = steel continuous slat tile
-stack-white-steel-slats-tile-continuous = white steel continuous slat tile
+moff-stack-dark-steel-slats-tile-continuous = dark steel continuous slat tile
+moff-stack-steel-slats-tile-continuous = steel continuous slat tile
+moff-stack-white-steel-slats-tile-continuous = white steel continuous slat tile
 
-stack-plasma-marble-floor = plasmarble floor
-stack-uranium-marble-floor = uranium marble floor
+moff-stack-plasma-marble-floor = plasmarble floor
+moff-stack-uranium-marble-floor = uranium marble floor

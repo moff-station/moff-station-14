@@ -12,7 +12,7 @@ public sealed partial class BloodBrotherComponent : Component
     public EntityUid? Brother;
 
     [DataField]
-    public ProtoId<FactionIconPrototype> BloodBrotherIcon = "BloodBrotherFaction";
+    public ProtoId<StatusIconPrototype> BloodBrotherIcon = "BloodBrotherFaction";
 
     public override bool SessionSpecific => true;
 }

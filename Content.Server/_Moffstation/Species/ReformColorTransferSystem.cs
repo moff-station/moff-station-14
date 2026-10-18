@@ -1,4 +1,4 @@
-using Content.Server._Moffstation.Geras;
+using Content.Shared._Moffstation.Geras;
 using Content.Shared.Body;
 using Content.Shared.Humanoid;
 using Content.Shared.Sprite;
