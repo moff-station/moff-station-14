@@ -10,7 +10,7 @@
     - Plating
     - FloorMoffSteelDiagonal
   - type: Stack
-    stackType: MoffFloorTileItemSteelDiagonal
+    stackType: MoffFloorTileSteelDiagonal
 
 - type: entity
   parent: FloorTileItemSteel
@@ -24,7 +24,7 @@
     - Plating
     - FloorMoffSteelDiagonalMini
   - type: Stack
-    stackType: MoffFloorTileItemSteelDiagonalMini
+    stackType: MoffFloorTileSteelDiagonalMini
 
 - type: entity
   parent: FloorTileItemSteel
@@ -38,7 +38,7 @@
     - Plating
     - FloorMoffSteelOffset
   - type: Stack
-    stackType: MoffFloorTileItemSteelOffset
+    stackType: MoffFloorTileSteelOffset
 
 
 - type: entity
@@ -53,7 +53,7 @@
     - Plating
     - FloorMoffDarkDiagonal
   - type: Stack
-    stackType: MoffFloorTileItemDarkDiagonal
+    stackType: MoffFloorTileDarkDiagonal
 
 - type: entity
   parent: FloorTileItemDark
@@ -67,7 +67,7 @@
     - Plating
     - FloorMoffDarkDiagonalMini
   - type: Stack
-    stackType: MoffFloorTileItemDarkDiagonalMini
+    stackType: MoffFloorTileDarkDiagonalMini
 
 - type: entity
   parent: FloorTileItemDark
@@ -81,7 +81,7 @@
     - Plating
     - FloorMoffDarkOffset
   - type: Stack
-    stackType: MoffFloorTileItemDarkOffset
+    stackType: MoffFloorTileDarkOffset
 
 
 - type: entity
@@ -96,7 +96,7 @@
     - Plating
     - FloorMoffWhiteDiagonal
   - type: Stack
-    stackType: MoffFloorTileItemWhiteDiagonal
+    stackType: MoffFloorTileWhiteDiagonal
 
 - type: entity
   parent: FloorTileItemWhite
@@ -110,7 +110,7 @@
     - Plating
     - FloorMoffWhiteDiagonalMini
   - type: Stack
-    stackType: MoffFloorTileItemWhiteDiagonalMini
+    stackType: MoffFloorTileWhiteDiagonalMini
 
 - type: entity
   parent: FloorTileItemWhite
@@ -124,7 +124,7 @@
     - Plating
     - FloorMoffWhiteOffset
   - type: Stack
-    stackType: MoffFloorTileItemWhiteOffset
+    stackType: MoffFloorTileWhiteOffset
 
 
 - type: entity
@@ -139,4 +139,4 @@
     - Plating
     - FloorMoffShowroom
   - type: Stack
-    stackType: MoffFloorTileItemShowroom
+    stackType: MoffFloorTileShowroom
