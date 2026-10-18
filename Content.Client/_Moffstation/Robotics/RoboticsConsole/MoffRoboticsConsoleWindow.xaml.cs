@@ -46,7 +46,7 @@ public sealed partial class MoffRoboticsConsoleWindow : FancyWindow
 
     public void Update(MoffRoboticsConsoleState status)
     {
-        foreach (var borg in status.cyborgs)
+        foreach (var borg in status.Cyborgs)
         {
             if (!_buttons.ContainsKey(borg.OwnerUid))
                 CreateSensor(borg, status.AllowBorgControl);
@@ -54,7 +54,7 @@ public sealed partial class MoffRoboticsConsoleWindow : FancyWindow
                 UpdateSensor(borg.OwnerUid, borg, status.AllowBorgControl);
         }
 
-        foreach (var removed in _buttons.Keys.Except(status.cyborgs.Select(x => x.OwnerUid)))
+        foreach (var removed in _buttons.Keys.Except(status.Cyborgs.Select(x => x.OwnerUid)))
         {
             RemoveSensor(removed);
         }
