@@ -305,11 +305,9 @@
 # Japanese Ghost Headband (Tenkan)
 - type: entity
   parent: ClothingHeadBase
-  id: ClothingHeadGhostHeadband
+  id: MoffClothingHeadGhostHeadband
   name: ghost headband
   description: A traditional japanese tenkan, in case you want to act like a silly ghost.
   components:
   - type: Sprite
-    sprite: _Moffstation/Clothing/Head/Misc/ghost_headband.rsi
-  - type: Clothing
     sprite: _Moffstation/Clothing/Head/Misc/ghost_headband.rsi
