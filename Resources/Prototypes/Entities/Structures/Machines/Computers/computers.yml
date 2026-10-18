@@ -1692,8 +1692,13 @@
       state: rd_key
     - map: [ "enum.WiresVisualLayers.MaintenancePanel" ]
       state: generic_panel_open
-  - type: RoboticsConsole
-    allowBorgControl: false
+  # Moffstation begin - new robotics console ui
+  - type: MoffRoboticsConsole
+    sensorTypes:
+    - NTBorgSensor
+  #- type: RoboticsConsole
+  #  allowBorgControl: false
+  # Moffstation end
   - type: ActiveRadio
     channels:
     - Science
@@ -1702,7 +1707,10 @@
   - type: UserInterface
     interfaces:
       enum.RoboticsConsoleUiKey.Key:
-        type: RoboticsConsoleBoundUserInterface
+        # Moff begin - new robotic console ui
+        #type: RoboticsConsoleBoundUserInterface
+        type: MoffRoboticsConsoleBoundUserInterface
+        # Moff end
       enum.WiresUiKey.Key:
         type: WiresBoundUserInterface
   - type: ApcPowerReceiver
@@ -1711,10 +1719,14 @@
     idlePowerDraw: 5
     workingPowerDraw: 1000
   - type: UIPowerState
+  # Moff begin - new robotic console ui
   - type: DeviceNetwork
+    receiveAll: true
     deviceNetId: Wireless
-    receiveFrequencyId: RoboticsConsole
+    #receiveFrequencyId: RoboticsConsole
+    receiveFrequencyId: SuitSensor
     transmitFrequencyId: CyborgControl
+  # Moff end
   - type: Computer
     board: RoboticsConsoleCircuitboard
   - type: AccessReader # only used for dangerous things

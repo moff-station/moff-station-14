@@ -11,13 +11,14 @@ using Content.Shared.DeviceNetwork;
 using Content.Shared.DeviceNetwork.Components;
 using Content.Shared.DeviceNetwork.Events;
 using Content.Shared.Lock;
+using Content.Shared.Medical.SuitSensors;
 using Content.Shared.Robotics;
 using Robust.Server.GameObjects;
 using Robust.Shared.Timing;
 
 namespace Content.Server._Moffstation.Robotics.RoboticsConsole;
 
-public sealed class MoffRoboticsConsoleSystem : EntitySystem
+public sealed partial class MoffRoboticsConsoleSystem : EntitySystem
 {
     [Dependency] private IGameTiming _time = default!;
     [Dependency] private SuitSensorSystem _sensors = default!;
@@ -71,16 +72,17 @@ public sealed class MoffRoboticsConsoleSystem : EntitySystem
     }
 
      [SubscribeLocalEvent]
-    private void OnPacketReceived(Entity<MoffRoboticsConsoleComponent> ent, ref DeviceNetworkPacketEvent args)
+    private void OnPacketReceived(Entity<MoffRoboticsConsoleComponent> ent, ref DeviceNetworkPacketEvent<SuitSensorStatusPayload> args)
     {
-        if (_sensors.PacketToSuitSensor(args.Data) is not {} sensor ||
-            !ent.Comp.SensorTypes.Contains(sensor.SensorType) ||
-            _borgs.ControlDataOrNull(GetEntity(sensor.OwnerUid)) is not {} controls)
+        var status = args.Data.Data;
+
+        if (!ent.Comp.SensorTypes.Contains(status.SensorType) ||
+            _borgs.TransponderDataOrNull(GetEntity(status.OwnerUid)) is not {} transponderData)
             return;
 
-        var data = new BorgSensorStatus(sensor, controls, _time.CurTime + ent.Comp.Timeout);
+        var data = new BorgSensorStatus(status, transponderData, _time.CurTime + ent.Comp.Timeout);
 
-        ent.Comp.Cyborgs[GetEntity(sensor.OwnerUid)] = data;
+        ent.Comp.Cyborgs[GetEntity(status.OwnerUid)] = data;
         UpdateUserInterface(ent);
     }
 
@@ -89,48 +91,55 @@ public sealed class MoffRoboticsConsoleSystem : EntitySystem
         UpdateUserInterface(ent);
     }
 
+
     private void OnDisable(Entity<MoffRoboticsConsoleComponent> ent, ref MoffRoboticsConsoleDisableMessage args)
     {
         if (!ent.Comp.AllowBorgControl ||
-            _lock.IsLocked(ent.Owner) ||
-            !ent.Comp.Cyborgs.TryGetValue(GetEntity(args.Target), out var controls))
+            _lock.IsLocked(ent.Owner))
             return;
 
-        var payload = new NetworkPayload()
-        {
-            [DeviceNetworkConstants.Command] = RoboticsConsoleConstants.NET_DISABLE_COMMAND,
-        };
-
-        if (AddressOrNull(args.Target) is not {} address)
+        if (!ent.Comp.Cyborgs.TryGetValue(GetEntity(args.Target), out var data))
             return;
 
-        _deviceNetwork.QueuePacket(ent, address, payload);
-        _adminLogger.Add(LogType.Action,
-            LogImpact.High,
-            $"{ToPrettyString(args.Actor):user} disabled borg {controls.Name} with address {address}");
+        var address = AddressOrNull(args.Target);
+        var payload = new RoboticsCyborgDisablePayload();
+        _deviceNetwork.SendPacket(ent.Owner, address, ref payload);
+
+        _adminLogger.Add(LogType.Action, LogImpact.High, $"{ToPrettyString(args.Actor):user} disabled borg {data.Name} with address {address}");
+        return;
     }
 
     private void OnDestroy(Entity<MoffRoboticsConsoleComponent> ent, ref MoffRoboticsConsoleDestroyMessage args)
     {
         if (!ent.Comp.AllowBorgControl ||
-            _lock.IsLocked(ent.Owner) ||
-            !ent.Comp.Cyborgs.TryGetValue(GetEntity(args.Target), out var controls))
+            _lock.IsLocked(ent.Owner))
             return;
 
-        var payload = new NetworkPayload()
-        {
-            [DeviceNetworkConstants.Command] = RoboticsConsoleConstants.NET_DESTROY_COMMAND,
-        };
-
-        if (AddressOrNull(args.Target) is not {} address)
+        var now = _time.CurTime;
+        if (now < ent.Comp.NextDestroy)
             return;
 
-        _deviceNetwork.QueuePacket(ent, address, payload);
+        if (!ent.Comp.Cyborgs.Remove(GetEntity(args.Target), out var data))
+            return;
 
-        var message = Loc.GetString(ent.Comp.DestroyMessage, ("name", controls.Name));
+        var address = AddressOrNull(args.Target);
+        var payload = new RoboticsCyborgDestroyPayload();
+        _deviceNetwork.SendPacket(ent.Owner, address, ref payload);
+
+        var message = Loc.GetString(ent.Comp.DestroyMessage, ("name", data.Name));
         _radio.SendRadioMessage(ent, message, ent.Comp.RadioChannel, ent);
-        _adminLogger.Add(LogType.Action,
-            LogImpact.Extreme,
-            $"{ToPrettyString(args.Actor):user} destroyed borg {controls.Name} with address {address}");
+        _adminLogger.Add(LogType.Action, LogImpact.Extreme, $"{ToPrettyString(args.Actor):user} destroyed borg {data.Name} with address {address}");
+
+        ent.Comp.NextDestroy = now + ent.Comp.DestroyCooldown;
+        Dirty(ent, ent.Comp);
     }
+
+
+    private void UpdateUserInterface(Entity<MoffRoboticsConsoleComponent> ent)
+    {
+        var state = new MoffRoboticsConsoleState(ent.Comp.Cyborgs.Values.ToList(), ent.Comp.AllowBorgControl);
+        _ui.SetUiState(ent.Owner, RoboticsConsoleUiKey.Key, state);
+    }
+
+    private string? AddressOrNull(NetEntity borg) => CompOrNull<DeviceNetworkComponent>(GetEntity(borg))?.Address;
 }

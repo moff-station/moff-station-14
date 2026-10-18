@@ -72,8 +72,8 @@ public sealed partial class RoboticsConsoleButton : Button
 
         DetailedPanel.Visible = expanded;
 
-        DisableButton.Visible = !controlsEnabled;
-        DestroyButton.Visible = !controlsEnabled;
+        DisableButton.Visible = controlsEnabled;
+        DestroyButton.Visible = controlsEnabled;
     }
 
     public SpriteSpecifier StatusSpecifier(BorgSensorStatus sensor)
