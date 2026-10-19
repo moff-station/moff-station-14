@@ -157,11 +157,8 @@ public sealed class MultiCharacterTest : GameTest
         });
     }
 
-    /// <summary>
-    /// Automatic preference resetting only covers slot 0, so slot 1 would leak between tests.
-    /// </summary>
     [TearDown]
-    public async Task CleanupSecondCharacter()
+    public async Task CleanupCharacters()
     {
         var pair = Pair;
         var prefMan = pair.Server.ResolveDependency<IServerPreferencesManager>();
@@ -169,6 +166,7 @@ public sealed class MultiCharacterTest : GameTest
         var user = pair.Client.User!.Value;
 
         await pair.Server.WaitPost(() => prefMan.SetProfile(user, 1, new HumanoidCharacterProfile()).Wait());
+        await pair.Server.WaitPost(() => prefMan.SetProfile(user, 0, new HumanoidCharacterProfile()).Wait());
 
         // Deactivating is what isolates: an inactive slot contributes no candidates.
         await pair.Server.WaitPost(() =>
