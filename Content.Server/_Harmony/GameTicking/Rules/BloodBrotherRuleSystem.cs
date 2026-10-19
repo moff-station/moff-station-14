@@ -35,7 +35,6 @@ using Robust.Server.Player;
 using Robust.Shared.Network;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Utility;
-using Serilog;
 
 namespace Content.Server._Harmony.GameTicking.Rules;
 
@@ -76,15 +75,17 @@ public sealed partial class BloodBrotherRuleSystem : GameRuleSystem<BloodBrother
     private static readonly LocId FailedDead = "blood-brother-convert-failed-dead";
     private static readonly LocId FailedPreference = "blood-brother-convert-failed-preference";
 
-    public override void Update(float frameTime)
+    protected override void ActiveTick(EntityUid uid,
+        BloodBrotherRuleComponent component,
+        GameRuleComponent gameRule,
+        float frameTime)
     {
-        base.Update(frameTime);
+        base.ActiveTick(uid, component, gameRule, frameTime);
 
-        if (!TryGetRule(out var rule)
-            || Timing.CurTime < rule.Comp.NextConvertibleUpdate)
+        if (Timing.CurTime < component.NextConvertibleUpdate)
             return;
 
-        rule.Comp.NextConvertibleUpdate = Timing.CurTime + rule.Comp.ConvertibleUpdateInterval;
+        component.NextConvertibleUpdate = Timing.CurTime + component.ConvertibleUpdateInterval;
 
         // Check if any blood brothers can even convert in the first place.
         // If they can't then don't bother running the expensive ass check on everyone in the round
@@ -253,8 +254,6 @@ public sealed partial class BloodBrotherRuleSystem : GameRuleSystem<BloodBrother
     {
         if (!Resolve(entity.Owner, ref entity.Comp) || !_mindSystem.TryGetMind(entity.Owner, out _, out var converterMind))
         {
-            DebugTools.Assert("Blood brother tried to convert but had no mind.");
-            Log.Error("Blood brother tried to convert but had no mind.");
             errorMessage = FailedNoMind;
             return false;
         }
@@ -352,17 +351,5 @@ public sealed partial class BloodBrotherRuleSystem : GameRuleSystem<BloodBrother
             if (_targetObjectiveQuery.TryComp(objective, out var targetObjective) && targetObjective.Target is { } target)
                 yield return target;
         }
-    }
-
-    private bool TryGetRule(out Entity<BloodBrotherRuleComponent> rule)
-    {
-        foreach (var ent in QueryActiveRules())
-        {
-            rule = (ent.Owner, ent.Comp1);
-            return true;
-        }
-
-        rule = default;
-        return false;
     }
 }
