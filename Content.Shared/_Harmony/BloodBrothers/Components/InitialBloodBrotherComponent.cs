@@ -13,7 +13,7 @@ namespace Content.Shared._Harmony.BloodBrothers.Components;
 /// <summary>
 /// Signifies that an entity is the blood brother chosen by a game-rule.
 /// </summary>
-[RegisterComponent, NetworkedComponent, Access(typeof(SharedBloodBrotherSystem))]
+[RegisterComponent, NetworkedComponent, Access(typeof(BloodBrotherSystem))]
 [AutoGenerateComponentState]
 public sealed partial class InitialBloodBrotherComponent : Component
 {

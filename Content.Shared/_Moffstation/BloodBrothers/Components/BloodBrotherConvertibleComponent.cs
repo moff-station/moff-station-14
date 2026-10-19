@@ -8,7 +8,7 @@ namespace Content.Shared._Moffstation.BloodBrothers.Components;
 /// <summary>
 /// Marks an entity that initial blood brothers can convert. Only sent to initial blood brothers.
 /// </summary>
-[RegisterComponent, NetworkedComponent, Access(typeof(SharedBloodBrotherSystem))]
+[RegisterComponent, NetworkedComponent, Access(typeof(BloodBrotherSystem))]
 public sealed partial class BloodBrotherConvertibleComponent : Component
 {
     [DataField]

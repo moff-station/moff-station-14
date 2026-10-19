@@ -7,7 +7,7 @@ using Robust.Shared.Player;
 
 namespace Content.Shared._Harmony.BloodBrothers.EntitySystems;
 
-public abstract partial class SharedBloodBrotherSystem : EntitySystem
+public abstract partial class BloodBrotherSystem : EntitySystem
 {
     [Dependency] private SharedActionsSystem _actionsSystem = default!;
 

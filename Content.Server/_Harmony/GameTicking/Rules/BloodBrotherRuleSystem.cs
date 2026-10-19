@@ -55,7 +55,7 @@ public sealed partial class BloodBrotherRuleSystem : GameRuleSystem<BloodBrother
     [Dependency] private RoleSystem _roleSystem = default!;
     [Dependency] private StunSystem _stunSystem = default!;
     [Dependency] private TargetObjectiveSystem _targetObjectiveSystem = default!;
-    [Dependency] private BloodBrotherSystem _bloodBrother = default!;
+    [Dependency] private ServerBloodBrotherSystem _bloodBrother = default!;
     [Dependency] private MoffCharacterPickerSystem _characterPicker = default!;
 
     [Dependency] private EntityQuery<BloodBrotherComponent> _bloodBrotherQuery = default!;
