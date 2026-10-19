@@ -8,23 +8,23 @@
     drawdepth: Mobs
     layers:
     - map: ["enum.DamageStateVisualLayers.Base", "movement"]
-      state: idle
-      sprite: Mobs/Animals/Spiders/viperspider.rsi
+      state: viper
+      sprite: Mobs/Animals/spider.rsi
   - type: SpriteMovement
     movementLayers:
       movement:
-        state: moving
+        state: viper-moving
     noMovementLayers:
       movement:
-        state: idle
+        state: viper
   - type: DamageStateVisuals
     states:
       Alive:
-        Base: idle
+        Base: viper
       Critical:
-        Base: dead
+        Base: viper_dead
       Dead:
-        Base: dead
+        Base: viper_dead
   - type: MeleeWeapon
     altDisarm: false
     angle: 0

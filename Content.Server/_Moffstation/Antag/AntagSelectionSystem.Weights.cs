@@ -6,7 +6,6 @@ using Content.Shared.GameTicking;
 using Content.Shared.Mind;
 using Content.Shared.Roles;
 using Robust.Shared.Network;
-using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
 
 // ReSharper disable once CheckNamespace
@@ -16,17 +15,12 @@ namespace Content.Server.Antag;
 /// Players who don't get selected to be antag get an extra name in the hat for future rounds
 /// This continues stacking until they roll antag, to which they will get reset to a weight of 1
 /// </summary>
-public sealed partial class ServerAntagSelectionSystem
+public sealed partial class AntagSelectionSystem
 {
     [Dependency] private IWeightedAntagManager _weightedAntagMan = default!;
 
     [Dependency] private EntityQuery<MoffUnweightedAntagComponent> _query;
     [Dependency] private EntityQuery<MindComponent> _mindQuery;
-
-    protected override float GetWeight(ICommonSession player)
-    {
-        return _weightedAntagMan.GetWeight(player.UserId);
-    }
 
     /// <summary>
     /// Check who was and wasn't an antag at the end of the round
@@ -68,7 +62,7 @@ public sealed partial class ServerAntagSelectionSystem
         }
 
         // Look through all the other players
-        foreach (var session in PlayerManager.Sessions)
+        foreach (var session in _playerManager.Sessions)
         {
             // Check if they're actually in round.
             if (!GameTicker.UserHasJoinedGame(session))

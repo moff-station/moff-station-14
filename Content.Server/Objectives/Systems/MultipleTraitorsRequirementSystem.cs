@@ -1,6 +1,5 @@
 using Content.Server.GameTicking.Rules;
 using Content.Server.Objectives.Components;
-using Content.Shared.GameTicking.Rules;
 using Content.Shared.Objectives.Components;
 
 namespace Content.Server.Objectives.Systems;

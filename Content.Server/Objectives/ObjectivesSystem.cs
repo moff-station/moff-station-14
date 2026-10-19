@@ -13,7 +13,6 @@ using System.Linq;
 using System.Text;
 using Content.Server.Objectives.Commands;
 using Content.Shared.CCVar;
-using Content.Shared.GameTicking;
 using Content.Shared._DV.CustomObjectiveSummary; // DeltaV
 using Content.Shared.Prototypes;
 using Content.Shared.Roles.Jobs;
@@ -39,6 +38,8 @@ public sealed partial class ObjectivesSystem : SharedObjectivesSystem
     {
         base.Initialize();
 
+        SubscribeLocalEvent<RoundEndTextAppendEvent>(OnRoundEndText);
+
         Subs.CVar(_cfg, CCVars.GameShowGreentext, value => _showGreentext = value, true);
 
         ProtoMan.PrototypesReloaded += CreateCompletions;
@@ -54,8 +55,7 @@ public sealed partial class ObjectivesSystem : SharedObjectivesSystem
     /// <summary>
     /// Adds objective text for each game rule's players on round end.
     /// </summary>
-    [SubscribeLocalEvent]
-    private void OnRoundEndText(ref RoundEndTextAppendEvent ev)
+    private void OnRoundEndText(RoundEndTextAppendEvent ev)
     {
         // go through each gamerule getting data for the roundend summary.
         var summaries = new Dictionary<string, Dictionary<string, List<(EntityUid, string)>>>();

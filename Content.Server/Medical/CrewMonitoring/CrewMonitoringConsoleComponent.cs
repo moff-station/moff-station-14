@@ -1,5 +1,5 @@
 using Content.Shared._Moffstation.Sensors; // Moffstation - Borg sensors
-using Content.Shared.Medical.SuitSensors;
+using Content.Shared.Medical.SuitSensor;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Utility; // Moffstation - Borg sensors
 

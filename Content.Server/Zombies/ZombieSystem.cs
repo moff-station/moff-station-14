@@ -28,8 +28,6 @@ using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 using Robust.Shared.Timing;
 using Content.Server.Ghost.Roles.Components;
-using Content.Shared.Medical;
-using Content.Shared.Construction.Steps;
 
 namespace Content.Server.Zombies
 {
@@ -306,13 +304,6 @@ namespace Content.Server.Zombies
 
             _bloodstream.ChangeBloodReagents(target, zombiecomp.BeforeZombifiedBloodReagents);
 
-            // Restore the blood refresh amount to what it was before zombification. They can't regain blood otherwise.
-            _bloodstream.ChangeBloodRefreshAmount(target, zombiecomp.BeforeZombifiedBloodRefresh);
-            _bloodstream.ChangeBloodIncreaseEnabled(target, true);
-
-            // Remove the tags that we added during Zombification
-            _tag.RemoveTag(target, CannotSuicideTag);
-            _tag.RemoveTag(target, InvalidForGlobalSpawnSpellTag);
             return true;
         }
 

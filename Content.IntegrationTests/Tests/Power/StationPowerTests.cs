@@ -62,7 +62,7 @@ public sealed class StationPowerTests : GameTest
 
         var entMan = server.EntMan;
         var protoMan = server.ProtoMan;
-        var ticker = entMan.System<ServerGameTicker>();
+        var ticker = entMan.System<GameTicker>();
         var batterySys = entMan.System<BatterySystem>();
 
         // Load the map
@@ -120,7 +120,7 @@ public sealed class StationPowerTests : GameTest
 
         var entMan = server.EntMan;
         var protoMan = server.ProtoMan;
-        var ticker = entMan.System<ServerGameTicker>();
+        var ticker = entMan.System<GameTicker>();
         var xform = entMan.System<TransformSystem>();
 
         // Load the map

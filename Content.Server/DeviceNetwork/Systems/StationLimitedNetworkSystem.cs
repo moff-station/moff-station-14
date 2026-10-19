@@ -2,6 +2,7 @@ using Content.Server.DeviceNetwork.Components;
 using Content.Server.Station.Systems;
 using Content.Shared.DeviceNetwork.Events;
 using JetBrains.Annotations;
+using Robust.Shared.Map;
 
 namespace Content.Server.DeviceNetwork.Systems
 {
@@ -11,8 +12,7 @@ namespace Content.Server.DeviceNetwork.Systems
     [UsedImplicitly]
     public sealed partial class StationLimitedNetworkSystem : EntitySystem
     {
-        [Dependency] private ServerStationSystem _stationSystem = default!;
-
+        [Dependency] private StationSystem _stationSystem = default!;
         public override void Initialize()
         {
             base.Initialize();
@@ -54,15 +54,14 @@ namespace Content.Server.DeviceNetwork.Systems
         /// <summary>
         /// Checks if both devices are limited to the same station
         /// </summary>
-        private void OnBeforePacketSent(Entity<StationLimitedNetworkComponent> ent, ref BeforePacketSentEvent args)
+        private void OnBeforePacketSent(EntityUid uid, StationLimitedNetworkComponent component, BeforePacketSentEvent args)
         {
-            var (uid, component) = ent;
             if (!component.StationId.HasValue)
                 TrySetStationId(uid, component);
 
             if (!CheckStationId(args.Sender, component.AllowNonStationPackets, component.StationId))
             {
-                args.Cancelled = true;
+                args.Cancel();
             }
         }
 

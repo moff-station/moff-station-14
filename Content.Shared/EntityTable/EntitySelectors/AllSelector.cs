@@ -1,10 +1,16 @@
 namespace Content.Shared.EntityTable.EntitySelectors;
 
 /// <summary>
-/// Gets spawns from all of <see cref="EntityTableSelectorWithChildrenBase.Children"/>.
+/// Gets spawns from all of <see cref="Children"/>.
 /// </summary>
-public sealed partial class AllSelector : EntityTableSelectorWithChildrenBase
+public sealed partial class AllSelector : EntityTableSelector
 {
+    /// <summary>
+    /// All children selectors to pick from.
+    /// </summary>
+    [DataField(required: true)]
+    public List<EntityTableSelector> Children;
+
     // Moffstation - Begin - Rewrite table selectors with visitors. Early merge of https://github.com/Space-Wizards-Federation/space-station-14/pull/177
     public override TResult Accept<TContext, TResult>(IEntityTableVisitor<TContext, TResult> visitor, TContext args) =>
         visitor.VisitAllSelector(this, args);
@@ -14,8 +20,6 @@ public sealed partial class AllSelector : EntityTableSelectorWithChildrenBase
     //     IPrototypeManager proto,
     //     EntityTableContext ctx)
     // {
-    //     using var scoped = ScopedConditions(ctx);
-    //
     //     foreach (var child in Children)
     //     {
     //         foreach (var spawn in child.GetSpawns(rand, entMan, proto, ctx))
@@ -47,10 +51,4 @@ public sealed partial class AllSelector : EntityTableSelectorWithChildrenBase
     //     }
     // }
     // Moffstation - End
-
-    /// <inheritdoc/>
-    public override string ToString()
-    {
-        return $"All({string.Join(", ", Children)})";
-    }
 }

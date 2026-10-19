@@ -1,4 +1,3 @@
-using Content.Shared.DeviceNetwork;
 using Content.Shared.DeviceNetwork.Components;
 using Content.Shared.Popups;
 using Content.Shared.Verbs;
@@ -34,7 +33,7 @@ public abstract partial class SharedJammerSystem : EntitySystem
             EnsureComp<ActiveRadioJammerComponent>(entity);
             EnsureComp<DeviceNetworkJammerComponent>(entity, out var jammingComp);
             _jammer.SetRange((entity, jammingComp), GetCurrentRange(entity));
-            _jammer.AddJammableNetwork((entity, jammingComp), (int) DeviceNetIdDefaults.Wireless);
+            _jammer.AddJammableNetwork((entity, jammingComp), DeviceNetworkComponent.DeviceNetIdDefaults.Wireless.ToString());
 
             // Add excluded frequencies using the system method
             foreach (var freq in entity.Comp.FrequenciesExcluded)

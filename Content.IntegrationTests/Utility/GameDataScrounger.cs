@@ -221,11 +221,6 @@ public static partial class GameDataScrounger
                 var entryMapping = (YamlMappingNode)entry;
 
                 var id = entryMapping[IdNode];
-
-                // TODO: Add handling for prototype variants
-                if (id is YamlMappingNode)
-                    continue;
-
                 var type = entryMapping[TypeNode];
                 var @abstract = ignored;
                 if (entryMapping.TryGetNode("abstract", out YamlScalarNode? abstractNode))
@@ -325,9 +320,7 @@ public static partial class GameDataScrounger
 
         foreach (var parent in entity.Parents)
         {
-            if (!_entitiesMetaIndex!.TryGetValue(parent, out var parentMeta)) // Moff - Variant parents aren't indexed
-                continue;
-
+            var parentMeta = _entitiesMetaIndex![parent];
             VisitEntity(parentMeta, visitedEntities);
 
             entity.Components.UnionWith(parentMeta.Components);

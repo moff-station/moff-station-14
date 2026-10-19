@@ -418,9 +418,6 @@ public sealed partial class DockingSystem : SharedDockingSystem
         var xformA = Transform(dockA);
         var xformB = Transform(dockB);
 
-        if (xformA.GridUid == xformB.GridUid)
-            return false;
-
         if (!xformA.Anchored || !xformB.Anchored)
             return false;
 

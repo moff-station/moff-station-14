@@ -1,6 +1,7 @@
 using Content.Server.DeviceLinking.Components;
 using Content.Shared.DeviceLinking;
 using Content.Shared.DeviceLinking.Events;
+using Content.Shared.DeviceNetwork;
 
 namespace Content.Server.DeviceLinking.Systems;
 
@@ -13,6 +14,7 @@ public sealed partial class EdgeDetectorSystem : EntitySystem
         base.Initialize();
 
         SubscribeLocalEvent<EdgeDetectorComponent, ComponentInit>(OnInit);
+        SubscribeLocalEvent<EdgeDetectorComponent, SignalReceivedEvent>(OnSignalReceived);
     }
 
     private void OnInit(EntityUid uid, EdgeDetectorComponent comp, ComponentInit args)
@@ -21,21 +23,25 @@ public sealed partial class EdgeDetectorSystem : EntitySystem
         _deviceLink.EnsureSourcePorts(uid, comp.OutputHighPort, comp.OutputLowPort);
     }
 
-    [SubscribeLocalEvent]
-    private void OnSignalReceived(EntityUid uid, EdgeDetectorComponent comp, ref SignalReceivedEvent<LogicStatePayload> args)
+    private void OnSignalReceived(EntityUid uid, EdgeDetectorComponent comp, ref SignalReceivedEvent args)
     {
-        var state = args.Data.State;
+        // only handle signals with edges
+        var state = SignalState.Momentary;
+        if (args.Data == null ||
+            !args.Data.TryGetValue(DeviceNetworkConstants.LogicState, out state) ||
+            state == SignalState.Momentary)
+            return;
 
         if (args.Port != comp.InputPort)
             return;
 
         // make sure the level changed, multiple devices sending the same level are treated as one spamming
-        if (comp.State == state)
-            return;
+        if (comp.State != state)
+        {
+            comp.State = state;
 
-        comp.State = state;
-
-        var port = state == SignalState.High ? comp.OutputHighPort : comp.OutputLowPort;
-        _deviceLink.InvokePort(uid, port);
+            var port = state == SignalState.High ? comp.OutputHighPort : comp.OutputLowPort;
+            _deviceLink.InvokePort(uid, port);
+        }
     }
 }

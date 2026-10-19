@@ -1,13 +1,4 @@
 - type: speechSounds
-  id: Arachnid
-  saySound:
-    path: /Audio/_Moffstation/Voice/Talk/arachnid.ogg
-  askSound:
-    path: /Audio/_Moffstation/Voice/Talk/arachnid_ask.ogg
-  exclaimSound:
-    path: /Audio/_Moffstation/Voice/Talk/arachnid_exclaim.ogg
-
-- type: speechSounds
   id: Bass
   saySound:
     path: /Audio/_Moffstation/Voice/Talk/speak_4.ogg
@@ -15,24 +6,6 @@
     path: /Audio/_Moffstation/Voice/Talk/speak_4_ask.ogg
   exclaimSound:
     path: /Audio/_Moffstation/Voice/Talk/speak_4_exclaim.ogg
-
-- type: speechSounds
-  id: MoffCatShadow
-  saySound:
-    path: /Audio/_Moffstation/Animals/cat_meow2_shadow.ogg
-  askSound:
-    path: /Audio/_Moffstation/Animals/cat_meow_shadow.ogg
-  exclaimSound:
-    path: /Audio/_Moffstation/Animals/cat_meow_shadow.ogg
-
-- type: speechSounds
-  id: FemaleAvali
-  saySound:
-    path: /Audio/_Moffstation/Voice/Talk/avali_2.ogg
-  askSound:
-    path: /Audio/_Moffstation/Voice/Talk/avali_2_ask.ogg
-  exclaimSound:
-    path: /Audio/_Moffstation/Voice/Talk/avali_2_exclaim.ogg
 
 - type: speechSounds
   id: Lizard
@@ -44,22 +17,31 @@
     path: /Audio/_Moffstation/Voice/Talk/lizard_exclaim.ogg
 
 - type: speechSounds
-  id: MaleAvali
+  id: Vox
   saySound:
-    path: /Audio/_Moffstation/Voice/Talk/avali_1.ogg
+    path: /Audio/_Moffstation/Voice/Talk/vox.ogg
   askSound:
-    path: /Audio/_Moffstation/Voice/Talk/avali_1_ask.ogg
+    path: /Audio/_Moffstation/Voice/Talk/vox_ask.ogg
   exclaimSound:
-    path: /Audio/_Moffstation/Voice/Talk/avali_1_exclaim.ogg
+    path: /Audio/_Moffstation/Voice/Talk/vox_exclaim.ogg
 
 - type: speechSounds
-  id: UnisexMoth
+  id: Arachnid
   saySound:
-    path: /Audio/_Moffstation/Voice/Talk/moth.ogg
+    path: /Audio/_Moffstation/Voice/Talk/arachnid.ogg
   askSound:
-    path: /Audio/_Moffstation/Voice/Talk/moth_ask.ogg
+    path: /Audio/_Moffstation/Voice/Talk/arachnid_ask.ogg
   exclaimSound:
-    path: /Audio/_Moffstation/Voice/Talk/moth_exclaim.ogg
+    path: /Audio/_Moffstation/Voice/Talk/arachnid_exclaim.ogg
+
+- type: speechSounds
+  id: Vulpkanin
+  saySound:
+    path: /Audio/_Moffstation/Voice/Talk/vulp.ogg
+  askSound:
+    path: /Audio/_Moffstation/Voice/Talk/vulp_ask.ogg
+  exclaimSound:
+    path: /Audio/_Moffstation/Voice/Talk/vulp_exclaim.ogg
 
 - type: speechSounds
   id: UnisexResomi
@@ -71,23 +53,31 @@
     path: /Audio/_Moffstation/Voice/Talk/resomi_1_exclaim.ogg
 
 - type: speechSounds
-  id: Vox
+  id: MaleAvali
   saySound:
-    path: /Audio/_Moffstation/Voice/Talk/vox.ogg
+    path: /Audio/_Moffstation/Voice/Talk/avali_1.ogg
   askSound:
-    path: /Audio/_Moffstation/Voice/Talk/vox_ask.ogg
+    path: /Audio/_Moffstation/Voice/Talk/avali_1_ask.ogg
   exclaimSound:
-    path: /Audio/_Moffstation/Voice/Talk/vox_exclaim.ogg
+    path: /Audio/_Moffstation/Voice/Talk/avali_1_exclaim.ogg
 
 - type: speechSounds
-  id: Vulpkanin
+  id: FemaleAvali
   saySound:
-    path: /Audio/_Moffstation/Voice/Talk/vulp.ogg
+    path: /Audio/_Moffstation/Voice/Talk/avali_2.ogg
   askSound:
-    path: /Audio/_Moffstation/Voice/Talk/vulp_ask.ogg
+    path: /Audio/_Moffstation/Voice/Talk/avali_2_ask.ogg
   exclaimSound:
-    path: /Audio/_Moffstation/Voice/Talk/vulp_exclaim.ogg
+    path: /Audio/_Moffstation/Voice/Talk/avali_2_exclaim.ogg
 
+- type: speechSounds
+  id: UnisexMoth
+  saySound:
+    path: /Audio/_Moffstation/Voice/Talk/moth.ogg
+  askSound:
+    path: /Audio/_Moffstation/Voice/Talk/moth_ask.ogg
+  exclaimSound:
+    path: /Audio/_Moffstation/Voice/Talk/moth_exclaim.ogg
 
 - type: speechSounds
   id: Whimperlet

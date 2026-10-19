@@ -86,7 +86,7 @@ public sealed class JobTest : GameTest
         var jobSys = pair.Server.System<SharedJobSystem>();
         var mindSys = pair.Server.System<MindSystem>();
         var roleSys = pair.Server.System<RoleSystem>();
-        var ticker = pair.Server.System<ServerGameTicker>();
+        var ticker = pair.Server.System<GameTicker>();
 
         user ??= pair.Client.User!.Value;
 
@@ -111,7 +111,7 @@ public sealed class JobTest : GameTest
         var pair = Pair;
 
         pair.Server.CfgMan.SetCVar(CCVars.GameMap, _map);
-        var ticker = pair.Server.System<ServerGameTicker>();
+        var ticker = pair.Server.System<GameTicker>();
 
         // Initially in the lobby
         Assert.That(ticker.RunLevel, Is.EqualTo(GameRunLevel.PreRoundLobby));
@@ -138,7 +138,7 @@ public sealed class JobTest : GameTest
         var pair = Pair;
 
         pair.Server.CfgMan.SetCVar(CCVars.GameMap, _map);
-        var ticker = pair.Server.System<ServerGameTicker>();
+        var ticker = pair.Server.System<GameTicker>();
         Assert.That(ticker.RunLevel, Is.EqualTo(GameRunLevel.PreRoundLobby));
         Assert.That(pair.Client.AttachedEntity, Is.Null);
 
@@ -172,11 +172,11 @@ public sealed class JobTest : GameTest
         var pair = Pair;
 
         pair.Server.CfgMan.SetCVar(CCVars.GameMap, _map);
-        var ticker = pair.Server.System<ServerGameTicker>();
+        var ticker = pair.Server.System<GameTicker>();
         Assert.That(ticker.RunLevel, Is.EqualTo(GameRunLevel.PreRoundLobby));
         Assert.That(pair.Client.AttachedEntity, Is.Null);
 
-        var stationJobs = pair.Server.System<ServerStationJobsSystem>();
+        var stationJobs = pair.Server.System<StationJobsSystem>();
         var captain = pair.Server.ProtoMan.Index(Captain);
         var engineer = pair.Server.ProtoMan.Index(Engineer);
         var passenger = pair.Server.ProtoMan.Index(Passenger);
@@ -205,9 +205,9 @@ public sealed class JobTest : GameTest
     {
         var pair = Pair;
         pair.Server.CfgMan.SetCVar(CCVars.GameMap, JobWeightOverrideMap);
-        var ticker = pair.Server.System<ServerGameTicker>();
+        var ticker = pair.Server.System<GameTicker>();
 
-        var stationJobs = pair.Server.System<ServerStationJobsSystem>();
+        var stationJobs = pair.Server.System<StationJobsSystem>();
         var passenger = pair.Server.ProtoMan.Index(Passenger);
         var engineer = pair.Server.ProtoMan.Index(Engineer);
         var captain = pair.Server.ProtoMan.Index(Captain);
@@ -259,7 +259,7 @@ public sealed class JobTest : GameTest
         var pair = Pair;
 
         pair.Server.CfgMan.SetCVar(CCVars.GameMap, _map);
-        var ticker = pair.Server.System<ServerGameTicker>();
+        var ticker = pair.Server.System<GameTicker>();
         Assert.That(ticker.RunLevel, Is.EqualTo(GameRunLevel.PreRoundLobby));
         Assert.That(pair.Client.AttachedEntity, Is.Null);
 

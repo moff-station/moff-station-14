@@ -1,4 +1,4 @@
-roles-antag-generic-solo-antagonist-name = Solo Antagonist
+﻿roles-antag-generic-solo-antagonist-name = Solo Antagonist
 
 roles-antag-generic-free-agent-name = Free Agent
 

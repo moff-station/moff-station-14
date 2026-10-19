@@ -1,4 +1,4 @@
-using System.Linq;
+﻿using System.Linq;
 using Content.IntegrationTests.Fixtures;
 using Content.Server.GameTicking;
 using Robust.Shared.GameObjects;
@@ -23,7 +23,8 @@ public sealed class SecretStartsTest : GameTest
 
         var server = pair.Server;
         await server.WaitIdleAsync();
-        var gameTicker = server.System<ServerGameTicker>();
+        var entMan = server.ResolveDependency<IEntityManager>();
+        var gameTicker = server.ResolveDependency<IEntitySystemManager>().GetEntitySystem<GameTicker>();
 
         await server.WaitAssertion(() =>
         {

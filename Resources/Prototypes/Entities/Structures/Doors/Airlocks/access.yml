@@ -449,7 +449,7 @@
   components:
   - type: ContainerFill
     containers:
-      board: [ DoorElectronicsEVA ]
+      board: [ DoorElectronicsExternal ]
 
 # Glass Airlocks
 - type: entity
@@ -852,7 +852,7 @@
   components:
   - type: ContainerFill
     containers:
-      board: [ DoorElectronicsEVA ]
+      board: [ DoorElectronicsExternal ]
 
 - type: entity
   parent: AirlockSyndicateGlass
@@ -1118,14 +1118,6 @@
     sprite: Structures/Doors/Airlocks/Standard/airlock-maints.rsi
 
 - type: entity
-  parent: AirlockEVALocked
-  id: AirlockMaintEVALocked
-  suffix: EVA, Locked
-  components:
-  - type: Sprite
-    sprite: Structures/Doors/Airlocks/Standard/airlock-maints.rsi
-
-- type: entity
   parent: AirlockSyndicate
   id: AirlockSyndicateLocked
   suffix: Syndicate, Locked
@@ -1167,7 +1159,7 @@
 - type: entity
   parent: AirlockShuttleSyndicate
   id: AirlockExternalShuttleSyndicateLocked
-  suffix: Syndicate, Docking, Locked
+  suffix: External, Docking, Syndicate, Locked
   components:
   - type: ContainerFill
     containers:
@@ -1176,7 +1168,7 @@
 - type: entity
   parent: AirlockShuttleSyndicate
   id: AirlockExternalShuttleNukeopLocked
-  suffix: Nukeop, Docking, Locked
+  suffix: External, Docking, Nukeop, Locked
   components:
   - type: ContainerFill
     containers:
@@ -1185,7 +1177,7 @@
 - type: entity
   parent: AirlockShuttleXenoborg
   id: AirlockGlassShuttleXenoborgLocked
-  suffix: Xenoborg, Docking, Locked
+  suffix: External, Docking, Xenoborg, Locked
   components:
   - type: StationAiWhitelist
     enabled: false
@@ -1196,7 +1188,7 @@
 - type: entity
   parent: AirlockGlassShuttle
   id: AirlockExternalGlassShuttleLocked
-  suffix: External, Docking, Glass
+  suffix: External, Glass, Docking, Locked
   components:
   - type: ContainerFill
     containers:
@@ -1205,7 +1197,7 @@
 - type: entity
   parent: AirlockGlassShuttleSyndicate
   id: AirlockExternalGlassShuttleSyndicateLocked
-  suffix: Syndicate, Docking, Glass
+  suffix: Syndicate, Locked, Glass
   components:
   - type: ContainerFill
     containers:
@@ -1214,7 +1206,7 @@
 - type: entity
   parent: AirlockGlassShuttleSyndicate
   id: AirlockExternalGlassShuttleNukeopLocked
-  suffix: Nukeop, Docking, Glass
+  suffix: Nukeop, Locked, Glass
   components:
   - type: ContainerFill
     containers:
@@ -1223,7 +1215,7 @@
 - type: entity
   parent: AirlockGlassShuttle
   id: AirlockExternalGlassShuttleEmergencyLocked
-  suffix: External, Emergency, Docking, Glass
+  suffix: External, Emergency, Glass, Docking, Locked
   components:
   - type: PriorityDock
     tag: DockEmergency
@@ -1232,10 +1224,10 @@
       board: [ DoorElectronicsExternal ]
 
 - type: entity
+  name: arrivals airlock
   parent: AirlockGlassShuttle
   id: AirlockExternalGlassShuttleArrivals
-  name: arrivals airlock
-  suffix: External, Arrivals, Docking, Glass
+  suffix: External, Arrivals, Glass, Docking
   components:
   - type: PriorityDock
     tag: DockArrivals
@@ -1248,10 +1240,10 @@
     dockLegendCategory: Arrivals
 
 - type: entity
+  name: cargo airlock
   parent: AirlockGlassShuttle
   id: AirlockExternalGlassShuttleCargo
-  name: cargo airlock
-  suffix: External, Cargo, Docking, Glass
+  suffix: External, Cargo, Glass, Docking
   components:
   - type: ContainerFill
     containers:
@@ -1264,7 +1256,7 @@
 - type: entity
   parent: AirlockGlassShuttle
   id: AirlockExternalGlassShuttleEscape
-  suffix: External, Escape 3x4, Docking, Glass
+  suffix: External, Escape 3x4, Glass, Docking
   components:
   - type: GridFill
     addComponents:

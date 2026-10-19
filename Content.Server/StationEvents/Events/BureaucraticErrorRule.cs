@@ -1,32 +1,29 @@
 using System.Linq;
+using Content.Server.Station.Components;
 using Content.Server.Station.Systems;
 using Content.Server.StationEvents.Components;
-using Content.Shared.GameTicking.Components;
-using Content.Shared.Station.Components;
+﻿using Content.Shared.GameTicking.Components;
+using Content.Shared.Roles;
 using JetBrains.Annotations;
 using Robust.Shared.Random;
 
 namespace Content.Server.StationEvents.Events;
 
-/// <summary>
-/// Handler for events that alter job slots for a station.
-/// </summary>
-/// <seealso cref="BureaucraticErrorRuleComponent"/>
 [UsedImplicitly]
 public sealed partial class BureaucraticErrorRule : StationEventSystem<BureaucraticErrorRuleComponent>
 {
-    [Dependency] private ServerStationJobsSystem _stationJobs = default!;
+    [Dependency] private StationJobsSystem _stationJobs = default!;
 
-    protected override void Started(Entity<BureaucraticErrorRuleComponent, GameRuleComponent> ent, ref GameRuleStartedEvent args)
+    protected override void Started(EntityUid uid, BureaucraticErrorRuleComponent component, GameRuleComponent gameRule, GameRuleStartedEvent args)
     {
-        base.Started(ent, ref args);
+        base.Started(uid, component, gameRule, args);
 
-        if (!Station.TryGetRandomStation<StationEventEligibleComponent>(out var chosenStation, HasComp<StationJobsComponent>))
+        if (!TryGetRandomStation(out var chosenStation, HasComp<StationJobsComponent>))
             return;
 
         var jobList = _stationJobs.GetJobs(chosenStation.Value).Keys.ToList();
 
-        foreach (var job in ent.Comp1.IgnoredJobs)
+        foreach(var job in component.IgnoredJobs)
             jobList.Remove(job);
 
         if (jobList.Count == 0)
@@ -47,8 +44,8 @@ public sealed partial class BureaucraticErrorRule : StationEventSystem<Bureaucra
         }
         else
         {
-            var lower = (int)(jobList.Count * 0.20f);
-            var upper = (int)(jobList.Count * 0.30f);
+            var lower = (int) (jobList.Count * 0.20);
+            var upper = (int) (jobList.Count * 0.30);
             // Changing every role is maybe a bit too chaotic so instead change 20-30% of them.
             var num = RobustRandom.Next(lower, upper);
             for (var i = 0; i < num; i++)

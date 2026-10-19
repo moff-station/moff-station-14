@@ -1,8 +1,8 @@
 - type: entity
   parent: BaseAction
-  id: ActionRetractableItemArmblade
-  name: Armblade
-  description: Shed your flesh and reform it into a fleshy blade. Can be toggled.
+  id: ActionRetractableItemArmBlade
+  name: Arm Blade
+  description: Shed your flesh and reform it into a fleshy blade.
   components:
   - type: Action
     useDelay: 2
@@ -15,7 +15,7 @@
   - type: InstantAction
     event: !type:OnRetractableItemActionEvent
   - type: RetractableItemAction
-    spawnedPrototype: Armblade
+    spawnedPrototype: ArmBlade
     summonSounds:
       collection: gib # Placeholder
     retractSounds:
@@ -35,19 +35,10 @@
     sprite: Interface/Actions/changeling2.rsi
     layers:
     - state: biodegrade
-  - type: ActionRequirements
-    failPopup: changeling-not-enough-chemicals
-    failPopupType: SmallCaution
-    conditions:
-      Performer:
-      - !type:SatiationCondition
-        satiationType: Chemicals
-        min: 20
-    effects:
-      Performer:
-      - !type:Satiate
-        satiationType: Chemicals
-        factor: -20
+  - type: ActionRequireSatiation
+    satiation: Chemicals
+    amount: 20
+    failReason: changeling-not-enough-chemicals
   - type: InstantAction
     event: !type:ChangelingBiodegradeActionEvent
   - type: ChangelingBiodegradeAbility
@@ -68,10 +59,7 @@
     - state: "devour_on"
       map: ["enum.ActionVisuals.IconToggled"]
       visible: false
-  - type: ActionRequirements
-    conditions:
-      Performer:
-      - !type:MouthUncoveredCondition
+  - type: ActionRequireMouthUncovered
   - type: TargetAction
   - type: EntityTargetAction
     event: !type:ChangelingDevourActionEvent
@@ -123,9 +111,9 @@
   id: ActionChangelingStasisWeak
   components:
   - type: RegenerativeStasisAction
-    bonusCooldownPerDamage: 2.4 # 50 damage should bring you to 180
+    bonusCooldownPerDamage: 1.2 # 50 damage should bring you to 120
     minStasisCooldown: 60
-    maxStasisCooldown: 180
+    maxStasisCooldown: 120
 
 - type: entity
   parent: ActionIntrinsicStore
@@ -173,17 +161,10 @@
     - state: "extract_dna_on"
       map: ["enum.ActionVisuals.IconToggled"]
       visible: false
-  - type: ActionRequirements
-    conditions:
-      Performer:
-      - !type:SatiationCondition
-        satiationType: Chemicals
-        min: 50
-    effects:
-      Performer:
-      - !type:Satiate
-        satiationType: Chemicals
-        factor: -50
+  - type: ActionRequireSatiation
+    satiation: Chemicals
+    amount: 50
+    failReason: changeling-not-enough-chemicals
   - type: TargetAction
   - type: EntityTargetAction
     canTargetSelf: false
@@ -207,19 +188,10 @@
       components:
       - Bloodstream
     event: !type:EntityEffectActionEvent
-  - type: ActionRequirements
-    failPopup: changeling-not-enough-chemicals
-    failPopupType: SmallCaution
-    conditions:
-      Performer:
-      - !type:SatiationCondition
-        satiationType: Chemicals
-        min: 30
-    effects:
-      Performer:
-      - !type:Satiate
-        satiationType: Chemicals
-        factor: -30
+  - type: ActionRequireSatiation
+    satiation: Chemicals
+    amount: 30
+    failReason: changeling-not-enough-chemicals
   - type: PopupOnAction
     popupType: Medium
     selfMessage: changeling-sting-success
@@ -231,7 +203,7 @@
   description: "Silently sting a target and worsen their sight for a short duration. \n\nRequires 30 Chemicals."
   components:
   - type: Action
-    useDelay: 10
+    useDelay: 30
     raiseOnAction: true
     itemIconStyle: BigAction
   - type: Sprite
@@ -240,16 +212,9 @@
     - state: blind_sting
   - type: EntityEffectAction
     effects:
-    - !type:EyeDamage
-      amount: 1
-    - !type:PopupMessage
-      type: Local
-      messages:
-      - norepinephricacid-effect-vision-fail
-    - !type:ModifyStatusEffect
-      effectProto: StatusEffectBlindness
-      type: Update
-      time: 20
+    - !type:AddReagentToBloodstream
+      reagent: NorepinephricAcid
+      quantity: 23
 
 - type: entity
   parent: BaseActionChangelingSting
@@ -278,29 +243,43 @@
   description: "Silently sting a target and inject them with a lethal dose of a slow acting poison. \n\nRequires 50 Chemicals."
   components:
   - type: Action
-    useDelay: 10
+    useDelay: 60
     raiseOnAction: true
     itemIconStyle: BigAction
   - type: Sprite
     sprite: Interface/Actions/changeling2.rsi
     layers:
     - state: lethal_sting
-  - type: ActionRequirements
-    conditions:
-      Performer:
-      - !type:SatiationCondition
-        satiationType: Chemicals
-        min: 50
-    effects:
-      Performer:
-      - !type:Satiate
-        satiationType: Chemicals
-        factor: -50
+  - type: ActionRequireSatiation
+    amount: 50
   - type: EntityEffectAction
     effects:
     - !type:AddReagentToBloodstream
       reagent: Lead
-      quantity: 7.5 # Exactly 100 poison damage over 3 minutes. 150 at 4.5min
+      quantity: 5 # Exactly 100 poison damage over 3 minutes.
+
+- type: entity
+  parent: BaseActionChangelingSting
+  id: ActionChangelingStingHallucinogenic
+  name: Hallucinogenic Sting
+  description: "Silently sting a target and inject them with chemicals that slow down their higher brain functions. \n\nRequires 30 Chemicals."
+  components:
+  - type: Action
+    useDelay: 10
+    raiseOnAction: true
+    itemIconStyle: BigAction
+  - type: Sprite
+    sprite: Interface/Actions/changeling2.rsi
+    layers:
+    - state: hallucination_sting
+  - type: EntityEffectAction
+    effects:
+    - !type:AddReagentToBloodstream
+      reagent: SpaceDrugs
+      quantity: 10 # About 100s of being high
+    - !type:AddReagentToBloodstream
+      reagent: Cryptobiolin
+      quantity: 10 # About 20s of your speech being scrambled
 
 - type: entity
   parent: BaseActionChangelingSting
@@ -309,7 +288,7 @@
   description: "Silently sting a target and inject them with chemicals that prevent them from speaking. \n\nRequires 30 Chemicals."
   components:
   - type: Action
-    useDelay: 10
+    useDelay: 30
     raiseOnAction: true
     itemIconStyle: BigAction
   - type: Sprite
@@ -318,54 +297,9 @@
     - state: mute_sting
   - type: EntityEffectAction
     effects:
-    - !type:ModifyStatusEffect
-      effectProto: StatusEffectChangelingMuted
-      type: Update
-      time: 50
-
-- type: entity
-  parent: BaseActionChangelingSting
-  id: ActionChangelingStingArmblade
-  name: Armblade Sting
-  description: "Silently sting a target and cause them to grow a dull armblade after a lengthy delay. \n\nRequires 50 Chemicals."
-  components:
-  - type: Action
-    useDelay: 10
-    raiseOnAction: true
-    itemIconStyle: BigAction
-  - type: Sprite
-    sprite: Interface/Actions/changeling2.rsi
-    layers:
-    - state: armblade_sting
-  - type: ActionRequirements
-    conditions:
-      Performer:
-      - !type:SatiationCondition
-        satiationType: Chemicals
-        min: 50
-    effects:
-      Performer:
-      - !type:Satiate
-        satiationType: Chemicals
-        factor: -50
-  - type: EntityEffectAction
-    effects:
-    - !type:ModifyStatusEffect
-      conditions:
-      - !type:MobStateCondition # Only do the delay on living targets
-        mobstate: Alive
-      effectProto: StatusEffectForcedItemArmblade
-      type: Update
-      time: 90 # Takes 100s to regain the chemicals, so spam-use is a nat negative.
-      delay: 30 # No using it for easy combat!
-    - !type:ModifyStatusEffect
-      conditions:
-      - !type:MobStateCondition
-        mobstate: Alive
-        inverted: true # Not alive!
-      effectProto: StatusEffectForcedItemArmblade
-      type: Update
-      time: 120 # On dead/crit, transfer the 30s to the duration instead. Means you can also maintain it "permanently" on corpses as long as youre around + want to spend fuck ton of chemicals.
+    - !type:AddReagentToBloodstream
+      reagent: TaciticAcid
+      quantity: 5 # 50s of imperceptible mute
 
 - type: entity
   parent: BaseAction
@@ -463,67 +397,3 @@
   - type: Tag
     tags:
     - FakeMindShieldChangeling # used to distinguish the changeling's toggle mindshield action from the implant's
-
-- type: entity
-  parent: BaseDoAfterAction
-  id: ActionChangelingFleshtomb
-  name: Fleshtomb
-  description: "Preserve a body in a fragile cocoon made of flesh, which slowly harvests their life for DNA. \n\nRequires 35 Chemicals."
-  components:
-  - type: Action
-    useDelay: 50
-    raiseOnAction: true
-    itemIconStyle: BigAction
-  - type: Sprite
-    sprite: Interface/Actions/changeling2.rsi
-    layers:
-    - state: fleshtomb
-  - type: TargetAction
-    interactOnMiss: false
-  - type: ActionRequirements
-    failPopup: changeling-action-fail-generic # Currently no way to tell which condition failed
-    failPopupType: SmallCaution
-    conditions:
-      Performer:
-      - !type:SatiationCondition
-        satiationType: Chemicals
-        min: 35
-      Target:
-      - !type:MobStateCondition
-        mobstate: Dead
-    effects:
-      Performer:
-      - !type:Satiate
-        satiationType: Chemicals
-        factor: -35
-  - type: PopupOnAction
-    popupType: MediumCaution
-    selfMessage: changeling-cocoon-success
-  - type: DoAfterArgs
-    examineText: changeling-cocoon-doafter
-    delay: 10
-    breakOnMove: true
-    breakOnDamage: true
-  - type: EntityTargetAction
-    whitelist:
-      components:
-      - HumanoidProfile
-      - MobState
-    blacklist:
-      components:
-      - RandomHumanoidAppearance # Hungry... For... Salvage corpses... grrrr...
-    event: !type:EntityEffectActionEvent
-  - type: EntityEffectAction
-    effects:
-    - !type:TrapInContainer
-      conditions:
-      - !type:MobStateCondition
-        mobstate: Dead
-      entity: ChangelingFleshCocoon
-      container: storage
-    - !type:PlaySound
-      conditions:
-      - !type:MobStateCondition
-        mobstate: Dead
-      sound:
-        collection: gib

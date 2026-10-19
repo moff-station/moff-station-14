@@ -1,4 +1,5 @@
 using Content.Server.DeviceNetwork.Components;
+using Content.Server.Power.Components;
 using Content.Server.Power.EntitySystems;
 using Content.Shared.DeviceNetwork.Events;
 
@@ -8,15 +9,15 @@ public sealed partial class DeviceNetworkRequiresPowerSystem : EntitySystem
 {
     public override void Initialize()
     {
-        base.Initialize();
         SubscribeLocalEvent<DeviceNetworkRequiresPowerComponent, BeforePacketSentEvent>(OnBeforePacketSent);
     }
 
-    private void OnBeforePacketSent(Entity<DeviceNetworkRequiresPowerComponent> ent, ref BeforePacketSentEvent args)
+    private void OnBeforePacketSent(EntityUid uid, DeviceNetworkRequiresPowerComponent component,
+        BeforePacketSentEvent args)
     {
-        if (!this.IsPowered(ent, EntityManager))
+        if (!this.IsPowered(uid, EntityManager))
         {
-            args.Cancelled = true;
+            args.Cancel();
         }
     }
 }

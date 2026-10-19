@@ -1,9 +1,8 @@
-using System.Linq;
+﻿using System.Linq;
 using Content.Server.Chat.Managers;
 using Content.Server.GameTicking;
 using Content.Shared._Moffstation.CCVar;
 using Content.Shared.CCVar;
-using Content.Shared.GameTicking;
 using Robust.Server;
 using Robust.Server.Player;
 using Robust.Server.ServerStatus;
@@ -32,7 +31,7 @@ public sealed partial class ServerUpdateManager : IPostInjectInit
     [Dependency] private ILogManager _logManager = default!;
     [Dependency] private IEntityManager _entityManager = default!; // Moff - server restart queue
 
-    private ServerGameTicker? _gameTicker; // Moff - server restart queue
+    private GameTicker? _gameTicker; // Moff - server restart queue
 
     private ISawmill _sawmill = default!;
 
@@ -112,7 +111,7 @@ public sealed partial class ServerUpdateManager : IPostInjectInit
     {
         // Before you say anything, this is how it's done in other places
         // its jank and I hate it but whatever
-        _gameTicker = _entityManager.EntitySysManager.GetEntitySystem<ServerGameTicker>();
+        _gameTicker = _entityManager.EntitySysManager.GetEntitySystem<GameTicker>();
 
         if (!_restartQueueEnabled
             || !_gameTicker.Paused

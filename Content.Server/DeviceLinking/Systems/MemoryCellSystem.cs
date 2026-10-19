@@ -1,6 +1,7 @@
 using Content.Server.DeviceLinking.Components;
 using Content.Shared.DeviceLinking;
 using Content.Shared.DeviceLinking.Events;
+using Content.Shared.DeviceNetwork;
 
 namespace Content.Server.DeviceLinking.Systems;
 
@@ -45,19 +46,7 @@ public sealed partial class MemoryCellSystem : EntitySystem
     private void OnSignalReceived(Entity<MemoryCellComponent> ent, ref SignalReceivedEvent args)
     {
         var state = SignalState.Momentary;
-
-        if (args.Port == ent.Comp.InputPort)
-            ent.Comp.InputState = state;
-        else if (args.Port == ent.Comp.EnablePort)
-            ent.Comp.EnableState = state;
-
-        UpdateOutput(ent);
-    }
-
-    [SubscribeLocalEvent]
-    private void OnSignalReceived(Entity<MemoryCellComponent> ent, ref SignalReceivedEvent<LogicStatePayload> args)
-    {
-        var state = args.Data.State;
+        args.Data?.TryGetValue(DeviceNetworkConstants.LogicState, out state);
 
         if (args.Port == ent.Comp.InputPort)
             ent.Comp.InputState = state;
@@ -69,6 +58,9 @@ public sealed partial class MemoryCellSystem : EntitySystem
 
     private void UpdateOutput(Entity<MemoryCellComponent, DeviceLinkSourceComponent?> ent)
     {
+        if (!Resolve(ent, ref ent.Comp2))
+            return;
+
         if (ent.Comp1.EnableState == SignalState.Low)
             return;
 
@@ -77,6 +69,6 @@ public sealed partial class MemoryCellSystem : EntitySystem
             return;
 
         ent.Comp1.LastOutput = value;
-        _deviceLink.SendSignal((ent.Owner, ent.Comp2), ent.Comp1.OutputPort, value);
+        _deviceLink.SendSignal(ent, ent.Comp1.OutputPort, value, ent.Comp2);
     }
 }

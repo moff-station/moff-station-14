@@ -8,7 +8,6 @@ using Content.Shared.Item;
 using Content.Shared.Light.Components;
 using Content.Shared.Toggleable;
 using Robust.Client.GameObjects;
-using Robust.Shared.Serialization.Manager;
 using Robust.Shared.Utility;
 
 namespace Content.Client.Toggleable;
@@ -21,7 +20,6 @@ namespace Content.Client.Toggleable;
 /// <see cref="ToggleableVisualsComponent"/>
 public sealed partial class ToggleableVisualsSystem : VisualizerSystem<ToggleableVisualsComponent>
 {
-    [Dependency] private ISerializationManager _seriMan = default!;
     [Dependency] private SharedItemSystem _item = default!;
     [Dependency] private SharedPointLightSystem _pointLight = default!;
 
@@ -106,10 +104,7 @@ public sealed partial class ToggleableVisualsSystem : VisualizerSystem<Toggleabl
             if (modulateColor)
                 layer.Color = color;
 
-            // Create a copy of the layer, which might get modified.
-            PrototypeLayerData newLayer = new();
-            _seriMan.CopyTo(layer, ref newLayer, notNullableOverride: true);
-            args.Layers.Add((key, newLayer));
+            args.Layers.Add((key, layer));
         }
     }
 

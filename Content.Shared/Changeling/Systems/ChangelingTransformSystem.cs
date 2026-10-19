@@ -161,7 +161,6 @@ public sealed partial class ChangelingTransformSystem : EntitySystem
             DuplicateCondition = DuplicateConditions.None,
             RequireCanInteract = false,
             DistanceThreshold = null,
-            ExamineText = ent.Comp.TransformExamine == null ? null : Loc.GetString(ent.Comp.TransformExamine, ("user", Identity.Entity(ent, EntityManager)))
         });
     }
 

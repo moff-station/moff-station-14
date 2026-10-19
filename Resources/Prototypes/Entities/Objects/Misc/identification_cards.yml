@@ -1083,19 +1083,17 @@
     iconGroups:
     - CommandIconGroup
     - SecurityIconGroup
+    - ResearchIconGroup
     - CargoIconGroup
     - EngineeringIconGroup
     - MedicalIconGroup
-    - ScienceIconGroup
     - ServiceIconGroup
-    - TheatreIconGroup
     - CivilianIconGroup
+    - EntertainerIconGroup
     - SiliconIconGroup
-    - CentCommIconGroup
-    - TaskForceIconGroup
-    - AntagonistIconGroup
-    - MiscIconGroup
     - BlankIconGroup
+    - ThreatIconGroup
+    - CentCommIconGroup
   - type: UIRequiresLock
   - type: ActivatableUI
     key: enum.AgentIDCardUiKey.Key
@@ -1560,19 +1558,17 @@
     iconGroups:
     - CommandIconGroup
     - SecurityIconGroup
+    - ResearchIconGroup
     - CargoIconGroup
     - EngineeringIconGroup
     - MedicalIconGroup
-    - ScienceIconGroup
     - ServiceIconGroup
-    - TheatreIconGroup
     - CivilianIconGroup
+    - EntertainerIconGroup
     - SiliconIconGroup
-    - CentCommIconGroup
-    - TaskForceIconGroup
-    - AntagonistIconGroup
-    - MiscIconGroup
     - BlankIconGroup
+    - ThreatIconGroup
+    - CentCommIconGroup
     - AdminIconGroup
   - type: ActivatableUI
     key: enum.AgentIDCardUiKey.Key

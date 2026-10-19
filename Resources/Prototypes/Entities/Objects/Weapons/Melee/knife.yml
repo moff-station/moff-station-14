@@ -191,7 +191,7 @@
     storedSprite: null
 
 - type: entity
-  parent: [ BaseXenoborgContraband, CombatKnife ]
+  parent: [ CombatKnife, BaseXenoborgContraband ]
   id: XenoborgBioKnife
   name: bio knife
   description: Melds itself to specific metabolizers and will deal extra damage to those targets!

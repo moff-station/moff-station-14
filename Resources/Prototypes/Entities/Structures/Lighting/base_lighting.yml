@@ -18,7 +18,6 @@
         collection: GlassSmash
   - type: Transform
     anchored: true
-  - type: Pullable
   - type: Clickable
   - type: InteractionOutline
   - type: Sprite
@@ -321,7 +320,6 @@
       light_bulb: !type:ContainerSlot
   - type: PoweredLight
     bulb: Bulb
-  - type: SpookyPoweredLight
   - type: ApcPowerReceiver
   - type: ExtensionCableReceiver
   - type: DeviceNetwork

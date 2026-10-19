@@ -1,20 +1,16 @@
-using System.Diagnostics.CodeAnalysis;
 using Content.Shared.EntityTable.Conditions;
 using Content.Shared.EntityTable.ValueSelector;
 using JetBrains.Annotations;
 using Robust.Shared.Prototypes;
-using Robust.Shared.Random;
 
 namespace Content.Shared.EntityTable.EntitySelectors;
 
+// Moffstation - Begin - Rewrite table selectors with visitors. Early merge of https://github.com/Space-Wizards-Federation/space-station-14/pull/177
 /// <summary>
-/// An extensible table for configurable entity selection, both random and deterministic.
+/// A table of <see cref="EntProtoId"/>s with various configuration specifying how individual entries are selected.
 /// </summary>
-/// <remarks>
-/// This is currently the favored way to select multiple entities - generally for spawning.
-/// With its children, it supports returning multiple entities, nested selectors,
-/// groups of entities, conditions, and probabilistic spawns.
-/// </remarks>
+/// <seealso cref="EntityTableSystem"/>
+// Moffstation - End
 [ImplicitDataDefinitionForInheritors, UsedImplicitly(ImplicitUseTargetFlags.WithInheritors)]
 // Moffstation - Begin
 // Ideally this'd have `[Access(typeof(EntityTableSystem), typeof(IEntityTableVisitor)]`, but an interface with
@@ -22,11 +18,6 @@ namespace Content.Shared.EntityTable.EntitySelectors;
 // Moffstation - End
 public abstract partial class EntityTableSelector
 {
-    /// <summary>
-    /// Key for <see cref="EntityTableContext"/>, under which additional scoped conditions should be stored.
-    /// </summary>
-    public const string AdditionalConditionsKey = "AdditionalConditions";
-
     /// <summary>
     /// The number of times this selector is run
     /// </summary>
@@ -62,8 +53,7 @@ public abstract partial class EntityTableSelector
     // /// <summary>
     // /// Samples an output for this selector.
     // /// </summary>
-    // public IEnumerable<EntProtoId> GetSpawns(
-    //     IRobustRandom rand,
+    // public IEnumerable<EntProtoId> GetSpawns(IRobustRandom rand,
     //     IEntityManager entMan,
     //     IPrototypeManager proto,
     //     EntityTableContext ctx)
@@ -88,14 +78,13 @@ public abstract partial class EntityTableSelector
     /// <summary>
     /// Check if the condition for this selector are met.
     /// </summary>
-    public virtual bool CheckConditions(IEntityManager entMan, IPrototypeManager proto, EntityTableContext ctx)
+    public bool CheckConditions(IEntityManager entMan, IPrototypeManager proto, EntityTableContext ctx)
     {
-        // No conditions to evaluate (own or injected into the context) => always valid.
-        if (!TryGetConditions(ctx, out var conditions))
+        if (Conditions.Count == 0)
             return true;
 
         var success = false;
-        foreach (var condition in conditions)
+        foreach (var condition in Conditions)
         {
             var res = condition.Evaluate(this, entMan, proto, ctx);
 
@@ -163,30 +152,4 @@ public abstract partial class EntityTableSelector
     //     IPrototypeManager proto,
     //     EntityTableContext ctx);
     // Moffstation - End
-
-    /// <summary>
-    /// Gets the effective conditions for this selector, respecting conditions injected into the context.
-    /// Returns false when there are no conditions to evaluate.
-    /// </summary>
-    private bool TryGetConditions(EntityTableContext ctx, [NotNullWhen(true)] out List<EntityTableCondition>? conditions)
-    {
-        var hasAdditionalConditions = ctx.TryGetData<List<EntityTableCondition>>(AdditionalConditionsKey, out var additionalConditions);
-
-        if (Conditions.Count == 0 && !hasAdditionalConditions)
-        {
-            conditions = null;
-            return false;
-        }
-
-        if (!hasAdditionalConditions)
-        {
-            conditions = Conditions;
-            return true;
-        }
-
-        conditions = new List<EntityTableCondition>(Conditions.Count + additionalConditions!.Count);
-        conditions.AddRange(Conditions);
-        conditions.AddRange(additionalConditions);
-        return true;
-    }
 }

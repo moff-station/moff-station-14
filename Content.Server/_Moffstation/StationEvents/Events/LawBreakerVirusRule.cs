@@ -19,20 +19,23 @@ public sealed partial class LawBreakerVirusRule : StationEventSystem<LawBreakerV
 {
     [Dependency] private LawBreakerVirusSystem _virus =  default!;
 
-    protected override void Started(Entity<LawBreakerVirusRuleComponent, GameRuleComponent> rule, ref GameRuleStartedEvent args)
+    protected override void Started(EntityUid uid,
+        LawBreakerVirusRuleComponent comp,
+        GameRuleComponent gameRule,
+        GameRuleStartedEvent args)
     {
-        base.Started(rule, ref args);
+        base.Started(uid, comp, gameRule, args);
 
-        if (!Station.TryGetRandomStation<StationEventEligibleComponent>(out var chosenStation))
+        if (!TryGetRandomStation(out var chosenStation))
             return;
 
-        var ionLawset = _virus.GenerateLawset((rule.Owner, rule.Comp1));
+        var ionLawset = _virus.GenerateLawset((uid, comp));
 
         var query = EntityQueryEnumerator<IonStormTargetComponent, TransformComponent>();
         var ev = new LawBreakerVirusEvent(ionLawset);
         while (query.MoveNext(out var ent, out _, out var xform))
         {
-            if (CompOrNull<StationMemberComponent>(xform.GridUid)?.Station != chosenStation.Value.Owner)
+            if (CompOrNull<StationMemberComponent>(xform.GridUid)?.Station != chosenStation)
                 continue;
             RaiseLocalEvent(ent, ref ev);
         }

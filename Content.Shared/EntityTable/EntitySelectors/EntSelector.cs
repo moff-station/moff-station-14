@@ -53,10 +53,4 @@ public sealed partial class EntSelector : EntityTableSelector
     //     yield return (Id, Amount.Average());
     // }
     // Moffstation - End
-
-    /// <inheritdoc/>
-    public override string ToString()
-    {
-        return $"{Id} x{Amount.Average()}";
-    }
 }

@@ -1,4 +1,4 @@
-using System.Numerics;
+﻿using System.Numerics;
 using Content.Shared.MapText;
 using Robust.Client.Graphics;
 using Robust.Client.ResourceManagement;
@@ -79,8 +79,7 @@ public sealed class MapTextOverlay : Overlay
 
             var pos = Vector2.Transform(mapPos.Position, matrix) + mapText.Offset;
             var dimensions = handle.GetDimensions(mapText.CachedFont, mapText.CachedText, scale);
-            var drawPosition = (pos - dimensions / 2f).Rounded();
-            handle.DrawString(mapText.CachedFont, drawPosition, mapText.CachedText, scale, mapText.Color, TextOutline.Default);
+            handle.DrawString(mapText.CachedFont, pos - dimensions / 2f, mapText.CachedText, scale, mapText.Color);
         }
     }
 }

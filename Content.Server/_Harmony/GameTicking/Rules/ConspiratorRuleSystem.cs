@@ -1,6 +1,11 @@
 using Content.Server._Harmony.GameTicking.Rules.Components;
+using Content.Server.Antag;
+using Content.Server.GameTicking;
+using Content.Server.GameTicking.Rules;
+using Content.Server.Roles;
 using Content.Shared._Harmony.Conspirators.Components;
 using Content.Shared._Harmony.Roles.Components;
+using Content.Shared.GameTicking.Components;
 using Content.Shared.Mind;
 using Content.Shared.Random.Helpers;
 using Robust.Shared.Prototypes;
@@ -8,10 +13,6 @@ using Robust.Shared.Random;
 using Robust.Shared.Utility;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
-using Content.Shared.Antag;
-using Content.Shared.GameTicking;
-using Content.Shared.GameTicking.Rules;
-using Content.Shared.Roles;
 
 namespace Content.Server._Harmony.GameTicking.Rules;
 
@@ -30,11 +31,14 @@ public sealed partial class ConspiratorRuleSystem : GameRuleSystem<ConspiratorRu
         SubscribeLocalEvent<ConspiratorRuleComponent, AfterAntagEntitySelectedEvent>(OnAntagSelected);
     }
 
-    protected override void AppendRoundEndText(Entity<ConspiratorRuleComponent> rule, ref RoundEndTextAppendEvent args)
+    protected override void AppendRoundEndText(EntityUid uid,
+        ConspiratorRuleComponent component,
+        GameRuleComponent gameRule,
+        ref RoundEndTextAppendEvent args)
     {
-        base.AppendRoundEndText(rule, ref args);
+        base.AppendRoundEndText(uid, component, gameRule, ref args);
 
-        var sessionData = _antag.GetAntagIdentifiers(rule.Owner).ToList();
+        var sessionData = _antag.GetAntagIdentifiers(uid).ToList();
         args.AddLine(Loc.GetString("conspirator-count", ("count", sessionData.Count)));
         foreach (var (_, data, name) in sessionData)
         {
@@ -43,7 +47,7 @@ public sealed partial class ConspiratorRuleSystem : GameRuleSystem<ConspiratorRu
                 ("username", data.UserName)));
         }
 
-        if (!_proto.TryIndex(rule.Comp.Objective, out var objectiveProto))
+        if (!_proto.TryIndex(component.Objective, out var objectiveProto))
             return;
 
         args.AddLine(Loc.GetString("conspirator-objective", ("objective", objectiveProto.Name)));

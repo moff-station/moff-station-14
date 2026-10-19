@@ -7,8 +7,7 @@ using Content.Shared.Power;
 using Content.Shared.Power.EntitySystems;
 using Content.Shared.StationTeleporter.Components;
 using Content.Shared.Teleportation.Systems;
-using Content.Shared.Timing.Components;
-using Content.Shared.Timing.Systems;
+using Content.Shared.Timing;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Containers;
 
@@ -104,7 +103,7 @@ public abstract partial class SharedStationTeleporterSystem : EntitySystem
         if (args.Handled)
             return;
 
-        if (_useDelay.IsDelayed(args.Used))
+        if (TryComp<UseDelayComponent>(args.Used, out var useDelayComp) && _useDelay.IsDelayed((args.Used, useDelayComp)))
             return;
 
         _useDelay.TryResetDelay(args.Used);

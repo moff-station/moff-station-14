@@ -219,7 +219,7 @@
     relayAccent: true
 
 - type: entity
-  parent: [ ClothingHeadBase ] # Moffstation - Cat Ears are no longer contraband (Removed BaseSyndicateContraband parent)
+  parent: [ ClothingHeadBase, BaseSyndicateContraband ]
   id: ClothingHeadHatCatEars
   name: cat ears
   description: "NYAH!"
@@ -233,10 +233,8 @@
     sprite: Clothing/Head/Hats/catears.rsi
   - type: OwOAccent
     relayAccent: true
-  # Moffstation start - Cat Ears are worthless now
-  # - type: StaticPrice
-  #  price: 15000
-  # Moffstation end
+  - type: StaticPrice
+    price: 15000
 
 - type: entity
   parent: [ClothingHeadHatCatEars, BaseToggleClothing]

@@ -401,6 +401,8 @@ public sealed partial class GerasSystem : EntitySystem
     }
 }
 
+public record struct GerasVisualInitEvent(HumanoidCharacterProfile? Profile);
+
 [ByRefEvent]
 public record struct PreMorphGerasEvent(EntityUid Geras);
 

@@ -19,6 +19,3 @@ generic-seconds = seconds
 generic-playtime-title = Playtime
 
 generic-confirm = Confirm
-generic-disabled = Disabled
-
-generic-no-access = Insufficient access.

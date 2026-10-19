@@ -1,8 +1,8 @@
 ﻿using Content.Server._Moffstation.StationEvents.Components;
+using Content.Server.GameTicking.Rules;
 using Content.Server.StationEvents;
 using Content.Shared._Moffstation.Extensions;
 using Content.Shared.GameTicking.Components;
-using Content.Shared.GameTicking.Rules;
 using Content.Shared.Random.Helpers;
 
 namespace Content.Server._Moffstation.StationEvents;
@@ -11,10 +11,13 @@ public sealed partial class MoffStationEventSchedulerSystem : GameRuleSystem<Mof
 {
     [Dependency] private EventManagerSystem _event = default!;
 
-    protected override void Started(Entity<MoffStationEventSchedulerComponent, GameRuleComponent> rule, ref GameRuleStartedEvent args)
+    protected override void Started(
+        EntityUid uid,
+        MoffStationEventSchedulerComponent component,
+        GameRuleComponent gameRule,
+        GameRuleStartedEvent args)
     {
-        base.Started(rule, ref args);
-        var (uid, component, _) = rule;
+        base.Started(uid, component, gameRule, args);
 
         if (!component.States.TryGetValue(component.InitialState, out var state))
         {
@@ -27,13 +30,17 @@ public sealed partial class MoffStationEventSchedulerSystem : GameRuleSystem<Mof
         component.NextEventTime = Timing.CurTime + TimeSpan.FromSeconds(component.InitialDelaySeconds.Next(RobustRandom));
     }
 
-    protected override void Ended(Entity<MoffStationEventSchedulerComponent> rule, ref GameRuleEndedEvent args)
+    protected override void Ended(
+        EntityUid uid,
+        MoffStationEventSchedulerComponent component,
+        GameRuleComponent gameRule,
+        GameRuleEndedEvent args)
     {
-        base.Ended(rule, ref args);
+        base.Ended(uid, component, gameRule, args);
 
-        rule.Comp.CurrentStateId = null;
-        rule.Comp.NextEventTime = TimeSpan.Zero;
-        rule.Comp.NextStateTime = null;
+        component.CurrentStateId = null;
+        component.NextEventTime = TimeSpan.Zero;
+        component.NextStateTime = null;
     }
 
     public override void Update(float frameTime)
@@ -45,7 +52,7 @@ public sealed partial class MoffStationEventSchedulerSystem : GameRuleSystem<Mof
 
         foreach (var ent in EntityQueryEnumerator<MoffStationEventSchedulerComponent, GameRuleComponent>())
         {
-            if (!GameTicker.IsGameRuleActive((ent.Owner, ent.Comp2)))
+            if (!GameTicker.IsGameRuleActive(ent))
                 continue;
 
             if (ent.Comp1.CurrentState is not { } state)

@@ -10,6 +10,7 @@ using Content.Shared.Power;
 using Content.Shared.Station.Components;
 using Robust.Shared.Audio;
 using Robust.Shared.Random;
+using Robust.Shared.Utility;
 
 namespace Content.Server.Cargo.Systems;
 
@@ -39,7 +40,9 @@ public sealed partial class CargoSystem
             if (_station.GetOwningStation(uid, xform) != args.Station)
                 continue;
 
-            if (!IsLinkedToConsole(uid, GetEntity(args.Order.ApprovingConsole)))
+            // todo cannot be fucking asked to figure out device linking rn but this shouldn't just default to the first port.
+            if (!TryGetLinkedConsole((uid, tele), out var console) ||
+                console.Value.Owner != args.OrderConsole.Owner)
                 continue;
 
             tele.CurrentOrders.Add(args.Order);
@@ -51,19 +54,21 @@ public sealed partial class CargoSystem
         }
     }
 
-    private bool IsLinkedToConsole(
-        EntityUid uid,
-        EntityUid? approvingConsole
-    )
+    private bool TryGetLinkedConsole(Entity<CargoTelepadComponent> ent,
+        [NotNullWhen(true)] out Entity<CargoOrderConsoleComponent>? console)
     {
-        if (approvingConsole is null)
+        console = null;
+        if (!TryComp<DeviceLinkSinkComponent>(ent, out var sinkComponent) ||
+            sinkComponent.LinkedSources.FirstOrNull() is not { } linked)
             return false;
 
-        if (!TryComp<DeviceLinkSinkComponent>(uid, out var sinkComponent))
+        if (!TryComp<CargoOrderConsoleComponent>(linked, out var consoleComp))
             return false;
 
-        return sinkComponent.LinkedSources.Any(ent => ent == approvingConsole.Value);
+        console = (linked, consoleComp);
+        return true;
     }
+
 
     private void UpdateTelepad(float frameTime)
     {
@@ -89,7 +94,7 @@ public sealed partial class CargoSystem
                 continue;
             }
 
-            if (comp.CurrentOrders.Count == 0)
+            if (comp.CurrentOrders.Count == 0 || !TryGetLinkedConsole((uid, comp), out var console))
             {
                 comp.Accumulator += comp.Delay;
                 continue;
@@ -138,16 +143,19 @@ public sealed partial class CargoSystem
 
         if (_station.GetOwningStation(ent) is not { } station)
         {
-            station = _random.Pick(_station.GetStations().Where(x => HasComp<StationCargoOrderDatabaseComponent>(x.Owner)).ToList());
+            station = _random.Pick(_station.GetStations().Where(HasComp<StationCargoOrderDatabaseComponent>).ToList());
         }
 
         if (!TryComp<StationCargoOrderDatabaseComponent>(station, out var db) ||
             !TryComp<StationDataComponent>(station, out var data))
             return;
 
+        if (!TryGetLinkedConsole(ent, out var console))
+            return;
+
         foreach (var order in ent.Comp.CurrentOrders)
         {
-            TryFulfillOrder((station, data), order.Account, order, db);
+            TryFulfillOrder((station, data), console.Value.Comp.Account, order, db);
         }
     }
 

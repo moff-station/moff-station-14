@@ -78,10 +78,6 @@
   - type: Sprite
     sprite: _Moffstation/Objects/Weapons/Guns/Pistols/viper.rsi
   - type: Gun
-    minAngle: 2
-    maxAngle: 25
-    angleIncrease: 2
-    angleDecay: 20
     selectedMode: FullAuto # Override of BaseWeaponPistol to default to full-auto
   - type: ItemSlots
     slots:
@@ -167,10 +163,6 @@
     storedOffset: 0,-2
 # Moffstation - End
   - type: Gun
-    minAngle: 2
-    maxAngle: 8
-    angleIncrease: 1
-    angleDecay: 14
     fireRate: 4
     soundGunshot:
       path: /Audio/Weapons/Guns/Gunshots/silenced.ogg
@@ -221,10 +213,6 @@
   - type: Item
     storedOffset: 0,-2
   - type: Gun
-    minAngle: 2
-    maxAngle: 17
-    angleIncrease: 2
-    angleDecay: 14
     fireRate: 5
     availableModes:
     - SemiAuto

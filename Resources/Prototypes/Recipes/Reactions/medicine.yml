@@ -329,12 +329,11 @@
   id: Ultravasculine
   reactants:
     Histamine:
-      amount: 1
+      amount: 2
     Plasma:
       amount: 1
-      catalyst: true
   products:
-    Ultravasculine: 1
+    Ultravasculine: 2
 
 - type: reaction
   id: Histamine

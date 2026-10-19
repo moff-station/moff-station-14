@@ -1,11 +1,16 @@
-- type: entity
+﻿- type: entity
   parent: AirlockRCDResistant
   id: AirlockShuttle
-  name: docking airlock
+  suffix: Docking
+  name: external airlock
   description: Necessary for connecting two space craft together.
   components:
   - type: Docking
   - type: DockingSignalControl
+  - type: DeviceLinkSource
+    ports:
+      - DoorStatus
+      - DockStatus
   - type: Fixtures
     fixtures:
       fix1:
@@ -102,7 +107,7 @@
 - type: entity
   id: AirlockGlassShuttle
   parent: AirlockShuttle
-  suffix: Glass
+  suffix: Glass, Docking
   components:
   - type: Sprite
     sprite: Structures/Doors/Airlocks/Glass/shuttle-base.rsi
@@ -116,16 +121,20 @@
         layer:     #removed opaque from the layer, allowing lasers to pass through glass airlocks
         - GlassAirlockLayer
 
-# TODO: migrate into assembly with the others
 - type: entity
   id: AirlockShuttleAssembly
   parent: AirlockAssembly
-  name: docking airlock assembly
+  name: external airlock assembly
+  suffix: Docking
   description: An incomplete structure necessary for connecting two space craft together.
   components:
+  - type: Transform
+    anchored: true
+    noRot: false
+  - type: Rotatable
   - type: Sprite
-    sprite: Structures/Doors/Airlocks/Standard/shuttle-base.rsi
-    state: "assembly"
+    sprite: Structures/Doors/Airlocks/Glass/shuttle-base.rsi
+    state: closed
     snapCardinals: false
   - type: Construction
     graph: AirlockShuttle
@@ -134,7 +143,6 @@
 - type: entity
   id: AirlockGlassShuttleSyndicate
   parent: AirlockGlassShuttle
-  suffix: Syndicate, Glass
   components:
   - type: Sprite
     sprite: Structures/Doors/Airlocks/Glass/shuttle-syndicate.rsi
@@ -142,7 +150,6 @@
 - type: entity
   parent: AirlockShuttle
   id: AirlockShuttleSyndicate
-  suffix: Syndicate
   components:
   - type: Sprite
     sprite: Structures/Doors/Airlocks/Standard/shuttle-syndicate.rsi
@@ -150,7 +157,7 @@
 - type: entity
   parent: AirlockShuttle
   id: AirlockShuttleXenoborg
-  name: docking mechadermis airlock
+  name: external mechadermis airlock
   components:
   - type: Sprite
     sprite: Structures/Doors/Airlocks/Standard/shuttle-xenoborg.rsi

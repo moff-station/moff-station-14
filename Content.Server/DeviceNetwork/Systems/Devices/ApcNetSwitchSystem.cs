@@ -1,8 +1,8 @@
 using Content.Server.DeviceNetwork.Components.Devices;
+using Content.Shared.DeviceNetwork;
 using Content.Shared.DeviceNetwork.Events;
 using Content.Shared.Interaction;
 using Content.Shared.DeviceNetwork.Components;
-using Content.Shared.DeviceNetwork.Payloads;
 
 namespace Content.Server.DeviceNetwork.Systems.Devices
 {
@@ -15,38 +15,43 @@ namespace Content.Server.DeviceNetwork.Systems.Devices
             base.Initialize();
 
             SubscribeLocalEvent<ApcNetSwitchComponent, InteractHandEvent>(OnInteracted);
+            SubscribeLocalEvent<ApcNetSwitchComponent, DeviceNetworkPacketEvent>(OnPackedReceived);
         }
 
-        private void OnInteracted(Entity<ApcNetSwitchComponent> ent, ref InteractHandEvent args)
+        /// <summary>
+        /// Toggles the state of the switch and sents a <see cref="DeviceNetworkConstants.CmdSetState"/> command with the
+        /// <see cref="DeviceNetworkConstants.StateEnabled"/> value set to state.
+        /// </summary>
+        private void OnInteracted(EntityUid uid, ApcNetSwitchComponent component, InteractHandEvent args)
         {
-            var (uid, component) = ent;
-            if (!TryComp(uid, out DeviceNetworkComponent? networkComponent))
-                return;
+            if (!TryComp(uid, out DeviceNetworkComponent? networkComponent)) return;
 
             component.State = !component.State;
 
             if (networkComponent.TransmitFrequency == null)
                 return;
 
-            var payload = new ApcNetTogglePayload
+            var payload = new NetworkPayload
             {
-                Enabled = component.State,
+                [DeviceNetworkConstants.Command] = DeviceNetworkConstants.CmdSetState,
+                [DeviceNetworkConstants.StateEnabled] = component.State,
             };
 
-            _deviceNetworkSystem.SendPacket(uid, null, ref payload);
+            _deviceNetworkSystem.QueuePacket(uid, null, payload, device: networkComponent);
 
             args.Handled = true;
         }
 
-        [SubscribeLocalEvent]
-        private void OnPackedReceived(Entity<ApcNetSwitchComponent> ent, ref DeviceNetworkPacketEvent<ApcNetTogglePayload> args)
+        /// <summary>
+        /// Listens to the <see cref="DeviceNetworkConstants.CmdSetState"/> command of other switches to sync state
+        /// </summary>
+        private void OnPackedReceived(EntityUid uid, ApcNetSwitchComponent component, DeviceNetworkPacketEvent args)
         {
-            var (uid, component) = ent;
-            if (!TryComp(uid, out DeviceNetworkComponent? networkComponent)
-                || args.SenderAddress == networkComponent.Address)
-                return;
+            if (!TryComp(uid, out DeviceNetworkComponent? networkComponent) || args.SenderAddress == networkComponent.Address) return;
+            if (!args.Data.TryGetValue(DeviceNetworkConstants.Command, out string? command) || command != DeviceNetworkConstants.CmdSetState) return;
+            if (!args.Data.TryGetValue(DeviceNetworkConstants.StateEnabled, out bool enabled)) return;
 
-            component.State = args.Data.Enabled;
+            component.State = enabled;
         }
     }
 }

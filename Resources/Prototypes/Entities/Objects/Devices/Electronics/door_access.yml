@@ -297,14 +297,6 @@
 
 - type: entity
   parent: DoorElectronics
-  id: DoorElectronicsEVA
-  suffix: EVA, Locked
-  components:
-  - type: AccessReader
-    access: [["HeadOfPersonnel"]]
-
-- type: entity
-  parent: DoorElectronics
   id: DoorElectronicsExternal
   suffix: External, Locked
   components:

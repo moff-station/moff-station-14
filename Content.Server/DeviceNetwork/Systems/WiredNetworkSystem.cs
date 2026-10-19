@@ -16,11 +16,11 @@ namespace Content.Server.DeviceNetwork.Systems
         /// <summary>
         /// Checks if both devices are on the same grid
         /// </summary>
-        private void OnBeforePacketSent(Entity<WiredNetworkComponent> ent, ref BeforePacketSentEvent args)
+        private void OnBeforePacketSent(EntityUid uid, WiredNetworkComponent component, BeforePacketSentEvent args)
         {
-            if (Transform(ent).GridUid != args.SenderTransform.GridUid)
+            if (Transform(uid).GridUid != args.SenderTransform.GridUid)
             {
-                args.Cancelled = true;
+                args.Cancel();
             }
         }
 

@@ -1,4 +1,4 @@
-using Content.Client.Stylesheets.Fonts;
+using Content.Client.Stylesheets;
 using Content.Client.UserInterface.Controls;
 using Content.Shared.Access;
 using Content.Shared.Access.Systems;
@@ -69,7 +69,7 @@ public sealed partial class TurretControllerWindow : BaseWindow
         AccessConfiguration.OnAccessLevelsChangedEvent += OnAccessLevelsChanged;
 
         // Override footer font
-        var smallFont = new NotoFontFamilyStack(_cache).GetFont(8);
+        var smallFont = _cache.NotoStack(size: 8);
         Footer.FontOverride = smallFont;
     }
 

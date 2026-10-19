@@ -1,6 +1,5 @@
 - type: constructionGraph
-  id: !type:CreateVariants
-    values: [ GasTrinary, GasTrinaryAlt1, GasTrinaryAlt2 ]
+  id: GasTrinary
   start: start
   graph:
   - node: start
@@ -53,8 +52,7 @@
 
   # Filter
   - node: filter
-    entity: !type:CreateVariants
-      values: [ GasFilter, GasFilterAlt1, GasFilterAlt2 ]
+    entity: GasFilter
     edges:
     - to: start
       conditions:
@@ -70,8 +68,7 @@
         doAfter: 1
 
   - node: filterflipped
-    entity: !type:CreateVariants
-      values: [ GasFilterFlipped, GasFilterFlippedAlt1, GasFilterFlippedAlt2 ]
+    entity: GasFilterFlipped
     edges:
     - to: start
       conditions:
@@ -88,8 +85,7 @@
 
   # Mixer
   - node: mixer
-    entity: !type:CreateVariants
-      values: [ GasMixer, GasMixerAlt1, GasMixerAlt2 ]
+    entity: GasMixer
     edges:
     - to: start
       conditions:
@@ -105,8 +101,7 @@
         doAfter: 1
 
   - node: mixerflipped
-    entity: !type:CreateVariants
-      values: [ GasMixerFlipped, GasMixerFlippedAlt1, GasMixerFlippedAlt2 ]
+    entity: GasMixerFlipped
     edges:
     - to: start
       conditions:
@@ -156,8 +151,7 @@
   # Moffstation - End
 
   - node: pneumaticvalve
-    entity: !type:CreateVariants
-      values: [ PressureControlledValve, PressureControlledValveAlt1, PressureControlledValveAlt2 ]
+    entity: PressureControlledValve
     edges:
     - to: start
       conditions:

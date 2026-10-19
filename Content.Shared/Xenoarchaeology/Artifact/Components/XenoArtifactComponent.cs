@@ -2,6 +2,7 @@ using Content.Shared.Actions;
 using Content.Shared.Actions.Components;
 using Content.Shared.Destructible.Thresholds;
 using Content.Shared.EntityTable.EntitySelectors;
+using Content.Shared.Xenoarchaeology.Artifact.Prototypes;
 using Robust.Shared.Audio;
 using Robust.Shared.Containers;
 using Robust.Shared.GameStates;
@@ -145,10 +146,7 @@ public sealed partial class XenoArtifactComponent : Component
     /// Triggers that can be used during this artefact generation.
     /// </summary>
     [DataField]
-    public EntityTableSelector TriggersTable = new NestedSelector
-    {
-        TableId = "XenoArtifactTriggerDefaultTable"
-    };
+    public ProtoId<WeightedRandomXenoArchTriggerPrototype> TriggerWeights = "DefaultTriggers";
     #endregion
 
     /// <summary>

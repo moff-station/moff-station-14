@@ -329,7 +329,6 @@
   plantMetabolism:
   - !type:PlantAdjustMutationLevel
     amount: 0.6
-    mutationTable: RandomPlantMutations
   - !type:PlantAdjustToxins
     amount: 4
   - !type:PlantAdjustHealth

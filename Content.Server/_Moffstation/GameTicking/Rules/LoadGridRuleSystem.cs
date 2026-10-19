@@ -1,11 +1,10 @@
 using System.Numerics;
 using Content.Server._Moffstation.GameTicking.Rules.Components;
+using Content.Server.GameTicking.Rules;
 using Content.Server.Mapping;
-using Content.Shared.GameTicking;
+using Content.Server.Station.Systems;
 using Content.Shared.GameTicking.Components;
-using Content.Shared.GameTicking.Rules;
 using Content.Shared.Station.Components;
-using Content.Shared.Station.Systems;
 using Robust.Shared.EntitySerialization.Systems;
 using Robust.Shared.Map;
 using Robust.Shared.Map.Components;
@@ -20,31 +19,31 @@ public sealed partial class LoadGridRuleSystem : GameRuleSystem<LoadGridRuleComp
     [Dependency] private SharedMapSystem _mapManager = default!;
 
 
-    protected override void Started(Entity<LoadGridRuleComponent, GameRuleComponent> rule, ref GameRuleStartedEvent args)
+    protected override void Started(EntityUid uid, LoadGridRuleComponent component, GameRuleComponent gameRule, GameRuleStartedEvent args)
     {
-        base.Started(rule, ref args);
-        var (uid, component, gameRule) = rule;
+        base.Started(uid, component, gameRule, args);
 
         //Get the station
-        if (!_stationSystem.TryGetRandomStation<StationEventEligibleComponent>(out var station))
+        if (!TryGetRandomStation(out var station) ||
+            !TryComp<StationDataComponent>(station, out var data))
         {
             Log.Warning($"Unable to find a valid station for {args.RuleId}!");
-            ForceEndSelf((uid, gameRule));
+            ForceEndSelf(uid, gameRule);
             return;
         }
 
         // Get the map that the main station exists on
-        if (_stationSystem.GetLargestGrid(station.Value.Owner) is not { } largestGrid)
+        if (_stationSystem.GetLargestGrid(station.Value) is not { } largestGrid)
         {
             Log.Warning($"Unable to find map for GameRule {args.RuleId}!");
-            ForceEndSelf((uid, gameRule));
+            ForceEndSelf(uid, gameRule);
             return;
         }
         var map = Transform(largestGrid).MapID;
         if (map == MapId.Nullspace)
         {
             Log.Warning($"Attempted to load into nullspace for GameRule {args.RuleId}!");
-            ForceEndSelf((uid, gameRule));
+            ForceEndSelf(uid, gameRule);
             return;
         }
 
@@ -62,7 +61,7 @@ public sealed partial class LoadGridRuleSystem : GameRuleSystem<LoadGridRuleComp
             else if (attempts > component.MaxAttempts)
             {
                 Log.Warning($"Unable to find unobstructed location for GameRule {args.RuleId}!");
-                ForceEndSelf((uid, gameRule));
+                ForceEndSelf(uid, gameRule);
                 return;
             }
             attempts++;
@@ -72,7 +71,7 @@ public sealed partial class LoadGridRuleSystem : GameRuleSystem<LoadGridRuleComp
         if (!_mapLoader.TryLoadGrid(map, component.GridPath, out var spawnedGrid, null, offset))
         {
             Log.Warning($"Unable to load grid for GameRule {args.RuleId}!");
-            ForceEndSelf((uid, gameRule));
+            ForceEndSelf(uid, gameRule);
             return;
         }
 

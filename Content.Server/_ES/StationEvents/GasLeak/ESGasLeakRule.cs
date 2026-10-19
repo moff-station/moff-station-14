@@ -8,7 +8,6 @@ using Content.Server.StationEvents.Events;
 using Content.Shared._ES.Voting.Components;
 using Content.Shared._ES.Voting.Results;
 using Content.Shared.GameTicking.Components;
-using Content.Shared.Station.Components;
 using Robust.Server.GameObjects;
 using Robust.Shared.Random;
 using Robust.Shared.Utility;
@@ -19,7 +18,7 @@ public sealed partial class ESGasLeakRule : StationEventSystem<ESGasLeakRuleComp
 {
     [Dependency] private AtmosphereSystem _atmosphere = default!;
     [Dependency] private NavMapSystem _navMap = default!;
-    [Dependency] private ServerStationSystem _station = default!;
+    [Dependency] private StationSystem _station = default!;
     [Dependency] private TransformSystem _transform = default!;
 
     public override void Initialize()
@@ -36,7 +35,7 @@ public sealed partial class ESGasLeakRule : StationEventSystem<ESGasLeakRuleComp
             !args.TryGetResult<ESEntityVoteOption>(1, out var ventResult) ||
             !TryGetEntity(ventResult.Entity, out var vent))
         {
-            ForceEndSelf((ent.Owner, null));
+            ForceEndSelf(ent);
             return;
         }
 
@@ -46,13 +45,13 @@ public sealed partial class ESGasLeakRule : StationEventSystem<ESGasLeakRuleComp
 
     private void OnGetVoteOptions(Entity<ESGasVentVoteComponent> ent, ref ESGetVoteOptionsEvent args)
     {
-        if (!_station.TryGetRandomStation<StationEventEligibleComponent>(out var station))
+        if (!TryGetRandomStation(out var station))
             return;
         var ventList = new List<Entity<TransformComponent>>();
         var query = EntityQueryEnumerator<GasVentPumpComponent, TransformComponent>();
         while (query.MoveNext(out var ventUid, out _, out var xform))
         {
-            if (_station.GetOwningStation(ventUid, xform) == station.Value.Owner)
+            if (_station.GetOwningStation(ventUid, xform) == station)
                 ventList.Add((ventUid, xform));
         }
 
@@ -69,14 +68,14 @@ public sealed partial class ESGasLeakRule : StationEventSystem<ESGasLeakRuleComp
         }
     }
 
-    protected override void Started(Entity<ESGasLeakRuleComponent, GameRuleComponent> rule, ref GameRuleStartedEvent args)
+    protected override void Started(EntityUid uid, ESGasLeakRuleComponent component, GameRuleComponent gameRule, GameRuleStartedEvent args)
     {
-        base.Started(rule, ref args);
+        base.Started(uid, component, gameRule, args);
 
-        rule.Comp1.NextLeakTime = Timing.CurTime;
-        rule.Comp1.LeakRate = RobustRandom.NextFloat(rule.Comp1.LeakRateRange.X, rule.Comp1.LeakRateRange.Y);
-        var moles = RobustRandom.NextFloat(rule.Comp1.LeakMolesRange.X, rule.Comp1.LeakMolesRange.Y);
-        Comp<StationEventComponent>(rule).EndTime = Timing.CurTime + TimeSpan.FromSeconds(moles / rule.Comp1.LeakRate) + TimeSpan.FromSeconds(1);
+        component.NextLeakTime = Timing.CurTime;
+        component.LeakRate = RobustRandom.NextFloat(component.LeakRateRange.X, component.LeakRateRange.Y);
+        var moles = RobustRandom.NextFloat(component.LeakMolesRange.X, component.LeakMolesRange.Y);
+        Comp<StationEventComponent>(uid).EndTime = Timing.CurTime + TimeSpan.FromSeconds(moles / component.LeakRate) + TimeSpan.FromSeconds(1);
     }
 
     protected override void ActiveTick(EntityUid uid, ESGasLeakRuleComponent component, GameRuleComponent gameRule, float frameTime)
@@ -94,24 +93,21 @@ public sealed partial class ESGasLeakRule : StationEventSystem<ESGasLeakRuleComp
         mixture?.AdjustMoles(component.LeakGas, (float) (component.LeakRate * component.LeakDelay).TotalSeconds);
     }
 
-    protected override void Ended(Entity<ESGasLeakRuleComponent> rule, ref GameRuleEndedEvent args)
+    protected override void Ended(EntityUid uid, ESGasLeakRuleComponent component, GameRuleComponent gameRule, GameRuleEndedEvent args)
     {
-        base.Ended(rule, ref args);
+        base.Ended(uid, component, gameRule, args);
 
-        if (TerminatingOrDeleted(rule)) // Moff - Rules ended by entity deletion skip end effects
+        if (!RobustRandom.Prob(component.SparkChance))
             return;
 
-        if (!RobustRandom.Prob(rule.Comp.SparkChance))
+        if (!Exists(component.LeakOrigin) || TerminatingOrDeleted(component.LeakOrigin))
             return;
 
-        if (!Exists(rule.Comp.LeakOrigin) || TerminatingOrDeleted(rule.Comp.LeakOrigin))
+        if (Transform(component.LeakOrigin).GridUid is not { } grid)
             return;
 
-        if (Transform(rule.Comp.LeakOrigin).GridUid is not { } grid)
-            return;
-
-        var indices = _transform.GetGridTilePositionOrDefault(rule.Comp.LeakOrigin);
+        var indices = _transform.GetGridTilePositionOrDefault(component.LeakOrigin);
         _atmosphere.HotspotExpose(grid, indices, 700f, 50f, null, true);
-        Audio.PlayPvs(rule.Comp.SparkSound, rule);
+        Audio.PlayPvs(component.SparkSound, uid);
     }
 }

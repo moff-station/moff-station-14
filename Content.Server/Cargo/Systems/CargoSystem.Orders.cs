@@ -219,10 +219,7 @@ namespace Content.Server.Cargo.Systems
                 order.SetApproverData(_identity.GetIdentityShortInfo(player, uid));
             }
 
-            order.ApprovingConsole = GetNetEntity(uid);
-            order.Approved = true;
-
-            var ev = new FulfillCargoOrderEvent((station.Value, stationData), order);
+            var ev = new FulfillCargoOrderEvent((station.Value, stationData), order, (uid, component));
             RaiseLocalEvent(ref ev);
             ev.FulfillmentEntity ??= station.Value;
 
@@ -235,12 +232,11 @@ namespace Content.Server.Cargo.Systems
                     _popup.PopupCursor(Loc.GetString("cargo-console-unfulfilled"), args.Actor);
                     PlayDenySound(uid, component);
                     order.Approver = null;
-                    order.ApprovingConsole = null;
-                    order.Approved = false;
                     return;
                 }
             }
 
+            order.Approved = true;
             _audio.PlayPvs(ApproveSound, uid);
 
             if (!emagged)

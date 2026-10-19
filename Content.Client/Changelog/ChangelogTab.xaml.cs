@@ -1,4 +1,3 @@
-using Content.Client.UserInterface.Controls;
 using System.Linq;
 using System.Numerics;
 using Content.Client.Resources;
@@ -122,7 +121,7 @@ public sealed partial class ChangelogTab : Control
                     };
 
                     readDivider.AddChild(hBox);
-                    readDivider.AddChild(new Separator { StyleClasses = { StyleClass.LowDivider } });
+                    readDivider.AddChild(new PanelContainer { StyleClasses = { StyleClass.LowDivider } });
                     ChangelogBody.AddChild(readDivider);
 
                     if (first)

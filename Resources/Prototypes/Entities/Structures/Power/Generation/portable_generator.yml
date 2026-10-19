@@ -318,7 +318,7 @@
     # Full tank is 25 moles of gas
     moleRatio: 0.5
   - type: Explosive
-    explosionType: Transparent # Funky RMC Explosions
+    explosionType: Default
     tileBreakScale: 0
   - type: Destructible
     thresholds:
