@@ -58,9 +58,9 @@ public sealed partial class BloodBrotherRuleSystem : GameRuleSystem<BloodBrother
     [Dependency] private ServerBloodBrotherSystem _bloodBrother = default!;
     [Dependency] private MoffCharacterPickerSystem _characterPicker = default!;
 
-    [Dependency] private EntityQuery<BloodBrotherComponent> _bloodBrotherQuery = default!;
-    [Dependency] private EntityQuery<TargetObjectiveComponent> _targetObjectiveQuery = default!;
-    [Dependency] private EntityQuery<ZombieComponent> _zombieQuery = default!;
+    [Dependency] private EntityQuery<BloodBrotherComponent> _bloodBrotherQuery;
+    [Dependency] private EntityQuery<TargetObjectiveComponent> _targetObjectiveQuery;
+    [Dependency] private EntityQuery<ZombieComponent> _zombieQuery;
 
     private static readonly ProtoId<RoleTypePrototype>[] ImmuneRoleTypes =
         {"SoloAntagonist", "TeamAntagonist"}; // Traitors and Nukies and other team antags
