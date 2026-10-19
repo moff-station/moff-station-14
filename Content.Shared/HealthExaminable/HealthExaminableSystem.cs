@@ -63,7 +63,7 @@ public sealed partial class HealthExaminableSystem : EntitySystem
             string chosenLocStr = string.Empty;
             foreach (var threshold in component.Thresholds)
             {
-// Moff start - Replace janky check for loc string not existing with function made for that purpose
+                // Moff start - Replace janky check for loc string not existing with function made for that purpose
                 // var str = $"health-examinable-{component.LocPrefix}-{type}-{threshold}";
                 // var tempLocStr = Loc.GetString($"health-examinable-{component.LocPrefix}-{type}-{threshold}", ("target", Identity.Entity(uid, EntityManager)));
                 //
