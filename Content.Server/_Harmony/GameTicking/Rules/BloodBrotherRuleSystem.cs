@@ -65,8 +65,11 @@ public sealed partial class BloodBrotherRuleSystem : GameRuleSystem<BloodBrother
     private static readonly ProtoId<RoleTypePrototype>[] ImmuneRoleTypes =
         {"SoloAntagonist", "TeamAntagonist"}; // Traitors and Nukies and other team antags
 
+    private static readonly ProtoId<AntagPrototype> RequiredAntagPreference = "BloodBrotherConvertible";
+
     private static readonly LocId FailedNoMind = "blood-brother-convert-failed-no-mind";
     private static readonly LocId FailedAlreadyBrother = "blood-brother-convert-failed-already-brother";
+    private static readonly LocId FailedHasBrother = "blood-brother-convert-failed-has-brother";
     private static readonly LocId FailedTarget = "blood-brother-convert-failed-target";
     private static readonly LocId FailedZombie = "blood-brother-convert-failed-zombie";
     private static readonly LocId FailedShielded = "blood-brother-convert-failed-shielded";
@@ -78,15 +81,33 @@ public sealed partial class BloodBrotherRuleSystem : GameRuleSystem<BloodBrother
         base.Update(frameTime);
 
         if (!TryGetRule(out var rule)
-            || Timing.CurTime < rule.Comp.NextConvertibleUpdate
-            || Count<InitialBloodBrotherComponent>() == 0)
+            || Timing.CurTime < rule.Comp.NextConvertibleUpdate)
             return;
 
         rule.Comp.NextConvertibleUpdate = Timing.CurTime + rule.Comp.ConvertibleUpdateInterval;
 
+        // Check if any blood brothers can even convert in the first place.
+        // If they can't then don't bother running the expensive ass check on everyone in the round
+        var anyCanConvert = false;
+        foreach (var initial in EntityQueryEnumerator<InitialBloodBrotherComponent>())
+        {
+            if (!CanConvert(initial.AsNullable(), null, out _))
+                continue;
+
+            anyCanConvert = true;
+            break;
+        }
+
+        if (!anyCanConvert)
+        {
+            _bloodBrother.ClearConvertible();
+            return;
+        }
+
+        // This checks over every player in the round to see if they can be converted.
         foreach (var target in EntityQueryEnumerator<HumanoidProfileComponent>())
         {
-            _bloodBrother.SetConvertible(target, CanBeConverted(target, rule.Comp.RequiredAntagPreference, out _));
+            _bloodBrother.SetConvertible(target, CanBeConverted(target, out _));
         }
     }
 
@@ -133,6 +154,9 @@ public sealed partial class BloodBrotherRuleSystem : GameRuleSystem<BloodBrother
         }
     }
 
+    /// <summary>
+    /// Converts someone to blood bound
+    /// </summary>
     [SubscribeLocalEvent]
     private void OnBloodBrotherConvert(Entity<InitialBloodBrotherComponent> entity,
         ref BloodBrotherConvertActionEvent args)
@@ -218,12 +242,16 @@ public sealed partial class BloodBrotherRuleSystem : GameRuleSystem<BloodBrother
         Dirty(args.Target, convertedComp);
     }
 
+    /// <summary>
+    /// Checks whether a blood bound is capable of converting someone.
+    /// Run against checks against the target as well, unless target is null
+    /// </summary>
     public bool CanConvert(
         Entity<InitialBloodBrotherComponent?> entity,
-        EntityUid target,
+        EntityUid? target,
         [NotNullWhen(false)] out string? errorMessage)
     {
-        if (!Resolve(entity, ref entity.Comp) || !_mindSystem.TryGetMind(entity, out _, out var converterMind))
+        if (!Resolve(entity.Owner, ref entity.Comp) || !_mindSystem.TryGetMind(entity.Owner, out _, out var converterMind))
         {
             DebugTools.Assert("Blood brother tried to convert but had no mind.");
             Log.Error("Blood brother tried to convert but had no mind.");
@@ -231,17 +259,24 @@ public sealed partial class BloodBrotherRuleSystem : GameRuleSystem<BloodBrother
             return false;
         }
 
-        if (!TryGetRule(out var rule))
+        if (!_bloodBrotherQuery.TryComp(entity.Owner, out var converterBBComp) || converterBBComp.Brother != null)
         {
-            Log.Error($"{ToPrettyString(entity)} tried to convert with no {nameof(BloodBrotherRuleComponent)} in the round.");
-            errorMessage = FailedPreference;
+            Log.Error($"{ToPrettyString(entity.Owner)} tried to convert but was missing a {nameof(BloodBrotherComponent)} or already had a brother.");
+            errorMessage = FailedHasBrother;
             return false;
         }
 
-        if (!CanBeConverted(target, rule.Comp.RequiredAntagPreference, out errorMessage))
+        // If there's not a target, the rest of the checks aren't necessary
+        if (target is not { } targetUid)
+        {
+            errorMessage = null;
+            return true;
+        }
+
+        if (!CanBeConverted(targetUid, out errorMessage))
             return false;
 
-        if (_mindSystem.TryGetMind(target, out var targetMindId, out _)
+        if (_mindSystem.TryGetMind(targetUid, out var targetMindId, out _)
             && GetObjectiveTargets(converterMind).Contains(targetMindId))
         {
             errorMessage = FailedTarget;
@@ -252,11 +287,10 @@ public sealed partial class BloodBrotherRuleSystem : GameRuleSystem<BloodBrother
     }
 
     /// <summary>
-    /// The checks that only depend on the target, shared by every converter.
+    /// Checks whether a target can be converted to a blood bound.
     /// </summary>
     private bool CanBeConverted(
         EntityUid target,
-        ProtoId<AntagPrototype>? requiredPreference,
         [NotNullWhen(false)] out string? errorMessage)
     {
         errorMessage = null;
@@ -293,7 +327,7 @@ public sealed partial class BloodBrotherRuleSystem : GameRuleSystem<BloodBrother
         }
 
         // Antags share the opted-out message so the converter can't tell them apart; keep these together
-        if (ImmuneRoleTypes.Contains(targetMind.RoleType) || !HasAntagPreference(userId, requiredPreference))
+        if (ImmuneRoleTypes.Contains(targetMind.RoleType) || !HasAntagPreference(userId))
         {
             errorMessage = FailedPreference;
             return false;
@@ -302,16 +336,13 @@ public sealed partial class BloodBrotherRuleSystem : GameRuleSystem<BloodBrother
         return true;
     }
 
-    private bool HasAntagPreference(NetUserId userId, ProtoId<AntagPrototype>? preference)
+    private bool HasAntagPreference(NetUserId userId)
     {
-        if (preference == null)
-            return true;
-
         var profile = _characterPicker.GetSpawnedProfile(userId);
         if (profile == null && _preferencesManager.TryGetCachedPreferences(userId, out var preferences))
             profile = preferences.SelectedCharacter;
 
-        return profile != null && profile.AntagPreferences.Contains(preference.Value);
+        return profile != null && profile.AntagPreferences.Contains(RequiredAntagPreference);
     }
 
     private IEnumerable<EntityUid> GetObjectiveTargets(MindComponent mind)

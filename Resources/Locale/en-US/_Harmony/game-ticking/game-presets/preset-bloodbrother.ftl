@@ -20,6 +20,7 @@ blood-brother-briefing = Collaborate with your blood bound to accomplish all you
 
 blood-brother-convert-failed-no-mind = {CAPITALIZE(THE($converted))} does not have a mind
 blood-brother-convert-failed-already-brother = {CAPITALIZE(THE($converted))} is already a blood bound
+blood-brother-convert-failed-has-brother = You already have a blood bound
 blood-brother-convert-failed-target = {CAPITALIZE(THE($converted))} is your target
 blood-brother-convert-failed-zombie = {CAPITALIZE(THE($converted))} is a zombie
 blood-brother-convert-failed-shielded = {CAPITALIZE(THE($converted))}'s mind is too protected
