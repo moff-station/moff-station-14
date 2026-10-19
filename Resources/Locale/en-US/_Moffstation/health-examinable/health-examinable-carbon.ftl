@@ -1,5 +1,0 @@
-﻿health-examinable-carbon-Asphyxiation-8 = [color=#C5E5F0]The edge of { POSS-ADJ($target) } lips are turning blue.[/color]
-health-examinable-carbon-Asphyxiation-15 = [color=#C5E5F0]The edge of { POSS-ADJ($target) } lips are turning blue.[/color]
-health-examinable-carbon-Asphyxiation-50 = [color=#7DBACE]{ CAPITALIZE(POSS-ADJ($target)) } lips are turning blue.[/color]
-health-examinable-carbon-Asphyxiation-100 = [color=#189FCC]{ CAPITALIZE(POSS-ADJ($target)) } face is turning blue.[/color]
-health-examinable-carbon-Asphyxiation-200 = [color=#189FCC]{ CAPITALIZE(POSS-ADJ($target)) } face is turning blue.[/color]

@@ -63,12 +63,16 @@ public sealed partial class HealthExaminableSystem : EntitySystem
             string chosenLocStr = string.Empty;
             foreach (var threshold in component.Thresholds)
             {
-                var str = $"health-examinable-{component.LocPrefix}-{type}-{threshold}";
-                var tempLocStr = Loc.GetString($"health-examinable-{component.LocPrefix}-{type}-{threshold}", ("target", Identity.Entity(uid, EntityManager)));
-
-                // i.e., this string doesn't exist, because theres nothing for that threshold
-                if (tempLocStr == str)
+// Moff start - Replace janky check for loc string not existing with function made for that purpose
+                // var str = $"health-examinable-{component.LocPrefix}-{type}-{threshold}";
+                // var tempLocStr = Loc.GetString($"health-examinable-{component.LocPrefix}-{type}-{threshold}", ("target", Identity.Entity(uid, EntityManager)));
+                //
+                // // i.e., this string doesn't exist, because theres nothing for that threshold
+                // if (tempLocStr == str)
+                //   continue;
+                if (!Loc.TryGetString($"health-examinable-{component.LocPrefix}-{type}-{threshold}", out var tempLocStr, ("target", Identity.Entity(uid, EntityManager))))
                     continue;
+                // Moff end
 
                 if (dmg > threshold && threshold > closest)
                 {
