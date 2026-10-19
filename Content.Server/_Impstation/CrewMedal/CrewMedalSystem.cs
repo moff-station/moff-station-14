@@ -1,13 +1,13 @@
-using Content.Server.GameTicking;
-using Content.Shared.Administration.Logs;
-using Content.Shared.Clothing;
-using Content.Shared._Impstation.CrewMedal;
-using Content.Shared.Database;
-using Content.Shared.IdentityManagement;
-using Content.Shared.Popups;
 using System.Linq;
 using System.Text;
-using Robust.Shared.Utility; // Moff - add missing references
+using Content.Shared._Impstation.CrewMedal;
+using Content.Shared.Administration.Logs;
+using Content.Shared.Clothing;
+using Content.Shared.Database;
+using Content.Shared.GameTicking;
+using Content.Shared.IdentityManagement;
+using Content.Shared.Popups;
+using Robust.Shared.Utility;
 
 namespace Content.Server._Impstation.CrewMedal;
 
