@@ -32,26 +32,27 @@
     containers:
       machine_board: !type:Container
       machine_parts: !type:Container
-        # Moffstation - Begin - Add abstract crewmon server parent.
-        #     Changes to this section must be carefully considered: if the change should apply to the machine variant, leave
-        #     it on this proto. If it should apply to the machine variant AND the blade server variant, comment out the
-        #     change here and duplicate it to the abstract parent.
-        #    - type: CrewMonitoringServer
-        #    - type: SingletonDeviceNetServer
-        #    - type: DeviceNetwork
-        #      deviceNetId: Wireless
-        #      transmitFrequencyId: CrewMonitor
-        #      receiveFrequencyId: SuitSensor
-        #      autoConnect: false
-        #    - type: WirelessNetworkConnection
-        #      range: 10000 # Moffstation - Exended range for Listening outpost
-        #    #- type: StationLimitedNetwork # Moffstation
-        #    - type: ApcPowerReceiver
-        #      powerLoad: 200
-        #    - type: ExtensionCableReceiver
-        #    - type: WiresPanel
-        #    - type: WiresVisuals
-      # Moffstation - End
+# Moff start - Add abstract crewmon server parent.
+#     Changes to this section must be carefully considered: if the change should apply to the machine variant, leave
+#     it on this proto. If it should apply to the machine variant AND the blade server variant, comment out the
+#     change here and duplicate it to the abstract parent.
+#  - type: CrewMonitoringServer
+#  - type: SingletonDeviceNetServer
+#  - type: DeviceNetwork
+#    deviceNetId: Wireless
+#    transmitFrequencyId: CrewMonitor
+#    receiveFrequencyId: SuitSensor
+#    prefix: device-address-prefix-crew-monitoring-server
+#    autoConnect: false
+#  - type: WirelessNetworkConnection
+#    range: 500
+#  - type: StationLimitedNetwork
+#  - type: ApcPowerReceiver
+#    powerLoad: 200
+#  - type: ExtensionCableReceiver
+#  - type: WiresPanel
+#  - type: WiresVisuals
+# Moff end
   - type: Damageable
     damageModifierSet: SteelMod
   - type: Destructible

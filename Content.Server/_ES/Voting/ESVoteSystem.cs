@@ -31,7 +31,7 @@ public sealed partial class ESVoteSystem : ESSharedVoteSystem
         // We manually start this rule now that the votes have concluded.
         // Is this kinda hacky? yes. I don't think it's that bad though
         Comp<GameRuleComponent>(ent).Added = true;
-        var ev = new GameRuleAddedEvent(ent, Prototype(ent)!.ID);
+        var ev = new GameRuleAddedEvent(ent);
         RaiseLocalEvent(ent, ref ev, true);
     }
 
