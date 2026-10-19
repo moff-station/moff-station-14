@@ -1,0 +1,27 @@
+# Player: HotrodMcCoolgal - Character: Ashley Williams
+
+- type: entity
+  parent: BookBartendersManual
+  id: &id PersonalItemAshleyNecronomicon
+  name: Necronomicon Ex Mortis
+  description: A grisly book with a face on the cover, bound by unnerving looking leather.
+  suffix: PersonalItem
+  components:
+  - type: Sprite
+    sprite: &sprite _Moffstation/PersonalItems/Items/Davyei/Ashley_Williams/necronomiconexmortis.rsi
+    layers: # Replaces the parent's layered book sprite
+    - state: icon
+  - type: Item
+    sprite: *sprite
+  - type: DetailExaminable
+    content: Upon closer inspection, a lot of these pages are either scribbled or stapled over with drink recipes, I guess that'll keep evil from tapping into its full potential.
+
+- type: loadout
+  id: *id
+  storage:
+    back:
+    - *id
+  effects:
+  - !type:PersonalItemLoadoutEffect
+    character:
+    - Ashley Williams
