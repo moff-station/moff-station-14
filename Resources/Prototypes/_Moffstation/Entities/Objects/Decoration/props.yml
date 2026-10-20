@@ -1,0 +1,103 @@
+- type: entity
+  id: FakeSingularity
+  name: gravitational singularity
+  description: A mesmerizing swirl of darkness that sucks in everything. If it's moving towards you, run.
+  suffix: Fake # Made exclusively for decorative purposes. Not harmful in any way.
+  components:
+  - type: Clickable
+  - type: AmbientSound
+    volume: -4
+    range: 14
+    sound:
+      path: /Audio/Effects/singularity.ogg
+  - type: Fixtures
+    fixtures:
+      EventHorizonCollider:
+        shape:
+          !type:PhysShapeCircle
+            radius: 4
+        hard: true
+        restitution: 0.8
+        density: 99999
+        mask:
+        - SingularityLayer
+        layer:
+        - SingularityLayer
+  - type: SingularityDistortion
+    falloffPower: 2.529822
+    intensity: 3645
+  - type: PointLight
+    enabled: true
+    radius: 10
+  - type: Appearance
+  - type: GuideHelp # Always strive to be helpful in trying times.
+    guides:
+    - SingularityEngine
+    - SingularityTeslaEngine
+    - Power
+  - type: Sprite
+    sprite: Structures/Power/Generation/Singularity/singularity_4.rsi
+    state: singularity_4
+
+- type: entity
+  id: FakeRadiationCollector
+  name: radiation collector
+  description: A machine that collects radiation and turns it into power. Requires plasma gas to function.
+  parent: BaseMachineDestructible
+  suffix: Fake # Made exclusively for decorative purposes. Generates power for free
+  components:
+  - type: Clickable
+  - type: InteractionOutline
+  - type: Physics
+    bodyType: Static
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.45,-0.45,0.45,0.45"
+        density: 190
+        mask:
+        - MachineMask
+        layer:
+        - MachineLayer
+  - type: Transform
+    anchored: true
+    noRot: true
+  - type: Sprite
+    sprite: Structures/Power/Generation/Singularity/collector.rsi
+    snapCardinals: true
+    layers:
+      - state: static
+  - type: NodeContainer
+    examinable: true
+    nodes:
+      input:
+        !type:CableDeviceNode
+        nodeGroupID: HVPower
+  - type: PowerMonitoringDevice
+    group: Generator
+    loadNode: input
+    collectionName: radiationCollector
+    sprite: Structures/Power/Generation/Singularity/collector.rsi
+    state: static
+  - type: PowerSupplier
+    supplyRate: 60000
+    supplyRampRate: 50000
+    supplyRampTolerance: 500
+  - type: Anchorable
+  - type: Rotatable
+  - type: Pullable
+  - type: GuideHelp
+    guides:
+    - SingularityEngine
+    - Power
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 175
+      behaviors:
+      - !type:PlaySoundBehavior
+        sound:
+          collection: MetalGlassBreak
