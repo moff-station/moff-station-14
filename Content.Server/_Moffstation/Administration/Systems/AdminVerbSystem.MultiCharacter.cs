@@ -11,7 +11,7 @@ namespace Content.Server.Administration.Systems;
 public sealed partial class AdminVerbSystem
 {
     [Dependency] private IServerPreferencesManager _moffPrefsManager = default!;
-    [Dependency] private MoffCharacterPickerSystem _moffCharacterPicker = default!;
+    [Dependency] private MoffProfileSpawnedSystem _moffProfileSpawned = default!;
 
     /// <summary>
     /// One "spawn here" entry per character the player has, since there is no single selected one.
