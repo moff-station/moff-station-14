@@ -52,9 +52,9 @@ public sealed partial class AntagLoadProfileRuleSystem : GameRuleSystem<AntagLoa
             else
             {
                 // Pick a random active profile with the antag enabled.
-                var antagSpecifierPrototype = args.Antag.ID;
+                var antagPrefRoles = args.Antag.PrefRoles;
                 var activeProfilesWithAntagEnabled = _moffJobCandidate.GetActiveProfiles(session.UserId)
-                    .Where(it => it.AntagPreferences.Contains(antagSpecifierPrototype))
+                    .Where(it => it.AntagPreferences.Intersect(antagPrefRoles).Any())
                     .ToList();
                 if (activeProfilesWithAntagEnabled.Count != 0)
                 {
