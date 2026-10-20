@@ -7,9 +7,10 @@
   icon: "JobIconCentralCommandIntern"
   supervisors: job-supervisors-centcom
   accessGroups:
-  - AllAccess
+  - General # You're not even getting paid for this - what makes you think you're getting access?
   access:
   - CentralCommand
+  - Command
   special:
   - !type:AddImplantSpecial
     implants: [ MindShieldImplant, DeathRattleImplantCentcomm ]
@@ -17,23 +18,14 @@
 - type: startingGear
   id: CentcommInternGear
   equipment:
-    back: ClothingBackpackSatchelLeather
+    back: ClothingBackpackSatchel
     belt: BoxFolderCentComClipboardThreePapers
-    ears: ClothingHeadsetAltCentCom
-    eyes: ClothingEyesGlassesCommand
-    head: ClothingHeadHatBeretCentcomm
-    neck: ClothingNeckScarfStripedCentcom
-    mask: ClothingMaskGasCentcom
-    gloves: ClothingHandsGlovesHop
-    id: CentcomPDA
-    jumpsuit: ClothingUniformJumpsuitCentcommTurtle
-    outerClothing: ClothingOuterWinterWindbreakerCentcom
-    shoes: ClothingShoesBootsLaceup
-    pocket1: WeaponPistolN1984
-  inhand:
-  - BriefcaseBrownFilled
+    ears: ClothingHeadsetCentCom
+    id: CentralCommandInternPDA
+    jumpsuit: ClothingUniformJumpsuitCentcomOfficer
+    shoes: ClothingShoesColorBlack
   storage:
     back:
-    - Flash
     - Crowbar
-    - PenCentcom
+    - FoodBakedGrilledCheeseSandwich
+    - DrinkWaterBottleFull
