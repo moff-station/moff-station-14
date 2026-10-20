@@ -451,8 +451,6 @@
       path: /Audio/Items/bikehorn.ogg
     Ping:
       path: /Audio/Effects/Cargo/ping.ogg
-    Blink: # Monke
-      collection: Blinks # Monke  
 
 - type: emoteSounds
   id: UnisexSiliconSyndicate
@@ -475,8 +473,6 @@
       path: /Audio/Items/bikehorn.ogg
     Ping:
       path: /Audio/Effects/Cargo/ping.ogg
-    Blink: # Monke
-      collection: Blinks # Monke  
 
 - type: emoteSounds
   id: UnisexSiliconXenoborg
@@ -499,8 +495,6 @@
       collection: XenoborgBikeHorn
     Ping:
       collection: XenoborgPing
-    Blink: # Monke
-      collection: Blinks # Monke  
 
 # Vulp Sounds
 - type: emoteSounds
@@ -603,8 +597,6 @@
         volume: -6
     Salute:
       collection: Salutes
-    Blink: # Monke
-      collection: Blinks # Monke
     Knuckles: # Monke
       collection: Knuckles # Monke
 
@@ -624,8 +616,6 @@
       path: /Audio/Voice/Diona/diona_salute.ogg
       params:
        volume: -5
-    Blink: # Monke
-      collection: Blinks # Monke   
     Knuckles: # Monke
       path: /Audio/Voice/Diona/diona_salute.ogg
       params:
@@ -649,10 +639,8 @@
         volume: -6
     Salute:
       collection: Salutes
-    Blink: # Monke
-      collection: Blinks # Monke
     Knuckles: # Monke
-      collection: Knuckles # Monke  
+      collection: Knuckles # Monke
 
 - type: emoteSounds
   id: MothBodyEmotes
@@ -669,10 +657,8 @@
         volume: -6
     Salute:
       collection: Salutes
-    Blink: # Monke
-      collection: Blinks # Monke 
     Knuckles: # Monke
-      collection: Knuckles # Monke   
+      collection: Knuckles # Monke
 
 # mobs
 - type: emoteSounds
@@ -805,7 +791,5 @@
       collection: MaleGasp
     DefaultDeathgasp:
       collection: WawaDeath
-    Blink: # Monke
-      collection: Blinks # Monke
     Knuckles: # Monke
-      collection: Knuckles # Monke    
+      collection: Knuckles # Monke
