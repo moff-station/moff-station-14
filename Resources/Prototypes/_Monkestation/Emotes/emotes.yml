@@ -1,17 +1,4 @@
 - type: emote
-  id: Blink
-  name: ms-chat-emote-name-blink
-  category: General
-  icon: _Monkestation/Interface/Emotes/eyes.png
-  blacklist:
-    components:
-    - Ghost
-  chatMessages: ["ms-chat-emote-msg-blink"]
-  chatTriggers:
-  - blink
-  - blinks
-
-- type: emote
   id: Knuckles
   name: ms-chat-emote-name-knuckles
   category: Hands
