@@ -20,7 +20,7 @@ public sealed partial class JestographicRecyclerComponent : Component
     ///How long of a stun going through this is.
     /// </summary>
     [DataField]
-    public TimeSpan StunDuration = TimeSpan.FromSeconds(1.0);
+    public TimeSpan StunDuration = TimeSpan.FromSeconds(2.0);
 
     [DataField]
     public SoundSpecifier Sound = new SoundPathSpecifier("/Audio/Items/bikehorn.ogg");

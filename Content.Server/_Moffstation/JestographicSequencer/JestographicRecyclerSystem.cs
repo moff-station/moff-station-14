@@ -1,9 +1,12 @@
 using Content.Shared._Moffstation.JestographicSequencer;
+using Content.Server.Chat.Systems;
+using Content.Shared.Chat;
 using Content.Shared.Interaction.Components;
 using Content.Shared.Inventory;
 using Content.Shared.Materials;
 using Content.Shared.Mobs.Components;
 using Content.Shared.Stunnable;
+using Content.Shared.Timing.Systems;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Containers;
 using Robust.Shared.Physics.Events;
@@ -16,12 +19,16 @@ namespace Content.Server._Moffstation.JestographicSequencer;
 /// </summary>
 public sealed partial class JestographicRecyclerSystem : EntitySystem
 {
+    [Dependency] private ChatSystem _chat = default!;
+    [Dependency] private UseDelaySystem _useDelay = default!;
     [Dependency] private InventorySystem _inventory = default!;
     [Dependency] private SharedAudioSystem _audio = default!;
     [Dependency] private SharedContainerSystem _container = default!;
     [Dependency] private SharedMaterialReclaimerSystem _reclaimer = default!;
     [Dependency] private SharedStunSystem _stun = default!;
     [Dependency] private SharedTransformSystem _transform = default!;
+
+    private const string HonkDelayId = "jestographicRecyclerHonk";
 
     public override void Initialize()
     {
@@ -41,6 +48,10 @@ public sealed partial class JestographicRecyclerSystem : EntitySystem
         var victim = args.OtherEntity;
         if (!HasComp<MobStateComponent>(victim) || !HasComp<InventoryComponent>(victim))
             return;
+
+        _useDelay.SetLength(ent.Owner, TimeSpan.FromSeconds(1), HonkDelayId);
+        if (_useDelay.TryResetDelay(ent.Owner, checkDelayed: true, id: HonkDelayId))
+            _chat.TrySendInGameICMessage(ent.Owner, Loc.GetString("jestographic-recycler-message"), InGameICChatType.Speak, hideChat: true);
 
         _audio.PlayPvs(ent.Comp.Sound, victim);
 

@@ -17,7 +17,6 @@
     rechargeDuration: 89
   - type: Slippery
   - type: StepTrigger
-    intersectRatio: 0.2
   - type: CollisionWake
     enabled: false
   - type: Physics
@@ -35,7 +34,7 @@
         shape:
           !type:PhysShapeAabb
           bounds: "-0.4,-0.3,0.4,0.3"
-        density: 10
+        density: 5
         mask:
         - ItemMask
   - type: StaticPrice

@@ -9,6 +9,7 @@ jestographic-interaction-clown-recorder = The sequencer honks at {THE($target)},
 jestographic-interaction-honkbot = The sequencer honks at {THE($target)}, and it starts zooming around!
 jestographic-interaction-recycler = The sequencer honks at {THE($target)}, and it starts to hum wildly!
 jestographic-interaction-camera = The sequencer honks at {THE($target)}, frying some wires!
+jestographic-recycler-message = You've just been clowned!
 jestographic-ooze-examine = [color=yellow]It is coated in a thick layer of yellow ooze.[/color][color=red] Use soap to remove it.[/color]
 jestographic-ooze-cleaning = You start scrubbing the yellow ooze off {THE($target)}.
 jestographic-ooze-cleaned = The yellow ooze washes off {THE($target)}.
