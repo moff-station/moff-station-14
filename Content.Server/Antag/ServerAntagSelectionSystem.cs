@@ -48,7 +48,7 @@ public sealed partial class ServerAntagSelectionSystem : AntagSelectionSystem
             return;
 
         // Moff start - multi character selection: respect character selection for ghostroles while picking random profiles for roundstart
-        if (!TrySpawnAntagonist((rule, select), def, args.Player, respectPlayerSelection: false, XForm.GetMapCoordinates(ent), out var uidAndProfile) ||
+        if (!TrySpawnAntagonist((rule, select), def, args.Player, respectPlayerSelection: true, XForm.GetMapCoordinates(ent), out var uidAndProfile) ||
             uidAndProfile is not var (uid, profile))
         // Moff end
         {
