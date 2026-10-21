@@ -1,8 +1,11 @@
 using Content.Shared.Audio;
+using Content.Shared.EntityTable;
 using Content.Shared.Destructible;
 using Content.Shared.Examine;
 using Content.Shared.Explosion.EntitySystems;
 using Content.Shared.NameModifier.EntitySystems;
+using Content.Shared._Moffstation.Delivery;
+using Content.Shared.Coordinates;
 using JetBrains.Annotations;
 using Robust.Shared.Network;
 using Robust.Shared.Random;
@@ -23,6 +26,8 @@ public sealed partial class DeliveryModifierSystem : EntitySystem
     [Dependency] private SharedDeliverySystem _delivery = default!;
     [Dependency] private SharedExplosionSystem _explosion = default!;
     [Dependency] private SharedAmbientSoundSystem _ambientSound = default!;
+
+    [Dependency] private EntityTableSystem _entityTable = default!; // Moff - Entity table integration
 
     public override void Initialize()
     {
@@ -203,6 +208,51 @@ public sealed partial class DeliveryModifierSystem : EntitySystem
         _ambientSound.SetAmbience(ent, true);
     }
     #endregion
+
+    // Moff Start - Delivery entity table spawn for new mail prototypes
+    #region MoffEntityTableSpawn
+
+    [SubscribeLocalEvent]
+    private void OnEntityTableSpawnDelivered(Entity<DeliveryEntityTableSpawnComponent> ent, ref DeliveryUnlockedEvent args)
+    {
+
+        DeliveryEntityTableSpawn(ent);
+    }
+
+    [SubscribeLocalEvent]
+    private void OnEntityTableSpawnExpire(Entity<DeliveryEntityTableSpawnComponent> ent, ref DeliveryPriorityExpiredEvent args)
+    {
+        if (!ent.Comp.PrimeOnExpire)
+            return;
+
+        DeliveryEntityTableSpawn(ent);
+    }
+
+    [SubscribeLocalEvent]
+    private void OnEntityTableSpawnBreak(Entity<DeliveryEntityTableSpawnComponent> ent, ref BreakageEventArgs args)
+    {
+        if (!ent.Comp.PrimeOnBreakage)
+            return;
+
+        DeliveryEntityTableSpawn(ent);
+    }
+
+    [PublicAPI]
+    public void DeliveryEntityTableSpawn(Entity<DeliveryEntityTableSpawnComponent> ent)
+    {
+
+        foreach (var proto in _entityTable.GetSpawns(ent.Comp.TableSpawn))
+        {
+            Spawn(proto, ent.Owner.ToCoordinates());
+        }
+
+        if (ent.Comp.DeleteAfterSpawn)
+        {
+            QueueDel(ent);
+        }
+    }
+    #endregion
+    // Moff End
 
     #region Update Loops
     public override void Update(float frameTime)

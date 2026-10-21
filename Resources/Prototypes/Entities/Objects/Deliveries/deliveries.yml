@@ -83,10 +83,10 @@
     #- state: bomb
     #  map: [ "enum.DeliveryVisualLayers.Bomb" ]
     #  visible: false
-    #- state: bomb_unshaded
-    #  map: [ "enum.DeliveryVisualLayers.BombPrimed" ]
-    #  shader: unshaded
-    #  visible: false
+    - state: bomb_triggered
+      map: [ "enum.DeliveryVisualLayers.BombPrimed" ]
+      shader: unshaded
+      visible: false
     # Moffstation - End
     - state: trash
       map: [ "enum.DeliveryVisualLayers.Trash" ]
@@ -142,10 +142,11 @@
     #- state: bomb
     #  map: [ "enum.DeliveryVisualLayers.Bomb" ]
     #  visible: false
-    #- state: bomb_unshaded
-    #  map: [ "enum.DeliveryVisualLayers.BombPrimed" ]
-    #  shader: unshaded
-    #  visible: false
+    - state: bomb_triggered
+      sprite: _Moffstation/Objects/Specific/Cargo/mail.rsi
+      map: [ "enum.DeliveryVisualLayers.BombPrimed" ]
+      shader: unshaded
+      visible: false
     # Moffstation - End
   - type: Item
     storedRotation: 90
@@ -171,6 +172,10 @@
       prob: 0.25
     - id: DeliveryModifierBomb
       prob: 0.02 # Should happen maybe once or twice per game.
+    # Moff Start - Secret anomaly mail
+    - id: MoffDeliveryModifierAnomaly
+      prob: 0.02
+    # Moff End
 
 - type: entity
   id: DeliveryModifierPriority
