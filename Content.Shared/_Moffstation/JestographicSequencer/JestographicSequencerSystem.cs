@@ -44,6 +44,7 @@ public sealed partial class JestographicSequencerSystem : EntitySystem
     [Dependency] private EntityWhitelistSystem _whitelist = default!;
     [Dependency] private MovementSpeedModifierSystem _speed = default!;
     [Dependency] private UseDelaySystem _useDelay = default!;
+    [Dependency] private JestographicOozeSystem _ooze = default!;
 
     public override void Initialize()
     {
@@ -110,6 +111,26 @@ public sealed partial class JestographicSequencerSystem : EntitySystem
         if (reader == null || readerEnt == null)
             return;
 
+        //Using the sequencer on an oozy device undoes the swap and strips the ooze.
+        if (TryComp<JestographicOozeComponent>(target, out var ooze))
+        {
+            _ooze.Revert((target, ooze), args.User);
+            _charges.TryUseCharge(ent.Owner);
+            _audio.PlayPredicted(ent.Comp.ReverseSound, target, args.User);
+            _popup.PopupEntity(
+                Loc.GetString("jestographic-sequencer-success", ("target", Identity.Entity(target, EntityManager))),
+                args.User,
+                args.User,
+                PopupType.Medium);
+
+            _adminLogger.Add(LogType.Emag,
+                LogImpact.High,
+                $"{ToPrettyString(args.User):player} restored the accesses on {ToPrettyString(target):target} using {ToPrettyString(ent):used}");
+
+            args.Handled = true;
+            return;
+        }
+
         //Empty access lists allow everyone, so can't be reversed. Door is bolted instead.
         if (reader.AccessLists.Count == 0 && reader.DenyTags.Count == 0)
         {
@@ -126,8 +147,14 @@ public sealed partial class JestographicSequencerSystem : EntitySystem
             _charges.TryUseCharge(ent.Owner);
 
             //Bolting also cuts the AI off from the door.
+            var aiDisabled = false;
             if (TryComp<StationAiWhitelistComponent>(target, out var aiWhitelist))
+            {
+                aiDisabled = aiWhitelist.Enabled;
                 _stationAi.SetWhitelistEnabled((target, aiWhitelist), false, announce: true);
+            }
+
+            _ooze.Coat(target, null, bolted: true, aiDisabled: aiDisabled);
 
             _audio.PlayPredicted(ent.Comp.ReverseSound, target, args.User);
             _popup.PopupEntity(
@@ -144,27 +171,14 @@ public sealed partial class JestographicSequencerSystem : EntitySystem
             return;
         }
 
-        //A door swapped with the every-access-level fallback below is restored instead of swapped again.
-        var restoring = IsFallbackSwap(reader);
-
         //Everything that used to grant access now denies it
-        HashSet<ProtoId<AccessLevelPrototype>> newDenyTags = restoring
-            ? new()
-            : reader.AccessLists.SelectMany(x => x).ToHashSet();
+        var newDenyTags = reader.AccessLists.SelectMany(x => x).ToHashSet();
 
         //Everything that used to deny access now grants it.
         var newAccessLists = new List<HashSet<ProtoId<AccessLevelPrototype>>>();
         foreach (var denyTag in reader.DenyTags)
         {
             newAccessLists.Add([denyTag]);
-        }
-
-        //The saved original keeps grouped requirements (e.g. needing two accesses at once) intact.
-        if (restoring
-            && reader.AccessListsOriginal is { } original
-            && original.SelectMany(x => x).ToHashSet().SetEquals(reader.DenyTags))
-        {
-            newAccessLists = original.Select(x => x.ToHashSet()).ToList();
         }
 
         //Cause this was a pain to figure out, when swapping, the access list becoming empty and the deny list filling would let people in with no or blank IDs, defeating the purpose of the item 
@@ -179,6 +193,7 @@ public sealed partial class JestographicSequencerSystem : EntitySystem
             }
         }
 
+        _ooze.Coat(target, reader);
         _accessReader.SetDenyTags(readerEnt.Value, newDenyTags);
         _accessReader.TrySetAccesses(readerEnt.Value, newAccessLists);
 
@@ -196,21 +211,6 @@ public sealed partial class JestographicSequencerSystem : EntitySystem
             $"{ToPrettyString(args.User):player} reversed the accesses on {ToPrettyString(target):target} using {ToPrettyString(ent):used}");
 
         args.Handled = true;
-    }
-
-    //True if the reader's access lists are exactly one entry per access level, which is what a swap leaves on a door with no deny tags.
-    //Checks that there is a deny tag, access list entries have exactly one level, no dupes or extras.
-    private bool IsFallbackSwap(AccessReaderComponent reader)
-    {
-        if (reader.DenyTags.Count == 0 || reader.AccessLists.Any(list => list.Count != 1))
-            return false;
-
-        var levels = _prototype.EnumeratePrototypes<AccessLevelPrototype>()
-            .Select(level => new ProtoId<AccessLevelPrototype>(level.ID))
-            .ToHashSet();
-
-        return reader.AccessLists.Count == levels.Count
-               && reader.AccessLists.Select(list => list.First()).ToHashSet().SetEquals(levels);
     }
 
     /// <summary>

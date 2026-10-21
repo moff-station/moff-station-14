@@ -2,7 +2,7 @@
   parent: BaseItem
   id: JestographicSequencer
   name: jestographic sequencer
-  description: The all in one clown hacking solution. Reverses access on things it touches.
+  description: The all in one clown hacking solution. Honk!
   components:
   - type: JestographicSequencer
   - type: Sprite #TODO Placeholder art, reuses the emag sprite.
@@ -15,5 +15,28 @@
     maxCharges: 3
   - type: AutoRecharge
     rechargeDuration: 89
+  - type: Slippery
+  - type: StepTrigger
+    intersectRatio: 0.2
+  - type: CollisionWake
+    enabled: false
+  - type: Physics
+    bodyType: Dynamic
+  - type: Fixtures
+    fixtures:
+      slips:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.4,-0.3,0.4,0.3"
+        layer:
+        - SlipLayer
+        hard: false
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.4,-0.3,0.4,0.3"
+        density: 10
+        mask:
+        - ItemMask
   - type: StaticPrice
     price: 1500

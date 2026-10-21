@@ -42,47 +42,40 @@ public sealed partial class JestographicRecyclerSystem : EntitySystem
         if (!HasComp<MobStateComponent>(victim) || !HasComp<InventoryComponent>(victim))
             return;
 
-        var dressed = false;
+        _audio.PlayPvs(ent.Comp.Sound, victim);
+
         foreach (var (slot, proto) in ent.Comp.Outfit)
         {
-            dressed |= Dress(victim, slot, proto);
+            Dress(victim, slot, proto);
         }
 
-        if (!dressed)
-            return;
-
         _stun.TryUpdateParalyzeDuration(victim, ent.Comp.StunDuration);
-        _audio.PlayPvs(ent.Comp.Sound, victim);
     }
 
     /// <summary>
-    /// Returns true if the slot was changed.
+    /// Equips the outfit and drops any item it replaces on the ground.
     /// </summary>
-    private bool Dress(EntityUid victim, string slot, EntProtoId proto)
+    private void Dress(EntityUid victim, string slot, EntProtoId proto)
     {
         if (!_inventory.TryGetSlotContainer(victim, slot, out var container, out _))
-            return false;
+            return;
 
         if (container.ContainedEntity is { } old)
         {
             // Already wearing it from an earlier pass.
-            if (Prototype(old)?.ID == proto.Id && HasComp<UnremoveableComponent>(old))
-                return false;
+            if (Prototype(old)?.ID == proto.Id)
+                return;
 
             // Removed directly rather than unequipped, so items in dependent slots (pockets, ID) aren't dropped with it.
             if (!_container.Remove(old, container, force: true))
-                return false;
+                return;
 
             // Their old clothes are left on the floor.
             _transform.DropNextTo(old, victim);
         }
 
         var item = Spawn(proto, Transform(victim).Coordinates);
-        EnsureComp<UnremoveableComponent>(item);
-        if (_inventory.TryEquip(victim, item, slot, silent: true, force: true))
-            return true;
-
-        Del(item);
-        return false;
+        if (!_inventory.TryEquip(victim, item, slot, silent: true, force: true))
+            Del(item);
     }
 }
