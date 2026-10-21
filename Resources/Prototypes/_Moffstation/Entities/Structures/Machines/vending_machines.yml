@@ -5,12 +5,12 @@
   description: A vending machine for swimsuits.
   components:
   - type: VendingMachine
-    pack: SwimvendInventory
+    pack: MoffSwimvendInventory
     initialStockQuality: 0.80
   - type: DatasetVocalizer
-    dataset: SwimVendAds
+    dataset: MoffSwimVendAds
   - type: SpeakOnUIClosed
-    pack: SwimVendGoodbyes
+    pack: MoffSwimVendGoodbyes
   - type: Sprite
     sprite: _Moffstation/Structures/Machines/VendingMachines/swimsuits.rsi
     layers:
@@ -33,12 +33,12 @@
   description: A vending machine for all things Nanotrasen! Glory to Nanotrasen!
   components:
   - type: VendingMachine
-    pack: NanovendInventory
+    pack: MoffNanovendInventory
     initialStockQuality: 0.95
   - type: DatasetVocalizer
-    dataset: NanoVendAds
+    dataset: MoffNanoVendAds
   - type: SpeakOnUIClosed
-    pack: NanoVendGoodbyes
+    pack: MoffNanoVendGoodbyes
   - type: Sprite
     sprite: _Moffstation/Structures/Machines/VendingMachines/nanovend.rsi
     layers:
