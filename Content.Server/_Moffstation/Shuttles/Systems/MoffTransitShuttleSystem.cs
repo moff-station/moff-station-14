@@ -1,15 +1,17 @@
+using System.Linq;
 using System.Numerics;
 using Content.Server._Moffstation.Shuttles.Components;
 using Content.Server._Moffstation.Spawners;
 using Content.Server.Communications;
 using Content.Server.DeviceNetwork.Systems;
+using Content.Server.GameTicking;
 using Content.Server.Screens.Components;
 using Content.Server.Shuttles.Components;
 using Content.Server.Shuttles.Events;
 using Content.Server.Shuttles.Systems;
 using Content.Shared._Moffstation.CCVar;
+using Content.Shared._Moffstation.Extensions;
 using Content.Shared.CCVar;
-using Content.Shared.DeviceNetwork.Components;
 using Content.Shared.GameTicking.Events;
 using Content.Shared.Mind;
 using Content.Shared.Mobs.Components;
@@ -34,6 +36,7 @@ public sealed partial class MoffTransitShuttleSystem : EntitySystem
     [Dependency] private IGameTiming _timing = default!;
     [Dependency] private ServerArrivalsSystem _arrivals = default!;
     [Dependency] private DeviceNetworkSystem _deviceNetwork = default!;
+    [Dependency] private ServerGameTicker _ticker = default!;
     [Dependency] private SharedBatterySystem _battery = default!;
     [Dependency] private SharedMapSystem _map = default!;
     [Dependency] private SharedTransformSystem _transform = default!;
@@ -41,6 +44,7 @@ public sealed partial class MoffTransitShuttleSystem : EntitySystem
     [Dependency] private StationSystem _station = default!;
 
     [Dependency] private EntityQuery<MoffTransitShuttleComponent> _evacArrivalsQuery;
+    [Dependency] private EntityQuery<FTLComponent> _ftlQuery;
     [Dependency] private EntityQuery<MobStateComponent> _mobStateQuery;
     [Dependency] private EntityQuery<ShuttleComponent> _shuttleQuery;
     [Dependency] private EntityQuery<StationCentcommComponent> _centcommQuery;
@@ -57,7 +61,7 @@ public sealed partial class MoffTransitShuttleSystem : EntitySystem
             if (ent.Comp1.DepartTime is not { } depart || depart > _timing.CurTime)
                 continue;
 
-            if (HasComp<FTLComponent>(ent))
+            if (_ftlQuery.HasComp(ent))
                 continue;
 
             ent.Comp1.State = TransitShuttleState.Returning;
@@ -82,24 +86,23 @@ public sealed partial class MoffTransitShuttleSystem : EntitySystem
 
         foreach (var station in EntityQueryEnumerator<StationEmergencyShuttleComponent>())
         {
-            if (station.Comp.EmergencyShuttle is not { } shuttle ||
-                !_shuttleQuery.TryComp(shuttle, out var shuttleComp) ||
+            if (_shuttleQuery.ResolveOrNull(station.Comp.EmergencyShuttle, logMissing: false) is not { } shuttle ||
                 _station.GetLargestGrid(station.Owner) is not { } target)
                 continue;
 
             var arrival = EnsureComp<MoffTransitShuttleComponent>(shuttle);
             arrival.Station = station;
-            shuttleComp.FTLCooldownOverride = TimeSpan.Zero;
+            shuttle.Comp.FTLCooldownOverride = TimeSpan.Zero;
 
             _shuttle.FTLToDock(shuttle,
-                shuttleComp,
+                shuttle.Comp,
                 target,
                 startupTime: 0f,
                 hyperspaceTime: _cfg.GetCVar(MoffCCVars.TransitArrivalFTLTime),
                 priorityTag: DockTag);
 
             // So people don't get knocked on their ass when they spawn
-            if (TryComp<FTLComponent>(shuttle, out var ftl))
+            if (_ftlQuery.TryComp(shuttle, out var ftl))
                 ftl.KnockdownOnStart = false;
         }
     }
@@ -110,12 +113,11 @@ public sealed partial class MoffTransitShuttleSystem : EntitySystem
         if (args.Cancelled)
             return;
 
-        foreach (var _ in EntityQueryEnumerator<MoffTransitShuttleComponent>())
-        {
-            args.Cancelled = true;
-            args.Reason = Loc.GetString(CallBlockedReason);
+        if (!EntityQuery<MoffTransitShuttleComponent>().Any())
             return;
-        }
+
+        args.Cancelled = true;
+        args.Reason = Loc.GetString(CallBlockedReason);
     }
 
     [SubscribeLocalEvent]
@@ -128,7 +130,7 @@ public sealed partial class MoffTransitShuttleSystem : EntitySystem
     }
 
     [SubscribeLocalEvent]
-    private void OnEvacDepartureCheck(Entity<MoffTransitShuttleComponent> ent, ref EvacShuttleDepartureCheckEvent args)
+    private static void OnEvacDepartureCheck(Entity<MoffTransitShuttleComponent> ent, ref EvacShuttleDepartureCheckEvent args)
     {
         args.Cancelled = true;
     }
@@ -140,7 +142,7 @@ public sealed partial class MoffTransitShuttleSystem : EntitySystem
         {
             case TransitShuttleState.InTransit:
 
-                if (!TryComp<FTLComponent>(ent, out var ftl))
+                if (!_ftlQuery.TryComp(ent, out var ftl))
                     break;
 
                 ftl.KnockdownOnStart = true;
@@ -155,12 +157,13 @@ public sealed partial class MoffTransitShuttleSystem : EntitySystem
                     OverrideText = ShuttleTimerMasks.ETA,
                 };
 
-                if (TryComp<DeviceNetworkComponent>(ent.Owner, out var net))
-                    _deviceNetwork.SendPacket(ent.Owner, null, ref payload, net.TransmitFrequency);
+                _deviceNetwork.SendPacket(ent.Owner, null, ref payload);
                 break;
             case TransitShuttleState.Returning:
                 SendCrewToStation(ent);
                 _arrivals.DumpChildren(ent, ref args);
+                break;
+            default:
                 break;
         }
     }
@@ -175,6 +178,7 @@ public sealed partial class MoffTransitShuttleSystem : EntitySystem
                 ent.Comp.State = TransitShuttleState.Docked;
                 ent.Comp.DepartTime = _timing.CurTime + dockTime;
                 RefillStationBatteries(ent.Comp.Station);
+                _ticker.AnnounceRound();
 
                 var payload = new ScreenShuttlePayload
                 {
@@ -185,12 +189,13 @@ public sealed partial class MoffTransitShuttleSystem : EntitySystem
                     Docked = true,
                     OverrideText = ShuttleTimerMasks.ETD,
                 };
-                if (TryComp<DeviceNetworkComponent>(ent.Owner, out var net))
-                    _deviceNetwork.SendPacket(ent.Owner, null, ref payload, net.TransmitFrequency);
+                _deviceNetwork.SendPacket(ent.Owner, null, ref payload);
                 break;
             case TransitShuttleState.Returning:
                 if (_shuttleQuery.HasComp(ent))
                     RemCompDeferred<MoffTransitShuttleComponent>(ent);
+                break;
+            default:
                 break;
         }
     }

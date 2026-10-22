@@ -293,9 +293,10 @@ public sealed partial class EmergencyShuttleSystem : SharedEmergencyShuttleSyste
             };
         }
 
-        // Moff - Evac arrivals
+        // Moff start - Evac arrivals
         // We have to undock manually otherwise it can get stuck
         _dock.UndockDocks(stationShuttle.EmergencyShuttle.Value);
+        // Moff end
 
         ShuttleDockResultType resultType;
         if (_shuttle.TryFTLDock(stationShuttle.EmergencyShuttle.Value, shuttle, targetGrid.Value, out var config, DockTag))
