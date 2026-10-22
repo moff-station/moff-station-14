@@ -8764,6 +8764,18 @@ Entries:
   id: 2028
   time: '2026-10-15T20:59:20.000'
   url: https://github.com/moff-station/moff-station-14/pull/2028
+- author: Centronias
+  changes:
+  - message: Round start antag selection will now spawn a player who has been selected
+      to be an antag as any one of their active character profiles with that antag
+      enabled, rather than always spawning the active profile.
+    type: fix
+  - message: Ghost role antag spawning will no longer spawn you with the wrong loadout
+      when selecting a character to spawn as in a ghost role enrollment raffle.
+    type: fix
+  id: 2030
+  time: '2026-10-22T01:36:52.000'
+  url: https://github.com/moff-station/moff-station-14/pull/2030
 - author: nithead10
   changes:
   - message: Geras traits work again
