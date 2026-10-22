@@ -597,6 +597,8 @@
         volume: -6
     Salute:
       collection: Salutes
+    Knuckles: # Monke
+      collection: Knuckles # Monke
 
 - type: emoteSounds
   id: DionaBodyEmotes
@@ -614,6 +616,11 @@
       path: /Audio/Voice/Diona/diona_salute.ogg
       params:
        volume: -5
+    Knuckles: # Monke
+      path: /Audio/Voice/Diona/diona_salute.ogg
+      params:
+       volume: -6
+
 
 - type: emoteSounds
   id: ReptilianBodyEmotes
@@ -632,6 +639,8 @@
         volume: -6
     Salute:
       collection: Salutes
+    Knuckles: # Monke
+      collection: Knuckles # Monke
 
 - type: emoteSounds
   id: MothBodyEmotes
@@ -648,6 +657,8 @@
         volume: -6
     Salute:
       collection: Salutes
+    Knuckles: # Monke
+      collection: Knuckles # Monke
 
 # mobs
 - type: emoteSounds
@@ -780,3 +791,5 @@
       collection: MaleGasp
     DefaultDeathgasp:
       collection: WawaDeath
+    Knuckles: # Monke
+      collection: Knuckles # Monke

@@ -7889,6 +7889,13 @@ Entries:
   url: https://github.com/moff-station/moff-station-14/pull/1821
 - author: Wintoli
   changes:
+  - message: Makeshift handcuffs are harder to break out of!
+    type: tweak
+  id: 1824
+  time: '2026-10-20T23:13:33.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1824
+- author: Wintoli
+  changes:
   - message: A smoke implanter has been added to the Syndicate store and Thief loadout!
     type: add
   id: 1825
@@ -8696,6 +8703,15 @@ Entries:
   id: 2010
   time: '2026-10-10T17:52:51.000'
   url: https://github.com/moff-station/moff-station-14/pull/2010
+- author: Mixelz
+  changes:
+  - message: Added a new NT Themed Vending Machine. Glory to Nanotrasen!
+    type: add
+  - message: Updated Swimvend barks to be more thematic! Surfs up!
+    type: tweak
+  id: 2012
+  time: '2026-10-21T22:46:16.000'
+  url: https://github.com/moff-station/moff-station-14/pull/2012
 - author: Centronias
   changes:
   - message: Integrated hardsuit helmets no longer soak up reagents to become stained.
@@ -8748,6 +8764,18 @@ Entries:
   id: 2028
   time: '2026-10-15T20:59:20.000'
   url: https://github.com/moff-station/moff-station-14/pull/2028
+- author: Centronias
+  changes:
+  - message: Round start antag selection will now spawn a player who has been selected
+      to be an antag as any one of their active character profiles with that antag
+      enabled, rather than always spawning the active profile.
+    type: fix
+  - message: Ghost role antag spawning will no longer spawn you with the wrong loadout
+      when selecting a character to spawn as in a ghost role enrollment raffle.
+    type: fix
+  id: 2030
+  time: '2026-10-22T01:36:52.000'
+  url: https://github.com/moff-station/moff-station-14/pull/2030
 - author: nithead10
   changes:
   - message: Geras traits work again
@@ -8802,6 +8830,13 @@ Entries:
   url: https://github.com/moff-station/moff-station-14/pull/2044
 - author: Nyxilath
   changes:
+  - message: Bombmail now flashes while ticking.
+    type: tweak
+  id: 2045
+  time: '2026-10-20T17:12:28.000'
+  url: https://github.com/moff-station/moff-station-14/pull/2045
+- author: Nyxilath
+  changes:
   - message: Anomalies have infected the mail system. Beware.
     type: add
   id: 2047
@@ -8814,6 +8849,21 @@ Entries:
   id: 2050
   time: '2026-10-19T00:39:13.000'
   url: https://github.com/moff-station/moff-station-14/pull/2050
+- author: DrWhoFan13
+  changes:
+  - message: Knuckle cracking now has sound to go with it! Feel free to threaten at
+      your leisure!
+    type: add
+  id: 2052
+  time: '2026-10-20T22:51:34.000'
+  url: https://github.com/moff-station/moff-station-14/pull/2052
+- author: compilatron
+  changes:
+  - message: Intern loadout is now not even paid for this shit
+    type: tweak
+  id: 2053
+  time: '2026-10-20T16:50:57.000'
+  url: https://github.com/moff-station/moff-station-14/pull/2053
 - author: Centronias
   changes:
   - message: Added Ashley Williams's personal item.
@@ -8821,5 +8871,34 @@ Entries:
   id: 2056
   time: '2026-10-19T23:15:20.000'
   url: https://github.com/moff-station/moff-station-14/pull/2056
+- author: Centronias, Nyxilath
+  changes:
+  - message: AI upload now contains randomized law boards for player selection.
+    type: tweak
+  - message: Law boards now have their names applied via label on spawn.
+    type: tweak
+  - message: AI law upload consoles now start with a crewismov law board by default.
+    type: add
+  - message: AI law upload consoles now require a board insertion to eject the previous
+      board.
+    type: tweak
+  - message: Xenoborg and Xenoborg Mothership law boards can now be printed from emagged
+      law matrix imprinters.
+    type: add
+  id: 2058
+  time: '2026-10-22T10:38:10.000'
+  url: https://github.com/moff-station/moff-station-14/pull/2058
+- author: StudMuffin
+  changes: []
+  id: 2064
+  time: '2026-10-21T19:08:05.000'
+  url: https://github.com/moff-station/moff-station-14/pull/2064
+- author: DrWhoFan13
+  changes:
+  - message: Security has been given orders to confiscate the Rebar Crossbow
+    type: fix
+  id: 2065
+  time: '2026-10-22T06:11:58.000'
+  url: https://github.com/moff-station/moff-station-14/pull/2065
 Name: Mofflog
 Order: -2
