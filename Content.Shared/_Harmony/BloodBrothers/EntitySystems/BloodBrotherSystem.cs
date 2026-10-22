@@ -38,8 +38,7 @@ public abstract partial class BloodBrotherSystem : EntitySystem
         Entity<BloodBrotherConvertibleComponent> entity,
         ref ComponentGetStateAttemptEvent args)
     {
-        if (args.Player?.AttachedEntity is { } viewer)
-            args.Cancelled = !HasComp<InitialBloodBrotherComponent>(viewer);
+        args.Cancelled = !HasComp<InitialBloodBrotherComponent>(args.Player?.AttachedEntity);
     }
 
     private void OnInitialBloodBrotherShutdown(Entity<InitialBloodBrotherComponent> entity, ref ComponentShutdown args)

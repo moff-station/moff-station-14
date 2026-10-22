@@ -16,13 +16,11 @@ public sealed partial class ClientBloodBrotherSystem : BloodBrotherSystem
     [SubscribeLocalEvent]
     private void OnBloodBrotherGetIcons(Entity<BloodBrotherComponent> entity, ref GetStatusIconsEvent args)
     {
-        if (_playerManager.LocalSession?.AttachedEntity is { } playerEntity)
-        {
-            if (!HasComp<ShowAntagIconsComponent>(playerEntity) &&
-                entity.Owner != playerEntity &&
-                entity.Comp.Brother != playerEntity)
-                return;
-        }
+        if (_playerManager.LocalSession?.AttachedEntity is { } playerEntity &&
+            !HasComp<ShowAntagIconsComponent>(playerEntity) &&
+            entity.Owner != playerEntity &&
+            entity.Comp.Brother != playerEntity)
+            return;
 
         if (_prototypeManager.TryIndex(entity.Comp.BloodBrotherIcon, out var iconPrototype))
             args.StatusIcons.Add(iconPrototype);
@@ -31,7 +29,7 @@ public sealed partial class ClientBloodBrotherSystem : BloodBrotherSystem
     [SubscribeLocalEvent]
     private void OnConvertibleGetIcons(Entity<BloodBrotherConvertibleComponent> entity, ref GetStatusIconsEvent args)
     {
-        if (_prototypeManager.TryIndex(entity.Comp.Icon, out var iconPrototype))
+        if (_prototypeManager.Resolve(entity.Comp.Icon, out var iconPrototype))
             args.StatusIcons.Add(iconPrototype);
     }
 }

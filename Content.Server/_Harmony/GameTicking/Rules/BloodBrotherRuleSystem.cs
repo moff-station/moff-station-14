@@ -4,6 +4,7 @@ using Content.Server._Harmony.BloodBrothers.EntitySystems;
 using Content.Server._Harmony.GameTicking.Rules.Components;
 using Content.Server._Harmony.Roles;
 using Content.Server._Moffstation.Station;
+using Content.Shared._Moffstation.Extensions;
 using Content.Server.Administration.Logs;
 using Content.Server.Antag;
 using Content.Server.GameTicking.Rules;
@@ -92,7 +93,7 @@ public sealed partial class BloodBrotherRuleSystem : GameRuleSystem<BloodBrother
         var anyCanConvert = false;
         foreach (var initial in EntityQueryEnumerator<InitialBloodBrotherComponent>())
         {
-            if (!CanConvert(initial.AsNullable(), null, out _))
+            if (!CanConvert(initial.AsNullable(), out _))
                 continue;
 
             anyCanConvert = true;
@@ -243,16 +244,14 @@ public sealed partial class BloodBrotherRuleSystem : GameRuleSystem<BloodBrother
         Dirty(args.Target, convertedComp);
     }
 
-    /// <summary>
-    /// Checks whether a blood bound is capable of converting someone.
-    /// Run against checks against the target as well, unless target is null
-    /// </summary>
+    /// Checks whether a blood bound is capable of converting anyone at all.
     public bool CanConvert(
         Entity<InitialBloodBrotherComponent?> entity,
-        EntityUid? target,
         [NotNullWhen(false)] out string? errorMessage)
     {
-        if (!Resolve(entity.Owner, ref entity.Comp) || !_mindSystem.TryGetMind(entity.Owner, out _, out var converterMind))
+        errorMessage = null;
+
+        if (!Resolve(entity.Owner, ref entity.Comp) || !_mindSystem.TryGetMind(entity.Owner, out _, out _))
         {
             errorMessage = FailedNoMind;
             return false;
@@ -265,17 +264,20 @@ public sealed partial class BloodBrotherRuleSystem : GameRuleSystem<BloodBrother
             return false;
         }
 
-        // If there's not a target, the rest of the checks aren't necessary
-        if (target is not { } targetUid)
-        {
-            errorMessage = null;
-            return true;
-        }
+        return true;
+    }
 
-        if (!CanBeConverted(targetUid, out errorMessage))
+    /// Checks whether a blood bound can convert a specific target.
+    public bool CanConvert(
+        Entity<InitialBloodBrotherComponent?> entity,
+        EntityUid target,
+        [NotNullWhen(false)] out string? errorMessage)
+    {
+        if (!CanConvert(entity, out errorMessage) || !CanBeConverted(target, out errorMessage))
             return false;
 
-        if (_mindSystem.TryGetMind(targetUid, out var targetMindId, out _)
+        if (_mindSystem.TryGetMind(entity.Owner, out _, out var converterMind)
+            && _mindSystem.TryGetMind(target, out var targetMindId, out _)
             && GetObjectiveTargets(converterMind).Contains(targetMindId))
         {
             errorMessage = FailedTarget;
@@ -285,9 +287,7 @@ public sealed partial class BloodBrotherRuleSystem : GameRuleSystem<BloodBrother
         return true;
     }
 
-    /// <summary>
     /// Checks whether a target can be converted to a blood bound.
-    /// </summary>
     private bool CanBeConverted(
         EntityUid target,
         [NotNullWhen(false)] out string? errorMessage)
@@ -325,7 +325,6 @@ public sealed partial class BloodBrotherRuleSystem : GameRuleSystem<BloodBrother
             return false;
         }
 
-        // Antags share the opted-out message so the converter can't tell them apart; keep these together
         if (ImmuneRoleTypes.Contains(targetMind.RoleType) || !HasAntagPreference(userId))
         {
             errorMessage = FailedPreference;
@@ -344,12 +343,8 @@ public sealed partial class BloodBrotherRuleSystem : GameRuleSystem<BloodBrother
         return profile != null && profile.AntagPreferences.Contains(RequiredAntagPreference);
     }
 
-    private IEnumerable<EntityUid> GetObjectiveTargets(MindComponent mind)
-    {
-        foreach (var objective in mind.Objectives)
-        {
-            if (_targetObjectiveQuery.TryComp(objective, out var targetObjective) && targetObjective.Target is { } target)
-                yield return target;
-        }
-    }
+    private IEnumerable<EntityUid> GetObjectiveTargets(MindComponent mind) => _targetObjectiveQuery
+        .ResolveAll(mind.Objectives, logMissing: false)
+        .Select(it => it.Comp.Target)
+        .OfType<EntityUid>();
 }
