@@ -8871,6 +8871,23 @@ Entries:
   id: 2056
   time: '2026-10-19T23:15:20.000'
   url: https://github.com/moff-station/moff-station-14/pull/2056
+- author: Centronias, Nyxilath
+  changes:
+  - message: AI upload now contains randomized law boards for player selection.
+    type: tweak
+  - message: Law boards now have their names applied via label on spawn.
+    type: tweak
+  - message: AI law upload consoles now start with a crewismov law board by default.
+    type: add
+  - message: AI law upload consoles now require a board insertion to eject the previous
+      board.
+    type: tweak
+  - message: Xenoborg and Xenoborg Mothership law boards can now be printed from emagged
+      law matrix imprinters.
+    type: add
+  id: 2058
+  time: '2026-10-22T10:38:10.000'
+  url: https://github.com/moff-station/moff-station-14/pull/2058
 - author: StudMuffin
   changes: []
   id: 2064
