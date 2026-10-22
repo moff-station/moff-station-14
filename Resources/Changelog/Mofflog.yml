@@ -8809,6 +8809,14 @@ Entries:
   url: https://github.com/moff-station/moff-station-14/pull/2038
 - author: DuckManZach
   changes:
+  - message: Fixed quantum corpses spawning as maints loot, they should be regular
+      corpses now.
+    type: tweak
+  id: 2039
+  time: '2026-10-22T23:52:39.000'
+  url: https://github.com/moff-station/moff-station-14/pull/2039
+- author: DuckManZach
+  changes:
   - message: Pirates have been pulled from gamemode pool (for now).
     type: remove
   id: 2041
