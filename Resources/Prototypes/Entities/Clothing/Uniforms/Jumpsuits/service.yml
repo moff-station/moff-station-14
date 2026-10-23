@@ -40,9 +40,9 @@
   description: It's a black jumpsuit, often worn by religious folk.
   components:
   - type: Sprite
-    sprite: Clothing/Uniforms/Jumpsuits/Service/chaplain.rsi
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/chaplain.rsi # Moffstation
   - type: Clothing
-    sprite: Clothing/Uniforms/Jumpsuits/Service/chaplain.rsi
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/chaplain.rsi # Moffstation
 
 - type: entity
   parent: ClothingUniformBase
