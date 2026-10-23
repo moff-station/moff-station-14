@@ -12,10 +12,12 @@ on:
         required: false
         default: false
         type: boolean
-      version:
-        description: Optional version tag to apply to the released commit and push (used as-is, e.g. 'v2026.08.0'); adds no tag when empty.
-        required: false
-        type: string
+      # Moff start - Version tagging isn't part of our release process
+      # version:
+      #   description: Optional version tag to apply to the released commit and push (used as-is, e.g. 'v2026.08.0'); adds no tag when empty.
+      #   required: false
+      #   type: string
+      # Moff end
   schedule:
   - cron: '0 10 * * *'
 
@@ -67,70 +69,72 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-    - name: Update changelog
-      run: |
-        dotnet tool install --global SpaceWizards.ChangelogTool --version 1.0.8
-        ss14-changelog update -d Resources/Changelog -s ${LAST_PUBLISH_SHA}
-      env:
-        REPO: ${{ github.repository }}
-        BRANCH: stable
-        CHANGELOG_REPO_PATH: Resources/Changelog
-        EXTRA_CATEGORIES: Admin,Maps,Rules
-        GITHUB_TOKEN: ${{ secrets.CL_ACCESS_TOKEN }}
-        LAST_PUBLISH_SHA: ${{ steps.last-publish.outputs.last_publish_sha }}
+    # Moff start - Upstream's changelog/release steps; we use changelog.yml and have no stable branch
+    # - name: Update changelog
+    #   run: |
+    #     dotnet tool install --global SpaceWizards.ChangelogTool --version 1.0.8
+    #     ss14-changelog update -d Resources/Changelog -s ${LAST_PUBLISH_SHA}
+    #   env:
+    #     REPO: ${{ github.repository }}
+    #     BRANCH: stable
+    #     CHANGELOG_REPO_PATH: Resources/Changelog
+    #     EXTRA_CATEGORIES: Admin,Maps,Rules
+    #     GITHUB_TOKEN: ${{ secrets.CL_ACCESS_TOKEN }}
+    #     LAST_PUBLISH_SHA: ${{ steps.last-publish.outputs.last_publish_sha }}
 
-    - name: Commit and push changelog changes
-      id: changelog
-      run: |
-        git config user.name "Space-Wizards-Bot"
-        git config user.email "bot@spacestation14.com"
-        if [ -n "$(git status --porcelain Resources/Changelog)" ]; then
-          git add Resources/Changelog
-          if [ "$DRY_RUN" = "true" ]; then
-            echo "DRY-RUN: staged files:"
-            git diff --cached --name-only | sed 's/^/DRY-RUN:   /'
-            if git commit -m "Update changelog"; then
-              git push --dry-run "https://x-access-token:${GH_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" "HEAD:${GITHUB_REF_NAME}" || true
-              # Roll back the throwaway commit. Required by following step dry-run mode.
-              git reset --soft HEAD~1
-            fi
-          else
-            git commit -m "Update changelog"
-            git remote set-url origin "https://x-access-token:${GH_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
-            git push origin "HEAD:${GITHUB_REF_NAME}"
-            echo "committed=true" >> "$GITHUB_OUTPUT"
-          fi
-        fi
-      env:
-        GH_TOKEN: ${{ secrets.CL_ACCESS_TOKEN }}
+    # - name: Commit and push changelog changes
+    #   id: changelog
+    #   run: |
+    #     git config user.name "Space-Wizards-Bot"
+    #     git config user.email "bot@spacestation14.com"
+    #     if [ -n "$(git status --porcelain Resources/Changelog)" ]; then
+    #       git add Resources/Changelog
+    #       if [ "$DRY_RUN" = "true" ]; then
+    #         echo "DRY-RUN: staged files:"
+    #         git diff --cached --name-only | sed 's/^/DRY-RUN:   /'
+    #         if git commit -m "Update changelog"; then
+    #           git push --dry-run "https://x-access-token:${GH_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" "HEAD:${GITHUB_REF_NAME}" || true
+    #           # Roll back the throwaway commit. Required by following step dry-run mode.
+    #           git reset --soft HEAD~1
+    #         fi
+    #       else
+    #         git commit -m "Update changelog"
+    #         git remote set-url origin "https://x-access-token:${GH_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
+    #         git push origin "HEAD:${GITHUB_REF_NAME}"
+    #         echo "committed=true" >> "$GITHUB_OUTPUT"
+    #       fi
+    #     fi
+    #   env:
+    #     GH_TOKEN: ${{ secrets.CL_ACCESS_TOKEN }}
 
-    - name: Tag version commit
-      if: ${{ github.event.inputs.version != '' }}
-      env:
-        GH_TOKEN: ${{ secrets.CL_ACCESS_TOKEN }}
-        VERSION_TAG: ${{ github.event.inputs.version }}
-      run: |
-        HEAD_SHA=$(git rev-parse HEAD)
-        if [ "$DRY_RUN" = "true" ]; then
-          echo "DRY-RUN: would create tag '${VERSION_TAG}' at ${HEAD_SHA} and push it."
-        else
-          git tag "${VERSION_TAG}"
-          git push "https://x-access-token:${GH_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" "refs/tags/${VERSION_TAG}"
-        fi
+    # - name: Tag version commit
+    #   if: ${{ github.event.inputs.version != '' }}
+    #   env:
+    #     GH_TOKEN: ${{ secrets.CL_ACCESS_TOKEN }}
+    #     VERSION_TAG: ${{ github.event.inputs.version }}
+    #   run: |
+    #     HEAD_SHA=$(git rev-parse HEAD)
+    #     if [ "$DRY_RUN" = "true" ]; then
+    #       echo "DRY-RUN: would create tag '${VERSION_TAG}' at ${HEAD_SHA} and push it."
+    #     else
+    #       git tag "${VERSION_TAG}"
+    #       git push "https://x-access-token:${GH_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" "refs/tags/${VERSION_TAG}"
+    #     fi
 
-    - name: Create PR from stable to master
-      env:
-        GH_TOKEN: ${{ secrets.CL_ACCESS_TOKEN }}
-      run: |
-        if [ -z "$(gh pr list --repo "$GITHUB_REPOSITORY" --head stable --base master --state open --json number --jq '.[].number')" ]; then
-          if [ "$DRY_RUN" = "true" ]; then
-            gh pr create --dry-run --repo "$GITHUB_REPOSITORY" --base master --head stable --title "Stable to master sync after release" --body "Sync from release to master." || echo "::warning::DRY-RUN: PR would not be created (see gh output above)."
-          else
-            gh pr create --repo "$GITHUB_REPOSITORY" --base master --head stable --title "Update changelog" --body "Sync from release to master."
-          fi
-        else
-          echo "Merge from stable to master PR already exist, skipping."
-        fi
+    # - name: Create PR from stable to master
+    #   env:
+    #     GH_TOKEN: ${{ secrets.CL_ACCESS_TOKEN }}
+    #   run: |
+    #     if [ -z "$(gh pr list --repo "$GITHUB_REPOSITORY" --head stable --base master --state open --json number --jq '.[].number')" ]; then
+    #       if [ "$DRY_RUN" = "true" ]; then
+    #         gh pr create --dry-run --repo "$GITHUB_REPOSITORY" --base master --head stable --title "Stable to master sync after release" --body "Sync from release to master." || echo "::warning::DRY-RUN: PR would not be created (see gh output above)."
+    #       else
+    #         gh pr create --repo "$GITHUB_REPOSITORY" --base master --head stable --title "Update changelog" --body "Sync from release to master."
+    #       fi
+    #     else
+    #       echo "Merge from stable to master PR already exist, skipping."
+    #     fi
+    # Moff end
 
     - name: Build Packaging
       run: dotnet build Content.Packaging --configuration Release --no-restore /m
