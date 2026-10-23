@@ -32,7 +32,7 @@
         !type:DamageTrigger
         damage: 4
       behaviors:
-      - !type:DoActsBehavior # maybe add a "twang" sound effect ?
+      - !type:DoActsBehavior
         acts: [ "Destruction" ]
       - !type:PlaySoundBehavior
         sound:
