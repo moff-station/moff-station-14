@@ -19,6 +19,25 @@
     ammoTable:
       id: BungeeWeb
     capacity: 1
+  - type: DamageOnActivation
+    damage:
+      types:
+        Blunt: 1
+  - type: Damageable
+  - type: Injurable
+    damageContainer: Inorganic
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 4
+      behaviors:
+      - !type:DoActsBehavior # maybe add a "twang" sound effect ?
+        acts: [ "Destruction" ]
+      - !type:PlaySoundBehavior
+        sound:
+          path: /Audio/Effects/snap.ogg
+
   - type: Sprite
     sprite: _Moffstation/Objects/Weapons/Guns/Launchers/bungeeweb.rsi
     state: base
