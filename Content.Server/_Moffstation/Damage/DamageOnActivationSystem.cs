@@ -1,5 +1,4 @@
 using Content.Shared._Moffstation.Damage.Components;
-using Content.Shared.Chat;
 using Content.Shared.Damage.Systems;
 using Content.Shared.Interaction;
 
