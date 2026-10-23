@@ -8764,6 +8764,18 @@ Entries:
   id: 2028
   time: '2026-10-15T20:59:20.000'
   url: https://github.com/moff-station/moff-station-14/pull/2028
+- author: Centronias
+  changes:
+  - message: Round start antag selection will now spawn a player who has been selected
+      to be an antag as any one of their active character profiles with that antag
+      enabled, rather than always spawning the active profile.
+    type: fix
+  - message: Ghost role antag spawning will no longer spawn you with the wrong loadout
+      when selecting a character to spawn as in a ghost role enrollment raffle.
+    type: fix
+  id: 2030
+  time: '2026-10-22T01:36:52.000'
+  url: https://github.com/moff-station/moff-station-14/pull/2030
 - author: nithead10
   changes:
   - message: Geras traits work again
@@ -8795,6 +8807,14 @@ Entries:
   id: 2038
   time: '2026-10-16T20:46:49.000'
   url: https://github.com/moff-station/moff-station-14/pull/2038
+- author: DuckManZach
+  changes:
+  - message: Fixed quantum corpses spawning as maints loot, they should be regular
+      corpses now.
+    type: tweak
+  id: 2039
+  time: '2026-10-22T23:52:39.000'
+  url: https://github.com/moff-station/moff-station-14/pull/2039
 - author: DuckManZach
   changes:
   - message: Pirates have been pulled from gamemode pool (for now).
@@ -8859,10 +8879,34 @@ Entries:
   id: 2056
   time: '2026-10-19T23:15:20.000'
   url: https://github.com/moff-station/moff-station-14/pull/2056
+- author: Centronias, Nyxilath
+  changes:
+  - message: AI upload now contains randomized law boards for player selection.
+    type: tweak
+  - message: Law boards now have their names applied via label on spawn.
+    type: tweak
+  - message: AI law upload consoles now start with a crewismov law board by default.
+    type: add
+  - message: AI law upload consoles now require a board insertion to eject the previous
+      board.
+    type: tweak
+  - message: Xenoborg and Xenoborg Mothership law boards can now be printed from emagged
+      law matrix imprinters.
+    type: add
+  id: 2058
+  time: '2026-10-22T10:38:10.000'
+  url: https://github.com/moff-station/moff-station-14/pull/2058
 - author: StudMuffin
   changes: []
   id: 2064
   time: '2026-10-21T19:08:05.000'
   url: https://github.com/moff-station/moff-station-14/pull/2064
+- author: DrWhoFan13
+  changes:
+  - message: Security has been given orders to confiscate the Rebar Crossbow
+    type: fix
+  id: 2065
+  time: '2026-10-22T06:11:58.000'
+  url: https://github.com/moff-station/moff-station-14/pull/2065
 Name: Mofflog
 Order: -2
