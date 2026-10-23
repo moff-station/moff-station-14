@@ -21,6 +21,7 @@ public sealed partial class ChitterProbeCartridgeSystem : EntitySystem
     [Dependency] private SharedDoAfterSystem _doAfter = default!;
     [Dependency] private SharedPopupSystem _popup = default!;
 
+    [Dependency] private EntityQuery<CartridgeLoaderComponent> _cartridgeLoaderQuery;
     [Dependency] private EntityQuery<ChitterServerComponent> _chitterServerQuery;
 
     [SubscribeLocalEvent]
@@ -71,10 +72,12 @@ public sealed partial class ChitterProbeCartridgeSystem : EntitySystem
         var serverName = Name(server);
         entity.Comp.ProbeData = new ChitterProbeData(
             serverName,
+            null, // Initialize the current chat to null because we're on a new server.
             _chitterServer.GetAllChats(server).Select(ChitterUiChatDetail.From).ToImmutableArray(),
             _chitterServer.GetAllAccounts(server).ToImmutableArray(),
             _timing.CurTime
         );
+        Dirty(entity);
 
         _audio.PlayPredicted(entity.Comp.ScanSound, used, args.Args.User);
         if (entity.Comp.ScanPopup is { } popup)
@@ -87,6 +90,18 @@ public sealed partial class ChitterProbeCartridgeSystem : EntitySystem
         }
 
         UpdateUi(entity, used);
+    }
+
+    [SubscribeLocalEvent]
+    private void OnMessage(Entity<ChitterProbeCartridgeComponent> entity, ref CartridgeMessageEvent a)
+    {
+        if (a is not ChitterProbeChatSelectedMessage args ||
+            entity.Comp.ProbeData is not { } data)
+            return;
+
+        entity.Comp.ProbeData = data with { SelectedChat = args.Chat };
+        Dirty(entity);
+        UpdateUi(entity, GetEntity(args.LoaderUid));
     }
 
     private void UpdateUi(Entity<ChitterProbeCartridgeComponent> entity, Entity<CartridgeLoaderComponent?> loader) =>

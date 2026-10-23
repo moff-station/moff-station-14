@@ -3,5 +3,5 @@
                       xmlns:controls="clr-namespace:Content.Client.UserInterface.Controls"
                       Title="{Loc 'chitter-log-title'}"
                       MinSize="750 480">
-    <logUi:ChitterLogContainer Name="LogContainer" Searchable="True" HorizontalExpand="True" VerticalExpand="True" />
+    <logUi:ChitterLogControl Name="LogControl" Searchable="True" HorizontalExpand="True" VerticalExpand="True" />
 </controls:FancyWindow>

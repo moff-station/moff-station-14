@@ -37,7 +37,7 @@ public sealed partial class IntrinsicChitterClientSystem : ChitterClientSystem<E
     [SubscribeLocalEvent]
     private void OnMapInit(Entity<IntrinsicChitterClientComponent> entity, ref MapInitEvent args)
     {
-        base.OnMapInit((entity, entity));
+        base.OnMapInit(entity);
     }
 
     [SubscribeLocalEvent]

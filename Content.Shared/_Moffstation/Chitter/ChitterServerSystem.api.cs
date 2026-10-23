@@ -6,6 +6,9 @@ using Robust.Shared.Prototypes;
 
 namespace Content.Shared._Moffstation.Chitter;
 
+/// This event is raised <b>without a target entity</b> whenever a change is made to any chitter server's state.
+/// This is used to update UIs that are not discoverable from the server system. UIs should handle this event and
+/// inspect the contents to determine if it is relevant, then update themselves accordingly.
 [ByRefEvent]
 public readonly record struct DirtyChitterEvent(EntityUid Server, ImmutableHashSet<ChitterAccountId> Recipients);
 

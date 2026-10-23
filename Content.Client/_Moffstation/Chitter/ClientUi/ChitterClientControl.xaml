@@ -24,18 +24,17 @@
                                       VerticalExpand="True" />
 
     <!-- Main UI -->
-    <BoxContainer Name="MainUi"
-                  Orientation="Vertical"
-                  HorizontalExpand="True"
-                  VerticalExpand="True">
+    <SplitContainer Name="MainUi"
+                    Orientation="Vertical"
+                    HorizontalExpand="True"
+                    VerticalExpand="True">
         <clientUi:ChitterUserControl Name="UserControl" HorizontalExpand="True" VerticalAlignment="Top" />
-        <controls:Separator Orientation="Horizontal" />
         <BoxContainer HorizontalExpand="True" VerticalExpand="True" Orientation="Horizontal">
             <clientUi:ChitterChatListingControl Name="ChatList" MinSize="150 0" MaxSize="150 9999"
                                                 VerticalExpand="True" />
             <controls:Separator Orientation="Vertical" />
             <clientUi:ChitterChatControl Name="CurrentChat" HorizontalExpand="True" VerticalExpand="True" />
         </BoxContainer>
-    </BoxContainer>
+    </SplitContainer>
 
 </clientUi:ChitterClientControl>

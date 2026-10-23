@@ -8,10 +8,18 @@ namespace Content.Client._Moffstation.Chitter.LogUi;
 [GenerateTypedNameReferences]
 public sealed partial class ChitterLogWindow : FancyWindow
 {
+    public event Action<ChitterChatId?>? OnChatSelected;
+
     public ChitterLogWindow()
     {
         RobustXamlLoader.Load(this);
+        LogControl.OnChatSelected += chat => OnChatSelected?.Invoke(chat);
     }
 
-    public void UpdateState(ChitterLogEuiState state) => LogContainer.Update(state.Chats, state.Accounts);
+    public void UpdateState(ChitterLogEuiState state) => LogControl.Update(
+        null,
+        state.SelectedChat,
+        state.Chats,
+        state.Accounts
+    );
 }

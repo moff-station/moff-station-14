@@ -22,7 +22,7 @@ public sealed partial class ChitterCartridgeSystem : ChitterClientSystem<
     [SubscribeLocalEvent]
     private void OnMapInit(Entity<ChitterCartridgeComponent> entity, ref MapInitEvent args)
     {
-        base.OnMapInit((entity, entity));
+        base.OnMapInit(entity);
     }
 
     [SubscribeLocalEvent]
@@ -86,8 +86,6 @@ public sealed partial class ChitterCartridgeSystem : ChitterClientSystem<
                 args.Inner.ThrowUnknownInheritor();
                 break;
         }
-
-        UpdateUi(entAndLoader);
     }
 
     /// <inheritdoc/>

@@ -1,0 +1,14 @@
+﻿<logUi:ChitterLogControl
+    xmlns="https://spacestation14.io"
+    xmlns:logUi="clr-namespace:Content.Client._Moffstation.Chitter.LogUi"
+    xmlns:controls="clr-namespace:Content.Client.UserInterface.Controls">
+
+    <BoxContainer Orientation="Vertical" HorizontalExpand="True" VerticalExpand="True">
+        <Label Name="HeaderLabel" Text="{Loc 'chitter-probe-last-scanned'}" Margin="5 0" />
+        <controls:Separator Orientation="Horizontal" />
+        <SplitContainer Orientation="Horizontal" HorizontalExpand="True" VerticalExpand="True">
+            <logUi:ChitterLogChatListing Name="ChatListing" HorizontalExpand="True" VerticalExpand="True" />
+            <logUi:ChitterLogMessagesContainer Name="Messages" HorizontalExpand="True" VerticalExpand="True" />
+        </SplitContainer>
+    </BoxContainer>
+</logUi:ChitterLogControl>

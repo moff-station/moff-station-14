@@ -74,7 +74,7 @@ public sealed partial class ChitterLogEuiSystem : EntitySystem
         }
     }
 
-    private ChitterLogEuiState GetState()
+    private ChitterLogEuiState GetState(ChitterChatId? selectedChat)
     {
         List<ChitterUiChatDetail> chats = [];
         List<ChitterAccount> accounts = [];
@@ -84,13 +84,24 @@ public sealed partial class ChitterLogEuiSystem : EntitySystem
             accounts.AddRange(_chitterServer.GetAllAccounts(server));
         }
 
-        return new ChitterLogEuiState(chats, accounts);
+        return new ChitterLogEuiState(selectedChat, chats, accounts);
     }
 }
 
 /// An admin-facing EUI for viewing chitter messages independently of any client.
-public sealed partial class ChitterLogEui(Func<ChitterLogEuiState> getState, Action onClose) : BaseEui
+public sealed partial class ChitterLogEui(Func<ChitterChatId?, ChitterLogEuiState> getState, Action onClose) : BaseEui
 {
-    public override EuiStateBase GetNewState() => getState();
+    public ChitterChatId? SelectedChat;
+
+    public override EuiStateBase GetNewState() => getState(SelectedChat);
     public override void Closed() => onClose();
+
+    public override void HandleMessage(EuiMessageBase msg)
+    {
+        if (msg is not ChitterLogEuiChatSelectedMessage message)
+            return;
+
+        SelectedChat = message.Chat;
+        StateDirty();
+    }
 }

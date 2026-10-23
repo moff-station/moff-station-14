@@ -1,5 +1,6 @@
 using Content.Client.UserInterface.Fragments;
 using Content.Shared._Moffstation.Chitter.Probe;
+using Content.Shared.CartridgeLoader;
 using JetBrains.Annotations;
 using Robust.Client.UserInterface;
 
@@ -12,8 +13,14 @@ public sealed partial class ChitterProbeUi : UIFragment
 
     public override Control GetUIFragmentRoot() => _fragment!;
 
-    public override void Setup(BoundUserInterface userInterface, EntityUid? fragmentOwner) =>
+    public override void Setup(BoundUserInterface userInterface, EntityUid? fragmentOwner)
+    {
         _fragment = new ChitterProbeView();
+        _fragment.OnChatSelected +=
+            chat => userInterface.SendPredictedMessage(
+                new CartridgeUiMessage(new ChitterProbeChatSelectedMessage(chat))
+            );
+    }
 
     public override void UpdateState(BoundUserInterfaceState state)
     {

@@ -2,8 +2,6 @@
 chitter-program-name = Chitter
 
 ## Chitter Client UI
-chitter-client-no-identity = No account found
-
 chitter-client-no-connection = No Chitter server selected
 chitter-client-connected-to = Connected to
 chitter-client-connect = Connect

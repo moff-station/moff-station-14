@@ -113,10 +113,6 @@ public abstract partial class ChitterClientSystem<T> : EntitySystem, ChitterClie
     [Dependency] private ChitterIdentitySystem _identity = default!;
     [Dependency] private ChitterServerSystem _server = default!;
 
-    // TODO CENT Out of scope: Basically any usage of _server should instead go through DeviceNet
-
-    [Dependency] private EntityQuery<ChitterServerComponent> _chitterServerQuery;
-
     /// The key for managing <see cref="UseDelaySystem">delays</see> when interacting with chitter servers.
     private const string DelayKey = "chitter-client-server-interaction";
 

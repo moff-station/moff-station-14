@@ -23,7 +23,7 @@ public abstract partial class ChitterClientSystem<T>
     /// Causes the given client to update its UI.
     protected void UpdateUi(T clientData) => UpdateUi(clientData, BuildUiState(clientData));
 
-    protected void OnMapInit(Entity<ChitterClientComponent> entity)
+    protected void OnMapInit<TComp>(Entity<TComp> entity) where TComp : ChitterClientComponent
     {
         _delay.SetLength(entity.Owner, entity.Comp.ServerInteractionDelay, id: DelayKey);
     }
@@ -42,6 +42,7 @@ public abstract partial class ChitterClientSystem<T>
         client.Comp.CurrentChat = _server.CreateChat(server, participants, args.ChatName);
         client.Comp.OpenSubwindow = null;
         Dirty(client);
+        UpdateUi(clientData);
     }
 
     protected void OnSelectChat(T clientData, ref ChitterMsg.ChangeSelectedChat args)
@@ -49,6 +50,7 @@ public abstract partial class ChitterClientSystem<T>
         var client = GetClient(clientData);
         client.Comp.CurrentChat = args.ChatId;
         Dirty(client);
+        UpdateUi(clientData);
     }
 
     protected void OnSendMessage(T clientData, ref ChitterMsg.SendMessage args)
@@ -60,6 +62,7 @@ public abstract partial class ChitterClientSystem<T>
             return;
 
         _server.AddMessage(server, chat.Id, account.Comp.AccountId, args.Content);
+        UpdateUi(clientData);
     }
 
     protected void OnSetProfilePicture(T clientData, ref ChitterMsg.SetOwnAvatar args)
@@ -71,6 +74,7 @@ public abstract partial class ChitterClientSystem<T>
         if (_client.GetConnectedServer(GetClient(clientData)) is not { } server)
             return;
         _server.SetProfilePicture(server, account.Comp, args.Proto);
+        UpdateUi(clientData);
     }
 
     protected void OnConnectToServer(T clientData, ref ChitterMsg.ChooseConnectedServer args)
@@ -82,6 +86,7 @@ public abstract partial class ChitterClientSystem<T>
             client.Comp.OpenSubwindow = null;
             Dirty(client);
         }
+        UpdateUi(clientData);
     }
 
     protected void OnGoToMainView(T clientData, ref ChitterMsg.GoToMainView args)
@@ -89,6 +94,7 @@ public abstract partial class ChitterClientSystem<T>
         var client = GetClient(clientData);
         client.Comp.OpenSubwindow = null;
         Dirty(client);
+        UpdateUi(clientData);
     }
 
     protected void OnViewSelf(T clientData, ref ChitterMsg.GoToSettings args)
@@ -96,6 +102,7 @@ public abstract partial class ChitterClientSystem<T>
         var client = GetClient(clientData);
         client.Comp.OpenSubwindow = ChitterSubwindow.Settings;
         Dirty(client);
+        UpdateUi(clientData);
     }
 
     protected void OnViewServers(T clientData, ref ChitterMsg.GoToServerSelection args)
@@ -103,6 +110,7 @@ public abstract partial class ChitterClientSystem<T>
         var client = GetClient(clientData);
         client.Comp.OpenSubwindow = ChitterSubwindow.ServerSelection;
         Dirty(client);
+        UpdateUi(clientData);
     }
 
     protected void OnStartNewChat(T clientData, ref ChitterMsg.GoToNewChat args)
@@ -110,5 +118,6 @@ public abstract partial class ChitterClientSystem<T>
         var client = GetClient(clientData);
         client.Comp.OpenSubwindow = ChitterSubwindow.NewChat;
         Dirty(client);
+        UpdateUi(clientData);
     }
 }

@@ -7,7 +7,7 @@
                                HorizontalAlignment="Left">
     <BoxContainer Name="SenderRow" Orientation="Horizontal" Margin="4 4 0 0" SeparationOverride="4">
         <TextureRect Name="AvatarTexture" SetSize="24 24" Margin="0 0 4 0" Visible="False" />
-        <Label Name="SenderLabel" Text="" FontColorOverride="#aaaaaa" VerticalAlignment="Center" />
+        <Label Name="SenderLabel" FontColorOverride="#aaaaaa" VerticalAlignment="Center" />
     </BoxContainer>
     <PanelContainer Name="BubbleBackground" MinWidth="80" Margin="0 2">
         <PanelContainer.PanelOverride>
@@ -17,8 +17,8 @@
                 BorderThickness="1" />
         </PanelContainer.PanelOverride>
         <BoxContainer Orientation="Vertical" Margin="8 4">
-            <Label Name="MessageLabel" Text="" FontColorOverride="#dddddd" />
-            <Label Name="TimestampLabel" Text="" FontColorOverride="#666666" />
+            <RichTextLabel Name="MessageLabel" MaxWidth="350" />
+            <Label Name="TimestampLabel" FontColorOverride="#666666" />
         </BoxContainer>
     </PanelContainer>
 </clientUi:ChitterMessageBubble>

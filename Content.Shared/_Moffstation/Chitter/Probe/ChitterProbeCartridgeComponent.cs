@@ -1,4 +1,5 @@
 using System.Collections.Immutable;
+using Content.Shared.CartridgeLoader;
 using Content.Shared.DoAfter;
 using Robust.Shared.Audio;
 using Robust.Shared.GameStates;
@@ -9,7 +10,7 @@ namespace Content.Shared._Moffstation.Chitter.Probe;
 
 /// This component makes its owner a Chitter Probe cart/program, which allows for the user to download
 /// <see cref="ChitterProbeData"/> from chitter servers.
-[RegisterComponent, NetworkedComponent, AutoGenerateComponentState]
+[RegisterComponent, NetworkedComponent, AutoGenerateComponentState, Access(typeof(ChitterProbeCartridgeSystem))]
 public sealed partial class ChitterProbeCartridgeComponent : Component
 {
     /// The most recently accessed data. Null if none has been downloaded yet.
@@ -26,7 +27,7 @@ public sealed partial class ChitterProbeCartridgeComponent : Component
 
     /// The popup to show when data is downloaded.
     [DataField, AutoNetworkedField]
-    public LocId? ScanPopup = "chitter-pi-scan-complete";
+    public LocId? ScanPopup = "chitter-probe-scan-complete";
 }
 
 /// <summary>
@@ -38,6 +39,7 @@ public sealed partial class ChitterProbeCartridgeComponent : Component
 [DataRecord, Serializable, NetSerializable]
 public partial record struct ChitterProbeData(
     string ServerName,
+    ChitterChatId? SelectedChat,
     ImmutableArray<ChitterUiChatDetail> Chats,
     ImmutableArray<ChitterAccount> Accounts,
     [field: DataField(customTypeSerializer: typeof(TimeOffsetSerializer))]
@@ -54,3 +56,10 @@ public sealed class ChitterProbeUiState(ChitterProbeData? data) : BoundUserInter
 /// The doafter event for <see cref="ChitterProbeCartridgeComponent"/>'s downloading.
 [Serializable, NetSerializable]
 public sealed partial class ChitterProbeScanDoAfterEvent : SimpleDoAfterEvent;
+
+/// This message is sent from the Chitter Probe BUI to the server to select a chat to view.
+[Serializable, NetSerializable]
+public sealed partial class ChitterProbeChatSelectedMessage(ChitterChatId? chat) : CartridgeMessageEvent
+{
+    public readonly ChitterChatId? Chat = chat;
+}

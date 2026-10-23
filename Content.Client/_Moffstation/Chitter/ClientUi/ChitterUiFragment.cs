@@ -7,11 +7,10 @@ using Robust.Shared.Utility;
 
 namespace Content.Client._Moffstation.Chitter.ClientUi;
 
-[UsedImplicitly] // References in YAML
+[UsedImplicitly] // Referenced in YAML
 public sealed partial class ChitterUiFragment : UIFragment
 {
     private ChitterClientControl? _inner;
-    private EntityUid? _owner;
 
     public override Control GetUIFragmentRoot()
     {
@@ -21,7 +20,6 @@ public sealed partial class ChitterUiFragment : UIFragment
 
     public override void Setup(BoundUserInterface userInterface, EntityUid? fragmentOwner)
     {
-        _owner = fragmentOwner;
         _inner = new ChitterClientControl();
         _inner.HandleEventsWithBuiMessages(
             msg => userInterface.SendPredictedMessage(new CartridgeUiMessage(new ChitterCartridgeMessageEvent(msg))),

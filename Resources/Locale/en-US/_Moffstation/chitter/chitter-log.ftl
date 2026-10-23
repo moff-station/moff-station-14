@@ -6,10 +6,6 @@ cmd-showchitterlog-desc = Opens the Chitter conversation log panel
 cmd-showchitterlog-help = Usage: showchitterlog
 
 chitter-log-title = Chitter Log
-chitter-log-chats-label = Conversations
-chitter-log-search-placeholder = Search by chat name or participant...
-chitter-log-select-chat = Select a conversation to view its messages
+chitter-log-search-placeholder = Search by chat name or participant
 chitter-log-no-chats = No Chitter conversations recorded
-chitter-log-no-messages = No messages in this conversation
-chitter-log-archived = Archived
-chitter-log-delivery-failed = delivery failed
+chitter-log-no-messages = No messages

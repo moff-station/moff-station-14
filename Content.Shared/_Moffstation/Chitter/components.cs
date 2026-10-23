@@ -29,7 +29,7 @@ public sealed partial class ChitterServerComponent : Component
     [DataField, AutoNetworkedField]
     public bool Discoverable = true;
 
-    [DataField, AutoNetworkedField]
+    [DataField]
     public EntityTableSelector? EmagEffects;
 
     // Runtime data below

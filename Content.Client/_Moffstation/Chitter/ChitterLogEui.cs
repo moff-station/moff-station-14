@@ -14,6 +14,7 @@ public sealed class ChitterLogEui : BaseEui
     public ChitterLogEui()
     {
         _window.OnClose += () => SendMessage(new CloseEuiMessage());
+        _window.OnChatSelected += chat => SendMessage(new ChitterLogEuiChatSelectedMessage(chat));
     }
 
     public override void Opened()
