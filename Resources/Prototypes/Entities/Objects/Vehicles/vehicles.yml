@@ -84,6 +84,10 @@
   id: VehicleWheelchairFolded
   suffix: folded
   components:
+  # Moffstation - Start
+  - type: Item
+    size: Large 
+  # Moffstation - End
   - type: Foldable
     folded: true
   - type: Strap
