@@ -4,7 +4,7 @@ using Robust.Shared.GameStates;
 namespace Content.Shared._Moffstation.GaussFabricator;
 
 [RegisterComponent, NetworkedComponent, AutoGenerateComponentState(true, fieldDeltas: true)]
-[Access(typeof(SharedGaussFabricatorSystem))]
+[Access(typeof(GaussFabricatorSystem))]
 public sealed partial class GaussFabricatorComponent : Component
 {
     [DataField, AutoNetworkedField]

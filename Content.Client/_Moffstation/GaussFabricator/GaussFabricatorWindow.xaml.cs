@@ -101,8 +101,6 @@ public sealed partial class GaussFabricatorWindow : FancyWindow
 
     private void PopulateButtons()
     {
-        AdjustmentButtons.Children.Clear();
-
         foreach (var increment in _increments)
         {
             var row = new BoxContainer

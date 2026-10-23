@@ -63,7 +63,7 @@
     priority: 2
   - type: GaussFabricator
   - type: SpawnOnBatteryFull
-    proto: MoffRefinedConductorIngot
+    proto: MoffGaussianHypermagnet
   - type: AccessReader
     access: [["Engineering"]]
   - type: ActivatableUIRequiresAccess
@@ -96,7 +96,7 @@
 
 - type: entity
   parent: BaseItem
-  id: MoffRefinedConductorIngot
+  id: MoffGaussianHypermagnet
   name: gaussian hypermagnet
   description: A strong and highly sought after magnet, made from an intense process of crystallizing ions in the atmosphere.
   components:

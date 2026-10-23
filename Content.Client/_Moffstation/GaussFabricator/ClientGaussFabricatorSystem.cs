@@ -3,9 +3,9 @@ using Content.Shared.Examine;
 
 namespace Content.Client._Moffstation.GaussFabricator;
 
-public sealed partial class GaussFabricatorSystem : SharedGaussFabricatorSystem
+public sealed partial class ClientGaussFabricatorSystem : GaussFabricatorSystem
 {
-    [Dependency] private SharedUserInterfaceSystem _uiSystem = default!;
+    [Dependency] private SharedUserInterfaceSystem _ui = default!;
 
     [SubscribeLocalEvent]
     private void OnAfterState(Entity<GaussFabricatorComponent> ent, ref AfterAutoHandleStateEvent args)
@@ -23,7 +23,7 @@ public sealed partial class GaussFabricatorSystem : SharedGaussFabricatorSystem
 
     protected override void UpdateUi(Entity<GaussFabricatorComponent> ent)
     {
-        if (_uiSystem.TryGetOpenUi(ent.Owner, GaussFabricatorUiKey.Key, out var bui))
+        if (_ui.TryGetOpenUi(ent.Owner, GaussFabricatorUiKey.Key, out var bui))
             bui.Update();
     }
 }

@@ -15,14 +15,14 @@ using Robust.Shared.Timing;
 
 namespace Content.Server._Moffstation.GaussFabricator;
 
-public sealed partial class GaussFabricatorSystem : SharedGaussFabricatorSystem
+public sealed partial class ServerGaussFabricatorSystem : GaussFabricatorSystem
 {
     [Dependency] private IGameTiming _timing = default!;
     [Dependency] private AtmosphereSystem _atmosphere = default!;
     [Dependency] private SharedAmbientSoundSystem _ambient = default!;
     [Dependency] private SharedAppearanceSystem _appearance = default!;
     [Dependency] private SharedBatterySystem _battery = default!;
-    [Dependency] private UserInterfaceSystem _uiSystem = default!;
+    [Dependency] private UserInterfaceSystem _ui = default!;
 
     [Dependency] private EntityQuery<BatteryComponent> _batteryQuery;
     [Dependency] private EntityQuery<PowerNetworkBatteryComponent> _powerBatteryQuery;
@@ -34,37 +34,6 @@ public sealed partial class GaussFabricatorSystem : SharedGaussFabricatorSystem
         base.Initialize();
 
         UpdatesAfter.Add(typeof(PowerNetSystem));
-    }
-
-    [SubscribeLocalEvent]
-    private void OnMapInit(Entity<GaussFabricatorComponent> ent, ref MapInitEvent args)
-    {
-        SyncPower(ent);
-    }
-
-    [SubscribeLocalEvent]
-    private void OnUiOpened(Entity<GaussFabricatorComponent> ent, ref AfterActivatableUIOpenEvent args)
-    {
-        UpdateUi(ent);
-    }
-
-    protected override void ExamineAtmosphere(Entity<GaussFabricatorComponent> ent, ExaminedEvent args)
-    {
-        var mixture = _atmosphere.GetContainingMixture(ent.Owner);
-        var temperature = GetBand(ent.Comp.TemperatureAcceptable, ent.Comp.TemperatureOptimal, mixture?.Temperature);
-        var pressure = GetBand(ent.Comp.PressureAcceptable, ent.Comp.PressureOptimal, mixture?.Pressure);
-
-        args.PushMarkup(Loc.GetString("gauss-fabricator-examine-temperature", ("band", GetBandName(temperature))));
-        args.PushMarkup(Loc.GetString("gauss-fabricator-examine-pressure", ("band", GetBandName(pressure))));
-    }
-
-    protected override void SyncPower(Entity<GaussFabricatorComponent> ent)
-    {
-        if (!_powerBatteryQuery.TryComp(ent, out var pnb))
-            return;
-
-        pnb.MaxChargeRate = ent.Comp.CurrentDraw;
-        pnb.Enabled = ent.Comp.Enabled;
     }
 
     public override void Update(float frameTime)
@@ -98,6 +67,43 @@ public sealed partial class GaussFabricatorSystem : SharedGaussFabricatorSystem
         }
     }
 
+    protected override void ExamineAtmosphere(Entity<GaussFabricatorComponent> ent, ExaminedEvent args)
+    {
+        var mixture = _atmosphere.GetContainingMixture(ent.Owner);
+        var temperature = GetBand(ent.Comp.TemperatureAcceptable, ent.Comp.TemperatureOptimal, mixture?.Temperature);
+        var pressure = GetBand(ent.Comp.PressureAcceptable, ent.Comp.PressureOptimal, mixture?.Pressure);
+
+        args.PushMarkup(Loc.GetString("gauss-fabricator-examine-temperature", ("band", GetBandName(temperature))));
+        args.PushMarkup(Loc.GetString("gauss-fabricator-examine-pressure", ("band", GetBandName(pressure))));
+    }
+
+    protected override void SyncPower(Entity<GaussFabricatorComponent> ent)
+    {
+        if (!_powerBatteryQuery.TryComp(ent, out var pnb))
+            return;
+
+        pnb.MaxChargeRate = ent.Comp.CurrentDraw;
+        pnb.Enabled = ent.Comp.Enabled;
+    }
+
+    protected override void UpdateUi(Entity<GaussFabricatorComponent> ent)
+    {
+        if (_powerBatteryQuery.TryComp(ent, out var pnb))
+            UpdateUi((ent.Owner, ent.Comp, pnb), _atmosphere.GetContainingMixture(ent.Owner));
+    }
+
+    [SubscribeLocalEvent]
+    private void OnMapInit(Entity<GaussFabricatorComponent> ent, ref MapInitEvent args)
+    {
+        SyncPower(ent);
+    }
+
+    [SubscribeLocalEvent]
+    private void OnUiOpened(Entity<GaussFabricatorComponent> ent, ref AfterActivatableUIOpenEvent args)
+    {
+        UpdateUi(ent);
+    }
+
     /// Multiplier for the progress for a specific band. No atmos counts as bad.
     private static float GetBandMultiplier(
         GaussFabricatorComponent comp,
@@ -128,24 +134,20 @@ public sealed partial class GaussFabricatorSystem : SharedGaussFabricatorSystem
         return Loc.GetString($"gauss-fabricator-band-{band.ToString().ToLowerInvariant()}");
     }
 
-    protected override void UpdateUi(Entity<GaussFabricatorComponent> ent)
-    {
-        if (_powerBatteryQuery.TryComp(ent, out var pnb))
-            UpdateUi((ent.Owner, ent.Comp, pnb), _atmosphere.GetContainingMixture(ent.Owner));
-    }
-
     private void UpdateUi(Entity<GaussFabricatorComponent, PowerNetworkBatteryComponent> ent, GasMixture? mixture)
     {
-        if (!_uiSystem.IsUiOpen(ent.Owner, GaussFabricatorUiKey.Key)
-            || !_batteryQuery.TryComp(ent, out var battery))
+        if (!_ui.IsUiOpen(ent.Owner, GaussFabricatorUiKey.Key) ||
+            !_batteryQuery.TryComp(ent, out var battery))
+        {
             return;
+        }
 
         // One thingy is spawned per full battery.
         var outputRate = battery.MaxCharge > 0f
             ? ent.Comp2.CurrentReceiving * ent.Comp2.Efficiency * 60f / battery.MaxCharge
             : 0f;
 
-        _uiSystem.SetUiState(
+        _ui.SetUiState(
             ent.Owner,
             GaussFabricatorUiKey.Key,
             new GaussFabricatorBuiState(

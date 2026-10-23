@@ -25,12 +25,12 @@ public sealed class GaussFabricatorBuiState(
 
     public override bool Equals(object? obj)
     {
-        return obj is GaussFabricatorBuiState other
-            && ReceivedPower.Equals(other.ReceivedPower)
-            && Progress.Equals(other.Progress)
-            && OutputRate.Equals(other.OutputRate)
-            && Temperature.Equals(other.Temperature)
-            && Pressure.Equals(other.Pressure);
+        return obj is GaussFabricatorBuiState other &&
+            ReceivedPower.Equals(other.ReceivedPower) &&
+            Progress.Equals(other.Progress) &&
+            OutputRate.Equals(other.OutputRate) &&
+            Temperature.Equals(other.Temperature) &&
+            Pressure.Equals(other.Pressure);
     }
 
     public override int GetHashCode()

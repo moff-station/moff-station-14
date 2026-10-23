@@ -4,7 +4,7 @@ using Content.Shared.Examine;
 
 namespace Content.Shared._Moffstation.GaussFabricator;
 
-public abstract partial class SharedGaussFabricatorSystem : EntitySystem
+public abstract partial class GaussFabricatorSystem : EntitySystem
 {
     [Dependency] private ISharedAdminLogManager _adminLog = default!;
 
@@ -28,7 +28,7 @@ public abstract partial class SharedGaussFabricatorSystem : EntitySystem
         ent.Comp.CurrentDraw = Math.Clamp(args.Draw, ent.Comp.MinDraw, ent.Comp.MaxDraw);
         DirtyField(ent.AsNullable(), nameof(GaussFabricatorComponent.CurrentDraw));
 
-        _adminLog.Add(LogType.Action, $"{args.Actor:actor} set draw rate to {ent.Comp.CurrentDraw} W on {ent.Owner:target}");
+        _adminLog.Add(LogType.Action, LogImpact.Low, $"{args.Actor:actor} set draw rate to {ent.Comp.CurrentDraw} W on {ent.Owner:target}");
 
         SyncPower(ent);
         UpdateUi(ent);
@@ -42,7 +42,7 @@ public abstract partial class SharedGaussFabricatorSystem : EntitySystem
         ent.Comp.Enabled = args.On;
         DirtyField(ent.AsNullable(), nameof(GaussFabricatorComponent.Enabled));
 
-        _adminLog.Add(LogType.Action, $"{args.Actor:actor} toggled {ent.Owner:target} {(args.On ? "on" : "off")}");
+        _adminLog.Add(LogType.Action, LogImpact.Low, $"{args.Actor:actor} toggled {ent.Owner:target} {(args.On ? "on" : "off")}");
 
         SyncPower(ent);
         UpdateUi(ent);
