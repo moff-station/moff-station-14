@@ -1,0 +1,41 @@
+- type: entity
+  parent: BaseItem
+  id: JestographicSequencer
+  name: jestographic sequencer
+  description: The all in one clown hacking solution. Honk!
+  components:
+  - type: JestographicSequencer
+  - type: Sprite #TODO Placeholder art, reuses the emag sprite.
+    sprite: _Moffstation/Objects/Tools/jestographic_sequencer.rsi
+    state: icon
+  - type: Item
+    sprite: _Moffstation/Objects/Tools/jestographic_sequencer.rsi
+    storedRotation: -90
+  - type: LimitedCharges
+    maxCharges: 3
+  - type: AutoRecharge
+    rechargeDuration: 89
+  - type: Slippery
+  - type: StepTrigger
+  - type: CollisionWake
+    enabled: false
+  - type: Physics
+    bodyType: Dynamic
+  - type: Fixtures
+    fixtures:
+      slips:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.4,-0.3,0.4,0.3"
+        layer:
+        - SlipLayer
+        hard: false
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.4,-0.3,0.4,0.3"
+        density: 5
+        mask:
+        - ItemMask
+  - type: StaticPrice
+    price: 1500

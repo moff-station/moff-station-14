@@ -21,6 +21,9 @@ uplink-smoke-implant-desc = Implant that releases a large cloud of smoke when ac
 uplink-clown-spider-grenade-name = Jar of Clown Spiders
 uplink-clown-spider-grenade-desc = Smuggled out of a Honkmother meeting, the spiders floating inside liquid happiness laugh away. Would be funny to throw at someone.
 
+uplink-jestographic-sequencer-name = Jestographic Sequencer
+uplink-jestographic-sequencer-desc = The ultimate prankster tool. Reverses access requirements on electronic devices. Has a few special tricks.
+
 uplink-flaming-fire-axe-name = Fire Axe
 uplink-flaming-fire-axe-desc = Why fight fire with an axe when you can fight with fire and axe? Now featuring rugged rubberized handle!
 

@@ -58,6 +58,7 @@ public abstract partial class SharedSiliconLawSystem : EntitySystem
         InitializeUpdater();
         InitializeProvider();
         InitializeEmag();
+        InitializeJestographic(); //Moffstation - jestographic sequencer
     }
 
     #region Events
