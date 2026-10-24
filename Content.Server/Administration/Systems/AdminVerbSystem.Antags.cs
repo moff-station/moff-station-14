@@ -1,10 +1,11 @@
-using Content.Server._Moffstation.GameTicking.Rules.Components; // Moffstation
-using Content.Server._Harmony.GameTicking.Rules.Components; // Harmony
+using Content.Server._Moffstation.GameTicking.Rules.Components;
+using Content.Server._Harmony.GameTicking.Rules.Components;
 using Content.Server.Antag;
 using Content.Server.GameTicking;
 using Content.Server.Zombies;
 using Content.Shared.Administration;
 using Content.Server.Clothing.Systems;
+using Content.Shared._Moffstation.Roles.Components;
 using Content.Shared.Antag;
 using Content.Shared.Database;
 using Content.Shared.GameTicking.Rules.Components;
@@ -40,6 +41,7 @@ public sealed partial class AdminVerbSystem
     private static readonly ProtoId<StartingGearPrototype> PirateGearId = "PirateGear";
 
     private static readonly EntProtoId<PiratesRuleComponent> DefaultPirateRule = "Pirates"; // Moffstation
+    private static readonly EntProtoId DefaultWizardDuelRule = "WizardDuel"; // Moffstation
 
     // All antag verbs have names so invokeverb works.
     private void AddAntagVerbs(GetVerbsEvent<Verb> args)
@@ -214,6 +216,53 @@ public sealed partial class AdminVerbSystem
             Message = string.Join(": ", wizardName, Loc.GetString("admin-verb-make-wizard")),
         };
         args.Verbs.Add(wizard);
+
+        // Moff Start - Wizard Duelists
+        var wizardDuelistBlueName = Loc.GetString("moff-admin-verb-text-make-wizard-duelist-blue");
+        Verb wizardDuelistBlue = new()
+        {
+            Text = wizardDuelistBlueName,
+            Category = VerbCategory.Antag,
+            Icon = new SpriteSpecifier.Rsi(new("/Textures/_Moffstation/Interface/Misc/job_icons.rsi"), "WizardDuelistBlue"),
+            Act = () =>
+            {
+                _antag.ForceMakeAntag<WizardDuelistBlueRoleComponent>(targetPlayer, DefaultWizardDuelRule);
+            },
+            Impact = LogImpact.High,
+            Message = string.Join(": ", wizardDuelistBlueName, Loc.GetString("moff-admin-verb-make-wizard-duelist-blue")),
+        };
+        args.Verbs.Add(wizardDuelistBlue);
+
+        var wizardDuelistRedName = Loc.GetString("moff-admin-verb-text-make-wizard-duelist-red");
+        Verb wizardDuelistRed = new()
+        {
+            Text = wizardDuelistRedName,
+            Category = VerbCategory.Antag,
+            Icon = new SpriteSpecifier.Rsi(new("/Textures/_Moffstation/Interface/Misc/job_icons.rsi"), "WizardDuelistRed"),
+            Act = () =>
+            {
+                _antag.ForceMakeAntag<WizardDuelistRedRoleComponent>(targetPlayer, DefaultWizardDuelRule);
+            },
+            Impact = LogImpact.High,
+            Message = string.Join(": ", wizardDuelistRedName, Loc.GetString("moff-admin-verb-make-wizard-duelist-red")),
+        };
+        args.Verbs.Add(wizardDuelistRed);
+
+        var wizardDuelistVioletName = Loc.GetString("moff-admin-verb-text-make-wizard-duelist-violet");
+        Verb wizardDuelistViolet = new()
+        {
+            Text = wizardDuelistVioletName,
+            Category = VerbCategory.Antag,
+            Icon = new SpriteSpecifier.Rsi(new("/Textures/_Moffstation/Interface/Misc/job_icons.rsi"), "WizardDuelistViolet"),
+            Act = () =>
+            {
+                _antag.ForceMakeAntag<WizardDuelistVioletRoleComponent>(targetPlayer, DefaultWizardDuelRule);
+            },
+            Impact = LogImpact.High,
+            Message = string.Join(": ", wizardDuelistVioletName, Loc.GetString("moff-admin-verb-make-wizard-duelist-violet")),
+        };
+        args.Verbs.Add(wizardDuelistViolet);
+        // Moff End
 
         var ninjaName = Loc.GetString("admin-verb-text-make-space-ninja");
         Verb ninja = new()
