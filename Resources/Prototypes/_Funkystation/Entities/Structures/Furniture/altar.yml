@@ -1,0 +1,9 @@
+- type: entity
+  id: FunkySelectableChaplainAltar
+  abstract: true
+  components:
+  - type: AltarSwapping
+  - type: UserInterface
+    interfaces:
+      enum.AltarSwappingUiKey.Key:
+        type: AltarSwappingBoundUserInterface
