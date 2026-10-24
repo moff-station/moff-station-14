@@ -1,7 +1,13 @@
 using System.Diagnostics.CodeAnalysis;
+using System.Linq;
+using Content.Server._Harmony.BloodBrothers.EntitySystems;
 using Content.Server._Harmony.GameTicking.Rules.Components;
 using Content.Server._Harmony.Roles;
+using Content.Server._Moffstation.Station;
+using Content.Shared._Moffstation.Extensions;
 using Content.Server.Administration.Logs;
+using Content.Server.Antag;
+using Content.Server.GameTicking.Rules;
 using Content.Server.Mind;
 using Content.Server.Objectives;
 using Content.Server.Objectives.Components;
@@ -13,6 +19,7 @@ using Content.Server.Stunnable;
 using Content.Shared._Harmony.BloodBrothers.Components;
 using Content.Shared.Antag;
 using Content.Shared.Database;
+using Content.Shared.GameTicking.Components;
 using Content.Shared.GameTicking.Rules;
 using Content.Shared.Humanoid;
 using Content.Shared.IdentityManagement;
@@ -21,11 +28,12 @@ using Content.Shared.Mindshield;
 using Content.Shared.Mobs.Systems;
 using Content.Shared.NPC.Systems;
 using Content.Shared.Popups;
-using Content.Shared.Preferences;
+using Content.Shared.Roles;
 using Content.Shared.Roles.Components;
 using Content.Shared.Roles.RoleCodeword;
 using Content.Shared.Zombies;
 using Robust.Server.Player;
+using Robust.Shared.Network;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Utility;
 
@@ -47,19 +55,72 @@ public sealed partial class BloodBrotherRuleSystem : GameRuleSystem<BloodBrother
     [Dependency] private RoleSystem _roleSystem = default!;
     [Dependency] private StunSystem _stunSystem = default!;
     [Dependency] private TargetObjectiveSystem _targetObjectiveSystem = default!;
+    [Dependency] private ServerBloodBrotherSystem _bloodBrother = default!;
+    [Dependency] private MoffCharacterPickerSystem _characterPicker = default!;
 
-    private static readonly ProtoId<RoleTypePrototype>[] Filter =
+    [Dependency] private EntityQuery<BloodBrotherComponent> _bloodBrotherQuery;
+    [Dependency] private EntityQuery<TargetObjectiveComponent> _targetObjectiveQuery;
+    [Dependency] private EntityQuery<ZombieComponent> _zombieQuery;
+
+    private static readonly ProtoId<RoleTypePrototype>[] ImmuneRoleTypes =
         {"SoloAntagonist", "TeamAntagonist"}; // Traitors and Nukies and other team antags
 
-    public override void Initialize()
-    {
-        base.Initialize();
+    private static readonly ProtoId<AntagPrototype> RequiredAntagPreference = "BloodBrotherConvertible";
 
-        SubscribeLocalEvent<BloodBrotherRuleComponent, ObjectivesTextPrependEvent>(OnObjectivesTextPrepend);
-        SubscribeLocalEvent<InitialBloodBrotherComponent, BloodBrotherConvertActionEvent>(OnBloodBrotherConvert);
-        SubscribeLocalEvent<InitialBloodBrotherComponent, BloodBrotherCheckConvertActionEvent>(OnBloodBrotherCheckConvert);
+    private static readonly LocId FailedNoMind = "blood-brother-convert-failed-no-mind";
+    private static readonly LocId FailedAlreadyBrother = "blood-brother-convert-failed-already-brother";
+    private static readonly LocId FailedHasBrother = "blood-brother-convert-failed-has-brother";
+    private static readonly LocId FailedTarget = "blood-brother-convert-failed-target";
+    private static readonly LocId FailedZombie = "blood-brother-convert-failed-zombie";
+    private static readonly LocId FailedShielded = "blood-brother-convert-failed-shielded";
+    private static readonly LocId FailedDead = "blood-brother-convert-failed-dead";
+    private static readonly LocId FailedPreference = "blood-brother-convert-failed-preference";
+
+    protected override void ActiveTick(EntityUid uid,
+        BloodBrotherRuleComponent component,
+        GameRuleComponent gameRule,
+        float frameTime)
+    {
+        base.ActiveTick(uid, component, gameRule, frameTime);
+
+        if (Timing.CurTime < component.NextConvertibleUpdate)
+            return;
+
+        component.NextConvertibleUpdate = Timing.CurTime + component.ConvertibleUpdateInterval;
+
+        // Check if any blood brothers can even convert in the first place.
+        // If they can't then don't bother running the expensive ass check on everyone in the round
+        var anyCanConvert = false;
+        foreach (var initial in EntityQueryEnumerator<InitialBloodBrotherComponent>())
+        {
+            if (!CanConvert(initial.AsNullable(), out _))
+                continue;
+
+            anyCanConvert = true;
+            break;
+        }
+
+        if (!anyCanConvert)
+        {
+            _bloodBrother.ClearConvertible();
+            return;
+        }
+
+        // This checks over every player in the round to see if they can be converted.
+        foreach (var target in EntityQueryEnumerator<HumanoidProfileComponent>())
+        {
+            _bloodBrother.SetConvertible(target, CanBeConverted(target, out _));
+        }
     }
 
+    protected override void Ended(Entity<BloodBrotherRuleComponent> rule, ref GameRuleEndedEvent args)
+    {
+        base.Ended(rule, ref args);
+
+        _bloodBrother.ClearConvertible();
+    }
+
+    [SubscribeLocalEvent]
     private void OnObjectivesTextPrepend(Entity<BloodBrotherRuleComponent> entity, ref ObjectivesTextPrependEvent args)
     {
         var antags = _antagSystem.GetAntagIdentifiers(entity.Owner);
@@ -95,6 +156,10 @@ public sealed partial class BloodBrotherRuleSystem : GameRuleSystem<BloodBrother
         }
     }
 
+    /// <summary>
+    /// Converts someone to blood bound
+    /// </summary>
+    [SubscribeLocalEvent]
     private void OnBloodBrotherConvert(Entity<InitialBloodBrotherComponent> entity,
         ref BloodBrotherConvertActionEvent args)
     {
@@ -102,7 +167,7 @@ public sealed partial class BloodBrotherRuleSystem : GameRuleSystem<BloodBrother
         if (!TryComp<BloodBrotherComponent>(entity, out var originalComponent))
             return;
 
-        if (!CanConvert(entity, args.Target, out var failureMessage))
+        if (!CanConvert(entity.AsNullable(), args.Target, out var failureMessage))
         {
             _popupSystem.PopupEntity(
                 Loc.GetString(failureMessage,
@@ -179,123 +244,107 @@ public sealed partial class BloodBrotherRuleSystem : GameRuleSystem<BloodBrother
         Dirty(args.Target, convertedComp);
     }
 
-    private void OnBloodBrotherCheckConvert(Entity<InitialBloodBrotherComponent> entity,
-        ref BloodBrotherCheckConvertActionEvent args)
+    /// Checks whether a blood bound is capable of converting anyone at all.
+    public bool CanConvert(
+        Entity<InitialBloodBrotherComponent?> entity,
+        [NotNullWhen(false)] out string? errorMessage)
     {
-        if (!CanConvert(entity, args.Target, out var failureMessage))
+        errorMessage = null;
+
+        if (!Resolve(entity.Owner, ref entity.Comp) || !_mindSystem.TryGetMind(entity.Owner, out _, out _))
         {
-            _popupSystem.PopupEntity(
-                Loc.GetString(failureMessage,
-                    ("converter", Identity.Entity(entity, _entityManager)),
-                    ("converted", Identity.Entity(args.Target, _entityManager))),
-                args.Target,
-                entity,
-                PopupType.MediumCaution);
-            return;
+            errorMessage = FailedNoMind;
+            return false;
         }
 
-        _popupSystem.PopupEntity(
-            Loc.GetString("blood-brother-convert-convertible",
-                ("converter", Identity.Entity(entity, _entityManager)),
-                ("converted", Identity.Entity(args.Target, _entityManager))),
-            args.Target,
-            entity,
-            PopupType.Medium);
+        if (!_bloodBrotherQuery.TryComp(entity.Owner, out var converterBBComp) || converterBBComp.Brother != null)
+        {
+            Log.Error($"{ToPrettyString(entity.Owner)} tried to convert but was missing a {nameof(BloodBrotherComponent)} or already had a brother.");
+            errorMessage = FailedHasBrother;
+            return false;
+        }
+
+        return true;
     }
 
-    private bool CanConvert(
-        Entity<InitialBloodBrotherComponent> entity,
+    /// Checks whether a blood bound can convert a specific target.
+    public bool CanConvert(
+        Entity<InitialBloodBrotherComponent?> entity,
+        EntityUid target,
+        [NotNullWhen(false)] out string? errorMessage)
+    {
+        if (!CanConvert(entity, out errorMessage) || !CanBeConverted(target, out errorMessage))
+            return false;
+
+        if (_mindSystem.TryGetMind(entity.Owner, out _, out var converterMind)
+            && _mindSystem.TryGetMind(target, out var targetMindId, out _)
+            && GetObjectiveTargets(converterMind).Contains(targetMindId))
+        {
+            errorMessage = FailedTarget;
+            return false;
+        }
+
+        return true;
+    }
+
+    /// Checks whether a target can be converted to a blood bound.
+    private bool CanBeConverted(
         EntityUid target,
         [NotNullWhen(false)] out string? errorMessage)
     {
         errorMessage = null;
 
-        if (!_mindSystem.TryGetMind(entity, out _, out var converterMind))
+        if (_bloodBrotherQuery.HasComp(target))
         {
-            DebugTools.Assert("Blood brother tried to convert but had no mind.");
-            Log.Error("Blood brother tried to convert but had no mind.");
-            errorMessage = "guh";
-            return false; // How would this even happen
-        }
-
-        if (!_mindSystem.TryGetMind(target, out var targetMindId, out var targetMind))
-        {
-            errorMessage = "blood-brother-convert-failed-no-mind";
+            errorMessage = FailedAlreadyBrother;
             return false;
         }
 
-        // Target is already a blood brother
-        if (HasComp<BloodBrotherComponent>(target))
+        if (_zombieQuery.HasComp(target))
         {
-            errorMessage = "blood-brother-convert-failed-already-brother";
+            errorMessage = FailedZombie;
             return false;
-        }
-
-        // Stop the blood brother from converting a target.
-        foreach (var objective in converterMind.Objectives)
-        {
-            if (!TryComp<TargetObjectiveComponent>(objective, out var targetObjective))
-                continue;
-
-            if (targetObjective.Target != targetMindId)
-                continue;
-
-            errorMessage = "blood-brother-convert-failed-target";
-            return false;
-        }
-
-        if (!HasComp<HumanoidProfileComponent>(target))
-        {
-            errorMessage = "blood-brother-convert-failed-no-mind";
-            return false;
-        }
-
-        if (HasComp<ZombieComponent>(target))
-        {
-            errorMessage = "blood-brother-convert-failed-zombie";
-            return false;
-        }
-
-        if (targetMind.UserId == null)
-        {
-            errorMessage = "blood-brother-convert-failed-no-mind";
-            return false;
-        }
-
-        //Prevent Traitors - they have RoleCodewordComponent
-        if (Filter.Contains(targetMind.RoleType))
-        {
-            errorMessage = "blood-brother-convert-failed-preference"; // Dont want the BB to metagame a tot with a different message
-            return false;
-        }
-
-        // Check antag preference
-        if (entity.Comp.RequiredAntagPreference != null &&
-            _preferencesManager.TryGetCachedPreferences(targetMind.UserId.Value, out var preferences))
-        {
-
-            var profile = (HumanoidCharacterProfile)preferences.SelectedCharacter;
-
-            if (profile.AntagPreferences.Contains(entity.Comp.RequiredAntagPreference!.Value) != true)
-            {
-                errorMessage = "blood-brother-convert-failed-preference";
-                return false;
-            }
         }
 
         if (!_mobStateSystem.IsAlive(target))
         {
-            errorMessage = "blood-brother-convert-failed-dead";
+            errorMessage = FailedDead;
+            return false;
+        }
+
+        if (!_mindSystem.TryGetMind(target, out _, out var targetMind) || targetMind.UserId is not { } userId)
+        {
+            errorMessage = FailedNoMind;
             return false;
         }
 
         _mindShield.GetMindshieldStatus(target, out var targetIsMindshielded, out _);
         if (targetIsMindshielded)
         {
-            errorMessage = "blood-brother-convert-failed-shielded";
+            errorMessage = FailedShielded;
+            return false;
+        }
+
+        if (ImmuneRoleTypes.Contains(targetMind.RoleType) || !HasAntagPreference(userId))
+        {
+            errorMessage = FailedPreference;
             return false;
         }
 
         return true;
     }
+
+    private bool HasAntagPreference(NetUserId userId)
+    {
+        var profile = _characterPicker.GetSpawnedProfile(userId);
+        if (profile == null && _preferencesManager.TryGetCachedPreferences(userId, out var preferences))
+            profile = preferences.SelectedCharacter;
+
+        return profile != null && profile.AntagPreferences.Contains(RequiredAntagPreference);
+    }
+
+    private IEnumerable<EntityUid> GetObjectiveTargets(MindComponent mind) => _targetObjectiveQuery
+        .ResolveAll(mind.Objectives, logMissing: false)
+        .Select(it => it.Comp.Target)
+        .OfType<EntityUid>();
 }
