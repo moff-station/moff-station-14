@@ -84,6 +84,10 @@
   id: VehicleWheelchairFolded
   suffix: folded
   components:
+  # Moff start - wheelchair in backpack
+  - type: Item
+    size: Large 
+  # Moff - end
   - type: Foldable
     folded: true
   - type: Strap
