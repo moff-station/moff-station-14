@@ -73,6 +73,7 @@
 
 # 2026/07/22
 # The respritening! With this one simple trick, i give 200 mappers a collective aneurysm.
+# Moff aneurysm treatment is ongoing.
 
 - type: tileAlias
   id: FloorBrassReebe
@@ -87,44 +88,46 @@
   target: Plating
 
 - type: tileAlias
-  id: FloorDarkDiagonal
-  target: FloorDark
-
-- type: tileAlias
-  id: FloorDarkDiagonalMini
-  target: FloorDark
-
-- type: tileAlias
-  id: FloorDarkOffset
-  target: FloorDark
-
-- type: tileAlias
-  id: FloorSteelDiagonal
-  target: FloorSteel
-
-- type: tileAlias
-  id: FloorSteelDiagonalMini
-  target: FloorSteel
-
-- type: tileAlias
-  id: FloorSteelOffset
-  target: FloorSteel
-
-- type: tileAlias
   id: FloorSteelDirty
   target: FloorSteel
 
-- type: tileAlias
-  id: FloorWhiteDiagonal
-  target: FloorWhite
-
-- type: tileAlias
-  id: FloorWhiteDiagonalMini
-  target: FloorWhite
-
-- type: tileAlias
-  id: FloorWhiteOffset
-  target: FloorWhite
+# Moff Start - Bringing back really important tiles that shouldn't have been removed.
+# - type: tileAlias
+#   id: FloorDarkDiagonal
+#   target: FloorDark
+#
+# - type: tileAlias
+#   id: FloorDarkDiagonalMini
+#   target: FloorDark
+#
+# - type: tileAlias
+#   id: FloorDarkOffset
+#   target: FloorDark
+#
+# - type: tileAlias
+#   id: FloorSteelDiagonal
+#   target: FloorSteel
+#
+# - type: tileAlias
+#   id: FloorSteelDiagonalMini
+#   target: FloorSteel
+#
+# - type: tileAlias
+#   id: FloorSteelOffset
+#   target: FloorSteel
+#
+# - type: tileAlias
+#   id: FloorWhiteDiagonal
+#   target: FloorWhite
+#
+# - type: tileAlias
+#   id: FloorWhiteDiagonalMini
+#   target: FloorWhite
+#
+# - type: tileAlias
+#   id: FloorWhiteOffset
+#   target: FloorWhite
+# Moff End
 
 # Moff start
 # - type: tileAlias
@@ -168,9 +171,11 @@
   id: FloorRockVault
   target: FloorSteel
 
-- type: tileAlias
-  id: FloorShowroom
-  target: FloorSteel
+# Moff Start
+# - type: tileAlias
+#   id: FloorShowroom
+#   target: FloorSteel
+# Moff End
 
 # Moff Start - Continuous slats namespace change
 # - type: tileAlias
@@ -397,3 +402,48 @@
   target: MoffFloorDarkSlatsContinuous
 
 # Moff end
+
+# 2025-10-10
+# Moff start - Porting Diagonal, Diagonal Mini, Offset, and Showroom to moffspace
+
+- type: tileAlias
+  id: FloorDarkDiagonal
+  target: MoffFloorDarkDiagonal
+
+- type: tileAlias
+  id: FloorDarkDiagonalMini
+  target: MoffFloorDarkDiagonalMini
+
+- type: tileAlias
+  id: FloorDarkOffset
+  target: MoffFloorDarkOffset
+
+- type: tileAlias
+  id: FloorSteelDiagonal
+  target: MoffFloorSteelDiagonal
+
+- type: tileAlias
+  id: FloorSteelDiagonalMini
+  target: MoffFloorSteelDiagonalMini
+
+- type: tileAlias
+  id: FloorSteelOffset
+  target: MoffFloorSteelOffset
+
+- type: tileAlias
+  id: FloorWhiteDiagonal
+  target: MoffFloorWhiteDiagonal
+
+- type: tileAlias
+  id: FloorWhiteDiagonalMini
+  target: MoffFloorWhiteDiagonalMini
+
+- type: tileAlias
+  id: FloorWhiteOffset
+  target: MoffFloorWhiteOffset
+
+- type: tileAlias
+  id: FloorShowroom
+  target: MoffFloorShowroom
+
+# moff end

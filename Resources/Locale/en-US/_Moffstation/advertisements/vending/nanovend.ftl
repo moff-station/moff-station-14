@@ -1,0 +1,12 @@
+moff-advertisement-nano-1 = Glory to Nanotrasen!
+moff-advertisement-nano-2 = GLORY TO NANOTRASEN!!!
+moff-advertisement-nano-3 = Show your patriotism to Nanotrasen!
+moff-advertisement-nano-4 = The best color to wear is Nanotrasen Blue!
+moff-advertisement-nano-5 = Don't be a Syndicate Slum, buy Nanotrasen today!
+moff-advertisement-nano-6 = Nanotrasen guides our might!
+moff-thankyou-nanovend-1 = Glory to Nanotrasen!
+moff-thankyou-nanovend-2 = Glory to Nanotrasen!!!
+moff-thankyou-nanovend-3 = That's what John Nanotrasen would have selected!
+moff-thankyou-nanovend-4 = Remember to come back later for your daily dose of Nanotrasen!
+moff-thankyou-nanovend-5 = For a brighter future!
+moff-thankyou-nanovend-6 = Nanotrasen, we perservere!

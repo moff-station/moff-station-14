@@ -14,6 +14,7 @@
       children:
       - id: VendingMachineChang
       - id: VendingMachineCigs
+      - id: MoffVendingMachineNanoTrasen # Moff - Moff Exclusive Vending machine
       - id: VendingMachineCoffee
       - id: VendingMachineCola #Robust Sofdrinks
       - id: VendingMachineColaBlack #Robust Sofdrinks [Black]
@@ -45,7 +46,10 @@
       weight: 4
     - id: VendingMachinePride
     - id: VendingMachineTheater
-    - id: VendingMachineSwimsuits # Moffstation - Add Swimvent
+    # Moff Start - Moff Exclusive Vending machines
+    - id: MoffVendingMachineSwimsuits
+    - id: MoffVendingMachineNanoTrasen
+    # Moff End
 
 - type: entity
   parent: MarkerBase
