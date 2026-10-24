@@ -1,5 +1,6 @@
 using System.Linq;
 using System.Numerics;
+using Content.Server._Moffstation.Shuttles.Components;
 using Content.Server.Announcements;
 using Content.Server.Discord;
 using Content.Server.GameTicking.Events;
@@ -434,7 +435,9 @@ public sealed partial class ServerGameTicker
         SendStatusToAll();
         ReqWindowAttentionAll();
         UpdateLateJoinStatus();
-        AnnounceRound();
+        // Moff - Evac arrivals
+        if (!EntityQuery<MoffTransitShuttleComponent>().Any())
+            AnnounceRound();
         UpdateInfoText();
         SendRoundStartedDiscordMessage();
 
@@ -844,7 +847,7 @@ public sealed partial class ServerGameTicker
         }
     }
 
-    private void AnnounceRound()
+    public void AnnounceRound() // Moff - Evac arrivals
     {
         if (CurrentPreset == null)
             return;

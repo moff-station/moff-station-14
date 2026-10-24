@@ -196,6 +196,11 @@ public sealed partial class EmergencyShuttleSystem : SharedEmergencyShuttleSyste
     /// </summary>
     private void OnEmergencyFTL(EntityUid uid, EmergencyShuttleComponent component, ref FTLStartedEvent args)
     {
+        // Moff start - Evac arrivals
+        if (!IsEvacDeparture(uid))
+            return;
+        // Moff end
+
         var ftlTime = TimeSpan.FromSeconds
         (
             TryComp<FTLComponent>(uid, out var ftlComp) ? ftlComp.TravelTime : _shuttle.DefaultTravelTime
@@ -222,6 +227,11 @@ public sealed partial class EmergencyShuttleSystem : SharedEmergencyShuttleSyste
     /// </summary>
     private void OnEmergencyFTLComplete(EntityUid uid, EmergencyShuttleComponent component, ref FTLCompletedEvent args)
     {
+        // Moff start - Evac arrivals
+        if (!IsEvacDeparture(uid))
+            return;
+        // Moff end
+
         var countdownTime = TimeSpan.FromSeconds(ConfigManager.GetCVar(CCVars.RoundRestartTime));
         var shuttle = args.Entity;
         if (TryComp<DeviceNetworkComponent>(shuttle, out var net))
@@ -282,6 +292,11 @@ public sealed partial class EmergencyShuttleSystem : SharedEmergencyShuttleSyste
                 ResultType = ShuttleDockResultType.GoodLuck,
             };
         }
+
+        // Moff start - Evac arrivals
+        // We have to undock manually otherwise it can get stuck
+        _dock.UndockDocks(stationShuttle.EmergencyShuttle.Value);
+        // Moff end
 
         ShuttleDockResultType resultType;
         if (_shuttle.TryFTLDock(stationShuttle.EmergencyShuttle.Value, shuttle, targetGrid.Value, out var config, DockTag))

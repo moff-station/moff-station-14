@@ -14,7 +14,8 @@
           !type:NanotrasenNameGenerator
           prefixCreator: '14-DS'
       - type: StationEmergencyShuttle
-        emergencyShuttlePath: /Maps/_Harmony/Shuttles/emergency_wapiti.yml
+        # Moff - Evac arrivals
+        emergencyShuttlePath: /Maps/_Moffstation/Shuttles/emergency_wapiti.yml
       - type: StationCargoShuttle
         path: /Maps/_Harmony/Shuttles/cargo_wapiti.yml
       - type: StationJobs
