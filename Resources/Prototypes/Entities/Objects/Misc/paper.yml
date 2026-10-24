@@ -29,7 +29,9 @@
   - type: Destructible
     thresholds:
     - trigger:
-        !type:DamageTrigger
+        # Moffstation start - Paper ash fix
+        !type:DamageTypeTrigger
+        damageType: Heat
         damage: 15
       behaviors:
       - !type:SpawnEntitiesBehavior
@@ -37,6 +39,12 @@
           Ash:
             min: 1
             max: 1
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ] # Moffstation end
+    - trigger:
+        !type:DamageTrigger
+        damage: 15
+      behaviors:
       - !type:DoActsBehavior
         acts: [ "Destruction" ]
   - type: Edible
