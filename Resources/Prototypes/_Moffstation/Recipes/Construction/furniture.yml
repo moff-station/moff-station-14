@@ -48,3 +48,353 @@
   canBuildInImpassable: false
   conditions:
   - !type:TileNotBlocked
+
+#Sofa
+
+- type: construction
+  id: SofaMiddle
+  graph: SofasGraph
+  startNode: start
+  targetNode: SofaMiddleNode
+  category: construction-category-furniture
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canBuildInImpassable: false
+  conditions:
+  - !type:TileNotBlocked
+
+- type: construction
+  id: SofaLeft
+  graph: SofasGraph
+  startNode: start
+  targetNode: SofaLeftNode
+  category: construction-category-furniture
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canBuildInImpassable: false
+  conditions:
+  - !type:TileNotBlocked
+
+- type: construction
+  id: SofaRight
+  graph: SofasGraph
+  startNode: start
+  targetNode: SofaRightNode
+  category: construction-category-furniture
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canBuildInImpassable: false
+  conditions:
+  - !type:TileNotBlocked
+
+- type: construction
+  id: SofaCorner
+  graph: SofasGraph
+  startNode: start
+  targetNode: SofaCornerNode
+  category: construction-category-furniture
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canBuildInImpassable: false
+  conditions:
+  - !type:TileNotBlocked
+
+- type: construction
+  id: GreenSofaMiddle
+  graph: SofasGraph
+  startNode: start
+  targetNode: GreenSofaMiddleNode
+  category: construction-category-furniture
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canBuildInImpassable: false
+  conditions:
+  - !type:TileNotBlocked
+
+- type: construction
+  id: GreenSofaLeft
+  graph: SofasGraph
+  startNode: start
+  targetNode: GreenSofaLeftNode
+  category: construction-category-furniture
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canBuildInImpassable: false
+  conditions:
+  - !type:TileNotBlocked
+
+- type: construction
+  id: GreenSofaRight
+  graph: SofasGraph
+  startNode: start
+  targetNode: GreenSofaRightNode
+  category: construction-category-furniture
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canBuildInImpassable: false
+  conditions:
+  - !type:TileNotBlocked
+
+- type: construction
+  id: GreenSofaCorner
+  graph: SofasGraph
+  startNode: start
+  targetNode: GreenSofaCornerNode
+  category: construction-category-furniture
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canBuildInImpassable: false
+  conditions:
+  - !type:TileNotBlocked
+
+- type: construction
+  id: RedSofaMiddle
+  graph: SofasGraph
+  startNode: start
+  targetNode: RedSofaMiddleNode
+  category: construction-category-furniture
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canBuildInImpassable: false
+  conditions:
+  - !type:TileNotBlocked
+
+- type: construction
+  id: RedSofaLeft
+  graph: SofasGraph
+  startNode: start
+  targetNode: RedSofaLeftNode
+  category: construction-category-furniture
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canBuildInImpassable: false
+  conditions:
+  - !type:TileNotBlocked
+
+- type: construction
+  id: RedSofaRight
+  graph: SofasGraph
+  startNode: start
+  targetNode: RedSofaRightNode
+  category: construction-category-furniture
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canBuildInImpassable: false
+  conditions:
+  - !type:TileNotBlocked
+
+- type: construction
+  id: RedSofaCorner
+  graph: SofasGraph
+  startNode: start
+  targetNode: RedSofaCornerNode
+  category: construction-category-furniture
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canBuildInImpassable: false
+  conditions:
+  - !type:TileNotBlocked
+
+- type: construction
+  id: BlackSofaMiddle
+  graph: SofasGraph
+  startNode: start
+  targetNode: BlackSofaMiddleNode
+  category: construction-category-furniture
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canBuildInImpassable: false
+  conditions:
+  - !type:TileNotBlocked
+
+- type: construction
+  id: BlackSofaLeft
+  graph: SofasGraph
+  startNode: start
+  targetNode: BlackSofaLeftNode
+  category: construction-category-furniture
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canBuildInImpassable: false
+  conditions:
+  - !type:TileNotBlocked
+
+- type: construction
+  id: BlackSofaRight
+  graph: SofasGraph
+  startNode: start
+  targetNode: BlackSofaRightNode
+  category: construction-category-furniture
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canBuildInImpassable: false
+  conditions:
+  - !type:TileNotBlocked
+
+- type: construction
+  id: BlackSofaCorner
+  graph: SofasGraph
+  startNode: start
+  targetNode: BlackSofaCornerNode
+  category: construction-category-furniture
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canBuildInImpassable: false
+  conditions:
+  - !type:TileNotBlocked
+
+- type: construction
+  id: BlueSofaMiddle
+  graph: SofasGraph
+  startNode: start
+  targetNode: BlueSofaMiddleNode
+  category: construction-category-furniture
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canBuildInImpassable: false
+  conditions:
+  - !type:TileNotBlocked
+
+- type: construction
+  id: BlueSofaLeft
+  graph: SofasGraph
+  startNode: start
+  targetNode: BlueSofaLeftNode
+  category: construction-category-furniture
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canBuildInImpassable: false
+  conditions:
+  - !type:TileNotBlocked
+
+- type: construction
+  id: BlueSofaRight
+  graph: SofasGraph
+  startNode: start
+  targetNode: BlueSofaRightNode
+  category: construction-category-furniture
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canBuildInImpassable: false
+  conditions:
+  - !type:TileNotBlocked
+
+- type: construction
+  id: BlueSofaCorner
+  graph: SofasGraph
+  startNode: start
+  targetNode: BlueSofaCornerNode
+  category: construction-category-furniture
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canBuildInImpassable: false
+  conditions:
+  - !type:TileNotBlocked
+
+- type: construction
+  id: BrownSofaMiddle
+  graph: SofasGraph
+  startNode: start
+  targetNode: BrownSofaMiddleNode
+  category: construction-category-furniture
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canBuildInImpassable: false
+  conditions:
+  - !type:TileNotBlocked
+
+- type: construction
+  id: BrownSofaLeft
+  graph: SofasGraph
+  startNode: start
+  targetNode: BrownSofaLeftNode
+  category: construction-category-furniture
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canBuildInImpassable: false
+  conditions:
+  - !type:TileNotBlocked
+
+- type: construction
+  id: BrownSofaRight
+  graph: SofasGraph
+  startNode: start
+  targetNode: BrownSofaRightNode
+  category: construction-category-furniture
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canBuildInImpassable: false
+  conditions:
+  - !type:TileNotBlocked
+
+- type: construction
+  id: BrownSofaCorner
+  graph: SofasGraph
+  startNode: start
+  targetNode: BrownSofaCornerNode
+  category: construction-category-furniture
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canBuildInImpassable: false
+  conditions:
+  - !type:TileNotBlocked
+
+- type: construction
+  id: chairComfyGreen
+  graph: Seat
+  startNode: start
+  targetNode: chairComfyGreen
+  category: construction-category-furniture
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canBuildInImpassable: false
+  conditions:
+  - !type:TileNotBlocked
+
+- type: construction
+  id: chairComfyRed
+  graph: Seat
+  startNode: start
+  targetNode: chairComfyRed
+  category: construction-category-furniture
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canBuildInImpassable: false
+  conditions:
+  - !type:TileNotBlocked
+
+- type: construction
+  id: chairComfyBlack
+  graph: Seat
+  startNode: start
+  targetNode: chairComfyBlack
+  category: construction-category-furniture
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canBuildInImpassable: false
+  conditions:
+  - !type:TileNotBlocked
+
+- type: construction
+  id: chairComfyBlue
+  graph: Seat
+  startNode: start
+  targetNode: chairComfyBlue
+  category: construction-category-furniture
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canBuildInImpassable: false
+  conditions:
+  - !type:TileNotBlocked
+
+- type: construction
+  id: chairComfyBrown
+  graph: Seat
+  startNode: start
+  targetNode: chairComfyBrown
+  category: construction-category-furniture
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canBuildInImpassable: false
+  conditions:
+  - !type:TileNotBlocked

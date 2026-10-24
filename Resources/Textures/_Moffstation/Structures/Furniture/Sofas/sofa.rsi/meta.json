@@ -1,0 +1,34 @@
+{
+    "version": 1,
+    "license": "CC-BY-SA-4.0",
+    "copyright": "Sprited by Davyei (github) for Moffstation",
+    "size": {
+        "x": 32,
+        "y": 32
+    },
+    "states": [
+        {
+            "name": "arm-left"
+        },
+        {
+            "name": "arm-right",
+            "directions": 4
+        },
+        {
+            "name": "corner",
+            "directions": 4
+        },
+        {
+            "name": "left",
+            "directions": 4
+        },
+        {
+            "name": "middle",
+            "directions": 4
+        },
+        {
+            "name": "right",
+            "directions": 4
+        }
+    ]
+}
