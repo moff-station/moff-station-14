@@ -12,7 +12,7 @@ using Robust.Client.UserInterface.XAML;
 using Robust.Shared.Configuration;
 using Robust.Shared.Prototypes;
 using System.Numerics;
-using Content.Shared._CD.NanoChat;
+using Content.Shared._Moffstation.Chitter;
 
 namespace Content.Client.Access.UI;
 
@@ -24,12 +24,10 @@ public sealed partial class AgentIDCardWindow : FancyWindow
     [Dependency] private IPrototypeManager _prototypeManager = default!;
     private readonly SpriteSystem _spriteSystem;
 
-    private const int MaxNumberLength = 4; // CD - Same as NewChatPopup
-
     public event Action<string>? OnNameChanged;
     public event Action<string>? OnJobChanged;
 
-    public event Action<uint>? OnNumberChanged; // CD - Add event for number changes
+    public event Action<ChitterAccountId>? OnChitterIdChanged; // Moff - Chitter ID change handler
 
     public event Action<ProtoId<JobIconPrototype>>? OnJobIconChanged;
 
@@ -48,34 +46,35 @@ public sealed partial class AgentIDCardWindow : FancyWindow
         NameLineEdit.IsValid = s => s.Length <= _cfgManager.GetCVar(CCVars.MaxNameLength);
         JobLineEdit.IsValid = s => s.Length <= _cfgManager.GetCVar(CCVars.MaxIdJobLength);
 
-        // CD - Add handlers for number changes
-        NumberLineEdit.OnTextEntered += OnNumberEntered;
-        NumberLineEdit.OnFocusExit += OnNumberEntered;
-
-        // CD - Filter to only allow digits
-        NumberLineEdit.OnTextChanged += args =>
+        // Moff start - Add chitter ID
+        ChitterIdLineEdit.OnTextEntered += OnNumberEntered;
+        ChitterIdLineEdit.OnFocusExit += OnNumberEntered;
+        ChitterIdLineEdit.OnTextChanged += args =>
         {
-            if (args.Text.Length > MaxNumberLength)
+            // Truncate to max characters
+            if (args.Text.Length > ChitterAccountId.MaxDigits)
             {
-                NumberLineEdit.Text = args.Text[..MaxNumberLength];
+                ChitterIdLineEdit.Text = args.Text[..ChitterAccountId.MaxDigits];
             }
 
             // Filter to digits only
             var newText = string.Concat(args.Text.Where(char.IsDigit));
             if (newText != args.Text)
-                NumberLineEdit.Text = newText;
+                ChitterIdLineEdit.Text = newText;
         };
+        // Moff end
 
         AgentTabs.SetTabTitle(0, Loc.GetString("agent-id-ui-tab-settings"));
         AgentTabs.SetTabTitle(1, Loc.GetString("agent-id-ui-tab-job-icons"));
     }
 
-    // CD - Add number validation and event
+    // Moff start - Add chitter ID
     private void OnNumberEntered(LineEdit.LineEditEventArgs args)
     {
-        if (uint.TryParse(args.Text, out var number) && number > 0)
-            OnNumberChanged?.Invoke(number);
+        if (int.TryParse(args.Text, out var number) && number > 0)
+            OnChitterIdChanged?.Invoke(new ChitterAccountId(number));
     }
+    // Moff end
 
     /// <summary>
     /// Creates the job icons tab.
@@ -153,7 +152,7 @@ public sealed partial class AgentIDCardWindow : FancyWindow
         }
     }
 
-    public void Update(IdCardComponent card, NanoChatCardComponent? nanochat) // Moff - Nanochat
+    public void Update(IdCardComponent card, ChitterAccountId? chitterId) // Moff - Chitter
     {
         var name = card.FullName ?? string.Empty;
         var job = card.LocalizedJobTitle ?? string.Empty;
@@ -162,7 +161,7 @@ public sealed partial class AgentIDCardWindow : FancyWindow
         CurrentName.Text = name;
         JobLineEdit.Text = job;
         CurrentJob.Text = job;
-        NumberLineEdit.Text = nanochat?.Number?.ToString("D4") ?? ""; // Moff - Nanochat
+        ChitterIdLineEdit.Text = chitterId?.Display(withHash: false) ?? ""; // Moff - Chitter
 
         var jobIconProto = _prototypeManager.Index(card.JobIcon);
         CurrentJobIcon.Texture = _spriteSystem.Frame0(jobIconProto.Icon);

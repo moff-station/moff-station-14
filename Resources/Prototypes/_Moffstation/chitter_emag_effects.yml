@@ -1,0 +1,39 @@
+- type: chitterServerEmagEffect
+  id: ChitterEmagSyndicateIntern
+  serverColor: "#CC2626"
+  avatars:
+  - ChitterAvatar49
+  - ChitterAvatar50
+  - ChitterAvatar51
+  - ChitterAvatar52
+  jobTitle: chitter-emag-job-syndicate-intern
+  nameParts:
+  - NamesSyndicatePrefix
+  - NamesSyndicateNormal
+
+- type: chitterServerEmagEffect
+  id: ChitterEmagClown
+  serverColor: "#F273BF"
+  avatars:
+  - ChitterAvatar53
+  - ChitterAvatar54
+  - ChitterAvatar55
+  - ChitterAvatar56
+  jobTitle: chitter-emag-job-clown
+  nameParts:
+  - NamesClown
+
+# These entities only exist to enable selection of `chitterServerEmagEffect`s via entity tables.
+- type: entity
+  abstract: true
+  id: ChitterEmagEffectSyndicateIntern
+  components:
+  - type: ChitterServerEmagEffect
+    effect: ChitterEmagSyndicateIntern
+
+- type: entity
+  abstract: true
+  id: ChitterEmagEffectClown
+  components:
+  - type: ChitterServerEmagEffect
+    effect: ChitterEmagClown

@@ -1,0 +1,7 @@
+﻿<controls:ItemListOrEmptyLabel xmlns="https://spacestation14.io"
+                               xmlns:controls="clr-namespace:Content.Client._Moffstation.Controls">
+    <BoxContainer HorizontalExpand="True" VerticalExpand="True">
+        <Label Name="NoItemsLabel" HorizontalExpand="True" HorizontalAlignment="Center" VerticalAlignment="Center" />
+        <ItemList Name="Items" HorizontalExpand="True" VerticalExpand="True" Access="Public" />
+    </BoxContainer>
+</controls:ItemListOrEmptyLabel>

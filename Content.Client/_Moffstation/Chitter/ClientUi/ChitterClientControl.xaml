@@ -1,0 +1,40 @@
+<clientUi:ChitterClientControl
+    xmlns="https://spacestation14.io"
+    xmlns:clientUi="clr-namespace:Content.Client._Moffstation.Chitter.ClientUi"
+    xmlns:controls="clr-namespace:Content.Client.UserInterface.Controls"
+    Orientation="Vertical"
+    HorizontalExpand="True"
+    VerticalExpand="True">
+
+    <!-- These three will have their visibility swapped in and out with the main content as needed. Hacky sub-"window"s. -->
+    <!-- Server Connection Selection -->
+    <clientUi:ChitterServerSelectionSubwindow Name="ServerSelection"
+                                              Visible="False"
+                                              HorizontalExpand="True"
+                                              VerticalExpand="True" />
+    <!-- Identity + Settings -->
+    <clientUi:ChitterSettingsSubwindow Name="Settings"
+                                       Visible="False"
+                                       HorizontalExpand="True"
+                                       VerticalExpand="True" />
+    <!-- New Chat -->
+    <clientUi:ChitterNewChatSubwindow Name="NewChat"
+                                      Visible="False"
+                                      HorizontalExpand="True"
+                                      VerticalExpand="True" />
+
+    <!-- Main UI -->
+    <SplitContainer Name="MainUi"
+                    Orientation="Vertical"
+                    HorizontalExpand="True"
+                    VerticalExpand="True">
+        <clientUi:ChitterUserControl Name="UserControl" HorizontalExpand="True" VerticalAlignment="Top" />
+        <BoxContainer HorizontalExpand="True" VerticalExpand="True" Orientation="Horizontal">
+            <clientUi:ChitterChatListingControl Name="ChatList" MinSize="150 0" MaxSize="150 9999"
+                                                VerticalExpand="True" />
+            <controls:Separator Orientation="Vertical" />
+            <clientUi:ChitterChatControl Name="CurrentChat" HorizontalExpand="True" VerticalExpand="True" />
+        </BoxContainer>
+    </SplitContainer>
+
+</clientUi:ChitterClientControl>

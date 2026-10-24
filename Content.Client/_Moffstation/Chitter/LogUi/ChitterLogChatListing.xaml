@@ -1,0 +1,13 @@
+﻿<controls:ChitterLogChatListing
+    xmlns="https://spacestation14.io"
+    xmlns:controls="clr-namespace:Content.Client._Moffstation.Chitter.LogUi"
+    xmlns:moff="clr-namespace:Content.Client._Moffstation.Controls">
+
+    <BoxContainer Orientation="Vertical" HorizontalExpand="True" VerticalExpand="True">
+        <LineEdit Name="SearchInput" PlaceHolder="{Loc 'chitter-log-search-placeholder'}" />
+        <moff:ItemListOrEmptyLabel Name="ChatList"
+                                   EmptyText="{Loc 'chitter-log-no-chats'}"
+                                   HorizontalExpand="True"
+                                   VerticalExpand="True" />
+    </BoxContainer>
+</controls:ChitterLogChatListing>

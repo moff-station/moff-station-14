@@ -1,0 +1,8 @@
+﻿<logUi:ChitterMessageControl
+    xmlns="https://spacestation14.io"
+    xmlns:logUi="clr-namespace:Content.Client._Moffstation.Chitter.LogUi"
+    Orientation="Vertical"
+    Margin="0 0 0 4">
+    <Label Name="Title" FontColorOverride="Gray" />
+    <Label Name="Content" />
+</logUi:ChitterMessageControl>

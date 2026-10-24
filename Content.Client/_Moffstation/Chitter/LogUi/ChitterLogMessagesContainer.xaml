@@ -1,0 +1,11 @@
+﻿<controls:ChitterLogMessagesContainer
+    xmlns="https://spacestation14.io"
+    xmlns:controls="clr-namespace:Content.Client._Moffstation.Chitter.LogUi">
+
+    <ScrollContainer>
+        <Label Name="NoMessagesLabel" Text="{Loc 'chitter-log-no-messages'}" HorizontalAlignment="Center" />
+        <BoxContainer Name="MessageList" Orientation="Vertical" Visible="False">
+            <!-- Populated programmatically -->
+        </BoxContainer>
+    </ScrollContainer>
+</controls:ChitterLogMessagesContainer>

@@ -1,0 +1,17 @@
+<clientUi:ChitterServerConnectionControl xmlns="https://spacestation14.io"
+                                         xmlns:clientUi="clr-namespace:Content.Client._Moffstation.Chitter.ClientUi"
+                                         Orientation="Horizontal">
+    <BoxContainer Name="NoConnection"
+                  HorizontalExpand="True"
+                  VerticalExpand="True">
+        <Label Text="{Loc 'chitter-client-no-connection'}" />
+        <Button Name="ConnectButton" Text="{Loc 'chitter-client-connect'}" Margin="5 0" />
+    </BoxContainer>
+    <BoxContainer Name="Connection"
+                  HorizontalExpand="True"
+                  VerticalExpand="True">
+        <Label Text="{Loc 'chitter-client-connected-to'}" />
+        <Label Name="ConnectedToName" Margin="5 0" />
+        <Button Name="DisconnectButton" Text="{Loc 'chitter-client-disconnect'}" Margin="5 0" />
+    </BoxContainer>
+</clientUi:ChitterServerConnectionControl>

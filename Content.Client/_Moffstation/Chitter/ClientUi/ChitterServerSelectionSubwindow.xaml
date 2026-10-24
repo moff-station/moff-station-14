@@ -1,0 +1,14 @@
+﻿<controls:ChitterServerSelectionSubwindow
+    xmlns="https://spacestation14.io"
+    xmlns:controls="clr-namespace:Content.Client._Moffstation.Chitter.ClientUi"
+    xmlns:moffControls="clr-namespace:Content.Client._Moffstation.Controls"
+    Title="{Loc 'chitter-client-server-selection-title'}">
+    <moffControls:ItemListOrEmptyLabel Name="ServerOptions"
+                                       SelectMode="Single"
+                                       HorizontalExpand="True"
+                                       VerticalExpand="True"
+                                       EmptyText="{Loc 'chitter-client-server-selection-no-servers'}">
+        <!-- Populated programmatically -->
+    </moffControls:ItemListOrEmptyLabel>
+    <Button Name="Submit" Text="{Loc 'chitter-client-server-selection-submit'}" Margin="0 5"/>
+</controls:ChitterServerSelectionSubwindow>

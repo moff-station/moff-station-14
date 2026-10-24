@@ -1,6 +1,8 @@
+using Content.Shared._Moffstation.PDA;
 using Content.Shared.Access.Components;
 using Content.Shared.Access.Systems;
 using Content.Shared.Containers.ItemSlots;
+using Content.Shared.PDA;
 using Robust.Shared.Containers;
 
 namespace Content.Shared.PDA
@@ -47,6 +49,17 @@ namespace Content.Shared.PDA
             if (args.Container.ID == PdaComponent.PdaIdSlotId)
                 pda.ContainedId = args.Entity;
 
+            // Moff start - PDA/ID events
+            var pdaEnt = new Entity<PdaComponent>(uid, pda);
+            var idEvent = new InsertedIntoPdaEvent(pdaEnt);
+            RaiseLocalEvent(args.Entity, ref idEvent);
+            if (WithCompOrNull<IdCardComponent>(args.Entity) is {} idEnt)
+            {
+                var pdaEvent = new IdInsertedIntoEvent(idEnt);
+                RaiseLocalEvent(uid, ref pdaEvent);
+            }
+            // Moff end
+
             UpdatePdaAppearance(uid, pda);
             UpdateJobStatus(uid);
         }
@@ -55,6 +68,17 @@ namespace Content.Shared.PDA
         {
             if (args.Container.ID == pda.IdSlot.ID)
                 pda.ContainedId = null;
+
+            // Moff start - PDA/ID events
+            var pdaEnt = new Entity<PdaComponent>(uid, pda);
+            var idEvent = new RemovedFromPdaEvent(pdaEnt);
+            RaiseLocalEvent(args.Entity, ref idEvent);
+            if (WithCompOrNull<IdCardComponent>(args.Entity) is {} idEnt)
+            {
+                var pdaEvent = new IdRemovedFromEvent(idEnt);
+                RaiseLocalEvent(uid, ref pdaEvent);
+            }
+            // Moff end
 
             UpdatePdaAppearance(uid, pda);
             UpdateJobStatus(uid);

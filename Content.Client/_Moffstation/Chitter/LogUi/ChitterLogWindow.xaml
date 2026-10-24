@@ -1,0 +1,7 @@
+<controls:FancyWindow xmlns="https://spacestation14.io"
+                      xmlns:logUi="clr-namespace:Content.Client._Moffstation.Chitter.LogUi"
+                      xmlns:controls="clr-namespace:Content.Client.UserInterface.Controls"
+                      Title="{Loc 'chitter-log-title'}"
+                      MinSize="750 480">
+    <logUi:ChitterLogControl Name="LogControl" Searchable="True" HorizontalExpand="True" VerticalExpand="True" />
+</controls:FancyWindow>
