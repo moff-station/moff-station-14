@@ -61,7 +61,7 @@
     - state: stripe_top
       color: "#99ff98"
     - sprite: &icon-rsi _Moffstation/Interface/Misc/job_icons.rsi
-      offset: &icon-offset -0.09375, 0.0625
+      offset: &icon-offset -0.12500, 0
       state: CentralCommandIntern
   - type: Item
     heldPrefix: silver
@@ -81,9 +81,9 @@
     layers:
     - state: default
     - state: stripe_bottom
-      color: "#1b67a5"
+      color: "#4594de"
     - state: stripe_top
-      color: "#7cb1d1"
+      color: "#1c3c74"
     - sprite: *icon-rsi
       offset: *icon-offset
       state: CoffeeLogisticsOfficer
@@ -99,9 +99,9 @@
     layers:
     - state: default
     - state: stripe_bottom
-      color: "#1b67a5"
+      color: "#4594de"
     - state: stripe_top
-      color: "#7cb1d1"
+      color: "#1c3c74"
     - sprite: *icon-rsi
       offset: *icon-offset
       state: BridgeAssistant
@@ -119,9 +119,9 @@
     layers:
     - state: default
     - state: stripe_bottom
-      color: "#639137"
+      color: "#afc647"
     - state: stripe_top
-      color: "#7cb1d1"
+      color: "#7b9f2c"
     - sprite: *icon-rsi
       offset: *icon-offset
       state: HeadOfSanitation
@@ -160,9 +160,9 @@
     layers:
     - state: default
     - state: stripe_bottom
-      color: "#b47832"
+      color: "#dca049"
     - state: stripe_top
-      color: "#e9b375"
+      color: "#804724"
     - sprite: *icon-rsi
       offset: *icon-offset
       state: FreightPilot
@@ -178,9 +178,9 @@
     layers:
     - state: default
     - state: stripe_side
-      color: "#e56c30"
+      color: "#ff7954"
     - state: stripe_top
-      color: "#e58b5e"
+      color: "#ca401b"
     - sprite: *icon-rsi
       offset: *icon-offset
       state: SeniorAtmos
@@ -196,9 +196,9 @@
     layers:
     - state: default
     - state: stripe_bottom
-      color: &color-medical-bottom "#7daff8"
+      color: &color-medical-bottom "#a2d2ff"
     - state: stripe_top
-      color: &color-medical-top "#bed8ff"
+      color: &color-medical-top "#7daff8"
     - sprite: *icon-rsi
       offset: *icon-offset
       state: Geneticist
@@ -230,9 +230,9 @@
     layers:
     - state: default
     - state: stripe_bottom
-      color: "#6b57c8"
+      color: "#a676f0"
     - state: stripe_top
-      color: "#c2b5ff"
+      color: "#4e4798"
     - sprite: *icon-rsi
       offset: *icon-offset
       state: Roboticist
@@ -246,9 +246,9 @@
     layers:
     - state: orange
     - state: stripe_bottom
-      color: "#a2c940"
+      color: "#afc647"
     - state: stripe_top
-      color: "#c2b5ff"
+      color: "#7b9f2c"
     - sprite: *icon-rsi
       offset: *icon-offset
       state: CommunityLaborer
