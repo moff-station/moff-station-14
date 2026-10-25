@@ -8802,6 +8802,18 @@ Entries:
   url: https://github.com/moff-station/moff-station-14/pull/2034
 - author: DuckManZach
   changes:
+  - message: If you click a tile with a mop, it'll mop that tile. No more pixel hunting
+    type: add
+  - message: (Hopefully) fixed bugged puddles with 0u
+    type: add
+  - message: Turned down the waterlogged station variant (puddles are one third as
+      common)
+    type: add
+  id: 2035
+  time: '2026-10-25T05:21:50.000'
+  url: https://github.com/moff-station/moff-station-14/pull/2035
+- author: DuckManZach
+  changes:
   - message: The discord event no longer gets fired briefly on server startup.
     type: fix
   id: 2038
