@@ -69,18 +69,24 @@ public abstract partial class SharedStainSystem : EntitySystem
         if (!rand.Prob(ent.Comp.StainChance))
             return;
 
-        // Get the puddle's solution component, so that we can split the puddle's solution in a way that
-        // gets networked and updated properly
-        if (!TryComp<SolutionComponent>(args.Source, out var puddleSolutionComp))
-            return;
-        var split = _solution.SplitSolution((args.Source, puddleSolutionComp), ent.Comp.SpillTransferAmount);
-
-        // fuck water (and similar absorbent substances!)
-        for (var i = split.Contents.Count - 1; i >= 0; i--)
+        // If we're getting spilled on by a puddle, get the entire puddle solution (minus absorbent reagents) to spill
+        // onto us.
+        Solution split;
+        if (TryComp<PuddleComponent>(args.Source, out var puddle) && puddle.Solution is {} puddleSolution)
         {
-            if (_prototype.TryIndex<ReagentPrototype>(split.Contents[i].Reagent.Prototype, out var reagentProto)
-                && reagentProto.Absorbent)
-                split.RemoveReagent(split.Contents[i].Reagent, split.Contents[i].Quantity);
+            split = _solution.SplitSolution(puddleSolution, ent.Comp.SpillTransferAmount);
+
+            // fuck water (and similar absorbent substances!)
+            for (var i = split.Contents.Count - 1; i >= 0; i--)
+            {
+                if (_prototype.Resolve(split.Contents[i].Reagent.Prototype, out var reagentProto) &&
+                    reagentProto.Absorbent)
+                    split.RemoveReagent(split.Contents[i].Reagent, split.Contents[i].Quantity);
+            }
+        }
+        else
+        {
+            split = args.Solution;
         }
 
         // Transfer our stuff in
