@@ -85,11 +85,11 @@ namespace Content.Server.GameTicking
             DebugTools.Assert(_initialized);
             DebugTools.Assert(!_postInitialized);
 
+            PauseStart(Cfg.GetCVar(CCVars.StartServerPaused)); // Moff - Pause the round on startup if the Cvar is enabled
+
             // We restart the round now that entities are initialized and prototypes have been loaded.
             if (!DummyTicker)
                 RestartRound();
-
-            PauseStart(Cfg.GetCVar(CCVars.StartServerPaused)); // Moffstation - Pause the round on startup if the Cvar is enabled
 
             _postInitialized = true;
         }
