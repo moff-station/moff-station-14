@@ -1,0 +1,9 @@
+<clientUi:ChitterChatListingControl xmlns="https://spacestation14.io"
+                                    xmlns:clientUi="clr-namespace:Content.Client._Moffstation.Chitter.ClientUi">
+    <BoxContainer Orientation="Vertical">
+        <BoxContainer Name="Items" Orientation="Vertical" VerticalExpand="True" HorizontalExpand="True">
+            <!-- Populated programmatically -->
+        </BoxContainer>
+        <Button Name="NewChatButton" Text="{Loc 'chitter-client-new-chat'}" HorizontalExpand="True" />
+    </BoxContainer>
+</clientUi:ChitterChatListingControl>

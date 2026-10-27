@@ -1,16 +1,12 @@
-﻿using Content.Shared._Moffstation.Silicons.StationAi;
+﻿using Content.Shared._Moffstation.Chitter;
+using Content.Shared._Moffstation.Silicons.StationAi;
 
 // ReSharper disable once CheckNamespace // Moffstation additions to the existing system.
 namespace Content.Shared.Silicons.StationAi;
 
 public abstract partial class SharedStationAiSystem
 {
-    private void InitMoffstation()
-    {
-        SubscribeLocalEvent<StationAiHeldComponent, AiShellControlStartedEvent>(OnAiShellControlStarted);
-        SubscribeLocalEvent<StationAiHeldComponent, AiShellControlStoppedEvent>(OnAiShellControlStopped);
-    }
-
+    [SubscribeLocalEvent]
     private void OnAiShellControlStarted(Entity<StationAiHeldComponent> entity, ref AiShellControlStartedEvent args)
     {
         if (!TryGetCore(entity, out var core))
@@ -19,6 +15,7 @@ public abstract partial class SharedStationAiSystem
         SwitchRemoteEntityMode(core, false);
     }
 
+    [SubscribeLocalEvent]
     private void OnAiShellControlStopped(Entity<StationAiHeldComponent> entity, ref AiShellControlStoppedEvent args)
     {
         if (TryGetCore(entity, out var core))
@@ -27,5 +24,14 @@ public abstract partial class SharedStationAiSystem
             if (core.Comp?.RemoteEntity is { } remoteEnt)
                 _xforms.SetCoordinates(remoteEnt, Transform(args.Shell).Coordinates);
         }
+    }
+
+    private static readonly LocId StationAiTitle = "job-name-station-ai";
+
+    [SubscribeLocalEvent]
+    private void On(Entity<StationAiHeldComponent> entity, ref ChitterGetIdentityInfoEvent args)
+    {
+        args.Name = Name(entity);
+        args.Title = Loc.GetString(StationAiTitle);
     }
 }

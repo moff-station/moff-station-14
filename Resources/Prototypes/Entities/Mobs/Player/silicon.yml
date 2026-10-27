@@ -53,6 +53,10 @@
       enum.ShellUiKey.Key:
         type: AiShellControllerBoundUserInterface
       # Moffstation - Ai Shells- End
+      # Moff start - Chitter
+      enum.IntrinsicChitterUiKey.Key:
+        type: IntrinsicChitterClientBoundUserInterface
+      # Moff end
   - type: IntrinsicUI
     uis:
       enum.RadarConsoleUiKey.Key:
@@ -63,6 +67,10 @@
         toggleAction: ActionAGhostShowStationRecords
       enum.CommunicationsConsoleUiKey.Key:
         toggleAction: ActionAGhostShowCommunications
+      # Moff start - Chitter
+      enum.IntrinsicChitterUiKey.Key:
+        toggleAction: ActionAGhostShowChitter
+      # Moff end
   # Moffstation - Begin - Ai warp
   - type: Warp
   - type: NavMapWarp
@@ -83,6 +91,14 @@
     canShuttle: false
     title: comms-console-announcement-title-station-ai
     color: "#5ed7aa"
+  # Moff start - Chitter
+  - type: ChitterIdentity
+  - type: IntrinsicChitterClient
+  - type: UseDelay
+    delays: # I hate that this is here, but networking hated me more when trying to get it to be defaulted in the C#
+      chitter-client-server-interaction:
+        length: 1.0
+  # Moff end
   - type: ShowJobIcons
   - type: ShowCrewIcons
   - type: DamagedSiliconAccent
@@ -154,7 +170,7 @@
     layers:
     - state: base
     - state: full
-      map: ["unshaded"]
+      map: [ "unshaded" ]
       shader: unshaded
   - type: Appearance
   - type: GenericVisualizer
@@ -241,7 +257,7 @@
             min: 2
             max: 2
       - !type:DoActsBehavior
-        acts: ["Destruction"]
+        acts: [ "Destruction" ]
   - type: DamageVisuals
     thresholds: [50, 100, 200, 600, 1200, 1800, 2400]
 # Moff End
@@ -273,14 +289,14 @@
     layers:
     - state: base
     - state: ai_empty
-      map: ["enum.StationAiVisualLayers.Base"]
+      map: [ "enum.StationAiVisualLayers.Base" ]
       shader: unshaded
     - state: ai
-      map: ["enum.StationAiVisualLayers.Icon"]
+      map: [ "enum.StationAiVisualLayers.Icon" ]
       shader: unshaded
       visible: false
     - state: ai_unpowered
-      map: ["enum.PowerDeviceVisualLayers.Powered"]
+      map: [ "enum.PowerDeviceVisualLayers.Powered" ]
       visible: false
   - type: Appearance
   - type: GenericVisualizer
@@ -299,8 +315,8 @@
       state: creampie_ai
   - type: Reactive
     reactions:
-    - reagents: [Water, SpaceCleaner]
-      methods: [Touch]
+    - reagents: [ Water, SpaceCleaner ]
+      methods: [ Touch ]
       effects:
       - !type:WashCreamPie
   - type: InteractionPopup
@@ -416,7 +432,7 @@
         - station_ai_brain_slot
         - board
       - !type:DoActsBehavior
-        acts: ["Destruction"]
+        acts: [ "Destruction" ]
   - type: Construction
     graph: StationAiCore
     node: frame
@@ -425,7 +441,7 @@
       board: !type:Container
       station_ai_brain_slot: !type:Container
 
-# The actual brain inside the core
+      # The actual brain inside the core
 - type: entity
   id: StationAiBrain
   parent: PositronicBrain # Moffstation - let them be ion'd!
@@ -501,7 +517,7 @@
       actions: !type:Container
         showEnts: False
         occludes: True
-        ents: []
+        ents: [ ]
   # Moffstation - End
 
 # Hologram projection that the AI's eye tracks.
@@ -536,7 +552,7 @@
     layers:
     - state: ai_camera
       shader: unshaded
-      map: ["base"]
+      map: [ "base" ]
   - type: CameraActiveOnCollideCollider
 
 # The holographic representation of the AI that is projected from a holopad.
@@ -590,11 +606,11 @@
   - type: ContainerFill
     containers:
       borg_brain:
-        - PositronicBrainSyndicate
+      - PositronicBrainSyndicate
       borg_module:
-        - BorgModuleOperative
-        - BorgModuleL6C
-        - BorgModuleDoubleEsword
+      - BorgModuleOperative
+      - BorgModuleL6C
+      - BorgModuleDoubleEsword
   - type: ItemSlots
     slots:
       cell_slot:
@@ -606,14 +622,14 @@
   parent: PlayerBorgSyndicateAssaultBattery
   suffix: Ghost role
   components:
-    - type: GhostRole
-      name: ghost-role-information-syndicate-cyborg-assault-name
-      description: ghost-role-information-syndicate-cyborg-description
-      rules: ghost-role-information-silicon-rules
-      raffle:
-        settings: default
-      job: Borg
-    - type: GhostTakeoverAvailable
+  - type: GhostRole
+    name: ghost-role-information-syndicate-cyborg-assault-name
+    description: ghost-role-information-syndicate-cyborg-description
+    rules: ghost-role-information-silicon-rules
+    raffle:
+      settings: default
+    job: Borg
+  - type: GhostTakeoverAvailable
 
 - type: entity
   id: PlayerBorgSyndicateSaboteurBattery
@@ -624,11 +640,11 @@
   - type: ContainerFill
     containers:
       borg_brain:
-        - PositronicBrain
+      - PositronicBrain
       borg_module:
-        - BorgModuleTool
-        - BorgModuleOperative
-        - BorgModuleSyndicateWeapon
+      - BorgModuleTool
+      - BorgModuleOperative
+      - BorgModuleSyndicateWeapon
   - type: ItemSlots
     slots:
       cell_slot:
@@ -640,14 +656,14 @@
   parent: PlayerBorgSyndicateSaboteurBattery
   suffix: Ghost role
   components:
-    - type: GhostRole
-      name: ghost-role-information-syndicate-cyborg-saboteur-name
-      description: ghost-role-information-syndicate-cyborg-description
-      rules: ghost-role-information-silicon-rules
-      raffle:
-        settings: default
-      job: Borg
-    - type: GhostTakeoverAvailable
+  - type: GhostRole
+    name: ghost-role-information-syndicate-cyborg-saboteur-name
+    description: ghost-role-information-syndicate-cyborg-description
+    rules: ghost-role-information-silicon-rules
+    raffle:
+      settings: default
+    job: Borg
+  - type: GhostTakeoverAvailable
 
 - type: entity
   parent: MarkerBase
@@ -656,9 +672,9 @@
   components:
   - type: Sprite
     layers:
-      - state: red
-      - sprite: Structures/Decoration/banner.rsi
-        state: banner_syndicate
+    - state: red
+    - sprite: Structures/Decoration/banner.rsi
+      state: banner_syndicate
   - type: EntityTableSpawner
     table: !type:GroupSelector
       children:
@@ -689,7 +705,7 @@
         name: power-cell-slot-component-slot-name-default
         startingItem: PowerCellHigh
   - type: RandomMetadata
-    nameSegments: [NamesBorg]
+    nameSegments: [ NamesBorg ]
 
 - type: entity
   parent: PlayerEngineeringBorgDerelict
@@ -714,33 +730,33 @@
   - type: ContainerFill
     containers:
       borg_brain:
-        - PositronicBrainIonStormed
+      - PositronicBrainIonStormed
       borg_module:
-        - BorgModulePrying
-        - BorgModuleTool
-        - BorgModuleFireExtinguisher
+      - BorgModulePrying
+      - BorgModuleTool
+      - BorgModuleFireExtinguisher
   - type: ItemSlots
     slots:
       cell_slot:
         name: power-cell-slot-component-slot-name-default
         startingItem: PowerCellHigh
   - type: RandomMetadata
-    nameSegments: [NamesBorg]
+    nameSegments: [ NamesBorg ]
 
 - type: entity
   parent: PlayerBorgDerelict
   id: PlayerBorgDerelictGhostRole
   suffix: Ghost role
   components:
-    - type: GhostRole
-      name: ghost-role-information-derelict-cyborg-name
-      description: ghost-role-information-derelict-cyborg-description
-      rules: ghost-role-information-silicon-rules
-      raffle:
-        settings: default
-      reregister: false
-      job: Borg
-    - type: GhostTakeoverAvailable
+  - type: GhostRole
+    name: ghost-role-information-derelict-cyborg-name
+    description: ghost-role-information-derelict-cyborg-description
+    rules: ghost-role-information-silicon-rules
+    raffle:
+      settings: default
+    reregister: false
+    job: Borg
+  - type: GhostTakeoverAvailable
 
 - type: entity
   parent: JanitorBorgChassisDerelict
@@ -763,7 +779,7 @@
         name: power-cell-slot-component-slot-name-default
         startingItem: PowerCellHigh
   - type: RandomMetadata
-    nameSegments: [NamesBorg]
+    nameSegments: [ NamesBorg ]
 
 - type: entity
   parent: PlayerJanitorBorgDerelict
@@ -802,7 +818,7 @@
         name: power-cell-slot-component-slot-name-default
         startingItem: PowerCellHigh
   - type: RandomMetadata
-    nameSegments: [NamesBorg]
+    nameSegments: [ NamesBorg ]
 
 - type: entity
   parent: PlayerMedicalBorgDerelict
@@ -841,7 +857,7 @@
         name: power-cell-slot-component-slot-name-default
         startingItem: PowerCellHigh
   - type: RandomMetadata
-    nameSegments: [NamesBorg]
+    nameSegments: [ NamesBorg ]
 
 - type: entity
   parent: PlayerMiningBorgDerelict

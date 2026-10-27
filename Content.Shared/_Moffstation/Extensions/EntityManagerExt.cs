@@ -39,4 +39,11 @@ public static class EntityManagerExt
         public Entity<T> EnsureComp<T>(EntityUid ent) where T : IComponent, new() =>
             new(ent, entMan.EnsureComponent<T>(ent));
     }
+
+    extension(IEntityManager entMan)
+    {
+        /// Resolves a system of type <typeparamref name="T"/>, assigning it to <paramref name="system"/>.
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public void ResolveSystem<T>(out T system) where T : EntitySystem => system = entMan.System<T>();
+    }
 }

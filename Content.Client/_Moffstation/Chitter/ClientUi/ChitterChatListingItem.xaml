@@ -1,0 +1,11 @@
+﻿<clientUi:ChitterChatListingItem xmlns="https://spacestation14.io"
+                                 xmlns:clientUi="clr-namespace:Content.Client._Moffstation.Chitter.ClientUi"
+                                 HorizontalExpand="True">
+    <PanelContainer Name="Panel" HorizontalExpand="True" MinSize="0 50" StyleClasses="PanelDark">
+        <BoxContainer Orientation="Vertical" HorizontalExpand="True" VerticalExpand="True" Margin="5">
+            <Label Name="Title" ClipText="True" HorizontalExpand="True" />
+            <Label Name="Preview" ClipText="True" HorizontalExpand="True" StyleClasses="WindowFooterText" />
+            <!-- TODO Show number of unread messages / highlight chats with unread messages -->
+        </BoxContainer>
+    </PanelContainer>
+</clientUi:ChitterChatListingItem>

@@ -1,0 +1,11 @@
+﻿<chitter:ChitterSubwindow xmlns="https://spacestation14.io"
+                          xmlns:chitter="clr-namespace:Content.Client._Moffstation.Chitter.ClientUi"
+                          Orientation="Vertical">
+    <PanelContainer Name="WindowHeader" StyleClasses="windowHeader" HorizontalExpand="True">
+        <BoxContainer Orientation="Horizontal">
+            <Label Margin="5 0 0 0" HorizontalExpand="true" Name="TitleLabel" StyleIdentifier="foo" ClipText="True"
+                   Text="{Loc 'defaultwindow-placeholder-title'}" VAlign="Center" StyleClasses="windowTitle" />
+            <TextureButton Name="CloseButton" StyleClasses="windowCloseButton" VerticalAlignment="Center" />
+        </BoxContainer>
+    </PanelContainer>
+</chitter:ChitterSubwindow>
