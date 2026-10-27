@@ -386,8 +386,8 @@
         Structural: 16 # Moff - 40% bonus damage to structures, based on esword
   - type: MeleeRequiresWield
   - type: HeldSpeedModifier #slowdown is what balances this compared to a dsword
-    walkModifier: 0.70 # Moffstation adjustment - previously .6
-    sprintModifier: 0.70 # Moffstation adjustment - previously .6
+    walkModifier: 0.65 # Moffstation adjustment - previously .6
+    sprintModifier: 0.65 # Moffstation adjustment - previously .6
     weightlessAcceleration: 0.6
     zeroGravityModifier: 0.6
   - type: UseDelay
@@ -410,7 +410,7 @@
     size: Small
     sprite: Objects/Weapons/Melee/hypereutactic_blade_inhands.rsi
   - type: Reflect
-    reflectProb: .80 # Moffstation adjustment - no longer 100% reflect.
+    reflectProb: .75 # Moffstation adjustment - no longer 100% reflect.
     spread: 75
 
 # Borgs

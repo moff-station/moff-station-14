@@ -200,10 +200,13 @@
   id: UplinkHyperEutacticBlade
   name: uplink-hypereutatic-blade-moff-name
   description: uplink-hypereutatic-blade-moff-desc
+  productEntity: HyperEutacticBlade
   icon:
     sprite: Objects/Weapons/Melee/hypereutactic_blade.rsi
     state: icon
-  productEntity: HyperEutacticBlade
+  discountCategory: veryRareDiscounts
+  discountDownTo:
+    Telecrystal: 6
   cost:
     Telecrystal: 12
   categories:
@@ -240,6 +243,9 @@
   description: uplink-smoke-implant-desc
   icon: { sprite: /Textures/Objects/Weapons/Grenades/smoke.rsi, state: icon }
   productEntity: SmokeImplanter
+  discountCategory: rareDiscounts
+  discountDownTo:
+    Telecrystal: 1
   cost:
     Telecrystal: 2
   categories:
