@@ -4,8 +4,8 @@ meta:
   engineVersion: 290.0.0
   forkId: ""
   forkVersion: ""
-  time: 10/25/2026 02:56:52
-  entityCount: 910
+  time: 10/27/2026 02:35:20
+  entityCount: 918
 maps: []
 grids:
 - 1
@@ -33,7 +33,7 @@ entities:
   - uid: 1
     components:
     - type: MetaData
-      name: grid
+      name: NT Evac Flammeus 79
     - type: Transform
       parent: invalid
       pos: -0.515625,-0.484375
@@ -509,6 +509,56 @@ entities:
       parent: 1
       rot: -1.5707963267948966 rad
       pos: 12.5,-4.5
+- proto: AtmosDeviceFanDirectional
+  entities:
+  - uid: 911
+    components:
+    - type: Transform
+      parent: 1
+      rot: -1.5707963267948966 rad
+      pos: -1.5,1.5
+  - uid: 912
+    components:
+    - type: Transform
+      parent: 1
+      rot: -1.5707963267948966 rad
+      pos: -1.5,-0.5
+  - uid: 913
+    components:
+    - type: Transform
+      parent: 1
+      rot: -1.5707963267948966 rad
+      pos: -1.5,-10.5
+  - uid: 914
+    components:
+    - type: Transform
+      parent: 1
+      rot: -1.5707963267948966 rad
+      pos: -1.5,-12.5
+  - uid: 915
+    components:
+    - type: Transform
+      parent: 1
+      rot: 1.5707963267948966 rad
+      pos: 15.5,-10.5
+  - uid: 916
+    components:
+    - type: Transform
+      parent: 1
+      rot: 1.5707963267948966 rad
+      pos: 15.5,-8.5
+  - uid: 917
+    components:
+    - type: Transform
+      parent: 1
+      rot: 1.5707963267948966 rad
+      pos: 15.5,-2.5
+  - uid: 918
+    components:
+    - type: Transform
+      parent: 1
+      rot: 1.5707963267948966 rad
+      pos: 15.5,-0.5
 - proto: AtmosFixAirMarker
   entities:
   - uid: 383
