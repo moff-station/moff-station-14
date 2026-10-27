@@ -7,10 +7,10 @@
   components:
   - type: Emag
   - type: Sprite
-    sprite: Objects/Tools/emag.rsi
+    sprite: _Moffstation/Objects/Tools/emag.rsi # Moff
     state: icon
   - type: Item
-    sprite: Objects/Tools/emag.rsi
+    sprite: _Moffstation/Objects/Tools/emag.rsi # Moff
     storedRotation: -90
 
 - type: entity
