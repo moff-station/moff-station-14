@@ -6,17 +6,8 @@
   components:
   - type: Sprite
     sprite: _Moffstation/Structures/Machines/computers.rsi # Moffstation
-    layers:
-    - map: ["computerLayerBody"]
-      state: computer
-    - map: ["computerLayerKeyboard"]
-      state: generic_keyboard
-    - map: ["computerLayerScreen"]
-      state: comm_science
-    - map: ["computerLayerKeys"]
-      state: generic_keys
-    - map: [ "enum.WiresVisualLayers.MaintenancePanel" ]
-      state: generic_panel_open
+  - type: ComputerVisuals
+    stateScreen: comm_science
   - type: AccessReader
     access: [[ "ResearchDirector" ]]
   - type: CommunicationsConsole
@@ -38,17 +29,8 @@
   components:
   - type: Sprite
     sprite: _Moffstation/Structures/Machines/computers.rsi # Moffstation
-    layers:
-    - map: ["computerLayerBody"]
-      state: computer
-    - map: ["computerLayerKeyboard"]
-      state: generic_keyboard
-    - map: ["computerLayerScreen"]
-      state: comm_security
-    - map: ["computerLayerKeys"]
-      state: generic_keys
-    - map: [ "enum.WiresVisualLayers.MaintenancePanel" ]
-      state: generic_panel_open
+  - type: ComputerVisuals
+    stateScreen: comm_security
   - type: AccessReader
     access: [[ "HeadOfSecurity" ]]
   - type: CommunicationsConsole
@@ -70,17 +52,8 @@
   components:
   - type: Sprite
     sprite: _Moffstation/Structures/Machines/computers.rsi # Moffstation
-    layers:
-    - map: ["computerLayerBody"]
-      state: computer
-    - map: ["computerLayerKeyboard"]
-      state: generic_keyboard
-    - map: ["computerLayerScreen"]
-      state: comm_service
-    - map: ["computerLayerKeys"]
-      state: generic_keys
-    - map: [ "enum.WiresVisualLayers.MaintenancePanel" ]
-      state: generic_panel_open
+  - type: ComputerVisuals
+    stateScreen: comm_service
   - type: AccessReader
     access: [[ "HeadOfPersonnel" ]]
   - type: CommunicationsConsole
@@ -102,17 +75,8 @@
   components:
   - type: Sprite
     sprite: _Moffstation/Structures/Machines/computers.rsi # Moffstation
-    layers:
-    - map: ["computerLayerBody"]
-      state: computer
-    - map: ["computerLayerKeyboard"]
-      state: generic_keyboard
-    - map: ["computerLayerScreen"]
-      state: comm_cargo
-    - map: ["computerLayerKeys"]
-      state: generic_keys
-    - map: [ "enum.WiresVisualLayers.MaintenancePanel" ]
-      state: generic_panel_open
+  - type: ComputerVisuals
+    stateScreen: comm_cargo
   - type: AccessReader
     access: [[ "Quartermaster" ]]
   - type: CommunicationsConsole
@@ -134,17 +98,8 @@
   components:
   - type: Sprite
     sprite: _Moffstation/Structures/Machines/computers.rsi # Moffstation
-    layers:
-    - map: ["computerLayerBody"]
-      state: computer
-    - map: ["computerLayerKeyboard"]
-      state: generic_keyboard
-    - map: ["computerLayerScreen"]
-      state: comm_engi
-    - map: ["computerLayerKeys"]
-      state: generic_keys
-    - map: [ "enum.WiresVisualLayers.MaintenancePanel" ]
-      state: generic_panel_open
+  - type: ComputerVisuals
+    stateScreen: comm_engi
   - type: AccessReader
     access: [[ "ChiefEngineer" ]]
   - type: CommunicationsConsole
@@ -166,17 +121,8 @@
   components:
   - type: Sprite
     sprite: _Moffstation/Structures/Machines/computers.rsi # Moffstation
-    layers:
-    - map: ["computerLayerBody"]
-      state: computer
-    - map: ["computerLayerKeyboard"]
-      state: generic_keyboard
-    - map: ["computerLayerScreen"]
-      state: comm_medical
-    - map: ["computerLayerKeys"]
-      state: generic_keys
-    - map: [ "enum.WiresVisualLayers.MaintenancePanel" ]
-      state: generic_panel_open
+  - type: ComputerVisuals
+    stateScreen: comm_medical
   - type: AccessReader
     access: [[ "ChiefMedicalOfficer" ]]
   - type: CommunicationsConsole

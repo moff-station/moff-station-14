@@ -20,6 +20,7 @@
     price: 0
   - type: Tag
     tags:
+    - Dinnerware
     - Plastic
     - Trash
     - Utensil # Moffstation - Give service borgs some love
@@ -38,6 +39,7 @@
   components:
   - type: Tag
     tags:
+    - Dinnerware
     - Metal
     - Utensil # Moffstation - Give service borgs some love
   - type: Sprite
@@ -72,6 +74,7 @@
   components:
   - type: Tag
     tags:
+    - Dinnerware
     - Metal
     - Utensil # Moffstation - Give service borgs some love
   - type: Sprite
@@ -129,11 +132,12 @@
     - Knife
   - type: Tag
     tags:
-    - Plastic
-    - Trash
+    - Dinnerware
     - Knife
     - Utensil # Moffstation - Give service borgs some love
+    - Plastic
     - ToyKnife
+    - Trash
   - type: Fixtures
     fixtures:
       fix1:

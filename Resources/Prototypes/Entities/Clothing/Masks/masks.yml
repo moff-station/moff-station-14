@@ -215,12 +215,14 @@
     tags:
     - ClownMask
     - WhitelistChameleon
+    - HamsterWearable
   - type: HideLayerClothing
     slots:
     - Snout
   # Imp - Begin - Tourists
   - type: StealTarget
-    stealGroup: ClownMask
+    stealGroup:
+    - ClownMask
   # Imp - Begin - Tourists
 
 #Moffstation - Start - No more wig so not need to be able to fold it
@@ -257,14 +259,6 @@
   - type: Construction
     graph: BananaClownMask
     node: mask
-  - type: Tag
-    tags:
-    - ClownMask
-    - HamsterWearable
-    - WhitelistChameleon
-  - type: HideLayerClothing
-    slots:
-    - Snout
 
 - type: entity
   parent: [ClothingMaskClownBase] #Moffstation - Clown Mask in Loadout

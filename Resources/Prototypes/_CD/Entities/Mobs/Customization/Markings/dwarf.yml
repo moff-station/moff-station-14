@@ -20,8 +20,7 @@
   sprites:
   - sprite: _CD/Mobs/Customization/Dwarf/chest.rsi
     state: constellation
-  shaders:
-    constellation: unshaded
+    shader: unshaded
 
 - type: marking
   id: DwarfMarkBear
@@ -35,8 +34,7 @@
   sprites:
   - sprite: _CD/Mobs/Customization/Dwarf/chest.rsi
     state: markbear
-  shaders:
-    markbear: unshaded
+    shader: unshaded
 
 - type: marking
   id: DwarfMarkCobra
@@ -50,8 +48,7 @@
   sprites:
   - sprite: _CD/Mobs/Customization/Dwarf/chest.rsi
     state: markcobra
-  shaders:
-    markcobra: unshaded
+    shader: unshaded
 
 - type: marking
   id: DwarfMarkSpider
@@ -65,8 +62,7 @@
   sprites:
   - sprite: _CD/Mobs/Customization/Dwarf/chest.rsi
     state: markspider
-  shaders:
-    markspider: unshaded
+    shader: unshaded
 
 - type: marking
   id: DwarfTattooShootingStar
@@ -80,8 +76,7 @@
   sprites:
   - sprite: _CD/Mobs/Customization/Dwarf/chest.rsi
     state: shootingstar
-  shaders:
-    shootingstar: unshaded
+    shader: unshaded
 
 # Head
 
@@ -93,8 +88,7 @@
   sprites:
   - sprite: _CD/Mobs/Customization/Dwarf/head.rsi
     state: bearcheeks
-  shaders:
-    bearcheeks: unshaded
+    shader: unshaded
 
 - type: marking
   id: DwarfConstellationHead
@@ -108,8 +102,7 @@
   sprites:
   - sprite: _CD/Mobs/Customization/Dwarf/head.rsi
     state: constellation
-  shaders:
-    constellation: unshaded
+    shader: unshaded
 
 - type: marking
   id: DwarfHeadGlow
@@ -119,8 +112,7 @@
   sprites:
   - sprite: _CD/Mobs/Customization/Dwarf/head.rsi
     state: glow
-  shaders:
-    glow: unshaded
+    shader: unshaded
 
 # Snout
 
@@ -140,8 +132,7 @@
   sprites:
   - sprite: _CD/Mobs/Customization/Dwarf/rarm.rsi
     state: constellation
-  shaders:
-    constellation: unshaded
+    shader: unshaded
 
 # LArm
 
@@ -165,8 +156,7 @@
   sprites:
   - sprite: _CD/Mobs/Customization/Dwarf/larm.rsi
     state: constellation
-  shaders:
-    constellation: unshaded
+    shader: unshaded
 
 # RLeg
 
@@ -182,8 +172,7 @@
   sprites:
   - sprite: _CD/Mobs/Customization/Dwarf/rleg.rsi
     state: constellation
-  shaders:
-    constellation: unshaded
+    shader: unshaded
 
 # LLeg
 
@@ -199,8 +188,7 @@
   sprites:
   - sprite: _CD/Mobs/Customization/Dwarf/lleg.rsi
     state: constellation
-  shaders:
-    constellation: unshaded
+    shader: unshaded
 
 - type: marking
   id: DwarfLegHair
@@ -228,8 +216,7 @@
   sprites:
   - sprite: _CD/Mobs/Customization/Dwarf/lfoot.rsi
     state: constellation
-  shaders:
-    constellation: unshaded
+    shader: unshaded
 
 # RFoot
 
@@ -245,8 +232,7 @@
   sprites:
   - sprite: _CD/Mobs/Customization/Dwarf/rfoot.rsi
     state: constellation
-  shaders:
-    constellation: unshaded
+    shader: unshaded
 
 # LHand
 
@@ -262,8 +248,7 @@
   sprites:
   - sprite: _CD/Mobs/Customization/Dwarf/lhand.rsi
     state: constellation
-  shaders:
-    constellation: unshaded
+    shader: unshaded
 
 - type: marking
   id: DwarfMarkKangarooLHand
@@ -277,8 +262,7 @@
   sprites:
   - sprite: _CD/Mobs/Customization/Dwarf/lhand.rsi
     state: markkangaroo
-  shaders:
-    markkangaroo: unshaded
+    shader: unshaded
 
 # RHand
 
@@ -294,8 +278,7 @@
   sprites:
   - sprite: _CD/Mobs/Customization/Dwarf/rhand.rsi
     state: constellation
-  shaders:
-    constellation: unshaded
+    shader: unshaded
 
 - type: marking
   id: DwarfMarkKangarooRHand
@@ -309,8 +292,7 @@
   sprites:
   - sprite: _CD/Mobs/Customization/Dwarf/rhand.rsi
     state: markkangaroo
-  shaders:
-    markkangaroo: unshaded
+    shader: unshaded
 
 # FacialHair
 

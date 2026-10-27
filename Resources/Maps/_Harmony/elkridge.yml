@@ -67307,7 +67307,6 @@ entities:
       pos: 28.5,2.5
     - type: FaxMachine
       name: Medical
-      destinationAddress: Medical
   - uid: 4072
     components:
     - type: Transform
@@ -67315,7 +67314,6 @@ entities:
       pos: 39.5,-16.5
     - type: FaxMachine
       name: CE's Office
-      destinationAddress: CE's Office
   - uid: 4589
     components:
     - type: Transform
@@ -67323,7 +67321,6 @@ entities:
       pos: 26.5,-15.5
     - type: FaxMachine
       name: Engineering
-      destinationAddress: Engineering
   - uid: 4947
     components:
     - type: Transform
@@ -67331,7 +67328,6 @@ entities:
       pos: -4.5,2.5
     - type: FaxMachine
       name: Service
-      destinationAddress: Service
   - uid: 5571
     components:
     - type: Transform
@@ -67346,7 +67342,6 @@ entities:
       pos: -14.5,20.5
     - type: FaxMachine
       name: Science
-      destinationAddress: Science
   - uid: 7129
     components:
     - type: Transform
@@ -67354,7 +67349,6 @@ entities:
       pos: 32.5,21.5
     - type: FaxMachine
       name: CMO's Office
-      destinationAddress: CMO's Office
   - uid: 9398
     components:
     - type: Transform
@@ -67362,7 +67356,6 @@ entities:
       pos: 1.5,40.5
     - type: FaxMachine
       name: QM's Office
-      destinationAddress: QM's Office
   - uid: 9399
     components:
     - type: Transform
@@ -67370,7 +67363,6 @@ entities:
       pos: 4.5,35.5
     - type: FaxMachine
       name: Cargo
-      destinationAddress: Cargo
   - uid: 9403
     components:
     - type: Transform
@@ -67378,7 +67370,6 @@ entities:
       pos: -31.5,-5.5
     - type: FaxMachine
       name: Bridge
-      destinationAddress: Bridge
   - uid: 11803
     components:
     - type: Transform
@@ -67393,7 +67384,6 @@ entities:
       pos: -3.5,-37.5
     - type: FaxMachine
       name: HoS's Office
-      destinationAddress: HoS's Office
   - uid: 11833
     components:
     - type: Transform
@@ -67408,7 +67398,6 @@ entities:
       pos: -24.5,-19.5
     - type: FaxMachine
       name: Library
-      destinationAddress: Library
 - proto: FaxMachineCaptain
   entities:
   - uid: 4528
@@ -67417,7 +67406,6 @@ entities:
       parent: 2
       pos: -26.5,-5.5
     - type: FaxMachine
-      destinationAddress: Captain's Office
 - proto: filingCabinetDrawerRandom
   entities:
   - uid: 2284

@@ -6,29 +6,13 @@
   components:
   - type: Computer
     board: AlertsComputerCircuitboard
-  - type: Sprite
-    layers:
-    - map: ["computerLayerBody"]
-      state: computer
-    - map: ["computerLayerKeyboard"]
-      state: generic_keyboard
-    - map: ["computerLayerScreen"]
-      state: alert_0 # Moffstation
-    - map: ["computerLayerKeys"]
-      state: atmos_key
-    - map: [ "enum.WiresVisualLayers.MaintenancePanel" ]
-      state: generic_panel_open
+  - type: ComputerVisuals
+    stateScreen: alert_0
+    stateKeys: atmos_key
   - type: GenericVisualizer
     visuals:
-      enum.ComputerVisuals.Powered:
-        computerLayerScreen:
-          True: { visible: true, shader: unshaded }
-          False: { visible: false }
-        computerLayerKeys:
-          True: { visible: true, shader: unshaded }
-          False: { visible: true, shader: shaded }
       enum.AtmosAlertsComputerVisuals.ComputerLayerScreen:
-        computerLayerScreen:
+        enum.ComputerVisualLayers.Screen:
           # Moffstation - Start - Computer resprite
           0: { state: alert_0 }
           1: { state: alert_0 }
@@ -60,18 +44,10 @@
   components:
   - type: Computer
     board: AtmosMonitoringComputerCircuitboard
-  - type: Sprite
-    layers:
-    - map: ["computerLayerBody"]
-      state: computer
-    - map: ["computerLayerKeyboard"]
-      state: atmos_key_off # Moffstation
-    - map: ["computerLayerScreen"]
-      state: tank
-    - map: ["computerLayerKeys"]
-      state: atmos_key
-    - map: [ "enum.WiresVisualLayers.MaintenancePanel" ]
-      state: generic_panel_open
+  - type: ComputerVisuals
+    stateKeyboard: atmos_key_off
+    stateScreen: tank
+    stateKeys: atmos_key
   - type: AtmosMonitoringConsole
     navMapTileColor: "#1a1a1a"
     navMapWallColor: "#404040"
@@ -159,18 +135,8 @@
   name: shuttle console
   description: Used to pilot a shuttle.
   components:
-  - type: Sprite
-    layers:
-    - map: ["computerLayerBody"]
-      state: computer
-    - map: ["computerLayerKeyboard"]
-      state: generic_keyboard
-    - map: ["computerLayerScreen"]
-      state: shuttle
-    - map: ["computerLayerKeys"]
-      state: generic_keys
-    - map: [ "enum.WiresVisualLayers.MaintenancePanel" ]
-      state: generic_panel_open
+  - type: ComputerVisuals
+    stateScreen: shuttle
   - type: Computer
     board: ShuttleConsoleCircuitboard
 
@@ -180,18 +146,11 @@
   name: syndicate shuttle console
   description: Used to pilot a syndicate shuttle.
   components:
-  - type: Sprite
-    layers:
-    - map: ["computerLayerBody"]
-      state: syndicate_computer
-    - map: ["computerLayerKeyboard"]
-      state: syndie_key_off # Moffstation
-    - map: ["computerLayerScreen"]
-      state: syndishuttle
-    - map: ["computerLayerKeys"]
-      state: syndie_key
-    - map: [ "enum.WiresVisualLayers.MaintenancePanel" ]
-      state: generic_panel_open
+  - type: ComputerVisuals
+    stateFrame: syndicate_computer
+    stateKeyboard: syndie_key_off
+    stateScreen: syndishuttle
+    stateKeys: syndie_key
   - type: Tag
     tags:
       - Syndicate
@@ -210,18 +169,8 @@
   name: cargo shuttle console
   description: Used to pilot the cargo shuttle.
   components:
-  - type: Sprite
-    layers:
-    - map: ["computerLayerBody"]
-      state: computer
-    - map: ["computerLayerKeyboard"]
-      state: generic_keyboard
-    - map: ["computerLayerScreen"]
-      state: shuttle
-    - map: ["computerLayerKeys"]
-      state: generic_keys
-    - map: [ "enum.WiresVisualLayers.MaintenancePanel" ]
-      state: generic_panel_open
+  - type: ComputerVisuals
+    stateScreen: shuttle
   - type: DroneConsole
     components:
       - type: CargoShuttle
@@ -234,7 +183,8 @@
   - type: Computer
     board: CargoShuttleConsoleCircuitboard
   - type: StealTarget
-    stealGroup: CargoShuttleConsoleCircuitboard
+    stealGroup:
+    - CargoShuttleConsoleCircuitboard
 
 - type: entity
   parent: BaseComputerAiAccess
@@ -243,19 +193,8 @@
   description: Allows you to control the IFF characteristics of this vessel.
   components:
   - type: IFFConsole
-  - type: Sprite
-    layers:
-    - map: ["computerLayerBody"]
-      state: computer
-    - map: ["computerLayerKeyboard"]
-      state: generic_keyboard
-    - map: ["computerLayerScreen"]
-      #sprite: Structures/Shuttles/iff.rsi # Moffstation
-      state: helm
-    - map: ["computerLayerKeys"]
-      state: generic_keys
-    - map: [ "enum.WiresVisualLayers.MaintenancePanel" ]
-      state: generic_panel_open
+  - type: ComputerVisuals
+    stateScreen: helm
   - type: ActivatableUI
     key: enum.IFFConsoleUiKey.Key
   - type: UserInterface
@@ -275,17 +214,11 @@
   description: Allows you to control the IFF and stealth characteristics of this vessel.
   components:
   # Moffstation - Start
-  - type: Sprite
-    layers:
-    - map: [ "computerLayerBody" ]
-      state: syndicate_computer
-    - map: [ "computerLayerKeyboard" ]
-      state: syndie_key_off
-    - map: [ "computerLayerScreen" ]
-      state: helm
-    - map: [ "computerLayerKeys" ]
-      state: syndie_generic_keys
-    - map: [ "enum.WiresVisualLayers.MaintenancePanel" ]
+  - type: ComputerVisuals
+    stateFrame: syndicate_computer
+    stateKeyboard: syndie_key_off
+    stateScreen: helm
+    stateKeys: syndie_generic_keys
   # Moffstation - End
   - type: IFFConsole
     allowedFlags:
@@ -309,18 +242,10 @@
   name: power monitoring computer
   description: It monitors power levels across the station.
   components:
-  - type: Sprite
-    layers:
-    - map: ["computerLayerBody"]
-      state: computer
-    - map: ["computerLayerKeyboard"]
-      state: power_key_off # Moffstation
-    - map: ["computerLayerScreen"]
-      state: power_monitor
-    - map: ["computerLayerKeys"]
-      state: power_key
-    - map: [ "enum.WiresVisualLayers.MaintenancePanel" ]
-      state: generic_panel_open
+  - type: ComputerVisuals
+    stateKeyboard: power_key_off
+    stateScreen: power_monitor
+    stateKeys: power_key
   - type: PointLight
     radius: 1.5
     energy: 4.0
@@ -352,18 +277,10 @@
   name: medical records computer
   description: This can be used to check medical records.
   components:
-  - type: Sprite
-    layers:
-    - map: ["computerLayerBody"]
-      state: computer
-    - map: ["computerLayerKeyboard"]
-      state: med_key_off
-    - map: ["computerLayerScreen"]
-      state: medcomp
-    - map: ["computerLayerKeys"]
-      state: med_key
-    - map: [ "enum.WiresVisualLayers.MaintenancePanel" ]
-      state: generic_panel_open
+  - type: ComputerVisuals
+    stateKeyboard: med_key_off
+    stateScreen: medcomp
+    stateKeys: med_key
   - type: PointLight
     radius: 1.5
     energy: 4.0
@@ -405,18 +322,10 @@
 #  - type: ActivatableUI
 #    key: enum.CriminalRecordsConsoleKey.Key
   # Moffstation - End
-  - type: Sprite
-    layers:
-    - map: ["computerLayerBody"]
-      state: computer
-    - map: ["computerLayerKeyboard"]
-      state: security_key_off # Moffstation
-    - map: ["computerLayerScreen"]
-      state: explosive
-    - map: ["computerLayerKeys"]
-      state: security_key
-    - map: [ "enum.WiresVisualLayers.MaintenancePanel" ]
-      state: generic_panel_open
+  - type: ComputerVisuals
+    stateKeyboard: security_key_off
+    stateScreen: explosive
+    stateKeys: security_key
   - type: PointLight
     radius: 1.5
     energy: 4.0
@@ -474,18 +383,10 @@
   name: crew monitoring console
   description: Used to monitor active health sensors built into most of the crew's uniforms.
   components:
-  - type: Sprite
-    layers:
-    - map: ["computerLayerBody"]
-      state: computer
-    - map: ["computerLayerKeyboard"]
-      state: med_key_off # Moffstation
-    - map: ["computerLayerScreen"]
-      state: crew
-    - map: ["computerLayerKeys"]
-      state: med_key
-    - map: [ "enum.WiresVisualLayers.MaintenancePanel" ]
-      state: generic_panel_open
+  - type: ComputerVisuals
+    stateKeyboard: med_key_off
+    stateScreen: crew
+    stateKeys: med_key
   - type: PointLight
     radius: 1.5
     energy: 4.0
@@ -507,7 +408,7 @@
     deviceNetId: Wireless
     receiveFrequencyId: CrewMonitor
     prefix: device-address-prefix-crew-monitor
-  - type: WirelessNetworkConnection
+  - type: WirelessNetwork
     range: 1200
   - type: AmbientMusicMarkerMedical
 
@@ -517,18 +418,9 @@
   name: station teleporters control console
   description: Used to monitor station teleport system operations.
   components:
-  - type: Sprite
-    layers:
-    - map: ["computerLayerBody"]
-      state: computer
-    - map: ["computerLayerKeyboard"]
-      state: generic_keyboard
-    - map: ["computerLayerScreen"]
-      state: telesci # Moff
-    - map: ["computerLayerKeys"]
-      state: telesci_key
-    - map: [ "enum.WiresVisualLayers.MaintenancePanel" ]
-      state: generic_panel_open
+  - type: ComputerVisuals
+    stateScreen: telesci
+    stateKeys: telesci_key
   - type: PointLight
     radius: 1.5
     energy: 1.6
@@ -592,18 +484,11 @@
   id: ComputerSyndicateTeleportersControl
   name: syndicate teleporters control console
   components:
-  - type: Sprite
-    layers:
-    - map: ["computerLayerBody"]
-      state: syndicate_computer # Moff
-    - map: ["computerLayerKeyboard"]
-      state: syndie_key_off # Moff
-    - map: ["computerLayerScreen"]
-      state: telesci # Moff
-    - map: ["computerLayerKeys"]
-      state: syndie_key
-    - map: [ "enum.WiresVisualLayers.MaintenancePanel" ]
-      state: generic_panel_open
+  - type: ComputerVisuals
+    stateFrame: syndicate_computer
+    stateKeyboard: syndie_key_off
+    stateScreen: telesci
+    stateKeys: syndie_key
   - type: PointLight
     color: "#c61414"
   - type: Computer
@@ -619,18 +504,10 @@
   name: R&D computer
   description: A computer used to interface with R&D tools.
   components:
-  - type: Sprite
-    layers:
-    - map: ["computerLayerBody"]
-      state: computer
-    - map: ["computerLayerKeyboard"]
-      state: rd_key_off # Moffstation
-    - map: ["computerLayerScreen"]
-      state: rdcomp
-    - map: ["computerLayerKeys"]
-      state: rd_key
-    - map: [ "enum.WiresVisualLayers.MaintenancePanel" ]
-      state: generic_panel_open
+  - type: ComputerVisuals
+    stateKeyboard: rd_key_off
+    stateScreen: rdcomp
+    stateKeys: rd_key
   - type: ResearchClient
   - type: ResearchConsole
   - type: ActiveRadio
@@ -670,18 +547,10 @@
   name: analysis console
   description: A computer used to interface with the artifact analyzer.
   components:
-  - type: Sprite
-    layers:
-    - map: ["computerLayerBody"]
-      state: computer
-    - map: ["computerLayerKeyboard"]
-      state: tech_key_off # Moffstation
-    - map: ["computerLayerScreen"]
-      state: artifact
-    - map: ["computerLayerKeys"]
-      state: tech_key
-    - map: [ "enum.WiresVisualLayers.MaintenancePanel" ]
-      state: generic_panel_open
+  - type: ComputerVisuals
+    stateKeyboard: tech_key_off
+    stateScreen: artifact
+    stateKeys: tech_key
   - type: ResearchClient
   - type: AnalysisConsole
   - type: DeviceList
@@ -732,6 +601,8 @@
       whitelist:
         components:
         - IdCard
+        - Access
+        requireAll: true
     targetIdSlot:
       name: id-card-console-target-id
       ejectSound: /Audio/Machines/id_swipe.ogg
@@ -741,6 +612,8 @@
       whitelist:
         components:
         - IdCard
+        - Access
+        requireAll: true
   - type: ActivatableUI
     key: enum.IdCardConsoleUiKey.Key
   - type: UserInterface
@@ -754,18 +627,10 @@
   - type: Speech
     speechVerb: Robotic
     speechSounds: Pai
-  - type: Sprite
-    layers:
-    - map: ["computerLayerBody"]
-      state: computer
-    - map: ["computerLayerKeyboard"]
-      state: id_key_off # Moffstation
-    - map: ["computerLayerScreen"]
-      state: id
-    - map: ["computerLayerKeys"]
-      state: id_key
-    - map: [ "enum.WiresVisualLayers.MaintenancePanel" ]
-      state: generic_panel_open
+  - type: ComputerVisuals
+    stateKeyboard: id_key_off
+    stateScreen: id
+    stateKeys: id_key
   - type: Computer
     board: IDComputerCircuitboard
   - type: PointLight
@@ -781,7 +646,7 @@
 
 - type: entity
   parent: BaseComputerAiAccess
-  id: computerBodyScanner
+  id: ComputerBodyScanner
   name: body scanner computer
   description: A body scanner.
   components:
@@ -799,18 +664,8 @@
   name: communications computer
   description: A computer used to make station wide announcements via keyboard, set the appropriate alert level, and call the emergency shuttle.
   components:
-  - type: Sprite
-    layers:
-    - map: ["computerLayerBody"]
-      state: computer
-    - map: ["computerLayerKeyboard"]
-      state: generic_keyboard
-    - map: ["computerLayerScreen"]
-      state: comm
-    - map: ["computerLayerKeys"]
-      state: generic_keys
-    - map: [ "enum.WiresVisualLayers.MaintenancePanel" ]
-      state: generic_panel_open
+  - type: ComputerVisuals
+    stateScreen: comm
   - type: AccessReader
     access: [[ "Command" ]]
   - type: CommunicationsConsole
@@ -839,18 +694,11 @@
   name: syndicate communications computer
   description: A computer capable of remotely hacking into the station's communications systems. Using this to make an announcement will alert the station to your presence.
   components:
-  - type: Sprite
-    layers:
-    - map: ["computerLayerBody"]
-      state: syndicate_computer # Moffstation
-    - map: ["computerLayerKeyboard"]
-      state: syndie_key_off
-    - map: ["computerLayerScreen"]
-      state: comm_syndie
-    - map: ["computerLayerKeys"]
-      state: syndie_key
-    - map: [ "enum.WiresVisualLayers.MaintenancePanel" ]
-      state: generic_panel_open
+  - type: ComputerVisuals
+    stateFrame: syndicate_computer
+    stateKeyboard: syndie_key_off
+    stateScreen: comm_syndie
+    stateKeys: syndie_key
   - type: AccessReader
     access: [[ "NuclearOperative" ]]
   - type: CommunicationsConsole
@@ -873,18 +721,9 @@
   name: wizard communications computer
   description: A computer capable of magically projecting your speech to the station. Using this to make an announcement will alert the station to your presence.
   components:
-  - type: Sprite
-    layers:
-    - map: ["computerLayerBody"]
-      state: computer
-    - map: ["computerLayerKeyboard"]
-      state: generic_keyboard
-    - map: ["computerLayerScreen"]
-      state: comm_wizard
-    - map: ["computerLayerKeys"]
-      state: wizard_key
-    - map: [ "enum.WiresVisualLayers.MaintenancePanel" ]
-      state: generic_panel_open
+  - type: ComputerVisuals
+    stateScreen: comm_wizard
+    stateKeys: wizard_key
   - type: AccessReader
     access: [[ "Wizard" ]]
   - type: CommunicationsConsole
@@ -907,18 +746,8 @@
   name: central command communications computer
   description: A computer used to make world wide announcements via keyboard. The superior cousin of the regular communications computer.
   components:
-  - type: Sprite
-    layers:
-    - map: ["computerLayerBody"]
-      state: computer
-    - map: ["computerLayerKeyboard"]
-      state: generic_keyboard
-    - map: ["computerLayerScreen"]
-      state: comm_logs
-    - map: ["computerLayerKeys"]
-      state: generic_keys
-    - map: [ "enum.WiresVisualLayers.MaintenancePanel" ]
-      state: generic_panel_open
+  - type: ComputerVisuals
+    stateScreen: comm_logs
   - type: AccessReader
     access: [[ "CentralCommand" ]]
   - type: CommunicationsConsole
@@ -939,18 +768,8 @@
   name: solar control computer
   description: A controller for solar panel arrays.
   components:
-  - type: Sprite
-    layers:
-    - map: ["computerLayerBody"]
-      state: computer
-    - map: ["computerLayerKeyboard"]
-      state: generic_keyboard
-    - map: ["computerLayerScreen"]
-      state: solar_screen
-    - map: ["computerLayerKeys"]
-      state: generic_keys
-    - map: [ "enum.WiresVisualLayers.MaintenancePanel" ]
-      state: generic_panel_open
+  - type: ComputerVisuals
+    stateScreen: solar_screen
   - type: SolarControlConsole
   - type: ActivatableUI
     key: enum.SolarControlConsoleUiKey.Key
@@ -977,18 +796,10 @@
   name: mass scanner computer
   description: A computer for detecting nearby bodies, displaying them by position and mass.
   components:
-  - type: Sprite
-    layers:
-    - map: ["computerLayerBody"]
-      state: computer
-    - map: ["computerLayerKeyboard"]
-      state: power_key_off # Moffstation
-    - map: ["computerLayerScreen"]
-      state: eris_control # Moffstation
-    - map: ["computerLayerKeys"]
-      state: power_key # Moffstation
-    - map: [ "enum.WiresVisualLayers.MaintenancePanel" ]
-      state: generic_panel_open
+  - type: ComputerVisuals
+    stateKeyboard: power_key_off
+    stateScreen: eris_control
+    stateKeys: power_key
   - type: RadarConsole
   - type: ActivatableUI
     key: enum.RadarConsoleUiKey.Key
@@ -1011,18 +822,8 @@
   name: cargo request computer
   description: Used to order supplies and approve requests.
   components:
-  - type: Sprite
-    layers:
-    - map: ["computerLayerBody"]
-      state: computer
-    - map: ["computerLayerKeyboard"]
-      state: generic_keyboard
-    - map: ["computerLayerScreen"]
-      state: request
-    - map: ["computerLayerKeys"]
-      state: generic_keys
-    - map: [ "enum.WiresVisualLayers.MaintenancePanel" ]
-      state: generic_panel_open
+  - type: ComputerVisuals
+    stateScreen: request
   - type: CargoOrderConsole
     removeLimitAccess: [ "Quartermaster" ]
   - type: ActiveRadio
@@ -1047,7 +848,7 @@
   - type: DeviceNetwork
     deviceNetId: Wireless
     receiveFrequencyId: BasicDevice
-  - type: WirelessNetworkConnection
+  - type: WirelessNetwork
     range: 200
   - type: DeviceLinkSource
     range: 200
@@ -1064,18 +865,8 @@
   name: engineering request computer
   description: Used by the engineering department to order supplies.
   components:
-  - type: Sprite
-    layers:
-    - map: ["computerLayerBody"]
-      state: computer
-    - map: ["computerLayerKeyboard"]
-      state: generic_keyboard
-    - map: ["computerLayerScreen"]
-      state: request_eng # Moffstation
-    - map: ["computerLayerKeys"]
-      state: generic_keys
-    - map: [ "enum.WiresVisualLayers.MaintenancePanel" ]
-      state: generic_panel_open
+  - type: ComputerVisuals
+    stateScreen: request_eng
   - type: CargoOrderConsole
     account: Engineering
     announcementChannel: Engineering
@@ -1098,18 +889,8 @@
   name: medical request computer
   description: Used by the medical department to order supplies.
   components:
-  - type: Sprite
-    layers:
-    - map: ["computerLayerBody"]
-      state: computer
-    - map: ["computerLayerKeyboard"]
-      state: generic_keyboard
-    - map: ["computerLayerScreen"]
-      state: request_med # Moffstation
-    - map: ["computerLayerKeys"]
-      state: generic_keys
-    - map: [ "enum.WiresVisualLayers.MaintenancePanel" ]
-      state: generic_panel_open
+  - type: ComputerVisuals
+    stateScreen: request_med
   - type: CargoOrderConsole
     account: Medical
     announcementChannel: Medical
@@ -1132,18 +913,8 @@
   name: science request computer
   description: Used by the science department to order supplies.
   components:
-  - type: Sprite
-    layers:
-    - map: ["computerLayerBody"]
-      state: computer
-    - map: ["computerLayerKeyboard"]
-      state: generic_keyboard
-    - map: ["computerLayerScreen"]
-      state: request_sci # Moffstation
-    - map: ["computerLayerKeys"]
-      state: generic_keys
-    - map: [ "enum.WiresVisualLayers.MaintenancePanel" ]
-      state: generic_panel_open
+  - type: ComputerVisuals
+    stateScreen: request_sci
   - type: CargoOrderConsole
     account: Science
     announcementChannel: Science
@@ -1165,18 +936,8 @@
   name: security request computer
   description: Used by the security department to order supplies.
   components:
-  - type: Sprite
-    layers:
-    - map: ["computerLayerBody"]
-      state: computer
-    - map: ["computerLayerKeyboard"]
-      state: generic_keyboard
-    - map: ["computerLayerScreen"]
-      state: request_sec # Moffstation
-    - map: ["computerLayerKeys"]
-      state: generic_keys
-    - map: [ "enum.WiresVisualLayers.MaintenancePanel" ]
-      state: generic_panel_open
+  - type: ComputerVisuals
+    stateScreen: request_sec
   - type: CargoOrderConsole
     account: Security
     announcementChannel: Security
@@ -1198,18 +959,8 @@
   name: service request computer
   description: Used by the service department to order supplies.
   components:
-  - type: Sprite
-    layers:
-    - map: ["computerLayerBody"]
-      state: computer
-    - map: ["computerLayerKeyboard"]
-      state: generic_keyboard
-    - map: ["computerLayerScreen"]
-      state: request_srv # Moffstation
-    - map: ["computerLayerKeys"]
-      state: generic_keys
-    - map: [ "enum.WiresVisualLayers.MaintenancePanel" ]
-      state: generic_panel_open
+  - type: ComputerVisuals
+    stateScreen: request_srv
   - type: CargoOrderConsole
     account: Service
     announcementChannel: Service
@@ -1231,18 +982,10 @@
   name: cargo bounty computer
   description: Used to manage currently active bounties.
   components:
-  - type: Sprite
-    layers:
-    - map: ["computerLayerBody"]
-      state: computer
-    - map: ["computerLayerKeyboard"]
-      state: tech_key_off # Moffstation
-    - map: ["computerLayerScreen"]
-      state: bounty
-    - map: ["computerLayerKeys"]
-      state: tech_key
-    - map: [ "enum.WiresVisualLayers.MaintenancePanel" ]
-      state: generic_panel_open
+  - type: ComputerVisuals
+    stateKeyboard: tech_key_off
+    stateScreen: bounty
+    stateKeys: tech_key
   - type: CargoBountyConsole
   - type: ActivatableUI
     key: enum.CargoConsoleUiKey.Bounty
@@ -1271,18 +1014,8 @@
   name: funding allocation computer
   description: Terminal for controlling the distribution of funds and pay to departments.
   components:
-  - type: Sprite
-    layers:
-    - map: ["computerLayerBody"]
-      state: computer
-    - map: ["computerLayerKeyboard"]
-      state: generic_keyboard
-    - map: ["computerLayerScreen"]
-      state: allocate # ALLOCATION !!!
-    - map: ["computerLayerKeys"]
-      state: generic_keys
-    - map: [ "enum.WiresVisualLayers.MaintenancePanel" ]
-      state: generic_panel_open
+  - type: ComputerVisuals
+    stateScreen: allocate
   - type: FundingAllocationConsole
   - type: ActivatableUI
     key: enum.FundingAllocationConsoleUiKey.Key
@@ -1312,18 +1045,8 @@
   - type: DeviceList
   - type: DeviceNetwork
     deviceNetId: Wired
-  - type: Sprite
-    layers:
-    - map: ["computerLayerBody"]
-      state: computer
-    - map: ["computerLayerKeyboard"]
-      state: generic_keyboard
-    - map: ["computerLayerScreen"]
-      state: dna
-    - map: ["computerLayerKeys"]
-      state: generic_keys
-    - map: [ "enum.WiresVisualLayers.MaintenancePanel" ]
-      state: generic_panel_open
+  - type: ComputerVisuals
+    stateScreen: dna
   - type: Computer
     board: CloningConsoleComputerCircuitboard
   - type: PointLight
@@ -1356,18 +1079,8 @@
   name: salvage job board
   description: Console for accessing salvage jobs, if you're tough enough.
   components:
-  - type: Sprite
-    layers:
-    - map: ["computerLayerBody"]
-      state: computer
-    - map: ["computerLayerKeyboard"]
-      state: generic_keyboard
-    - map: ["computerLayerScreen"]
-      state: salvjob # givin em a salvjob like hawk tuah
-    - map: ["computerLayerKeys"]
-      state: generic_keys
-    - map: [ "enum.WiresVisualLayers.MaintenancePanel" ]
-      state: generic_panel_open
+  - type: ComputerVisuals
+    stateScreen: salvjob
   - type: SalvageJobBoardConsole
   - type: ActivatableUI
     key: enum.SalvageJobBoardUiKey.Key
@@ -1392,48 +1105,9 @@
   name: salvage expeditions computer
   description: Used to accept salvage missions, if you're tough enough.
   components:
-    - type: Sprite
-      layers:
-        - map: ["computerLayerBody"]
-          state: computer
-        - map: ["computerLayerKeyboard"]
-          state: tech_key_off # Moffstation
-        - map: [ "computerLayerScreen" ]
-          state: mining
-        - map: ["computerLayerKeys"]
-          state: tech_key
-        - map: [ "enum.WiresVisualLayers.MaintenancePanel" ]
-          state: generic_panel_open
-    - type: Appearance
-    - type: GenericVisualizer
-      visuals:
-        enum.ComputerVisuals.Powered:
-          computerLayerScreen:
-            True: { visible: true, shader: unshaded }
-            False: { visible: false }
-          computerLayerKeys:
-            True: { visible: true, shader: unshaded }
-            False: { visible: true }
-    - type: SalvageExpeditionConsole
-    - type: ActivatableUI
-      key: enum.SalvageConsoleUiKey.Expedition
-    - type: ActivatableUIRequiresPower
-    - type: UserInterface
-      interfaces:
-        enum.SalvageConsoleUiKey.Expedition:
-          type: SalvageExpeditionConsoleBoundUserInterface
-        enum.WiresUiKey.Key:
-          type: WiresBoundUserInterface
-    - type: Computer
-      board: SalvageExpeditionsComputerCircuitboard
-    - type: PointLight
-      radius: 1.5
-      energy: 4.0
-      color: "#b89f25"
-    - type: AccessReader
-      access: [["Salvage"]]
-    - type: StealTarget
-      stealGroup: SalvageExpeditionsComputerCircuitboard
+    - type: ComputerVisuals
+      stateKeyboard: tech_key_off
+      stateKeys: tech_key
 
 - type: entity
   parent: BaseComputer
@@ -1441,18 +1115,10 @@
   name: camera monitor
   description: A surveillance camera monitor. You're watching them. Maybe.
   components:
-  - type: Sprite
-    layers:
-    - map: ["computerLayerBody"]
-      state: computer
-    - map: ["computerLayerKeyboard"]
-      state: tech_key_off # Moffstation
-    - map: ["computerLayerScreen"]
-      state: cameras
-    - map: ["computerLayerKeys"]
-      state: tech_key
-    - map: [ "enum.WiresVisualLayers.MaintenancePanel" ]
-      state: generic_panel_open
+  - type: ComputerVisuals
+    stateKeyboard: tech_key_off
+    stateScreen: cameras
+    stateKeys: tech_key
   - type: Computer
     board: SurveillanceCameraMonitorCircuitboard
   - type: DeviceNetwork
@@ -1461,8 +1127,8 @@
     transmitFrequencyId: SurveillanceCamera
     prefix: device-address-prefix-camera-monitor
   # Moffstation - Listening outpost remote camera viewing
-  #- type: WiredNetworkConnection
-  - type: WirelessNetworkConnection
+  #- type: WiredNetwork
+  - type: WirelessNetwork
     range: 200
   # Moffstation - End
   - type: DeviceNetworkRequiresPower
@@ -1474,10 +1140,10 @@
     anchored: true
   - type: UserInterface
     interfaces:
-        enum.SurveillanceCameraMonitorUiKey.Key:
-          type: SurveillanceCameraMonitorBoundUserInterface
-        enum.WiresUiKey.Key:
-          type: WiresBoundUserInterface
+      enum.SurveillanceCameraMonitorUiKey.Key:
+        type: SurveillanceCameraMonitorBoundUserInterface
+      enum.WiresUiKey.Key:
+        type: WiresBoundUserInterface
 
 - type: entity
   parent: BaseComputer
@@ -1485,18 +1151,10 @@
   name: wireless camera monitor
   description: A wireless surveillance camera monitor. You're watching them. Maybe.
   components:
-  - type: Sprite
-    layers:
-    - map: ["computerLayerBody"]
-      state: computer
-    - map: ["computerLayerKeyboard"]
-      state: telesci_key_off # Moffstation
-    - map: ["computerLayerScreen"]
-      state: cameras
-    - map: ["computerLayerKeys"]
-      state: telesci_key # Moffstation
-    - map: [ "enum.WiresVisualLayers.MaintenancePanel" ]
-      state: generic_panel_open
+  - type: ComputerVisuals
+    stateKeyboard: telesci_key_off
+    stateScreen: cameras
+    stateKeys: telesci_key
   - type: Computer
     board: SurveillanceWirelessCameraMonitorCircuitboard
   - type: DeviceNetwork
@@ -1504,7 +1162,7 @@
     receiveFrequencyId: SurveillanceCamera
     transmitFrequencyId: SurveillanceCamera
     prefix: device-address-prefix-camera-monitor
-  - type: WirelessNetworkConnection
+  - type: WirelessNetwork
     range: 200
   - type: DeviceNetworkRequiresPower
   - type: Speech
@@ -1516,10 +1174,10 @@
   - type: ActivatableUIRequiresVision
   - type: UserInterface
     interfaces:
-        enum.SurveillanceCameraMonitorUiKey.Key:
-          type: SurveillanceCameraMonitorBoundUserInterface
-        enum.WiresUiKey.Key:
-          type: WiresBoundUserInterface
+      enum.SurveillanceCameraMonitorUiKey.Key:
+        type: SurveillanceCameraMonitorBoundUserInterface
+      enum.WiresUiKey.Key:
+        type: WiresBoundUserInterface
 
 - type: entity
   parent: ComputerSurveillanceWirelessCameraMonitor
@@ -1528,18 +1186,11 @@
   description: A wireless xenoborg camera monitor. You're watching them. Maybe.
   components:
   # Moffstation - Start
-  - type: Sprite
-    layers:
-    - map: [ "computerLayerBody" ]
-      state: computer_xeno
-    - map: [ "computerLayerKeyboard" ]
-      state: telesci_key_off
-    - map: [ "computerLayerScreen" ]
-      state: cameras
-    - map: [ "computerLayerKeys" ]
-      state: telesci_key
-    - map: [ "enum.WiresVisualLayers.MaintenancePanel" ]
-      state: generic_panel_open
+  - type: ComputerVisuals
+    stateFrame: computer_xeno
+    stateKeyboard: telesci_key_off
+    stateScreen: cameras
+    stateKeys: telesci_key
   # Moffstation - End
   - type: Computer
     board: XenoborgCameraMonitorCircuitboard
@@ -1547,7 +1198,7 @@
     deviceNetId: Wireless
     receiveFrequencyId: Mothership
     transmitFrequencyId: Mothership
-  - type: WirelessNetworkConnection
+  - type: WirelessNetwork
     range: 2000
 
 - type: entity
@@ -1556,18 +1207,8 @@
   name: cargo sale computer
   description: Used to sell goods loaded onto cargo pallets.
   components:
-  - type: Sprite
-    layers:
-    - map: ["computerLayerBody"]
-      state: computer
-    - map: ["computerLayerKeyboard"]
-      state: generic_keyboard
-    - map: ["computerLayerScreen"]
-      state: transfer
-    - map: ["computerLayerKeys"]
-      state: generic_keys
-    - map: [ "enum.WiresVisualLayers.MaintenancePanel" ]
-      state: generic_panel_open
+  - type: ComputerVisuals
+    stateScreen: transfer
   - type: Anchorable
     flags:
     - Anchorable
@@ -1596,18 +1237,9 @@
   name: news manager console
   description: Write your message to the world!
   components:
-  - type: Sprite
-    layers:
-    - map: ["computerLayerBody"]
-      state: computer
-    - map: ["computerLayerKeyboard"]
-      state: generic_keyboard
-    - map: ["computerLayerScreen"]
-      state: entertainment # Moffstation
-    - map: ["computerLayerKeys"]
-      state: service_keys
-    - map: [ "enum.WiresVisualLayers.MaintenancePanel" ]
-      state: generic_panel_open
+  - type: ComputerVisuals
+    stateScreen: entertainment
+    stateKeys: service_keys
   - type: Computer
     board: ComputerMassMediaCircuitboard
   - type: DeviceNetworkRequiresPower
@@ -1621,10 +1253,10 @@
     anchored: true
   - type: UserInterface
     interfaces:
-        enum.NewsWriterUiKey.Key:
-          type: NewsWriterBoundUserInterface
-        enum.WiresUiKey.Key:
-          type: WiresBoundUserInterface
+      enum.NewsWriterUiKey.Key:
+        type: NewsWriterBoundUserInterface
+      enum.WiresUiKey.Key:
+        type: WiresBoundUserInterface
 
 - type: entity
   parent: BaseComputer
@@ -1636,43 +1268,10 @@
   suffix: TESTING, DO NOT MAP
   categories: [ DoNotMap ]
   components:
-    - type: Sprite
-      layers:
-        - map: ["computerLayerBody"]
-          state: computer
-        - map: ["computerLayerKeyboard"]
-          state: atmos_key_off # Moffstation
-        - map: ["computerLayerScreen"]
-          state: sensors
-        - map: ["computerLayerKeys"]
-          state: atmos_key
-        - map: [ "enum.WiresVisualLayers.MaintenancePanel" ]
-          state: generic_panel_open
-    - type: PointLight
-      radius: 1.5
-      energy: 4.0
-      color: "#43ccb5"
-    - type: Computer
-      board: SensorConsoleCircuitboard
-    - type: SensorMonitoringConsole
-    - type: ActivatableUI
-      key: enum.SensorMonitoringConsoleUiKey.Key
-    - type: UserInterface
-      interfaces:
-        enum.SensorMonitoringConsoleUiKey.Key:
-          type: SensorMonitoringConsoleBoundUserInterface
-        enum.WiresUiKey.Key:
-          type: WiresBoundUserInterface
-    - type: DeviceNetwork
-      deviceNetId: AtmosDevices
-      receiveFrequencyId: AtmosMonitor
-      transmitFrequencyId: AtmosMonitor
-      prefix: device-address-prefix-sensor-monitor
-      sendBroadcastAttemptEvent: true
-      examinableAddress: true
-    - type: WiredNetworkConnection
-    - type: DeviceList
-    - type: AtmosDevice
+    - type: ComputerVisuals
+      stateKeyboard: atmos_key_off
+      stateScreen: sensors
+      stateKeys: atmos_key
 
 - type: entity
   parent: BaseComputerAiAccess
@@ -1680,18 +1279,10 @@
   name: robotics control console
   description: Used to remotely monitor the station's cyborgs.
   components:
-  - type: Sprite
-    layers:
-    - map: ["computerLayerBody"]
-      state: computer
-    - map: ["computerLayerKeyboard"]
-      state: rd_key_off # Moffstation
-    - map: ["computerLayerScreen"]
-      state: robot
-    - map: ["computerLayerKeys"]
-      state: rd_key
-    - map: [ "enum.WiresVisualLayers.MaintenancePanel" ]
-      state: generic_panel_open
+  - type: ComputerVisuals
+    stateKeyboard: rd_key_off
+    stateScreen: robot
+    stateKeys: rd_key
   - type: RoboticsConsole
     allowBorgControl: false
   - type: ActiveRadio
@@ -1728,18 +1319,11 @@
   name: xenoborgs control console
   description: Used to remotely monitor all xenoborgs.
   components:
-  - type: Sprite
-    layers:
-    - map: ["computerLayerBody"]
-      state: computer_xeno # Moffstation
-    - map: ["computerLayerKeyboard"]
-      state: telesci_key_off # Moffstation
-    - map: ["computerLayerScreen"]
-      state: xenorobot
-    - map: ["computerLayerKeys"]
-      state: telesci_key # Moffstation
-    - map: [ "enum.WiresVisualLayers.MaintenancePanel" ]
-      state: generic_panel_open
+  - type: ComputerVisuals
+    stateFrame: computer_xeno
+    stateKeyboard: telesci_key_off
+    stateScreen: xenorobot
+    stateKeys: telesci_key
   - type: ActivatableUI
     key: enum.RoboticsConsoleUiKey.Key
   - type: UserInterface
@@ -1772,18 +1356,8 @@
   name: AI upload console
   description: Used to update the laws of the station AI.
   components:
-  - type: Sprite
-    layers:
-    - map: [ "computerLayerBody" ]
-      state: computer
-    - map: [ "computerLayerKeyboard" ]
-      state: generic_keyboard
-    - map: [ "computerLayerScreen" ]
-      state: aiupload
-    - map: [ "computerLayerKeys" ]
-      state: generic_keys
-    - map: [ "enum.WiresVisualLayers.MaintenancePanel" ]
-      state: generic_panel_open
+  - type: ComputerVisuals
+    stateScreen: aiupload
   - type: ApcPowerReceiver
     powerLoad: 50
   - type: PowerState
@@ -1827,30 +1401,12 @@
   name: silicon restoration console
   description: Used to repair damaged artifical intelligences.
   components:
-  - type: Sprite
-    layers:
-    - map: [ "computerLayerBody" ]
-      state: computer
-    - map: [ "computerLayerKeyboard" ]
-      state: rd_key_off # Moffstation
-    - map: [ "computerLayerScreen" ]
-      state: ai_fixer_empty
-    - map: [ "computerLayerKeys" ]
-      state: rd_key
-    - map: [ "enum.WiresVisualLayers.MaintenancePanel" ]
-      state: generic_panel_open
+  - type: ComputerVisuals
   - type: Appearance
   - type: GenericVisualizer
     visuals:
-      enum.ComputerVisuals.Powered:
-        computerLayerScreen:
-          True: { visible: true, shader: unshaded }
-          False: { visible: false }
-        computerLayerKeys:
-          True: { visible: true, shader: unshaded }
-          False: { visible: true, shader: shaded }
       enum.StationAiFixerConsoleVisuals.Key:
-        computerLayerScreen:
+        enum.ComputerVisualLayers.Screen:
           # Moffstation - Start
           Repair0: { state: ai_fixer_progress_0 }
           Repair1: { state: ai_fixer_progress_1 }
@@ -1914,18 +1470,11 @@
   name: syndicate delivery computer
   description: "A computer that can bluespace in certain equipment for Nuclear Operations. \nThe circuitboard is integrated into the frame and can't be recovered if deconstructed."
   components:
-  - type: Sprite
-    layers:
-    - map: ["computerLayerBody"]
-      state: syndicate_computer # Moffstation
-    - map: ["computerLayerKeyboard"]
-      state: syndie_key_off # Moffstation
-    - map: ["computerLayerScreen"]
-      state: request_syndie # Moffstation
-    - map: ["computerLayerKeys"]
-      state: syndie_generic_keys
-    - map: [ "enum.WiresVisualLayers.MaintenancePanel" ]
-      state: generic_panel_open
+  - type: ComputerVisuals
+    stateFrame: syndicate_computer
+    stateKeyboard: syndie_key_off
+    stateScreen: request_syndie
+    stateKeys: syndie_generic_keys
   # - type: Computer
   #   board: SyndicateCommsComputerCircuitboard
   - type: Anchorable

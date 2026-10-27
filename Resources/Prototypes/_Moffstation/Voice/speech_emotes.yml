@@ -71,45 +71,7 @@
   - squawking
   - squawks
 
-# vocal emotes
-- type: emote
-  id: Hiss
-  name: chat-emote-name-hiss
-  category: Vocal
-  available: false
-  icon: { sprite: _Moffstation/Actions/avali.rsi, state: hiss }
-  whitelist:
-    components:
-    - Vocal
-  blacklist:
-    components:
-    - BorgChassis
-  chatMessages: ["chat-emote-msg-hiss"]
-  chatTriggers:
-  - hiss
-  - hisses
-  - hissing
-
 # vox
-- type: emote
-  id: Caw
-  name: chat-emote-name-caw
-  category: Vocal
-  icon: _Moffstation/Interface/Emotes/caw.png
-  available: false
-  whitelist:
-    components:
-    - Vocal
-  blacklist:
-    tags:
-    - SiliconEmotes
-  chatMessages: [chat-emote-msg-caw]
-  chatTriggers:
-   - caw
-   - caws
-   - cawed
-   - cawing
-
 - type: emote
   id: Crow
   name: chat-emote-name-crow

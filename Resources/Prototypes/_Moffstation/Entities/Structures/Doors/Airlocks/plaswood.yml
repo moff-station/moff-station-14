@@ -8,7 +8,6 @@
     sprite: _Moffstation/Structures/Doors/Airlocks/Glass/plaswood.rsi
   - type: IconSmooth
     key: woods
-    mode: NoSprite
   - type: Reflect  # NOT vulnerable to lasers.
     reflects:
       - Energy

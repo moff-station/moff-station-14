@@ -31,7 +31,8 @@
 #        color: "#f8f8f8"
     # Moff end
   - type: StealTarget
-    stealGroup: Stamp
+    stealGroup:
+    - Stamp
   # Moffstation - Start - Stamping other people
   - type: MeleeWeapon
     hidden: true
