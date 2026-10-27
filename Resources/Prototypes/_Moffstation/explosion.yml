@@ -7,9 +7,9 @@
       Blunt: 5
       Piercing: 5
   fireColor: Transparent
-  tileBreakChance: [0, 0.5, 1]
-  tileBreakIntensity: [0, 10, 30]
-  tileBreakRerollReduction: 20
+  tileBreakChance: [ 0, 0.5, 1 ]
+  tileBreakIntensity: [ 0, 50, 75 ]
+  tileBreakRerollReduction: 25
   lightColor: Black
   texturePath: /Textures/Effects/fire.rsi
   fireStates: 3
@@ -44,6 +44,22 @@
   tileBreakChance: [0, 0.5, 1]
   tileBreakIntensity: [0, 10, 30]
   tileBreakRerollReduction: 20
+  lightColor: Black
+  texturePath: /Textures/Effects/fire.rsi
+  fireStates: 3
+  temperature: 800
+
+- type: explosion
+  id: TransparentClake
+  damagePerIntensity:
+    types:
+      Heat: 2
+      Blunt: 2
+      Piercing: 3
+      Structural: 65
+  tileBreakChance: [ 0, 0.5, 1 ]
+  tileBreakIntensity: [ 0, 50, 75 ]
+  tileBreakRerollReduction: 25
   lightColor: Black
   texturePath: /Textures/Effects/fire.rsi
   fireStates: 3
