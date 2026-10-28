@@ -447,3 +447,33 @@
   target: MoffFloorShowroom
 
 # moff end
+
+# Moff - 2026-10-27 - renamed tiles
+
+- type: tileAlias
+  id: FloorMoffIronsandTile
+  target: MoffFloorIronsandTile
+
+- type: tileAlias
+  id: FloorMoffIronsandConcrete
+  target: MoffFloorIronsandConcrete
+
+- type: tileAlias
+  id: FloorMoffIronsandConcreteMono
+  target: MoffFloorIronsandConcreteMono
+
+- type: tileAlias
+  id: FloorMoffIronsandConcreteSmooth
+  target: MoffFloorIronsandConcreteSmooth
+
+- type: tileAlias
+  id: FloorMoffSteelSlatsContinuous
+  target: MoffFloorSteelSlatsContinuous
+
+- type: tileAlias
+  id: FloorMoffWhiteSlatsContinuous
+  target: MoffFloorWhiteSlatsContinuous
+
+- type: tileAlias
+  id: FloorMoffDarkSlatsContinuous
+  target: MoffFloorDarkSlatsContinuous
