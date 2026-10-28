@@ -1105,9 +1105,32 @@
   name: salvage expeditions computer
   description: Used to accept salvage missions, if you're tough enough.
   components:
-    - type: ComputerVisuals
-      stateKeyboard: tech_key_off
-      stateKeys: tech_key
+  - type: ComputerVisuals
+    stateKeyboard: tech_key_off # Moff
+    stateScreen: mining
+    stateKeys: tech_key
+  - type: Appearance
+  - type: SalvageExpeditionConsole
+  - type: ActivatableUI
+    key: enum.SalvageConsoleUiKey.Expedition
+  - type: ActivatableUIRequiresPower
+  - type: UserInterface
+    interfaces:
+      enum.SalvageConsoleUiKey.Expedition:
+        type: SalvageExpeditionConsoleBoundUserInterface
+      enum.WiresUiKey.Key:
+        type: WiresBoundUserInterface
+  - type: Computer
+    board: SalvageExpeditionsComputerCircuitboard
+  - type: PointLight
+    radius: 1.5
+    energy: 4.0
+    color: "#b89f25"
+  - type: AccessReader
+    access: [["Salvage"]]
+  - type: StealTarget
+    stealGroup:
+    - SalvageExpeditionsComputerCircuitboard
 
 - type: entity
   parent: BaseComputer
@@ -1268,10 +1291,35 @@
   suffix: TESTING, DO NOT MAP
   categories: [ DoNotMap ]
   components:
-    - type: ComputerVisuals
-      stateKeyboard: atmos_key_off
-      stateScreen: sensors
-      stateKeys: atmos_key
+  - type: ComputerVisuals
+    stateKeyboard: atmos_key_off # Moff
+    stateScreen: sensors
+    stateKeys: atmos_key
+  - type: PointLight
+    radius: 1.5
+    energy: 4.0
+    color: "#43ccb5"
+  - type: Computer
+    board: SensorConsoleCircuitboard
+  - type: SensorMonitoringConsole
+  - type: ActivatableUI
+    key: enum.SensorMonitoringConsoleUiKey.Key
+  - type: UserInterface
+    interfaces:
+      enum.SensorMonitoringConsoleUiKey.Key:
+        type: SensorMonitoringConsoleBoundUserInterface
+      enum.WiresUiKey.Key:
+        type: WiresBoundUserInterface
+  - type: DeviceNetwork
+    deviceNetId: AtmosDevices
+    receiveFrequencyId: AtmosMonitor
+    transmitFrequencyId: AtmosMonitor
+    prefix: device-address-prefix-sensor-monitor
+    sendBroadcastAttemptEvent: true
+    examinableAddress: true
+  - type: WiredNetwork
+  - type: DeviceList
+  - type: AtmosDevice
 
 - type: entity
   parent: BaseComputerAiAccess

@@ -1,14 +1,18 @@
 using System.Linq;
 using System.Numerics;
 using Content.Server.Administration;
+using Content.Server.Antag;
 using Content.Server.Chat.Managers;
 using Content.Shared.DeviceNetwork.Systems;
 using Content.Server.GameTicking;
 using Content.Server.GameTicking.Events;
 using Content.Server.Parallax;
-using Content.Server.Power.EntitySystems; // Moffstation
+using Content.Server.Power.EntitySystems;
+using Content.Server.Shuttles.Components; // Moffstation
 using Content.Server.Shuttles.Events;
+using Content.Server.Spawners.Components;
 using Content.Server.Station.Events;
+using Content.Server.Station.Systems;
 using Content.Shared._Moffstation.CCVar;
 using Content.Shared.Administration;
 using Content.Shared.Antag;
@@ -356,7 +360,7 @@ public sealed partial class ServerArrivalsSystem : ArrivalsSystem
         // Moffstation - End
     }
 
-    private void DumpChildren(EntityUid uid, ref FTLStartedEvent args)
+    public void DumpChildren(EntityUid uid, ref FTLStartedEvent args) // Moff - Made public
     {
         var toDump = new List<Entity<TransformComponent>>();
         FindDumpChildren(uid, toDump);
@@ -419,7 +423,7 @@ public sealed partial class ServerArrivalsSystem : ArrivalsSystem
         _chat.DispatchServerMessage(ev.Player, message);
     }
 
-    private bool TryTeleportToMapSpawn(EntityUid player, EntityUid stationId, TransformComponent? transform = null)
+    public bool TryTeleportToMapSpawn(EntityUid player, EntityUid stationId, TransformComponent? transform = null) // Moff - Made public
     {
         if (!Resolve(player, ref transform))
             return false;

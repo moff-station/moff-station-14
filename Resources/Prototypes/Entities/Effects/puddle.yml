@@ -230,6 +230,11 @@
         - SlipLayer
         hard: false
   - type: Footprint
+  # Moff start - Foobrints don't get smoothing like puddles
+  - type: IconSmooth
+    key: footprints
+    enabled: false
+  # Moff end
   - type: Puddle
     solution: print
     affectsMovement: false
