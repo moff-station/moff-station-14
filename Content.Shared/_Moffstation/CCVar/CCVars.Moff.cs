@@ -113,8 +113,8 @@ public sealed class MoffCCVars
     ///     Should lockable uplinks be forcefully locked while on the same map as the evac shuttle, while in FTL,
     ///     on CentComm and on the arrivals terminal?
     /// </summary>
-    public static readonly CVarDef<bool> GameBlockUplinks =
-        CVarDef.Create("moff.lock_uplinks", true, CVar.SERVERONLY);
+    public static readonly CVarDef<bool> GameBlockUplinksOnEvac =
+        CVarDef.Create("moff.block_uplinks_evac", true, CVar.SERVERONLY);
 
     /*
      * Arrivals

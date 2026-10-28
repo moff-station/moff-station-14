@@ -28,7 +28,7 @@ public sealed partial class RingerSystem
     /// <returns></returns>
     private bool UplinkAllowed(EntityUid uplink)
     {
-        if (!_cfg.GetCVar(MoffCCVars.GameBlockUplinks))
+        if (!_cfg.GetCVar(MoffCCVars.GameBlockUplinksOnEvac))
             return true;
 
         var uplinkMapId = _transform.GetMap(uplink);
