@@ -383,7 +383,7 @@
       types:
         Slash: 20
         Heat: 20
-        Structural: 16 # Moff - 40% bonus damage to structures, based on esword
+        Structural: 40 # Moff - similar structure breaking speed of esword
   - type: MeleeRequiresWield
   - type: HeldSpeedModifier #slowdown is what balances this compared to a dsword
     walkModifier: 0.65 # Moffstation adjustment - previously .6
