@@ -386,8 +386,8 @@
         Structural: 30 # Moff - Meant to do a lot of structural damage.
   - type: MeleeRequiresWield
   - type: HeldSpeedModifier #slowdown is what balances this compared to a dsword
-    walkModifier: 0.70 # Moffstation adjustment - previously .6
-    sprintModifier: 0.70 # Moffstation adjustment - previously .6
+    walkModifier: 0.65 # Moffstation adjustment - previously .6
+    sprintModifier: 0.65 # Moffstation adjustment - previously .6
     weightlessAcceleration: 0.6
     zeroGravityModifier: 0.6
   - type: UseDelay
