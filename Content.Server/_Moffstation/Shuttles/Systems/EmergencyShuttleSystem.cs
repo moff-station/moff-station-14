@@ -1,7 +1,7 @@
 using Content.Server._Moffstation.PDA.Ringer;
 using Content.Server.PDA.Ringer;
-using Content.Server.Shuttles.Components;
 using Content.Server.Shuttles.Events;
+using Content.Shared.Shuttles.Components;
 
 namespace Content.Server.Shuttles.Systems;
 

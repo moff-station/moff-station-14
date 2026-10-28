@@ -1,13 +1,17 @@
-using Content.Server._Moffstation.Voting; // Moff - enrollment character selection
-using Content.Server.Antag;
+using System.Linq;
+using Content.Server._Moffstation.Station;
+using Content.Server._Moffstation.Voting;
 using Content.Server.GameTicking.Rules.Components;
 using Content.Server.Preferences.Managers;
+using Content.Shared.Antag;
 using Content.Shared.Body;
 using Content.Shared.DetailExaminable;
+using Content.Shared.GameTicking.Rules;
 using Content.Shared.Humanoid;
 using Content.Shared.Humanoid.Prototypes;
 using Content.Shared.Preferences;
 using Robust.Shared.Prototypes;
+using Robust.Shared.Random;
 
 namespace Content.Server.GameTicking.Rules;
 
@@ -16,8 +20,13 @@ public sealed partial class AntagLoadProfileRuleSystem : GameRuleSystem<AntagLoa
     [Dependency] private HumanoidProfileSystem _humanoidProfile = default!;
     [Dependency] private IServerPreferencesManager _prefs = default!;
     [Dependency] private SharedVisualBodySystem _visualBody = default!;
-    [Dependency] private MetaDataSystem _metaData = default!;  // Moffstation
-    [Dependency] private MoffEnrollEventSystem _moffEnroll = default!; // Moff - enrollment character selection
+
+    // Moff start
+    [Dependency] private MetaDataSystem _metaData = default!;
+    [Dependency] private MoffEnrollEventSystem _moffEnroll = default!;
+    [Dependency] private MoffJobCandidateSystem _moffJobCandidate = default!;
+    [Dependency] private IRobustRandom _random = default!;
+    // Moff end
 
     public override void Initialize()
     {
@@ -31,10 +40,33 @@ public sealed partial class AntagLoadProfileRuleSystem : GameRuleSystem<AntagLoa
         if (args.Handled)
             return;
 
-        // Moff start - enrollees can opt to spawn as a randomly generated character rather than their selected one.
-        var profile = args.Session == null || _moffEnroll.EnrolleeWantsRandom(ent.Owner, args.Session)
-            ? HumanoidCharacterProfile.Random()
-            : _prefs.GetPreferences(args.Session.UserId).SelectedCharacter as HumanoidCharacterProfile;
+        // Moff start - Multi character selection for antags + ES ghostrole enrollment votes with selectable profiles
+        if (args.Session is { } session &&
+            !_moffEnroll.EnrolleeWantsRandom(ent.Owner, args.Session))
+        {
+            if (args.RespectPlayerSelection)
+            {
+                // Use the player's active profile (selected by ghostrole enrollment UI)
+                args.AssociatedProfile = _prefs.GetPreferences(session.UserId).SelectedCharacter;
+            }
+            else
+            {
+                // Pick a random active profile with the antag enabled.
+                var antagPrefRoles = args.Antag.PrefRoles;
+                var activeProfilesWithAntagEnabled = _moffJobCandidate.GetActiveProfiles(session.UserId)
+                    .Where(it => it.AntagPreferences.Intersect(antagPrefRoles).Any())
+                    .ToList();
+                if (activeProfilesWithAntagEnabled.Count != 0)
+                {
+                    args.AssociatedProfile = _random.Pick(activeProfilesWithAntagEnabled);
+                }
+            }
+        }
+
+        // If we didn't assign a profile above for whatever reason, make a random one. Alias it to `profile` to
+        // minimize changes to upstream code.
+        args.AssociatedProfile ??= HumanoidCharacterProfile.Random();
+        var profile = args.AssociatedProfile;
         // Moff end
 
         if (profile?.Species is not { } speciesId || !ProtoMan.Resolve(speciesId, out var species))

@@ -190,7 +190,7 @@
       types:
         Heat: 4.5 # Moffstation - Revert moth fire stack damage reduction
   - type: TemperatureDamage # Moths hate the heat and thrive in the cold.
-    heatDamageThreshold: 320
+    heatDamageThreshold: 314.15
     coldDamageThreshold: 230
     coldDamage:
       types:

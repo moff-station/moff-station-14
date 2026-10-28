@@ -24,6 +24,18 @@ public sealed partial class ChatSanitizationManager : IChatSanitizationManager
         Entry("[=", "chatsan-smiles"),
         Entry("^^", "chatsan-smiles"),
         Entry("^-^", "chatsan-smiles"),
+        // Carpmosia-start - More smilies
+        Entry(":-)", "chatsan-smiles"),
+        Entry("(-:", "chatsan-smiles"),
+        Entry("=-)", "chatsan-smiles"),
+        Entry("(-=", "chatsan-smiles"),
+        Entry("B)", "chatsan-smiles-smugly"),
+        Entry("B-)", "chatsan-smiles-smugly"),
+        Entry(":c", "chatsan-frowns"),
+        Entry("c:", "chatsan-smiles"),
+        Entry(":))", "chatsan-smiles-widely"),
+        Entry(":-))", "chatsan-smiles-widely"),
+        // Carpmosia-end - More smilies
         Entry(":(", "chatsan-frowns"),
         Entry(":[", "chatsan-frowns"),
         Entry("=(", "chatsan-frowns"),
@@ -77,6 +89,10 @@ public sealed partial class ChatSanitizationManager : IChatSanitizationManager
         Entry("lel", "chatsan-laughs"),
         Entry("kek", "chatsan-laughs"),
         Entry("rofl", "chatsan-laughs"),
+        // Carmosia-start - More smilies
+        Entry("kekw", "chatsan-laughs"),
+        Entry("lul", "chatsan-laughs"),
+        // Carmosia-end - More smilies
         Entry("o7", "chatsan-salutes"),
         Entry(";_;7", "chatsan-tearfully-salutes"),
         Entry(";)", "chatsan-winks"),

@@ -3,7 +3,9 @@ using Content.IntegrationTests.Fixtures;
 using Content.Server.GameTicking;
 using Content.Server.Shuttles.Components;
 using Content.Server.Shuttles.Systems;
+using Content.Shared._Moffstation.CCVar;
 using Content.Shared.CCVar;
+using Content.Shared.GameTicking;
 using Content.Shared.Shuttles.Components;
 using Content.Shared.Station.Components;
 using Robust.Shared.GameObjects;
@@ -30,7 +32,7 @@ public sealed class EvacShuttleTest : GameTest
         var pair = Pair;
         var server = pair.Server;
         var entMan = server.EntMan;
-        var ticker = server.System<GameTicker>();
+        var ticker = server.System<ServerGameTicker>();
 
         // Dummy ticker tests should not have centcomm
         Assert.That(entMan.Count<StationCentcommComponent>(), Is.Zero);
@@ -40,6 +42,8 @@ public sealed class EvacShuttleTest : GameTest
         pair.Server.CfgMan.SetCVar(CCVars.GameDummyTicker, false);
         var gameMap = pair.Server.CfgMan.GetCVar(CCVars.GameMap);
         pair.Server.CfgMan.SetCVar(CCVars.GameMap, PoolManager.TestStation);
+        var startAtArrivals = pair.Server.CfgMan.GetCVar(MoffCCVars.StartAtArrivals); // Moff - Evac arrivals
+        pair.Server.CfgMan.SetCVar(MoffCCVars.StartAtArrivals, false); // Moff - Evac arrivals
 
         await server.WaitPost(() => ticker.RestartRound());
         await pair.RunTicksSync(25);
@@ -129,5 +133,6 @@ public sealed class EvacShuttleTest : GameTest
         server.CfgMan.SetCVar(CCVars.EmergencyShuttleDockTime, dockTime);
         pair.Server.CfgMan.SetCVar(CCVars.EmergencyShuttleEnabled, false);
         pair.Server.CfgMan.SetCVar(CCVars.GameMap, gameMap);
+        pair.Server.CfgMan.SetCVar(MoffCCVars.StartAtArrivals, startAtArrivals); // Moff - Evac arrivals
     }
 }

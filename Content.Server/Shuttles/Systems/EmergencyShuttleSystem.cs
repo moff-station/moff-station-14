@@ -21,10 +21,11 @@ using Content.Shared._DV.CustomObjectiveSummary; // DeltaV
 using Content.Shared.Access.Systems;
 using Content.Shared.CCVar;
 using Content.Shared.Database;
-using Content.Shared.DeviceNetwork;
 using Content.Shared.DeviceNetwork.Components;
 using Content.Shared.GameTicking;
+using Content.Shared.GameTicking.Events;
 using Content.Shared.Localizations;
+using Content.Shared.RoundEnd;
 using Content.Shared.Shuttles.Components;
 using Content.Shared.Shuttles.Events;
 using Content.Shared.Shuttles.Systems;
@@ -58,7 +59,7 @@ public sealed partial class EmergencyShuttleSystem : SharedEmergencyShuttleSyste
     [Dependency] private CommunicationsConsoleSystem _commsConsole = default!;
     [Dependency] private DeviceNetworkSystem _deviceNetworkSystem = default!;
     [Dependency] private DockingSystem _dock = default!;
-    [Dependency] private GameTicker _ticker = default!;
+    [Dependency] private ServerGameTicker _ticker = default!;
     [Dependency] private IdCardSystem _idSystem = default!;
     [Dependency] private NavMapSystem _navMap = default!;
     [Dependency] private MapLoaderSystem _loader = default!;
@@ -66,7 +67,7 @@ public sealed partial class EmergencyShuttleSystem : SharedEmergencyShuttleSyste
     [Dependency] private RoundEndSystem _roundEnd = default!;
     [Dependency] private SharedAudioSystem _audio = default!;
     [Dependency] private ShuttleSystem _shuttle = default!;
-    [Dependency] private StationSystem _station = default!;
+    [Dependency] private ServerStationSystem _station = default!;
     [Dependency] private TransformSystem _transformSystem = default!;
     [Dependency] private UserInterfaceSystem _uiSystem = default!;
 
@@ -119,15 +120,6 @@ public sealed partial class EmergencyShuttleSystem : SharedEmergencyShuttleSyste
         QueueDel(component.MapEntity);
         component.Entity = null;
         component.MapEntity = null;
-    }
-
-    /// <summary>
-    ///     Attempts to get the EntityUid of the emergency shuttle
-    /// </summary>
-    public EntityUid? GetShuttle()
-    {
-        AllEntityQuery<EmergencyShuttleComponent>().MoveNext(out var shuttle, out _);
-        return shuttle;
     }
 
     private void SetEmergencyShuttleEnabled(bool value)
@@ -205,6 +197,11 @@ public sealed partial class EmergencyShuttleSystem : SharedEmergencyShuttleSyste
     /// </summary>
     private void OnEmergencyFTL(EntityUid uid, EmergencyShuttleComponent component, ref FTLStartedEvent args)
     {
+        // Moff start - Evac arrivals
+        if (!IsEvacDeparture(uid))
+            return;
+        // Moff end
+
         var ftlTime = TimeSpan.FromSeconds
         (
             TryComp<FTLComponent>(uid, out var ftlComp) ? ftlComp.TravelTime : _shuttle.DefaultTravelTime
@@ -212,16 +209,16 @@ public sealed partial class EmergencyShuttleSystem : SharedEmergencyShuttleSyste
 
         if (TryComp<DeviceNetworkComponent>(uid, out var netComp))
         {
-            var payload = new NetworkPayload
+            var payload = new ScreenShuttlePayload
             {
-                [ShuttleTimerMasks.ShuttleMap] = uid,
-                [ShuttleTimerMasks.SourceMap] = args.FromMapUid,
-                [ShuttleTimerMasks.DestMap] = _transformSystem.GetMap(args.TargetCoordinates),
-                [ShuttleTimerMasks.ShuttleTime] = ftlTime,
-                [ShuttleTimerMasks.SourceTime] = ftlTime,
-                [ShuttleTimerMasks.DestTime] = ftlTime
+                Shuttle = uid,
+                SourceMap = args.FromMapUid,
+                DestinationMap = _transformSystem.GetMap(args.TargetCoordinates),
+                ShuttleTime = ftlTime,
+                SourceTime = ftlTime,
+                DestinationTime = ftlTime,
             };
-            _deviceNetworkSystem.QueuePacket(uid, null, payload, netComp.TransmitFrequency);
+            _deviceNetworkSystem.SendPacket(uid, null, ref payload, netComp.TransmitFrequency);
         }
         RaiseLocalEvent(new EvacShuttleLeftEvent()); // DeltaV
     }
@@ -231,31 +228,36 @@ public sealed partial class EmergencyShuttleSystem : SharedEmergencyShuttleSyste
     /// </summary>
     private void OnEmergencyFTLComplete(EntityUid uid, EmergencyShuttleComponent component, ref FTLCompletedEvent args)
     {
+        // Moff start - Evac arrivals
+        if (!IsEvacDeparture(uid))
+            return;
+        // Moff end
+
         var countdownTime = TimeSpan.FromSeconds(ConfigManager.GetCVar(CCVars.RoundRestartTime));
         var shuttle = args.Entity;
         if (TryComp<DeviceNetworkComponent>(shuttle, out var net))
         {
-            var payload = new NetworkPayload
+            var payload = new ScreenShuttlePayload
             {
-                [ShuttleTimerMasks.ShuttleMap] = shuttle,
-                [ShuttleTimerMasks.SourceMap] = _roundEnd.GetCentcomm(),
-                [ShuttleTimerMasks.DestMap] = _roundEnd.GetStation(),
-                [ShuttleTimerMasks.ShuttleTime] = countdownTime,
-                [ShuttleTimerMasks.SourceTime] = countdownTime,
-                [ShuttleTimerMasks.DestTime] = countdownTime,
+                Shuttle = shuttle,
+                SourceMap = _roundEnd.GetCentcomm(),
+                DestinationMap = _roundEnd.GetStation(),
+                ShuttleTime = countdownTime,
+                SourceTime = countdownTime,
+                DestinationTime = countdownTime,
             };
 
             // by popular request
             // https://discord.com/channels/310555209753690112/770682801607278632/1189989482234126356
             if (_random.Next(1000) == 0)
             {
-                payload.Add(ScreenMasks.Text, ShuttleTimerMasks.Kill);
-                payload.Add(ScreenMasks.Color, Color.Red);
+                payload.OverrideText = ShuttleTimerMasks.Kill;
+                payload.OverrideColor = Color.Red;
             }
             else
-                payload.Add(ScreenMasks.Text, ShuttleTimerMasks.Bye);
+                payload.OverrideText = ShuttleTimerMasks.Bye;
 
-            _deviceNetworkSystem.QueuePacket(shuttle, null, payload, net.TransmitFrequency);
+            _deviceNetworkSystem.SendPacket(shuttle, null, ref payload, net.TransmitFrequency);
         }
     }
 
@@ -291,6 +293,11 @@ public sealed partial class EmergencyShuttleSystem : SharedEmergencyShuttleSyste
                 ResultType = ShuttleDockResultType.GoodLuck,
             };
         }
+
+        // Moff start - Evac arrivals
+        // We have to undock manually otherwise it can get stuck
+        _dock.UndockDocks(stationShuttle.EmergencyShuttle.Value);
+        // Moff end
 
         ShuttleDockResultType resultType;
         if (_shuttle.TryFTLDock(stationShuttle.EmergencyShuttle.Value, shuttle, targetGrid.Value, out var config, DockTag))
@@ -385,17 +392,17 @@ public sealed partial class EmergencyShuttleSystem : SharedEmergencyShuttleSyste
         var time = TimeSpan.FromSeconds(_consoleAccumulator);
         if (TryComp<DeviceNetworkComponent>(shuttle, out var netComp))
         {
-            var payload = new NetworkPayload
+            var payload = new ScreenShuttlePayload
             {
-                [ShuttleTimerMasks.ShuttleMap] = shuttle,
-                [ShuttleTimerMasks.SourceMap] = targetXform.MapUid,
-                [ShuttleTimerMasks.DestMap] = _roundEnd.GetCentcomm(),
-                [ShuttleTimerMasks.ShuttleTime] = time,
-                [ShuttleTimerMasks.SourceTime] = time,
-                [ShuttleTimerMasks.DestTime] = time + TimeSpan.FromSeconds(TransitTime),
-                [ShuttleTimerMasks.Docked] = true,
+                Shuttle = shuttle,
+                SourceMap = targetXform.MapUid,
+                DestinationMap = _roundEnd.GetCentcomm(),
+                ShuttleTime = time,
+                SourceTime = time,
+                DestinationTime = time + TimeSpan.FromSeconds(TransitTime),
+                Docked = true,
             };
-            _deviceNetworkSystem.QueuePacket(shuttle.Value, null, payload, netComp.TransmitFrequency);
+            _deviceNetworkSystem.SendPacket(shuttle.Value, null, ref payload, netComp.TransmitFrequency);
         }
 
         // Play announcement audio.

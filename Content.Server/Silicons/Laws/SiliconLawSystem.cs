@@ -27,7 +27,7 @@ public sealed partial class SiliconLawSystem : SharedSiliconLawSystem
     [Dependency] private IChatManager _chatManager = default!;
     [Dependency] private SharedMindSystem _mind = default!;
     [Dependency] private SharedRoleSystem _roles = default!;
-    // [Dependency] private StationSystem _station = default!; // Moffstation - Now Unused
+    // [Dependency] private ServerStationSystem _station = default!; // Moffstation - Now Unused
     // [Dependency] private UserInterfaceSystem _userInterface = default!; // Moffstation - Now Unused
     // [Dependency] private EmagSystem _emag = default!; // Moffstation - Now Unused
     [Dependency] private ISharedAdminLogManager _adminLogger = default!;
@@ -142,13 +142,18 @@ public sealed partial class SiliconLawSystem : SharedSiliconLawSystem
 
         while (query.MoveNext(out var update))
         {
+            // Moff Start - Spawn with default law board
+            if (!TryComp<SiliconLawProviderComponent>(update, out var lawProvider))
+                continue;
+            // Moff End
+
             if (TryComp<ShowCrewIconsComponent>(update, out var crewIconComp))
             {
                 crewIconComp.UncertainCrewBorder = DefaultCrewLawset != provider.Laws;
                 Dirty(update, crewIconComp);
             }
 
-            SetProviderLaws(update, lawset.Laws, false, provider.LawUploadSound);
+            SetProviderLaws((update, lawProvider), lawset.Laws, false, provider.LawUploadSound); // Moff - Spawn with default law board
         }
     }
 

@@ -7,6 +7,7 @@
   - FloorTileItemDarkHerringbone
   - FloorTileItemDarkMini
   - FloorTileItemDarkMono
+  - MoffFloorTileItemDarkSlatsContinuous # Moff - keeping continuous tiles when they're removed upstream
   - FloorTileItemDarkVerticalSlatsBordered
   - FloorTileItemDarkHorizontalSlatsBordered
   - FloorTileItemDarkPavement
@@ -18,6 +19,7 @@
   - FloorTileItemSteel
   - FloorTileItemSteelHerringbone
   - FloorTileItemSteelMini
+  - MoffFloorTileItemSteelSlatsContinuous # Moff - keeping continuous tiles when they're removed upstream
   - FloorTileItemSteelVerticalSlatsBordered
   - FloorTileItemSteelHorizontalSlatsBordered
   - FloorTileItemSteelPavement
@@ -32,6 +34,7 @@
   - FloorTileItemWhiteHerringbone
   - FloorTileItemWhiteMini
   - FloorTileItemWhiteMono
+  - MoffFloorTileItemWhiteSlatsContinuous # Moff - keeping continuous tiles when they're removed upstream
   - FloorTileItemWhiteVerticalSlatsBordered
   - FloorTileItemWhiteHorizontalSlatsBordered
   - FloorTileItemWhitePavement
@@ -63,9 +66,9 @@
   - FloorTileItemConcrete
   - FloorTileItemConcreteMono
   - FloorTileItemConcreteSmooth
-  - FloorTileItemMoffIronsandConcrete # Moff - keeping ironsand when it's removed upstream
-  - FloorTileItemMoffIronsandConcreteMono # Moff - keeping ironsand when it's removed upstream
-  - FloorTileItemMoffIronsandConcreteSmooth # Moff - keeping ironsand when it's removed upstream
+  - MoffFloorTileItemIronsandConcrete # Moff - keeping ironsand when it's removed upstream
+  - MoffFloorTileItemIronsandConcreteMono # Moff - keeping ironsand when it's removed upstream
+  - MoffFloorTileItemIronsandConcreteSmooth # Moff - keeping ironsand when it's removed upstream
 
 - type: latheRecipePack
   id: CircuitFloorsStatic
@@ -79,6 +82,8 @@
   recipes:
   - FloorTileItemWhiteMarble
   - FloorTileItemDarkMarble
+  - MoffFloorTileItemUraniumMarble # Moff - Uranium marble and plasmarble to Moff namespace
+  - MoffFloorTileItemPlasmaMarble # Moff - Uranium marble and plasmarble to Moff namespace
 
 - type: latheRecipePack
   id: FloorShuttleTilesStatic
@@ -97,6 +102,9 @@
   - FloorTileItemLino
   - FloorTileItemBoxing
   - FloorTileItemGym
+  - FloorTileItemPlastic
+  - FloorTileItemDarkPlastic
+  - FloorTileItemWhitePlastic
 
 - type: latheRecipePack
   id: CarpetTilesStatic

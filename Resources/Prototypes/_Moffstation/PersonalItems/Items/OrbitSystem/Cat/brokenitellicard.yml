@@ -2,7 +2,7 @@
 - type: entity
   parent: BaseItem
   id: PersonalItemCatCard
-  name: Broken Intellicard
+  name: broken intellicard
   suffix: PersonalItem
   description: An Intellicard that no longer functions. A memento of a previous life.
   components:
@@ -20,4 +20,6 @@
   effects:
   - !type:PersonalItemLoadoutEffect
     character:
-    - Cat
+    - Catalina
+    - Chainbreaker
+    - Captain Chainbreaker

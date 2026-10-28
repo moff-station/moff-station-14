@@ -303,7 +303,7 @@
   description: An atmos tech's best friend. Provides some heat resistance and looks cool.
   components:
   - type: Sprite
-    sprite: Clothing/Head/Helmets/firehelmet.rsi
+    sprite: _Moffstation/Clothing/Head/Helmets/firehelmet.rsi # Moff
   - type: ToggleableVisuals
     clothingVisuals:
       head:
@@ -410,7 +410,7 @@
 #ERT HELMETS
 #ERT Leader Helmet
 - type: entity
-  parent: [ BaseCentcommContraband, ClothingHeadHelmetArmoredBase ]
+  parent: [ BaseTaskForceContraband, ClothingHeadHelmetArmoredBase ]
   id: ClothingHeadHelmetERTLeader
   name: ERT leader helmet
   description: An in-atmosphere helmet worn by the leader of a Nanotrasen Emergency Response Team. Has blue highlights.
@@ -482,7 +482,7 @@
   - type: HideLayerClothing
     layers:
       Hair: HEAD
-  - type: MoffStainRepellent # Moff - He, the beacon which stands against the filth; he the paragon of cleanliness; arise and banish the corrupting filth; banish the squalor.
+  - type: MoffStainRepellentCoated # Moff - He, the beacon which stands against the filth; he the paragon of cleanliness; arise and banish the corrupting filth; banish the squalor.
 
 - type: entity
   parent: [ BaseSyndicateContraband, ClothingHeadHelmetBase ]

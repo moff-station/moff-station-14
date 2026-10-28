@@ -30,7 +30,7 @@
         layer:
         - WallLayer
   - type: Damageable
-    damageModifierSet: PlasteelMod
+    damageModifierSet: PlasteelStaticMod
   - type: Destructible
     thresholds:
     - trigger:
@@ -56,7 +56,7 @@
       lockedFailPopup: ame-controller-component-fuel-slot-fail-locked
       insertSuccessPopup: ame-controller-component-fuel-slot-success-insert
   - type: Explosive
-    explosionType: Default
+    explosionType: Transparent # Funky RMC Explosions
     intensitySlope: 5
     maxIntensity: 60
   - type: ActivatableUI
@@ -155,7 +155,7 @@
         layer:
         - WallLayer
   - type: Damageable
-    damageModifierSet: PlasteelMod
+    damageModifierSet: PlasteelStaticMod
   - type: Destructible
     thresholds:
     - trigger:

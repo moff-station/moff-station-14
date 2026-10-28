@@ -3,6 +3,7 @@ using Content.Shared.Item;
 using Content.Shared.Projectiles;
 using Content.Shared.Storage;
 using Content.Shared.Timing;
+using Content.Shared.Timing.Systems;
 using Robust.Shared.Containers;
 using Robust.Shared.Map;
 
@@ -45,7 +46,7 @@ public sealed partial class QuickPickupSystem : EntitySystem
             args.Target is not { Valid: true } target ||
             target == args.User ||
             !args.CanReach ||
-            !_useDelay.TryResetDelay(entity, checkDelayed: true, id: DelayId) ||
+            !_useDelay.TryResetDelay(entity.Owner, checkDelayed: true, id: DelayId) ||
             _container.IsEntityInContainer(target) ||
             !_itemQuery.TryComp(target, out var targetItemComp))
             return;

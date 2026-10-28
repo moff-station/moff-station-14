@@ -14,7 +14,8 @@
             !type:NanotrasenNameGenerator
             prefixCreator: '14'
         - type: StationEmergencyShuttle
-          emergencyShuttlePath: /Maps/Shuttles/emergency_courser.yml
+          # Moff - Evac arrivals
+          emergencyShuttlePath: /Maps/_Moffstation/Shuttles/emergency_courser.yml
         - type: StationJobs
           availableJobs:
             #service

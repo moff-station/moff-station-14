@@ -487,7 +487,7 @@ CrateCrewMonitoringBoards: CrateCrewMonitoring
 CrateSlimepersonLifeSupport: CrateEmergencyEVA
 
 # 2024-12-01
-DungeonMasterCircuitBoard: GameMasterCircuitBoard
+DungeonMasterCircuitBoard: MoffStandardLawBoardSpawner # Moff
 
 # 2024-12-12
 FloraRockSolid01: FloraRockSolid
@@ -879,7 +879,7 @@ ClothingHeadPyjamaNanotrasenBlue: null
 ClothingHeadWhiteBow: ClothingHeadHatHairFlowerWhite
 ClothingUniformJumpsuitPyjamaNanotrasenBlue: null
 DermalineChemistryBottleHarmony: ChemistryBottleDermaline
-DrinkThirstTrapGlass: DrinkWizardAleFull
+DrinkThirstTrapGlass: MoffDrinkWizardAleFull
 LockerQuarterMasterFilledNoSuit: LockerQuarterMasterFilled
 PlushieAvali: PlushieMoth
 PosterHarmonyAlwaysWatching: RandomPosterAny
@@ -918,7 +918,7 @@ SecurityBola: Bola
 BookSOP: BookSpaceLaw
 
 # Moffstation - 2026-06-09
-DrinkAviationGlass: RussianMothroachGlass
+DrinkAviationGlass: MoffRussianMothroachGlass
 PosterHarmonySafetyLizz: RandomPosterLegit
 
 # 2026-07-16
@@ -1017,23 +1017,29 @@ CrateEngineeringThruster: CrateSpaceThruster
 BlastDoorXenoborg: BlastDoorXeno
 BlastDoorXenoborgOpen: BlastDoorXenoOpen
 
-### Dark Tiles
-FloorTileItemDarkDiagonalMini: FloorTileItemDark
-FloorTileItemDarkDiagonal: FloorTileItemDark
-FloorTileItemDarkOffset: FloorTileItemDark
+# Moff Start - Bring back these tiles
+# ### Dark Tiles
+# FloorTileItemDarkDiagonalMini: FloorTileItemDark
+# FloorTileItemDarkDiagonal: FloorTileItemDark
+# FloorTileItemDarkOffset: FloorTileItemDark
+# Moff End
 FloorTileItemDarkSlatsContinuous: FloorTileItemDarkVerticalSlatsBordered
 
-### Steel Tiles
-FloorTileItemSteelDiagonalMini: FloorTileItemSteel
-FloorTileItemSteelDiagonal: FloorTileItemSteel
-FloorTileItemSteelOffset: FloorTileItemSteel
-FloorTileItemShowroom: FloorTileItemSteel
+# Moff Start - Bring back these tiles
+# ### Steel Tiles
+# FloorTileItemSteelDiagonalMini: FloorTileItemSteel
+# FloorTileItemSteelDiagonal: FloorTileItemSteel
+# FloorTileItemSteelOffset: FloorTileItemSteel
+# FloorTileItemShowroom: FloorTileItemSteel
+# Moff End
 FloorTileItemSteelSlatsContinuous: FloorTileItemSteelVerticalSlatsBordered
 
-### White Tiles
-FloorTileItemWhiteDiagonalMini: FloorTileItemWhite
-FloorTileItemWhiteDiagonal: FloorTileItemWhite
-FloorTileItemWhiteOffset: FloorTileItemWhite
+# Moff Start - Bring back these tiles
+# ### White Tiles
+# FloorTileItemWhiteDiagonalMini: FloorTileItemWhite
+# FloorTileItemWhiteDiagonal: FloorTileItemWhite
+# FloorTileItemWhiteOffset: FloorTileItemWhite
+# Moff End
 FloorTileItemWhiteSlatsContinuous: FloorTileItemWhiteVerticalSlatsBordered
 
 ### Misc Tiles
@@ -1042,12 +1048,9 @@ FloorTileItemPlasmaMarble: FloorTileItemWhiteMarble
 FloorTileItemEighties: FloorTileItemArcadeBlue
 FloorTileItemArcadeBlue2: FloorTileItemArcadeBlue
 FloorTileItemElevatorShaft: FloorTileItemDark
-FloorTileItemMining: FloorTileItemDark
-FloorTileItemMiningLight: FloorTileItemDark
-FloorTileItemMiningDark: FloorTileItemDark
-#FloorTileItemMining: FloorTileItemDarkPlastic
-#FloorTileItemMiningLight: FloorTileItemDarkPlastic
-#FloorTileItemMiningDark: FloorTileItemDarkPlastic
+FloorTileItemMining: FloorTileItemDarkPlastic
+FloorTileItemMiningLight: FloorTileItemDarkPlastic
+FloorTileItemMiningDark: FloorTileItemDarkPlastic
 FloorTileItemRockVault: FloorTileItemSteel
 FloorTileItemBrassReebe: null
 FloorTileItemBrassFilled: null
@@ -1167,7 +1170,6 @@ BaseAsteroidRock: AsteroidRock
 ButtonFrameExit: ButtonFrameWhite
 
 # 2026-08-12
-#TODO: Moff - Moff - we are reversing these because we dont have them yet. Delete the active ones when we have them
 WindoorSecure: Windoor
 WindoorSecurePlasma: WindoorPlasma
 WindoorSecureUranium: WindoorUranium
@@ -1233,9 +1235,9 @@ StatueBananiumClown: StatueOrnateClown
 DrinkNeurotoxinGlass: null
 
 # Moff - 2026-08-18 - Ironsands namespace change
-FloorTileItemIronsandConcrete: FloorTileItemMoffIronsandConcrete
-FloorTileItemIronsandConcreteMono: FloorTileItemMoffIronsandConcreteMono
-FloorTileItemIronsandConcreteSmooth: FloorTileItemMoffIronsandConcreteSmooth
+FloorTileItemIronsandConcrete: MoffFloorTileItemIronsandConcrete
+FloorTileItemIronsandConcreteMono: MoffFloorTileItemIronsandConcreteMono
+FloorTileItemIronsandConcreteSmooth: MoffFloorTileItemIronsandConcreteSmooth
 IronstoneDoor: MoffIronstoneDoor
 EncrustedIronstoneDoor: MoffEncrustedIronstoneDoor
 IronSandstone: MoffIronSandstone
@@ -1247,3 +1249,48 @@ IronsandStepConcaveCorner: MoffIronsandStepConcaveCorner
 
 #2026-08-19
 JanitorServiceLight: null
+
+# Moff - 2026-10-02 - Moffstation poster change
+PosterSignups: PosterMoffsector
+
+# Moff - 2026-10-10 - Diagonal, Diagonal Mini, Offset, and Showroom tiles namespace change
+FloorTileItemSteelDiagonal: MoffFloorTileItemSteelDiagonal
+FloorTileItemSteelDiagonalMini: MoffFloorTileItemSteelDiagonalMini
+FloorTileItemSteelOffset: MoffFloorTileItemSteelOffset
+FloorTileItemDarkDiagonal: MoffFloorTileItemDarkDiagonal
+FloorTileItemDarkDiagonalMini: MoffFloorTileItemDarkDiagonalMini
+FloorTileItemDarkOffset: MoffFloorTileItemDarkOffset
+FloorTileItemWhiteDiagonal: MoffFloorTileItemWhiteDiagonal
+FloorTileItemWhiteDiagonalMini: MoffFloorTileItemWhiteDiagonalMini
+FloorTileItemWhiteOffset: MoffFloorTileItemWhiteOffset
+FloorTileItemShowroom: MoffFloorTileItemShowroom
+
+#2026-08-31
+DrinkWaterJug: JugWater
+
+#2026-09-05
+# TODO: Nyx you gotta switch this one too on your lawboard PR
+AsimovCircuitBoard: MoffNanotrasenLawBoardSpawner
+
+# 2026-09-24
+ClothingShoesTourist: ClothingShoesSandalsBlack
+ClothingShoesWizard: ClothingShoesSandalsBrown
+
+# Moff - 2026-09-28 - Law board spawners
+NTDefaultCircuitBoard: MoffNanotrasenLawBoardSpawner
+CrewsimovCircuitBoard: MoffNanotrasenLawBoardSpawner # Prepare to change this to 'Crewsimov' here and in law_boards.yml when upstream merges
+CorporateCircuitBoard: MoffNanotrasenLawBoardSpawner
+CommandmentCircuitBoard: MoffStandardLawBoardSpawner
+PaladinCircuitBoard: MoffStandardLawBoardSpawner
+LiveLetLiveCircuitBoard: MoffStandardLawBoardSpawner
+StationEfficiencyCircuitBoard: MoffStandardLawBoardSpawner
+RobocopCircuitBoard: MoffStandardLawBoardSpawner
+GameMasterCircuitBoard: MoffStandardLawBoardSpawner
+ArtistCircuitBoard: MoffStandardLawBoardSpawner
+NutimovCircuitBoard: MoffStandardLawBoardSpawner
+
+# Moff - 2026-10-11 - Unmap telepads
+CargoTelepad: null
+
+# Moff - 2026-10-21 - Swimvend rename
+VendingMachineSwimsuits: MoffVendingMachineSwimsuits

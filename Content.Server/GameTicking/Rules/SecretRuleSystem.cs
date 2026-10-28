@@ -1,12 +1,14 @@
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using Content.Server.Administration.Logs;
-using Content.Server.GameTicking.Presets;
 using Content.Server.GameTicking.Rules.Components;
 using Content.Shared.GameTicking.Components;
 using Content.Shared.Random;
 using Content.Shared.CCVar;
 using Content.Shared.Database;
+using Content.Shared.GameTicking;
+using Content.Shared.GameTicking.Prototypes;
+using Content.Shared.GameTicking.Rules;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 using Robust.Shared.Configuration;
@@ -14,29 +16,31 @@ using Robust.Shared.Utility;
 
 namespace Content.Server.GameTicking.Rules;
 
+/// <summary>
+/// The handler for secret rules, rules that randomly pick from a set of subrules in secret.
+/// </summary>
+/// <seealso cref="SecretRuleComponent"/>
 public sealed partial class SecretRuleSystem : GameRuleSystem<SecretRuleComponent>
 {
     [Dependency] private IRobustRandom _random = default!;
     [Dependency] private IConfigurationManager _configurationManager = default!;
     [Dependency] private IAdminLogManager _adminLogger = default!;
-
-    private string _ruleCompName = default!;
+    [Dependency] private ServerGameTicker _serverTicker = default!; // Moff - Total player count for rules
 
     public override void Initialize()
     {
         base.Initialize();
-        _ruleCompName = Factory.GetComponentName<GameRuleComponent>();
     }
 
-    protected override void Added(EntityUid uid, SecretRuleComponent component, GameRuleComponent gameRule, GameRuleAddedEvent args)
+    protected override void Added(Entity<SecretRuleComponent, GameRuleComponent> ent, ref GameRuleAddedEvent args)
     {
-        base.Added(uid, component, gameRule, args);
+        base.Added(ent, ref args);
         var weights = _configurationManager.GetCVar(CCVars.SecretWeightPrototype);
 
         if (!TryPickPreset(weights, out var preset))
         {
-            Log.Error($"{ToPrettyString(uid)} failed to pick any preset. Removing rule.");
-            Del(uid);
+            Log.Error($"{ToPrettyString(ent.Owner)} failed to pick any preset. Removing rule.");
+            Del(ent);
             return;
         }
 
@@ -48,7 +52,7 @@ public sealed partial class SecretRuleSystem : GameRuleSystem<SecretRuleComponen
             if (GameTicker.IsIgnored(rule))
                 continue;
 
-            EntityUid ruleEnt;
+            Entity<GameRuleComponent>? ruleEnt;
 
             // if we're pre-round (i.e. will only be added)
             // then just add rules. if we're added in the middle of the round (or at any other point really)
@@ -58,24 +62,29 @@ public sealed partial class SecretRuleSystem : GameRuleSystem<SecretRuleComponen
             else
                 GameTicker.StartGameRule(rule, out ruleEnt);
 
-            component.AdditionalGameRules.Add(ruleEnt);
+            if (ruleEnt == null)
+                continue;
+
+            ent.Comp1.AdditionalGameRules.Add(ruleEnt.Value);
         }
     }
 
-    protected override void Ended(EntityUid uid, SecretRuleComponent component, GameRuleComponent gameRule, GameRuleEndedEvent args)
+    // TODO: We PROBABLY SHOULD NOT BE DOING THIS as the only time Secret ends naturally is end of round which already cleans up these rules.
+    // TODO: IN ADDITION We should end secret once it spawns its rules so we don't tick it :V or pause it?
+    protected override void Ended(Entity<SecretRuleComponent> rule, ref GameRuleEndedEvent args)
     {
-        base.Ended(uid, component, gameRule, args);
+        base.Ended(rule, ref args);
 
-        foreach (var rule in component.AdditionalGameRules)
+        foreach (var gameRule in rule.Comp.AdditionalGameRules)
         {
-            GameTicker.EndGameRule(rule);
+            GameTicker.EndGameRule(gameRule);
         }
     }
 
     private bool TryPickPreset(ProtoId<WeightedRandomPrototype> weights, [NotNullWhen(true)] out GamePresetPrototype? preset)
     {
         var options = ProtoMan.Index(weights).Weights.ShallowClone();
-        var players = GameTicker.DynamicPlayerCount();  // Moffstation - total player count for rules
+        var players = _serverTicker.DynamicPlayerCount();  // Moffstation - total player count for rules
 
         GamePresetPrototype? selectedPreset = null;
         var sum = options.Values.Sum();
@@ -133,7 +142,7 @@ public sealed partial class SecretRuleSystem : GameRuleSystem<SecretRuleComponen
     /// </summary>
     public bool CanPickAny(IEnumerable<ProtoId<GamePresetPrototype>> protos)
     {
-        var players = GameTicker.DynamicPlayerCount();  // Moffstation - total player count for rules
+        var players = _serverTicker.DynamicPlayerCount();  // Moffstation - total player count for rules
         foreach (var id in protos)
         {
             if (!ProtoMan.TryIndex(id, out var selectedPreset))
