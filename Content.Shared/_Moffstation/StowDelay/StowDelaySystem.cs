@@ -34,13 +34,15 @@ public sealed partial class StowDelaySystem : EntitySystem
     [SubscribeLocalEvent]
     private void OnExamined(Entity<StowDelayMultiplierComponent> ent, ref ExaminedEvent args)
     {
+        if (!args.IsInDetailsRange)
+            return;
+
         var multiplier = ent.Comp.Multiplier;
         if (multiplier <= 0 || MathHelper.CloseTo(multiplier, 1))
             return;
 
         var faster = multiplier < 1;
         args.PushMarkup(Loc.GetString(ent.Comp.ExamineText,
-            ("name", Name(ent)),
             ("faster", faster),
             ("mul", MathF.Round(faster ? 1f / multiplier : multiplier, 1))));
     }
@@ -138,7 +140,8 @@ public sealed partial class StowDelaySystem : EntitySystem
         if (!Resolve(storage, ref storage.Comp, false)
             || !storage.Comp.Container.Contains(item)
             || !_itemQuery.TryComp(item, out var itemComp)
-            || !_hands.CanPickupAnyHand(user, item, item: itemComp))
+            || _hands.GetActiveHand(user) is not { } hand
+            || !_hands.CanPickupToHand(user, item, hand, item: itemComp))
             return false;
 
         var delay = GetStorageDelay(storage, itemComp);
@@ -268,8 +271,8 @@ public sealed partial class StowDelaySystem : EntitySystem
             DuplicateCondition = DuplicateConditions.SameEvent,
         });
 
-        if (started && interactionParticles && !stealthEv.Stealth)
-            _interaction.DoContactInteraction(user, eventTarget, item, true, interactionParticleType: StellarInteractionParticleType.InHand);
+        if (started && interactionParticles)
+            _interaction.DoContactInteraction(user, eventTarget, item, true, interactionParticles: !stealthEv.Stealth, interactionParticleType: StellarInteractionParticleType.InHand);
 
         return true;
     }
