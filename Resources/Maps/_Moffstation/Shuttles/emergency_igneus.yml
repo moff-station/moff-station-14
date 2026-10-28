@@ -4,8 +4,8 @@ meta:
   engineVersion: 290.0.0
   forkId: ""
   forkVersion: ""
-  time: 10/27/2026 02:35:20
-  entityCount: 918
+  time: 10/28/2026 21:03:30
+  entityCount: 1001
 maps: []
 grids:
 - 1
@@ -509,6 +509,451 @@ entities:
       parent: 1
       rot: -1.5707963267948966 rad
       pos: 12.5,-4.5
+- proto: ArrivalsSpawnPointBartender
+  entities:
+  - uid: 968
+    components:
+    - type: Transform
+      parent: 1
+      pos: 1.5,-5.5
+- proto: ArrivalsSpawnPointCaptain
+  entities:
+  - uid: 920
+    components:
+    - type: Transform
+      parent: 1
+      pos: 2.5,7.5
+- proto: ArrivalsSpawnPointChiefEngineer
+  entities:
+  - uid: 919
+    components:
+    - type: Transform
+      parent: 1
+      pos: 0.5,7.5
+- proto: ArrivalsSpawnPointChiefMedicalOfficer
+  entities:
+  - uid: 924
+    components:
+    - type: Transform
+      parent: 1
+      pos: 2.5,-14.5
+- proto: ArrivalsSpawnPointDetective
+  entities:
+  - uid: 996
+    components:
+    - type: Transform
+      parent: 1
+      pos: 9.5,-16.5
+- proto: ArrivalsSpawnPointEngineer
+  entities:
+  - uid: 925
+    components:
+    - type: Transform
+      parent: 1
+      pos: 10.5,5.5
+  - uid: 926
+    components:
+    - type: Transform
+      parent: 1
+      pos: 10.5,3.5
+- proto: ArrivalsSpawnPointGeneral
+  entities:
+  - uid: 927
+    components:
+    - type: Transform
+      parent: 1
+      pos: 4.5,3.5
+  - uid: 928
+    components:
+    - type: Transform
+      parent: 1
+      pos: 4.5,4.5
+  - uid: 929
+    components:
+    - type: Transform
+      parent: 1
+      pos: -0.5,2.5
+  - uid: 930
+    components:
+    - type: Transform
+      parent: 1
+      pos: 0.5,2.5
+  - uid: 931
+    components:
+    - type: Transform
+      parent: 1
+      pos: 6.5,2.5
+  - uid: 932
+    components:
+    - type: Transform
+      parent: 1
+      pos: 7.5,2.5
+  - uid: 933
+    components:
+    - type: Transform
+      parent: 1
+      pos: 8.5,1.5
+  - uid: 934
+    components:
+    - type: Transform
+      parent: 1
+      pos: 6.5,-0.5
+  - uid: 935
+    components:
+    - type: Transform
+      parent: 1
+      pos: 7.5,-0.5
+  - uid: 936
+    components:
+    - type: Transform
+      parent: 1
+      pos: 8.5,-0.5
+  - uid: 937
+    components:
+    - type: Transform
+      parent: 1
+      pos: 10.5,-0.5
+  - uid: 938
+    components:
+    - type: Transform
+      parent: 1
+      pos: 9.5,-0.5
+  - uid: 939
+    components:
+    - type: Transform
+      parent: 1
+      pos: 11.5,-0.5
+  - uid: 940
+    components:
+    - type: Transform
+      parent: 1
+      pos: 12.5,-0.5
+  - uid: 941
+    components:
+    - type: Transform
+      parent: 1
+      pos: 0.5,-1.5
+  - uid: 942
+    components:
+    - type: Transform
+      parent: 1
+      pos: 1.5,-1.5
+  - uid: 943
+    components:
+    - type: Transform
+      parent: 1
+      pos: 5.5,-2.5
+  - uid: 944
+    components:
+    - type: Transform
+      parent: 1
+      pos: 5.5,-3.5
+  - uid: 945
+    components:
+    - type: Transform
+      parent: 1
+      pos: 7.5,-3.5
+  - uid: 946
+    components:
+    - type: Transform
+      parent: 1
+      pos: 7.5,-2.5
+  - uid: 947
+    components:
+    - type: Transform
+      parent: 1
+      pos: 9.5,-2.5
+  - uid: 948
+    components:
+    - type: Transform
+      parent: 1
+      pos: 9.5,-3.5
+  - uid: 949
+    components:
+    - type: Transform
+      parent: 1
+      pos: 9.5,-4.5
+  - uid: 950
+    components:
+    - type: Transform
+      parent: 1
+      pos: 11.5,-4.5
+  - uid: 951
+    components:
+    - type: Transform
+      parent: 1
+      pos: 11.5,-3.5
+  - uid: 952
+    components:
+    - type: Transform
+      parent: 1
+      pos: 11.5,-2.5
+  - uid: 953
+    components:
+    - type: Transform
+      parent: 1
+      pos: 11.5,-6.5
+  - uid: 954
+    components:
+    - type: Transform
+      parent: 1
+      pos: 11.5,-7.5
+  - uid: 955
+    components:
+    - type: Transform
+      parent: 1
+      pos: 11.5,-8.5
+  - uid: 956
+    components:
+    - type: Transform
+      parent: 1
+      pos: 9.5,-8.5
+  - uid: 957
+    components:
+    - type: Transform
+      parent: 1
+      pos: 9.5,-7.5
+  - uid: 958
+    components:
+    - type: Transform
+      parent: 1
+      pos: 9.5,-6.5
+  - uid: 959
+    components:
+    - type: Transform
+      parent: 1
+      pos: 7.5,-8.5
+  - uid: 960
+    components:
+    - type: Transform
+      parent: 1
+      pos: 7.5,-7.5
+  - uid: 961
+    components:
+    - type: Transform
+      parent: 1
+      pos: 5.5,-8.5
+  - uid: 962
+    components:
+    - type: Transform
+      parent: 1
+      pos: 5.5,-7.5
+  - uid: 963
+    components:
+    - type: Transform
+      parent: 1
+      pos: 3.5,-7.5
+  - uid: 964
+    components:
+    - type: Transform
+      parent: 1
+      pos: 3.5,-5.5
+  - uid: 965
+    components:
+    - type: Transform
+      parent: 1
+      pos: 3.5,-6.5
+  - uid: 966
+    components:
+    - type: Transform
+      parent: 1
+      pos: 3.5,-4.5
+  - uid: 967
+    components:
+    - type: Transform
+      parent: 1
+      pos: 3.5,-3.5
+  - uid: 969
+    components:
+    - type: Transform
+      parent: 1
+      pos: 3.5,-12.5
+  - uid: 970
+    components:
+    - type: Transform
+      parent: 1
+      pos: 4.5,-12.5
+  - uid: 971
+    components:
+    - type: Transform
+      parent: 1
+      pos: 5.5,-10.5
+  - uid: 972
+    components:
+    - type: Transform
+      parent: 1
+      pos: 6.5,-10.5
+  - uid: 973
+    components:
+    - type: Transform
+      parent: 1
+      pos: 7.5,-10.5
+  - uid: 974
+    components:
+    - type: Transform
+      parent: 1
+      pos: 8.5,-10.5
+  - uid: 975
+    components:
+    - type: Transform
+      parent: 1
+      pos: 9.5,-10.5
+  - uid: 976
+    components:
+    - type: Transform
+      parent: 1
+      pos: 10.5,-10.5
+  - uid: 977
+    components:
+    - type: Transform
+      parent: 1
+      pos: 11.5,-10.5
+  - uid: 978
+    components:
+    - type: Transform
+      parent: 1
+      pos: 12.5,-10.5
+  - uid: 979
+    components:
+    - type: Transform
+      parent: 1
+      pos: 8.5,-12.5
+  - uid: 980
+    components:
+    - type: Transform
+      parent: 1
+      pos: 9.5,-12.5
+  - uid: 981
+    components:
+    - type: Transform
+      parent: 1
+      pos: 5.5,-13.5
+  - uid: 982
+    components:
+    - type: Transform
+      parent: 1
+      pos: 5.5,-15.5
+  - uid: 983
+    components:
+    - type: Transform
+      parent: 1
+      pos: 5.5,-14.5
+  - uid: 985
+    components:
+    - type: Transform
+      parent: 1
+      pos: 14.5,-7.5
+  - uid: 986
+    components:
+    - type: Transform
+      parent: 1
+      pos: 14.5,-6.5
+  - uid: 987
+    components:
+    - type: Transform
+      parent: 1
+      pos: 14.5,-5.5
+  - uid: 988
+    components:
+    - type: Transform
+      parent: 1
+      pos: 14.5,-3.5
+  - uid: 989
+    components:
+    - type: Transform
+      parent: 1
+      pos: 14.5,-4.5
+- proto: ArrivalsSpawnPointHeadOfPersonnel
+  entities:
+  - uid: 921
+    components:
+    - type: Transform
+      parent: 1
+      pos: 1.5,7.5
+- proto: ArrivalsSpawnPointHeadOfSecurity
+  entities:
+  - uid: 640
+    components:
+    - type: Transform
+      parent: 1
+      pos: 11.5,-17.5
+- proto: ArrivalsSpawnPointMedical
+  entities:
+  - uid: 998
+    components:
+    - type: Transform
+      parent: 1
+      pos: 0.5,-18.5
+  - uid: 999
+    components:
+    - type: Transform
+      parent: 1
+      pos: 0.5,-16.5
+  - uid: 1000
+    components:
+    - type: Transform
+      parent: 1
+      pos: 0.5,-15.5
+  - uid: 1001
+    components:
+    - type: Transform
+      parent: 1
+      pos: 0.5,-17.5
+- proto: ArrivalsSpawnPointPrisoner
+  entities:
+  - uid: 990
+    components:
+    - type: Transform
+      parent: 1
+      pos: 10.5,-19.5
+  - uid: 991
+    components:
+    - type: Transform
+      parent: 1
+      pos: 9.5,-19.5
+  - uid: 992
+    components:
+    - type: Transform
+      parent: 1
+      pos: 11.5,-19.5
+- proto: ArrivalsSpawnPointQuartermaster
+  entities:
+  - uid: 922
+    components:
+    - type: Transform
+      parent: 1
+      pos: 3.5,7.5
+- proto: ArrivalsSpawnPointResearchDirector
+  entities:
+  - uid: 923
+    components:
+    - type: Transform
+      parent: 1
+      pos: 4.5,7.5
+- proto: ArrivalsSpawnPointSecurity
+  entities:
+  - uid: 993
+    components:
+    - type: Transform
+      parent: 1
+      pos: 11.5,-16.5
+  - uid: 994
+    components:
+    - type: Transform
+      parent: 1
+      pos: 11.5,-15.5
+  - uid: 997
+    components:
+    - type: Transform
+      parent: 1
+      pos: 9.5,-15.5
+- proto: ArrivalsSpawnPointWarden
+  entities:
+  - uid: 995
+    components:
+    - type: Transform
+      parent: 1
+      pos: 9.5,-17.5
 - proto: AtmosDeviceFanDirectional
   entities:
   - uid: 911
@@ -2048,24 +2493,6 @@ entities:
       parent: 1
       rot: 1.5707963267948966 rad
       pos: 0.5,-15.5
-  - uid: 258
-    components:
-    - type: Transform
-      parent: 1
-      rot: -1.5707963267948966 rad
-      pos: 7.5,-15.5
-  - uid: 259
-    components:
-    - type: Transform
-      parent: 1
-      rot: -1.5707963267948966 rad
-      pos: 7.5,-14.5
-  - uid: 260
-    components:
-    - type: Transform
-      parent: 1
-      rot: -1.5707963267948966 rad
-      pos: 7.5,-13.5
   - uid: 261
     components:
     - type: Transform
@@ -2320,13 +2747,6 @@ entities:
     - type: Transform
       parent: 1
       pos: 14.5,-12.5
-- proto: ClosetFireFilled
-  entities:
-  - uid: 640
-    components:
-    - type: Transform
-      parent: 1
-      pos: 7.5,-16.5
 - proto: ClosetWallEmergencyFilledRandom
   entities:
   - uid: 641
@@ -4415,6 +4835,13 @@ entities:
     - type: Transform
       parent: 1
       pos: 3.5,-17.5
+- proto: MoffVendingMachineSwimsuits
+  entities:
+  - uid: 259
+    components:
+    - type: Transform
+      parent: 1
+      pos: 7.5,-16.5
 - proto: PlasmaReinforcedWindowDirectional
   entities:
   - uid: 384
@@ -5233,6 +5660,13 @@ entities:
     - type: Transform
       parent: 1
       pos: 0.5,-3.5
+- proto: VendingMachineClothing
+  entities:
+  - uid: 260
+    components:
+    - type: Transform
+      parent: 1
+      pos: 7.5,-13.5
 - proto: VendingMachineMedical
   entities:
   - uid: 298
@@ -5247,6 +5681,13 @@ entities:
     - type: Transform
       parent: 1
       pos: 12.5,-14.5
+- proto: VendingMachineTheater
+  entities:
+  - uid: 984
+    components:
+    - type: Transform
+      parent: 1
+      pos: 7.5,-15.5
 - proto: VendingMachineWallMedicalCivilian
   entities:
   - uid: 299
@@ -5254,6 +5695,13 @@ entities:
     - type: Transform
       parent: 1
       pos: 0.5,-13.5
+- proto: VendingMachineWinter
+  entities:
+  - uid: 258
+    components:
+    - type: Transform
+      parent: 1
+      pos: 7.5,-14.5
 - proto: WallShuttle
   entities:
   - uid: 5
