@@ -302,6 +302,57 @@
     - HeadTop
     - HeadSide
 
+# White Mechfighter (Rei Ayanami)
+- type: entity
+  parent: ClothingHeadBase
+  id: ClothingHeadWigEvaRei
+  name: white mechfighter's wig
+  description: A blue wig with short hair. Resembles a famous mechfighter.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Head/Misc/eva_rei.rsi
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Head/Misc/eva_rei.rsi
+  - type: HideLayerClothing
+    slots:
+    - Hair
+    - HeadTop
+    - HeadSide
+
+# Red Mechfighter (Asuka Langley Soryu)
+- type: entity
+  parent: ClothingHeadBase
+  id: ClothingHeadWigEvaAsuka
+  name: red mechfighter's wig
+  description: A brown wig with long hair. Resembles a famous mechfighter.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Head/Misc/eva_asuka.rsi
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Head/Misc/eva_asuka.rsi
+  - type: HideLayerClothing
+    slots:
+    - Hair
+    - HeadTop
+    - HeadSide
+
+# Dark Magical Girl (Homura Akemi)
+- type: entity
+  parent: ClothingHeadBase
+  id: ClothingHeadWigHomura
+  name: dark magical wig
+  description: Description here
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Head/Misc/homura.rsi
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Head/Misc/homura.rsi
+  - type: HideLayerClothing
+    slots:
+    - Hair
+    - HeadTop
+    - HeadSide
+
 # Japanese Ghost Headband (Tenkan)
 - type: entity
   parent: ClothingHeadBase

@@ -689,3 +689,27 @@
     sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/sovietofficer.rsi
   - type: Clothing
     sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/sovietofficer.rsi
+
+# Red Mechfighter (Asuka Langley Soryu)
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformJumpsuitEvaAsuka
+  name: red mechfighter's jumpsuit
+  description: A jumpsuit once belonging to a hot-headed mechfighter.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/eva_asuka.rsi
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/eva_asuka.rsi
+
+# White Mechfighter (Rei Ayanami)
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformJumpsuitEvaRei
+  name: white mechfighter's jumpsuit
+  description: A jumpsuit once belonging to a reserved and quiet mechfighter.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/eva_rei.rsi
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/eva_rei.rsi

@@ -564,3 +564,13 @@
   components:
   - type: Sprite
     sprite: _Moffstation/Clothing/Uniforms/Jumpskirt/ice_fairy.rsi
+
+# Dark Magical Girl (Homura Akemi)
+- type: entity
+  parent: ClothingUniformSkirtBase
+  id: ClothingUniformJumpskirtHomura
+  name: dark magical dress
+  description: Description here
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Uniforms/Jumpskirt/homura.rsi

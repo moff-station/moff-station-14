@@ -46,8 +46,24 @@
         - id: ClothingHeadPerformerWigYellow
 
 - type: entity
-  name: ice fairy costume box
+  name: costume box
   parent: BoxCardboard
+  id: BoxCostume
+  components:
+  - type: Sprite
+    layers:
+    - state: boxwide
+  - type: Item
+    shape:
+    - 0,0,3,3
+  - type: Storage
+    maxItemSize: Normal
+    grid:
+    - 0,0,3,3
+
+- type: entity
+  name: ice fairy costume box
+  parent: BoxCostume
   id: BoxIceFairy
   description: Contains the personal belongings of a certain ice fairy. Happy Cirno Day!
   components:
@@ -61,10 +77,56 @@
   - type: Sprite
     layers:
     - state: cirno
-  - type: Item
-    shape:
-    - 0,0,3,1
-  - type: Storage
-    maxItemSize: Normal
-    grid:
-    - 0,0,3,1
+
+- type: entity
+  name: white mechfighter costume box
+  parent: BoxCostume
+  id: BoxEvaRei
+  description: Contains the uniform of a certain blue-haired mechfighter.
+  components:
+  - type: EntityTableContainerFill
+    containers:
+      storagebase: !type:AllSelector
+        children:
+        - id: ClothingUniformJumpsuitEvaRei
+        - id: ClothingShoesEvaRei
+        - id: ClothingHandsGlovesEvaRei
+        - id: ClothingHeadWigEvaRei
+  - type: Sprite
+    layers:
+    - state: eva_rei
+
+- type: entity
+  name: red mechfighter costume box
+  parent: BoxCostume
+  id: BoxEvaAsuka
+  description: Contains the uniform of a certain brown-haired mechfighter.
+  components:
+  - type: EntityTableContainerFill
+    containers:
+      storagebase: !type:AllSelector
+        children:
+        - id: ClothingUniformJumpsuitEvaAsuka
+        - id: ClothingShoesEvaAsuka
+        - id: ClothingHandsGlovesEvaAsuka
+        - id: ClothingHeadWigEvaAsuka
+  - type: Sprite
+    layers:
+    - state: eva_asuka
+
+- type: entity
+  name: dark magical girl costume box
+  parent: BoxCostume
+  id: BoxHomura
+  description: Contains the outfit of a certain dark magical girl.
+  components:
+  - type: EntityTableContainerFill
+    containers:
+      storagebase: !type:AllSelector
+        children:
+        - id: ClothingUniformJumpskirtHomura
+        - id: ClothingShoesBootsHomura
+        - id: ClothingHeadWigHomura
+  - type: Sprite
+    layers:
+    - state: homura
