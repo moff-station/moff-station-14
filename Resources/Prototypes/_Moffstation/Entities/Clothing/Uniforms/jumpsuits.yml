@@ -689,3 +689,38 @@
     sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/sovietofficer.rsi
   - type: Clothing
     sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/sovietofficer.rsi
+
+# Red Mechfighter (Asuka Langley Soryu)
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformJumpsuitEvaAsuka
+  name: red mechfighter's jumpsuit
+  description: A jumpsuit once belonging to a hot-headed mechfighter.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/eva_asuka.rsi
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/eva_asuka.rsi
+
+# White Mechfighter (Rei Ayanami)
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformJumpsuitEvaRei
+  name: white mechfighter's jumpsuit
+  description: A jumpsuit once belonging to a reserved and quiet mechfighter.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/eva_rei.rsi
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/eva_rei.rsi
+
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformJumpsuitSgtPepperBlue
+  name: musician's naval coat
+  description: This coat onced belonged to a member of a band spearheaded by the mystical Colonel Salt.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/sgt_pepper_blue.rsi
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/sgt_pepper_blue.rsi

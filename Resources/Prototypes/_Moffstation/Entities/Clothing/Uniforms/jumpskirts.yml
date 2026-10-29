@@ -564,3 +564,32 @@
   components:
   - type: Sprite
     sprite: _Moffstation/Clothing/Uniforms/Jumpskirt/ice_fairy.rsi
+
+# Pink Magical Girl (Madoka Kaname)
+- type: entity
+  parent: ClothingUniformSkirtBase
+  id: ClothingUniformJumpskirtMadoka
+  name: pink magical dress
+  description: A pink dress belonging to a magical girl.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Uniforms/Jumpskirt/madoka.rsi
+
+# Dark Magical Girl (Homura Akemi)
+- type: entity
+  parent: ClothingUniformSkirtBase
+  id: ClothingUniformJumpskirtHomura
+  name: dark magical dress
+  description: A black and purple dress belonging to a magical girl.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Uniforms/Jumpskirt/homura.rsi
+
+- type: entity
+  parent: ClothingUniformSkirtBase
+  id: ClothingUniformJumpskirtDressWitch
+  name: witch's dress
+  description: A black dress for performing witchcraft or other witch-like activities.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Uniforms/Jumpskirt/witch_dress.rsi
