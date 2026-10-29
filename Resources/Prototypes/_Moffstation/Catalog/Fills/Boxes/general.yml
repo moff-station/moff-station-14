@@ -115,6 +115,24 @@
     - state: eva_asuka
 
 - type: entity
+  name: pink magical girl costume box
+  parent: BoxCostume
+  id: BoxMadoka
+  description: Contains the outfit of a certain pink magical girl.
+  components:
+  - type: EntityTableContainerFill
+    containers:
+      storagebase: !type:AllSelector
+        children:
+        - id: ClothingUniformJumpskirtMadoka
+        - id: ClothingShoesBootsMadoka
+        - id: ClothingHandsGlovesMadoka
+        - id: ClothingHeadWigMadoka
+  - type: Sprite
+    layers:
+    - state: madoka
+
+- type: entity
   name: dark magical girl costume box
   parent: BoxCostume
   id: BoxHomura

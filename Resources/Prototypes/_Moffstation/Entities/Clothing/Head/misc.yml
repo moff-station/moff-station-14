@@ -336,6 +336,23 @@
     - HeadTop
     - HeadSide
 
+# Pink Magical Girl (Madoka Kaname)
+- type: entity
+  parent: ClothingHeadBase
+  id: ClothingHeadWigMadoka
+  name: pink magical wig
+  description: Description here
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Head/Misc/madoka.rsi
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Head/Misc/madoka.rsi
+  - type: HideLayerClothing
+    slots:
+    - Hair
+    - HeadTop
+    - HeadSide
+
 # Dark Magical Girl (Homura Akemi)
 - type: entity
   parent: ClothingHeadBase
@@ -362,3 +379,20 @@
   components:
   - type: Sprite
     sprite: _Moffstation/Clothing/Head/Misc/ghost_headband.rsi
+
+- type: entity
+  parent: ClothingHeadBase
+  id: ClothingHeadFreddyFazbear
+  name: Freaky Freddy™ mask
+  description: Har, har ha har har
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Head/Misc/freddy.rsi
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Head/Misc/freddy.rsi
+  - type: HideLayerClothing
+    slots:
+    - Hair
+    - HeadTop
+    - HeadSide
+  - type: IdentityBlocker

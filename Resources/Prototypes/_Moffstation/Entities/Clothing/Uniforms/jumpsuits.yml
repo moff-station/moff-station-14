@@ -713,3 +713,14 @@
     sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/eva_rei.rsi
   - type: Clothing
     sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/eva_rei.rsi
+
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformJumpsuitSgtPepperBlue
+  name: musician's naval coat
+  description: This coat onced belonged to a member of a band spearheaded by the mystical Colonel Salt.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/sgt_pepper_blue.rsi
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/sgt_pepper_blue.rsi

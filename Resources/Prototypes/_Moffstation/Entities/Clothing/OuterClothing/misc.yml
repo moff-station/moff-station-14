@@ -14,3 +14,16 @@
     - Apron
     - WhitelistChameleon
 
+- type: entity
+  parent: ClothingOuterBase
+  id: ClothingOuterFreddyFazbear
+  name: Freaky Freddy™ spring suit
+  description: Har, Her or Hor
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/OuterClothing/Misc/freddy.rsi
+  - type: Clothing
+    sprite: _Moffstation/Clothing/OuterClothing/Misc/freddy.rsi
+  - type: Tag
+    tags:
+    - WhitelistChameleon

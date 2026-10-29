@@ -177,6 +177,18 @@
   - type: Clothing
     sprite: _Moffstation/Clothing/Shoes/eva_rei.rsi
 
+# Pink Magical Girl (Madoka Kaname)
+- type: entity
+  parent: ClothingShoesBaseButcherable
+  id: ClothingShoesBootsMadoka
+  name: pink magical shoes
+  description: Description here
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Shoes/madoka.rsi
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Shoes/madoka.rsi
+
 # Dark Magical Girl (Homura Akemi)
 - type: entity
   parent: ClothingShoesHighheelBoots

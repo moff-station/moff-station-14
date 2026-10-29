@@ -40,3 +40,17 @@
   - type: Fiber
     fiberMaterial: fibers-latex
   - type: FingerprintMask
+
+- type: entity
+  parent: ClothingHandsBase
+  id: ClothingHandsGlovesMadoka
+  name: pink magical gloves
+  description: Description here
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Hands/madoka.rsi
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Hands/madoka.rsi
+  - type: Fiber
+    fiberColor: fibers-white
+  - type: FingerprintMask
