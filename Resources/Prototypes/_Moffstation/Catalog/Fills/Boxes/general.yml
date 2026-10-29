@@ -46,13 +46,10 @@
         - id: ClothingHeadPerformerWigYellow
 
 - type: entity
-  name: costume box
+  abstract: true
   parent: BoxCardboard
   id: BoxCostume
   components:
-  - type: Sprite
-    layers:
-    - state: boxwide
   - type: Item
     shape:
     - 0,0,3,3
@@ -77,6 +74,13 @@
   - type: Sprite
     layers:
     - state: cirno
+  - type: Item
+    shape:
+    - 0,0,3,1
+  - type: Storage
+    maxItemSize: Normal
+    grid:
+    - 0,0,3,1
 
 - type: entity
   name: white mechfighter costume box
