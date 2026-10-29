@@ -48,19 +48,19 @@ public sealed partial class VendingMachineComponent : Component
     public EntityUid? RestockStream;
 
     [DataField]
-    public SoundSpecifier BeepSound = new SoundPathSpecifier("/Audio/Machines/Nuke/general_beep.ogg", new AudioParams().WithVolume(-10));
+    public SoundSpecifier BeepSound = new SoundPathSpecifier("/Audio/Machines/Nuke/general_beep.ogg", new AudioParams().WithVolume(-8));
 
     [DataField]
-    public SoundSpecifier SuccessSound = new SoundPathSpecifier("/Audio/Machines/vending_jingle.ogg", new AudioParams().WithVolume(-10));
+    public SoundSpecifier SuccessSound = new SoundPathSpecifier("/Audio/Machines/vending_jingle.ogg", new AudioParams().WithVolume(-8));
 
     [DataField]
-    public SoundSpecifier ErrorSound = new SoundPathSpecifier("/Audio/Machines/buzz-two.ogg", new AudioParams().WithVolume(-10));
+    public SoundSpecifier ErrorSound = new SoundPathSpecifier("/Audio/Machines/buzz-two.ogg", new AudioParams().WithVolume(-8));
 
     [DataField]
-    public SoundSpecifier TimeoutSound = new SoundPathSpecifier("/Audio/Machines/button.ogg", new AudioParams().WithVolume(-12));
+    public SoundSpecifier TimeoutSound = new SoundPathSpecifier("/Audio/Machines/button.ogg", new AudioParams().WithVolume(-10));
 
     [DataField]
-    public TimeSpan KeypadSoundCooldown = TimeSpan.FromSeconds(0.2);
+    public TimeSpan KeypadSoundCooldown = TimeSpan.FromSeconds(0.1);
 
     [DataField(customTypeSerializer: typeof(TimeOffsetSerializer))]
     public TimeSpan NextKeypadSound;
