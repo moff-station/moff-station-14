@@ -8978,6 +8978,14 @@ Entries:
   id: 2070
   time: '2026-10-26T16:53:51.000'
   url: https://github.com/moff-station/moff-station-14/pull/2070
+- author: Centronias
+  changes:
+  - message: Getting stained by a creature which is bleeding out no longer miraculously
+      extracts their innards from their body.
+    type: fix
+  id: 2071
+  time: '2026-10-29T19:04:29.000'
+  url: https://github.com/moff-station/moff-station-14/pull/2071
 - author: DuckManZach
   changes:
   - message: Increased likelyhood of traitors
@@ -9013,5 +9021,12 @@ Entries:
   id: 2081
   time: '2026-10-29T18:24:10.000'
   url: https://github.com/moff-station/moff-station-14/pull/2081
+- author: Centronias
+  changes:
+  - message: Fixed an issue where telecomms blade servers did not work.
+    type: fix
+  id: 2085
+  time: '2026-10-29T19:04:29.000'
+  url: https://github.com/moff-station/moff-station-14/pull/2085
 Name: Mofflog
 Order: -2
