@@ -52,7 +52,7 @@ public sealed partial class ChasmSystem : EntitySystem
             // Moff start - Replicator chasms manage their own deletion
             if (chasmComp.DeleteEntitiesWhichFallInto)
             {
-                PredictedQueueDel(uid);
+                QueueDel(uid);
             }
             else
             {

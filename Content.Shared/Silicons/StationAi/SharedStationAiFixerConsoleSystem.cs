@@ -338,8 +338,10 @@ public abstract partial class SharedStationAiFixerConsoleSystem : EntitySystem
                     _mobState.ChangeMobState(ent.Comp.ActionTarget.Value, MobState.Alive);
                     break;
                 case StationAiFixerConsoleAction.Purge:
-                    if (!TryGetStationAiHolder(ent, out _))
+                    if (!TryGetStationAiHolder(ent, out var holder))
                         break;
+
+                    _container.RemoveEntity(holder.Value, ent.Comp.ActionTarget.Value, force: true);
 
                     QueueDel(ent.Comp.ActionTarget);
 

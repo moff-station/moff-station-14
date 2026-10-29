@@ -108,7 +108,8 @@
     containers:
       Nuke: !type:ContainerSlot
   - type: StealTarget
-    stealGroup: NuclearBomb
+    stealGroup:
+    - NuclearBomb
   - type: Tag
     tags:
     - Nuke  # Moffstation - Tag for pirate bounty

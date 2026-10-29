@@ -10,8 +10,10 @@
     noRot: true
   - type: IconSmooth
     key: walls
-    mode: NoSprite
-  - type: SmoothEdge
+    states:
+    - !type:EdgeSpriteSmoothing
+      mask: [ walls ]
+      base: ironsandstone_
   - type: Icon
     sprite: _Moffstation/Structures/Walls/ironsandstone.rsi
     state: ironsandstone
@@ -19,14 +21,6 @@
     sprite: _Moffstation/Structures/Walls/ironsandstone.rsi
     layers:
     - state: ironsandstone
-    - map: [ "enum.EdgeLayer.South" ]
-      state: ironsandstone_south
-    - map: [ "enum.EdgeLayer.East" ]
-      state: ironsandstone_east
-    - map: [ "enum.EdgeLayer.North" ]
-      state: ironsandstone_north
-    - map: [ "enum.EdgeLayer.West" ]
-      state: ironsandstone_west
   - type: MiningScannerViewable
   - type: Damageable
     damageModifierSet: Rock

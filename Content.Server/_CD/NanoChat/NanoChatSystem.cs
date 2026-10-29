@@ -1,7 +1,7 @@
 using System.Linq;
 using Content.Server.Access.Systems;
 using Content.Server.Administration.Logs;
-using Content.Server.Kitchen.Components;
+using Content.Shared.Kitchen.Components;
 using Content.Server.NameIdentifier;
 using Content.Shared.Database;
 using Content.Shared._CD.CartridgeLoader.Cartridges;

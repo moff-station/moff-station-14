@@ -1,9 +1,9 @@
 - type: entity
   abstract: true
   parent: ClothingNeckMetallicChameleonableBase # Moffstation - Fix neck slot parenting
-  id: ClothingNeckMedalBase
+  id: ClothingMedalBase
   name: medal
-  description: A medal to show your mettle. May or may not be made of metal.
+  description: A medal to show your mettle. May or may not be made out of metal.
   components:
   - type: Tag
     tags:
@@ -22,7 +22,7 @@
   # Moffstation - End - Medal Rewards reasons
 
 - type: entity
-  parent: ClothingNeckMedalBase
+  parent: ClothingMedalBase
   id: ClothingNeckBronzeheart
   name: bronzeheart medal
   description: Given to crewmates for exemplary bravery in the face of danger.
@@ -37,7 +37,7 @@
   # Moffstation - End
 
 - type: entity
-  parent: ClothingNeckMedalBase
+  parent: ClothingMedalBase
   id: ClothingNeckGoldmedal
   name: gold medal of crewmanship
   description: Given to crewmates who display excellent crewmanship.
@@ -47,7 +47,8 @@
   - type: Clothing
     sprite: Clothing/Neck/Medals/gold.rsi
   - type: StealTarget
-    stealGroup: ClothingNeckGoldmedal
+    stealGroup:
+    - ClothingNeckGoldmedal
   # Moffstation - Start - Examinable Clothing
   - type: PhysicalComposition
     materialComposition:
@@ -57,7 +58,7 @@
   # Moffstation - End
 
 - type: entity
-  parent: ClothingNeckMedalBase
+  parent: ClothingMedalBase
   id: ClothingNeckCargomedal
   name: cargo medal
   description: Given for the best work in the cargo department.
@@ -72,7 +73,7 @@
   # Moffstation - End
 
 - type: entity
-  parent: ClothingNeckMedalBase
+  parent: ClothingMedalBase
   id: ClothingNeckEngineermedal
   name: engineer medal
   description: Given for the best work in the engineering department.
@@ -87,7 +88,7 @@
   # Moffstation - End
 
 - type: entity
-  parent: ClothingNeckMedalBase
+  parent: ClothingMedalBase
   id: ClothingNeckMedicalmedal
   name: medical medal
   description: Given for the best work in the medical department.
@@ -102,7 +103,7 @@
   # Moffstation - End
 
 - type: entity
-  parent: ClothingNeckMedalBase
+  parent: ClothingMedalBase
   id: ClothingNeckSciencemedal
   name: science medal
   description: Given for the best work in the science department.
@@ -117,7 +118,7 @@
   # Moffstation - End
 
 - type: entity
-  parent: ClothingNeckMedalBase
+  parent: ClothingMedalBase
   id: ClothingNeckSecuritymedal
   name: security medal
   description: Given for the best work in the security department.
@@ -132,7 +133,7 @@
   # Moffstation - End
 
 - type: entity
-  parent: ClothingNeckMedalBase
+  parent: ClothingMedalBase
   id: ClothingNeckClownmedal
   name: clown medal
   description: Given for the best joke in the universe. HONK!
@@ -142,7 +143,8 @@
   - type: Clothing
     sprite: _Moffstation/Clothing/Neck/Medals/clownmedal.rsi # Moffstation - Swapped out medal sprites
   - type: StealTarget
-    stealGroup: ClothingNeckClownmedal
+    stealGroup:
+    - ClothingNeckClownmedal
   # Moffstation - Start - Examinable Clothing
   - type: PhysicalComposition
     materialComposition:

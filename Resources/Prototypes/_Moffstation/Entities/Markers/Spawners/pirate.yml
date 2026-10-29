@@ -72,9 +72,9 @@
     layers:
     - state: green
     - state: kobold
-      sprite: Mobs/Animals/kobold.rsi
+      sprite: Mobs/Animals/Ancestors/kobold.rsi
     - state: outline
-      sprite: Mobs/Animals/kobold.rsi
+      sprite: Mobs/Animals/Ancestors/kobold.rsi
   - type: ConditionalSpawner
     prototypes:
     - MobKoboldJokejoke

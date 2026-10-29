@@ -2,7 +2,7 @@ using Content.Server.StationEvents.Components;
 using Content.Shared.GameTicking.Components;
 // Moffstation - Start - Syndicate dead drop
 using Content.Server.Radio.EntitySystems;
-using Content.Server.Pinpointer;
+using Content.Shared.Pinpointer;
 using Robust.Shared.Utility;
 // Moffstation - End
 

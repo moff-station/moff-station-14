@@ -58,8 +58,7 @@
   groupWhitelist: [Diona]
   coloring:
     default:
-      type:
-        !type:SkinColoring
+      type: !type:SkinColoring {}
   sprites:
   #- sprite: Mobs/Customization/diona.rsi
   #  state: leaf_cover
@@ -102,10 +101,6 @@
   id: DionaBrushHead
   bodyPart: Head
   groupWhitelist: [Diona]
-  coloring:
-    default:
-      type:
-        !type:SkinColoring
   sprites:
   #- sprite: Mobs/Customization/diona.rsi
   - sprite: _CD/Mobs/Customization/Diona/head.rsi # CD

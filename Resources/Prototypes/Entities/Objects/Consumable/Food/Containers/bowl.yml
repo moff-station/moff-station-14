@@ -20,6 +20,8 @@
   - type: Solution
     solution:
       maxVol: 60 #Moffstation - changed from 50 to be able to mix bread
+  - type: ExaminableSolution
+    solution: food
   - type: MixableSolution
     solution: food
   - type: Edible
@@ -64,6 +66,7 @@
         acts: [ "Destruction" ]
   - type: Tag
     tags:
+    - Dinnerware
     - Trash
     - Dinnerware # Moffstation - Give service borgs some love
 
