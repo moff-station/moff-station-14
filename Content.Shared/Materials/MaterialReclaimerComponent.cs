@@ -159,6 +159,12 @@ public sealed partial class MaterialReclaimerComponent : Component
     /// </summary>
     [DataField]
     public bool GibOnEmag = false; // Moff - emagged recycler doesn't gib, but instead cuts you up
+
+    /// <summary>
+    /// Should it reclaim things on interaction
+    /// </summary>
+    [DataField]
+    public bool ReclaimOnInteract;
 }
 
 [NetSerializable, Serializable]

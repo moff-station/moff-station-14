@@ -8,19 +8,19 @@
     sprite: _Moffstation/Structures/Machines/computers.rsi # Moffstation
     drawdepth: SmallObjects
     layers:
-    - map: ["computerLayerBody"]
+    - map: ["enum.ComputerVisualLayers.Frame"]
       sprite: _Moffstation/Structures/Machines/computers.rsi # Moffstation
       state: computer_tabletop
       offset: 0.043, 0.055
-    - map: ["computerLayerKeyboard"]
+    - map: ["enum.ComputerVisualLayers.Keyboard"]
       sprite: _Moffstation/Structures/Machines/computers.rsi # Moffstation
       state: generic_keyboard_tabletop
       offset: 0.043, 0.055
-    - map: ["computerLayerScreen"]
+    - map: ["enum.ComputerVisualLayers.Screen"]
       sprite: _Moffstation/Structures/Machines/computers.rsi # Moffstation
       state: generic
       offset: 0.043, 0.055
-    - map: ["computerLayerKeys"]
+    - map: ["enum.ComputerVisualLayers.Keys"]
       sprite: _Moffstation/Structures/Machines/computers.rsi # Moffstation
       state: generic_keys
       offset: 0.043, 0.055
@@ -44,439 +44,266 @@
   parent: [BaseStructureComputerTabletop, ComputerMedicalRecords]
   id: ComputerTabletopMedicalRecords
   components:
-  - type: Sprite
-    layers:
-    - map: ["computerLayerBody"]
-      #sprite: _CD/Structures/Machines/Computers/tabletopcomputer.rsi # Moffstation
-      state: computer_tabletop
-    - map: ["computerLayerKeyboard"]
-      #sprite: _CD/Structures/Machines/Computers/tabletopcomputer.rsi # Moffstation
-      state: generic_keyboard_tabletop
-    - map: ["computerLayerScreen"]
-      #sprite: Structures/Machines/computers.rsi # Moffstation
-      state: medcomp
-    - map: ["computerLayerKeys"]
-      #sprite: Structures/Machines/computers.rsi # Moffstation
-      state: med_key
+  - type: ComputerVisuals
+    stateFrame: computer_tabletop
+    stateKeyboard: generic_keyboard_tabletop
+    stateScreen: medcomp
+    stateKeys: med_key
+    statePanel: null # Moff - tabletop computers have no maintenance panel layer
 
 #Criminal Records
 - type: entity
   parent: [BaseStructureComputerTabletop, ComputerCriminalRecords]
   id: ComputerTabletopCriminalRecords
   components:
-  - type: Sprite
-    layers:
-    - map: ["computerLayerBody"]
-      #sprite: _CD/Structures/Machines/Computers/tabletopcomputer.rsi # Moffstation
-      state: computer_tabletop
-    - map: ["computerLayerKeyboard"]
-      #sprite: _CD/Structures/Machines/Computers/tabletopcomputer.rsi # Moffstation
-      state: generic_keyboard_tabletop
-    - map: ["computerLayerScreen"]
-      #sprite: Structures/Machines/computers.rsi # Moffstation
-      state: explosive
-    - map: ["computerLayerKeys"]
-      #sprite: Structures/Machines/computers.rsi # Moffstation
-      state: security_key
+  - type: ComputerVisuals
+    stateFrame: computer_tabletop
+    stateKeyboard: generic_keyboard_tabletop
+    stateScreen: explosive
+    stateKeys: security_key
+    statePanel: null # Moff - tabletop computers have no maintenance panel layer
 
 #Station Records
 - type: entity
   parent: [BaseStructureComputerTabletop, ComputerStationRecords]
   id: ComputerTabletopStationRecords
   components:
-  - type: Sprite
-    layers:
-    - map: ["computerLayerBody"]
-      #sprite: _CD/Structures/Machines/Computers/tabletopcomputer.rsi # Moffstation
-      state: computer_tabletop
-    - map: ["computerLayerKeyboard"]
-      #sprite: _CD/Structures/Machines/Computers/tabletopcomputer.rsi # Moffstation
-      state: generic_keyboard_tabletop
-    - map: ["computerLayerScreen"]
-      #sprite: Structures/Machines/computers.rsi # Moffstation
-      state: generic
-    - map: ["computerLayerKeys"]
-      #sprite: Structures/Machines/computers.rsi # Moffstation
-      state: generic_keys
+  - type: ComputerVisuals
+    stateFrame: computer_tabletop
+    stateKeyboard: generic_keyboard_tabletop
+    stateScreen: generic
+    stateKeys: generic_keys
+    statePanel: null # Moff - tabletop computers have no maintenance panel layer
 
 #Crew Monitoring
 - type: entity
   parent: [BaseStructureComputerTabletop, ComputerCrewMonitoring]
   id: ComputerTabletopCrewMonitoring
   components:
-  - type: Sprite
-    layers:
-    - map: ["computerLayerBody"]
-      #sprite: _CD/Structures/Machines/Computers/tabletopcomputer.rsi # Moffstation
-      state: computer_tabletop
-    - map: ["computerLayerKeyboard"]
-      #sprite: _CD/Structures/Machines/Computers/tabletopcomputer.rsi # Moffstation
-      state: generic_keyboard_tabletop
-    - map: ["computerLayerScreen"]
-      #sprite: Structures/Machines/computers.rsi # Moffstation
-      state: crew
-    - map: ["computerLayerKeys"]
-      #sprite: Structures/Machines/computers.rsi # Moffstation
-      state: med_key
+  - type: ComputerVisuals
+    stateFrame: computer_tabletop
+    stateKeyboard: generic_keyboard_tabletop
+    stateScreen: crew
+    stateKeys: med_key
+    statePanel: null # Moff - tabletop computers have no maintenance panel layer
 
 #ID Computer
 - type: entity
   parent: [BaseStructureComputerTabletop, ComputerId]
   id: ComputerTabletopId
   components:
-  - type: Sprite
-    layers:
-    - map: ["computerLayerBody"]
-      #sprite: _CD/Structures/Machines/Computers/tabletopcomputer.rsi # Moffstation
-      state: computer_tabletop
-    - map: ["computerLayerKeyboard"]
-      #sprite: _CD/Structures/Machines/Computers/tabletopcomputer.rsi # Moffstation
-      state: generic_keyboard_tabletop
-    - map: ["computerLayerScreen"]
-      #sprite: Structures/Machines/computers.rsi # Moffstation
-      state: id
-    - map: ["computerLayerKeys"]
-      #sprite: Structures/Machines/computers.rsi # Moffstation
-      state: id_key
+  - type: ComputerVisuals
+    stateFrame: computer_tabletop
+    stateKeyboard: generic_keyboard_tabletop
+    stateScreen: id
+    stateKeys: id_key
+    statePanel: null # Moff - tabletop computers have no maintenance panel layer
 
 #Camera Monitor
 - type: entity
   parent: [BaseStructureComputerTabletop, ComputerSurveillanceCameraMonitor]
   id: ComputerTabletopSurveillanceCameraMonitor
   components:
-  - type: Sprite
-    layers:
-    - map: ["computerLayerBody"]
-      #sprite: _CD/Structures/Machines/Computers/tabletopcomputer.rsi # Moffstation
-      state: computer_tabletop
-    - map: ["computerLayerKeyboard"]
-      #sprite: _CD/Structures/Machines/Computers/tabletopcomputer.rsi # Moffstation
-      state: generic_keyboard_tabletop
-    - map: ["computerLayerScreen"]
-      #sprite: Structures/Machines/computers.rsi # Moffstation
-      state: cameras
-    - map: ["computerLayerKeys"]
-      #sprite: Structures/Machines/computers.rsi # Moffstation
-      state: tech_key
+  - type: ComputerVisuals
+    stateFrame: computer_tabletop
+    stateKeyboard: generic_keyboard_tabletop
+    stateScreen: cameras
+    stateKeys: tech_key
+    statePanel: null # Moff - tabletop computers have no maintenance panel layer
 
 #Wireless Camera Monitor
 - type: entity
   parent: [BaseStructureComputerTabletop, ComputerSurveillanceWirelessCameraMonitor]
   id: ComputerTabletopSurveillanceWirelessCameraMonitor
   components:
-  - type: Sprite
-    layers:
-    - map: ["computerLayerBody"]
-      #sprite: _CD/Structures/Machines/Computers/tabletopcomputer.rsi # Moffstation
-      state: computer_tabletop
-    - map: ["computerLayerKeyboard"]
-      #sprite: _CD/Structures/Machines/Computers/tabletopcomputer.rsi # Moffstation
-      state: generic_keyboard_tabletop
-    - map: ["computerLayerScreen"]
-      #sprite: Structures/Machines/computers.rsi # Moffstation
-      state: cameras
-    - map: ["computerLayerKeys"]
-      #sprite: Structures/Machines/computers.rsi # Moffstation
-      state: tech_key
+  - type: ComputerVisuals
+    stateFrame: computer_tabletop
+    stateKeyboard: generic_keyboard_tabletop
+    stateScreen: cameras
+    stateKeys: tech_key
+    statePanel: null # Moff - tabletop computers have no maintenance panel layer
 
 #Communications Console
 - type: entity
   parent: [BaseStructureComputerTabletop, ComputerComms]
   id: ComputerTabletopComms
   components:
-  - type: Sprite
-    layers:
-    - map: ["computerLayerBody"]
-      #sprite: _CD/Structures/Machines/Computers/tabletopcomputer.rsi # Moffstation
-      state: computer_tabletop
-    - map: ["computerLayerKeyboard"]
-      #sprite: _CD/Structures/Machines/Computers/tabletopcomputer.rsi # Moffstation
-      state: generic_keyboard_tabletop
-    - map: ["computerLayerScreen"]
-      #sprite: Structures/Machines/computers.rsi # Moffstation
-      state: comm
-    - map: ["computerLayerKeys"]
-      #sprite: Structures/Machines/computers.rsi # Moffstation
-      state: generic_keys
+  - type: ComputerVisuals
+    stateFrame: computer_tabletop
+    stateKeyboard: generic_keyboard_tabletop
+    stateScreen: comm
+    stateKeys: generic_keys
+    statePanel: null # Moff - tabletop computers have no maintenance panel layer
 
 #Air Alarms Computer
 - type: entity
   parent: [BaseStructureComputerTabletop, ComputerAlert]
   id: ComputerTabletopAlert
   components:
-  - type: Sprite
-    layers:
-    - map: ["computerLayerBody"]
-      #sprite: _CD/Structures/Machines/Computers/tabletopcomputer.rsi # Moffstation
-      state: computer_tabletop
-    - map: ["computerLayerKeyboard"]
-      #sprite: _CD/Structures/Machines/Computers/tabletopcomputer.rsi # Moffstation
-      state: generic_keyboard_tabletop
-    - map: ["computerLayerScreen"]
-      #sprite: Structures/Machines/computers.rsi # Moffstation
-      state: alert_2 # Moffstation
-    - map: ["computerLayerKeys"]
-      #sprite: Structures/Machines/computers.rsi # Moffstation
-      state: atmos_key
+  - type: ComputerVisuals
+    stateFrame: computer_tabletop
+    stateKeyboard: generic_keyboard_tabletop
+    stateScreen: alert_2
+    stateKeys: atmos_key
+    statePanel: null # Moff - tabletop computers have no maintenance panel layer
 
 #Power Monitoring Console
 - type: entity
   parent: [BaseStructureComputerTabletop, ComputerPowerMonitoring]
   id: ComputerTabletopPowerMonitoring
   components:
-  - type: Sprite
-    layers:
-    - map: ["computerLayerBody"]
-      #sprite: _CD/Structures/Machines/Computers/tabletopcomputer.rsi # Moffstation
-      state: computer_tabletop
-    - map: ["computerLayerKeyboard"]
-      #sprite: _CD/Structures/Machines/Computers/tabletopcomputer.rsi # Moffstation
-      state: generic_keyboard_tabletop
-    - map: ["computerLayerScreen"]
-      #sprite: Structures/Machines/computers.rsi # Moffstation
-      state: power_monitor
-    - map: ["computerLayerKeys"]
-      #sprite: Structures/Machines/computers.rsi # Moffstation
-      state: power_key
+  - type: ComputerVisuals
+    stateFrame: computer_tabletop
+    stateKeyboard: generic_keyboard_tabletop
+    stateScreen: power_monitor
+    stateKeys: power_key
+    statePanel: null # Moff - tabletop computers have no maintenance panel layer
 
 #R&D Console
 - type: entity
   parent: [BaseStructureComputerTabletop, ComputerResearchAndDevelopment]
   id: ComputerTabletopResearchAndDevelopment
   components:
-  - type: Sprite
-    layers:
-    - map: ["computerLayerBody"]
-      #sprite: _CD/Structures/Machines/Computers/tabletopcomputer.rsi # Moffstation
-      state: computer_tabletop
-    - map: ["computerLayerKeyboard"]
-      #sprite: _CD/Structures/Machines/Computers/tabletopcomputer.rsi # Moffstation
-      state: generic_keyboard_tabletop
-    - map: ["computerLayerScreen"]
-      #sprite: Structures/Machines/computers.rsi # Moffstation
-      state: rdcomp
-    - map: ["computerLayerKeys"]
-      #sprite: Structures/Machines/computers.rsi # Moffstation
-      state: rd_key
+  - type: ComputerVisuals
+    stateFrame: computer_tabletop
+    stateKeyboard: generic_keyboard_tabletop
+    stateScreen: rdcomp
+    stateKeys: rd_key
+    statePanel: null # Moff - tabletop computers have no maintenance panel layer
 
 #Analysis Console
 - type: entity
   parent: [BaseStructureComputerTabletop, ComputerAnalysisConsole]
   id: ComputerTabletopAnalysisConsole
   components:
-  - type: Sprite
-    layers:
-    - map: ["computerLayerBody"]
-      #sprite: _CD/Structures/Machines/Computers/tabletopcomputer.rsi # Moffstation
-      state: computer_tabletop
-    - map: ["computerLayerKeyboard"]
-      #sprite: _CD/Structures/Machines/Computers/tabletopcomputer.rsi # Moffstation
-      state: generic_keyboard_tabletop
-    - map: ["computerLayerScreen"]
-      #sprite: Structures/Machines/computers.rsi # Moffstation
-      state: artifact
-    - map: ["computerLayerKeys"]
-      #sprite: Structures/Machines/computers.rsi # Moffstation
-      state: tech_key
+  - type: ComputerVisuals
+    stateFrame: computer_tabletop
+    stateKeyboard: generic_keyboard_tabletop
+    stateScreen: artifact
+    stateKeys: tech_key
+    statePanel: null # Moff - tabletop computers have no maintenance panel layer
 
 #Body Scanner
 - type: entity
-  parent: [BaseStructureComputerTabletop, computerBodyScanner]
+  parent: [BaseStructureComputerTabletop, ComputerBodyScanner]
   id: ComputerTabletopBodyScanner
   components:
   - type: Sprite
     #sprite: _CD/Structures/Machines/Computers/tabletopcomputer.rsi # Moffstation
-    layers:
-    - map: ["computerLayerBody"]
-      state: computer_tabletop
-    - map: ["computerLayerKeyboard"]
-      state: generic_keyboard_tabletop
-    - map: ["computerLayerScreen"]
-      #sprite: Structures/Machines/computers.rsi # Moffstation
-      state: generic
-    - map: ["computerLayerKeys"]
-      #sprite: Structures/Machines/computers.rsi # Moffstation
-      state: generic_keys
+  - type: ComputerVisuals
+    stateFrame: computer_tabletop
+    stateKeyboard: generic_keyboard_tabletop
+    stateScreen: generic
+    stateKeys: generic_keys
+    statePanel: null # Moff - tabletop computers have no maintenance panel layer
 
 #Syndicate Communications Console
 - type: entity
   parent: [BaseStructureComputerTabletop, SyndicateComputerComms]
   id: SyndicateComputerTabletopComms
   components:
-  - type: Sprite
-    layers:
-    - map: ["computerLayerBody"]
-      #sprite: _CD/Structures/Machines/Computers/tabletopcomputer.rsi # Moffstation
-      state: computer_tabletop
-    - map: ["computerLayerKeyboard"]
-      #sprite: _CD/Structures/Machines/Computers/tabletopcomputer.rsi # Moffstation
-      state: generic_keyboard_tabletop
-    - map: ["computerLayerScreen"]
-      #sprite: Structures/Machines/computers.rsi # Moffstation
-      state: comm_syndie
-    - map: ["computerLayerKeys"]
-      #sprite: Structures/Machines/computers.rsi # Moffstation
-      state: syndie_key
+  - type: ComputerVisuals
+    stateFrame: computer_tabletop
+    stateKeyboard: generic_keyboard_tabletop
+    stateScreen: comm_syndie
+    stateKeys: syndie_key
+    statePanel: null # Moff - tabletop computers have no maintenance panel layer
 
 #Solar Controller
 - type: entity
   parent: [BaseStructureComputerTabletop, ComputerSolarControl]
   id: ComputerTabletopSolarControl
   components:
-  - type: Sprite
-    layers:
-    - map: ["computerLayerBody"]
-      #sprite: _CD/Structures/Machines/Computers/tabletopcomputer.rsi # Moffstation
-      state: computer_tabletop
-    - map: ["computerLayerKeyboard"]
-      #sprite: _CD/Structures/Machines/Computers/tabletopcomputer.rsi # Moffstation
-      state: generic_keyboard_tabletop
-    - map: ["computerLayerScreen"]
-      #sprite: Structures/Machines/computers.rsi # Moffstation
-      state: solar_screen
-    - map: ["computerLayerKeys"]
-      #sprite: Structures/Machines/computers.rsi # Moffstation
-      state: generic_keys
+  - type: ComputerVisuals
+    stateFrame: computer_tabletop
+    stateKeyboard: generic_keyboard_tabletop
+    stateScreen: solar_screen
+    stateKeys: generic_keys
+    statePanel: null # Moff - tabletop computers have no maintenance panel layer
 
 #Mass Scanner
 - type: entity
   parent: [BaseStructureComputerTabletop, ComputerRadar]
   id: ComputerTabletopRadar
   components:
-  - type: Sprite
-    layers:
-    - map: ["computerLayerBody"]
-      #sprite: _CD/Structures/Machines/Computers/tabletopcomputer.rsi # Moffstation
-      state: computer_tabletop
-    - map: ["computerLayerKeyboard"]
-      #sprite: _CD/Structures/Machines/Computers/tabletopcomputer.rsi # Moffstation
-      state: generic_keyboard_tabletop
-    - map: ["computerLayerScreen"]
-      #sprite: Structures/Machines/computers.rsi # Moffstation
-      state: solar_screen
-    - map: ["computerLayerKeys"]
-      #sprite: Structures/Machines/computers.rsi # Moffstation
-      state: generic_keys
+  - type: ComputerVisuals
+    stateFrame: computer_tabletop
+    stateKeyboard: generic_keyboard_tabletop
+    stateScreen: solar_screen
+    stateKeys: generic_keys
+    statePanel: null # Moff - tabletop computers have no maintenance panel layer
 
 #Cargo Shuttle Computer
 - type: entity
   parent: [BaseStructureComputerTabletop, ComputerShuttleCargo]
   id: ComputerTabletopShuttleCargo
   components:
-  - type: Sprite
-    layers:
-    - map: ["computerLayerBody"]
-      #sprite: _CD/Structures/Machines/Computers/tabletopcomputer.rsi # Moffstation
-      state: computer_tabletop
-    - map: ["computerLayerKeyboard"]
-      #sprite: _CD/Structures/Machines/Computers/tabletopcomputer.rsi # Moffstation
-      state: generic_keyboard_tabletop
-    - map: ["computerLayerScreen"]
-      #sprite: Structures/Machines/computers.rsi # Moffstation
-      state: supply
-    - map: ["computerLayerKeys"]
-      #sprite: Structures/Machines/computers.rsi # Moffstation
-      state: tech_key
+  - type: ComputerVisuals
+    stateFrame: computer_tabletop
+    stateKeyboard: generic_keyboard_tabletop
+    stateScreen: supply
+    stateKeys: tech_key
+    statePanel: null # Moff - tabletop computers have no maintenance panel layer
 
 #Cargo Request Computer
 - type: entity
   parent: [BaseStructureComputerTabletop, ComputerCargoOrders]
   id: ComputerTabletopCargoOrders
   components:
-  - type: Sprite
-    layers:
-    - map: ["computerLayerBody"]
-      #sprite: _CD/Structures/Machines/Computers/tabletopcomputer.rsi # Moffstation
-      state: computer_tabletop
-    - map: ["computerLayerKeyboard"]
-      #sprite: _CD/Structures/Machines/Computers/tabletopcomputer.rsi # Moffstation
-      state: generic_keyboard_tabletop
-    - map: ["computerLayerScreen"]
-      #sprite: Structures/Machines/computers.rsi # Moffstation
-      state: request
-    - map: ["computerLayerKeys"]
-      #sprite: Structures/Machines/computers.rsi # Moffstation
-      state: tech_key
+  - type: ComputerVisuals
+    stateFrame: computer_tabletop
+    stateKeyboard: generic_keyboard_tabletop
+    stateScreen: request
+    stateKeys: tech_key
+    statePanel: null # Moff - tabletop computers have no maintenance panel layer
 
 #Cargo Bounty Computer
 - type: entity
   parent: [BaseStructureComputerTabletop, ComputerCargoBounty]
   id: ComputerTabletopCargoBounty
   components:
-  - type: Sprite
-    layers:
-    - map: ["computerLayerBody"]
-      #sprite: _CD/Structures/Machines/Computers/tabletopcomputer.rsi # Moffstation
-      state: computer_tabletop
-    - map: ["computerLayerKeyboard"]
-      #sprite: _CD/Structures/Machines/Computers/tabletopcomputer.rsi # Moffstation
-      state: generic_keyboard_tabletop
-    - map: ["computerLayerScreen"]
-      #sprite: Structures/Machines/computers.rsi # Moffstation
-      state: bounty
-    - map: ["computerLayerKeys"]
-      #sprite: Structures/Machines/computers.rsi # Moffstation
-      state: tech_key
+  - type: ComputerVisuals
+    stateFrame: computer_tabletop
+    stateKeyboard: generic_keyboard_tabletop
+    stateScreen: bounty
+    stateKeys: tech_key
+    statePanel: null # Moff - tabletop computers have no maintenance panel layer
 
 #Cloning Console
 - type: entity
   parent: [BaseStructureComputerTabletop, ComputerCloningConsole]
   id: ComputerTabletopCloningConsole
   components:
-  - type: Sprite
-    layers:
-    - map: ["computerLayerBody"]
-      #sprite: _CD/Structures/Machines/Computers/tabletopcomputer.rsi # Moffstation
-      state: computer_tabletop
-    - map: ["computerLayerKeyboard"]
-      #sprite: _CD/Structures/Machines/Computers/tabletopcomputer.rsi # Moffstation
-      state: generic_keyboard_tabletop
-    - map: ["computerLayerScreen"]
-      #sprite: Structures/Machines/computers.rsi # Moffstation
-      state: dna
-    - map: ["computerLayerKeys"]
-      #sprite: Structures/Machines/computers.rsi # Moffstation
-      state: generic_keys
+  - type: ComputerVisuals
+    stateFrame: computer_tabletop
+    stateKeyboard: generic_keyboard_tabletop
+    stateScreen: dna
+    stateKeys: generic_keys
+    statePanel: null # Moff - tabletop computers have no maintenance panel layer
 
 #Salvage Expedition Computer
 - type: entity
   parent: [BaseStructureComputerTabletop, ComputerSalvageExpedition]
   id: ComputerTabletopSalvageExpedition
   components:
-  - type: Sprite
-    layers:
-    - map: ["computerLayerBody"]
-      #sprite: _CD/Structures/Machines/Computers/tabletopcomputer.rsi # Moffstation
-      state: computer_tabletop
-    - map: ["computerLayerKeyboard"]
-      #sprite: _CD/Structures/Machines/Computers/tabletopcomputer.rsi # Moffstation
-      state: generic_keyboard_tabletop
-    - map: ["computerLayerScreen"]
-      #sprite: Structures/Machines/computers.rsi # Moffstation
-      state: mining
-    - map: ["computerLayerKeys"]
-      #sprite: Structures/Machines/computers.rsi # Moffstation
-      state: tech_key
+  - type: ComputerVisuals
+    stateFrame: computer_tabletop
+    stateKeyboard: generic_keyboard_tabletop
+    stateScreen: mining
+    stateKeys: tech_key
+    statePanel: null # Moff - tabletop computers have no maintenance panel layer
 
 #Mass Media Console
 - type: entity
   parent: [BaseStructureComputerTabletop, ComputerMassMedia]
   id: ComputerTabletopMassMedia
   components:
-  - type: Sprite
-    layers:
-    - map: ["computerLayerBody"]
-      #sprite: _CD/Structures/Machines/Computers/tabletopcomputer.rsi # Moffstation
-      state: computer_tabletop
-    - map: ["computerLayerKeyboard"]
-      #sprite: _CD/Structures/Machines/Computers/tabletopcomputer.rsi # Moffstation
-      state: generic_keyboard_tabletop
-    - map: ["computerLayerScreen"]
-      #sprite: Structures/Machines/computers.rsi # Moffstation
-      state: service
-    - map: ["computerLayerKeys"]
-      #sprite: Structures/Machines/computers.rsi # Moffstation
-      state: service_keys
+  - type: ComputerVisuals
+    stateFrame: computer_tabletop
+    stateKeyboard: generic_keyboard_tabletop
+    stateScreen: service
+    stateKeys: service_keys
+    statePanel: null # Moff - tabletop computers have no maintenance panel layer
 
 #Shuttle Related Computers
 #Emergency Shuttle Computer
@@ -486,78 +313,48 @@
   components:
   - type: Sprite
     #sprite: _CD/Structures/Machines/Computers/tabletopcomputer.rsi # Moffstation
-    layers:
-    - map: ["computerLayerBody"]
-      #sprite: _CD/Structures/Machines/Computers/tabletopcomputer.rsi # Moffstation
-      state: computer_tabletop
-    - map: ["computerLayerKeyboard"]
-      state: generic_keyboard_tabletop
-    - map: ["computerLayerScreen"]
-      #sprite: Structures/Machines/computers.rsi # Moffstation
-      state: generic
-    - map: ["computerLayerKeys"]
-      #sprite: Structures/Machines/computers.rsi # Moffstation
-      state: generic_keys
+  - type: ComputerVisuals
+    stateFrame: computer_tabletop
+    stateKeyboard: generic_keyboard_tabletop
+    stateScreen: generic
+    stateKeys: generic_keys
+    statePanel: null # Moff - tabletop computers have no maintenance panel layer
 
 #Shuttle Computer
 - type: entity
   parent: [BaseStructureComputerTabletop, ComputerShuttle]
   id: ComputerTabletopShuttle
   components:
-  - type: Sprite
-    layers:
-    - map: ["computerLayerBody"]
-      #sprite: _CD/Structures/Machines/Computers/tabletopcomputer.rsi # Moffstation
-      state: computer_tabletop
-    - map: ["computerLayerKeyboard"]
-      #sprite: _CD/Structures/Machines/Computers/tabletopcomputer.rsi # Moffstation
-      state: generic_keyboard_tabletop
-    - map: ["computerLayerScreen"]
-      #sprite: Structures/Machines/computers.rsi # Moffstation
-      state: shuttle
-    - map: ["computerLayerKeys"]
-      #sprite: Structures/Machines/computers.rsi # Moffstation
-      state: generic_keys
+  - type: ComputerVisuals
+    stateFrame: computer_tabletop
+    stateKeyboard: generic_keyboard_tabletop
+    stateScreen: shuttle
+    stateKeys: generic_keys
+    statePanel: null # Moff - tabletop computers have no maintenance panel layer
 
 #Syndicate Shuttle Computer
 - type: entity
   parent: [BaseStructureComputerTabletop, ComputerShuttleSyndie]
   id: ComputerTabletopShuttleSyndie
   components:
-  - type: Sprite
-    layers:
-    - map: ["computerLayerBody"]
-      #sprite: _CD/Structures/Machines/Computers/tabletopcomputer.rsi # Moffstation
-      state: computer_tabletop
-    - map: ["computerLayerKeyboard"]
-      #sprite: _CD/Structures/Machines/Computers/tabletopcomputer.rsi # Moffstation
-      state: generic_keyboard_tabletop
-    - map: ["computerLayerScreen"]
-      #sprite: Structures/Machines/computers.rsi # Moffstation
-      state: syndishuttle
-    - map: ["computerLayerKeys"]
-      #sprite: Structures/Machines/computers.rsi # Moffstation
-      state: syndie_key
+  - type: ComputerVisuals
+    stateFrame: computer_tabletop
+    stateKeyboard: generic_keyboard_tabletop
+    stateScreen: syndishuttle
+    stateKeys: syndie_key
+    statePanel: null # Moff - tabletop computers have no maintenance panel layer
 
 #IFF Console
 - type: entity
   parent: [BaseStructureComputerTabletop, ComputerIFF]
   id: ComputerTabletopIFF
   components:
-  - type: Sprite
-    layers:
-    - map: ["computerLayerBody"]
-      #sprite: _CD/Structures/Machines/Computers/tabletopcomputer.rsi # Moffstation
-      state: computer_tabletop
-    - map: ["computerLayerKeyboard"]
-      #sprite: _CD/Structures/Machines/Computers/tabletopcomputer.rsi # Moffstation
-      state: generic_keyboard_tabletop
-    - map: ["computerLayerScreen"]
-      #sprite: Structures/Shuttles/iff.rsi # Moffstation
-      state: helm
-    - map: ["computerLayerKeys"]
-      #sprite: Structures/Machines/computers.rsi # Moffstation
-      state: generic_keys
+  - type: ComputerVisuals
+    stateFrame: computer_tabletop
+    stateKeyboard: generic_keyboard_tabletop
+    stateScreen: helm
+    stateKeys: generic_keys
+    statePanel: null # Moff - tabletop computers have no maintenance panel layer
 
 #Syndicate IFF Console
 - type: entity
@@ -565,20 +362,12 @@
   id: ComputerTabletopIFFSyndicate
   suffix: Syndicate, Tabletop
   components:
-  - type: Sprite
-    layers:
-    - map: ["computerLayerBody"]
-      #sprite: _CD/Structures/Machines/Computers/tabletopcomputer.rsi # Moffstation
-      state: computer_tabletop
-    - map: ["computerLayerKeyboard"]
-      #sprite: _CD/Structures/Machines/Computers/tabletopcomputer.rsi # Moffstation
-      state: generic_keyboard_tabletop
-    - map: ["computerLayerScreen"]
-      #sprite: Structures/Shuttles/iff.rsi # Moffstation
-      state: helm
-    - map: ["computerLayerKeys"]
-      #sprite: Structures/Machines/computers.rsi # Moffstation
-      state: generic_keys
+  - type: ComputerVisuals
+    stateFrame: computer_tabletop
+    stateKeyboard: generic_keyboard_tabletop
+    stateScreen: helm
+    stateKeys: generic_keys
+    statePanel: null # Moff - tabletop computers have no maintenance panel layer
 
 #Testing/Debugging
 - type: entity
@@ -586,17 +375,9 @@
   id: ComputerTabletopSensorMonitoring
   suffix: Tabletop, TESTING, DO NOT MAP
   components:
-  - type: Sprite
-    layers:
-    - map: ["computerLayerBody"]
-      #sprite: _CD/Structures/Machines/Computers/tabletopcomputer.rsi # Moffstation
-      state: computer_tabletop
-    - map: ["computerLayerKeyboard"]
-      #sprite: _CD/Structures/Machines/Computers/tabletopcomputer.rsi # Moffstation
-      state: generic_keyboard_tabletop
-    - map: ["computerLayerScreen"]
-      #sprite: Structures/Machines/computers.rsi # Moffstation
-      state: sensors
-    - map: ["computerLayerKeys"]
-      #sprite: Structures/Machines/computers.rsi # Moffstation
-      state: atmos_key
+  - type: ComputerVisuals
+    stateFrame: computer_tabletop
+    stateKeyboard: generic_keyboard_tabletop
+    stateScreen: sensors
+    stateKeys: atmos_key
+    statePanel: null # Moff - tabletop computers have no maintenance panel layer

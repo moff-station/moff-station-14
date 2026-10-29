@@ -314,3 +314,15 @@
   - type: ExtraExaminable
     wornText: clothing-scarf-long-bacon
     # Moffstation - End
+
+- type: entity
+  parent: ClothingNeckBase
+  id: ClothingNeckScarfVirtualIce
+  name: ice singer's scarf
+  description: A bright blue scarf with yellow tips at the ends.
+  components:
+    - type: Sprite
+      sprite: Clothing/Neck/Scarfs/virtual_ice.rsi
+    - type: Clothing
+      sprite: Clothing/Neck/Scarfs/virtual_ice.rsi
+

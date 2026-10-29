@@ -106,6 +106,16 @@
       max:  20
 
 - type: entity
+  abstract: true
+  parent: BaseGameRule
+  id: BaseStationEventVeryShortDelay
+  components:
+  - type: GameRule
+    delay:
+      min:  5
+      max:  10
+
+- type: entity
   id: BaseStationEventShortDelay
   parent: BaseGameRule
   abstract: true
@@ -136,6 +146,8 @@
     weight: 8
     duration: 35
   - type: AnomalySpawnRule
+  - type: DynamicRuleCost
+    cost: 10
 
 - type: entity
   id: BluespaceArtifact
@@ -152,6 +164,8 @@
     weight: 8
     duration: 35
   - type: BluespaceArtifactRule
+  - type: DynamicRuleCost
+    cost: 10
 
 - type: entity
   id: BluespaceLocker
@@ -163,24 +177,26 @@
     earliestStart: 1
     duration: 1
   - type: BluespaceLockerRule
+  - type: DynamicRuleCost
+    cost: 10
 
 - type: entity
-  id: BreakerFlip
   parent: BaseGameRule
+  id: BreakerFlip
   components:
   - type: StationEvent
     weight: 7
     duration: 1
     minimumPlayers: 15
+    startAudio:
+      path: /Audio/Announcements/announce.ogg
   - type: BreakerFlipRule
-    blacklist:
-      components:
-        - ProtectedGrid
-
+  - type: DynamicRuleCost
+    cost: 10
 
 - type: entity
-  id: BureaucraticError
   parent: BaseGameRule
+  id: BureaucraticError
   components:
   - type: StationEvent
     startAnnouncement: station-event-bureaucratic-error-announcement
@@ -194,6 +210,8 @@
     - MedicalIntern
     - SecurityCadet
     - TechnicalAssistant
+  - type: DynamicRuleCost
+    cost: 10
 
 - type: entity
   id: ClericalError
@@ -205,6 +223,8 @@
     weight: 5
     duration: 1
   - type: ClericalErrorRule
+  - type: DynamicRuleCost
+    cost: 15
 
 - type: entity
   parent: BaseGameRule
@@ -220,6 +240,8 @@
     minimumPlayers: 10
   - type: RandomEntityStorageSpawnRule
     prototype: MobSkeletonCloset
+  - type: DynamicRuleCost
+    cost: 50
 
 - type: entity
   parent: BaseAntagGhostRoleRule
@@ -362,7 +384,7 @@
     - ParadoxCloneEnroller
   # Moffstation end
   - type: DynamicRuleCost
-    cost: 50
+    cost: 75
 
 - type: entity
   parent: BaseGameRule
@@ -379,6 +401,8 @@
     minimumPlayers: 20
   - type: RandomSpawnRule
     prototype: MobRevenant
+  - type: DynamicRuleCost
+    cost: 75
 
 - type: entity
   parent: [ BaseAntagGhostRoleRule, BaseWizardRule ]
@@ -418,6 +442,8 @@
     endAnnouncement: station-event-gas-leak-end-announcement
     weight: 8
   - type: GasLeakRule
+  - type: DynamicRuleCost
+    cost: 25
 
 - type: entity
   id: KudzuGrowth
@@ -429,6 +455,8 @@
     weight: 7
     duration: 240
   - type: KudzuGrowthRule
+  - type: DynamicRuleCost
+    cost: 40 #this shit can get insane
 
 - type: entity
   id: PowerGridCheck
@@ -445,6 +473,8 @@
     duration: 50
     maxDuration: 100
   - type: PowerGridCheckRule
+  - type: DynamicRuleCost
+    cost: 20
 
 - type: entity
   parent: BaseGameRule
@@ -473,6 +503,22 @@
     extraCount: 2
     lightBreakChancePerSecond: 0.0003
     doorToggleChancePerSecond: 0.001
+  - type: DynamicRuleCost
+    cost: 10
+
+- type: entity
+  parent: BaseStationEventVeryShortDelay
+  id: VendorMalfunction
+  components:
+  - type: StationEvent
+    startAnnouncement: station-event-vendor-malfunction-announcement
+    startAudio:
+      path: /Audio/Announcements/announce.ogg
+    weight: 5
+    duration: 1
+  - type: VendorMalfunctionRule
+  - type: DynamicRuleCost
+    cost: 5
 
 - type: entity
   id: VentClog
@@ -487,6 +533,8 @@
     weight: 5
     duration: 60
   - type: VentClogRule
+  - type: DynamicRuleCost
+    cost: 15
 
 # Critters
 
@@ -513,6 +561,8 @@
       - id: MobAdultSlimesReformablePoisonousAngrySmasher
         weight: 1
       # Moffstation - End
+  - type: DynamicRuleCost
+    cost: 30
 
 - type: entity
   id: SnakeSpawnHorde
@@ -536,6 +586,8 @@
       - id: MobSmallPurpleSnakeSmasher
       - id: MobCobraSpaceSmasher
       # Moffstation - End
+  - type: DynamicRuleCost
+    cost: 30
 
 - type: entity
   id: SpiderSpawnHorde
@@ -559,6 +611,8 @@
       - id: MobGiantSpiderGuardAngry
       - id: MobGiantSpiderMidwifeAngry
       - id: MobGiantSpiderNurseAngry
+  - type: DynamicRuleCost
+    cost: 30
 
 - type: entity
   id: SpiderClownSpawnHorde
@@ -578,6 +632,8 @@
       rolls: 4, 8
       children:
       - id: MobGiantSpiderClownAngry
+  - type: DynamicRuleCost
+    cost: 30
 
 - type: entity
   id: ZombieOutbreak
@@ -650,6 +706,8 @@
       range:
         min: 1
         max: 2
+  - type: DynamicRuleCost
+    cost: 50
 
 - type: entity
   id: MassHallucinations
@@ -666,6 +724,8 @@
     maxSoundDistance: 7
     sounds:
       collection: Paracusia
+  - type: DynamicRuleCost
+    cost: 10
 
 - type: entity
   parent: BaseGameRule
@@ -676,6 +736,8 @@
     reoccurrenceDelay: 20
     duration: 1
   - type: IonStormRule
+  - type: DynamicRuleCost
+    cost: 25
 
 - type: entity
   id: GreytideVirus
@@ -697,6 +759,8 @@
     - Service
     blacklist:
     - External # don't space everything
+  - type: DynamicRuleCost
+    cost: 25
 
 - type: entity
   parent: BaseGameRule
@@ -729,6 +793,8 @@
     votes:
     - DerelictCyborgEnroller
   # Moffstation end
+  - type: DynamicRuleCost
+    cost: 45
 
 - type: entity
   parent: BaseDerelictCyborgSpawn

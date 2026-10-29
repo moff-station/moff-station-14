@@ -1,4 +1,5 @@
 using Content.Shared._Moffstation.Sensors;
+using Content.Shared.DeviceNetwork;
 using Content.Shared.Medical.SuitSensors;
 using Robust.Shared.GameStates;
 using Robust.Shared.Prototypes;
@@ -57,7 +58,7 @@ public sealed partial class BorgSensorComponent : Component
     ///     It does this by calling the servers entity system for performance reasons.
     /// </summary>
     [DataField("server")]
-    public string? ConnectedServer = null;
+    public DeviceAddress? ConnectedServer = null;
 
     /// <summary>
     ///     The station this suit sensor belongs to. If it's null the suit didn't spawn on a station and the sensor doesn't work.

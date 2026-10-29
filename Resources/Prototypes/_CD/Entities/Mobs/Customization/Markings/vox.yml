@@ -751,8 +751,7 @@
   sprites:
   - sprite: _CD/Mobs/Customization/Vox/tail.rsi
     state: lantern
-  shaders:
-    lantern: unshaded
+    shader: unshaded
 
 - type: marking
   id: VoxTailSmallPlume

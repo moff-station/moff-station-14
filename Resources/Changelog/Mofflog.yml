@@ -8383,6 +8383,13 @@ Entries:
   id: 1951
   time: '2026-09-22T23:50:13.000'
   url: https://github.com/moff-station/moff-station-14/pull/1951
+- author: DuckManZach
+  changes:
+  - message: Uplinks now lock on CC, Arrivals, and once evac shows up.
+    type: add
+  id: 1952
+  time: '2026-10-28T23:43:01.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1952
 - author: Rachel
   changes:
   - message: Thief communicator kit now provides a binary key.
@@ -8985,6 +8992,13 @@ Entries:
   id: 2077
   time: '2026-10-28T03:20:32.000'
   url: https://github.com/moff-station/moff-station-14/pull/2077
+- author: Dave
+  changes:
+  - message: Gray Jumpsuit Displacement now gives them sleeves
+    type: fix
+  id: 2079
+  time: '2026-10-29T04:12:17.000'
+  url: https://github.com/moff-station/moff-station-14/pull/2079
 - author: DuckManZach
   changes:
   - message: Fixes igneus evac shuttle
@@ -8992,5 +9006,12 @@ Entries:
   id: 2080
   time: '2026-10-28T21:05:04.000'
   url: https://github.com/moff-station/moff-station-14/pull/2080
+- author: DuckManZach
+  changes:
+  - message: Removed the arrivals energy gates
+    type: remove
+  id: 2081
+  time: '2026-10-29T18:24:10.000'
+  url: https://github.com/moff-station/moff-station-14/pull/2081
 Name: Mofflog
 Order: -2

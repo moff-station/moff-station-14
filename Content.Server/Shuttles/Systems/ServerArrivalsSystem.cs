@@ -3,8 +3,11 @@ using System.Numerics;
 using Content.Server.Administration;
 using Content.Server.Antag;
 using Content.Server.Chat.Managers;
-using Content.Server.DeviceNetwork.Systems;
+using Content.Shared.DeviceNetwork.Systems;
+using Content.Server.GameTicking;
+using Content.Server.GameTicking.Events;
 using Content.Server.Parallax;
+using Content.Server._Moffstation.PDA.Ringer;
 using Content.Server.Power.EntitySystems;
 using Content.Server.Shuttles.Components; // Moffstation
 using Content.Server.Shuttles.Events;
@@ -144,6 +147,7 @@ public sealed partial class ServerArrivalsSystem : ArrivalsSystem
         EnsureComp<ArrivalsSourceComponent>(grid.Value);
         EnsureComp<ProtectedGridComponent>(grid.Value);
         EnsureComp<PreventPilotComponent>(grid.Value);
+        EnsureComp<LockableUplinkBlockedMapComponent>(mapUid); // Moff - uplink blocking - We can't do this in the file because it's a grid and not a map.
 
         // Setup planet arrivals if relevant
         if (Cfg.GetCVar(CCVars.ArrivalsPlanet))

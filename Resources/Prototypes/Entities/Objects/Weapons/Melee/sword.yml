@@ -103,7 +103,8 @@
 #    # not putting a BlockMovement component here cause that's funny.
   # Moffstation - End
   - type: StealTarget
-    stealGroup: CaptainSword
+    stealGroup:
+    - CaptainSword
 
 - type: entity
   name: katana

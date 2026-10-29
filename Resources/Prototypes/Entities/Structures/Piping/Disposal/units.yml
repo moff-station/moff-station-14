@@ -131,7 +131,7 @@
   - type: DeviceNetwork
     deviceNetId: Wireless
     receiveFrequencyId: BasicDevice
-  - type: WirelessNetworkConnection
+  - type: WirelessNetwork
     range: 200
   - type: DeviceLinkSink
     ports:
@@ -245,8 +245,8 @@
     deviceNetId: Wired
     receiveFrequencyId: MailingUnit
     transmitFrequencyId: MailingUnit
+  - type: WiredNetwork
   - type: DeviceNetworkRequiresPower
-  - type: WiredNetworkConnection
   - type: Configuration
     config:
       tag:
