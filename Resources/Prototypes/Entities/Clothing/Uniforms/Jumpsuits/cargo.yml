@@ -17,12 +17,33 @@
   name: salvage specialist's jumpsuit
   description: It's a snappy jumpsuit with a sturdy set of overalls. It's very dirty.
   components:
-  # Moff Start - Cargo Outfits
+  # Moffstation - Start
   - type: Sprite
-    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/salvage-overalls.rsi
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/jumpsuit.rsi
+    layers:
+    - state: icon
+      color: "#bc4a9b"
+    - state: basics-trinkets-icon
+    - state: overalls-trinkets-icon
+      color: "#91553b"
+  - type: Item
+    inhandVisuals:
+      left:
+      - state: inhand-left
+        color: "#bc4a9b"
+      right:
+      - state: inhand-right
+        color: "#bc4a9b"
   - type: Clothing
-    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/salvage-overalls.rsi
-  # Moff End
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/jumpsuit.rsi
+    clothingVisuals:
+      jumpsuit:
+      - state: equipped-INNERCLOTHING
+        color: "#bc4a9b"
+      - state: basics-trinkets-equipped-INNERCLOTHING
+      - state: overalls-trinkets-equipped-INNERCLOTHING
+        color: "#91553b"
+# Moffstation - End
 
 - type: entity
   parent: [ClothingUniformBase, BaseCommandContraband]
