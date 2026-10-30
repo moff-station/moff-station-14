@@ -39,6 +39,10 @@
     - WhitelistChameleon
     - Backpack
   - type: Dumpable # Moffstation - Make all bags dumpable
+  # Moff Start - Stow delay
+  - type: StowDelayMultiplier
+    multiplier: 1.5
+  # Moff end
 
 - type: entity
   parent: ClothingBackpack
