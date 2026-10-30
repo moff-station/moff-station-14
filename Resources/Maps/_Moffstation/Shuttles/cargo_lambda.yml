@@ -1,11 +1,11 @@
 meta:
   format: 7
   category: Grid
-  engineVersion: 288.1.0
+  engineVersion: 289.0.3
   forkId: ""
   forkVersion: ""
-  time: 09/16/2026 22:52:05
-  entityCount: 168
+  time: 10/13/2026 01:53:20
+  entityCount: 176
 maps: []
 grids:
 - 1
@@ -117,6 +117,7 @@ entities:
       chunkEntities:
       - 167
       - 168
+    - type: GridSplitNode
 - proto: AirCanister
   entities:
   - uid: 158
@@ -124,20 +125,20 @@ entities:
     - type: Transform
       parent: 1
       pos: -1.5,-0.5
-- proto: AirlockGlassShuttle
+- proto: AirlockExternalGlassShuttleCargo
   entities:
-  - uid: 20
-    components:
-    - type: Transform
-      parent: 1
-      rot: 3.141592653589793 rad
-      pos: -2.5,6.5
-  - uid: 58
+  - uid: 49
     components:
     - type: Transform
       parent: 1
       rot: -1.5707963267948966 rad
       pos: -5.5,1.5
+  - uid: 58
+    components:
+    - type: Transform
+      parent: 1
+      rot: -1.5707963267948966 rad
+      pos: -5.5,3.5
   - uid: 59
     components:
     - type: Transform
@@ -148,8 +149,8 @@ entities:
     components:
     - type: Transform
       parent: 1
-      rot: -1.5707963267948966 rad
-      pos: -5.5,3.5
+      rot: 3.141592653589793 rad
+      pos: -2.5,6.5
 - proto: APCBasic
   entities:
   - uid: 6
@@ -361,6 +362,46 @@ entities:
     - type: Transform
       parent: 1
       pos: 0.5,-1.5
+  - uid: 169
+    components:
+    - type: Transform
+      parent: 1
+      pos: -3.5,2.5
+  - uid: 170
+    components:
+    - type: Transform
+      parent: 1
+      pos: -4.5,2.5
+  - uid: 171
+    components:
+    - type: Transform
+      parent: 1
+      pos: -4.5,4.5
+  - uid: 172
+    components:
+    - type: Transform
+      parent: 1
+      pos: -2.5,0.5
+  - uid: 173
+    components:
+    - type: Transform
+      parent: 1
+      pos: -2.5,-0.5
+  - uid: 174
+    components:
+    - type: Transform
+      parent: 1
+      pos: 1.5,-1.5
+  - uid: 175
+    components:
+    - type: Transform
+      parent: 1
+      pos: -0.5,-1.5
+  - uid: 176
+    components:
+    - type: Transform
+      parent: 1
+      pos: 4.5,0.5
 - proto: CableHV
   entities:
   - uid: 33
@@ -798,17 +839,18 @@ entities:
       pos: 3.5,3.5
 - proto: Poweredlight
   entities:
+  - uid: 20
+    components:
+    - type: Transform
+      parent: 1
+      rot: -1.5707963267948966 rad
+      pos: 1.5,5.5
   - uid: 45
     components:
     - type: Transform
       parent: 1
       rot: 3.141592653589793 rad
       pos: 3.5,4.5
-  - uid: 49
-    components:
-    - type: Transform
-      parent: 1
-      pos: -2.5,5.5
   - uid: 85
     components:
     - type: Transform
@@ -1162,7 +1204,7 @@ entities:
       parent: 1
       rot: 3.141592653589793 rad
       pos: 3.5,-1.5
-- proto: WindoorSecureCargoLocked
+- proto: WindoorCargoLocked
   entities:
   - uid: 56
     components:
