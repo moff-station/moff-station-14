@@ -593,3 +593,12 @@
   components:
   - type: Sprite
     sprite: _Moffstation/Clothing/Uniforms/Jumpskirt/witch_dress.rsi
+
+- type: entity
+  parent: ClothingUniformSkirtBase
+  id: ClothingUniformJumpskirtCozyVested
+  name: cozy vested attire
+  description: An iconic white puffer vest is layered on top of an orange turtleneck tee, and green denim skirt. Don't you think blondes have more fun?
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Uniforms/Jumpskirt/cozy_vested.rsi
