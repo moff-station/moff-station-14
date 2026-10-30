@@ -66,6 +66,12 @@ public sealed partial class BorgSensorComponent : Component
     [DataField("station"), AutoNetworkedField]
     public EntityUid? StationId = null;
 
+    /// <summary>
+    /// Available sensor mode.
+    /// </summary>
+    [DataField, AutoNetworkedField]
+    public HashSet<SuitSensorMode> AvailableModes = [SuitSensorMode.SensorVitals, SuitSensorMode.SensorCords];
+
 
     /// <summary>
     ///     The type of sensor sent to the server <see cref="SensorTypePrototype"/>
