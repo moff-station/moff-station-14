@@ -29,9 +29,10 @@
   - type: Destructible
     thresholds:
     - trigger:
-        # Moffstation start - Paper ash fix
+        # Moff start - Paper ashes to heat damage, not any damage
         !type:DamageTypeTrigger
         damageType: Heat
+        # Moff end
         damage: 15
       behaviors:
       - !type:SpawnEntitiesBehavior
@@ -40,13 +41,15 @@
             min: 1
             max: 1
       - !type:DoActsBehavior
-        acts: [ "Destruction" ] # Moffstation end
+        acts: [ "Destruction" ]
+    # Moff start - Paper ashes to heat damage, not any damage
     - trigger:
         !type:DamageTrigger
         damage: 15
       behaviors:
       - !type:DoActsBehavior
         acts: [ "Destruction" ]
+    # Moff end
   - type: Edible
     delay: 7
     forceFeedDelay: 7
