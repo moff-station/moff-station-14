@@ -1347,6 +1347,9 @@
         # Moff end
       enum.WiresUiKey.Key:
         type: WiresBoundUserInterface
+  - type: MoffRoboticsConsole
+    sensorTypes:
+    - NTBorgSensor
   - type: ApcPowerReceiver
     powerLoad: 5
   - type: PowerState

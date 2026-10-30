@@ -1,7 +1,5 @@
-using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using Content.Server.Administration.Logs;
-using Content.Server.DeviceNetwork.Systems;
 using Content.Server.Medical.SuitSensors;
 using Content.Server.Radio.EntitySystems;
 using Content.Server.Silicons.Borgs;
@@ -10,6 +8,7 @@ using Content.Shared.Database;
 using Content.Shared.DeviceNetwork;
 using Content.Shared.DeviceNetwork.Components;
 using Content.Shared.DeviceNetwork.Events;
+using Content.Shared.DeviceNetwork.Systems;
 using Content.Shared.Lock;
 using Content.Shared.Medical.SuitSensors;
 using Content.Shared.Robotics;
@@ -141,5 +140,5 @@ public sealed partial class MoffRoboticsConsoleSystem : EntitySystem
         _ui.SetUiState(ent.Owner, RoboticsConsoleUiKey.Key, state);
     }
 
-    private string? AddressOrNull(NetEntity borg) => CompOrNull<DeviceNetworkComponent>(GetEntity(borg))?.Address;
+    private DeviceAddress? AddressOrNull(NetEntity borg) => CompOrNull<DeviceNetworkComponent>(GetEntity(borg))?.Address;
 }
