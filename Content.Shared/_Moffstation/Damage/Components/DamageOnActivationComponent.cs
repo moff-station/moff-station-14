@@ -12,13 +12,11 @@ public sealed partial class DamageOnActivationComponent : Component
     /// Damage taken by the entity when activated
     /// </summary>
     [DataField(required:true)]
-    [ViewVariables(VVAccess.ReadWrite)]
     public DamageSpecifier Damage = default!;
 
     /// <summary>
     /// Should the damage taken ignore the entity resistances ?
     /// </summary>
     [DataField("ignoreResistances")]
-    [ViewVariables(VVAccess.ReadWrite)]
     public bool IgnoreResistances = true;
 }
