@@ -724,3 +724,14 @@
     sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/sgt_pepper_blue.rsi
   - type: Clothing
     sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/sgt_pepper_blue.rsi
+
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformJumpsuitDarkAlternative
+  name: dark alternative attire
+  description: A fishnet bodysuit layered beneath an alternative band tee and shorts, there is a single belt on the upper thigh.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/dark_alternative.rsi
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/dark_alternative.rsi
