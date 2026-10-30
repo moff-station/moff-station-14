@@ -57,6 +57,16 @@
           - material: Steel
             amount: 2
             doAfter: 1
+        - to: chairComfyBlue
+          steps:
+            - material: Steel
+              amount: 2
+              doAfter: 1
+        - to: chairComfyBrown
+          steps:
+            - material: Steel
+              amount: 2
+              doAfter: 1
         # Moff - End
         - to: chairPilotSeat
           steps:
