@@ -1,4 +1,5 @@
 using Content.Client.IconSmoothing;
+using Content.Shared._Funkystation.Footprints;
 using Content.Shared.Chemistry.Components;
 using Content.Shared.Fluids;
 using Content.Shared.Fluids.Components;
@@ -15,7 +16,7 @@ public sealed partial class PuddleSystem : SharedPuddleSystem
     [SubscribeLocalEvent]
     private void OnPuddleAppearance(EntityUid uid, PuddleComponent component, ref AppearanceChangeEvent args)
     {
-        if (args.Sprite == null)
+        if (args.Sprite == null || HasComp<FootprintComponent>(uid)) // Moff - Foobrints
             return;
 
         if (!args.TryGetData<float>(PuddleVisuals.CurrentVolume, out var volume))
