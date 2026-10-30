@@ -37,7 +37,7 @@ public sealed partial class BorgSensorComponent : Component
     ///     Current sensor mode. Can be switched by user verbs.
     /// </summary>
     [DataField, AutoNetworkedField]
-    public SuitSensorMode Mode = SuitSensorMode.SensorOff;
+    public SuitSensorMode Mode = SuitSensorMode.SensorVitals;
 
     /// <summary>
     ///     How often does sensor update its owners status (in seconds). Limited by the system update rate.
