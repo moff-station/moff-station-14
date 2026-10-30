@@ -1,7 +1,7 @@
 - type: entity
   abstract: true
   parent: [ ChairBase, StructureHealthFurniture ]
-  id: SofaBase
+  id: MoffSofaBase
   name: sofa
   description: Multiple seats spanning a single object. Truly a marvel of science.
   components:
@@ -14,7 +14,7 @@
 
 - type: entity
   parent: SofaBase
-  id: SofaMiddle
+  id: MoffSofaMiddle
   name: sofa
   suffix: middle
   components:
@@ -27,7 +27,7 @@
 
 - type: entity
   parent: SofaBase
-  id: SofaLeft
+  id: MoffSofaLeft
   name: sofa
   suffix: left
   components:
@@ -39,7 +39,7 @@
 
 - type: entity
   parent: SofaBase
-  id: SofaRight
+  id: MoffSofaRight
   name: sofa
   suffix: right
   components:
@@ -51,7 +51,7 @@
 
 - type: entity
   parent: SofaBase
-  id: SofaCorner
+  id: MoffSofaCorner
   name: sofa
   suffix: corner
   components:
@@ -66,7 +66,7 @@
 
 - type: entity
   parent: SofaBase
-  id: RedSofaMiddle
+  id: MoffSofaMiddleRed
   name: red sofa
   suffix: middle
   components:
@@ -80,7 +80,7 @@
 
 - type: entity
   parent: SofaBase
-  id: RedSofaLeft
+  id: MoffSofaLeftRed
   name: red sofa
   suffix: left
   components:
@@ -93,7 +93,7 @@
 
 - type: entity
   parent: SofaBase
-  id: RedSofaRight
+  id: MoffSofaRightRed
   name: red sofa
   suffix: right
   components:
@@ -106,7 +106,7 @@
 
 - type: entity
   parent: SofaBase
-  id: RedSofaCorner
+  id: MoffSofaCornerRed
   name: red sofa
   suffix: corner
   components:
@@ -120,7 +120,7 @@
 
 - type: entity
   parent: SofaBase
-  id: GreenSofaMiddle
+  id: MoffSofaMiddleGreen
   name: green sofa
   suffix: middle
   components:
@@ -134,7 +134,7 @@
 
 - type: entity
   parent: SofaBase
-  id: GreenSofaLeft
+  id: MoffSofaLeftGreen
   name: green sofa
   suffix: left
   components:
@@ -147,7 +147,7 @@
 
 - type: entity
   parent: SofaBase
-  id: GreenSofaRight
+  id: MoffSofaRightGreen
   name: green sofa
   suffix: right
   components:
@@ -160,7 +160,7 @@
 
 - type: entity
   parent: SofaBase
-  id: GreenSofaCorner
+  id: MoffSofaCornerGreen
   name: green sofa
   suffix: corner
   components:
@@ -174,7 +174,7 @@
 
 - type: entity
   parent: SofaBase
-  id: BlackSofaMiddle
+  id: MoffSofaMiddleBlack
   name: black sofa
   suffix: middle
   components:
@@ -188,7 +188,7 @@
 
 - type: entity
   parent: SofaBase
-  id: BlackSofaLeft
+  id: MoffSofaLeftBlack
   name: black sofa
   suffix: left
   components:
@@ -201,7 +201,7 @@
 
 - type: entity
   parent: SofaBase
-  id: BlackSofaRight
+  id: MoffSofaRightBlack
   name: black sofa
   suffix: right
   components:
@@ -214,7 +214,7 @@
 
 - type: entity
   parent: SofaBase
-  id: BlackSofaCorner
+  id: MoffSofaCornerBlack
   name: black sofa
   suffix: corner
   components:
@@ -228,7 +228,7 @@
 
 - type: entity
   parent: SofaBase
-  id: BlueSofaMiddle
+  id: MoffSofaMiddleBlue
   name: blue sofa
   suffix: middle
   components:
@@ -242,7 +242,7 @@
 
 - type: entity
   parent: SofaBase
-  id: BlueSofaLeft
+  id: MoffSofaLeftBlue
   name: blue sofa
   suffix: left
   components:
@@ -255,7 +255,7 @@
 
 - type: entity
   parent: SofaBase
-  id: BlueSofaRight
+  id: MoffSofaRightBlue
   name: blue sofa
   suffix: right
   components:
@@ -268,7 +268,7 @@
 
 - type: entity
   parent: SofaBase
-  id: BlueSofaCorner
+  id: MoffSofaCornerBlue
   name: blue sofa
   suffix: corner
   components:
@@ -282,7 +282,7 @@
 
 - type: entity
   parent: SofaBase
-  id: BrownSofaMiddle
+  id: MoffSofaMiddleBrown
   name: brown sofa
   suffix: middle
   components:
@@ -296,7 +296,7 @@
 
 - type: entity
   parent: SofaBase
-  id: BrownSofaLeft
+  id: MoffSofaLeftBrown
   name: brown sofa
   suffix: left
   components:
@@ -309,7 +309,7 @@
 
 - type: entity
   parent: SofaBase
-  id: BrownSofaRight
+  id: MoffSofaRightBrown
   name: brown sofa
   suffix: right
   components:
@@ -322,7 +322,7 @@
 
 - type: entity
   parent: SofaBase
-  id: BrownSofaCorner
+  id: MoffSofaCornerBrown
   name: brown sofa
   suffix: corner
   components:
