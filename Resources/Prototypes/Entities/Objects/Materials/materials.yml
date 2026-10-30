@@ -190,6 +190,8 @@
       - ConstructionMaterial
   - type: Item
     heldPrefix: durathread
+  - type: SuitPatch # Funky
+    otherApplyDelay: 12
 
 - type: entity
   parent: MaterialDurathread
