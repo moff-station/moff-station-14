@@ -35,7 +35,7 @@
     state: left
   - type: Construction
     graph: SofasGraph
-    node: SofaLeftNode
+    node: MoffSofaLeftNode
 
 - type: entity
   parent: MoffSofaBase
@@ -47,7 +47,7 @@
     state: right
   - type: Construction
     graph: SofasGraph
-    node: SofaRightNode
+    node: MoffSofaRightNode
 
 - type: entity
   parent: MoffSofaBase
@@ -60,7 +60,7 @@
     state: corner
   - type: Construction
     graph: SofasGraph
-    node: SofaCornerNode
+    node: MoffSofaCornerNode
 
 # Colour sofas
 
@@ -76,7 +76,7 @@
     color: "#aa1c34"
   - type: Construction
     graph: SofasGraph
-    node: SofaMiddleNode
+    node: MoffSofaMiddleRedNode
 
 - type: entity
   parent: MoffSofaBase
@@ -89,7 +89,7 @@
     color: "#aa1c34"
   - type: Construction
     graph: SofasGraph
-    node: SofaLeftNode
+    node: MoffSofaLeftRedNode
 
 - type: entity
   parent: MoffSofaBase
@@ -102,7 +102,7 @@
     color: "#aa1c34"
   - type: Construction
     graph: SofasGraph
-    node: SofaRightNode
+    node: MoffSofaRightRedNode
 
 - type: entity
   parent: MoffSofaBase
@@ -116,7 +116,7 @@
     color: "#aa1c34"
   - type: Construction
     graph: SofasGraph
-    node: SofaCornerNode
+    node: MoffSofaCornerRedNode
 
 - type: entity
   parent: MoffSofaBase
@@ -130,7 +130,7 @@
     color: "#4b7e6e"
   - type: Construction
     graph: SofasGraph
-    node: SofaMiddleNode
+    node: MoffSofaMiddleGreenNode
 
 - type: entity
   parent: MoffSofaBase
@@ -143,7 +143,7 @@
     color: "#4b7e6e"
   - type: Construction
     graph: SofasGraph
-    node: SofaLeftNode
+    node: MoffSofaLeftGreenNode
 
 - type: entity
   parent: MoffSofaBase
@@ -156,7 +156,7 @@
     color: "#4b7e6e"
   - type: Construction
     graph: SofasGraph
-    node: SofaRightNode
+    node: MoffSofaRightGreenNode
 
 - type: entity
   parent: MoffSofaBase
@@ -170,7 +170,7 @@
     color: "#4b7e6e"
   - type: Construction
     graph: SofasGraph
-    node: SofaCornerNode
+    node: MoffSofaCornerGreenNode
 
 - type: entity
   parent: MoffSofaBase
@@ -184,7 +184,7 @@
     color: "#3b334e"
   - type: Construction
     graph: SofasGraph
-    node: SofaMiddleNode
+    node: MoffSofaMiddleBlackNode
 
 - type: entity
   parent: MoffSofaBase
@@ -197,7 +197,7 @@
     color: "#3b334e"
   - type: Construction
     graph: SofasGraph
-    node: SofaLeftNode
+    node: MoffSofaLeftBlackNode
 
 - type: entity
   parent: MoffSofaBase
@@ -210,7 +210,7 @@
     color: "#3b334e"
   - type: Construction
     graph: SofasGraph
-    node: SofaRightNode
+    node: MoffSofaRightBlackNode
 
 - type: entity
   parent: MoffSofaBase
@@ -224,7 +224,7 @@
     color: "#3b334e"
   - type: Construction
     graph: SofasGraph
-    node: SofaCornerNode
+    node: MoffSofaCornerBlackNode
 
 - type: entity
   parent: MoffSofaBase
@@ -238,7 +238,7 @@
     color: "#366694"
   - type: Construction
     graph: SofasGraph
-    node: SofaMiddleNode
+    node: MoffSofaMiddleBlueNode
 
 - type: entity
   parent: MoffSofaBase
@@ -251,7 +251,7 @@
     color: "#366694"
   - type: Construction
     graph: SofasGraph
-    node: SofaLeftNode
+    node: MoffSofaLeftBlueNode
 
 - type: entity
   parent: MoffSofaBase
@@ -264,7 +264,7 @@
     color: "#366694"
   - type: Construction
     graph: SofasGraph
-    node: SofaRightNode
+    node: MoffSofaRightBlueNode
 
 - type: entity
   parent: MoffSofaBase
@@ -278,7 +278,7 @@
     color: "#366694"
   - type: Construction
     graph: SofasGraph
-    node: SofaCornerNode
+    node: MoffSofaCornerBlueNode
 
 - type: entity
   parent: MoffSofaBase
@@ -292,7 +292,7 @@
     color: "#91553b"
   - type: Construction
     graph: SofasGraph
-    node: SofaMiddleNode
+    node: MoffSofaMiddleBrownNode
 
 - type: entity
   parent: MoffSofaBase
@@ -305,7 +305,7 @@
     color: "#91553b"
   - type: Construction
     graph: SofasGraph
-    node: SofaLeftNode
+    node: MoffSofaLeftBrownNode
 
 - type: entity
   parent: MoffSofaBase
@@ -318,7 +318,7 @@
     color: "#91553b"
   - type: Construction
     graph: SofasGraph
-    node: SofaRightNode
+    node: MoffSofaRightBrownNode
 
 - type: entity
   parent: MoffSofaBase
@@ -332,4 +332,4 @@
     color: "#91553b"
   - type: Construction
     graph: SofasGraph
-    node: SofaCornerNode
+    node: MoffSofaCornerBrownNode

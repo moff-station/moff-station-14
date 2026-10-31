@@ -16,7 +16,7 @@
       - material: Cloth
         amount: 2
         doAfter: 1
-    - to: MoffSofaLeft
+    - to: MoffSofaLeftNode
       completed:
       - !type:SnapToGrid { }
       steps:
@@ -26,7 +26,7 @@
       - material: Cloth
         amount: 2
         doAfter: 1
-    - to: MoffSofaRight
+    - to: MoffSofaRightNode
       completed:
       - !type:SnapToGrid { }
       steps:
@@ -36,7 +36,7 @@
       - material: Cloth
         amount: 2
         doAfter: 1
-    - to: MoffSofaCorner
+    - to: MoffSofaCornerNode
       completed:
       - !type:SnapToGrid { }
       steps:
@@ -46,7 +46,7 @@
       - material: Cloth
         amount: 2
         doAfter: 1
-    - to: MoffSofaMiddleGreen
+    - to: MoffSofaMiddleGreenNode
       completed:
       - !type:SnapToGrid { }
       steps:
@@ -56,7 +56,7 @@
       - material: Cloth
         amount: 2
         doAfter: 1
-    - to: MoffSofaLeftGreen
+    - to: MoffSofaLeftGreenNode
       completed:
       - !type:SnapToGrid { }
       steps:
@@ -66,7 +66,7 @@
       - material: Cloth
         amount: 2
         doAfter: 1
-    - to: MoffSofaRightGreen
+    - to: MoffSofaRightGreenNode
       completed:
       - !type:SnapToGrid { }
       steps:
@@ -76,7 +76,7 @@
       - material: Cloth
         amount: 2
         doAfter: 1
-    - to: MoffSofaCornerGreen
+    - to: MoffSofaCornerGreenNode
       completed:
       - !type:SnapToGrid { }
       steps:
@@ -86,7 +86,7 @@
       - material: Cloth
         amount: 2
         doAfter: 1
-    - to: MoffSofaMiddleRed
+    - to: MoffSofaMiddleRedNode
       completed:
       - !type:SnapToGrid { }
       steps:
@@ -96,7 +96,7 @@
       - material: Cloth
         amount: 2
         doAfter: 1
-    - to: MoffSofaLeftRed
+    - to: MoffSofaLeftRedNode
       completed:
       - !type:SnapToGrid { }
       steps:
@@ -106,7 +106,7 @@
       - material: Cloth
         amount: 2
         doAfter: 1
-    - to: MoffSofaRightRed
+    - to: MoffSofaRightRedNode
       completed:
       - !type:SnapToGrid { }
       steps:
@@ -116,7 +116,7 @@
       - material: Cloth
         amount: 2
         doAfter: 1
-    - to: MoffSofaCornerRed
+    - to: MoffSofaCornerRedNode
       completed:
       - !type:SnapToGrid { }
       steps:
@@ -126,7 +126,7 @@
       - material: Cloth
         amount: 2
         doAfter: 1
-    - to: MoffSofaMiddleBlack
+    - to: MoffSofaMiddleBlackNode
       completed:
       - !type:SnapToGrid { }
       steps:
@@ -136,7 +136,7 @@
       - material: Cloth
         amount: 2
         doAfter: 1
-    - to: MoffSofaLeftBlack
+    - to: MoffSofaLeftBlackNode
       completed:
       - !type:SnapToGrid { }
       steps:
@@ -146,7 +146,7 @@
       - material: Cloth
         amount: 2
         doAfter: 1
-    - to: MoffSofaRightBlack
+    - to: MoffSofaRightBlackNode
       completed:
       - !type:SnapToGrid { }
       steps:
@@ -156,7 +156,7 @@
       - material: Cloth
         amount: 2
         doAfter: 1
-    - to: MoffSofaCornerBlack
+    - to: MoffSofaCornerBlackNode
       completed:
       - !type:SnapToGrid { }
       steps:
@@ -166,7 +166,7 @@
       - material: Cloth
         amount: 2
         doAfter: 1
-    - to: MoffSofaMiddleBlue
+    - to: MoffSofaMiddleBlueNode
       completed:
       - !type:SnapToGrid { }
       steps:
@@ -176,7 +176,7 @@
       - material: Cloth
         amount: 2
         doAfter: 1
-    - to: MoffSofaLeftBlue
+    - to: MoffSofaLeftBlueNode
       completed:
       - !type:SnapToGrid { }
       steps:
@@ -186,7 +186,7 @@
       - material: Cloth
         amount: 2
         doAfter: 1
-    - to: MoffSofaRightBlue
+    - to: MoffSofaRightBlueNode
       completed:
       - !type:SnapToGrid { }
       steps:
@@ -196,7 +196,7 @@
       - material: Cloth
         amount: 2
         doAfter: 1
-    - to: MoffSofaCornerBlue
+    - to: MoffSofaCornerBlueNode
       completed:
       - !type:SnapToGrid { }
       steps:
@@ -206,7 +206,7 @@
       - material: Cloth
         amount: 2
         doAfter: 1
-    - to: MoffSofaMiddleBrown
+    - to: MoffSofaMiddleBrownNode
       completed:
       - !type:SnapToGrid { }
       steps:
@@ -216,7 +216,7 @@
       - material: Cloth
         amount: 2
         doAfter: 1
-    - to: MoffSofaLeftBrown
+    - to: MoffSofaLeftBrownNode
       completed:
       - !type:SnapToGrid { }
       steps:
@@ -226,7 +226,7 @@
       - material: Cloth
         amount: 2
         doAfter: 1
-    - to: MoffSofaRightBrown
+    - to: MoffSofaRightBrownNode
       completed:
       - !type:SnapToGrid { }
       steps:
@@ -236,7 +236,7 @@
       - material: Cloth
         amount: 2
         doAfter: 1
-    - to: MoffSofaCornerBrown
+    - to: MoffSofaCornerBrownNode
       completed:
       - !type:SnapToGrid { }
       steps:
