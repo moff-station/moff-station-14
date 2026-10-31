@@ -42,27 +42,27 @@
               amount: 2
               doAfter: 1
         # Moff - Start
-        - to: MoffChairComfyGreen
+        - to: MoffChairComfyGreenNode
           steps:
             - material: Steel
               amount: 2
               doAfter: 1
-        - to: MoffChairComfyRed
+        - to: MoffChairComfyRedNode
           steps:
             - material: Steel
               amount: 2
               doAfter: 1
-        - to: MoffChairComfyBlack
+        - to: MoffChairComfyBlackNode
           steps:
           - material: Steel
             amount: 2
             doAfter: 1
-        - to: MoffChairComfyBlue
+        - to: MoffChairComfyBlueNode
           steps:
             - material: Steel
               amount: 2
               doAfter: 1
-        - to: MoffChairComfyBrown
+        - to: MoffChairComfyBrownNode
           steps:
             - material: Steel
               amount: 2
@@ -199,7 +199,7 @@
             - tool: Screwing
               doAfter: 1
 # Moff - Start
-    - node: MoffChairComfyGreen
+    - node: MoffChairComfyGreenNode
       entity: MoffChairComfyGreen
       edges:
         - to: start
@@ -210,7 +210,7 @@
           steps:
           - tool: Screwing
             doAfter: 1
-    - node: MoffChairComfyRed
+    - node: MoffChairComfyRedNode
       entity: MoffChairComfyRed
       edges:
       - to: start
@@ -221,7 +221,7 @@
         steps:
         - tool: Screwing
           doAfter: 1
-    - node: MoffChairComfyBlack
+    - node: MoffChairComfyBlackNode
       entity: MoffChairComfyBlack
       edges:
       - to: start
@@ -232,7 +232,7 @@
         steps:
         - tool: Screwing
           doAfter: 1
-    - node: MoffChairComfyBlue
+    - node: MoffChairComfyBlueNode
       entity: MoffChairComfyBlue
       edges:
       - to: start
@@ -243,7 +243,7 @@
         steps:
         - tool: Screwing
           doAfter: 1
-    - node: MoffChairComfyBrown
+    - node: MoffChairComfyBrownNode
       entity: MoffChairComfyBrown
       edges:
       - to: start
