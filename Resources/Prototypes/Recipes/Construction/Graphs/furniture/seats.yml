@@ -42,27 +42,27 @@
               amount: 2
               doAfter: 1
         # Moff - Start
-        - to: MoffChairComfyGreenNode
+        - to: MoffChairComfyGreen
           steps:
             - material: Steel
               amount: 2
               doAfter: 1
-        - to: MoffChairComfyRedNode
+        - to: MoffChairComfyRed
           steps:
             - material: Steel
               amount: 2
               doAfter: 1
-        - to: MoffChairComfyBlackNode
+        - to: MoffChairComfyBlack
           steps:
           - material: Steel
             amount: 2
             doAfter: 1
-        - to: MoffChairComfyBlueNode
+        - to: MoffChairComfyBlue
           steps:
             - material: Steel
               amount: 2
               doAfter: 1
-        - to: MoffChairComfyBrownNode
+        - to: MoffChairComfyBrown
           steps:
             - material: Steel
               amount: 2
