@@ -32,6 +32,11 @@
       whitelist:
         components:
         - PAI
+      # Moff start - Disallow the captain's sabre
+      blacklist:
+        tags:
+        - CaptainSabre
+      # Moff end
     penSlot:
       startingItem: Pen
       priority: -1
