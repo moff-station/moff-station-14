@@ -6,7 +6,7 @@
     actions:
     - !type:DestroyEntity {}
     edges:
-    - to: MoffSofaMiddlee
+    - to: MoffSofaMiddleNode
       completed:
       - !type:SnapToGrid { }
       steps:
