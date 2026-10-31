@@ -1,0 +1,23 @@
+# Player: siannodel - Character: Aisling Breen
+- type: entity
+  parent: CelloInstrument
+  id: PersonalItemAislingCello
+  name: Mossy Cello
+  description: "An old, dark coloured cello covered in dust and moss. You get the impression someone forgot it somewhere..."
+  suffix: PersonalItem
+  components:
+  - type: Sprite
+    sprite: _Moffstation/PersonalItems/Items/siannodel/Aisling_Breen/mossycello.rsi
+    state: icon
+  - type: Item
+    sprite: _Moffstation/PersonalItems/Items/siannodel/Aisling_Breen/mossycello.rsi
+
+- type: loadout
+  id: PersonalItemAislingCello
+  storage:
+    back:
+    - PersonalItemAislingCello
+  effects:
+  - !type:PersonalItemLoadoutEffect
+    character:
+    - Aisling Breen
