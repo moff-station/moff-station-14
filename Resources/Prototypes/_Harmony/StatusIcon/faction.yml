@@ -11,17 +11,6 @@
     state: BloodBrother
 
 - type: statusIcon
-  id: BloodBrotherConvertible
-  isShaded: true
-  priority: 11
-  showTo:
-    components:
-    - InitialBloodBrother
-  icon:
-    sprite: /Textures/_Moffstation/Interface/Misc/job_icons.rsi
-    state: BloodBrotherConvertible
-
-- type: statusIcon
   id: ConspiratorFaction
   isShaded: true
   priority: 11
