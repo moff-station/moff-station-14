@@ -52,10 +52,10 @@
 #Sofa
 
 - type: construction
-  id: SofaMiddle
+  id: MoffSofaMiddle
   graph: SofasGraph
   startNode: start
-  targetNode: SofaMiddleNode
+  targetNode: MoffSofaMiddleNode
   category: construction-category-furniture
   objectType: Structure
   placementMode: SnapgridCenter
@@ -64,10 +64,10 @@
   - !type:TileNotBlocked
 
 - type: construction
-  id: SofaLeft
+  id: MoffSofaLeft
   graph: SofasGraph
   startNode: start
-  targetNode: SofaLeftNode
+  targetNode: MoffSofaLeftNode
   category: construction-category-furniture
   objectType: Structure
   placementMode: SnapgridCenter
@@ -76,10 +76,10 @@
   - !type:TileNotBlocked
 
 - type: construction
-  id: SofaRight
+  id: MoffSofaRight
   graph: SofasGraph
   startNode: start
-  targetNode: SofaRightNode
+  targetNode: MoffSofaRightNode
   category: construction-category-furniture
   objectType: Structure
   placementMode: SnapgridCenter
@@ -88,10 +88,10 @@
   - !type:TileNotBlocked
 
 - type: construction
-  id: SofaCorner
+  id: MoffSofaCorner
   graph: SofasGraph
   startNode: start
-  targetNode: SofaCornerNode
+  targetNode: MoffSofaCornerNode
   category: construction-category-furniture
   objectType: Structure
   placementMode: SnapgridCenter
@@ -100,10 +100,10 @@
   - !type:TileNotBlocked
 
 - type: construction
-  id: GreenSofaMiddle
+  id: MoffSofaMiddleGreen
   graph: SofasGraph
   startNode: start
-  targetNode: GreenSofaMiddleNode
+  targetNode: MoffSofaMiddleGreenNode
   category: construction-category-furniture
   objectType: Structure
   placementMode: SnapgridCenter
@@ -112,10 +112,10 @@
   - !type:TileNotBlocked
 
 - type: construction
-  id: GreenSofaLeft
+  id: MoffSofaLeftGreen
   graph: SofasGraph
   startNode: start
-  targetNode: GreenSofaLeftNode
+  targetNode: MoffSofaLeftGreenNode
   category: construction-category-furniture
   objectType: Structure
   placementMode: SnapgridCenter
@@ -124,10 +124,10 @@
   - !type:TileNotBlocked
 
 - type: construction
-  id: GreenSofaRight
+  id: MoffSofaRightGreen
   graph: SofasGraph
   startNode: start
-  targetNode: GreenSofaRightNode
+  targetNode: MoffSofaRightGreenNode
   category: construction-category-furniture
   objectType: Structure
   placementMode: SnapgridCenter
@@ -136,10 +136,10 @@
   - !type:TileNotBlocked
 
 - type: construction
-  id: GreenSofaCorner
+  id: MoffSofaCornerGreen
   graph: SofasGraph
   startNode: start
-  targetNode: GreenSofaCornerNode
+  targetNode: MoffSofaCornerGreenNode
   category: construction-category-furniture
   objectType: Structure
   placementMode: SnapgridCenter
@@ -148,10 +148,10 @@
   - !type:TileNotBlocked
 
 - type: construction
-  id: RedSofaMiddle
+  id: MoffSofaMiddleRed
   graph: SofasGraph
   startNode: start
-  targetNode: RedSofaMiddleNode
+  targetNode: MoffSofaMiddleRedNode
   category: construction-category-furniture
   objectType: Structure
   placementMode: SnapgridCenter
@@ -160,10 +160,10 @@
   - !type:TileNotBlocked
 
 - type: construction
-  id: RedSofaLeft
+  id: MoffSofaLeftRed
   graph: SofasGraph
   startNode: start
-  targetNode: RedSofaLeftNode
+  targetNode: MoffSofaLeftRedNode
   category: construction-category-furniture
   objectType: Structure
   placementMode: SnapgridCenter
@@ -172,10 +172,10 @@
   - !type:TileNotBlocked
 
 - type: construction
-  id: RedSofaRight
+  id: MoffSofaRightRed
   graph: SofasGraph
   startNode: start
-  targetNode: RedSofaRightNode
+  targetNode: MoffSofaRightRedNode
   category: construction-category-furniture
   objectType: Structure
   placementMode: SnapgridCenter
@@ -184,10 +184,10 @@
   - !type:TileNotBlocked
 
 - type: construction
-  id: RedSofaCorner
+  id: MoffSofaCornerRed
   graph: SofasGraph
   startNode: start
-  targetNode: RedSofaCornerNode
+  targetNode: MoffSofaCornerRedNode
   category: construction-category-furniture
   objectType: Structure
   placementMode: SnapgridCenter
@@ -196,10 +196,10 @@
   - !type:TileNotBlocked
 
 - type: construction
-  id: BlackSofaMiddle
+  id: MoffSofaMiddleBlack
   graph: SofasGraph
   startNode: start
-  targetNode: BlackSofaMiddleNode
+  targetNode: MoffSofaMiddleBlackNode
   category: construction-category-furniture
   objectType: Structure
   placementMode: SnapgridCenter
@@ -208,10 +208,10 @@
   - !type:TileNotBlocked
 
 - type: construction
-  id: BlackSofaLeft
+  id: MoffSofaLeftBlack
   graph: SofasGraph
   startNode: start
-  targetNode: BlackSofaLeftNode
+  targetNode: MoffSofaLeftBlackNode
   category: construction-category-furniture
   objectType: Structure
   placementMode: SnapgridCenter
@@ -220,10 +220,10 @@
   - !type:TileNotBlocked
 
 - type: construction
-  id: BlackSofaRight
+  id: MoffSofaRightBlack
   graph: SofasGraph
   startNode: start
-  targetNode: BlackSofaRightNode
+  targetNode: MoffSofaRightBlackNode
   category: construction-category-furniture
   objectType: Structure
   placementMode: SnapgridCenter
@@ -232,10 +232,10 @@
   - !type:TileNotBlocked
 
 - type: construction
-  id: BlackSofaCorner
+  id: MoffSofaCornerBlack
   graph: SofasGraph
   startNode: start
-  targetNode: BlackSofaCornerNode
+  targetNode: MoffSofaCornerBlackNode
   category: construction-category-furniture
   objectType: Structure
   placementMode: SnapgridCenter
@@ -244,10 +244,10 @@
   - !type:TileNotBlocked
 
 - type: construction
-  id: BlueSofaMiddle
+  id: MoffSofaMiddleBlue
   graph: SofasGraph
   startNode: start
-  targetNode: BlueSofaMiddleNode
+  targetNode: MoffSofaMiddleBlueNode
   category: construction-category-furniture
   objectType: Structure
   placementMode: SnapgridCenter
@@ -256,10 +256,10 @@
   - !type:TileNotBlocked
 
 - type: construction
-  id: BlueSofaLeft
+  id: MoffSofaLeftBlue
   graph: SofasGraph
   startNode: start
-  targetNode: BlueSofaLeftNode
+  targetNode: MoffSofaLeftBlueNode
   category: construction-category-furniture
   objectType: Structure
   placementMode: SnapgridCenter
@@ -268,10 +268,10 @@
   - !type:TileNotBlocked
 
 - type: construction
-  id: BlueSofaRight
+  id: MoffSofaRightBlue
   graph: SofasGraph
   startNode: start
-  targetNode: BlueSofaRightNode
+  targetNode: MoffSofaRightBlueNode
   category: construction-category-furniture
   objectType: Structure
   placementMode: SnapgridCenter
@@ -280,10 +280,10 @@
   - !type:TileNotBlocked
 
 - type: construction
-  id: BlueSofaCorner
+  id: MoffSofaCornerBlue
   graph: SofasGraph
   startNode: start
-  targetNode: BlueSofaCornerNode
+  targetNode: MoffSofaCornerBlueNode
   category: construction-category-furniture
   objectType: Structure
   placementMode: SnapgridCenter
@@ -292,10 +292,10 @@
   - !type:TileNotBlocked
 
 - type: construction
-  id: BrownSofaMiddle
+  id: MoffSofaMiddleBrown
   graph: SofasGraph
   startNode: start
-  targetNode: BrownSofaMiddleNode
+  targetNode: MoffSofaMiddleBrownNode
   category: construction-category-furniture
   objectType: Structure
   placementMode: SnapgridCenter
@@ -304,10 +304,10 @@
   - !type:TileNotBlocked
 
 - type: construction
-  id: BrownSofaLeft
+  id: MoffSofaLeftBrown
   graph: SofasGraph
   startNode: start
-  targetNode: BrownSofaLeftNode
+  targetNode: MoffSofaLeftBrownNode
   category: construction-category-furniture
   objectType: Structure
   placementMode: SnapgridCenter
@@ -316,10 +316,10 @@
   - !type:TileNotBlocked
 
 - type: construction
-  id: BrownSofaRight
+  id: MoffSofaRightBrown
   graph: SofasGraph
   startNode: start
-  targetNode: BrownSofaRightNode
+  targetNode: MoffSofaRightBrownNode
   category: construction-category-furniture
   objectType: Structure
   placementMode: SnapgridCenter
@@ -328,10 +328,10 @@
   - !type:TileNotBlocked
 
 - type: construction
-  id: BrownSofaCorner
+  id: MoffSofaCornerBrown
   graph: SofasGraph
   startNode: start
-  targetNode: BrownSofaCornerNode
+  targetNode: MoffSofaCornerBrownNode
   category: construction-category-furniture
   objectType: Structure
   placementMode: SnapgridCenter
@@ -340,10 +340,10 @@
   - !type:TileNotBlocked
 
 - type: construction
-  id: chairComfyGreen
+  id: MoffChairComfyGreen
   graph: Seat
   startNode: start
-  targetNode: chairComfyGreen
+  targetNode: MoffChairComfyGreen
   category: construction-category-furniture
   objectType: Structure
   placementMode: SnapgridCenter
@@ -352,10 +352,10 @@
   - !type:TileNotBlocked
 
 - type: construction
-  id: chairComfyRed
+  id: MoffChairComfyRed
   graph: Seat
   startNode: start
-  targetNode: chairComfyRed
+  targetNode: MoffChairComfyRed
   category: construction-category-furniture
   objectType: Structure
   placementMode: SnapgridCenter
@@ -364,10 +364,10 @@
   - !type:TileNotBlocked
 
 - type: construction
-  id: chairComfyBlack
+  id: MoffChairComfyBlack
   graph: Seat
   startNode: start
-  targetNode: chairComfyBlack
+  targetNode: MoffChairComfyBlack
   category: construction-category-furniture
   objectType: Structure
   placementMode: SnapgridCenter
@@ -376,10 +376,10 @@
   - !type:TileNotBlocked
 
 - type: construction
-  id: chairComfyBlue
+  id: MoffChairComfyBlue
   graph: Seat
   startNode: start
-  targetNode: chairComfyBlue
+  targetNode: MoffChairComfyBlue
   category: construction-category-furniture
   objectType: Structure
   placementMode: SnapgridCenter
@@ -388,10 +388,10 @@
   - !type:TileNotBlocked
 
 - type: construction
-  id: chairComfyBrown
+  id: MoffChairComfyBrown
   graph: Seat
   startNode: start
-  targetNode: chairComfyBrown
+  targetNode: MoffChairComfyBrown
   category: construction-category-furniture
   objectType: Structure
   placementMode: SnapgridCenter

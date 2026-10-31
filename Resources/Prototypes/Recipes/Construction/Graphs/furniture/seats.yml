@@ -199,8 +199,8 @@
             - tool: Screwing
               doAfter: 1
 # Moff - Start
-    - node: chairComfyGreen
-      entity: chairComfyGreen
+    - node: MoffChairComfyGreen
+      entity: MoffChairComfyGreen
       edges:
         - to: start
           completed:
@@ -210,8 +210,8 @@
           steps:
           - tool: Screwing
             doAfter: 1
-    - node: chairComfyRed
-      entity: chairComfyRed
+    - node: MoffChairComfyRed
+      entity: MoffChairComfyRed
       edges:
       - to: start
         completed:
@@ -221,8 +221,8 @@
         steps:
         - tool: Screwing
           doAfter: 1
-    - node: chairComfyBlack
-      entity: chairComfyBlack
+    - node: MoffChairComfyBlack
+      entity: MoffChairComfyBlack
       edges:
       - to: start
         completed:
@@ -232,8 +232,8 @@
         steps:
         - tool: Screwing
           doAfter: 1
-    - node: chairComfyBlue
-      entity: chairComfyBlue
+    - node: MoffChairComfyBlue
+      entity: MoffChairComfyBlue
       edges:
       - to: start
         completed:
@@ -243,8 +243,8 @@
         steps:
         - tool: Screwing
           doAfter: 1
-    - node: chairComfyBrown
-      entity: chairComfyBrown
+    - node: MoffChairComfyBrown
+      entity: MoffChairComfyBrown
       edges:
       - to: start
         completed:

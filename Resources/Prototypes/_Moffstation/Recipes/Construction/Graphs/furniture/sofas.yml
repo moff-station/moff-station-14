@@ -246,7 +246,7 @@
       - material: Cloth
         amount: 2
         doAfter: 1
-  - node: SofaMiddleNode
+  - node: MoffSofaMiddleeNode
     entity: MoffSofaMiddle
     edges:
     - to: start
@@ -260,7 +260,7 @@
       steps:
       - tool: Screwing
         doAfter: 1
-  - node: SofaLeftNode
+  - node: MoffSofaLeftNode
     entity: MoffSofaLeft
     edges:
     - to: start
@@ -274,7 +274,7 @@
       steps:
       - tool: Screwing
         doAfter: 1
-  - node: SofaRightNode
+  - node: MoffSofaRightNode
     entity: MoffSofaRight
     edges:
     - to: start
@@ -288,7 +288,7 @@
       steps:
       - tool: Screwing
         doAfter: 1
-  - node: SofaCornerNode
+  - node: MoffSofaCornerNode
     entity: MoffSofaCorner
     edges:
     - to: start
@@ -302,7 +302,7 @@
       steps:
       - tool: Screwing
         doAfter: 1
-  - node: GreenSofaMiddleNode
+  - node: MoffSofaMiddleGreenNode
     entity: MoffSofaMiddleGreen
     edges:
     - to: start
@@ -316,7 +316,7 @@
       steps:
       - tool: Screwing
         doAfter: 1
-  - node: GreenSofaLeftNode
+  - node: MoffSofaLeftGreenNode
     entity: MoffSofaLeftGreen
     edges:
     - to: start
@@ -330,7 +330,7 @@
       steps:
       - tool: Screwing
         doAfter: 1
-  - node: GreenSofaRightNode
+  - node: MoffSofaRightGreenNode
     entity: MoffSofaRightGreen
     edges:
     - to: start
@@ -344,7 +344,7 @@
       steps:
       - tool: Screwing
         doAfter: 1
-  - node: GreenSofaCornerNode
+  - node: MoffSofaCornerGreenNode
     entity: MoffSofaCornerGreen
     edges:
     - to: start
@@ -359,7 +359,7 @@
       - tool: Screwing
         doAfter: 1
 
-  - node: RedSofaMiddleNode
+  - node: MoffSofaMiddleRedNode
     entity: MoffSofaMiddleRed
     edges:
     - to: start
@@ -373,7 +373,7 @@
       steps:
       - tool: Screwing
         doAfter: 1
-  - node: RedSofaLeftNode
+  - node: MoffSofaLeftRedNode
     entity: MoffSofaLeftRed
     edges:
     - to: start
@@ -387,7 +387,7 @@
       steps:
       - tool: Screwing
         doAfter: 1
-  - node: RedSofaRightNode
+  - node: MoffSofaRightRedNode
     entity: MoffSofaRightRed
     edges:
     - to: start
@@ -401,7 +401,7 @@
       steps:
       - tool: Screwing
         doAfter: 1
-  - node: RedSofaCornerNode
+  - node: MoffSofaCornerRedNode
     entity: MoffSofaCornerRed
     edges:
     - to: start
@@ -415,7 +415,7 @@
       steps:
       - tool: Screwing
         doAfter: 1
-  - node: BlackSofaMiddleNode
+  - node: MoffSofaMiddleBlackNode
     entity: MoffSofaMiddleBlack
     edges:
     - to: start
@@ -429,7 +429,7 @@
       steps:
       - tool: Screwing
         doAfter: 1
-  - node: BlackSofaLeftNode
+  - node: MoffSofaLeftBlackNode
     entity: MoffSofaLeftBlack
     edges:
     - to: start
@@ -443,7 +443,7 @@
       steps:
       - tool: Screwing
         doAfter: 1
-  - node: BlackSofaRightNode
+  - node: MoffSofaRightBlackNode
     entity: MoffSofaRightBlack
     edges:
     - to: start
@@ -457,7 +457,7 @@
       steps:
       - tool: Screwing
         doAfter: 1
-  - node: BlackSofaCornerNode
+  - node: MoffSofaCornerBlackNode
     entity: MoffSofaCornerBlack
     edges:
     - to: start
@@ -471,7 +471,7 @@
       steps:
       - tool: Screwing
         doAfter: 1
-  - node: BlueSofaMiddleNode
+  - node: MoffSofaMiddleBlueNode
     entity: MoffSofaMiddleBlue
     edges:
     - to: start
@@ -485,7 +485,7 @@
       steps:
       - tool: Screwing
         doAfter: 1
-  - node: BlueSofaLeftNode
+  - node: MoffSofaLeftBlueNode
     entity: MoffSofaLeftBlue
     edges:
     - to: start
@@ -499,7 +499,7 @@
       steps:
       - tool: Screwing
         doAfter: 1
-  - node: BlueSofaRightNode
+  - node: MoffSofaRightBlueNode
     entity: MoffSofaRightBlue
     edges:
     - to: start
@@ -513,7 +513,7 @@
       steps:
       - tool: Screwing
         doAfter: 1
-  - node: BlueSofaCornerNode
+  - node: MoffSofaCornerBlueNode
     entity: MoffSofaCornerBlue
     edges:
     - to: start
@@ -527,7 +527,7 @@
       steps:
       - tool: Screwing
         doAfter: 1
-  - node: BrownSofaMiddleNode
+  - node: MoffSofaMiddleBrownNode
     entity: MoffSofaMiddleBrown
     edges:
     - to: start
@@ -541,7 +541,7 @@
       steps:
       - tool: Screwing
         doAfter: 1
-  - node: BrownSofaLeftNode
+  - node: MoffSofaLeftBrownNode
     entity: MoffSofaLeftBrown
     edges:
     - to: start
@@ -555,7 +555,7 @@
       steps:
       - tool: Screwing
         doAfter: 1
-  - node: BrownSofaRightNode
+  - node: MoffSofaRightBrownNode
     entity: MoffSofaRightBrown
     edges:
     - to: start
@@ -569,7 +569,7 @@
       steps:
       - tool: Screwing
         doAfter: 1
-  - node: BrownSofaCornerNode
+  - node: MoffSofaCornerBrownNode
     entity: MoffSofaCornerBrown
     edges:
     - to: start
