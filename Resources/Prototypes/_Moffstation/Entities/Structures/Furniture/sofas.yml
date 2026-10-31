@@ -1,0 +1,335 @@
+- type: entity
+  abstract: true
+  parent: [ ChairBase, StructureHealthFurniture ]
+  id: MoffSofaBase
+  name: sofa
+  description: Multiple seats spanning a single object. Truly a marvel of science.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Structures/Furniture/Sofas/sofa.rsi
+  - type: Damageable
+    damageModifierSet: SteelMod
+
+# White
+
+- type: entity
+  parent: MoffSofaBase
+  id: MoffSofaMiddle
+  name: sofa
+  suffix: middle
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Structures/Furniture/Sofas/sofa.rsi
+    state: middle
+  - type: Construction
+    graph: SofasGraph
+    node: SofaMiddleNode
+
+- type: entity
+  parent: MoffSofaBase
+  id: MoffSofaLeft
+  name: sofa
+  suffix: left
+  components:
+  - type: Sprite
+    state: left
+  - type: Construction
+    graph: SofasGraph
+    node: SofaLeftNode
+
+- type: entity
+  parent: MoffSofaBase
+  id: MoffSofaRight
+  name: sofa
+  suffix: right
+  components:
+  - type: Sprite
+    state: right
+  - type: Construction
+    graph: SofasGraph
+    node: SofaRightNode
+
+- type: entity
+  parent: MoffSofaBase
+  id: MoffSofaCorner
+  name: sofa
+  suffix: corner
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Structures/Furniture/Sofas/sofa.rsi
+    state: corner
+  - type: Construction
+    graph: SofasGraph
+    node: SofaCornerNode
+
+# Colour sofas
+
+- type: entity
+  parent: MoffSofaBase
+  id: MoffSofaMiddleRed
+  name: red sofa
+  suffix: middle
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Structures/Furniture/Sofas/sofa.rsi
+    state: middle
+    color: "#aa1c34"
+  - type: Construction
+    graph: SofasGraph
+    node: SofaMiddleNode
+
+- type: entity
+  parent: MoffSofaBase
+  id: MoffSofaLeftRed
+  name: red sofa
+  suffix: left
+  components:
+  - type: Sprite
+    state: left
+    color: "#aa1c34"
+  - type: Construction
+    graph: SofasGraph
+    node: SofaLeftNode
+
+- type: entity
+  parent: MoffSofaBase
+  id: MoffSofaRightRed
+  name: red sofa
+  suffix: right
+  components:
+  - type: Sprite
+    state: right
+    color: "#aa1c34"
+  - type: Construction
+    graph: SofasGraph
+    node: SofaRightNode
+
+- type: entity
+  parent: MoffSofaBase
+  id: MoffSofaCornerRed
+  name: red sofa
+  suffix: corner
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Structures/Furniture/Sofas/sofa.rsi
+    state: corner
+    color: "#aa1c34"
+  - type: Construction
+    graph: SofasGraph
+    node: SofaCornerNode
+
+- type: entity
+  parent: MoffSofaBase
+  id: MoffSofaMiddleGreen
+  name: green sofa
+  suffix: middle
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Structures/Furniture/Sofas/sofa.rsi
+    state: middle
+    color: "#4b7e6e"
+  - type: Construction
+    graph: SofasGraph
+    node: SofaMiddleNode
+
+- type: entity
+  parent: MoffSofaBase
+  id: MoffSofaLeftGreen
+  name: green sofa
+  suffix: left
+  components:
+  - type: Sprite
+    state: left
+    color: "#4b7e6e"
+  - type: Construction
+    graph: SofasGraph
+    node: SofaLeftNode
+
+- type: entity
+  parent: MoffSofaBase
+  id: MoffSofaRightGreen
+  name: green sofa
+  suffix: right
+  components:
+  - type: Sprite
+    state: right
+    color: "#4b7e6e"
+  - type: Construction
+    graph: SofasGraph
+    node: SofaRightNode
+
+- type: entity
+  parent: MoffSofaBase
+  id: MoffSofaCornerGreen
+  name: green sofa
+  suffix: corner
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Structures/Furniture/Sofas/sofa.rsi
+    state: corner
+    color: "#4b7e6e"
+  - type: Construction
+    graph: SofasGraph
+    node: SofaCornerNode
+
+- type: entity
+  parent: MoffSofaBase
+  id: MoffSofaMiddleBlack
+  name: black sofa
+  suffix: middle
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Structures/Furniture/Sofas/sofa.rsi
+    state: middle
+    color: "#3b334e"
+  - type: Construction
+    graph: SofasGraph
+    node: SofaMiddleNode
+
+- type: entity
+  parent: MoffSofaBase
+  id: MoffSofaLeftBlack
+  name: black sofa
+  suffix: left
+  components:
+  - type: Sprite
+    state: left
+    color: "#3b334e"
+  - type: Construction
+    graph: SofasGraph
+    node: SofaLeftNode
+
+- type: entity
+  parent: MoffSofaBase
+  id: MoffSofaRightBlack
+  name: black sofa
+  suffix: right
+  components:
+  - type: Sprite
+    state: right
+    color: "#3b334e"
+  - type: Construction
+    graph: SofasGraph
+    node: SofaRightNode
+
+- type: entity
+  parent: MoffSofaBase
+  id: MoffSofaCornerBlack
+  name: black sofa
+  suffix: corner
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Structures/Furniture/Sofas/sofa.rsi
+    state: corner
+    color: "#3b334e"
+  - type: Construction
+    graph: SofasGraph
+    node: SofaCornerNode
+
+- type: entity
+  parent: MoffSofaBase
+  id: MoffSofaMiddleBlue
+  name: blue sofa
+  suffix: middle
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Structures/Furniture/Sofas/sofa.rsi
+    state: middle
+    color: "#366694"
+  - type: Construction
+    graph: SofasGraph
+    node: SofaMiddleNode
+
+- type: entity
+  parent: MoffSofaBase
+  id: MoffSofaLeftBlue
+  name: blue sofa
+  suffix: left
+  components:
+  - type: Sprite
+    state: left
+    color: "#366694"
+  - type: Construction
+    graph: SofasGraph
+    node: SofaLeftNode
+
+- type: entity
+  parent: MoffSofaBase
+  id: MoffSofaRightBlue
+  name: blue sofa
+  suffix: right
+  components:
+  - type: Sprite
+    state: right
+    color: "#366694"
+  - type: Construction
+    graph: SofasGraph
+    node: SofaRightNode
+
+- type: entity
+  parent: MoffSofaBase
+  id: MoffSofaCornerBlue
+  name: blue sofa
+  suffix: corner
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Structures/Furniture/Sofas/sofa.rsi
+    state: corner
+    color: "#366694"
+  - type: Construction
+    graph: SofasGraph
+    node: SofaCornerNode
+
+- type: entity
+  parent: MoffSofaBase
+  id: MoffSofaMiddleBrown
+  name: brown sofa
+  suffix: middle
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Structures/Furniture/Sofas/sofa.rsi
+    state: middle
+    color: "#91553b"
+  - type: Construction
+    graph: SofasGraph
+    node: SofaMiddleNode
+
+- type: entity
+  parent: MoffSofaBase
+  id: MoffSofaLeftBrown
+  name: brown sofa
+  suffix: left
+  components:
+  - type: Sprite
+    state: left
+    color: "#91553b"
+  - type: Construction
+    graph: SofasGraph
+    node: SofaLeftNode
+
+- type: entity
+  parent: MoffSofaBase
+  id: MoffSofaRightBrown
+  name: brown sofa
+  suffix: right
+  components:
+  - type: Sprite
+    state: right
+    color: "#91553b"
+  - type: Construction
+    graph: SofasGraph
+    node: SofaRightNode
+
+- type: entity
+  parent: MoffSofaBase
+  id: MoffSofaCornerBrown
+  name: brown sofa
+  suffix: corner
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Structures/Furniture/Sofas/sofa.rsi
+    state: corner
+    color: "#91553b"
+  - type: Construction
+    graph: SofasGraph
+    node: SofaCornerNode
