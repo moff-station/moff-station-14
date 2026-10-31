@@ -1,6 +1,5 @@
 ﻿using Content.Shared._Funkystation.Fluids;
 using Content.Shared._Funkystation.Stains.Components;
-using Content.Shared._Moffstation.Extensions;
 using Content.Shared._Moffstation.Stains;
 using Content.Shared.Chemistry.Components;
 using Content.Shared.Chemistry.EntitySystems;
@@ -25,7 +24,7 @@ namespace Content.Shared._Funkystation.Stains.Systems;
 [Serializable, NetSerializable]
 public enum StainVisuals : byte
 {
-    Color
+    Toggle
 }
 
 public abstract partial class SharedStainSystem : EntitySystem
@@ -139,22 +138,25 @@ public abstract partial class SharedStainSystem : EntitySystem
 
     public void UpdateVisuals(Entity<StainableComponent> ent)
     {
-        Color? color = _solution.TryGetSolution(ent.Owner, ent.Comp.SolutionName, out _, out var sol) && sol.Volume > 0
-            ? sol.GetColor(_prototype)
-            : null;
-        _appearance.SetOrRemoveData(ent.Owner, StainVisuals.Color, color);
-
         _item.VisualsChanged(ent.Owner);
 
-        if (!_container.TryGetContainingContainer(ent.Owner, out var container))
-            return;
+        if (TryComp<AppearanceComponent>(ent.Owner, out var app))
+        {
+            var toggled = true;
+            if (_appearance.TryGetData(ent.Owner, StainVisuals.Toggle, out bool current, app))
+                toggled = !current;
 
-        if (!TryComp<AppearanceComponent>(container.Owner, out var wearerApp))
-            return;
+            _appearance.SetData(ent.Owner, StainVisuals.Toggle, toggled, app);
+        }
+        if (_container.TryGetContainingContainer(ent.Owner, out var container))
+        {
+            if (TryComp<AppearanceComponent>(container.Owner, out var wearerApp))
+            {
+                _appearance.QueueUpdate(container.Owner, wearerApp);
 
-        _appearance.QueueUpdate(container.Owner, wearerApp);
-
-        Dirty(container.Owner, wearerApp);
+                Dirty(container.Owner, wearerApp);
+            }
+        }
     }
 
     [SubscribeLocalEvent]

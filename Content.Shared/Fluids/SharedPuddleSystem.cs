@@ -114,6 +114,9 @@ public abstract partial class SharedPuddleSystem : EntitySystem
     [SubscribeLocalEvent]
     private void OnStepInPuddle(Entity<PuddleComponent> ent, ref StartCollideEvent args)
     {
+        if (_timing.ApplyingState)
+            return;
+
         // If it dont stain it dont stain
         if (!ent.Comp.CausesStains)
             return;

@@ -2,16 +2,20 @@
 using Content.Client.Items.Systems;
 using Content.Shared._Funkystation.Stains.Components;
 using Content.Shared._Funkystation.Stains.Systems;
+using Content.Shared.Chemistry.EntitySystems;
 using Content.Shared.Clothing;
 using Content.Shared.Clothing.Components;
+using Content.Shared.FixedPoint;
 using Content.Shared.Hands;
 using Robust.Client.GameObjects;
+using Robust.Shared.Prototypes;
 
 namespace Content.Client._Funkystation.Stains;
 
 public sealed partial class StainSystem : SharedStainSystem
 {
-    [Dependency] private SharedAppearanceSystem _appearance = default!;
+    [Dependency] private IPrototypeManager _prototypeManager = null!;
+    [Dependency] private SharedSolutionContainerSystem _solution = null!;
     [Dependency] private SpriteSystem _sprite = null!;
 
     [SubscribeLocalEvent]
@@ -57,9 +61,10 @@ public sealed partial class StainSystem : SharedStainSystem
 
     private IEnumerable<(string, PrototypeLayerData)> BuildVisuals(Entity<StainableComponent> ent, List<PrototypeLayerData> templates, string prefix)
     {
-        if (!_appearance.TryGetData<Color>(ent.Owner, StainVisuals.Color, out var color))
+        if (!_solution.TryGetSolution(ent.Owner, ent.Comp.SolutionName, out _, out var sol) || sol.Volume <= FixedPoint2.Zero)
             yield break;
 
+        var color = sol.GetColor(_prototypeManager);
         for (var i = 0; i < templates.Count; i++)
         {
             var layer = templates[i];
