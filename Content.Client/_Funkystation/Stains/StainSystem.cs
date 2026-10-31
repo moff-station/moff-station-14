@@ -2,30 +2,19 @@
 using Content.Client.Items.Systems;
 using Content.Shared._Funkystation.Stains.Components;
 using Content.Shared._Funkystation.Stains.Systems;
-using Content.Shared.Chemistry.EntitySystems;
 using Content.Shared.Clothing;
 using Content.Shared.Clothing.Components;
-using Content.Shared.FixedPoint;
 using Content.Shared.Hands;
 using Robust.Client.GameObjects;
-using Robust.Shared.Prototypes;
 
 namespace Content.Client._Funkystation.Stains;
 
 public sealed partial class StainSystem : SharedStainSystem
 {
-    [Dependency] private IPrototypeManager _prototypeManager = null!;
-    [Dependency] private SharedSolutionContainerSystem _solution = null!;
+    [Dependency] private SharedAppearanceSystem _appearance = default!;
     [Dependency] private SpriteSystem _sprite = null!;
 
-    public override void Initialize()
-    {
-        base.Initialize();
-        SubscribeLocalEvent<StainableComponent, AppearanceChangeEvent>(OnAppearanceChanged);
-        SubscribeLocalEvent<StainableComponent, GetEquipmentVisualsEvent>(OnEquipmentVisuals, after: [typeof(ClientClothingSystem)]);
-        SubscribeLocalEvent<StainableComponent, GetInhandVisualsEvent>(OnInhandVisuals, after: [typeof(ItemSystem)]);
-    }
-
+    [SubscribeLocalEvent]
     private void OnAppearanceChanged(Entity<StainableComponent> ent, ref AppearanceChangeEvent args)
     {
         if (args.Sprite == null)
@@ -52,12 +41,14 @@ public sealed partial class StainSystem : SharedStainSystem
         }
     }
 
+    [SubscribeLocalEvent(after: [typeof(ClientClothingSystem)])]
     private void OnEquipmentVisuals(Entity<StainableComponent> ent, ref GetEquipmentVisualsEvent args)
     {
         if (ent.Comp.ClothingVisuals.TryGetValue(args.Slot, out var layers))
             args.Layers.AddRange(BuildVisuals(ent, layers, args.Slot));
     }
 
+    [SubscribeLocalEvent(after: [typeof(ItemSystem)])]
     private void OnInhandVisuals(Entity<StainableComponent> ent, ref GetInhandVisualsEvent args)
     {
         if (ent.Comp.ItemVisuals.TryGetValue(args.Location.ToString(), out var layers))
@@ -66,10 +57,9 @@ public sealed partial class StainSystem : SharedStainSystem
 
     private IEnumerable<(string, PrototypeLayerData)> BuildVisuals(Entity<StainableComponent> ent, List<PrototypeLayerData> templates, string prefix)
     {
-        if (!_solution.TryGetSolution(ent.Owner, ent.Comp.SolutionName, out _, out var sol) || sol.Volume <= FixedPoint2.Zero)
+        if (!_appearance.TryGetData<Color>(ent.Owner, StainVisuals.Color, out var color))
             yield break;
 
-        var color = sol.GetColor(_prototypeManager);
         for (var i = 0; i < templates.Count; i++)
         {
             var layer = templates[i];
