@@ -2,6 +2,7 @@
 - type: itemSize
   id: Tiny
   weight: 1
+  stowDelay: 0.2 # Moff - Stow delay
   name: item-component-size-Tiny
   defaultShape:
   - 0,0,0,0
@@ -10,6 +11,7 @@
 - type: itemSize
   id: Small
   weight: 2
+  stowDelay: 0.4 # Moff - Stow delay
   name: item-component-size-Small
   defaultShape:
   - 0,0,0,1
@@ -18,6 +20,7 @@
 - type: itemSize
   id: Normal
   weight: 4
+  stowDelay: 0.6 # Moff - Stow delay
   name: item-component-size-Normal
   defaultShape:
   - 0,0,1,1
@@ -26,6 +29,7 @@
 - type: itemSize
   id: Large
   weight: 8
+  stowDelay: 1.0 # Moff - Stow delay
   name: item-component-size-Large
   defaultShape:
   - 0,0,3,1
@@ -34,6 +38,7 @@
 - type: itemSize
   id: Huge
   weight: 16
+  stowDelay: 2.0 # Moff - Stow delay
   name: item-component-size-Huge
   defaultShape:
   - 0,0,3,3
@@ -42,6 +47,7 @@
 - type: itemSize
   id: Ginormous
   weight: 32
+  stowDelay: 3.0 # Moff - Stow delay
   name: item-component-size-Ginormous
   defaultShape:
   - 0,0,5,5
@@ -50,6 +56,7 @@
 - type: itemSize
   id: Colossal
   weight: 64
+  stowDelay: 4.0 # Moff - Stow delay
   name: item-component-size-Colossal
   defaultShape:
   - 0,0,6,5

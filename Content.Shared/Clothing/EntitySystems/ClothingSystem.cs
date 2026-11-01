@@ -1,3 +1,4 @@
+using Content.Shared._Moffstation.StowDelay;
 using Content.Shared.Clothing.Components;
 using Content.Shared.Hands.Components;
 using Content.Shared.Hands.EntitySystems;
@@ -14,6 +15,7 @@ public abstract partial class ClothingSystem : EntitySystem
     [Dependency] private SharedItemSystem _itemSys = default!;
     [Dependency] private InventorySystem _invSystem = default!;
     [Dependency] private SharedHandsSystem _handsSystem = default!;
+    [Dependency] private StowDelaySystem _stowDelay = default!; // Moff - Stow delay
 
     [Dependency] protected EntityQuery<ClothingComponent> ClothingQuery;
     [Dependency] private EntityQuery<HandsComponent> _handsQuery;
@@ -51,6 +53,11 @@ public abstract partial class ClothingSystem : EntitySystem
                 if (ClothingQuery.TryComp(slotEntity, out ClothingComponent? item) && !item.QuickEquip)
                     continue;
 
+                // Moff Start - Stow delay
+                if (_stowDelay.TryStartEquipDelay(userEnt, userEnt, toEquipEnt, slotDef.Name))
+                    break;
+                // Moff end
+
                 if (!_invSystem.TryUnequip(userEnt, slotDef.Name, true, inventory: userEnt, checkDoafter: true))
                     continue;
 
@@ -61,6 +68,11 @@ public abstract partial class ClothingSystem : EntitySystem
             }
             else
             {
+                // Moff Start - Stow delay
+                if (_stowDelay.TryStartEquipDelay(userEnt, userEnt, toEquipEnt, slotDef.Name))
+                    break;
+                // Moff end
+
                 if (!_invSystem.TryEquip(userEnt, toEquipEnt, slotDef.Name, inventory: userEnt, clothing: toEquipEnt, checkDoafter: true, triggerHandContact: true))
                     continue;
             }
