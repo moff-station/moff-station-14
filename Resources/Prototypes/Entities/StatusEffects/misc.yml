@@ -180,7 +180,7 @@
       components:
       - MobState
       - Blindable
-      requireAll: true
+      requireAll: false # Moff - Borgs can get flashed again
   - type: FlashedStatusEffect
 
 # Forces fake items into the hands/slots of the target
