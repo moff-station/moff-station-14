@@ -1,0 +1,585 @@
+- type: constructionGraph
+  id: SofasGraph
+  start: start
+  graph:
+  - node: start
+    actions:
+    - !type:DestroyEntity {}
+    edges:
+    - to: MoffSofaMiddleNode
+      completed:
+      - !type:SnapToGrid { }
+      steps:
+      - material: Steel
+        amount: 2
+        doAfter: 1
+      - material: Cloth
+        amount: 2
+        doAfter: 1
+    - to: MoffSofaLeftNode
+      completed:
+      - !type:SnapToGrid { }
+      steps:
+      - material: Steel
+        amount: 2
+        doAfter: 1
+      - material: Cloth
+        amount: 2
+        doAfter: 1
+    - to: MoffSofaRightNode
+      completed:
+      - !type:SnapToGrid { }
+      steps:
+      - material: Steel
+        amount: 2
+        doAfter: 1
+      - material: Cloth
+        amount: 2
+        doAfter: 1
+    - to: MoffSofaCornerNode
+      completed:
+      - !type:SnapToGrid { }
+      steps:
+      - material: Steel
+        amount: 2
+        doAfter: 1
+      - material: Cloth
+        amount: 2
+        doAfter: 1
+    - to: MoffSofaMiddleGreenNode
+      completed:
+      - !type:SnapToGrid { }
+      steps:
+      - material: Steel
+        amount: 2
+        doAfter: 1
+      - material: Cloth
+        amount: 2
+        doAfter: 1
+    - to: MoffSofaLeftGreenNode
+      completed:
+      - !type:SnapToGrid { }
+      steps:
+      - material: Steel
+        amount: 2
+        doAfter: 1
+      - material: Cloth
+        amount: 2
+        doAfter: 1
+    - to: MoffSofaRightGreenNode
+      completed:
+      - !type:SnapToGrid { }
+      steps:
+      - material: Steel
+        amount: 2
+        doAfter: 1
+      - material: Cloth
+        amount: 2
+        doAfter: 1
+    - to: MoffSofaCornerGreenNode
+      completed:
+      - !type:SnapToGrid { }
+      steps:
+      - material: Steel
+        amount: 2
+        doAfter: 1
+      - material: Cloth
+        amount: 2
+        doAfter: 1
+    - to: MoffSofaMiddleRedNode
+      completed:
+      - !type:SnapToGrid { }
+      steps:
+      - material: Steel
+        amount: 2
+        doAfter: 1
+      - material: Cloth
+        amount: 2
+        doAfter: 1
+    - to: MoffSofaLeftRedNode
+      completed:
+      - !type:SnapToGrid { }
+      steps:
+      - material: Steel
+        amount: 2
+        doAfter: 1
+      - material: Cloth
+        amount: 2
+        doAfter: 1
+    - to: MoffSofaRightRedNode
+      completed:
+      - !type:SnapToGrid { }
+      steps:
+      - material: Steel
+        amount: 2
+        doAfter: 1
+      - material: Cloth
+        amount: 2
+        doAfter: 1
+    - to: MoffSofaCornerRedNode
+      completed:
+      - !type:SnapToGrid { }
+      steps:
+      - material: Steel
+        amount: 2
+        doAfter: 1
+      - material: Cloth
+        amount: 2
+        doAfter: 1
+    - to: MoffSofaMiddleBlackNode
+      completed:
+      - !type:SnapToGrid { }
+      steps:
+      - material: Steel
+        amount: 2
+        doAfter: 1
+      - material: Cloth
+        amount: 2
+        doAfter: 1
+    - to: MoffSofaLeftBlackNode
+      completed:
+      - !type:SnapToGrid { }
+      steps:
+      - material: Steel
+        amount: 2
+        doAfter: 1
+      - material: Cloth
+        amount: 2
+        doAfter: 1
+    - to: MoffSofaRightBlackNode
+      completed:
+      - !type:SnapToGrid { }
+      steps:
+      - material: Steel
+        amount: 2
+        doAfter: 1
+      - material: Cloth
+        amount: 2
+        doAfter: 1
+    - to: MoffSofaCornerBlackNode
+      completed:
+      - !type:SnapToGrid { }
+      steps:
+      - material: Steel
+        amount: 2
+        doAfter: 1
+      - material: Cloth
+        amount: 2
+        doAfter: 1
+    - to: MoffSofaMiddleBlueNode
+      completed:
+      - !type:SnapToGrid { }
+      steps:
+      - material: Steel
+        amount: 2
+        doAfter: 1
+      - material: Cloth
+        amount: 2
+        doAfter: 1
+    - to: MoffSofaLeftBlueNode
+      completed:
+      - !type:SnapToGrid { }
+      steps:
+      - material: Steel
+        amount: 2
+        doAfter: 1
+      - material: Cloth
+        amount: 2
+        doAfter: 1
+    - to: MoffSofaRightBlueNode
+      completed:
+      - !type:SnapToGrid { }
+      steps:
+      - material: Steel
+        amount: 2
+        doAfter: 1
+      - material: Cloth
+        amount: 2
+        doAfter: 1
+    - to: MoffSofaCornerBlueNode
+      completed:
+      - !type:SnapToGrid { }
+      steps:
+      - material: Steel
+        amount: 2
+        doAfter: 1
+      - material: Cloth
+        amount: 2
+        doAfter: 1
+    - to: MoffSofaMiddleBrownNode
+      completed:
+      - !type:SnapToGrid { }
+      steps:
+      - material: Steel
+        amount: 2
+        doAfter: 1
+      - material: Cloth
+        amount: 2
+        doAfter: 1
+    - to: MoffSofaLeftBrownNode
+      completed:
+      - !type:SnapToGrid { }
+      steps:
+      - material: Steel
+        amount: 2
+        doAfter: 1
+      - material: Cloth
+        amount: 2
+        doAfter: 1
+    - to: MoffSofaRightBrownNode
+      completed:
+      - !type:SnapToGrid { }
+      steps:
+      - material: Steel
+        amount: 2
+        doAfter: 1
+      - material: Cloth
+        amount: 2
+        doAfter: 1
+    - to: MoffSofaCornerBrownNode
+      completed:
+      - !type:SnapToGrid { }
+      steps:
+      - material: Steel
+        amount: 2
+        doAfter: 1
+      - material: Cloth
+        amount: 2
+        doAfter: 1
+  - node: MoffSofaMiddleNode
+    entity: MoffSofaMiddle
+    edges:
+    - to: start
+      completed:
+      - !type:SpawnPrototype
+        prototype: SheetSteel1
+        amount: 2
+      - !type:SpawnPrototype
+        prototype: MaterialCloth1
+        amount: 2
+      steps:
+      - tool: Screwing
+        doAfter: 1
+  - node: MoffSofaLeftNode
+    entity: MoffSofaLeft
+    edges:
+    - to: start
+      completed:
+      - !type:SpawnPrototype
+        prototype: SheetSteel1
+        amount: 2
+      - !type:SpawnPrototype
+        prototype: MaterialCloth1
+        amount: 2
+      steps:
+      - tool: Screwing
+        doAfter: 1
+  - node: MoffSofaRightNode
+    entity: MoffSofaRight
+    edges:
+    - to: start
+      completed:
+      - !type:SpawnPrototype
+        prototype: SheetSteel1
+        amount: 2
+      - !type:SpawnPrototype
+        prototype: MaterialCloth1
+        amount: 2
+      steps:
+      - tool: Screwing
+        doAfter: 1
+  - node: MoffSofaCornerNode
+    entity: MoffSofaCorner
+    edges:
+    - to: start
+      completed:
+      - !type:SpawnPrototype
+        prototype: SheetSteel1
+        amount: 2
+      - !type:SpawnPrototype
+        prototype: MaterialCloth1
+        amount: 2
+      steps:
+      - tool: Screwing
+        doAfter: 1
+  - node: MoffSofaMiddleGreenNode
+    entity: MoffSofaMiddleGreen
+    edges:
+    - to: start
+      completed:
+      - !type:SpawnPrototype
+        prototype: SheetSteel1
+        amount: 2
+      - !type:SpawnPrototype
+        prototype: MaterialCloth1
+        amount: 2
+      steps:
+      - tool: Screwing
+        doAfter: 1
+  - node: MoffSofaLeftGreenNode
+    entity: MoffSofaLeftGreen
+    edges:
+    - to: start
+      completed:
+      - !type:SpawnPrototype
+        prototype: SheetSteel1
+        amount: 2
+      - !type:SpawnPrototype
+        prototype: MaterialCloth1
+        amount: 2
+      steps:
+      - tool: Screwing
+        doAfter: 1
+  - node: MoffSofaRightGreenNode
+    entity: MoffSofaRightGreen
+    edges:
+    - to: start
+      completed:
+      - !type:SpawnPrototype
+        prototype: SheetSteel1
+        amount: 2
+      - !type:SpawnPrototype
+        prototype: MaterialCloth1
+        amount: 2
+      steps:
+      - tool: Screwing
+        doAfter: 1
+  - node: MoffSofaCornerGreenNode
+    entity: MoffSofaCornerGreen
+    edges:
+    - to: start
+      completed:
+      - !type:SpawnPrototype
+        prototype: SheetSteel1
+        amount: 2
+      - !type:SpawnPrototype
+        prototype: MaterialCloth1
+        amount: 2
+      steps:
+      - tool: Screwing
+        doAfter: 1
+
+  - node: MoffSofaMiddleRedNode
+    entity: MoffSofaMiddleRed
+    edges:
+    - to: start
+      completed:
+      - !type:SpawnPrototype
+        prototype: SheetSteel1
+        amount: 2
+      - !type:SpawnPrototype
+        prototype: MaterialCloth1
+        amount: 2
+      steps:
+      - tool: Screwing
+        doAfter: 1
+  - node: MoffSofaLeftRedNode
+    entity: MoffSofaLeftRed
+    edges:
+    - to: start
+      completed:
+      - !type:SpawnPrototype
+        prototype: SheetSteel1
+        amount: 2
+      - !type:SpawnPrototype
+        prototype: MaterialCloth1
+        amount: 2
+      steps:
+      - tool: Screwing
+        doAfter: 1
+  - node: MoffSofaRightRedNode
+    entity: MoffSofaRightRed
+    edges:
+    - to: start
+      completed:
+      - !type:SpawnPrototype
+        prototype: SheetSteel1
+        amount: 2
+      - !type:SpawnPrototype
+        prototype: MaterialCloth1
+        amount: 2
+      steps:
+      - tool: Screwing
+        doAfter: 1
+  - node: MoffSofaCornerRedNode
+    entity: MoffSofaCornerRed
+    edges:
+    - to: start
+      completed:
+      - !type:SpawnPrototype
+        prototype: SheetSteel1
+        amount: 2
+      - !type:SpawnPrototype
+        prototype: MaterialCloth1
+        amount: 2
+      steps:
+      - tool: Screwing
+        doAfter: 1
+  - node: MoffSofaMiddleBlackNode
+    entity: MoffSofaMiddleBlack
+    edges:
+    - to: start
+      completed:
+      - !type:SpawnPrototype
+        prototype: SheetSteel1
+        amount: 2
+      - !type:SpawnPrototype
+        prototype: MaterialCloth1
+        amount: 2
+      steps:
+      - tool: Screwing
+        doAfter: 1
+  - node: MoffSofaLeftBlackNode
+    entity: MoffSofaLeftBlack
+    edges:
+    - to: start
+      completed:
+      - !type:SpawnPrototype
+        prototype: SheetSteel1
+        amount: 2
+      - !type:SpawnPrototype
+        prototype: MaterialCloth1
+        amount: 2
+      steps:
+      - tool: Screwing
+        doAfter: 1
+  - node: MoffSofaRightBlackNode
+    entity: MoffSofaRightBlack
+    edges:
+    - to: start
+      completed:
+      - !type:SpawnPrototype
+        prototype: SheetSteel1
+        amount: 2
+      - !type:SpawnPrototype
+        prototype: MaterialCloth1
+        amount: 2
+      steps:
+      - tool: Screwing
+        doAfter: 1
+  - node: MoffSofaCornerBlackNode
+    entity: MoffSofaCornerBlack
+    edges:
+    - to: start
+      completed:
+      - !type:SpawnPrototype
+        prototype: SheetSteel1
+        amount: 2
+      - !type:SpawnPrototype
+        prototype: MaterialCloth1
+        amount: 2
+      steps:
+      - tool: Screwing
+        doAfter: 1
+  - node: MoffSofaMiddleBlueNode
+    entity: MoffSofaMiddleBlue
+    edges:
+    - to: start
+      completed:
+      - !type:SpawnPrototype
+        prototype: SheetSteel1
+        amount: 2
+      - !type:SpawnPrototype
+        prototype: MaterialCloth1
+        amount: 2
+      steps:
+      - tool: Screwing
+        doAfter: 1
+  - node: MoffSofaLeftBlueNode
+    entity: MoffSofaLeftBlue
+    edges:
+    - to: start
+      completed:
+      - !type:SpawnPrototype
+        prototype: SheetSteel1
+        amount: 2
+      - !type:SpawnPrototype
+        prototype: MaterialCloth1
+        amount: 2
+      steps:
+      - tool: Screwing
+        doAfter: 1
+  - node: MoffSofaRightBlueNode
+    entity: MoffSofaRightBlue
+    edges:
+    - to: start
+      completed:
+      - !type:SpawnPrototype
+        prototype: SheetSteel1
+        amount: 2
+      - !type:SpawnPrototype
+        prototype: MaterialCloth1
+        amount: 2
+      steps:
+      - tool: Screwing
+        doAfter: 1
+  - node: MoffSofaCornerBlueNode
+    entity: MoffSofaCornerBlue
+    edges:
+    - to: start
+      completed:
+      - !type:SpawnPrototype
+        prototype: SheetSteel1
+        amount: 2
+      - !type:SpawnPrototype
+        prototype: MaterialCloth1
+        amount: 2
+      steps:
+      - tool: Screwing
+        doAfter: 1
+  - node: MoffSofaMiddleBrownNode
+    entity: MoffSofaMiddleBrown
+    edges:
+    - to: start
+      completed:
+      - !type:SpawnPrototype
+        prototype: SheetSteel1
+        amount: 2
+      - !type:SpawnPrototype
+        prototype: MaterialCloth1
+        amount: 2
+      steps:
+      - tool: Screwing
+        doAfter: 1
+  - node: MoffSofaLeftBrownNode
+    entity: MoffSofaLeftBrown
+    edges:
+    - to: start
+      completed:
+      - !type:SpawnPrototype
+        prototype: SheetSteel1
+        amount: 2
+      - !type:SpawnPrototype
+        prototype: MaterialCloth1
+        amount: 2
+      steps:
+      - tool: Screwing
+        doAfter: 1
+  - node: MoffSofaRightBrownNode
+    entity: MoffSofaRightBrown
+    edges:
+    - to: start
+      completed:
+      - !type:SpawnPrototype
+        prototype: SheetSteel1
+        amount: 2
+      - !type:SpawnPrototype
+        prototype: MaterialCloth1
+        amount: 2
+      steps:
+      - tool: Screwing
+        doAfter: 1
+  - node: MoffSofaCornerBrownNode
+    entity: MoffSofaCornerBrown
+    edges:
+    - to: start
+      completed:
+      - !type:SpawnPrototype
+        prototype: SheetSteel1
+        amount: 2
+      - !type:SpawnPrototype
+        prototype: MaterialCloth1
+        amount: 2
+      steps:
+      - tool: Screwing
+        doAfter: 1

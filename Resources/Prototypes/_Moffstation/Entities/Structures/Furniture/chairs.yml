@@ -1,0 +1,64 @@
+- type: entity
+  parent: [ ComfyChair, StructureHealthFurniture ]
+  id: MoffChairComfyGreen
+  name: green comfy chair
+  description: It looks comfy.
+  components:
+  - type: Sprite
+    state: comfy
+    color: "#4b7e6e"
+  - type: Construction
+    graph: Seat
+    node: chairComfy
+
+- type: entity
+  parent: [ ComfyChair, StructureHealthFurniture ]
+  id: MoffChairComfyRed
+  name: red comfy chair
+  description: It looks comfy.
+  components:
+  - type: Sprite
+    state: comfy
+    color: "#aa1c34"
+  - type: Construction
+    graph: Seat
+    node: chairComfy
+
+- type: entity
+  parent: [ ComfyChair, StructureHealthFurniture ]
+  id: MoffChairComfyBlack
+  name: black comfy chair
+  description: It looks comfy.
+  components:
+  - type: Sprite
+    state: comfy
+    color: "#3b334e"
+  - type: Construction
+    graph: Seat
+    node: chairComfy
+
+- type: entity
+  parent: [ ComfyChair, StructureHealthFurniture ]
+  id: MoffChairComfyBlue
+  name: blue comfy chair
+  description: It looks comfy.
+  components:
+  - type: Sprite
+    state: comfy
+    color: "#366694"
+  - type: Construction
+    graph: Seat
+    node: chairComfy
+
+- type: entity
+  parent: [ ComfyChair, StructureHealthFurniture ]
+  id: MoffChairComfyBrown
+  name: brown comfy chair
+  description: It looks comfy.
+  components:
+  - type: Sprite
+    state: comfy
+    color: "#91553b"
+  - type: Construction
+    graph: Seat
+    node: chairComfy
