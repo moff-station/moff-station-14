@@ -1,0 +1,59 @@
+#Special jestographic sequencer interactions
+
+#Any cyborg module becomes an advanced clowning module that works with any chassis.
+- type: jestographicInteraction
+  id: JestographicBorgModule
+  whitelist:
+    components:
+    - BorgModule
+  replaceWith: BorgModuleJestedAdvancedClowning
+  message: jestographic-interaction-borg-module
+
+#Pie cannon becomes the experimental pie cannon.
+- type: jestographicInteraction
+  id: JestographicPieCannon
+  prototypes:
+  - LauncherCreamPie
+  replaceWith: BorgLauncherCreamPie
+  message: jestographic-interaction-pie-cannon
+
+#Clown recorder with 1 second cooldown.
+- type: jestographicInteraction
+  id: JestographicClownRecorder
+  prototypes:
+  - ClownRecorder
+  useDelay: 1
+  message: jestographic-interaction-clown-recorder
+
+#Honkbots and jonkbots are slightly faster and honk more often.
+- type: jestographicInteraction
+  id: JestographicHonkbot
+  prototypes:
+  - MobHonkBot
+  - MobJonkBot
+  speedMultiplier: 1.50
+  soundIntervalMultiplier: 0.5
+  message: jestographic-interaction-honkbot
+
+#Anyone who falls into a recycler is dressed in an unremovable clown outfit.
+- type: jestographicInteraction
+  id: JestographicRecycler
+  whitelist:
+    components:
+    - CollideMaterialReclaimer
+  recyclerOutfit:
+    jumpsuit: ClothingUniformJumpsuitClown
+    mask: ClothingMaskClown
+    head: ClothingHeadHatJesterAlt
+    shoes: ClothingShoesClownLarge
+  message: jestographic-interaction-recycler
+
+#Cameras lose AI vision and map visibility until their wires are mended.
+- type: jestographicInteraction
+  id: JestographicCamera
+  whitelist:
+    components:
+    - SurveillanceCamera
+  cutCameraWires: true
+  repeatable: true
+  message: jestographic-interaction-camera
