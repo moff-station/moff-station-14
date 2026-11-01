@@ -194,7 +194,7 @@
 
 - type: entity
   abstract: true
-  parent: [ClothingOuterBaseLargeInsulated, AllowSuitStorageClothing]
+  parent: [ BaseSuitBreachableSoftsuit, ClothingOuterBaseLargeInsulated, AllowSuitStorageClothing ] # Moff - Suit breach tiers
   id: ClothingOuterEVASuitBase
   name: base EVA Suit
   components:
@@ -224,7 +224,7 @@
 
 - type: entity
   abstract: true
-  parent: [ ClothingOuterEVASuitBase, GeigerCounterClothing ]
+  parent: [ BaseSuitBreachableHardsuit, ClothingOuterEVASuitBase, GeigerCounterClothing ] # Moff - Suit breach tiers
   id: ClothingOuterHardsuitBase
   name: base hardsuit
   components:
