@@ -201,7 +201,7 @@ namespace Content.Server.GameTicking
 
             // Or if no index or failed to look up a profile, fall back to a previously spawned profile.
             // Or if that fails, just use whatever the "selected" profile is
-            return _moffCharacterPicker.GetSpawnedProfile(p.UserId) ?? _prefsManager.GetPreferences(p.UserId).SelectedCharacter;
+            return _moffProfileSpawned.GetSpawnedProfile(p.UserId).Profile ?? _prefsManager.GetPreferences(p.UserId).SelectedCharacter;
             // Moff end
         }
 

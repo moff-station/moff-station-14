@@ -48,7 +48,8 @@ namespace Content.Server.GameTicking
         [Dependency] private ServerStationJobsSystem _stationJobs = default!;
         [Dependency] private StationSpawningSystem _stationSpawning = default!;
         [Dependency] private UserDbDataManager _userDb = default!;
-        [Dependency] private MoffCharacterPickerSystem _moffCharacterPicker = default!; // Moffstation - Multi-character selection
+
+        [Dependency] private MoffProfileSpawnedSystem _moffProfileSpawned = default!; // Moffstation - Multi-character selection
 
         [ViewVariables] private bool _initialized;
         [ViewVariables] private bool _postInitialized;
