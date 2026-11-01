@@ -193,6 +193,10 @@
     proto: EffectGravityPulse
     predicted: true
   # Moff Start - Push horn is also a bikehorn!
+  - type: Tool
+    qualities:
+    - Honking
+    useSound: "/Audio/Items/Toys/pushHornHonk.ogg"
   - type: Tag
     tags:
     - BikeHorn
