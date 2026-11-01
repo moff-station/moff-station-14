@@ -192,6 +192,11 @@
   - type: SpawnOnTrigger
     proto: EffectGravityPulse
     predicted: true
+  # Moff Start - Push horn is also a bikehorn!
+  - type: Tag
+    tags:
+    - BikeHorn
+  # Moff End
 
 ## Whistles
 
