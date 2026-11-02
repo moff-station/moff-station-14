@@ -24,7 +24,12 @@ public sealed partial class ServerAntagSelectionSystem
         HumanoidCharacterProfile? preselected
     ) => preselected ??
          _moffProfileSpawned.GetSpawnedProfile(player.UserId).Profile ??
-        _pref.GetPreferences(player.UserId).SelectedCharacter;
+         _pref.GetPreferences(player.UserId).SelectedCharacter;
+
+    protected override void SetMoffAntagProfile(
+        EntityUid entity,
+        HumanoidCharacterProfile? profile
+    ) => _moffProfileSpawned.SetSpawnedProfile(entity, profile);
 
     /// <summary>
     /// Every antag preference held by any of the player's active characters, or just the spawned
