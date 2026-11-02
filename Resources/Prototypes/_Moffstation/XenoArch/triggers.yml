@@ -1,0 +1,17 @@
+- type: entity
+  parent: BaseXenoArtifactTrigger
+  id: TriggerCriticalSuccess
+  name: Critical success
+  components:
+  - type: XATDiceRoll
+    requiredSides: 20
+    triggerValue: 20
+
+- type: entity
+  parent: BaseXenoArtifactTrigger
+  id: TriggerCriticalFailure
+  name: Critical failure
+  components:
+  - type: XATDiceRoll
+    requiredSides: 20
+    triggerValue: 1
