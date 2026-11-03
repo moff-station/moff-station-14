@@ -1,0 +1,300 @@
+# === COSTUME BUNDLES ===
+# Used to group together multi-part outfits into a single storage item. Think, like, Spirit Halloween costumes.
+# Convenient for vending machines, crate orders, loadouts, admeme spawning, et cetera.
+#
+# == TO MAKE A NEW COSTUME BUNDLE: ==
+# Make an entity that inherits from `BaseCostumeBundle`. Ideally, the ID of this entity should
+# be along the lines of "CostumeBundle[CostumeName]". Make sure to change the `name`` field to "[costume] costume bundle"!
+#
+# The sprite has four layers:
+# - outfit: This is the clothing "inside" the bundle. I recommend color-picking from the most significant
+#     accessory in the bundle itself, such as an inner/outer clothing layer (if there is one).
+# - wrapper-fill: Translucent plastic wrap. Always `#ffffff22`.
+# - wrapper: Outline of the plastic wrap. Don't touch the color of this one.
+# - label: The outer label part of the sprite. This is often `#dd6b17` as a fallback, especially for
+#     "generic" costumes, but this can be anything, like an accent color. It doesn't really matter.
+#
+# Then, modify the EntityTableContainerFill component to contain the parts of your costume.
+#
+# Note that costume bundles have a whitelist: entities with the Clothing component, and entities with the
+# CostumeItem tag. If you're inserting prop items, make sure to add the CostumeItem tag if it's not wearable
+# - for example, the pirate's foam cutlass, or the shrine maiden's gohei.
+# =======================
+
+- type: entity
+  parent: BaseCostumeBundle
+  id: CostumeBundleHarlequin
+  name: harlequin costume bundle
+  components:
+  - type: Sprite
+    layers:
+    - state: outfit-1
+      map: [ "enum.StorageFillLayers.Fill" ]
+      color: "#810c03"
+    - state: wrapper-fill
+      color: "#ffffff22"
+    - state: wrapper
+    - state: label
+      color: "#dd6b17"
+  - type: EntityTableContainerFill
+    containers:
+      storagebase: !type:AllSelector
+        children:
+        - id: ClothingHeadHatHarlequin
+        - id: ClothingMaskClownHarlequin
+        - id: ClothingUniformJumpsuitHarlequin
+        - id: ClothingShoesHarlequin
+
+- type: entity
+  parent: BaseCostumeBundle
+  id: CostumeBundlePierrot
+  name: pierrot costume bundle
+  components:
+  - type: Sprite
+    layers:
+    - state: outfit-1
+      map: [ "enum.StorageFillLayers.Fill" ]
+      color: "#d87b30"
+    - state: wrapper-fill
+      color: "#ffffff22"
+    - state: wrapper
+    - state: label
+      color: "#dd6b17"
+  - type: EntityTableContainerFill
+    containers:
+      storagebase: !type:AllSelector
+        children:
+        - id: ClothingHeadHatPierrot
+        - id: ClothingMaskMimePierrot
+        - id: ClothingOuterWinterPierrot
+        - id: ClothingUniformJumpsuitPierrot
+
+- type: entity
+  parent: BaseCostumeBundle
+  id: CostumeBundleRockstar
+  name: rockstar costume bundle
+  components:
+  - type: Sprite
+    layers:
+    - state: outfit-1
+      map: [ "enum.StorageFillLayers.Fill" ]
+      color: "#9d8893"
+    - state: wrapper-fill
+      color: "#ffffff22"
+    - state: wrapper
+    - state: label
+      color: "#dd6b17"
+  - type: EntityTableContainerFill
+    containers:
+      storagebase: !type:AllSelector
+        children:
+        - id: ClothingHeadHatRockstar
+        - id: ClothingUniformJumpsuitRockstar
+
+- type: entity
+  parent: BaseCostumeBundle
+  id: CostumeBundleRedPreformer
+  name: red preformer costume bundle
+  components:
+  - type: Sprite
+    layers:
+    - state: outfit-1
+      map: [ "enum.StorageFillLayers.Fill" ]
+      color: "#882b36"
+    - state: wrapper-fill
+      color: "#ffffff22"
+    - state: wrapper
+    - state: label
+      color: "#dd6b17"
+  - type: EntityTableContainerFill
+    containers:
+      storagebase: !type:AllSelector
+        children:
+        - id: ClothingShoesBootsPerformerRed
+        - id: ClothingUniformJumpskirtPerformerRed
+        - id: ClothingHeadPerformerWigRed
+        - id: FoodBreadBaguette
+
+- type: entity
+  parent: BaseCostumeBundle
+  id: CostumeBundleYellowPreformer
+  name: yellow performer costume bundle
+  components:
+  - type: Sprite
+    layers:
+    - state: outfit-1
+      map: [ "enum.StorageFillLayers.Fill" ]
+      color: "#a5972a"
+    - state: wrapper-fill
+      color: "#ffffff22"
+    - state: wrapper
+    - state: label
+      color: "#dd6b17"
+  - type: EntityTableContainerFill
+    containers:
+      storagebase: !type:AllSelector
+        children:
+        - id: ClothingShoesBootsPerformerYellow
+        - id: ClothingUniformJumpskirtPerformerYellow
+        - id: ClothingHeadPerformerWigYellow
+
+- type: entity
+  parent: BaseCostumeBundle
+  id: CostumeBundleRedMechfighter
+  name: red mechfighter costume bundle
+  components:
+  - type: Sprite
+    layers:
+    - state: outfit-1
+      map: [ "enum.StorageFillLayers.Fill" ]
+      color: "#630a15"
+    - state: wrapper-fill
+      color: "#ffffff22"
+    - state: wrapper
+    - state: label
+      color: "#dd6b17"
+  - type: EntityTableContainerFill
+    containers:
+      storagebase: !type:AllSelector
+        children:
+        - id: ClothingUniformJumpsuitEvaAsuka
+        - id: ClothingShoesEvaAsuka
+        - id: ClothingHandsGlovesEvaAsuka
+        - id: ClothingHeadWigEvaAsuka
+
+- type: entity
+  parent: BaseCostumeBundle
+  id: CostumeBundleWhiteMechfighter
+  name: white mechfighter costume bundle
+  components:
+  - type: Sprite
+    layers:
+    - state: outfit-1
+      map: [ "enum.StorageFillLayers.Fill" ]
+      color: "#908783"
+    - state: wrapper-fill
+      color: "#ffffff22"
+    - state: wrapper
+    - state: label
+      color: "#dd6b17"
+  - type: EntityTableContainerFill
+    containers:
+      storagebase: !type:AllSelector
+        children:
+        - id: ClothingUniformJumpsuitEvaRei
+        - id: ClothingShoesEvaRei
+        - id: ClothingHandsGlovesEvaRei
+        - id: ClothingHeadWigEvaRei
+
+- type: entity
+  parent: BaseCostumeBundle
+  id: CostumeBundleBearMascot
+  name: bear mascot costume bundle
+  components:
+  - type: Sprite
+    layers:
+    - state: outfit-1
+      map: [ "enum.StorageFillLayers.Fill" ]
+      color: "#592d1a"
+    - state: wrapper-fill
+      color: "#ffffff22"
+    - state: wrapper
+    - state: label
+      color: "#dd6b17"
+  - type: EntityTableContainerFill
+    containers:
+      storagebase: !type:AllSelector
+        children:
+        - id: ClothingHeadFreddyFazbear
+        - id: ClothingOuterFreddyFazbear
+
+- type: entity
+  parent: BaseCostumeBundle
+  id: CostumeBundlePinkMagicalGirl
+  name: pink magical girl costume bundle
+  components:
+  - type: Sprite
+    layers:
+    - state: outfit-1
+      map: [ "enum.StorageFillLayers.Fill" ]
+      color: "#984547"
+    - state: wrapper-fill
+      color: "#ffffff22"
+    - state: wrapper
+    - state: label
+      color: "#dd6b17"
+  - type: EntityTableContainerFill
+    containers:
+      storagebase: !type:AllSelector
+        - id: ClothingUniformJumpskirtMadoka
+        - id: ClothingShoesBootsMadoka
+        - id: ClothingHandsGlovesMadoka
+        - id: ClothingHeadWigMadoka
+
+- type: entity
+  parent: BaseCostumeBundle
+  id: CostumeBundleDarkMagicalGirl
+  name: dark magical girl costume bundle
+  components:
+  - type: Sprite
+    layers:
+    - state: outfit-1
+      map: [ "enum.StorageFillLayers.Fill" ]
+      color: "#462638"
+    - state: wrapper-fill
+      color: "#ffffff22"
+    - state: wrapper
+    - state: label
+      color: "#dd6b17"
+  - type: EntityTableContainerFill
+    containers:
+      storagebase: !type:AllSelector
+        children:
+        - id: ClothingUniformJumpskirtHomura
+        - id: ClothingShoesBootsHomura
+        - id: ClothingHeadWigHomura
+
+- type: entity
+  parent: BaseCostumeBundle
+  id: CostumeBundleIceFairy
+  name: ice fairy costume bundle
+  components:
+  - type: Sprite
+    layers:
+    - state: outfit-1
+      map: [ "enum.StorageFillLayers.Fill" ]
+      color: "#688988"
+    - state: wrapper-fill
+      color: "#ffffff22"
+    - state: wrapper
+    - state: label
+      color: "#dd6b17"
+  - type: EntityTableContainerFill
+    containers:
+      storagebase: !type:AllSelector
+        children:
+        - id: ClothingUniformJumpskirtIceFairy
+        - id: ClothingHeadIceFairyWig
+        - id: ClothingNeckIceFairyWings
+
+- type: entity
+  parent: BaseCostumeBundle
+  id: CostumeBundleMaid
+  name: maid costume bundle
+  components:
+  - type: Sprite
+    layers:
+    - state: outfit-1
+      map: [ "enum.StorageFillLayers.Fill" ]
+      color: "#b8a296"
+    - state: wrapper-fill
+      color: "#ffffff22"
+    - state: wrapper
+    - state: label
+      color: "#dd6b17"
+  - type: EntityTableContainerFill
+    containers:
+      storagebase: !type:AllSelector
+        children:
+        - id: ClothingHeadHatMaid
+        - id: ClothingUniformJumpskirtMaid
