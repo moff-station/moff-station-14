@@ -60,7 +60,7 @@
   name: Deckard
   parent: [BaseWeaponRevolver, BaseSecurityCommandContraband]
   id: WeaponRevolverDeckard
-  description: A beautifully machined, custom-built revolver. Used when there is no time for the Voight-Kampff test. Loads 5 rounds of .45 magnum.
+  description: A beautifully machined, custom-built revolver, likely originating some time during the 2nd Corporate War. Used when there is no time for the Voight-Kampff test. Loads 5 rounds of .45 magnum. # Moffstation
   components:
   - type: Sprite
     sprite: _Moffstation/Objects/Weapons/Guns/Revolvers/deckard.rsi # Moffstation
@@ -88,7 +88,7 @@
   name: Inspector
   parent: [BaseWeaponRevolver, BaseSecurityContraband]
   id: WeaponRevolverInspector
-  description: A double-action revolver manufactured by various companies. It is readily available on the civilian market, making it a popular choice among private investigators. You feel lucky just holding it. Loads 6 rounds of .45 magnum.
+  description: A double-action revolver manufactured by Aussec. It's ease of maintenance and availability makes it a popular choice for private investigators. You feel lucky just holding it. Loads 6 rounds of .45 magnum. # Moffstation
   components:
   - type: Sprite
     sprite: _Moffstation/Objects/Weapons/Guns/Revolvers/inspector.rsi # Moffstation
@@ -132,7 +132,7 @@
   name: Python
   parent: [BaseWeaponRevolver, BaseSyndicateContraband]
   id: WeaponRevolverPython
-  description: A powerful double-action revolver manufactured by the Syndicate. Loud and flashy, perfect for any agent looking to make a statement. Loads 6 rounds of .45 magnum.
+  description: A powerful double-action revolver manufactured by Donk Co. as part of an publicity stunt. Although it's design is ancient, the revolver quickly became a popular choice for underworld figures thanks to it's sheer power and simplicity. Loads 6 rounds of .45 magnum. # Moffstation
   components:
   - type: Sprite
     sprite: _Moffstation/Objects/Weapons/Guns/Revolvers/python.rsi # Moffstation

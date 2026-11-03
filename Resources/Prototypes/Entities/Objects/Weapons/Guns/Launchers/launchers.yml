@@ -39,7 +39,7 @@
   parent: [ BaseWeaponLauncher, BaseSyndicateContraband ]
   id: WeaponLauncherChinaLake
   name: china lake
-  description: PLOOP.
+  description: "The china lake is a revolving gas-powered grenade launcher, devloped by Waffle Corp. Infamous for it's destructive potential, it can be equally a boon or a hinderance to any squad that uses it. A metal stamp on the stock reads \"DANGER CLOSE\"." # Moffstation
   components:
   - type: Sprite
     sprite: Objects/Weapons/Guns/Launchers/china_lake.rsi
@@ -72,7 +72,7 @@
   parent: [ BaseWeaponLauncher, BaseMajorContraband ]
   id: WeaponLauncherHydra
   name: hydra
-  description: PLOOP... FSSSSSS...
+  description: "A refined version of an air-cannon originally made by a disgruntled janitor using spare atmospheric components. The Hydra is capable of launching dedicated cleanade capsules over long ranges, to maximize the effective area of any janitor." # Moffstation
   components:
   - type: Sprite
     sprite: Objects/Weapons/Guns/Launchers/hydra_launcher.rsi

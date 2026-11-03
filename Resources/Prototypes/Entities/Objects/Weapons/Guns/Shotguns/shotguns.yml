@@ -58,7 +58,7 @@
   # Don't parent to BaseWeaponShotgun because it differs significantly
   parent: [BaseItem, BaseGunWieldable, BaseSyndicateContraband]
   id: WeaponShotgunBulldog
-  description: An automatic magazine-fed shotgun for close-quarters combat. Kicks like a mule on steroids. Uses .50 shotgun shells.
+  description: A combat shotgun designed by Waffle Corp, beloved by Gorlex and Pirate raiding parties who take deep pleasure in turning unarmored civilians into piles of gore. Uses a unique, revolving magazine that holds .50 shotgun shells. # Moffstation
   components:
   - type: Sprite
     sprite: Objects/Weapons/Guns/Shotguns/bulldog.rsi
@@ -155,7 +155,7 @@
   name: Enforcer
   parent: [BaseWeaponShotgun, BaseGunWieldable, BaseSecurityContraband]
   id: WeaponShotgunEnforcer
-  description: A premium semi-automatic shotgun, and the pride of all security forces. Uses .50 shotgun shells.
+  description: A semi-automatic shotgun, developed by Aussec explicitly for prison riot control. It's powerful, heavy and unweildy - perfect for desperate security officers in high-stress situations. Uses .50 shotgun shells. # Moffstation
   components: # intend for Enforcer to have wider choke for semi-auto function
   - type: Sprite
     sprite: Objects/Weapons/Guns/Shotguns/enforcer.rsi
@@ -178,7 +178,7 @@
   name: Kammerer
   parent: [BaseWeaponShotgun, BaseGunWieldable, BaseSecurityContraband]
   id: WeaponShotgunKammerer
-  description: An old yet faithful design, and a favorite among irregular forces of many worlds. Uses .50 shotgun shells.
+  description: An old yet faithful design, the Kammerer is a pump action shotgun manufactured by Scarborough Firearms for civilian use. Originally designed for hunting, it features a light wooden stock and a narrower spread compared to other shotguns. Uses .50 shotgun shells. # Moffstation
   components: # intend for Kammerer to have tighter choke for slower fire rate and/or manual cycling
   - type: Item
     sprite: Objects/Weapons/Guns/Shotguns/pump_inhands_64x.rsi
