@@ -2,7 +2,7 @@ using Content.Server._Moffstation.GameTicking.Rules.Components;
 using Content.Server._Moffstation.Power.Components;
 using Content.Server.Chat.Systems;
 using Content.Server.Light.EntitySystems;
-using Content.Server.Pinpointer;
+using Content.Shared.Pinpointer;
 using Content.Server.Power.Components;
 using Content.Server.Power.EntitySystems;
 using Content.Server.Radio.EntitySystems;

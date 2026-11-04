@@ -108,6 +108,17 @@ public sealed partial class RingerSystem : SharedRingerSystem
         if (store != entity.Owner)
             Store.SetRemoteStore(entity.Owner, store);
 
+        // Moff Start - uplink blocking
+        if (!entity.Comp.Unlocked && user != null)
+        {
+            var ev = new BeforeUplinkOpenEvent(user.Value);
+            RaiseLocalEvent(entity.Owner, ref ev);
+            // Return true anyway so the code isn't saved as the ringtone.
+            if (ev.Canceled)
+                return true;
+        }
+        // Moff end
+
         return ToggleUplinkInternal((entity, entity.Comp));
     }
 

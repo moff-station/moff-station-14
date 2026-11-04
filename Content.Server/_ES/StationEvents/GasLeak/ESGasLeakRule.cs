@@ -1,7 +1,7 @@
 using Content.Server._ES.StationEvents.GasLeak.Components;
 using Content.Server.Atmos.EntitySystems;
 using Content.Server.Atmos.Piping.Unary.Components;
-using Content.Server.Pinpointer;
+using Content.Shared.Pinpointer;
 using Content.Server.Station.Systems;
 using Content.Server.StationEvents.Components;
 using Content.Server.StationEvents.Events;

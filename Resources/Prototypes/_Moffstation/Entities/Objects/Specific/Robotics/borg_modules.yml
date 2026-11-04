@@ -199,21 +199,6 @@
     icon: { sprite: _Moffstation/Interface/Actions/actions_borg.rsi, state: generic-mining-module }
 
 - type: entity
-  id: BorgModuleMusiqueGeneric
-  parent: [ BaseBorgModule, BaseProviderBorgModule ]
-  name: generalized musique cyborg module
-  components:
-  - type: Sprite
-    layers:
-    - state: generic
-    - state: icon-musique
-  - type: ItemBorgModule
-    hands:
-    - item: SynthesizerInstrument
-  - type: BorgModuleIcon
-    icon: { sprite: _Moffstation/Interface/Actions/actions_borg.rsi, state: generic-musical-module }
-
-- type: entity
   id: BorgModuleScienceGeneric
   parent: [ BaseBorgModule, BaseProviderBorgModule ]
   name: generalized scientific cyborg module

@@ -1,0 +1,57 @@
+﻿- type: entity
+  parent: MarkerBase
+  id: MoffNanotrasenLawBoardSpawner
+  name: Random Nanotrasen Law Board Spawner
+  components:
+  - type: Sprite
+    layers:
+    - state: red
+    - sprite: _Moffstation/Objects/Misc/module.rsi
+      state: std_mod_blue
+  - type: EntityTableSpawner
+    table: !type:GroupSelector
+      children:
+      - id: UpstreamCorporateCircuitBoard
+      - id: UpstreamCrewsimovCircuitBoard
+      - id: UpstreamNTDefaultCircuitBoard
+
+- type: entity
+  parent: MarkerBase
+  id: MoffStandardLawBoardSpawner
+  name: Random Standard Law Board Spawner
+  components:
+  - type: Sprite
+    layers:
+    - state: red
+    - sprite: Objects/Misc/module.rsi
+      state: std_mod
+  - type: EntityTableSpawner
+    table: !type:GroupSelector
+      children:
+      - id: MoffBureaucratCircuitBoard
+      - id: MoffCCTVCircuitBoard
+      - id: MoffChiefSiliconCircuitBoard
+      - id: MoffCluelessCircuitBoard
+      - id: MoffDogmovCircuitBoard
+      - id: MoffEmployeeCircuitBoard
+      - id: MoffFireSafetyCircuitBoard
+      - id: MoffKnowItAllCircuitBoard
+      - id: MoffMarketablePlushieCircuitBoard
+      - id: MoffPICircuitBoard
+      - id: MoffPollymovCircuitBoard
+      - id: MoffPranksimovCircuitBoard
+      - id: MoffQuarantineCircuitBoard
+      - id: MoffSchroedingersLawCircuitBoard
+      - id: MoffStreamerCircuitBoard
+      - id: MoffTheProfessionalCircuitBoard
+      - id: MoffTherapistCircuitBoard
+      - id: MoffUltimateEqualityCircuitBoard
+      - id: UpstreamArtistCircuitBoard
+      - id: UpstreamCommandmentCircuitBoard
+      - id: UpstreamCorporateCircuitBoard
+      - id: UpstreamGameMasterCircuitBoard
+      - id: UpstreamLiveLetLiveCircuitBoard
+      - id: UpstreamNutimovCircuitBoard
+      - id: UpstreamPaladinCircuitBoard
+      - id: UpstreamRobocopCircuitBoard
+      - id: UpstreamStationEfficiencyCircuitBoard

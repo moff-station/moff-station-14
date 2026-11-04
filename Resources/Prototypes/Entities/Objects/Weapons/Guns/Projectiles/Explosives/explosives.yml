@@ -73,7 +73,7 @@
     - state: grenade
   - type: ExplodeOnTrigger
   - type: Explosive
-    explosionType: Transparent # Funky RMC Explosions
+    explosionType: TransparentClake # Funky RMC Explosions
     totalIntensity: 150 # a ~3 tile radius
     intensitySlope: 5
     maxIntensity: 20

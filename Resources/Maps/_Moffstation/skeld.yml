@@ -1354,7 +1354,7 @@ entities:
           -2,15:
             1: 52430
           -2,16:
-            1: 2252
+            1: 2188
           -1,13:
             0: 62463
           -1,14:
@@ -1362,7 +1362,7 @@ entities:
           -1,15:
             1: 4096
           -1,16:
-            1: 61439
+            1: 59135
           0,13:
             0: 30719
           0,14:
@@ -1371,7 +1371,7 @@ entities:
           0,15:
             1: 60620
           0,16:
-            1: 65535
+            1: 64511
           1,12:
             0: 65280
             1: 8
@@ -2685,7 +2685,7 @@ entities:
             1: 65331
             0: 8
           -25,7:
-            1: 2254
+            1: 204
           -23,5:
             0: 49151
           -23,6:
@@ -2694,7 +2694,7 @@ entities:
             0: 15
             1: 30464
           -23,8:
-            1: 17511
+            1: 17510
             3: 34816
           -22,5:
             0: 65535
@@ -194924,7 +194924,7 @@ entities:
     - MagazineAmmoProvider
     - ItemSlots
     - DeviceNetwork
-    - WirelessNetworkConnection
+    - WirelessNetwork
     - DeviceLinkSink
     - AutoShootGun
     - GunSignalControl
@@ -194944,7 +194944,7 @@ entities:
     - MagazineAmmoProvider
     - ItemSlots
     - DeviceNetwork
-    - WirelessNetworkConnection
+    - WirelessNetwork
     - DeviceLinkSink
     - AutoShootGun
     - GunSignalControl

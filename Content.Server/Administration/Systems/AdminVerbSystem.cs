@@ -59,7 +59,7 @@ namespace Content.Server.Administration.Systems
         [Dependency] private EuiManager _euiManager = default!;
         [Dependency] private GhostRoleSystem _ghostRoleSystem = default!;
         [Dependency] private UserInterfaceSystem _uiSystem = default!;
-        [Dependency] private PrayerSystem _prayerSystem = default!;
+        [Dependency] private ServerPrayerSystem _prayerSystem = default!;
         [Dependency] private MindSystem _mindSystem = default!;
         [Dependency] private ToolshedManager _toolshed = default!;
         [Dependency] private RejuvenateSystem _rejuvenate = default!;
@@ -191,7 +191,7 @@ namespace Content.Server.Administration.Systems
 
                             // Moff start - Multi-character selection: clone the character they actually
                             // spawned as, not whichever one is selected in the lobby.
-                            var profile = _moffCharacterPicker.GetSpawnedProfile(targetActor.PlayerSession.UserId)
+                            var profile = _moffProfileSpawned.GetSpawnedProfile(targetActor.PlayerSession.UserId).Profile
                                           ?? _gameTicker.GetPlayerProfile(targetActor.PlayerSession, profileIndex: null);
                             // Moff end
                             _spawning.SpawnPlayerMob(coords.Value, null, profile, stationUid);

@@ -62,7 +62,10 @@
   #  Moffstation - End
   - type: Sprite
     sprite: Objects/Fun/Instruments/otherinstruments.rsi
-    state: red_phone
+    # Moff start - Phones override the sprite layers inherited from RadioHandheld (walkietalkie layers)
+    layers:
+    - state: red_phone
+    # Moff end
   - type: EmitSoundOnLand
     sound:
        path: /Audio/Items/ring.ogg
@@ -91,7 +94,10 @@
   # Moffstation -End
   - type: Sprite
     sprite: Objects/Fun/Instruments/blood_red_phone.rsi
-    state: icon
+    # Moff start - Phones override the sprite layers inherited from RadioHandheld (walkietalkie layers)
+    layers:
+    - state: icon
+    # Moff end
   - type: Prayable
     sentMessage: prayer-popup-notify-syndicate-sent
     notificationPrefix: prayer-chat-notify-syndicate

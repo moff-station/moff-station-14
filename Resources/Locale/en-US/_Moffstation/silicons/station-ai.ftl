@@ -58,3 +58,6 @@ ai-shell-guideentry = AI Shells
 ai-warp-fail-no-eye = Eye unavailable
 ai-warp-fail-out-reach = Target out of reach
 ai-warp-fail-no-coords = Target without coordinates
+
+# AI Upload Console
+circuit-holder = Circuit holder

@@ -1,6 +1,7 @@
 using Content.Server.Administration.Logs;
 using Content.Server.Chat.Systems;
 using Content.Server.Power.Components;
+using Content.Shared._Moffstation.Radio;
 using Content.Shared.Chat;
 using Content.Shared.Database;
 using Content.Shared.Radio;
@@ -13,7 +14,6 @@ using Robust.Shared.Player;
 using Robust.Shared.Random;
 using Robust.Shared.Replays;
 using Robust.Shared.Utility;
-using Content.Shared._Moffstation.Radio; // Moffstation - Radio warp
 
 namespace Content.Server.Radio.EntitySystems;
 
@@ -62,8 +62,13 @@ public sealed partial class RadioSystem : SharedRadioSystem
         var evt = new TransformSpeakerNameEvent(messageSource, MetaData(messageSource).EntityName);
         RaiseLocalEvent(messageSource, evt);
 
-        var name = evt.VoiceName;
-        name = _chat.ChatNameLinks ? $"[textlink=\"{FormattedMessage.EscapeStringParameter(name)}\" entity=\"{GetNetEntity(messageSource)}\" color=\"{channel.Color.ToHex()}\"]" : FormattedMessage.EscapeText(name);
+        // Moffstation begin - Radio warp
+        //var name = evt.VoiceName;
+        //name = _chat.ChatNameLinks ? $"[textlink=\"{FormattedMessage.EscapeStringParameter(name)}\" entity=\"{GetNetEntity(messageSource)}\" color=\"{channel.Color.ToHex()}\"]" : FormattedMessage.EscapeText(name);
+        var name = FormattedMessage.EscapeText(evt.VoiceName);
+        var warpName =
+            $"[textlink=\"{FormattedMessage.EscapeStringParameter(evt.VoiceName)}\" entity=\"{GetNetEntity(messageSource)}\" color=\"{channel.Color.ToHex()}\"]";
+        // Moffstation end
 
         SpeechVerbPrototype speech;
         if (evt.SpeechVerb != null && ProtoMan.Resolve(evt.SpeechVerb, out var evntProto))
@@ -81,7 +86,7 @@ public sealed partial class RadioSystem : SharedRadioSystem
             ("fontSize", speech.FontSize),
             ("verb", Loc.GetString(_random.Pick(speech.SpeechVerbStrings))),
             ("channel", $"\\[{channel.LocalizedName}\\]"),
-            ("name", name),
+            ("name", _chat.ChatNameLinks? warpName : name),
             ("message", content));
 
         // Moffstation - Begin - Radio warp

@@ -10,8 +10,9 @@
     # Moffstation - Start- New ID Cards
     - state: stripe_side
       color: "#b47832"
+    - state: stripe_top
     - sprite: _Moffstation/Interface/Misc/job_icons.rsi
-      offset: -0.09375, 0.0625
+      offset: -0.12500, 0
       state: ERTMailCarrier
     # Moffstation - End - New ID Cards
   - type: PresetIdCard

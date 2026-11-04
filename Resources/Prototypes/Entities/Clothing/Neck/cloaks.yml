@@ -7,7 +7,8 @@
   - type: Sprite
     sprite: _Moffstation/Clothing/Neck/centcomcloakformal.rsi # Moff
   - type: StealTarget
-    stealGroup: HeadCloak # leaving this here because I suppose it might be interesting?
+    stealGroup:
+    - HeadCloak # leaving this here because I suppose it might be interesting?
 
 - type: entity
   parent: [ClothingNeckClothChameleonableBase, BaseCommandContraband] # Moffstation - Fix neck slot parenting
@@ -18,7 +19,8 @@
   - type: Sprite
     sprite: _Moffstation/Clothing/Neck/cap.rsi # Moffstation - Command Outfit Resprite
   - type: StealTarget
-    stealGroup: HeadCloak
+    stealGroup:
+    - HeadCloak
 
 - type: entity
   parent: [ClothingNeckClothChameleonableBase, BaseCommandContraband] # Moffstation - Fix neck slot parenting
@@ -29,7 +31,8 @@
   - type: Sprite
     sprite: _Moffstation/Clothing/Neck/hos.rsi # Moffstation - New Security Outfits
   - type: StealTarget
-    stealGroup: HeadCloak
+    stealGroup:
+    - HeadCloak
 
 - type: entity
   parent: [ClothingNeckClothChameleonableBase, BaseCommandContraband] # Moffstation - Fix neck slot parenting
@@ -40,7 +43,8 @@
   - type: Sprite
     sprite: _Moffstation/Clothing/Neck/ce.rsi # New Command Outfits
   - type: StealTarget
-    stealGroup: HeadCloak
+    stealGroup:
+    - HeadCloak
 
 - type: entity
   parent: [ClothingNeckClothChameleonableBase, BaseCommandContraband] # Moffstation - Fix neck slot parenting
@@ -51,7 +55,8 @@
   - type: Sprite
     sprite: _Moffstation/Clothing/Neck/cmo.rsi # New Command Outfits
   - type: StealTarget
-    stealGroup: HeadCloak
+    stealGroup:
+    - HeadCloak
 
 - type: entity
   parent: [ClothingNeckClothChameleonableBase, BaseCommandContraband] # Moffstation - Fix neck slot parenting
@@ -62,7 +67,8 @@
   - type: Sprite
     sprite: _Moffstation/Clothing/Neck/rd.rsi # New Command Outfits
   - type: StealTarget
-    stealGroup: HeadCloak
+    stealGroup:
+    - HeadCloak
 
 - type: entity
   parent: [ClothingNeckClothChameleonableBase, BaseCommandContraband] # Moffstation - Fix neck slot parenting
@@ -73,7 +79,8 @@
   - type: Sprite
     sprite: _Moffstation/Clothing/Neck/qm.rsi # New Command Outfits
   - type: StealTarget
-    stealGroup: HeadCloak
+    stealGroup:
+    - HeadCloak
 
 - type: entity
   parent: [ClothingNeckClothChameleonableBase, BaseCommandContraband] # Moffstation - Fix neck slot parenting
@@ -84,7 +91,8 @@
   - type: Sprite
     sprite: _Moffstation/Clothing/Neck/hop.rsi # New Command Outfits
   - type: StealTarget
-    stealGroup: HeadCloak
+    stealGroup:
+    - HeadCloak
 
 - type: entity
   parent: ClothingNeckClothChameleonableBase # Moffstation - Fix neck slot parenting
@@ -113,7 +121,8 @@
   - type: Sprite
     sprite: _Moffstation/Clothing/Neck/capcloakformal.rsi # Moffstation - Command Outfit Resprite
   - type: StealTarget
-    stealGroup: HeadCloak
+    stealGroup:
+    - HeadCloak
 
 - type: entity
   parent: ClothingNeckClothChameleonableBase # Moffstation - Fix neck slot parenting
@@ -124,7 +133,8 @@
   - type: Sprite
     sprite: Clothing/Neck/Cloaks/admin.rsi
   - type: StealTarget
-    stealGroup: HeadCloak
+    stealGroup:
+    - HeadCloak
 
 - type: entity
   parent: ClothingNeckClothChameleonableBase # Moffstation - Fix neck slot parenting

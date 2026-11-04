@@ -152,3 +152,51 @@
     sprite: _Moffstation/Clothing/Shoes/performer-yellow.rsi
   - type: Clothing
     sprite: _Moffstation/Clothing/Shoes/performer-yellow.rsi
+
+# Red Mechfighter (Asuka Langley Soryu)
+- type: entity
+  parent: ClothingShoesBaseButcherable
+  id: ClothingShoesEvaAsuka
+  name: red mechfighter's shoes
+  description: A pair of red shoes belonging to a mechfighter's uniform.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Shoes/eva_asuka.rsi
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Shoes/eva_asuka.rsi
+
+# White Mechfighter (Rei Ayanami)
+- type: entity
+  parent: ClothingShoesBaseButcherable
+  id: ClothingShoesEvaRei
+  name: white mechfighter's shoes
+  description: A pair of white shoes belonging to a mechfighter's uniform.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Shoes/eva_rei.rsi
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Shoes/eva_rei.rsi
+
+# Pink Magical Girl (Madoka Kaname)
+- type: entity
+  parent: ClothingShoesBaseButcherable
+  id: ClothingShoesBootsMadoka
+  name: pink magical shoes
+  description: A pair of red mary janes belonging to a magical girl.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Shoes/madoka.rsi
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Shoes/madoka.rsi
+
+# Dark Magical Girl (Homura Akemi)
+- type: entity
+  parent: ClothingShoesHighheelBoots
+  id: ClothingShoesBootsHomura
+  name: dark magical high heels
+  description: A pair of black and purple high heels belonging to a magical girl.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Shoes/homura.rsi
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Shoes/homura.rsi

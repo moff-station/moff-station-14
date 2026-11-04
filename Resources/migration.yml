@@ -487,7 +487,7 @@ CrateCrewMonitoringBoards: CrateCrewMonitoring
 CrateSlimepersonLifeSupport: CrateEmergencyEVA
 
 # 2024-12-01
-DungeonMasterCircuitBoard: GameMasterCircuitBoard
+DungeonMasterCircuitBoard: MoffStandardLawBoardSpawner # Moff
 
 # 2024-12-12
 FloraRockSolid01: FloraRockSolid
@@ -1265,16 +1265,67 @@ FloorTileItemWhiteDiagonalMini: MoffFloorTileItemWhiteDiagonalMini
 FloorTileItemWhiteOffset: MoffFloorTileItemWhiteOffset
 FloorTileItemShowroom: MoffFloorTileItemShowroom
 
+#2026-08-28
+ClothingUniformJumpskirtPerformer: ClothingUniformJumpskirtVirtualSinger
+ClothingShoesBootsPerformer: ClothingShoesBootsVirtualSinger
+
 #2026-08-31
 DrinkWaterJug: JugWater
 
 #2026-09-05
 # TODO: Nyx you gotta switch this one too on your lawboard PR
-AsimovCircuitBoard: CrewsimovCircuitBoard
+AsimovCircuitBoard: MoffNanotrasenLawBoardSpawner
 
 # 2026-09-24
 ClothingShoesTourist: ClothingShoesSandalsBlack
 ClothingShoesWizard: ClothingShoesSandalsBrown
 
+# Moff - 2026-09-28 - Law board spawners
+NTDefaultCircuitBoard: MoffNanotrasenLawBoardSpawner
+CrewsimovCircuitBoard: MoffNanotrasenLawBoardSpawner # Prepare to change this to 'Crewsimov' here and in law_boards.yml when upstream merges
+CorporateCircuitBoard: MoffNanotrasenLawBoardSpawner
+CommandmentCircuitBoard: MoffStandardLawBoardSpawner
+PaladinCircuitBoard: MoffStandardLawBoardSpawner
+LiveLetLiveCircuitBoard: MoffStandardLawBoardSpawner
+StationEfficiencyCircuitBoard: MoffStandardLawBoardSpawner
+RobocopCircuitBoard: MoffStandardLawBoardSpawner
+GameMasterCircuitBoard: MoffStandardLawBoardSpawner
+ArtistCircuitBoard: MoffStandardLawBoardSpawner
+NutimovCircuitBoard: MoffStandardLawBoardSpawner
+
 # Moff - 2026-10-11 - Unmap telepads
 CargoTelepad: null
+#2026-09-28
+BorgModuleGardening: BorgModuleBotany
+BorgModuleHarvesting: BorgModuleBotany
+
+# 2026-09-29
+WallMalign: WallSolid
+WallMalignIndestructible: WallSolid
+WallMalignIndestructibleNoOcclusion: WallSolid
+MalignWindow: Window
+
+# 2026-10-01
+ClothingHeadHatWizard: ClothingHeadHatWizardBlue
+ClothingOuterWizard: ClothingOuterWizardBlue
+ClothingHeadHatRedwizard: ClothingHeadHatWizardRed
+ClothingHeadHatVioletwizard: ClothingHeadHatWizardViolet
+
+# 2026-10-07
+computerBodyScanner: ComputerBodyScanner
+filingCabinet: FilingCabinet
+filingCabinetRandom: FilingCabinetRandom
+filingCabinetDrawer: FilingCabinetDrawer
+filingCabinetDrawerRandom: FilingCabinetDrawerRandom
+filingCabinetTall: FilingCabinetTall
+filingCabinetTallRandom: FilingCabinetTallRandom
+hydroponicsSoil: HydroponicsSoil
+hydroponicsTray: HydroponicsTray
+trayScanner: TRayScanner
+voicesensor: VoiceSensor
+
+# Moff - 2026-10-21 - Swimvend rename
+VendingMachineSwimsuits: MoffVendingMachineSwimsuits
+
+# Moff - 2026-10-28 - Remove arrivals E-gates
+EnergyGateAirtight: AirlockExternalGlass
