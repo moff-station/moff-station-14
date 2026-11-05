@@ -603,6 +603,12 @@ public abstract partial class SharedStationAiSystem : EntitySystem
             return false;
 
         entity.Comp.Enabled = value;
+
+        // Moffstation - all machine that Ai can access are AI visible
+        if (TryComp<StationAiVisionComponent>(entity.Owner, out var vision))
+            SetVisionEnabled((entity, vision), value, false);
+        // Moffstation - end
+
         Dirty(entity);
 
         return true;
