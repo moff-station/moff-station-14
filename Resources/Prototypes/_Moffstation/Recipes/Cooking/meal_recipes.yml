@@ -1,6 +1,5 @@
 - type: microwaveMealRecipe
   id: RecipeChickenNuggets
-  name: chicken nugget recipe
   result: FoodBoxNugget
   time: 10
   solids:
@@ -12,25 +11,13 @@
 
 - type: microwaveMealRecipe
   id: RecipeRoastedCoffee
-  name: roasted coffee beans recipe
   result: LeavesCoffeeDried
   time: 10
   solids:
     FoodCoffeeBeans: 1
 
 - type: microwaveMealRecipe
-  id: RecipeTarburger
-  name: tarburger recipe
-  result: FoodBurgerTar
-  time: 10
-  group: Savory
-  solids:
-    FoodBreadBun: 1
-    ClothingEyesGlassesJamjar: 1
-
-- type: microwaveMealRecipe
   id: RecipeMothroachDeathsheadBurger
-  name: mothroach burger recipe
   result: FoodBurgerMothRoachDeathshead
   time: 10
   group: Ohio # I don't know if this is the correct way to hide it from the guidebook, but it doesn't seem to create errors.
@@ -40,7 +27,6 @@
 
 - type: microwaveMealRecipe
   id: RecipeMothroachRosyBurger
-  name: mothroach burger recipe
   result: FoodBurgerMothRoachRosy
   time: 10
   group: Brazil # I don't know if this is the correct way to hide it from the guidebook, but it doesn't seem to create errors.
@@ -50,7 +36,6 @@
 
 - type: microwaveMealRecipe
   id: RecipeOmniPocket
-  name: omni pocket recipe
   result: FoodDonkpocketOmni
   time: 30
   group: Secret
@@ -68,7 +53,6 @@
 
 - type: microwaveMealRecipe
   id: RecipeTricoChicken
-  name: trico chicken recipe
   result: FoodMeatTricoChickenCooked
   time: 15
   group: Other
@@ -79,7 +63,6 @@
 
 - type: microwaveMealRecipe
   id: RecipeMilkSteak
-  name: milk steak recipe
   result: FoodMeatMilkSteak
   time: 15
   group: Other
@@ -90,7 +73,6 @@
 
 - type: microwaveMealRecipe
   id: RecipeMoffles
-  name: waffle recipe
   result: FoodBakedMoffle
   time: 10
   group: Breakfast
@@ -103,7 +85,6 @@
 
 - type: microwaveMealRecipe
   id: RecipeMeatWaffles
-  name: waffle recipe
   result: FoodBakedMeatWaffle
   time: 10
   group: Breakfast
@@ -116,7 +97,6 @@
 
 - type: microwaveMealRecipe
   id: RecipeMealOmelette
-  name: cheese omelette recipe
   result: FoodMealOmelette
   time: 10
   group: Savory
@@ -130,7 +110,6 @@
 
 - type: microwaveMealRecipe
   id: RecipeMealEggplantParm
-  name: eggplant parmigiana recipe
   result: FoodMealEggplantParm
   time: 15
   group: Savory
@@ -141,7 +120,6 @@
 
 - type: microwaveMealRecipe
   id: RecipeMealCornedbeef
-  name: corned beef and cabbage recipe
   result: FoodMealCornedbeef
   time: 15
   group: Savory
@@ -153,7 +131,6 @@
 
 - type: microwaveMealRecipe
   id: RecipeMealSpesslaw
-  name: Spesslaw recipe
   result: FoodNoodlesSpesslaw
   time: 10
   group: Savory
@@ -163,7 +140,6 @@
 
 - type: microwaveMealRecipe
   id: RecipeMealPigBlanket
-  name: pig blanket recipe
   result: FoodMealPigblanket
   time: 10
   group: Savory
@@ -174,7 +150,6 @@
 
 - type: microwaveMealRecipe
   id: RecipeMealBearsteak
-  name: filet migrawr recipe
   result: FoodMealBearsteak
   time: 30
   group: Savory

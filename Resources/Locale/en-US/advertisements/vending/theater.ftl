@@ -1,4 +1,4 @@
-﻿advertisement-theater-1 = Dress for success!
+advertisement-theater-1 = Dress for success!
 advertisement-theater-2 = Suited and booted!
 advertisement-theater-3 = It's show time!
 # Moffstation - Begin - Rename "AutoDrobe" here to "DramaDrobe"

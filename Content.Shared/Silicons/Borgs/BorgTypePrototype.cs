@@ -1,4 +1,4 @@
-﻿using Content.Shared.DisplacementMap; // Moffstation - Adding field for DisplacementMaps
+using Content.Shared.DisplacementMap; // Moffstation - Adding field for DisplacementMaps
 using Content.Shared.Interaction.Components;
 using Content.Shared.Inventory;
 using Content.Shared.Radio;

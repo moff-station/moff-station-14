@@ -33,7 +33,7 @@ public sealed partial class LoadoutGroupContainer : BoxContainer
         _groupProto = groupProto;
 
         // Moffstation - Personal Item Filters
-        ShowAllLoadouts.StateChanged += val => { 
+        ShowAllLoadouts.OnToggled += _ => { 
             RefreshLoadouts(profile, loadout, session, collection);
         };
         // Moffstation - End
@@ -83,7 +83,7 @@ public sealed partial class LoadoutGroupContainer : BoxContainer
         var validProtos = _groupProto.Loadouts.Select(id => protoMan.Index(id));
         
         // MOFFSTATION - Personal Item Filters
-        if (!ShowAllLoadouts.IsOn)
+        if (!ShowAllLoadouts.Pressed)
             validProtos = validProtos.Where((proto) => loadout.IsValid(profile, session, proto.ID, collection, out var reason));
         // MOFFSTATION - End
 

@@ -1,21 +1,35 @@
 using System.Linq;
 using Content.Server._Moffstation.Preferences;
 using Content.Server._Moffstation.Station;
-using Content.Shared.GameTicking.Components;
+using Content.Shared.Preferences;
 using Content.Shared.Roles;
 using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
 
+// ReSharper disable once CheckNamespace // Moff addition to upstream partial class
 namespace Content.Server.Antag;
 
 /// <summary>
 /// Multi-character selection support: a player opts in to an antag if any of their active
 /// characters wants it, and the character that spawns must be one of those.
 /// </summary>
-public sealed partial class AntagSelectionSystem
+public sealed partial class ServerAntagSelectionSystem
 {
     [Dependency] private MoffCharacterSelectionManager _moffCharacterSelection = default!;
-    [Dependency] private MoffCharacterPickerSystem _moffCharacterPicker = default!;
+    [Dependency] private MoffProfileSpawnedSystem _moffProfileSpawned = default!;
+
+    // Preselected > spawned > selected in lobby
+    protected override HumanoidCharacterProfile GetMoffAntagProfile(
+        ICommonSession player,
+        HumanoidCharacterProfile? preselected
+    ) => preselected ??
+         _moffProfileSpawned.GetSpawnedProfile(player.UserId).Profile ??
+         _pref.GetPreferences(player.UserId).SelectedCharacter;
+
+    protected override void SetMoffAntagProfile(
+        EntityUid entity,
+        HumanoidCharacterProfile? profile
+    ) => _moffProfileSpawned.SetSpawnedProfile(entity, profile);
 
     /// <summary>
     /// Every antag preference held by any of the player's active characters, or just the spawned
@@ -26,7 +40,7 @@ public sealed partial class AntagSelectionSystem
         var result = new HashSet<ProtoId<AntagPrototype>>();
 
         // If they've already spawned, get the prefs from the spawned profile
-        if (_moffCharacterPicker.GetSpawnedProfile(session.UserId) is { } spawned)
+        if (_moffProfileSpawned.GetSpawnedProfile(session.UserId).Profile is { } spawned)
         {
             result.UnionWith(spawned.AntagPreferences);
             return result;
@@ -59,11 +73,8 @@ public sealed partial class AntagSelectionSystem
         var result = new List<HashSet<ProtoId<AntagPrototype>>>();
 
         var query = QueryAllRules();
-        while (query.MoveNext(out var uid, out var comp, out _))
+        while (query.MoveNext(out var comp, out _))
         {
-            if (HasComp<EndedGameRuleComponent>(uid))
-                continue;
-
             foreach (var antag in comp.Antags)
             {
                 if (!comp.PreSelectedSessions.TryGetValue(antag, out var set) || !set.Contains(session))

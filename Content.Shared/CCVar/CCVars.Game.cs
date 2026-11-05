@@ -390,7 +390,7 @@ public sealed partial class CCVars
     ///     Defaults to 2 minutes.
     /// </summary>
     public static readonly CVarDef<float> RoundRestartTime =
-        CVarDef.Create("game.round_restart_time", 120f, CVar.SERVERONLY);
+        CVarDef.Create("game.round_restart_time", 300f, CVar.SERVERONLY);
 
     /// <summary>
     ///     The prototype to use for secret weights.
@@ -465,6 +465,19 @@ public sealed partial class CCVars
     /// </remarks>
     public static readonly CVarDef<string> NewCharacterJobs =
         CVarDef.Create("game.new_character_jobs", "Passenger", CVar.REPLICATED);
+
+    /// <summary>
+    /// If true, shows a new player indicator over the heads of newly joined players.
+    /// Only visible to whitelisted players.
+    /// </summary>
+    public static readonly CVarDef<bool> ShowNewPlayerIcons =
+        CVarDef.Create("game.show_new_player_icons", true, CVar.REPLICATED | CVar.CLIENT | CVar.ARCHIVE);
+
+    /// <summary>
+    /// The minutes under which a new player will have an indicator above their sprite, when <see cref="ShowNewPlayerIcons"/> is true.
+    /// </summary>
+    public static readonly CVarDef<float> NewPlayerTimeTotalMinutes =
+        CVarDef.Create("game.new_player_time_total_minutes", 90f, CVar.REPLICATED | CVar.SERVER);
 
     /// <summary>
     /// Determines whether wall-mounted entities are hidden when viewed from outside their facing arc.

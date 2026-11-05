@@ -4,6 +4,7 @@ using Content.Shared._Funkystation.Stains.Components;
 using Content.Shared._Funkystation.Stains.Systems;
 using Content.Shared.Chemistry.EntitySystems;
 using Content.Shared.Clothing;
+using Content.Shared.Clothing.Components;
 using Content.Shared.FixedPoint;
 using Content.Shared.Hands;
 using Robust.Client.GameObjects;
@@ -17,14 +18,7 @@ public sealed partial class StainSystem : SharedStainSystem
     [Dependency] private SharedSolutionContainerSystem _solution = null!;
     [Dependency] private SpriteSystem _sprite = null!;
 
-    public override void Initialize()
-    {
-        base.Initialize();
-        SubscribeLocalEvent<StainableComponent, AppearanceChangeEvent>(OnAppearanceChanged);
-        SubscribeLocalEvent<StainableComponent, GetEquipmentVisualsEvent>(OnEquipmentVisuals, after: [typeof(ClientClothingSystem)]);
-        SubscribeLocalEvent<StainableComponent, GetInhandVisualsEvent>(OnInhandVisuals, after: [typeof(ItemSystem)]);
-    }
-
+    [SubscribeLocalEvent]
     private void OnAppearanceChanged(Entity<StainableComponent> ent, ref AppearanceChangeEvent args)
     {
         if (args.Sprite == null)
@@ -37,7 +31,10 @@ public sealed partial class StainSystem : SharedStainSystem
 
         foreach (var layer in layers)
         {
-            _sprite.RemoveLayer(spriteEnt, layer);
+            // Moff start - Add disgusting special snowflake "don't log errors" case. As far as I can tell, chameleon clothing
+            // visuals have to do some unusual appearance data updates to work, so we just swallow missing layers here. :shrug:
+            _sprite.RemoveLayer(spriteEnt, layer, !HasComp<ChameleonClothingComponent>(ent));
+            // Moff end
         }
 
         ent.Comp.RevealedLayers.Clear();
@@ -48,12 +45,14 @@ public sealed partial class StainSystem : SharedStainSystem
         }
     }
 
+    [SubscribeLocalEvent(after: [typeof(ClientClothingSystem)])]
     private void OnEquipmentVisuals(Entity<StainableComponent> ent, ref GetEquipmentVisualsEvent args)
     {
         if (ent.Comp.ClothingVisuals.TryGetValue(args.Slot, out var layers))
             args.Layers.AddRange(BuildVisuals(ent, layers, args.Slot));
     }
 
+    [SubscribeLocalEvent(after: [typeof(ItemSystem)])]
     private void OnInhandVisuals(Entity<StainableComponent> ent, ref GetInhandVisualsEvent args)
     {
         if (ent.Comp.ItemVisuals.TryGetValue(args.Location.ToString(), out var layers))

@@ -46,11 +46,9 @@ public abstract partial class SharedStainSystem : EntitySystem
         base.Initialize();
 
         Subs.SubscribeWithRelay<StainableComponent, SpilledOnEvent>(OnSpilledOn);
-        SubscribeLocalEvent<StainableComponent, GetVerbsEvent<Verb>>(OnGetVerbs);
-        SubscribeLocalEvent<StainableComponent, WringStainDoAfterEvent>(OnWring);
-        SubscribeLocalEvent<StainableComponent, SolutionChangedEvent>(OnSolutionChanged);
     }
 
+    [SubscribeLocalEvent]
     private void OnSolutionChanged(Entity<StainableComponent> ent, ref SolutionChangedEvent args)
     {
         if (args.Solution.Comp.Id == ent.Comp.SolutionName)
@@ -71,17 +69,23 @@ public abstract partial class SharedStainSystem : EntitySystem
         if (!rand.Prob(ent.Comp.StainChance))
             return;
 
-        // Get the puddle's solution component, so that we can split the puddle's solution in a way that
-        // gets networked and updated properly
-        if (!TryComp<SolutionComponent>(args.Source, out var puddleSolutionComp))
-            return;
-        var split = _solution.SplitSolution((args.Source, puddleSolutionComp), ent.Comp.SpillTransferAmount);
+        // If we're getting spilled on by a puddle, split from the puddle's solution so that it gets networked and
+        // updated properly. Otherwise, split from the solution provided by the event.
+        Solution split;
+        if (TryComp<PuddleComponent>(args.Source, out var puddle) && puddle.Solution is {} puddleSolution)
+        {
+            split = _solution.SplitSolution(puddleSolution, ent.Comp.SpillTransferAmount);
+        }
+        else
+        {
+            split = args.Solution.SplitSolution(ent.Comp.SpillTransferAmount);
+        }
 
         // fuck water (and similar absorbent substances!)
         for (var i = split.Contents.Count - 1; i >= 0; i--)
         {
-            if (_prototype.TryIndex<ReagentPrototype>(split.Contents[i].Reagent.Prototype, out var reagentProto)
-                && reagentProto.Absorbent)
+            if (_prototype.Resolve(split.Contents[i].Reagent.Prototype, out var reagentProto) &&
+                reagentProto.Absorbent)
                 split.RemoveReagent(split.Contents[i].Reagent, split.Contents[i].Quantity);
         }
 
@@ -155,6 +159,7 @@ public abstract partial class SharedStainSystem : EntitySystem
         }
     }
 
+    [SubscribeLocalEvent]
     private void OnGetVerbs(Entity<StainableComponent> ent, ref GetVerbsEvent<Verb> args)
     {
         if (!args.CanInteract || !args.CanAccess || args.Using != ent.Owner)
@@ -180,6 +185,7 @@ public abstract partial class SharedStainSystem : EntitySystem
         });
     }
 
+    [SubscribeLocalEvent]
     private void OnWring(Entity<StainableComponent> ent, ref WringStainDoAfterEvent args)
     {
         if (args.Handled || args.Cancelled)

@@ -4,12 +4,12 @@ using Content.Shared.Damage.Systems;
 using Content.Shared.DoAfter;
 using Content.Shared.Emp;
 using Content.Shared.Interaction;
-using Content.Shared.Medical.SuitSensor;
 using Content.Shared.Medical.SuitSensors;
 using Content.Shared.Mobs;
 using Content.Shared.Mobs.Components;
 using Content.Shared.Mobs.Systems;
 using Content.Shared.Station;
+using Content.Shared.Station.Systems;
 using Content.Shared.Verbs;
 using Robust.Shared.Map;
 using Robust.Shared.Timing;
@@ -19,7 +19,7 @@ namespace Content.Shared._Moffstation.Silicons.Borgs;
 public abstract partial class SharedBorgSensorSystem : EntitySystem
 {
     [Dependency] private IGameTiming _timing = default!;
-    [Dependency] private SharedStationSystem _station = default!;
+    [Dependency] private StationSystem _station = default!;
     [Dependency] private SharedInteractionSystem _interaction = default!;
     [Dependency] protected SharedSuitSensorSystem Sensor = default!;
     [Dependency] private SharedDoAfterSystem _doAfter = default!;

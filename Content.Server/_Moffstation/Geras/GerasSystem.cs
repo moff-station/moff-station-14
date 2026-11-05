@@ -8,6 +8,7 @@ using Content.Server.Popups;
 using Content.Shared._Moffstation.Body.Events;
 using Content.Shared._Moffstation.Damage.Events;
 using Content.Shared._Moffstation.Geras;
+using Content.Shared._Moffstation.Extensions;
 using Content.Shared.Atmos.Components;
 using Content.Shared.Body.Components;
 using Content.Shared.Body.Events;
@@ -26,6 +27,7 @@ using Content.Shared.Mind;
 using Content.Shared.Mobs.Systems;
 using Content.Shared.Nutrition.Components;
 using Content.Shared.Nutrition.EntitySystems;
+using Content.Shared.ParcelWrap.Components;
 using Content.Shared.Preferences;
 using Content.Shared.Projectiles;
 using Content.Shared.StatusEffect;
@@ -38,7 +40,6 @@ using Content.Shared.Temperature.HeatContainer;
 using Content.Shared.Zombies;
 using Robust.Server.GameObjects;
 using Robust.Shared.Containers;
-using Robust.Shared.Prototypes;
 
 namespace Content.Server._Moffstation.Geras;
 
@@ -70,7 +71,6 @@ public sealed partial class GerasSystem : EntitySystem
     [Dependency] private SharedStaminaSystem  _stamina = default!;
     [Dependency] private TraitSystem _trait = default!;
     [Dependency] private FlammableSystem _flammable = default!;
-    [Dependency] private IPrototypeManager _prototypeManager = default!;
 
     private const string GerasIdSlot = "id";
 
@@ -184,10 +184,11 @@ public sealed partial class GerasSystem : EntitySystem
             {
                 _container.AttachParentToContainerOrGrid((uid, Transform(uid)));
             }
-        }
-        if (_container.IsEntityOrParentInContainer(uid))// If the entity is in any other container, put the geras in that container
-        {
-            _transform.DropNextTo(geras, uid);
+            else // If the entity is in any other container, put the geras in that container
+            {
+                _container.Remove(uid, container, force: false, reparent: true);
+                _container.Insert(geras, container);
+            }
         }
 
         _implantSystem.TransferImplants(uid, geras);
@@ -362,10 +363,8 @@ public sealed partial class GerasSystem : EntitySystem
         if (ent.Comp.Geras is not { } geras)
             return;
 
-        foreach (var traitId in args.Profile.TraitPreferences)
+        foreach (var trait in ProtoMan.ResolveAll(args.Traits))
         {
-            if (_prototypeManager.TryIndex(traitId, out var trait) || trait == null)
-                continue;
             _trait.ApplyTrait(geras, trait);
         }
     }
@@ -400,8 +399,6 @@ public sealed partial class GerasSystem : EntitySystem
         QueueDel(component.StorageMap);
     }
 }
-
-public record struct GerasVisualInitEvent(HumanoidCharacterProfile? Profile);
 
 [ByRefEvent]
 public record struct PreMorphGerasEvent(EntityUid Geras);

@@ -22,22 +22,6 @@
       prob: 0.01
 
 - type: entity
-  id: TarboldMigration
-  parent: BaseStationEventShortDelay
-  components:
-  - type: StationEvent
-    earliestStart: 15
-    weight: 0 # Disabled for now - no special treatment for players
-    duration: 30
-  - type: VentCrittersRule
-    entries:
-    - id: MobTarbold
-      prob: 0.02
-    specialEntries:
-    - id: MobTarbold
-      prob: 0.001
-
-- type: entity
   id: WhimperletMigration
   parent: BaseStationEventShortDelay
   components:

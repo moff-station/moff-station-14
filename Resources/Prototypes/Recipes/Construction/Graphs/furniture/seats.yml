@@ -41,6 +41,33 @@
             - material: Steel
               amount: 2
               doAfter: 1
+        # Moff - Start
+        - to: MoffChairComfyGreenNode
+          steps:
+            - material: Steel
+              amount: 2
+              doAfter: 1
+        - to: MoffChairComfyRedNode
+          steps:
+            - material: Steel
+              amount: 2
+              doAfter: 1
+        - to: MoffChairComfyBlackNode
+          steps:
+          - material: Steel
+            amount: 2
+            doAfter: 1
+        - to: MoffChairComfyBlueNode
+          steps:
+            - material: Steel
+              amount: 2
+              doAfter: 1
+        - to: MoffChairComfyBrownNode
+          steps:
+            - material: Steel
+              amount: 2
+              doAfter: 1
+        # Moff - End
         - to: chairPilotSeat
           steps:
             - material: Steel
@@ -92,7 +119,6 @@
               doAfter: 1
             - material: Cloth
               amount: 1
-
     - node: chair
       entity: Chair
       edges:
@@ -172,7 +198,63 @@
           steps:
             - tool: Screwing
               doAfter: 1
-
+# Moff - Start
+    - node: MoffChairComfyGreenNode
+      entity: MoffChairComfyGreen
+      edges:
+        - to: start
+          completed:
+          - !type:SpawnPrototype
+            prototype: SheetSteel1
+            amount: 2
+          steps:
+          - tool: Screwing
+            doAfter: 1
+    - node: MoffChairComfyRedNode
+      entity: MoffChairComfyRed
+      edges:
+      - to: start
+        completed:
+        - !type:SpawnPrototype
+          prototype: SheetSteel1
+          amount: 2
+        steps:
+        - tool: Screwing
+          doAfter: 1
+    - node: MoffChairComfyBlackNode
+      entity: MoffChairComfyBlack
+      edges:
+      - to: start
+        completed:
+        - !type:SpawnPrototype
+          prototype: SheetSteel1
+          amount: 2
+        steps:
+        - tool: Screwing
+          doAfter: 1
+    - node: MoffChairComfyBlueNode
+      entity: MoffChairComfyBlue
+      edges:
+      - to: start
+        completed:
+        - !type:SpawnPrototype
+          prototype: SheetSteel1
+          amount: 2
+        steps:
+        - tool: Screwing
+          doAfter: 1
+    - node: MoffChairComfyBrownNode
+      entity: MoffChairComfyBrown
+      edges:
+      - to: start
+        completed:
+        - !type:SpawnPrototype
+          prototype: SheetSteel1
+          amount: 2
+        steps:
+        - tool: Screwing
+          doAfter: 1
+# Moff - End
     - node: chairPilotSeat
       entity: ChairPilotSeat
       edges:

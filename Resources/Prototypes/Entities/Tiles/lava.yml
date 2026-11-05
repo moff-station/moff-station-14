@@ -33,9 +33,10 @@
     state: full
   - type: IconSmooth
     key: lava
-    base: water
-    additionalKeys:
-    - walls
+    states:
+    - !type:CornerSpriteSmoothing
+      mask: [ lava, walls ]
+      base: water
   - type: Physics
     bodyType: Static
   - type: Fixtures
@@ -50,8 +51,10 @@
           - ItemMask
         density: 1000
         hard: false
-  - type: Tag
-    tags:
-      - HideContextMenu
+# Moff Start - Why is this context menu hidden? Removed for Igneus Station.
+  # - type: Tag
+  #   tags:
+  #     - HideContextMenu
+# Moff End
   - type: PlacementReplacement
     key: tileOverlay

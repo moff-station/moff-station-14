@@ -7,6 +7,7 @@ using Content.Server._Moffstation.GameTicking.Rules;
 using Content.Server._Moffstation.GameTicking.Rules.Components;
 using Content.Server.Antag.Components;
 using Content.Server.GameTicking;
+using Content.Shared.GameTicking;
 using Content.Shared._Moffstation.Replicator.Components;
 using Content.Shared._Moffstation.Voting.Components;
 using Content.Shared.Actions;
@@ -34,7 +35,7 @@ public sealed class ReplicatorLifecycleTest : GameTest
         Map = PoolManager.TestStation,
     };
 
-    [SidedDependency(Side.Server)] private readonly GameTicker _ticker = default!;
+    [SidedDependency(Side.Server)] private readonly ServerGameTicker _ticker = default!;
     [SidedDependency(Side.Server)] private readonly SharedActionsSystem _action = default!;
     [SidedDependency(Side.Server)] private readonly TurfSystem _turf = default!;
     [SidedDependency(Side.Server)] private readonly TileSystem _tile = default!;
@@ -60,9 +61,10 @@ public sealed class ReplicatorLifecycleTest : GameTest
         {
             const string ruleId = "ReplicatorSpawn";
             Assume.That(
-                _ticker.StartGameRule(ruleId, out ruleEntity),
+                _ticker.StartGameRule(ruleId, out var startedRule),
                 "TestReplicatorRule should start successfully"
             );
+            ruleEntity = startedRule!.Value.Owner;
         });
 
         await Server.WaitPost(() => _ticker.SpawnObserver(ServerSession!));
@@ -298,7 +300,7 @@ public sealed class ReplicatorLifecycleTest : GameTest
     public void TestRoundEndTextMentionsReplicators()
     {
         var textEv = new RoundEndTextAppendEvent();
-        SEntMan.EventBus.RaiseEvent(EventSource.Local, textEv);
+        SEntMan.EventBus.RaiseEvent(EventSource.Local, ref textEv);
 
         Assert.That(textEv.Text, Does.Contain("Nest(s)"), "Round-end text should mention nests");
         Assert.That(textEv.Text, Does.Contain("Replicators"), "Round-end text should mention replicators");

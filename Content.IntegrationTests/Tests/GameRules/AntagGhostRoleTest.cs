@@ -1,18 +1,19 @@
-﻿#nullable enable
+#nullable enable
 using System.Collections.Generic;
 using Content.IntegrationTests.Fixtures.Attributes;
 using Content.IntegrationTests.Utility;
-using Content.Server.Antag;
-using Content.Server.Antag.Components;
 using Content.Server.GameTicking;
 using Content.Server.Ghost.Roles;
 using Content.Server.Ghost.Roles.Components;
+using Content.Server.Preferences.Managers;
 using Content.Shared._ES.Voting.Components;
 using Content.Shared.Antag;
+using Content.Shared.Antag.Components;
 using Content.Shared.Players;
 using Robust.Shared.GameObjects;
 using Robust.Shared.Map;
 using Robust.Shared.Maths;
+using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 
@@ -24,17 +25,29 @@ public sealed partial class AntagGhostRoleTest : AntagTest
     {
         Dirty = true,
         DummyTicker = false,
-        Connected = true,
+        Connected = false, // Moff - Client reconnects leak memory
         Map = PoolManager.TestStation
     };
 
     [SidedDependency(Side.Server)] private IRobustRandom _random = default!;
     [SidedDependency(Side.Server)] private GhostRoleSystem _ghostRole = default!;
 
+    // Moff Start - Client reconnects leak memory
+    [SidedDependency(Side.Server)] private IServerPreferencesManager _prefs = default!;
+    private ICommonSession _session = default!;
+
+    public override async Task DoSetup()
+    {
+        await base.DoSetup();
+        _session = await Server.AddDummySession();
+        await PoolManager.WaitUntil(Server, () => _prefs.HavePreferencesLoaded(_session));
+    }
+    // Moff end
+
     private static readonly string[] AntagGameRules = GameDataScrounger.EntitiesWithComponent("AntagSelection");
 
     [Test]
-    [TestOf(typeof(GameTicker)), TestOf(typeof(AntagSelectionSystem)), TestOf(typeof(AntagSelectionComponent)), TestOf(typeof(GhostRoleSystem))]
+    [TestOf(typeof(ServerGameTicker)), TestOf(typeof(AntagSelectionSystem)), TestOf(typeof(AntagSelectionComponent)), TestOf(typeof(GhostRoleSystem))]
     [TestCaseSource(nameof(AntagGameRules))]
     [Description($"Ensures all GameRule entities with {nameof(AntagSelectionComponent)} can properly spawn those roles and they can be taken.")]
     [RunOnSide(Side.Server)]
@@ -74,7 +87,7 @@ public sealed partial class AntagGhostRoleTest : AntagTest
         while (roleEnumerator.MoveNext(out var spawner, out var role, out var xform))
         {
             // Ensure the ghost role spawner spawned correctly!
-            Assert.That(spawner.Rule, Is.EqualTo(gameRule));
+            Assert.That(spawner.Rule, Is.EqualTo(gameRule?.Owner));
             Assert.That(spawner.Definition, Is.Not.Null);
             AssertGhostRoleTaken(spawner, role, xform);
             var value = rules[spawner.Definition.Value];
@@ -90,7 +103,7 @@ public sealed partial class AntagGhostRoleTest : AntagTest
     }
 
     [Test]
-    [TestOf(typeof(GameTicker)), TestOf(typeof(AntagSelectionSystem)), TestOf(typeof(AntagSelectionComponent)), TestOf(typeof(GhostRoleSystem))]
+    [TestOf(typeof(ServerGameTicker)), TestOf(typeof(AntagSelectionSystem)), TestOf(typeof(AntagSelectionComponent)), TestOf(typeof(GhostRoleSystem))]
     [Description("Ensures a player can take all antag ghost roles sequentially without transferring unwanted mind data.")]
     [RunOnSide(Side.Server)]
     public void TestAntagGhostRolesSequential()
@@ -106,13 +119,13 @@ public sealed partial class AntagGhostRoleTest : AntagTest
             STicker.StartGameRule(ruleId);
         }
 
-        var mind = ServerSession!.GetMind();
+        var mind = _session.GetMind(); // Moff - Client reconnects leak memory
 
         var roleEnumerator = SEntMan.EntityQueryEnumerator<GhostRoleAntagSpawnerComponent, GhostRoleComponent, TransformComponent>();
         while (roleEnumerator.MoveNext(out var spawner, out var role, out var xform))
         {
             AssertGhostRoleTaken(spawner, role, xform);
-            var newMind = ServerSession!.GetMind();
+            var newMind = _session.GetMind(); // Moff - Client reconnects leak memory
             Assert.That(newMind, Is.Not.EqualTo(mind));
             mind = newMind;
         }
@@ -130,13 +143,15 @@ public sealed partial class AntagGhostRoleTest : AntagTest
         Assert.That(xform.MapID, Is.Not.EqualTo(MapId.Nullspace));
 
         // Take the ghost role and ensure we take it!
-        Assert.That(_ghostRole.Takeover(ServerSession!, role.Identifier), Is.True);
-        Assert.That(ServerSession!.AttachedEntity, Is.Not.Null);
+        // Moff Start - Client reconnects leak memory
+        Assert.That(_ghostRole.Takeover(_session, role.Identifier), Is.True);
+        Assert.That(_session.AttachedEntity, Is.Not.Null);
         var antag = SProtoMan.Index(spawner.Definition);
-        SAssertAntagInitialized(antag, ServerSession);
+        SAssertAntagInitialized(antag, _session);
 
         // Ensure we spawned in the correct location
-        var sessionXform = SEntMan.GetComponent<TransformComponent>(ServerSession.AttachedEntity.Value);
+        var sessionXform = SEntMan.GetComponent<TransformComponent>(_session.AttachedEntity!.Value);
+        // Moff end
         Assert.That(sessionXform.MapUid, Is.EqualTo(xform.MapUid));
 
         // We break it up like this cause otherwise it'll sometimes randomly fail

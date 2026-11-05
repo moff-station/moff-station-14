@@ -39,6 +39,11 @@
     jumpsuit: ClothingUniformJumpsuitQMFormal
   groupBy: "quartermaster jumpsuits" # Moffstation - New Drip
 
+- type: loadout
+  id: QuartermasterFormalDress
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtQMFormalDress
+
 # Head
 - type: loadout
   id: QuartermasterHead

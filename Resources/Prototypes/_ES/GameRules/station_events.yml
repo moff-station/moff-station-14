@@ -65,22 +65,22 @@
 #        volume: -4
 #
 ### Gas Leak
-- type: entity
-  parent: ESBaseStationEvent
-  id: ESStationEventGasLeak
-  name: Gas Leak
-  description: Choose a location to be flooded with a gas of your choice.
-  components:
-  - type: StationEvent
-    startAnnouncement: station-event-gas-leak-start-announcement
-    endAnnouncement: station-event-gas-leak-end-announcement
-    startAudio:
-      path: /Audio/Announcements/attention.ogg
-  - type: ESGasLeakRule
-  - type: ESSynchronizedVoteManager
-    votes:
-    - ESVoteGasLeakGases
-    - ESVoteGasLeakLocation
+#- type: entity
+#  parent: ESBaseStationEvent
+#  id: ESStationEventGasLeak
+#  name: Gas Leak
+#  description: Choose a location to be flooded with a gas of your choice.
+#  components:
+#  - type: StationEvent
+#    startAnnouncement: station-event-gas-leak-start-announcement
+#    endAnnouncement: station-event-gas-leak-end-announcement
+#    startAudio:
+#      path: /Audio/Announcements/attention.ogg
+#  - type: ESGasLeakRule
+#  - type: ESSynchronizedVoteManager
+#    votes:
+#    - ESVoteGasLeakGases
+#    - ESVoteGasLeakLocation
 
 - type: entity
   parent: MoffBaseEntry

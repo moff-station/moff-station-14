@@ -69,6 +69,11 @@ public sealed partial class TraitSystem : EntitySystem
             ApplyTrait(args.Mob, trait);
         }
 
+        //Moffstation - Yet Another Geras Traits Patch - Begin
+        var notifEv = new TraitsAppliedEvent(validTraits);
+        RaiseLocalEvent(args.Mob, ref notifEv);
+        //Moffstation - End
+
         // Send disabled traits notification to client if any were rejected
         if (disabledTraits.Count > 0)
         {
@@ -312,5 +317,5 @@ public sealed partial class TraitSystem : EntitySystem
 
 // Moffstation - Begin - Allow application of traits by other systems
 [ByRefEvent]
-public readonly record struct TraitsAppliedEvent(HumanoidCharacterProfile Profile);
+public readonly record struct TraitsAppliedEvent(HashSet<ProtoId<TraitPrototype>> Traits);
 // Moffstation - End

@@ -1,0 +1,48 @@
+- type: job
+  id: Lawyer
+  name: job-name-lawyer
+  description: job-description-lawyer
+  playTimeTracker: JobLawyer
+  # Moffstation - Start - Change role timers
+  #requirements:
+  #  - !type:OverallPlaytimeRequirement
+  #    time: 2.5h
+  # Moffstation - End
+  startingGear: LawyerGear
+  icon: "JobIconLawyer"
+  supervisors: job-supervisors-hop
+  guides: [ SpaceLaw ] # TODO: should have a more specific guidebook page instead of just linking to Space Law
+  access:
+  - Service
+  - Lawyer
+  - Brig
+  - Maintenance
+
+- type: startingGear
+  id: LawyerGear
+  equipment:
+    shoes: ClothingShoesBootsLaceup
+#    id: LawyerPDA # Moffstation - PDA loadouts
+    ears: ClothingHeadsetService # Moffstation
+  inhand:
+    - BriefcaseBrownFilled
+  storage:
+    back:
+    - RubberStampLawyer
+    - BookSpaceLaw
+    # Moffstation - Start
+    - TapeRecorder
+    - CassetteTape
+    - CassetteTape
+    # Moffstation - End
+
+- type: chameleonOutfit
+  id: LawyerChameleonOutfit
+  job: Lawyer
+  equipment:
+    head: ClothingHeadHatBowlerHat
+    eyes: ClothingEyesGlassesCheapSunglasses
+    mask: ClothingMaskBreath
+    neck: ClothingNeckLawyerbadge
+    outerClothing: ClothingOuterWinterColorBlack
+    gloves: ClothingHandsGlovesColorBlack

@@ -138,16 +138,6 @@ figurines-buckshot-4 = It’s so cold in here...
 figurines-buckshot-5 = Where are all my engineers?!
 figurines-buckshot-6 = I blame science.
 
-figurines-camilla-1 = Have you seen meine wife?
-figurines-camilla-2 = Kalimotxo please?
-figurines-camilla-3 = She just looks like me, and sounds like me...
-figurines-camilla-4 = Capitaine, my love!
-figurines-camilla-5 = Officers dispatch.
-figurines-camilla-6 = Security Officer, to my office, now.
-figurines-camilla-7 = I don't want to execute them...
-figurines-camilla-8 = No, you cannot lethal the clown.
-figurines-camilla-9 = I am das kaptain's kommandant, and she is ma capitaine.
-
 figurines-cantrel-1 = Salvage, don't die.
 figurines-cantrel-2 = Cargo techs, move freight!
 figurines-cantrel-3 = You know the drill.
@@ -870,14 +860,6 @@ figurines-tania-8 = OORAH!!
 figurines-tania-9 = Fuck it, we ball.
 figurines-tania-10 = CE stands for 'Combat Engineer'.
 figurines-tania-11 = Gang shit.
-
-figurines-tar-1 = Wah?
-figurines-tar-2 = Haii!
-figurines-tar-3 = *thump*
-figurines-tar-4 = You are just a hater!!
-figurines-tar-5 = Tar is making an anomaly.
-figurines-tar-6 = Tar is making a weird ball!
-figurines-tar-7 = I would never do crime!
 
 figurines-tomcarter-1 = Please...bring me some coffee.
 figurines-tomcarter-2 = If I collect 40 cigarette butts I can get 5% off on my pack.

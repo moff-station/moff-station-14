@@ -30,8 +30,8 @@ Guidelines: https://github.com/moff-station/moff-station-14/blob/master/CONTRIBU
 - add: This is an example, change me to fit your PR!
 
 <!-- Changelog Changes go above here, these are the templates
-- add: Added fun!
-- remove: Removed fun!
-- tweak: Changed fun!
-- fix: Fixed fun!
+- add: Crowbars now randomly spawn in maintenance lockers.
+- remove: Crowbars no longer spawn in maintenance crates.
+- tweak: Crowbar spawn rates have been increased for tool lockers.
+- fix: Crowbars no longer accidentally spawn in microwaves.
 -->

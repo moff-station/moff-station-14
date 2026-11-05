@@ -5,6 +5,7 @@ using Content.Server.Roles;
 using Content.Server.RoundEnd;
 using Content.Shared._Moffstation.RoundReport.Components;
 using Content.Shared.Alert;
+using Content.Shared.GameTicking;
 using Content.Shared.GameTicking.Components;
 
 namespace Content.Server._Moffstation.RoundReport;
@@ -18,7 +19,7 @@ public sealed class RoundReportSystem : EntitySystem
         SubscribeLocalEvent<RoundEndTextAppendEvent>(AppendRoundEndText);
     }
 
-    private void AppendRoundEndText(RoundEndTextAppendEvent args)
+    private void AppendRoundEndText(ref RoundEndTextAppendEvent args)
     {
         var query = EntityQueryEnumerator<RoundReportComponent>();
         while (query.MoveNext(out var uid, out var roundReport))

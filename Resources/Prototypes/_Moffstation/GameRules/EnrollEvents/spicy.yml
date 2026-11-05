@@ -91,3 +91,9 @@
     minEnrolled: 3
     fallbackRules: !type:NestedSelector
       tableId: MoffSpicyNonPlayerEventsTable
+
+- type: entity
+  parent: MoffBaseEnrollSpicy
+  id: ChangelingEnroller
+  name: Changeling
+  description: You are a changeling, a highly intelligent predator. After drifting frozen in space for decades, you find yourself near a space station filled to the brim with juicy crew members. You are hungry and will not make it long without sustenance... Kill. Consume. Hide. Survive.

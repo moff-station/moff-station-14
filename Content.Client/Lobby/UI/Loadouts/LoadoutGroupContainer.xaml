@@ -4,7 +4,7 @@
          Orientation="Vertical">
     <!-- Moffstation - Personal items hider -->
     <BoxContainer Name="LoadoutsToggleContainer" Orientation="Horizontal" Margin="4">
-        <controls:OnOffButton Name="ShowAllLoadouts" HorizontalExpand="True"/>
+        <controls:SwitchButton Name="ShowAllLoadouts" HorizontalExpand="True"/>
         <Label Text="{Loc 'loadout-show-all'}" HorizontalExpand="True"/>
     </BoxContainer>
     <!-- End Moffstation -->

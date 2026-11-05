@@ -1,5 +1,5 @@
 using Content.Server.Chat.Systems;
-using Content.Server.Pinpointer; // Moffstation
+using Content.Shared.Pinpointer; // Moffstation
 using Content.Server.Radio.EntitySystems;
 using Content.Shared.Access.Components;
 using Content.Shared.CartridgeLoader;

@@ -1,5 +1,6 @@
 using System.Diagnostics.CodeAnalysis;
 using System.Numerics;
+using Content.Shared._Moffstation.Extensions;
 using Content.Shared.ActionBlocker;
 using Content.Shared.CCVar;
 using Content.Shared.Friction;
@@ -557,6 +558,16 @@ public abstract partial class SharedMoverController : VirtualController
             sound = modifier.FootstepSoundCollection;
             return sound != null;
         }
+
+        // Moff start - Enable footstep modifier sounds in slots other than shoes
+        // This will cause inconsistent sounds if you're wearing multiple footstep modifier clothings, based on the
+        // enumeration order, but eh. A cleaner solution would be to just get and play all the sounds (visual:aural::clown vomit:clown cacophony).
+        foreach (var (equipped, _) in _inventory.GetAllEquippedEntitiesWithComp(uid, FootstepModifierQuery, SlotFlags.WITHOUT_POCKET & ~SlotFlags.FEET))
+        {
+            sound = equipped.Comp.FootstepSoundCollection;
+            return sound != null;
+        }
+        // Moff end
 
         return TryGetFootstepSound(uid, xform, shoes != null, out sound, tileDef: tileDef);
     }
