@@ -24,7 +24,7 @@ public sealed partial class XATDiceRollSystem : BaseXATSystem<XATDiceRollCompone
 
             if (comp.RequiredSides != ent.Comp.Sides && comp.RequiredSides is not null)
                 continue;
-            if (comp.TriggerValue != ent.Comp.CurrentValue)
+            if (comp.TriggerValue > ent.Comp.CurrentValue)
                 continue;
 
             var artifact = _xenoArtifactQuery.Get(node.Attached.Value);

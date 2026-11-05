@@ -13,7 +13,7 @@ public sealed partial class XATDiceRollComponent : Component
     public int? RequiredSides;
 
     /// <summary>
-    /// The dice value that will trigger the node.
+    /// The dice must roll above this for the trigger to work.
     /// </summary>
     [DataField, AutoNetworkedField]
     public int TriggerValue;
