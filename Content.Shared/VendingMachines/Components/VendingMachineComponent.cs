@@ -2,6 +2,7 @@ using Content.Shared.Actions;
 using Robust.Shared.Audio;
 using Robust.Shared.GameStates;
 using Robust.Shared.Prototypes;
+using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom;
 
 namespace Content.Shared.VendingMachines.Components;
 
@@ -60,6 +61,9 @@ public sealed partial class VendingMachineComponent : Component
 
     [DataField]
     public TimeSpan KeypadSoundCooldown = TimeSpan.FromSeconds(0.1);
+
+    [DataField(customTypeSerializer: typeof(TimeOffsetSerializer))]
+    public TimeSpan NextKeypadSound;
 }
 
 public sealed partial class VendingMachineSelfDispenseEvent : InstantActionEvent;

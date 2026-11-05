@@ -1,18 +1,16 @@
 ﻿using Content.Shared._Funkystation.VendingMachines;
-using Content.Shared.Timing.Systems;
 using Content.Shared.VendingMachines;
 using Content.Shared.VendingMachines.Components;
 using Robust.Shared.Audio;
 using Robust.Shared.Audio.Systems;
+using Robust.Shared.Timing;
 
 namespace Content.Server._Funkystation.VendingMachines;
 
 public sealed partial class VendingMachineKeypadSystem : EntitySystem
 {
     [Dependency] private SharedAudioSystem _audio = null!;
-    [Dependency] private UseDelaySystem _useDelay = null!;
-
-    private const string KeypadSoundDelayId = "keypadSound";
+    [Dependency] private IGameTiming _timing = null!;
 
     public override void Initialize()
     {
@@ -22,9 +20,10 @@ public sealed partial class VendingMachineKeypadSystem : EntitySystem
 
     private void OnKeypadAudio(EntityUid uid, VendingMachineComponent component, VendingMachineKeypadAudioMessage args)
     {
-        _useDelay.SetLength(uid, component.KeypadSoundCooldown, KeypadSoundDelayId);
-        if (!_useDelay.TryResetDelay(uid, true, KeypadSoundDelayId))
+        if (_timing.CurTime < component.NextKeypadSound)
             return;
+
+        component.NextKeypadSound = _timing.CurTime + component.KeypadSoundCooldown;
 
         var sound = args.SoundType switch
         {
