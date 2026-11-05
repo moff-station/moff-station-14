@@ -9142,6 +9142,14 @@ Entries:
   url: https://github.com/moff-station/moff-station-14/pull/2101
 - author: Centronias
   changes:
+  - message: Picking up items into a preexisting material stack will no longer animate
+      an interaction particle from you to the picked up item.
+    type: tweak
+  id: 2103
+  time: '2026-11-05T20:20:45.000'
+  url: https://github.com/moff-station/moff-station-14/pull/2103
+- author: Centronias
+  changes:
   - message: The End of Round dialog should no longer be prevented from appearing
       by typing certain text as your last words before round end.
     type: fix
