@@ -47,7 +47,7 @@ public abstract partial class SharedBorgSensorSystem : EntitySystem
             return;
 
         var user = args.User;
-        args.Verbs.UnionWith(Enum.GetValues<SuitSensorMode>().Select(it => CreateVerb(ent, user, it)));
+        args.Verbs.UnionWith(ent.Comp.AvailableModes.Select(it => CreateVerb(ent, user, it)));
     }
 
     private Verb CreateVerb(Entity<BorgSensorComponent> ent, EntityUid userUid, SuitSensorMode mode)

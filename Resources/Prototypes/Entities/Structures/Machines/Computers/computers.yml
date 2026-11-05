@@ -1341,9 +1341,14 @@
   - type: UserInterface
     interfaces:
       enum.RoboticsConsoleUiKey.Key:
-        type: RoboticsConsoleBoundUserInterface
+        type: MoffRoboticsConsoleBoundUserInterface # Moffstation - new robotics console UI
       enum.WiresUiKey.Key:
         type: WiresBoundUserInterface
+  # Moffstation - begin - new robotics console ui
+  - type: MoffRoboticsConsole
+    sensorTypes:
+    - NTBorgSensor
+  # Moffstation - end
   - type: ApcPowerReceiver
     powerLoad: 5
   - type: PowerState
@@ -1351,8 +1356,9 @@
     workingPowerDraw: 1000
   - type: UIPowerState
   - type: DeviceNetwork
+    receiveAll: true # # Moffstation - new robotics console UI
     deviceNetId: Wireless
-    receiveFrequencyId: RoboticsConsole
+    receiveFrequencyId: SuitSensor # Moffstation - new robotics console UI
     transmitFrequencyId: CyborgControl
   - type: Computer
     board: RoboticsConsoleCircuitboard
