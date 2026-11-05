@@ -2,19 +2,20 @@ using System.Collections.Frozen;
 using Content.Shared.Chat.Prototypes;
 using Content.Shared.Emoting;
 using Content.Shared.Speech;
+using Content.Shared.Timing.Systems;
 using Robust.Shared.Audio;
 using Robust.Shared.Random;
-using Robust.Shared.Timing;
 
 namespace Content.Shared.Chat;
 
 public abstract partial class SharedChatSystem
 {
     // Moff Start - Emote sound cooldown
-    [Dependency] private IGameTiming _timing = default!;
+    [Dependency] private UseDelaySystem _useDelay = default!;
     [Dependency] private EntityQuery<EmotingComponent> _emoteQuery;
 
-    private static readonly TimeSpan EmoteSoundCooldown = TimeSpan.FromSeconds(0.3);
+    private const string EmoteSoundDelayId = "emoteSound";
+    private static readonly TimeSpan EmoteSoundCooldown = TimeSpan.FromSeconds(0.5);
     // Moff end
 
     private FrozenDictionary<string, EmotePrototype> _wordEmoteDict = FrozenDictionary<string, EmotePrototype>.Empty;
@@ -167,10 +168,12 @@ public abstract partial class SharedChatSystem
         var param = audioParams ?? proto.GeneralParams ?? sound.Params;
 
         // Moff Start - Emote sound cooldown
-        if (_emoteQuery.TryComp(uid, out var emoting) && _timing.CurTime < emoting.NextEmoteSound)
-            return true; // Despite the description of the function, it returns true here because it was properly handled.
-
-        emoting?.NextEmoteSound = _timing.CurTime + EmoteSoundCooldown;
+        if (_emoteQuery.HasComp(uid))
+        {
+            _useDelay.SetLength(uid, EmoteSoundCooldown, EmoteSoundDelayId);
+            if (!_useDelay.TryResetDelay(uid, true, EmoteSoundDelayId))
+                return true; // Despite the description of the function, it returns true here because it was properly handled.
+        }
         // Moff end
         if (_net.IsServer) // TODO: replace this call with PlayPredicted when chat is predicted.
             _audio.PlayPvs(sound, uid, param);
