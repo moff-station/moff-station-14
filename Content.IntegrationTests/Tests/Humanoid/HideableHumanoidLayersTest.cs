@@ -19,6 +19,7 @@ public sealed class HideableHumanoidLayersTest : InteractionTest
         await SpawnTarget("ClothingMaskGas");
         await Pickup(); // equip mask
         await UseInHand();
+        await AwaitDoAfters(); // Moff - Stow delay
 
         await Server.WaitAssertion(() =>
         {
@@ -53,6 +54,7 @@ public sealed class HideableHumanoidLayersTest : InteractionTest
         await SpawnTarget("ClothingMaskGas");
         await Pickup(); // equip mask
         await UseInHand();
+        await AwaitDoAfters(); // Moff - Stow delay
 
         await RunTicks(20);
 

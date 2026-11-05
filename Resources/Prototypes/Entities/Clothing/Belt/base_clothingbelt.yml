@@ -40,6 +40,10 @@
     interfaces:
       enum.StorageUiKey.Key:
         type: StorageBoundUserInterface
+  # Moff Start - Stow delay
+  - type: StowDelayMultiplier
+    multiplier: 0.5
+  # Moff end
 
 - type: entity
   abstract: true
