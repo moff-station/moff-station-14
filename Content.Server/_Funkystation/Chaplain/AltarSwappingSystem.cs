@@ -1,4 +1,4 @@
-using Content.Server.Bible.Components;
+using Content.Shared.Bible.Components;
 using Content.Shared._Funkystation.Chaplain;
 using Content.Shared.Administration.Logs;
 using Content.Shared.Database;
