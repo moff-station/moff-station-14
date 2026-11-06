@@ -8548,6 +8548,15 @@ Entries:
   id: 1977
   time: '2026-10-01T19:11:10.000'
   url: https://github.com/moff-station/moff-station-14/pull/1977
+- author: Dave
+  changes:
+  - message: Sofas
+    type: add
+  - message: Resprite Comfy Chair
+    type: tweak
+  id: 1978
+  time: '2026-11-04T22:54:04.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1978
 - author: Centronias
   changes:
   - message: Iris "Monster" Foundling's personal items now have different names for
@@ -9131,5 +9140,21 @@ Entries:
   id: 2101
   time: '2026-11-04T04:45:23.000'
   url: https://github.com/moff-station/moff-station-14/pull/2101
+- author: Centronias
+  changes:
+  - message: Picking up items into a preexisting material stack will no longer animate
+      an interaction particle from you to the picked up item.
+    type: tweak
+  id: 2103
+  time: '2026-11-05T20:20:45.000'
+  url: https://github.com/moff-station/moff-station-14/pull/2103
+- author: Centronias
+  changes:
+  - message: The End of Round dialog should no longer be prevented from appearing
+      by typing certain text as your last words before round end.
+    type: fix
+  id: 2104
+  time: '2026-11-05T01:11:55.000'
+  url: https://github.com/moff-station/moff-station-14/pull/2104
 Name: Mofflog
 Order: -2
