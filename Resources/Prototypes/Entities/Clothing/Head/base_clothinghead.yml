@@ -160,7 +160,7 @@
 
 - type: entity
   abstract: true
-  parent: TemperatureProtection
+  parent: [ TemperatureProtection, MoffStainableClothingBase ] # Moffstation - mixed in MoffStainableClothingBase
   id: ClothingHeadHardsuitBase
   name: base hardsuit helmet
   categories: [ HideSpawnMenu ]
@@ -292,7 +292,7 @@
 
 - type: entity
   abstract: true
-  parent: TemperatureProtectionMinimal
+  parent: [ TemperatureProtectionMinimal, MoffStainableClothingBase ] # Moffstation - mixed in MoffStainableClothingBase
   id: ClothingHeadHatHoodWinterBase
   name: base winter coat hood
   description: A hood, made to keep your head warm.
