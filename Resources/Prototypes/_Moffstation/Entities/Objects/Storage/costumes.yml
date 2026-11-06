@@ -93,8 +93,8 @@
 
 - type: entity
   parent: BaseCostumeBundle
-  id: CostumeBundleRedPreformer
-  name: red preformer costume bundle
+  id: CostumeBundleRedPerformer
+  name: red performer costume bundle
   components:
   - type: Sprite
     layers:
@@ -117,7 +117,7 @@
 
 - type: entity
   parent: BaseCostumeBundle
-  id: CostumeBundleYellowPreformer
+  id: CostumeBundleYellowPerformer
   name: yellow performer costume bundle
   components:
   - type: Sprite
