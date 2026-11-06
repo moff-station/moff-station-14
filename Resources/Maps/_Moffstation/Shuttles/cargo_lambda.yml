@@ -1,11 +1,11 @@
 meta:
   format: 7
   category: Grid
-  engineVersion: 289.0.3
+  engineVersion: 294.0.0
   forkId: ""
   forkVersion: ""
-  time: 10/13/2026 01:53:20
-  entityCount: 176
+  time: 11/06/2026 00:04:14
+  entityCount: 170
 maps: []
 grids:
 - 1
@@ -236,7 +236,7 @@ entities:
     components:
     - type: Transform
       parent: 1
-      pos: 1.5,0.5
+      pos: -1.5,-0.5
   - uid: 12
     components:
     - type: Transform
@@ -246,12 +246,12 @@ entities:
     components:
     - type: Transform
       parent: 1
-      pos: -0.5,0.5
+      pos: -3.5,5.5
   - uid: 14
     components:
     - type: Transform
       parent: 1
-      pos: -1.5,0.5
+      pos: 1.5,5.5
   - uid: 15
     components:
     - type: Transform
@@ -301,27 +301,27 @@ entities:
     components:
     - type: Transform
       parent: 1
-      pos: 2.5,2.5
+      pos: 2.5,3.5
   - uid: 31
     components:
     - type: Transform
       parent: 1
-      pos: 3.5,2.5
+      pos: 2.5,2.5
   - uid: 36
     components:
     - type: Transform
       parent: 1
-      pos: -3.5,4.5
+      pos: 2.5,4.5
   - uid: 37
     components:
     - type: Transform
       parent: 1
-      pos: 2.5,5.5
+      pos: 1.5,0.5
   - uid: 42
     components:
     - type: Transform
       parent: 1
-      pos: 3.5,3.5
+      pos: -0.5,-0.5
   - uid: 63
     components:
     - type: Transform
@@ -346,7 +346,7 @@ entities:
     components:
     - type: Transform
       parent: 1
-      pos: 2.5,4.5
+      pos: 0.5,-1.5
   - uid: 108
     components:
     - type: Transform
@@ -357,11 +357,6 @@ entities:
     - type: Transform
       parent: 1
       pos: 0.5,-0.5
-  - uid: 156
-    components:
-    - type: Transform
-      parent: 1
-      pos: 0.5,-1.5
   - uid: 169
     components:
     - type: Transform
@@ -372,31 +367,6 @@ entities:
     - type: Transform
       parent: 1
       pos: -4.5,2.5
-  - uid: 171
-    components:
-    - type: Transform
-      parent: 1
-      pos: -4.5,4.5
-  - uid: 172
-    components:
-    - type: Transform
-      parent: 1
-      pos: -2.5,0.5
-  - uid: 173
-    components:
-    - type: Transform
-      parent: 1
-      pos: -2.5,-0.5
-  - uid: 174
-    components:
-    - type: Transform
-      parent: 1
-      pos: 1.5,-1.5
-  - uid: 175
-    components:
-    - type: Transform
-      parent: 1
-      pos: -0.5,-1.5
   - uid: 176
     components:
     - type: Transform
@@ -929,11 +899,11 @@ entities:
     - type: DeviceLinkSource
       linkedPorts:
         25:
-        - - Pressed
-          - Toggle
+        - source: Pressed
+          sink: Toggle
         64:
-        - - Pressed
-          - Toggle
+        - source: Pressed
+          sink: Toggle
 - proto: SMESBasic
   entities:
   - uid: 32
@@ -1000,12 +970,12 @@ entities:
     - type: DeviceLinkSource
       linkedPorts:
         34:
-        - - Left
-          - Reverse
-        - - Right
-          - Forward
-        - - Middle
-          - Off
+        - source: Left
+          sink: Reverse
+        - source: Right
+          sink: Forward
+        - source: Middle
+          sink: Off
   - uid: 127
     components:
     - type: Transform
@@ -1014,19 +984,19 @@ entities:
     - type: DeviceLinkSource
       linkedPorts:
         109:
-        - - Left
-          - Reverse
-        - - Right
-          - Forward
-        - - Middle
-          - Off
+        - source: Left
+          sink: Reverse
+        - source: Right
+          sink: Forward
+        - source: Middle
+          sink: Off
         39:
-        - - Left
-          - Reverse
-        - - Right
-          - Forward
-        - - Middle
-          - Off
+        - source: Left
+          sink: Reverse
+        - source: Right
+          sink: Forward
+        - source: Middle
+          sink: Off
 - proto: WallShuttle
   entities:
   - uid: 22
