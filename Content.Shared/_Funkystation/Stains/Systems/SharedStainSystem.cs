@@ -4,6 +4,7 @@ using Content.Shared._Moffstation.Stains;
 using Content.Shared.Chemistry.Components;
 using Content.Shared.Chemistry.EntitySystems;
 using Content.Shared.Chemistry.Reagent;
+using Content.Shared.Clothing.Components; // Moff
 using Content.Shared.DoAfter;
 using Content.Shared.Fluids;
 using Content.Shared.Fluids.Components;
@@ -40,6 +41,7 @@ public abstract partial class SharedStainSystem : EntitySystem
     [Dependency] private IPrototypeManager _prototype = default!;
     [Dependency] private IGameTiming _timing = default!;
     [Dependency] private MoffStainRepellentSystem _stainRepellent = default!;
+    [Dependency] private EntityQuery<AttachedClothingComponent> _attachedClothingQuery; // Moff
 
     public override void Initialize()
     {
@@ -116,6 +118,10 @@ public abstract partial class SharedStainSystem : EntitySystem
         {
             return true;
         }
+
+        // Integrated clothing (eg. hardsuit helmets, coat hoods) can't be stained.
+        if (_attachedClothingQuery.HasComp(ent))
+            return true;
         // Moff end
 
         if (!_container.TryGetContainingContainer(ent.Owner, out var container) || !TryComp<InventoryComponent>(container.Owner, out var inv))
