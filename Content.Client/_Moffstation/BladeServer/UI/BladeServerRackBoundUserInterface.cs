@@ -8,9 +8,19 @@ using Robust.Shared.Input;
 namespace Content.Client._Moffstation.BladeServer.UI;
 
 [UsedImplicitly]
-public sealed partial class BladeServerRackBoundUserInterface(EntityUid owner, Enum uiKey) : BoundUserInterface(owner, uiKey)
+public sealed partial class BladeServerRackBoundUserInterface(EntityUid owner, Enum uiKey)
+    : BoundUserInterface(owner, uiKey)
 {
     [Dependency] private IEntityManager _entityMan = default!;
+
+    private ClientBladeServerSystem BladeServer
+    {
+        get
+        {
+            field ??= EntMan.System<ClientBladeServerSystem>();
+            return field;
+        }
+    }
 
     private BladeServerRackWindow? _window;
 
@@ -43,8 +53,6 @@ public sealed partial class BladeServerRackBoundUserInterface(EntityUid owner, E
 
     private void OnServerBladePressed(int slotIndex, GUIBoundKeyEventArgs args)
     {
-        var bladeServer = EntMan.System<ClientBladeServerSystem>();
-
         if (args.Function == EngineKeyFunctions.Use)
         {
             SendPredictedMessage(new BladeServerRackUseMessage(slotIndex));
@@ -61,9 +69,9 @@ public sealed partial class BladeServerRackBoundUserInterface(EntityUid owner, E
             args.Handle();
         }
         else if (args.Function == ContentKeyFunctions.ExamineEntity &&
-                 bladeServer.TryExamine(Owner, slotIndex) ||
+                 BladeServer.TryExamine(Owner, slotIndex) ||
                  args.Function == EngineKeyFunctions.UseSecondary &&
-                 bladeServer.TryUseSecondary(Owner, slotIndex))
+                 BladeServer.TryUseSecondary(Owner, slotIndex))
         {
             args.Handle();
         }
@@ -71,8 +79,7 @@ public sealed partial class BladeServerRackBoundUserInterface(EntityUid owner, E
 
     private void OnPowerPressed(int slotIndex)
     {
-        var bladeServer = EntMan.System<ClientBladeServerSystem>();
-        if (bladeServer.IsSlotPowerEnabled(Owner, slotIndex) is not { } powered)
+        if (BladeServer.IsSlotPowerEnabled(Owner, slotIndex) is not { } powered)
             return;
 
         SendPredictedMessage(new BladeServerRackPowerPressedMessage(slotIndex, !powered));

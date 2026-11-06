@@ -62,8 +62,7 @@ public sealed partial class BladeSlot(ItemSlot slot)
 
     /// Whether or not this blade slot's power toggle is on. Note that this DOES NOT make a blade powered or not, as the
     /// overall rack has a separate power state which also contributes to blades being powered.
-    [ViewVariables(VVAccess.ReadOnly)]
-    [Access(typeof(BladeServerSystem), Other = AccessPermissions.Read)]
+    [ViewVariables(VVAccess.ReadOnly), Access(typeof(BladeServerSystem))]
     public bool IsPowerEnabled = true;
 
     /// The entity in this slot.
