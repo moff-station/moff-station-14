@@ -25,7 +25,7 @@ public sealed partial class VendingMachineKeypadMenu : FancyWindow
 
     private readonly List<VendingMachineGridSlot> _slots = new();
 
-    public EntityUid VendingMachineOwner;
+    public Entity<VendingMachineComponent> VendingMachineOwner;
     public EntityUid? User;
 
     private int _rowCount;
@@ -91,7 +91,7 @@ public sealed partial class VendingMachineKeypadMenu : FancyWindow
         };
         clearKey.OnKeyPressed += () =>
         {
-            var sound = _entManager.GetComponent<VendingMachineComponent>(VendingMachineOwner).BeepSound;
+            var sound = VendingMachineOwner.Comp.BeepSound;
             _audio.PlayPredicted(sound, VendingMachineOwner, User, sound.Params.WithPitchScale(0.7f));
             OnAudioPlayed?.Invoke(VendingMachineKeypadSound.Beep, 0.7f);
             ClearBuffer();
@@ -252,7 +252,7 @@ public sealed partial class VendingMachineKeypadMenu : FancyWindow
             _inactivityTimer += args.DeltaSeconds;
             if (_inactivityTimer >= 15f)
             {
-                var sound = _entManager.GetComponent<VendingMachineComponent>(VendingMachineOwner).TimeoutSound;
+                var sound = VendingMachineOwner.Comp.TimeoutSound;
                 _audio.PlayPredicted(sound, VendingMachineOwner, User, sound.Params.WithPitchScale(0.6f));
                 OnAudioPlayed?.Invoke(VendingMachineKeypadSound.Timeout, 0.6f);
 
@@ -269,7 +269,7 @@ public sealed partial class VendingMachineKeypadMenu : FancyWindow
         if (_showingFeedback)
             return;
 
-        var sound = _entManager.GetComponent<VendingMachineComponent>(VendingMachineOwner).BeepSound;
+        var sound = VendingMachineOwner.Comp.BeepSound;
         _audio.PlayPredicted(sound, VendingMachineOwner, User, sound.Params.WithPitchScale(pitch));
         OnAudioPlayed?.Invoke(VendingMachineKeypadSound.Beep, pitch);
 
@@ -285,7 +285,7 @@ public sealed partial class VendingMachineKeypadMenu : FancyWindow
         if (_showingFeedback)
             return;
 
-        var sound = _entManager.GetComponent<VendingMachineComponent>(VendingMachineOwner).BeepSound;
+        var sound = VendingMachineOwner.Comp.BeepSound;
         _audio.PlayPredicted(sound, VendingMachineOwner, User, sound.Params.WithPitchScale(pitch));
         OnAudioPlayed?.Invoke(VendingMachineKeypadSound.Beep, pitch);
 
@@ -362,7 +362,7 @@ public sealed partial class VendingMachineKeypadMenu : FancyWindow
             BufferLabel.FontColorOverride = Color.Green;
             BufferLabel.Text = _random.Pick(_successPhrases);
             GreenLed.Modulate = _greenOnColor;
-            _audio.PlayPredicted(_entManager.GetComponent<VendingMachineComponent>(VendingMachineOwner).SuccessSound, VendingMachineOwner, User);
+            _audio.PlayPredicted(VendingMachineOwner.Comp.SuccessSound, VendingMachineOwner, User);
             OnAudioPlayed?.Invoke(VendingMachineKeypadSound.Success, 1f);
 
             _powerSagTimer = 0.15f;
@@ -372,7 +372,7 @@ public sealed partial class VendingMachineKeypadMenu : FancyWindow
             BufferLabel.FontColorOverride = Color.Red;
             BufferLabel.Text = "[ EMPTY ]";
             RedLed.Modulate = _redOnColor;
-            _audio.PlayPredicted(_entManager.GetComponent<VendingMachineComponent>(VendingMachineOwner).ErrorSound, VendingMachineOwner, User);
+            _audio.PlayPredicted(VendingMachineOwner.Comp.ErrorSound, VendingMachineOwner, User);
             OnAudioPlayed?.Invoke(VendingMachineKeypadSound.Error, 1f);
         }
 
