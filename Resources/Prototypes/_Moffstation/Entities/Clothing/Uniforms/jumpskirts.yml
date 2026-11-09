@@ -207,9 +207,9 @@
     layers:
     - state: icon
       color: &color-grey "#9a97b9"
-    - state: professional-trinkets-icon
     - state: color-trinkets-icon
       color: *color-black
+    - state: professional-trinkets-icon
   - type: Item
     inhandVisuals:
       left:
@@ -224,9 +224,9 @@
       jumpsuit:
       - state: equipped-INNERCLOTHING
         color: *color-grey
-      - state: professional-trinkets-equipped-INNERCLOTHING
       - state: color-trinkets-equipped-INNERCLOTHING
         color: *color-black
+      - state: professional-trinkets-equipped-INNERCLOTHING
   - type: SuitSensor
     controlsLocked: true
     randomMode: false
