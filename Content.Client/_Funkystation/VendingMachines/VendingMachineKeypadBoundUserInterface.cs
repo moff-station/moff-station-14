@@ -26,7 +26,7 @@ public sealed class VendingMachineKeypadBoundUserInterface(EntityUid owner, Enum
         base.Open();
 
         _menu = this.CreateWindowCenteredLeft<VendingMachineKeypadMenu>();
-        _menu.VendingMachineOwner = Owner;
+        _menu.VendingMachineOwner = (Owner, EntMan.GetComponent<VendingMachineComponent>(Owner));
         _menu.User = IoCManager.Resolve<IPlayerManager>().LocalSession?.AttachedEntity;
         _menu.Title = EntMan.GetComponent<MetaDataComponent>(Owner).EntityName;
         _menu.OnCodeEntered += OnCodeEntered;
