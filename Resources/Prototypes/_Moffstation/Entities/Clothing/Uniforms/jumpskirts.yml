@@ -458,7 +458,7 @@
       color: &color-salvage "#b2435a"
     - state: basics-trinkets-icon
     - state: color-trinkets-icon
-      color: &color-cargo "#e39e00"
+      color: &color-lightbrown "#9b5244"
   - type: Item
     inhandVisuals:
       left:
@@ -475,7 +475,7 @@
         color: *color-salvage
       - state: basics-trinkets-equipped-INNERCLOTHING
       - state: color-trinkets-equipped-INNERCLOTHING
-        color: *color-cargo
+        color: *color-lightbrown
 #Service
 
 #Bartender
