@@ -435,7 +435,7 @@ public abstract partial class SharedModularHudSystem : EntitySystem
     /// update the visuals for the HUD entity.
     private void SyncVisuals(Entity<ModularHudComponent, ModularHudVisualsComponent?> entity)
     {
-        if (!Resolve(entity, ref entity.Comp2))
+        if (!Resolve(entity, ref entity.Comp2, logMissing: false))
             return;
 
         // Assemble the visuals data from the contained modules and defaults.
