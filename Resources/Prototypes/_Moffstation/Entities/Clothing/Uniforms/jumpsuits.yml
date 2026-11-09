@@ -31,10 +31,10 @@
     sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/jumpsuit.rsi
     layers:
     - state: icon
-      color: &color-orange "#db542e"
-    - state: professional-trinkets-icon
+      color: &color-orange "#c74c2a"
     - state: color-trinkets-icon
-      color: &color-black "#3f3f3f"
+      color: &color-black "#251f32"
+    - state: professional-trinkets-icon
   - type: Item
     inhandVisuals:
       left:
@@ -49,9 +49,9 @@
       jumpsuit:
       - state: equipped-INNERCLOTHING
         color: *color-orange
-      - state: professional-trinkets-equipped-INNERCLOTHING
       - state: color-trinkets-equipped-INNERCLOTHING
         color: *color-black
+      - state: professional-trinkets-equipped-INNERCLOTHING
   - type: Tag
     tags:
     - ClothMade
@@ -69,10 +69,10 @@
     sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/jumpsuit.rsi
     layers:
     - state: icon-light
-      color: &color-grey "#9b9b9b"
-    - state: professional-trinkets-icon
+      color: &color-grey "#9a97b9"
     - state: color-trinkets-icon
       color: *color-black
+    - state: professional-trinkets-icon
   - type: Item
     inhandVisuals:
       left:
@@ -87,9 +87,9 @@
       jumpsuit:
       - state: equipped-INNERCLOTHING-light
         color: *color-grey
-      - state: professional-trinkets-equipped-INNERCLOTHING
       - state: color-trinkets-equipped-INNERCLOTHING
         color: *color-black
+      - state: professional-trinkets-equipped-INNERCLOTHING
   - type: SuitSensor
     controlsLocked: true
     randomMode: false
@@ -582,10 +582,10 @@
     sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/jumpsuit.rsi
     layers:
     - state: icon
-      color: &color-salvage "#bc4a9b"
+      color: &color-salvage "#b2435a"
     - state: basics-trinkets-icon
     - state: color-trinkets-icon
-      color: &color-cargo "#e39e00"
+      color: &color-lightbrown "#9b5244"
   - type: Item
     inhandVisuals:
       left:
@@ -602,7 +602,7 @@
         color: *color-salvage
       - state: basics-trinkets-equipped-INNERCLOTHING
       - state: color-trinkets-equipped-INNERCLOTHING
-        color: *color-cargo
+        color: *color-lightbrown
 #Service
 
 #Bartender
@@ -629,7 +629,7 @@
       color: *color-black
     - state: basics-trinkets-icon
     - state: overalls-trinkets-icon
-      color: &color-purple "#ac50e6"
+      color: &color-purple "#7b41b5"
   - type: Item
     inhandVisuals:
       left:
@@ -657,9 +657,9 @@
     layers:
     - state: icon-light
       color: *color-black
-    - state: professional-trinkets-icon
     - state: color-trinkets-icon
       color: *color-purple
+    - state: professional-trinkets-icon
   - type: Item
     inhandVisuals:
       left:
@@ -674,9 +674,9 @@
       jumpsuit:
       - state: equipped-INNERCLOTHING-light
         color: *color-black
-      - state: professional-trinkets-equipped-INNERCLOTHING
       - state: color-trinkets-equipped-INNERCLOTHING
         color: *color-purple
+      - state: professional-trinkets-equipped-INNERCLOTHING
 
 #Soviet
 - type: entity

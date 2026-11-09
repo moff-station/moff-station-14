@@ -165,10 +165,10 @@
     sprite: _Moffstation/Clothing/Uniforms/Jumpskirt/jumpskirt.rsi
     layers:
     - state: icon
-      color: &color-orange "#db542e"
-    - state: professional-trinkets-icon
+      color: &color-orange "#c74c2a"
     - state: color-trinkets-icon
-      color: &color-black "#3f3f3f"
+      color: &color-black "#251f32"
+    - state: professional-trinkets-icon
   - type: Item
     inhandVisuals:
       left:
@@ -183,9 +183,9 @@
       jumpsuit:
       - state: equipped-INNERCLOTHING
         color: *color-orange
-      - state: professional-trinkets-equipped-INNERCLOTHING
       - state: color-trinkets-equipped-INNERCLOTHING
         color: *color-black
+      - state: professional-trinkets-equipped-INNERCLOTHING
   - type: SuitSensor
     controlsLocked: true
     randomMode: false
@@ -206,7 +206,7 @@
     sprite: _Moffstation/Clothing/Uniforms/Jumpskirt/jumpskirt.rsi
     layers:
     - state: icon
-      color: &color-grey "#9b9b9b"
+      color: &color-grey "#9a97b9"
     - state: professional-trinkets-icon
     - state: color-trinkets-icon
       color: *color-black
@@ -455,7 +455,7 @@
     sprite: _Moffstation/Clothing/Uniforms/Jumpskirt/jumpskirt.rsi
     layers:
     - state: icon
-      color: &color-salvage "#bc4a9b"
+      color: &color-salvage "#b2435a"
     - state: basics-trinkets-icon
     - state: color-trinkets-icon
       color: &color-cargo "#e39e00"
@@ -502,7 +502,7 @@
       color: *color-black
     - state: professional-trinkets-icon
     - state: color-trinkets-icon
-      color: &color-purple "#ac50e6"
+      color: &color-purple "#7b41b5"
   - type: Item
     inhandVisuals:
       left:
