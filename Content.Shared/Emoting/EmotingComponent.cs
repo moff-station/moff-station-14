@@ -1,3 +1,4 @@
+using Content.Shared.Chat;
 using Robust.Shared.GameStates;
 
 namespace Content.Shared.Emoting;
@@ -15,4 +16,9 @@ public sealed partial class EmotingComponent : Component
     [DataField, AutoNetworkedField]
     [Access(typeof(EmoteSystem), Friend = AccessPermissions.ReadWrite, Other = AccessPermissions.Read)]
     public bool Enabled = true;
+
+    // Moff Start - Emote sound cooldown
+    [ViewVariables, Access(typeof(SharedChatSystem))]
+    public TimeSpan NextEmoteSound;
+    // Moff end
 }
