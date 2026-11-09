@@ -21,6 +21,7 @@
   tileReactions:
   - !type:ExtinguishTileReaction { }
   - !type:SpillIfPuddlePresentTileReaction { }
+  rootAbsorbable: true
 
 - type: reagent
   id: BaseSoda
