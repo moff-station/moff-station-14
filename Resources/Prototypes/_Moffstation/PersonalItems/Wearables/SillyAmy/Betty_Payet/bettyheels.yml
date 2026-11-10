@@ -1,0 +1,27 @@
+- type: entity
+  parent: ClothingShoesHighheelBoots
+  id: PersonalItemBettyHeels
+  name: modified high-heeled jackboots
+  description: A pair of modified high-heeled jackboots made to remove all aspects that could possible make them contraband. Oh, and the laces are red. "BP" is engraved on the sole.
+  suffix: PersonalItem
+  components:
+  - type: Sprite
+    sprite: _Moffstation/PersonalItems/Wearables/SillyAmy/Betty_Payet
+  - type: Item
+    sprite: _Moffstation/PersonalItems/Wearables/SillyAmy/Betty_Payet
+  - type: Clothing
+    sprite: _Moffstation/PersonalItems/Wearables/SillyAmy/Betty_Payet
+    clothingVisuals:
+      shoes:
+      - state: equipped-FEET
+        offset: "0, -0.03"
+
+- type: loadout
+  id: PersonalItemBettyHeels
+  storage:
+    back:
+    - PersonalItemBettyHeels
+  effects:
+  - !type:PersonalItemLoadoutEffect
+    character:
+    - Betty Payet
