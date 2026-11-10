@@ -6,14 +6,7 @@ namespace Content.Shared.Silicons.StationAi;
 
 public abstract partial class SharedStationAiSystem
 {
-    private void InitMoffstation()
-    {
-        SubscribeLocalEvent<StationAiHeldComponent, AiShellControlStartedEvent>(OnAiShellControlStarted);
-        SubscribeLocalEvent<StationAiHeldComponent, AiShellControlStoppedEvent>(OnAiShellControlStopped);
-
-        SubscribeLocalEvent<StationAiWhitelistComponent, ComponentInit>(OnWhitelistInit);
-    }
-
+    [SubscribeLocalEvent]
     private void OnAiShellControlStarted(Entity<StationAiHeldComponent> entity, ref AiShellControlStartedEvent args)
     {
         if (!TryGetCore(entity, out var core))
@@ -22,6 +15,7 @@ public abstract partial class SharedStationAiSystem
         SwitchRemoteEntityMode(core, false);
     }
 
+    [SubscribeLocalEvent]
     private void OnAiShellControlStopped(Entity<StationAiHeldComponent> entity, ref AiShellControlStoppedEvent args)
     {
         if (TryGetCore(entity, out var core))
@@ -33,6 +27,7 @@ public abstract partial class SharedStationAiSystem
     }
 
     // ensure that all machines whitelisted for the AI are visible for the AI.
+    [SubscribeLocalEvent]
     private void OnWhitelistInit(Entity<StationAiWhitelistComponent> ent, ref ComponentInit args)
     {
         if (TryComp<StationAiVisionComponent>(ent.Owner, out var vision))
