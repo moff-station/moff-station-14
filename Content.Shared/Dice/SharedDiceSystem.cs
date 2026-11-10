@@ -2,6 +2,8 @@ using Content.Shared.Examine;
 using Content.Shared.Interaction.Events;
 using Content.Shared.Popups;
 using Content.Shared.Random.Helpers;
+using Content.Shared.Storage; // Moffstation - dice roll when dumped
+using Content.Shared.Storage.Components; // Moffstation - dice roll when dumped
 using Content.Shared.Throwing;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Random;
@@ -14,6 +16,18 @@ public abstract partial class SharedDiceSystem : EntitySystem
     [Dependency] private IGameTiming _timing = default!;
     [Dependency] private SharedAudioSystem _audio = default!;
     [Dependency] private SharedPopupSystem _popup = default!;
+
+    // Moffstation - Start - dice roll when dumped
+    [SubscribeLocalEvent]
+    private void OnDumped(Entity<StorageComponent> ent, ref DumpEvent args)
+    {
+        foreach (var entityUid in args.DumpQueue)
+        {
+            if (TryComp<DiceComponent>(entityUid, out var comp))
+                Roll((entityUid, comp));
+        }
+    }
+    // Moffstation - End
 
     [SubscribeLocalEvent]
     private void OnUseInHand(Entity<DiceComponent> entity, ref UseInHandEvent args)
