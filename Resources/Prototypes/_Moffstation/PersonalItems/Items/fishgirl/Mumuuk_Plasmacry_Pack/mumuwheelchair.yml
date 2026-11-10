@@ -1,0 +1,40 @@
+# player fishgirl - character mumuuk plasmacry pack
+
+- type: entity
+  id: PersonalItemMumuWheelchair
+  parent: VehicleWheelchair
+  name: comfy wheelchair
+  description: An advanced medical-grade wheelchair, featuring a deep blue paint job. The brand name was hastily painted over.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/PersonalItems/Items/fishgirl/Mumuuk_Plasmacry_Pack/mumuwheelchair.rsi
+    layers:
+    - state: wheelchair
+      map: ["unfoldedLayer"]
+    - state: wheelchair_folded
+      map: ["foldedLayer"]
+      visible: false
+
+- type: entity
+  parent: PersonalItemMumuWheelchair
+  id: PersonalItemMumuWheelchairFolded
+  suffix: folded
+  components:
+  # Moff start - wheelchair in backpack
+  - type: Item
+    size: Large 
+  # Moff - end
+  - type: Foldable
+    folded: true
+  - type: Strap
+    enabled: False
+
+- type: loadout
+  id: PersonalItemMumuWheelchair
+  storage:
+    back:
+    - PersonalItemMumuWheelchairFolded
+  effects:
+  - !type:PersonalItemLoadoutEffect
+    character:
+    - Mumuuk Plasmacry Pack
