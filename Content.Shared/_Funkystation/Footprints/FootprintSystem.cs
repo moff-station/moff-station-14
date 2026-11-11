@@ -46,15 +46,7 @@ public sealed partial class FootprintSystem : EntitySystem
         "dragging-5"
     ];
 
-    public override void Initialize()
-    {
-        base.Initialize();
-
-        // Listen for chemical changes (like Space Cleaner)
-        // Moff, after sharedpuddle
-        SubscribeLocalEvent<FootprintComponent, SolutionChangedEvent>(OnSolutionChanged, after: [typeof(SharedPuddleSystem)]);
-    }
-
+    [SubscribeLocalEvent(after: [typeof(SharedPuddleSystem)])]
     private void OnSolutionChanged(EntityUid uid, FootprintComponent component, ref SolutionChangedEvent args)
     {
         UpdatePrintColors(uid, component);
@@ -160,7 +152,10 @@ public sealed partial class FootprintSystem : EntitySystem
             _puddle.TrySpillAt(Transform(puddleUid).Coordinates, split, out _, false);
         }
         var spaceLeft = FixedPoint2.Max(0, maxStorage - ownerSolution.Comp.Solution.Volume);
-        _solutionContainer.TryTransferSolution(ownerSolution, puddleSolution.Value.Comp.Solution, spaceLeft);
+        // Moff start - Update drained puddle
+        if (_solutionContainer.TryTransferSolution(ownerSolution, puddleSolution.Value.Comp.Solution, spaceLeft))
+            _solutionContainer.UpdateChemicals(puddleSolution.Value);
+        // Moff end
         return true;
     }
 
@@ -194,7 +189,10 @@ public sealed partial class FootprintSystem : EntitySystem
         var color = ownerSolution.Value.Comp.Solution.GetColor(_prototypeManager).WithAlpha(alpha);
         // Moff end
 
-        _solutionContainer.TryTransferSolution(printSolution.Solution, ownerSolution.Value.Comp.Solution, transferAmount);
+        // Moff start - Update drained print solution
+        if (_solutionContainer.TryTransferSolution(printSolution.Solution, ownerSolution.Value.Comp.Solution, transferAmount))
+            _solutionContainer.UpdateChemicals(ownerSolution.Value);
+        // Moff end
 
         if (printSolution.Solution.Comp.Solution.Volume >= MaxVolumePerTile)
         {

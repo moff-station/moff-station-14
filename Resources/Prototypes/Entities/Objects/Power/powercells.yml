@@ -9,7 +9,7 @@
     pricePerJoule: 0.15
   - type: PowerCell
   - type: Explosive
-    explosionType: Default
+    explosionType: Transparent # Funky RMC Explosions
     maxIntensity: 200
     intensitySlope: 1.5
   - type: Sprite

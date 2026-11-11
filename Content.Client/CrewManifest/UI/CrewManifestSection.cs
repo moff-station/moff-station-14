@@ -1,4 +1,4 @@
-﻿// Moff start - Moved to `CrewManifestSection.xaml.cs
+// Moff start - Moved to `CrewManifestSection.xaml.cs
 // using System.Numerics;
 // using Content.Shared.CrewManifest;
 // using Content.Shared.Roles;

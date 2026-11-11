@@ -1,0 +1,25 @@
+#Player DrWhoFan13 - Character: Fail Gloriously
+- type: entity
+  parent: ClothingHandsBase
+  id: PersonalItemFailRing
+  name: Fail's Wedding Ring
+  description: A perfectly fitting silver ring with a blue star sapphire set on the center. Surrounding it is an engraving reading "You're mine to have & to hold - Restless Zoey"
+  suffix: PersonalItem
+  components:
+  - type: Sprite
+    sprite: _Moffstation/PersonalItems/Wearables/Tezzaide/Iris_Steelewing/irisring.rsi
+  - type: Clothing
+    quickEquip: True
+    sprite: _Moffstation/PersonalItems/Wearables/Tezzaide/Iris_Steelewing/irisring.rsi
+  - type: Item
+    size: Tiny
+
+- type: loadout
+  id: PersonalItemFailRing
+  storage:
+    back:
+    - PersonalItemFailRing
+  effects:
+  - !type:PersonalItemLoadoutEffect
+    character:
+    - Fail Gloriously

@@ -1,4 +1,3 @@
-using System.Linq;
 using Content.Server._MACRO.StrangeMoods;
 using Content.Server._MACRO.StrangeMoods.Eui;
 using Content.Server.Administration.Logs;
@@ -15,7 +14,6 @@ using Content.Shared._MACRO.StrangeMoods;
 using Content.Shared._Moffstation.Verbs; // Moff - Multi-character selection
 using Content.Shared.Administration;
 using Content.Shared.Administration.Systems;
-using Content.Shared.Chemistry.Components;
 using Content.Shared.Chemistry.Components.SolutionManager;
 using Content.Shared.Chemistry.EntitySystems;
 using Content.Shared.Configurable;
@@ -37,9 +35,11 @@ using Robust.Shared.Console;
 using Robust.Shared.Map.Components;
 using Robust.Shared.Physics.Components;
 using Robust.Shared.Player;
-using Robust.Shared.Timing;
 using Robust.Shared.Toolshed;
 using Robust.Shared.Utility;
+using System.Linq;
+using Content.Shared.Chemistry.Components;
+using Content.Shared.Station.Systems;
 using static Content.Shared.Configurable.ConfigurationComponent;
 
 namespace Content.Server.Administration.Systems
@@ -53,14 +53,13 @@ namespace Content.Server.Administration.Systems
         [Dependency] private IConsoleHost _console = default!;
         [Dependency] private IAdminLogManager _adminLogs = default!;
         [Dependency] private IAdminManager _adminManager = default!;
-        [Dependency] private IGameTiming _gameTiming = default!;
         [Dependency] private SharedMapSystem _map = default!;
         [Dependency] private AdminSystem _adminSystem = default!;
         [Dependency] private DisposalTubeSystem _disposalTubes = default!;
         [Dependency] private EuiManager _euiManager = default!;
         [Dependency] private GhostRoleSystem _ghostRoleSystem = default!;
         [Dependency] private UserInterfaceSystem _uiSystem = default!;
-        [Dependency] private PrayerSystem _prayerSystem = default!;
+        [Dependency] private ServerPrayerSystem _prayerSystem = default!;
         [Dependency] private MindSystem _mindSystem = default!;
         [Dependency] private ToolshedManager _toolshed = default!;
         [Dependency] private RejuvenateSystem _rejuvenate = default!;
@@ -72,6 +71,7 @@ namespace Content.Server.Administration.Systems
         [Dependency] private IPlayerManager _playerManager = default!;
         [Dependency] private SiliconLawSystem _siliconLawSystem = default!;
         [Dependency] private AfkConfirmSystem _afkConfirm = default!;
+        [Dependency] private SharedTransformSystem _transformSystem = default!;
 
         [Dependency] private StrangeMoodsSystem _moods = default!; // MACRO
 
@@ -91,7 +91,7 @@ namespace Content.Server.Administration.Systems
         {
             AddAdminVerbs(ev);
             AddDebugVerbs(ev);
-            AddSmiteVerbs(ev);
+            AddPrototypeVerbs(ev);
             AddTricksVerbs(ev);
             AddAntagVerbs(ev);
         }
@@ -189,10 +189,11 @@ namespace Content.Server.Administration.Systems
 
                             var stationUid = _stations.GetOwningStation(args.Target);
 
-                            // Moff - Multi-character selection: clone the character they actually
+                            // Moff start - Multi-character selection: clone the character they actually
                             // spawned as, not whichever one is selected in the lobby.
-                            var profile = _moffCharacterPicker.GetSpawnedProfile(targetActor.PlayerSession.UserId)
-                                          ?? _gameTicker.GetPlayerProfile(targetActor.PlayerSession);
+                            var profile = _moffProfileSpawned.GetSpawnedProfile(targetActor.PlayerSession.UserId).Profile
+                                          ?? _gameTicker.GetPlayerProfile(targetActor.PlayerSession, profileIndex: null);
+                            // Moff end
                             _spawning.SpawnPlayerMob(coords.Value, null, profile, stationUid);
                         },
                         ConfirmationPopup = true,

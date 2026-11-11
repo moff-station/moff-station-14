@@ -20,31 +20,31 @@
     GreenTea: 6
 
 - type: reaction
-  id: LemonLimeBitters
+  id: MoffLemonLimeBitters
   reactants:
     Lemonade:
       amount: 10
     JuiceLime:
       amount: 5
-    AstrosturaBitters: # Don't use more than 1u of bitters in each recipe.
+    MoffAstrosturaBitters: # Don't use more than 1u of bitters in each recipe.
       amount: 1
   products:
-    LemonLimeBitters: 16
+    MoffLemonLimeBitters: 16
 
 - type: reaction
-  id: PinkGin
+  id: MoffPinkGin
   requiredMixerCategories:
   - Stir
   reactants:
     Gin:
       amount: 15
-    AstrosturaBitters: # Don't use more than 1u of bitters in each recipe.
+    MoffAstrosturaBitters: # Don't use more than 1u of bitters in each recipe.
       amount: 1
   products:
-    PinkGin: 16
+    MoffPinkGin: 16
 
 - type: reaction
-  id: PlantersPunch
+  id: MoffPlantersPunch
   requiredMixerCategories:
   - Stir
   reactants:
@@ -52,23 +52,23 @@
       amount: 10
     Rum:
       amount: 5
-    AstrosturaBitters: # Don't use more than 1u of bitters in each recipe.
+    MoffAstrosturaBitters: # Don't use more than 1u of bitters in each recipe.
       amount: 1
   products:
-    PlantersPunch: 16
+    MoffPlantersPunch: 16
 
 - type: reaction
-  id: Breathalyzer
+  id: MoffBreathalyzer
   reactants:
     Ethylredoxrazine:
       amount: 1
     Nothing:
       amount: 1
   products:
-    Breathalyzer: 2
+    MoffBreathalyzer: 2
 
 - type: reaction
-  id: CorpseReviver
+  id: MoffCorpseReviver
   requiredMixerCategories:
   - Shake
   reactants:
@@ -85,10 +85,10 @@
     Gin:
       amount: 2
   products:
-    CorpseReviver: 10
+    MoffCorpseReviver: 10
 
 - type: reaction
-  id: PrairieCocktail
+  id: MoffPrairieCocktail
   requiredMixerCategories:
   - Stir
   reactants:
@@ -101,21 +101,21 @@
     Egg:
       amount: 6
   products:
-    PrairieCocktail: 20
+    MoffPrairieCocktail: 20
 # the ratios on this one are horrible due to 1 egg being 6 raw egg
 
 - type: reaction
-  id: MossySpecial
+  id: MoffMossySpecial
   reactants:
     Ethylredoxrazine:
       amount: 1
     ManlyDorf:
       amount: 2
   products:
-    MossySpecial: 3
+    MoffMossySpecial: 3
 
 - type: reaction
-  id: ScrantonSpecial
+  id: MoffScrantonSpecial
   requiredMixerCategories:
   - Stir
   reactants:
@@ -124,20 +124,20 @@
     Cream:
       amount: 1
   products:
-    ScrantonSpecial: 3
+    MoffScrantonSpecial: 3
 
 - type: reaction
-  id: ApexCola
+  id: MoffApexCola
   reactants:
     WeldingFuel:
       amount: 1
     Cola:
       amount: 1
   products:
-    ApexCola: 2
+    MoffApexCola: 2
 
 - type: reaction
-  id: Cocoon
+  id: MoffCocoon
   reactants:
     Fiber:
       amount: 2
@@ -146,10 +146,10 @@
     Ice:
       amount: 1
   products:
-    Cocoon: 6
+    MoffCocoon: 6
 
 - type: reaction
-  id: CoughDrop
+  id: MoffCoughDrop
   requiredMixerCategories:
   - Shake
   reactants:
@@ -160,10 +160,10 @@
     SolDry:
       amount: 1
   products:
-    CoughDrop: 6
+    MoffCoughDrop: 6
 
 - type: reaction
-  id: Fertilizer
+  id: MoffFertilizer
   requiredMixerCategories:
   - Shake
   reactants:
@@ -174,42 +174,42 @@
     Vermouth:
       amount: 1
   products:
-    Fertilizer: 3
+    MoffFertilizer: 3
 
 - type: reaction
-  id: Gelatin
+  id: MoffGelatin
   reactants:
     OrangeLimeSoda:
       amount: 1
     Slime:
       amount: 1
   products:
-    Gelatin: 2
+    MoffGelatin: 2
 
 - type: reaction
-  id: MeatAnomaly
+  id: MoffMeatAnomaly
   requiredMixerCategories:
   - Shake
   reactants:
-    MeatPulp:
+    MoffMeatPulp:
       amount: 1
     RedMead:
       amount: 1
   products:
-    MeatAnomaly: 2
+    MoffMeatAnomaly: 2
 
 - type: reaction
-  id: RussianMothroach
+  id: MoffRussianMothroach
   reactants:
     Fiber:
       amount: 1
     WhiteRussian:
       amount: 1
   products:
-    RussianMothroach: 2
+    MoffRussianMothroach: 2
 
 - type: reaction
-  id: SolarHurricane
+  id: MoffSolarHurricane
   requiredMixerCategories:
   - Shake
   reactants:
@@ -220,10 +220,10 @@
     SpaceMountainWind:
       amount: 1
   products:
-    SolarHurricane: 3
+    MoffSolarHurricane: 3
 
 - type: reaction
-  id: Uprooting
+  id: MoffUprooting
   requiredMixerCategories:
   - Stir
   reactants:
@@ -234,7 +234,7 @@
     Coffee:
       amount: 1
   products:
-    Uprooting: 3
+    MoffUprooting: 3
 
 - type: reaction
   id: Singulo
@@ -291,7 +291,7 @@
     Mopwata: 6
 
 - type: reaction
-  id: MeatPulp
+  id: MoffMeatPulp
   requiredMixerCategories:
   - Stir
   reactants:
@@ -300,7 +300,7 @@
     UncookedAnimalProteins:
       amount: 1
   products:
-    MeatPulp: 2
+    MoffMeatPulp: 2
 
 - type: reaction
   id: MeatPulpBreakdown
@@ -308,7 +308,7 @@
   requiredMixerCategories:
   - Centrifuge
   reactants:
-    MeatPulp:
+    MoffMeatPulp:
       amount: 2
   products:
     UncookedAnimalProteins: 1

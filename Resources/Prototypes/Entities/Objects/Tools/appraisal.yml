@@ -1,4 +1,4 @@
-﻿- type: entity
+- type: entity
   parent: BaseItem
   id: AppraisalTool
   name: appraisal tool
@@ -30,5 +30,6 @@
     - Cargo
   # Imp - Begin - Tourists
   - type: StealTarget
-    stealGroup: AppraisalTool
+    stealGroup:
+    - AppraisalTool
   # Imp - End

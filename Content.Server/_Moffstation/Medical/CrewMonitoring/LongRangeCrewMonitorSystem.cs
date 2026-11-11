@@ -1,7 +1,6 @@
-using Content.Server.Station.Components;
-using Content.Server.Station.Systems;
 using Content.Shared._Moffstation.Medical.CrewMonitoring;
 using Content.Shared.Station.Components;
+using Content.Shared.Station.Systems;
 
 namespace Content.Server._Moffstation.Medical.CrewMonitoring;
 

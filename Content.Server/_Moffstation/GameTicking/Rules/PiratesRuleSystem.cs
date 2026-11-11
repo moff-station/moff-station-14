@@ -1,22 +1,20 @@
 using System.Linq;
 using Content.Server._Moffstation.GameTicking.Rules.Components;
 using Content.Server._Moffstation.Roles;
-using Content.Server.Antag;
-using Content.Server.Cargo.Components;
-using Content.Server.GameTicking;
-using Content.Server.GameTicking.Rules;
-using Content.Server.Roles;
 using Content.Server.Station.Systems;
 using Content.Shared._Moffstation.Pirate.Components;
 using Content.Shared.Cargo.Components;
-using Content.Shared.GameTicking.Components;
+using Content.Shared.Antag;
+using Content.Shared.GameTicking;
+using Content.Shared.GameTicking.Rules;
+using Content.Shared.Roles;
 
 namespace Content.Server._Moffstation.GameTicking.Rules;
 
 public sealed partial class PiratesRuleSystem : GameRuleSystem<PiratesRuleComponent>
 {
     [Dependency] private AntagSelectionSystem _antag = default!;
-    [Dependency] private StationSystem _station = default!;
+    [Dependency] private ServerStationSystem _station = default!;
 
     public override void Initialize()
     {
@@ -28,16 +26,13 @@ public sealed partial class PiratesRuleSystem : GameRuleSystem<PiratesRuleCompon
         SubscribeLocalEvent<PirateStationComponent, BankBalanceUpdatedEvent>(OnBalanceUpdated);
     }
 
-    protected override void AppendRoundEndText(EntityUid uid,
-        PiratesRuleComponent component,
-        GameRuleComponent gameRule,
-        ref RoundEndTextAppendEvent args)
+    protected override void AppendRoundEndText(Entity<PiratesRuleComponent> rule, ref RoundEndTextAppendEvent args)
     {
         args.AddLine(Loc.GetString("pirates-existing"));
-        args.AddLine(Loc.GetString("pirates-earned-spesos", ("money", component.TotalMoneyCollected)));
+        args.AddLine(Loc.GetString("pirates-earned-spesos", ("money", rule.Comp.TotalMoneyCollected)));
         args.AddLine(Loc.GetString("pirate-list-start"));
 
-        var antags = _antag.GetAntagIdentifiers(uid);
+        var antags = _antag.GetAntagIdentifiers(rule.Owner);
 
         foreach (var (_, sessionData, name) in antags)
         {

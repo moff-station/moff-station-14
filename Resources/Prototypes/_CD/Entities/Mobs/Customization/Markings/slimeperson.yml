@@ -54,8 +54,7 @@
   sprites:
   - sprite: _CD/Mobs/Customization/SlimePerson/chest.rsi
     state: core
-  shaders:
-    core: unshaded
+    shader: unshaded
 
 - type: marking
   id: SlimeLungs
@@ -74,14 +73,13 @@
   sprites:
   - sprite: _CD/Mobs/Customization/SlimePerson/head.rsi
     state: fadingstars1
+    shader: unshaded
   - sprite: _CD/Mobs/Customization/SlimePerson/head.rsi
     state: fadingstars2
+    shader: unshaded
   - sprite: _CD/Mobs/Customization/SlimePerson/head.rsi
     state: fadingstars3
-  shaders:
-    fadingstars1: unshaded
-    fadingstars2: unshaded
-    fadingstars3: unshaded
+    shader: unshaded
 
 - type: marking
   id: fizz
@@ -145,8 +143,7 @@
   sprites:
   - sprite: _CD/Mobs/Customization/SlimePerson/eyes.rsi
     state: glow
-  shaders:
-    glow: unshaded
+    shader: unshaded
 
 - type: marking
   id: SlimeEyesDroopy
@@ -173,8 +170,7 @@
   sprites:
   - sprite: _CD/Mobs/Customization/SlimePerson/eyes.rsi
     state: droopyglow
-  shaders:
-    droopyglow: unshaded
+    shader: unshaded
 
 - type: marking
   id: SlimeEyesCyclops
@@ -201,8 +197,7 @@
   sprites:
   - sprite: _CD/Mobs/Customization/SlimePerson/eyes.rsi
     state: cyclopsglow
-  shaders:
-    cyclopsglow: unshaded
+    shader: unshaded
 
 # RArm
 

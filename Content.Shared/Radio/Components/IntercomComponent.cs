@@ -1,4 +1,4 @@
-﻿using Content.Shared.DeviceLinking; // Moffstation
+using Content.Shared.DeviceLinking; // Moffstation
 using Robust.Shared.GameStates;
 using Robust.Shared.Prototypes;
 

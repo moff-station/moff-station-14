@@ -90,7 +90,7 @@
   - type: Extractable # Moffstation - Meat Pulp
     juiceSolution:
       reagents:
-      - ReagentId: MeatPulp
+      - ReagentId: MoffMeatPulp
         Quantity: 10 # Mothstation- End
   - type: SpawnItemsOnUse
     items:
@@ -209,7 +209,7 @@
   - type: Produce
     plantId: TowercapPlants
   - type: ToolRefinable
-    qualityNeeded: Sawing
+    qualityNeeded: Slicing
     refineResult:
     - id: MaterialWoodPlank1
       amount: 2
@@ -231,7 +231,7 @@
   - type: Produce
     plantId: SteelcapPlants
   - type: ToolRefinable
-    qualityNeeded: Sawing
+    qualityNeeded: Slicing
     refineResult:
     - id: SheetSteel1
 
@@ -345,8 +345,7 @@
     trash:
     - TrashBananaPeel
   - type: ToolRefinable
-    refineResult:
-    - id: TrashBananaPeel
+    refineResult: [] # Spawns trash on refine
   - type: Solution
     solution:
       reagents:
@@ -390,8 +389,7 @@
     trash:
     - TrashMimanaPeel
   - type: ToolRefinable
-    refineResult:
-    - id: TrashMimanaPeel
+    refineResult: [] # Spawns trash on refine
   - type: Solution
     solution:
       reagents:
@@ -952,7 +950,7 @@
   - type: FoodSequenceElement
     entries:
       Skewer: TomatoSkewer
-      Burger: Tomato
+      Burger: TomatoBurger
       Taco: Tomato
 
 - type: entity
@@ -1001,7 +999,7 @@
     - Vegetable
   - type: FoodSequenceElement
     entries:
-      Burger: BlueTomato
+      Burger: BlueTomatoBurger
       Taco: BlueTomato
 
 - type: entity
@@ -1049,7 +1047,7 @@
   - type: FoodSequenceElement
     entries:
       Skewer: TomatoSkewer
-      Burger: BloodTomato
+      Burger: BloodTomatoBurger
       Taco: BloodTomato
 
 - type: entity
@@ -1193,8 +1191,7 @@
     trash:
     - FoodCornTrash
   - type: ToolRefinable
-    refineResult:
-    - id: FoodCornTrash #no idea why you'd ever do this, but it's just here for consistency
+    refineResult: [] # Spawns trash on refine
   - type: Solution
     solution:
       reagents:
@@ -1331,6 +1328,10 @@
     tags:
     - Vegetable
     - Mushroom
+  - type: FoodSequenceElement
+    entries:
+      Burger: ChanterelleBurger
+      Taco: Chanterelle
 
 # Slices
 
@@ -1468,7 +1469,7 @@
   - type: FoodSequenceElement
     entries:
       Taco: ChiliPepper
-      Burger: ChiliPepper
+      Burger: ChiliPepperBurger
       Skewer: ChiliPepperSkewer
 
 - type: entity
@@ -1499,7 +1500,7 @@
   - type: FoodSequenceElement
     entries:
       Taco: ChillyPepper
-      Burger: ChillyPepper
+      Burger: ChillyPepperBurger
       Skewer: ChillyPepperSkewer
 
 - type: entity
@@ -1685,7 +1686,7 @@
   - type: Solution
     solution:
       reagents:
-      - ReagentId: Omnizine
+      - ReagentId: ApotheosoticEnzymes
         Quantity: 3
       - ReagentId: SpaceDrugs
         Quantity: 10
@@ -1736,7 +1737,7 @@
   - type: Tag
     tags:
     - Galaxythistle
-    - Fruit # Probably?
+    - Flower
   - type: FoodSequenceElement
     entries:
       Taco: Galaxythistle
@@ -1870,8 +1871,7 @@
     trash:
     - WeaponRevolverPython
   - type: ToolRefinable
-    refineResult:
-    - id: WeaponRevolverPython
+    refineResult: [] # Spawns trash on refine
   - type: Tag
     tags:
     - Fruit # It's in the name
@@ -1908,8 +1908,7 @@
     trash:
     - RevolverCapGun
   - type: ToolRefinable
-    refineResult:
-    - id: RevolverCapGun
+    refineResult: [] # Spawns trash on refine
   - type: Tag
     tags:
     - Fruit
@@ -1930,8 +1929,7 @@
     trash:
     - RevolverCapGunFake
   - type: ToolRefinable
-    refineResult:
-    - id: RevolverCapGunFake
+    refineResult: [] # Spawns trash on refine
 
 - type: entity
   name: rice bushel
@@ -2340,8 +2338,7 @@
     trash:
     - FoodBungoPit
   - type: ToolRefinable
-    refineResult:
-    - id: FoodBungoPit
+    refineResult: [] # Spawns trash on refine
   - type: Solution
     solution:
       reagents:
@@ -2644,8 +2641,7 @@
     trash:
     - TrashCherryPit
   - type: ToolRefinable
-    refineResult:
-    - id: TrashCherryPit
+    refineResult: [] # Spawns trash on refine
   - type: Solution
     solution:
       maxVol: 15

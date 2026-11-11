@@ -1,4 +1,4 @@
-﻿using Robust.Shared.Prototypes;
+using Robust.Shared.Prototypes;
 // Moffstation - Start - Infectious blood
 using Content.Shared.Chemistry.Components;
 using Content.Shared.Chemistry.Reagent;

@@ -1,9 +1,9 @@
 using System.Linq;
 using Content.Shared.Administration.Logs;
+using Content.Shared._Starfall.Offering;
 using Content.Shared.Chat;
 using Content.Shared.CombatMode;
 using Content.Shared.Cuffs;
-using Content.Shared.Cuffs.Components;
 using Content.Shared.Database;
 using Content.Shared.DoAfter;
 using Content.Shared.DragDrop;
@@ -15,6 +15,7 @@ using Content.Shared.Interaction.Components;
 using Content.Shared.Interaction.Events;
 using Content.Shared.Inventory;
 using Content.Shared.Inventory.VirtualItem;
+using Content.Shared.Mind;
 using Content.Shared.Popups;
 using Content.Shared.Strip.Components;
 using Content.Shared.Verbs;
@@ -35,6 +36,7 @@ public abstract partial class SharedStrippableSystem : EntitySystem
     [Dependency] private SharedDoAfterSystem _doAfterSystem = default!;
     [Dependency] private SharedHandsSystem _handsSystem = default!;
     [Dependency] private SharedPopupSystem _popupSystem = default!;
+    [Dependency] private SharedMindSystem _mindSystem = default!;
 
     [Dependency] private ISharedAdminLogManager _adminLogger = default!;
 
@@ -168,7 +170,7 @@ public abstract partial class SharedStrippableSystem : EntitySystem
 
         if (_inventorySystem.TryGetSlotEntity(target, slot, out _))
         {
-            _popupSystem.PopupCursor(Loc.GetString("strippable-component-item-slot-occupied", ("owner", targetIdentity)), user);
+            _popupSystem.PopupCursor(Loc.GetString("strippable-component-item-slot-occupied-message", ("owner", targetIdentity)), user);
             return false;
         }
 
@@ -361,7 +363,11 @@ public abstract partial class SharedStrippableSystem : EntitySystem
         RaiseLocalEvent(item, new DroppedEvent(user), true); // Gas tank internals etc.
 
         _handsSystem.PickupOrDrop(user, item, animateUser: stealth, animate: !stealth);
-        _adminLogger.Add(LogType.Stripping, LogImpact.High, $"{ToPrettyString(user):actor} has stripped the item {ToPrettyString(item):item} from {ToPrettyString(target):target}'s {slot} slot");
+        // Entities that have never been mind-controlled (mannequins, unpossessed animals) don't need to alert admins.
+        var impact = _mindSystem.TryGetLastMind(target, out _)
+            ? LogImpact.High
+            : LogImpact.Low;
+        _adminLogger.Add(LogType.Stripping, impact, $"{ToPrettyString(user):actor} has stripped the item {ToPrettyString(item):item} from {ToPrettyString(target):target}'s {slot} slot");
     }
 
     /// <summary>
@@ -442,7 +448,13 @@ public abstract partial class SharedStrippableSystem : EntitySystem
             DuplicateCondition = DuplicateConditions.SameTool
         };
 
-        _doAfterSystem.TryStartDoAfter(doAfterArgs);
+        // Moff Start - Item offering
+        if (!_doAfterSystem.TryStartDoAfter(doAfterArgs, out var doAfterId))
+            return;
+
+        var offerEv = new StripHandInsertStartedEvent(target.Owner, held, doAfterId.Value.Index);
+        RaiseLocalEvent(user.Owner, ref offerEv);
+        // Moff end
     }
 
     /// <summary>
@@ -526,6 +538,13 @@ public abstract partial class SharedStrippableSystem : EntitySystem
         if (!CanStripRemoveHand(user, target, item, handName))
             return;
 
+        // Moff Start - Item offering
+        var beforeEv = new BeforeStripHandRemoveEvent(user.Owner, target.Owner);
+        RaiseLocalEvent(item, ref beforeEv);
+        if (beforeEv.Handled)
+            return;
+        // Moff end
+
         var (time, stealth) = GetStripTimeModifiers(user, target, null, targetStrippable.HandStripDelay);
 
         if (!stealth)
@@ -576,7 +595,11 @@ public abstract partial class SharedStrippableSystem : EntitySystem
 
         _handsSystem.TryDrop(target, item, checkActionBlocker: false);
         _handsSystem.PickupOrDrop(user, item, animateUser: stealth, animate: !stealth, handsComp: user.Comp);
-        _adminLogger.Add(LogType.Stripping, LogImpact.High, $"{ToPrettyString(user):actor} has stripped the item {ToPrettyString(item):item} from {ToPrettyString(target):target}'s hands");
+        // Entities that have never been mind-controlled (mannequins, unpossessed animals) don't need to alert admins.
+        var impact = _mindSystem.TryGetLastMind(target.Owner, out _)
+            ? LogImpact.High
+            : LogImpact.Low;
+        _adminLogger.Add(LogType.Stripping, impact, $"{ToPrettyString(user):actor} has stripped the item {ToPrettyString(item):item} from {ToPrettyString(target):target}'s hands");
 
         // Hand update will trigger strippable update.
     }

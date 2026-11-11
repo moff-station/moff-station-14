@@ -3,7 +3,6 @@ using System.Linq;
 using Content.Server.Administration.Logs;
 using Content.Server.Administration.Managers;
 using Content.Server.Chat.Managers;
-using Content.Server.GameTicking;
 using Content.Server.Station.Systems;
 using Content.Shared._Starlight.CollectiveMind; // Starlight - Collective Minds
 using Content.Shared.ActionBlocker;
@@ -12,7 +11,7 @@ using Content.Shared.CCVar;
 using Content.Shared.Chat;
 using Content.Shared.Database;
 using Content.Shared.Examine;
-using Content.Shared.Ghost;
+using Content.Shared.GameTicking;
 using Content.Shared.Ghost.Components;
 using Content.Shared.Mobs.Systems;
 using Content.Shared.Players.RateLimiting;
@@ -43,7 +42,7 @@ public sealed partial class ChatSystem : SharedChatSystem
     [Dependency] private IRobustRandom _random = default!;
     [Dependency] private IAdminLogManager _adminLogger = default!;
     [Dependency] private ActionBlockerSystem _actionBlocker = default!;
-    [Dependency] private StationSystem _stationSystem = default!;
+    [Dependency] private ServerStationSystem _stationSystem = default!;
     [Dependency] private MobStateSystem _mobStateSystem = default!;
     [Dependency] private SharedAudioSystem _audio = default!;
     [Dependency] private ReplacementAccentSystem _wordreplacement = default!;

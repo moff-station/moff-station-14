@@ -1,13 +1,13 @@
 - type: entity
   parent: [ DrinkVisualsOpenable, DrinkBottleGlassBaseFull ]
-  id: DrinkAstrosturaBittersBottleFull
+  id: MoffDrinkAstrosturaBittersBottleFull
   name: astrostura bitters bottle
   description: A common mixer used to spice drinks.
   components:
   - type: Solution
     solution:
       reagents:
-      - ReagentId: AstrosturaBitters
+      - ReagentId: MoffAstrosturaBitters
         Quantity: 60
   - type: Label
     localizedLabel: reagent-name-astrosturabitters
@@ -20,7 +20,7 @@
 
 - type: entity
   parent: [ DrinkVisualsOpenable, DrinkBottleGlassBaseFull ]
-  id: DrinkEthylredoxrazineBottleFull
+  id: MoffDrinkEthylredoxrazineBottleFull
   name: Halcyon Ethyl Tincture
   description: A tincture to cure all your ales, or any other alcohol for that matter. This mix is particularly potent.
   components:
@@ -41,14 +41,14 @@
 
 - type: entity
   parent: [ DrinkVisualsOpenable, DrinkBottleGlassBaseFull ]
-  id: DrinkWizardAleFull
+  id: MoffDrinkWizardAleFull
   name: Wizard Ale bottle
   description: It's brewed, and it's good, and it's delicious, and it's made from hops collected from the prairies, the distant prairies in the woods. Coming to a tavern near you, except it won't, because it's SECRET.
   components:
   - type: Solution
     solution:
       reagents:
-      - ReagentId: WizardAle
+      - ReagentId: MoffWizardAle
         Quantity: 120
   - type: Label
     localizedLabel: reagent-name-wizard-ale

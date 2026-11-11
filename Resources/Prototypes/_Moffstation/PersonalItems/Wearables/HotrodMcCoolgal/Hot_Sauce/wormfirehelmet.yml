@@ -1,0 +1,30 @@
+# Player: HotrodMcCoolgal - Character: Hot Sauce
+- type: entity
+  parent: ClothingHeadHatHardhatRed
+  id: &id PersonalItemHotSauceWormFireHelmet
+  name: worm fire helmet
+  description: An old decommissioned hard hat from the Thirteenth Space Station, it has seen many years of use.
+  suffix: PersonalItem
+  components:
+  - type: Sprite
+    sprite: &sprite Clothing/Head/Hardhats/red.rsi
+  - type: Clothing
+    sprite: *sprite
+  - type: Item
+    sprite: *sprite
+  - type: ItemSlots
+    slots:
+      cell_slot:
+        startingItem: null
+  - type: DetailExaminable
+    content: Many scratches and dings line this helmet, the name 'F. Serrano' is scratched on the inside...
+
+- type: loadout
+  id: *id
+  storage:
+    back:
+    - *id
+  effects:
+  - !type:PersonalItemLoadoutEffect
+    character:
+    - Hot Sauce

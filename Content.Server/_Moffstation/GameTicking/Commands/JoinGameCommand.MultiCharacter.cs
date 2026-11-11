@@ -1,21 +1,16 @@
-using Content.Server._Moffstation.Station;
-using Content.Server.Preferences.Managers;
-using Content.Shared.Preferences;
+using System.Diagnostics.CodeAnalysis;
 using Robust.Shared.Console;
-using Robust.Shared.Player;
 
 // ReSharper disable once CheckNamespace // Moff - Adds to existing class in non-moff namespace
 namespace Content.Server.GameTicking.Commands;
 
 internal sealed partial class JoinGameCommand
 {
-    [Dependency] private IServerPreferencesManager _moffPreferences = default!;
-
     /// <summary>
     /// Validates the argument count and takes the optional leading character-slot argument, trimming
     /// it off <paramref name="args"/> so the rest of the command sees upstream's two-argument form.
     /// </summary>
-    private static bool TryTakeMoffSlotArg(IConsoleShell shell, ref string[] args, out int? slot)
+    private static bool TryTakeMoffSlotArg(IConsoleShell shell, ref string[] args, [NotNullWhen(true)] out int? slot)
     {
         slot = null;
 
@@ -26,7 +21,7 @@ internal sealed partial class JoinGameCommand
         }
 
         if (args.Length != 3)
-            return true;
+            return false;
 
         if (!int.TryParse(args[0], out var parsed))
         {
@@ -36,22 +31,6 @@ internal sealed partial class JoinGameCommand
 
         slot = parsed;
         args = args[1..];
-        return true;
-    }
-
-    /// <summary>
-    /// Pins the character in <paramref name="slot"/> as the one this player is late joining with.
-    /// </summary>
-    private bool TrySetMoffCharacter(IConsoleShell shell, ICommonSession player, int slot)
-    {
-        if (_moffPreferences.GetPreferencesOrNull(player.UserId) is not { } prefs ||
-            !prefs.Characters.TryGetValue(slot, out var profile))
-        {
-            shell.WriteError(Loc.GetString("moff-join-game-no-character-in-slot", ("slot", slot)));
-            return false;
-        }
-
-        _entManager.System<MoffCharacterPickerSystem>().SetExplicitChoice(player.UserId, profile);
         return true;
     }
 }

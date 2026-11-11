@@ -15,12 +15,11 @@
     transmitFrequencyId: CrewMonitor
     receiveFrequencyId: SuitSensor
     autoConnect: false
-  - type: WirelessNetworkConnection
+  - type: WirelessNetwork
     range: 10000 # Moffstation - Exended range for Listening outpost
   #- type: StationLimitedNetwork # Moffstation
   - type: ApcPowerReceiver
     powerLoad: 200
-  - type: ExtensionCableReceiver
   - type: WiresPanel
   - type: WiresVisuals
   - type: Appearance

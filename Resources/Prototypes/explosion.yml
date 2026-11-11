@@ -14,6 +14,23 @@
   temperature: 800
 
 - type: explosion
+  id: Clake
+  damagePerIntensity:
+    types:
+      Heat: 2
+      Blunt: 2
+      Piercing: 3
+      Structural: 65
+  tileBreakChance: [ 0, 0.5, 1 ]
+  tileBreakIntensity: [ 0, 50, 75 ]
+  tileBreakRerollReduction: 25
+  lightColor: Orange
+  fireColor: Red
+  texturePath: /Textures/Effects/fire_greyscale.rsi
+  fireStates: 3
+  temperature: 800
+
+- type: explosion
   id: DemolitionCharge
   damagePerIntensity:
     types:
@@ -31,6 +48,7 @@
 
 - type: explosion
   id: MicroBomb
+  effects: null # Funky RMC Explosions
   damagePerIntensity:
     types:
       Heat: 6
@@ -91,6 +109,7 @@
 
 - type: explosion
   id: PowerSink
+  effects: null # Funky RMC Explosions
   damagePerIntensity:
     types:
       Heat: 12
@@ -138,6 +157,7 @@
 
 - type: explosion
   id: XenoborgAntiStructureExplosion
+  effects: null # Funky RMC Explosions
   damagePerIntensity:
     types:
       Heat: 4

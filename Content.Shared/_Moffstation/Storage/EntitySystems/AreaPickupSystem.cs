@@ -5,6 +5,7 @@ using Content.Shared.Item;
 using Content.Shared.Projectiles;
 using Content.Shared.Storage;
 using Content.Shared.Timing;
+using Content.Shared.Timing.Systems;
 using Robust.Shared.Audio;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Containers;
@@ -60,7 +61,7 @@ public sealed partial class AreaPickupSystem : EntitySystem
     {
         if (args.Handled ||
             !args.CanReach ||
-            !_useDelay.TryResetDelay(entity, checkDelayed: true, id: DelayId))
+            !_useDelay.TryResetDelay(entity.Owner, checkDelayed: true, id: DelayId))
             return;
 
         // Find entities near where the interaction click was.

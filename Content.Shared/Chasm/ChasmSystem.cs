@@ -1,4 +1,4 @@
-﻿using Content.Shared.ActionBlocker;
+using Content.Shared.ActionBlocker;
 using Content.Shared.Chat;
 using Content.Shared.Movement.Events;
 using Content.Shared.StepTrigger.Systems;
@@ -52,7 +52,7 @@ public sealed partial class ChasmSystem : EntitySystem
             // Moff start - Replicator chasms manage their own deletion
             if (chasmComp.DeleteEntitiesWhichFallInto)
             {
-                PredictedQueueDel(uid);
+                QueueDel(uid);
             }
             else
             {

@@ -102,7 +102,7 @@
       types:
         Slash: 5
   - type: Temperature
-    specificHeat: 48
+    specificHeat: 2500 # now more sensitive than average, but still behaves correctly
   - type: TemperatureDamage
     heatDamageThreshold: 310
     coldDamageThreshold: 223
@@ -114,9 +114,9 @@
         Heat : 3 #per second, scales with temperature & other constants
   - type: TemperatureSpeed
     thresholds: # all temps are 10K colder then moths, adjusted for current temp.
-      265: 0.8
-      251: 0.6
-      226: 0.4
+      265: 0.9
+      251: 0.7
+      226: 0.5
   - type: ThermalRegulator
     metabolismHeat: 400 # icebirb go brrr
     radiatedHeat: 100

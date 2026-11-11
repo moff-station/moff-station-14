@@ -116,10 +116,12 @@ public sealed partial class CharacterUIController : UIController, IOnStateEntere
         UpdateRoleType();
         _window.NameLabel.SetMarkup(Loc.GetString("character-info-name-format",
             ("name", FormattedMessage.EscapeText(entityName))));
-        if (_characterWindow.GetJobInfo(jobId) is { } job)
+        var job = _characterWindow.GetJobInfo(jobId);
+        _window.JobContainer.Visible = job != null;
+        if (job is { } jobInfo)
         {
-            _window.SubText.SetMarkup(Loc.GetString("character-info-job-format", ("job", Loc.GetString(job.Name))));
-            _window.JobIcon.Texture = job.Icon;
+            _window.SubText.SetMarkup(Loc.GetString("character-info-job-format", ("job", Loc.GetString(jobInfo.Name))));
+            _window.JobIcon.Texture = jobInfo.Icon;
         }
 
         var profile = _characterWindow.GetProfileInfo(entity);

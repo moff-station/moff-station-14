@@ -22,3 +22,5 @@ moff-personalitem-centronias-nomenclatura-crown-color-light-blue = Light blue
 moff-personalitem-centronias-nomenclatura-crown-color-magenta = Magenta
 moff-personalitem-centronias-nomenclatura-crown-color-orange = Orange
 moff-personalitem-centronias-nomenclatura-crown-color-white = White
+
+moff-personalitem-ruinousangel-monster-loadout-name-paramedic = Monster's sundress (with siren)

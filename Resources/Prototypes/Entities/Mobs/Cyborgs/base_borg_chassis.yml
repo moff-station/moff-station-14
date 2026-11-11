@@ -275,7 +275,7 @@
     - timer
   # explosion does most of its damage in the center and less at the edges
   - type: Explosive
-    explosionType: Minibomb
+    explosionType: TransparentMinibomb # Funky RMC Explosions
     deleteAfterExplosion: false # let damage threshold gib the borg
     totalIntensity: 30
     intensitySlope: 20
@@ -296,7 +296,7 @@
     id: Xenoborg
     useEntityNameAsCameraId: true
   - type: Explosive
-    explosionType: Minibomb
+    explosionType: TransparentMinibomb # Funky RMC Explosions
     deleteAfterExplosion: false # let damage threshold gib the borg
     totalIntensity: 200 # bigger kaboom
     intensitySlope: 20
@@ -333,7 +333,7 @@
     deviceNetId: Wireless
     transmitFrequencyId: SuitSensor
     savableAddress: false
-  - type: WirelessNetworkConnection
+  - type: WirelessNetwork
     range: 1200
   - type: StationLimitedNetwork
   # Moffstation - End

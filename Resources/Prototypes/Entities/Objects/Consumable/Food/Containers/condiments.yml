@@ -20,6 +20,9 @@
   - type: SpaceGarbage
   - type: StaticPrice
     price: 0
+  - type: Tag
+    tags:
+    - Ingredient
 
 # Packets
 
@@ -389,6 +392,7 @@
     tags:
       - Coldsauce
       - Condiment # Moffstation - Give service borgs some love
+      - Ingredient
 
 - type: entity
   parent: BaseFoodCondimentBottle
@@ -415,6 +419,7 @@
     tags:
       - Enzyme
       - Condiment # Moffstation - Give service borgs some love
+      - Ingredient
 
 - type: entity
   parent: BaseFoodCondimentBottle
@@ -468,6 +473,7 @@
     tags:
       - Hotsauce
       - Condiment # Moffstation - Give service borgs some love
+      - Ingredient
 
 - type: entity
   parent: BaseFoodCondimentBottle
@@ -494,6 +500,7 @@
     tags:
       - Ketchup
       - Condiment # Moffstation - Give service borgs some love
+      - Ingredient
 
 - type: entity
   parent: BaseFoodCondimentBottle
@@ -521,6 +528,7 @@
     tags:
       - BBQsauce
       - Condiment # Moffstation - Give service borgs some love
+      - Ingredient
 
 # Shakers
 
@@ -582,6 +590,7 @@
     tags:
       - SaltShaker
       - Condiment # Moffstation - Give service borgs some love
+      - Ingredient
 
 - type: entity
   parent: BaseFoodShaker
@@ -602,3 +611,4 @@
     tags:
       - PepperShaker
       - Condiment # Moffstation - Give service borgs some love
+      - Ingredient

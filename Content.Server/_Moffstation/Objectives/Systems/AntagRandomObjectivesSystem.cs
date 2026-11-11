@@ -3,6 +3,7 @@ using Content.Server._Moffstation.Objectives.Components;
 using Content.Server.Antag;
 using Content.Server.Objectives;
 using Content.Shared._Moffstation.Objectives;
+using Content.Shared.Antag;
 using Content.Shared.Mind;
 using Robust.Shared.Random;
 

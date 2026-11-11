@@ -40,6 +40,10 @@
   components:
   - type: BorgSwitchableType
     selectedBorgType: generic
+  # Moff start - Species IDs on borg inventories to avoid displacement map mangling
+  - type: Inventory
+    speciesId: moffBorgGeneric
+  # Moff end
 
 - type: entity
   id: BorgChassisMining
@@ -48,6 +52,10 @@
   components:
   - type: BorgSwitchableType
     selectedBorgType: mining
+  # Moff start - Species IDs on borg inventories to avoid displacement map mangling
+  - type: Inventory
+    speciesId: moffBorgMining
+  # Moff end
 
 - type: entity
   id: BorgChassisEngineer
@@ -56,6 +64,10 @@
   components:
   - type: BorgSwitchableType
     selectedBorgType: engineering
+  # Moff start - Species IDs on borg inventories to avoid displacement map mangling
+  - type: Inventory
+    speciesId: moffBorgEngineer
+  # Moff end
 
 - type: entity
   id: BorgChassisJanitor
@@ -64,6 +76,10 @@
   components:
   - type: BorgSwitchableType
     selectedBorgType: janitor
+  # Moff start - Species IDs on borg inventories to avoid displacement map mangling
+  - type: Inventory
+    speciesId: moffBorgJanitor
+  # Moff end
 
 - type: entity
   id: BorgChassisMedical
@@ -72,6 +88,10 @@
   components:
   - type: BorgSwitchableType
     selectedBorgType: medical
+  # Moff start - Species IDs on borg inventories to avoid displacement map mangling
+  - type: Inventory
+    speciesId: moffBorgMedical
+  # Moff end
 
 - type: entity
   id: BorgChassisService
@@ -80,6 +100,10 @@
   components:
   - type: BorgSwitchableType
     selectedBorgType: service
+  # Moff start - Species IDs on borg inventories to avoid displacement map mangling
+  - type: Inventory
+    speciesId: moffBorgService
+  # Moff end
 
 - type: entity
   id: BorgChassisSyndicateAssault
@@ -223,6 +247,10 @@
     interactFailureString: petting-failure-derelict-cyborg
     interactSuccessSound:
       path: /Audio/Ambience/Objects/periodic_beep.ogg
+  # Moff start - Species IDs on borg inventories to avoid displacement map mangling
+  - type: Inventory
+    speciesId: moffBorgGeneric
+  # Moff end
 
 - type: entity
   parent: BaseBorgChassisDerelict
@@ -264,6 +292,10 @@
       - BorgModuleEngineering
     hasMindState: borg_e # Moffstation - Early merge of Borg RSI fix
     noMindState: borg_e_r # Moffstation - Early merge of Borg RSI fix
+  # Moff start - Species IDs on borg inventories to avoid displacement map mangling
+  - type: Inventory
+    speciesId: moffBorgEngineer
+  # Moff end
 
 - type: entity
   parent: BaseBorgChassisDerelict
@@ -299,6 +331,10 @@
       - BorgModuleJanitor
     hasMindState: borg_e # Moffstation - Early merge of Borg RSI fix
     noMindState: borg_e_r # Moffstation - Early merge of Borg RSI fix
+  # Moff start - Species IDs on borg inventories to avoid displacement map mangling
+  - type: Inventory
+    speciesId: moffBorgJanitor
+  # Moff end
 
 - type: entity
   parent: BaseBorgChassisDerelict
@@ -341,6 +377,10 @@
   - type: ShowHealthIcons
     damageContainers:
     - Biological
+  # Moff start - Species IDs on borg inventories to avoid displacement map mangling
+  - type: Inventory
+    speciesId: moffBorgMedical
+  # Moff end
 
 - type: entity
   parent: BaseBorgChassisDerelict
@@ -425,6 +465,10 @@
         variation: 0.05
         volume: -10
   # Moffstation - End
+  # Moff start - Species IDs on borg inventories to avoid displacement map mangling
+  - type: Inventory
+    speciesId: moffBorgMining
+  # Moff end
 
 - type: entity
   parent: BaseBorgChassisSyndicateDerelict

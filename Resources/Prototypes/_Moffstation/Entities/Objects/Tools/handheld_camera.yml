@@ -6,7 +6,7 @@
   suffix: Handheld
   components:
   - type: Eye
-  - type: WirelessNetworkConnection
+  - type: WirelessNetwork
     range: 200
   - type: HeldSpeedModifier # Still a big, heavy camera
     walkModifier: 0.9

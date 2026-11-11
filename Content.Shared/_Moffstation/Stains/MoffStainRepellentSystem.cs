@@ -27,17 +27,11 @@ public sealed partial class MoffStainRepellentSystem : EntitySystem
     [Dependency] private EntityQuery<ItemComponent> _itemQuery;
     [Dependency] private EntityQuery<MoffStainRepellentCoatedComponent> _stainRepellentCoatedQuery;
 
-    public override void Initialize()
-    {
-        base.Initialize();
-
-        SubscribeLocalEvent<MoffStainRepellentComponent, AfterInteractEvent>(OnInteract, after: [typeof(OpenableSystem)]);
-    }
-
     public bool IsStainRepellent(Entity<MoffStainRepellentCoatedComponent?> entity) =>
         _stainRepellentCoatedQuery.HasComp(entity);
 
-    private void OnInteract(Entity<MoffStainRepellentComponent> entity, ref AfterInteractEvent args)
+    [SubscribeLocalEvent(after: [typeof(OpenableSystem)])]
+    private void OnInteract(Entity<MoffStainRepellentSourceComponent> entity, ref AfterInteractEvent args)
     {
         if (args.Handled || !args.CanReach || args.Target is not { Valid: true } target)
             return;
@@ -47,7 +41,7 @@ public sealed partial class MoffStainRepellentSystem : EntitySystem
     }
 
     [SubscribeLocalEvent]
-    private void OnUtilityVerb(Entity<MoffStainRepellentComponent> entity, ref GetVerbsEvent<UtilityVerb> args)
+    private void OnUtilityVerb(Entity<MoffStainRepellentSourceComponent> entity, ref GetVerbsEvent<UtilityVerb> args)
     {
         if (!args.CanInteract || !args.CanAccess ||
             args.Target is not { Valid: true } target ||
@@ -66,7 +60,7 @@ public sealed partial class MoffStainRepellentSystem : EntitySystem
         args.Verbs.Add(verb);
     }
 
-    private bool TryCoat(Entity<MoffStainRepellentComponent> entity, EntityUid target, EntityUid actor)
+    private bool TryCoat(Entity<MoffStainRepellentSourceComponent> entity, EntityUid target, EntityUid actor)
     {
         if (!_itemQuery.HasComp(target))
         {
@@ -122,7 +116,7 @@ public sealed partial class MoffStainRepellentSystem : EntitySystem
         _adminLogger.Add(
             LogType.Action,
             LogImpact.Medium,
-            $"{ToPrettyString(actor):actor} applied stain-repellent coating to {ToPrettyString(target):subject} with {ToPrettyString(entity.Owner):tool}"
+            $"{ToPrettyString(actor):actor} applied stain-repellent coating to {target:subject} with {entity.Owner:tool}"
         );
 
         var blocker = EnsureComp<MoffStainRepellentCoatedComponent>(target);

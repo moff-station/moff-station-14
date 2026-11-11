@@ -9,8 +9,8 @@
     receiveFrequencyId: SurveillanceCamera
     transmitFrequencyId: SurveillanceCamera
   # Moffstation - Start - Listening outpost remote viewing
-  #- type: WiredNetworkConnection
-  - type: WirelessNetworkConnection
+  #- type: WiredNetwork
+  - type: WirelessNetwork
     range: 10000
   # Moffstation - End
   - type: DeviceNetworkRequiresPower
@@ -39,7 +39,7 @@
     receiveFrequencyId: SurveillanceCamera
     transmitFrequencyId: SurveillanceCamera
   # Moffstation - Listening post remote viewing
-#  - type: WirelessNetworkConnection
+#  - type: WirelessNetwork
 #    range: 200
   # Moffstation - Listening post remote viewing
   - type: DeviceNetworkRequiresPower

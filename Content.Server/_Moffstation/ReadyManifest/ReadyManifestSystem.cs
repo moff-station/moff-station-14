@@ -6,6 +6,7 @@ using Content.Server.GameTicking.Events;
 using Content.Server.Station.Systems;
 using Content.Shared._Moffstation.ReadyManifest;
 using Content.Shared.GameTicking;
+using Content.Shared.GameTicking.Events;
 using Content.Shared.Preferences;
 using Content.Shared.Roles;
 using Robust.Shared.Network;
@@ -17,7 +18,7 @@ namespace Content.Server._Moffstation.ReadyManifest;
 public sealed partial class ReadyManifestSystem : EntitySystem
 {
     [Dependency] private EuiManager _euiManager = default!;
-    [Dependency] private GameTicker _gameTicker = default!;
+    [Dependency] private ServerGameTicker _gameTicker = default!;
     [Dependency] private IPrototypeManager _protoMan = default!;
     [Dependency] private MoffCharacterSelectionManager _selection = default!;
     [Dependency] private MoffJobCandidateSystem _candidates = default!;

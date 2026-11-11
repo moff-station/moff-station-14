@@ -1,0 +1,23 @@
+using Content.Shared.Shuttles.Systems;
+using Robust.Shared.GameStates;
+using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom;
+using Content.Shared.Tag; // Moffstation
+using Robust.Shared.Prototypes; // Moffstation
+
+namespace Content.Shared.Shuttles.Components;
+
+/// <summary>
+/// If added to a grid gets launched when the emergency shuttle launches.
+/// </summary>
+[RegisterComponent, NetworkedComponent, Access(typeof(SharedEmergencyShuttleSystem)), AutoGenerateComponentPause]
+public sealed partial class EscapePodComponent : Component
+{
+    [DataField(customTypeSerializer:typeof(TimeOffsetSerializer))]
+    [AutoPausedField]
+    public TimeSpan? LaunchTime;
+
+    // Moffstation - Start - Allows detection if something else is queued to be docked
+    [DataField]
+    public ProtoId<TagPrototype> PriorityTag = "DockEmergencyPod";
+    // Moffstation - End
+}

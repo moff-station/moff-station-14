@@ -26,7 +26,7 @@ public sealed class SprayPainterBoundUserInterface(EntityUid owner, Enum uiKey) 
 
             _window.OnSpritePicked += OnSpritePicked;
             _window.OnSetPipeColor += OnSetPipeColor;
-            _window.OnSetGasTankVisuals += OnSetGasTankVisuals; // Moffstation
+            _window.OnSetGasHolderVisuals += OnSetGasHolderVisuals; // Moffstation
             _window.OnTabChanged += OnTabChanged;
             _window.OnDecalChanged += OnDecalChanged;
             _window.OnDecalColorChanged += OnDecalColorChanged;
@@ -55,8 +55,8 @@ public sealed class SprayPainterBoundUserInterface(EntityUid owner, Enum uiKey) 
         if (sprayPainter.PickedColor != null)
             _window.SelectColor(sprayPainter.PickedColor);
         // Moffstation - Start
-        _window.PopulateGasTankStyles();
-        _window.SelectGasTankVisuals(sprayPainter.GasTankVisuals);
+        _window.PopulateGasHolderStyles();
+        _window.SelectGasHolderVisuals(sprayPainter.GasHolderVisuals);
         // Moffstation - End
         _window.SetSelectedStyles(sprayPainter.StylesByGroup);
         _window.SetSelectedDecal(sprayPainter.SelectedDecal);
@@ -108,9 +108,9 @@ public sealed class SprayPainterBoundUserInterface(EntityUid owner, Enum uiKey) 
     }
 
     // Moffstation - Start
-    private void OnSetGasTankVisuals(GasTankVisuals visuals)
+    private void OnSetGasHolderVisuals(GasHolderVisuals visuals)
     {
-        SendPredictedMessage(new SprayPainterSetGasTankVisualsMessage(visuals));
+        SendPredictedMessage(new SprayPainterSetGasHolderVisualsMessage(visuals));
     }
     // Moffstation - End
 }

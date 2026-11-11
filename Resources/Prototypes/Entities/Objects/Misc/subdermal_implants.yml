@@ -88,7 +88,8 @@
       deviceNetId: Wireless
       transmitFrequencyId: SuitSensor
     - type: StationLimitedNetwork
-    - type: WirelessNetworkConnection
+    - type: StationTracker
+    - type: WirelessNetwork
       range: 500
 
 #Traitor implants
@@ -267,7 +268,7 @@
     targetUser: true
     deleteItems: true
   - type: Explosive
-    explosionType: MicroBomb
+    explosionType: TransparentMicroBomb # Funky RMC Explosions
     totalIntensity: 120
     intensitySlope: 5
     maxIntensity: 30

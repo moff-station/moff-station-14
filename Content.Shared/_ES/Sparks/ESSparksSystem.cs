@@ -24,8 +24,6 @@ public sealed partial class ESSparksSystem : EntitySystem
     [Dependency] private ThrowingSystem _throwing = default!;
     [Dependency] private SharedTransformSystem _transform = default!;
 
-    [Dependency] private EntityQuery<TransformComponent> _transformQuery; // Moff
-
     public static readonly EntProtoId DefaultSparks = "ESEffectSparks";
 
     /// <summary>
@@ -108,20 +106,17 @@ public sealed partial class ESSparksSystem : EntitySystem
 
         sparksPrototype ??= DefaultSparks;
 
+        // Moff Start - Sparks spawning in nullspace breaks LE tests
+        if (_transform.ToMapCoordinates(coordinates, logError: false).MapId == MapId.Nullspace)
+            return;
+        // Moff end
+
         var angleDelta = (Angle) (MathF.Tau / number);
         var angle = _random.NextAngle();
         for (var i = 0; i < number; i++)
         {
             var sparks = Spawn(sparksPrototype, _transform.ToMapCoordinates(coordinates), rotation: angle);
             angle += angleDelta;
-
-            // Moff start - Guard against intermittent test failure where throwing `throw`s :^) because of a lack of
-            // transform component on the sparks. I have no idea how a newly spawned entity can sometimes have a transform and sometimes not.
-            if (!_transformQuery.HasComp(sparks))
-            {
-                Log.Warning($"Skipping throwing sparks for {ToPrettyString(sparks)}, as it lacks a {nameof(TransformComponent)}");
-            }
-            // Moff end
 
             _throwing.TryThrow(sparks, angle.ToVec(), 2f, animated: false);
             _preventCollide.PreventCollide(sparks, ignored);

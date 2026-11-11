@@ -1,0 +1,24 @@
+# Player: MissKay1994 / Character: Rekascreva
+- type: entity
+  name: cryptic vox tablet
+  parent: BaseItem
+  id: PersonalItemRekaTablet
+  description: A worn tablet with a strange symbol on the bottom right. It is completely illegible unless you are a vox
+  components:
+  - type: Sprite
+    sprite: _Moffstation/PersonalItems/Items/MissKay1994/rekatablet.rsi
+    layers:
+    - state: icon
+    - state: active
+  - type: Item
+    sprite: _Moffstation/PersonalItems/Items/MissKay1994/rekatablet.rsi
+
+- type: loadout
+  id: PersonalItemRekaTablet
+  storage:
+    back:
+    - PersonalItemRekaTablet
+  effects:
+  - !type:PersonalItemLoadoutEffect
+    character:
+    - Rekascreva

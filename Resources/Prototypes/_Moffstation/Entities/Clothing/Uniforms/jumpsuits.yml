@@ -404,7 +404,7 @@
 - type: entity
   parent: [ClothingUniformBase, BaseCentcommContraband]
   id: ClothingUniformJumpsuitCentcommResearch
-  name: Centcomm Researcher Suit
+  name: centcomm researcher suit
   description: An Outfit to accept awards for scientific & technological advancement.
   components:
   - type: Sprite
@@ -414,19 +414,19 @@
 
 - type: entity
   parent: [ClothingUniformBase, BaseCentcommContraband]
-  id: ClothingUniformJumpsuitCentcommMedical
-  name: Centcomm Physician Sweater
-  description: An Outfit to accept awards for medical advancement.
+  id: MoffClothingUniformJumpsuitCentcommRep
+  name: centcomm representative sweater
+  description: An Outfit to accept awards for bureaucratic mastery.
   components:
   - type: Sprite
-    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/centcomm-medical.rsi
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/centcomm-rep.rsi
   - type: Clothing
-    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/centcomm-medical.rsi
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/centcomm-rep.rsi
 
 - type: entity
   parent: [ClothingUniformBase, BaseCentcommContraband]
   id: ClothingUniformJumpsuitCentcommTurtle
-  name: Centcomm Turtleneck
+  name: centcomm turtleneck
   description: An Comfortable outfit for the executive who enjoys a warm fireplace.
   components:
   - type: Sprite
@@ -491,6 +491,17 @@
     sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/prosecutorred.rsi
   - type: Clothing
     sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/prosecutorred.rsi
+
+- type: entity
+  parent: [ClothingUniformBase,BaseSyndicateContraband]
+  id: MoffClothingUniformJumpsuitLawyerSyndie
+  name: cybersun law suit
+  description: A sleek black suit worn by cutting-edge cybersun lawyers designed for televised courtroom cases.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/lawyersyndie.rsi
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/lawyersyndie.rsi
 
 #Medical
 - type: entity
@@ -678,3 +689,49 @@
     sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/sovietofficer.rsi
   - type: Clothing
     sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/sovietofficer.rsi
+
+# Red Mechfighter (Asuka Langley Soryu)
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformJumpsuitEvaAsuka
+  name: red mechfighter's jumpsuit
+  description: A jumpsuit once belonging to a hot-headed mechfighter.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/eva_asuka.rsi
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/eva_asuka.rsi
+
+# White Mechfighter (Rei Ayanami)
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformJumpsuitEvaRei
+  name: white mechfighter's jumpsuit
+  description: A jumpsuit once belonging to a reserved and quiet mechfighter.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/eva_rei.rsi
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/eva_rei.rsi
+
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformJumpsuitSgtPepperBlue
+  name: musician's naval coat
+  description: This coat onced belonged to a member of a band spearheaded by the mystical Colonel Salt.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/sgt_pepper_blue.rsi
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/sgt_pepper_blue.rsi
+
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformJumpsuitDarkAlternative
+  name: dark alternative attire
+  description: A fishnet bodysuit layered beneath an alternative band tee and shorts, there is a single belt on the upper thigh.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/dark_alternative.rsi
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/dark_alternative.rsi

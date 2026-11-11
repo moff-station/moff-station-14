@@ -22,6 +22,14 @@
     tags:
     - WhitelistChameleon
     - WeldingMask
+  - type: HideLayerClothing
+    slots:
+    - Snout
+  # Moff Start - Funky welding masks
+  # - type: ImageOverlay
+  #   pathToOverlayImage: "/Textures/Clothing/Head/Welding/weldingTexture.png"
+  #   additionalColorOverlay: "#000000A0"
+  # Moff end
   # Funky - Start
   - type: ToggleClothing
     action: ActionToggleWeldingMask

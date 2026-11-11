@@ -1,0 +1,25 @@
+# Player LienLien - Character: Nova Stareater
+
+- type: entity
+  parent: ClothingOuterStorageFoldableBase
+  id: &id PersonalItemNovaFlightJacket
+  name: worn out flight jacket
+  description: A dark leather flight jacket with multiple different patches.
+  suffix: PersonalItem
+  components:
+  - type: Sprite
+    sprite: &sprite _Moffstation/PersonalItems/Wearables/LienLien/Nova_Stareater/worn_out_flight_jacket.rsi
+  - type: Clothing
+    sprite: *sprite
+  - type: DetailExaminable
+    content: The patches indicate the jacket belongs to one "Nova Stareater", and seems to have makeshift repairs up along the left side from damage to the leather of the sleeve.
+
+- type: loadout
+  id: *id
+  storage:
+    back:
+    - *id
+  effects:
+  - !type:PersonalItemLoadoutEffect
+    character:
+    - Nova Stareater

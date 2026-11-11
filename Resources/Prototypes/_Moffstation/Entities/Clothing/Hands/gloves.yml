@@ -12,3 +12,45 @@
     fiberMaterial: fibers-rubber
     fiberColor: fibers-black
   - type: FingerprintMask
+
+- type: entity
+  parent: ClothingHandsBase
+  id: ClothingHandsGlovesEvaAsuka
+  name: red mechfighter's gloves
+  description: A pair of red latex gloves belonging to a mechfighter's uniform.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Hands/eva_asuka.rsi
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Hands/eva_asuka.rsi
+  - type: Fiber
+    fiberMaterial: fibers-latex
+  - type: FingerprintMask
+
+- type: entity
+  parent: ClothingHandsBase
+  id: ClothingHandsGlovesEvaRei
+  name: white mechfighter's gloves
+  description: A pair of white latex gloves belonging to a mechfighter's uniform.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Hands/eva_rei.rsi
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Hands/eva_rei.rsi
+  - type: Fiber
+    fiberMaterial: fibers-latex
+  - type: FingerprintMask
+
+- type: entity
+  parent: ClothingHandsBase
+  id: ClothingHandsGlovesMadoka
+  name: pink magical gloves
+  description: A pair of white gloves belonging to a magical girl.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Hands/madoka.rsi
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Hands/madoka.rsi
+  - type: Fiber
+    fiberColor: fibers-white
+  - type: FingerprintMask

@@ -105,14 +105,14 @@ public sealed partial class GameMapManager : IGameMapManager
 
     public IEnumerable<GameMapPrototype> AllVotableMaps()
     {
-        var poolPrototype = _entityManager.System<GameTicker>().Preset?.MapPool ??
+        var poolPrototype = _entityManager.System<ServerGameTicker>().Preset?.MapPool ??
                    _configurationManager.GetCVar(CCVars.GameMapPool);
 
-        if (_prototypeManager.TryIndex<GameMapPoolPrototype>(poolPrototype, out var pool))
+        if (_prototypeManager.TryIndex(poolPrototype, out var pool))
         {
             foreach (var map in pool.Maps)
             {
-                if (!_prototypeManager.TryIndex<GameMapPrototype>(map, out var mapProto))
+                if (!_prototypeManager.TryIndex(map, out var mapProto))
                 {
                     _log.Error($"Couldn't index map {map} in pool {poolPrototype}");
                     continue;
@@ -197,7 +197,7 @@ public sealed partial class GameMapManager : IGameMapManager
         return map.MaxPlayers >= _playerManager.PlayerCount &&
                map.MinPlayers <= _playerManager.PlayerCount &&
                map.Conditions.All(x => x.Check(map)) &&
-               _entityManager.System<GameTicker>().IsMapEligible(map) &&
+               _entityManager.System<ServerGameTicker>().IsMapEligible(map) &&
                (_configurationManager.GetCVar(MoffCCVars.AllowDoublePickMap) || map.ID != _previousMaps.Last());    // Moffstation - Checks if we're either allowing double picks, or the map was the one previously played on
     }
 

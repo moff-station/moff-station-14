@@ -38,11 +38,7 @@
   id: MobCobraSpaceSmasher
 
 - type: entity
-  parent: [BaseSmasherHostile, MobGiantSpiderAngry]
-  id: MobGiantSpiderAngrySmasher
-
-- type: entity
-  parent: [BaseSmasherHostile, MobClownSpider]
+  parent: [BaseSmasherHostile, MobGiantSpiderClownAngry]
   id: MobClownSpiderSmasher
 
 - type: entity

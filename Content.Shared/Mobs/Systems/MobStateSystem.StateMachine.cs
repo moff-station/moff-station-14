@@ -1,4 +1,4 @@
-﻿using Content.Shared.Body;//Moffstation - Re-add Geras
+using Content.Shared.Body;//Moffstation - Re-add Geras
 using Content.Shared.Database;
 using Content.Shared.Humanoid;
 using Content.Shared.Mobs.Components;

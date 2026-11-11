@@ -12,4 +12,9 @@ public sealed partial class RandomHumanoidSpawnerComponent : Component
 {
     [DataField("settings")]
     public ProtoId<RandomHumanoidSettingsPrototype>? SettingsPrototypeId;
+
+    // Moff Start - Track spawned humanoid
+    [DataField]
+    public EntityUid? Spawned;
+    // Moff end
 }

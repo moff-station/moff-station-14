@@ -1,3 +1,4 @@
+using System.Linq;
 using System.Numerics;
 using Content.Shared._Funkystation.Footprints;
 using Content.Shared.Chemistry.Components;
@@ -7,12 +8,13 @@ using Content.Shared.Fluids.Components;
 using Content.Shared.Interaction;
 using Content.Shared.Item;
 using Content.Shared.Popups;
-using Content.Shared.Timing;
+using Content.Shared.Timing.Components;
+using Content.Shared.Timing.Systems;
 using Content.Shared.Weapons.Melee;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Map.Components;
-using Robust.Shared.Prototypes;
 using Robust.Shared.Timing;
+using Robust.Shared.Utility;
 
 namespace Content.Shared.Fluids;
 
@@ -31,6 +33,7 @@ public abstract partial class SharedAbsorbentSystem : EntitySystem
     [Dependency] private SharedMapSystem _mapSystem = default!;
     [Dependency] private SharedItemSystem _item = default!;
     [Dependency] private IGameTiming _timing = default!;
+    [Dependency] private SharedInteractionSystem _interaction = default!; // Moff - Mop puddles by clicking their tile
 
     public override void Initialize()
     {
@@ -52,6 +55,20 @@ public abstract partial class SharedAbsorbentSystem : EntitySystem
 
     private void OnAfterInteract(Entity<AbsorbentComponent> ent, ref AfterInteractEvent args)
     {
+        // Moff start - Mop puddles/footprints by clicking their tile
+        if (args.Target == null && args is { CanReach: true, Handled: false })
+        {
+            var puddles = Puddle.GetTilePuddle(args.ClickLocation).ToList();
+            foreach (var puddle in puddles)
+            {
+                Mop(ent, args.User, puddle.Owner);
+                args.Handled = true;
+                return;
+            }
+            _interaction.DoContactInteraction(args.User, puddles.FirstOrNull(), ent.Owner, true, args);
+        }
+        // Moff end
+
         if (!args.CanReach || args.Handled || args.Target is not { } target)
             return;
 
@@ -332,14 +349,21 @@ public abstract partial class SharedAbsorbentSystem : EntitySystem
         }
         else
         {
-            // Note: arguably shouldn't this get all solutions?
-            puddleSplit = puddleSolution.SplitSolutionWithout(absorber.PickupAmount, Puddle.GetAbsorbentReagents(puddleSolution));
+            var absorberSolution = absorberSoln.Comp.Solution;
+            var transferAmount = FixedPoint2.Min(absorberSolution.AvailableVolume, absorber.PickupAmount);
+            if (transferAmount <= FixedPoint2.Zero)
+            {
+                _popups.PopupEntity(Loc.GetString("mopping-system-full", ("used", absorbEnt)), absorbEnt, user);
+                return true;
+            }
+
+            puddleSplit = puddleSolution.SplitSolution(transferAmount);
             // Despawn if we're done
             if (puddleSolution.Volume == FixedPoint2.Zero)
             {
                 // Spawn a *sparkle*
                 PredictedSpawnAttachedTo(absorber.MoppedEffect, Transform(target).Coordinates);
-                PredictedQueueDel(target);
+                QueueDel(target);
                 isRemoved = true;
             }
         }

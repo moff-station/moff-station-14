@@ -25,7 +25,7 @@
   - type: Objective
     difficulty: 1.5
     icon:
-      sprite: Objects/Tools/emag.rsi
+      sprite: _Moffstation/Objects/Tools/emag.rsi # Moff
       state: icon
   - type: LocationObjective
     title: objective-condition-sabotage-department
@@ -59,20 +59,6 @@
       state: icon
   - type: LocationObjective
     title: objective-condition-claim-room
-
-# objective to cause/setup a Jailbreak
-- type: entity
-  parent: BaseTraitorObjective
-  id: JailbreakObjective
-  description: It doesn't matter who was locked up or why, we just need you to keep the jails empty.
-  components:
-  - type: Objective
-    difficulty: 1.0
-    icon:
-      sprite: Objects/Tools/access_breaker.rsi
-      state: syndi-icon
-  - type: SimpleObjective
-    title: objective-condition-jailbreak
 
 # teach someone a lesson without killing them permanently
 - type: entity

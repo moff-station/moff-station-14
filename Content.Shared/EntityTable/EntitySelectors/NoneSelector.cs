@@ -27,4 +27,10 @@ public sealed partial class NoneSelector : EntityTableSelector
     //     yield break;
     // }
     // Moffstation - End
+
+    /// <inheritdoc/>
+    public override string ToString()
+    {
+        return "None";
+    }
 }

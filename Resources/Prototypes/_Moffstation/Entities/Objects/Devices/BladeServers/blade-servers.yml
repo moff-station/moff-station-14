@@ -35,6 +35,9 @@
   - type: BladeServer
   - type: Machine
   - type: InnerCableReceiver
+  - type: ApcPowerReceiver
+    powerLoad: 1000
+  - type: ExtensionCableReceiver
   - type: ContainerContainer
     containers:
       machine_board: !type:Container
@@ -99,6 +102,12 @@
   - type: MultiHandedItem
   - type: Speech
     speechVerb: Robotic
+  - type: LightningTarget
+    priority: 1
+  - type: ESSparkOnHit
+    prob: 0.25
+    count: 2
+  - type: ESSparkCooldown
 
 - type: entity
   parent: [ BaseResearchAndDevelopmentServer, ConstructibleBladeServer ]

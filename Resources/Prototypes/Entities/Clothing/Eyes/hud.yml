@@ -5,7 +5,8 @@
   categories: [ HideSpawnMenu ]
   components:
   - type: StealTarget
-    stealGroup: ClothingEyesHuds
+    stealGroup:
+    - ClothingEyesHuds
 
 - type: entity
   id: ShowSecurityIcons
@@ -279,7 +280,8 @@
   suffix: Syndicate
   components:
   - type: StealTarget
-    stealGroup: ClothingEyesHuds
+    stealGroup:
+    - ClothingEyesHuds
 
 - type: entity
   # Moffstation - Begin - Replaced by modular HUDs
