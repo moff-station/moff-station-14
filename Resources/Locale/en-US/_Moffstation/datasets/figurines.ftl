@@ -314,23 +314,11 @@ figurines-flink-7 = HAHAHAHAHA!!
 figurines-flink-8 = the meth is for important science reasons.
 figurines-flink-9 = YOUR NOT EVEN MY REAL DAD, NOW GIVE ME METH!
 
-figurines-fred-1 = Hey fellas!
-figurines-fred-2 = IM GONNA CRASH OUT!!
-figurines-fred-3 = Are they a first-time offender?
-figurines-fred-4 = Holy crap this reminds me of the time I got turned into a marketable figurine.
-
-figurines-fredcentral-1 = The big Moth.
-figurines-fredcentral-2 = IM GONNA CRASH OUT!!
-figurines-fredcentral-3 = That name sucks, Your new name is "The Big Moth", here's five hundred spesos & I'll get your records updated.
-figurines-fredcentral-4 = Holy crap this reminds me of the time I got turned into a marketable figurine.
-figurines-fredcentral-5 = Do you got games on your PDA?
-figurines-fredcentral-6 = I PAY YOUR DAMN PAYCHECKS, WHAT DO YOU MEAN I CAN'T SAY THAT, I'M GONNA CRASH OUT DUDE!
-figurines-fredcentral-7 = Sorry I was watching Squawkbob Trillpants, you said you needed ERT for uhhh-... oh hold on- ad breaks is over now. Good luck!
-figurines-fredcentral-8 = Hey Officer, I NEED your gun- LIKE- NOW! I REALLY wanna shoot the clown!
-figurines-fredcentral-9 = Send the interns to the coal mines, I need some fuel for my fireplace.
-figurines-fredcentral-10 = The Big nukebob is being armed by who?
-figurines-fredcentral-11 = I be grubbing up stuff with straight fingers.
-figurines-fredcentral-12 = what do you mean I can't change it to spacelawbob? what do I pay you guys for?
+figurines-fred-1 = Hey fellas.
+figurines-fred-2 = Sure, write it down and I'll get around to it.
+figurines-fred-3 = Hold on, watch me make this shot.
+figurines-fred-4 = You claim this man killed half the station and detonated a nuclear bomb, but with what evidence?
+figurines-fred-5 = Sometimes it's hard being the smartest guy in the room.
 
 figurines-frostwing-1 = Our thoughts and prayers go out to those affected.
 figurines-frostwing-2 = I'm sorry, they spent the cargo budget on what?!
