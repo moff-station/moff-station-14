@@ -1,0 +1,35 @@
+# Player Tao7891 - Character: FQ - 14
+- type: entity
+  parent: ClothingEyesHudBase
+  id: PersonalItemFQ-14
+  name: FQ - 14's visor
+  description: A FQ unit visor, it accepts HUD modules.
+  suffix: PersonalItem
+  components:
+  - type: Sprite
+    sprite: _Moffstation/PersonalItems/Wearables/Tao7891/FQ-14/FQ-14Visor.rsi
+  - type: EmitSoundOnActivate
+    sound:
+      path: /Audio/Machines/twobeep.ogg
+  - type: UseDelay
+    delay: 1
+  - type: Tag
+    tags:
+    - FullEyeCovering
+  - type: ModularHud
+    moduleContainerId: modular-hud-modules
+    maximumContainedModules: 2
+    moduleExtractionToolQuality: Screwing
+    moduleRemovalDelay: 1s
+  - type: ContainerContainer
+    containers:
+      modular-hud-modules: !type:Container
+
+- type: loadout
+  id: PersonalItemFQ-14
+  equipment:
+    eyes: PersonalItemFQ-14
+  effects:
+  - !type:PersonalItemLoadoutEffect
+    character:
+    - FQ - 14
