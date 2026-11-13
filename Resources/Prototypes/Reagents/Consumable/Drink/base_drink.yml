@@ -21,6 +21,7 @@
   tileReactions:
   - !type:ExtinguishTileReaction { }
   - !type:SpillIfPuddlePresentTileReaction { }
+  rootAbsorbable: true
 
 - type: reagent
   id: BaseSoda
@@ -71,6 +72,7 @@
     amount: 0.25
   - !type:PlantAdjustWater
     amount: 0.7
+  rootAbsorbable: true
 
 - type: reagent
   id: BaseJuice

@@ -99,6 +99,14 @@ namespace Content.Shared.Chemistry.Reagent
         [DataField("color")]
         public Color SubstanceColor { get; private set; } = Color.White;
 
+        // Moffstation - new rooting system
+        /// <summary>
+        /// Can the reagent be absorbed via roots ?
+        /// </summary>
+        [DataField]
+        public bool RootAbsorbable = false;
+        // Moffstation - end
+
         /// <summary>
         ///     The specific heat of the reagent.
         ///     How much energy it takes to heat one unit of this reagent by one Kelvin.
