@@ -1,3 +1,4 @@
+using Content.Shared._Moffstation.StowDelay;
 using Content.Shared.ActionBlocker;
 using Content.Shared.Containers.ItemSlots;
 using Content.Shared.Hands.Components;
@@ -28,6 +29,7 @@ public sealed partial class SmartEquipSystem : EntitySystem
     [Dependency] private SharedPopupSystem _popup = default!;
     [Dependency] private ActionBlockerSystem _actionBlocker = default!;
     [Dependency] private EntityWhitelistSystem _whitelistSystem = default!;
+    [Dependency] private StowDelaySystem _stowDelay = default!; // Moff - Stow delay
 
     /// <inheritdoc/>
     public override void Initialize()
@@ -154,6 +156,10 @@ public sealed partial class SmartEquipSystem : EntitySystem
                     return;
                 case null:
                     var removing = storage.Container.ContainedEntities[^1];
+                    // Moff Start - Stow delay
+                    if (_stowDelay.TryStartStorageTransferDelay(slotItem, uid, removing))
+                        return;
+                    // Moff end
                     _container.RemoveEntity(slotItem, removing);
                     _hands.TryPickup(uid, removing, handsComp: hands);
                     return;
@@ -166,6 +172,11 @@ public sealed partial class SmartEquipSystem : EntitySystem
 
                 return;
             }
+
+            // Moff Start - Stow delay
+            if (_stowDelay.TryStartStorageDelay(slotItem, uid, handItem.Value))
+                return;
+            // Moff end
 
             _storage.Insert(slotItem, handItem.Value, out var stacked, out _, user: uid);
 
@@ -239,6 +250,11 @@ public sealed partial class SmartEquipSystem : EntitySystem
             _popup.PopupEntity(Loc.GetString(inventoryReason), uid, uid);
             return;
         }
+
+        // Moff Start - Stow delay
+        if (_stowDelay.TryStartUnequipDelay(uid, uid, equipmentSlot))
+            return;
+        // Moff end
 
         _inventory.TryUnequip(uid, equipmentSlot, inventory: inventory, predicted: true, checkDoafter: true);
         _hands.TryPickup(uid, slotItem, handsComp: hands);

@@ -66,6 +66,7 @@ public sealed class StorageInteractionTest : InteractionTest
         // Click on the pda to pick it up and remove it from the backpack.
         await ClickControl(ctrl, ContentKeyFunctions.MoveStoredItem);
         await RunTicks(10);
+        await AwaitDoAfters(); // Moff - Stow delay
         Assert.That(sys.TryGetContainingContainer((sPda, null), out container));
         Assert.That(container!.Owner, Is.EqualTo(SPlayer));
 

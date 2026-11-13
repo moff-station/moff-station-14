@@ -1430,7 +1430,7 @@ namespace Content.Shared.Interaction
         /// <param name="predicted">Whether this interaction is predicted. <see cref="uidA"/> is assumed to be the client entity.</param>
         /// <param name="args">Optional handleable entity event to check.</param>
         /// <param name="interactionParticles">Whether to spawn interaction particles on this contact.</param>
-        public void DoContactInteraction(EntityUid uidA, EntityUid? uidB, EntityUid? used, bool predicted, HandledEntityEventArgs? args = null, bool interactionParticles = true) // Stellar/ES - interaction particles
+        public void DoContactInteraction(EntityUid uidA, EntityUid? uidB, EntityUid? used, bool predicted, HandledEntityEventArgs? args = null, bool interactionParticles = true, StellarInteractionParticleType interactionParticleType = StellarInteractionParticleType.Use) // Stellar/ES - interaction particles
         {
             if (uidB == null || args?.Handled == false)
                 return;
@@ -1461,11 +1461,11 @@ namespace Content.Shared.Interaction
                     ? Filter.PvsExcept(uidA, entityManager: EntityManager)
                     : Filter.Pvs(uidA, entityManager: EntityManager);
 
-                RaiseNetworkEvent(new StellarInteractionParticleEvent(GetNetEntity(uidA), GetNetEntity(used), GetNetEntity(uidB.Value), false), filter);
+                RaiseNetworkEvent(new StellarInteractionParticleEvent(GetNetEntity(uidA), GetNetEntity(used), GetNetEntity(uidB.Value), false, interactionParticleType), filter); // Moff - Stow delay
             }
             else if (_gameTiming.IsFirstTimePredicted)
             {
-                var evt = new StellarInteractionParticleEvent(GetNetEntity(uidA), GetNetEntity(used), GetNetEntity(uidB.Value), true);
+                var evt = new StellarInteractionParticleEvent(GetNetEntity(uidA), GetNetEntity(used), GetNetEntity(uidB.Value), true, interactionParticleType); // Moff - Stow delay
                 RaiseLocalEvent(evt);
             }
             // End Stellar/ES Additions - Interaction particles
