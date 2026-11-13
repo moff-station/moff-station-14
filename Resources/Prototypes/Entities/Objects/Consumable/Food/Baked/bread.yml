@@ -670,6 +670,10 @@
     damage:
       types:
         Blunt: 1 # bonk
+  # Moff: Allow item to be inserted in costume bundles
+  - type: Tag
+    tags:
+    - CostumeItem
 # Tastes like France.
 
 - type: entity
