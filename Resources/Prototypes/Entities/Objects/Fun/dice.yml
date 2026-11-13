@@ -169,6 +169,7 @@
   name: bag of dice
   description: Contains all the luck you'll ever need.
   components:
+  - type: Dumpable # Moffstation - dice roll when dumped
   - type: EntityTableContainerFill
     containers:
       storagebase: !type:AllSelector
