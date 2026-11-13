@@ -4,7 +4,7 @@
   id: PersonalItemMumuWheelchair
   parent: VehicleWheelchair
   name: comfy wheelchair
-  description: An advanced medical-grade wheelchair, featuring a deep blue paint job. The brand name was hastily painted over.
+  description: An advanced medical-grade wheelchair, featuring a deep blue paint job.
   components:
   - type: Sprite
     sprite: _Moffstation/PersonalItems/Items/fishgirl/Mumuuk_Plasmacry_Pack/mumuwheelchair.rsi
@@ -14,6 +14,10 @@
     - state: wheelchair_folded
       map: ["foldedLayer"]
       visible: false
+  - type: Item
+    sprite: _Moffstation/PersonalItems/Items/fishgirl/Mumuuk_Plasmacry_Pack/mumuwheelchair.rsi
+  - type: DetailExaminable
+    content: Upon closer inspection, the brand name appears to have been hastily painted over.
 
 - type: entity
   parent: PersonalItemMumuWheelchair
