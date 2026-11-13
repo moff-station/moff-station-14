@@ -940,3 +940,29 @@
   components:
   - type: Label
     localizedLabel: holopad-service-clown-mime
+
+# Moff Start - Unique Moff Prototypes
+- type: entity
+  parent: Holopad
+  id: MoffHolopadMedicalPsychology
+  suffix: Psychology
+  components:
+  - type: Label
+    localizedLabel: moffholopad-medical-psychology
+
+- type: entity
+  parent: Holopad
+  id: MoffHolopadGeneralPool
+  suffix: Pool
+  components:
+  - type: Label
+    localizedLabel: moffholopad-general-pool
+
+- type: entity
+  parent: Holopad
+  id: MoffHolopadGeneralLaundromat
+  suffix: Laundromat
+  components:
+  - type: Label
+    localizedLabel: moffholopad-general-laundromat
+# Moff End
