@@ -1,0 +1,50 @@
+- type: entity
+  abstract: true
+  id: BaseSuitBreachable
+  components:
+  - type: SuitBreachable
+
+- type: entity
+  abstract: true
+  parent: BaseSuitBreachable
+  id: BaseSuitBreachableFragile
+  components:
+  - type: SuitBreachable
+    breachChance: 0.9
+    minDamageToRoll: 5
+
+- type: entity
+  abstract: true
+  parent: BaseSuitBreachable
+  id: BaseSuitBreachableSoftsuit
+  components:
+  - type: SuitBreachable
+    breachChance: 0.5
+    minDamageToRoll: 8
+
+- type: entity
+  abstract: true
+  parent: BaseSuitBreachable
+  id: BaseSuitBreachableHardsuit
+  components:
+  - type: SuitBreachable
+    breachChance: 0.35
+    minDamageToRoll: 11
+
+- type: entity
+  abstract: true
+  parent: BaseSuitBreachable
+  id: BaseSuitBreachableArmored
+  components:
+  - type: SuitBreachable
+    breachChance: 0.1
+    minDamageToRoll: 13
+
+- type: entity
+  abstract: true
+  parent: BaseSuitBreachable
+  id: BaseSuitBreachableHeavyArmored
+  components:
+  - type: SuitBreachable
+    breachChance: 0.1
+    minDamageToRoll: 17

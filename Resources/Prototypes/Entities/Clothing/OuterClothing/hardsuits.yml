@@ -185,7 +185,7 @@
 
 #Maxim Hardsuit
 - type: entity
-  parent: [ClothingOuterHardsuitBase, BaseCargoContraband]
+  parent: [ BaseSuitBreachableArmored, ClothingOuterHardsuitBase, BaseCargoContraband ] # Moff - Suit breach tiers
   id: ClothingOuterHardsuitMaxim
   name: salvager maxim hardsuit
   description: Fire. Heat. These things forge great weapons, they also forge great salvagers.
@@ -215,7 +215,7 @@
 
 #Security Hardsuit
 - type: entity
-  parent: [ClothingOuterHardsuitBase, BaseSecurityContraband]
+  parent: [ BaseSuitBreachableArmored, ClothingOuterHardsuitBase, BaseSecurityContraband ] # Moff - Suit breach tiers
   id: ClothingOuterHardsuitSecurity
   name: security hardsuit
   description: A special suit that protects against hazardous, low pressure environments. Has an additional layer of armor.
@@ -250,7 +250,7 @@
 
 #Brigmedic Hardsuit
 - type: entity
-  parent: [ClothingOuterHardsuitBase, BaseSecurityContraband]
+  parent: [ BaseSuitBreachableArmored, ClothingOuterHardsuitBase, BaseSecurityContraband ] # Moff - Suit breach tiers
   id: ClothingOuterHardsuitBrigmedic
   name: brigmedic hardsuit
   description: Special hardsuit of the guardian angel of the brig. It is the medical version of the security hardsuit.
@@ -277,7 +277,7 @@
 
 #Warden's Hardsuit
 - type: entity
-  parent: [ClothingOuterHardsuitBase, BaseSecurityContraband]
+  parent: [ BaseSuitBreachableArmored, ClothingOuterHardsuitBase, BaseSecurityContraband ] # Moff - Suit breach tiers
   id: ClothingOuterHardsuitWarden
   name: warden's hardsuit
   description: A specialized riot suit geared to combat low pressure environments.
@@ -308,7 +308,7 @@
 
 #Captain's Hardsuit
 - type: entity
-  parent: [ClothingOuterHardsuitBase, BaseCommandContraband]
+  parent: [ BaseSuitBreachableArmored, ClothingOuterHardsuitBase, BaseCommandContraband ] # Moff - Suit breach tiers
   id: ClothingOuterHardsuitCap
   name: captain's armored spacesuit
   description: A formal armored spacesuit, made for the station's captain.
@@ -347,7 +347,7 @@
 
 #Chief Engineer's Hardsuit
 - type: entity
-  parent: [ TemperatureProtectionGreat, ClothingOuterHardsuitBase, BaseCommandContraband]
+  parent: [ BaseSuitBreachableArmored, TemperatureProtectionGreat, ClothingOuterHardsuitBase, BaseCommandContraband] # Moff - Suit breach tiers
   id: ClothingOuterHardsuitEngineeringWhite
   name: chief engineer's hardsuit
   description: A special hardsuit that protects against hazardous, low pressure environments, made for the chief engineer of the station.
@@ -422,7 +422,7 @@
 
 #Research Director's Hardsuit
 - type: entity
-  parent: [ClothingOuterHardsuitBase, BaseGrandTheftContraband]
+  parent: [ BaseSuitBreachableHeavyArmored, ClothingOuterHardsuitBase, BaseGrandTheftContraband ] # Moff - Suit breach tiers
   id: ClothingOuterHardsuitRd
   name: experimental research hardsuit
   description: A special suit that protects against hazardous, low pressure environments. Has an additional layer of armor.
@@ -469,7 +469,7 @@
 
 #Head of Security's Hardsuit
 - type: entity
-  parent: [ClothingOuterHardsuitBase, BaseCommandContraband]
+  parent: [ BaseSuitBreachableArmored, ClothingOuterHardsuitBase, BaseCommandContraband ] # Moff - Suit breach tiers
   id: ClothingOuterHardsuitSecurityRed
   name: head of security's hardsuit
   description: A special suit that protects against hazardous, low pressure environments. Has an additional layer of armor.
@@ -538,7 +538,7 @@
 #ANTAG HARDSUITS
 #Blood-red Hardsuit
 - type: entity
-  parent: [ ClothingOuterHardsuitBase, BaseSyndicateContraband ]
+  parent: [ BaseSuitBreachableArmored, ClothingOuterHardsuitBase, BaseSyndicateContraband ] # Moff - Suit breach tiers
   id: ClothingOuterHardsuitSyndie
   name: blood-red hardsuit
   description: A heavily armored hardsuit designed for work in special operations. Property of Gorlex Marauders.
@@ -602,7 +602,7 @@
 
 #Syndicate Elite Hardsuit
 - type: entity
-  parent: [ TemperatureProtectionGreat, ClothingOuterHardsuitBase, BaseSyndicateContraband ]
+  parent: [ BaseSuitBreachableArmored, TemperatureProtectionGreat, ClothingOuterHardsuitBase, BaseSyndicateContraband ] # Moff - Suit breach tiers
   id: ClothingOuterHardsuitSyndieElite
   name: syndicate elite hardsuit
   description: An elite version of the blood-red hardsuit, with improved radiation resistance and fireproofing. Property of Gorlex Marauders.
@@ -646,7 +646,7 @@
 
 #Syndicate Commander Hardsuit
 - type: entity
-  parent: [ClothingOuterHardsuitBase, BaseSyndicateContraband]
+  parent: [ BaseSuitBreachableHeavyArmored, ClothingOuterHardsuitBase, BaseSyndicateContraband ] # Moff - Suit breach tiers
   id: ClothingOuterHardsuitSyndieCommander
   name: syndicate commander hardsuit
   description: A bulked up version of the blood-red hardsuit, purpose-built for the commander of a syndicate operative squad. Has significantly improved armor for those deadly front-lines firefights.
@@ -685,7 +685,7 @@
 
 #Cybersun Juggernaut Hardsuit
 - type: entity
-  parent: [ClothingOuterHardsuitBase, BaseSyndicateContraband]
+  parent: [ BaseSuitBreachableHeavyArmored, ClothingOuterHardsuitBase, BaseSyndicateContraband ] # Moff - Suit breach tiers
   id: ClothingOuterHardsuitJuggernaut
   name: cybersun juggernaut suit
   description: A suit made by the cutting edge R&D department at cybersun to be hyper resilient.
@@ -721,7 +721,7 @@
 
 #Wizard Hardsuit
 - type: entity
-  parent: [ ClothingOuterHardsuitBase, BaseMagicalContraband ]
+  parent: [ BaseSuitBreachableArmored, ClothingOuterHardsuitBase, BaseMagicalContraband ] # Moff - Suit breach tiers
   id: ClothingOuterHardsuitWizard
   name: wizard hardsuit
   description: A bizarre gem-encrusted suit that radiates magical energies.
@@ -994,7 +994,7 @@
 
 #Deathsquad
 - type: entity
-  parent: [ BaseDeathSquadContraband, ClothingOuterHardsuitBase ]
+  parent: [ BaseSuitBreachableHeavyArmored, BaseDeathSquadContraband, ClothingOuterHardsuitBase ] # Moff - Suit breach tiers
   id: ClothingOuterHardsuitDeathsquad
   name: death squad hardsuit
   description: An advanced hardsuit favored by commandos for use in special operations.
@@ -1038,7 +1038,7 @@
 
 #CBURN Hardsuit
 - type: entity
-  parent: [ BaseCBURNContraband, ClothingOuterHardsuitBase ]
+  parent: [ BaseSuitBreachableArmored, BaseCBURNContraband, ClothingOuterHardsuitBase ] # Moff - Suit breach tiers
   id: ClothingOuterHardsuitCBURN
   name: CBURN exosuit
   description: A lightweight yet strong exosuit used for special cleanup operations.
@@ -1075,7 +1075,7 @@
 #MISC. HARDSUITS
 #Clown Hardsuit
 - type: entity
-  parent: ClothingOuterHardsuitBase
+  parent: [ BaseSuitBreachableSoftsuit, ClothingOuterHardsuitBase ] # Moff - Suit breach tiers
   id: ClothingOuterHardsuitClown
   name: clown hardsuit
   description: A custom-made clown hardsuit.
