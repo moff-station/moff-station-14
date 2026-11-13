@@ -2,7 +2,7 @@
 <img alt="Moff Station" height="400" src="https://raw.githubusercontent.com/moff-station/moff-station-14/021b361c1c512675ca61592108ec87093d1f28b0/Resources/Textures/_Moffstation/Logo/logo.png" />
 </div>
 
-Moffstation is a fork of upstream Space Station 14 (Wizard's Den) with a focus on silly antics and custom content, all in an MRP environment.
+Moffstation is a fork of Space Station 14 focused on providing a unique, high-quality roleplay experience.
 
 This is not the official Space Station 14 repository.
 
