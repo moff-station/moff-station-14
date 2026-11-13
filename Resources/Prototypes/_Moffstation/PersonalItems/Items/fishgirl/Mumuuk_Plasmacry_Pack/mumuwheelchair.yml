@@ -5,6 +5,7 @@
   parent: VehicleWheelchair
   name: comfy wheelchair
   description: An advanced medical-grade wheelchair, featuring a deep blue paint job.
+  suffix: PersonalItem
   components:
   - type: Sprite
     sprite: _Moffstation/PersonalItems/Items/fishgirl/Mumuuk_Plasmacry_Pack/mumuwheelchair.rsi
@@ -22,12 +23,10 @@
 - type: entity
   parent: PersonalItemMumuWheelchair
   id: PersonalItemMumuWheelchairFolded
-  suffix: folded
+  suffix: PersonalItem, folded
   components:
-  # Moff start - wheelchair in backpack
   - type: Item
     size: Large 
-  # Moff - end
   - type: Foldable
     folded: true
   - type: Strap
