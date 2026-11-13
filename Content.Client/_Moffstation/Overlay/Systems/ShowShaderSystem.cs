@@ -26,7 +26,6 @@ public sealed partial class ShowShaderSystem : EquipmentHudSystem<ShowShaderComp
     {
         base.UpdateInternal(args);
 
-        _overlay.ActiveShaders.Clear();
         _overlay.ActiveShaders = args.Components.Select(x => (x.Shader, x.Color)).ToList();
         _overlayMan.AddOverlay(_overlay);
     }

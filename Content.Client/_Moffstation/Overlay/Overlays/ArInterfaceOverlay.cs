@@ -12,7 +12,7 @@ public sealed partial class ArInterfaceOverlay : Robust.Client.Graphics.Overlay
 
     public override OverlaySpace Space => OverlaySpace.WorldSpace;
 
-    private readonly List<ProtoId<ArInterfacePrototype>> _activeInterfaces = [];
+    public HashSet<ProtoId<ArInterfacePrototype>> ActiveInterfaces = [];
 
 
     public ArInterfaceOverlay()
