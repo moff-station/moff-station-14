@@ -1,4 +1,6 @@
-﻿using System.Linq;
+﻿using System.Collections.Immutable;
+using System.Linq;
+using Content.Shared._Moffstation.Extensions;
 using Content.Shared.Construction.Components;
 using Content.Shared.Containers.ItemSlots;
 using Content.Shared.Examine;
@@ -9,13 +11,14 @@ using Content.Shared.Popups;
 using Content.Shared.Power;
 using Content.Shared.Power.EntitySystems;
 using Content.Shared.Whitelist;
+using JetBrains.Annotations;
 using Robust.Shared.Containers;
 using Robust.Shared.Utility;
 
 namespace Content.Shared._Moffstation.BladeServer;
 
 /// This system handles behavior for <see cref="BladeServerRackComponent"/>s and <see cref="BladeServerComponent"/>s.
-public abstract partial class SharedBladeServerSystem : EntitySystem
+public abstract partial class BladeServerSystem : EntitySystem
 {
     [Dependency] private IComponentFactory _componentFactory = default!;
     [Dependency] private SharedAppearanceSystem _appearance = default!;
@@ -26,6 +29,11 @@ public abstract partial class SharedBladeServerSystem : EntitySystem
     [Dependency] private SharedPowerReceiverSystem _powerReceiver = default!;
     [Dependency] private SharedUserInterfaceSystem _ui = default!;
 
+    [Dependency] private EntityQuery<BladeServerComponent> _bladeServerQuery;
+    [Dependency] private EntityQuery<BladeServerRackComponent> _bladeServerRackQuery;
+    [Dependency] private EntityQuery<MachineBoardComponent> _machineBoardQuery;
+    [Dependency] private EntityQuery<BladeServerBoardComponent> _bladeServerBoardQuery;
+
     /// This whitelist allows only entities with <see cref="BladeServerComponent"/> to be inserted into the rack.
     private EntityWhitelist _slotWhitelist = new();
 
@@ -35,17 +43,6 @@ public abstract partial class SharedBladeServerSystem : EntitySystem
         {
             Components = [_componentFactory.GetComponentName<BladeServerComponent>()],
         };
-
-        SubscribeLocalEvent<BladeServerRackComponent, AfterAutoHandleStateEvent>(AfterAutoHandleState);
-        SubscribeLocalEvent<BladeServerRackComponent, ComponentInit>(OnComponentInit);
-
-        SubscribeLocalEvent<BladeServerRackComponent, EntInsertedIntoContainerMessage>(OnEntInserted);
-        SubscribeLocalEvent<BladeServerRackComponent, EntRemovedFromContainerMessage>(OnEntRemoved);
-        SubscribeLocalEvent<BladeServerRackComponent, PowerChangedEvent>(OnPowerChanged);
-        SubscribeLocalEvent<BladeServerRackComponent, ExaminedEvent>(OnExamined);
-        SubscribeLocalEvent<BladeServerRackComponent, LockToggledEvent>(OnLockToggled);
-
-        SubscribeLocalEvent<BladeServerRackComponent, ComponentRemove>(OnComponentRemove);
 
         Subs.BuiEvents<BladeServerRackComponent>(
             BladeServerRackUiKey.Key,
@@ -58,15 +55,47 @@ public abstract partial class SharedBladeServerSystem : EntitySystem
                 subs.Event<BladeServerRackActivateInWorldMessage>(OnActivateInWorld);
             }
         );
-
-        SubscribeLocalEvent<BladeServerComponent, ComponentInit>(OnComponentInit);
-        SubscribeLocalEvent<BladeServerComponent, GettingPickedUpAttemptEvent>(OnGettingPickedUpAttempt);
-
-        SubscribeLocalEvent<BladeServerFrameComponent, InteractUsingEvent>(OnBladeServerFrameInteractUsing);
-        SubscribeLocalEvent<BladeServerBoardComponent, ExaminedEvent>(OnBladeServerBoardExamined);
-        SubscribeLocalEvent<BladeServerComponent, AccessibleOverrideEvent>(OnBladeServerAccessibleOverride); // Starlight
     }
 
+    /// Tries to get the <see cref="BladeServerRackComponent"/> and <see cref="BladeSlot"/> which contains the given
+    /// blade server.
+    [PublicAPI] public (Entity<BladeServerRackComponent> rack, BladeSlot slot)? GetContainingRackAndSlot(
+        Entity<BladeServerComponent?> entity
+    )
+    {
+        if (_bladeServerQuery.ResolveOrNull(entity) == null ||
+            !_container.IsEntityInContainer(entity) ||
+            Transform(entity).ParentUid is not { Valid: true } parent ||
+            _bladeServerRackQuery.ResolveOrNull(parent, logMissing: false) is not { } rack ||
+            GetContainingSlotOrNull(rack, entity) is not { } slot)
+            return null;
+
+        return (rack, slot);
+    }
+
+    /// Different from just "is powered" because this DOES NOT care about the rack itself being powered.
+    public bool? IsSlotPowerEnabled(Entity<BladeServerRackComponent?> entity, int slotIndex)
+    {
+        return GetSlotOrNull(entity, slotIndex)?.IsPowerEnabled;
+    }
+
+    /// Sets (or removes) the stripe color of the given blade server.
+    [PublicAPI] public void SetStripeColorOverride(Entity<BladeServerComponent?> entity, Color? color)
+    {
+        if (_bladeServerQuery.ResolveOrNull(entity) is not { } blade)
+            return;
+
+        blade.Comp.StripeColor = color;
+        _appearance.SetOrRemoveData(entity.Owner, BladeServerVisuals.StripeColor, color);
+        Dirty(entity);
+
+        if (GetContainingRackAndSlot(entity)?.rack is { } rack)
+        {
+            UpdateVisuals(rack);
+        }
+    }
+
+    [SubscribeLocalEvent]
     private void OnComponentInit(Entity<BladeServerRackComponent> entity, ref ComponentInit args)
     {
         // Fill slots in the rack based on the component's `StartingContents`
@@ -78,6 +107,7 @@ public abstract partial class SharedBladeServerSystem : EntitySystem
         );
     }
 
+    [SubscribeLocalEvent]
     private void AfterAutoHandleState(Entity<BladeServerRackComponent> entity, ref AfterAutoHandleStateEvent args)
     {
         if (entity.Comp.NumSlots == entity.Comp.BladeSlots.Count)
@@ -93,6 +123,7 @@ public abstract partial class SharedBladeServerSystem : EntitySystem
         UpdateUiAndVisuals(entity);
     }
 
+    [SubscribeLocalEvent]
     private void OnEntInserted(
         Entity<BladeServerRackComponent> entity,
         ref EntInsertedIntoContainerMessage args)
@@ -100,21 +131,25 @@ public abstract partial class SharedBladeServerSystem : EntitySystem
         UpdateUiAndVisuals(entity);
     }
 
+    [SubscribeLocalEvent]
     private void OnEntRemoved(Entity<BladeServerRackComponent> entity, ref EntRemovedFromContainerMessage args)
     {
         UpdateUiAndVisuals(entity);
     }
 
+    [SubscribeLocalEvent]
     private void OnPowerChanged(Entity<BladeServerRackComponent> entity, ref PowerChangedEvent args)
     {
         UpdateVisuals(entity);
     }
 
+    [SubscribeLocalEvent]
     private void OnLockToggled(Entity<BladeServerRackComponent> entity, ref LockToggledEvent args)
     {
         UpdateUi(entity);
     }
 
+    [SubscribeLocalEvent]
     private void OnExamined(Entity<BladeServerRackComponent> entity, ref ExaminedEvent args)
     {
         if (entity.Comp.BladeSlots.All(it => it.Item == null))
@@ -168,42 +203,30 @@ public abstract partial class SharedBladeServerSystem : EntitySystem
         }
     }
 
+    [SubscribeLocalEvent]
     private void OnComponentRemove(Entity<BladeServerRackComponent> entity, ref ComponentRemove args)
     {
         ClearSlots(entity);
     }
 
-    // Starlight Start
-    /// <summary>
     /// Allow interaction with blade servers that are inside a rack if the user is in range of the rack.
-    /// </summary>
-    private void OnBladeServerAccessibleOverride(Entity<BladeServerComponent> bladeServer, ref AccessibleOverrideEvent args)
+    [SubscribeLocalEvent]
+    private void OnBladeServerAccessibleOverride(
+        Entity<BladeServerComponent> bladeServer,
+        ref AccessibleOverrideEvent args
+    )
     {
-        // If already handled or already accessible, return
-        if (args.Handled || args.Accessible)
+        if (args.Handled || args.Accessible || args.Target != bladeServer.Owner)
             return;
 
-        // Check if the blade server (target) is what we're trying to access
-        if (args.Target != bladeServer.Owner)
-            return;
-
-        // Find the rack containing this blade server
-        foreach (var container in _container.GetContainingContainers(bladeServer.Owner))
+        // If the blade is in a rack, the blade is accessible if the rack is accessible.
+        if (GetContainingRackAndSlot(bladeServer.AsNullable())?.rack is { } rack &&
+            _interaction.InRangeUnobstructed(args.User, rack.Owner))
         {
-            // Check if the container owner is a blade server rack
-            if (!HasComp<BladeServerRackComponent>(container.Owner))
-                continue;
-
-            // Check if the user is in range of the rack
-            if (_interaction.InRangeUnobstructed(args.User, container.Owner))
-            {
-                args.Accessible = true;
-                args.Handled = true;
-                return;
-            }
+            args.Accessible = true;
+            args.Handled = true;
         }
     }
-    // Starlight End
 
     private void OnEjectPressed(Entity<BladeServerRackComponent> entity, ref BladeServerRackEjectPressedMessage args)
     {
@@ -244,13 +267,9 @@ public abstract partial class SharedBladeServerSystem : EntitySystem
 
         if (slot.Item is { } slotEntity)
         {
-            // Relay the usage to the entity in the slot.
-            if (!TryComp(entity, out TransformComponent? xform))
-                return;
-
             _interaction.UserInteraction(
                 args.Actor,
-                xform.Coordinates,
+                Transform(entity).Coordinates,
                 slotEntity,
                 // It's specifically in a container, so skip access checks.
                 // We checked that the server rack is accessible above.
@@ -288,6 +307,7 @@ public abstract partial class SharedBladeServerSystem : EntitySystem
     }
 
     /// Sets the appearance data for new blade servers to make their stripe colors work.
+    [SubscribeLocalEvent]
     private void OnComponentInit(Entity<BladeServerComponent> entity, ref ComponentInit args)
     {
         if (entity.Comp.StripeColor is not { } stripeColor)
@@ -297,24 +317,16 @@ public abstract partial class SharedBladeServerSystem : EntitySystem
     }
 
     /// This prevents blade servers from being picked up while inside a rack.
+    [SubscribeLocalEvent]
     private void OnGettingPickedUpAttempt(
         Entity<BladeServerComponent> entity,
         ref GettingPickedUpAttemptEvent args
     )
     {
-        if (_container.IsEntityInContainer(entity) &&
-            TryComp(entity, out TransformComponent? xform) &&
-            TryComp<BladeServerRackComponent>(xform.ParentUid, out var parentRack) &&
-            GetContainingSlotOrNull((xform.ParentUid, parentRack), entity) is { Ejecting: false })
+        if (GetContainingRackAndSlot(entity.AsNullable())?.slot is { Ejecting: false })
         {
             args.Cancel();
         }
-    }
-
-    /// Different from just "is powered" because this DOES NOT care about the rack itself being powered.
-    public bool? IsSlotPowerEnabled(Entity<BladeServerRackComponent?> entity, int slotIndex)
-    {
-        return GetSlotOrNull(entity, slotIndex)?.IsPowerEnabled;
     }
 
     /// Tries to get the slot at <paramref name="slotIndex"/>. Returns null if the index is out of bounds.
@@ -385,8 +397,10 @@ public abstract partial class SharedBladeServerSystem : EntitySystem
 
             _itemSlots.AddItemSlot(entity.Owner, entity.Comp.BladeSlotName(idx), slot);
 
-            var inserted = getEntityToInsertForIndex(idx) is { } entityToInsert &&
-                           _itemSlots.TryInsert(entity, slot, entityToInsert, user: null);
+            if (getEntityToInsertForIndex(idx) is { } entityToInsert)
+            {
+                _itemSlots.TryInsert(entity, slot, entityToInsert, user: null);
+            }
 
             entity.Comp.BladeSlots.Add(new BladeSlot(slot));
         }
@@ -440,34 +454,33 @@ public abstract partial class SharedBladeServerSystem : EntitySystem
         var rackPowered = _powerReceiver.IsPowered(entity.Owner);
 
         var data = entity.Comp.BladeSlots.Select((bladeSlot, idx) =>
-        {
-            if (bladeSlot.Item is not { } bladeServer ||
-                !TryComp<BladeServerComponent>(bladeServer, out var blade))
-                return null;
-
-            return new BladeServerRackSlotVisualData(
-                blade.StripeColor,
-                rackPowered && bladeSlot.IsPowerEnabled,
-                entity.Comp.BladeSlotSpritePixelOffsetToLayerOffset(idx)
-            );
-        });
+            _bladeServerQuery.ResolveOrNull(bladeSlot.Item) is { } blade
+                ? (BladeServerRackSlotVisualData?)new BladeServerRackSlotVisualData(
+                    blade.Comp.StripeColor,
+                    rackPowered && bladeSlot.IsPowerEnabled,
+                    entity.Comp.BladeSlotSpritePixelOffsetToLayerOffset(idx)
+                )
+                : null
+        );
 
         _appearance.SetData(
             entity.Owner,
             BladeServerRackVisuals.SlotsKey,
-            new BladeServerRackSlotVisualData.Group(data)
+            new BladeServerRackSlotVisualData.Group(data.ToImmutableArray())
         );
     }
 
     /// Gives a popup to users explaining why non-bladeserver boards don't fit.
+    [SubscribeLocalEvent]
     private void OnBladeServerFrameInteractUsing(Entity<BladeServerFrameComponent> entity, ref InteractUsingEvent args)
     {
-        if (HasComp<MachineBoardComponent>(args.Used) && !HasComp<BladeServerBoardComponent>(args.Used))
+        if (_machineBoardQuery.HasComp(args.Used) && !_bladeServerBoardQuery.HasComp(args.Used))
         {
-            _popup.PopupPredictedCursor(Loc.GetString("moff-blade-server-frame-incompatible-board"), args.User);
+            _popup.PopupCursor(Loc.GetString("moff-blade-server-frame-incompatible-board"), args.User);
         }
     }
 
+    [SubscribeLocalEvent]
     private void OnBladeServerBoardExamined(Entity<BladeServerBoardComponent> entity, ref ExaminedEvent args)
     {
         args.PushMarkup(Loc.GetString("moff-blade-server-board-compatible-hint"));
