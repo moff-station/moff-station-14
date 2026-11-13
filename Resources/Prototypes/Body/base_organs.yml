@@ -39,10 +39,7 @@
         Quantity: 20
   # Moffstation - grind organs for proteins
   - type: Extractable
-    juiceSolution:
-      reagents:
-      - ReagentId: UncookedAnimalProteins
-        Quantity: 20
+    grindableSolutionName: food
   # Moffstation - end
   - type: Tag # I am nearing my limit of tolerance for TagComponent.
     tags:
