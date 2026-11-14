@@ -102,10 +102,10 @@
         sound:
           collection: MetalGlassBreak
   # Moffstation - augmented reality
-  #- type: ArDisplays
-  #  displays:
-  #    ArHackerInterface:
-  #    - ArHackerHolopadIndicator
+  - type: ArDisplays
+    displays:
+      ArHackerInterface:
+      - prototype: ArHackerHolopadIndicator
   # Moffstation - end
 
 - type: entity

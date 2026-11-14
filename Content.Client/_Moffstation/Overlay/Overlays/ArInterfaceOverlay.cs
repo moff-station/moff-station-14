@@ -23,13 +23,11 @@ public sealed partial class ArInterfaceOverlay : Robust.Client.Graphics.Overlay
 
     protected override void Draw(in OverlayDrawArgs args)
     {
-        var sources = _entMan.EntityQueryEnumerator<ArDisplaysComponent>();
-        foreach (var source in sources)
-        {
-            // var fetchEv = new GetArDisplaysEvent(in _activeInterfaces, null);
-            // if display == null => continue
-            // foreach var display in displays
-            //     raise local event (display, DrawArDisplayEvent(in OverlayDrawArgs));
-        }
+        // ideally here a very simple loop like :
+        // ev = new ArInterfaceDrawEvent(ActiveInterfaces, []);
+        // Raise(ArInterfaceDrawEvent)
+        // foreach(var toDraw in ev.Drawn)
+        //      RaiseLocalEvent(draw, new ...)
+        // with the idea that the drawing strategy of an entity is not defined here.
     }
 }

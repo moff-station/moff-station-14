@@ -1,9 +1,10 @@
-#- type: entity
-#  id: ArHackerHolopadIndicator
-#  save: false
-#  components:
-#  - type: Sprite
-#    sprite:
+- type: entity
+  id: ArHackerHolopadIndicator
+  save: false
+  components:
+  - type: Sprite
+    sprite: _Moffstation/ArInterfaces/hacker.rsi
+    state: holopad
 
 #- type: entity
 #  id: ArHackerCameraIndicator

@@ -24,6 +24,30 @@ public sealed partial class ArInterfaceSystem : EquipmentHudSystem<ShowArInterfa
         _overlay = new ArInterfaceOverlay();
     }
 
+    public override void Update(float dt)
+    {
+        base.Update(dt);
+
+        var query = EntityQueryEnumerator<ArDisplaysComponent>();
+        foreach (var source in query)
+        {
+            UpdateDisplays(source, _overlay.ActiveInterfaces);
+        }
+    }
+
+    # region sources
+
+    private void UpdateDisplays(Entity<ArDisplaysComponent> ent, HashSet<ProtoId<ArInterfacePrototype>> interfaces)
+    {
+        // ensure inside interface are spawned,
+        // ensure outside interface are despawned
+    }
+
+    # endregion
+
+
+    # region overlay
+
     protected override void UpdateInternal(RefreshEquipmentHudEvent<ShowArInterfaceComponent> args)
     {
         base.UpdateInternal(args);
@@ -36,4 +60,12 @@ public sealed partial class ArInterfaceSystem : EquipmentHudSystem<ShowArInterfa
         base.DeactivateInternal();
         _overlayMan.RemoveOverlay(_overlay);
     }
+
+    [SubscribeLocalEvent]
+    private void OnAfterHandleState(Entity<ShowArInterfaceComponent> ent, ref AfterAutoHandleStateEvent args)
+    {
+        RefreshOverlay();
+    }
+
+    #endregion
 }
