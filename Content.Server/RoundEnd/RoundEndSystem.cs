@@ -378,6 +378,11 @@ namespace Content.Server.RoundEnd
         {
             RoundEndExtensionsUpdate(); // Moff - Round end extension vote
 
+            // Moff Start - Evac call time fix
+            if (_gameTicker.RunLevel != GameRunLevel.InRound)
+                return;
+            // Moff end
+
             // Check if we should auto-call.
             int mins = _autoCalledBefore ? _cfg.GetCVar(CCVars.EmergencyShuttleAutoCallExtensionTime)
                                         : _cfg.GetCVar(CCVars.EmergencyShuttleAutoCallTime);
