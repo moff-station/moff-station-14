@@ -1,0 +1,8 @@
+- type: entity
+  parent: BaseXenoArtifactTrigger
+  id: TriggerDCFive
+  name: DC 5 check
+  components:
+  - type: XATDiceRoll
+    requiredSides: 20
+    triggerValue: 5
