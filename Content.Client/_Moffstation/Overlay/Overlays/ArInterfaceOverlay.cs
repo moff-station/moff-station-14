@@ -1,3 +1,4 @@
+using Content.Client._Moffstation.ArInterface;
 using Content.Shared._Moffstation.ArInterface.Components;
 using Content.Shared._Moffstation.Overlay.Prototypes;
 using Robust.Client.Graphics;
@@ -18,16 +19,25 @@ public sealed partial class ArInterfaceOverlay : Robust.Client.Graphics.Overlay
     public ArInterfaceOverlay()
     {
         IoCManager.InjectDependencies(this);
-        ZIndex = -1; // place us underneath most shaders
+        ZIndex = -1; // to be underneath eventual shaders.
     }
 
     protected override void Draw(in OverlayDrawArgs args)
     {
-        // ideally here a very simple loop like :
-        // ev = new ArInterfaceDrawEvent(ActiveInterfaces, []);
-        // Raise(ArInterfaceDrawEvent)
-        // foreach(var toDraw in ev.Drawn)
-        //      RaiseLocalEvent(draw, new ...)
-        // with the idea that the drawing strategy of an entity is not defined here.
+        var entities = _entMan.EntityQueryEnumerator<ArElementComponent>();
+
+        foreach (var ent in entities)
+        {
+            if (!ActiveInterfaces.Contains(ent.Comp.Interface))
+                continue;
+
+            var ev = new GetArDrawingMethodsEvent([]);
+            _entMan.EventBus.RaiseLocalEvent(ent, ref ev);
+
+            foreach (var method in ev.Methods)
+            {
+                method(ent, args);
+            }
+        }
     }
 }
