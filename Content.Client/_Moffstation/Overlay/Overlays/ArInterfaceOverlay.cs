@@ -1,4 +1,5 @@
 using Content.Client._Moffstation.ArInterface;
+using Content.Client._Moffstation.Overlay.Events;
 using Content.Shared._Moffstation.ArInterface.Components;
 using Content.Shared._Moffstation.Overlay.Prototypes;
 using Robust.Client.Graphics;
@@ -31,12 +32,12 @@ public sealed partial class ArInterfaceOverlay : Robust.Client.Graphics.Overlay
             if (!ActiveInterfaces.Contains(ent.Comp.Interface))
                 continue;
 
-            var ev = new GetArDrawingMethodsEvent([]);
-            _entMan.EventBus.RaiseLocalEvent(ent, ref ev);
-
-            foreach (var method in ev.Methods)
+            // i would love to make this a "ArDrawEvent that handle the whole drawing call
+            // but sadly OverlayDrawArgs being a readonly ref struct does not allow it to be passed around in events
+            var ev = new GetOverlayDrawingFunctionsEvent([]);
+            foreach (var fun in ev.Functions)
             {
-                method(ent, args);
+                fun(ent, args);
             }
         }
     }

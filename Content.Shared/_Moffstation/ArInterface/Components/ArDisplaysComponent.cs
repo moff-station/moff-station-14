@@ -14,11 +14,11 @@ public sealed partial class ArDisplaysComponent : Component
     /// prototypes associated to this entity by interface.
     /// </summary>
     [DataField(required: true)]
-    public Dictionary<ProtoId<ArInterfacePrototype>, EntProtoId> Displays;
+    public Dictionary<ProtoId<ArInterfacePrototype>, List<EntProtoId>> Displays = [];
 
     /// <summary>
     /// entities currently spawned.
     /// </summary>
     [DataField, NonSerialized]
-    public Dictionary<ProtoId<ArInterfacePrototype>, EntityUid> Entities;
+    public Dictionary<ProtoId<ArInterfacePrototype>, List<EntityUid>> Entities = [];
 }
