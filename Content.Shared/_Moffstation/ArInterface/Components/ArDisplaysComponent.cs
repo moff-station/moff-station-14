@@ -5,16 +5,16 @@ using Robust.Shared.Prototypes;
 namespace Content.Shared._Moffstation.ArInterface.Components;
 
 /// <summary>
-/// This is used to indicate that
+///
 /// </summary>
 [RegisterComponent, NetworkedComponent, AutoGenerateComponentState]
 public sealed partial class ArDisplaysComponent : Component
 {
     [DataField(required: true), AutoNetworkedField]
-    public Dictionary<ProtoId<ArInterfacePrototype>, EntProtoId> Displays;
+    public Dictionary<ProtoId<ArInterfacePrototype>, List<EntProtoId>> Displays;
 
     [DataField, NonSerialized]
-    public Dictionary<ProtoId<ArInterfacePrototype>, EntProtoId> EntDisplays = [];
+    public Dictionary<ProtoId<ArInterfacePrototype>, List<EntityUid>> EntDisplays = [];
 }
 
 /// <summary>

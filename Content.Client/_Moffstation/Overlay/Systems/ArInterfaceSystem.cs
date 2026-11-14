@@ -3,8 +3,11 @@ using Content.Client._Moffstation.Overlay.Overlays;
 using Content.Client.Overlays;
 using Content.Shared._Moffstation.ArInterface.Components;
 using Content.Shared._Moffstation.Overlay.Components;
+using Content.Shared._Moffstation.Overlay.Prototypes;
 using Content.Shared.Inventory.Events;
+using Robust.Client.GameObjects;
 using Robust.Client.Graphics;
+using Robust.Shared.Prototypes;
 
 namespace Content.Client._Moffstation.Overlay.Systems;
 
@@ -21,15 +24,6 @@ public sealed partial class ArInterfaceSystem : EquipmentHudSystem<ShowArInterfa
         _overlay = new ArInterfaceOverlay();
     }
 
-
-    [SubscribeLocalEvent]
-    private void OnGetDisplays(Entity<ArDisplaysComponent> ent, ref GetArDisplaysEvent args)
-    {
-        // here we add every entity associated to a key contained in args.Interfaces
-    }
-
-
-    #region Equipment Hud
     protected override void UpdateInternal(RefreshEquipmentHudEvent<ShowArInterfaceComponent> args)
     {
         base.UpdateInternal(args);
@@ -42,6 +36,4 @@ public sealed partial class ArInterfaceSystem : EquipmentHudSystem<ShowArInterfa
         base.DeactivateInternal();
         _overlayMan.RemoveOverlay(_overlay);
     }
-
-    #endregion
 }

@@ -101,6 +101,12 @@
       - !type:PlaySoundBehavior
         sound:
           collection: MetalGlassBreak
+  # Moffstation - augmented reality
+  #- type: ArDisplays
+  #  displays:
+  #    ArHackerInterface:
+  #    - ArHackerHolopadIndicator
+  # Moffstation - end
 
 - type: entity
   name: long-range holopad
