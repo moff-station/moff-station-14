@@ -66,7 +66,7 @@ namespace Content.Server.RoundEnd
         {
             base.Initialize();
             SubscribeLocalEvent<RoundRestartCleanupEvent>(_ => Reset());
-            SubscribeLocalEvent<RoundStartingEvent>(_ => SetAutoCallTime()); // Moffstation - Evac call time fix
+            SubscribeLocalEvent<RoundStartingEvent>(OnRoundStarting); // Moff - Evac call time fix
             SetAutoCallTime();
         }
 
@@ -377,11 +377,6 @@ namespace Content.Server.RoundEnd
         public override void Update(float frameTime)
         {
             RoundEndExtensionsUpdate(); // Moff - Round end extension vote
-
-            // Moff Start - Evac call time fix
-            if (_gameTicker.RunLevel != GameRunLevel.InRound)
-                return;
-            // Moff end
 
             // Check if we should auto-call.
             int mins = _autoCalledBefore ? _cfg.GetCVar(CCVars.EmergencyShuttleAutoCallExtensionTime)
