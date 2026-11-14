@@ -159,3 +159,8 @@ holopad-station-cargo-bay = Station - Cargo Bay
 
 # CentComm
 holopad-centcomm-evac = CentComm - Evacuation Shuttle
+
+# Moff Unique holopads
+moffholopad-medical-psychology = Station - Psychology
+moffholopad-general-pool = Station - Pool
+moffholopad-general-laundromat = Station - Laundromat
