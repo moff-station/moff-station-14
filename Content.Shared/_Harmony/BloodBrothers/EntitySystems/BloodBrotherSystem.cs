@@ -1,4 +1,5 @@
 ﻿using Content.Shared._Harmony.BloodBrothers.Components;
+using Content.Shared._Moffstation.BloodBrothers.Components;
 using Content.Shared.Actions;
 using Content.Shared.Antag;
 using Robust.Shared.GameStates;
@@ -6,7 +7,7 @@ using Robust.Shared.Player;
 
 namespace Content.Shared._Harmony.BloodBrothers.EntitySystems;
 
-public abstract partial class SharedBloodBrotherSystem : EntitySystem
+public abstract partial class BloodBrotherSystem : EntitySystem
 {
     [Dependency] private SharedActionsSystem _actionsSystem = default!;
 
@@ -22,14 +23,27 @@ public abstract partial class SharedBloodBrotherSystem : EntitySystem
     private void OnInitialBloodBrotherMapInit(Entity<InitialBloodBrotherComponent> entity, ref MapInitEvent args)
     {
         _actionsSystem.AddAction(entity, ref entity.Comp.ConvertActionEntity, entity.Comp.ConvertAction);
-        _actionsSystem.AddAction(entity, ref entity.Comp.CheckConvertActionEntity, entity.Comp.CheckConvertAction);
         Dirty(entity);
+        DirtyConvertibleMarkers();
+    }
+
+    [SubscribeLocalEvent]
+    private void OnInitialBloodBrotherPlayerAttached(Entity<InitialBloodBrotherComponent> entity, ref PlayerAttachedEvent args)
+    {
+        DirtyConvertibleMarkers();
+    }
+
+    [SubscribeLocalEvent]
+    private void OnConvertibleGetStateAttempt(
+        Entity<BloodBrotherConvertibleComponent> entity,
+        ref ComponentGetStateAttemptEvent args)
+    {
+        args.Cancelled = !HasComp<InitialBloodBrotherComponent>(args.Player?.AttachedEntity);
     }
 
     private void OnInitialBloodBrotherShutdown(Entity<InitialBloodBrotherComponent> entity, ref ComponentShutdown args)
     {
         _actionsSystem.RemoveAction(entity.Comp.ConvertActionEntity);
-        _actionsSystem.RemoveAction(entity.Comp.CheckConvertActionEntity);
     }
 
     private void OnBloodBrotherAttemptGetState(
@@ -46,5 +60,30 @@ public abstract partial class SharedBloodBrotherSystem : EntitySystem
             return true;
 
         return HasComp<BloodBrotherComponent>(uid) || HasComp<ShowAntagIconsComponent>(uid);
+    }
+
+    public void SetConvertible(EntityUid target, bool convertible)
+    {
+        if (convertible)
+            EnsureComp<BloodBrotherConvertibleComponent>(target);
+        else
+            RemComp<BloodBrotherConvertibleComponent>(target);
+    }
+
+    public void ClearConvertible()
+    {
+        foreach (var ent in EntityQueryEnumerator<BloodBrotherConvertibleComponent>())
+        {
+            RemCompDeferred(ent.Owner, ent.Comp);
+        }
+    }
+
+    // Markers added while a viewer couldn't see them are never sent unless dirtied again
+    private void DirtyConvertibleMarkers()
+    {
+        foreach (var ent in EntityQueryEnumerator<BloodBrotherConvertibleComponent>())
+        {
+            Dirty(ent.Owner, ent.Comp);
+        }
     }
 }
