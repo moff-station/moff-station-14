@@ -1,5 +1,6 @@
 using System.Linq;
 using System.Numerics;
+using Content.Client._Moffstation.Overlay.Events;
 using Content.Shared._Moffstation.ArInterface.Components;
 using Robust.Client.GameObjects;
 
@@ -12,6 +13,8 @@ public sealed partial class ArDisplaysSystem : EntitySystem
     [SubscribeLocalEvent]
     private void OnUpdate(Entity<ArDisplaysComponent> ent, ref ArDisplayUpdateEvent args)
     {
+        var ev = new ArSpawnEvent(ent, args.ViewerEntity);
+
         var toAdd = ent.Comp.Displays.Keys
             .Intersect(args.Interfaces)
             .Except(ent.Comp.Entities.Keys);
@@ -21,9 +24,7 @@ public sealed partial class ArDisplaysSystem : EntitySystem
             foreach (var proto in ent.Comp.Displays[addedInterface])
             {
                 var display = Spawn(proto);
-                _xform.SetParent(display, ent);
-                _xform.SetLocalPosition(display, Vector2.Zero);
-                _xform.SetLocalRotation(display, 0);
+                RaiseLocalEvent(display, ref ev);
                 ent.Comp.Entities[addedInterface].Add(display);
             }
         }
@@ -36,6 +37,29 @@ public sealed partial class ArDisplaysSystem : EntitySystem
                 Del(display);
             }
             ent.Comp.Entities.Remove(removedInterface);
+        }
+    }
+
+    [SubscribeLocalEvent]
+    private void OnSpawn(Entity<ArElementComponent> ent, ref ArSpawnEvent args)
+    {
+        switch (ent.Comp.SpawnAt)
+        {
+            case ArSpawnAtViewer v:
+                _xform.SetParent(ent, args.ViewerEntity);
+                _xform.SetLocalPosition(ent, v.Offset);
+                _xform.SetLocalRotation(ent, v.Angle);
+                break;
+            case ArSpawnAtSource s:
+                _xform.SetParent(ent, args.SourceEntity);
+                _xform.SetLocalPosition(ent, s.Offset);
+                _xform.SetLocalRotation(ent, s.Angle);
+                break;
+            default:
+                _xform.SetParent(ent, args.SourceEntity);
+                _xform.SetLocalPosition(ent, Vector2.Zero);
+                _xform.SetLocalRotation(ent, 0);
+                break;
         }
     }
 }

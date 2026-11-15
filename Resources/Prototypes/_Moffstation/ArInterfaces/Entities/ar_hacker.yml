@@ -4,18 +4,37 @@
   components:
   - type: ArElement
     interface: ArHackerInterface
+    spawnAt: !type:ArSpawnAtSource
+      offset: 0,0
+      angle: 0
   - type: Sprite
     sprite: _Moffstation/ArInterfaces/hacker.rsi
     state: holopad
     visible: false
     noRot: true
+  - type: VisualLinks
+    sprite:
+      sprite: _Moffstation/ArInterfaces/hacker.rsi
+      state: link
 
-#- type: entity
-#  id: ArHackerCameraIndicator
-#  save: false
-#  components:
-#  - type: Sprite
-#    sprite:
+- type: entity
+  id: ArHackerCameraIndicator
+  save: false
+  components:
+  - type: ArElement
+    interface: ArHackerInterface
+    spawnAt: !type:ArSpawnAtSource
+      offset: -0.25, -0.4
+      angle: 0
+  - type: Sprite
+    sprite: _Moffstation/ArInterfaces/hacker.rsi
+    state: camera
+    visible: false
+    noRot: true
+  - type: VisualLinks
+    sprite:
+      sprite: _Moffstation/ArInterfaces/hacker.rsi
+      state: link
 
 #- type: entity
 #  id: ArHackerViewerIndicator

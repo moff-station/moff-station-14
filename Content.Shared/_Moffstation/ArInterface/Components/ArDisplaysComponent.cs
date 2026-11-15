@@ -22,10 +22,10 @@ public sealed partial class ArDisplaysComponent : Component
     public Dictionary<ProtoId<ArInterfacePrototype>, List<EntityUid>> Entities = [];
 }
 
-
 /// <summary>
 /// Raised directed on entity CLIENT-SIDE ONLY to spawn / despawn entities
 /// </summary>
+/// <param name="ViewerEntity">Entity looking at the interface</param>
 /// <param name="Interfaces">Active virtual reality interfaces</param>
 [ByRefEvent]
-public record struct ArDisplayUpdateEvent(HashSet<ProtoId<ArInterfacePrototype>> Interfaces);
+public record struct ArDisplayUpdateEvent(EntityUid ViewerEntity, HashSet<ProtoId<ArInterfacePrototype>> Interfaces);

@@ -5,12 +5,14 @@ using Content.Shared._Moffstation.ArInterface.Components;
 using Content.Shared._Moffstation.Overlay.Components;
 using Content.Shared.Inventory.Events;
 using Robust.Client.Graphics;
+using Robust.Client.Player;
 
 namespace Content.Client._Moffstation.Overlay.Systems;
 
-public sealed partial class ArInterfaceSystem : EquipmentHudSystem<ShowArInterfaceComponent>
+public sealed partial class ArInterfaceOverlaySystem : EquipmentHudSystem<ShowArInterfaceComponent>
 {
     [Dependency] private IOverlayManager _overlayMan = default!;
+    [Dependency] private IPlayerManager _playerMan = default!;
 
     private ArInterfaceOverlay _overlay = default!;
 
@@ -23,12 +25,12 @@ public sealed partial class ArInterfaceSystem : EquipmentHudSystem<ShowArInterfa
 
     public override void Update(float dt)
     {
-        if (! IsActive)
+        if (! IsActive || _playerMan.LocalEntity is not {} viewer)
             return;
 
-        // would love to do it outside of Update
+        // would love to do it outside of Update...
         var query = EntityQueryEnumerator<ArDisplaysComponent>();
-        var ev = new ArDisplayUpdateEvent(_overlay.ActiveInterfaces);
+        var ev = new ArDisplayUpdateEvent(viewer, _overlay.ActiveInterfaces);
         foreach (var entity in query)
         {
             RaiseLocalEvent(entity, ref ev);

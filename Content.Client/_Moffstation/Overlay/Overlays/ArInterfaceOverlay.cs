@@ -26,16 +26,13 @@ public sealed partial class ArInterfaceOverlay : Robust.Client.Graphics.Overlay
     {
         var entities = _entMan.EntityQueryEnumerator<ArElementComponent>();
 
+        var ev = new ArDrawEvent(args.WorldHandle);
         foreach (var ent in entities)
         {
             if (!ActiveInterfaces.Contains(ent.Comp.Interface))
                 continue;
 
-            var ev = new GetOverlayDrawingFunctionsEvent([]);
-            foreach (var fun in ev.Functions)
-            {
-                fun(ent, args);
-            }
+            _entMan.EventBus.RaiseLocalEvent(ent, ref ev);
         }
     }
 }
