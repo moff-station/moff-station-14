@@ -16,7 +16,7 @@ public abstract partial class SharedDiceSystem : EntitySystem
     [Dependency] private IGameTiming _timing = default!;
     [Dependency] private SharedAudioSystem _audio = default!;
     [Dependency] private SharedPopupSystem _popup = default!;
-
+    [Dependency] private EntityQuery<DiceComponent> _diceQuery;
     // Moffstation - Start - dice roll when dumped
     [SubscribeLocalEvent]
     private void OnDumped(Entity<StorageComponent> ent, ref DumpEvent args)
