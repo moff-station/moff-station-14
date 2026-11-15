@@ -21,9 +21,8 @@ public abstract partial class SharedDiceSystem : EntitySystem
     [SubscribeLocalEvent]
     private void OnDumped(Entity<StorageComponent> ent, ref DumpEvent args)
     {
-        foreach (var entityUid in args.DumpQueue)
+        foreach (var ent in _diceQuery.ResolveAll(args.DumpQueue, logMissing: false))
         {
-            if (TryComp<DiceComponent>(entityUid, out var comp))
                 Roll((entityUid, comp));
         }
     }
