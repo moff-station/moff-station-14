@@ -8,14 +8,6 @@
   components:
   - type: Sprite
     sprite: _Moffstation/PersonalItems/Items/fishgirl/Mumuuk_Plasmacry_Pack/mumuwheelchair.rsi
-    layers:
-    - state: wheelchair
-      map: ["unfoldedLayer"]
-    - state: wheelchair_folded
-      map: ["foldedLayer"]
-      visible: false
-  - type: Item
-    sprite: _Moffstation/PersonalItems/Items/fishgirl/Mumuuk_Plasmacry_Pack/mumuwheelchair.rsi
   - type: DetailExaminable
     content: Upon closer inspection, the brand name appears to have been hastily painted over.
 
