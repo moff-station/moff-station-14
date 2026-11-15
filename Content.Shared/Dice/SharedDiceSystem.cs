@@ -1,11 +1,11 @@
 using Content.Shared._Moffstation.Dice; // Moffstation - xenoarch dice trigger
-using Content.Shared._Moffstation.Extensions;
+using Content.Shared._Moffstation.Extensions; // Moffstation - dice roll when dumped
+using Content.Shared.Storage; // Moffstation - dice roll when dumped
+using Content.Shared.Storage.Components; // Moffstation - dice roll when dumped
 using Content.Shared.Examine;
 using Content.Shared.Interaction.Events;
 using Content.Shared.Popups;
 using Content.Shared.Random.Helpers;
-using Content.Shared.Storage; // Moffstation - dice roll when dumped
-using Content.Shared.Storage.Components; // Moffstation - dice roll when dumped
 using Content.Shared.Throwing;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Random;
