@@ -1,14 +1,10 @@
 using System.Linq;
-using Content.Client._Moffstation.ArInterface;
 using Content.Client._Moffstation.Overlay.Overlays;
 using Content.Client.Overlays;
 using Content.Shared._Moffstation.ArInterface.Components;
 using Content.Shared._Moffstation.Overlay.Components;
-using Content.Shared._Moffstation.Overlay.Prototypes;
 using Content.Shared.Inventory.Events;
-using Robust.Client.GameObjects;
 using Robust.Client.Graphics;
-using Robust.Shared.Prototypes;
 
 namespace Content.Client._Moffstation.Overlay.Systems;
 
@@ -23,6 +19,20 @@ public sealed partial class ArInterfaceSystem : EquipmentHudSystem<ShowArInterfa
         base.Initialize();
 
         _overlay = new ArInterfaceOverlay();
+    }
+
+    public override void Update(float dt)
+    {
+        if (! IsActive)
+            return;
+
+        // would love to do it outside of Update
+        var query = EntityQueryEnumerator<ArDisplaysComponent>();
+        var ev = new ArDisplayUpdateEvent(_overlay.ActiveInterfaces);
+        foreach (var entity in query)
+        {
+            RaiseLocalEvent(entity, ref ev);
+        }
     }
 
     protected override void UpdateInternal(RefreshEquipmentHudEvent<ShowArInterfaceComponent> args)

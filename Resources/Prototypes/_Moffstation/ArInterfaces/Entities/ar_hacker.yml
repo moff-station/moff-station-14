@@ -2,9 +2,13 @@
   id: ArHackerHolopadIndicator
   save: false
   components:
+  - type: ArElement
+    interface: ArHackerInterface
   - type: Sprite
     sprite: _Moffstation/ArInterfaces/hacker.rsi
     state: holopad
+    visible: false
+    noRot: true
 
 #- type: entity
 #  id: ArHackerCameraIndicator

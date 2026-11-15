@@ -1,5 +1,4 @@
 using Content.Shared._Moffstation.Overlay.Prototypes;
-using Robust.Shared.GameStates;
 using Robust.Shared.Prototypes;
 
 namespace Content.Shared._Moffstation.ArInterface.Components;
@@ -22,3 +21,11 @@ public sealed partial class ArDisplaysComponent : Component
     [DataField, NonSerialized]
     public Dictionary<ProtoId<ArInterfacePrototype>, List<EntityUid>> Entities = [];
 }
+
+
+/// <summary>
+/// Raised directed on entity CLIENT-SIDE ONLY to spawn / despawn entities
+/// </summary>
+/// <param name="Interfaces">Active virtual reality interfaces</param>
+[ByRefEvent]
+public record struct ArDisplayUpdateEvent(HashSet<ProtoId<ArInterfacePrototype>> Interfaces);
