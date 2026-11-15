@@ -1,3 +1,4 @@
+using Content.Shared._Moffstation.Extensions;
 using Content.Shared.Examine;
 using Content.Shared.Interaction.Events;
 using Content.Shared.Popups;
@@ -21,9 +22,9 @@ public abstract partial class SharedDiceSystem : EntitySystem
     [SubscribeLocalEvent]
     private void OnDumped(Entity<StorageComponent> ent, ref DumpEvent args)
     {
-        foreach (var ent in _diceQuery.ResolveAll(args.DumpQueue, logMissing: false))
+        foreach (var entity in _diceQuery.ResolveAll(args.DumpQueue, logMissing: false))
         {
-                Roll((entityUid, comp));
+                Roll(entity);
         }
     }
     // Moffstation - End
