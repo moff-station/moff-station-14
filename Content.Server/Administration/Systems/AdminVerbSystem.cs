@@ -191,7 +191,7 @@ namespace Content.Server.Administration.Systems
 
                             // Moff start - Multi-character selection: clone the character they actually
                             // spawned as, not whichever one is selected in the lobby.
-                            var profile = _moffCharacterPicker.GetSpawnedProfile(targetActor.PlayerSession.UserId)
+                            var profile = _moffProfileSpawned.GetSpawnedProfile(targetActor.PlayerSession.UserId).Profile
                                           ?? _gameTicker.GetPlayerProfile(targetActor.PlayerSession, profileIndex: null);
                             // Moff end
                             _spawning.SpawnPlayerMob(coords.Value, null, profile, stationUid);

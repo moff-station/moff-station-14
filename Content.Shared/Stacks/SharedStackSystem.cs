@@ -99,6 +99,7 @@ public abstract partial class SharedStackSystem : EntitySystem
         {
             var localRotation = Transform(args.Used).LocalRotation;
             _storage.PlayPickupAnimation(args.Used, popupPos, userCoords, localRotation, args.User);
+            args.SuppressInteractionParticles = true; // Moff - Don't animate an interaction effect if we're doing a pickup effect
         }
     }
 

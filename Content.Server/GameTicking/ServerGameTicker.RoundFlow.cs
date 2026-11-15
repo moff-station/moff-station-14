@@ -573,7 +573,7 @@ public sealed partial class ServerGameTicker
             if (TryComp<LastWordsComponent>(mindId, out var lastWordsComponent)
                 && !TerminatingOrDeleted(entity))
             {
-                lastWords = lastWordsComponent.LastWords;
+                lastWords = lastWordsComponent.LastWords ?? "";
 
                 if (TryComp<MobStateComponent>(entity, out var mobStateComp) && mobState is { } _)
                     mobState = mobStateComp.CurrentState;
@@ -603,7 +603,7 @@ public sealed partial class ServerGameTicker
                 Observer = observer,
                 Connected = connected,
                 // Goob Station - End of Round Screen
-                LastWords = lastWords,
+                LastWords = FormattedMessage.EscapeText(lastWords),
                 EntMobState = mobState,
 #pragma warning disable CS0618 // Type or member is obsolete // Moffstation Grouping in the UI
                 DamagePerGroup = damagePerGroup ?? new Dictionary<ProtoId<DamageGroupPrototype>, FixedPoint2>(),

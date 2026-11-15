@@ -58,6 +58,9 @@
       weight: 0.5
     - id: TriggerAttackParticleEngine
       weight: 0.1
+    # Moffstation - Begin - Add dice roll trigger
+    - id: TriggerDCFive
+    # Moffstation - End
 
 - type: entityTable
   id: XenoArtifactHandheldOnlyTriggerTable

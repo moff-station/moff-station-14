@@ -42,6 +42,11 @@ public sealed class InteractUsingEvent : HandledEntityEventArgs
         Target = target;
         ClickLocation = clickLocation;
     }
+
+    // Moff start - Prevent interaction particles for some interactions, eg. picking up stacked materials while holding some of that material already.
+    /// If true, interaction particles will not be created for this interaction.
+    public bool SuppressInteractionParticles;
+    // Moff end
 }
 
 /// <summary>

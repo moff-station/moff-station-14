@@ -284,6 +284,15 @@ public abstract partial class AntagSelectionSystem : GameRuleSystem<AntagSelecti
         ICommonSession player,
         HumanoidCharacterProfile? preselected
     ) => preselected;
+
+    /// Sets the profile this antag entity was spawned from.
+    protected virtual void SetMoffAntagProfile(
+        EntityUid entity,
+        HumanoidCharacterProfile? profile
+    )
+    {
+        // Does nothing on the client.
+    }
     // Moff end
 
     private void AssignAntags(Entity<AntagSelectionComponent> gameRule)
@@ -733,6 +742,8 @@ public abstract partial class AntagSelectionSystem : GameRuleSystem<AntagSelecti
         List<ProtoId<StartingGearPrototype>> gear = new();
         if (prototype.StartingGear is not null)
             gear.Add(prototype.StartingGear.Value);
+
+        SetMoffAntagProfile(antag, preselectedProfile); // Moff - Track the profile which was used to spawn this antag.
 
         // Moffstation - Begin - Use LoadoutAwareEquip function to equip Roleloadout and Starting gear, this allows custom loadouts for antags.
         // _loadout.Equip(antag, gear, prototype.RoleLoadout);

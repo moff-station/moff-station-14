@@ -18,14 +18,7 @@ public sealed partial class StainSystem : SharedStainSystem
     [Dependency] private SharedSolutionContainerSystem _solution = null!;
     [Dependency] private SpriteSystem _sprite = null!;
 
-    public override void Initialize()
-    {
-        base.Initialize();
-        SubscribeLocalEvent<StainableComponent, AppearanceChangeEvent>(OnAppearanceChanged);
-        SubscribeLocalEvent<StainableComponent, GetEquipmentVisualsEvent>(OnEquipmentVisuals, after: [typeof(ClientClothingSystem)]);
-        SubscribeLocalEvent<StainableComponent, GetInhandVisualsEvent>(OnInhandVisuals, after: [typeof(ItemSystem)]);
-    }
-
+    [SubscribeLocalEvent]
     private void OnAppearanceChanged(Entity<StainableComponent> ent, ref AppearanceChangeEvent args)
     {
         if (args.Sprite == null)
@@ -52,12 +45,14 @@ public sealed partial class StainSystem : SharedStainSystem
         }
     }
 
+    [SubscribeLocalEvent(after: [typeof(ClientClothingSystem)])]
     private void OnEquipmentVisuals(Entity<StainableComponent> ent, ref GetEquipmentVisualsEvent args)
     {
         if (ent.Comp.ClothingVisuals.TryGetValue(args.Slot, out var layers))
             args.Layers.AddRange(BuildVisuals(ent, layers, args.Slot));
     }
 
+    [SubscribeLocalEvent(after: [typeof(ItemSystem)])]
     private void OnInhandVisuals(Entity<StainableComponent> ent, ref GetInhandVisualsEvent args)
     {
         if (ent.Comp.ItemVisuals.TryGetValue(args.Location.ToString(), out var layers))
