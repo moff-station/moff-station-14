@@ -257,7 +257,9 @@
       - !type:HealthChange
         conditions:
         - !type:MetabolizerTypeCondition
-          type: [ Rat ]
+          #Moff start - Allow avali to breathe ammonia
+          type: [ Rat, Avali ]
+          #Moff end
           inverted: true
         - !type:ReagentCondition
           reagent: Ammonia
@@ -271,7 +273,9 @@
         probability: 0.12
         conditions:
         - !type:MetabolizerTypeCondition
-          type: [ Rat, Vox ]
+          #Moff start - Allow avali to breathe ammonia
+          type: [ Rat, Vox, Avali ]
+          #Moff end
           inverted: true
         - !type:ReagentCondition
           reagent: Ammonia
