@@ -21,7 +21,7 @@ public sealed partial class RoundEndSystem
     private TimeSpan ExtensionVoteDuration => TimeSpan.FromSeconds(_cfg.GetCVar(MoffCCVars.RoundEndExtensionVoteDuration));
 
     [SubscribeLocalEvent]
-    private void OnRoundStarting(ref RoundStartingEvent args)
+    private void OnRoundStarting(RoundStartingEvent ev)
     {
         SetAutoCallTime();
         _autoCalledBefore = false;
