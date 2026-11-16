@@ -16,6 +16,15 @@
     sprite:
       sprite: _Moffstation/ArInterfaces/hacker.rsi
       state: link
+  - type: Fixtures
+    fixtures:
+      playerDetection:
+        shape:
+          !type:PhysShapeCircle
+          radius: 8
+        hard: false
+        mask:
+        - GhostImpassable
 
 - type: entity
   id: ArHackerCameraIndicator
@@ -35,6 +44,15 @@
     sprite:
       sprite: _Moffstation/ArInterfaces/hacker.rsi
       state: link
+  - type: Fixtures
+    fixtures:
+      playerDetection:
+        shape:
+          !type:PhysShapeCircle
+          radius: 3
+        hard: false
+        mask:
+        - GhostImpassable
 
 #- type: entity
 #  id: ArHackerViewerIndicator
@@ -43,8 +61,18 @@
 #  - type: Sprite
 #    sprite:
 
-#- type: entity
-#  id: ArHackerAiEyeIndicator
-#  save: false
-#  components:
-#  - type: Sprite
+- type: entity
+  id: ArHackerViewerIndicator
+  save: false
+  components:
+  - type: ArElement
+    interface: ArHackerInterface
+    spawnAt: !type:ArSpawnAtViewer
+      offset: 0,0
+      angle: 0
+  - type: Sprite
+    sprite: _Moffstation/ArInterfaces/hacker.rsi
+    state: camera # todo : change that !
+    visible: false
+    noRot: true
+

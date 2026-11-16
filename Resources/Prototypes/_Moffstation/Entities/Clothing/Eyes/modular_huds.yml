@@ -353,3 +353,7 @@
     color: '#3CB1C8'
   - type: ShowArInterface
     interface: ArHackerInterface
+  - type: ArDisplays
+    displays:
+      ArHackerInterface:
+      - ArHackerViewerIndicator
