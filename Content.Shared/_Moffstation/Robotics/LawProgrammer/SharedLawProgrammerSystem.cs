@@ -1,5 +1,6 @@
 using Content.Shared.Containers.ItemSlots;
 using Content.Shared.DoAfter;
+using Content.Shared.Emag.Components;
 using Content.Shared.Interaction;
 using Content.Shared.Mind;
 using Content.Shared.Popups;
@@ -188,6 +189,9 @@ public sealed partial class SharedLawProgrammerSystem : EntitySystem
                 _audio.PlayPredicted(used.Comp.FailureSound, used, args.User);
             }
         }
+
+        if (TryComp<EmaggedComponent>(target, out var emagged))
+            RemComp(target, emagged);
     }
 
     private void UpdateUi(Entity<LawProgrammerComponent> entity)
