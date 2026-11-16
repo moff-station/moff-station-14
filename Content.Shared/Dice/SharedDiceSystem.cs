@@ -1,7 +1,4 @@
 using Content.Shared._Moffstation.Dice; // Moffstation - xenoarch dice trigger
-using Content.Shared._Moffstation.Extensions; // Moffstation - dice roll when dumped
-using Content.Shared.Storage; // Moffstation - dice roll when dumped
-using Content.Shared.Storage.Components; // Moffstation - dice roll when dumped
 using Content.Shared.Examine;
 using Content.Shared.Interaction.Events;
 using Content.Shared.Popups;
@@ -18,17 +15,6 @@ public abstract partial class SharedDiceSystem : EntitySystem
     [Dependency] private IGameTiming _timing = default!;
     [Dependency] private SharedAudioSystem _audio = default!;
     [Dependency] private SharedPopupSystem _popup = default!;
-    [Dependency] private EntityQuery<DiceComponent> _diceQuery;
-    // Moffstation - Start - dice roll when dumped
-    [SubscribeLocalEvent]
-    private void OnDumped(Entity<StorageComponent> ent, ref DumpEvent args)
-    {
-        foreach (var entity in _diceQuery.ResolveAll(args.DumpQueue, logMissing: false))
-        {
-                Roll(entity);
-        }
-    }
-    // Moffstation - End
 
     [SubscribeLocalEvent]
     private void OnUseInHand(Entity<DiceComponent> entity, ref UseInHandEvent args)
