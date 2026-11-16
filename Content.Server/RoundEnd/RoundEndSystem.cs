@@ -66,7 +66,6 @@ namespace Content.Server.RoundEnd
         {
             base.Initialize();
             SubscribeLocalEvent<RoundRestartCleanupEvent>(_ => Reset());
-            SubscribeLocalEvent<RoundStartingEvent>(_ => OnRoundStarting()); // Moff - Evac call time fix
             SetAutoCallTime();
         }
 
