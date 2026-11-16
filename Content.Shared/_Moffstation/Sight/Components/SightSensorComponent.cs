@@ -10,13 +10,19 @@ public sealed partial class SightSensorComponent : Component
     /// The range at which the sensor is able to see a target.
     /// </summary>
     [DataField(required: true)]
-    public float Range;
+    public string FixtureId;
 
     /// <summary>
     /// If true the sensor is able to see through walls
     /// </summary>
     [DataField]
     public bool IgnoreOcclusion;
+
+    /// <summary>
+    ///
+    /// </summary>
+    [DataField]
+    public string Key = "";
 }
 
 /// <summary>
@@ -24,11 +30,11 @@ public sealed partial class SightSensorComponent : Component
 /// </summary>
 /// <param name="sensor"></param>
 [ByRefEvent]
-public record struct EnterSightlineEvent(EntityUid sensor);
+public record struct EnterSightlineEvent(EntityUid target);
 
 /// <summary>
 /// Raised on an entity when leaving the sightline of a sensor
 /// </summary>
 /// <param name="sensor"></param>
 [ByRefEvent]
-public record struct ExitSightlineEvent(EntityUid sensor);
+public record struct ExitSightlineEvent(EntityUid target);

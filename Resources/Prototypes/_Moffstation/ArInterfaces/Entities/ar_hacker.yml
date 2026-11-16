@@ -12,17 +12,25 @@
     state: holopad
     visible: false
     noRot: true
+  - type: SightSensor
+    fixtureId: viewerDetection
+    key: "viewerDetection"
   - type: VisualLinks
     sprite:
       sprite: _Moffstation/ArInterfaces/hacker.rsi
       state: link
+  - type: Physics
+    bodyType: KinematicController
+    bodyStatus: InAir
   - type: Fixtures
     fixtures:
-      playerDetection:
+      viewerDetection:
         shape:
           !type:PhysShapeCircle
-          radius: 8
+          radius: 3
         hard: false
+        layer:
+        - GhostImpassable
         mask:
         - GhostImpassable
 
@@ -40,17 +48,25 @@
     state: camera
     visible: false
     noRot: true
+  - type: SightSensor
+    fixtureId: viewerDetection
+    key: "viewerDetection"
   - type: VisualLinks
     sprite:
       sprite: _Moffstation/ArInterfaces/hacker.rsi
       state: link
+  - type: Physics
+    bodyType: KinematicController
+    bodyStatus: InAir
   - type: Fixtures
     fixtures:
-      playerDetection:
+      viewerDetection:
         shape:
           !type:PhysShapeCircle
-          radius: 3
+          radius: 8
         hard: false
+        layer:
+        - GhostImpassable
         mask:
         - GhostImpassable
 
@@ -75,4 +91,19 @@
     state: camera # todo : change that !
     visible: false
     noRot: true
-
+  - type: SightTarget
+    key: "viewerDetection"
+  - type: Physics
+    bodyType: KinematicController
+    bodyStatus: InAir
+  - type: Fixtures
+    fixtures:
+      viewerDetection:
+        shape:
+          !type:PhysShapeCircle
+          radius: 0.5
+        hard: false
+        layer:
+        - GhostImpassable
+        mask:
+        - GhostImpassable
