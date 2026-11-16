@@ -271,9 +271,7 @@
         probability: 0.12
         conditions:
         - !type:MetabolizerTypeCondition
-          #Moff start - Allow avali to breathe ammonia
-          type: [ Rat, Vox, Avali ]
-          #Moff end
+          type: [ Avali, Rat, Vox ] # Moff - Allow avali to breathe ammonia
           inverted: true
         - !type:ReagentCondition
           reagent: Ammonia
