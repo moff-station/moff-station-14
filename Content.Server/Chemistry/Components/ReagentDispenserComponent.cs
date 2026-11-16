@@ -19,7 +19,17 @@ namespace Content.Server.Chemistry.Components
         [DataField("clickSound"), ViewVariables(VVAccess.ReadWrite)]
         public SoundSpecifier ClickSound = new SoundPathSpecifier("/Audio/Machines/machine_switch.ogg");
 
-        [ViewVariables(VVAccess.ReadWrite)]
-        public ReagentDispenserDispenseAmount DispenseAmount = ReagentDispenserDispenseAmount.U10;
+        // Moff Start - Configurable dispense amounts
+        // [ViewVariables(VVAccess.ReadWrite)]
+        // public ReagentDispenserDispenseAmount DispenseAmount = ReagentDispenserDispenseAmount.U10;
+
+        /// The amounts, in units, this dispenser can be set to dispense, in UI order.
+        [DataField]
+        public List<int> DispenseAmounts = [1, 5, 10, 15, 20, 30, 40, 60, 120];
+
+        /// The currently selected amount to dispense, one of <see cref="DispenseAmounts"/>.
+        [DataField]
+        public int DispenseAmount = 10;
+        // Moff end
     }
 }

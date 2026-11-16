@@ -62,7 +62,10 @@ namespace Content.Server.Chemistry.EntitySystems
 
             var inventory = GetInventory(reagentDispenser);
 
-            var state = new ReagentDispenserBoundUserInterfaceState(outputContainerInfo, GetNetEntity(outputContainer), inventory, reagentDispenser.Comp.DispenseAmount);
+            // Moff Start - Configurable dispense amounts
+            // var state = new ReagentDispenserBoundUserInterfaceState(outputContainerInfo, GetNetEntity(outputContainer), inventory, reagentDispenser.Comp.DispenseAmount);
+            var state = new ReagentDispenserBoundUserInterfaceState(outputContainerInfo, GetNetEntity(outputContainer), inventory, reagentDispenser.Comp.DispenseAmounts, reagentDispenser.Comp.DispenseAmount);
+            // Moff end
             _userInterfaceSystem.SetUiState(reagentDispenser.Owner, ReagentDispenserUiKey.Key, state);
         }
 
@@ -116,7 +119,13 @@ namespace Content.Server.Chemistry.EntitySystems
 
         private void OnSetDispenseAmountMessage(Entity<ReagentDispenserComponent> reagentDispenser, ref ReagentDispenserSetDispenseAmountMessage message)
         {
-            reagentDispenser.Comp.DispenseAmount = message.ReagentDispenserDispenseAmount;
+            // Moff Start - Configurable dispense amounts
+            // reagentDispenser.Comp.DispenseAmount = message.ReagentDispenserDispenseAmount;
+            if (!reagentDispenser.Comp.DispenseAmounts.Contains(message.DispenseAmount))
+                return;
+
+            reagentDispenser.Comp.DispenseAmount = message.DispenseAmount;
+            // Moff end
             UpdateUiState(reagentDispenser);
             ClickSound(reagentDispenser);
         }
@@ -146,7 +155,10 @@ namespace Content.Server.Chemistry.EntitySystems
                 _solutionTransferSystem.Transfer(new SolutionTransferData(reagentDispenser,
                         storedContainer, src.Value,
                         outputContainer.Value, dst.Value,
-                        (int)reagentDispenser.Comp.DispenseAmount));
+                        // Moff Start - Configurable dispense amounts
+                        // (int)reagentDispenser.Comp.DispenseAmount));
+                        reagentDispenser.Comp.DispenseAmount));
+                        // Moff end
             }
 
             UpdateUiState(reagentDispenser);
@@ -192,6 +204,11 @@ namespace Content.Server.Chemistry.EntitySystems
         private void OnMapInit(Entity<ReagentDispenserComponent> ent, ref MapInitEvent args)
         {
             _itemSlotsSystem.AddItemSlot(ent.Owner, SharedReagentDispenser.OutputSlotName, ent.Comp.BeakerSlot);
+
+            // Moff Start - Configurable dispense amounts
+            if (!ent.Comp.DispenseAmounts.Contains(ent.Comp.DispenseAmount) && ent.Comp.DispenseAmounts.Count > 0)
+                ent.Comp.DispenseAmount = ent.Comp.DispenseAmounts[0];
+            // Moff end
         }
     }
 }
