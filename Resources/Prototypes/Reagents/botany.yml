@@ -257,9 +257,7 @@
       - !type:HealthChange
         conditions:
         - !type:MetabolizerTypeCondition
-          #Moff start - Allow avali to breathe ammonia
-          type: [ Rat, Avali ]
-          #Moff end
+          type: [ Avali, Rat ] # Moff - Allow avali to breathe ammonia
           inverted: true
         - !type:ReagentCondition
           reagent: Ammonia
