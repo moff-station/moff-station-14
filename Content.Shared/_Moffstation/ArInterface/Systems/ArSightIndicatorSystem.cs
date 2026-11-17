@@ -8,16 +8,9 @@ namespace Content.Shared._Moffstation.ArInterface.Systems;
 
 public sealed partial class ArSightIndicatorSystem : EntitySystem
 {
-    [Dependency] private ISharedPlayerManager _playerMan = default!;
-    [Dependency] private SharedPopupSystem _popup = default!;
-
-
     [SubscribeLocalEvent]
     private void OnSighted(Entity<ArSightIndicatorComponent> ent, ref DetectorSeeTargetEvent ev)
     {
-        if (_playerMan.LocalEntity is {} viewer)
-            _popup.PopupEntity("seen !", viewer, viewer);
-
         if (!TryComp<VisualLinksComponent>(ent, out var links))
             return;
 

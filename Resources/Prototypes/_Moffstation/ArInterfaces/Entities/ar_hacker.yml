@@ -11,15 +11,18 @@
     noRot: false
   - type: Sprite
     sprite: _Moffstation/ArInterfaces/hacker.rsi
-    state: holopad
+    layers:
+    - state: holopad
+      renderingStrategy: NoRotation
+    #state: holopad
     visible: false
-    noRot: true
+    #noRot: true
   - type: ArSightIndicator
   - type: SightDetector
     range: 3
     key: viewer
   - type: VisualLinks
-    sprite:
+    linkSprite:
       sprite: _Moffstation/ArInterfaces/hacker.rsi
       state: link
 
@@ -36,15 +39,19 @@
     noRot: false
   - type: Sprite
     sprite: _Moffstation/ArInterfaces/hacker.rsi
-    state: camera
+    layers:
+    - state: camera
+      renderingStrategy: NoRotation
+    #state: holopad
     visible: false
+    #noRot: true
     noRot: true
   - type: ArSightIndicator
   - type: SightDetector
     range: 8
     key: viewer
   - type: VisualLinks
-    sprite:
+    linkSprite:
       sprite: _Moffstation/ArInterfaces/hacker.rsi
       state: link
 

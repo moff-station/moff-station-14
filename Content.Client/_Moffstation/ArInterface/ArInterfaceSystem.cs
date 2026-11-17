@@ -1,6 +1,7 @@
 using Content.Client._Moffstation.Overlay.Events;
 using Content.Client.Popups;
 using Content.Shared._Moffstation.Physics;
+using Content.Shared.Popups;
 using Robust.Client.GameObjects;
 using Robust.Client.Graphics;
 using Robust.Shared.Player;
@@ -11,6 +12,9 @@ public sealed partial class ArInterfaceSystem : EntitySystem
 {
     [Dependency] private SpriteSystem _sprite = default!;
     [Dependency] private TransformSystem _xform = default!;
+
+    [Dependency] private ISharedPlayerManager _playerMan = default!;
+    [Dependency] private SharedPopupSystem _popup = default!;
 
 
     [SubscribeLocalEvent]
@@ -26,20 +30,20 @@ public sealed partial class ArInterfaceSystem : EntitySystem
     [SubscribeLocalEvent]
     private void OnDraw(Entity<VisualLinksComponent> ent, ref ArDrawEvent e)
     {
-        var texture = _sprite.Frame0(ent.Comp.Sprite);
+        var texture = _sprite.Frame0(ent.Comp.LinkSprite);
         var width = texture.Width / (float)EyeManager.PixelsPerMeter;
 
         var mapId = _xform.GetMapId(ent.Owner);
 
-        var posA = _xform.GetWorldPosition(ent) + _xform.GetWorldRotation(ent).RotateVec(ent.Comp.OffsetA);
+        var posA = _xform.GetWorldPosition(ent); // + _xform.GetWorldRotation(ent).RotateVec(ent.Comp.OffsetA);
 
-        // if you want some fun see what Rider what you to do with Linq, here
+        // if you want some fun see what Rider want you to do with Linq, here
         foreach (var target in ent.Comp.Targets)
         {
-            if (_xform.GetMapId(target) != mapId)
-                continue;
+            //if (_xform.GetMapId(target) != mapId)
+            //    continue;
 
-            var posB = _xform.GetWorldPosition(target) + _xform.GetWorldRotation(target).RotateVec(ent.Comp.OffsetB);
+            var posB = _xform.GetWorldPosition(target); // + _xform.GetWorldRotation(target).RotateVec(ent.Comp.OffsetB);
 
             var diff =  posB - posA;
             var length =  diff.Length();

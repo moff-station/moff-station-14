@@ -7,7 +7,7 @@ namespace Content.Shared._Moffstation.Physics;
 public sealed partial class VisualLinksComponent : Component
 {
     [DataField(required: true)]
-    public SpriteSpecifier Sprite;
+    public SpriteSpecifier LinkSprite;
 
     [DataField]
     public Vector2 OffsetA;
