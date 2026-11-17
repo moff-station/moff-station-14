@@ -82,7 +82,16 @@ namespace Content.Server.Chemistry.EntitySystems
 
             var state = new ChemMasterBoundUserInterfaceState(
                 chemMaster.Mode, chemMaster.SortingType, BuildInputContainerInfo(inputContainer), BuildOutputContainerInfo(outputContainer),
-                bufferReagents, bufferCurrentVolume, chemMaster.PillType, chemMaster.PillDosageLimit, updateLabel, chemMaster.DrawSource);
+                // Moff Start - Configurable reagent amounts
+                bufferReagents,
+                bufferCurrentVolume,
+                chemMaster.PillType,
+                chemMaster.PillDosageLimit,
+                updateLabel,
+                chemMaster.DrawSource,
+                chemMaster.ReagentAmounts // <- This is the one addition
+            );
+            // Moff end
 
             _userInterfaceSystem.SetUiState(owner, ChemMasterUiKey.Key, state);
         }
@@ -120,17 +129,22 @@ namespace Content.Server.Chemistry.EntitySystems
 
         private void OnReagentButtonMessage(Entity<ChemMasterComponent> chemMaster, ref ChemMasterReagentAmountButtonMessage message)
         {
+            // Moff Start - Configurable reagent amounts
             // Ensure the amount corresponds to one of the reagent amount buttons.
-            if (!Enum.IsDefined(typeof(ChemMasterReagentAmount), message.Amount))
+            // if (!Enum.IsDefined(typeof(ChemMasterReagentAmount), message.Amount))
+            if (message.Amount is { } messageAmount && !chemMaster.Comp.ReagentAmounts.Contains(messageAmount))
                 return;
+
+            var amount = message.Amount is { } units ? FixedPoint2.New(units) : FixedPoint2.MaxValue;
+            // Moff end
 
             switch (chemMaster.Comp.Mode)
             {
                 case ChemMasterMode.Transfer:
-                    TransferReagents(chemMaster, message.ReagentId, message.Amount.GetFixedPoint(), message.FromBuffer);
+                    TransferReagents(chemMaster, message.ReagentId, amount, message.FromBuffer); // Moff - Configurable reagent amounts
                     break;
                 case ChemMasterMode.Discard:
-                    DiscardReagents(chemMaster, message.ReagentId, message.Amount.GetFixedPoint(), message.FromBuffer);
+                    DiscardReagents(chemMaster, message.ReagentId, amount, message.FromBuffer); // Moff - Configurable reagent amounts
                     break;
                 default:
                     // Invalid mode.

@@ -44,10 +44,10 @@ namespace Content.Shared.Chemistry
     public sealed class ChemMasterReagentAmountButtonMessage : BoundUserInterfaceMessage
     {
         public readonly ReagentId ReagentId;
-        public readonly ChemMasterReagentAmount Amount;
+        public readonly int? Amount; // Moff - Configurable reagent amounts
         public readonly bool FromBuffer;
 
-        public ChemMasterReagentAmountButtonMessage(ReagentId reagentId, ChemMasterReagentAmount amount, bool fromBuffer)
+        public ChemMasterReagentAmountButtonMessage(ReagentId reagentId, int? amount, bool fromBuffer) // Moff - Configurable reagent amounts
         {
             ReagentId = reagentId;
             Amount = amount;
@@ -107,19 +107,21 @@ namespace Content.Shared.Chemistry
     public sealed class ChemMasterSortingTypeCycleMessage : BoundUserInterfaceMessage;
 
 
-    public enum ChemMasterReagentAmount
-    {
-        U1 = 1,
-        U5 = 5,
-        U10 = 10,
-        U15 = 15,
-        U20 = 20,
-        U30 = 30,
-        U40 = 40,
-        U60 = 60,
-        U120 = 120,
-        All,
-    }
+    // Moff Start - Configurable reagent amounts
+    // public enum ChemMasterReagentAmount
+    // {
+    //     U1 = 1,
+    //     U5 = 5,
+    //     U10 = 10,
+    //     U15 = 15,
+    //     U20 = 20,
+    //     U30 = 30,
+    //     U40 = 40,
+    //     U60 = 60,
+    //     U120 = 120,
+    //     All,
+    // }
+    // Moff end
 
     public enum ChemMasterDrawSource
     {
@@ -127,16 +129,18 @@ namespace Content.Shared.Chemistry
         External,
     }
 
-    public static class ChemMasterReagentAmountToFixedPoint
-    {
-        public static FixedPoint2 GetFixedPoint(this ChemMasterReagentAmount amount)
-        {
-            if (amount == ChemMasterReagentAmount.All)
-                return FixedPoint2.MaxValue;
-            else
-                return FixedPoint2.New((int)amount);
-        }
-    }
+    // Moff Start - Configurable reagent amounts
+    // public static class ChemMasterReagentAmountToFixedPoint
+    // {
+    //     public static FixedPoint2 GetFixedPoint(this ChemMasterReagentAmount amount)
+    //     {
+    //         if (amount == ChemMasterReagentAmount.All)
+    //             return FixedPoint2.MaxValue;
+    //         else
+    //             return FixedPoint2.New((int)amount);
+    //     }
+    // }
+    // Moff end
 
     /// <summary>
     /// Information about the capacity and contents of a container for display in the UI
@@ -198,10 +202,12 @@ namespace Content.Shared.Chemistry
 
         public readonly ChemMasterDrawSource DrawSource;
 
+        public readonly List<int> ReagentAmounts; // Moff - Configurable reagent amounts
+
         public ChemMasterBoundUserInterfaceState(
             ChemMasterMode mode, ChemMasterSortingType sortingType, ContainerInfo? inputContainerInfo, ContainerInfo? outputContainerInfo,
             IReadOnlyList<ReagentQuantity> bufferReagents, FixedPoint2 bufferCurrentVolume,
-            uint selectedPillType, uint pillDosageLimit, bool updateLabel, ChemMasterDrawSource drawSource)
+            uint selectedPillType, uint pillDosageLimit, bool updateLabel, ChemMasterDrawSource drawSource, List<int> reagentAmounts) // Moff - Configurable reagent amounts
         {
             InputContainerInfo = inputContainerInfo;
             OutputContainerInfo = outputContainerInfo;
@@ -213,6 +219,7 @@ namespace Content.Shared.Chemistry
             PillDosageLimit = pillDosageLimit;
             UpdateLabel = updateLabel;
             DrawSource = drawSource;
+            ReagentAmounts = reagentAmounts; // Moff - Configurable reagent amounts
         }
     }
 

@@ -30,6 +30,8 @@ namespace Content.Client.Chemistry.UI
         public event Action<BaseButton.ButtonEventArgs, ReagentButton>? OnReagentButtonPressed;
         public readonly Button[] PillTypeButtons;
 
+        private List<int> _reagentAmounts = []; // Moff - Configurable reagent amounts
+
         private const string PillsRsiPath = "/Textures/Objects/Specific/Chemistry/pills.rsi";
 
         /// <summary>
@@ -94,7 +96,7 @@ namespace Content.Client.Chemistry.UI
             Tabs.SetTabTitle(1, Loc.GetString("chem-master-window-output-tab"));
         }
 
-        private ReagentButton MakeReagentButton(string text, ChemMasterReagentAmount amount, ReagentId id, bool isBuffer, string styleClass)
+        private ReagentButton MakeReagentButton(string text, int? amount, ReagentId id, bool isBuffer, string styleClass) // Moff - Configurable reagent amounts
         {
             var reagentTransferButton = new ReagentButton(text, amount, id, isBuffer, styleClass);
             reagentTransferButton.OnPressed += args
@@ -110,19 +112,24 @@ namespace Content.Client.Chemistry.UI
             if (!addReagentButtons)
                 return new List<ReagentButton>(); // Return an empty list if reagentTransferButton creation is disabled.
 
-            var buttonConfigs = new (string text, ChemMasterReagentAmount amount, string styleClass)[]
-            {
-                ("1", ChemMasterReagentAmount.U1, StyleClass.ButtonOpenBoth),
-                ("5", ChemMasterReagentAmount.U5, StyleClass.ButtonOpenBoth),
-                ("10", ChemMasterReagentAmount.U10, StyleClass.ButtonOpenBoth),
-                ("15", ChemMasterReagentAmount.U15, StyleClass.ButtonOpenBoth),
-                ("20", ChemMasterReagentAmount.U20, StyleClass.ButtonOpenBoth),
-                ("30", ChemMasterReagentAmount.U30, StyleClass.ButtonOpenBoth),
-                ("40", ChemMasterReagentAmount.U40, StyleClass.ButtonOpenBoth),
-                ("60", ChemMasterReagentAmount.U60, StyleClass.ButtonOpenBoth),
-                ("120", ChemMasterReagentAmount.U120, StyleClass.ButtonOpenBoth),
-                (Loc.GetString("chem-master-window-buffer-all-amount"), ChemMasterReagentAmount.All, StyleClass.ButtonOpenLeft),
-            };
+            // Moff Start - Configurable reagent amounts
+            // var buttonConfigs = new (string text, ChemMasterReagentAmount amount, string styleClass)[]
+            // {
+            //     ("1", ChemMasterReagentAmount.U1, StyleClass.ButtonOpenBoth),
+            //     ("5", ChemMasterReagentAmount.U5, StyleClass.ButtonOpenBoth),
+            //     ("10", ChemMasterReagentAmount.U10, StyleClass.ButtonOpenBoth),
+            //     ("15", ChemMasterReagentAmount.U15, StyleClass.ButtonOpenBoth),
+            //     ("20", ChemMasterReagentAmount.U20, StyleClass.ButtonOpenBoth),
+            //     ("30", ChemMasterReagentAmount.U30, StyleClass.ButtonOpenBoth),
+            //     ("40", ChemMasterReagentAmount.U40, StyleClass.ButtonOpenBoth),
+            //     ("60", ChemMasterReagentAmount.U60, StyleClass.ButtonOpenBoth),
+            //     ("120", ChemMasterReagentAmount.U120, StyleClass.ButtonOpenBoth),
+            //     (Loc.GetString("chem-master-window-buffer-all-amount"), ChemMasterReagentAmount.All, StyleClass.ButtonOpenLeft),
+            // };
+            var buttonConfigs = _reagentAmounts
+                .Select(amount => (text: amount.ToString(), amount: (int?) amount, styleClass: StyleClass.ButtonOpenBoth))
+                .Append((Loc.GetString("chem-master-window-buffer-all-amount"), (int?) null, StyleClass.ButtonOpenLeft));
+            // Moff end
 
             var buttons = new List<ReagentButton>();
 
@@ -239,6 +246,8 @@ namespace Content.Client.Chemistry.UI
         /// <param name="state">State data for the dispenser.</param>
         private void UpdatePanelInfo(ChemMasterBoundUserInterfaceState state)
         {
+            _reagentAmounts = state.ReagentAmounts; // Moff - configurable reagent amounts
+
             BufferTransferButton.Pressed = state.Mode == ChemMasterMode.Transfer;
             BufferDiscardButton.Pressed = state.Mode == ChemMasterMode.Discard;
 
@@ -381,10 +390,10 @@ namespace Content.Client.Chemistry.UI
 
     public sealed class ReagentButton : Button
     {
-        public ChemMasterReagentAmount Amount { get; set; }
+        public int? Amount { get; set; } // Moff - Configurable reagent amounts
         public bool IsBuffer = true;
         public ReagentId Id { get; set; }
-        public ReagentButton(string text, ChemMasterReagentAmount amount, ReagentId id, bool isBuffer, string styleClass)
+        public ReagentButton(string text, int? amount, ReagentId id, bool isBuffer, string styleClass) // Moff - Configurable reagent amounts
         {
             AddStyleClass(styleClass);
             Text = text;
