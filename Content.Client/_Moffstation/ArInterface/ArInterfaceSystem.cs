@@ -1,7 +1,9 @@
 using Content.Client._Moffstation.Overlay.Events;
+using Content.Client.Popups;
 using Content.Shared._Moffstation.Physics;
 using Robust.Client.GameObjects;
 using Robust.Client.Graphics;
+using Robust.Shared.Player;
 
 namespace Content.Client._Moffstation.ArInterface;
 
@@ -42,7 +44,7 @@ public sealed partial class ArInterfaceSystem : EntitySystem
             var diff =  posB - posA;
             var length =  diff.Length();
             var angle = diff.ToWorldAngle();
-            var mid = (posA + posB) / 2;
+            var mid = (posA + posB) / 2f;
 
             var box = new Box2(-width/2f, -length/2f, width/2f, length/2f);
             var rotate = new Box2Rotated(box.Translated(mid), angle, mid);

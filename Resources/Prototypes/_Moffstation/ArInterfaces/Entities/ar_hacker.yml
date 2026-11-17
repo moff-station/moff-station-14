@@ -7,32 +7,21 @@
     spawnAt: !type:ArSpawnAtSource
       offset: 0,0
       angle: 0
+  - type: Transform
+    noRot: false
   - type: Sprite
     sprite: _Moffstation/ArInterfaces/hacker.rsi
     state: holopad
     visible: false
     noRot: true
-  - type: SightSensor
-    fixtureId: viewerDetection
-    key: "viewerDetection"
+  - type: ArSightIndicator
+  - type: SightDetector
+    range: 3
+    key: viewer
   - type: VisualLinks
     sprite:
       sprite: _Moffstation/ArInterfaces/hacker.rsi
       state: link
-  - type: Physics
-    bodyType: KinematicController
-    bodyStatus: InAir
-  - type: Fixtures
-    fixtures:
-      viewerDetection:
-        shape:
-          !type:PhysShapeCircle
-          radius: 3
-        hard: false
-        layer:
-        - GhostImpassable
-        mask:
-        - GhostImpassable
 
 - type: entity
   id: ArHackerCameraIndicator
@@ -43,39 +32,21 @@
     spawnAt: !type:ArSpawnAtSource
       offset: -0.25, -0.4
       angle: 0
+  - type: Transform
+    noRot: false
   - type: Sprite
     sprite: _Moffstation/ArInterfaces/hacker.rsi
     state: camera
     visible: false
     noRot: true
-  - type: SightSensor
-    fixtureId: viewerDetection
-    key: "viewerDetection"
+  - type: ArSightIndicator
+  - type: SightDetector
+    range: 8
+    key: viewer
   - type: VisualLinks
     sprite:
       sprite: _Moffstation/ArInterfaces/hacker.rsi
       state: link
-  - type: Physics
-    bodyType: KinematicController
-    bodyStatus: InAir
-  - type: Fixtures
-    fixtures:
-      viewerDetection:
-        shape:
-          !type:PhysShapeCircle
-          radius: 8
-        hard: false
-        layer:
-        - GhostImpassable
-        mask:
-        - GhostImpassable
-
-#- type: entity
-#  id: ArHackerViewerIndicator
-#  save: false
-#  components:
-#  - type: Sprite
-#    sprite:
 
 - type: entity
   id: ArHackerViewerIndicator
@@ -86,24 +57,12 @@
     spawnAt: !type:ArSpawnAtViewer
       offset: 0,0
       angle: 0
+  - type: Transform
+    noRot: false
   - type: Sprite
     sprite: _Moffstation/ArInterfaces/hacker.rsi
     state: camera # todo : change that !
     visible: false
     noRot: true
-  - type: SightTarget
-    key: "viewerDetection"
-  - type: Physics
-    bodyType: KinematicController
-    bodyStatus: InAir
-  - type: Fixtures
-    fixtures:
-      viewerDetection:
-        shape:
-          !type:PhysShapeCircle
-          radius: 0.5
-        hard: false
-        layer:
-        - GhostImpassable
-        mask:
-        - GhostImpassable
+  - type: SightDetectorTarget
+    key: viewer
