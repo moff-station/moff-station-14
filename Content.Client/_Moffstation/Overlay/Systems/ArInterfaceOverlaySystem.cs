@@ -3,16 +3,18 @@ using Content.Client._Moffstation.Overlay.Overlays;
 using Content.Client.Overlays;
 using Content.Shared._Moffstation.ArInterface.Components;
 using Content.Shared._Moffstation.Overlay.Components;
+using Content.Shared._Moffstation.Overlay.Prototypes;
 using Content.Shared.Inventory.Events;
 using Robust.Client.Graphics;
 using Robust.Client.Player;
+using Robust.Shared.Prototypes;
 
 namespace Content.Client._Moffstation.Overlay.Systems;
 
 public sealed partial class ArInterfaceOverlaySystem : EquipmentHudSystem<ShowArInterfaceComponent>
 {
     [Dependency] private IOverlayManager _overlayMan = default!;
-    [Dependency] private IPlayerManager _playerMan = default!;
+
 
     private ArInterfaceOverlay _overlay = default!;
 
@@ -21,20 +23,6 @@ public sealed partial class ArInterfaceOverlaySystem : EquipmentHudSystem<ShowAr
         base.Initialize();
 
         _overlay = new ArInterfaceOverlay();
-    }
-
-    public override void Update(float dt)
-    {
-        if (! IsActive || _playerMan.LocalEntity is not {} viewer)
-            return;
-
-        // would love to do it outside of Update...
-        var query = EntityQueryEnumerator<ArDisplaysComponent>();
-        var ev = new ArDisplayUpdateEvent(viewer, _overlay.ActiveInterfaces);
-        foreach (var entity in query)
-        {
-            RaiseLocalEvent(entity, ref ev);
-        }
     }
 
     protected override void UpdateInternal(RefreshEquipmentHudEvent<ShowArInterfaceComponent> args)
@@ -55,4 +43,6 @@ public sealed partial class ArInterfaceOverlaySystem : EquipmentHudSystem<ShowAr
     {
         RefreshOverlay();
     }
+
+    public HashSet<ProtoId<ArInterfacePrototype>> ActiveInterfaces =>  _overlay.ActiveInterfaces;
 }

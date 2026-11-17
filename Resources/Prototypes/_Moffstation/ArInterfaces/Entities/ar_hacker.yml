@@ -1,5 +1,6 @@
 - type: entity
   id: ArHackerHolopadIndicator
+  categories: [ HideSpawnMenu ]
   save: false
   components:
   - type: ArElement
@@ -7,20 +8,10 @@
     spawnAt: !type:ArSpawnAtSource
       offset: 0,0
       angle: 0
-  - type: Transform
-    noRot: false
   - type: Sprite
     sprite: _Moffstation/ArInterfaces/hacker.rsi
-    layers:
-    - state: holopad
-      renderingStrategy: NoRotation
-    #state: holopad
-    visible: false
-    #noRot: true
-  - type: ArSightIndicator
-  - type: SightDetector
-    range: 3
-    key: viewer
+    state: holopad
+    noRot: true
   - type: VisualLinks
     linkSprite:
       sprite: _Moffstation/ArInterfaces/hacker.rsi
@@ -28,6 +19,7 @@
 
 - type: entity
   id: ArHackerCameraIndicator
+  categories: [ HideSpawnMenu ]
   save: false
   components:
   - type: ArElement
@@ -35,21 +27,10 @@
     spawnAt: !type:ArSpawnAtSource
       offset: -0.25, -0.4
       angle: 0
-  - type: Transform
-    noRot: false
   - type: Sprite
     sprite: _Moffstation/ArInterfaces/hacker.rsi
-    layers:
-    - state: camera
-      renderingStrategy: NoRotation
-    #state: holopad
-    visible: false
-    #noRot: true
+    state: camera
     noRot: true
-  - type: ArSightIndicator
-  - type: SightDetector
-    range: 8
-    key: viewer
   - type: VisualLinks
     linkSprite:
       sprite: _Moffstation/ArInterfaces/hacker.rsi
@@ -57,6 +38,7 @@
 
 - type: entity
   id: ArHackerViewerIndicator
+  categories: [ HideSpawnMenu ]
   save: false
   components:
   - type: ArElement
@@ -69,7 +51,4 @@
   - type: Sprite
     sprite: _Moffstation/ArInterfaces/hacker.rsi
     state: camera # todo : change that !
-    visible: false
     noRot: true
-  - type: SightDetectorTarget
-    key: viewer

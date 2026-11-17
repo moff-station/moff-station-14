@@ -3,12 +3,14 @@ using System.Numerics;
 using Content.Client._Moffstation.Overlay.Events;
 using Content.Shared._Moffstation.ArInterface.Components;
 using Robust.Client.GameObjects;
+using Robust.Client.Player;
 
 namespace Content.Client._Moffstation.ArInterface;
 
 public sealed partial class ArDisplaysSystem : EntitySystem
 {
     [Dependency] private TransformSystem _xform = default!;
+    [Dependency] private IPlayerManager _playerMan = default!;
 
     [SubscribeLocalEvent]
     private void OnUpdate(Entity<ArDisplaysComponent> ent, ref ArDisplayUpdateEvent args)
@@ -37,29 +39,6 @@ public sealed partial class ArDisplaysSystem : EntitySystem
                 Del(display);
             }
             ent.Comp.Entities.Remove(removedInterface);
-        }
-    }
-
-    [SubscribeLocalEvent]
-    private void OnSpawn(Entity<ArElementComponent> ent, ref ArSpawnEvent args)
-    {
-        switch (ent.Comp.SpawnAt)
-        {
-            case ArSpawnAtViewer v:
-                _xform.SetParent(ent, args.ViewerEntity);
-                _xform.SetLocalPosition(ent, v.Offset);
-                _xform.SetLocalRotation(ent, v.Angle);
-                break;
-            case ArSpawnAtSource s:
-                _xform.SetParent(ent, args.SourceEntity);
-                _xform.SetLocalPosition(ent, s.Offset);
-                _xform.SetLocalRotation(ent, s.Angle);
-                break;
-            default:
-                _xform.SetParent(ent, args.SourceEntity);
-                _xform.SetLocalPosition(ent, Vector2.Zero);
-                _xform.SetLocalRotation(ent, 0);
-                break;
         }
     }
 }

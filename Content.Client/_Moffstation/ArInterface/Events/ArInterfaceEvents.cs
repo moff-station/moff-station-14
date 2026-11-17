@@ -16,4 +16,4 @@ public record struct ArSpawnEvent(EntityUid SourceEntity, EntityUid ViewerEntity
 /// </summary>
 /// <param name="handleWorld">world handle used to draw</param>
 [ByRefEvent]
-public record struct ArDrawEvent(DrawingHandleWorld HandleWorld);
+public record struct ArDrawEvent(DrawingHandleWorld WorldHandle);

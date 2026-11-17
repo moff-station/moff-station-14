@@ -19,7 +19,7 @@ public sealed partial class ArInterfaceOverlay : Robust.Client.Graphics.Overlay
     public ArInterfaceOverlay()
     {
         IoCManager.InjectDependencies(this);
-        ZIndex = -1; // to be underneath eventual shaders.
+        ZIndex = -1;
     }
 
     protected override void Draw(in OverlayDrawArgs args)

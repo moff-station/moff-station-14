@@ -1,0 +1,17 @@
+- type: entity
+  parent: RemoteSignaller
+  name: h4ck3r remote
+  id: RemoteHacker
+  description: A handheld device able to shut down camera and holopads at a distance.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Objects/Devices/hacker_remote.rsi
+    state: remote
+  - type: LimitedCharges
+    maxCharges: 3
+  - type: AutoRecharge
+    rechargeDuration: 10
+  - type: HackingRemote
+    layouts:
+    - SurveillanceCamera
+    - Holopad

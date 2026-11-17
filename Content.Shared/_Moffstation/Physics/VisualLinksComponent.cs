@@ -10,10 +10,10 @@ public sealed partial class VisualLinksComponent : Component
     public SpriteSpecifier LinkSprite;
 
     [DataField]
-    public Vector2 OffsetA;
+    public Vector2 OffsetA = Vector2.Zero;
 
     [DataField]
-    public Vector2 OffsetB;
+    public Vector2 OffsetB = Vector2.Zero;
 
     [DataField, NonSerialized]
     public HashSet<EntityUid> Targets = [];
