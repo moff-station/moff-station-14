@@ -192,7 +192,6 @@ public sealed partial class BorgSystem
     }
 
     // Moffstation begin - change to robotics console
-
     /// <summary>
     /// Attempt to retrieve all the information on an entity monitored by a transponder.
     /// </summary>
@@ -213,7 +212,7 @@ public sealed partial class BorgSystem
         var hasBrain = CheckBrain(chassis.BrainEntity) && !transponder.FakeDisabled;
         var canDisable = transponder.NextDisable == null && !transponder.FakeDisabling;
 
-        return  new CyborgControlData(
+        return new CyborgControlData(
             transponder.Sprite,
             transponder.Name,
             metaData.EntityName,

@@ -93,9 +93,4 @@ public sealed partial class MoffRoboticsConsoleButton : Button
     {
         DetailedPanel.Visible = expanded;
     }
-
-    public void Inject(IDependencyCollection dependencies)
-    {
-        throw new NotImplementedException();
-    }
 }

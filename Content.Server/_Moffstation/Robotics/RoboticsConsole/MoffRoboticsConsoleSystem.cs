@@ -20,7 +20,6 @@ namespace Content.Server._Moffstation.Robotics.RoboticsConsole;
 public sealed partial class MoffRoboticsConsoleSystem : EntitySystem
 {
     [Dependency] private IGameTiming _time = default!;
-    [Dependency] private SuitSensorSystem _sensors = default!;
     [Dependency] private BorgSystem _borgs = default!;
     [Dependency] private UserInterfaceSystem _ui = default!;
     [Dependency] private LockSystem _lock = default!;
@@ -45,13 +44,12 @@ public sealed partial class MoffRoboticsConsoleSystem : EntitySystem
         base.Update(frameTime);
 
         var now = _time.CurTime;
-        var query = EntityQueryEnumerator<MoffRoboticsConsoleComponent>();
 
         HashSet<EntityUid> removed = [];
-        while (query.MoveNext(out var uid, out var comp))
+        foreach (var entity in EntityQueryEnumerator<MoffRoboticsConsoleComponent>())
         {
             // remove cyborgs that have not pinged for a long time
-            foreach (var (borg, data) in comp.Cyborgs)
+            foreach (var (borg, data) in entity.Comp.Cyborgs)
             {
                 if (now >= data.Timeout)
                     removed.Add(borg);
@@ -60,11 +58,11 @@ public sealed partial class MoffRoboticsConsoleSystem : EntitySystem
             // needed to prevent modifying while iterating it
             foreach (var borg in removed)
             {
-                comp.Cyborgs.Remove(borg);
+                entity.Comp.Cyborgs.Remove(borg);
             }
 
             if (removed.Count > 0)
-                UpdateUserInterface((uid, comp));
+                UpdateUserInterface(entity);
 
             removed.Clear();
         }
@@ -105,7 +103,6 @@ public sealed partial class MoffRoboticsConsoleSystem : EntitySystem
         _deviceNetwork.SendPacket(ent.Owner, address, ref payload);
 
         _adminLogger.Add(LogType.Action, LogImpact.High, $"{ToPrettyString(args.Actor):user} disabled borg {data.Name} with address {address}");
-        return;
     }
 
     private void OnDestroy(Entity<MoffRoboticsConsoleComponent> ent, ref MoffRoboticsConsoleDestroyMessage args)
