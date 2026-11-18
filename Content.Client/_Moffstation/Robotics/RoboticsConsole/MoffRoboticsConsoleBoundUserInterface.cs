@@ -4,7 +4,7 @@ using Content.Shared._Moffstation.Robotics.RoboticsConsole;
 using JetBrains.Annotations;
 using Robust.Client.UserInterface;
 
-namespace Content.Client._Moffstation.Robotics.MoffRoboticsConsole;
+namespace Content.Client._Moffstation.Robotics.RoboticsConsole;
 
 [UsedImplicitly]
 public sealed class MoffRoboticsConsoleBoundUserInterface(EntityUid owner, Enum uiKey)
