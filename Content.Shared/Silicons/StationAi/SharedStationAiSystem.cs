@@ -675,3 +675,14 @@ public enum StationAiState : byte
     Rebooting,
     Hologram,
 }
+
+// Moffstation - hacker remote
+[Serializable, NetSerializable]
+public enum StationAiVisionWireKey : byte
+{
+    Key,
+    Status,
+    Pulsed,
+    PulseCancel,
+}
+// Moffstation - end

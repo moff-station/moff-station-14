@@ -232,3 +232,16 @@
   categories:
     - UplinkImplants
 
+# Disruption
+- type: listing
+  id: UplinkHackerRemote
+  name: uplink-hacker-remote-name
+  description: uplink-hacker-remote-desc
+  productEntity: RemoteHacker
+  discountCategory: rareDiscounts
+  discountDownTo:
+    Telecrystal: 2
+  cost:
+    Telecrystal: 4
+  categories:
+  - UplinkDisruption

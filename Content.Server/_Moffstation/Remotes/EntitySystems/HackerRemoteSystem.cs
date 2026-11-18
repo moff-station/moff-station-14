@@ -1,5 +1,6 @@
 using Content.Server._Moffstation.Remotes.Components;
 using Content.Server.Power;
+using Content.Server.Silicons.StationAi;
 using Content.Server.Wires;
 using Content.Shared.Charges.Systems;
 using Content.Shared.Examine;
@@ -8,14 +9,14 @@ using Robust.Shared.Audio.Systems;
 
 namespace Content.Server._Moffstation.Remotes.EntitySystems;
 
-public sealed partial class PulseRemoteSystem : EntitySystem
+public sealed partial class HackerRemoteSystem : EntitySystem
 {
     [Dependency] private SharedChargesSystem _charges = default!;
     [Dependency] private ExamineSystemShared _examine = default!;
     [Dependency] private SharedAudioSystem _audio = default!;
 
     [SubscribeLocalEvent]
-    private void OnRangeInteract(Entity<PulseRemoteComponent> ent, ref BeforeRangedInteractEvent ev)
+    private void OnRangeInteract(Entity<HackerRemoteComponent> ent, ref BeforeRangedInteractEvent ev)
     {
         if (ev.Handled || ev.Target is not { } target ||
             !TryComp<WiresComponent>(target, out var wires) || !ent.Comp.AcceptedLayouts.Contains(wires.LayoutId) ||
@@ -24,20 +25,28 @@ public sealed partial class PulseRemoteSystem : EntitySystem
 
         ev.Handled = true;
 
-        var success = false;
+        var used = false;
         foreach (var wire in wires.WiresList)
         {
-            if (wire.Action is not PowerWireAction { } powerWire)
-                continue;
+            switch (wire.Action)
+            {
+                case PowerWireAction power :
+                    if (!used && !_charges.TryUseCharge(ent.Owner))
+                        return;
+                    power.Pulse(ent, wire);
+                    break;
+                case AiVisionWireAction ai :
+                    if (!used && !_charges.TryUseCharge(ent.Owner))
+                        return;
+                    ai.Pulse(ent, wire);
+                    break;
+                default:
+                    continue;
+            }
 
-            if (!success && !_charges.TryUseCharge(ent.Owner))
-                break;
-
-            success = true;
-            powerWire.Pulse(ent, wire);
+            used = true;
         }
 
-        if (success)
-            _audio.PlayEntity(ent.Comp.PulseSound, ev.User, ent);
+        _audio.PlayEntity(ent.Comp.PulseSound, ev.User, ent);
     }
 }

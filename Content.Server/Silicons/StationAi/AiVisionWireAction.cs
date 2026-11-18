@@ -1,5 +1,6 @@
 using Content.Server.Wires;
 using Content.Shared.Doors;
+using Content.Shared.Power;
 using Content.Shared.Silicons.StationAi;
 using Content.Shared.StationAi;
 using Content.Shared.Wires;
@@ -15,6 +16,11 @@ public sealed partial class AiVisionWireAction : ComponentWireAction<StationAiVi
     public override Color Color { get; set; } = Color.White;
     public override object StatusKey => AirlockWireStatus.AiVisionIndicator;
 
+    // Moffstation - hacker remote
+    [DataField("pulseTimeout")]
+    private int _pulseTimeout = 30;
+    // Moffstation - end
+
     public override StatusLightState? GetLightState(Wire wire, StationAiVisionComponent component)
     {
         return component.Enabled ? StatusLightState.On : StatusLightState.Off;
@@ -28,13 +34,31 @@ public sealed partial class AiVisionWireAction : ComponentWireAction<StationAiVi
 
     public override bool Mend(EntityUid user, Wire wire, StationAiVisionComponent component)
     {
+        WiresSystem.TryCancelWireAction(wire.Owner, StationAiVisionWireKey.PulseCancel); // Moffstation - hacker remote
+        WiresSystem.SetData(wire.Owner, StationAiVisionWireKey.Pulsed, false);
         return EntityManager.System<SharedStationAiSystem>()
             .SetVisionEnabled((wire.Owner, component), true);
     }
 
     public override void Pulse(EntityUid user, Wire wire, StationAiVisionComponent component)
     {
-        // TODO: This should turn it off for a bit
-        // Need timer cleanup first out of scope.
+        // Moffstation - hacker remote
+        if (WiresSystem.TryGetData<bool>(wire.Owner, StationAiVisionWireKey.Pulsed, out var pulsedKey) && pulsedKey)
+            return;
+
+        WiresSystem.SetData(wire.Owner, StationAiVisionWireKey.Pulsed, true);
+
+        EntityManager.System<SharedStationAiSystem>()
+            .SetVisionEnabled((wire.Owner, component), false);
+
+        WiresSystem.StartWireAction(wire.Owner, _pulseTimeout, StationAiVisionWireKey.PulseCancel, new TimedWireEvent(x => AwaitPulseCancel(x, component), wire));
+        // Moffstation - end
+    }
+
+    private void AwaitPulseCancel(Wire wire, StationAiVisionComponent component)
+    {
+        WiresSystem.SetData(wire.Owner,  StationAiVisionWireKey.Pulsed, false);
+        EntityManager.System<SharedStationAiSystem>()
+            .SetVisionEnabled((wire.Owner, component), true);
     }
 }

@@ -1,15 +1,15 @@
 using Content.Server.Wires;
-using Content.Shared.Wires;
 using Robust.Shared.Audio;
 using Robust.Shared.Prototypes;
 
 namespace Content.Server._Moffstation.Remotes.Components;
 
 /// <summary>
-/// This is used for remotes able to pulse wires on a machine from a distance.
+/// This is used for remotes able to deactivate surveillance machines from a distance.
+/// It works by pulsing the Power and Ai vision of the device.
 /// </summary>
 [RegisterComponent]
-public sealed partial class PulseRemoteComponent : Component
+public sealed partial class HackerRemoteComponent : Component
 {
     /// <summary>
     /// Layouts on which this remote work.
@@ -33,5 +33,5 @@ public sealed partial class PulseRemoteComponent : Component
     /// Sound played to the user when successfully pulsed a target.
     /// </summary>
     [DataField]
-    public SoundSpecifier PulseSound = new SoundPathSpecifier("/Audio/Machines/twobeep.ogg");
+    public SoundSpecifier PulseSound = new SoundPathSpecifier("/Audio/_Moffstation/Machines/boobeep.ogg");
 }
