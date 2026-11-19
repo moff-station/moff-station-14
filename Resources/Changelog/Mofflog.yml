@@ -9310,5 +9310,16 @@ Entries:
   id: 2125
   time: '2026-11-19T14:22:43.000'
   url: https://github.com/moff-station/moff-station-14/pull/2125
+- author: Centronias
+  changes:
+  - message: Roundstart reagent jugs in the Chemical Dispenser and ChemVend now only
+      contain 200u of reagent (their 240u capacity remains unchanged).
+    type: tweak
+  - message: The Chemical Dispenser and Chem Master can now dispense 25u, 50u, and
+      100u at a time in addition to its current capabilities.
+    type: add
+  id: 2126
+  time: '2026-11-19T18:58:45.000'
+  url: https://github.com/moff-station/moff-station-14/pull/2126
 Name: Mofflog
 Order: -2
