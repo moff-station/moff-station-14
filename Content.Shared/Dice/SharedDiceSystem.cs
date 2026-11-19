@@ -1,3 +1,4 @@
+using Content.Shared._Moffstation.Dice; // Moffstation - xenoarch dice trigger
 using Content.Shared.Examine;
 using Content.Shared.Interaction.Events;
 using Content.Shared.Popups;
@@ -84,6 +85,10 @@ public abstract partial class SharedDiceSystem : EntitySystem
             var roll = rand.Next(1, entity.Comp.Sides + 1);
             SetCurrentSide(entity, roll);
         }
+        // Moffstation - Begin - xenoarch dice trigger
+        var ev = new DiceRolledEvent();
+        RaiseLocalEvent(entity.Owner, ref ev);
+        // MoffStation - End
 
         var popupString = Loc.GetString("dice-component-on-roll-land",
 

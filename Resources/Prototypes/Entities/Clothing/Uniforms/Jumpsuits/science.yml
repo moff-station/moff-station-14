@@ -20,25 +20,23 @@
     sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/jumpsuit.rsi
     layers:
     - state: icon-light
-    - state: professional-trinkets-icon
     - state: color-trinkets-icon
-      color: "#b20dff"
+      color: &color-purple "#7b41b5"
+    - state: professional-trinkets-icon
   - type: Item
     inhandVisuals:
       left:
       - state: inhand-left
-        color: "#b20dff"
       right:
       - state: inhand-right
-        color: "#b20dff"
   - type: Clothing
     sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/scrubs.rsi
     clothingVisuals:
       jumpsuit:
       - state: equipped-INNERCLOTHING-light
-      - state: professional-trinkets-equipped-INNERCLOTHING
       - state: color-trinkets-equipped-INNERCLOTHING
-        color: "#b20dff"
+        color: *color-purple
+      - state: professional-trinkets-equipped-INNERCLOTHING
   # Moffstation - End
 
 - type: entity

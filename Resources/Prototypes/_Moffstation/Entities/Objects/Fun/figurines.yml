@@ -571,7 +571,7 @@
   - type: Sprite
     state: fred-central
   - type: SpeakOnTrigger
-    pack: FigurinesFredCentral
+    pack: FigurinesFred
 
 - type: entity
   parent: BaseFigurineMoff
@@ -1471,17 +1471,6 @@
     state: moonlight
   - type: SpeakOnTrigger
     pack: FigurinesMoonlight
-
-- type: entity
-  parent: BaseFigurineMoff
-  id: ToyFigurineZara
-  name: pale research director figurine
-  description: A figurine depicting an eerily pale human with long, messy hair, wearing a research director lab coat and beret. The face has a smug grin plastered on it.
-  components:
-  - type: Sprite
-    state: zara
-  - type: SpeakOnTrigger
-    pack: FigurinesZara
 
 - type: entity
   parent: BaseFigurineMoff

@@ -8548,6 +8548,15 @@ Entries:
   id: 1977
   time: '2026-10-01T19:11:10.000'
   url: https://github.com/moff-station/moff-station-14/pull/1977
+- author: Dave
+  changes:
+  - message: Sofas
+    type: add
+  - message: Resprite Comfy Chair
+    type: tweak
+  id: 1978
+  time: '2026-11-04T22:54:04.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1978
 - author: Centronias
   changes:
   - message: Iris "Monster" Foundling's personal items now have different names for
@@ -8778,6 +8787,13 @@ Entries:
   id: 2023
   time: '2026-10-13T00:58:17.000'
   url: https://github.com/moff-station/moff-station-14/pull/2023
+- author: MissKay1994
+  changes:
+  - message: Lambda has been updated to fix small issues
+    type: tweak
+  id: 2024
+  time: '2026-11-14T22:56:15.000'
+  url: https://github.com/moff-station/moff-station-14/pull/2024
 - author: DrWhoFan13, Mycobiota
   changes:
   - message: Washing machines don't destroy their contents when they're destroyed
@@ -8952,6 +8968,14 @@ Entries:
   id: 2058
   time: '2026-10-22T10:38:10.000'
   url: https://github.com/moff-station/moff-station-14/pull/2058
+- author: Laggy
+  changes:
+  - message: Re-added lexorin, nocturine, hyperzine and mute toxin to the possible
+      botany mutations
+    type: add
+  id: 2063
+  time: '2026-11-15T00:08:00.000'
+  url: https://github.com/moff-station/moff-station-14/pull/2063
 - author: StudMuffin
   changes: []
   id: 2064
@@ -8978,6 +9002,13 @@ Entries:
   id: 2067
   time: '2026-10-27T13:35:04.000'
   url: https://github.com/moff-station/moff-station-14/pull/2067
+- author: Dave
+  changes:
+  - message: Color Jumpsuit sprites work better with species displacements now.
+    type: tweak
+  id: 2068
+  time: '2026-11-11T19:04:40.000'
+  url: https://github.com/moff-station/moff-station-14/pull/2068
 - author: "Mass\xE9na"
   changes:
   - message: wheelchair loadout option under assistive items
@@ -9044,6 +9075,14 @@ Entries:
   id: 2081
   time: '2026-10-29T18:24:10.000'
   url: https://github.com/moff-station/moff-station-14/pull/2081
+- author: DuckManZach
+  changes:
+  - message: Vending machines are now quieter and have a 0.1 second cooldown between
+      noises
+    type: tweak
+  id: 2082
+  time: '2026-11-09T18:14:42.000'
+  url: https://github.com/moff-station/moff-station-14/pull/2082
 - author: gummyema
   changes:
   - message: Added 7 new costumes to the DramaDrobe, sprited by Frodmaer, gummyema,
@@ -9052,6 +9091,13 @@ Entries:
   id: 2083
   time: '2026-10-29T20:25:11.000'
   url: https://github.com/moff-station/moff-station-14/pull/2083
+- author: DuckManZach
+  changes:
+  - message: Emotes now have a split second cooldown to guard against spamming.
+    type: tweak
+  id: 2084
+  time: '2026-11-13T19:23:12.000'
+  url: https://github.com/moff-station/moff-station-14/pull/2084
 - author: Centronias
   changes:
   - message: Fixed an issue where telecomms blade servers did not work.
@@ -9124,6 +9170,13 @@ Entries:
   id: 2097
   time: '2026-11-04T12:28:04.000'
   url: https://github.com/moff-station/moff-station-14/pull/2097
+- author: murphyneko
+  changes:
+  - message: 'New xenoarchaeology trigger: DC 5 check.'
+    type: add
+  id: 2098
+  time: '2026-11-15T00:26:58.000'
+  url: https://github.com/moff-station/moff-station-14/pull/2098
 - author: Wintoli
   changes:
   - message: Brad figures back to og sprites.
@@ -9131,5 +9184,124 @@ Entries:
   id: 2101
   time: '2026-11-04T04:45:23.000'
   url: https://github.com/moff-station/moff-station-14/pull/2101
+- author: Mixelz
+  changes:
+  - message: Additional updates to Igneus Station, including missing Holopads and
+      Order Computers.
+    type: tweak
+  id: 2102
+  time: '2026-11-14T23:14:54.000'
+  url: https://github.com/moff-station/moff-station-14/pull/2102
+- author: Centronias
+  changes:
+  - message: Picking up items into a preexisting material stack will no longer animate
+      an interaction particle from you to the picked up item.
+    type: tweak
+  id: 2103
+  time: '2026-11-05T20:20:45.000'
+  url: https://github.com/moff-station/moff-station-14/pull/2103
+- author: Centronias
+  changes:
+  - message: The End of Round dialog should no longer be prevented from appearing
+      by typing certain text as your last words before round end.
+    type: fix
+  id: 2104
+  time: '2026-11-05T01:11:55.000'
+  url: https://github.com/moff-station/moff-station-14/pull/2104
+- author: Centronias
+  changes:
+  - message: The claymore's inhand sprites now correctly reflect which hand the item
+      is being held in.
+    type: fix
+  id: 2105
+  time: '2026-11-11T18:47:25.000'
+  url: https://github.com/moff-station/moff-station-14/pull/2105
+- author: Centronias
+  changes:
+  - message: All toggleable hoods and helmets are now innately immune to staining
+      since they cannot be cleaned.
+    type: fix
+  id: 2107
+  time: '2026-11-09T20:20:10.000'
+  url: https://github.com/moff-station/moff-station-14/pull/2107
+- author: Tao
+  changes:
+  - message: Added FQ - 14's visor
+    type: add
+  id: 2108
+  time: '2026-11-13T18:42:21.000'
+  url: https://github.com/moff-station/moff-station-14/pull/2108
+- author: "Mass\xE9na"
+  changes:
+  - message: mumuuk's personal item (comfy wheelchair)
+    type: add
+  id: 2110
+  time: '2026-11-16T12:54:13.000'
+  url: https://github.com/moff-station/moff-station-14/pull/2110
+- author: SillyAmy
+  changes:
+  - message: Added Betty's personal item
+    type: add
+  id: 2112
+  time: '2026-11-13T19:23:12.000'
+  url: https://github.com/moff-station/moff-station-14/pull/2112
+- author: DuckManZach
+  changes:
+  - message: Changed Fred figurine quotes.
+    type: tweak
+  id: 2113
+  time: '2026-11-11T00:23:26.000'
+  url: https://github.com/moff-station/moff-station-14/pull/2113
+- author: Centronias
+  changes:
+  - message: Added Red Jade's Beckoning's personal item.
+    type: add
+  id: 2115
+  time: '2026-11-16T12:28:13.000'
+  url: https://github.com/moff-station/moff-station-14/pull/2115
+- author: StudMuffin
+  changes:
+  - message: Organs can now be grinded to obtain 20 units of uncooked animal proteins
+      !
+    type: add
+  id: 2116
+  time: '2026-11-13T20:15:58.000'
+  url: https://github.com/moff-station/moff-station-14/pull/2116
+- author: SillyAmy
+  changes:
+  - message: Tweaked Betty Payet's personal item slightly.
+    type: tweak
+  id: 2117
+  time: '2026-11-14T23:33:28.000'
+  url: https://github.com/moff-station/moff-station-14/pull/2117
+- author: DuckManZach
+  changes:
+  - message: Fixed the shuttle sometimes being called at 45 minutes
+    type: fix
+  id: 2120
+  time: '2026-11-16T21:08:52.000'
+  url: https://github.com/moff-station/moff-station-14/pull/2120
+- author: Laggy
+  changes:
+  - message: Allow avali to breathe in ammonia without dying
+    type: tweak
+  id: 2121
+  time: '2026-11-16T10:39:02.000'
+  url: https://github.com/moff-station/moff-station-14/pull/2121
+- author: Nyxilath
+  changes:
+  - message: The Zara figurine has been discontinued due to concerns regarding small
+      choking parts and asbestos.
+    type: remove
+  id: 2122
+  time: '2026-11-15T22:27:46.000'
+  url: https://github.com/moff-station/moff-station-14/pull/2122
+- author: DuckManZach
+  changes:
+  - message: 'New lobby art: The Elkridge Kid'
+    type: add
+  id: 2124
+  time: '2026-11-16T11:05:10.000'
+  url: https://github.com/moff-station/moff-station-14/pull/2124
 Name: Mofflog
 Order: -2

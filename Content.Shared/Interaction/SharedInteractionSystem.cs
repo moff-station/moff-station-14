@@ -1452,7 +1452,7 @@ namespace Content.Shared.Interaction
             RaiseLocalEvent(uidB.Value, ev);
 
             // Begin Stellar/ES Additions - Interaction particles
-            if (!interactionParticles)
+            if (!interactionParticles || ((args as InteractUsingEvent)?.SuppressInteractionParticles ?? false)) // Moff - suppress particles if it's the right flavor of event. This is a gross hack, but here we are! :^)
                 return;
 
             if (_net.IsServer)
