@@ -13,56 +13,64 @@ namespace Content.Shared.Chemistry
         public const string OutputSlotName = "beakerSlot";
     }
 
+    // Moff Start - Configurable dispense amounts
+    // [Serializable, NetSerializable]
+    // public sealed class ReagentDispenserSetDispenseAmountMessage : BoundUserInterfaceMessage
+    // {
+    //     public readonly ReagentDispenserDispenseAmount ReagentDispenserDispenseAmount;
+    //
+    //     public ReagentDispenserSetDispenseAmountMessage(ReagentDispenserDispenseAmount amount)
+    //     {
+    //         ReagentDispenserDispenseAmount = amount;
+    //     }
+    //
+    //     /// <summary>
+    //     ///     Create a new instance from interpreting a String as an integer,
+    //     ///     throwing an exception if it is unable to parse.
+    //     /// </summary>
+    //     public ReagentDispenserSetDispenseAmountMessage(String s)
+    //     {
+    //         switch (s)
+    //         {
+    //             case "1":
+    //                 ReagentDispenserDispenseAmount = ReagentDispenserDispenseAmount.U1;
+    //                 break;
+    //             case "5":
+    //                 ReagentDispenserDispenseAmount = ReagentDispenserDispenseAmount.U5;
+    //                 break;
+    //             case "10":
+    //                 ReagentDispenserDispenseAmount = ReagentDispenserDispenseAmount.U10;
+    //                 break;
+    //             case "15":
+    //                 ReagentDispenserDispenseAmount = ReagentDispenserDispenseAmount.U15;
+    //                 break;
+    //             case "20":
+    //                 ReagentDispenserDispenseAmount = ReagentDispenserDispenseAmount.U20;
+    //                 break;
+    //             case "30":
+    //                 ReagentDispenserDispenseAmount = ReagentDispenserDispenseAmount.U30;
+    //                 break;
+    //             case "40":
+    //                 ReagentDispenserDispenseAmount = ReagentDispenserDispenseAmount.U40;
+    //                 break;
+    //             case "60":
+    //                 ReagentDispenserDispenseAmount = ReagentDispenserDispenseAmount.U60;
+    //                 break;
+    //             case "120":
+    //                 ReagentDispenserDispenseAmount = ReagentDispenserDispenseAmount.U120;
+    //                 break;
+    //             default:
+    //                 throw new Exception($"Cannot convert the string `{s}` into a valid ReagentDispenser DispenseAmount");
+    //         }
+    //     }
+    // }
+
     [Serializable, NetSerializable]
-    public sealed class ReagentDispenserSetDispenseAmountMessage : BoundUserInterfaceMessage
+    public sealed class ReagentDispenserSetDispenseAmountMessage(int amount) : BoundUserInterfaceMessage
     {
-        public readonly ReagentDispenserDispenseAmount ReagentDispenserDispenseAmount;
-
-        public ReagentDispenserSetDispenseAmountMessage(ReagentDispenserDispenseAmount amount)
-        {
-            ReagentDispenserDispenseAmount = amount;
-        }
-
-        /// <summary>
-        ///     Create a new instance from interpreting a String as an integer,
-        ///     throwing an exception if it is unable to parse.
-        /// </summary>
-        public ReagentDispenserSetDispenseAmountMessage(String s)
-        {
-            switch (s)
-            {
-                case "1":
-                    ReagentDispenserDispenseAmount = ReagentDispenserDispenseAmount.U1;
-                    break;
-                case "5":
-                    ReagentDispenserDispenseAmount = ReagentDispenserDispenseAmount.U5;
-                    break;
-                case "10":
-                    ReagentDispenserDispenseAmount = ReagentDispenserDispenseAmount.U10;
-                    break;
-                case "15":
-                    ReagentDispenserDispenseAmount = ReagentDispenserDispenseAmount.U15;
-                    break;
-                case "20":
-                    ReagentDispenserDispenseAmount = ReagentDispenserDispenseAmount.U20;
-                    break;
-                case "30":
-                    ReagentDispenserDispenseAmount = ReagentDispenserDispenseAmount.U30;
-                    break;
-                case "40":
-                    ReagentDispenserDispenseAmount = ReagentDispenserDispenseAmount.U40;
-                    break;
-                case "60":
-                    ReagentDispenserDispenseAmount = ReagentDispenserDispenseAmount.U60;
-                    break;
-                case "120":
-                    ReagentDispenserDispenseAmount = ReagentDispenserDispenseAmount.U120;
-                    break;
-                default:
-                    throw new Exception($"Cannot convert the string `{s}` into a valid ReagentDispenser DispenseAmount");
-            }
-        }
+        public readonly int DispenseAmount = amount;
     }
+    // Moff end
 
     [Serializable, NetSerializable]
     public sealed class ReagentDispenserDispenseReagentMessage : BoundUserInterfaceMessage
@@ -95,18 +103,20 @@ namespace Content.Shared.Chemistry
 
     }
 
-    public enum ReagentDispenserDispenseAmount
-    {
-        U1 = 1,
-        U5 = 5,
-        U10 = 10,
-        U15 = 15,
-        U20 = 20,
-        U30 = 30,
-        U40 = 40,
-        U60 = 60,
-        U120 = 120,
-    }
+    // Moff Start - Configurable dispense amounts
+    // public enum ReagentDispenserDispenseAmount
+    // {
+    //     U1 = 1,
+    //     U5 = 5,
+    //     U10 = 10,
+    //     U15 = 15,
+    //     U20 = 20,
+    //     U30 = 30,
+    //     U40 = 40,
+    //     U60 = 60,
+    //     U120 = 120,
+    // }
+    // Moff end
 
     [Serializable, NetSerializable]
     public sealed class ReagentInventoryItem(ItemStorageLocation storageLocation, string reagentLabel, FixedPoint2 quantity, Color reagentColor)
@@ -129,15 +139,24 @@ namespace Content.Shared.Chemistry
         /// </summary>
         public readonly List<ReagentInventoryItem> Inventory;
 
-        public readonly ReagentDispenserDispenseAmount SelectedDispenseAmount;
+        // Moff Start - Configurable dispense amounts
+        // public readonly ReagentDispenserDispenseAmount SelectedDispenseAmount;
 
-        public ReagentDispenserBoundUserInterfaceState(ContainerInfo? outputContainer, NetEntity? outputContainerEntity, List<ReagentInventoryItem> inventory, ReagentDispenserDispenseAmount selectedDispenseAmount)
+        /// The amounts this dispenser can be set to dispense, in UI order.
+        public readonly List<int> DispenseAmounts;
+
+        public readonly int SelectedDispenseAmount;
+
+        // public ReagentDispenserBoundUserInterfaceState(ContainerInfo? outputContainer, NetEntity? outputContainerEntity, List<ReagentInventoryItem> inventory, ReagentDispenserDispenseAmount selectedDispenseAmount)
+        public ReagentDispenserBoundUserInterfaceState(ContainerInfo? outputContainer, NetEntity? outputContainerEntity, List<ReagentInventoryItem> inventory, List<int> dispenseAmounts, int selectedDispenseAmount)
         {
             OutputContainer = outputContainer;
             OutputContainerEntity = outputContainerEntity;
             Inventory = inventory;
+            DispenseAmounts = dispenseAmounts;
             SelectedDispenseAmount = selectedDispenseAmount;
         }
+        // Moff end
     }
 
     [Serializable, NetSerializable]
