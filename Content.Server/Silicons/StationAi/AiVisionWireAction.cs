@@ -34,8 +34,10 @@ public sealed partial class AiVisionWireAction : ComponentWireAction<StationAiVi
 
     public override bool Mend(EntityUid user, Wire wire, StationAiVisionComponent component)
     {
-        WiresSystem.TryCancelWireAction(wire.Owner, StationAiVisionWireKey.PulseCancel); // Moffstation - hacker remote
+        // Moffstation - hacker remote
+        WiresSystem.TryCancelWireAction(wire.Owner, StationAiVisionWireKey.PulseCancel);
         WiresSystem.SetData(wire.Owner, StationAiVisionWireKey.Pulsed, false);
+        // Moffstation - end
         return EntityManager.System<SharedStationAiSystem>()
             .SetVisionEnabled((wire.Owner, component), true);
     }

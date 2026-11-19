@@ -37,4 +37,4 @@ uplink-clothing-rocket-skates-desc = An experimental prototype from Lumens Techn
 
 #Disruption
 uplink-hacker-remote-name = H4cker Remote
-uplink-hacker-remote-desc = A heavily modified remote signaller designed to jam surveillance camera and holopads from a distance, disabling them for 30 seconds. Come with 3 charges that slowly regenerate over time.
+uplink-hacker-remote-desc = A heavily modified remote signaller designed to jam surveillance cameras and holopads from a distance, disabling them for 30 seconds. Comes with 3 charges that slowly regenerate over time.

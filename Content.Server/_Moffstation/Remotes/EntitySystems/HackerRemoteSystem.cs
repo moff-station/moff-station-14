@@ -20,7 +20,7 @@ public sealed partial class HackerRemoteSystem : EntitySystem
     {
         if (ev.Handled || ev.Target is not { } target ||
             !TryComp<WiresComponent>(target, out var wires) || !ent.Comp.AcceptedLayouts.Contains(wires.LayoutId) ||
-            !_examine.InRangeUnOccluded(ev.User, target, ent.Comp.Range, ent.Comp.IgnoreOcclusion? _ => true : null))
+            !_examine.InRangeUnOccluded(ev.User, target, ent.Comp.Range, ent.Comp.IgnoreOcclusion ? _ => true : null))
             return;
 
         ev.Handled = true;
