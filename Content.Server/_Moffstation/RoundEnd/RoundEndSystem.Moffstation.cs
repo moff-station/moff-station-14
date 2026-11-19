@@ -6,6 +6,7 @@ using Content.Server.Voting.Managers;
 using Content.Shared._Moffstation.CCVar;
 using Content.Shared.Database;
 using Content.Shared.DeviceNetwork.Components;
+using Content.Shared.GameTicking.Events;
 using Content.Shared.RoundEnd;
 using Robust.Shared.Map;
 
@@ -18,6 +19,13 @@ public sealed partial class RoundEndSystem
     private static readonly TimeSpan ExtensionVoteBuffer = TimeSpan.FromSeconds(10);
 
     private TimeSpan ExtensionVoteDuration => TimeSpan.FromSeconds(_cfg.GetCVar(MoffCCVars.RoundEndExtensionVoteDuration));
+
+    [SubscribeLocalEvent]
+    private void OnRoundStarting(RoundStartingEvent ev)
+    {
+        SetAutoCallTime();
+        _autoCalledBefore = false;
+    }
 
     private void InitializeRoundEndExtension(TimeSpan countdown)
     {

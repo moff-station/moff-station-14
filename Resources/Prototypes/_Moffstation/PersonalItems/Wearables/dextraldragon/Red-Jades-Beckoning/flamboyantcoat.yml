@@ -1,0 +1,25 @@
+# Player: dextraldragon - Character: Red-Jade's-Beckoning
+
+- type: entity
+  parent: ClothingOuterCoatExpensive
+  id: &id PersonalItemRedJadeCoat
+  name: flamboyant coat
+  description: A luxurious fur-lined coat, sprinkled in bright pink glitter.
+  suffix: PersonalItem
+  components:
+  - type: Sprite
+    sprite: &sprite _Moffstation/PersonalItems/Wearables/dextraldragon/Red-Jades-Beckoning/flamboyantcoat.rsi
+  - type: Clothing
+    sprite: *sprite
+  - type: DetailExaminable
+    content: Strands of orange fur stick to the inner lining. The initials "RJB" are embroidered inside.
+
+- type: loadout
+  id: *id
+  storage:
+    back:
+    - *id
+  effects:
+  - !type:PersonalItemLoadoutEffect
+    character:
+    - Red-Jade's-Beckoning

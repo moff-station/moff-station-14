@@ -5,18 +5,14 @@ using Robust.Client.UserInterface;
 
 namespace Content.Client._Moffstation.BladeServer;
 
-/// <summary>
-/// This system extends <see cref="SharedBladeServerSystem"/> with accessors for BUI interactions.
-/// </summary>
-public sealed partial class BladeServerSystem : SharedBladeServerSystem
+/// This system extends <see cref="BladeServerSystem"/> with accessors for BUI interactions.
+public sealed partial class ClientBladeServerSystem : BladeServerSystem
 {
     [Dependency] private IUserInterfaceManager _userInterfaceMan = default!;
     [Dependency] private ExamineSystem _examine = default!;
 
-    /// <summary>
     /// Relays examine interactions to <see cref="_userInterfaceMan"/> for the entity in the given
     /// <paramref name="slotIndex"/>. Returns true if the interaction was handled, false otherwise.
-    /// </summary>
     public bool TryExamine(Entity<BladeServerRackComponent?> entity, int slotIndex)
     {
         if (GetSlotOrNull(entity, slotIndex)?.Item is not { } bladeServer)
@@ -26,10 +22,8 @@ public sealed partial class BladeServerSystem : SharedBladeServerSystem
         return true;
     }
 
-    /// <summary>
     /// Relays context-menu interactions to <see cref="_userInterfaceMan"/> for the entity in the given
     /// <paramref name="slotIndex"/>. Returns true if the interaction was handled, false otherwise.
-    /// </summary>
     public bool TryUseSecondary(Entity<BladeServerRackComponent?> entity, int slotIndex)
     {
         if (GetSlotOrNull(entity, slotIndex)?.Item is not { } bladeServer)

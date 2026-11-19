@@ -42,3 +42,6 @@ moffstation-lobby-state-background-kazowatchinngsout-artist = shedonk
 
 moffstation-lobby-state-background-chadwherestheteg-title = Chad, where's the TEG?
 moffstation-lobby-state-background-chadwherestheteg-artist = Ciraus
+
+moffstation-lobby-state-background-theelkridgekid-title = The Elkridge Kid
+moffstation-lobby-state-background-theelkridgekid-artist = Pilkie
