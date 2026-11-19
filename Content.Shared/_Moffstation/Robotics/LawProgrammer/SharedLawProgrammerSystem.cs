@@ -193,7 +193,6 @@ public sealed partial class SharedLawProgrammerSystem : EntitySystem
         if (TryComp<EmaggedComponent>(target, out var emagged))
         {
             RemComp(target, emagged);
-            Dirty(target);
         }
     }
 
