@@ -102,6 +102,12 @@
         type: SurveillanceCameraSetupBoundUi
       enum.WiresUiKey.Key:
         type: WiresBoundUserInterface
+  # Moffstation - augmented reality
+  - type: ArDisplays
+    displays:
+      ArHackerInterface:
+      - ArHackerCameraIndicator
+  # Moffstation - end
 
 - type: entity
   parent: SurveillanceCameraBase

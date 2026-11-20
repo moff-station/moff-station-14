@@ -1,6 +1,7 @@
 using System.Linq;
 using Content.Shared._Moffstation.Clothing.ModularHud.Components;
 using Content.Shared._Moffstation.Extensions;
+using Content.Shared._Moffstation.Overlay.Components;
 using Content.Shared.Access.Systems;
 using Content.Shared.Chemistry;
 using Content.Shared.Contraband;
@@ -98,6 +99,8 @@ public abstract partial class SharedModularHudSystem : EntitySystem
         SubscribeRelaysForEffectEvents<RefreshEquipmentHudEvent<ShowCriminalRecordIconsComponent>>();
         SubscribeRelaysForEffectEvents<RefreshEquipmentHudEvent<BlackAndWhiteOverlayComponent>>();
         SubscribeRelaysForEffectEvents<RefreshEquipmentHudEvent<NoirOverlayComponent>>();
+        SubscribeRelaysForEffectEvents<RefreshEquipmentHudEvent<ShowShaderComponent>>();
+        SubscribeRelaysForEffectEvents<RefreshEquipmentHudEvent<ShowArInterfaceComponent>>();
     }
 
     /// Adds subscriptions which relay `TArgs` to all contained modules.
