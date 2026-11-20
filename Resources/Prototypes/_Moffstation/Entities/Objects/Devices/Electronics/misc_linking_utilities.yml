@@ -17,20 +17,21 @@
     - VoiceEmitterVoicelineThree
     - VoiceEmitterVoicelineFour
     - VoiceEmitterVoicelineRandom
-  #- type: SignalOnTrigger
-  #  port: VoiceEmitterVoicelineRandom
-  - type: UseDelayOnTrigger
-  - type: UseDelayTriggerCondition
-  - type: UseDelay
-  - type: TalkOnTrigger
-    randomPort: VoiceEmitterVoicelineRandom
+  - type: SignalSpeech
   - type: Speech
     speechSounds: Pai # it just sounds better
-  - type: EmitSoundOnTrigger
-    sound:
-      collection: TriggerActivate
   - type: DeviceNetwork
     deviceNetId: Wireless
     receiveFrequencyId: BasicDevice
   - type: WirelessNetwork
     range: 15
+  - type: SinkOnTrigger
+    port: VoiceEmitterVoicelineRandom
+  - type: UseDelayOnTrigger
+  - type: UseDelayTriggerCondition
+  - type: UseDelay
+  - type: TriggerOnUse
+  - type: EmitSoundOnTrigger
+    sound:
+      collection: TriggerActivate
+

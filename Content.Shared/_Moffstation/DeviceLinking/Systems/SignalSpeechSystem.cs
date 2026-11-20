@@ -10,9 +10,9 @@ using Content.Shared.Verbs;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 
-namespace Content.Shared._Moffstation.Trigger.Systems;
+namespace Content.Shared._Moffstation.DeviceLinking.Systems;
 
-public sealed partial class TalkOnTriggerSystem : EntitySystem
+public sealed partial class SignalSpeechSystem : EntitySystem
 {
     [Dependency] private IRobustRandom _random = default!;
     [Dependency] private SharedChatSystem _chat = default!;
@@ -20,7 +20,7 @@ public sealed partial class TalkOnTriggerSystem : EntitySystem
     [Dependency] private DeviceLinkSystem _links = default!;
 
     [SubscribeLocalEvent]
-    private void Init(Entity<TalkOnTriggerComponent> ent, ref MapInitEvent ev)
+    private void Init(Entity<Components.SignalSpeechComponent> ent, ref MapInitEvent ev)
     {
         foreach (var port in _links.GetSinkPorts(ent.Owner))
         {
@@ -33,7 +33,7 @@ public sealed partial class TalkOnTriggerSystem : EntitySystem
     }
 
     [SubscribeLocalEvent]
-    private void OnTrigger(Entity<TalkOnTriggerComponent> ent, ref SignalReceivedEvent ev)
+    private void OnTrigger(Entity<Components.SignalSpeechComponent> ent, ref SignalReceivedEvent ev)
     {
         if (ent.Comp.Lines.TryGetValue(ev.Port, out var line))
         {
@@ -54,39 +54,40 @@ public sealed partial class TalkOnTriggerSystem : EntitySystem
     }
 
     [SubscribeLocalEvent]
-    private void OnGetVerbs(Entity<TalkOnTriggerComponent> ent, ref GetVerbsEvent<AlternativeVerb> ev)
+    private void OnGetVerbs(Entity<Components.SignalSpeechComponent> ent, ref GetVerbsEvent<AlternativeVerb> ev)
     {
         if (!ev.CanAccess || !ev.CanInteract)
             return;
 
-        var category = new VerbCategory("Record", null);
-
-        var i = 1;
-        foreach (var port in ent.Comp.Lines.Keys)
+        if (ent.Comp.RecordingPort != null)
         {
             ev.Verbs.Add(new AlternativeVerb
             {
-                Text = "voice line " + i,
-                Act = () => StartRecording(ent, port),
-                Priority = -i,
-                Category = category,
+                Text = "Stop recording",
+                Act = () => StopRecording(ent, "cancelled"),
+                Priority = 0,
             });
-            i++;
         }
-
-        if (ent.Comp.RecordingPort == null)
-            return;
-
-        ev.Verbs.Add(new AlternativeVerb
+        else
         {
-            Text = "stop recording",
-            Act = () => StopRecording(ent, "cancelled"),
-            Priority = 0,
-        });
+            var category = new VerbCategory("Record", null);
+            var i = 1;
+            foreach (var port in ent.Comp.Lines.Keys)
+            {
+                ev.Verbs.Add(new AlternativeVerb
+                {
+                    Text = "voice line " + i,
+                    Act = () => StartRecording(ent, port),
+                    Priority = -i,
+                    Category = category,
+                });
+                i++;
+            }
+        }
     }
 
     [SubscribeLocalEvent]
-    private void OnListen(Entity<TalkOnTriggerComponent> ent, ref ListenEvent ev)
+    private void OnListen(Entity<Components.SignalSpeechComponent> ent, ref ListenEvent ev)
     {
         if (ev.Source == ent.Owner || ent.Comp.RecordingPort is not {} recorded)
             return;
@@ -104,7 +105,7 @@ public sealed partial class TalkOnTriggerSystem : EntitySystem
         StopRecording(ent, popupId);
     }
 
-    private void StartRecording(Entity<TalkOnTriggerComponent> ent, ProtoId<SinkPortPrototype> port)
+    private void StartRecording(Entity<Components.SignalSpeechComponent> ent, ProtoId<SinkPortPrototype> port)
     {
         _popup.PopupEntity("started", ent);
         Dirty(ent);
@@ -112,9 +113,10 @@ public sealed partial class TalkOnTriggerSystem : EntitySystem
         ent.Comp.RecordingPort = port;
     }
 
-    private void StopRecording(Entity<TalkOnTriggerComponent> ent, string popupId)
+    private void StopRecording(Entity<Components.SignalSpeechComponent> ent, string popupId)
     {
         _popup.PopupEntity(popupId, ent);
+        Dirty(ent);
         ent.Comp.RecordingPort = null;
         RemCompDeferred<ActiveListenerComponent>(ent);
     }
