@@ -2,14 +2,13 @@
   parent: BaseItem
   id: VoiceEmitter
   name: voice emitter
-  description: This thing, i need to find a description for this thing.
+  description: A cheap little thing that say prerecorded phrases when receiving a signal.
   components:
   - type: Sprite
-    sprite: Objects/Devices/voicesensor.rsi
+    sprite: _Moffstation/Objects/Devices/voice_emitter.rsi
     state: icon
   - type: StaticPrice
-    price: 40
-  # todo : probably make it with number of lines as parameters.
+    price: 20
   - type: DeviceLinkSink
     ports:
     - VoiceEmitterVoicelineOne

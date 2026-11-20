@@ -1,4 +1,4 @@
-using Content.Shared._Moffstation.Trigger.Components.Effects;
+using Content.Shared._Moffstation.DeviceLinking.Components;
 using Content.Shared.Chat;
 using Content.Shared.DeviceLinking;
 using Content.Shared.DeviceLinking.Events;
@@ -20,7 +20,7 @@ public sealed partial class SignalSpeechSystem : EntitySystem
     [Dependency] private DeviceLinkSystem _links = default!;
 
     [SubscribeLocalEvent]
-    private void Init(Entity<Components.SignalSpeechComponent> ent, ref MapInitEvent ev)
+    private void Init(Entity<SignalSpeechComponent> ent, ref MapInitEvent ev)
     {
         foreach (var port in _links.GetSinkPorts(ent.Owner))
         {
@@ -33,7 +33,7 @@ public sealed partial class SignalSpeechSystem : EntitySystem
     }
 
     [SubscribeLocalEvent]
-    private void OnTrigger(Entity<Components.SignalSpeechComponent> ent, ref SignalReceivedEvent ev)
+    private void OnTrigger(Entity<SignalSpeechComponent> ent, ref SignalReceivedEvent ev)
     {
         if (ent.Comp.Lines.TryGetValue(ev.Port, out var line))
         {
@@ -54,7 +54,7 @@ public sealed partial class SignalSpeechSystem : EntitySystem
     }
 
     [SubscribeLocalEvent]
-    private void OnGetVerbs(Entity<Components.SignalSpeechComponent> ent, ref GetVerbsEvent<AlternativeVerb> ev)
+    private void OnGetVerbs(Entity<SignalSpeechComponent> ent, ref GetVerbsEvent<AlternativeVerb> ev)
     {
         if (!ev.CanAccess || !ev.CanInteract)
             return;
@@ -63,20 +63,20 @@ public sealed partial class SignalSpeechSystem : EntitySystem
         {
             ev.Verbs.Add(new AlternativeVerb
             {
-                Text = "Stop recording",
-                Act = () => StopRecording(ent, "cancelled"),
+                Text = Loc.GetString("voice-emitter-stop"),
+                Act = () => StopRecording(ent, Loc.GetString("voice-emitter-stop-recording")),
                 Priority = 0,
             });
         }
         else
         {
-            var category = new VerbCategory("Record", null);
+            var category = new VerbCategory(Loc.GetString("voice-emitter-record"), null);
             var i = 1;
             foreach (var port in ent.Comp.Lines.Keys)
             {
                 ev.Verbs.Add(new AlternativeVerb
                 {
-                    Text = "voice line " + i,
+                    Text = Loc.GetString("voice-emitter-record-line", ("index", i)),
                     Act = () => StartRecording(ent, port),
                     Priority = -i,
                     Category = category,
@@ -87,33 +87,33 @@ public sealed partial class SignalSpeechSystem : EntitySystem
     }
 
     [SubscribeLocalEvent]
-    private void OnListen(Entity<Components.SignalSpeechComponent> ent, ref ListenEvent ev)
+    private void OnListen(Entity<SignalSpeechComponent> ent, ref ListenEvent ev)
     {
         if (ev.Source == ent.Owner || ent.Comp.RecordingPort is not {} recorded)
             return;
 
         var line = ev.Message.Trim();
 
-        var popupId = "success";
+        var popupId = Loc.GetString("voice-emitter-recorded");
         if (line.Length >= ent.Comp.MinLength && line.Length <= ent.Comp.MaxLength)
             ent.Comp.Lines[recorded] = line;
         else if (line.Length < ent.Comp.MinLength)
-            popupId = "too short";
+            popupId = Loc.GetString("voice-emitter-failed-record-failed-too-short");
         else if (line.Length > ent.Comp.MaxLength)
-            popupId = "too long";
+            popupId = Loc.GetString("voice-emitter-record-failed-too-long");
 
         StopRecording(ent, popupId);
     }
 
-    private void StartRecording(Entity<Components.SignalSpeechComponent> ent, ProtoId<SinkPortPrototype> port)
+    private void StartRecording(Entity<SignalSpeechComponent> ent, ProtoId<SinkPortPrototype> port)
     {
-        _popup.PopupEntity("started", ent);
+        _popup.PopupEntity(Loc.GetString("voice-emitter-start-recording"), ent);
         Dirty(ent);
         EnsureComp<ActiveListenerComponent>(ent).Range = ent.Comp.RecordingRange;
         ent.Comp.RecordingPort = port;
     }
 
-    private void StopRecording(Entity<Components.SignalSpeechComponent> ent, string popupId)
+    private void StopRecording(Entity<SignalSpeechComponent> ent, string popupId)
     {
         _popup.PopupEntity(popupId, ent);
         Dirty(ent);
