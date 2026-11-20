@@ -1,0 +1,36 @@
+- type: entity
+  parent: BaseItem
+  id: VoiceEmitter
+  name: voice emitter
+  description: This thing, i need to find a description for this thing.
+  components:
+  - type: Sprite
+    sprite: Objects/Devices/voicesensor.rsi
+    state: icon
+  - type: StaticPrice
+    price: 40
+  # todo : probably make it with number of lines as parameters.
+  - type: DeviceLinkSink
+    ports:
+    - VoiceEmitterVoicelineOne
+    - VoiceEmitterVoicelineTwo
+    - VoiceEmitterVoicelineThree
+    - VoiceEmitterVoicelineFour
+    - VoiceEmitterVoicelineRandom
+  #- type: SignalOnTrigger
+  #  port: VoiceEmitterVoicelineRandom
+  - type: UseDelayOnTrigger
+  - type: UseDelayTriggerCondition
+  - type: UseDelay
+  - type: TalkOnTrigger
+    randomPort: VoiceEmitterVoicelineRandom
+  - type: Speech
+    speechSounds: Pai # it just sounds better
+  - type: EmitSoundOnTrigger
+    sound:
+      collection: TriggerActivate
+  - type: DeviceNetwork
+    deviceNetId: Wireless
+    receiveFrequencyId: BasicDevice
+  - type: WirelessNetwork
+    range: 15
