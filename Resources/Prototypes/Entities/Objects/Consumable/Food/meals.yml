@@ -466,6 +466,18 @@
       - memoryleek
   - type: Sprite
     state: memoryLeek
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        maxVol: 20
+        reagents:
+        - ReagentId: Nutriment
+          Quantity: 10
+        - ReagentId: Allicin
+          Quantity: 5
+  - type: Tag # MACROCOSM: Allow item to be inserted in costume bundles
+    tags:
+    - CostumeItem
 # Tastes like pain.
 
 - type: entity
