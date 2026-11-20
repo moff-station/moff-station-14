@@ -1,0 +1,10 @@
+- type: entity
+  parent: CrateEngineeringSecure
+  id: CrateEngineeringGaussFabricator
+  name: gaussian fabrication unit crate
+  description: A gaussian fabrication unit.
+  components:
+  - type: EntityTableContainerFill
+    containers:
+      entity_storage:
+        id: GaussFabricatorFlatpack
