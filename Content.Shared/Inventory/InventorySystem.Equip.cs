@@ -1,5 +1,6 @@
 using System.Diagnostics.CodeAnalysis;
 using Content.Shared._Moffstation.Armor; // Moffstation
+using Content.Shared._Moffstation.StowDelay;
 using Content.Shared.Armor;
 using Content.Shared.Clothing.Components;
 using Content.Shared.DoAfter;
@@ -37,6 +38,7 @@ public abstract partial class InventorySystem
     [Dependency] private SharedStrippableSystem _strippable = default!;
 
     [Dependency] private SuitStorageAttachmentSystem _suitStorageAttachment = default!; // Moffstation
+    [Dependency] private StowDelaySystem _stowDelay = default!; // Moff - Stow delay
 
     private static readonly ProtoId<ItemSizePrototype> PocketableItemSize = "Small";
 
@@ -158,6 +160,11 @@ public abstract partial class InventorySystem
                 _popup.PopupCursor(Loc.GetString(reason), actor);
             return false;
         }
+
+        // Moff Start - Stow delay
+        if (checkDoafter && _stowDelay.TryStartEquipDelay(actor, target, itemUid, slot))
+            return false;
+        // Moff end
 
         if (checkDoafter &&
             clothing != null &&
@@ -487,6 +494,11 @@ public abstract partial class InventorySystem
         //we need to do this to make sure we are 100% removing this entity, since we are now dropping dependant slots
         if (!force && !_containerSystem.CanRemove(removedItem.Value, slotContainer))
             return false;
+
+        // Moff Start - Stow delay
+        if (checkDoafter && _stowDelay.TryStartUnequipDelay(actor, target, slot))
+            return false;
+        // Moff end
 
         if (checkDoafter &&
             Resolve(removedItem.Value, ref clothing, false) &&

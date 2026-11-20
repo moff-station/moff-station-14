@@ -1,3 +1,4 @@
+using Content.Shared._Moffstation.StowDelay;
 using Content.Shared.Hands.EntitySystems;
 using Content.Shared.Interaction;
 using Content.Shared.Verbs;
@@ -15,6 +16,7 @@ public abstract partial class SharedItemSystem : EntitySystem
 {
     [Dependency] private SharedHandsSystem _handsSystem = default!;
     [Dependency] protected SharedContainerSystem Container = default!;
+    [Dependency] private StowDelaySystem _stowDelay = default!; // Moff - Stow delay
 
     private readonly List<ItemSizePrototype> _sortedSizes = [];
 
@@ -145,8 +147,17 @@ public abstract partial class SharedItemSystem : EntitySystem
             return;
 
         InteractionVerb verb = new();
+        // Moff Start - Stow delay
+        verb.Act = () =>
+        {
+            if (!_stowDelay.TryStartPickupDelay(args.User, args.Target))
+                _handsSystem.TryPickupAnyHand(args.User, args.Target, checkActionBlocker: false, handsComp: args.Hands, item: component);
+        };
+        /*
         verb.Act = () => _handsSystem.TryPickupAnyHand(args.User, args.Target, checkActionBlocker: false,
             handsComp: args.Hands, item: component);
+        */
+        // Moff end
         verb.Icon = new SpriteSpecifier.Texture(new("/Textures/Interface/VerbIcons/pickup.svg.192dpi.png"));
 
         // if the item already in a container (that is not the same as the user's), then change the text.
