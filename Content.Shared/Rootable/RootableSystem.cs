@@ -22,7 +22,9 @@ using Robust.Shared.Audio.Systems;
 using Robust.Shared.Physics.Components;
 using Robust.Shared.Physics.Events;
 using Robust.Shared.Physics.Systems;
+using Robust.Shared.Prototypes;
 using Robust.Shared.Timing;
+using System.Linq;
 
 namespace Content.Shared.Rootable;
 
@@ -46,6 +48,7 @@ public sealed partial class RootableSystem : EntitySystem
 
     [Dependency] private EntityQuery<PuddleComponent> _puddleQuery = default!;
     [Dependency] private EntityQuery<PhysicsComponent> _physicsQuery = default!;
+    [Dependency] private IPrototypeManager _protoMan =  default!; // Moffstation - new rooting system
 
     public override void Initialize()
     {
@@ -102,9 +105,13 @@ public sealed partial class RootableSystem : EntitySystem
         if (!_solutionContainer.ResolveSolution(ent.Owner, ent.Comp2.BloodSolutionName, ref ent.Comp2.BloodSolution, out var bloodSolution) || bloodSolution.AvailableVolume <= 0)
             return;
 
-        var availableTransfer = FixedPoint2.Min(solution.Volume, ent.Comp1.TransferRate);
+        var filteredSolution = GetTransferableSolution(ent, solution);
+        if(filteredSolution.Volume <= 0)
+            _logger.Add(LogType.ForceFeed, LogImpact.Medium, $"filtered solution contain nothing !");
+        var availableTransfer = FixedPoint2.Min(filteredSolution.Volume, ent.Comp1.TransferRate);
         var transferAmount = FixedPoint2.Min(availableTransfer, bloodSolution.AvailableVolume);
-        var transferSolution = _solutionContainer.SplitSolution(puddleEntity.Comp.Solution!.Value, transferAmount);
+        var transferSolution = filteredSolution.SplitSolution(transferAmount);
+        _solutionContainer.TryAddSolution(puddleEntity.Comp.Solution!.Value, filteredSolution);
 
         _reactive.DoEntityReaction(ent, transferSolution, ReactionMethod.Ingestion);
 
@@ -254,5 +261,16 @@ public sealed partial class RootableSystem : EntitySystem
     {
         if (ent.Comp.Rooted)
             args.ModifySpeed(ent.Comp.SpeedModifier);
+    }
+    /// <summary>
+    ///   filter a solution the entity can drink from a base solution
+    /// </summary>
+    private Solution GetTransferableSolution(Entity<RootableComponent> ent, Solution solution)
+    {
+        var absorbables  = solution.Contents
+            .Select(x => x.Reagent.Prototype)
+            .Where(x => _protoMan.Resolve(x, out var index) && index.RootAbsorbable);
+
+        return solution.SplitSolutionWithOnly(solution.Volume, absorbables.ToArray());
     }
 }
