@@ -44,7 +44,7 @@
     sprite: Clothing/OuterClothing/Suits/janitor_bombsuit.rsi
 
 - type: entity
-  parent: [ ClothingOuterBaseLargeFireproof, AllowSuitStorageClothing ]
+  parent: [ BaseSuitBreachableSoftsuit, ClothingOuterBaseLargeFireproof, AllowSuitStorageClothing ] # Moff - Suit breach tiers
   id: ClothingOuterSuitFire
   name: fire suit
   description: A suit that helps protect against hazardous temperatures.
