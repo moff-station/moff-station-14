@@ -20,7 +20,7 @@ public sealed partial class SignalSpeechSystem : EntitySystem
     [Dependency] private DeviceLinkSystem _links = default!;
 
     [SubscribeLocalEvent]
-    private void Init(Entity<SignalSpeechComponent> ent, ref MapInitEvent ev)
+    private void OnStartup(Entity<SignalSpeechComponent> ent, ref ComponentStartup ev)
     {
         foreach (var port in _links.GetSinkPorts(ent.Owner))
         {
