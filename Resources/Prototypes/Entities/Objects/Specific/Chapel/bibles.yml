@@ -92,7 +92,7 @@
   - type: Summonable
     summonEntity: SpawnPointGhostCerberus
     respawnTime: 300
-    requiresBibleUser: false ## Moffstation - start - Non-chaplains can use necronomicon
+    requiresBibleUser: false # Moffstation - start - Non-chaplains can use necronomicon
   - type: Prayable
     bibleUserOnly: false # Moffstation - end - Non-chaplains can use necronomicon
   - type: Sprite
