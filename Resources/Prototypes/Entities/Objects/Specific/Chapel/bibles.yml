@@ -69,7 +69,7 @@
   id: BibleNecronomicon
   components:
   - type: Bible
-    requiresBibleUser: false ## Moffstation - Non-chaplains can use necronomicon
+    requiresBibleUser: false # Moffstation - Non-chaplains can use necronomicon
     damage:
       types:
         Caustic: 20 ## ~15 dps
