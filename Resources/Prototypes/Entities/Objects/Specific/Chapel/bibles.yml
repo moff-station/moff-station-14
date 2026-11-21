@@ -94,7 +94,7 @@
     respawnTime: 300
     requiresBibleUser: false ## Moffstation - start - Non-chaplains can use necronomicon
   - type: Prayable
-    bibleUserOnly: false ## Moffstation - end - Non-chaplains can use necronomicon
+    bibleUserOnly: false # Moffstation - end - Non-chaplains can use necronomicon
   - type: Sprite
     sprite: Objects/Specific/Chapel/necronomicon.rsi
   - type: Item
