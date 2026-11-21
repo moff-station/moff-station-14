@@ -25,7 +25,7 @@ uplink-flaming-fire-axe-name = Fire Axe
 uplink-flaming-fire-axe-desc = Why fight fire with an axe when you can fight with fire and axe? Now featuring rugged rubberized handle!
 
 uplink-necronomicon-name = Necronomicon
-uplink-necronomicon-desc = A rechargable cursed book that allows the wielder to summon a powerful cerberus from the underworld to do their bidding. This demon gets faster the closer it is to death and has a powerful bite that can light things aflame. The book can also be used in a pinch to burn foes or pray to dark forces for assistance.
+uplink-necronomicon-desc = A rechargeable cursed book that allows the wielder to summon a powerful cerberus from the underworld to do their bidding. This demon gets faster the closer it is to death and has a powerful bite that can light things aflame. The book can also be used in a pinch to burn foes or pray to dark forces for assistance.
 
 # Other
 uplink-super-surplus-bundle-name = Super Surplus Crate
