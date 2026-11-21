@@ -4,6 +4,7 @@ using Content.Client.Pinpointer.UI; // Carpmosia-edit - AI Navmap
 using Content.Client.Graphics;
 using Content.Shared.CCVar;
 using Content.Shared.Silicons.StationAi;
+using Robust.Client.GameObjects;
 using Robust.Client.Graphics;
 using Robust.Client.Player;
 using Robust.Shared.Collections; // Carpmosia-edit - AI Navmap
@@ -30,6 +31,12 @@ public sealed partial class StationAiOverlay : Overlay
     [Dependency] private IPlayerManager _player = default!;
     [Dependency] private IPrototypeManager _proto = default!;
 
+    // Moffstation - Ai Access always visible
+    [Dependency] private IEyeManager _eye = default!;
+    private SpriteSystem _sprite;
+    private SharedTransformSystem _xform;
+    // Moffstation - ent
+
     public override OverlaySpace Space => OverlaySpace.WorldSpace;
 
     private readonly HashSet<Vector2i> _visibleTiles = new();
@@ -51,6 +58,8 @@ public sealed partial class StationAiOverlay : Overlay
         _navMap.TileColor = new(30, 30, 30);
         // Carpmosia-end - AI Navmap
 
+        _sprite = _entManager.System<SpriteSystem>(); // Moffstation - AI Access always visible
+        _xform = _entManager.System<SharedTransformSystem>(); // Moffstation - AI Access always visible
     }
 
     private void OnAiStaticChanged(bool toggle)
@@ -151,6 +160,11 @@ public sealed partial class StationAiOverlay : Overlay
         // Draw the static
         worldHandle.UseShader(_proto.Index(StencilDrawShader).Instance());
         worldHandle.DrawTextureRect(res.StaticTexture!.Texture, worldBounds);
+
+        // Moffstation - AI Access always visible
+        // Draw accessible devices
+        DrawDevices(args.WorldHandle, gridUid);
+        // Moffstation - end
     }
 
     protected override void DisposeBehavior()
@@ -236,4 +250,23 @@ public sealed partial class StationAiOverlay : Overlay
         }
     }
     // Carpmosia-end - AI Navmap
+
+    // Moffstation - AI Access always visible
+    private void DrawDevices(DrawingHandleWorld handle, EntityUid? playerGrid)
+    {
+        var devices = _entManager.EntityQueryEnumerator<StationAiWhitelistComponent, TransformComponent, SpriteComponent>();
+        foreach (var device in devices)
+        {
+            if (device.Comp2.GridUid != playerGrid || !device.Comp1.Enabled || ! device.Comp1.AlwaysVisible)
+                continue;
+
+            _sprite.RenderSprite((device.Owner, device.Comp3),
+                handle,
+                _eye.CurrentEye.Rotation,
+                _xform.GetWorldRotation(device.Owner),
+                _xform.GetWorldPosition(device.Owner)
+                );
+        }
+    }
+    // Moffstation - end
 }

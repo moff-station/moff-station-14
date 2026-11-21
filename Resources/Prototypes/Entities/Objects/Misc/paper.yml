@@ -101,6 +101,8 @@
   - type: PaperVisualizer
   - type: PaperVisuals
   - type: StationAiWhitelist
+    alwaysVisible: false # Moffstation - AI Access always visible
+    alwaysAccessible: false # Moffstation - AI Access always visible
 
 - type: entity
   name: paper scrap

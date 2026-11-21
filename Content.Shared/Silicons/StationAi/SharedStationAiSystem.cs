@@ -211,6 +211,14 @@ public abstract partial class SharedStationAiSystem : EntitySystem
             return;
         }
 
+        // Moffstation - Ai access always visible
+        if (TryComp<StationAiWhitelistComponent>(args.Target, out var whitelist) && whitelist is { Enabled: true, AlwaysAccessible: true })
+        {
+            args.InRange = true;
+            return;
+        }
+        // Moffstation - end
+
         // Validate it's in camera range yes this is expensive.
         // Yes it needs optimising
         if (!_broadphaseQuery.TryComp(targetXform.GridUid, out var broadphase) || !_gridQuery.TryComp(targetXform.GridUid, out var grid))
