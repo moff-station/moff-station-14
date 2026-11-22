@@ -53,6 +53,27 @@ namespace Content.Server.Nuke
         [DataField("alertTime")]
         public float AlertSoundTime = 10.0f;
 
+        // Moffstation - emergency nuke launch
+        /// <summary>
+        /// If true the emergency shuttle and pods will fly off station when the nuke is about to go off
+        /// </summary>
+        [DataField]
+        public bool EmergencyLaunchEnabled = true;
+
+
+        /// <summary>
+        /// When this time is left and emergency launch is enabled, the emergency shuttle and pods will leave the station immediately.
+        /// </summary>
+        [DataField]
+        public float EmergencyLaunchTime = 5.0f;
+
+        /// <summary>
+        /// Indicate if the emergency shuttle and pods were already launched.
+        /// </summary>
+        [DataField]
+        public bool LaunchedShuttles;
+        // Moffstation - end
+
         /// <summary>
         ///     How long a user must wait to disarm the bomb.
         /// </summary>
