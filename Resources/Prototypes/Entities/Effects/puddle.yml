@@ -230,12 +230,6 @@
         - SlipLayer
         hard: false
   - type: Footprint
-  # Moff start - Must hold at least Footprint's maxVolumePerTile so it can turn into a puddle
-  - type: Solution
-    id: print
-    solution:
-      canReact: false
-  # Moff end
   # Moff start - Foobrints don't get smoothing like puddles
   - type: IconSmooth
     key: footprints
