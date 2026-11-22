@@ -80,6 +80,9 @@ public sealed partial class FootprintSystem : EntitySystem
     [SubscribeLocalEvent]
     private void OnEntityMoved(Entity<FootprintOwnerComponent> ent, ref MoveEvent args)
     {
+        if (_timing.ApplyingState)
+            return;
+
         if (HasComp<NoFootprintsComponent>(ent.Owner))
             return;
 
@@ -146,12 +149,18 @@ public sealed partial class FootprintSystem : EntitySystem
             return false;
         // Moff End
 
-        if (maxStorage - ownerSolution.Comp.Solution.Volume <= 0)
+        var tradeAmount = FixedPoint2.Min(component.PrintMixAmount,
+            FixedPoint2.Min(ownerSolution.Comp.Solution.Volume, puddleSolution.Value.Comp.Solution.Volume));
+        if (tradeAmount > FixedPoint2.Zero)
         {
-            var split = _solutionContainer.SplitSolution(ownerSolution, component.PrintMixAmount);
-            _puddle.TrySpillAt(Transform(puddleUid).Coordinates, split, out _, false);
+            var fromFeet = _solutionContainer.SplitSolution(ownerSolution, tradeAmount);
+            var fromPuddle = _solutionContainer.SplitSolution(puddleSolution.Value, tradeAmount);
+            _solutionContainer.TryAddSolution(ownerSolution, fromPuddle);
+            _solutionContainer.TryAddSolution(puddleSolution.Value, fromFeet);
         }
+
         var spaceLeft = FixedPoint2.Max(0, maxStorage - ownerSolution.Comp.Solution.Volume);
+
         // Moff start - Update drained puddle
         if (_solutionContainer.TryTransferSolution(ownerSolution, puddleSolution.Value.Comp.Solution, spaceLeft))
             _solutionContainer.UpdateChemicals(puddleSolution.Value);
