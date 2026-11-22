@@ -32,7 +32,7 @@ public sealed partial class FootprintSystem : EntitySystem
     [Dependency] private SharedAudioSystem _audio = default!;
 
 
-    private static readonly FixedPoint2 MaxVolumePerTile = 50;
+    private const float MaxVolumePerTile = 50;
     private static readonly EntProtoId FootprintEntityId = "Footprint";
     private const string PrintSolutionName = "print";
     private const string PuddleTargetSolution = "puddle";
