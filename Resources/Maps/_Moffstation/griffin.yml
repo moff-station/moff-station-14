@@ -39583,71 +39583,36 @@ entities:
     - type: Transform
       parent: 2
       pos: -48.5,17.5
-    - type: LinkedDeviceNetwork
-      deviceLists:
-      - 76
-      configurators:
-      - invalid
   - uid: 5955
     components:
     - type: Transform
       parent: 2
       pos: -49.5,17.5
-    - type: LinkedDeviceNetwork
-      deviceLists:
-      - 76
-      configurators:
-      - invalid
   - uid: 5956
     components:
     - type: Transform
       parent: 2
       pos: -43.5,4.5
-    - type: LinkedDeviceNetwork
-      deviceLists:
-      - 76
-      configurators:
-      - invalid
   - uid: 5957
     components:
     - type: Transform
       parent: 2
       pos: -42.5,4.5
-    - type: LinkedDeviceNetwork
-      deviceLists:
-      - 76
-      configurators:
-      - invalid
   - uid: 5958
     components:
     - type: Transform
       parent: 2
       pos: -44.5,4.5
-    - type: LinkedDeviceNetwork
-      deviceLists:
-      - 76
-      configurators:
-      - invalid
   - uid: 5959
     components:
     - type: Transform
       parent: 2
       pos: -46.5,15.5
-    - type: LinkedDeviceNetwork
-      deviceLists:
-      - 76
-      configurators:
-      - invalid
   - uid: 5960
     components:
     - type: Transform
       parent: 2
       pos: -46.5,16.5
-    - type: LinkedDeviceNetwork
-      deviceLists:
-      - 76
-      configurators:
-      - invalid
 - proto: FirelockEdge
   entities:
   - uid: 5961
@@ -39655,22 +39620,12 @@ entities:
     - type: Transform
       parent: 2
       pos: -40.5,8.5
-    - type: LinkedDeviceNetwork
-      deviceLists:
-      - 76
-      configurators:
-      - invalid
   - uid: 5962
     components:
     - type: Transform
       parent: 2
       rot: 3.141592653589793 rad
       pos: -40.5,10.5
-    - type: LinkedDeviceNetwork
-      deviceLists:
-      - 76
-      configurators:
-      - invalid
   - uid: 5963
     components:
     - type: Transform
