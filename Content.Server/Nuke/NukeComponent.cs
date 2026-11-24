@@ -62,10 +62,15 @@ namespace Content.Server.Nuke
 
 
         /// <summary>
-        /// When this time is left and emergency launch is enabled, the emergency shuttle and pods will leave the station immediately.
+        /// When this time is left and emergency launch is enabled, the emergency shuttle and pods
+        /// will be authorised immediate departure
         /// </summary>
+        /// <remark>
+        /// As tempting as it is to time it so that it launch JUST as the nuke explode, this will make the shuttles
+        /// enter FTL and be pulverised by the nuke in FTL space, so give it a good second between launch and detonation
+        /// </remark>
         [DataField]
-        public float EmergencyLaunchTime = 5.0f;
+        public float EmergencyLaunchTime = 11.0f;
 
         /// <summary>
         /// Indicate if the emergency shuttle and pods were already launched.
