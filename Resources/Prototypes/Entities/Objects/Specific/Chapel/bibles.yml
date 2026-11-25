@@ -69,6 +69,7 @@
   id: BibleNecronomicon
   components:
   - type: Bible
+    requiresBibleUser: false # Moffstation - Non-chaplains can use necronomicon
     damage:
       types:
         Caustic: 20 ## ~15 dps
@@ -91,6 +92,9 @@
   - type: Summonable
     summonEntity: SpawnPointGhostCerberus
     respawnTime: 300
+    requiresBibleUser: false # Moffstation - start - Non-chaplains can use necronomicon
+  - type: Prayable
+    bibleUserOnly: false # Moffstation - end - Non-chaplains can use necronomicon
   - type: Sprite
     sprite: Objects/Specific/Chapel/necronomicon.rsi
   - type: Item

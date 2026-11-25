@@ -63,6 +63,14 @@ public sealed partial class BibleComponent : Component
     [DataField(required: true)]
     public DamageSpecifier DamageOnUntrainedUse = default!;
 
+    /// Moffstation - start - Necronomicon implementation
+    /// <summary>
+    /// Whether using the Bible on a target requires the user to be a  'Bible user' in code.
+    /// </summary>
+    [DataField]
+    public bool RequiresBibleUser = true;
+    /// Moffstation - end - Necronomicon implementation
+
     /// <summary>
     /// Chance theBbible will fail to heal someone with no helmet.
     /// </summary>
