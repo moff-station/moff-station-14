@@ -1,5 +1,6 @@
 using Content.Shared.Containers.ItemSlots;
 using Content.Shared.DoAfter;
+using Content.Shared.Emag.Components;
 using Content.Shared.Interaction;
 using Content.Shared.Mind;
 using Content.Shared.Popups;
@@ -187,6 +188,11 @@ public sealed partial class SharedLawProgrammerSystem : EntitySystem
                 _popup.PopupClient(Loc.GetString("law-programmer-interaction-failure-provider-missing"), target, args.User);
                 _audio.PlayPredicted(used.Comp.FailureSound, used, args.User);
             }
+        }
+
+        if (TryComp<EmaggedComponent>(target, out var emagged))
+        {
+            RemComp(target, emagged);
         }
     }
 
