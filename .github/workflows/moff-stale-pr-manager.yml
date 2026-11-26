@@ -14,6 +14,7 @@ jobs:
       with:
         days-before-pr-stale: 14
         days-before-pr-close: 7
+        exempt-pr-labels: 'S: Needs Art Review, S: Needs Map Review, S: Needs Review, S: Approved'
         stale-pr-label: 'S: Stale'
         stale-pr-message: 'This PR has been marked as stale due to 14 days of inactivity. It will be closed in 7 days if no further activity occurs.'
         close-pr-message: 'This PR was closed due to inactivity. Feel free to reopen when you are ready to continue working on it.'
