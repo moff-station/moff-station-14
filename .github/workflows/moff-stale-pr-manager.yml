@@ -1,0 +1,21 @@
+﻿name: Moffstation Stale PR Manager
+on:
+  schedule:
+  - cron: '0 23 * * *' # 7:00 PM EST
+
+permissions:
+  pull-requests: write
+
+jobs:
+  stale:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/stale@v10
+      with:
+        days-before-pr-stale: 14
+        days-before-pr-close: 7
+        exempt-pr-labels: 'S: Needs Art Review, S: Needs Map Review, S: Needs Review, S: Approved'
+        stale-pr-label: 'S: Stale'
+        stale-pr-message: 'This PR has been marked as stale due to 14 days of inactivity. It will be closed in 7 days if no further activity occurs.'
+        close-pr-message: 'This PR was closed due to inactivity. Feel free to reopen when you are ready to continue working on it.'
+        days-before-issue-stale: -1 # Only PRs, not Issues
