@@ -1,6 +1,6 @@
 - type: entity
   abstract: true
-  parent: [ BaseStructure, StructureHealthFurnitureStrong ]
+  parent: [ BaseStructure, StructureHealthFurnitureStrong, FunkySelectableChaplainAltar] # Moff - Makes Chaplains able to change the altar via holy book
   id: AltarBase
   name: altar
   description: Altar of the Gods.
