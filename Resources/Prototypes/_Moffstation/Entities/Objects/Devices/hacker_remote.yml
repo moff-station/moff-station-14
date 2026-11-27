@@ -1,0 +1,17 @@
+- type: entity
+  parent: [ BaseItem, BaseSyndicateContraband ]
+  id: RemoteHacker
+  name: h4cker remote
+  description: A handheld device used to remotely jam surveillance devices.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Objects/Devices/hacker_remote.rsi
+    state: icon
+  - type: HackerRemote
+    acceptedLayouts:
+    - SurveillanceCamera
+    - Holopad
+  - type: LimitedCharges
+    maxCharges: 3
+  - type: AutoRecharge
+    rechargeDuration: 30

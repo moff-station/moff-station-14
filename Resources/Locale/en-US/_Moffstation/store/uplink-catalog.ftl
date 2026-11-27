@@ -42,3 +42,6 @@ uplink-clothing-infiltrator-headset-desc = A headset combining both chameleon an
 uplink-clothing-rocket-skates-name = Syndicate Rocket Skates
 uplink-clothing-rocket-skates-desc = An experimental prototype from Lumens Technologies, combining the benefits of rollerskates with the thrusting capacities of a rocket for maximum velocity.
 
+#Disruption
+uplink-hacker-remote-name = H4cker Remote
+uplink-hacker-remote-desc = A heavily modified remote signaller designed to jam surveillance cameras and holopads from a distance, disabling them for 30 seconds. Comes with 3 charges that slowly regenerate over time.
