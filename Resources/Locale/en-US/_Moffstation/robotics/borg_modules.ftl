@@ -7,7 +7,6 @@ borg-slot-rcd-ammo-empty = Compressed matter
 borg-slot-dinnerware-empty = Dinnerware
 borg-slot-foam-grenade-empty = Foam dart grenades
 borg-slot-food-empty = Food
-borg-slot-ingredients-empty = Ingredients
 borg-slot-ores-empty = Ores
 borg-slot-peels-empty = Banana peels
 borg-slot-pies-empty = Banana cream pies

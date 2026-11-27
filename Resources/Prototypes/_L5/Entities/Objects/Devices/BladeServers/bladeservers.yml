@@ -139,7 +139,7 @@
     deviceNetId: Wireless
     receiveFrequencyId: Mothership
     transmitFrequencyId: Mothership
-  - type: WirelessNetworkConnection
+  - type: WirelessNetwork
     range: 2000 # longer range to get xenoborgs even when the mothership is far away
   - type: SurveillanceCameraRouter
     subnetFrequency: Xenoborg

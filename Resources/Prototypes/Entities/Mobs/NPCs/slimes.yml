@@ -1,8 +1,8 @@
-﻿- type: entity
-  name: slime # Moffstation - random slime colors
-  id: BaseMobAdultSlimes
-  parent: [ BaseMobSlimes, SimpleMobBase, MobCombat, BaseSlicingRefinable, MobNightVision, BaseMobDestructible ]
+- type: entity
   abstract: true
+  parent: [ BaseMobSlimes, SimpleMobBase, MobCombat, BaseSlicingRefinableButchering, MobNightVision, BaseMobDestructible ]
+  id: BaseMobAdultSlimes
+  name: slime # Moffstation - random slime colors
   description: It looks so much like jelly. I wonder what it tastes like?
   components:
   - type: Sprite
@@ -72,11 +72,11 @@
       Flammable: [ Touch ]
       Extinguish: [ Touch ]
     reactions:
-    - reagents: [ Water, SpaceCleaner ]
+    - reagents: [ Water, Holywater, SpaceCleaner ]
       methods: [ Touch ]
       effects:
       - !type:WashCreamPie
-    - reagents: [ Water ]
+    - reagents: [ Water, Holywater ]
       methods: [ Touch ]
       effects:
       - !type:HealthChange
@@ -104,40 +104,49 @@
   - type: Speech
     speechVerb: Slime
     speechSounds: Slime
+    allowedEmotes: ['Squish']
   - type: TypingIndicator
     proto: slime
 
 - type: entity
-  # name: basic slime # Moff
-  id: MobAdultSlimes
-  parent: BaseMobAdultSlimes
   abstract: true
+  parent: BaseMobAdultSlimes
+  id: MobAdultSlimes
+  # name: basic slime # Moff
   description: It looks so much like jelly. I wonder what it tastes like?
   components:
   - type: ReplacementAccent
     accent: slimes
   - type: GhostTakeoverAvailable
   - type: GhostRole
+    prob: 0.05
     makeSentient: true
     name: ghost-role-information-slimes-name
     description: ghost-role-information-slimes-description
     rules: ghost-role-information-nonantagonist-rules
-    # Moffstation - Begin (No Raffle for Minor Ghostroles)
-    #raffle:
-    #  settings: short
-    # Moffstation - End
-  - type: Speech
-    speechVerb: Slime
-    speechSounds: Slime
-    allowedEmotes: ['Squish']
-  - type: TypingIndicator
-    proto: slime
   - type: NpcFactionMember
     factions:
     - SimpleNeutral
   - type: HTN
     rootTask:
       task: SimpleHostileCompound
+  - type: NPCRetaliation
+    attackMemoryLength: 10
+
+- type: entity
+  abstract: true
+  id: BaseAdultSlimesAngry
+  name: base angry slime
+  components:
+  - type: NpcFactionMember
+    factions:
+      - SimpleHostile
+  - type: GhostRole
+    prob: 1
+    description: ghost-role-information-angry-slimes-description
+    rules: ghost-role-information-angry-slimes-rules
+    mindRoles:
+    - MindRoleGhostRoleTeamAntagonist
 
 # Moff Start
 # Blue and Yellow slimes have been changed to a generic `MobAdultSlimesReformable`

@@ -94,7 +94,7 @@ public sealed partial class BibleSystem : EntitySystem
         var targetEnt = Identity.Entity(args.Target.Value, EntityManager);
 
         // Sizzle user if they are not a Bible user.
-        if (!HasComp<BibleUserComponent>(args.User))
+        if (ent.Comp.RequiresBibleUser && !HasComp<BibleUserComponent>(args.User)) //Moffstation - Necronomicon usable by more than chaplain.
         {
             _popup.PopupEntity(Loc.GetString(ent.Comp.SizzleText, ("user", userEnt), ("target", targetEnt), ("bible", ent)), args.User, args.User);
 

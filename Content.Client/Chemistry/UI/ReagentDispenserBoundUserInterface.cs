@@ -38,7 +38,10 @@ namespace Content.Client.Chemistry.UI
             _window.EjectButton.OnPressed += _ => SendMessage(new ItemSlotButtonPressedEvent(SharedReagentDispenser.OutputSlotName));
             _window.ClearButton.OnPressed += _ => SendMessage(new ReagentDispenserClearContainerSolutionMessage());
 
-            _window.AmountGrid.OnButtonPressed += s => SendMessage(new ReagentDispenserSetDispenseAmountMessage(s));
+            // Moff Start - Configurable dispense amounts
+            // _window.AmountGrid.OnButtonPressed += s => SendMessage(new ReagentDispenserSetDispenseAmountMessage(s));
+            _window.AmountGrid.OnButtonPressed += s => SendMessage(new ReagentDispenserSetDispenseAmountMessage(int.Parse(s)));
+            // Moff end
 
             _window.OnDispenseReagentButtonPressed += (location) => SendMessage(new ReagentDispenserDispenseReagentMessage(location));
             _window.OnEjectJugButtonPressed += (location) => SendMessage(new ReagentDispenserEjectContainerMessage(location));

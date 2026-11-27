@@ -9,7 +9,8 @@
       stationProto: StandardNanotrasenStation
       components:
       - type: StationEmergencyShuttle
-        emergencyShuttlePath: /Maps/_Harmony/Shuttles/emergency_jeremiah.yml
+        # Moff - Evac arrivals
+        emergencyShuttlePath: /Maps/_Moffstation/Shuttles/emergency_jeremiah.yml
       - type: StationNameSetup
         mapNameTemplate: '{0} Orbital Prime {1}'
         nameGenerator:

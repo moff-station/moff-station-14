@@ -57,6 +57,24 @@ public sealed class MoffCCVars
     public static readonly CVarDef<int> MapVoteCount =
         CVarDef.Create("votekick.map_vote_count", 3, CVar.SERVERONLY);
 
+    /// <summary>
+    ///     How many times post-round can be extended by vote. 0 disables the vote.
+    /// </summary>
+    public static readonly CVarDef<int> MaxRoundEndExtensionVotes =
+        CVarDef.Create("moff.round_end_extension_max", 2, CVar.SERVERONLY);
+
+    /// <summary>
+    ///     How many minutes each successful post-round extension vote extends the round by.
+    /// </summary>
+    public static readonly CVarDef<int> RoundEndExtensionVoteMinutes =
+        CVarDef.Create("moff.round_end_extension_minutes", 5, CVar.SERVERONLY);
+
+    /// <summary>
+    ///     How long the extension vote stays open, in seconds.
+    /// </summary>
+    public static readonly CVarDef<int> RoundEndExtensionVoteDuration =
+        CVarDef.Create("moff.round_end_extension_duration", 30, CVar.SERVERONLY);
+
     /*
      * Gameplay
      */
@@ -91,6 +109,13 @@ public sealed class MoffCCVars
     public static readonly CVarDef<float> MoffScreenShakeIntensity =
         CVarDef.Create("moff.screenshake_intensity", 1.0f, CVar.CLIENTONLY | CVar.ARCHIVE);
 
+    /// <summary>
+    ///     Should lockable uplinks be forcefully locked while on the same map as the evac shuttle, while in FTL,
+    ///     on CentComm and on the arrivals terminal?
+    /// </summary>
+    public static readonly CVarDef<bool> GameBlockUplinksOnEvac =
+        CVarDef.Create("moff.block_uplinks_evac", true, CVar.SERVERONLY);
+
     /*
      * Arrivals
      */
@@ -112,6 +137,18 @@ public sealed class MoffCCVars
     /// </summary>
     public static readonly CVarDef<float> ArrivalsRange =
         CVarDef.Create("shuttle.arrivals_range", 50f, CVar.SERVERONLY);
+
+    /// <summary>
+    ///     How long the evac shuttle spends in FTL when bringing the crew in at round start
+    /// </summary>
+    public static readonly CVarDef<float> TransitArrivalFTLTime =
+        CVarDef.Create("shuttle.evac_arrival_ftl_time", 150f, CVar.SERVERONLY);
+
+    /// <summary>
+    ///     How long the evac shuttle stays docked after bringing the crew in before returning to CC
+    /// </summary>
+    public static readonly CVarDef<float> TransitArrivalDockTime =
+        CVarDef.Create("shuttle.evac_arrival_dock_time", 60f, CVar.SERVERONLY);
 
     /*
      * Patreon
@@ -137,6 +174,10 @@ public sealed class MoffCCVars
     [CVarControl(AdminFlags.Server)]
     public static readonly CVarDef<bool> OocUpstreamPatronColorEnabled =
         CVarDef.Create("moff.ooc_upstream_patron_color_enabled", true, CVar.SERVERONLY | CVar.ARCHIVE);
+
+    /*
+     * Misc
+     */
 
     /// <summary>
     /// Whether a discord event should be created and managed as long as the round timer is unpaused

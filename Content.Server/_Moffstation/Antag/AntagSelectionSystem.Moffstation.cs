@@ -6,6 +6,7 @@ using Content.Shared.Roles;
 using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
 
+// ReSharper disable once CheckNamespace // Moff addition to upstream partial class
 namespace Content.Server.Antag;
 
 /// <summary>
@@ -15,13 +16,20 @@ namespace Content.Server.Antag;
 public sealed partial class ServerAntagSelectionSystem
 {
     [Dependency] private MoffCharacterSelectionManager _moffCharacterSelection = default!;
-    [Dependency] private MoffCharacterPickerSystem _moffCharacterPicker = default!;
+    [Dependency] private MoffProfileSpawnedSystem _moffProfileSpawned = default!;
 
-    protected override HumanoidCharacterProfile? GetMoffAntagProfile(ICommonSession player)
-    {
-        return _moffCharacterPicker.GetSpawnedProfile(player.UserId)
-               ?? _pref.GetPreferences(player.UserId).SelectedCharacter;
-    }
+    // Preselected > spawned > selected in lobby
+    protected override HumanoidCharacterProfile GetMoffAntagProfile(
+        ICommonSession player,
+        HumanoidCharacterProfile? preselected
+    ) => preselected ??
+         _moffProfileSpawned.GetSpawnedProfile(player.UserId).Profile ??
+         _pref.GetPreferences(player.UserId).SelectedCharacter;
+
+    protected override void SetMoffAntagProfile(
+        EntityUid entity,
+        HumanoidCharacterProfile? profile
+    ) => _moffProfileSpawned.SetSpawnedProfile(entity, profile);
 
     /// <summary>
     /// Every antag preference held by any of the player's active characters, or just the spawned
@@ -32,7 +40,7 @@ public sealed partial class ServerAntagSelectionSystem
         var result = new HashSet<ProtoId<AntagPrototype>>();
 
         // If they've already spawned, get the prefs from the spawned profile
-        if (_moffCharacterPicker.GetSpawnedProfile(session.UserId) is { } spawned)
+        if (_moffProfileSpawned.GetSpawnedProfile(session.UserId).Profile is { } spawned)
         {
             result.UnionWith(spawned.AntagPreferences);
             return result;

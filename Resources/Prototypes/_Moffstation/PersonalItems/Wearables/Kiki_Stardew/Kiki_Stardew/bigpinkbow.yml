@@ -1,0 +1,28 @@
+# Player: Kiki_Stardew - Character: Kiki Stardew
+
+- type: entity
+  parent: ClothingNeckClothBase
+  id: &id PersonalItemKikiBow
+  name: big pink bow
+  description: A large pink satin bow with a bell dangling from the knot.
+  suffix: PersonalItem
+  components:
+  - type: Sprite
+    sprite: &sprite _Moffstation/PersonalItems/Wearables/Kiki_Stardew/Kiki_Stardew/bigpinkbow.rsi
+  - type: Clothing
+    sprite: *sprite
+  - type: FootstepModifier
+    footstepSoundCollection:
+      collection: FootstepJester
+      params:
+        variation: 0.07
+
+- type: loadout
+  id: *id
+  storage:
+    back:
+    - *id
+  effects:
+  - !type:PersonalItemLoadoutEffect
+    character:
+    - Kiki Stardew

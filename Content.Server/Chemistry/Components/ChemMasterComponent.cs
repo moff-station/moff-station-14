@@ -32,5 +32,11 @@ namespace Content.Server.Chemistry.Components
         /// </summary>
         [DataField]
         public ChemMasterDrawSource DrawSource = ChemMasterDrawSource.Internal;
+
+        // Moff Start - Configurable reagent amounts
+        /// The amounts, in units, the reagent transfer/discard buttons can move, in UI order.
+        [DataField]
+        public List<int> ReagentAmounts = [1, 5, 10, 15, 20, 25, 30, 40, 50, 60, 100, 120];
+        // Moff end
     }
 }

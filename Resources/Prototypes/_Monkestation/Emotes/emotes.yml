@@ -1,0 +1,19 @@
+- type: emote
+  id: Knuckles
+  name: ms-chat-emote-name-knuckles
+  category: Hands
+  icon: _Monkestation/Interface/Emotes/crack.png
+  blacklist:
+    components:
+    - BorgChassis
+    - Ghost
+  chatMessages: ["ms-chat-emote-msg-knuckles"]
+  chatTriggers:
+  - crack knuckles
+  - cracks knuckles
+  - cracking knuckles
+  - cracked knuckles
+  - cracks their knuckles
+  - cracks her knuckles
+  - cracks his knuckles
+  - cracks its knuckles

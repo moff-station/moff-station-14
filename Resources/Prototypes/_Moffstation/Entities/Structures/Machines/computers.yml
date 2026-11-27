@@ -84,7 +84,7 @@
   suffix: long-range
   description: A surveillance camera monitor. You're watching them. Maybe.
   components:
-  - type: WirelessNetworkConnection
+  - type: WirelessNetwork
     range: 10000
 
 - type: entity
@@ -94,7 +94,7 @@
   suffix: long-range, tabletop
   description: A surveillance camera monitor. You're watching them. Maybe.
   components:
-  - type: WirelessNetworkConnection
+  - type: WirelessNetwork
     range: 10000
 
 # Pirate consoles
@@ -107,17 +107,11 @@
   components:
   - type: Sprite
     sprite: _Moffstation/Structures/Machines/computers.rsi
-    layers:
-    - map: ["computerLayerBody"]
-      state: computer_pirate
-    - map: [ "computerLayerKeyboard" ]
-      state: generic_keyboard_pirate
-    - map: [ "computerLayerScreen" ]
-      state: pirate_request
-    - map: [ "computerLayerKeys" ]
-      state: pirate_key
-    - map: [ "enum.WiresVisualLayers.MaintenancePanel" ]
-      state: generic_panel_open
+  - type: ComputerVisuals
+    stateFrame: computer_pirate
+    stateKeyboard: generic_keyboard_pirate
+    stateScreen: pirate_request
+    stateKeys: pirate_key
   - type: CargoOrderConsole
     allowedGroups: [ "pirateMarket" ]
     account: Pirates
@@ -136,17 +130,11 @@
   id: MoffComputerIFFPirate
   suffix: Pirate
   components:
-  - type: Sprite
-    layers:
-    - map: [ "computerLayerBody" ]
-      state: computer_pirate
-    - map: [ "computerLayerKeyboard" ]
-      state: generic_keyboard_pirate
-    - map: [ "computerLayerScreen" ]
-      state: helm
-    - map: [ "computerLayerKeys" ]
-      state: pirate_key
-    - map: [ "enum.WiresVisualLayers.MaintenancePanel" ]
+  - type: ComputerVisuals
+    stateFrame: computer_pirate
+    stateKeyboard: generic_keyboard_pirate
+    stateScreen: helm
+    stateKeys: pirate_key
   - type: IFFConsole
     allowedFlags:
     - Hide
@@ -171,17 +159,11 @@
   components:
   - type: Sprite
     sprite: _Moffstation/Structures/Machines/computers.rsi
-    layers:
-    - map: ["computerLayerBody"]
-      state: computer_pirate
-    - map: ["computerLayerKeyboard"]
-      state: generic_keyboard_pirate
-    - map: ["computerLayerScreen"]
-      state: pirate_transfer
-    - map: ["computerLayerKeys"]
-      state: pirate_key
-    - map: [ "enum.WiresVisualLayers.MaintenancePanel" ]
-      state: generic_panel_open
+  - type: ComputerVisuals
+    stateFrame: computer_pirate
+    stateKeyboard: generic_keyboard_pirate
+    stateScreen: pirate_transfer
+    stateKeys: pirate_key
   - type: Anchorable
     flags:
     - Anchorable
@@ -213,17 +195,11 @@
   components:
   - type: Sprite
     sprite: _Moffstation/Structures/Machines/computers.rsi
-    layers:
-    - map: ["computerLayerBody"]
-      state: computer_pirate
-    - map: ["computerLayerKeyboard"]
-      state: tech_key_off
-    - map: ["computerLayerScreen"]
-      state: pirate_bounty
-    - map: ["computerLayerKeys"]
-      state: tech_key
-    - map: [ "enum.WiresVisualLayers.MaintenancePanel" ]
-      state: generic_panel_open
+  - type: ComputerVisuals
+    stateFrame: computer_pirate
+    stateKeyboard: tech_key_off
+    stateScreen: pirate_bounty
+    stateKeys: tech_key
   - type: CargoBountyConsole
   - type: ActivatableUI
     key: enum.CargoConsoleUiKey.Bounty
@@ -255,17 +231,11 @@
   components:
   - type: Sprite
     sprite: _Moffstation/Structures/Machines/computers.rsi
-    layers:
-    - map: ["computerLayerBody"]
-      state: computer_pirate
-    - map: ["computerLayerKeyboard"]
-      state: syndie_key_off
-    - map: ["computerLayerScreen"]
-      state: pirate_shuttle
-    - map: ["computerLayerKeys"]
-      state: syndie_key
-    - map: [ "enum.WiresVisualLayers.MaintenancePanel" ]
-      state: generic_panel_open
+  - type: ComputerVisuals
+    stateFrame: computer_pirate
+    stateKeyboard: syndie_key_off
+    stateScreen: pirate_shuttle
+    stateKeys: syndie_key
   - type: Tag
     tags:
     - Pirate
@@ -287,17 +257,11 @@
   components:
   - type: Sprite
     sprite: _Moffstation/Structures/Machines/computers.rsi
-    layers:
-    - map: ["computerLayerBody"]
-      state: computer_pirate
-    - map: ["computerLayerKeyboard"]
-      state: syndie_key_off
-    - map: ["computerLayerScreen"]
-      state: pirate_comm
-    - map: ["computerLayerKeys"]
-      state: syndie_key
-    - map: [ "enum.WiresVisualLayers.MaintenancePanel" ]
-      state: generic_panel_open
+  - type: ComputerVisuals
+    stateFrame: computer_pirate
+    stateKeyboard: syndie_key_off
+    stateScreen: pirate_comm
+    stateKeys: syndie_key
   - type: AccessReader
     access: [["Pirate"]]
   - type: CommunicationsConsole

@@ -28,7 +28,7 @@ public sealed partial class IonStormRule : StationEventSystem<IonStormRuleCompon
         // begin macro edit
         // var query = EntityQueryEnumerator<SiliconLawBoundComponent, TransformComponent, IonStormTargetComponent>();
         var query = EntityQueryEnumerator<IonStormTargetComponent, TransformComponent>();
-        while (query.MoveNext(out var _, out var target, out var xform))
+        while (query.MoveNext(out var targetUid, out var target, out var xform)) // Moff - Raise the even on the silicon, dummy
         // end macro edit
         {
             // only affect law holders on the station, and check random chance (macro edit)
@@ -37,7 +37,7 @@ public sealed partial class IonStormRule : StationEventSystem<IonStormRuleCompon
                 continue;
             // begin macro edit again
             var ev = new IonStormEvent();
-            RaiseLocalEvent(ent, ref ev);
+            RaiseLocalEvent(targetUid, ref ev); // Moff - Raise the even on the silicon, dummy
             //     _ionStorm.IonStormTarget((ent, lawBound, target)); // end macro
         }
 

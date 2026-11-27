@@ -38,7 +38,7 @@ public abstract partial class SharedStackSystem : EntitySystem
         base.Initialize();
 
         _vvm.GetTypeHandler<StackComponent>()
-            .AddPath(nameof(StackComponent.Count), (_, comp) => comp.Count, SetCount);
+            .AddPath(nameof(StackComponent.Count), (_, comp) => comp.Count, (uid, value, comp) => SetCount((uid, comp), value));
     }
 
     public override void Shutdown()
@@ -99,6 +99,7 @@ public abstract partial class SharedStackSystem : EntitySystem
         {
             var localRotation = Transform(args.Used).LocalRotation;
             _storage.PlayPickupAnimation(args.Used, popupPos, userCoords, localRotation, args.User);
+            args.SuppressInteractionParticles = true; // Moff - Don't animate an interaction effect if we're doing a pickup effect
         }
     }
 

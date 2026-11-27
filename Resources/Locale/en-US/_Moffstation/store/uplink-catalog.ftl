@@ -24,10 +24,14 @@ uplink-clown-spider-grenade-desc = Smuggled out of a Honkmother meeting, the spi
 uplink-flaming-fire-axe-name = Fire Axe
 uplink-flaming-fire-axe-desc = Why fight fire with an axe when you can fight with fire and axe? Now featuring rugged rubberized handle!
 
-# Weapons
-uplink-hypereutatic-blade-moff-name = Hypereutactic Blade
-uplink-hypereutatic-blade-moff-desc = A gigantic energy sword with power that matches its looks. Requires two hands to swing. Slow and unwieldy, yet pretty adept at reflecting projectiles and slicing through structures. Makes a lot of noise when turned on. Demons fear its hum.
+uplink-necronomicon-name = Necronomicon
+uplink-necronomicon-desc = A rechargeable cursed book that allows the wielder to summon a powerful cerberus from the underworld to do their bidding. This demon gets faster the closer it is to death and has a powerful bite that can light things aflame. The book can also be used in a pinch to burn foes or pray to dark forces for assistance.
 
+# Other
+uplink-super-surplus-bundle-name = Super Surplus Crate
+uplink-super-surplus-bundle-desc = Contains 125 telecrystals worth of random Syndicate items. No refunds!
+
+# Weapons
 uplink-sniper-elephant-name = Space Elephant Rifle
 uplink-sniper-elephant-desc = A loud and powerful single-shot rifle commonly used by poachers. Comes loaded with a singular round, so make it count. Uses .60 anti-materiel ammo.
 

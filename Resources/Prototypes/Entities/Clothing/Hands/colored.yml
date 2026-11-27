@@ -349,7 +349,8 @@
     fiberColor: fibers-yellow
   # Imp - Begin - Tourists
   - type: StealTarget
-    stealGroup: InsulatedGloves
+    stealGroup:
+    - InsulatedGloves
     # Imp - End
 
 
@@ -381,7 +382,8 @@
     fiberColor: fibers-yellow
   # Imp - Begin - Tourists
   - type: StealTarget
-    stealGroup: BudgetInsuls
+    stealGroup:
+    - BudgetInsuls
   # Imp - End
 
 # Conductive Insulated Gloves
@@ -394,5 +396,6 @@
     coefficient: 5 # zap em good
   # Imp - Begin - Tourists
   - type: StealTarget
-    stealGroup: InsulatedGloves
+    stealGroup:
+    - InsulatedGloves
   # Imp - End

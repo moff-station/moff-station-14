@@ -14,7 +14,8 @@
             !type:NanotrasenNameGenerator
             prefixCreator: '14'
         - type: StationEmergencyShuttle
-          emergencyShuttlePath: /Maps/Shuttles/emergency_crimson.yml
+          # Moff - Evac arrivals
+          emergencyShuttlePath: /Maps/_Moffstation/Shuttles/emergency_crimson.yml
         - type: StationJobs
           availableJobs: # 43 jobs total w/o latejoins & interns, 52 jobs total w/ latejoins & interns
             #command (7)

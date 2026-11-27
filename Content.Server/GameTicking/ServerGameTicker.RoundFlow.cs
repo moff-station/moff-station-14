@@ -1,5 +1,6 @@
 using System.Linq;
 using System.Numerics;
+using Content.Server._Moffstation.Shuttles.Components;
 using Content.Server.Announcements;
 using Content.Server.Discord;
 using Content.Server.GameTicking.Events;
@@ -434,7 +435,9 @@ public sealed partial class ServerGameTicker
         SendStatusToAll();
         ReqWindowAttentionAll();
         UpdateLateJoinStatus();
-        AnnounceRound();
+        // Moff - Evac arrivals
+        if (!EntityQuery<MoffTransitShuttleComponent>().Any())
+            AnnounceRound();
         UpdateInfoText();
         SendRoundStartedDiscordMessage();
 
@@ -570,7 +573,7 @@ public sealed partial class ServerGameTicker
             if (TryComp<LastWordsComponent>(mindId, out var lastWordsComponent)
                 && !TerminatingOrDeleted(entity))
             {
-                lastWords = lastWordsComponent.LastWords;
+                lastWords = lastWordsComponent.LastWords ?? "";
 
                 if (TryComp<MobStateComponent>(entity, out var mobStateComp) && mobState is { } _)
                     mobState = mobStateComp.CurrentState;
@@ -600,7 +603,7 @@ public sealed partial class ServerGameTicker
                 Observer = observer,
                 Connected = connected,
                 // Goob Station - End of Round Screen
-                LastWords = lastWords,
+                LastWords = FormattedMessage.EscapeText(lastWords),
                 EntMobState = mobState,
 #pragma warning disable CS0618 // Type or member is obsolete // Moffstation Grouping in the UI
                 DamagePerGroup = damagePerGroup ?? new Dictionary<ProtoId<DamageGroupPrototype>, FixedPoint2>(),
@@ -844,7 +847,7 @@ public sealed partial class ServerGameTicker
         }
     }
 
-    private void AnnounceRound()
+    public void AnnounceRound() // Moff - Evac arrivals
     {
         if (CurrentPreset == null)
             return;

@@ -42,25 +42,27 @@
     sprite: _Moffstation/Clothing/Uniforms/Jumpskirt/jumpskirt.rsi
     layers:
     - state: icon
-      color: "#2abd8e"
+      color: &color-green "#5d9b79"
     - state: basics-trinkets-icon
     - state: color-trinkets-icon
-      color: "#547abb"
+      color: &color-darkblue "#363f77"
   - type: Item
     inhandVisuals:
       left:
       - state: inhand-left
+        color: *color-green
       right:
       - state: inhand-right
+        color: *color-green
   - type: Clothing
     sprite: _Moffstation/Clothing/Uniforms/Jumpskirt/jumpskirt.rsi
     clothingVisuals:
       jumpsuit:
       - state: equipped-INNERCLOTHING
-        color: "#2abd8e"
+        color: *color-green
       - state: basics-trinkets-equipped-INNERCLOTHING
       - state: color-trinkets-equipped-INNERCLOTHING
-        color: "#547abb"
+        color: *color-darkblue
 # Moffstation - End
 
 - type: entity
@@ -74,27 +76,27 @@
     sprite: _Moffstation/Clothing/Uniforms/Jumpskirt/jumpskirt.rsi
     layers:
     - state: icon
-      color: "#9b9b9b"
-    - state: basics-trinkets-icon
+      color: &color-grey "#9a97b9"
     - state: color-trinkets-icon
-      color: "#ac50e6"
+      color: &color-purple "#7b41b5"
+    - state: basics-trinkets-icon
   - type: Item
     inhandVisuals:
       left:
       - state: inhand-left
-        color: "#9b9b9b"
+        color: *color-grey
       right:
       - state: inhand-right
-        color: "#9b9b9b"
+        color: *color-grey
   - type: Clothing
     sprite: _Moffstation/Clothing/Uniforms/Jumpskirt/jumpskirt.rsi
     clothingVisuals:
       jumpsuit:
       - state: equipped-INNERCLOTHING
-        color: "#9b9b9b"
-      - state: basics-trinkets-equipped-INNERCLOTHING
+        color: *color-grey
       - state: color-trinkets-equipped-INNERCLOTHING
-        color: "#ac50e6"
+        color: *color-purple
+      - state: basics-trinkets-equipped-INNERCLOTHING
 # Moffstation - End
 
 - type: entity
@@ -129,17 +131,6 @@
     sprite: _Moffstation/Clothing/Uniforms/Jumpskirt/curator.rsi # Moffstation
   - type: Clothing
     sprite: _Moffstation/Clothing/Uniforms/Jumpskirt/curator.rsi # Moffstation
-
-- type: entity
-  parent: ClothingUniformSkirtBase
-  id: ClothingUniformJumpskirtPerformer
-  name: blue performer's jumpskirt # Moff
-  description: Hi, I'm Scott, president of Donk Pizza. Have you heard of [FAMOUS VIRTUAL PERFORMER]?
-  components:
-  - type: Sprite
-    sprite: _Moffstation/Clothing/Uniforms/Jumpskirt/performer.rsi # Moff
-  - type: Clothing
-    sprite: _Moffstation/Clothing/Uniforms/Jumpskirt/performer.rsi # Moff
 
 - type: entity
   parent: ClothingUniformSkirtBase
@@ -254,3 +245,58 @@
     sprite: _Moffstation/Clothing/Uniforms/Jumpskirt/lawyergood.rsi # Moffstation
   - type: Clothing
     sprite: _Moffstation/Clothing/Uniforms/Jumpskirt/lawyergood.rsi # Moffstation
+
+- type: entity
+  parent: ClothingUniformSkirtBase
+  id: ClothingUniformJumpskirtVirtualSinger
+  name: blue performer's jumpskirt # Moff
+  description: Hi, I'm Scott, president of Donk Pizza. Have you heard of [FAMOUS VIRTUAL PERFORMER]?
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Uniforms/Jumpskirt/performer.rsi # Moff
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Uniforms/Jumpskirt/performer.rsi # Moff
+
+- type: entity
+  parent: ClothingUniformSkirtBase
+  id: ClothingUniformJumpskirtVirtualChimera
+  name: chimera singer's sleeveless shirt
+  description: Military-style clothing with pink trim. A pink sash is attached to the side of the skirt. There should be wings somewhere on the back.
+  components:
+  - type: Sprite
+    sprite: Clothing/Uniforms/Jumpskirts/Service/virtual_chimera.rsi
+  - type: Clothing
+    sprite: Clothing/Uniforms/Jumpskirts/Service/virtual_chimera.rsi
+
+- type: entity
+  parent: ClothingUniformSkirtBase
+  id: ClothingUniformJumpskirtVirtualFan
+  name: singer's fan sleeveless shirt
+  description: The outfit is made from materials bought at an "everything for 100 speso" store. Even so, there wasn't enough fabric, which is why the top is open at the stomach, the tie is short, and there are two holes in the back.
+  components:
+  - type: Sprite
+    sprite: Clothing/Uniforms/Jumpskirts/Service/virtual_fan.rsi
+  - type: Clothing
+    sprite: Clothing/Uniforms/Jumpskirts/Service/virtual_fan.rsi
+
+- type: entity
+  parent: ClothingUniformSkirtBase
+  id: ClothingUniformJumpskirtVirtualForeigner
+  name: foreign singer's dress
+  description: The dress was designed to look old-fashioned and remind fans of the past. If you look closely, you can see the code 'CV03' on the shoulder.
+  components:
+  - type: Sprite
+    sprite: Clothing/Uniforms/Jumpskirts/Service/virtual_foreigner.rsi
+  - type: Clothing
+    sprite: Clothing/Uniforms/Jumpskirts/Service/virtual_foreigner.rsi
+
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformJumpskirtTramDriver
+  name: tram driver's jumpskirt
+  description: Perfectly ironed, for well-prepared professionals.
+  components:
+  - type: Sprite
+    sprite: Clothing/Uniforms/Jumpskirts/Service/tramdriver.rsi
+  - type: Clothing
+    sprite: Clothing/Uniforms/Jumpskirts/Service/tramdriver.rsi

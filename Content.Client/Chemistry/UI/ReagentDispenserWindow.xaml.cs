@@ -71,7 +71,13 @@ namespace Content.Client.Chemistry.UI
             ClearButton.Disabled = castState.OutputContainer is null;
             EjectButton.Disabled = castState.OutputContainer is null;
 
-            AmountGrid.Selected = ((int)castState.SelectedDispenseAmount).ToString();
+            // Moff Start - Configurable dispense amounts
+            // AmountGrid.Selected = ((int)castState.SelectedDispenseAmount).ToString();
+            var buttonList = string.Join(",", castState.DispenseAmounts);
+            if (AmountGrid.ButtonList != buttonList)
+                AmountGrid.ButtonList = buttonList;
+            AmountGrid.Selected = castState.SelectedDispenseAmount.ToString();
+            // Moff end
         }
 
         /// <summary>

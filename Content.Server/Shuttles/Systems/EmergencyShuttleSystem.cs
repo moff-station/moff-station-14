@@ -6,10 +6,11 @@ using Content.Server.Administration.Logs;
 using Content.Server.Administration.Managers;
 using Content.Server.Chat.Systems;
 using Content.Server.Communications;
-using Content.Server.DeviceNetwork.Systems;
+using Content.Shared.DeviceNetwork.Systems;
 using Content.Server.GameTicking;
 using Content.Server.GameTicking.Events;
 using Content.Server.Pinpointer;
+using Content.Server._Moffstation.PDA.Ringer;
 using Content.Server.RoundEnd;
 using Content.Server.Screens.Components;
 using Content.Server.Shuttles.Components;
@@ -24,6 +25,7 @@ using Content.Shared.DeviceNetwork.Components;
 using Content.Shared.GameTicking;
 using Content.Shared.GameTicking.Events;
 using Content.Shared.Localizations;
+using Content.Shared.Pinpointer;
 using Content.Shared.RoundEnd;
 using Content.Shared.Shuttles.Components;
 using Content.Shared.Shuttles.Events;
@@ -196,6 +198,11 @@ public sealed partial class EmergencyShuttleSystem : SharedEmergencyShuttleSyste
     /// </summary>
     private void OnEmergencyFTL(EntityUid uid, EmergencyShuttleComponent component, ref FTLStartedEvent args)
     {
+        // Moff start - Evac arrivals
+        if (!IsEvacDeparture(uid))
+            return;
+        // Moff end
+
         var ftlTime = TimeSpan.FromSeconds
         (
             TryComp<FTLComponent>(uid, out var ftlComp) ? ftlComp.TravelTime : _shuttle.DefaultTravelTime
@@ -222,6 +229,11 @@ public sealed partial class EmergencyShuttleSystem : SharedEmergencyShuttleSyste
     /// </summary>
     private void OnEmergencyFTLComplete(EntityUid uid, EmergencyShuttleComponent component, ref FTLCompletedEvent args)
     {
+        // Moff start - Evac arrivals
+        if (!IsEvacDeparture(uid))
+            return;
+        // Moff end
+
         var countdownTime = TimeSpan.FromSeconds(ConfigManager.GetCVar(CCVars.RoundRestartTime));
         var shuttle = args.Entity;
         if (TryComp<DeviceNetworkComponent>(shuttle, out var net))
@@ -283,6 +295,11 @@ public sealed partial class EmergencyShuttleSystem : SharedEmergencyShuttleSyste
             };
         }
 
+        // Moff start - Evac arrivals
+        // We have to undock manually otherwise it can get stuck
+        _dock.UndockDocks(stationShuttle.EmergencyShuttle.Value);
+        // Moff end
+
         ShuttleDockResultType resultType;
         if (_shuttle.TryFTLDock(stationShuttle.EmergencyShuttle.Value, shuttle, targetGrid.Value, out var config, DockTag))
         {
@@ -304,6 +321,11 @@ public sealed partial class EmergencyShuttleSystem : SharedEmergencyShuttleSyste
 
             resultType = ShuttleDockResultType.NoDock;
         }
+
+        // Moff Start - Emergency shuttle arrived event
+        var dockedEv = new EmergencyShuttleArrivedEvent();
+        RaiseLocalEvent(stationShuttle.EmergencyShuttle.Value, ref dockedEv);
+        // Moff end
 
         return new ShuttleDockResult
         {
@@ -555,6 +577,8 @@ public sealed partial class EmergencyShuttleSystem : SharedEmergencyShuttleSyste
             QueueDel(grid);
             return;
         }
+
+        EnsureComp<LockableUplinkBlockedMapComponent>(map); // Moff - uplink blocking - We can't do this in the file because it's a grid and not a map.
 
         component.MapEntity = map;
         _metaData.SetEntityName(map, Loc.GetString("map-name-centcomm"));

@@ -142,6 +142,7 @@
   - !type:BuyerJobCondition
     whitelist:
     - Chaplain
+    - Librarian
 
 # Other
 - type: listing
@@ -193,19 +194,6 @@
     Telecrystal: 6
   cost:
     Telecrystal: 8
-  categories:
-  - UplinkWeaponry
-
-- type: listing
-  id: UplinkHyperEutacticBlade
-  name: uplink-hypereutatic-blade-moff-name
-  description: uplink-hypereutatic-blade-moff-desc
-  icon:
-    sprite: Objects/Weapons/Melee/hypereutactic_blade.rsi
-    state: icon
-  productEntity: HyperEutacticBlade
-  cost:
-    Telecrystal: 12
   categories:
   - UplinkWeaponry
 

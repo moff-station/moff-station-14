@@ -102,8 +102,8 @@
 - type: entity
   parent: ClothingHeadBase
   id: ClothingHeadHatPwig
-  name: pwig
-  description: To be honest, those look ridiculous.
+  name: powdered wig
+  description: Ridiculous? You be the judge.
   components:
   - type: Sprite
     sprite: _Moffstation/Clothing/Head/Hats/pwig.rsi # Moffstation
@@ -320,7 +320,7 @@
   parent: [SolutionDrink, Clothing]
   id: WaterDropletHat
   name: water droplet
-  description: Makes 8-eyed friends 8 times more adorable!
+  description: Makes eight-eyed friends eight times more adorable!
   components:
   - type: Sprite
     sprite: Clothing/Head/Misc/waterdroplet.rsi
@@ -377,6 +377,21 @@
     price: 1
 
 - type: entity
+  parent: WaterDropletHat
+  id: HolywaterDropletHat
+  name: holy water droplet
+  description: Makes eight-eyed friends eight times more divine!
+  components:
+  - type: FlavorProfile
+    flavors:
+      - holy
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: Holywater
+        Quantity: 2
+
+- type: entity
   parent: ClothingHeadBase
   id: ClothingHeadHatHairFlowerBase # Moffstation - Color Changing Hairflower
   description: A beautiful hairflower that can be inserted between locks of hair.
@@ -403,7 +418,7 @@
 
 - type: entity
   parent: ClothingHeadBase
-  id: ClothingHeadPerformerWig
+  id: ClothingHeadVirtualSingerWig
   name: blue performer's wig # Moff
   description: On a closer inspection, it appears that it is made from optic fiber.
   components:
@@ -411,6 +426,96 @@
     sprite: _Moffstation/Clothing/Head/Misc/performer-wig.rsi # Moff
   - type: Clothing
     sprite: _Moffstation/Clothing/Head/Misc/performer-wig.rsi # Moff
+  - type: Item
+    storedRotation: 0
+  - type: Tag
+    tags:
+    - HamsterWearable
+    - WhitelistChameleon
+  - type: HideLayerClothing
+    slots:
+    - Hair
+    - HeadTop
+    - HeadSide
+
+- type: entity
+  parent: ClothingHeadBase
+  id: ClothingHeadVirtualChimeraWig
+  name: chimera singer's wig
+  description: The sides feature swirls that look a lot like drill bits. Come to think of it, you could use them to drill a hole in the wall and more.
+  components:
+  - type: Sprite
+    sprite: Clothing/Head/Misc/virtual-chimera-wig.rsi
+  - type: Clothing
+    sprite: Clothing/Head/Misc/virtual-chimera-wig.rsi
+  - type: Tag
+    tags:
+    - HamsterWearable
+    - WhitelistChameleon
+  - type: HideLayerClothing
+    slots:
+    - Hair
+    - HeadTop
+    - HeadSide
+
+- type: entity
+  parent: ClothingHeadBase
+  id: ClothingHeadVirtualFanWig
+  name: singer's fan wig
+  description: A wig consisting of a strange mix of short and long strands of hair. The long strands are pulled back into a ponytail on the left side.
+  components:
+  - type: Sprite
+    sprite: Clothing/Head/Misc/virtual-fan-wig.rsi
+  - type: Clothing
+    sprite: Clothing/Head/Misc/virtual-fan-wig.rsi
+  - type: Item
+    storedRotation: 0
+  - type: Tag
+    tags:
+    - HamsterWearable
+    - WhitelistChameleon
+  - type: HideLayerClothing
+    slots:
+    - Hair
+    - HeadTop
+    - HeadSide
+
+- type: entity
+  parent: ClothingHeadBase
+  id: ClothingHeadVirtualForeignerWig
+  name: foreign singer's wig
+  description: Long hair reaching the hips, with a small curl falling over the left shoulder. Retro headphones sit atop the head.
+  components:
+  - type: Sprite
+    sprite: Clothing/Head/Misc/virtual-foreigner-wig.rsi
+  - type: Clothing
+    sprite: Clothing/Head/Misc/virtual-foreigner-wig.rsi
+  - type: Item
+    storedRotation: 0
+  - type: Tag
+    tags:
+    - HamsterWearable
+    - WhitelistChameleon
+  - type: HideLayerClothing
+    slots:
+    - Hair
+    - HeadTop
+    - HeadSide
+
+- type: entity
+  parent: ClothingHeadBase
+  id: ClothingHeadVirtualIceWig
+  name: ice singer's wig
+  description: Short blue hair with a hint of frost visible at the tips.
+  components:
+  - type: Sprite
+    sprite: Clothing/Head/Misc/virtual-ice-wig.rsi
+  - type: Clothing
+    sprite: Clothing/Head/Misc/virtual-ice-wig.rsi
+  - type: Tag
+    tags:
+    - HamsterWearable
+    - WhitelistChameleon
   - type: HideLayerClothing
     slots:
     - Hair

@@ -135,8 +135,6 @@ namespace Content.Shared.Interaction
                     CCVars.InteractionRateLimitAnnounceAdminsDelay,
                     RateLimitAlertAdmins)
             );
-
-            InitializeBlocking();
         }
 
         private void RateLimitAlertAdmins(ICommonSession session)
@@ -238,7 +236,7 @@ namespace Content.Shared.Interaction
             if (!item.DeleteOnDrop)
                 RemCompDeferred<UnremoveableComponent>(uid);
             else
-                PredictedQueueDel(uid);
+                QueueDel(uid);
         }
 
         private void OnUnequipHand(EntityUid uid, UnremoveableComponent item, GotUnequippedHandEvent args)
@@ -249,7 +247,7 @@ namespace Content.Shared.Interaction
             if (!item.DeleteOnDrop)
                 RemCompDeferred<UnremoveableComponent>(uid);
             else
-                PredictedQueueDel(uid);
+                QueueDel(uid);
         }
 
         private void OnDropped(EntityUid uid, UnremoveableComponent item, DroppedEvent args)
@@ -262,7 +260,7 @@ namespace Content.Shared.Interaction
             if (!item.DeleteOnDrop)
                 RemCompDeferred<UnremoveableComponent>(uid);
             else
-                PredictedQueueDel(uid);
+                QueueDel(uid);
         }
 
         private bool HandleTryPullObject(ICommonSession? session, EntityCoordinates coords, EntityUid uid)
@@ -1454,7 +1452,7 @@ namespace Content.Shared.Interaction
             RaiseLocalEvent(uidB.Value, ev);
 
             // Begin Stellar/ES Additions - Interaction particles
-            if (!interactionParticles)
+            if (!interactionParticles || ((args as InteractUsingEvent)?.SuppressInteractionParticles ?? false)) // Moff - suppress particles if it's the right flavor of event. This is a gross hack, but here we are! :^)
                 return;
 
             if (_net.IsServer)

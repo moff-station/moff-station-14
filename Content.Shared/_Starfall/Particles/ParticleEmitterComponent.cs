@@ -7,6 +7,7 @@ namespace Content.Shared._Starfall.Particles;
 /// Spawns a particle effect on this entity when it initializes.
 /// </summary>
 [RegisterComponent]
+[ComponentProtoName("StarfallParticleEmitter")] // Moffstation - upstream added its own "ParticleEmitter" component
 public sealed partial class ParticleEmitterComponent : Component
 {
     /// <summary>The particle effect to emit.</summary>

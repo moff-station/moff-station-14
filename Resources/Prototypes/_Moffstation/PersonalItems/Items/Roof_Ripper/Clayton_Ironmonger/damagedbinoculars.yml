@@ -1,0 +1,32 @@
+# Player: Roof_Ripper - Character: Clayton Ironmonger
+
+- type: entity
+  parent: BaseItem
+  id: &id PersonalItemClaytonBinoculars
+  name: damaged binoculars
+  description: Higher quality binoculars used by ship spotters. They are no longer functional.
+  suffix: PersonalItem
+  components:
+  - type: Sprite
+    sprite: &sprite _Moffstation/PersonalItems/Items/Roof_Ripper/Clayton_Ironmonger/damagedbinoculars.rsi
+    state: icon
+  - type: Item
+    size: Normal
+  - type: Clothing
+    sprite: *sprite
+    quickEquip: false
+    slots:
+    - Neck
+  - type: Wieldable
+  - type: DetailExaminable
+    content: On a closer look, you can see the name IRONMONGER engraved onto one side, and DM132 printed on the other.
+
+- type: loadout
+  id: *id
+  storage:
+    back:
+    - *id
+  effects:
+  - !type:PersonalItemLoadoutEffect
+    character:
+    - Clayton Ironmonger

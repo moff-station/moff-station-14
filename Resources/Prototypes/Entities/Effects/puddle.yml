@@ -149,9 +149,7 @@
     noRot: true
     anchored: true
   - type: Sprite
-    layers:
-    - sprite: Fluids/puddle.rsi
-      state: splat0
+    sprite: Fluids/puddle.rsi
     drawdepth: Puddles
     color: "#FFFFFF80"
   - type: Physics
@@ -169,10 +167,11 @@
         hard: false
   - type: IconSmooth
     key: puddles
-    additionalKeys:
-    - walls
-    base: splat
-    mode: CardinalFlags
+    enabled: false # Let bum ass puddle system update this.
+    states:
+    - !type:DirectionSpriteSmoothing
+      mask: [ walls, windows, marble, puddles ]
+      base: splat
   - type: Puddle
   - type: Solution
     id: puddle
@@ -231,6 +230,11 @@
         - SlipLayer
         hard: false
   - type: Footprint
+  # Moff start - Foobrints don't get smoothing like puddles
+  - type: IconSmooth
+    key: footprints
+    enabled: false
+  # Moff end
   - type: Puddle
     solution: print
     affectsMovement: false

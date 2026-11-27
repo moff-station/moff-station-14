@@ -137,7 +137,7 @@
         Caustic: 0.75
 
 - type: entity
-  parent: ClothingOuterWinterCMO
+  parent: [ClothingOuterStorageFoldableBase, TemperatureProtection]
   id: ClothingOuterWinterMed
   name: medical doctor's insulated labcoat
   components:
@@ -147,7 +147,7 @@
     sprite: _Moffstation/Clothing/OuterClothing/Coats/large-labcoat.rsi
 
 - type: entity
-  parent: ClothingOuterWinterCMO
+  parent: ClothingOuterWinterMed
   id: ClothingOuterWinterChem
   name: chemist's insulated labcoat
   components:

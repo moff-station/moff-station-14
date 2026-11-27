@@ -82,7 +82,7 @@ public abstract partial class GameTicker : EntitySystem
 
     public TimeSpan RoundDuration()
     {
-        return Timing.CurTime.Subtract(RoundStartTimeSpan);
+        return RunLevel < GameRunLevel.InRound ? TimeSpan.Zero : Timing.CurTime.Subtract(RoundStartTimeSpan);
     }
 }
 

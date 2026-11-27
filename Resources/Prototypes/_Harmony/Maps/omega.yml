@@ -14,7 +14,8 @@
             !type:NanotrasenNameGenerator
             prefixCreator: 'TG'
         - type: StationEmergencyShuttle
-          emergencyShuttlePath: /Maps/Shuttles/emergency_omega.yml
+          # Moff - Evac arrivals
+          emergencyShuttlePath: /Maps/_Moffstation/Shuttles/emergency_omega.yml
         - type: StationJobs
           availableJobs: # 48 jobs total without interns, 56 jobs total with interns
             #command (7)

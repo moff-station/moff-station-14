@@ -106,7 +106,7 @@
       prefix: device-address-prefix-smes
       sendBroadcastAttemptEvent: true
       examinableAddress: true
-    - type: WiredNetworkConnection
+    - type: WiredNetwork
     - type: GuideHelp
       guides:
       - PowerStorage
@@ -191,6 +191,7 @@
     collectionName: smes
     sprite: Structures/Power/smes.rsi
     state: advancedsmes-static
+  - type: BatteryRefillOnArrival # Moff - Evac arrivals
 
 - type: entity
   parent: SMESAdvanced

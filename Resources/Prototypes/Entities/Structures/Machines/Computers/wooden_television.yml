@@ -7,11 +7,12 @@
   - type: Sprite
     #noRot: true # Moffstation
     drawdepth: SmallObjects
-    layers:
-    - map: ["computerLayerBody"]
-      state: television
-    - map: ["computerLayerScreen"]
-      state: detective_television
+  - type: ComputerVisuals
+    stateFrame: television
+    stateKeyboard: null
+    stateScreen: detective_television
+    stateKeys: null
+    statePanel: null # Moff - our computers.rsi has no television panel state
   - type: Computer
     board: ComputerTelevisionCircuitboard
   - type: PointLight

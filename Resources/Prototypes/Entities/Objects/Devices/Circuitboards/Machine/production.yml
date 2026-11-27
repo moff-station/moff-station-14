@@ -129,7 +129,8 @@
           amount: 2
           defaultPrototype: Beaker
     - type: StealTarget
-      stealGroup: MedicalTechFabCircuitboard
+      stealGroup:
+      - MedicalTechFabCircuitboard
 
 - type: entity
   id: CircuitImprinterMachineCircuitboard

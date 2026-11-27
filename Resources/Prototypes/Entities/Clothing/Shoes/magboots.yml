@@ -65,7 +65,8 @@
   - type: StaticPrice
     price: 750
   - type: StealTarget
-    stealGroup: ClothingShoesBootsMagAdv
+    stealGroup:
+    - ClothingShoesBootsMagAdv
 
 - type: entity
   parent: [ClothingShoesBootsMagBase]

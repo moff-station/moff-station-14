@@ -48,7 +48,8 @@ namespace Content.Server.GameTicking
         [Dependency] private ServerStationJobsSystem _stationJobs = default!;
         [Dependency] private StationSpawningSystem _stationSpawning = default!;
         [Dependency] private UserDbDataManager _userDb = default!;
-        [Dependency] private MoffCharacterPickerSystem _moffCharacterPicker = default!; // Moffstation - Multi-character selection
+
+        [Dependency] private MoffProfileSpawnedSystem _moffProfileSpawned = default!; // Moffstation - Multi-character selection
 
         [ViewVariables] private bool _initialized;
         [ViewVariables] private bool _postInitialized;
@@ -85,11 +86,11 @@ namespace Content.Server.GameTicking
             DebugTools.Assert(_initialized);
             DebugTools.Assert(!_postInitialized);
 
+            PauseStart(Cfg.GetCVar(CCVars.StartServerPaused)); // Moff - Pause the round on startup if the Cvar is enabled
+
             // We restart the round now that entities are initialized and prototypes have been loaded.
             if (!DummyTicker)
                 RestartRound();
-
-            PauseStart(Cfg.GetCVar(CCVars.StartServerPaused)); // Moffstation - Pause the round on startup if the Cvar is enabled
 
             _postInitialized = true;
         }

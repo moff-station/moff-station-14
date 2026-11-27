@@ -1,0 +1,13 @@
+moff-advertisement-swim-1 = Surfs up!
+moff-advertisement-swim-2 = Totally tubular, brah!
+moff-advertisement-swim-3 = Can't beat the heat? Stay in the pool!
+moff-advertisement-swim-4 = Swim on by!
+moff-advertisement-swim-5 = Show some flammable skin!
+moff-advertisement-swim-6 = NO RUNNING BY THE POOLSIDE!
+moff-advertisement-swim-7 = *lifeguard-whistle.ogg*
+moff-advertisement-swim-8 = Hang ten! Or however many fingers you got, brah!
+moff-thankyou-swimvend-1 = Remember to wait 15 minutes after eating!
+moff-thankyou-swimvend-2 = Go catch some gnarly waves, brah!
+moff-thankyou-swimvend-3 = Enjoy the pool!
+moff-thankyou-swimvend-4 = Come back when you're ready to towel off!
+moff-thankyou-swimvend-5 = Make sure to apply your sunscreen!

@@ -38,6 +38,7 @@ using Content.Shared.Strip.Components;
 using Content.Shared.Temperature;
 using Content.Shared.Verbs;
 using Content.Shared.VoiceMask;
+using Content.Shared.Waypointer.Events;
 using Content.Shared.Weapons.Ranged.Events;
 using Content.Shared.Wieldable;
 using Content.Shared.Zombies;
@@ -97,6 +98,7 @@ public partial class InventorySystem
         SubscribeLocalEvent<InventoryComponent, RefreshNightVisionEvent>(RefRelayInventoryEvent);
         SubscribeLocalEvent<InventoryComponent, GluedEffectAttemptEvent>(RefRelayInventoryEvent);
         SubscribeLocalEvent<InventoryComponent, LubedEffectAttemptEvent>(RefRelayInventoryEvent);
+        SubscribeLocalEvent<InventoryComponent, WaypointerChangedEvent>(RefRelayInventoryEvent);
 
         SubscribeLocalEvent<InventoryComponent, RecoilKickAttemptEvent>(RefRelayInventoryEvent); // Moffstation
         SubscribeLocalEvent<InventoryComponent, ExaminedEvent>(RefRelayInventoryEvent); // Moffstation - Examinable Clothing

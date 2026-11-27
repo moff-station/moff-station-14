@@ -86,13 +86,13 @@ public sealed class MachineBoardTest : GameTest
                          .Where(p => !pair.IsTestPrototype(p))
                          .Where(p => !_ignoredPrototypes.Contains(p.ID)))
             {
-                if (!p.TryGetComponent<BladeServerBoardComponent>(out var mbc, compFact))
+                if (!p.TryComp<BladeServerBoardComponent>(out var mbc, compFact))
                     continue;
 
                 Assert.Multiple(() =>
                 {
                     Assert.That(
-                        p.HasComponent<MachineBoardComponent>(compFact),
+                        p.HasComp<MachineBoardComponent>(compFact),
                         $"Blade server board {p.ID} does not have a {nameof(MachineBoardComponent)}"
                     );
                     Assert.That(
@@ -100,11 +100,11 @@ public sealed class MachineBoardTest : GameTest
                         $"Blade server board {p.ID}'s corresponding blade server has an invalid prototype."
                     );
                     Assert.That(
-                        bsProto!.HasComponent<BladeServerComponent>(compFact),
+                        bsProto!.HasComp<BladeServerComponent>(compFact),
                         $"Blade server board {p.ID}'s corresponding blade server {mbc.Prototype} does not have {nameof(BladeServerComponent)}"
                     );
                     Assert.That(
-                        bsProto!.TryGetComponent<MachineComponent>(out var mComp, compFact),
+                        bsProto!.TryComp<MachineComponent>(out var mComp, compFact),
                         $"Blade server board {p.ID}'s corresponding blade server {mbc.Prototype} does not have {nameof(MachineComponent)}"
                     );
                     Assert.That(

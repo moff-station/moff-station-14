@@ -13,8 +13,8 @@
                 Columns="3"
                 HorizontalAlignment="Center"
                 Margin="5"
-                ButtonList="1,5,10,15,20,30,40,60,120"
                 RadioGroup="True">
+                <!-- Moff - Configurable dispense amounts - removed ButtonList="1,5,10,15,20,30,40,60,120" -->
             </ui:ButtonGrid>
             <Control VerticalExpand="True" />
             <Label Name="ContainerInfoName"

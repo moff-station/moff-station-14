@@ -195,7 +195,7 @@
       Plastic: 100
   - type: StaticPrice
     price: 30 # increases in price after decomposed into raw materials
-  - type: MoffStainRepellent # Moff - Mostly solid plastic, and it means Vox don't look like they just climed out of the dumpster constantly
+  - type: MoffStainRepellentCoated # Moff - Mostly solid plastic, and it means Vox don't look like they just climbed out of the dumpster constantly
 
 - type: entity
   parent: ClothingMaskBase
@@ -215,12 +215,14 @@
     tags:
     - ClownMask
     - WhitelistChameleon
+    - HamsterWearable
   - type: HideLayerClothing
     slots:
     - Snout
   # Imp - Begin - Tourists
   - type: StealTarget
-    stealGroup: ClownMask
+    stealGroup:
+    - ClownMask
   # Imp - Begin - Tourists
 
 #Moffstation - Start - No more wig so not need to be able to fold it
@@ -257,14 +259,6 @@
   - type: Construction
     graph: BananaClownMask
     node: mask
-  - type: Tag
-    tags:
-    - ClownMask
-    - HamsterWearable
-    - WhitelistChameleon
-  - type: HideLayerClothing
-    slots:
-    - Snout
 
 - type: entity
   parent: [ClothingMaskClownBase] #Moffstation - Clown Mask in Loadout
@@ -316,9 +310,9 @@
   description: The traditional mime's mask. It has an eerie facial posture.
   components:
   - type: Sprite
-    sprite: Clothing/Mask/mime.rsi
+    sprite: _Moffstation/Clothing/Mask/mime.rsi # Moff
   - type: Clothing
-    sprite: Clothing/Mask/mime.rsi
+    sprite: _Moffstation/Clothing/Mask/mime.rsi # Moff
   - type: BreathMask
   - type: IdentityBlocker
   - type: Tag
@@ -350,7 +344,7 @@
       Plastic: 25
   - type: StaticPrice
     price: 5
-  - type: MoffStainRepellent # Moff - Mostly solid plastic, and it means Vox don't look like they just climed out of the dumpster constantly
+  - type: MoffStainRepellentCoated # Moff - Mostly solid plastic, and it means Vox don't look like they just climbed out of the dumpster constantly
 
 - type: entity
   parent: ClothingMaskBase

@@ -61,4 +61,10 @@ public sealed partial class FTLComponent : Component
 
     [DataField]
     public EntityUid? TravelStream;
+
+    // Moff Start - Evac arrivals
+    /// Whether unbuckled mobs get knocked down when the shuttle jumps to hyperspace.
+    [DataField]
+    public bool KnockdownOnStart = true;
+    // Moff end
 }
