@@ -125,6 +125,7 @@ public sealed class ChangelingSlimeTests : InteractionTest
         {
             _sharedStorage.PlayerInsertHeldEntity(SPlayer, SPlayer);
         });
+        await AwaitDoAfters(); // Moff - Stow delay
         Assert.That(storageComponent.StoredItems, Has.Count.EqualTo(1));
         Assert.That(storageComponent.StoredItems.TryGetValue(appleEnt, out var appleStoredLocation), "Failed to get the stored location of the apple.");
 
@@ -149,6 +150,7 @@ public sealed class ChangelingSlimeTests : InteractionTest
         var ctrl = GetStorageControl(apple);
         await ClickControl(ctrl, ContentKeyFunctions.MoveStoredItem);
         await RunUntilSynced();
+        await AwaitDoAfters(); // Moff - Stow delay
         Assert.That(_hands.IsHolding((SPlayer, Hands), appleEnt), "Changeling did not successfully pull the stored item from their storage.");
     }
 
@@ -181,6 +183,7 @@ public sealed class ChangelingSlimeTests : InteractionTest
         {
             _sharedStorage.PlayerInsertHeldEntity(SPlayer, SPlayer);
         });
+        await AwaitDoAfters(); // Moff - Stow delay
         var storageComponent = Comp<StorageComponent>(Player);
         Assert.That(_container.TryGetContainingContainer(appleEnt, out var container), "Failed to get the container for the stored item after inserting into slime storage.");
         Assert.That(container, Is.EqualTo(storageComponent.Container), "The stored item is not in the storage container after inserting into slime storage.");

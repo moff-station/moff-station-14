@@ -30,6 +30,14 @@ public sealed partial class ItemSizePrototype : IPrototype, IComparable<ItemSize
     [DataField(required: true)]
     public IReadOnlyList<Box2i> DefaultShape = new List<Box2i>();
 
+    // Moff Start - Stow delay
+    /// <summary>
+    /// How long it takes to store or equip an item of this size.
+    /// </summary>
+    [DataField(required: true)]
+    public TimeSpan StowDelay;
+    // Moff end
+
     public int CompareTo(ItemSizePrototype? other)
     {
         if (other is not { } otherItemSize)

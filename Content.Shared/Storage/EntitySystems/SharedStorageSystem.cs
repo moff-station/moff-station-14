@@ -2,6 +2,7 @@ using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using Content.Shared._Moffstation.Storage; // Moffstation
 using Content.Shared._Moffstation.Storage.EntitySystems; // Moffstation
+using Content.Shared._Moffstation.StowDelay;
 using Content.Shared.ActionBlocker;
 using Content.Shared.Administration.Logs;
 using Content.Shared.CCVar;
@@ -73,6 +74,7 @@ public abstract partial class SharedStorageSystem : EntitySystem
 
     [Dependency] private AreaPickupSystem _areaPickup = default!; // Moffstation
     [Dependency] private QuickPickupSystem _quickPickup = default!; // Moffstation
+    [Dependency] private StowDelaySystem _stowDelay = default!; // Moff - Stow delay
 
     [Dependency] private EntityQuery<ItemComponent> _itemQuery = default!;
     [Dependency] private EntityQuery<StackComponent> _stackQuery = default!;
@@ -468,7 +470,16 @@ public abstract partial class SharedStorageSystem : EntitySystem
             {
                 Text = Loc.GetString("storage-component-transfer-verb"),
                 IconEntity = GetNetEntity(args.Using),
+                // Moff Start - Stow delay
+                Act = () =>
+                {
+                    if (!_stowDelay.TryStartStorageTransferAllDelay((uid, component), args.Target, args.User))
+                        TransferEntities(uid, args.Target, args.User, component, null, targetStorage, targetLock);
+                },
+                /*
                 Act = () => TransferEntities(uid, args.Target, args.User, component, null, targetStorage, targetLock)
+                */
+                // Moff end
             };
 
             args.Verbs.Add(verb);
@@ -783,12 +794,18 @@ public abstract partial class SharedStorageSystem : EntitySystem
                 LogImpact.Low,
                 $"{ToPrettyString(player):player} is attempting to take {ToPrettyString(item):item} out of {ToPrettyString(storage):storage}");
 
+            // Moff Start - Stow delay
+            if (!_stowDelay.TryStartStorageTransferDelay(storage.AsNullable(), player, item))
+                GrabItem(storage.AsNullable(), player.AsNullable(), item);
+            /*
             if (_sharedHandsSystem.TryPickupAnyHand(player, item, handsComp: player.Comp)
                 && storage.Comp.StorageRemoveSound != null
                 && !_tag.HasTag(player, storage.Comp.SilentStorageUserTag))
             {
                 Audio.PlayPredicted(storage.Comp.StorageRemoveSound, storage, player, _audioParams);
             }
+            */
+            // Moff end
 
             return;
         }
@@ -866,6 +883,18 @@ public abstract partial class SharedStorageSystem : EntitySystem
             return;
         }
 
+        // Moff Start - Stow delay
+        if (ValidateInput(args, msg.StorageEnt, out var transferPlayer, out var transferStorage)
+            && _stowDelay.TryStartStorageTransferDelay(transferStorage.AsNullable(), transferPlayer, itemUid.Value, (transferStorage, msg.Location)))
+        {
+            _adminLog.Add(
+                LogType.Storage,
+                LogImpact.Low,
+                $"{ToPrettyString(transferPlayer):player} is inserting {ToPrettyString(itemUid.Value):item} into {ToPrettyString(transferStorage):storage}");
+            return;
+        }
+        // Moff end
+
         if (!TryComp(localPlayer, out HandsComponent? handsComp) || !_sharedHandsSystem.TryPickup(localPlayer.Value, itemEnt, handsComp: handsComp, animate: false))
             return;
 
@@ -889,6 +918,10 @@ public abstract partial class SharedStorageSystem : EntitySystem
             LogType.Storage,
             LogImpact.Low,
             $"{ToPrettyString(player):player} is inserting {ToPrettyString(item):item} into {ToPrettyString(storage):storage}");
+        // Moff Start - Stow delay
+        if (_stowDelay.TryStartStorageDelay(storage, player, item, msg.Location))
+            return;
+        // Moff end
         InsertAt(storage!, item!, msg.Location, out _, player, stackAutomatically: false);
     }
 
@@ -1314,6 +1347,11 @@ public abstract partial class SharedStorageSystem : EntitySystem
             _popupSystem.PopupEntity(Loc.GetString("comp-storage-cant-drop", ("entity", toInsert.Value)), ent, player);
             return false;
         }
+
+        // Moff Start - Stow delay
+        if (_stowDelay.TryStartStorageDelay(ent, player, toInsert.Value))
+            return false;
+        // Moff end
 
         return PlayerInsertEntityInWorld((ent, ent.Comp), player, toInsert.Value);
     }

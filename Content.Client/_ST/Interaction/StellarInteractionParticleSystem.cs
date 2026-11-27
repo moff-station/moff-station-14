@@ -21,12 +21,15 @@ public sealed partial class StellarInteractionParticleSystem : EntitySystem
     [Dependency] private SpriteSystem _sprite = default!;
     [Dependency] private AnimationPlayerSystem _animation = default!;
     [Dependency] private IGameTiming _timing = default!;
+    [Dependency] private TransformSystem _xform = default!; // Moff - Stow delay
 
     [Dependency] private EntityQuery<MoffDisallowInteractionParticlesComponent> _disallowParticlesQuery; // Moff
 
     private const string AnimateKey = "particle-animation";
 
     private static readonly EntProtoId InteractionParticleId = "StellarInteractionParticle";
+
+    private static readonly Vector2 InHandOffset = new(0, 0.85f); // Moff - Stow delay
 
     public override void Initialize()
     {
@@ -65,11 +68,22 @@ public sealed partial class StellarInteractionParticleSystem : EntitySystem
         if (performerXform.MapID == MapId.Nullspace || targetXform.MapID == MapId.Nullspace)
             return;
 
-        if (performerXform.ParentUid != targetXform.ParentUid)
+        // Moff Start - Stow delay
+        var inHand = performerXform.ParentUid != targetXform.ParentUid;
+        if (inHand && ev.Type != StellarInteractionParticleType.InHand)
             return;
 
-        var performerTargetDelta = targetXform.LocalPosition - performerXform.LocalPosition;
+        var performerTargetDelta = inHand ? InHandOffset : targetXform.LocalPosition - performerXform.LocalPosition;
+        // Moff end
         var particle = Spawn(InteractionParticleId, performerXform.Coordinates);
+
+        // Moff Start - Stow delay
+        if (inHand)
+        {
+            used ??= target;
+            _xform.SetParent(particle, performer);
+        }
+        // Moff end
 
         if (used is { } usedEntity && Exists(usedEntity) && TryComp<SpriteComponent>(usedEntity, out var usedSprite))
         {
@@ -78,6 +92,11 @@ public sealed partial class StellarInteractionParticleSystem : EntitySystem
             _sprite.SetDrawDepth(particle, (int) Shared.DrawDepth.DrawDepth.Effects);
             // ES END
         }
+
+        // Moff Start - Stow delay
+        if (inHand)
+            Comp<SpriteComponent>(particle).NoRotation = true;
+        // Moff end
 
         var spriteColor = Comp<SpriteComponent>(particle).Color;
         _animation.Play(particle, GetAnimation(performerTargetDelta, spriteColor), AnimateKey);

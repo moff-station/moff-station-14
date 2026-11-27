@@ -10,7 +10,7 @@ namespace Content.Shared._ST.Interaction;
 /// Data for interaction particles
 /// </summary>
 [Serializable, NetSerializable]
-public sealed class StellarInteractionParticleEvent(NetEntity performer, NetEntity? used, NetEntity target, bool isClientEvent) : EntityEventArgs
+public sealed class StellarInteractionParticleEvent(NetEntity performer, NetEntity? used, NetEntity target, bool isClientEvent, StellarInteractionParticleType type) : EntityEventArgs // Moff - Stow delay
 {
     public NetEntity Performer = performer;
 
@@ -23,4 +23,15 @@ public sealed class StellarInteractionParticleEvent(NetEntity performer, NetEnti
     /// Workaround for event subscription not working w/ the session overload
     /// </summary>
     public bool IsClientEvent = isClientEvent;
+
+    public StellarInteractionParticleType Type = type; // Moff - Stow delay
 }
+
+// Moff Start - Stow delay
+[Serializable, NetSerializable]
+public enum StellarInteractionParticleType
+{
+    Use,
+    InHand,
+}
+// Moff end
