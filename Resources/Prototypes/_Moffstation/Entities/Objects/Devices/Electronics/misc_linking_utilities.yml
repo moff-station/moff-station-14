@@ -1,0 +1,36 @@
+- type: entity
+  parent: BaseItem
+  id: VoiceEmitter
+  name: voice emitter
+  description: A cheap little thing that say prerecorded phrases when receiving a signal.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Objects/Devices/voice_emitter.rsi
+    state: icon
+  - type: StaticPrice
+    price: 20
+  - type: DeviceLinkSink
+    ports:
+    - VoiceEmitterVoicelineOne
+    - VoiceEmitterVoicelineTwo
+    - VoiceEmitterVoicelineThree
+    - VoiceEmitterVoicelineFour
+    - VoiceEmitterVoicelineRandom
+  - type: SignalSpeech
+  - type: Speech
+    speechSounds: Pai # it just sounds better
+  - type: DeviceNetwork
+    deviceNetId: Wireless
+    receiveFrequencyId: BasicDevice
+  - type: WirelessNetwork
+    range: 15
+  - type: SinkOnTrigger
+    port: VoiceEmitterVoicelineRandom
+  - type: UseDelayOnTrigger
+  - type: UseDelayTriggerCondition
+  - type: UseDelay
+  - type: TriggerOnUse
+  - type: EmitSoundOnTrigger
+    sound:
+      collection: TriggerActivate
+

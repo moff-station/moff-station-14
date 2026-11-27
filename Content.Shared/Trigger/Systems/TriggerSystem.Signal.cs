@@ -1,3 +1,4 @@
+using Content.Shared._Moffstation.Trigger.Effects;
 using Content.Shared.Trigger.Components.Triggers;
 using Content.Shared.Trigger.Components.Effects;
 using Content.Shared.DeviceLinking.Events;
@@ -41,4 +42,17 @@ public sealed partial class TriggerSystem
 
         Trigger(ent.Owner, args.Trigger, ent.Comp.KeyOut);
     }
+
+    // Moffstation - sink on trigger
+    [SubscribeLocalEvent]
+    private void OnTrigger(Entity<SinkOnTriggerComponent> ent, ref TriggerEvent args)
+    {
+        if (args.Key != null && !ent.Comp.KeysIn.Contains(args.Key))
+            return;
+
+        var ev = new SignalReceivedEvent(ent.Comp.Port, args.User);
+        RaiseLocalEvent(ent, ref ev);
+        args.Handled = true;
+    }
+    // Moffstation - end
 }

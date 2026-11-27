@@ -23,3 +23,14 @@ signal-port-name-disposal-unit-autoflush-off = Autoflush Off
 signal-port-description-disposal-unit-autoflush-off = disable automatic flushing.
 signal-port-name-disposal-unit-autoflush-toggle = Toggle Autoflush
 signal-port-description-disposal-unit-autoflush-toggle = toggle automatic flushing.
+
+signal-port-name-voice-emitter-voiceline-one = Voiceline 1
+signal-port-description-voice-emitter-voiceline-one = emit voiceline 1
+signal-port-name-voice-emitter-voiceline-two = Voiceline 2
+signal-port-description-voice-emitter-voiceline-two = emit voiceline 2
+signal-port-name-voice-emitter-voiceline-three = Voiceline 3
+signal-port-description-voice-emitter-voiceline-three = emit voiceline 3
+signal-port-name-voice-emitter-voiceline-four = Voiceline 4
+signal-port-description-voice-emitter-voiceline-four = emit voiceline 4
+signal-port-name-voice-emitter-voiceline-random = Random voiceline
+signal-port-description-voice-emitter-voiceline-random = emit a random voiceline
