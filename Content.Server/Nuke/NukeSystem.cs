@@ -1,6 +1,7 @@
 using Content.Server.Chat.Systems;
 using Content.Server.Explosion.EntitySystems;
 using Content.Server.Popups;
+using Content.Server.Shuttles.Systems;
 using Content.Server.Station.Systems;
 using Content.Shared.AlertLevel;
 using Content.Shared.Audio;
@@ -44,6 +45,8 @@ public sealed partial class NukeSystem : EntitySystem
     [Dependency] private AppearanceSystem _appearance = default!;
     [Dependency] private TurfSystem _turf = default!;
     [Dependency] private IGameTiming _timing = default!;
+
+    [Dependency] private EmergencyShuttleSystem _shuttles =  default!; // Moffstation - emergency nuke launch
 
     /// <summary>
     ///     Used to calculate when the nuke song should start playing for maximum kino with the nuke sfx
@@ -338,6 +341,14 @@ public sealed partial class NukeSystem : EntitySystem
             nuke.PlayedAlertSound = true;
             UpdateAppearance(uid, nuke);
         }
+
+        // Moffstation - emergency nuke launch
+        if (nuke.EmergencyLaunchEnabled && nuke.RemainingTime <= nuke.EmergencyLaunchTime && !nuke.LaunchedShuttles)
+        {
+            _shuttles.EarlyLaunch(false);
+            nuke.LaunchedShuttles = true;
+        }
+        // Moffstation - end
 
         if (nuke.RemainingTime <= 0)
         {

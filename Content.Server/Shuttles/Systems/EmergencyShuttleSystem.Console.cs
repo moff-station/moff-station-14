@@ -355,9 +355,15 @@ public sealed partial class EmergencyShuttleSystem
     /// <summary>
     /// Attempts to early launch the emergency shuttle if not already done.
     /// </summary>
-    public bool EarlyLaunch()
+    public bool EarlyLaunch(bool CheckAuthorisation = true) // Moffstation - emergency nuke launch
     {
-        if (EarlyLaunchAuthorized || !EmergencyShuttleArrived || _consoleAccumulator <= _authorizeTime) return false;
+        // Moffstation - emergency nuke launch
+        if (CheckAuthorisation)
+        {
+            if (EarlyLaunchAuthorized || !EmergencyShuttleArrived || _consoleAccumulator <= _authorizeTime)
+                return false;
+        }
+        // Moffstation - end
 
         _logger.Add(LogType.EmergencyShuttle, LogImpact.High, $"Emergency shuttle launch authorized");
         _consoleAccumulator = _authorizeTime;
