@@ -3,7 +3,6 @@ using Content.Shared.Actions;
 using Content.Shared.Actions.Components;
 using Content.Shared.NPC.Prototypes;
 using Content.Shared.Objectives.Components;
-using Content.Shared.Roles;
 using Content.Shared.Roles.Components;
 using Robust.Shared.Audio;
 using Robust.Shared.GameStates;
@@ -14,7 +13,7 @@ namespace Content.Shared._Harmony.BloodBrothers.Components;
 /// <summary>
 /// Signifies that an entity is the blood brother chosen by a game-rule.
 /// </summary>
-[RegisterComponent, NetworkedComponent, Access(typeof(SharedBloodBrotherSystem))]
+[RegisterComponent, NetworkedComponent, Access(typeof(BloodBrotherSystem))]
 [AutoGenerateComponentState]
 public sealed partial class InitialBloodBrotherComponent : Component
 {
@@ -26,20 +25,7 @@ public sealed partial class InitialBloodBrotherComponent : Component
     [DataField, AutoNetworkedField]
     public EntityUid? ConvertActionEntity;
 
-    [DataField]
-    public EntProtoId<EntityTargetActionComponent> CheckConvertAction = "ActionBloodBrotherCheckConvert";
-
-    [DataField, AutoNetworkedField]
-    public EntityUid? CheckConvertActionEntity;
-
     #endregion
-
-    /// <summary>
-    /// The antag preference required for someone to be converted into a blood brother.
-    /// If null, the check will be skipped.
-    /// </summary>
-    [DataField]
-    public ProtoId<AntagPrototype>? RequiredAntagPreference = "BloodBrotherConvertible";
 
     /// <summary>
     /// The popup that will happen when a blood brother is converted.
@@ -90,5 +76,3 @@ public sealed partial class InitialBloodBrotherComponent : Component
 }
 
 public sealed partial class BloodBrotherConvertActionEvent : EntityTargetActionEvent;
-
-public sealed partial class BloodBrotherCheckConvertActionEvent : EntityTargetActionEvent;
