@@ -1,4 +1,5 @@
 using Content.Shared._Funkystation.Fluids;
+using Content.Shared._Moffstation.Overlay.Components;
 using Content.Shared._Moffstation.Weapons.Ranged.Components;
 using Content.Shared.Access.Systems;
 using Content.Shared.Armor;
@@ -122,6 +123,8 @@ public partial class InventorySystem
         SubscribeLocalEvent<InventoryComponent, RefreshEquipmentHudEvent<NoirOverlayComponent>>(RefRelayInventoryEvent);
         SubscribeLocalEvent<InventoryComponent, RefreshEquipmentHudEvent<ThermalSightComponent>>(RefRelayInventoryEvent);
         SubscribeLocalEvent<InventoryComponent, RefreshEquipmentHudEvent<ImageOverlayComponent>>(RefRelayInventoryEvent);
+        SubscribeLocalEvent<InventoryComponent, RefreshEquipmentHudEvent<ShowShaderComponent>>(RefRelayInventoryEvent); // Moffstation
+        SubscribeLocalEvent<InventoryComponent, RefreshEquipmentHudEvent<ShowArInterfaceComponent>>(RefRelayInventoryEvent); // Moffstation
 
         SubscribeLocalEvent<InventoryComponent, GetVerbsEvent<EquipmentVerb>>(OnGetEquipmentVerbs);
         SubscribeLocalEvent<InventoryComponent, GetVerbsEvent<InnateVerb>>(OnGetInnateVerbs);

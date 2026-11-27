@@ -1,0 +1,54 @@
+- type: entity
+  id: ArHackerHolopadIndicator
+  categories: [ HideSpawnMenu ]
+  save: false
+  components:
+  - type: ArElement
+    interface: ArHackerInterface
+    spawnAt: !type:ArSpawnAtSource
+      offset: 0,0
+      angle: 0
+  - type: Sprite
+    sprite: _Moffstation/ArInterfaces/hacker.rsi
+    state: holopad
+    noRot: true
+  - type: VisualLinks
+    linkSprite:
+      sprite: _Moffstation/ArInterfaces/hacker.rsi
+      state: link
+
+- type: entity
+  id: ArHackerCameraIndicator
+  categories: [ HideSpawnMenu ]
+  save: false
+  components:
+  - type: ArElement
+    interface: ArHackerInterface
+    spawnAt: !type:ArSpawnAtSource
+      offset: -0.25, -0.4
+      angle: 0
+  - type: Sprite
+    sprite: _Moffstation/ArInterfaces/hacker.rsi
+    state: camera
+    noRot: true
+  - type: VisualLinks
+    linkSprite:
+      sprite: _Moffstation/ArInterfaces/hacker.rsi
+      state: link
+
+- type: entity
+  id: ArHackerViewerIndicator
+  categories: [ HideSpawnMenu ]
+  save: false
+  components:
+  - type: ArElement
+    interface: ArHackerInterface
+    spawnAt: !type:ArSpawnAtViewer
+      offset: 0,0
+      angle: 0
+  - type: Transform
+    noRot: false
+  - type: Sprite
+    sprite: _Moffstation/ArInterfaces/hacker.rsi
+    state: camera # todo : change that !
+    noRot: true

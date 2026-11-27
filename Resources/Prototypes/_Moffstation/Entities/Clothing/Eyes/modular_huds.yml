@@ -334,3 +334,26 @@
     shownTypes:
     - Thirst
   - type: SolutionScanner
+
+- type: entity
+  parent: ModularHudModuleBase
+  id: HudModuleHacker
+  name: h4ck3r HUD module
+  description: A highly illegal module able to break any firewall.
+  components:
+  - type: Sprite
+    layers:
+    - state: base
+      color: "#333333" # very dark gray, almost black
+    - state: stripe
+      color: Red
+    - state: contacts
+    - state: ai_label
+  - type: ShowShader
+    color: '#3CB1C8'
+  - type: ShowArInterface
+    interface: ArHackerInterface
+  - type: ArDisplays
+    displays:
+      ArHackerInterface:
+      - ArHackerViewerIndicator

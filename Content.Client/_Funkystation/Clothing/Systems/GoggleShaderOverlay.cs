@@ -9,7 +9,7 @@ public sealed class GoggleShaderOverlay(IPrototypeManager prototype) : Overlay
     public override OverlaySpace Space => OverlaySpace.WorldSpace;
     public override bool RequestScreenTexture => true;
 
-    public readonly List<(string Shader, Color Color)> ActiveShaders = new();
+    public List<(string Shader, Color Color)> ActiveShaders = []; // Moffstation - no longer readonly
 
     public bool ReducedMotion;
 
