@@ -45,3 +45,6 @@ moffstation-lobby-state-background-chadwherestheteg-artist = Ciraus
 
 moffstation-lobby-state-background-theelkridgekid-title = The Elkridge Kid
 moffstation-lobby-state-background-theelkridgekid-artist = Pilkie
+
+moffstation-lobby-state-background-oneday-title = One Day
+moffstation-lobby-state-background-oneday-artist = Townfoolery
