@@ -56,7 +56,7 @@ public sealed partial class BloodBrotherRuleSystem : GameRuleSystem<BloodBrother
     [Dependency] private StunSystem _stunSystem = default!;
     [Dependency] private TargetObjectiveSystem _targetObjectiveSystem = default!;
     [Dependency] private ServerBloodBrotherSystem _bloodBrother = default!;
-    [Dependency] private MoffCharacterPickerSystem _characterPicker = default!;
+    [Dependency] private MoffProfileSpawnedSystem _moffProfileSpawned = default!;
 
     [Dependency] private EntityQuery<BloodBrotherComponent> _bloodBrotherQuery;
     [Dependency] private EntityQuery<TargetObjectiveComponent> _targetObjectiveQuery;
@@ -336,7 +336,7 @@ public sealed partial class BloodBrotherRuleSystem : GameRuleSystem<BloodBrother
 
     private bool HasAntagPreference(NetUserId userId)
     {
-        var profile = _characterPicker.GetSpawnedProfile(userId);
+        var profile = _moffProfileSpawned.GetSpawnedProfile(userId).Profile;
         if (profile == null && _preferencesManager.TryGetCachedPreferences(userId, out var preferences))
             profile = preferences.SelectedCharacter;
 
