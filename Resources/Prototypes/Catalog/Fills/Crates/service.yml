@@ -155,8 +155,11 @@
       entity_storage: !type:AllSelector
         children:
         - id: BarberScissors
-        - id: ClothingOuterSuitMonkey
-        - id: ClothingHeadHatAnimalMonkey
+        # Begin Macrocosm: Costume bundles
+        # - id: ClothingOuterSuitMonkey
+        # - id: ClothingHeadHatAnimalMonkey
+        - id: CostumeBundleMonkey
+        # End Macrocosm
         - id: ClothingUniformJumpskirtJanimaid
         - id: ClothingUniformJumpskirtOldDress
         - id: ClothingHeadHatMagician
@@ -180,8 +183,11 @@
           - id: ClothingMaskMime
           - id: ClothingBeltSuspendersRed
           - id: ClothingBeltSuspendersBlack
-        - !type:NestedSelector
-          tableId: RandomVirtualSingerOutfitTable
+        # Begin Macrocosm: Costume bundles
+        # - !type:NestedSelector
+        #  tableId: RandomVirtualSingerOutfitTable
+        - id: CostumeBundlePerformer
+        # End Macrocosm
 
 - type: entity
   parent: CrateGenericSteel
